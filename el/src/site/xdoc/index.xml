@@ -1,0 +1,242 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+    <properties>
+        <title>Welcome</title>
+    </properties>
+
+    <body>
+
+        <section name="Welcome to Struts EL">
+            <a name="welcome"/>
+
+            <p>
+                Struts EL is an extension of the Struts Taglib component 
+                that uses JSTL (the JavaServer Pages Standard Tag Library)
+                as a foundation technology. 
+                Each JSP custom tag in this library is a JSTL-aware 
+                subclass of a corresponding tag in Struts Taglib.
+                Since JSTL is a prerequisite, 
+                only those tags without a JSTL corrollary were ported to 
+                Struts EL. 
+            </p>
+            <p>
+                Since this component utilizes JSTL, the JSTL expression 
+                language ("EL"), and Struts Taglib, an understanding of all 
+                three is a prerequisite. 
+            </p>
+        </section>
+        
+        <section name="Evaluating Expressions">        
+            <p>
+                Unlike the Struts Taglib component, 
+                Struts EL does not use runtime scriptlet expressions ("rtexprvalues"), 
+                EL uses the expression evaluation engine in the Jakarta Taglibs
+                implementation of JSTL (version 1.0) to evaluate attribute
+                values.
+            </p>
+
+            <p>
+                The base Struts Taglib contains tags which rely on the
+                evaluation of "rtexprvalue"s to render dynamic
+                attribute values. For instance, to print a message from a
+                properties
+                file based on a resource key, you would use the
+                <code>bean:write</code>
+                tag, perhaps like this:
+            </p>
+            <source>
+                <![CDATA[<bean:message key='<%= stringvar %>'/>]]>
+            </source>
+
+            <p>
+                This assumes that
+                <code>stringvar</code>
+                exists as a JSP scripting
+                variable. If you're using the
+                <strong>Struts-EL</strong>
+                library, the
+                reference looks very similar, but slightly different, like
+                this:
+            </p>
+            <source>
+                <![CDATA[<bean-el:message key="${stringvar}"/>]]>
+            </source>
+        </section>
+        
+        <section name="Tag Mapping">
+            <p>
+                In implementing the Struts-EL library, every Struts tag that
+                provides a feature
+                that is not covered by the JSTL (1.0) library is mapped into
+                the Struts-EL
+                library. This section reviews which Struts tags are NOT
+                implemented in the
+                Struts-EL library, and which JSTL tags provide that feature.
+                (See the <a href="tagreference.html">
+                reference</a> for the tags that are implemented.)
+            </p>
+            <p>
+                Many of the non-porting decisions were based on the fact that
+                the JSTL
+                expression language itself provides the same functionality. In
+                those cases, in
+                addition to a possible JSTL tag name, the symbol "EL" will be
+                listed.
+            </p>
+            <subsection
+                    name="Bean Tag Library Tags NOT Implemented in Struts-EL">
+                <table>
+                    <tr>
+                        <th>Struts Tag</th>
+                        <th>JSTL Tag</th>
+                    </tr>
+                    <tr>
+                        <td>cookie</td>
+                        <td>c:set, EL</td>
+                    </tr>
+                    <tr>
+                        <td>define</td>
+                        <td>c:set, EL</td>
+                    </tr>
+                    <tr>
+                        <td>header</td>
+                        <td>c:set, EL</td>
+                    </tr>
+                    <tr>
+                        <td>include</td>
+                        <td>c:import</td>
+                    </tr>
+                    <tr>
+                        <td>parameter</td>
+                        <td>c:set, EL</td>
+                    </tr>
+                    <tr>
+                        <td>write</td>
+                        <td>c:out</td>
+                    </tr>
+                </table>
+            </subsection>
+
+            <subsection
+                    name="Logic Tag Library Tags NOT Implemented in Struts-EL">
+                <table>
+                    <tr>
+                        <th>Struts Tag</th>
+                        <th>JSTL Tag</th>
+                    </tr>
+                    <tr>
+                        <td>empty</td>
+                        <td>c:if, c:when, EL</td>
+                    </tr>
+                    <tr>
+                        <td>equal</td>
+                        <td>c:if, c:when, EL</td>
+                    </tr>
+                    <tr>
+                        <td>greaterEqual</td>
+                        <td>c:if, c:when, EL</td>
+                    </tr>
+                    <tr>
+                        <td>greaterThan</td>
+                        <td>c:if, c:when, EL</td>
+                    </tr>
+                    <tr>
+                        <td>lessEqual</td>
+                        <td>c:if, c:when, EL</td>
+                    </tr>
+                    <tr>
+                        <td>lessThan</td>
+                        <td>c:if, c:when, EL</td>
+                    </tr>
+                    <tr>
+                        <td>notEmpty</td>
+                        <td>c:if, c:when, EL</td>
+                    </tr>
+                    <tr>
+                        <td>notEqual</td>
+                        <td>c:if, c:when, EL</td>
+                    </tr>
+                </table>
+                <p>
+                    (Note that the "iterate" tag was originally ported, even
+                    with the presence of
+                    the "c:forEach" tag, as the "indexed tag" functionality
+                    was not supported when
+                    using "c:forEach" instead of "logic:iterate". This has
+                    since been rectified,
+                    such that the "indexed tag" functionality checks for being
+                    contained in a
+                    "c:forEach" tag, in addition to the "logic:iterate" tag.
+                    However, the ported
+                    "iterate" tag has not been removed from Struts-EL, for
+                    backward compatibility.)
+                </p>
+            </subsection>
+
+            <subsection
+                    name="Html Tag Library Tags NOT Implemented in Struts-EL">
+                <p>
+                    None (all of them were ported).
+                </p>
+            </subsection>
+        </section>
+
+        <section name="Attribute Mapping">
+            <p>
+                At this point of the implementation, there is only one change
+                (to two similar
+                tags) to the set of attributes between the Struts tags, and
+                the Struts-EL tags.
+                The "logic:match" and "logic:notMatch" tags have an additional
+                attribute named
+                "expr", which can take any value, and will be used as the
+                value to compare
+                against, in addition to the choices of "cookie", "header",
+                "name"/"property",
+                and "parameter".
+            </p>
+        </section>
+
+        <section name="Usage Requirements">
+            <p>
+                The Struts-EL tag library requires the use of the Struts tag
+                library, and the
+                Java Server Pages Standard Tag Library. It is not necessary
+                for JSP pages
+                using the Struts-EL tag library to also use the Struts tags or
+                the JSTL tags,
+                but the Struts and JSTL tag libraries need to be part of the
+                application
+                utilizing the Struts-EL tag library.
+            </p>
+            <p>
+                This is because the Struts-EL tag classes are all subclasses
+                of Struts tag
+                classes, and their implementation uses classes provided by the
+                JSTL.
+            </p>
+        </section>
+    </body>
+</document>
+

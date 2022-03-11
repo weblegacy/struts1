@@ -1,0 +1,653 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE faces-config PUBLIC
+  "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
+  "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
+
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<!-- ================== STRUTS-FACES CONFIGURATION FILE =================== -->
+
+
+<faces-config>
+
+
+  <!-- Custom JSF Lifecycle and Evaluator Objects -->
+
+  <application>
+    <action-listener>
+      org.apache.struts.faces.application.ActionListenerImpl
+    </action-listener>
+    <property-resolver>
+      org.apache.struts.faces.application.PropertyResolverImpl
+    </property-resolver>
+    <view-handler>
+      org.apache.struts.faces.application.ViewHandlerImpl
+    </view-handler>
+  </application>
+
+
+  <!-- Custom Components -->
+
+  <component>
+
+    <component-type>org.apache.struts.faces.Base</component-type>
+    <component-class>
+      org.apache.struts.faces.component.BaseComponent
+    </component-class>
+
+    <property>
+      <description>
+        Target frame for this base reference.
+      </description>
+      <display-name>Target Frame</display-name>
+      <property-name>target</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+  </component>
+
+
+  <component>
+
+    <component-type>org.apache.struts.faces.CommandLink</component-type>
+    <component-class>
+      org.apache.struts.faces.component.CommandLinkComponent
+    </component-class>
+
+    <property>
+      <description>
+        Access key that, when pressed, transfers focus to
+        this element.
+      </description>
+      <display-name>Access Key</display-name>
+      <property-name>accesskey</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Character encoding of the resource identified by
+        this hyperlink.
+      </description>
+      <display-name>Character Set</display-name>
+      <property-name>charset</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Direction indication for text ("LTR" or "RTL").
+      </description>
+      <display-name>Direction</display-name>
+      <property-name>dir</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Language code of the resource identified by
+        this hyperlink.
+      </description>
+      <display-name>Resource Language Code</display-name>
+      <property-name>hreflang</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Language code used for the generated markup of this element.
+      </description>
+      <display-name>Language Code</display-name>
+      <property-name>lang</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Scripting code executed when this element loses focus.
+      </description>
+      <display-name>Focus Off Script</display-name>
+      <property-name>onblur</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Scripting code executed when a pointer button is clicked
+        over this element.
+      </description>
+      <display-name>Button Click Script</display-name>
+      <property-name>onclick</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Scripting code executed when a pointer button is double clicked
+        over this element.
+      </description>
+      <display-name>Double Click Script</display-name>
+      <property-name>ondblclick</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Scripting code executed when this element receives focus.
+      </description>
+      <display-name>Focus On Script</display-name>
+      <property-name>onfocus</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Scripting code executed when a key is pressed and released
+        over this element.
+      </description>
+      <display-name>Key Down Script</display-name>
+      <property-name>onkeydown</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Scripting code executed when a key is pressed and released
+        over this element.
+      </description>
+      <display-name>Key Press Script</display-name>
+      <property-name>onkeypress</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Scripting code executed when a key is pressed and released
+        over this element.
+      </description>
+      <display-name>Key Up Script</display-name>
+      <property-name>onkeyup</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Scripting code executed when a pointer button is pressed down
+        over this element.
+      </description>
+      <display-name>Mouse Down Script</display-name>
+      <property-name>onmousedown</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Scripting code executed when a pointer button is moved
+        over this element.
+      </description>
+      <display-name>Mouse Move Script</display-name>
+      <property-name>onmousemove</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Scripting code executed when a pointer button is moved
+        off of this element.
+      </description>
+      <display-name>Mouse Out Script</display-name>
+      <property-name>onmouseout</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Scripting code executed when a pointer button is moved
+        onto this element.
+      </description>
+      <display-name>Mouse Over Script</display-name>
+      <property-name>onmouseover</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Scripting code executed when a pointer button is released
+        over this element.
+      </description>
+      <display-name>Mouse Up Script</display-name>
+      <property-name>onmouseup</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Relationship from the current document to the resource
+        specified by this hyperlink.
+      </description>
+      <display-name>Relationship</display-name>
+      <property-name>rel</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Relationship from the resource identified by this hyperlink
+        to the current document.
+      </description>
+      <display-name>Reverse Relationship</display-name>
+      <property-name>rev</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        CSS style(s) to be applied when this component is rendered.
+      </description>
+      <display-name>CSS Styles</display-name>
+      <property-name>style</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Space-separated list of CSS style class(es) to be applied when
+        this element is rendered.
+      </description>
+      <display-name>CSS Style Classes</display-name>
+      <property-name>styleClass</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Position of this element in the tabbing order for the current document.
+      </description>
+      <display-name>Tab Index</display-name>
+      <property-name>tabindex</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Name of the frame where the resource identified by
+        this hyperlink should be displayed.
+      </description>
+      <display-name>Target Frame</display-name>
+      <property-name>target</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Advisory title information about markup elements generated
+        for this component.
+      </description>
+      <display-name>Advisory Title</display-name>
+      <property-name>title</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Content type of the resource identified by this hyperlink.
+      </description>
+      <display-name>Content Type</display-name>
+      <property-name>type</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+  </component>
+
+
+  <component>
+
+    <component-type>org.apache.struts.faces.Errors</component-type>
+    <component-class>
+      org.apache.struts.faces.component.ErrorsComponent
+    </component-class>
+
+    <property>
+      <description>
+        Application scope attribute key for the MessageResources
+        instance to use for lookup.  If not specified, the default
+        MessageResources for the current module will be used.
+      </description>
+      <display-name>MessageResources Key</display-name>
+      <property-name>bundle</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+  </component>
+
+
+  <component>
+
+    <component-type>org.apache.struts.faces.Form</component-type>
+    <component-class>
+      org.apache.struts.faces.component.FormComponent
+    </component-class>
+
+    <property>
+      <description>
+        Struts action to be executed.
+      </description>
+      <display-name>Struts 1</display-name>
+      <property-name>action</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Encoding type for form submit.
+      </description>
+      <display-name>Encoding Type</display-name>
+      <property-name>enctype</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Name of focus component identifier.
+      </description>
+      <display-name>Focus Component Name</display-name>
+      <property-name>focusIndex</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Index of focus component identifier.
+      </description>
+      <display-name>Focus Component Index</display-name>
+      <property-name>focusIndex</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        JavaScript to execute on form reset.
+      </description>
+      <display-name>Form Reset Script</display-name>
+      <property-name>onreset</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        JavaScript to execute on form submit.
+      </description>
+      <display-name>Form Submit Script</display-name>
+      <property-name>onsubmit</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        CSS style(s) to render for this component.
+      </description>
+      <display-name>CSS Style(s)</display-name>
+      <property-name>style</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        CSS style class(es) to render for this component.
+      </description>
+      <display-name>CSS Style Class(es)</display-name>
+      <property-name>styleClass</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Target frame for the response to this form submit.
+      </description>
+      <display-name>Target Frame</display-name>
+      <property-name>target</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+  </component>
+
+
+  <component>
+
+    <component-type>org.apache.struts.faces.Html</component-type>
+    <component-class>
+      org.apache.struts.faces.component.HtmlComponent
+    </component-class>
+
+    <property>
+      <description>
+        Flag indicating whether a Locale should be stored in the
+        user's session, based on the Accept-Language header, if
+        one is not already present.
+      </description>
+      <display-name>Locale Flag</display-name>
+      <property-name>locale</property-name>
+      <property-class>boolean</property-class>
+    </property>
+
+    <property>
+      <description>
+        Flag indicating whether XHTML-compatible output should
+        be rendered.
+      </description>
+      <display-name>XHTML Flag</display-name>
+      <property-name>xhtml</property-name>
+      <property-class>boolean</property-class>
+    </property>
+
+  </component>
+
+
+  <component>
+
+    <component-type>org.apache.struts.faces.Message</component-type>
+    <component-class>
+      org.apache.struts.faces.component.MessageComponent
+    </component-class>
+
+    <property>
+      <description>
+        Application scope attribute key for the MessageResources
+        instance to use for lookup.  If not specified, the default
+        MessageResources for the current module will be used.
+      </description>
+      <display-name>MessageResources Key</display-name>
+      <property-name>bundle</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Message key to use for message lookup
+      </description>
+      <display-name>Message Key</display-name>
+      <property-name>key</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        CSS style(s) to render for this component.
+      </description>
+      <display-name>CSS Style(s)</display-name>
+      <property-name>style</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        CSS style class(es) to render for this component.
+      </description>
+      <display-name>CSS Style Class(es)</display-name>
+      <property-name>styleClass</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+  </component>
+
+
+  <component>
+
+    <component-type>org.apache.struts.faces.Stylesheet</component-type>
+    <component-class>
+      org.apache.struts.faces.component.StylesheetComponent
+    </component-class>
+
+    <property>
+      <description>
+        Context-relative path (starting with a "/" character)
+        of the stylesheet to which this link should point.
+      </description>
+      <display-name>Stylesheet Path</display-name>
+      <property-name>path</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+  </component>
+
+
+  <component>
+
+    <component-type>org.apache.struts.faces.Write</component-type>
+    <component-class>
+      org.apache.struts.faces.component.WriteComponent
+    </component-class>
+
+    <property>
+      <description>
+        Flag indicating that the rendered output should be filtered
+        for characters that are sensitive in HTML.  Default value is
+        "true".
+      </description>
+      <display-name>Filtered Flag</display-name>
+      <property-name>filter</property-name>
+      <property-class>boolean</property-class>
+    </property>
+
+    <property>
+      <description>
+        CSS style(s) to render for this component.
+      </description>
+      <display-name>CSS Style(s)</display-name>
+      <property-name>style</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        CSS style class(es) to render for this component.
+      </description>
+      <display-name>CSS Style Class(es)</display-name>
+      <property-name>styleClass</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+  </component>
+
+
+  <!-- Custom Managed Beans -->
+
+  <managed-bean>
+    <managed-bean-name>struts</managed-bean-name>
+    <managed-bean-class>
+      org.apache.struts.faces.util.StrutsContext
+    </managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+
+
+  <!-- Custom Renderers -->
+  <render-kit>
+
+    <renderer>
+      <component-family>org.apache.struts.faces.Base</component-family>
+      <renderer-type>org.apache.struts.faces.Base</renderer-type>
+      <renderer-class>
+        org.apache.struts.faces.renderer.BaseRenderer
+      </renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.apache.struts.faces.CommandLink</component-family>
+      <renderer-type>org.apache.struts.faces.CommandLink</renderer-type>
+      <renderer-class>
+        org.apache.struts.faces.renderer.CommandLinkRenderer
+      </renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.apache.struts.faces.Errors</component-family>
+      <renderer-type>org.apache.struts.faces.Errors</renderer-type>
+      <renderer-class>
+        org.apache.struts.faces.renderer.ErrorsRenderer
+      </renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.apache.struts.faces.Form</component-family>
+      <renderer-type>org.apache.struts.faces.Form</renderer-type>
+      <renderer-class>
+        org.apache.struts.faces.renderer.FormRenderer
+      </renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.apache.struts.faces.Html</component-family>
+      <renderer-type>org.apache.struts.faces.Html</renderer-type>
+      <renderer-class>
+        org.apache.struts.faces.renderer.HtmlRenderer
+      </renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.apache.struts.faces.Message</component-family>
+      <renderer-type>org.apache.struts.faces.Message</renderer-type>
+      <renderer-class>
+        org.apache.struts.faces.renderer.MessageRenderer
+      </renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.apache.struts.faces.Stylesheet</component-family>
+      <renderer-type>org.apache.struts.faces.Stylesheet</renderer-type>
+      <renderer-class>
+        org.apache.struts.faces.renderer.StylesheetRenderer
+      </renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.apache.struts.faces.Write</component-family>
+      <renderer-type>org.apache.struts.faces.Write</renderer-type>
+      <renderer-class>
+        org.apache.struts.faces.renderer.WriteRenderer
+      </renderer-class>
+    </renderer>
+
+  </render-kit>
+
+
+</faces-config>

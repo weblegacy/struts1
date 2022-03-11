@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<!--
+  Default configuration file for examples application.
+  Each module also has its own struts-config under: /WEB-INF/$MODULE/
+  @version $Revision: 1.9 $ $Date$
+-->
+<struts-config>
+
+    <form-beans type="org.apache.struts.webapp.examples.CustomFormBean">
+        <form-bean name="example"
+                   type="org.apache.struts.webapp.examples.CustomFormBean">
+            <set-property property="example" value="EXAMPLE"/>
+        </form-bean>
+    </form-beans>
+
+    <global-exceptions/>
+
+    <global-forwards
+            type="org.apache.struts.webapp.examples.CustomActionForward">
+
+        <!-- utilize a custom ActionForward as an example only -->
+        <forward name="welcome" path="/welcome.do">
+            <set-property property="example" value="EXAMPLE"/>
+        </forward>
+    </global-forwards>
+
+    <action-mappings
+            type="org.apache.struts.webapp.examples.CustomActionMapping">
+        <action path="/welcome" forward="/welcome.jsp">
+            <set-property property="example" value="EXAMPLE"/>
+        </action>
+    </action-mappings>
+
+    <message-resources parameter="MessageResources"/>
+
+</struts-config>

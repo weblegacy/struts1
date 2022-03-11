@@ -1,0 +1,134 @@
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<project name="blank" basedir="../" default="all">
+
+
+    <!-- Local system paths -->
+    <property name="servlet.jar" value="../../common/lib/servlet-api.jar"/>
+    <property name="distpath.project" value="dist"/>
+
+
+    <!-- Project settings -->
+    <property name="project.title" value="Apache Struts Blank "/>
+    <property name="project.distname" value="blank"/>
+    <property name="project.version" value="1.3"/>
+
+
+    <!-- Path settings -->
+    <property name="doc.path" value="./doc/api"/>
+    <property name="doc.src" value="./src/java"/>
+
+
+    <!-- classpath for Struts 1.3 -->
+    <path id="compile.classpath">
+        <pathelement path ="lib/commons-beanutils.jar"/>
+        <pathelement path ="lib/commons-digester.jar"/>
+        <pathelement path ="lib/struts.jar"/>
+        <pathelement path ="${servlet.jar}"/>
+        <pathelement path ="classes"/>
+        <pathelement path ="${classpath}"/>
+    </path>
+
+
+    <!-- Check timestamp on files -->
+    <target name="prepare">
+        <tstamp/>
+    </target>
+
+
+    <!-- Copy any resource or configuration files -->
+    <target name="resources">
+        <copy todir="classes" includeEmptyDirs="no">
+            <fileset dir="src/java">
+            <patternset>
+                <include name="**/*.conf"/>
+                <include name="**/*.properties"/>
+                <include name="**/*.xml"/>
+            </patternset>
+            </fileset>
+        </copy>
+    </target>
+
+
+    <!-- Normal build of application -->
+    <target name="compile" depends="prepare,resources">
+        <javac srcdir="src/java" destdir="classes">
+            <classpath refid="compile.classpath"/>
+        </javac>
+    </target>
+
+
+    <!-- Remove classes directory for clean build -->
+    <target name="clean"
+      description="Prepare for clean build">
+      <delete dir="classes"/>
+      <mkdir  dir="classes"/>
+    </target>
+
+
+    <!-- Build Javadoc documentation -->
+    <target name="javadoc"
+     description="Generate JavaDoc API docs">
+        <delete dir="./doc/api"/>
+        <mkdir dir="./doc/api"/>
+        <javadoc sourcepath="./src/java"
+            destdir="./doc/api"
+            classpath="${servlet.jar}"
+            packagenames="*"
+            author="false"
+            private="true"
+            version="true"
+            windowtitle="${project.title} API Documentation"
+            doctitle="&lt;h1&gt;${project.title} Documentation (Version ${project.version})&lt;/h1&gt;"
+            bottom="Copyright &#169; 2002-2005">
+            <classpath refid="compile.classpath"/>
+        </javadoc>
+    </target>
+
+
+    <!-- Build entire project -->
+    <target name="project" depends="clean,prepare,compile,javadoc"/>
+
+
+    <!-- Create binary distribution -->
+    <target name="dist"
+        description="Create binary distribution">
+
+      <mkdir
+        dir="${distpath.project}"/>
+      <jar
+        jarfile="${distpath.project}/${project.distname}.jar"
+        basedir="./classes"/>
+      <copy
+        file="${distpath.project}/${project.distname}.jar"
+        todir="${distpath.project}"/>
+
+      <war
+        basedir="../"
+        warfile="../../${project.distname}.war"
+        webxml="web.xml">
+        <exclude name="**/${distpath.project}/**"/>
+       </war>
+      <move file="../../${project.distname}.war" tofile="${distpath.project}/${project.distname}.war" />
+
+    </target>
+
+
+    <!-- Build project and create distribution-->
+    <target name="all" depends="project,dist"/>
+
+</project>

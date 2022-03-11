@@ -1,0 +1,808 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+
+    <properties>
+        <title>Building View Components</title>
+    </properties>
+
+    <body>
+        <section name="3. Building View Components">
+
+           <blockquote><p><em>
+           "What if I should fall right through the center of the earth... 
+           oh, and come out the other side, where people walk upside down."
+            </em></p></blockquote>
+
+            <a name="overview"/>
+            <subsection name="3.1 Overview">
+
+                <p>
+                    The framework provides infrastructural support for view
+                    components,
+                    but does not provide any actual view components of its
+                    own.
+                    Several <a href="#presentation_frameworks">
+                        presentation technologies</a> are available, 
+                    including, among others, Cocoon, JSP, Velocity Templates, 
+                    and XSLT.
+                </p>
+
+                <p>
+                    Features provided by the framework for direct use by view
+                    components
+                    include
+                    <a href="#i18n">Message Resources</a>
+                    for localizing text and images,
+                    and
+                    <a href="#form_beans">FormBeans</a>
+                    to provide for automatic
+                    population and validation.
+                </p>
+
+            </subsection>
+
+            <a name="i18n"/>
+            <subsection name="3.2 Internationalized Messages">
+
+                <p>
+                    A few years ago, application developers could count on
+                    having to support
+                    only residents of their own country, who are used to only
+                    one (or
+                    sometimes two) languages, and one way to represent numeric
+                    quantities like
+                    dates, numbers, and monetary values.
+                    However, the explosion of application development based on
+                    web
+                    technologies, as well as the deployment of such
+                    applications on the
+                    Internet and other broadly accessible networks, have
+                    rendered national
+                    boundaries invisible in many cases.
+                    This has translated (if you will pardon the pun) into a
+                    need for
+                    applications to support
+                    <em>internationalization</em>
+                    (often called "i18n"
+                    because 18 is the number of letters in between the "i" and
+                    the "n") and
+                    <em>localization.</em>
+                </p>
+
+                <p>
+                    The framework builds upon the standard classes available on the
+                    Java platform to
+                    build internationalized and localized applications.
+                    The key concepts to become familiar with are:
+                </p>
+
+                <ul>
+
+                    <li>
+                        <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/Locale.html">
+                            <strong>Locale</strong>
+                        </a>
+                        - The fundamental Java class that supports
+                        internationalization is
+                        <code>Locale</code>
+                        .
+                        Each
+                        <code>Locale</code>
+                        represents a particular choice of country and
+                        language (plus an optional language variant), and also
+                        a set of
+                        formatting assumptions for things like numbers and
+                        dates.
+                    </li>
+
+                    <li>
+                        <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/ResourceBundle.html">
+                            <strong>ResourceBundle</strong>
+                        </a>
+                        - The
+                        <code>java.util.ResourceBundle</code>
+                        class provides the fundamental tools for supporting
+                        messages in
+                        multiple languages.
+                        See the Javadocs for the
+                        <code>ResourceBundle</code>
+                        class, and the
+                        information on Internationalization in the
+                        documentation bundle for your
+                        JDK release, for more information.
+                    </li>
+
+                    <li>
+                        <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/PropertyResourceBundle.html">
+                            <strong>PropertyResourceBundle</strong>
+                        </a>
+                        - One of the standard
+                        implementations of
+                        <code>ResourceBundle</code>
+                        allows you to define
+                        resources using the same "name=value" syntax used to
+                        initialize
+                        properties files.
+                        This is very convenient for preparing resource bundles
+                        with messages
+                        that are used in a web application, because these
+                        messages are
+                        generally text oriented.
+                    </li>
+
+                    <li>
+                        <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/text/MessageFormat.html">
+                            <strong>MessageFormat</strong>
+                        </a>
+                        - The
+                        <code>java.text.MessageFormat</code>
+                        class allows you to replace portions of a message
+                        string (in this
+                        case, one retrieved from a resource bundle) with
+                        arguments specified
+                        at run time.
+                        This is useful in cases where you are creating a
+                        sentence, but the
+                        words would appear in a different order in different
+                        languages.
+                        The placeholder string
+                        <code>{0}</code>
+                        in the message is replaced by
+                        the first runtime argument,
+                        <code>{1}</code>
+                        is replaced by the
+                        second argument, and so on.
+                    </li>
+
+                    <li>
+                        <a href="../apidocs/org/apache/struts/util/MessageResources.html">
+                            <strong>MessageResources</strong>
+                        </a>
+                        - The framework class
+                        <code>org.apache.struts.util.MessageResources</code>
+                        lets you treat
+                        a set of resource bundles like a database, and allows
+                        you to request
+                        a particular message string for a particular Locale
+                        (normally one
+                        associated with the current user) instead of for the
+                        default Locale
+                        the server itself is running in.
+                    </li>
+
+                </ul>
+
+                <p>
+                    Please note that the i18n support in a server-side
+                    framework is limited to
+                    the
+                    <strong>presentation</strong>
+                    of internationalized text and images to the user.
+                    Support for Locale specific
+                    <strong>input methods</strong>
+                    (used with languages
+                    such as Japanese, Chinese, and Korean) is left up to the
+                    client device,
+                    which is usually a web browser.
+                </p>
+
+                <p>
+                    For an internationalized application, follow the steps
+                    described in
+                    the Internationalization document in the JDK documentation
+                    bundle for your
+                    platform to create a properties file containing the
+                    messages for each
+                    language.
+                    An example will illustrate this further:
+                </p>
+
+                <p>
+                    Assume that your source code is created in package
+                    <code>com.mycompany.mypackage</code>
+                    , so it is stored in a directory
+                    (relative to your source directory) named
+                    <code>com/mycompany/mypackage.</code>
+                    To create a resource bundle called
+                    <code>com.mycompany.mypackage.MyApplication,</code>
+                    you would create the
+                    following files in the
+                    <code>com/mycompany/mypackage</code>
+                    directory:
+                </p>
+
+                <ul>
+
+                    <li>
+                        <strong>MyApplication.properties</strong>
+                        - Contains the messages in the default
+                        language for your server.
+                        If your default language is English, you might have an
+                        entry like
+                        this:
+                        <code>prompt.hello=Hello</code>
+                    </li>
+
+                    <li>
+                        <strong>MyApplication_xx.properties</strong>
+                        - Contains the same messages in the
+                        language whose ISO language code is "xx" (See the
+                        <a href="http://java.sun.com/j2se/1.4.2/docs/api/java/util/ResourceBundle.html">
+                            ResourceBundle Javadoc</a>
+                        page for a link to the current list).
+                        For a French version of the message shown above, you
+                        would have this
+                        entry:
+                        <code>prompt.hello=Bonjour</code>
+                        You can have resource bundle files for as many
+                        languages as you need.
+                    </li>
+
+                </ul>
+
+                <p>
+                    When you configure the controller servlet via the
+                    struts-config.xml
+                    configuration file, one of the things you will need to
+                    define is
+                    the base name of the resource bundle for the application.
+                    In the case described above, it would be
+                    <code>com.mycompany.mypackage.MyApplication.</code>
+                </p>
+
+                <source><![CDATA[
+<message-resources parameter="com.mycompany.mypackage.MyApplication"/>
+]]></source>
+
+                <p>
+                    The important thing is for the resource bundle to be found
+                    on the
+                    class path for your application.
+                    Another approach is to store the
+                    <code>MyResources.properties</code>
+                    file in your application's
+                    <code>classes</code>
+                    folder.
+                    You can then simply specify "myResources" as the
+                    application value.
+                    Just be careful it is not deleted if your build script
+                    deletes
+                    classes as part of a "clean" target.
+                </p>
+
+                <p>
+                    If it does, here is an Ant task to run when compiling your
+                    application
+                    that copies the contents of a
+                    <code>src/conf</code>
+                    directory to the
+                    <code>classes</code>
+                    directory:
+                </p>
+
+                <source><![CDATA[
+<!-- Copy any configuration files -->
+<copy todir="classes">
+<fileset dir="src/conf"/>
+</copy>
+]]></source>
+
+            </subsection>
+
+            <a name="form_beans"/>
+            <subsection name="3.3 Forms and FormBean Interactions">
+
+                <p>
+                    <strong>Note:</strong>
+                    While the examples given here use JSP and custom tags,
+                    the ActionForm beans and the other controller components
+                    are
+                    View neutral.
+                    The framework can also be used with Cocoon, Velocity Templates,
+                    XSLT, and
+                    any other presentation technology that can be rendered via
+                    a Java servlet.
+                </p>
+
+            </subsection>
+
+            <a name="form_population"/>
+            <subsection name="3.3.1 Automatic Form Population">
+
+                <p>
+                    At one time or another, most web developers have built
+                    forms using
+                    the standard capabilities of HTML, such as the
+                    <code>&lt;input&gt;</code>
+                    tag.
+                    Users have come to expect interactive applications to have
+                    certain
+                    behaviors, and one of these expectations relates to error
+                    handling -- if
+                    the user makes an error, the application should allow them
+                    to fix just
+                    what needs to be changed -- without having to re-enter any
+                    of the rest
+                    of the information on the current page or form.
+                </p>
+
+                <p>
+                    Fulfilling this expectation is tedious and cumbersome when
+                    coding with
+                    standard HTML and JSP pages.
+                    For example, an input element for a
+                    <code>username</code>
+                    field might
+                    look like this (in JSP):
+                </p>
+
+                <source><![CDATA[
+<input type="text" name="username"
+value="<%= loginBean.getUsername() >"/>
+]]></source>
+
+                <p>
+                    which is difficult to type correctly, confuses HTML
+                    developers who are
+                    not knowledgeable about programming concepts, and can
+                    cause problems with
+                    HTML editors.
+                    Instead, Struts Taglibs provides a comprehensive facility
+                    for
+                    building forms,
+                    based on the Custom Tag Library facility of JSP 1.1.
+                    The case above would be rendered like this using Struts
+                    Taglibs:
+                </p>
+
+                <source><![CDATA[
+<html:text property="username"/>;
+]]></source>
+
+                <p>
+                    with no need to explicitly refer to the JavaBean from
+                    which the initial
+                    value is retrieved. That is handled automatically by the
+                    JSP tag, using
+                    facilities provided by the framework.
+                </p>
+
+                <p>
+                    HTML forms are sometimes used to upload other files.
+                    Most browsers support this through a &lt;input type="file"&gt;
+                    element,
+                    that generates a file browse button, but it's up to the
+                    developer to
+                    handle the incoming files.
+                    The framework handles these "multipart" forms in a way
+                    identical to building
+                    normal forms.
+                </p>
+
+                <p>
+                    For an example of using the framework to create a simple
+                    login form,
+                    see the 
+                    <a href="../faqs/actionForm.html">
+                        Buiding an ActionForm Howto.</a>
+                </p>
+            </subsection>
+
+            <a name="form_validation"/>
+            <subsection name="3.3.2 Automatic Form Validation">
+
+                <p>
+                    In addition to the form and bean interactions described
+                    above,
+                    The framework offers an additional facility to validate
+                    the input
+                    fields it has received.
+                    To utilize this feature, override the following method in
+                    your ActionForm
+                    class:
+                </p>
+
+                <source><![CDATA[
+validate(ActionMapping mapping,
+HttpServletRequest request);
+]]></source>
+
+                <p>
+                    The
+                    <code>validate</code>
+                    method is called by the controller servlet after
+                    the bean properties have been populated, but before the
+                    corresponding
+                    action class's
+                    <code>execute</code>
+                    method is invoked.
+                    The
+                    <code>validate</code>
+                    method has the following options:
+                </p>
+
+                <ul>
+
+                    <li>
+                        Perform the appropriate validations and find no
+                        problems -- Return
+                        either
+                        <code>null</code>
+                        or a zero-length ActionErrors instance,
+                        and the controller servlet will proceed to call the
+                        <code>execute</code>
+                        method of the appropriate
+                        <code>Action</code>
+                        class.
+                    </li>
+
+                    <li>
+                        Perform the appropriate validations and find problems
+                        -- Return an
+                        ActionErrors instance containing
+                        <code>ActionMessage's,</code>
+                        which
+                        are classes that contain the error message keys (into
+                        the
+                        application's
+                        <code>MessageResources</code>
+                        bundle) that should be
+                        displayed.
+                        The controller servlet will store this array as a
+                        request attribute
+                        suitable for use by the
+                        <code>&lt;html:errors&gt;</code>
+                        tag, and
+                        will forward control back to the input form
+                        (identified by the
+                        <code>input</code>
+                        property for this
+                        <code>ActionMapping</code>
+                        ).
+                    </li>
+
+                </ul>
+
+                <p>
+                    As mentioned earlier, this feature is entirely optional.
+                    The default implementation of the
+                    <code>validate</code>
+                    method returns
+                    <code>null,</code>
+                    and the controller servlet will assume that any
+                    required validation is done by the action class.
+                </p>
+
+                <p>
+                    One common approach is to perform simple, prima facia
+                    validations using
+                    the ActionForm
+                    <code>validate</code>
+                    method, and then handle the
+                    "business logic" validation from the Action.
+                </p>
+
+                <p>
+                    The Struts Validator, covered in the next section, may be
+                    used to easily
+                    validate ActionForms.
+                </p>
+
+            </subsection>
+
+            <a name="validator"/>
+            <subsection name="3.3.3 The Struts Validator">
+
+
+                <p>
+                    Configuring the Validator to perform form validation is
+                    easy.
+                </p>
+                <ol>
+
+                    <li>
+                        The ActionForm bean must extend ValidatorForm.
+                    </li>
+                    <li>
+                        The form's JSP must include the
+                        <a href="struts-html.html">&lt;html:javascript&gt;</a>
+                        tag for client
+                        side validation.
+                    </li>
+                    <li>
+                        You must define the validation rules in an xml file
+                        like this:
+
+                        <source><![CDATA[
+<form-validation>
+<formset>
+<form name="logonForm">
+  <field property="username" depends="required">
+    <msg name="required" key="error.username"/>
+  </field>
+</form>
+</formset>
+</form-validation>
+]]></source>
+                        The msg element points to the message resource key to
+                        use when generating the error message.
+                    </li>
+                    <li>Lastly, you must enable the ValidatorPlugin in the
+                        struts-config.xml file like this:
+                        <source><![CDATA[
+<plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+<set-property
+property="pathnames"
+value="/org/apache/struts/validator/validator-rules.xml,
+    /WEB-INF/validation.xml"/>
+</plug-in>
+]]></source>
+
+                    </li>
+                </ol>
+
+                <p>
+                    <strong>Note:</strong>
+                    If your required form property is one of the Java object
+                    representations of
+                    primitive types (ie. java.lang.Integer), you must set the
+                    ActionServlet's convertNull init.
+                    parameter to true. Failing to do this will result in the
+                    required validation not being performed
+                    on that field because it will default to 0.
+                </p>
+
+                <p>
+                    For more about the Struts Validator, see the
+                    <a href="../faqs/validator.html">
+                        Developers Guide.</a>
+                </p>
+
+            </subsection>
+
+
+            <a name="Tiles"/>
+            <subsection name="3.3.4 Page Composition With Tiles">
+
+                <p>
+                    Tiles is a powerful templating library that allows you to
+                    construct views
+                    by combining various "tiles".
+                    Here's a quick setup guide:
+                </p>
+
+                <ol>
+                    <li>
+                        Create a /layout/layout.jsp file that contains your
+                        app's common look and
+                        feel:
+
+                        <source><![CDATA[
+<html>
+<body>
+<tiles:insert attribute="body"/>
+</body>
+</html>
+]]></source>
+                    </li>
+
+                    <li>
+                        Create your /index.jsp homepage file:
+
+                        <source><![CDATA[
+<h1>This is my homepage</h1>
+]]></source>
+
+                    </li>
+
+                    <li>
+                        Create a /WEB-INF/tiles-defs.xml file that looks like
+                        this:
+
+                        <source><![CDATA[
+<tiles-definitions>
+<definition
+    name="layout"
+    path="/layout/layout.jsp">
+    <put name="body" value=""/>
+</definition>
+<definition name="homepage" extends="layout">
+    <put
+        name="body"
+        value="/index.jsp"/>
+</definition>
+<tiles-definitions>
+]]></source>
+                    </li>
+
+                    <li>
+                        Setup the TilesPlugin in the struts-config.xml file:
+
+                        <source><![CDATA[
+<plug-in
+    className="org.apache.struts.tiles.TilesPlugin">
+    <set-property
+        property="definitions-config"
+        value="/WEB-INF/tiles-defs.xml"/>
+</plug-in>
+]]></source>
+                    </li>
+
+                    <li>
+                        Setup an action mapping in struts-config.xml to point
+                        to your
+                        homepage tile:
+
+                        <source><![CDATA[
+<action
+path="/index"
+type="org.apache.struts.actions.ForwardAction"
+parameter="homepage"/>
+]]></source>
+                    </li>
+                </ol>
+
+                <p>
+                    The TilesPlugin configures a special RequestProcessor that
+                    determines
+                    if the requested view is a tile and processes it
+                    accordingly.
+                    Note that we made the homepage tile extend our root layout
+                    tile and
+                    changed the body attribute.
+                    Tiles inserts the file named in the body attribute into
+                    the main
+                    layout.
+                </p>
+
+                <p>
+                    See the
+                    <a href="http://struts.apache.org/struts-tiles/">Struts
+                        Tiles website</a>
+                    for in-depth examples.
+                </p>
+
+            </subsection>
+
+            <a name="presentation_frameworks"/>
+            <subsection name="3.4 Presentation Frameworks">
+                <p>
+                    The framework is supported by many presentation
+                    technologies,
+                    and there are a great number of extensions that
+                    make creating view components even easier.
+                    Some popular presentation technologies include:
+                </p>
+                
+                <ul>
+                    <li>
+                        <a href="http://struts.apache.org/struts-taglib/">
+                            Struts Taglib</a>
+                    </li>
+                    <li>
+                        <a href="http://struts.sourceforge.net/struts-cocoon/">
+                            Struts Cocoon</a>
+                    </li>
+                    <li>
+                        <a href="http://jakarta.apache.org/velocity/tools/struts/">
+                            Velocity Struts</a>
+                    </li>
+                    <li>
+                        <a href="http://stxx.sourceforge.net/">Stxx for
+                            XLST</a>
+                    </li>
+                </ul>
+            </subsection>
+
+            <a name="other_presentations"/>
+            <subsection name="3.5 Other Presentation Techniques">
+
+                <p>
+                    Although the look and feel of your application can be
+                    completely
+                    constructed based on the standard capabilities of
+                    presentation libraries,
+                    you may need to employ other techniques to render some
+                    responses directly.
+                </p>
+
+            </subsection>
+
+            <a name="image_rendering"/>
+            <subsection name="3.5.1 Image Rendering Components">
+
+                <p>
+                    Some applications require dynamically generated images,
+                    like the
+                    price charts on a stock reporting site.
+                    Two different approaches are commonly used to meet these
+                    requirements:
+                </p>
+
+                <ul>
+
+                    <li>
+                        Render a hyperlink with a URL that executes a servlet
+                        request.
+                        The servlet will use a graphics library to render the
+                        graphical image,
+                        set the content type appropriately (such as to
+                        <code>image/gif</code>
+                        ), and send back the bytes of that image to the
+                        browser, which will display them just as if it had
+                        received a static
+                        file.
+                    </li>
+
+                    <li>
+                        Render the HTML code necessary to download a Java
+                        applet that
+                        creates the required graph.
+                        You can configure the graph by setting appropriate
+                        initialization
+                        parameters for the applet in the rendered code, or you
+                        can have the
+                        applet make its own connection to the server to
+                        receive
+                        these parameters.
+                    </li>
+
+                </ul>
+
+            </subsection>
+
+            <a name="text_rendering"/>
+            <subsection name="3.5.2 Rendering Text">
+
+                <p>
+                    Some applications require dynamically generated text or
+                    markup,
+                    such as XML.
+                    If a complete page is being rendered, and can be output
+                    using a
+                    PrintWriter, this is very easy to do from an Action:
+                </p>
+
+                <source><![CDATA[
+response.setContentType("text/plain"); // or text/xml
+PrintWriter writer = response.getWriter();
+// use writer to render text
+return(null);
+]]></source>
+
+            </subsection>
+
+
+        </section>
+
+        <section>
+            <p class="right">
+                Next:
+                <a href="building_controller.html">Building Controller
+                    Components</a>
+            </p>
+        </section>
+
+    </body>
+</document>

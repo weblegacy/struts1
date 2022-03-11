@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+  <!--============================================== Form Bean Definitions  -->
+  <form-beans>
+
+    <!-- Registration form bean -->
+    <form-bean name="registrationForm" type="org.apache.struts.webapp.validator.RegistrationForm" />
+
+    <!-- Multi-Part Registration form bean -->
+    <form-bean name="multiRegistrationForm" type="org.apache.struts.webapp.validator.RegistrationForm" />
+
+    <!-- Locale form bean -->
+    <form-bean name="localeForm" type="org.apache.struts.action.DynaActionForm">
+        <form-property name="language" type="java.lang.String" />
+        <form-property name="country"  type="java.lang.String" />
+    </form-bean>
+
+  </form-beans>
+
+  <!-- ======================================== Global Forward Definitions  -->
+  <global-forwards>
+      <forward name="home" path="/index.jsp" />
+  </global-forwards>
+
+  <!-- ========================================= Action Mapping Definitions -->
+  <action-mappings>
+
+      <!-- Welcome -->
+      <action path="/welcome" forward="/index.jsp" />
+
+      <!-- Registration Actions -->
+      <action path="/registration" forward="/registration.jsp" />
+      <action path="/registration-submit" 
+              type="org.apache.struts.webapp.validator.RegistrationAction" 
+              name="registrationForm" 
+              scope="request"
+              validate="true"
+              cancellable="true"
+              input="input">
+          <forward name="input" path="/registration.do" />
+          <forward name="success" path="/index.jsp" />
+      </action>
+      <action path="/jsRegistration" forward="/jsRegistration.jsp" />
+
+      <!-- Multi-Part Registration Actions -->
+      <action path="/multiRegistration" forward="/multiRegistration1.jsp" />
+      <action path="/multiRegistration-submit" 
+              type="org.apache.struts.webapp.validator.MultiRegistrationAction" 
+              name="multiRegistrationForm" 
+              scope="request" 
+              validate="false">
+          <forward name="success" path="/welcome.do" />
+          <forward name="input1" path="/multiRegistration1.jsp" />
+          <forward name="input2" path="/multiRegistration2.jsp" />
+      </action>
+
+      <!-- Locale Action -->
+      <action path="/locale" 
+              type="org.apache.struts.webapp.validator.LocaleAction" 
+              name="localeForm" 
+              scope="request">
+          <forward name="success" path="/welcome.do" />
+      </action>
+
+    <!-- Show struts-config.xml -->
+    <action path="/showStrutsConfig" 
+            type="org.apache.struts.webapp.validator.ShowFileAction" 
+            scope="request" 
+            parameter="/WEB-INF/validator/struts-config.xml">
+        <forward name="success" path="/showFile.jsp" />
+    </action>
+
+    <!-- Show validations.xml -->
+    <action path="/showValidation" 
+            type="org.apache.struts.webapp.validator.ShowFileAction" 
+            scope="request" 
+            parameter="/WEB-INF/validator/validation.xml">
+        <forward name="success" path="/showFile.jsp" />
+    </action>
+
+  </action-mappings>
+
+  <!-- ============================================= Controller Definition  -->
+  <controller inputForward="true" />
+
+
+  <!-- ===================================== Message Resources Definitions  -->
+  <message-resources parameter="org.apache.struts.webapp.validator.MessageResources">
+      <set-property key="mode" value="JSTL"/>
+  </message-resources>
+
+  <!-- ============================================ Plug Ins Configuration  -->
+
+  <!-- 
+       Add multiple validator resource files by setting the pathnames property 
+       with a comma delimited list of resource files to load. 
+    -->
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property property="pathnames" value="/org/apache/struts/validator/validator-rules-compressed.xml,
+                                              /WEB-INF/validator/validation.xml,
+                                              /WEB-INF/validator/validation-bundles.xml,
+                                              /WEB-INF/validator/validation-i18nVariables.xml,
+                                              /WEB-INF/validator/validation-type.xml,
+                                              /WEB-INF/validator/validation-validwhen.xml" />
+      <set-property property="stopOnFirstError" value="true" />
+  </plug-in>
+
+</struts-config>

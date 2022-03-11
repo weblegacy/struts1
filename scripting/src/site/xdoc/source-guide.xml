@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+  <properties>
+    <title>Source Code Guide</title>
+  </properties>
+
+  <body>
+    <section name="Source Code Guide">
+      <a name="overview"/>
+      <p>The Struts Scripting component, for the most part, follows Apache Struts build and
+      source code layout, so if you are familiar with another Struts component, you'll be
+      at home here.  If not, this guide first walks you though what is where and why.
+      Next, it gives help on how to build common artifacts.
+      </p>
+      <p>Again, since the heavy lifting is done by the 
+      <a href="http://jakarta.apache.org/bsf">Bean Scripting Framework </a> 
+      and the scripting engines themselves, there isn't much code to this project itself.
+      </p>
+      <ul>
+        <li><a href="#layout">Source code layout</a></li>
+        <li><a href="#build">Build instructions</a></li>
+      </ul>  
+    <subsection name="Source code layout">
+      <a name="layout"/>
+         <p>When you unzip the latest release of Struts or check it out from Subversion
+         (more help on Subversion at the Struts <a href="http://struts.apache.org/downloads.html#Source_Code">source code</a>), you'll be confronted with a directory structure that includes:
+         </p>
+         <ul>
+         <li><code>/apps/scripting-mailreader</code> - A modified version of the classic Struts Mailreader example application.  
+         This rendition replaces Java-coded Struts Actions with <a href="http://groovy.codehaus.org">Groovy</a> scripts.</li>
+         <li><code>/scripting/src</code> - All other scripting source code can be found here</li>
+         <li><code>/scripting/src/main/java</code> - The source code for the Struts Scripting framework itself</li>
+         </ul>
+         <ul>
+         <li><code>/scripting/src/site/xdocs</code> - The XML source code for all documentation, including this guide.</li>
+         <li><code>/scripting/target</code> - Maven puts all compiled files into this temporary directory.</li>
+         </ul>
+        <p>Next, we'll look at how to build both Struts Scripting library and the Mailreader example application.</p>
+    </subsection>     
+    <subsection name="Build Instructions">
+      <a name="build"/>
+         <p>Struts Scripting uses <a href="http://maven.apache.org">Apache Maven 2</a> to build its JAR, example application, documentation, and distribution files.  Maven is used throughout Struts for building subprojects, providing a consistent build environment to Struts users.  To follow these build instructions, you will need to have <a href="http://maven.apache.org">Apache Maven 2</a> installed and its <code>mvn</code> executable available in your command path.
+         </p>
+         <p>
+         Since there are a bunch of build targets, we will break the build down into tasks that you might want to accomplish and show the best way to complete them.
+         </p>
+         <ul>
+         <li><strong>Build the Struts Scripting JAR</strong> - Run '<code>mvn jar:jar</code>' which will create the JAR as <code>/scripting/target/struts-scripting-VERSION.jar</code>.</li>
+         <li><strong>Build the Mailreader example</strong> - Change to <code>/apps/scripting-mailreader</code> and run '<code>mvn install</code>' to create <code>/apps/scripting-mailreadertarget/scripting-mailreader.war</code>.</li>
+         <li><strong>Build the documentation</strong> - Run '<code>mvn site</code>' to create the Struts Scripting website at <code>/scripting/target/docs</code>.</li>
+         </ul>
+      </subsection>
+   </section> 
+          
+          </body>
+
+</document>

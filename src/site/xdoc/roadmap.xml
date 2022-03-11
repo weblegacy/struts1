@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+
+    <properties>
+        <title>Roadmap</title>
+    </properties>
+
+    <body>
+
+        <section name="Development Roadmap">
+            <a name="roadmap"/>
+
+                <p>
+                    This document outlines some of changes we expect to
+                    see in future releases of Struts 1.
+                </p>
+
+                <p>
+                    This document is provided for discussion purposes only.
+                    All releases and changes to the codebase are subject to
+                    <a href="http://struts.apache.org/bylaws.html">a vote</a>
+                    of the
+                    <a href="http://struts.apache.org/volunteers.html#pmc">
+                        Apache Struts PMC.</a>
+                </p>
+
+            <a name="JIRA"/>
+            <subsection name="JIRA Queries">
+
+                <p>
+                    The Apache Struts Projects uses the
+                    <a href="http://issues.apache.org/struts/">
+                        JIRA issuer tracker</a>
+                    to manage problem reports
+                    and enhancement suggestions.
+                    For your convenience, here are some common JIRA 
+                    queries:
+                </p>
+
+                <ul>
+                    <li>
+                        <a href="http://issues.apache.org/struts/browse/STR?report=com.atlassian.jira.plugin.system.project:openissues-panel">Open Issues (Struts 1)</a>
+                    </li>
+                    <li>
+                        <a href="http://issues.apache.org/struts/browse/WW?report=com.atlassian.jira.plugin.system.project:openissues-panel">Open Issues (Struts 2)</a>
+                    </li>
+                    <li>
+                        <a href="http://issues.apache.org/struts/browse/SB?report=com.atlassian.jira.plugin.system.project:openissues-panel">Open Issues (Sandbox)</a>
+                    </li>
+                </ul>
+
+
+            </subsection>
+
+            <a name="Struts_1_x"/>
+            <subsection name="Struts 1.x">
+
+                <p>
+                    Releases in the 1.x series will focus on refactoring of
+                    existing functionality, with a continued emphasis on
+                    backward compatibility.
+                </p>
+                <p>
+                    New features are being added to the 1.x series,
+                    but only if backward compatability with the prior release
+                    can be retained.
+                    The framework's API is evolving through a strict
+                    deprecate/replace/remove protocol.
+                    Developers are encouraged to stay current with the "best
+                    available"
+                    release and to observe deprecation warnings.
+                    Features are deprecated before removal, and deprecated
+                    features are
+                    removed in a subsequent release.
+                </p>
+
+                <p>
+                    Throughout the 1.x series,
+                    there will be a continued emphasis on expanding unit test
+                    coverage.
+                    Bug reports should include a failing test case when
+                    possible.
+                    Proposals for new features should include a working test
+                    suite.
+                    (Creating features through Test Driven Development is
+                    encouraged.)
+                </p>
+
+                <p>
+                    Enhancement requests are logged in JIRA as they are
+                    suggested.
+                    <strong>The listing of an enhancement in JIRA does not
+                        imply that
+                        it is being "planned",</strong>
+                    merely that someone has suggested it,
+                    and the idea hasn't been ruled out (yet).
+                </p>
+
+                <p>
+                    Future release
+                    <a href="#milestones">milestones</a>
+                    are provided
+                    for enhancements which are being actively planned or
+                    developed
+                    but may not be ready for the current release.
+                    If a report has not been tagged for a specific milestone
+                    by a working developer,
+                    then
+                    <strong>it may never be implemented</strong>
+                    .
+                    When developers (including non-Committers) are actually
+                    working on an
+                    enhancement,
+                    they should re-tag it for a specific release milestone,
+                    such as "1.4.1" or "1.4.2".
+                </p>
+
+                <p>
+                    If an enhancement has not been tagged for a specific
+                    target,
+                    feel free to start working on it yourself.
+                    Many of our best features have been contributed by
+                    developers,
+                    just like you.
+                    If you are working on an enhancement,
+                    post a note on the ticket that you are working on an
+                    enhancement
+                    and then post a patch as soon as possible.
+                    If the development effort doesn't succeed,
+                    post a note to the ticket explaining what problem you had
+                    creating the enhancement,
+                    so that other developers can explore alternatives.
+                </p>
+
+            </subsection>
+            
+            <subsection name="Development Milestones">
+                <a name="milestones"/>
+                <p>
+                    These are milestones of where we have been, where we are, and 
+                    possibly where we are going.
+                </p>
+    
+                <a name="struts_1_0"/>
+                <subsection name="Release 1.0.x (complete)">
+                    <p>
+                        Major refactoring of framework internals to provide support
+                        for modules and a new
+                        "config" object series. Bundles Struts Tiles and Struts
+                        Validator into main distribution.
+                        The initial release of Struts EL is provided as an
+                        optional package.
+                    </p>
+                </subsection>
+                
+                <a name="struts_1_1"/>
+                <subsection name="Release 1.1.x (complete)">
+                    <p>
+                        Split internal libraries into their own projects in Jakarta
+                        Commons.  Added support for modules and plugins.
+                    </p>
+                </subsection>
+    
+                <a name="struts_1_2"/>
+                <subsection name="Release 1.2.x (complete)">
+                    <p>
+                        Added support for wildcard mappings, internal project restructuring,
+                        removed deprecations, other minor enhancements.
+                    </p>
+               </subsection>
+    
+                <a name="struts_1_3_x"/>
+                <subsection name="Release 1.3.x (pending)">
+                    <p>
+                        Evolutionary enhancements to product base,
+                        based on existing features or codebases.
+                    </p>
+                    <ul>
+                        <li>
+                            Divided distribution into components with individual JARs
+                        </li>
+                        <li>
+                            Support for Maven 2 builds
+                        </li>
+                        <li>
+                            Moved action to "Struts Chain" Request Processor
+                        </li>
+                        <li>
+                            Enhanced all configs to extend one configuration
+                            element from another,
+                            as is done with Tiles Definitions
+                        </li>
+                    </ul>
+                </subsection>
+            </subsection>    
+        </section>
+
+        <section>
+            <p class="right">Next:
+                <a href="userGuide/index.html">User Guide</a>
+            </p>
+        </section>
+
+    </body>
+</document>

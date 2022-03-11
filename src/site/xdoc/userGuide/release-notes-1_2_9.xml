@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<document url="release-notes.html">
+  <properties>
+    <title>Struts Release Notes (since 1.2.8)</title>
+  </properties>
+ <body>
+ <section name="6.1 Release Notes - Version 1.2.9" href="release_notes">
+      <subsection name="Introduction" href="Introduction">
+          <p>
+              The main motivation for releasing Struts 1.2.9 is to fix three
+              security issues which have been identified:
+          </p>
+          <ul>
+              <li><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38374">Bug 38374</a> - 
+                  Validation always skipped with Globals.CANCEL_KEY.</li>
+              <li><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38534">Bug 38534</a> - 
+                  DOS attack, application hack.</li>
+              <li><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38749">Bug 38749</a> - 
+                  XSS vulnerability in LookupDispatchAction.</li>
+          </ul>
+          <p>
+              This section contains release notes for changes that have taken
+              place since
+              <a href="release-notes-1_2_8.html">Version 1.2.8</a>.
+              To keep up-to-date on all changes to Struts, subscribe to the
+              dev@ list.
+          </p>
+          <p>
+              <b>Notes on upgrading</b> are maintained in the
+              <a href="http://wiki.apache.org/struts/StrutsUpgrade">Wiki Upgrade pages</a>.
+              The wiki is a community maintained resource - please feel free to add your
+              input so that everyone can benefit from the collective experience.
+          </p>
+          <p>
+             For the version requirements of each library, see the 
+             <a href="installation.html">Installation chapter</a>.
+          </p>
+ 
+  
+      <h3 id="STRUTS_1_2_9">Version 1.2.9</h3>
+
+          <p>
+              After <a href="http://svn.apache.org/viewcvs.cgi/struts/core/tags/STRUTS_1_2_6/">Version 1.2.6 was tagged</a>
+              the <a href="http://svn.apache.org/viewcvs.cgi/struts/core/branches/STRUTS_1_2_BRANCH/">1.2 Branch</a>
+              was created and work started on the next version (<i>1.3.x series</i>). Work has continued on
+              both versions and <i>Revision</i> numbers shown in brackets are where a change has been ported
+              from the current development version into the <i>1.2 Branch</i>.
+          </p>
+
+         <table>
+             <thead><tr>
+                 <th>Modification</th><th>Revision</th><th>Bugzilla</th><th>Description</th>
+             </tr></thead>
+             <tr>
+                 <td align="center">2006-03-08</td>
+                 <td align="center"><a href="http://svn.apache.org/viewcvs.cgi?rev=384234&amp;view=rev">384234</a>
+                     (<a href="http://svn.apache.org/viewcvs?rev=384235&amp;view=rev">384235</a>)</td>
+                 <td align="center"><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37817">37817</a></td>
+                 <td>TagUtils doesn't create XHTML compliant URLs using forwards defined with redirect="true".</td>
+             </tr>
+             <tr>
+                 <td align="center">2006-03-08</td>
+                 <td align="center"><a href="http://svn.apache.org/viewcvs.cgi?rev=384090&amp;view=rev">384090</a>
+                     (<a href="http://svn.apache.org/viewcvs?rev=384092&amp;view=rev">384092</a>)</td>
+                 <td align="center"><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38343">38343</a></td>
+                 <td>Add EventDispatchAction and EventActionDispatcher.</td>
+             </tr>
+             <tr>
+                 <td align="center">2006-03-07</td>
+                 <td align="center"><a href="http://svn.apache.org/viewcvs.cgi?rev=383907&amp;view=rev">383907</a>
+                     (<a href="http://svn.apache.org/viewcvs?rev=383908&amp;view=rev">383908</a>)</td>
+                 <td align="center"><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=37685">37685</a></td>
+                 <td>Javascript tag does not work on Mozilla.</td>
+             </tr>
+             <tr>
+                 <td align="center">2006-03-07</td>
+                 <td align="center"><a href="http://svn.apache.org/viewcvs.cgi?rev=383718&amp;view=rev">383718</a>
+                     (<a href="http://svn.apache.org/viewcvs?rev=383720&amp;view=rev">383720</a>)</td>
+                 <td align="center"><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38749">38749</a></td>
+                 <td>XSS vulnerability in LookupDispatchAction.</td>
+             </tr>
+             <tr>
+                 <td align="center">2006-02-15</td>
+                 <td align="center"><a href="http://svn.apache.org/viewcvs.cgi?rev=379661&amp;view=rev">379661</a>
+                     (<a href="http://svn.apache.org/viewcvs?rev=377929&amp;view=rev">377929</a>)</td>
+                 <td align="center"><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38534">38534</a></td>
+                 <td>DOS attack, application hack.</td>
+             </tr>
+             <tr>
+                 <td align="center">2006-02-14</td>
+                 <td align="center"><a href="http://svn.apache.org/viewcvs.cgi?rev=377562&amp;view=rev">377562</a>
+                     (<a href="http://svn.apache.org/viewcvs?rev=377805&amp;view=rev">377805</a>)</td>
+                 <td align="center"><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38374">38374</a></td>
+                 <td>Validation always skipped with Globals.CANCEL_KEY.</td>
+             </tr>
+             <tr>
+                 <td align="center">2006-01-31</td>
+                 <td align="center"><a href="http://svn.apache.org/viewcvs.cgi?rev=373798&amp;view=rev">373798</a>
+                     (<a href="http://svn.apache.org/viewcvs?rev=373801&amp;view=rev">373801</a>)</td>
+                 <td align="center"><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38461">38461</a></td>
+                 <td>struts-el html tag library errorKey not using documented default value.</td>
+             </tr>
+         </table>
+
+      </subsection>
+
+     <subsection>
+       <p class="right">Next:
+       <a href="installation.html">Installation</a></p>
+     </subsection>
+ </section>
+</body>
+</document>

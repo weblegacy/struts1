@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+<form-validation>
+
+  <!-- ========================= Default Formset ========================= -->
+  <formset>
+
+    <!-- ***************************************** -->
+    <!--             BASE FORM                     -->
+    <!-- ***************************************** -->
+    <form name="baseTypeForm">
+
+      <field property="byte" depends="required,byte">
+        <arg key="typeForm.byte.displayname" />
+      </field>
+
+      <field property="short" depends="required,short">
+        <arg key="typeForm.short.displayname" />
+      </field>
+
+      <field property="integer" depends="required,integer">
+        <arg key="typeForm.integer.displayname" />
+      </field>
+
+      <field property="intRange" depends="required,integer,intRange">
+        <arg key="typeForm.intRange.displayname" />
+        <arg name="intRange" key="${var:min}" resource="false" position="1" />
+        <arg name="intRange" key="${var:max}" resource="false" position="2" />
+        <var>
+          <var-name>min</var-name>
+          <var-value>10</var-value>
+        </var>
+        <var>
+          <var-name>max</var-name>
+          <var-value>20</var-value>
+        </var>
+      </field>
+
+      <field property="long" depends="">
+      </field>
+
+      <field property="float" depends="required,float">
+        <arg key="typeForm.float.displayname" />
+      </field>
+
+      <field property="floatRange" depends="required,float,floatRange">
+        <arg key="typeForm.floatRange.displayname" />
+        <arg name="floatRange" key="${var:min}" resource="false" position="1" />
+        <arg name="floatRange" key="${var:max}" resource="false" position="2" />
+        <var>
+          <var-name>min</var-name>
+          <var-value>-2.17</var-value>
+        </var>
+        <var>
+          <var-name>max</var-name>
+          <var-value>3.14</var-value>
+        </var>
+      </field>
+
+      <field property="double" depends="">
+      </field>
+
+      <field property="date" depends="required,date">
+        <arg key="typeForm.date.displayname" />
+        <var>
+          <var-name>datePatternStrict</var-name>
+          <var-value>MM/dd/yyyy</var-value>
+        </var>
+      </field>
+
+      <field property="creditCard" depends="required,creditCard">
+        <arg key="typeForm.creditCard.displayname" />
+      </field>
+
+      <field property="email" depends="required,email">
+        <arg key="typeForm.email.displayname" />
+      </field>
+
+      <field property="mask" depends="required,mask">
+        <arg key="typeForm.mask.displayname" />
+        <msg name="mask" key="typeForm.mask.error" /> 
+        <var>
+          <var-name>mask</var-name>
+          <var-value>^[A-Z]*$</var-value>
+        </var>
+      </field>
+
+      <field property="minMaxLength" depends="required,minlength,maxlength">
+        <arg key="typeForm.minMaxLength.displayname" />
+        <arg name="minlength" key="${var:minlength}" resource="false" position="1" />
+        <arg name="maxlength" key="${var:maxlength}" resource="false" position="1" />
+        <var>
+          <var-name>minlength</var-name>
+          <var-value>5</var-value>
+        </var>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>20</var-value>
+        </var>
+      </field>
+
+    </form>
+
+
+    <form name="typeForm" extends="baseTypeForm">
+
+      <field property="url" depends="required,url">
+        <arg key="typeForm.url.displayname" />
+      </field>
+
+      <field property="long" depends="required,long">
+        <arg key="typeForm.long.displayname" />
+      </field>
+
+      <field property="double" depends="required,double">
+        <arg key="typeForm.double.displayname" />
+      </field>
+
+      <field property="value" indexedListProperty="nameList" depends="required">
+        <arg key="typeForm.nested.name.displayname" />
+      </field>
+
+    </form>
+
+
+    <form name="jsTypeForm" extends="baseTypeForm">
+
+      <field property="satisfaction" depends="required">
+        <arg key="typeForm.option.satisfaction" />
+      </field>
+
+      <field property="osList" depends="required">
+        <arg key="typeForm.option.os.list" />
+      </field>
+
+      <field property="overallSatisfaction" depends="required">
+        <arg key="typeForm.radio.overall.satisfaction" />
+      </field>
+
+      <field property="wouldRecommend" depends="required">
+        <arg key="typeForm.checkbox.wouldrecommend" />
+      </field>
+
+      <field property="usedLanguages" depends="required">
+        <arg key="typeForm.checkbox.used.languages" />
+      </field>
+
+    </form>
+
+  </formset>
+
+  <!-- ========================= fr Formset ========================= -->
+  <formset language="fr">
+
+
+    <form name="typeForm">
+
+      <field property="integer" depends="required,integer,intRange">
+        <arg key="typeForm.integer.displayname" />
+        <arg name="intRange" key="${var:min}" resource="false" position="1" />
+        <arg name="intRange" key="${var:max}" resource="false" position="2" />
+        <var>
+          <var-name>min</var-name>
+          <var-value>100</var-value>
+        </var>
+        <var>
+          <var-name>max</var-name>
+          <var-value>200</var-value>
+        </var>
+      </field>
+
+      <field property="date" depends="required,date">
+        <arg key="typeForm.date.displayname" />
+        <var>
+          <var-name>datePatternStrict</var-name>
+          <var-value>dd.MM.yyyy</var-value>
+        </var>
+      </field>
+
+    </form>
+
+
+    <form name="jsTypeForm">
+
+      <field property="integer" depends="required,integer,intRange">
+        <arg key="typeForm.integer.displayname" />
+        <arg name="intRange" key="${var:min}" resource="false" position="1" />
+        <arg name="intRange" key="${var:max}" resource="false" position="2" />
+        <var>
+          <var-name>min</var-name>
+          <var-value>100</var-value>
+        </var>
+        <var>
+          <var-name>max</var-name>
+          <var-value>200</var-value>
+        </var>
+      </field>
+
+      <field property="date" depends="required,date">
+        <arg key="typeForm.date.displayname" />
+        <var>
+          <var-name>datePatternStrict</var-name>
+          <var-value>dd.MM.yyyy</var-value>
+        </var>
+      </field>
+
+    </form>
+
+  </formset>
+
+  <!-- ========================= ja Formset ========================= -->
+  <formset language="ja">
+
+
+    <form name="typeForm">
+
+      <field property="integer" depends="required,integer,intRange">
+        <arg key="typeForm.integer.displayname" />
+        <arg name="intRange" key="${var:min}" resource="false" position="1" />
+        <arg name="intRange" key="${var:max}" resource="false" position="2" />
+        <var>
+          <var-name>min</var-name>
+          <var-value>400</var-value>
+        </var>
+        <var>
+          <var-name>max</var-name>
+          <var-value>700</var-value>
+        </var>
+      </field>
+
+      <field property="date" depends="required,date">
+        <arg key="typeForm.date.displayname" />
+        <var>
+          <var-name>datePatternStrict</var-name>
+          <var-value>yyyy/MM/dd</var-value>
+        </var>
+      </field>
+
+    </form>
+
+
+    <form name="jsTypeForm">
+
+      <field property="integer" depends="required,integer,intRange">
+        <arg key="typeForm.integer.displayname" />
+        <arg name="intRange" key="${var:min}" resource="false" position="1" />
+        <arg name="intRange" key="${var:max}" resource="false" position="2" />
+        <var>
+          <var-name>min</var-name>
+          <var-value>400</var-value>
+        </var>
+        <var>
+          <var-name>max</var-name>
+          <var-value>700</var-value>
+        </var>
+      </field>
+
+      <field property="date" depends="required,date">
+        <arg key="typeForm.date.displayname" />
+        <var>
+          <var-name>datePatternStrict</var-name>
+          <var-value>yyyy/MM/dd</var-value>
+        </var>
+      </field>
+
+    </form>
+
+  </formset>
+
+  <!-- ========================= fr-CA Formset ========================= -->
+  <formset language="fr" country="CA">
+
+
+    <form name="typeForm">
+      <field property="integer" depends="required,integer,intRange">
+        <arg key="typeForm.integer.displayname" />
+        <arg name="intRange" key="${var:min}" resource="false" position="1" />
+        <arg name="intRange" key="${var:max}" resource="false" position="2" />
+        <var>
+          <var-name>min</var-name>
+          <var-value>40</var-value>
+        </var>
+        <var>
+          <var-name>max</var-name>
+          <var-value>50</var-value>
+        </var>
+      </field>
+      <field property="date" depends="required,date">
+        <arg key="typeForm.date.displayname" />
+        <var>
+          <var-name>datePatternStrict</var-name>
+          <var-value>MM-dd-yyyy</var-value>
+        </var>
+      </field>
+    </form>
+
+
+    <form name="jsTypeForm">
+      <field property="integer" depends="required,integer,intRange">
+        <arg key="typeForm.integer.displayname" />
+        <arg name="intRange" key="${var:min}" resource="false" position="1" />
+        <arg name="intRange" key="${var:max}" resource="false" position="2" />
+        <var>
+          <var-name>min</var-name>
+          <var-value>40</var-value>
+        </var>
+        <var>
+          <var-name>max</var-name>
+          <var-value>50</var-value>
+        </var>
+      </field>
+      <field property="date" depends="required,date">
+        <arg key="typeForm.date.displayname" />
+        <var>
+          <var-name>datePatternStrict</var-name>
+          <var-value>MM-dd-yyyy</var-value>
+        </var>
+      </field>
+    </form>
+
+  </formset>
+</form-validation>

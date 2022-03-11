@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+
+    <properties>
+        <title>Release Notes (since 1.3.1)</title>
+    </properties>
+    <body>
+        <section name="6.1 Release Notes - Version 1.3.2">
+
+            <subsection>
+                <p>
+                    <strong>SPECIAL NOTE ON UPGRADING - README FIRST!</strong>
+                    - If you use the standard
+                    <strong>CANCEL BUTTON</strong>
+                    in your application
+                    and validate is set to true for that mapping, you
+                    <strong>MUST</strong>
+                    also specify "cancellable=true" in the mapping, otherwise,
+                    an InvalidCancelException will be thrown if the Cancel button is
+                    used. See the new
+                    <a href="release-notes-1_3_1.html#opt-in">Opt-In Cancel Handling</a>
+                    feature for more.
+                </p>
+                <p>
+                    <source>
+                        &lt;action path="/ActionThatCanBeCancelled"
+                                validate="true"
+                                <strong>cancellable="true"</strong>
+                                ...
+                         &lt;/action>
+                    </source>
+                </p>
+            </subsection>
+
+            <a name="release_notes"/>
+            <subsection name="Introduction">
+                <p>
+                    This section contains release notes for changes that have
+                    taken place to the Struts 1 project, previously known
+                    as "Struts Classic" since 
+                    <a href="release-notes-1_3_1.html">Version 1.3.1</a>.
+                    To keep up-to-date on all changes to Struts, subscribe to
+                    the (commits at struts.apache.org) list.
+                    To preview our plans for upcoming changes,
+                    please visit the
+                    <a href="../roadmap.html">Roadmap page</a>
+                    .
+                </p>
+                <p>
+                    <b>Notes on upgrading</b>
+                    are maintained in the
+                    <a href="http://wiki.apache.org/struts/StrutsUpgrade">Wiki
+                        Upgrade pages</a>
+                    .
+                    The wiki is a community maintained resource - please feel
+                    free to add your
+                    input so that everyone can benefit from the collective
+                    experience.
+                </p>
+                <p>
+                    For the version requirements of each library, see the
+                    <a href="installation.html">Installation chapter</a>
+                    .
+                </p>
+
+            </subsection>
+
+            <a name="Highlight"/>
+            <subsection name="Highlights of Changes">
+                <p>
+                    The purpose of this section is to highlight the new
+                    features since the
+                    Version 1.3.1 release.
+                    For more detail, see the Project Info reports for each
+                    subproject,
+                    which include a complete changelog and list of external
+                    dependencies.
+                </p>
+                <p>
+                    You can also access to the Apache Struts source repository and
+                    change logs directly through both
+                    <a href="http://svn.apache.org/viewcvs.cgi/struts/action/trunk/?root=Apache-SVN">
+                        web browser</a>
+                    and
+                    <a href="http://www.apache.org/dev/version-control.html">
+                        Subversion client</a>
+                    interfaces.
+                </p>
+
+                <h3>Struts</h3>
+
+                <p>
+                    Since Struts 1.3.1, we have moved the Struts 1 related
+                    subprojects back into the Struts 1 project, leaving 
+                    Struts and Struts Shale the two remaining subprojects.
+                    The Struts 1.3.2 release contains the following seven
+                    components: Core, Applications, EL, Extras, Scripting, 
+                    Taglibs, and Tiles.
+                </p>
+
+                <p>
+                    The Struts, including the website, is being
+                    built with Maven 2.
+                    But, of course, you can continue to build your own
+                    projects any way you like!
+                </p>
+
+                <h3>Dependency Changes</h3>
+
+                <h4>Specification Changes</h4>
+                <p>
+                    The 1.3.x series of Struts has
+                    a minumum requirement of the following specification
+                    versions:
+                    <ul>
+                        <li>
+                            Java Servlet 2.3 and JavaServer Pages (JSP) 1.2
+                        </li>
+                        <li>
+                            Java 2 Standard Platform Edition (J2SE) 1.4
+                        </li>
+                    </ul>
+                </p>
+                <h4>Software Component Changes</h4>
+                <p>
+                    A following software dependency change applies to this release:
+                    <ul>
+                        <li>
+                            Upgraded to Commons Validator 1.3 (previously 1.2) -
+                            see
+                            <a href="http://jakarta.apache.org/commons/validator/changes-report.html">
+                                Validator 1.3.0 Release Notes
+                            </a>
+                            .
+                        </li>
+                    </ul>
+                </p>
+
+                <h3>Bug Fixes</h3>
+                <ul>
+                    <li>[<a href='http://issues.apache.org/struts/browse/STR-2822'>STR-2822</a>] - Wildcard action matcher does not set module in forward</li>
+                    <li>[<a href='http://issues.apache.org/struts/browse/STR-2838'>STR-2838</a>] - Add necessary reports to site build</li>
+                    <li>[<a href='http://issues.apache.org/struts/browse/STR-2840'>STR-2840</a>] - Release should include site docs</li>
+                </ul>
+            </subsection>
+
+            <subsection>
+                <p class="right">Next:
+                    <a href="installation.html">Installation</a>
+                </p>
+            </subsection>
+        </section>
+    </body>
+</document>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+
+    <properties>
+        <title>Welcome</title>
+    </properties>
+
+    <body>
+
+        <section name="FAQs">
+
+            <ul>
+
+                <li>
+                    <a href="kickstart.html">Kickstart FAQ</a>
+                    (read me first)
+                </li>
+
+                <li>
+                    <a href="newbie.html">Newbie FAQ</a>
+                </li>
+
+                <li>
+                    <a href="http://struts.apache.org/helping.html">How to
+                        Help FAQ</a>
+                </li>
+
+                <li>
+                    <a href="works.html">How does it work?</a>
+                </li>
+
+            </ul>
+
+        </section>
+
+        <section name="HOWTOs">
+
+            <ul>
+
+                <li>
+                    <a href="db-howto.html">Accessing a Database</a>
+                </li>
+
+                <li>
+                    <a href="actionForm.html">Building an Action Form</a>
+                </li>
+
+                <li>
+                    <a href="apps.html">Building Applications</a>
+                </li>
+                
+                <li>
+                    <a href="validator.html">Using Struts Validator</a>
+                </li>
+            </ul>
+
+        </section>
+
+        <section name="IDE HOWTOs">
+
+            <ul>
+
+                <li>
+                    <a href="eclipse.html">Installing the Eclipse IDE</a>
+                </li>
+
+                <li>
+                    <a href="netbeans40.html">Installing the Netbeans IDE
+                        (Version 4.0)</a>
+                </li>
+
+            </ul>
+
+        </section>
+
+        <section name="External FAQs and HOWTOs">
+
+            <ul>
+                <li>
+                    <a href="http://wiki.apache.org/struts">Apache Struts
+                        Wiki</a>
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    <a href="http://www.jguru.com/faq/home.jsp?topic=Struts">
+                        jGuru FAQ</a>
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    <a href="http://www.husted.com/struts/tips">Struts
+                        Tips</a>
+                    by Ted Husted
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    <a href="http://opensource2.atlassian.com/confluence/oss/display/STRUTS/Home">
+                        Struts University</a>
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    <a href="http://www.raibledesigns.com/page/rd/20030226#struts_validator_validating_two_fields">
+                        Struts Validator: Validating Two Fields Match</a>
+                    by Matt Raible
+                </li>
+            </ul>
+
+            <ul>
+                <li>
+                    <a href="http://strutstestcase.sourceforge.net">Unit
+                        Testing with Struts TestCase</a>
+                    by Deryl Seale
+                </li>
+            </ul>
+
+        </section>
+
+    </body>
+</document>

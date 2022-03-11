@@ -1,0 +1,75 @@
+<!DOCTYPE tiles-definitions PUBLIC
+  "-//Apache Software Foundation//DTD Tiles Configuration//EN"
+  "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+
+<tiles-definitions>
+
+
+  <!-- ========== LAYOUTS ========== -->
+
+  <!-- Base Layout -->
+  <definition name=".base"         page="/layout.faces">
+    <put      name="header"       value="/header.jsp"/>
+    <put      name="footer"       value="/footer.jsp"/>
+    <put      name="menu"         value="/blank.jsp"/>
+    <put      name="body"         value="/blank.jsp"/>
+  </definition>
+
+  <!-- Logged Off Layout -->
+  <definition name=".loggedoff" extends=".base">
+    <put      name="menu"         value="/loggedoff.jsp"/>
+  </definition>
+
+  <!-- Logged On Layout -->
+  <definition name=".loggedon"  extends=".base">
+    <put      name="menu"         value="/loggedon.jsp"/>
+  </definition>
+
+
+  <!-- ========== PAGES ========== -->
+
+  <definition name=".logon"     extends=".loggedoff">
+    <put      name="body"         value="/logon.jsp"/>
+  </definition>
+
+  <definition name=".mainMenu"  extends=".loggedon">
+    <put      name="body"         value="/mainMenu.jsp"/>
+  </definition>
+
+  <definition name=".register"  extends=".loggedoff">
+    <put      name="body"         value="/registration.jsp"/>
+  </definition>
+
+  <definition name=".registration"
+                                extends=".loggedon">
+    <put      name="body"         value="/registration.jsp"/>
+  </definition>
+
+  <definition name=".subscription"
+                                extends=".loggedon">
+    <put      name="body"         value="/subscription.jsp"/>
+  </definition>
+
+  <definition name=".welcome"   extends=".loggedoff">
+  </definition>
+
+
+</tiles-definitions>

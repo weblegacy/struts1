@@ -1,0 +1,9 @@
+build.properties
+build
+dist
+target
+struts-el.jpx*
+..jbprojectbak
+velocity.log
+maven.log
+

@@ -1,0 +1,117 @@
+<?xml version="1.0"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+    <properties>
+        <title>Welcome</title>
+    </properties>
+
+    <body>
+
+        <section name="Welcome to Struts Apps">
+            <a name="welcome"/>
+
+            <p>
+                Several example applications come bundled with the Struts 
+                distribution, ready to deploy on your container. 
+                In the case of Tomcat, you would copy the application's 
+                WAR file from the <code>apps</code> distribution to 
+                Tomcat's <code>webapps</code> folder. 
+             </p>
+             
+             <p>As a convenience, the linked examples are available online 
+             at <a href="http://planetstruts.org">Planet Struts</a>.</p>
+             
+            <table>
+
+            <tr><th>
+            Blank            
+            </th><td>
+            Struts Blank is a template you can use to create your own 
+            application. You can copy and rename the WAR, 
+            deploy it to your server, and start adding your own code. 
+            </td></tr>
+
+            <tr><th>
+            Cookbook
+            </th><td>
+            Struts Cookbook is a show-and-tell application that 
+            demonstrates some common use cases. 
+            The source code for each example can be viewed through the 
+            application itself.
+            </td></tr>
+
+            <tr><th>
+            Examples
+            </th><td>
+            Struts Example is a modular application. 
+            Modules include an "exercise" application to test and 
+            demonstrate the Struts Taglibs, 
+            a file uploading example, 
+            a "validate" example that demonstrates and test 
+            validation and localization features, 
+            </td></tr>
+
+            <tr><th>
+            MailReader
+            </th><td>
+            Struts MailReader is a best-practices example of a typical 
+            web application.
+            </td></tr>
+
+            <tr><th>
+            EL Example
+            </th><td>
+            Struts EL Example demonstrates and tests the 
+            <a href="../struts-el/index.html">Struts EL tags</a> 
+            using tests from the Exercise-Taglib application. 
+            </td></tr>
+
+            <tr><th>
+            Faces Example 1
+            </th><td>
+            The Struts Faces Example 1 application is JSF-enabled rendition 
+            of the classic Struts MailReader,
+            </td></tr>
+
+
+            <tr><th>
+            Faces Example 2
+            </th><td>
+            Struts Faces Example 2 application is <em>Tiles-enabled,</em> 
+            JSF-enabled rendition of the classic Struts MailReader. 
+            </td></tr>
+
+
+            <tr><th>
+            Scripting MailReader
+            </th><td>
+            Struts Scripting Mailreader is a scripting-enabled rendition of the 
+            classic Struts MailReader. Here, Actions are written with scripts 
+            rather than Java.
+            </td></tr>
+
+            </table>
+            
+            
+        </section>
+   </body>
+</document>
+

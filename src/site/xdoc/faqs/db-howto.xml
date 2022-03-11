@@ -1,0 +1,334 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+
+    <properties>
+        <title>How to Access a Database</title>
+    </properties>
+
+    <body>
+
+        <section name="How to Access a Database" href="database">
+
+            <p>
+                Most developers would consider accessing a database part of
+                the "business
+                end" of an application. Most often, we don't access a database
+                for the sake
+                of accessing a database. We use the database as part of a
+                larger business
+                transaction. So lets start with accessing business logic from
+                the framework.
+            </p>
+
+            <p>
+                The best thing is to use the Action as a thin adaptor between the
+                web/presentation-tier and your business classes (including
+                those that
+                access a database).
+            </p>
+
+            <p>
+                So you first design a business API that uses plain Java
+                classes.
+                The best thing is to use objects that take ordinary Java types
+                and return
+                a JavaBean or collection of JavaBeans.
+                The Action then calls these objects and passes the result back
+                to the
+                web/presentation tier.
+            </p>
+
+            <p>
+                A common approach is to create an Action class for each of
+                business
+                transaction, or use case, in your application. A simple "CRUD"
+                application might have a CreateAction, a RetrieveAction, an
+                UpdateAction,
+                and a DeleteAction. To complete each transaction, the Action
+                can make
+                whatever calls are needed to your business API classes.
+            </p>
+
+            <p>
+                Ideally, all the database access code should be encapsulated
+                behind the
+                business API classes, so the framework doesn't know what persistent
+                layer you
+                are using (or even if there is a persistence layer).
+                It just passes a key or search String and gets back a bean or
+                collection
+                of beans.
+                This lets you use the same business API classes in other
+                environments,
+                and also to run unit tests against your business API outside
+                of a web environment.
+            </p>
+
+            <p>
+                The Struts MailReader shows
+                how this is usually done. MailReader uses the DAO (Data Access
+                Object)
+                pattern to separate the persistence layer from the (Struts)
+                control layer.
+                MailReader defines a DAO interface that the Actions can call,
+                it then
+                defines a implementation that uses a database stored in main
+                memory.
+                Other implementations could be defined and used instead,
+                without
+                changing any of the Struts classes.
+            </p>
+
+            <p>
+                To get started, it's simplest to setup a 1:1 correspondence
+                between the
+                Actions and your application's use cases. Each use case may
+                make one or
+                more calls to your business API, but from the user's
+                perspective, each
+                use case is a single transaction.
+            </p>
+
+            <p>
+                As you gain experience, you will find ways to combine your
+                Action classes,
+                say by using the DispatchAction.
+                It's even possible to use a single "framework" Action to call
+                all of your
+                business classes, as is done with Scaffold ProcessAction in
+                the Sandbox subproject.
+            </p>
+
+            <p>
+                Using fewer Actions does require a deeper understanding of how
+                Struts
+                and MVC frameworks operate.
+                Don't hesitate to err on the side of creating more Action
+                classes at first.
+                The configuration file makes it easy to refactor your Actions
+                later,
+                since you can change the Action type without changing anything
+                else in the
+                application.
+            </p>
+
+        </section>
+
+        <section name="Using DataSources" href="datasources">
+
+            <p>
+                When you use the DAO approach, all of the database access
+                details are
+                hidden behind the business interface. The implementation of
+                the business
+                classes handle all the gritty details, like using a
+                <code>DataSource</code>
+                to pool connections to the database.
+            </p>
+
+            <p>
+                As a rule, you should always use a connection pool to access a
+                database.
+                The
+                <code>DataSource</code>
+                interface is the preferred way to implement a
+                connection pool today. Many containers and database systems
+                now bundle
+                a DataSource implmentation that you can use. Most often, the
+                DataSource
+                is made available through JNDI. The JNDI approach makes it
+                easy for your
+                business classes to access the DataSource without worrying
+                about who set it
+                up.
+            </p>
+
+        </section>
+
+        <section name="Persistence Franeworks" href="persistence">
+
+            <p>
+                There are many useful and mature persistence layer frameworks
+                available.
+                Before using raw JDBC or "rolling your own" solution, you
+                should carefully
+                review one or more of these packages. Here's a short list of
+                packages
+                most often mentioned on the Struts User list:
+            </p>
+
+            <ul>
+                <li>
+                    <a href="http://www.hibernate.org/">Hibernate</a>
+                </li>
+                <li>
+                    <a href="http://sourceforge.net/projects/ibatisdb">
+                        iBATIS</a>
+                </li>
+                <li>
+                    <a href="http://db.apache.org/ojb/">Object Relational
+                        Bridge</a>
+                </li>
+                <li>
+                    <a href="http://db.apache.org/torque/index.html">Torque /
+                        Peers</a>
+                </li>
+            </ul>
+
+            <p>
+                For more, see the
+                <a href="http://struts.sourceforge.net/community/models.html">
+                    Struts
+                    Community Resources area</a>
+                on SourceForge.
+            </p>
+
+        </section>
+
+
+        <section href="more" name="See Also">
+
+            <p>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24621.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24621.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24709.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24709.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24626.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24626.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24331.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24331.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24102.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24102.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg23501.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg23501.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg23455.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg23455.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg23375.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg23375.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg23321.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg23321.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg23098.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg23098.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg22713.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg22713.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg21974.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg21974.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg21026.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg21026.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg19338.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg19338.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg18323.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg18323.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg14975.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg14975.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg14914.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg14914.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg14435.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg14435.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg01562.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg01562.html</a>
+            </p>
+
+            <p>
+                Transformation/Data Transfer
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24480.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24480.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg23623.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg23623.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg10195.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg10195.html</a>
+                <br/>
+                <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg10205.html">
+                    http://www.mail-archive.com/struts-user@jakarta.apache.org/msg10205.html</a>
+            </p>
+
+        </section>
+
+
+        <section href="DynaResultSet" name="Rendering a dynamic result set">
+
+            <p>
+                The result of most queries will map to the ActionForms you are
+                already using,
+                and so you can render the ResultSet as a collection of
+                ActionForms.
+                But sometimes there are columns in a ResultSet that are not
+                properties of an ActionForm,
+                or even known in advance.
+            </p>
+
+            <p>
+                Happily, the Struts JSP tags don't care what type of bean you
+                use with them.
+                You could even output a ResultSet directly.
+                But a ResultSet retains a connection to the database, and
+                passing "all that" directly to a JSP gets messy.
+                So what's a developer to do?
+            </p>
+
+            <p>
+                Since version 1.1, the simplest option is to use a
+                <a href="http://commons.apache.org/beanutils/api/org/apache/commons/beanutils/ResultSetDynaClass.html">
+                    ResultSetDynaClass</a>
+                to transfer the ResultSet into an ArrayList of DynaBeans.
+                The Struts custom tags can use DynaBean properties as easily
+                as they use conventional JavaBean properties.
+                (See
+                <a href="../userGuide/building_controller.html#dyna_action_form_classes">
+                DynaActionForm classes</a>
+                in the Struts User Guide for details.)
+            </p>
+
+            <p>
+                Since these classes are in the BeanUtils JAR, you already have it on
+                board, and just need to implement the transfer routine
+                (see the ResultSetDynaClass link).
+            </p>
+
+        </section>
+
+    </body>
+</document>
+

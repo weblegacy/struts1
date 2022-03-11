@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+
+  <properties>
+    <title>Welcome</title>
+  </properties>
+
+  <body>
+
+    <section name="Welcome to Struts Faces">
+    <a name="welcome"/>
+
+  <p>
+    The "Struts Faces" component contains an add-on library that supports 
+    the use of JavaServer Faces (JSF) user interface technology in a 
+    Struts-based web application, in place of the Struts custom tag libraries.
+  </p>
+  
+  <p>
+    The Struts-Faces Integration Library should work with any implementation
+    of JavaServer Faces, version 1.0 or later.  It has primarily been tested
+    against version 1.1 of the 
+    <a href="http://java.sun.com/javaee/javaserverfaces/">JavaServer Faces</a>
+    reference implementation.
+  </p>
+
+  <p>
+    For more information, consult the
+    <a href="README.txt" target="_blank">README</a> file or the
+    <a href="http://wiki.apache.org/struts/StrutsFaces">StrutsFaces</a>
+    wiki page.
+  </p>
+  
+  <p>Known issues with some JSF implementations:
+    <ul>
+      <li><a href="http://issues.apache.org/jira/browse/MYFACES-1421">
+      [MYFACES-1421]</a> - MyFaces 1.1.4 does not recognize the family of the
+      Struts Faces form component.</li>
+    </ul>
+  </p>
+  
+  <p>
+    Note that the Struts Faces component is intended as a "bridge" between 
+    Struts 1 and JavaServer Faces. 
+    The typical use case is a team that would like to experiment with JSF 
+    components but does not want to completely rework an existing application. 
+  </p>
+  
+  <p>
+    For better JavaServer Faces support, 
+    consider using Struts 2 or 
+    <a href="http://shale.apache.org/">Apache Shale.</a>
+  </p>
+    </section>
+
+    <section name="Struts-Faces Issue Tracking">
+    <a name="issue"/>
+
+      <p>Please report any bugs, or log any enhancement requests, in the
+      <a href="http://issues.apache.org/struts/">Struts JIRA Issue Tracker</a> 
+      to the <code>Faces</code> component under <code>Struts 1.</code></p>
+
+    </section>
+
+
+  </body>
+
+</document>

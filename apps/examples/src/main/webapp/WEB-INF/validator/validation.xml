@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+<form-validation>
+  <global>
+    <constant>
+      <constant-name>phone</constant-name>
+      <constant-value>^\(?(\d{3})\)?[-| ]?(\d{3})[-| ]?(\d{4})$</constant-value>
+    </constant>
+    <constant>
+      <constant-name>zip</constant-name>
+      <constant-value>^\d{5}\d*$</constant-value>
+    </constant>
+  </global>
+
+  <!-- ========================= Default Formset ========================= -->
+  <formset>
+
+    <constant>
+      <constant-name>zip</constant-name>
+      <constant-value>^\d{5}(-\d{4})?$</constant-value>
+    </constant>
+
+    <form name="registrationForm">
+      <field property="firstName" depends="required,mask,minlength">
+        <arg key="registrationForm.firstname.displayname" position="0"/>
+        <arg name="minlength" key="${var:minlength}" resource="false" position="1"/>
+        <var>
+          <var-name>mask</var-name>
+          <var-value>^\w+$</var-value>
+        </var>
+        <var>
+          <var-name>minlength</var-name>
+          <var-value>5</var-value>
+        </var>
+      </field>
+      <field property="lastName" depends="required,mask,maxlength">
+        <msg name="mask" key="registrationForm.lastname.maskmsg" />
+        <arg key="registrationForm.lastname.displayname" position="0" />
+        <arg name="maxlength" key="${var:maxlength}" resource="false" position="1"/>
+         <var>
+          <var-name>mask</var-name>
+          <var-value>^[a-zA-Z]*$</var-value>
+        </var>
+        <var>
+          <var-name>maxlength</var-name>
+          <var-value>10</var-value>
+        </var>
+      </field>
+      <field property="addr" depends="required">
+        <arg key="registrationForm.addr.displayname" />
+      </field>
+      <field property="cityStateZip.city" depends="required,mask">
+        <arg key="registrationForm.city.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>^[a-zA-Z]*$</var-value>
+        </var>
+      </field>
+      <field property="cityStateZip.stateProv" depends="required,mask">
+        <arg key="registrationForm.stateprov.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>^[a-zA-Z]*$</var-value>
+        </var>
+      </field>
+      <field property="cityStateZip.zipPostal[1]" depends="required,mask">
+        <arg key="registrationForm.zippostal.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>${zip}</var-value>
+        </var>
+      </field>
+      <field property="phone" depends="mask">
+        <arg key="registrationForm.phone.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>${phone}</var-value>
+        </var>
+      </field>
+      <field property="email" depends="required,email">
+        <arg key="registrationForm.email.displayname" />
+      </field>
+    </form>
+
+    <form name="multiRegistrationForm">
+      <field property="firstName" depends="required,mask" page="1">
+        <arg key="registrationForm.firstname.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>^\w+$</var-value>
+        </var>
+      </field>
+      <field property="lastName" depends="required,mask" page="1">
+        <msg name="mask" key="registrationForm.lastname.maskmsg" />
+        <arg key="registrationForm.lastname.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>^[a-zA-Z]*$</var-value>
+        </var>
+      </field>
+      <field property="addr" depends="required" page="1">
+        <arg key="registrationForm.addr.displayname" />
+      </field>
+      <field property="cityStateZip.city" depends="required,mask" page="1">
+        <arg key="registrationForm.city.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>^[a-zA-Z]*$</var-value>
+        </var>
+      </field>
+      <field property="cityStateZip.stateProv" depends="required,mask" page="2">
+        <arg key="registrationForm.stateprov.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>^[a-zA-Z]*$</var-value>
+        </var>
+      </field>
+      <field property="cityStateZip.zipPostal[1]" depends="required,mask" page="2">
+        <arg key="registrationForm.zippostal.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>${zip}</var-value>
+        </var>
+      </field>
+      <field property="phone" depends="mask" page="2">
+        <arg key="registrationForm.phone.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>${phone}</var-value>
+        </var>
+      </field>
+      <field property="email" depends="required,email" page="2">
+        <arg key="registrationForm.email.displayname" />
+      </field>
+    </form>
+  </formset>
+
+  <!-- ========================= fr Formset ========================= -->
+  <formset language="fr">
+
+    <form name="registrationForm">
+
+      <field property="lastName" depends="required,mask">
+        <msg name="mask" key="registrationForm.lastname.maskmsg" />
+        <arg key="registrationForm.lastname.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>^\w+$</var-value>
+        </var>
+      </field>
+
+      <field property="cityStateZip.stateProv">
+        <arg  key="registrationForm.stateprov.displayname" />
+      </field>
+
+      <field property="phone">
+        <arg key="registrationForm.phone.displayname" />
+      </field>
+
+    </form>
+
+    <form name="multiRegistrationForm">
+
+      <field property="lastName" depends="required,mask" page="1">
+        <msg name="mask" key="registrationForm.lastname.maskmsg" />
+        <arg key="registrationForm.lastname.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>^\w+$</var-value>
+        </var>
+      </field>
+
+      <field property="cityStateZip.stateProv" page="2">
+        <arg key="registrationForm.stateprov.displayname" />
+      </field>
+
+      <field property="phone" page="2">
+        <arg key="registrationForm.phone.displayname" />
+      </field>
+
+    </form>
+
+  </formset>
+
+  <!-- ========================= ja Formset ========================= -->
+  <formset language="ja">
+
+    <constant>
+      <constant-name>zip</constant-name>
+      <constant-value>^\d{3}-\d{4}$</constant-value>
+    </constant>
+
+    <constant>
+      <constant-name>phone</constant-name>
+      <constant-value>^[0][1-9]((\d{2,3}-?)|(-\d{2,3})|(\d-\d{1,2})|(\d{2}-\d))\d-\d{4}$</constant-value>
+    </constant>
+
+    <form name="registrationForm">
+
+      <!-- ${zip} constant is different in this locale -->
+      <field property="cityStateZip.zipPostal[1]" depends="required,mask">
+        <arg key="registrationForm.zippostal.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>${zip}</var-value>
+        </var>
+      </field>
+
+      <!-- ${phone} constant is different in this locale -->
+      <field property="phone" depends="mask">
+        <arg key="registrationForm.phone.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>${phone}</var-value>
+        </var>
+      </field>
+
+    </form>
+
+
+    <form name="multiRegistrationForm">
+
+      <field property="cityStateZip.zipPostal[1]" depends="required,mask" page="2">
+        <arg key="registrationForm.zippostal.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>${zip}</var-value>
+        </var>
+      </field>
+
+      <field property="phone" depends="mask" page="2">
+        <arg key="registrationForm.phone.displayname" />
+        <var>
+          <var-name>mask</var-name>
+          <var-value>${phone}</var-value>
+        </var>
+      </field>
+
+    </form>
+
+  </formset>
+
+  <!-- ========================= fr-CA Formset ========================= -->
+
+</form-validation>

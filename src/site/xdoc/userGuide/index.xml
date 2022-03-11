@@ -1,0 +1,447 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+
+    <properties>
+        <title>Table of Contents</title>
+    </properties>
+
+    <body>
+
+        <!-- Omit chapter heading for the list of chapters (also omits authors) -->
+
+        <section name="Table of Contents" href="toc">
+
+            <ul>
+                <li>
+                    <a href="introduction.html">1. Introduction</a>
+                    <ul>
+                        <li>
+                            <a href="introduction.html#history">1.1 Forward
+                                into the Past!</a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>
+                                    <a href="introduction.html#modelConcepts">
+                                        1.2.1 The Model: System State and
+                                        Business Logic JavaBeans</a>
+                                </li>
+                                <li>
+                                    <a href="introduction.html#presentationConcepts">
+                                        1.2.2 The View: JSP Pages and
+                                        Presentation Components</a>
+                                </li>
+                                <li>
+                                    <a href="introduction.html#controllerConcepts">
+                                        1.2.3 The Controller: ActionServlet
+                                        and ActionMapping</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="introduction.html#flow">1.3 Control
+                                Flow</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="building_model.html">2. Building Model
+                        Components</a>
+                    <ul>
+                        <li>
+                            <a href="building_model.html#overview">2.1
+                                Overview</a>
+                        </li>
+                        <li>
+                            <a href="building_model.html#javabeans">2.2
+                                JavaBeans and Scope</a>
+                        </li>
+                        <li>
+                            <a href="building_model.html#actionform">2.3
+                                ActionForm Beans</a>
+                        </li>
+                        <li>
+                            <a href="building_model.html#system_state">2.4
+                                System State Beans</a>
+                        </li>
+                        <li>
+                            <a href="building_model.html#business_logic">2.5
+                                Business Logic Beans</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="building_view.html">3. Building View
+                        Components</a>
+                    <ul>
+                        <li>
+                            <a href="building_view.html#overview">3.1
+                                Overview</a>
+                        </li>
+                        <li>
+                            <a href="building_view.html#i18n">3.2
+                                Internationalization</a>
+                        </li>
+                        <li>
+                            <a href="building_view.html#form_beans">3.3 Forms
+                                and FormBean Interactions</a>
+                            <ul>
+                                <li>
+                                    <a href="building_view.html#form_population">
+                                        3.3.1 Automatic Form Population</a>
+                                </li>
+                                <li>
+                                    <a href="building_view.html#form_validation">
+                                        3.3.2 Automatic Form Validation</a>
+                                </li>
+                                <li>
+                                    <a href="building_view.html#validator">
+                                        3.3.3 The Struts Validator</a>
+                                </li>
+                                <li>
+                                    <a href="building_view.html#Tiles">3.3.4
+                                        Page Composition With Tiles</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="building_view.html#presentation_frameworks">
+                                3.4 Presentation Frameworks</a>
+                        </li>
+                        <li>
+                            <a href="building_view.html#other_presentations">
+                                3.4 Direct Presentation Techniques</a>
+                            <ul>
+                                <li>
+                                    <a href="building_view.html#image_rendering">
+                                        3.4.1 Image Rendering Components</a>
+                                </li>
+                                <li>
+                                    <a href="building_view.html#text_rendering">
+                                        3.4.2 Rendering Text</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="building_controller.html">4. Building Controller
+                        Components</a>
+                    <ul>
+                        <li>
+                            <a href="building_controller.html#overview">4.1
+                                Overview</a>
+                        </li>
+                        <li>
+                            <a href="building_controller.html#action_servlet">
+                                4.2 The ActionServlet</a>
+                            <ul>
+                                <li>
+                                    <a href="building_controller.html#request_processor">
+                                        4.2.1 Request Processor</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="building_controller.html#action_form_classes">
+                                4.3 ActionForm Classes</a>
+                            <ul>
+                                <li>
+                                    <a href="building_controller.html#dyna_action_form_classes">
+                                        4.3.1 DynaActionForm Classes</a>
+                                </li>
+                                <li>
+                                    <a href="building_controller.html#lazy_action_form_classes">
+                                        4.3.2 LazyActionForm Classes</a>
+                                </li>
+                                <li>
+                                    <a href="building_controller.html#map_action_form_classes">
+                                        4.3.3 Map-backed ActionForm
+                                        Classes</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="building_controller.html#action_classes">
+                                4.4 Action Classes</a>
+                            <ul>
+                                <li>
+                                    <a href="building_controller.html#action_design_guide">
+                                        4.4.1 Action Class Design
+                                        Guidelines</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="building_controller.html#exception_handler">
+                                4.5 Exception Handler</a>
+                        </li>
+                        <li>
+                            <a href="building_controller.html#plugin_classes">
+                                4.6 Plugin Classes</a>
+                        </li>
+                        <li>
+                            <a href="building_controller.html#actionmapping">
+                                4.7 The ActionMapping Implementation</a>
+                        </li>
+                        <li>
+                            <a href="building_controller.html#config">4.8
+                                Writing ActionMappings</a>
+                            <ul>
+                                <li>
+                                    <a href="building_controller.html#action_mapping_example">
+                                        4.8.1 ActionMapping Example</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="building_controller.html#module_config-use_actions">
+                                4.9 Using ActionMappings for Pages</a>
+                        </li>
+                        <li>
+                            <a href="building_controller.html#action_mapping_wildcards">
+                                4.10 Using Wildcards in ActionMappings</a>
+                        </li>
+                        <li>
+                            <a href="building_controller.html#logging">4.11
+                                Using The Commons Logging Interface</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="configuration.html">5. Configuring
+                        Applications</a>
+                    <ul>
+                        <li>
+                            <a href="configuration.html#config-overview">5.1
+                                Overview</a>
+                        </li>
+                        <li>
+                            <a href="configuration.html#struts-config">5.2 The
+                                Configuration File</a>
+                            <ul>
+                                <li>
+                                    <a href="configuration.html#controller_config">
+                                        5.2.1 Controller Configuration</a>
+                                </li>
+                                <li>
+                                    <a href="configuration.html#resources_config">
+                                        5.2.2 Message Resources
+                                        Configuration</a>
+                                </li>
+                                <li>
+                                    <a href="configuration.html#plugin_config">
+                                        5.2.3 PlugIn Configuration</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="configuration.html#dd_config_modules">5.3
+                                Configuring your application for modules</a>
+                            <ul>
+                                <li>
+                                    <a href="configuration.html#module_config-files">
+                                        5.3.1 Module Configuration Files</a>
+                                </li>
+                                <li>
+                                    <a href="configuration.html#module_config-inform_controller">
+                                        5.3.2 Informing the Controller</a>
+                                </li>
+                                <li>
+                                    <a href="configuration.html#module_config-switching">
+                                        5.3.3 Switching Modules</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="configuration.html#dd_config">5.4 The Web
+                                Application Deployment Descriptor</a>
+                            <ul>
+                                <li>
+                                    <a href="configuration.html#dd_config_servlet">
+                                        5.4.1 Configure the Action Servlet
+                                        Instance</a>
+                                </li>
+                                <li>
+                                    <a href="configuration.html#dd_config_mapping">
+                                        5.4.2 Configure the Action Servlet
+                                        Mapping</a>
+                                </li>
+                                <li>
+                                    <a href="configuration.html#dd_config_taglib">
+                                        5.4.3 Configure Struts Taglib"</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="configuration.html#config_add">5.5 Add
+                                Framework Components To Your Application</a>
+                        </li>
+                        <li>
+                            <a href="configuration.html#config_logging">5.6
+                                Logging</a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>6. Getting Started
+                    <ul>
+                        <li>
+                            <a href="release-notes.html">6.1 Release Notes</a>
+                            <ul>
+                                <li>
+                                    <a href="release-notes-1_3_7.html">Release
+                                        Notes 1.3.7</a> <i>(Beta)</i>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_3_6.html">Release
+                                        Notes 1.3.6</a> <i>(Test Build)</i>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_3_5.html">Release
+                                        Notes 1.3.5</a>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_3_3.html">Release
+                                        Notes 1.3.3</a> <i>(Test Build)</i>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_3_2.html">Release
+                                        Notes 1.3.2</a>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_3_1.html">Release
+                                        Notes 1.3.1</a> <i>(Test Build)</i>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_2_9.html">Release
+                                        Notes 1.2.9</a>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_2_8.html">Release
+                                        Notes 1.2.8</a>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_2_7.html">Release
+                                        Notes 1.2.7</a>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_2_4.html">Release
+                                        Notes 1.2.4</a>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_1.html">Release
+                                        Notes 1.1</a>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_1-rc2.html">
+                                        Release Notes 1.1-rc2</a>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_1-rc1.html">
+                                        Release Notes 1.1-rc1</a>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_1-b3.html">
+                                        Release Notes 1.1-b3</a>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_1-b2.html">
+                                        Release Notes 1.1-b2</a>
+                                </li>
+                                <li>
+                                    <a href="release-notes-1_1-b1.html">
+                                        Release Notes 1.1-b1</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="installation.html">6.2 Installation</a>
+                            <ul>
+                                <li>
+                                    <a href="installation-ip.html">iPlanet</a>
+                                </li>
+                                <li>
+                                    <a href="installation-ipas.html">Portal
+                                        Application Server</a>
+                                </li>
+                                <li>
+                                    <a href="installation-jetty.html">
+                                        Jetty</a>
+                                </li>
+                                <li>
+                                    <a href="installation-jr30.html">JRun
+                                        3.0</a>
+                                </li>
+                                <li>
+                                    <a href="installation-oas.html">Orion
+                                        Application Server</a>
+                                </li>
+                                <li>
+                                    <a href="installation-sas.html">
+                                        SilverStream Application Server 3.7.1
+                                        and later</a>
+                                </li>
+                                <li>
+                                    <a href="installation-tc.html">Tomcat with
+                                        Apache</a>
+                                </li>
+                                <li>
+                                    <a href="installation-ubs72.html">
+                                        Bluestone Universal Business Server
+                                        7.2</a>
+                                </li>
+                                <li>
+                                    <a href="installation-was352.html">
+                                        WebSphere Application Server 3.5
+                                        FixPack 2</a>
+                                </li>
+                                <li>
+                                    <a href="installation-was352-x.html">WAS
+                                        with the Example Applcation</a>
+                                </li>
+                                <li>
+                                    <a href="installation-wls5.html">Weblogic
+                                        5.1 sp8</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+        </section>
+
+        <section>
+            <p class="right">
+                Next:
+                <a href="introduction.html">Introduction</a>
+            </p>
+        </section>
+
+    </body>
+
+</document>

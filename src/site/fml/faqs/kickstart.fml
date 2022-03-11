@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<faqs title="Kickstart FAQ">
+    <part id="general">
+
+        <faq id="why">
+            <question>Why do we need Struts?"</question>
+            <answer>
+                <p>Java technologies give developers a serious boost when
+                    creating and maintaining applications to meet the demands
+                    of today's public Web sites and enterprise intranets.
+                    Struts combines standard Java
+                    technologies into a unified framework. 
+                </p>
+
+            </answer>
+        </faq>
+
+        <faq id="how">
+            <question>How does Struts work?</question>
+            <answer>
+                <p>Java Servlets are designed to handle requests made by Web
+                    browsers. Server pages are designed to create dynamic web
+                    pages that can turn billboard sites into interactive 
+                    applications. Struts uses a special
+                    Servlet as a switchboard to route requests from Web
+                    browsers to the appropriate server page. 
+                    Along the way, a special Java class, called an Action, 
+                    can interact with a data access framework or business 
+                    logic classes.
+                    A layered architecture makes enterprise-grade web
+                    applications easier to create and maintain.
+                    (For more detail, see the longer version of 
+                    <a href="works.html">"How Does Struts Work?".</a>)
+                </p>
+            </answer>
+        </faq>
+
+        <faq id="compat">
+            <question>Is Struts compatible with other Java
+                technologies?</question>
+            <answer>
+                <p>Yes. The Apache Struts Project is committed to supporting 
+                    industry standards.
+                    Struts acts as an integrator of Java technologies so that
+                    they can be used in the &quot;real world&quot;.</p>
+            </answer>
+        </faq>
+
+        <faq id="who">
+            <question>Who wrote Struts?</question>
+            <answer>
+                <p>There are several
+                    <a href="http://struts.apache.org/volunteers.html">active committers</a>
+                    to the Apache Struts project, working cooperatively from
+                    around the globe. Dozens of individual developers and
+                    committers contributed to the Struts 1.x codebase. All
+                    interested developers and wordsmiths are invited to
+                    <a href="http://struts.apache.org/helping.html#contribute">
+                        contribute to the project</a>
+                    .
+                </p>
+                <p>The initial Struts codebase (Struts 0.5) was created by
+                    Craig R. McClanahan in May 2000 and donated to The Apache
+                    Software Foundation in May 2000. Craig was the primary
+                    developer of both Struts 1.x and
+                    <a href="http://jakarta.apache.org/tomcat/index.html">
+                        Tomcat 4</a>
+                    . Tomcat 4 was the basis for the official reference
+                    implementation for a servlet 2.3 and JSP 1.2 container.
+                </p>
+                <p>After serving as the co-lead of the JSR 127 specification
+                    (JavaServerFaces), Craig created another rendition of
+                    Struts
+                    based on JavaServer Faces, called Shale. The new framework 
+                    began as an Apache Struts subproject, but later Shale 
+                    graduated to a  top-level Apache project
+                    in its own right. 
+                    <a href="http://shale.apache.org/">
+                      Apache Shale</a> is an excellent choice for teams 
+                    creating complex applications that utilize JSF
+                    as a foundation technology.
+	</p>
+            </answer>
+        </faq>
+
+        <faq id="first">
+            <question>Was Struts the first web application framework
+                for Java?</question>
+            <answer>
+                <p>No, not by a long shot. When Struts 1.0 shipped in June
+                    2001, there were already several other web application
+                    frameworks available, including Barracuda, Expresso,
+                    Maverick, Tapestry, and Turbine, to name a few. Struts did
+                    not enter a "greenfield". Back in the day, there were
+                    lively comparisons between the available frameworks,
+                    just as there are today. 
+               </p>
+            </answer>
+        </faq>
+
+        <faq id="popular">
+            <question>Is Struts the most popular web application
+                framework for Java?</question>
+            <answer>
+                <p>Yes. By any objective measure, Struts continues to
+                    be the most popular web application framework for
+                    Java.</p>
+                <p>As of 2006, the vast majority of job offerings for Java
+                    developers cite Struts as prerequisite. According to
+                    OnJava magazine between their reader surveys for 2005 and
+                    2004 the popularity of Struts remained steady. Likewise,
+                    the number of Struts articles published in all online
+                    journals also remained constant between 2004 and 2005. 
+                    (For a complete list, see the 
+                    <a href="http://www.StrutsCentral.net/">
+                    Struts Central website</a>.)                    
+                    New and updated books about Struts continue to be 
+                    published regularly.</p>
+                <p>While some people characterize the space of Java web
+                    application framework as being "fragmented", the truth is
+                    that
+                    <b>more web developers use Struts than all other
+                        alternatives combined.</b>
+                    This observation is as true in 2006 as it was in 2005,
+                    as it was in 2004. It's probably been true since Struts
+                    released its 1.0 version in 2001.
+                </p>
+                <p>Of course, some developers are finding that JavaServer
+                    Faces can be a faster way to write new applications,
+                    especially modest intranet applications. And
+                    that's great! More than anything else, every Struts
+                    committer wants every developer to get more out of every
+                    work day. (We're developers too!) As these new JSF
+                    applications grow in complexity, we're glad that 
+                    <a href="http://shale.apache.org/">
+                      Apache Shale</a> is ready to do for
+                    <em>JSF</em>
+                    developers what Struts has
+                    been doing for
+                    <em>JSP</em>
+                    developers, year after year
+                    after year.
+                </p>
+                <p>Meanwhile, enterprise web developers who have standardized
+                    on Struts can be assured that new releases of
+                    Struts 1 will continue, even as we break new ground with
+                    Struts 2.</p>
+            </answer>
+        </faq>
+
+        <faq id="where">
+            <question>Where can I get a copy of Struts
+                Framework?</question>
+            <answer>
+                <p>The best place to download Apache Struts products is at
+                    <a href="http://struts.apache.org/">struts.apache.org</a>
+                </p>
+            </answer>
+        </faq>
+
+        <faq id="install">
+            <question>How do I install Struts?</question>
+            <answer>
+                <p>To develop applications with Struts, you can usually just
+                    add the Struts JAR file
+                    to your Java development environment. You can then start
+                    using the Struts classes as
+                    part of your own application. A blank Struts application
+                    (in the
+                    <code>webapps</code>
+                    directory, open
+                    <code>struts-blank.war</code>
+                    )
+                    is provided, which you can just copy to get a quick-start
+                    on your own brainchild.
+                </p>
+                <p>Aside from the Struts jar, the blank
+                    application includes the other Struts
+                    Library JARs and dependencies.
+                    All dependencies are compatible with the Apache License.
+                </p>
+                <p>Since the full source code for Struts is available, we also
+                    provide
+                    <a href="http://struts.apache.org/downloads.html#Building">
+                        instructions</a>
+                    for compiling your own Struts JAR from scratch. 
+                    (With Maven, building Struts is easy!)
+                </p>
+                <p>Your Struts application can usually be deployed using a
+                    standard WAR file. In most
+                    cases, you simply deposit the WAR file on your application
+                    server, and it is installed
+                    automatically. If not, step-by-step installation
+                    instructions for
+                    <a href="../userGuide/installation.html#Containers">
+                        various servlet
+                        containers</a>
+                    are available.
+                </p>
+            </answer>
+        </faq>
+
+        <faq id="jar">
+            <question>When do I need the Struts JARs on my
+                classpath?</question>
+            <answer>
+                <p>When you are compiling an application that uses the Struts
+                    classes, you must have the Struts JARs on the classpath your
+                    <strong>compiler</strong>
+                    sees -- it does not
+                    <em>have</em>
+                    to be on your CLASSPATH environment variable.
+                </p>
+                <p>Why is that an important distinction? Because if you are
+                    using a servlet container on your development machine to
+                    test your application, the Struts JARs 
+                    <strong>must not</strong>
+                    be on your CLASSPATH environment variable when running the
+                    container. (This is because each Web application must also
+                    have their own copy of the Struts classes, and the
+                    container will become confused if it is on the environment
+                    path as well.)
+                </p>
+                <p>There are several general approaches to this issue:</p>
+                <ul>
+                    <li>
+                        <strong>Use Ant or Maven</strong>
+                        for building your projects -- it can easily assemble
+                        classpaths for the compiler. 
+                    </li>
+                    <li>
+                        <strong>Use an IDE</strong>
+                        where you can configure the "class path" used for
+                        compilation independent of the CLASSPATH environment
+                        variable.
+                    </li>
+                    <li>
+                        <strong>Use a shell script</strong>
+                        that temporarily adds struts-action.jar to the
+                        classpath just for compilation, for example
+                        <br/>
+                        <em>javac -classpath
+                            /path/to/struts-action.jar:$CLASSPATH $@</em>
+                    </li>
+                </ul>
+            </answer>
+        </faq>
+
+        <faq id="tests">
+            <question>Does Struts include its own unit
+                tests?</question>
+            <answer>
+                <p>
+                    Struts currently has two testing
+                    environments, to reflect the fact that
+                    some things can be tested statically, and some really need
+                    to be done in
+                    the environment of a running servlet container.</p>
+                <p>
+                    For static unit tests, we use the
+                    <a href="http://www.junit.org">JUnit framework</a>
+                    .
+                    The sources for these tests are in the "src/test"
+                    hierarchy in the source repository, and are executed via
+                    the "test.junit"
+                    target in the top-level build.xml file. Such tests are
+                    focused on the
+                    low-level functionality of individual methods, are
+                    particularly
+                    suitable for the static methods in the
+                    org.apache.struts.util utility
+                    classes. In the test hierarchy, there are also some "mock
+                    object" classes
+                    (in the org.apache.struts.mock package) so that you can
+                    package up things
+                    that look like servlet API and Struts API objects to pass
+                    in as arguments
+                    to such tests.
+                </p>
+                <p>
+                    Another valuable tool is
+                    <a href="http://sourceforge.net/projects/strutstestcase/">
+                        Struts TestCase</a>
+                    which provides a useful harness for Action classes that
+                    can be used with JUnit or
+                    <a href="http://jakarta.apache.org/cactus">Cactus</a>.
+                </p>
+            </answer>
+        </faq>
+    </part>
+</faqs>

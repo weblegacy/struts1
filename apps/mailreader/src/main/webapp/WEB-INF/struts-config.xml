@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<struts-config>
+    <display-name>
+        <![CDATA[ account maintenance ]]>
+    </display-name>
+    <description>
+        <![CDATA[ Allows the updating of users accounts and subscriptions.  ]]>
+    </description>
+
+    <!-- ==== Form Bean Definitions ==== -->
+
+    <form-beans>
+
+        <!-- BaseAction form bean (abstract) -->
+        <form-bean
+                name="BaseForm"
+                type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property
+                    name="username"
+                    type="java.lang.String"/>
+            <form-property
+                    name="password"
+                    type="java.lang.String"/>
+            <form-property
+                    name="task"
+                    type="java.lang.String"
+                    initial="Create"/>
+        </form-bean>
+
+        <!-- LogonAction form bean -->
+        <form-bean
+                name="LogonForm"
+                extends="BaseForm"/>
+
+        <!-- RegistrationAction form bean -->
+        <form-bean
+                name="RegistrationForm"
+                extends="BaseForm">
+            <form-property
+                    name="fromAddress"
+                    type="java.lang.String"/>
+            <form-property
+                    name="fullName"
+                    type="java.lang.String"/>
+            <form-property
+                    name="password2"
+                    type="java.lang.String"/>
+            <form-property
+                    name="replyToAddress"
+                    type="java.lang.String"/>
+        </form-bean>
+
+        <!-- SubscriptionAction form bean -->
+        <form-bean
+                name="SubscriptionForm"
+                extends="BaseForm">
+            <form-property
+                    name="autoConnect"
+                    type="java.lang.Boolean"
+                    initial="FALSE"
+                    reset="true"/>
+            <form-property
+                    name="host"
+                    type="java.lang.String"/>
+            <form-property
+                    name="type"
+                    type="java.lang.String"/>
+        </form-bean>
+
+    </form-beans>
+
+    <!-- ==== Global Forward Definitions ==== -->
+    <global-forwards>
+        <forward
+                name="Logoff"
+                path="/Logoff.do"/>
+        <forward
+                name="Logon"
+                path="/Logon.do"/>
+        <forward
+                name="Failure"
+                path="/Error.do"/>
+    </global-forwards>
+
+    <!-- ==== Action Mapping Definitions ==== -->
+    <action-mappings>
+
+        <!-- Display any other page (Logon, MainMenu) - Wildcards must come first! -->
+        <action
+                path="/*"
+                forward="/{1}.jsp">
+        </action>
+
+        <!-- Display welcome page -->
+        <action
+                path="/Welcome"
+                type="org.apache.struts.apps.mailreader.actions.WelcomeAction">
+            <forward
+                    name="Success"
+                    path="/Welcome.jsp"/>
+        </action>
+        <!-- Display welcome page -->
+        <action
+                path="/Welcome"
+                forward="/Welcome.jsp"/>
+
+        <!-- Change locale action -->
+        <action
+                path="/Locale"
+                type="org.apache.struts.apps.mailreader.actions.LocaleAction"
+                parameter="Success">
+            <forward
+                    name="Success"
+                    path="/Welcome.do"/>
+        </action>
+
+        <!-- Process a user logon -->
+        <action
+                path="/SubmitLogon"
+                type="org.apache.struts.apps.mailreader.actions.LogonAction"
+                name="LogonForm"
+                scope="request"
+                cancellable="true"
+                validate="true"
+                input="Logon">
+            <exception
+                    key="expired.password"
+                    type="org.apache.struts.apps.mailreader.dao.ExpiredPasswordException"
+                    path="/ChangePassword.do"/>
+            <forward
+                    name="Success"
+                    path="/MainMenu.do"/>
+        </action>
+
+        <!-- Display MainMenu -->
+        <action
+                path="/MainMenu"
+                type="org.apache.struts.apps.mailreader.actions.MainMenuAction">
+            <forward
+                    name="Success"
+                    path="/MainMenu.jsp"/>
+        </action>
+
+        <!-- Process a user logoff -->
+        <action
+                path="/Logoff"
+                type="org.apache.struts.apps.mailreader.actions.LogoffAction">
+            <forward
+                    name="Success"
+                    path="/Welcome.do"/>
+        </action>
+
+        <!-- "Abstract" mapping to use as base  -->
+        <action path="//BaseAction"
+                input="Input"
+                type="org.apache.struts.apps.mailreader.actions.{1}Action"
+                name="{1}Form"
+                scope="request">
+            <forward
+                    name="Success"
+                    path="/{1}.jsp"/>
+            <forward
+                    name="Input"
+                    path="/{1}.jsp"/>
+        </action>
+
+        <action
+                path="/Delete*"
+                extends="//BaseAction"
+                parameter="Delete"
+                validate="false"/>
+
+        <action
+                path="/Edit*"
+                extends="//BaseAction"
+                parameter="Edit"
+                validate="false"/>
+
+        <action
+                path="/Save*"
+                extends="//BaseAction"
+                parameter="Save"
+                cancellable="true"
+                validate="true">
+            <forward
+                    name="Success"
+                    path="/MainMenu.do"/>
+        </action>
+
+        <!-- Matches SaveSubscription action -->
+        <!-- If extends understood wildcards, we could specify only Success here. -->
+        <action
+                path="/SaveSubscription"
+                extends="/Save*"
+                type="org.apache.struts.apps.mailreader.actions.SubscriptionAction"
+                name="SubscriptionForm">
+            <forward
+                    name="Success"
+                    path="/EditRegistration.do"/>
+            <forward
+                    name="Input"
+                    path="/Subscription.do"/>
+        </action>
+
+        <!-- Display the "walking tour" documentation -->
+        <action
+                path="/Tour"
+                forward="/tour.html"/>
+
+    </action-mappings>
+
+    <!-- ==== Controller Configuration ==== -->
+
+    <controller
+            pagePattern="$M$P"
+            inputForward="true"/>
+
+    <!-- pagePattern: use this pattern when creating URIs to resources.
+        $M=module, $P=path -->
+    <!-- inputForward: The "input" parameter on "action" elements is the name of a
+         local or global "forward" rather than a module-relative path -->
+
+
+    <!-- ==== Message Resources Definitions ==== -->
+    <message-resources
+            parameter="org.apache.struts.apps.mailreader.resources.ApplicationResources"/>
+
+    <message-resources
+            parameter="org.apache.struts.apps.mailreader.resources.AlternateApplicationResources"
+            key="alternate"/>
+
+
+    <!-- ===== Plug Ins Configuration ==== -->
+    <plug-in
+            className="org.apache.struts.plugins.ModuleConfigVerifier"/>
+
+    <plug-in
+            className="org.apache.struts.apps.mailreader.plugin.MemoryDatabasePlugIn">
+        <set-property
+                property="pathname"
+                value="/WEB-INF/database.xml"/>
+    </plug-in>
+
+    <plug-in
+            className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+                property="pathnames"
+                value="/org/apache/struts/validator/validator-rules.xml,
+                /WEB-INF/validation.xml"/>
+    </plug-in>
+
+    <plug-in
+            className="org.apache.struts.plugins.DigestingPlugIn">
+        <set-property
+                property="key"
+                value="serverTypes"/>
+        <set-property
+                property="configPath"
+                value="/WEB-INF/server-types.xml"/>
+        <set-property
+                property="digesterPath"
+                value="/WEB-INF/lvb-digester-rules.xml"/>
+    </plug-in>
+
+</struts-config>

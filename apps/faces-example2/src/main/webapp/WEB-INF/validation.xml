@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+
+
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.1//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_1.dtd">
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+
+<!--
+    Validation Rules for the Struts Example Web Application
+
+    $Id$
+-->
+
+<form-validation>
+
+
+    <!-- ========== Default Language Form Definitions ===================== -->
+    <formset>
+
+        <form name="logonForm">
+
+            <field property="username"
+                    depends="minlength,maxlength">
+                <arg0   key="prompt.username"/>
+                <arg1   key="${var:minlength}" name="minlength"
+                   resource="false"/>
+                <arg2   key="${var:maxlength}" name="maxlength"
+                   resource="false"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>16</var-value>
+                </var>
+                <var>
+                    <var-name>minlength</var-name>
+                    <var-value>3</var-value>
+                </var>
+            </field>
+
+            <field property="password"
+                    depends="minlength,maxlength">
+                <arg0   key="prompt.password"/>
+                <arg1   key="${var:minlength}" name="minlength"
+                   resource="false"/>
+                <arg2   key="${var:maxlength}" name="maxlength"
+                   resource="false"/>
+                <var>
+                    <var-name>maxlength</var-name>
+                    <var-value>16</var-value>
+                </var>
+                <var>
+                    <var-name>minlength</var-name>
+                    <var-value>3</var-value>
+                </var>
+            </field>
+
+        </form>
+
+
+        <form name="registrationForm">
+
+            <field property="fromAddress"
+                    depends="required,email">
+                <arg0   key="prompt.fromAddress"/>
+            </field>
+
+            <field property="fullName"
+                    depends="required">
+              <arg0     key="prompt.fullName"/>
+            </field>
+
+            <field property="replyToAddress"
+                    depends="email">
+                <arg0   key="prompt.replyToAddress"/>
+            </field>
+
+            <field property="username"
+                    depends="required">
+              <arg0     key="prompt.username"/>
+            </field>
+
+        </form>
+
+
+    </formset>
+
+
+</form-validation>

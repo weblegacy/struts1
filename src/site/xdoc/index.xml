@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+
+    <properties>
+        <title>Welcome</title>
+    </properties>
+
+    <body>
+
+        <section name="Welcome to Struts 1">
+            <a name="Welcome"/>
+
+            <p>
+                Struts is a flexible control layer based on
+                <a href="userGuide/preface.html">standard technologies</a>
+                like Java
+                Servlets, JavaBeans, ResourceBundles, and XML, as well as
+                various
+                <a href="http://commons.apache.org/index.html">Apache
+                    Commons</a>
+                packages, like BeanUtils and Chain of Responsibility.
+                The framework helps you create an extensible
+                development
+                environment for your application,
+                based on published standards and proven design patterns.
+            </p>
+
+            <subsection name="Struts in a Nutshell">
+                <a name="nutshell"/>
+
+                <p>
+                    The framework provides its own web
+                    <strong>Controller</strong>
+                    component and
+                    integrates with other technologies to provide the Model
+                    and the View.
+                    For the
+                    <strong>Model,</strong>
+                    the framework can interact
+                    with standard data access technologies,
+                    like
+                    <a href="http://java.sun.com/products/jdbc/">JDBC</a>
+                    and
+                    <a href="http://java.sun.com/products/ejb/">EJB,</a>
+                    as well as most any third-party packages,
+                    like
+                    <a href="http://hibernate.org/">Hibernate,</a>
+                    <a href="http://ibatis.apache.org/">iBATIS,</a>
+                    or
+                    <a href="http://db.apache.org/ojb/">Object Relational
+                        Bridge.</a>
+                    For the
+                    <strong>View,</strong>
+                    the framework works well with
+                    <a href="http://java.sun.com/products/jsp/">JavaServer
+                        Pages,</a>
+                    including
+                    <a href="struts-el/index.html">JSTL</a> and 
+                    <a href="struts-faces/index.html">JSF,</a>
+                    as well as
+                    <a href="http://velocity.apache.org/tools/struts/">
+                        Velocity Templates,</a>
+                    <a href="http://stxx.sourceforge.net/">XSLT,</a>
+                    and other presentation systems.
+                </p>
+
+               <p>
+                    The framework's Controller acts as a bridge between the
+                    application's
+                    Model and the web View. When a request is received, the
+                    Controller invokes
+                    an
+                    <strong>Action</strong>
+                    class. The Action class consults with the Model
+                    (or, preferably, a
+                    <strong>Facade</strong>
+                    representing your Model)
+                    to examine or update the application's state.
+                    The framework provides an
+                    <strong>ActionForm</strong>
+                    class to help transfer
+                    data between Model and View.
+                </p>
+
+                <p>
+                    Most often, the Model is represented as a set of
+                    <strong>JavaBeans.</strong>
+                    Typically, developers will use the Commons
+                    <strong>BeanUtils</strong>
+                    to
+                    transfer data between ActionForms and the Model objects
+                    (or a Facade).
+                    Preferably, the Model will do the "heavy lifting",
+                    and the Action will act as a "traffic cop" or adapter.
+                </p>
+            </subsection>
+
+            <subsection name="Struts Config in a Nutshell">
+                <a name="nutshell-config"/>
+
+                <p>
+                    A web application
+                    uses a deployment descriptor to initialize resources
+                    like
+                    <a href="userGuide/preface.html#servlets">servlets</a>
+                    and
+                    <a href="userGuide/preface.html#jsp">taglibs.</a>
+                    The deployment descriptor is formatted as a
+                    <a href="userGuide/preface.html#xml">XML</a>
+                    document
+                    and named "web.xml".
+                    Likewise,
+                    the framework uses a configuration file to initialize its
+                    own resources.
+                    These resources include
+                    <a href="userGuide/building_controller.html#action_form_classes">
+                        ActionForms</a>
+                    to collect input from users,
+                    <a href="http://struts.apache.org/userGuide/building_controller.html#actionmapping">
+                        ActionMappings</a>
+                    to direct input to server-side
+                    <a href="http://struts.apache.org/userGuide/building_controller.html#action_classes">
+                        Actions,</a>
+                    and ActionForwards to select output pages.
+                </p>
+
+                <p>
+                    Here's a simple configuration (struts-config.xml) for a
+                    login workflow:
+                </p>
+
+                <pre>
+                    <code><![CDATA[
+    <?xml version="1.0" encoding="ISO-8859-1" ?>
+    <!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+    <struts-config>
+        <form-beans>
+            <form-bean
+                name="logonForm"
+                type="app.LogonForm"/>
+        </form-beans>
+        <action-mappings>
+            <action
+                path="/Welcome"
+                forward="/pages/Welcome.jsp"/>
+            <action
+                path="/Logon"
+                forward="/pages/Logon.jsp"/>
+            <action
+                path="/LogonSubmit"
+                type="app.LogonAction"
+                name="logonForm"
+                scope="request"
+                validate="true"
+                input="/pages/Logon.jsp">
+                <forward
+                    name="success"
+                    path="/pages/Welcome.jsp"/>
+                <forward
+                    name="failure"
+                    path="/pages/Logon.jsp"/>
+            </action>
+            <action
+                path="/Logoff"
+                type="app.LogoffAction">
+                <forward
+                    name="success"
+                    path="/pages/Logoff.jsp"/>
+            </action>
+        </action-mappings>
+        <message-resources parameter="resources.application"/>
+    </struts-config>
+    ]]></code>
+                </pre>
+
+                <p>
+                    There are several other resources you can specify in the
+                    framework's
+                    configuration file.
+                    You can specify validations for the ActionForms in an XML
+                    descriptor,
+                    using the
+                    <a href="faqs/validator.html">
+                    Struts Validator</a>. A standard extension,
+                    <a href="http://struts.apache.org/struts-tiles/dev_tiles.html">
+                    Tiles</a>, helps you build pages from smaller fragments.
+                </p>
+
+                <p>
+                    Struts is extensible.
+                    Every class deployed by the framework can be replaced by
+                    your own default class.
+                    The properties of your default class can be set using the
+                    <a href="http://commons.apache.org/digester/">
+                        Digester's</a>
+                    <code>set-property</code>
+                    feature.
+                    This is one reason why there are so many
+                    <a href="learning.html#resources">
+                        contributor
+                        extensions.</a>
+                    We provide the base framework, but you can still write
+                    <b>your</b>
+                    application
+                    <b>your</b>
+                    way.
+                </p>
+
+                <p>
+                    For more about the framework and its underlying
+                    technologies, see the
+                    <a href="userGuide/index.html">User Guide.</a>
+                </p>
+
+            </subsection>
+
+            <subsection
+                    name="Is Struts the best choice for every project?">
+
+                <p>
+                    No. If you need to write a very simple application, with a
+                    handful of
+                    pages,
+                    then you might consider a "Model 1" solution that uses
+                    only server
+                    pages.
+                </p>
+
+                <p>
+                    But, if you are writing a more complicated application,
+                    with dozens of pages,
+                    that need to be maintained over time, then Struts
+                    can help.
+                    For more about whether Model 1 or MVC/Model 2 is right for
+                    you, see
+                    <a href="http://www.javaworld.com/javaworld/jw-12-1999/jw-12-ssj-jspmvc.html">
+                        Understanding JavaServer Pages Model 2
+                        architecture.</a>
+                </p>
+
+            </subsection>
+        </section>
+
+        <section>
+            <p class="right">
+                Next:
+                <a href="learning.html">Learning about Struts</a>
+            </p>
+        </section>
+
+    </body>
+</document>

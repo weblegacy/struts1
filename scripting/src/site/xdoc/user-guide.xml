@@ -1,0 +1,172 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+  <properties>
+    <title>User Guide</title>
+  </properties>
+
+  <body>
+    <section name="User Guide">
+      <a name="overview"/>
+      <p>The entire Struts Scripting component is only a few classes, since most of
+      the heavy lifting is done by the 
+      <a href="http://jakarta.apache.org/bsf">Bean Scripting Framework</a> 
+      and the scripting engines themselves.  Therefore, there are only a few steps
+      you'll need to take in order to sucessfully install and use Struts Scripting.
+        </p>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#usage">Usage</a></li>
+      </ul>  
+    <subsection name="Installation">
+      <a name="installation"/>
+         <p>After downloading the Struts Scripting distribution, copy the Struts
+         Scripting jar, <code>struts-scripting-1.0.1.jar</code>, to your application's
+         libraries directory.  When deployed, this directory will be <code>WEB-INF/lib</code>.
+         </p>
+         <p>Next, choose which scripting engine you want to use.  BSF ships with knowledge about
+         the following languages and script extensions:</p>
+         <table>
+            <caption>
+              <strong>BSF-supported languages and extentions</strong>
+            </caption>
+            <thead>
+            <tr>
+             <td>javascript (js)</td>
+             <td>jacl (jacl)</td>
+             <td>netrexx (nrx)</td>
+            </tr>
+            <tr>
+             <td>java (java)</td>
+             <td>javaclass (class)</td>
+             <td>bml (bml)</td>
+            </tr>
+            <tr>
+             <td>vbscript (vbs)</td>
+             <td>jscript (jss)</td>
+             <td>perlscript (pls)</td>
+            </tr>
+            <tr>
+             <td>perl (pl)</td>
+             <td>jpython (py)</td>
+             <td>jython (py)</td>
+            </tr>
+            <tr>
+             <td>lotusscript (lss)</td>
+             <td>xslt (xslt)</td>
+             <td>pnuts (pnut)</td>
+            </tr>
+            <tr>
+             <td>beanbasic (bb)</td>
+             <td>beanshell (bsh)</td>
+             <td>ruby (rb)</td>
+            </tr>
+            <tr>
+             <td>judoscript (judo, jud)</td>
+            </tr>
+            </thead>
+        </table>   
+        <p>Once you have picked a language, you need to download its libraries and install it 
+        into your application, which usually means copying its jar files into the same location
+        you copied the Struts Scripting jar.  If you are not sure, we recommend Groovy
+        which ships with the Struts Scripting Mailreader example, as it features a very similar Java-like syntax.
+        </p>
+        <p><i>Optional</i>: If you don't see your desired language that claims to support BSF, 
+        or their BSF engine has changed from what BSF expects, you can manually define BSF 
+        engines and have them loaded by Struts Scripting.
+          Create a file called
+          <code>struts-scripting.properties</code> and add two properties for each engine:
+          </p>
+          <ul>
+           <li><code>struts-scripting.engine.ENGINE_NAME.class</code> - The class of the BSF
+               engine where ENGINE_NAME is the name you are calling the engine.</li>
+           <li><code>struts-scripting.engine.ENGINE_NAME.extensions</code> - A comma-delimited
+               list of file extensions that will be used to identify the engine to use
+               to execute the script.</li>
+          </ul>
+        <p>The <code>struts-scripting.properties</code> should then stored in a directory
+        accessible to the classloader, usually <code>WEB-INF/classes</code>.
+        </p>
+    </subsection>     
+    <subsection name="Usage">
+      <a name="usage"/>
+         <p>To determine what script will be executed, the "parameter" attribute of
+           the action mapping should contain the name of the script relative to
+           the web application root directory (i.e. http://server/app). In the place of 
+         the traditional Action implementation, use the value <code>org.apache.struts.scripting.ScriptAction</code>.
+         For example:
+         </p>
+<pre>
+    &lt;action    path="/logoff"
+               type="org.apache.struts.scripting.ScriptAction"
+               parameter="/WEB-INF/scripts/Logoff.bsh"&gt;
+      &lt;forward name="success"              path="/index.jsp"/&gt;
+    &lt;/action&gt;
+</pre>
+        <p>In addition to specifying the script file, the "parameter" attribute can
+        also contain parameters that will be passed to the script in the form of 
+        pre-defined variables.  The format follows the URL format:</p>
+<pre>
+    parameter="/path/file.bsh?PARAMETER_NAME=PARAMETER_VALUE[&amp;amp;PARAMETER_NAME=PARAMETER_VALUE..]"
+</pre>
+        <p>This ability to pass parameters can enable DispatchAction-type behavior where one script file
+            can handle multiple action paths.  If you are using Struts Action 1.3 or later, this feature
+            isn't as useful since you can pass multiple values through ActionMapping using the 
+            <code>&lt;set-property key="foo" value="bar"&gt;</code> syntax.
+        </p>
+        <p>
+        Before the script completes, the next ActionForward needs to be
+        specified.  This can be done one of two ways:
+        </p>
+          <ol>
+           <li>Set <code>struts.forwardName</code> to the name of the forward</li>
+           <li>Set <code>struts.forward</code> to the actual ActionForward object
+              </li>
+          </ol>
+          <p>A number of pre-defined variables are available to the script:</p>
+          <ul>
+           <li><code>request</code> - The HTTP request</li>
+           <li><code>response</code> - The HTTP response</li>
+           <li><code>session</code> - The session</li>
+           <li><code>application</code> - The servlet context</li>
+           <li><code><a href="apidocs/org/apache/struts/scripting/StrutsInfo.html">struts</a></code> 
+                - A grouping of all Struts-related objects</li>
+           <li><code>log</code> - A logging instance</li>
+          </ul>
+          <p>
+          You can add your own variables by creating a BSFManagerFilter and
+          configuring it in struts-scripting.properties:
+          </p>
+          <ul>
+           <li><code>struts-scripting.filters.FILTER_NAME.class=FILTER_CLASS</code> - The
+               class implementing BSFManagerFilter where FILTER_NAME is the name you
+               are calling the filter.</li>
+           <li><code>struts-scripting.filters.FILTER_NAME.PROPERTY_NAME=PROPERTY_VALUE</code>
+                - A property to be used by the filter.</li>
+          </ul>
+      </subsection>
+   </section> 
+          
+          </body>
+
+</document>

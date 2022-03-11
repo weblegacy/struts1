@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!DOCTYPE form-validation PUBLIC
+          "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+          "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+<form-validation>
+  <global>
+  </global>
+
+  <!-- ========================= Default Formset ========================= -->
+  <formset>
+  
+    <form name="i18nForm">
+
+      <field property="name" depends="required,minlength,maxlength">
+        <msg name="required"  key="msg.required"      bundle="i18nExample" />
+        <msg name="minlength" key="msg.minlength"     bundle="i18nExample" />
+        <msg name="maxlength" key="msg.maxlength"     bundle="i18nExample" />
+        <arg                  key="label.name"        bundle="i18nExample" />
+        <arg name="minlength" key="name.minlength"    bundle="i18nVariables" />
+        <arg name="maxlength" key="name.maxlength"    bundle="i18nVariables" />
+        <var resource="true" bundle="i18nVariables">
+            <var-name>minlength</var-name>
+            <var-value>name.minlength</var-value>
+        </var>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>maxlength</var-name>
+            <var-value>name.maxlength</var-value>
+        </var>
+      </field>
+
+      <field property="zip" depends="required,minlength,maxlength,validwhen">
+        <msg name="required"  key="msg.required"      bundle="i18nExample" />
+        <msg name="minlength" key="msg.zip.minlength" bundle="i18nExample" />
+        <msg name="maxlength" key="msg.zip.maxlength" bundle="i18nExample" />
+        <msg name="validwhen" key="msg.zip.validwhen" bundle="i18nExample" />
+        <arg                  key="label.zip"         bundle="i18nExample" />
+        <arg                  key="zip.minlength"     bundle="i18nVariables" />
+        <arg name="validwhen" key="zip.maxlength"     bundle="i18nVariables" />
+        <var resource="true" bundle="i18nVariables">
+            <var-name>minlength</var-name>
+            <var-value>zip.minlength</var-value>
+        </var>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>maxlength</var-name>
+            <var-value>zip.maxlength</var-value>
+        </var>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>test</var-name>
+            <var-value>zip.validwhen</var-value>
+        </var>
+      </field>
+
+      <field property="phone" depends="required,mask">
+        <msg name="required"  key="msg.required"      bundle="i18nExample" />
+        <msg name="mask"      key="msg.phone"         bundle="i18nExample" />
+        <arg                  key="label.phone"       bundle="i18nExample" />
+        <arg name="mask"      key="phone.display"     bundle="i18nVariables" />
+        <var resource="true" bundle="i18nVariables">
+            <var-name>mask</var-name>
+            <var-value>phone.regexp</var-value>
+        </var>
+      </field>
+
+      <field property="dob" depends="required,date">
+        <msg name="required"  key="msg.required"      bundle="i18nExample"/>
+        <msg name="date"      key="msg.date"          bundle="i18nExample"/>
+        <arg                  key="label.dob"         bundle="i18nExample" />
+        <arg name="date"      key="dob.display"       bundle="i18nVariables"/>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>datePattern</var-name>
+            <var-value>dob.format</var-value>
+        </var>
+      </field>
+
+      <field property="age" depends="required,integer,intRange">
+        <msg name="required"  key="msg.required"      bundle="i18nExample"/>
+        <msg name="integer"   key="msg.integer"       bundle="i18nExample"/>
+        <msg name="intRange"  key="msg.range"         bundle="i18nExample"/>
+        <arg                  key="label.age"         bundle="i18nExample" />
+        <arg name="intRange"  key="age.minimum"       bundle="i18nVariables"/>
+        <arg name="intRange"  key="age.maximum"       bundle="i18nVariables"/>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>min</var-name>
+            <var-value>age.minimum</var-value>
+        </var>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>max</var-name>
+            <var-value>age.maximum</var-value>
+        </var>
+      </field>
+
+      <field property="doe" depends="required,date">
+        <msg name="required"  key="msg.required"      bundle="i18nExample"/>
+        <msg name="date"      key="msg.date"          bundle="i18nExample"/>
+        <arg                  key="label.doe"         bundle="i18nExample" />
+        <arg name="date"      key="doe.display"       bundle="i18nVariables"/>
+        <var resource="true"  bundle="i18nVariables">
+            <var-name>datePatternStrict</var-name>
+            <var-value>doe.format</var-value>
+        </var>
+      </field>
+
+      <field property="emplno" depends="required,long,longRange">
+        <msg name="required"  key="msg.required"      bundle="i18nExample"/>
+        <msg name="long"      key="msg.long"          bundle="i18nExample"/>
+        <msg name="longRange" key="msg.range"         bundle="i18nExample"/>
+        <arg                  key="label.emplno"      bundle="i18nExample" />
+        <arg name="longRange" key="emplno.minimum"    bundle="i18nVariables"/>
+        <arg name="longRange" key="emplno.maximum"    bundle="i18nVariables"/>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>min</var-name>
+            <var-value>emplno.minimum</var-value>
+        </var>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>max</var-name>
+            <var-value>emplno.maximum</var-value>
+        </var>
+      </field>
+
+      <field property="salary" depends="required,long,doubleRange">
+        <msg name="required"    key="msg.required"    bundle="i18nExample"/>
+        <msg name="long"        key="msg.long"        bundle="i18nExample"/>
+        <msg name="doubleRange" key="msg.range"       bundle="i18nExample"/>
+        <arg                    key="label.salary"    bundle="i18nExample" />
+        <arg name="doubleRange" key="salary.minimum"  bundle="i18nVariables"/>
+        <arg name="doubleRange" key="salary.maximum"  bundle="i18nVariables"/>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>min</var-name>
+            <var-value>salary.minimum</var-value>
+        </var>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>max</var-name>
+            <var-value>salary.maximum</var-value>
+        </var>
+      </field>
+
+      <field property="hours" depends="required,float,floatRange">
+        <msg name="required"   key="msg.required"    bundle="i18nExample"/>
+        <msg name="float"      key="msg.float"       bundle="i18nExample"/>
+        <msg name="floatRange" key="msg.range"       bundle="i18nExample"/>
+        <arg                   key="label.hours"     bundle="i18nExample" />
+        <arg name="floatRange" key="hours.minimum"   bundle="i18nVariables"/>
+        <arg name="floatRange" key="hours.maximum"   bundle="i18nVariables"/>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>min</var-name>
+            <var-value>hours.minimum</var-value>
+        </var>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>max</var-name>
+            <var-value>hours.maximum</var-value>
+        </var>
+      </field>
+
+    </form>
+  </formset>
+
+  <!-- ========================= en_GB Formset ========================= -->
+  <formset language="en" country="GB">
+  
+    <form name="i18nForm">
+
+      <!-- Override the "zip" validation - doesn't include "validwhen" -->
+      <field property="zip" depends="required,minlength,maxlength">
+        <msg name="required"  key="msg.required"      bundle="i18nExample" />
+        <msg name="minlength" key="msg.zip.minlength" bundle="i18nExample" />
+        <msg name="maxlength" key="msg.zip.maxlength" bundle="i18nExample" />
+        <arg                  key="label.zip"         bundle="i18nExample" />
+        <arg                  key="zip.minlength"     bundle="i18nVariables" />
+        <arg                  key="zip.maxlength"     bundle="i18nVariables" />
+        <var resource="true" bundle="i18nVariables">
+            <var-name>minlength</var-name>
+            <var-value>zip.minlength</var-value>
+        </var>
+        <var resource="true" bundle="i18nVariables">
+            <var-name>maxlength</var-name>
+            <var-value>zip.maxlength</var-value>
+        </var>
+      </field>
+
+    </form>
+
+  </formset>
+</form-validation>

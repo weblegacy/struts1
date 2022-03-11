@@ -1,0 +1,114 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+
+    <properties>
+        <title>Release Notes (since 1.3.9)</title>
+    </properties>
+    <body>
+        <section name="6.1 Release Notes - Version 1.3.10">
+
+            <a name="release_notes"/>
+            <subsection name="Introduction">
+                <p>
+                    This section contains release notes for changes that have
+                    taken place to Struts,
+                    since the
+                    <a href="release-notes-1_3_9.html">Version 1.3.9</a>
+                    distribution.
+                    To keep up-to-date on all changes to the framework, 
+                    subscribe to
+                    the (commits at struts.apache.org) list.
+                    To preview our plans for upcoming changes,
+                    please visit the
+                    <a href="../roadmap.html">Roadmap page.</a>
+                </p>
+                <ul><li>
+                    <b>Notes on upgrading</b>
+                    are maintained in the
+                    <a href="http://wiki.apache.org/struts/StrutsUpgrade">Wiki
+                        Upgrade pages.</a>
+                    The wiki is a community maintained resource - please feel
+                    free to add your
+                    input so that everyone can benefit from the collective
+                    experience.
+                </li></ul>
+                <p>
+                    For the version requirements of each library, see the
+                    <a href="installation.html">Installation chapter.</a>
+                </p>
+
+            </subsection>
+
+            <a name="Highlight"/>
+            <subsection name="Issue Tracking">
+<h4>Bug</h4>
+<ul>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-2630'>STR-2630</a>] - Taglib documentation does not render embedded HTML</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-2802'>STR-2802</a>] - Validator validwhen cannot test between two different indices in array</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3026'>STR-3026</a>] - Linked examples hosted by &quot;Planet Struts&quot; nonexistant</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3052'>STR-3052</a>] - ImgTag missing actionId support</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3054'>STR-3054</a>] - EL-Example errors</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3070'>STR-3070</a>] - Postback forms cause NPE with classic RequestProcessor</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3076'>STR-3076</a>] - PasswordTag doesn't define the attribute onselect</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3080'>STR-3080</a>] - XLST instead of XSLT</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3081'>STR-3081</a>] - Uploading a File using LazyDynaBean causes ClassCastException</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3082'>STR-3082</a>] - Incomplete error message when failing to create a form bean</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3084'>STR-3084</a>] - Error on Tiles examples page</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3088'>STR-3088</a>] - N-length empty strings not treated as *null* by validwhen</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3093'>STR-3093</a>] - Taglibs TLD do not match tag implementations</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3097'>STR-3097</a>] - Generating site fails</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3110'>STR-3110</a>] - PropertyUtils.clearDescriptors() call in ActionServlet.destroy() method is causing appliction classloader memory leak on Weblogic Portal</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3112'>STR-3112</a>] - Generated javascript is wrong to set focus on control that is of array</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3143'>STR-3143</a>] - Struts jar remains &quot;in-use&quot; preventing dynamic redeployment</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3144'>STR-3144</a>] - Bean Taglib Documentation Has Been Unreadable FOR YEARS...</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3146'>STR-3146</a>] - TLD reports contain broken hyperlinks</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3161'>STR-3161</a>] - Servlet not injected into newly created action in higly concurrent env</li>
+</ul>
+    
+<h4>Improvement</h4>
+<ul>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-1496'>STR-1496</a>] - html:form focus and focusIndex problem</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-1709'>STR-1709</a>] - FormTag: Add check for nonexistent form field in focus javascript</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-2810'>STR-2810</a>] - autocomplete attribute</li>
+</ul>
+
+<h4>Task</h4>
+<ul>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3055'>STR-3055</a>] - Figure out the 'disabled=&quot;${!empty pageScope}&quot; in EL-Example</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3134'>STR-3134</a>] - Upgrade JSTL from 1.0.2 to latest 1.0.6</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3150'>STR-3150</a>] - Upgrade Commons Chain to 1.2</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3163'>STR-3163</a>] - Upgrade Commons BeanUtils</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3171'>STR-3171</a>] - Lock down Maven plugin dependencies</li>
+<li>[<a href='https://issues.apache.org/struts/browse/STR-3172'>STR-3172</a>] - Require Tomcat 5.5 for integration testing</li>
+</ul>
+</subsection>
+
+            <subsection>
+                <p class="right">Next:
+                    <a href="installation.html">Installation</a>
+                </p>
+            </subsection>
+        </section>
+    </body>
+</document>

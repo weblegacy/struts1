@@ -1,0 +1,310 @@
+<?xml version="1.0"?>
+<!DOCTYPE project SYSTEM "entities/WebTest.dtd" [
+        <!ENTITY taskdef-webtest SYSTEM "entities/taskdef.xml">
+        <!ENTITY config SYSTEM "entities/config.xml">
+        <!ENTITY logon-fail SYSTEM "file:./entities/logon-fail.xml">
+        <!ENTITY logon-hermes SYSTEM "file:./entities/logon-hermes.xml">
+        <!ENTITY logon-open SYSTEM "file:./entities/logon-open.xml">
+        <!ENTITY logon-page SYSTEM "file:./entities/logon-page.xml">
+        <!ENTITY menu-page SYSTEM "file:./entities/menu-page.xml">
+        <!ENTITY profile-open SYSTEM "file:./entities/profile-open.xml">
+        <!ENTITY register-hermes SYSTEM "file:./entities/register-hermes.xml">
+        <!ENTITY register-open SYSTEM "file:./entities/register-open.xml">
+        <!ENTITY register-page SYSTEM "file:./entities/register-page.xml">
+        <!ENTITY save-click SYSTEM "file:./entities/save-click.xml">
+        <!ENTITY subscription-add SYSTEM "file:./entities/subscription-add.xml">
+        <!ENTITY subscription-add-page SYSTEM "file:./entities/subscription-add-page.xml">
+        <!ENTITY subscription-delete SYSTEM "file:./entities/subscription-delete.xml">
+        <!ENTITY subscription-edit SYSTEM "file:./entities/subscription-edit.xml">
+        <!ENTITY subscription-invalid SYSTEM "file:./entities/subscription-invalid.xml">
+        <!ENTITY welcome-click SYSTEM "file:./entities/welcome-click.xml">
+        <!ENTITY welcome-open SYSTEM "file:./entities/welcome-open.xml">
+        ]>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<project name="MailReader Storyboard - Exercise navigation and database logic
+- Canoo WebTests" basedir="." default="default">
+    <!--
+     Canoo WebTest configuration file to test navigating between pages and
+     creating and editing an account.
+
+     To run this test, first install the Canoo Webtest package on your
+     local system [http://webtest.canoo.com].
+
+     The default location for this build file is under
+     "/opt/Canoo/webtest-1.7".
+     See the webtest.properties.sample to use another location.
+
+     Once Canoo is installed, the webtest.xml file can be run as an Ant build
+     file (ant -f webtest.xml).
+
+     By default, the tests are configured to find the application under test
+      at "http://localhost:8080/struts-mailreader".
+     See the webtest.properties.sample to use another location.
+
+     Use the standard Struts Apps "maven build-all" goal to create the
+     MailReader war, deploy it to your container, and use Ant to run the
+     webtest.xml.
+
+     The "clean" target can be run to test everything, but will fail if run again,
+     since the test-user will already be registered.
+     The "default" target skips registeration and can be run as often as needed
+     after "clean" is run once.
+
+     To reset the XML "database", either redeploy the application so that the
+     WEB-INF/database.xml is overwritten,
+     or use the "clean-database" target to overwrite the file.
+     Only use "clean-database" when the server  is stopped,
+     and then start it again before running other targets.
+
+     The tests are based on a set of MailReader Use Cases maintained at the
+     Struts University site
+     [http://opensource2.atlassian.com/confluence/oss/display/STRUTS/MailReader].
+
+     @version $Revision: 1.2 $ $Date$
+     */
+    -->
+
+    <!-- Load local preferences, if any -->
+    <property file="webtest.properties"/>
+
+    <!-- These properties can be customized using via webtest.properties -->
+    <!-- See webtest.properties.sample for a starter file -->
+    <property name="webtest.home"
+              location="/opt/Canoo/webtest-1.7"/>
+
+    <property name="host"
+              value="localhost"/>
+
+    <property name="port"
+              value="8080"/>
+
+    <property name="basepath"
+              value="struts-mailreader"/>
+
+    <property name="mailreader.home"
+              location="../../../"/>
+
+    <property name="resource.home"
+              location="${mailreader.home}/src/java/org/apache/struts/apps/mailreader/resources/ApplicationResources.properties"/>
+
+    <property name="webapps.home"
+              location="/Program Files/Apache Software Foundation/Tomcat 5.5/webapps/"/>
+
+    <!-- Load application resources -->
+    <property file="${resource.home}"/>
+
+    <taskdef file="${webtest.home}/webtestTaskdefs.properties">
+        <classpath>
+            <fileset dir="${webtest.home}" includes="**/lib/*.jar"/>
+            <fileset dir="${webtest.home}" includes="**/lib/runtime/*.jar"/>
+        </classpath>
+    </taskdef>
+
+    <target name="clean" description="Only run against a clean database"
+            depends="Browse,Register,Logon,Maintain,Verify"/>
+
+    <target name="clean-database"
+            description="Sets database.xml to default. Stop server, run target, and Start server.">
+        <copy file="${mailreader.home}/src/webapp/WEB-INF/database.xml"
+              tofile="${webapps.home}/${basepath}/WEB-INF/database.xml"
+              overwrite="true"/>
+    </target>
+
+    <target name="default" description="Can be run anytime"
+            depends="Browse"/>
+
+    <target name="Browse"
+            description=" Visitors can browse the Welcome, Login, and Register
+            pages (only) without presenting credentials.">
+
+        <webtest name="Browse public pages (MSS)">
+            &config;
+            <steps>
+                &register-open;
+                &welcome-click;
+                <clickLink
+                        description="Click Logon"
+                        label="${index.logon}"/>
+                &logon-page;
+                &welcome-click;
+            </steps>
+        </webtest>
+
+        <webtest name="Browse non-public pages (and fail) (5a)">
+            &config;
+            <steps>
+                <invoke
+                        description="Skip Logon page"
+                        url="SubmitLogon.do">
+                </invoke>
+                &logon-page;
+                <!-- This throws an Error 500.
+                    We might want to goto Logon instead.
+               <invoke
+                   description="Skip Save RegistrationAction page"
+                   url="SaveRegistration.do"/>
+                &logon-page;
+                -->
+            </steps>
+        </webtest>
+    </target>
+
+    <target name="Configure"
+            description=" Visitors can select a supported language and browse the site in that language.">
+        <!-- TODO: -->
+    </target>
+
+    <target name="Register"
+            description="Subscribers can store login credentials and a
+            primary email contact with the system.">
+
+        <webtest name="Register Hermes (MSS)">
+            &config;
+            <steps>
+                &register-open;
+                &register-hermes;
+                <verifyTitle
+                        description="Menu page title"
+                        text="${mainMenu.title}"/>
+            </steps>
+        </webtest>
+
+        <webtest name="Verify data-entry (1a-5a)">
+            &config;
+            <steps>
+                <!-- TODO: -->
+                <sleep description="Dummy step" millis="1"/>
+            </steps>
+        </webtest>
+
+    </target>
+
+    <target name="Logon"
+            description="Subscribers can present their registration credentials to
+        use an account again.">
+
+        <webtest name="Open logon action (MSS)">
+            &config;
+            <steps>
+                &logon-open;
+                <setInputField
+                        description="Default username"
+                        name="username"
+                        value="user"/>
+                <setInputField
+                        description="Correct default password"
+                        name="password"
+                        value="pass"/>
+                <clickButton
+                        description="Submit"
+                        name="Submit"/>
+                &menu-page;
+            </steps>
+        </webtest>
+
+        <webtest name="Open logon action (MSS)">
+            &config;
+            <steps>
+                &logon-hermes;
+            </steps>
+        </webtest>
+
+        <webtest name="Logon - Wrong password (1c)">
+            &config;
+            <steps>
+                &logon-open;
+                <setInputField
+                        description="Registered username"
+                        name="username"
+                        value="hermes"/>
+                <setInputField
+                        description="Wrong password"
+                        name="password"
+                        value="medusa"/>
+                &logon-fail;
+            </steps>
+        </webtest>
+
+        <webtest name="Logon - No Account (1a)">
+            &config;
+            <steps>
+                &logon-open;
+                <setInputField
+                        description="Not a username"
+                        name="username"
+                        value="zeus"/>
+                <setInputField
+                        description="Not a password"
+                        name="password"
+                        value="joltBolt"/>
+                &logon-fail;
+            </steps>
+        </webtest>
+
+    </target>
+
+    <target name="Maintain"
+            description="Subscribers can maintain a set of email subscriptions for an account.">
+        <webtest name="Add subscription (MSS)">
+            &config;
+            <steps>
+                &subscription-add;
+                &profile-page;
+            </steps>
+        </webtest>
+        <!-- FIXME: throws Runtime error, "Illegal argument"
+        <webtest name="Add duplicate host (3c)">
+            &config;
+            <steps>
+                &subscription-add;
+                &subscription-add-page;
+                <verifyText
+                    description="Validation Error"
+                    text="${errors.header}" />
+            </steps>
+        </webtest>
+        -->
+        <webtest name="Edit subscription (3a)">
+            &config;
+            <steps>
+                &subscription-edit;
+            </steps>
+        </webtest>
+
+        <webtest name="Delete subscription (3b)">
+            &config;
+            <steps>
+                &subscription-delete;
+            </steps>
+        </webtest>
+
+    </target>
+
+    <target name="Verify"
+            description="Subscribers can maintain a set of email subscriptions for an account.">
+
+        <webtest name="Verify data-entry (5a)">
+            &config;
+            <steps>
+                &subscription-invalid;
+            </steps>
+        </webtest>
+
+    </target>
+
+</project>

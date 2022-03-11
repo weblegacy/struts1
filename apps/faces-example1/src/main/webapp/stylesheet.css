@@ -1,0 +1,220 @@
+/*
+ *
+ * Copyright 2002,2004 The Apache Software Foundation.
+ * 
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ * 
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ * 
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+/* ========== Global Styles ================================================= */
+
+
+* { 
+  color:                 #000000;
+  font-family:           Arial, Helvetica, sans-serif;
+  font-size:             16px;
+  margin:                0px;
+  padding:               0px;
+  text-align:            left;
+}
+
+
+/* ========== Simple Styles ================================================= */
+
+
+.cancel { 
+  background-color:      #0000ff;
+  border:                1px solid #ffffff;
+  color:                 #ffffff;
+  font-weight:           bold;
+  margin:                2px;
+  padding:               2px;
+  text-align:            center;
+}
+
+
+.center { 
+  text-align:            center;
+}
+
+
+.field {
+  background-color:      #9999ff;
+  border:                1px solid #000000;
+  color:                 #000000;
+  font-weight:           normal;
+  margin:                2px;
+  padding:               2px;
+}
+
+
+.form {
+}
+
+
+.label {
+}
+
+
+.left { 
+  text-align:            left;
+}
+
+
+.link { 
+}
+
+
+.message { 
+  color:                 red;
+  font-style:            italic;
+}
+
+
+.password {
+  background-color:      #9999ff;
+  border:                1px solid #000000;
+  color:                 #000000;
+  font-weight:           normal;
+  margin:                2px;
+  padding:               2px;
+}
+
+
+.reset {
+  background-color:      #0000ff;
+  border:                1px solid #ffffff;
+  color:                 #ffffff;
+  font-weight:           bold;
+  margin:                2px;
+  padding:               2px;
+  text-align:            center;
+}
+
+
+.right { 
+  text-align:            right;
+}
+
+
+.submit { 
+  background-color:      #0000ff;
+  border:                1px solid #ffffff;
+  color:                 #ffffff;
+  font-weight:           bold;
+  margin:                2px;
+  padding:               2px;
+  text-align:            center;
+}
+
+
+.value { 
+}
+
+
+.wide {
+  width:                 100%;
+}
+
+
+/* ========== Grid Styles =================================================== */
+
+
+.grid { 
+  background-color:      #ccccff;
+  color:                 #0000ff;
+  text-align:            center;
+}
+
+
+.grid.column0 {
+  text-align:            right;
+}
+
+
+.grid.column1 {
+  text-align:            left;
+}
+
+
+.grid.column2 {
+  text-align:            left;
+}
+
+
+.grid.footer {
+  background-color:      #6666ff;
+  color:                 #000000;
+  font-size:             12px;
+  text-align:            center;
+}
+
+
+.grid.header {
+  background-color:      #6666ff;
+  color:                 #000000;
+  font-weight:           bold;
+  text-align:            center;
+}
+
+
+.grid.row.even { 
+}
+
+
+.grid.row.odd { 
+}
+
+
+/* ========== List Styles =================================================== */
+
+
+.list { 
+  background-color:      #ccccff;
+  color:                 #0000ff;
+  text-align:            center;
+}
+
+
+.list.column {
+  border-collapse:       collapse;
+  border-left:           1px solid black;
+  border-right:          1px solid black;
+}
+
+
+.list.footer {
+  background-color:      #6666ff;
+  color:                 #000000;
+  font-size:             12px;
+  text-align:            center;
+}
+
+
+.list.header {
+  background-color:      #6666ff;
+  color:                 #000000;
+  font-weight:           bold;
+  text-align:            center;
+}
+
+
+.list.row.even { 
+  background-color:      #eeeeff;
+}
+
+
+.list.row.odd { 
+}
+
+

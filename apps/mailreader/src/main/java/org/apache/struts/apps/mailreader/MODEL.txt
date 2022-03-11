@@ -1,0 +1,141 @@
+-MailReader Object Model-
+
+
+[(Associations)]
+----
+[UserDatabase] owns [User]s
+----
+[User] owns [Subscription]s
+===
+
+
+[Subscription (interface)]
+----
++ AutoConnect: Boolean
++ Host: String (readonly)
++ Type: String
++ Username: String
++ Password: String
++ User: User (readonly)
+----
+====
+
+
+
+[User (interface)]
+----
++ Username: String (readonly)
++ Password: String
++ FullName: String
++ FromAddress: String
++ ReplyToAddress: String
++ DataBase: UserDatabase
++ Subscription: Subscription[]
+----
++ CreateSubscription(Host:String): Subscription
++ FindSubscription(Host:String):Subscription
++ RemoveSubscription(Subscription:Subcription)
+====
+
+
+[UserDatabase (interface)]
+----
+----
++ Open()
++ Save()
++ Close()
++ CreateUser(username:String): User
++ FindUser(username:String): User
++ FindUsers(): User[]
++ RemoveUser(user:User)
++ UpdateUser(User) !NEW!
+====
+
+
+[MemorySubscription:Subscription]
+----
+- autoConnect:Boolean
+- host:String
+- type:String
+- username:String
+- password
+- user:User
+----
++ MemorySubscription(user:MemoryUser host:String)
+* :Subscription members
+* ToString:String
+====
+
+
+[MemoryUser:User]
+----
+- username:String
+- password:String
+- fullname:String
+- fromAddress:String
+- replyToAddress:String
+- database:MemoryDataBAse
+- subscriptions:HashMap
+----
++ MemoryUser(database:MemoryUserDatabase:* :User members
+database username:String)
+* ToString:String
+====
+
+
+[MemoryUserDatabase:UserDatabase]
+----
+- log:Log
+- users:HashMap
+- pathnameOld:String
+- pathnameNew:String
++ pathname:String
+----
+* :UserDatabase
+====
+
+
+[PlugIn (interface)]
+----
+----
++ Init(servlet:ActionServlet servlet config:ModuleConfig)
++ Destroy()
+====
+
+
+[MemoryDataBasePlugIn:PlugIn]
+----
+- database:MemoryUserDatabase
+- log:Log
+- servlet:ActionServlet
++ Pathname
+----
+* :PlugIn
+- CalculatePath()
+====
+
+
+[ObjectCreationFactory (interface)]
+----
+Digester:Digester
+----
+createObject(attributes:Attributes):Object
+====
+
+
+[MemorySubscriptionCreationFactory:ObjectCreationFactory]
+----
++ Digester:Digester
+----
+* :ObjectCreationFactory
+====
+
+
+[MemoryUserCreationFactory:ObjectCreationFactory]
+----
+----
++ Digester:Digester
+----
+* :ObjectCreationFactory
++ MemoryUserCreationFactory(database:MemoryUserDatabase)
+====

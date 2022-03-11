@@ -1,0 +1,410 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+
+    <properties>
+        <title>Learning</title>
+    </properties>
+
+    <body>
+
+        <a name="Docs"/>
+        <section name="Learning About Struts">
+
+            <p>
+                The
+                <strong>official documentation</strong>
+                for the framework is
+                provided online and may be built locally from the source code
+                distribution using <a href="http://maven.apache.org/">Apache Maven 2</a>.
+                To build the documentation, change to the subproject's
+                folder and run
+            </p>
+
+            <p>
+                $ mvn site
+            </p>
+            
+            <p>
+            For more help with building the website, visit the 
+            <a href="http://wiki.apache.org/struts/StrutsMaintenanceWebsite">
+            Struts Maintenance - Website</a> 
+            page. 
+            </p>
+
+            <p>
+                Our documentation includes a
+                <a href="userGuide/index.html">User Guide,</a>
+                <a href="./faqs/index.html">FAQs and Howto Guides,</a>
+                along with this top-level introduction.
+            </p>
+
+            <p>
+                The
+                <a href="apidocs/index.html">Javadocs</a>
+                and
+                <a href="http://svn.apache.org/viewcvs.cgi/struts/struts1/trunk/">
+                    source code</a>
+                can also be browsed.
+            </p>
+
+            <a name="Versions"/>
+            <subsection name="Documentation Versions">
+                <p>
+                    You are invited to preview the documentation online,
+                    and then install the documentation bundle locally for
+                    closer study.
+                </p>
+
+                <p>
+                    <strong>NOTE:</strong>
+                    If you are previewing the documentation on the website,
+                    most of the links in this section will refer to the
+                    <strong>Nightly Build.</strong>
+                    When learning about the framework,
+                    <strong>be sure to refer to the documentation for the
+                        version
+                        you are actually using.</strong>
+                </p>
+            </subsection>
+
+            <a name="userGuide"/>
+            <subsection name="User Guide">
+
+                <p>
+                    Our concise
+                    <a href="userGuide/index.html">
+                        <strong>
+                            User Guide</strong>
+                    </a>
+                    introduces the Model-View-Controller architecture,
+                    and how it relates to the major components of the
+                    framework.
+                    If you want to find out "How it works", this is the place
+                    to start.
+                    Along with an architectural overview,
+                    the User Guide also includes detailed installation
+                    instructions
+                    and release notes for each version of the framework.
+                </p>
+            </subsection>
+
+            <a name="faqs"/>
+            <subsection name="FAQS and HOWTOs">
+
+                <p>
+                    Our
+                    <strong>FAQs</strong>
+                    and
+                    <strong>HOWTOs</strong>
+                    are designed to fill in
+                    any gaps left by the Javadocs or User Guide.
+                </p>
+
+                <ul>
+                    <li>
+                        Our
+                        <a href="faqs/kickstart.html">Kickstart FAQ</a>
+                        answers the most common non-technical questions
+                        people first ask about the framework.
+                    </li>
+                    <li>
+                        Our
+                        <a href="faqs/newbie.html">Newbie FAQ</a>
+                        answers the most common technical questions asked
+                        developers using
+                        the framework for the first-time.
+                    </li>
+                </ul>
+
+                <p>
+                    The
+                    <strong>HOWTO Guides</strong>
+                    are designed to help you get started
+                    with some of the optional extensions and components
+                    available
+                    for the framework.
+                    These include topics like using the Secure Socket Layer
+                    (SSL) protocol
+                    and how to unit test your applications.
+                </p>
+
+                <p>
+                    If you have any comments on the pages you see here,
+                    they can be posted to the Wiki by following the link
+                    on the bottom of any page.
+                </p>
+
+                <p>
+                    Of course,
+                    the only true documentation is the code itself.
+                    If you have any questions about how the framework actually
+                    works,
+                    do not hesitate to
+                    <em>use the source.</em>
+                    For the complete, buildable source code,
+                    see the "src" folder in your
+                    <strong>source distribution.</strong>
+                </p>
+            </subsection>
+
+            <a name="Javadocs"/>
+            <subsection name="Javadocs">
+                <p>
+                    For more detail about a specific class or package,
+                    our
+                    <a href="apidocs/index.html">
+                        <strong>
+                            Javadocs</strong>
+                    </a>
+                    are
+                    <strong>surprisingly comprehensive and
+                        carefully maintained.</strong>
+                    It is
+                    <em>strongly</em>
+                    recommended that you refer to the
+                    <a href="apidocs/index.html">Javadocs</a>
+                    for each class
+                    as you begin to use it.
+                    This will help ensure that important features and options
+                    are not
+                    overlooked.
+                    <em>What you don't know, can't help you.</em>
+                </p>
+            </subsection>
+
+            <a name="Examples"/>
+            <subsection name="Struts by Example">
+                <p>
+                    To help you see how it all fits together, 
+                    several example applications
+                    are bundled in the "webapp" folder in the distribution 
+                    that demonstrate using the framework.
+                </p>
+
+                <ul>
+                    <li>
+                        Blank - A simple template for starting new
+                        applications.
+                    </li>
+                    <li>
+                        Cookbook - See various techniques in action and view
+                        the source code in place.
+                    </li>
+                    <li>
+                        Examples - Various demonstration applications combined
+                        as separate
+                        modules:
+                        <ul>
+                            <li>
+                                Exercise - A set of test pages that also
+                                demonstrate
+                                use of the custom tags.
+                            </li>
+                            <li>
+                                Upload - Demonstrates using the file upload
+                                facilities.
+                                (Based on Commons Upload.)
+                            </li>
+                            <li>
+                                Validator - Demonstrates using the Validator
+                                extension.
+                            </li>
+                        </ul>
+                    </li>
+                     <li>
+                        Faces - Demonstrates the Struts-Faces integration tag library.
+                    </li>
+                   <li>
+                        <a href="http://opensource2.atlassian.com/confluence/oss/display/STRUTS/MailReader">
+                            MailReader</a>
+                        - The original Struts example
+                        application.
+                        <em>Try me first!</em>
+                    </li>
+                </ul>
+
+                <p>
+                    There are also many third-party example applications
+                    available for study, including these three:
+                </p>
+
+                <ul>
+                    <li>
+                        <a href="http://raibledesigns.com/wiki/Wiki.jsp?page=AppFuse">
+                            AppFuse</a>
+                        - Demonstrates using XDoclet with the framework,
+                        along with different security packages and Hibernate
+                        for database persistence.
+                    </li>
+                    <li>
+                        <a href="http://ibatis.apache.org/petstore.html">
+                            JPetStore</a>
+                        -
+                        A streamlined version of the Java Petstore application
+                        implemented with Struts and iBATIS database
+                        layer.
+                    </li>
+                    <li>
+                        <a href="http://www.codeczar.com/products/logweb/index.html">
+                            LogWeb</a>
+                        - A Struts webapp for configuring
+                        Log4J at runtime within a servlet container.
+                    </li>
+                </ul>
+
+                <p>
+                    Other open source applications built using the framework include:
+                </p>
+
+                <ul>
+                    <li>
+                        <a href="http://rollerweblogger.org/page/project">
+                            Roller</a>
+                        -  open source blog server.
+                    </li>
+                    <li>
+                        <a href="http://www.xplanner.org/">
+                            XPlanner</a>
+                        - project planning and tracking tool for eXtreme Programming (XP) teams.
+                    </li>
+                </ul>
+            </subsection>
+
+            <a name="More"/>
+            <subsection name="Learning More About Struts">
+                <p>
+                    The Apache Struts
+                    <a href="http://struts.apache.org/mail.html">Mailing
+                        Lists</a>
+                    are a treasure trove of useful, interactive information.
+                    The user list tends to carry a high volume,
+                    so always check the published documentation and one of the
+                    <a href="http://struts.apache.org/mail.html#Archives">
+                        <strong>MAILING LIST ARCHIVES</strong>
+                    </a>
+                    before
+                    <a href="http://www.catb.org/~esr/faqs/smart-questions.html">
+                        posting a
+                        new question.</a>
+                    Like as not, it's already been asked and answered.
+                </p>
+
+                <p>
+                    If you really can't find the answer to your question in
+                    the
+                    <a href="#faqs">FAQs</a>
+                    or one of the
+                    <a href="http://struts.apache.org/mail.html#Archives">
+                        list archives,</a>
+                    you can post your query to the Apache Struts User list --
+                    <strong>BUT YOU MUST SUBSCRIBE TO THE
+                        <a href="mailto:user-subscribe@struts.apache.org">USER
+                            LIST</a>
+                        OR THE
+                        <a href="mailto:user-digest-subscribe@struts.apache.org">
+                            USER LIST DIGEST</a>
+                        BEFORE POSTING.
+                    </strong>
+                </p>
+
+                <p>
+                    The Apache Struts
+                    <a href="http://wiki.apache.org/struts">
+                        <strong>
+                            Wiki</strong>
+                    </a>
+                    is a relatively new addition to our
+                    documentation team.
+                    Any Struts user (that means you!) is invited to post new
+                    material to
+                    the Wiki.
+                    However, the Wiki is not the place to ask incidental
+                    questions.
+                    <strong>All support questions should be directed to the
+                        <a href="http://struts.apache.org/mail.html">Struts
+                            User list</a>
+                        or
+                        other support forum.
+                    </strong>
+                </p>
+
+                <p>
+                    The
+                    <a href="roadmap.html">
+                        <strong>Roadmap</strong>
+                    </a>
+                    page outlines
+                    our tentative plans for future development.
+                </p>
+            </subsection>
+
+            <a name="resources"/>
+            <subsection name="Community Resources">
+                <p>
+                    The framework has attracted a large and robust community
+                    of developers,
+                    which have created a vast number of Struts related
+                    resources.
+                    Several pages on our wiki are devoted to listing
+                    <a href="http://wiki.apache.org/struts/StrutsResources">
+                        Apache Struts
+                        resources.</a>
+                </p>
+                
+                <p>
+                    For a comprehensive listing of all resources related to 
+                    Apache Struts, 
+                    including articles, books, and third-party extensions, 
+                    for both Struts 1 and Struts 2, 
+                    visit <a href="http://www.StrutsCentral.net/">Struts Central.</a>
+                </p>
+
+            </subsection>
+
+            <a name="books"/>
+            <subsection name="Books about Struts">
+
+                <p>
+                    The Apache Software Foundation does not provide printed
+                    manuals,
+                    but several third-party books about Struts are
+                    available.
+                    Visit <a href="http://www.StrutsCentral.net/Resources/Action/books.html">
+                    Struts Central</a> 
+                    or the 
+                    <a href="http://opensource.atlassian.com/confluence/oss/display/BOOKS/Books+about+Struts">
+                    Apache Bookstore</a> for complete listings.
+                </p>
+            </subsection>
+        </section>
+
+        <section>
+            <p class="right">
+                Next:
+                <a href="roadmap.html">Roadmap</a>
+            </p>
+        </section>
+
+    </body>
+</document>

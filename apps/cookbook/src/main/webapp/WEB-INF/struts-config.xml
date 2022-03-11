@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+    <!-- ========== Form Bean Definitions ================================== -->
+    <form-beans>
+        <!-- Simple ActionForm Bean -->
+        <form-bean name="simpleForm" type="examples.simple.SimpleActionForm"/>
+
+        <!-- DynaActionForm Bean for Dyna -->
+        <form-bean name="dynaForm" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="name" type="java.lang.String" />
+            <form-property name="secret" type="java.lang.String" />
+            <form-property name="color" type="java.lang.String" />
+            <form-property name="confirm" type="java.lang.Boolean" />
+            <form-property name="rating" type="java.lang.String" />
+            <form-property name="message" type="java.lang.String" />
+            <form-property name="hidden" type="java.lang.String" />
+        </form-bean>
+
+        <!-- DynaActionForm Bean for Options -->
+        <form-bean name="optionsForm" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="fruit1" type="java.lang.String" initial="Pear" />
+            <form-property name="fruit2" type="java.lang.String" initial="Apple" />
+            <form-property name="fruit3" type="java.lang.String[]" initial="Banana Orange" />
+            <form-property name="color1" type="java.lang.String" />
+            <form-property name="color2" type="java.lang.String" />
+            <form-property name="color3" type="java.lang.String" />
+            <form-property name="day1" type="java.lang.String" />
+            <form-property name="day2" type="java.lang.String" />
+            <form-property name="book1" type="java.lang.String" />
+            <form-property name="book2" type="java.lang.String" />
+            <form-property name="animal1" type="java.lang.String" />
+            <form-property name="animal2" type="java.lang.String" />
+        </form-bean>
+
+        <!-- ActionForm Bean for Multibox -->
+        <form-bean name="multiboxForm" type="examples.multibox.MultiboxActionForm"/>
+
+        <!-- DynaActionForm Bean for Bean -->
+        <form-bean name="beanForm" type="org.apache.struts.action.DynaActionForm">
+        </form-bean>
+
+        <!-- General Test Form -->
+        <form-bean name="testForm" type="org.apache.struts.action.DynaActionForm">
+            <form-property name="name" type="java.lang.String" />
+            <form-property name="secret" type="java.lang.String" />
+            <form-property name="color" type="java.lang.String" />
+            <form-property name="confirm" type="java.lang.Boolean" />
+            <form-property name="rating" type="java.lang.String" />
+            <form-property name="message" type="java.lang.String" />
+            <form-property name="hidden" type="java.lang.String" />
+        </form-bean>
+
+        <!-- DynaActionForm Bean for Validator -->
+        <form-bean name="validatorForm" type="org.apache.struts.validator.DynaValidatorForm">
+            <form-property name="byteValue" type="java.lang.String" />
+            <form-property name="creditCard" type="java.lang.String" />
+            <form-property name="date" type="java.lang.String" />
+            <form-property name="doubleValue" type="java.lang.String" />
+            <form-property name="email" type="java.lang.String" />
+            <form-property name="floatValue" type="java.lang.String" />
+            <form-property name="integerValue" type="java.lang.String" />
+            <form-property name="longValue" type="java.lang.String" />
+            <form-property name="mask" type="java.lang.String" />
+            <form-property name="min" type="java.lang.String" />
+            <form-property name="max" type="java.lang.String" />
+            <form-property name="range" type="java.lang.String" />
+            <form-property name="required" type="java.lang.String" />
+            <form-property name="shortValue" type="java.lang.String" />
+            <form-property name="password" type="java.lang.String" />
+            <form-property name="password2" type="java.lang.String" />
+
+        </form-bean>
+
+    </form-beans>
+
+    <!-- ========= Global Exception Definitions ============================ -->
+    <global-exceptions>
+    </global-exceptions>
+
+    <!-- ========== Global Forward Definitions ============================= -->
+
+    <global-forwards>
+        <forward name="home" path="/Home.do"/>
+    </global-forwards>
+
+    <!-- ========== Action Mapping Definitions ============================= -->
+    <action-mappings>
+
+    <action path="/Home" type="examples.SuccessAction">
+        <forward name="success" path="/index.jsp" redirect="true"/>
+    </action>
+
+        <!-- Simple ActionForm Example ===================================== -->
+
+        <action path="/prepareSimple"
+                type="examples.SuccessAction">
+            <forward name="success" path="/jsp/simple/Simple.jsp"/>
+        </action>
+
+        <action path="/processSimple"
+                type="examples.simple.ProcessSimpleAction"
+                name="simpleForm"
+                scope="request"
+                input="/jsp/simple/Simple.jsp"
+                cancellable="true"
+                validate="true">
+            <forward name="success" path="/jsp/simple/SimpleResults.jsp"/>
+        </action>
+
+        <!-- DynaActionForm Example ======================================== -->
+
+        <action path="/prepareDyna"
+                type="examples.SuccessAction">
+            <forward name="success" path="/jsp/dyna/Dyna.jsp"/>
+        </action>
+
+        <action path="/processDyna"
+                type="examples.dyna.ProcessDynaAction"
+                name="dynaForm"
+                scope="request"
+                input="/jsp/dyna/Dyna.jsp"
+                validate="false">
+            <forward name="success" path="/jsp/dyna/DynaResults.jsp"/>
+        </action>
+
+        <!-- Options Example =============================================== -->
+
+        <action path="/prepareOptions"
+                type="examples.options.PrepareOptionsAction">
+            <forward name="success" path="/jsp/options/Options.jsp"/>
+        </action>
+
+        <action path="/processOptions"
+                type="examples.options.ProcessOptionsAction"
+                name="optionsForm"
+                scope="request"
+                input="/jsp/options/Options.jsp"
+                validate="false">
+            <forward name="success" path="/jsp/options/OptionsResults.jsp"/>
+        </action>
+
+        <!-- Mutibox Example =============================================== -->
+
+        <action path="/prepareMultibox"
+                type="examples.multibox.PrepareMultiboxAction"
+                name="multiboxForm"
+                scope="request"
+                validate="false">
+            <forward name="success" path="/jsp/multibox/Multibox.jsp"/>
+        </action>
+
+        <action path="/processMultibox"
+                type="examples.multibox.ProcessMultiboxAction"
+                name="multiboxForm"
+                scope="request"
+                input="/jsp/multibox/Multibox.jsp"
+                validate="false">
+            <forward name="success" path="/jsp/multibox/MultiboxResults.jsp"/>
+        </action>
+
+        <!-- Bean Tags Example ============================================= -->
+
+        <action path="/prepareBean"
+                type="examples.bean.PrepareBeanAction">
+            <forward name="success" path="/jsp/bean/Bean.jsp"/>
+        </action>
+
+        <!-- Links Tags Example ============================================ -->
+
+        <action path="/prepareLinks"
+                type="examples.links.PrepareLinksAction">
+            <forward name="success" path="/jsp/links/Links.jsp"/>
+        </action>
+
+        <action path="/processLinks"
+                type="examples.links.ProcessLinksAction"
+                name="testForm"
+                scope="request"
+                input="/jsp/links/Links.jsp"
+                validate="false">
+            <set-property property="actionId" value="linksAction"/>
+            <forward name="success" path="/jsp/links/LinksResults.jsp"/>
+        </action>
+
+        <!-- Logic Tags Example ============================================ -->
+
+        <action path="/prepareLogic"
+                type="examples.logic.PrepareLogicAction">
+            <forward name="success" path="/jsp/logic/Logic.jsp"/>
+        </action>
+
+        <!-- Validator Example ============================================= -->
+
+        <action path="/prepareValidator"
+                type="examples.SuccessAction">
+            <forward name="success" path="/jsp/validator/Validator.jsp"/>
+        </action>
+
+        <action path="/processValidator"
+                type="examples.validator.ProcessValidatorAction"
+                name="validatorForm"
+                scope="request"
+                input="/jsp/validator/Validator.jsp"
+                cancellable="true"
+                validate="true">
+            <set-property property="actionId" value="validatorAction"/>
+            <forward name="success" path="/jsp/validator/ValidatorResults.jsp"/>
+        </action>
+
+        <!-- Messages Tags Example ========================================= -->
+
+        <action path="/prepareMessages"
+                type="examples.SuccessAction">
+            <forward name="success" path="/jsp/messages/Messages.jsp"/>
+        </action>
+
+        <!-- Localization Tags Example ===================================== -->
+
+        <action path="/prepareLocalization"
+                type="examples.SuccessAction">
+            <forward name="success" path="/jsp/localization/Localization.jsp"/>
+        </action>
+
+        <action path="/processLocalization"
+                type="examples.localization.ProcessLocalizationAction"
+                name="testForm"
+                scope="request"
+                input="/jsp/localization/Localization.jsp"
+                validate="false">
+            <forward name="success" path="/jsp/localization/Localization.jsp"/>
+        </action>
+
+        <!-- Token Tags Example ============================================ -->
+
+        <action path="/prepareToken"
+                type="examples.token.PrepareTokenAction">
+            <forward name="success" path="/jsp/token/Token.jsp"/>
+        </action>
+
+        <action path="/processToken"
+                type="examples.token.ProcessTokenAction"
+                name="testForm"
+                scope="request"
+                input="/jsp/token/Token.jsp"
+                validate="false">
+            <forward name="success" path="/jsp/token/TokenResults.jsp"/>
+        </action>
+
+    </action-mappings>
+
+    <!-- ========== Message Resources Definitions =========================== -->
+
+    <message-resources parameter="examples.MessageResources" />
+
+    <!-- ========== Plug Ins Configuration ================================== -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property property="pathnames"
+                      value="/org/apache/struts/validator/validator-rules.xml,
+                             /WEB-INF/validation.xml" />
+    </plug-in>
+
+</struts-config>

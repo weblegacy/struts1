@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!DOCTYPE form-validation PUBLIC
+         "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+         "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<form-validation>
+
+	<global>
+		<!-- Custom Validator -->
+		<validator name="twofields" 
+                   classname="examples.validator.CustomValidator" 
+                   method="validateTwoFields" 
+                   methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.apache.struts.action.ActionMessages,
+                       javax.servlet.http.HttpServletRequest" 
+                   msg="errors.twofields" />
+	</global>
+
+	<formset>
+
+		<!-- Form for Validation example -->
+		<form name="validatorForm">
+
+			<field property="byteValue" depends="byte">
+				<arg key="prompt.byte" />
+			</field>
+
+			<field property="shortValue" depends="short">
+				<arg key="prompt.short" />
+			</field>
+
+			<field property="integerValue" depends="integer">
+				<arg key="prompt.integer" />
+			</field>
+
+			<field property="longValue" depends="long">
+				<arg key="prompt.long" />
+			</field>
+
+			<field property="floatValue" depends="float">
+				<arg key="prompt.float" />
+			</field>
+
+			<field property="doubleValue" depends="double">
+				<arg key="prompt.double" />
+			</field>
+
+			<field property="creditCard" depends="creditCard">
+				<arg key="prompt.creditCard" />
+			</field>
+
+			<field property="date" depends="date">
+				<arg key="prompt.date" />
+				<var>
+					<var-name>datePattern</var-name>
+					<var-value>MM/dd/yyyy</var-value>
+				</var>
+			</field>
+
+			<field property="email" depends="email">
+				<arg key="prompt.email" />
+			</field>
+
+			<field property="mask" depends="mask">
+				<arg key="prompt.mask" />
+				<var>
+					<var-name>mask</var-name>
+					<var-value>^\d{5}\d*$</var-value>
+				</var>
+			</field>
+
+			<field property="min" depends="minlength">
+				<arg key="prompt.min" position="0"/>
+		        <arg name="minlength" key="${var:minlength}" resource="false" position="1" />
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>5</var-value>
+				</var>
+			</field>
+
+			<field property="max" depends="maxlength">
+				<arg key="prompt.max" position="0"/>
+		        <arg name="maxlength" key="${var:maxlength}" resource="false" position="1" />
+				<var>
+					<var-name>maxlength</var-name>
+					<var-value>10</var-value>
+				</var>
+			</field>
+
+            <field property="range" depends="integer,intRange">
+                <arg key="prompt.range" />
+                <arg name="intRange" key="${var:min}" resource="false" position="1" />
+                <arg name="intRange" key="${var:max}" resource="false" position="2" />
+				<var>
+					<var-name>min</var-name>
+					<var-value>100</var-value>
+				</var>
+				<var>
+					<var-name>max</var-name>
+					<var-value>1000</var-value>
+				</var>
+
+			</field>
+
+			<field property="required" depends="required">
+				<arg key="prompt.required" />
+			</field>
+
+			<!-- Not until post 1.1 
+				<field property="password2" depends="validwhen">
+				<arg0 key="prompt.password2" />
+				<var>
+				<var-name>test</var-name>
+				<var-value>((password == null) or (*this* == password))</var-value>
+				</var>      
+				</field>
+			-->
+
+			<field property="password" depends="required,minlength,twofields">
+				<arg key="prompt.password" position="0"/>
+				<arg name="minlength" key="${var:minlength}" resource="false"  position="1"/>
+				<arg name="twofields" key="prompt.password2"  position="1"/>
+				<var>
+					<var-name>minlength</var-name>
+					<var-value>5</var-value>
+				</var>
+				<var>
+					<var-name>secondProperty</var-name>
+					<var-value>password2</var-value>
+				</var>
+			</field>
+
+		</form>
+	</formset>
+</form-validation>

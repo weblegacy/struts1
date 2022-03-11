@@ -1,0 +1,696 @@
+<!--
+
+ Copyright 2002,2004 The Apache Software Foundation.
+ 
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+ 
+      http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+-->
+
+
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="GENERATOR" content="Microsoft FrontPage 4.0">
+<meta name="ProgId" content="FrontPage.Editor.Document">
+<title>A Walking Tour of the Struts Example Application</title>
+</head>
+
+<body>
+
+<blockquote>
+
+<h2><font face="Arial">A Walking Tour of the Struts Example Application</font></h2>
+<p><i>This article is meant to introduce a new user to Struts by
+&quot;walking through&quot; the example application. See the <a href="http://jakarta.apache.org/struts/">Struts
+Users Guide and Strut's API</a> for more documentation.&nbsp;&nbsp;</i></p>
+<p><i>This article
+is based on the working 1.0 builds of Struts.&nbsp; It is assumed that the
+reader has already installed a developer's copy of Struts and the example
+application (following the instructions in the Struts readme), and is ready to
+explore the example on their own development workstation (e.g. localhost).&nbsp;</i></p>
+<p><i>This article also assumes the reader has a basic understanding of the Java
+language, JavaBeans, Web applications and JavaServer Pages. For background on these topics,
+see the various Sun Javasoft product sites.</i></p>
+<hr>
+<ul>
+  <li><a href="#index.jsp">index.jsp</a>
+    <ul>
+      <li><a href="#web.xml">web.xml and ApplicationResources.properties</a></li>
+      <li><a href="#DatabaseServlet.java">DatabaseServlet.java</a></li>
+    </ul>
+  </li>
+  <li><a href="#logon.jsp">logon.jsp</a>
+    <ul>
+      <li><a href="#struts-config.xml">struts-config.xml</a></li>
+      <li><a href="#struts-config.xml">LogonForm.java</a></li>
+      <li><a href="#LogonAction.java">LogonAction.java</a></li>
+      <li><a href="#struts-config.xml/2">struts-config.xml 2</a></li>
+    </ul>
+  </li>
+  <li><a href="#mainMenu.jsp">mainMenu.jsp</a>
+    <ul>
+      <li><a href="#CheckLoginTag.java">CheckLoginTag.java</a></li>
+      <li><a href="#editRegistrationAction.java">editRegistrationAction.java</a></li>
+    </ul>
+  </li>
+  <li><a href="#subscription.jsp">registration.jsp</a>
+    <ul>
+      <li>
+<a href="#registrationForm.java">
+RegistrationForm.java</a>
+      </li>
+      <li><a href="#editRegistrationAction.java">EditRegistrationAction.java</a></li>
+      <li><a href="#LinkSubscriptionTag.java">LinkSubscriptionTag.java</a></li>
+      <li><a href="#LinkUserTag.java">LinkUserTag.java</a></li>
+      <li><a href="#EditSubscriptionAction.java">EditSubscriptionAction.java</a></li>
+    </ul>
+  </li>
+  <li><a href="#subcription.jsp">subscription.jsp</a>
+    <ul>
+      <li><a href="#SubscriptionForm.java">SubscriptionForm.java </a></li>
+      <li><a href="#SaveSubscriptionAction.java">SaveSubscriptionAction.java</a></li>
+    </ul>
+  </li>
+  <li><a href="#Summary">Summary</a></li>
+</ul>
+<hr>
+<p>The standard Struts package comes with four applications: struts-test,
+struts-documentation, struts-template, and struts-example. Regarding
+struts-example, the readme
+tells us that:</p>
+<blockquote>
+<p>&quot;This example is the beginnings of a portal application that would allow
+users to register themselves, and maintain a set of subscriptions they own to
+mail servers elsewhere on the Internet. When completed, this application will
+provide the ability to read mail from various mail servers, through the
+application.&quot;</p>
+</blockquote>
+<p>The example is still incomplete, but still a very useful introduction to
+Struts. For more about installing Struts and the example application, see the
+Struts readme.</p>
+<h3><font face="Arial"><a name="index.jsp">index.jsp</a></font></h3>
+<p>Once installed, the example application is entered through a standard welcome
+page, index.jsp. This page offers two links, one to register with the
+application and one to login in (if you have already registered).</p>
+<p>Behind the scenes, index.jsp also checks for the existence of a database
+servlet and message resource. Both of these objects are referenced in the
+application's web.xml, and should be loaded before the index.jsp displays. If
+they are absent for any reason, index.jsp displays an error message.</p>
+<blockquote>
+  <p><i>Note that the error messages are hardcoded into the welcome page; this way
+they can be displayed even if the message resource is missing. In other pages, a message resource is used to lookup and display messages, based on the
+user's locale.&nbsp;</i></p>
+</blockquote>
+<h4><font face="Arial"><a name="web.xml">web.xml</a>&nbsp;and <a name="ApplicationResources.properties">ApplicationResources.properties</a></font></h4>
+<p>If you check the application's web.xml, you will see how these objects are
+loaded. The message resource is loaded by the application parameter to the
+ActionServlet. When the ActionServlet initializes, it parses the
+ApplicationResources.properties in the package folder into the default message
+resource. If you change a message in the resource, and then reload the
+application, it will appear throughout the application.</p>
+<blockquote>
+<p><i>You can even reload the configuration and message resources without
+restarting the container. See the end of the web.xml file for details.&nbsp;</i></p>
+</blockquote>
+<h4><font face="Arial"><a name="DatabaseServlet.java">DatabaseServlet.java</a></font></h4>
+<p>The database object has it's own initialization block. The database servlet
+stores the database contents as a XML file, which is parsed by the Struts
+digester and loaded as a set of nested hashtables. The outer table is the list
+of user objects, each of which has its own inner hashtable of subscriptions.
+When you register, a user object is stored in this hashtable ... and when you
+login, the user object is stored within the session context.</p>
+<blockquote>
+  <p><i>If you want to follow along (and you should!), the package source can be found under the src/example folder in your
+  jakarta-struts folder.</i></p>
+</blockquote>
+<p>In the Example application, the database is seeded with a sample user.
+If you check the database.xml file, you'll see the sample user described as:</p>
+<blockquote>
+<p><code>&lt;user username=&quot;user&quot; password=&quot;pass&quot; fullName=&quot;John
+Q. User&quot; fromAddress=&quot;John.User@somewhere.com&quot;&gt;<br>
+&nbsp;&lt;subscription autoConnect=&quot;false&quot; host=&quot;mail.hotmail.com&quot;
+type=&quot;pop3&quot; username=&quot;user1234&quot; password=&quot;bar&quot;
+/&gt;&nbsp;<br>
+ &lt;/user&gt;</code></p>
+</blockquote>
+<p>This creates a registration record&nbsp; for &quot;John Q. User&quot;, with the detail for his hotmail subscription.</p>
+<blockquote>
+  <p><i>In the source to the database servlet, you should notice that the attribute name for the servlet is read from the package's constant file. This is a good way to be sure a name or other string value is uniform between source files.&nbsp;</i></p>
+</blockquote>
+<h4><a name="index.jsp/2"><font face="Arial">index.jsp 2</font></a></h4>
+<p>Back in the index.jsp, we can find several good uses of Struts custom tags.
+Two worth noting now are the base and the link tags. The base tag returns the
+current URL to the page, to be sure other relative hyperlinks on the page work
+properly. The link tag renders another important service. Besides being a
+quick way to write a hyperlink, it will also URL encode the hyperlink to
+maintain the client's session -- if the current client can't store the session
+as a cookie.</p>
+<blockquote>
+<p><i> If you turn cookies off in your browser, and then reload your browser and
+this page, you will see the links with the session id information
+attached. (If you are using Internet Explorer and try this, be sure you reset
+cookies for the appropriate security zone, and that you disallow
+&quot;per-session&quot; cookies.)&nbsp;</i></p>
+</blockquote>
+<p>In just a simple welcome page, Struts has done quite a bit already:</p>
+<ul>
+  <li>Confirmed that required objects were created during initialization.&nbsp;</li>
+  <li>Written all the page headings and labels from an internationalized message
+resource.&nbsp;</li>
+  <li>Automatically rendered a current base tag for the page.&nbsp;</li>
+  <li>Automatically URL-encoded hyperlinks as needed.</li>
+</ul>
+<p>At the top of the index.jsp page, you may also note several directives that
+load the tag libraries. These are just the usual red tape that goes with any
+Java source file.</p>
+<h3><font face="Arial"><a name="logon.jsp">logon.jsp</a></font></h3>
+<p>Next, if you choose the log on link, the container loads the logon.jsp file.
+You can use the default username and password (user:pass) to login. (Note that
+both the username and password are case sensitive.) Better yet, try omitting or
+misspelling the login in various combinations and see how the application
+reacts.</p>
+<p>If you do this, Struts will return you to the same JSP, but with three
+major differences:</p>
+<ol>
+  <li>The page address is now logon.do rather than login.jsp.&nbsp;</li>
+  <li>Struts will
+display a validation-error above the logon form.&nbsp;</li>
+  <li>Whatever username you entered before is defaulted on the form.</li>
+</ol>
+<p>Pretty cool, but how does it work?</p>
+<h4><font face="Arial"><a name="struts-config.xml">struts-config.xml</a> and <a name="LogonForm.java">LogonForm.java</a></font></h4>
+<p>First, the logon.jsp makes use of the custom-tag &quot;form&quot;. This tag can scan the
+application's properties for a form bean related
+to the path /logon.jsp (from the link on the welcome page). In this case, Struts finds one, and then checks&nbsp; for an instance of this particular form bean.
+Not finding one, Struts creates a new form bean. When the form is
+submitted, Struts grabs the form fields from the HTTP request, and updates the
+waiting bean.</p>
+<p>To enable all this, you can simply</p>
+<ol>
+  <li>define a class for the form bean in your package (the form fields with
+    setters and getters),&nbsp;</li>
+  <li>add the bean class to your application's configuration
+resource, and&nbsp;</li>
+  <li>link the bean class to your action mapping by their name properties (name="logonForm").</li>
+</ol>
+<p>In addition to parameters representing standard HTML options, The form tag
+can also take several handy parameters to add JavaScript features to a form.
+These include focus, onsubmit, and onreset. There are even parameters for
+specifying cascading stylesheets.</p>
+<p>Struts has tidy mechanisms for validating forms and printing error messages. An action
+object can add as many messages as needed to a standard Struts collection. The
+JSP can then print all the messages, and clear the queue, using a single custom
+tag, &lt;html:errors/>. There can be as many messages as your validation routine cares to post.</p>
+<blockquote>
+<p><i>Struts labels this mechanism as an error message handler, though your
+application could use it for other&nbsp; messages too. For example, to post a
+message than a record was added or deleted.</i>&nbsp;</p>
+</blockquote>
+<p>To get the most out of your form beans, Struts provides a special class, ActionForm, with built-in support for validation and message handling that you can use as the base for your own form beans. Each of your JSP forms will probably have a unique set
+of fields, and would have their own specific form bean.</p>
+<h4><font face="Arial"><a name="LogonAction.java">LogonAction.java</a></font></h4>
+<p>The initial JSP submits its form to logon.do. If you check the servlet
+mappings in the example's web.xml you will see that requests for *.do files are
+directed to the Struts &quot;action&quot; servlet (an instance of ActionServlet).
+In the example, the ActionServlet refers to struts-config.xml for its own
+mappings (among other things), which is where we find the reference to logon.do:</p>
+<blockquote>
+<p><code>&lt;!-- Process a user logon --&gt;&nbsp;<br>
+ &lt;action<br>
+&nbsp;path=&quot;/logon&quot;<br>
+&nbsp;type=&quot;org.apache.struts.webapp.example.LogonAction&quot;<br>
+&nbsp;name=&quot;logonForm&quot;<br>
+&nbsp;scope=&quot;request&quot;<br>
+&nbsp;input=&quot;/logon.jsp&quot;<br>
+&nbsp;&gt;&nbsp;<br>
+ &lt;/action&gt;</code></p>
+</blockquote>
+<p>and a form bean to go with the &quot;logonForm&quot; action:</p>
+<blockquote>
+<p><code>&lt;!-- Logon form bean --&gt;&nbsp;<br>
+ &lt;form-bean<br>
+&nbsp;name=&quot;logonForm&quot;<br>
+&nbsp;type=&quot;org.apache.struts.webapp.example.LogonForm&quot;&nbsp;<br>
+&nbsp;/&gt;</code></p>
+</blockquote>
+<p>In the action mapping, the path property tells the ActionServlet to forward a
+request for logon.do to the LogonAction object. The input property tells the
+LogonAction object where it can pass control to get information from the user.</p>
+<p>Before passing the request to LogonAction, the ActionServlet looks for the
+LogonForm bean. If it finds it, the ActionServlet updates the bean by matching
+properties named in the HTTP request with properties named in the form bean. If
+it doesn't find the bean, ActionServlet creates it, so LogonAction can assume
+that it already exists.</p>
+<p>When called by the ActionServlet, LogonAction retrieves the username and
+password from the LogonForm bean. (If just created, the bean will return default
+values.)</p>
+<p>In the example, LogonAction then checks with the DatabaseServlet to see if
+the logon matches a registered user. If the logon doesn't match, LogonAction
+adds a message key to an error list. At the end of the routine, if the error
+list is not empty, LogonAction adds a User bean to the session context, and forwards
+control to its input form (login.jsp).</p>
+<blockquote>
+<p><i>Note that direct access to the DatabaseServlet should really be handled by a
+business-logic bean, and NOT by LogonAction. To quote the example's author
+&quot;This should be considered a bug in the example.&quot;&nbsp;</i></p>
+</blockquote>
+<p>If there are no errors, LogonAction places a user bean into the
+session context (replacing any prior user bean), and forwards control to the
+&quot;success&quot; action. Where that control actually goes is determined by
+the mappings in struts-config.xml.</p>
+<p>Before returning from a successful login, LogonAction also disposes of the LogonForm bean. This way,
+if the user returns to the index.jsp form later, it will be a clean form without
+the (old) login already entered. Note that LogonAction first checks to see if
+the scope has been set to &quot;request&quot;, and then removes the bean from
+the request context, or otherwise from the default session context.</p>
+<blockquote>
+<p><i>The Struts best practice is to use request scope for single-page forms
+that contain all of your relevant properties, because there is no need to
+maintain such form beans across requests.</i></p>
+<p><i>Note that the example removes the LogonForm bean regardless of scope. This
+is for
+backward compatibility with earlier configurations. In your application, you
+should follow the advice of the configuration, and remove it only if the scope
+is set to &quot;request&quot;. This way, the behavior can be changed just by
+editing struts-config.xml and reloading the application.&nbsp;</i></p>
+</blockquote>
+<p>Go ahead and login successfully now, using the default username and password
+(user and pass).&nbsp;</p>
+<h4><font face="Arial"> <a name="struts-config.xml/2">struts-config.xml
+2</a></font></h4>
+<p>As mentioned, on a successful login, LogonAction forwards control to the
+&quot;success&quot; action, and where control actually goes is determined by
+the mappings in struts-config.xml. But if you check the mappings for LogonAction,
+you'll find this block</p>
+<blockquote>
+  <p><code>    &lt;!-- Process a user logon --><br>
+    &lt;action&nbsp;<br>
+  &nbsp;path="/logon"<br>
+  &nbsp;type="com.husted.struts.example2.LogonAction"<br>
+  &nbsp;name=&quot;logonForm&quot;<br>
+  &nbsp;scope="request"<br>
+  &nbsp;input=&quot;/logon.jsp&quot;&gt;<br>
+    &lt;/action></code></p>
+</blockquote>
+<p><i>Huh!? Where's the success mapping?</i> If you dig around, you'll also find</p>
+<blockquote>
+<p><code>  &lt;!-- Global Forward Definitions --><br>
+  &lt;global-forwards><br>
+&nbsp;&lt;forward&nbsp;<br>
+&nbsp;&nbsp; name="logon"&nbsp;<br>
+&nbsp;&nbsp; path=&quot;/logon.jsp&quot;<br>
+&nbsp;/&gt;<br>
+&nbsp;&lt;forward&nbsp;<br>
+&nbsp;&nbsp; name="success"&nbsp;<br>
+&nbsp;&nbsp; path=&quot;/mainMenu.jsp&quot;<br>
+&nbsp;/&gt;<br>
+  &lt;/global-forwards></code></p>
+</blockquote>
+<p>Which says, if somebody says forward to &quot;success&quot;, and doesn't have
+a local forward for &quot;success&quot;, then forward using the path &quot;/mainMenu.jsp&quot;.
+(Ditto for forward to &quot;logon&quot;, but forward to &quot;/logon.jsp&quot;.)</p>
+<p>And which is why you should be now be staring at the result of the
+mainMenu.jsp now, offering the choices</p>
+<ul>
+  <li>Edit your user registration profile&nbsp;</li>
+  <li>     Log off MailReader Demonstration Application&nbsp;</li>
+</ul>
+<p>If you check the page path shown by your browser, you will see that it shows
+&quot;logon.do&quot; not &quot;mainMenu.jsp&quot;. This is because the page was
+loaded as the ultimate result of the logon.do request, so for all the browser
+knows, that's where you are. This is why the base custom tag is important. If
+your page included relative links to images, your browser would be trying to
+make them based on the path to &quot;logon.do&quot;.&nbsp; So the Struts base
+tag saves the day by telling the browser to resolve relative links based on the
+path to the file Struts returned, rather than on the &quot;file&quot; the
+browser requested.</p>
+<blockquote>
+<p><i>If you have a sharp eye, you also may have noticed that logon.do is not
+  followed by any parameters from the login form (logon.do?username=user). The
+  default method for a from created with the Struts form tag is POST, which does
+  not append&nbsp; form parameters to the request path, as GET does. This is the
+opposite of the HTML form tag, which uses GET by default.</i></p>
+</blockquote>
+<h3><font face="Arial"><a name="mainMenu.jsp">mainMenu.jsp</a></font></h3>
+<p>If you check the source for mainMenu.jsp, you will find some interesting new
+tags. The first is app:checkLogon. This is not a standard Struts custom tag, but
+one designed for the Example application. The directive at the top of the file
+tells us that the app tags are defined in app.tld. Tracing through app.tld, we
+find that source for this tag is (surprise!) CheckLogonTag.</p>
+<h4><font face="Arial"><a name="CheckLoginTag.java">CheckLoginTag.java</a></font></h4>
+<p>This is an excellent example of using custom tags to encapsulate application
+logic. CheckLoginTag.java looks to see if the user is logged in by checking for
+an object named &quot;User&quot; in the session context. If not, control is
+forwarded to &quot;/login.jsp&quot;. So, whenever you want to be sure someone is
+logged in before they access a page, just put &quot;&lt;app:checkLogon/>&quot;
+at the top of the JSP.</p>
+<blockquote>
+  <p><i>If you take a good look at the CheckLoginTag source, you will probably
+  see a quick and easy way the code could be made easier to maintain.</i></p>
+  <p><i>Hint: 'Consistency is Key'.</i></p>
+</blockquote>
+<p>You may not have noticed, but the heading on the mainMenu page is customized
+for the current user. If I were to create a new login for myself and come back
+to the mainMenu page, instead of saying &quot;Main Menu Options for user&quot;
+it would say &quot;Main Menu Options for thusted&quot;. In doing this, the
+mainMenu.jsp demonstrates using regular jsp:bean tags alongside Struts custom
+tags. (No worries mate!) It simply uses a standard jsp:useBean jsp:getProperty
+tags to snag your username from the User bean and display it in the HTML heading.</p>
+<blockquote>
+  <p><i>Unfortunately, some of the application's model is exposed by this page
+  view. Struts goes a long way toward minimizing this sort of thing, but in some
+  cases it is unavoidable.&nbsp;</i></p>
+</blockquote>
+<p>The other links we've seen have either gone directly to a JSP file, or to a
+Struts action path, like login.do. The &quot;Edit your user registration profile&quot;
+link is a little different, since it also uses a parameter, as in
+editRegistration.do?action=Edit. When the Struts ActionServlet processes this
+link, it will ignore the parameter for the purpose of matching the request, but
+still pass the parameter along to action's object.&nbsp;</p>
+<blockquote>
+  <p><i>This means that in Struts, an action object must be able to handle every
+  valid parameter for it's base path. (In the Example, editRegistration <b>must</b>
+  handle both Edit and Create.)&nbsp;</i></p>
+  <p><i>You may want to check for invalid parameters too. (And be careful
+  of&nbsp; differences in case if your comparisons are not case insensitive!)</i></p>
+</blockquote>
+<p>If you check the struts-config.xml, you'll see that the editRegistration
+action is mapped to the (surprise again!), the EditRegistrationAction; it uses a registrationForm bean, and registration.jsp for input.</p>
+<blockquote>
+  <p><code>    &lt;!-- Registration form bean --><br>
+    &lt;form-bean name=&quot;registrationForm&quot;<br>
+  type=&quot;org.apache.struts.webapp.example.RegistrationForm&quot;/&gt;</code></p>
+  <p><code>    &lt;!-- Edit user registration --><br>
+    &lt;action path=&quot;/editRegistration&quot;<br>
+  type=&quot;org.apache.struts.webapp.example.EditRegistrationAction&quot;<br>
+  name=&quot;registrationForm&quot;<br>
+              scope="request"<br>
+           validate="false"<br>
+              input="/registration.jsp"><br>
+      &lt;forward name="success"              path="/registration.jsp"/><br>
+    &lt;/action></code></p>
+  <p><i>Hint: Consistent naming conventions, like the ones used throughout the
+  Example, make applications much easier to write and understand. Save your
+  creativity for the things that matter, and follow an established standard for
+  source code formatting, like the <a href="www.amazon.com/exec/obidos/ISBN=0521777682/">Elements
+  of Java Style</a>.</i></p>
+</blockquote>
+<h4><font face="Arial"><a name="editRegistrationAction.java">EditRegistrationAction.java</a></font></h4>
+<p>Many objects in an application may do double-duty. For example, EditRegistrationAction not only lets you update a registration, but is also used to
+create a new one. Which task the object performs is determined by the action
+passed to it. In the case of EditRegistrationAction, it can either edit or
+create a registration, the default being create if&nbsp; a task is not
+specified. To select between tasks, simply add ?create or ?edit to the hyperlink
+or form action.</p>
+<blockquote>
+  <p><i>Like most classes in the example application, editRegistration makes good
+  use of the log to track it's progress. Note that ActionServlet has had a new log
+  method added since the Example was written. You can now specify both the
+  message and a minimum logging (or debug) level. For more, see the Javadoc in
+  your struts-documentation application.</i></p>
+</blockquote>
+<h3><font face="Arial"><a name="registration.jsp">registration.jsp</a> and <a name="RegistrationForm.java">RegistrationForm.java</a></font></h3>
+<p>If you follow the &quot;Edit your user registration profile&quot; link from
+the mainMenu, we
+will finally reach the heart of the Example application, the registration page.
+This page displays everything the Example application knows about you (or at
+least your login), while demonstrating several interesting techniques.&nbsp;</p>
+<p>You'll remember that mainMenu.jsp wanted to be sure that everyone was
+logged in, and used the CheckLogin tag to enforce that. The registration.jsp is
+a little different. First it uses a Struts logic tag to see if the task at hand
+is to register a new User. If not (e.g. action != &quot;Create&quot;), the logic tag exposes a CheckLoginTag to be sure we have a user (and therefore a registration) to edit.&nbsp;</p>
+<blockquote>
+  <p><code>&lt;logic:equal&nbsp;<br>
+  &nbsp;name=&quot;registrationForm&quot;&nbsp;<br>
+  &nbsp;property="action"<br>
+  &nbsp;scope="request"&nbsp;<br>
+  &nbsp;value=&quot;Edit&quot;<br>
+  &gt;<br>
+  &nbsp; &lt;app:checkLogon/><br>
+  &lt;/logic:equal&gt;</code></p>
+<p><i>Note that the Struts html:form tag will refer to properties set by struts-config.xml and automatically create a registrationForm bean if one is not present. However, that does not happen until the form tag is processed within the page. Since this
+block appears before the html:form tag, a runtime error is exposed if you try to access registration.jsp directly (rather then going through the editRegistration.do action).</i></p>
+</blockquote>
+<p>registation.jsp continues to use logic tags throughout the page so that a single JSP
+can be used to perform more than one task. For example, if you are editing the form (action == &quot;Edit&quot;), the
+page inserts your username from the registrationForm bean. If you are new user (action == &quot;Create&quot;), the page creates an
+empty field, so you can pick your username.&nbsp;</p>
+<blockquote>
+  <p><i> The Struts logic tags are a very
+convenient way to express&nbsp; application logic within your pages. This
+prevents user error and reduces the number of JSPs your application needs to
+maintain, among other benefits.</i></p>
+</blockquote>
+<p>The page also uses logic tags to display a list of subscriptions for the given user. If the user enters this page with an edit action in the request context, the lower part of the page listing the subscriptions is exposed by this logic tag:</p>
+<blockquote>
+<p><code>&lt;logic:equal&nbsp;<br>
+&nbsp;name=&quot;registrationForm&quot;&nbsp;<br>
+&nbsp;property="action"<br>
+&nbsp;scope="request"&nbsp;<br>
+&nbsp;value=&quot;Edit&quot;<br>
+&gt;</code></p>
+</blockquote>
+<p>Otherwise, the page just contains the top portion -- a blank data-entry form for creating the user's registration.</p>
+<h4><font face="Arial"><a name="logic:iterate">logic:iterate</a></font></h4>
+<p>Beside making the usual conditional tests, you can also use logic tags to
+forward control to other actions, to redirect control to another path, and to
+iterate over collections. The registration page includes a good example of using the
+logic:iterate tag to display the user's subscriptions.&nbsp;</p>
+<p>The subscriptions are stored in a hashtable object, which is in turn stored
+in the user object. So to display each subscription, we have to reach into
+the user object, and loop through the members of the subscription collection.
+Using the iterate tag, this couldn't be easier.&nbsp;</p>
+<blockquote>
+  <p>&lt;logic:iterate name="user" property=&quot;subscriptions&quot; id="subscription"&gt;<br>
+  &lt;!-- block to repeat --&gt;<br>
+  &lt;/logic:iterate></p>
+</blockquote>
+<p>The three parameters to the iterate tag ( name, property, and id) tell it to</p>
+<ol>
+  <li>Check this context for an attribute (e.g. object) named &quot;user&quot;,</li>
+  <li>Snag the property of user named &quot;subscriptions&quot;,&nbsp;</li>
+  <li>In the block to iterate, use &quot;subscription&quot; (singular) as the name for each member of
+    the collection.&nbsp;</li>
+</ol>
+<p>So, to list the host for each subscription in a HTML unordered list, we
+could write:</p>
+<blockquote>
+<p><code>&lt;ul&gt;<br>
+&nbsp; &lt;logic:iterate name="user" property=&quot;subscriptions&quot; id="subscription"&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;bean:write name="subscription" property="host" filter=&quot;true&quot; /&gt;<br>
+&nbsp;&nbsp;&nbsp; &lt;/li&gt;<br>
+&nbsp; &lt;/logic:iterate&gt;<br>
+&lt;/ul&gt;</code></p>
+<p><i>This is another good example of how Struts works with the standard JSP tags, like bean. The filter option says&nbsp; to use convert HTML commands to their character entity. So a &lt; would be output in the HTML as &amp;lt;.</i></p>
+</blockquote>
+<p>In registration.jsp, iterate is used to create a menu of subscriptions, each
+linked with an edit and delete action.</p>
+<blockquote>
+  <p><code>&lt;logic:iterate id="subscription" name="user" property="subscriptions"><br>
+  &lt;tr><br>
+    &lt;td align="left"><br>
+      &lt;bean:write name="subscription" property="host" filter="true"/><br>
+    &lt;/td><br>
+    &lt;td align="left"><br>
+      &lt;bean:write name="subscription" property="username" filter="true"/><br>
+    &lt;/td><br>
+    &lt;td align="center"><br>
+      &lt;bean:write name="subscription" property="type" filter="true"/><br>
+    &lt;/td><br>
+    &lt;td align="center"><br>
+      &lt;bean:write name="subscription" property="autoConnect"/><br>
+    &lt;/td><br>
+    &lt;td align="center"><br>
+      &lt;app:linkSubscription page="/editSubscription.do?action=Delete"><br>
+        &lt;bean:message key="registration.deleteSubscription"/><br>
+      &lt;/app:linkSubscription><br>
+      &lt;app:linkSubscription page="/editSubscription.do?action=Edit"><br>
+        &lt;bean:message key="registration.editSubscription"/><br>
+      &lt;/app:linkSubscription><br>
+    &lt;/td><br>
+  &lt;/tr><br>
+  &lt;/logic:iterate&gt;</code></p>
+<p><i>The collection in an iterate tag can be any of the following: an array of objects, an Iterator, a Collection (which includes Lists, Sets and Vectors), or a Map (which includes Hashtables) whose elements will be iterated over.&nbsp;</i></p>
+</blockquote>
+<p>You'll note that the hyperlinks to the edit and delete action for each
+subscription are written with another custom tag, app:linkSubscription. Writing a
+hyperlink to an action is not difficult, but it can be ugly, and makes an excellent
+case for encapsulation.&nbsp;If you trace through the app.tld, you will find that the source code for the
+linkSubscription tag lives in (<i>come on, take a guess</i>) LinkSubscriptionTag.java.</p>
+<h4><font face="Arial"><a name="LinkSubscriptionTag.java">LinkSubscriptionTag.java</a></font></h4>
+<p>The Example application uses a subscription's host name (e.g. yahoo.com) as a primary key, which means you can only have one subscription for each host. It also means that to edit a subscription, all you need to know is the user and host. In fact, the
+editSubscription action is designed to create, edit, or delete a subscription if provided a user and host names in the request. The goal of LinkSubscriptionTag is then to output a block like:</p>
+<blockquote>
+<p><font size="1"><code>      &lt;A&nbsp;&nbsp;&nbsp; HREF=[path]editSubscription.do?action=[action]&amp;username=[user]&amp;host=[host]&quot;&gt;[action]<br>
+&lt;/A&gt;</code></font></p>
+</blockquote>
+<p>based on input block like:</p>
+<blockquote>
+  <p><font size="2"><code>     &lt;app:linkSubscription&nbsp;<br>
+  &nbsp; page=&quot;/editSubscription.do?action=Delete&quot;&gt;Delete<br>
+  &lt;/app:linkSubscription&gt;</code></font></p>
+</blockquote>
+<p>To reduce overhead, LinkSubscriptionTag uses &quot;subscription&quot; as the default name (which the iterator refers to as &quot;ID&quot;), so that can be omitted from the tag properties. The &quot;action&quot; portion of&nbsp; the will differ, and so that is given as
+the page property to the tag</p>
+<p>Here are a few annotated highlights from LinkSubscriptionTag.java:</p>
+<ol>
+  <li><i>Create a string buffer, and ask the request for the relative path to the application&nbsp;</i><br>
+    <code>StringBuffer url = new StringBuffer(request.getContextPath());</code></li>
+  <li><i>Snag a reference to the subscription bean (for this iteration)<br>
+    </i><code>subscription = (Subscription) pageContext.findAttribute(name);</code></li>
+  <li><i>Append the username and host from the bean to the path request.<br>
+    </i><code>url.append(&quot;&amp;username=&quot;); url.append(BeanUtils.filter(subscription.getUser().getUsername()));<br>
+    url.append(&quot;&amp;host=");&nbsp;<br>
+    url.append(BeanUtils.filter(subscription.getHost()));</code></li>
+</ol>
+<p>These are the essentials, but be sure to see the full source in LinkSubscriptionTag.java for the rest of the error and logic checking that a working application needs to succeed.&nbsp;</p>
+<p>Meanwhile, back on registration.jsp, there is one more link on the page. This uses yet another custom tag, the app:linkUser tag.</p>
+<blockquote>
+  <p><code>&lt;app:linkUser page="/editSubscription.do?action=Create"><br>
+  &nbsp; &lt;bean:message key="registration.addSubscription"/><br>
+  &lt;/app:linkUser></code></p>
+</blockquote>
+<p>By this time, you must be ready to flip directly to LinkUserTag.java with nary a glance at the configuration file ...</p>
+<h4><font face="Arial"><a name="LinkUserTag.java">LinkUserTag.java</a></font></h4>
+<p>Since they solve the same general problem, LinkUserTag and LinkSubscriptionTag are quite a bit a like, except that LinkUserTag grabs the user bean from the session context, instead of a subscription bean from the iteration. Like the LinkSubscriptionTag, the name for the user bean (e.g.
+&quot;user&quot;) is defaulted,
+and can be omitted from the tag; all that's needed is the page property -- the rest is automatic!</p>
+<blockquote>
+  <p><font size="2">&lt;app:linkUser page="/editSubscription.do?action=Create"><br>
+  &nbsp; &lt;bean:message key="registration.addSubscription"/><br>
+  &lt;/app:linkUser></font></p>
+</blockquote>
+<p>When rendered, this displays a HTML hypertext link like:</p>
+<blockquote>
+  <p><font size="2"><code>&lt;a href=&quot;/struts-example/editSubscription.do?action=Create&amp;amp;username=user"><br>
+  &nbsp; Add<br>
+  &lt;/a></code></font></p>
+<p><i>Note that anchor links with ampersands should use the character entity &amp;amp; as the LinkUserTag has done here (<a href="http://www.w3.org/TR/html401/appendix/notes.html#h-B.2.2">http://www.w3.org/TR/html401/appendix/notes.html#h-B.2.2</a>).&nbsp;</i></p>
+</blockquote>
+<p>Let's follow that &quot;Add&quot;&nbsp; link now and see what's up with the editSubcription action anyway.&nbsp;</p>
+<h4><a name="EditSubscriptionAction.java"><font face="Arial">EditSubscriptionAction.java</font></a></h4>
+<p>Predictably, we find a some now-familiar mappings in struts-config.xml&nbsp;</p>
+<blockquote>
+  <p>    <code>    &lt;!-- Subscription form bean --><br>
+    &lt;form-bean&nbsp;<br>
+  &nbsp; name=&quot;subscriptionForm&quot;<br>
+  &nbsp; type=&quot;org.apache.struts.webapp.example.SubscriptionForm&quot;<br>
+  /&gt;</code></p>
+  <p>   <code>   &lt;!-- Edit mail subscription --><br>
+    &lt;action    path="/editSubscription"<br>
+  &nbsp; type=&quot;org.apache.struts.webapp.example.EditSubscriptionAction&quot;<br>
+  &nbsp; name=&quot;subscriptionForm&quot;<br>
+  &nbsp; scope="request"<br>
+  &nbsp; validate=&quot;false&quot;<br>
+  &nbsp;&gt;<br>
+  &nbsp; &lt;forward name="failure"              path="/mainMenu.jsp"/><br>
+  &nbsp; &lt;forward name="success"              path="/subscription.jsp"/><br>
+    &lt;/action></code></p>
+  <p><i>When we've introduced these type of mappings before, and mentioned that the struts-config.xml was parsed when the ActionServlet was initialized. But we should&nbsp; make it clear that when the Struts digester parsed this file, it actually created
+  standard Java objects, linked as properties to the controller. This means you don't have to edit Java source files just to add a bunch of &quot;new&quot; statements. (How cool is that?)</i></p>
+</blockquote>
+<p>Following what was specified by struts-config.xml, the controller makes sure that a subscriptionForm bean exists, along with the SubscriptionAction object, and then calls the action object's perform method. The perform method first checks to see that the user is logged-in. If not, control is forwarded to
+the login action. EditSubscriptionAction.perform then either creates a new subscription object (if the task is Create), or searches the user's subscription hashtable for a matching hostname (if&nbsp; the task is Edit).&nbsp;</p>
+<p> Finally, EditSubscriptionAction conforms the ActionForm bean with the database bean. There may be several subscriptions in the database, but in EditSubscriptionAction we expose the one selected (or just created) for this request to use. Once the
+Action form (called &quot;subform&quot; in the code)&nbsp; is created and populated from the database, the bean's action is set to either Create or Edit, and control is forwarded to our &quot;success&quot; form, subscription.jsp .&nbsp;</p>
+<blockquote>
+<p> <i>Note that the servlet only creates one object for each action. Each request is handled as a separate thread, and passed to the single action object instance. This means your action objects must be multi-thread safe.</i></p>
+</blockquote>
+<p> But before turning to our final JSP, a word about our database model ...</p>
+<h4><font face="Arial"><a name="User.java">User.java</a> and <a name="Subscription.java">Subscription.java</a></font></h4>
+<p>If you're used to working with relational databases, the links between the user and subscription objects may be confusing. A conventional relational database would create two distinct tables, one for the users and another for the subscriptions, and
+link them together with a user ID. The Example application implements a different model, a hierarchical database. Here a &quot;table&quot; of subscriptions is stored within each user object, something like the way a filing system stores documents within
+folders.&nbsp;</p>
+<p>In addition to the usual getters and setters, the user object also has two methods for working with subscription objects. findSubscription takes a hostname and returns the subscription object for that host. getSubscriptions returns an array of all the
+subscriptions for the user (ready-made for the iterate tag!). Besides the fields needed to manage the SubscriptionForm data, the object also maintains a runtime link to its user object.</p>
+<p>To create a new subscription, EditSubscriptionAction.java simply creates a new subscription object, and sets its user to the object found in the request, and then forwards control to its input form, subscription.jsp.&nbsp;</p>
+<h3><font face="Arial"><a name="subcription.jsp">subscription.jsp</a></font></h3>
+Saving the best for last, subscription.jsp demonstrates use of some interesting Struts custom form tags,&nbsp; html:options and html:checkbox.&nbsp;
+<p>In registration.jsp, the Struts iteration tag was used to write a list of subscriptions. Another place where iterations and collections are handy is the option list for a HTML select tag. Since this is such a common situation, Struts offers a
+html:options (plural) tag can take an array of objects as a parameter. The tag then iterates over the members of the array (beans) to place each one inside an standard option tag. So given a block like</p>
+<blockquote>
+  <p><code>      &lt;html:select property="type"><br>
+        &lt;html:options<br>
+  &nbsp;collection=&quot;serverTypes&quot;<br>
+  &nbsp;property="value"<br>
+  &nbsp;labelProperty=&quot;label&quot;<br>
+  /&gt;<br>
+      &lt;/html:select&gt;</code></p>
+</blockquote>
+<p>Struts outputs a block like</p>
+<blockquote>
+  <p><code>      &lt;select name="type"><br>
+        &lt;option value="imap" selected>IMAP Protocol&lt;/option><br>
+  &lt;option value="pop3">POP3 Protocol&lt;/option><br>
+      &lt;/select></code></p>
+</blockquote>
+<p> Here, one collection contained both the labels and the values, from properties of the same name. Options can also use a second array&nbsp; for the labels, if they do not match the values. Options can use a Collection, Iterator, or Map for the source of
+the list.<p>For demonstrations purposes, the serverTypes array is created at the top of this page. Usually, the html:options tag would be used to list valid items from a database maintained elsewhere. For example, if the application needed you to select a
+default subscription, a form might list the subscriptions in an options tag.&nbsp;
+<blockquote>
+<p>
+<i>The LabelValueBean used to create the demonstration array is also a good example of simple but useful bean object.</i>
+</blockquote>
+<p>A particularly tricky HTML control is the checkbox. A problem with a checkbox is that it is only sent in the request if it is checked. If it is not checked, it is not sent (i.e. null). This can be problematic when trying to validate the form's data
+after it has been translated to a bean. The autoconnect property for a subscription demonstrates how to handle validation of a checkbox.</p>
+<h4><font face="Arial"><a name="SubscriptionForm.java">SubscriptionForm.java&nbsp;</a></font></h4>
+<p>Struts validation is handled by the reset and validate methods of the ActionForm bean. When creating your own form beans, you should subclass ActionForm, add your own fields and their getters/setters, and implement the reset and validate methods.&nbsp;</p>
+<p>Struts calls reset before populating the form, and calls validate after populating it but before the perform method of the action. Reset should assign default values to each of your form fields, usually null. But in the case of checkboxes, the default
+value should usually be false instead of null.&nbsp;</p>
+<blockquote>
+  <p><i>For more examples of validating forms, take another look at LoginForm.java and RegistrationForm.java.</i></p>
+</blockquote>
+<p>Back in subscription.jsp, we have one more block to cover. Although the same basic form can be used to created, edit, or delete a subscription, people might expect the buttons to be labeled differently in each case. subscription.jsp accommodates by
+using a logic tag to output a different set of buttons for each case. This doesn't really change the way subscription.jsp works, but it does make things less confusing for the user.</p>
+<blockquote>
+  <p><code>      &lt;logic:equal&nbsp;<br>
+  &nbsp;name=&quot;subscriptionForm&quot;<br>
+  &nbsp;property="action"<br>
+  &nbsp;scope="request"<br>
+  &nbsp;value="Create"><br>
+  &nbsp;&lt;html:submit&gt;<br>
+  &nbsp;&nbsp; <b>&lt;bean:message key="button.save"/><br>
+  </b>&nbsp;&lt;/html:submit><br>
+      &lt;/logic:equal></code></p>
+</blockquote>
+<p>In the case of a request to delete a subscription, the submit button is labeled &quot;Confirm&quot;, since this view is meant to give the user a last chance to cancel, before sending that task along to SaveSubscriptionAction.java.</p>
+<p>The actual action property is placed into the form as a hidden field, and SaveSubscriptionAction checks that property to execute the appropriate task.</p>
+  <h4>
+<font face="Arial"><a name="SaveSubscriptionAction.java">
+SaveSubscriptionAction.java</a></font></h4>
+<p>Our final stop has the job of finishing what EditSubscriptionAction.java and subscription.jsp started. After the usual logic and error checking, SaveSubscriptionAction either deletes or updates the subscription object being handled by this request,
+and cleans up the bean, just to be tidy. By now, you should be very comfortable reading through the source on your own, to pickup the finer points.<p>This concludes our tour. To review, you may wish to trace the path a new user takes when they register with the application for the first
+time&nbsp;You should also read over each of the .java and JSP files carefully, since we only covered the high points here.
+<h3>
+<font face="Arial"><a name="Summary">Summary</a></font></h3>
+<ul>
+  <li>Struts uses a single controller servlet to route HTTP requests.&nbsp;</li>
+  <li>The requests are routed to action objects according to path (or URI).&nbsp;</li>
+  <li>Each request is handled as a separate thread</li>
+  <li>There is only one object for each action (URI), so your action objects must be multi-thread safe.</li>
+  <li>The configuration of action objects are loaded from a XML resource file, rather than hardcoded.</li>
+  <li>Action objects can respond to the request, or ask the controller to forward the request to another object or to another page, such as an input form.&nbsp;</li>
+  <li>A library of custom tags works with the rest of the framework to enhance use of JavaServer Pages.</li>
+  <li>The Struts form tag can work closely with an action objects via a Struts ActionFormBean to retain the state of a data-entry form, and validate the data entered.</li>
+  <li>ActionForm beans can be automatically created by the JSP form or controller servlet.&nbsp;</li>
+  <li>Struts supports a message resource for loading constants strings. Alternate message resources can be provided to internationalize an application.</li>
+</ul>
+<p>-- Ted Husted, 25 December 2000 &lt; <a href="mailto:support@husted.com">support@husted.com</a>
+&gt;.</p>
+<hr>
+</blockquote>
+</body>
+
+</html>

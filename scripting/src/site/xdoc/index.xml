@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document>
+  <properties>
+    <title>Welcome</title>
+  </properties>
+
+  <body>
+    <section name="Welcome to Struts Scripting">
+    <a name="overview"/>
+      <p>This component allows Struts Actions to be written in the scripting 
+      language of one's choice rather than as Java classes.  It uses the 
+      <a href="http://jakarta.apache.org/bsf">Bean Scripting Framework</a> 
+      to allow scripts to be written in any language BSF supports like Perl, 
+      Python, Ruby, JavaScript, Groovy, and even VBScript.  
+        </p>
+      <p>
+        Struts Scripting allows an application to be developed rapidly with
+        the quick development cycle (edit file -> refresh browser) that one 
+        would expect in a scripting environment.  Furthermore, it enables other
+        non-Java trained members of a development group, such as web designers who
+        may have a scripting background, to be more involved, leaving the Java
+        developers to create the reusable services the Struts actions will interact
+        with.  Finally, when used with Java-like languages such as <a
+        href="http://groovy.codehaus.org">Groovy</a>, applications can quickly be
+        stood up, then later the Struts action scripts can be migrated to Java for
+        better performance.
+      </p>  
+      
+      <subsection name="Features">
+      <a name="features"/>
+            <ul>
+              <li>Implement Actions with JavaScript, Groovy, etc.</li>
+              <li>Supports all BSF languages</li>
+              <li>Scripts cached in memory on first use</li>
+              <li>Ability to pass parameters to script through Struts config</li> 
+            </ul>
+      </subsection>
+      <subsection name="Documentation">
+        <a name="documentation"/>
+        <ul>
+            <li><a href="user-guide.html">User Guide</a> - Covers installation and usage</li>
+            <li><a href="source-guide.html">Source Code Guide</a> - Covers the source layout and how to build Struts Scripting</li>
+            <li><a href="apidocs/index.html">Javadocs</a> - Includes 
+                <a href="apidocs/org/apache/struts/scripting/StrutsInfo.html"><code>struts</code></a> variable and 
+                <a href="apidocs/org/apache/struts/scripting/BSFManagerFilter.html">Filter</a> API's.</li>
+            <li><a href="http://svn.apache.org/viewvc/struts/action/trunk/apps/scripting-mailreader/src/main/">Struts 
+                Mailreader</a> - A rewrite of the Struts Mailreader example application using Struts Scripting 
+                and <a href="http://groovy.codehaus.org">Groovy</a></li>
+        </ul>        
+      </subsection>   
+     </section> 
+   </body>
+
+</document>

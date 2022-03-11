@@ -1,0 +1,2463 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="generator"
+          content="HTML Tidy for Windows (vers 1st July 2003), see www.w3.org"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=us-ascii"/>
+    <link rel="stylesheet" type="text/css" href="base.css"/>
+
+    <title>A Walking Tour of the Struts MailReader Demonstration
+        Application</title>
+</head>
+
+<body>
+<blockquote>
+<h2>A Walking Tour of the Struts MailReader Demonstration Application</h2>
+
+<p>
+    <i>
+        This article is meant to introduce a new user to Struts by "walking
+        through" an
+        application.
+        See the <a href="http://struts.apache.org/">Struts Users Guide and
+        Strut's API</a>
+        for more documentation.
+    </i>
+</p>
+
+<p>
+    <i>
+        The MailReader application is based on the 1.3.0 build of Struts.
+        To follow along, you should install the MailReader application on your
+        own
+        development workstation (e.g. localhost).
+    </i>
+</p>
+
+<p>
+    <i>
+        This article assumes the reader has a basic understanding of the Java
+        language,
+        JavaBeans, web applications, and JavaServer Pages. For background on
+        these
+        technologies, see the
+        <a href="http://struts.apache.org/struts-action/userGuide/preface.html">
+            Preface to the Struts User Guide</a>.
+    </i>
+</p>
+
+<hr/>
+
+<ul>
+    <li>
+        <a href="#index.jsp">index.jsp</a>
+
+        <ul>
+            <li><a href="#web.xml">web.xml and
+                ApplicationResources.properties</a></li>
+
+            <li><a href="#DatabaseServlet.java">DatabaseServlet.java</a></li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="#Logon.jsp">Logon.jsp</a>
+
+        <ul>
+            <li><a href="#struts-config.xml">struts-config.xml</a></li>
+
+            <li><a href="#LogonForm">LogonForm</a></li>
+
+            <li><a href="#BaseForm">BaseForm</a></li>
+
+            <li><a href="#LogonAction.java">LogonAction.java</a></li>
+
+            <li><a href="#struts-config.xml/2">struts-config.xml 2</a></li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="#MainMenu.jsp">MainMenu.jsp</a>
+
+        <ul>
+            <li><a href=""></a></li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="#MainMenu.jsp">EditRegistration.do</a>
+    <ul>
+        <li><a href="#RegistrationAction.java">RegistrationAction.java</a>
+        </li>
+    </ul>
+    <li>
+        <a href="#Registeration.jsp">Registration.jsp</a>
+
+        <ul>
+            <li><a href="#RegistrationForm">RegistrationForm</a></li>
+
+            <li><a href="#RegistrationAction.java">RegistrationAction.java</a>
+            </li>
+
+            <li><a href="#Edit-SubscriptionAction.java">SubscriptionAction.java</a>
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <a href="#Subcription.jsp">Subscription.jsp</a>
+
+        <ul>
+            <li><a href="#SubscriptionForm">SubscriptionForm</a></li>
+
+            <li><a href="#Save-SubscriptionAction.java">SubscriptionAction</a>
+            </li>
+        </ul>
+    </li>
+
+    <li><a href="#Summary">Summary</a></li>
+</ul>
+<hr/>
+
+<p>
+    The Struts App subproject includes four applications: struts-blank,
+    struts-cookbook, struts-examples, and
+    struts-mailreader.
+    This document walks through struts-mailreader, also known as the
+    "MailReader Demonstration Application".
+</p>
+
+<p>
+    The premise of the MailReader is that it is the first iteration of a
+    portal application.
+    This version allows users to register themselves and maintain a set of
+    accounts with various mail servers.
+    If completed, the application would let users read mail from their
+    accounts.
+</p>
+
+<p>
+    The MailReader application demonstrates registering with an application,
+    logging into an application,
+    maintaining a master record, and maintaining child records.
+    This document walks through the constructs needed to do these things,
+    including the server pages, Java classes,
+    and configuration elements.
+</p>
+
+<p>
+    For more about the MailReader, including alternate implementations and a
+    set of formal Use Cases,
+    please visit the <a href="http://strutsuniversity.org/MailReader">
+    Struts University MailReader site</a>.
+</p>
+
+<hr/>
+<blockquote>
+    <p><font class="hint">
+        <strong>JAAS</strong> -
+        Note that for compatibility and ease of deployment, the MailReader
+        uses "application-based" authorization.
+        However, use of the standard Java Authentication and Authorization
+        Service (JAAS) is recommended for most
+        applications.
+        (See the <a
+            href="http://struts.apache.org/struts-action/userGuide/preface.html">
+        Preface to the Struts Action User Guide</a> for more about
+        authentification technologies.)
+    </font></p>
+</blockquote>
+<hr/>
+
+<p>
+    The walkthrough starts with how the initial welcome page is displayed, and
+    then steps through logging in,
+    adding and editing subscriptions, and creating a new registration.
+</p>
+
+<h3><a name="howdy" id="howdy">Howdy</a></h3>
+
+<p>
+    A web application, like any other web site, can specify a list of welcome
+    pages.
+    When you open a web application without specifying a particular page, a
+    welcome page is used by default.
+</p>
+
+<h4><a name="web.xml" id="web.xml">web.xml</a></h4>
+
+<p>
+    When a web application loads,
+    the container reads and parses the "Web Application Deployment
+    Descriptor", or web.xml file.
+    The Struts Action Framework plugs into a web application via a controller
+    servlet.
+    Like any servlet, the Action servlet is deployed via the web.xml.
+</p>
+
+<hr/>
+<h5>web.xml - The Web Application Deployment Descriptor</h5>
+<pre><code>&lt;?xml version="1.0" encoding="ISO-8859-1"?>
+
+    &lt;!DOCTYPE web-app PUBLIC
+    "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+    &lt;web-app>
+    &lt;display-name>Struts MailReader Application&lt;/display-name>
+
+    &lt;!-- Action Servlet Configuration -->
+    &lt;servlet>
+    &lt;servlet-name>action&lt;/servlet-name>
+    &lt;servlet-class>org.apache.struts.action.ActionServlet&lt;/servlet-class>
+    &lt;init-param>
+    &lt;param-name>config&lt;/param-name>
+    &lt;param-value>/WEB-INF/struts-config.xml&lt;/param-value>
+    &lt;/init-param>
+    &lt;load-on-startup>1&lt;/load-on-startup>
+    &lt;/servlet>
+
+    &lt;!-- Servlet Mapping -->
+    &lt;servlet-mapping>
+    &lt;servlet-name>action&lt;/servlet-name>
+    &lt;url-pattern>*.do&lt;/url-pattern>
+    &lt;/servlet-mapping>
+
+    &lt;!-- <strong>The Welcome File List</strong> -->
+    &lt;welcome-file-list>
+    &lt;welcome-file>index.jsp&lt;/welcome-file>
+    &lt;/welcome-file-list>
+
+    &lt;!-- The default error page -->
+    &lt;error-page>
+    &lt;exception-type>java.lang.Exception&lt;/exception-type>
+    &lt;location>/Error.jsp&lt;/location>
+    &lt;/error-page>
+
+    &lt;/web-app></code></pre>
+<hr/>
+
+<p>
+    Among other things,
+    the web.xml specifies the "Welcome File List" for an application.
+    When a web address refers to a directory rather than an individual file,
+    the container consults the Welcome File List for the name of a page to
+    open by default.
+</p>
+
+<p>
+    Albeit, most Struts applications do not refer to physical pages,
+    but to "virtual pages" called <i>actions</i>.
+    The actions are listed in a configuration file.
+    Actions contain code that we want to be run before a page is displayed.
+    An accepted practice in the Struts Action community is to never link
+    directly to server pages,
+    but only to Struts actions.
+    By linking to actions, developers can "rewire" an application without
+    editing the server pages.
+</p>
+
+<hr/>
+<h5>Best Practice:</h5>
+<blockquote>
+    <p><font class="hint">"Link actions not pages."</font></p>
+</blockquote>
+<hr/>
+
+<p>
+    Unless you are using Java 1.5, actions cannot be specified as a welcome
+    page.
+    So, in the case of a welcome page,
+    how do we follow the Struts best practice of navigating through actions
+    rather than pages?
+</p>
+
+<p>
+    One solution is to use a server page to "bootstrap" a Struts action.
+    A Java web application recognizes the idea of "forwarding" from one page
+    to another page (or action).
+    We can register the usual "index.jsp" as the welcome page and have it
+    forward to a "Welcome" action.
+</p>
+
+<hr/>
+<h5>MailReader's index.jsp</h5>
+<pre><code>&lt;%@ taglib uri="http://struts.apache.org/tags-logic"
+    prefix="logic" %>
+    &lt;logic:redirect <strong>action="/Welcome"</strong>/></code>
+</pre>
+<hr/>
+
+<p>
+    At the top of the page, we import the "struts-logic" JSP tag library.
+    (For more about the Struts JSP tags, see the <a
+        href="http://struts.apache.org/struts-taglib/">Struts Taglib
+    website</a>.)
+    The page itself consists of a single tag that redirects to the "Welcome"
+    action.
+    The tag inserts the actual web address for the redirect when the page is
+    rendered.
+    But, where does the tag find the actual address to insert?
+</p>
+
+<h4><a name="welcome.do" id="welcome.do">Welcome.do</a></h4>
+
+<p>
+    The list of actions, along with other components,
+    are registered through one or more Struts Action configuration files.
+    The configuration files are written as XML documents and processed when
+    the application starts.
+    If we just wanted to forward to the welcome page, we could use a simple
+    configuration element.
+</p>
+<hr/>
+<h5>A simple "forward thru" action element</h5>
+<pre><code>        &lt;!-- Display welcome page -->
+    &lt;action
+    path="/Welcome"
+    <strong>forward="/Welcome.jsp" /></strong></code></pre>
+<hr/>
+
+<p>
+    If someone asked for the Welcome action ("/Welcome.do"), the welcome.jsp
+    page would be displayed in return.
+</p>
+
+<p>
+    But if we peek at the configuration file for the MailReader,
+    we find a slightly more complicated XML element for the Welcome action.
+</p>
+<hr/>
+<h5>The Welcome action element</h5>
+<pre><code>        &lt;!-- Display welcome page -->
+    &lt;action
+    path="/Welcome"
+    <strong>
+        type="org.apache.struts.apps.mailreader.actions.WelcomeAction"</strong>
+    >
+    &lt;forward
+    name="Success"
+    path="/Welcome.jsp" />
+    &lt;/action></code></pre>
+<hr/>
+
+<p>
+    Here, the <strong>WelcomeAction</strong> Java class executes whenever
+    someone asks for the Welcome action.
+    As it completes, the Action class can select which "result" is displayed.
+    One available result is "Success".
+    Another available result, defined at a global scope, is "Failure".
+    But the Action class doesn't need to know the path to the result, or even
+    if they are server pages.
+    The Action class can select the appropriate result just by using names
+    like "Success" or "Failure".
+</p>
+
+<h4><a name="welcomeaction" id="welcomeaction">WelcomeAction</a></h4>
+
+<p>
+    OK ... but why would a WelcomeAction want to choose between Success and
+    Failure?
+</p>
+
+<p>
+    The MailReader application retains a list of users along with their email
+    accounts.
+    The application stores this information in a database.
+    If the application can't connect to the database, the application can't do
+    its job.
+    So before displaying the welcome page, the class checks to see if the
+    database is available.
+    The MailReader is also an internationalized application.
+    So, the WelcomeAction checks to see if the message resources are available
+    too.
+    If both resources are available, the class forwards to the "Success" path.
+    Otherwise, it forwards to the "Failure" path so that the appropriate error
+    messages can be displayed.
+</p>
+
+<h4><a name="global-forwards" id="global-forwards">global-forwards</a></h4>
+
+<hr/>
+<h5>MailReader's global-forward element</h5>
+<pre><code>    &lt;!-- ==== Global Forward Definitions ==== -->
+    <strong>&lt;global-forwards></strong>
+    &lt;forward
+    name="Logoff"
+    path="/Logoff.do"/>
+    &lt;forward
+    name="Logon"
+    path="/Logon.do"/>
+    &lt;forward
+    name="Failure"
+    path="/Error.jsp" />
+    &lt;/global-forwards></code></pre>
+<hr/>
+
+<p>
+    As mentioned, "Failure" is defined in a global scope.
+    Other actions may have trouble connecting to the database later, or other
+    unexpected errors may occur.
+    The MailReader defines the "Failure" result as a Global Forward, so that
+    any action can use it.
+</p>
+
+<h4><a name="MemoryDatabasePlugIn.java" id="MemoryDatabasePlugIn.java">MemoryDatabasePlugIn.java</a>
+</h4>
+
+<p>
+    The database is exposed as an object stored in application scope.
+    The database object is based on an interface.
+    Different implementations of the database could be loaded without changing
+    the rest of the application.
+    But how is the database object loaded in the first place?
+</p>
+
+<p>
+    One section of the Struts configuration is devoted to "PlugIns".
+    When a Struts application loads, it also loads whatever PlugIns are
+    specified in its configuration.
+    The PlugIn interface is quite simple.
+</p>
+
+<hr/>
+<h5>org.apache.struts.action.PlugIn</h5>
+<pre><code>public interface PlugIn {
+
+    void <strong>destroy</strong>();
+
+    void <strong>init</strong>(ActionServlet servlet, ModuleConfig config)
+    throws ServletException;
+    }</code></pre>
+<hr/>
+
+<p>
+    You can use PlugIns to do anything that might need to be done when your
+    application loads.
+    The PlugIn is also notified when the application shuts down, so you can
+    release any allocated resources.
+</p>
+<hr/>
+<h5>The Database PlugIn element</h5>
+<pre><code>    &lt;plug-in
+    className="org.apache.struts.apps.mailreader.plugin.<strong>
+    MemoryDatabasePlugIn</strong>">
+    &lt;set-property
+    property="pathname"
+    value="/WEB-INF/database.xml"/>
+    &lt;/plug-in>
+</code></pre>
+<hr/>
+
+<p>
+    By default, the MailReader application loads a "MemoryDatabase"
+    implementation of the UserDatabase.
+    MemoryDatabase stores the database content as a XML document,
+    which is parsed and loaded as a set of nested hashtables.
+    The outer table is the list of user objects, each of which has its own
+    inner hashtable of subscriptions.
+    When you register, a user object is stored in this hashtable ...
+    and when you login, the user object is stored within the session context.
+</p>
+
+<p>
+    The database comes seeded with a sample user.
+    If you check the database.xml file under WEB-INF, you'll see the sample
+    user described in XML.
+</p>
+
+<hr/>
+<h5>The "seed" user element from the MailReader database.xml</h5>
+<pre><code>  &lt;user username="user" fromAddress="John.User@somewhere.com"
+    fullName="John Q. User" password="pass">
+    &lt;subscription host="mail.hotmail.com" autoConnect="false"
+    password="bar" type="pop3" username="user1234">
+    &lt;/subscription>
+    &lt;subscription host="mail.yahoo.com" autoConnect="false" password="foo"
+    type="imap" username="jquser">
+    &lt;/subscription>
+    &lt;/user></code>
+</pre>
+<hr/>
+
+<p>
+    The "seed" user element creates a registration record for "John Q. User",
+    with the detail for his hotmail account (or "subscription").
+</p>
+
+<h4><a name="MessageResources.properties" id="MessageResources.properties">MessageResources.properties</a>
+</h4>
+
+<p>
+    Another section of the Struts configuration loads the message resources
+    for the application.
+    If you change a message in the resource, and then reload the application,
+    the change will appear throughout the application.
+    If you provide message resources for additional locales, you can
+    internationalize your application.
+</p>
+
+<hr/>
+<h5>The MailReader message-resources element</h5>
+<pre><code>    &lt;message-resources
+    parameter="org.apache.struts.apps.mailreader.resources.ApplicationResources"/></code>
+</pre>
+<hr/>
+
+<p>
+    The "ApplicationResources" parameter refers to a standard properties text
+    file.
+    The resource might be embedded in a JAR or kept under the WEB-INF/classes
+    folder.
+    MailReader uses the classes folder, which means its working copy of the
+    ApplicationResources can be found at
+    <code>
+        ./WEB-INF/classes/org/apache./struts/apps/mailreader/resources/ApplicationResources"</code>
+</p>
+
+<p>
+    The first time a page needs one of the resources, Struts Action loads and
+    caches the properties file,
+    so that the framework does not need to read the text file a second time.
+</p>
+<hr/>
+<h5>ApplicationResource entries used by the Welcome page</h5>
+<pre><code><strong>index.heading=</strong>MailReader Demonstration Application
+    Options
+    <strong>index.logon=</strong>Log on to the MailReader Demonstration
+    Application
+    <strong>index.registration=</strong>Register with the MailReader
+    Demonstration Application
+    <strong>index.title=</strong>MailReader Demonstration Application
+    <strong>index.tour=</strong>A Walking Tour of the MailReader Demonstration
+    Application</code></pre>
+<hr/>
+
+<p>
+    The MailReader application uses a second set of message resources for
+    non-text elements.
+</p>
+
+<hr/>
+<h5>The MailReader <em>alternate</em> message-resources element</h5>
+<pre><code>    &lt;message-resources
+    parameter="org.apache.struts.apps.mailreader.resources.AlternateApplicationResources"
+    key="alternate"/></code></pre>
+<hr/>
+
+<p>
+    The "key" element can be used to access this resource bundle rather than
+    the default bundle.
+</p>
+
+<h3><a name="welcome.jsp" id="welcome.jsp">Welcome page</a></h3>
+
+<p>
+    After confirming that the necessary resources exist, the WelcomeAction
+    forwards to the Welcome page.
+</p>
+<hr/>
+<h5>Welcome.jsp</h5>
+<pre><code>&lt;%@ page contentType="text/html;charset=UTF-8" language="java" %&gt;
+    &lt;%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %&gt;
+    &lt;%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %&gt;
+
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;title&gt;&lt;<strong>bean:message</strong> key="index.title"/&gt;&lt;/title&gt;
+    &lt;link rel="stylesheet" type="text/css" href="base.css" /&gt;
+    &lt;/head&gt;
+
+    &lt;h3&gt;&lt;bean:message key="index.heading"/&gt;&lt;/h3&gt;
+    &lt;ul&gt;
+    &lt;li&gt;&lt;<strong>html:link</strong> action="/EditRegistration"&gt;
+    &lt;bean:message key="index.registration"/&gt;&lt;/html:link&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;html:link action="/Logon"&gt;&lt;bean:message
+    key="index.logon"/&gt;&lt;/html:link&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Change Language&lt;/h3&gt;
+    &lt;ul&gt;
+    &lt;li&gt;&lt;html:link action="/Locale?language=en"&gt;English&lt;/html:link&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;html:link action="/Locale?language=ja"
+    useLocalEncoding="true"&gt;Japanese&lt;/html:link&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;html:link action="/Locale?language=ru"
+    useLocalEncoding="true"&gt;Russian&lt;/html:link&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;hr /&gt;
+
+    &lt;p&gt;&lt;<strong>html:img</strong> bundle="alternate"
+    pageKey="struts.logo.path" altKey="struts.logo.alt"/&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;html:link action="/Tour"&gt;&lt;bean:message
+    key="index.tour"/&gt;&lt;/html:link&gt;&lt;/p&gt;
+
+    &lt;/body&gt;
+    &lt;/html&gt;</code></pre>
+<hr/>
+
+<p>
+    At the top of the Welcome page, there are several directives that load the
+    Struts tag libraries.
+    These are just the usual red tape that goes with any JSP file.
+    The rest of the page utilizes three Struts JSP tags: "bean:message",
+    "html:link", and "html:img".
+</p>
+
+<p>
+    The <strong>bean:message</strong> tag inserts a message from the
+    MessageResources we mentioned in the last section.
+    The MailReader comes with support for three locales: English (the
+    default), Russian, and Japanese.
+    If the Struts Action locale setting is changed for a user,
+    the bean:message tag will render messages from that locale's property
+    bundle instead.
+</p>
+
+<p>
+    The <strong>html:link</strong> tag does double duty.
+    First, you can refer to an action or forward stored in the Struts
+    configuration,
+    and the tag will insert the corresponding path when the page is rendered.
+    This makes it easy to "rewire" an application without touching all the
+    pages.
+    Second, the link tag will "URL encode" the hyperlink to maintain the
+    client session.
+    Your application can maintain client state without requiring cookies.
+</p>
+
+<hr/>
+<h5>Tip:</h5>
+<blockquote>
+    <p><font class="hint">
+        <strong>Cookies</strong> -
+        If you turn cookies off in your browser, and then reload your browser
+        and this page,
+        you will see the links with the Java session id information attached.
+        (If you are using Internet Explorer and try this,
+        be sure you reset cookies for the appropriate security zone,
+        and that you disallow "per-session" cookies.)
+    </font></p>
+</blockquote>
+<hr/>
+
+<p>
+    The <strong>html:img</strong> tag renders an img tag.
+    When necessary, the src URI is encoded as it is with the link tag.
+    In this case, the tag inserts the src path from the "alternate"
+    MessageResource bundle,
+    along with the text for the alt element.
+</p>
+
+<p>
+    In the span of a single request for the Welcome page, Struts has done
+    quite a bit already:
+</p>
+
+<ul>
+    <li>
+        Confirmed that required resources were loaded during initialization.
+    </li>
+
+    <li>
+        Written all the page headings and labels from internationalized
+        message resources.
+    </li>
+
+    <li>
+        Automatically URL-encoded paths as needed.
+    </li>
+</ul>
+
+<p>
+    When rendered, the Welcome page lists two menu options:
+    one to register with the application and one to login in (if you have
+    already registered).
+    Let's follow the Login link first.
+</p>
+
+<h3><a name="Logon.jsp" id="Logon.jsp">Logon Page</a></h3>
+
+<p>
+    If you choose the Logon link, and all goes well, the Logon action forwards
+    control to the Logon.jsp page.
+    The Logon page displays a form that accepts a username and password.
+    You can use the default username and password to logon (user and pass) if
+    you like.
+</p>
+
+<p>
+    Note that both the username and password are case sensitive.
+    Better yet, try omitting or misspelling the username and password in
+    various combinations to
+    see how the application reacts.
+</p>
+
+<hr/>
+<h5>Login.jsp</h5>
+<pre><code>&lt;%@ page contentType="text/html;charset=UTF-8" language="java" %&gt;
+    &lt;%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %&gt;
+    &lt;%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %&gt;
+
+    &lt;html:xhtml/&gt;
+    &lt;html&gt;
+    &lt;head&gt;
+    &lt;title&gt;&lt;bean:message key="logon.title"/&gt;&lt;/title&gt;
+    &lt;/head&gt;
+
+    &lt;<strong>html:errors</strong>/&gt;
+
+    &lt;<strong>html:form</strong> action="/SubmitLogon" focus="username"
+    onsubmit="return validateLogonForm(this);"&gt;
+    &lt;table border="0" width="100%"&gt;
+
+    &lt;tr&gt;
+    &lt;th align="right"&gt;
+    &lt;bean:message key="prompt.username"/&gt;:
+    &lt;/th&gt;
+    &lt;td align="left"&gt;
+    &lt;<strong>html:text</strong> property="username" size="16"
+    maxlength="18"/&gt;
+    &lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+    &lt;th align="right"&gt;
+    &lt;bean:message key="prompt.password" bundle="alternate"/&gt;:
+    &lt;/th&gt;
+    &lt;td align="left"&gt;
+    &lt;<strong>html:password</strong> property="password" size="16"
+    maxlength="18"
+    redisplay="false"/&gt;
+    &lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;tr&gt;
+    &lt;td align="right"&gt;
+    &lt;<strong>html:submit</strong> property="Submit" value="Submit"/&gt;
+    &lt;/td&gt;
+    &lt;td align="left"&gt;
+    &lt;<strong>html:reset</strong>/&gt;
+    &lt;/td&gt;
+    &lt;/tr&gt;
+
+    &lt;/table&gt;
+
+    &lt;/html:form&gt;
+
+    &lt;<strong>html:javascript</strong> formName="LogonForm"
+    dynamicJavascript="true"
+    staticJavascript="false"/&gt;
+    &lt;script language="Javascript1.1" src="StaticJavascript.jsp"&gt;&lt;/script&gt;
+
+    &lt;jsp:include page="Footer.jsp" /&gt;
+    &lt;/body&gt;
+    &lt;/html&gt;</code>
+</pre>
+<hr/>
+
+<p>
+    We saw some of these tags on the Welcome page. Let's focus on the new
+    tags.
+</p>
+
+<p>
+    The first new tag on the logon page is <strong>html:errors</strong>.
+    The credentials you entered are validated and processed by a "LogonAction"
+    class.
+    If the credentials are incorrect,
+    the LogonAction posts an appropriate error message and forwards back to
+    the input page.
+    If the html:errors tag sees that one or more messages were posted, the tag
+    ouputs the messages to the page.
+    The text of the messages can be specified in the MessageResource bundle,
+    making them easy to localize.
+</p>
+
+<p>
+    The second new tag is <strong>html:form</strong>.
+    This tag renders a html form tag.
+    The "action" attribute tells the tag to use "SubmitLogon.do" for the
+    form's action.
+    The "focus" attribute tells the tag to generate a little Javascript into
+    the form that
+    sets its focus to the "username" field.
+    The "onsubmit" attribute tells the form to run a Javascript when the form
+    is submitted.
+    (Just like the corresponding attribute on the standard form tag.)
+</p>
+
+<p>
+    Within the html:form tag,
+    we see five more new tags: "html:text", "html:password", "html:submit",
+    "html:reset", and "html:javascript".
+</p>
+
+<p>
+    The <strong>html:text</strong> tag renders a "input type=text" tag.
+    The "property" attribute becomes the input tag's "name" attribute.
+</p>
+
+<p>
+    The <strong>html:password</strong> tag renders a "input type=password"
+    tag.
+    The "redisplay" attribute tell the tag not to render the password back
+    into the file, if the submit fails.
+    The <strong>html:submit</strong> and <strong>html:reset</strong> tags
+    render buttons of the corresponding types.
+</p>
+
+<p>
+    Following the form is a <strong>html:javascript</strong> tag.
+    This tag works with the Struts Validator component to generate a
+    JavaScript that can validate input
+    before it is submitted to the LogonAction.
+</p>
+
+<hr/>
+<h5>Tip:</h5>
+<blockquote>
+    <p><font class="hint">
+        Most of these tags have many more options than the ones we use in this
+        application.
+        For the complete documentation for each tag,
+        see the Tag Developer Guides in the Struts Taglib documentation
+        bundle.
+    </font></p>
+</blockquote>
+<hr/>
+
+<p>
+    But, how do these tags know so much?
+    How does the Javascript tag know what scripts to write?
+    How do the text and password tags know what values to redisplay?
+</p>
+
+<p>
+    For the answers, we need to turn back to the Struts Action Framework
+    configuration files,
+    "struts-config.xml" and "validation.xml".
+</p>
+
+<h4><a name="struts-config.xml" id="struts-config.xml">struts-config.xml</a>
+</h4>
+
+<p>
+    The Struts configuration file is parsed by the ActionServlet when the
+    application first load.
+</p>
+
+<h5>web.xml -- Action Servlet Configuration</h5>
+<pre><code>
+    &lt;servlet>
+    &lt;servlet-name>action&lt;/servlet-name>
+    &lt;servlet-class>org.apache.struts.action.ActionServlet&lt;/servlet-class>
+    &lt;init-param>
+    &lt;param-name>config&lt;/param-name>
+    &lt;param-value><strong>/WEB-INF/struts-config.xml</strong>&lt;/param-value>
+    &lt;/init-param>
+    &lt;load-on-startup>1&lt;/load-on-startup>
+    &lt;/servlet>
+</code></pre>
+
+<hr/>
+<h5>The SubmitLogon action element</h5>
+<pre><code>        &lt;!-- Process a user logon -->
+    &lt;action
+    <strong>path="/SubmitLogon"</strong>
+    type="org.apache.struts.apps.mailreader.actions.LogonAction"
+    <strong>name</strong>="LogonForm"
+    <strong>scope</strong>="request"
+    <strong>validate</strong>="request"
+    <strong>input</strong>="Logon">
+    &lt;<strong>exception</strong>
+    key="expired.password"
+    type="org.apache.struts.apps.mailreader.dao.ExpiredPasswordException"
+    path="/ChangePassword.jsp"/>
+    &lt;forward
+    name="Success"
+    path="/MainMenu.do"/>
+    &lt;/action></code></pre>
+<hr/>
+
+<p>
+    We saw the path and type attributes in the Welcome action.
+    Let's look at the new attributes: "name", "scope", "input", and
+    "exception".
+</p>
+
+<h4>The "name" attribute</h4>
+
+<p>
+    The <strong>name</strong> attribute specifies something Struts Action
+    calls an "ActionForm".
+    The ActionForm buffers input from a form and delivers it to an Action
+    class as an object.
+    The ActionForm can also be used to validate input.
+    If validation fails, the tags can rewrite the input values from the
+    ActionForm.
+</p>
+
+<p>
+    The ActionForms are defined in the "form-beans" section of struts-config.
+</p>
+
+<p>
+    ActionForms can be "conventional" or "dynamic".
+    MailReader uses dynamic ActionForms.
+    Rather than cobble up an actual JavaBean class,
+    we specify the properties the ActionForm can accept in the configuration
+    file.
+</p>
+
+<hr/>
+<h5>The form-bean element for LogonForm</h5>
+<pre><code>        &lt;!-- LogonAction form bean -->
+    &lt;form-bean
+    name="LogonForm"
+    <strong>extends="BaseForm"/></strong></code></pre>
+<hr/>
+
+<p>
+    Hmmmm. That doesn't seem to tell us much.
+    The LogonForm "extends" the BaseForm, but doesn't add any attributes.
+    What about the BaseForm element that LogonForm extends?
+</p>
+
+<hr/>
+<h5>BaseForm - An "abstract" form-bean</h5>
+<pre><code>        &lt;!-- BaseAction form bean (abstract) -->
+    &lt;form-bean
+    name="BaseForm"
+    type="org.apache.struts.validator.DynaValidatorForm">
+    <strong>&lt;form-property</strong>
+    name="username"
+    type="java.lang.String"/>
+    &lt;form-property
+    name="password"
+    type="java.lang.String"/>
+    &lt;form-property
+    name="task"
+    type="java.lang.String"
+    initial="Create"/>
+    &lt;/form-bean></code></pre>
+<hr/>
+
+<h5>Note:</h5>
+<blockquote>
+    <p><font class="hint">
+        <strong>Extends</strong> - In the Struts configuration file,
+        we can use the "extends" attribute to adopt default settings from
+        another element.
+        Extends makes using XML elements more like object-orientated
+        programming.
+        You can setup a base element, and then only specify the behavior that
+        changes.
+    </font></p>
+</blockquote>
+<hr/>
+
+<p>
+    Struts creates the ActionForms automatically, regardless of whether the
+    form-bean is conventional or dynamic.
+    The ActionForm lets us specify which properties we want to extract from
+    the incoming request.
+    If a property is not specified by the ActionForm,
+    the value is not automatically transferred from the request, validated,
+    or passed to the Action class.
+</p>
+
+<h4>The "scope" attribute</h4>
+
+<p>
+    The <strong>scope</strong> attribute in the "SubmitLogon" action element
+    tells the controller whether to store the ActionForm in the request,
+    rather than in the user's session.
+</p>
+
+<hr/>
+<h5>Best Practice:</h5>
+<blockquote>
+    <p><font class="hint">
+        Use request scope for single-page forms that contain all the
+        properties needed by the Action.
+        There is usually no need to maintain form input across requests.
+    </font></p>
+</blockquote>
+<hr/>
+
+<h4>The "validate" attribute</h4>
+
+<p>
+    The <strong>validate</strong> attribute controls whether the framework
+    will automatically validate
+    the ActionForm.
+    Conventional ActionForms have a stub "validate" method that you can
+    implement.
+    MailReader uses the Validator framework instead,
+    so the validations are specified in another configuration file.
+</p>
+
+<h4>The "input" attribute</h4>
+
+<p>
+    If validation fails, Struts looks for the forward specified by the
+    <strong>input</strong> attribute.
+    In this case, invoking the global "Logon" forward sends control back to
+    the Logon page.
+</p>
+
+<h4>The "exception" element</h4>
+
+<p>
+    Within the SubmitLogon action element is another new element, <strong>
+    exception</strong>.
+    When a user logons on, it's possible that an "ExpiredPasswordException"
+    will be thrown.
+    Should this happen, Struts will catch the exception and send control to
+    the "ChangePassword" action.
+</p>
+
+<hr/>
+<h5>Change Password screen</h5>
+<blockquote>
+    <p>
+        Your password has expired. Please ask the system administrator to
+        change it. <u>Try Again</u>
+    </p>
+</blockquote>
+<hr/>
+
+<p>
+    OK, it's not the greatest "Change Password" screen -- but, remember, this
+    is still the first iteration!
+</p>
+
+<h4><a name="validations.xml" id="validations.xml">validations.xml</a></h4>
+
+<p>
+    In the Logon page, we mentioned that the html:javascript tag confers with
+    the Struts Validator components.
+    The Validator is configured through another XML document, the <strong>
+    validation.xml</strong>.
+</p>
+
+<hr/>
+<h5>Validator element for LogonForm</h5>
+<pre><code>        &lt;form
+    name="LogonForm">
+
+    &lt;field
+    property="<strong>username</strong>"
+    depends="required">
+    &lt;arg
+    key="prompt.username"/>
+    &lt;/field>
+
+    &lt;field
+    property="<strong>password</strong>"
+    depends="required, minlength,maxlength">
+    &lt;arg
+    key="prompt.password"/>
+    &lt;arg
+    key="${var:minlength}"
+    name="minlength"
+    resource="false"/>
+    &lt;arg
+    key="${var:maxlength}"
+    name="maxlength"
+    resource="false"/>
+
+    &lt;var>
+    &lt;var-name>
+    maxlength
+    &lt;/var-name>
+    &lt;var-value>
+    16
+    &lt;/var-value>
+    &lt;/var>
+    &lt;var>
+    &lt;var-name>
+    minlength
+    &lt;/var-name>
+    &lt;var-value>
+    3
+    &lt;/var-value>
+    &lt;/var>
+    &lt;/field>
+
+    &lt;/form></code></pre>
+<hr/>
+
+<p>
+    The field elements correspond to the ActionForm properties.
+    The <strong>username</strong> field element says it depends on the
+    "required" validator.
+    If the username is blank or absent, validation will fail and an error
+    message is automatically generated.
+</p>
+
+<p>
+    The <strong>password</strong> field (or property) is also required.
+    In addition, it must also pass the "maxlength" and "minlength"
+    validations.
+    Here, the minimum length is three characters and the maximum length is
+    sixteen.
+    If the length of the password doesn't meet these criteria, a corresponding
+    error message is generated.
+    Of course, the messages are generated from the MessageResource bundles and
+    are easy to localize.
+</p>
+
+<h4><a name="LogonAction.java" id="LogonAction.java">LogonAction.java</a></h4>
+
+<p>
+    If validation passes, the LogonForm object is passed to the LogonAction as
+    a parameter.
+    The LogonAction interacts with the database to see if the credentials are
+    valid.
+    If so, the user is logged on, and control passes to the "success" forward.
+    Otherwise, control is forwarded to the input page and the list of error
+    messages displayed.
+</p>
+
+<hr/>
+<h5>LogonAction.java</h5>
+<pre><code> public final class <strong>LogonAction</strong> extends BaseAction
+    {
+    public ActionForward execute(
+    ActionMapping mapping,
+    ActionForm form,
+    HttpServletRequest request,
+    HttpServletResponse response)
+    throws Exception {
+
+    // Retrieve user
+    String username = <strong>doGet</strong>(form, USERNAME);
+    String password = doGet(form, PASSWORD);
+    ActionMessages errors = new ActionMessages();
+    User user = <strong>doGetUser</strong>(username,password,errors);
+
+    // Report back any errors, and exit if any
+    if (!errors.isEmpty()) {
+    this.saveErrors(request, errors);
+    return (mapping.getInputForward());
+    }
+
+    // Cache user object in session to signify logon
+    <strong>doCacheUser</strong>(request,user);
+
+    // Done
+    return <strong>doFindSuccess</strong>(mapping);
+    }
+    }</code></pre>
+<hr/>
+
+<p>
+    LogonAction extends another Action class, BaseAction.
+    The BaseAction class provides a number of helper methods, all of which are
+    prefixed with "do".
+    The <strong>doCacheUser</strong> method, for example, stores the user
+    object in the session,
+    and logs the event, if the logging level is set to debug.
+</p>
+
+<hr/>
+<h5>BaseAction.doCacheUser</h5>
+<pre><code> void <strong>doCacheUser</strong>(HttpServletRequest request, User
+    user) {
+
+    HttpSession session = request.getSession();
+    session.setAttribute(Constants.USER_KEY, user);
+    if (log.isDebugEnabled()) {
+    log.debug(
+    "LogonAction: User '"
+    + user.getUsername()
+    + "' logged on in session "
+    + session.getId());
+    }
+    }
+</code></pre>
+<hr/>
+
+<p>
+    Because our ActionForm is a DynaActionForm,
+    we can't access or change the properties directly using methods like
+    "getUsername".
+    To make working with DynaActionForm properties easier,
+    BaseAction provides two simple helper methods, <strong>doGet</strong> and
+    <strong>doSet</strong>.
+    These are utility methods that you caould use in any Struts application.
+</p>
+
+<hr/>
+<h5>BaseAction.doGet and doSet</h5>
+<pre><code> protected String <strong>doGet</strong>(ActionForm form, String
+    property) {
+    String initial;
+    try {
+    initial = (String) PropertyUtils.getSimpleProperty(form, property);
+    } catch (Throwable t) {
+    initial = null;
+    }
+    String value = null;
+    if ((initial !=null) && (initial.length()>0)) {
+    value = initial.trim();
+    if (value.length()==0) value = null;
+    }
+    return value;
+    }
+
+    protected boolean <strong>doSet</strong>(ActionForm form, String property,
+    String value) {
+    try {
+    DynaActionForm dyna = (DynaActionForm) form;
+    dyna.set(property,value);
+    } catch (Throwable t) {
+    return false;
+    }
+    return true;
+    }</code></pre>
+<hr/>
+
+<p>
+    LogonAction uses two other BaseAction helpers: "doGetUser" and
+    "doFindSuccess".
+</p>
+
+<hr/>
+<h5>BaseAction.doGetUser</h5>
+<pre><code> User <strong>doGetUser</strong>(UserDatabase database, String
+    username,
+    String password, ActionMessages errors)
+    throws ExpiredPasswordException {
+
+    User user = null;
+    if (database == null){
+    errors.add(
+    ActionMessages.GLOBAL_MESSAGE,
+    new ActionMessage("error.database.missing"));
+    }
+    else {
+    user = <strong>database.</strong>findUser(username);
+    if ((user != null) && !user.getPassword().equals(password)) {
+    user = null;
+    }
+    if (user == null) {
+    errors.add(
+    ActionMessages.GLOBAL_MESSAGE,
+    new ActionMessage("error.password.mismatch"));
+    }
+    }
+
+    return user;
+    }
+</code></pre>
+<hr/>
+
+<p>
+    The <strong>doGetUser</strong> helper does the real work of the
+    LogonAction.
+    The "doGetUser" method checks the tendered credentials against the
+    database,
+    If there are any issues, like there is not a user by that name, or the
+    password doesn't match, doGetUser passes back the appropriate messages.
+</p>
+
+<p>
+    The doGet user is another "facade" method.
+    A facade simplifies a complicated call to a business method.
+    Here, doGetUser wrapes the business method with the Error Handling needed
+    by the Mail Reader application.
+</p>
+
+<hr/>
+<h5>BaseAction.doFindSuccess</h5>
+<pre><code> protected ActionForward <strong>doFindSuccess</strong>
+    (ActionMapping mapping) {
+    if (log.isTraceEnabled()) {
+    log.trace(Constants.LOG_SUCCESS);
+    }
+    return mapping.findForward(Constants.SUCCESS);
+</code></pre>
+<hr/>
+
+<p>
+    The <strong>doFindSuccess</strong> method is a simple utility but often
+    used.
+    It just checks the mapping for a result named "Success".
+    By using a utility,
+    we can include a logging statement when trace is enabled,
+    and be very sure that everyone knows how to spell "Success". :)
+</p>
+
+<h4><a name="MainMenu.do" id="MainMenu.do">MainMenu.do and MainMenu.jsp</a>
+</h4>
+
+<p>
+    On a successful logon, the Main Menu page displays.
+    If you logged in using the demo account, the page title should be "Main
+    Menu Options for John Q. User".
+    Below this legend should be two links:
+</p>
+
+<ul>
+    <li>
+        Edit your user registration profile
+    </li>
+    <li>
+        Log off MailReader Demonstration Application
+    </li>
+</ul>
+
+<p>
+    If you check the address shown by your browser,
+    you will see that it shows "/SubmitLogon.do" not "/MainMenu.do".
+    The Java servlet platform supports the idea of server-side forwards.
+    When control passed from the SubmitLogon action to the MainMenu action,
+    everything occured server-side.
+    All the browser knows is that we are looking at the result of submitting a
+    form to "/SubmitLogon.do",
+    so that's the address that shows.
+    It doesn't know control passed from one action to another.
+    The difference between server-side forwards and client-side redirects is
+    subtle
+    and often confuses new developers.
+</p>
+
+<p>
+    If you change the address to "/MainMenu.do" and press enter, the same page
+    will display again,
+    but only because you are logged on.
+    If you bookmark MainMenu.do, log off, and try to return later, the system
+    will force you to logon first.
+</p>
+
+<p>
+    Let's review the source for the "MainMenu" action mapping,
+    "MainMenuAction.java" class, and the "MainMenu.jsp".
+</p>
+
+<hr/>
+<h5>Action mapping element for MainMenu</h5>
+<pre><code>        &lt;!-- Display MainMenu -->
+    &lt;action
+    <strong>path="/MainMenu"</strong>
+    type="org.apache.struts.apps.mailreader.actions.MainMenuAction">
+    &lt;forward
+    name="Success"
+    path="/MainMenu.jsp"/>
+    &lt;/action></code></pre>
+
+<h5>MainMenuAction.java</h5>
+<pre><code>public final class MainMenuAction extends BaseAction {
+
+    public ActionForward <strong>execute</strong> (
+    ActionMapping mapping,
+    ActionForm form,
+    HttpServletRequest request,
+    HttpServletResponse response)
+    throws Exception {
+
+    User user = doGetUser(request);
+    if (user==null) return <strong>doFindLogon</strong>(mapping);
+    return <strong>doFindSuccess</strong>(mapping);
+    }
+
+    }</code></pre>
+
+<h5>MainMenu.jsp</h5>
+<pre><code>&lt;%@ page contentType="text/html;charset=UTF-8" language="java"
+    %>
+    &lt;%@ taglib uri="/tags/app" prefix="app" %>
+    &lt;%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
+    &lt;%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+    &lt;html>
+    &lt;head>
+    &lt;title>&lt;bean:message key="mainMenu.title"/>&lt;/title>
+    &lt;link rel="stylesheet" type="text/css" href="base.css" />
+    &lt;/head>
+    &lt;h3>&lt;bean:message key="mainMenu.heading"/> &lt;<strong>
+    bean:write</strong> name="user" property="fullName" />&lt;/h3>
+    &lt;ul>
+    &lt;li>&lt;html:link action="/EditRegistration">&lt;bean:message
+    key="mainMenu.registration"/>&lt;/html:link>&lt;/li>
+    &lt;li>&lt;html:link action="/Logoff">&lt;bean:message
+    key="mainMenu.logoff"/>&lt;/html:link>&lt;/li>
+    &lt;/ul>
+    &lt;/body>
+    &lt;/html></code></pre>
+<hr/>
+
+<p>
+    In the MainMenuAction, we find two new helper methods: "doFindLogon" and
+    "doFindSuccess".
+</p>
+
+<p>
+    The <strong>doFindLogon</strong> helper locates the "logon" result,
+    and logs the event if trace logging is enabled.
+    If someone has bookmarked "MainMenu.do" and tries to return without
+    logging in,
+    the MainMenuAction sends the request to Logon.do instead.
+</p>
+
+<hr/>
+<h5>BaseAction.doFindLogon</h5>
+<pre><code> protected ActionForward <strong>doFindLogon</strong>(ActionMapping
+    mapping) {
+    if (log.isTraceEnabled()) {
+    log.trace(Constants.LOG_LOGON);
+    }
+    <strong>return mapping.findForward(Constants.LOGON);</strong>
+    }
+</code></pre>
+
+<p>
+    Likewise, <strong>doFindSuccess</strong> locates the "success" result,
+    and logs the event if trace logging is enabled.
+</p>
+
+<hr/>
+<h5>BaseAction.doFindSuccess</h5>
+<pre><code> protected ActionForward <strong>doFindSuccess</strong>
+    (ActionMapping mapping) {
+    if (log.isTraceEnabled()) {
+    log.trace(Constants.LOG_SUCCESS);
+    }
+    <strong>return mapping.findForward(Constants.SUCCESS);</strong>
+    }</code></pre>
+<hr/>
+
+<p>
+    The source for MainMenu.jsp also contains a new tag, <strong>
+    bean:write</strong>.
+    When control passed through the LogonAction,
+    it retrieved a "user" object from the database and stored a reference in
+    "session" scope.
+    This object is a JavaBean with several properties.
+    One property is "fullName".
+    The bean:write tag can find the User bean and print the fullName property
+    for us.
+</p>
+
+<p>
+    Since the MainMenuAction verifies that the User object exists,
+    the MainMenu page can refer to the object without ado.
+    The application does not reveal the location of any server page on the
+    browser address bar,
+    but if you did happen to know the address for the server page, and you did
+    enter it directly,
+    the tag would throw an exception, and the framework would transfer to the
+    standard error page.
+</p>
+
+<hr/>
+<h5>Error.jsp</h5>
+<pre><code> An unexpected error has occured
+
+    Cannot find bean: "user" in any scope
+
+    <u>MailReader Demonstration Application</u></code></pre>
+<hr/>
+
+<p>
+    The MainMenu action doesn't have an exception handler of its own,
+    so it falls back to the standard handler in the MailReader web.xml.
+</p>
+
+<hr/>
+<h5>error-page element in web.xml</h5>
+<pre><code>        &lt;!-- The default error page -->
+    &lt;error-page>
+    &lt;exception-type>java.lang.Exception&lt;/exception-type>
+    &lt;location>/Error.jsp&lt;/location>
+    &lt;/error-page></code></pre>
+<hr/>
+
+<p>
+    Meanwhile, The MainMenu page offers two links.
+    One link is to the "Logoff" action.
+    The other is to "EditRegistration".
+    Hmmmm, back on the Welcome page, we also linked to the EditRegistration
+    action to create an account.
+    Which is it? Insert or Update?
+</p>
+
+<h4><a name="EditRegistration.do" id="MainMenu.do">EditRegistration.do</a>
+</h4>
+
+<p>
+    If you scan the struts-config for an EditRegisration action, you won't
+    find one.
+    Instead, you will find a "/Edit*" action.
+    The asterisk is a wildcard character that lets you apply a common action
+    configuration
+    to any request that beings with "Edit".
+</p>
+
+<hr/>
+<h5>The Wilcard Edit* action and the BaseAction element it extends</h5>
+<pre><code>        &lt;action
+    path="/Edit<strong>*</strong>"
+    extends="//BaseAction"
+    <strong>parameter</strong>="Edit"
+    validate="false"/>
+
+    &lt;!-- "Abstract" mapping to use as base -->
+    &lt;action path="//BaseAction"
+    input="Input"
+    type="org.apache.struts.apps.mailreader.actions.<strong>{1}</strong>
+    Action"
+    name="<strong>{1}</strong>Form"
+    scope="request">
+    &lt;forward
+    name="Success"
+    path="/"<strong>{1}</strong>.jsp"/>
+    &lt;forward
+    name="Input"
+    path="/"<strong>{1}</strong>.jsp"/>
+    &lt;/action></code></pre>
+<hr/>
+
+<p>
+    The <strong>Edit*</strong> action extends the "BaseAction" element (as do
+    other Wilcard actions),
+    and provides two attibutes of its own: "validate" and "parameter".
+    Validate we've seen before, but what about "parameter"?
+</p>
+
+<p>
+    The Action class underlying the EditRegistration action extends a standard
+    Struts class called
+    "MappingDispatchAction".
+    Usually, an Action has one entry point, the "execute" method.
+    Dispatch Actions let you define multiple entry points to an Action.
+    People find Dispatch Actions handy for related actions, like editing or
+    saving the same entity.
+    (In our case, a Registration.)
+</p>
+
+<p>
+    A <strong>MappingDispatchAction</strong> uses the parameter attribute to
+    determine
+    which method to use as the entry point.
+    Each dispatch entry point is a separate method, but each method must same
+    signature as execute.
+    In this case, we're telling the framework to call the "Edit" method when
+    this action is invoked.
+</p>
+
+<p>
+    OK, but how do we know which Action class to call? The "Edit*" action
+    mapping doesn't specify a type attribute.
+</p>
+
+<p>
+    If you look at the BaseAction mapping,
+    you'll see that it does specify a type attribute, but the class name isn't
+    valid.
+    It contains a "{1}" token instead of the fully qualified class name.
+</p>
+
+<p>
+    Since the type attribute will be used with a Wildcard action ("/Edit*"),
+    we can use the {1} to represent the first Wildcard replaced in the path.
+    In the case of EditRegistration, the "wild" text would be "Registration",
+    so that's what is plugged into the type statement.
+    Then the EditRegistration action is called,
+    the type becomes "org.apache.struts.apps.mailreader.actions.<strong>
+    Registration</strong>Action".
+</p>
+
+<p>
+    The same thing will happen for the other markers.
+    The ActionForm name becomes "RegistrationForm".
+    The name of the "Success" server page becomes "Registration.jsp".
+</p>
+
+<p>
+    The <strong>RegistrationForm</strong> is a DynaActionForm, much like the
+    LoginForm.
+</p>
+
+<hr/>
+<h5>The RegistrationForm form-bean element</h5>
+<pre><code>    &lt;!-- RegistrationAction form bean -->
+    &lt;form-bean
+    name="RegistrationForm"
+    <strong>extends="BaseForm"</strong>>
+    &lt;form-property
+    name="fromAddress"
+    type="java.lang.String"/>
+    &lt;form-property
+    name="fullName"
+    type="java.lang.String"/>
+    &lt;form-property
+    name="password2"
+    type="java.lang.String"/>
+    &lt;form-property
+    name="replyToAddress"
+    type="java.lang.String"/>
+    &lt;/form-bean></code></pre>
+<hr/>
+
+<p>
+    The <strong>RegistrationForm</strong> extends the BaseForm and adds
+    properties peculiar to the Registration
+    action.
+    When either the Welcome page or MainMenu page link to "<strong>
+    Edit</strong>Registration",
+    the framework creates the RegistrationForm, autopopulates the form-bean
+    properties from any matching attributes
+    in the request, and invokes the <strong>Edit</strong> method of the
+    RegistrationAction class.
+</p>
+
+<hr/>
+<h5>RegistrationAction.Edit</h5>
+<pre><code> public ActionForward <strong>Edit</strong>(
+    ActionMapping mapping,
+    ActionForm form,
+    HttpServletRequest request,
+    HttpServletResponse response)
+    throws Exception {
+
+    final String method = Constants.EDIT;
+    <strong>doLogProcess</strong>(mapping,method);
+
+    HttpSession session = request.getSession();
+    User user = <strong>doGetUser</strong>(session);
+    boolean updating = (user!=null);
+    if (updating) {
+    <strong>doPopulate</strong>(form,user);
+    }
+
+    <strong>doSaveToken</strong>(request);
+    return doFindSuccess(mapping);
+    }
+</code></pre>
+<hr/>
+
+<p>
+    The <strong>RegistrationAction.Edit</strong> method does most of its work
+    by calling various helper methods,
+    including "doLogProcess", "doGetUser", "doPopulate", and "doSaveToken".
+</p>
+
+<hr/>
+<h5>BaseAction.doLogProcess</h5>
+<pre><code> protected void <strong>doLogProcess</strong>(ActionMapping
+    mapping, String method) {
+    if (log.isDebugEnabled()) {
+    StringBuffer sb = new StringBuffer(128);
+    sb.append(" ");
+    sb.append(mapping.getPath());
+    sb.append(":");
+    sb.append(Constants.LOG_PROCESSING);
+    sb.append(method);
+    log.debug(sb.toString());
+    }
+    }</code></pre>
+<hr/>
+
+<p>
+    MailReader uses <a href="http://jakarta.apache.org/commons/logging/">Commons
+    Logging</a> from Apache Jakarta.
+    Commons Logging is an API utility that can be used with several different
+    logging systems.
+    The <strong>doLogProcess</strong> helper is just a wrapper around a
+    logging statement
+    that MailReader uses in several places.
+    All of the MailReader's Dispatch methods call this helper to log when
+    control reaches the method.
+</p>
+
+<hr/>
+<h5>BaseAction.doGetUser</h5>
+<pre><code> protected User <strong>doGetUser</strong>(HttpSession session) {
+    return (User) session.getAttribute(Constants.USER_KEY);
+    }
+</code></pre>
+<hr/>
+
+<p>
+    Most of the MailReader actions utilize the User object,
+    and so BaseAction encapsulates obtaining the User into the very simple
+    <strong>doGetUser</strong> helper.
+</p>
+
+<hr/>
+<h5>RegistrationAction.doPopulate</h5>
+<pre><code> private void <strong>doPopulate</strong>(ActionForm form, User
+    user) throws ServletException {
+
+    final String title = Constants.EDIT;
+
+    if (log.isTraceEnabled()) {
+    log.trace(Constants.LOG_POPULATE_FORM + user);
+    }
+
+    try {
+    PropertyUtils.copyProperties(form, user);
+    DynaActionForm dyna = (DynaActionForm) form;
+    <strong>dyna.set(TASK,title);</strong>
+    dyna.set(PASSWORD,null);
+    dyna.set(PASSWORD2,null);
+    } catch (InvocationTargetException e) {
+    Throwable t = e.getTargetException();
+    if (t == null)
+    t = e;
+    log.error(LOG_REGISTRATION_POPULATE, t);
+    throw new ServletException(LOG_REGISTRATION_POPULATE, t);
+    } catch (Throwable t) {
+    log.error(LOG_REGISTRATION_POPULATE, t);
+    throw new ServletException(LOG_REGISTRATION_POPULATE, t);
+    }
+    }</code></pre>
+<hr/>
+
+<p>
+    The <strong>doPopulate</strong> helper lives in RegistrationAction rather
+    than BaseAction,
+    since it involves the RegistrationForm, which only the RegistrationAction
+    uses.
+    The main job of doPopulate is to transfer the input values from the
+    ActionForm to the User object.
+    The constants, like "PASSWORD", are defined on RegisrationAction as public
+    constants.
+    These constants document the property names specified in the Struts
+    configuration for the dynamic
+    RegistrationForm.
+</p>
+
+<p>
+    An interesting point is the line that sets the "TASK" to "Edit".
+    This value is used by the server page to adjust the page title and form
+    layout.
+    When we defined the RegistrationForm, we set the default value for TASK to
+    be "Create".
+    When EditRegistration is called from the Welcome page, we don't have a
+    User object yet,
+    and so the TASK remains at "Create".
+    When EditRegistration is called from the MainMenu page, we do have a User
+    object,
+    and so the TASK is set to "Edit".
+</p>
+
+<hr/>
+<h5>BaseAction.doSaveToken</h5>
+<pre><code> protected void doSaveToken(HttpServletRequest request) {
+    if (log.isTraceEnabled()) {
+    log.trace(Constants.LOG_TOKEN);
+    }
+    saveToken(request);
+    }</code></pre>
+<hr/>
+
+<p>
+    A common problem with designing web applications is that response times
+    can vary and users are impatient.
+    Sometimes, people will press a submit button a second time.
+    When this happens, the browser submits the request again,
+    so that we now have two requests for the same thing.
+    In the case of registering a user, if someone does press the submit button
+    again, and their timing is bad,
+    it could result in the system reporting that the username has already been
+    used.
+    (The first time the button was pressed.)
+    In practice, this would probably never happen, but for a longer running
+    process, like verifying a
+    credit card transaction, it's easier for a double submit to occur.
+</p>
+
+<p>
+    To forestall double submits, the framework can generate a token that is
+    embedded in the form
+    and also kept in the session.
+    If the value of the tokens do not compare, then we know that there has
+    been a problem,
+    and a form has been submitted twice or out of sequence.
+</p>
+
+<p>
+    The <strong>doSaveToken</strong> helper, logs the event for tracking,
+    and then calls the framework method.
+    Later, when we Save the registration, we will check to see if the token is
+    valid.
+</p>
+
+<p>
+    After the token has been saved,
+    Edit calls "doFindSuccess and" control flows to the Registration page.
+</p>
+
+<h3><a name="Registration.jsp" id="Registration.jsp">Registration page</a>
+</h3>
+
+<p>
+    If you follow the "Edit your user registration profile" link from the Main
+    Menu page,
+    we will finally reach the heart of the MailReader application: the
+    Registration, or "Profile", page.
+    This page displays everything MailReader knows about you (or at least your
+    login),
+    while utilizing several interesting techniques.
+</p>
+
+<p>
+    To do double duty as the "Create" Registration page and the "Edit"
+    Registration page,
+    the Registation.jsp makes good use of logic tags,
+    to make it appears as though there are two distinct pages.
+    For example, if you are editing the form (task == "Edit"),
+    the page inserts your username from the RegistrationForm bean.
+    If you are new user (task == "Create"), the page creates an empty field,
+    so you can pick your username.
+</p>
+
+<hr/>
+<h5>Note:</h5>
+<blockquote>
+    <p><font class="hint">
+        <strong>Presention Logic</strong> -
+        The Struts logic tags are a convenient way to express presentation
+        logic within your pages.
+        Customized pages help to prevent user error,
+        and dynamic customization reduces the number of JSPs your application
+        needs to maintain,
+        among other benefits.
+    </font></p>
+</blockquote>
+<hr/>
+
+<p>
+    The page also uses logic tags to display a list of subscriptions for the
+    given user.
+    If the RegistrationForm has task set to "Edit",
+    the lower part of the page that lists the subscriptions is exposed.
+</p>
+
+<hr/>
+<h5></h5>
+<pre><code>&lt;logic:equal name="RegistrationForm" <strong>
+    property="task"</strong>
+    scope="request" <strong>value="Edit"</strong>>
+    &lt;h3>&lt;bean:message key="heading.subscriptions"/>&lt;/h3>
+    &lt;!-- ... -->
+    &lt;html:link action="/EditSubscription">
+    &lt;bean:message key="registration.addSubscription"/>
+    &lt;/html:link>
+    &lt;/logic:equal></code></pre>
+<hr/>
+
+<p>
+    Otherwise, the page contains just the top portion --
+    a blank data-entry form for creating the user's registration.
+</p>
+
+<h4><a name="logic:iterate" id="logic:iterate">logic:iterate</a></h4>
+
+<p>
+    Beside making the usual conditional tests,
+    you can also use logic tags to forward control to other actions,
+    to redirect control to another path, and to iterate over collections.
+    The Registration page includes a good example of using the logic:iterate
+    tag to display the user's subscriptions.
+</p>
+
+<p>
+    The subscriptions are stored in a hashtable object, which is in turn
+    stored in the user object.
+    So to display each subscription, we have to reach into the user object,
+    and loop through the members of the subscription collection.
+    Using the iterate tag, you can code it the way it sounds.
+</p>
+
+<hr/>
+<h5>Using logic:iterate to list the Subscriptions</h5>
+<pre><code>    &lt;logic:iterate <strong>name</strong>="user" <strong>
+    property</strong>="subscriptions" <strong>id</strong>="subscription">
+    &lt;tr>
+    &lt;td align="left">
+    &lt;bean:write name="subscription" property="host"/>
+    &lt;/td>
+    &lt;td align="left">
+    &lt;bean:write name="subscription" property="username"/>
+    &lt;/td>
+    &lt;td align="center">
+    &lt;bean:write name="subscription" property="type"/>
+    &lt;/td>
+    &lt;td align="center">
+    &lt;bean:write name="subscription" property="autoConnect"/>
+    &lt;/td>
+    &lt;td align="center">
+    &lt;html:link action="/DeleteSubscription"
+    <strong>paramName</strong>="subscription" <strong>paramProperty</strong>
+    ="host" <strong>paramId</strong>="host">
+    &lt;bean:message key="registration.deleteSubscription"/>
+    &lt;/html:link>
+    &nbsp;
+    &lt;html:link action="/EditSubscription"
+    paramName="subscription" paramProperty="host" paramId="host">
+    &lt;bean:message key="registration.editSubscription"/>
+    &lt;/html:link>
+    &lt;/td>
+    &lt;/tr>
+    &lt;/logic:iterate></code></pre>
+<hr/>
+
+<p>
+    The three parameters to the iterate tag (name, property, and id) tell it
+    to
+</p>
+
+<ol>
+    <li>
+        <em>name</em> - Check this context for an attribute (e.g. object)
+        named <strong>user</strong>,
+    </li>
+
+    <li>
+        <em>property</em> - Snag the property of user named <strong>
+        subscriptions</strong>,
+    </li>
+
+    <li>
+        <em>id</em> - In the block to iterate,
+        use <strong>subscription</strong> (singular) as the name for each
+        member of the collection.
+    </li>
+</ol>
+
+<p>
+    Next to each entry in the subscription list are links to Delete and Edit
+    commands.
+    These links use the same name/property/id trinity as the interator,
+    except that the attributes are used to create a hyperlink with a single
+    parameter.
+    (Multiple parameters are possible too, but if the code is well-factored,
+    one should be sufficient.)
+</p>
+
+<p>
+    Given a subscription to "mail.yahoo.com",
+    the command links would translate to HTML links like these:
+</p>
+
+<hr/>
+<h5>The Delete and Edit links for mail.yahoo.com</h5>
+<pre><code>      &lt;a
+    href="/struts-mailreader/DeleteSubscription.do?host=mail.yahoo.com">Delete&lt;/a>
+    &nbsp;
+    &lt;a
+    href="/struts-mailreader/EditSubscription.do?host=mail.yahoo.com">Edit&lt;/a></code>
+</pre>
+<hr/>
+
+<p>
+    At the foot of the Register page is a link for adding a subscription.
+    Let's wind up the tour by following the Add link and then logging off.
+    Like the link for creating a Registration, Add points to an "Edit" action,
+    namely "EditSubscription".
+</p>
+
+<h4>
+    <a name="SubscriptionAction.java" id="SubscriptionAction.java">SubscriptionAction.java</a>
+</h4>
+
+<p>
+    The EditSubscription link shares the Wildcard "/Edit*" mapping we saw with
+    EditRegistration.
+    As before, in the case of "Edit<em>Subscription</em>",
+    the "{1}Form" attribute maps to <strong>SubscriptionForm</strong>.
+</p>
+
+<hr/>
+<h5>The SubscriptionAction form-bean element</h5>
+<pre><code>        &lt;form-bean
+    name="SubscriptionForm"
+    extends="BaseForm">
+    &lt;form-property
+    name="autoConnect"
+    <strong>type="java.lang.Boolean"
+        initial="FALSE"
+        reset="true"</strong>/>
+    &lt;form-property
+    name="host"
+    type="java.lang.String" />
+    &lt;form-property
+    name="type"
+    type="java.lang.String" />
+    &lt;/form-bean></code></pre>
+<hr/>
+
+<p>
+    The other DynaActionForms we've seen used only String properties.
+    SubscriptionForm is different in that it uses a Boolean type for the
+    "autoConnect" property.
+    On the HTML form, the autoConnect field is represented by a checkbox,
+    and checkboxes need to be handled differently that other controls.
+</p>
+
+<hr/>
+<h5>Tip:</h5>
+<blockquote>
+    <p class="hint">
+        <strong>Checkboxes</strong> -
+        The HTML checkbox is a tricky control.
+        The problem is that, according to the W3C specification, a value is
+        only guaranteed to be sent
+        if the control is checked.
+        If the control is not checked, then the control may be omitted from
+        the request, as if it was on on the page.
+        This can cause a problem with session-scope checkboxes.
+        Once you set the checkbox to true, the control can't set it to false
+        again,
+        because if you uncheck the box, nothing is sent, and so the control
+        stays checked.
+    </p>
+
+    <p class="hint">
+        The simple solution is to set the initial value for a checkbox control
+        to false before the form is populated.
+        If the checkbox is checked, it will return a value, and the checkbox
+        will represent true.
+        If the checkbox is unchecked, it will not return a value, and the
+        checkbox will remain unchecked ("false").
+    </p>
+</blockquote>
+<hr/>
+
+<p>
+    To be sure the autoConnect checkbox is handled correctly,
+    the SubscriptionForm initializes the property to FALSE,
+    and enables "reset" so that before autopopulation the property is set back
+    to FALSE.
+</p>
+
+<p>
+    The SubscriptionAction Edit method should look familiar, but it also has a
+    few twists of its own.
+</p>
+
+<hr/>
+<h5>SubscriptionAction.Edit</h5>
+<pre><code>public ActionForward Edit(
+    ActionMapping mapping,
+    ActionForm form,
+    HttpServletRequest request,
+    HttpServletResponse response)
+    throws Exception {
+
+    final String method = Constants.EDIT;
+    doLogProcess(mapping,method);
+
+    HttpSession session = request.getSession();
+    User user = doGetUser(session);
+    <strong>if (user==null) return doFindLogon(mapping);</strong>
+
+    // Retrieve the subscription, if there is one
+    Subscription subscription;
+    <strong>String host = doGet(form,HOST);
+        boolean updating = (host!=null);</strong>
+    if (updating) {
+    subscription = <strong>doFindSubscription</strong>(user,host);
+    if (subscription==null) return <strong>doFindFailure</strong>(mapping);
+    session.setAttribute(Constants.SUBSCRIPTION_KEY, subscription);
+    <strong>doPopulate</strong>(form,subscription);
+    doSet(form,TASK,method);
+    }
+
+    return doFindSuccess(mapping);
+    }</code></pre>
+<hr/>
+
+<p>
+    In RegistrationAction.Edit, we looked for the user object to decide if we
+    were updating or inserting.
+    In SubscriptionAction.Edit, the user object is required (and we trot off
+    to the Login page if it is missing).
+    This could happen because a session expired, or because someone bookmarked
+    a page.
+</p>
+
+<p>
+    To decide if we are inserting or updating a subscription,
+    we look to see if the <strong>host</strong> is set to the ActionForm.
+    If it is an update, we fetch the Subscription from the database.
+</p>
+
+<hr/>
+<h5>SubscriptionAction.doFindSubscription</h5>
+<pre><code> private Subscription <strong>doFindSubscription</strong>(User
+    user, String host) {
+
+    Subscription subscription;
+
+    try {
+    subscription = user.findSubscription(host);
+    }
+    catch (NullPointerException e) {
+    subscription = null;
+    }
+
+    if ((subscription == null) && (log.isTraceEnabled())) {
+    log.trace(
+    " No subscription for user "
+    + user.getUsername()
+    + " and host "
+    + host);
+    }
+
+    return subscription;
+    }</code></pre>
+<hr/>
+
+<p>
+    If we can't find the subscription,
+    we use <strong>doFindFailure</strong> to forward to the Failure result
+    (Error.jsp).
+</p>
+
+<hr/>
+<h5>BaseAction.doFindFailure</h5>
+<pre><code> protected ActionForward <strong>doFindFailure</strong>
+    (ActionMapping mapping) {
+    if (log.isTraceEnabled()) {
+    log.trace(Constants.LOG_FAILURE);
+    }
+    return (mapping.findForward(Constants.FAILURE));
+    }
+</code></pre>
+<hr/>
+
+<p>
+    In the normal course, the subscription should always be found,
+    since we selected the host from a system-generated list.
+    If the subscription is not found,
+    it would be because the database disappeared or the request is being
+    spoofed.
+</p>
+
+<p>
+    Like the RegisterAction, the <strong>doPopulate</strong> method transfers
+    data from the form to the domain
+    object. In this case, a Subscription object.
+</p>
+
+<hr/>
+<h5>SubscriptionAction.doPopulate</h5>
+<pre><code> private void <strong>doPopulate</strong>(ActionForm form,
+    Subscription subscription) throws ServletException {
+
+    final String title = Constants.EDIT;
+
+    if (log.isTraceEnabled()) {
+    log.trace(Constants.LOG_POPULATE_FORM + subscription.getHost());
+    }
+
+    try {
+    <strong>PropertyUtils.copyProperties(form, subscription);</strong>
+    doSet(form,TASK,title);
+    } catch (InvocationTargetException e) {
+    Throwable t = e.getTargetException();
+    if (t == null) t = e;
+    log.error(LOG_SUBSCRIPTION_POPULATE, t);
+    throw new ServletException(LOG_SUBSCRIPTION_POPULATE, t);
+    } catch (Throwable t) {
+    log.error(LOG_SUBSCRIPTION_POPULATE, t);
+    throw new ServletException(LOG_SUBSCRIPTION_POPULATE, t);
+    }
+    }</code></pre>
+<hr/>
+
+<p>
+    Most of the code in "doPopulate" is window dressing for the call to
+    <strong>PropertyUtils.copyProperties</strong>, which does the heavy
+    lifting.
+</p>
+
+<p>
+    But before turning to our final JSP, a word about our database model ...
+</p>
+
+<h4>
+    <a name="User.java" id="User.java">User.java</a> and <a
+        name="Subscription.java" id="Subscription.java">Subscription.java</a>
+</h4>
+
+<p>
+    If you're used to working with relational databases,
+    the links between the user and subscription objects may be confusing.
+    A conventional relational database would create two distinct tables,
+    one for the users and another for the subscriptions,
+    and link them together with a user ID.
+    The MailReader application implements a different model, a hierarchical
+    database.
+    Here a "table" of subscriptions is stored within each user object,
+    something like the way a filing system stores documents within folders.
+</p>
+
+<p>
+    Development teams often use frameworks like <a
+        href="http://www.objectstyle.org/cayenne/">Cayenne</a>
+    to map a relational database to a hierarchy of objects,
+    like the one used by MailReader.
+    For simplicity, the MailReader doesn't use a conventional database, but
+    saves its data as an XML file.
+    While the MailReader is running, the database is kept in main memory, and
+    written to back to disk when changed.
+</p>
+
+<p>
+    In addition to the usual getters and setters,
+    the user object also has two methods for working with subscription
+    objects.
+    The <strong>findSubscription</strong> method takes a hostname and returns
+    the subscription object for that host.
+    The <strong>getSubscriptions</strong> method returns an array of all the
+    subscriptions for the user
+    (ready-made for the iterate tag!).
+    Besides the fields needed to manage the SubscriptionForm data,
+    the object also maintains a runtime link to its own user object.
+</p>
+
+<p>
+    To create a new subscription,
+    SubscriptionAction.java simply creates a new subscription object,
+    and sets its user to the object found in the request,
+    and then forwards control to its input form, Subscription.jsp.
+</p>
+
+<h3><a name="subcription.jsp" id="subcription.jsp">Subscription.jsp</a></h3>
+
+<p>
+    Saving the best for last, Subscription.jsp utilizes two interesting Struts
+    custom form tags,
+    "html:options" and "html:checkbox".
+
+<p>
+    In Registration.jsp, the Struts iteration tag was used to write a list of
+    subscriptions.
+    Another place where iterations and collections are handy is the option
+    list for a HTML select tag.
+    Since this is such a common situation, Struts offers a html:options
+    (plural) tag
+    that can take an array of objects as a parameter.
+    The tag then iterates over the members of the array (beans) to place each
+    one inside an standard option tag.
+    So given a block like</p>
+
+<pre><code>&lt;html:select property="type"&gt;
+    &lt;html:options
+    collection="serverTypes"
+    property="value"
+    labelProperty="label" /&gt;
+    &lt;/html:select&gt;</code></pre>
+
+<p>The tag outputs a block like</p>
+
+<pre><code>&lt;select name="type"&gt;
+    &lt;option value="imap" selected&gt;IMAP Protocol&lt;/option&gt;
+    &lt;option value="pop3"&gt;POP3 Protocol&lt;/option&gt;
+    &lt;/select&gt;</code></pre>
+
+<p>
+    Here, one collection contained both the labels and the values, from
+    properties of the same name.
+    Options can also use a second array for the labels, if they do not match
+    the values.
+    Options can use a Collection, Iterator, or Map for the source of the list.
+</p>
+
+<p>
+    Unlike other data, the serverTypes array is not fetched from the database.
+    Instead, it is loaded by a Struts plugin.
+    The <strong>DigestingPlugin</strong> parses an XML document using a given
+    set of Digester rules.
+    The MailReader uses a set of rules for "LabelValueBeans" to create a list
+    of server types.
+</p>
+
+<hr/>
+<h5>Tip:</h5>
+<blockquote>
+    <p><font class="hint">
+        <strong>LabelValueBeans</strong> -
+        Many developers find the LabelValueBeans useful,
+        so the class is available in the Struts Action distribution as
+        [org.apache.struts.util.LabelValueBean].
+    </font></p>
+</blockquote>
+<hr/>
+
+<p>
+    The plugin stores the list is stored in application scope.
+    Since the Struts custom tags, like standard JSP tags, search the scopes in
+    succession,
+    the tag finds the list in application scope and uses it to write out the
+    options.
+</p>
+
+
+<h4><a name="SubscriptionForm.java" id="SubscriptionForm.java">SubscriptionForm.java</a>
+</h4>
+
+<p>
+    Back in Subscription.jsp, we have one more block to cover.
+    Although the same basic form can be used to created, edit, or delete a
+    subscription,
+    people might expect the buttons to be labeled differently in each case.
+    Like the Registration page, the Subscription page handles customization
+    by using a logic tag to output a different set of buttons for each case.
+    Changing buttons doesn't really change the way the Subscription page
+    works,
+    but customizing the buttons does make things less confusing for the user.
+</p>
+
+<pre><code>&lt;logic:equal
+    name="SubscriptionForm"
+    <strong>property="task"</strong>
+    scope="request"
+    value="Create"&gt;
+    &lt;html:submit&gt;
+    <b>&lt;bean:message key="button.save"/&gt;<br/></b> &lt;/html:submit&gt;
+    &lt;/logic:equal&gt;</code></pre>
+
+<p>
+    In the case of a request to delete a subscription,
+    the submit button is labeled "Confirm", since this view is meant to give
+    the user a last chance to cancel,
+    before sending that task along to SaveSubscriptionAction.java.
+</p>
+
+<p>
+    The actual task property is placed into the form as a hidden field,
+    and SaveSubscriptionAction uses that property to execute the appropriate
+    task.
+</p>
+
+<h4><a name="SubscriptionAction.java" id="SubscriptionAction.java">SubscriptionAction.java</a>
+</h4>
+
+<p>
+    Our final stop has the job of finishing what SubscriptionAction.Edit
+    started.
+    After the usual logic and error checking,
+    The SubscriptionAction.Save method either deletes or updates
+    the subscription object being handled by this request,
+    and cleans up the bean, just to be tidy.
+    By now, you should be very comfortable reading through the source on your
+    own, to pickup the finer points.
+</p>
+
+<hr/>
+<h5>SubscriptionAction.Save</h5>
+<pre><code> public ActionForward <strong>Save</strong>(
+    ActionMapping mapping,
+    ActionForm form,
+    HttpServletRequest request,
+    HttpServletResponse response)
+    throws Exception {
+
+    final String method = Constants.SAVE;
+    doLogProcess(mapping,method);
+
+    User user = doGetUser(request);
+    if (user == null) {
+    return doFindLogon(mapping);
+    }
+
+    HttpSession session = request.getSession();
+    if (isCancelled(request)) {
+    <strong>doCancel</strong>(session,method,Constants.SUBSCRIPTION_KEY);
+    return doFindSuccess(mapping);
+    }
+
+    String action = doGet(form,TASK);
+    Subscription subscription = <strong>doGetSubscription</strong>(request);
+    boolean isDelete = action.equals(Constants.DELETE);
+    if (isDelete) {
+    return <strong>doRemoveSubscription</strong>
+    (mapping,session,user,subscription);
+    }
+
+    if (subscription==null) {
+    subscription = <strong>user.createSubscription</strong>(doGet(form,HOST));
+    session.setAttribute(Constants.SUBSCRIPTION_KEY,subscription);
+    }
+
+    doPopulate(subscription,form);
+    <strong>doSaveUser</strong>(user);
+    session.removeAttribute(Constants.SUBSCRIPTION_KEY);
+
+    return doFindSuccess(mapping);
+    }</code></pre>
+<hr/>
+
+<p>
+    This concludes our tour.
+    To review, you may wish to trace the path a new user takes
+    when they register with the application for the first time.
+    You should also read over each of the .java and JSP files carefully,
+    since we only covered the high points here.
+</p>
+
+<h3><a name="Review" id="Review">Review</a></h3>
+
+<ul>
+    <li>Struts uses a single controller servlet to route HTTP requests.</li>
+
+    <li>The requests are routed to action objects according to path (or
+        URI).</li>
+
+    <li>Each request is handled as a separate thread</li>
+
+    <li>There is only one object for each action (URI), so your action objects
+        must be multi-thread safe.</li>
+
+    <li>The configuration of action objects are loaded from a XML resource
+        file, rather than hardcoded.</li>
+
+    <li>Action objects can respond to the request, or ask the controller to
+        forward the request to another object or to another page, such as an
+        input form.</li>
+
+    <li>A library of custom tags works with the rest of the framework to
+        enhance use of JavaServer Pages.</li>
+
+    <li>The Struts form tag can work closely with an action objects via a
+        Struts ActionFormBean to retain the state of a data-entry form, and
+        validate the data entered.</li>
+
+    <li>ActionForm beans can be automatically created by the JSP form or
+        controller servlet.</li>
+
+    <li>Struts supports a message resource for loading constants strings.
+        Alternate message resources can be provided to internationalize an
+        application.</li>
+</ul>
+<hr/>
+</blockquote>
+</body>
+</html>

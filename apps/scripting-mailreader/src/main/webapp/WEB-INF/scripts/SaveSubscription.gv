@@ -1,0 +1,139 @@
+/*
+ * $Id$
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+import java.lang.reflect.InvocationTargetException;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.struts.apps.scriptingmailreader.*;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
+
+form = struts.form;
+
+act = form.get("task");
+if (act == null) {
+    act = "?";
+}
+
+if (log.isDebugEnabled()) {
+    log.debug("SaveSubscriptionAction:  Processing " + act +
+              " act");
+}
+
+
+// Is there a currently logged on user?
+user = session.getAttribute(Constants.USER_KEY);
+
+if (user == null) {
+    if (log.isWarnEnabled()) {
+        log.warn(" User is not logged on in session "
+                  + session.getId());
+    }
+    struts.setForwardName("logon");
+    return;
+}
+
+if (struts.action.isCancelled(request)) {
+    if (log.isWarnEnabled()) {
+        log.warn(" Transact '" + act +
+                  "' was cancelled");
+    }
+    session.removeAttribute(Constants.SUBSCRIPTION_KEY);
+    struts.setForwardName("Success");
+    return;
+}
+
+
+// Is there a related Subscription object?
+subscription = session.getAttribute(Constants.SUBSCRIPTION_KEY);
+if ("Create".equals(act)) {
+    subscription =
+        user.createSubscription(request.getParameter("host"));
+}
+if (subscription == null) {
+    if (log.isWarnEnabled()) {
+        log.warn(" Missing subscription for user '" +
+                  user.getUsername() + "'");
+    }
+    log.warn("bad request sent");
+    response.sendError(HttpServletResponse.SC_BAD_REQUEST,
+                       response.getMessage("error.noSubscription"));
+
+}
+
+// Was this transact a Delete?
+if (act.equals("Delete")) {
+    if (log.isTraceEnabled()) {
+        log.trace(" Deleting mail server '" +
+                  subscription.getHost() + "' for user '" +
+                  user.getUsername() + "'");
+    }
+    user.removeSubscription(subscription);
+    session.removeAttribute(Constants.SUBSCRIPTION_KEY);
+    try {
+        database = application.getAttribute(Constants.DATABASE_KEY);
+        database.save();
+    } catch (Exception e) {
+        log.error("Database save", e);
+    }
+    struts.setForwardName("Success");
+    return;
+}
+
+// All required validations were done by the form itself
+
+// Update the persistent subscription information
+if (log.isTraceEnabled()) {
+    log.trace(" Populating database from form bean");
+}
+try {
+    PropertyUtils.copyProperties(subscription, form);
+} catch (InvocationTargetException e) {
+    Throwable t = e.getTargetException();
+    if (t == null)
+        t = e;
+    log.error("Subscription.populate", t);
+    throw new ServletException("Subscription.populate", t);
+} catch (Throwable t) {
+    log.error("Subscription.populate", t);
+    throw new ServletException("Subscription.populate", t);
+}
+
+try {
+    database = application.getAttribute(Constants.DATABASE_KEY);
+    database.save();
+} catch (Exception e) {
+    log.error("Database save", e);
+}
+
+// Remove the obsolete form bean and current subscription
+if (struts.mapping.attribute != null) {
+    if ("request".equals(struts.mapping.scope))
+        request.removeAttribute(struts.mapping.attribute);
+    else
+        session.removeAttribute(struts.mapping.attribute);
+}
+session.removeAttribute(Constants.SUBSCRIPTION_KEY);
+
+// Forward control to the specified success URI
+if (log.isTraceEnabled()) {
+    log.trace(" Forwarding to success page");
+}
+
+struts.setForwardName("Success");

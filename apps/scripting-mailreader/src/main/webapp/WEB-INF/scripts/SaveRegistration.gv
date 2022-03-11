@@ -1,0 +1,154 @@
+/*
+ * $Id$
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+import java.lang.reflect.InvocationTargetException;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.struts.action.*;
+import org.apache.struts.apps.scriptingmailreader.*;
+import javax.servlet.ServletException;
+
+form = struts.getForm();
+String act = form.get("task");
+if (act == null) {
+    act = "Create";
+}
+database = application.getAttribute(Constants.DATABASE_KEY);
+if (log.isDebugEnabled()) {
+    log.debug("SaveRegistrationAction:  Processing " + act +
+              " act");
+}
+
+// Is there a currently logged on user (unless creating)?
+user = session.getAttribute(Constants.USER_KEY);
+if (!"Create".equals(act) && (user == null)) {
+    if (log.isTraceEnabled()) {
+        log.trace(" User is not logged on in session "
+                  + session.getId());
+    }
+    struts.setForwardName("Logon");
+    return;
+}
+// Was this transact cancelled?
+if (struts.action.isCancelled(request)) {
+    if (log.isTraceEnabled()) {
+        log.trace(" Transact '" + act +
+                  "' was cancelled");
+    }
+    session.removeAttribute(Constants.SUBSCRIPTION_KEY);
+    struts.setForwardName("Success");
+    return;
+}
+
+// Validate the transactal control token
+errors = new ActionErrors();
+if (log.isTraceEnabled()) {
+    log.trace(" Checking transactal control token");
+}
+if (!struts.action.isTokenValid(request)) {
+    errors.add(ActionMessages.GLOBAL_MESSAGE,
+               new ActionMessage("error.transaction.token"));
+}
+struts.action.resetToken(request);
+
+// Validate the request parameters specified by the user
+if (log.isTraceEnabled()) {
+    log.trace(" Performing extra validations");
+}
+value = form.get("username");
+if (("Create".equals(act)) &&
+        (database.findUser(value) != null)) {
+        errors.add("username",
+                   new ActionMessage("error.username.unique",
+                                   form.get("username")));
+}
+if ("Create".equals(act)) {
+    value = form.get("password");
+    if ((value == null) || (value.length() <1)) {
+        errors.add("password",
+                   new ActionMessage("error.password.required"));
+    }
+    value = form.get("password2");
+    if ((value == null) || (value.length() < 1)) {
+        errors.add("password2",
+                   new ActionMessage("error.password2.required"));
+    }
+}
+
+// Report any errors we have discovered back to the original form
+if (!errors.isEmpty()) {
+    struts.action.saveErrors(request, errors);
+    struts.action.saveToken(request);
+    struts.setForward(struts.mapping.getInputForward());
+    return;
+}
+    
+// Update the user's persistent profile information
+try {
+    if ("Create".equals(act)) {
+        user = database.createUser(form.get("username"));
+    }
+    oldPassword = user.password;
+    PropertyUtils.copyProperties(user, form);
+    if ((form.get("password") == null) ||
+        (form.get("password").length() < 1)) {
+        user.setPassword(oldPassword);
+    }
+} catch (InvocationTargetException e) {
+    Throwable t = e.getTargetException();
+    if (t == null) {
+        t = e;
+    }
+    log.error("Registration.populate", t);
+    throw new RuntimeException("Registration.populate", t);
+} catch (Throwable t) {
+    log.error("Registration.populate", t);
+    throw new RuntimeException("Subscription.populate", t);
+}
+
+try {
+    database.save();
+} catch (Exception e) {
+    log.error("Database save", e);
+}
+
+// Log the user in if appropriate
+if ("Create".equals(act)) {
+    session.setAttribute(Constants.USER_KEY, user);
+    if (log.isTraceEnabled()) {
+        log.trace(" User '" + user.getUsername() +
+                  "' logged on in session " + session.getId());
+    }
+}
+
+// Remove the obsolete form bean
+if (struts.mapping.getAttribute() != null) {
+    if ("request".equals(struts.mapping.scope))
+        request.removeAttribute(struts.mapping.attribute);
+    else
+        session.removeAttribute(struts.mapping.attribute);
+}
+
+// Forward control to the specified success URI
+if (log.isTraceEnabled()) {
+    log.trace(" Forwarding to success page");
+}
+
+struts.setForwardName("Success");
+

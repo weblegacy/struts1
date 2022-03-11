@@ -1,0 +1,100 @@
+/*
+ * $Id$
+ *
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ *  http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+import java.lang.reflect.InvocationTargetException;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.struts.apps.scriptingmailreader.*;
+import org.apache.struts.apps.mailreader.dao.*;
+import javax.servlet.ServletException;
+
+System.out.println(" EditSubscription.gv (debug) begin");
+
+act = request.getParameter("task");
+if (act == null) {
+    act = "Create";
+}
+
+host = request.getParameter("host");
+if (log.isDebugEnabled()) {
+    log.debug("EditSubscriptionAction:  Processing " + act +
+              " task");
+}
+
+// Is there a currently logged on user?
+user = (User) session.getAttribute(Constants.USER_KEY);
+if (user == null) {
+    if (log.isTraceEnabled()) {
+        log.trace(" User is not logged on in session "
+                  + session.getId());
+    }
+    struts.setForwardName("Logon");
+	System.out.println(" EditSubscription.gv (debug) -> Logon");
+    return;
+}
+// Identify the relevant subscription
+subscription =
+        user.findSubscription(request.getParameter("host"));
+
+if ((subscription == null) && !act.equals("Create")) {
+    if (log.isTraceEnabled()) {
+        log.trace(" No subscription for user " +
+                  user.getUsername() + " and host " + host);
+    }
+	System.out.println(" EditSubscription.gv (debug) -> Failure");
+    struts.setForwardName("Failure");
+    return;
+}
+
+if (subscription != null) {
+    session.setAttribute(Constants.SUBSCRIPTION_KEY, subscription);
+}
+
+
+form = struts.form;
+System.out.println(" EditSubscription.gv (debug) Form:" + form.toString());
+
+form.set("task", act);
+if (!act.equals("Create")) {
+	System.out.println(" EditSubscription.gv (debug) act=" + act);
+    if (log.isTraceEnabled()) {
+        log.trace(" Populating form from " + subscription);
+    }
+    try {
+        PropertyUtils.copyProperties(form, subscription);
+    } catch (InvocationTargetException e) {
+        Throwable t = e.getTargetException();
+        if (t == null)
+            t = e;
+        log.error("SubscriptionForm.populate", t);
+        throw new ServletException("SubscriptionForm.populate", t);
+    } catch (Throwable t) {
+        log.error("SubscriptionForm.populate", t);
+        throw new ServletException("SubscriptionForm.populate", t);
+    }
+}
+
+// Forward control to the edit subscription page
+if (log.isTraceEnabled()) {
+    log.trace(" Forwarding to 'Success' page");
+}
+
+System.out.println(" EditSubscription.gv (debug) Form:" + form.toString());
+struts.setForwardName("Success");
+

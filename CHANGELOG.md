@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Upgrade maven-assembly-plugin with adjustments to current version
 * Disable 2 non-working integration-tests
 * Upgrade cargo-maven2-plugin (with dependencies) to cargo-maven3-plugin
 * Replace maven-antrun-plugin with maven-resources-plugin

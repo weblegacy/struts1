@@ -43,8 +43,7 @@
   <build>
     <plugins>
         <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>dependency-maven-plugin</artifactId>
+            <artifactId>maven-dependency-plugin</artifactId>
             <executions>
                 <execution>
                     <id>copy-war</id>
@@ -112,15 +111,15 @@
         <artifactId>maven-assembly-plugin</artifactId>
         <configuration>
           <descriptors>
-            <descriptor>src/main/assembly/all.xml</descriptor>
-            <descriptor>src/main/assembly/lib.xml</descriptor>
-            <descriptor>src/main/assembly/apps.xml</descriptor>
-            <descriptor>src/main/assembly/src.xml</descriptor>
-            <descriptor>src/main/assembly/docs.xml</descriptor>
+            <descriptor>${project.basedir}/src/main/assembly/all.xml</descriptor>
+            <descriptor>${project.basedir}/src/main/assembly/lib.xml</descriptor>
+            <descriptor>${project.basedir}/src/main/assembly/apps.xml</descriptor>
+            <descriptor>${project.basedir}/src/main/assembly/src.xml</descriptor>
+            <descriptor>${project.basedir}/src/main/assembly/docs.xml</descriptor>
           </descriptors>
           <finalName>struts-${project.version}</finalName>
-          <outputDirectory>target/assembly/out</outputDirectory>
-          <workDirectory>target/assembly/work</workDirectory>
+          <outputDirectory>${project.build.directory}/assembly/out</outputDirectory>
+          <workDirectory>${project.build.directory}/assembly/work</workDirectory>
         </configuration>
       </plugin>
     </plugins>

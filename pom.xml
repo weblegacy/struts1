@@ -153,7 +153,7 @@
             <plugins>
                 <plugin>
                    <artifactId>maven-assembly-plugin</artifactId>
-                   <version>2.0.1</version>
+                   <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-checkstyle-plugin</artifactId>
@@ -170,6 +170,10 @@
                         <source>${javaVersion}</source>
                         <target>${javaVersion}</target>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
@@ -256,11 +260,6 @@
                     <groupId>org.codehaus.cargo</groupId>
                     <artifactId>cargo-maven3-plugin</artifactId>
                     <version>1.9.10</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>dependency-maven-plugin</artifactId>
-                    <version>1.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>

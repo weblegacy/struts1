@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Upgrade Checkstyle to 10.0
 * Move checkstyle-config to local
 * Upgrade maven-assembly-plugin with adjustments to current version
 * Disable 2 non-working integration-tests

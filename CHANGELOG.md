@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Update javadoc-links
 * Change comment in checkstyle-config
 * Update deprecated MAVEN-Var ${basedir} to ${project.basedir}
 * Move maven-war-plugin from struts-app to parent

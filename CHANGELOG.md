@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Add/Define missing maven-plugins
 * Define Java-Version thru MAVEN-Var
 * Add maven-resources-plugin: Define encoding
 * Add maven-enforcer-plugin: Enforces required MAVEN-Version

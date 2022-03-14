@@ -71,7 +71,6 @@
          <plugin>
             <groupId>org.codehaus.cargo</groupId>
             <artifactId>cargo-maven2-plugin</artifactId>
-            <version>0.3.1</version>
             <configuration>
                <container>
                   <containerId>tomcat5x</containerId>
@@ -87,7 +86,6 @@
          <!-- Include source code under WEB-INF/src/java -->
          <plugin>
             <artifactId>maven-antrun-plugin</artifactId>
-            <version>1.1</version>
             <executions>
                <execution>
                   <id>copy-sources</id>

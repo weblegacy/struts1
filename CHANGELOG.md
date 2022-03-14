@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Update deprecated MAVEN-Var ${version}
 * Centralize MAVAN-Plugins-Version with PluginManagement
 * Replace org.apache.struts with ${project.groupId}
 * Remove MAVEN-GroupID from Sub-Projects

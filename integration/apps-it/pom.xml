@@ -92,7 +92,7 @@
                         </property>
                         <property>
                            <name>version</name>
-                           <value>${version}</value>
+                           <value>${project.version}</value>
                         </property>
                      </systemProperties>
                   </configuration>

@@ -42,6 +42,10 @@
        <url>http://svn.apache.org/viewvc/struts/struts1/branches/STRUTS_1_3_BRANCH</url>
     </scm>
 
+    <properties>
+        <mavenVersion>[3.5.4,4)</mavenVersion>
+    </properties>
+
     <issueManagement>
         <system>JIRA</system>
         <url>http://issues.apache.org/struts/</url>
@@ -165,6 +169,10 @@
                     </configuration>
                 </plugin>
                 <plugin>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <plugin>
                     <artifactId>maven-gpg-plugin</artifactId>
                     <version>1.0</version>
                 </plugin>
@@ -259,6 +267,24 @@
                      </goals>
                   </execution>
                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>enforce-maven</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>${mavenVersion}</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
         

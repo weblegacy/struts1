@@ -67,15 +67,6 @@
          </resource>
       </resources>
 
-      <pluginManagement>
-         <plugins>
-            <plugin>
-               <artifactId>maven-war-plugin</artifactId>
-               <version>3.3.2</version>
-            </plugin>
-         </plugins>
-      </pluginManagement>
-
       <plugins>
          <plugin>
             <groupId>org.codehaus.cargo</groupId>

@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Set current MAVEN-Plugins in subproject-profile
 * Bump MAVEN-Plugins to current versions
 * Upgrade Checkstyle to 10.0
 * Move checkstyle-config to local

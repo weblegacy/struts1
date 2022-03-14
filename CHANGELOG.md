@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Add maven-resources-plugin: Define encoding
 * Add maven-enforcer-plugin: Enforces required MAVEN-Version
 * Update deprecated MAVEN-Var ${version}
 * Centralize MAVAN-Plugins-Version with PluginManagement

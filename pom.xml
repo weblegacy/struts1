@@ -43,6 +43,8 @@
     </scm>
 
     <properties>
+        <encoding>UTF-8</encoding>
+        <propertiesEncoding>ISO-8859-1</propertiesEncoding>
         <mavenVersion>[3.5.4,4)</mavenVersion>
     </properties>
 
@@ -179,6 +181,14 @@
                 <plugin>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>2.5</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.2.0</version>
+                    <configuration>
+                        <encoding>${encoding}</encoding>
+                        <propertiesEncoding>${propertiesEncoding}</propertiesEncoding>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-site-plugin</artifactId>

@@ -26,6 +26,8 @@
   so this file is almost the same as Maven's sun_checks.xml file. The only
   changes from that file are:
 
+    - Allow legacy package.html file to be used.
+
     - Use a RegexpHeader check instead of a regular Header check, since we use
       the Subversion 'Id' keyword in file headers, which needs to be ignored
       in the header check.
@@ -38,9 +40,6 @@
 
     - Disable the FinalParameters module, since fixing those complaints
       would result in backwards incompatible API changes.
-
-    - Disable the InlineConditions modules, since Struts has always used
-      this construct.
 
     - Increase LineLength max to 120 since Jalopy is set to format lines at
       column 80. Some lines are difficult to both indent and wrap at 80.

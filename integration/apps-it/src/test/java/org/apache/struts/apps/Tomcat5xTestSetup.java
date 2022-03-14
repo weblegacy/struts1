@@ -69,7 +69,7 @@ public class Tomcat5xTestSetup extends TestSetup {
         //     -Dcargo.tomcat5x.home=c:/java/apache-tomcat-5.5.17
         String tomcat5x = System.getProperty("cargo.tomcat5x.home");
 
-        File tomcatHome;
+        String tomcatHome;
         if (tomcat5x == null || tomcat5x.startsWith("$")) {
             //System.out.println("INFO: Downloading Tomcat 5.0 from a mirror");
             Installer installer = new ZipURLInstaller(
@@ -78,14 +78,14 @@ public class Tomcat5xTestSetup extends TestSetup {
             installer.install();
             tomcatHome = installer.getHome();
         } else {
-            tomcatHome = new File(tomcat5x);
+            tomcatHome = tomcat5x;
         }
         //System.out.println("INFO: Tomcat home is " + tomcatHome);
 
         // (2) Create the Cargo Container instance wrapping our physical container
         LocalConfiguration configuration = (LocalConfiguration)
                 new DefaultConfigurationFactory().createConfiguration(
-                        "tomcat5x", ConfigurationType.STANDALONE);
+                        "tomcat5x", ContainerType.INSTALLED, ConfigurationType.STANDALONE);
         container = (InstalledLocalContainer)
                 new DefaultContainerFactory().createContainer(
                         "tomcat5x", ContainerType.INSTALLED, configuration);

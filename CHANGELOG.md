@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Upgrade cargo-maven2-plugin (with dependencies) to cargo-maven3-plugin
 * Replace maven-antrun-plugin with maven-resources-plugin
 * Add/Define missing maven-plugins
 * Define Java-Version thru MAVEN-Var

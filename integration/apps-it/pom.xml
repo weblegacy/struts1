@@ -40,26 +40,20 @@
          <version>3.8.1</version>
       </dependency>
       <dependency>
-         <groupId>htmlunit</groupId>
+         <groupId>net.sourceforge.htmlunit</groupId>
          <artifactId>htmlunit</artifactId>
-         <version>1.8</version>
-         <exclusions>
-            <exclusion>
-               <groupId>javax.xml</groupId>
-               <artifactId>jsr173</artifactId>
-            </exclusion>
-         </exclusions>
+         <version>2.59.0</version>
       </dependency>
       <dependency>
          <groupId>org.codehaus.cargo</groupId>
          <artifactId>cargo-core-uberjar</artifactId>
-         <version>0.8</version>
+         <version>1.9.10</version>
          <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>org.codehaus.cargo</groupId>
          <artifactId>cargo-ant</artifactId>
-         <version>0.8</version>
+         <version>1.9.10</version>
          <scope>test</scope>
       </dependency>
    </dependencies>
@@ -85,6 +79,10 @@
                         <property>
                            <name>cargo.tomcat5x.home</name>
                            <value>${cargo.tomcat5x.home}</value>
+                        </property>
+                        <property>
+                           <name>cargo.java.home</name>
+                           <value>${cargo.java.home}</value>
                         </property>
                         <property>
                            <name>cargo.servlet.port</name>

@@ -333,7 +333,7 @@
             <plugin>
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <configuration>
-                  <configLocation>http://svn.apache.org/repos/asf/struts/maven/trunk/build/struts_checks.xml</configLocation>
+                  <configLocation>${project.basedir}/struts_checks.xml</configLocation>
                 </configuration>
             </plugin>
             <plugin>

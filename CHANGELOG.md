@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Replace maven-antrun-plugin with maven-resources-plugin
 * Add/Define missing maven-plugins
 * Define Java-Version thru MAVEN-Var
 * Add maven-resources-plugin: Define encoding

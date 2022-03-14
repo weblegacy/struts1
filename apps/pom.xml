@@ -94,21 +94,21 @@
          </plugin>
          <!-- Include source code under WEB-INF/src/java -->
          <plugin>
-            <artifactId>maven-antrun-plugin</artifactId>
+            <artifactId>maven-resources-plugin</artifactId>
             <executions>
                <execution>
                   <id>copy-sources</id>
                   <phase>process-sources</phase>
                   <configuration>
-                     <tasks>
-                        <copy todir="${project.build.directory}/${project.artifactId}/WEB-INF/src/java"
-                              failonerror="false">
-                           <fileset dir="${basedir}/src/main/java"/>
-                        </copy>
-                     </tasks>
+                     <outputDirectory>${project.build.directory}/${project.artifactId}/WEB-INF/src/java</outputDirectory>
+                     <resources>
+                        <resource>
+                           <directory>${basedir}/src/main/java</directory>
+                        </resource>
+                     </resources>
                   </configuration>
                   <goals>
-                     <goal>run</goal>
+                     <goal>copy-resources</goal>
                   </goals>
                </execution>
             </executions>

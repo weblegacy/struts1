@@ -94,7 +94,7 @@
             <groupId>net.sourceforge.maven-taglib</groupId>
             <artifactId>maven-taglib-plugin</artifactId>
             <configuration>
-               <taglib.src.dir>${basedir}/src/main/resources/META-INF/tld</taglib.src.dir>
+               <taglib.src.dir>${project.basedir}/src/main/resources/META-INF/tld</taglib.src.dir>
                <parseHtml>true</parseHtml>
             </configuration>
          </plugin>

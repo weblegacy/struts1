@@ -94,7 +94,7 @@
                      <outputDirectory>${project.build.directory}/${project.artifactId}/WEB-INF/src/java</outputDirectory>
                      <resources>
                         <resource>
-                           <directory>${basedir}/src/main/java</directory>
+                           <directory>${project.basedir}/src/main/java</directory>
                         </resource>
                      </resources>
                   </configuration>

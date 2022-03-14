@@ -286,8 +286,8 @@
                         <outputDirectory>${project.build.directory}/site/dtds</outputDirectory>
                         <resources>
                            <resource>
-                              <directory>${basedir}/core/src/main/resources/org/apache/struts/resources</directory>
-                              <directory>${basedir}/tiles/src/main/resources/org/apache/struts/resources</directory>
+                              <directory>${project.basedir}/core/src/main/resources/org/apache/struts/resources</directory>
+                              <directory>${project.basedir}/tiles/src/main/resources/org/apache/struts/resources</directory>
                            </resource>
                         </resources>
                      </configuration>

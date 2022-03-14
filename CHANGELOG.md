@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Update deprecated MAVEN-Var ${basedir} to ${project.basedir}
 * Move maven-war-plugin from struts-app to parent
 * Set current MAVEN-Plugins in subproject-profile
 * Bump MAVEN-Plugins to current versions

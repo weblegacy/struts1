@@ -55,49 +55,49 @@
                     <configuration>
                         <artifactItems>
                             <artifactItem>
-                                <groupId>org.apache.struts</groupId>
+                                <groupId>${project.groupId}</groupId>
                                 <artifactId>struts-blank</artifactId>
                                 <version>${project.version}</version>
                                 <type>war</type>
                             </artifactItem>
                             <artifactItem>
-                                <groupId>org.apache.struts</groupId>
+                                <groupId>${project.groupId}</groupId>
                                 <artifactId>struts-cookbook</artifactId>
                                 <version>${project.version}</version>
                                 <type>war</type>
                             </artifactItem>
                             <artifactItem>
-                                <groupId>org.apache.struts</groupId>
+                                <groupId>${project.groupId}</groupId>
                                 <artifactId>struts-examples</artifactId>
                                 <version>${project.version}</version>
                                 <type>war</type>
                             </artifactItem>
                             <artifactItem>
-                                <groupId>org.apache.struts</groupId>
+                                <groupId>${project.groupId}</groupId>
                                 <artifactId>struts-faces-example1</artifactId>
                                 <version>${project.version}</version>
                                 <type>war</type>
                             </artifactItem>
                             <artifactItem>
-                                <groupId>org.apache.struts</groupId>
+                                <groupId>${project.groupId}</groupId>
                                 <artifactId>struts-faces-example2</artifactId>
                                 <version>${project.version}</version>
                                 <type>war</type>
                             </artifactItem>
                             <artifactItem>
-                                <groupId>org.apache.struts</groupId>
+                                <groupId>${project.groupId}</groupId>
                                 <artifactId>struts-mailreader</artifactId>
                                 <version>${project.version}</version>
                                 <type>war</type>
                             </artifactItem>
                             <artifactItem>
-                                <groupId>org.apache.struts</groupId>
+                                <groupId>${project.groupId}</groupId>
                                 <artifactId>struts-scripting-mailreader</artifactId>
                                 <version>${project.version}</version>
                                 <type>war</type>
                             </artifactItem>
                             <artifactItem>
-                                <groupId>org.apache.struts</groupId>
+                                <groupId>${project.groupId}</groupId>
                                 <artifactId>struts-el-example</artifactId>
                                 <version>${project.version}</version>
                                 <type>war</type>
@@ -130,42 +130,42 @@
   <dependencies>
 
     <dependency>
-      <groupId>org.apache.struts</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>struts-core</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.struts</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>struts-extras</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.struts</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>struts-el</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.struts</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>struts-faces</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.struts</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>struts-scripting</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.struts</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>struts-taglib</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.struts</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>struts-tiles</artifactId>
       <version>${project.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.struts</groupId>
+      <groupId>${project.groupId}</groupId>
       <artifactId>struts-mailreader-dao</artifactId>
       <version>${project.version}</version>
     </dependency>

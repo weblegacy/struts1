@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Replace org.apache.struts with ${project.groupId}
 * Remove MAVEN-GroupID from Sub-Projects
 * Remove MAVEN-Default-Plugin-Group (org.apache.maven.plugins)
 

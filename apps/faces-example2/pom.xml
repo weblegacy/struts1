@@ -88,7 +88,7 @@
 
       <!-- This example needs Tiles as well -->
       <dependency>
-          <groupId>org.apache.struts</groupId>
+          <groupId>${project.groupId}</groupId>
           <artifactId>struts-tiles</artifactId>
           <version>${project.version}</version>
       </dependency>

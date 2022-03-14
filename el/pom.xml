@@ -71,19 +71,19 @@
       </dependency>
 
       <dependency>
-         <groupId>org.apache.struts</groupId>
+         <groupId>${project.groupId}</groupId>
          <artifactId>struts-core</artifactId>
          <version>${project.version}</version>
       </dependency>
 
       <dependency>
-         <groupId>org.apache.struts</groupId>
+         <groupId>${project.groupId}</groupId>
          <artifactId>struts-taglib</artifactId>
          <version>${project.version}</version>
       </dependency>
 
       <dependency>
-         <groupId>org.apache.struts</groupId>
+         <groupId>${project.groupId}</groupId>
          <artifactId>struts-tiles</artifactId>
          <version>${project.version}</version>
          <optional>true</optional>

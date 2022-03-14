@@ -46,6 +46,7 @@
         <encoding>UTF-8</encoding>
         <propertiesEncoding>ISO-8859-1</propertiesEncoding>
         <mavenVersion>[3.5.4,4)</mavenVersion>
+        <javaVersion>1.4</javaVersion>
     </properties>
 
     <issueManagement>
@@ -166,8 +167,8 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>2.0.2</version>
                     <configuration>
-                        <source>1.4</source>
-                        <target>1.4</target>
+                        <source>${javaVersion}</source>
+                        <target>${javaVersion}</target>
                     </configuration>
                 </plugin>
                 <plugin>

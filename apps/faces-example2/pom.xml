@@ -26,7 +26,6 @@
    </parent>
 
    <modelVersion>4.0.0</modelVersion>
-   <groupId>org.apache.struts</groupId>
    <artifactId>struts-faces-example2</artifactId>
    <packaging>war</packaging>
    <name>Struts Apps - Faces Example 2</name>

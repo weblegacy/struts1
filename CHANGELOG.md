@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Remove MAVEN-GroupID from Sub-Projects
 * Remove MAVEN-Default-Plugin-Group (org.apache.maven.plugins)
 
 # 1.3.11-SNAPSHOT / 2022-03-11

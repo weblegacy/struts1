@@ -28,7 +28,6 @@
    </parent>
 
    <modelVersion>4.0.0</modelVersion>
-   <groupId>org.apache.struts</groupId>
    <artifactId>struts-it-apps</artifactId>
    <packaging>pom</packaging>
    <name>Struts Integration - Apps Tests</name>

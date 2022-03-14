@@ -29,7 +29,6 @@
    </parent>
 
    <modelVersion>4.0.0</modelVersion>
-   <groupId>org.apache.struts</groupId>
    <artifactId>struts-faces</artifactId>
    <packaging>jar</packaging>
    <name>Struts Faces</name>

@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Move `TestMockBase` in module `core` from main into test
 * Centralize junit dependency
 * Update ReadMe
 * Update javadoc-links

@@ -152,8 +152,8 @@
         <pluginManagement>
             <plugins>
                 <plugin>
-                   <artifactId>maven-assembly-plugin</artifactId>
-                   <version>3.3.0</version>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-checkstyle-plugin</artifactId>
@@ -241,8 +241,8 @@
                 <plugin>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>3.2.2</version>
-                 </plugin>
-                 <plugin>
+                </plugin>
+                <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.0.0-M5</version>
                 </plugin>
@@ -264,7 +264,7 @@
                     <artifactId>maven-taglib-plugin</artifactId>
                     <version>2.4</version>
                     <configuration>
-                      <parseHtml>true</parseHtml>
+                        <parseHtml>true</parseHtml>
                     </configuration>
                 </plugin>
                 <plugin>
@@ -366,7 +366,14 @@
         </plugins>
     </reporting>
 
-    <dependencies/>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
     <repositories>
         <repository>

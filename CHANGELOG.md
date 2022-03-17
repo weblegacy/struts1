@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Centralize junit dependency
 * Update ReadMe
 * Update javadoc-links
 * Change comment in checkstyle-config

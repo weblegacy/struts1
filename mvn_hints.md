@@ -8,7 +8,7 @@
 *Notice:*
 JDK 1.8u91 and greater no longer works with Tomcat 5.x  - see also [StackOverflow - The type java.io.ObjectInputStream cannot be resolved. It is indirectly referenced from required .class files](https://stackoverflow.com/questions/36963248/the-type-java-io-objectinputstream-cannot-be-resolved-it-is-indirectly-referenc/38444118).
 
-Therefore, Tomcat 5.5 must run with a JDK 1.7. 
+Therefore, Tomcat 5.5 must run with a JDK 1.7.
 
 **Example:**  
 `mvn -Papps,itest -Dcargo.tomcat5x.home=c:/EProg/apache-tomcat-5.5.36 -Dcargo.java.home=c:/Program Files (x86)/Java/jdk1.7.0_80 clean install`

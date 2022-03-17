@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Update ReadMe
 * Update javadoc-links
 * Change comment in checkstyle-config
 * Update deprecated MAVEN-Var ${basedir} to ${project.basedir}

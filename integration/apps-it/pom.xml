@@ -29,9 +29,13 @@
 
    <modelVersion>4.0.0</modelVersion>
    <artifactId>struts-it-apps</artifactId>
-   <packaging>pom</packaging>
+   <packaging>jar</packaging>
    <name>Struts Integration - Apps Tests</name>
    <url>http://struts.apache.org</url>
+
+    <properties>
+        <cargo.servlet.port>8080</cargo.servlet.port>
+    </properties>
 
    <dependencies>
       <dependency>
@@ -40,61 +44,155 @@
          <version>2.59.0</version>
       </dependency>
       <dependency>
-         <groupId>org.codehaus.cargo</groupId>
-         <artifactId>cargo-core-uberjar</artifactId>
-         <version>1.9.10</version>
-         <scope>test</scope>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>struts-blank</artifactId>
+         <version>${project.version}</version>
+         <type>war</type>
       </dependency>
       <dependency>
-         <groupId>org.codehaus.cargo</groupId>
-         <artifactId>cargo-ant</artifactId>
-         <version>1.9.10</version>
-         <scope>test</scope>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>struts-cookbook</artifactId>
+         <version>${project.version}</version>
+         <type>war</type>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>struts-examples</artifactId>
+         <version>${project.version}</version>
+         <type>war</type>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>struts-faces-example1</artifactId>
+         <version>${project.version}</version>
+         <type>war</type>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>struts-faces-example2</artifactId>
+         <version>${project.version}</version>
+         <type>war</type>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>struts-mailreader</artifactId>
+         <version>${project.version}</version>
+         <type>war</type>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>struts-scripting-mailreader</artifactId>
+         <version>${project.version}</version>
+         <type>war</type>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>struts-el-example</artifactId>
+         <version>${project.version}</version>
+         <type>war</type>
       </dependency>
    </dependencies>
 
           <build>
             <plugins>
                <plugin>
-                  <artifactId>maven-compiler-plugin</artifactId>
-                  <executions>
-                     <execution>
-                        <id>compiler-for-tests</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                           <goal>testCompile</goal>
-                        </goals>
-                     </execution>
-                  </executions>
-               </plugin>
-               <plugin>
-                  <artifactId>maven-surefire-plugin</artifactId>
+                  <artifactId>maven-failsafe-plugin</artifactId>
                   <configuration>
                      <systemProperties>
                         <property>
-                           <name>cargo.tomcat5x.home</name>
-                           <value>${cargo.tomcat5x.home}</value>
-                        </property>
-                        <property>
-                           <name>cargo.java.home</name>
-                           <value>${cargo.java.home}</value>
-                        </property>
-                        <property>
                            <name>cargo.servlet.port</name>
-                           <value>8080</value>
-                        </property>
-                        <property>
-                           <name>version</name>
-                           <value>${project.version}</value>
+                           <value>${cargo.servlet.port}</value>
                         </property>
                      </systemProperties>
                   </configuration>
                   <executions>
                      <execution>
-                        <id>surefire-it</id>
-                        <phase>integration-test</phase>
+                        <id>integration-test</id>
                         <goals>
-                           <goal>test</goal>
+                           <goal>integration-test</goal>
+                        </goals>
+                     </execution>
+                     <execution>
+                        <id>verify</id>
+                        <goals>
+                           <goal>verify</goal>
+                        </goals>
+                     </execution>
+                  </executions>
+               </plugin>
+               <plugin>
+                  <groupId>org.codehaus.cargo</groupId>
+                  <artifactId>cargo-maven3-plugin</artifactId>
+                  <configuration>
+                     <container>
+                        <containerId>tomcat5x</containerId>
+                        <artifactInstaller>
+                           <groupId>org.apache.tomcat</groupId>
+                           <artifactId>apache-tomcat</artifactId>
+                           <version>5.5.36</version>
+                        </artifactInstaller>
+                     </container>
+                     <configuration>
+                        <properties>
+                           <cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
+                        </properties>
+                     </configuration>
+                     <deployables>
+                        <deployable>
+                           <groupId>${project.groupId}</groupId>
+                           <artifactId>struts-blank</artifactId>
+                           <type>war</type>
+                        </deployable>
+                        <deployable>
+                           <groupId>${project.groupId}</groupId>
+                           <artifactId>struts-cookbook</artifactId>
+                           <type>war</type>
+                        </deployable>
+                        <deployable>
+                           <groupId>${project.groupId}</groupId>
+                           <artifactId>struts-examples</artifactId>
+                           <type>war</type>
+                        </deployable>
+                        <deployable>
+                           <groupId>${project.groupId}</groupId>
+                           <artifactId>struts-faces-example1</artifactId>
+                           <type>war</type>
+                        </deployable>
+                        <deployable>
+                           <groupId>${project.groupId}</groupId>
+                           <artifactId>struts-faces-example2</artifactId>
+                           <type>war</type>
+                        </deployable>
+                        <deployable>
+                           <groupId>${project.groupId}</groupId>
+                           <artifactId>struts-mailreader</artifactId>
+                           <type>war</type>
+                        </deployable>
+                        <deployable>
+                           <groupId>${project.groupId}</groupId>
+                           <artifactId>struts-scripting-mailreader</artifactId>
+                           <type>war</type>
+                        </deployable>
+                        <deployable>
+                           <groupId>${project.groupId}</groupId>
+                           <artifactId>struts-el-example</artifactId>
+                           <type>war</type>
+                        </deployable>
+                     </deployables>
+                  </configuration>
+                  <executions>
+                     <execution>
+                        <id>start-container</id>
+                        <phase>pre-integration-test</phase>
+                        <goals>
+                           <goal>start</goal>
+                        </goals>
+                     </execution>
+                     <execution>
+                        <id>stop-container</id>
+                        <phase>post-integration-test</phase>
+                        <goals>
+                           <goal>stop</goal>
                         </goals>
                      </execution>
                   </executions>

@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Add forgotten `dispatchValidator.zip` from apache-struts1-clone
 * Integration-test: skip creating empty jar file
 * Move integration-test-settings to integration-test-parent-POM
 * Integration-tests with JUnit5 and deploy server with cargo-function

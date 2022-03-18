@@ -172,12 +172,11 @@ modules.xml
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files #
+# Package Files without ZIP #
 *.jar
 *.war
 *.nar
 *.ear
-*.zip
 *.tar.gz
 *.rar
 

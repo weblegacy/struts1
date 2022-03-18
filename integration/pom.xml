@@ -32,10 +32,38 @@
    <packaging>pom</packaging>
    <name>Struts Integration Tests</name>
 
-    <properties>
-        <javaTestVersion>1.7</javaTestVersion>
-        <cargo.servlet.port>8080</cargo.servlet.port>
-    </properties>
+   <properties>
+      <javaTestVersion>1.7</javaTestVersion>
+      <cargo.servlet.port>8080</cargo.servlet.port>
+   </properties>
+
+   <profiles>
+      <profile>
+         <id>cargorun</id>
+         <activation>
+            <property>
+               <name>cargorun</name>
+            </property>
+         </activation>
+         <build>
+            <plugins>
+               <plugin>
+                  <groupId>org.codehaus.cargo</groupId>
+                  <artifactId>cargo-maven3-plugin</artifactId>
+                  <executions>
+                     <execution>
+                        <id>run-container</id>
+                        <phase>test</phase>
+                        <goals>
+                           <goal>run</goal>
+                        </goals>
+                     </execution>
+                  </executions>
+               </plugin>
+            </plugins>
+         </build>
+      </profile>
+   </profiles>
 
    <modules>
       <module>apps-it</module>

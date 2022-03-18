@@ -22,3 +22,5 @@ Is a clone of <https://github.com/apache/struts1.git> - STRUTS_1_3_BRANCH, aimin
  * **itest** - Includes the integration-tests into build
      * Add the module `integration`
  * **release** - Signs all of the project's attached artifacts with GnuPG
+ * **cargorun** - Starts a web-server to manually test the example-apps
+    * `mvn -Papps,itest,cargorun -Dcargo.java.home=[JDK_1.7]`

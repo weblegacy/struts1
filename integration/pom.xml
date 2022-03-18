@@ -32,6 +32,10 @@
    <packaging>pom</packaging>
    <name>Struts Integration Tests</name>
 
+    <properties>
+        <javaTestVersion>1.7</javaTestVersion>
+    </properties>
+
    <modules>
       <module>apps-it</module>
    </modules>

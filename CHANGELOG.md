@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Compile tests with JDK 1.8 and integration-tests with JDK 1.7
 * Move `TestMockBase` in module `core` from main into test
 * Centralize junit dependency
 * Update ReadMe

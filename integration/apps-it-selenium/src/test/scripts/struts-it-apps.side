@@ -1,0 +1,42 @@
+{
+  "id": "4614e02a-c8a1-4e00-860a-30ec23358cc1",
+  "version": "2.0",
+  "name": "struts-it-apps",
+  "url": "http://localhost:8080/",
+  "tests": [{
+    "id": "2c84ae5b-cabb-43d6-9d94-a2ee41790488",
+    "name": "blank-verify-welcome",
+    "commands": [{
+      "id": "39c85bd4-ecc2-49c6-8f92-831121b56e57",
+      "comment": "",
+      "command": "open",
+      "target": "struts-blank/Welcome.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e4018044-6c26-4a97-b175-c82327c08749",
+      "comment": "",
+      "command": "verifyTitle",
+      "target": "Struts Blank Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7b73f8c7-d08c-4055-bd34-8e1d8b96a027",
+      "comment": "",
+      "command": "assertElementPresent",
+      "target": "xpath=//*[contains(text(),'Welcome!')]",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "fe9892c9-0e90-4652-b998-f8f52830ec74",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["2c84ae5b-cabb-43d6-9d94-a2ee41790488"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

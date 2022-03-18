@@ -67,6 +67,7 @@
 
    <modules>
       <module>apps-it</module>
+      <module>apps-it-selenium</module>
    </modules>
 
    <build>

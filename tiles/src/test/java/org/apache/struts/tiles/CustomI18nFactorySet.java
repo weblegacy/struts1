@@ -18,21 +18,22 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.apache.struts.tiles;
 
 import java.util.Map;
-import java.util.Locale;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
+
 import org.apache.struts.tiles.xmlDefinition.I18nFactorySet;
+
 /**
- * <p>Test I18nFactorySet.</p>
+ * Test {@link I18nFactorySet}.
  *
  * @version $Rev$ $Date$
  */
-
 public class CustomI18nFactorySet extends I18nFactorySet {
+    private static final long serialVersionUID = 5068476450131483964L;
 
     /**
      * Constructor.
@@ -41,7 +42,7 @@ public class CustomI18nFactorySet extends I18nFactorySet {
      * @param properties Map containing all properties.
      * @throws FactoryNotFoundException Can't find factory configuration file.
      */
-    public CustomI18nFactorySet(ServletContext servletContext, Map properties)
+    public CustomI18nFactorySet(ServletContext servletContext, Map<String, String> properties)
         throws DefinitionsFactoryException {
         super(servletContext, properties);
     }

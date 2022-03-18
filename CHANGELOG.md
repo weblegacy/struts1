@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Bump JUnit 3.8.1 to JUnit5 5.8.2
 * Compile tests with JDK 1.8 and integration-tests with JDK 1.7
 * Move `TestMockBase` in module `core` from main into test
 * Centralize junit dependency

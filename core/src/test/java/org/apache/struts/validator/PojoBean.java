@@ -34,7 +34,7 @@ public class PojoBean {
     protected Integer integerValue1;
     protected Integer integerValue2;
     protected PojoBean[] beans;
-    protected Map map = new HashMap();
+    protected Map<String, Object> map = new HashMap<>();
 
     /**
      * Default Constructor
@@ -175,7 +175,7 @@ public class PojoBean {
     /**
      * Return the Map
      */
-    public void setMap(Map map) {
+    public void setMap(Map<String, Object> map) {
         this.map = map;
     }
 

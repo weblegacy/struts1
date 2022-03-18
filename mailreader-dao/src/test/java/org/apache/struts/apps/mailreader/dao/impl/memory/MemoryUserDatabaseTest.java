@@ -1,5 +1,5 @@
 /*
- * $Id: $
+ * $Id$
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -18,7 +18,6 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.apache.struts.apps.mailreader.dao.impl.memory;
 
 import java.io.File;
@@ -27,9 +26,14 @@ import org.apache.struts.apps.mailreader.dao.BaseTestUserDatabase;
 import org.apache.struts.apps.mailreader.dao.Subscription;
 import org.apache.struts.apps.mailreader.dao.User;
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
-
-
+/**
+ * Unit tests for {@link MemoryUserDatabase}.
+ *
+ * @version $Rev$ $Date$
+ */
 public class MemoryUserDatabaseTest extends BaseTestUserDatabase {
 
     protected String defaultPathName = "test-database.xml";
@@ -59,12 +63,14 @@ public class MemoryUserDatabaseTest extends BaseTestUserDatabase {
         return user.createSubscription(host);
     }
 
+    @BeforeEach
     protected void setUp() throws Exception {
         super.setUp();
         // force write to disk
        userDatabase.close();
     }
 
+    @AfterEach
     protected void tearDown() throws Exception {
         super.tearDown();
         if (isDeleteDatabaseFile()) {

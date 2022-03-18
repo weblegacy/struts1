@@ -1,5 +1,5 @@
 /*
- * $Id: $
+ * $Id$
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,8 +20,6 @@
  */
 package org.apache.struts.taglib;
 
-import junit.framework.TestCase;
-
 import org.apache.struts.Globals;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.config.ModuleConfig;
@@ -35,8 +33,10 @@ import org.apache.struts.mock.MockServletContext;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.MessageResourcesFactory;
 import org.apache.struts.util.PropertyMessageResources;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 
-public class TagTestBase extends TestCase {
+public class TagTestBase {
     protected TagUtils tagutils = TagUtils.getInstance();
     protected MockServletConfig servletConfig;
     protected MockServletContext servletContext;
@@ -45,14 +45,6 @@ public class TagTestBase extends TestCase {
     protected ModuleConfig moduleConfig;
     protected ModuleConfig moduleConfig2;
     protected ModuleConfig moduleConfig3;
-
-    public TagTestBase() {
-        super();
-    }
-
-    public TagTestBase(String theName) {
-        super(theName);
-    }
 
     /**
      * Helper method that creates/configures a basic configuration of Mock
@@ -64,6 +56,7 @@ public class TagTestBase extends TestCase {
      *
      * "/myapp", "/foo", null, null,
      */
+    @BeforeEach
     public void setUp() {
         // -- default Module
         this.moduleConfig = new ModuleConfigImpl("");
@@ -110,6 +103,7 @@ public class TagTestBase extends TestCase {
                 new MockHttpServletResponse());
     }
 
+    @AfterEach
     public void tearDown() {
         this.moduleConfig = null;
         this.moduleConfig2 = null;

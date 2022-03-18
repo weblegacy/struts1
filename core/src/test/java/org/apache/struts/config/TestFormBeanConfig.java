@@ -20,21 +20,26 @@
  */
 package org.apache.struts.config;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.lang.reflect.InvocationTargetException;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 /**
- * Unit tests for the <code>org.apache.struts.config.FormBeanConfig</code>
- * class.  Currently only contains code to test the methods that support
- * configuration inheritance.
+ * Unit tests for the {@link FormBeanConfig} class.  Currently only
+ * contains code to test the methods that support configuration inheritance.
  *
- * @version $Rev$ $Date: 2005-05-25 19:35:00 -0400 (Wed, 25 May 2005)
- *          $
+ * @version $Rev$ $Date$
  */
-public class TestFormBeanConfig extends TestCase {
+public class TestFormBeanConfig {
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -47,22 +52,12 @@ public class TestFormBeanConfig extends TestCase {
      */
     protected FormBeanConfig baseForm = null;
 
-    // ----------------------------------------------------------- Constructors
-
-    /**
-     * Construct a new instance of this test case.
-     *
-     * @param name Name of the test case
-     */
-    public TestFormBeanConfig(String name) {
-        super(name);
-    }
-
     // --------------------------------------------------------- Public Methods
 
     /**
      * Set up instance variables required by this test case.
      */
+    @BeforeEach
     public void setUp() {
         ModuleConfigFactory factoryObject = ModuleConfigFactory.createFactory();
 
@@ -101,15 +96,9 @@ public class TestFormBeanConfig extends TestCase {
     }
 
     /**
-     * Return the tests included in this test suite.
-     */
-    public static Test suite() {
-        return (new TestSuite(TestFormBeanConfig.class));
-    }
-
-    /**
      * Tear down instance variables required by this test case.
      */
+    @AfterEach
     public void tearDown() {
         config = null;
         baseForm = null;
@@ -120,6 +109,7 @@ public class TestFormBeanConfig extends TestCase {
     /**
      * Basic check that shouldn't detect an error.
      */
+    @Test
     public void testCheckCircularInheritance() {
         FormBeanConfig child = new FormBeanConfig();
 
@@ -134,13 +124,14 @@ public class TestFormBeanConfig extends TestCase {
         config.addFormBeanConfig(child);
         config.addFormBeanConfig(grandChild);
 
-        assertTrue("Circular inheritance shouldn't have been detected",
-            !grandChild.checkCircularInheritance(config));
+        assertFalse(grandChild.checkCircularInheritance(config),
+            "Circular inheritance shouldn't have been detected");
     }
 
     /**
      * Basic check that SHOULD detect an error.
      */
+    @Test
     public void testCheckCircularInheritanceError() {
         FormBeanConfig child = new FormBeanConfig();
 
@@ -158,14 +149,15 @@ public class TestFormBeanConfig extends TestCase {
         config.addFormBeanConfig(child);
         config.addFormBeanConfig(grandChild);
 
-        assertTrue("Circular inheritance should've been detected",
-            grandChild.checkCircularInheritance(config));
+        assertTrue(grandChild.checkCircularInheritance(config),
+            "Circular inheritance should've been detected");
     }
 
     /**
      * Test that processExtends() makes sure that a base form's own extension
      * has been processed.
      */
+    @Test
     public void testProcessExtendsBaseFormExtends()
         throws Exception {
         CustomFormBeanConfig first = new CustomFormBeanConfig();
@@ -185,29 +177,23 @@ public class TestFormBeanConfig extends TestCase {
 
         baseForm.processExtends(config);
 
-        assertTrue("The first form's processExtends() wasn't called",
-            first.processExtendsCalled);
-        assertTrue("The second form's processExtends() wasn't called",
-            second.processExtendsCalled);
+        assertTrue(first.processExtendsCalled,
+            "The first form's processExtends() wasn't called");
+        assertTrue(second.processExtendsCalled,
+            "The second form's processExtends() wasn't called");
     }
 
     /**
      * Make sure that correct exception is thrown if a base form can't be
      * found.
      */
-    public void testProcessExtendsMissingBaseForm()
-        throws Exception {
+    @Test
+    public void testProcessExtendsMissingBaseForm() {
         baseForm.setExtends("someMissingForm");
 
-        try {
-            baseForm.processExtends(config);
-            fail(
-                "An exception should be thrown if a super form can't be found.");
-        } catch (NullPointerException e) {
-            // succeed
-        } catch (InstantiationException e) {
-            fail("Unrecognized exception thrown.");
-        }
+        assertThrows(NullPointerException.class,
+            () -> baseForm.processExtends(config),
+            "An exception should be thrown if a super form can't be found.");
     }
 
     /**
@@ -215,8 +201,9 @@ public class TestFormBeanConfig extends TestCase {
      * properties should be inherited from a base form.  This method checks
      * all the properties.
      */
+    @Test
     public void testInheritFrom()
-        throws Exception {
+        throws ClassNotFoundException, IllegalAccessException, InstantiationException, InvocationTargetException {
         // give baseForm some arbitrary parameters
         String baseFormCount = "1";
 
@@ -255,21 +242,21 @@ public class TestFormBeanConfig extends TestCase {
         subForm.inheritFrom(baseForm);
 
         // check that our subForm is still the one in the config
-        assertSame("subForm no longer in ModuleConfig", subForm,
-            config.findFormBeanConfig("subForm"));
+        assertSame(subForm, config.findFormBeanConfig("subForm"),
+            "subForm no longer in ModuleConfig");
 
         // check our configured sub form
-        assertNotNull("Form bean type was not inherited", subForm.getType());
-        assertEquals("Wrong form bean name", subFormName, subForm.getName());
-        assertEquals("Wrong form bean type", baseForm.getType(),
-            subForm.getType());
-        assertEquals("Wrong restricted value", baseForm.isRestricted(),
-            subForm.isRestricted());
+        assertNotNull(subForm.getType(), "Form bean type was not inherited");
+        assertEquals(subFormName, subForm.getName(), "Wrong form bean name");
+        assertEquals(baseForm.getType(), subForm.getType(),
+            "Wrong form bean type");
+        assertEquals(baseForm.isRestricted(), subForm.isRestricted(),
+            "Wrong restricted value");
 
         FormPropertyConfig[] formPropertyConfigs =
             subForm.findFormPropertyConfigs();
 
-        assertEquals("Wrong prop count", 4, formPropertyConfigs.length);
+        assertEquals(4, formPropertyConfigs.length, "Wrong prop count");
 
         // we want to check that the form is EXACTLY as we want it, so
         //  here are some fine grain checks
@@ -277,57 +264,60 @@ public class TestFormBeanConfig extends TestCase {
 
         FormPropertyConfig original = baseForm.findFormPropertyConfig("name");
 
-        assertNotNull("'name' property was not inherited", property);
-        assertEquals("Wrong type for name", original.getType(),
-            property.getType());
-        assertEquals("Wrong initial value for name", original.getInitial(),
-            property.getInitial());
-        assertEquals("Wrong size value for name", original.getSize(),
-            property.getSize());
+        assertNotNull(property, "'name' property was not inherited");
+        assertEquals(original.getType(), property.getType(),
+            "Wrong type for name");
+        assertEquals(original.getInitial(), property.getInitial(),
+            "Wrong initial value for name");
+        assertEquals(original.getSize(), property.getSize(),
+            "Wrong size value for name");
 
         property = subForm.findFormPropertyConfig("id");
         original = baseForm.findFormPropertyConfig("id");
-        assertNotNull("'id' property was not found", property);
-        assertEquals("Wrong type for id", original.getType(), property.getType());
-        assertEquals("Wrong initial value for id", "unknown",
-            property.getInitial());
-        assertEquals("Wrong size value for id", original.getSize(),
-            property.getSize());
+        assertNotNull(property, "'id' property was not found");
+        assertEquals(original.getType(), property.getType(), "Wrong type for id");
+        assertEquals("unknown", property.getInitial(),
+            "Wrong initial value for id");
+        assertEquals(original.getSize(), property.getSize(),
+            "Wrong size value for id");
 
         property = subForm.findFormPropertyConfig("score");
         original = baseForm.findFormPropertyConfig("score");
-        assertNotNull("'score' property was not found", property);
-        assertEquals("Wrong type for score", "java.lang.Integer",
-            property.getType());
-        assertEquals("Wrong initial value for score", original.getInitial(),
-            property.getInitial());
-        assertEquals("Wrong size value for score", original.getSize(),
-            property.getSize());
+        assertNotNull(property, "'score' property was not found");
+        assertEquals(property.getType(), "java.lang.Integer",
+            "Wrong type for score");
+        assertEquals(original.getInitial(), property.getInitial(),
+            "Wrong initial value for score");
+        assertEquals(original.getSize(), property.getSize(),
+            "Wrong size value for score");
 
         property = subForm.findFormPropertyConfig("message");
         original = baseForm.findFormPropertyConfig("message");
-        assertNotNull("'message' property was not found", property);
-        assertEquals("Wrong type for message", original.getType(),
-            property.getType());
-        assertEquals("Wrong initial value for message", original.getInitial(),
-            property.getInitial());
-        assertEquals("Wrong size value for message", 10, property.getSize());
+        assertNotNull(property, "'message' property was not found");
+        assertEquals(original.getType(), property.getType(),
+            "Wrong type for message");
+        assertEquals(original.getInitial(), property.getInitial(),
+            "Wrong initial value for message");
+        assertEquals(10, property.getSize(),
+            "Wrong size value for message");
 
         property = subForm.findFormPropertyConfig("name");
         original = baseForm.findFormPropertyConfig("name");
-        assertEquals("Arbitrary property not found",
-            original.getProperty("count"), property.getProperty("count"));
+        assertEquals(original.getProperty("count"), property.getProperty("count"),
+            "Arbitrary property not found");
 
         String count = subForm.getProperty("count");
 
-        assertEquals("Arbitrary property was not inherited", baseFormCount,
-            count);
+        assertEquals(baseFormCount, count,
+            "Arbitrary property was not inherited");
     }
 
     /**
      * Used to detect that FormBeanConfig is making the right calls.
      */
     public static class CustomFormBeanConfig extends FormBeanConfig {
+        private static final long serialVersionUID = -1148163983085104532L;
+
         boolean processExtendsCalled = false;
 
         public void processExtends(ModuleConfig moduleConfig)

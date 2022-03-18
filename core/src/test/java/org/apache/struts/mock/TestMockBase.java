@@ -20,9 +20,8 @@
  */
 package org.apache.struts.mock;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionFormBean;
@@ -33,19 +32,21 @@ import org.apache.struts.config.FormPropertyConfig;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.config.ModuleConfigFactory;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
- * <p>Convenience base class for unit tests of the <code>org.apache.struts.util</code>
+ * Convenience base class for unit tests of the {@code org.apache.struts.mock}
  * package, and others that require a runtime environment similar to what the
- * Struts controller servlet sets up.  The <code>setUp()</code> method
+ * Struts controller servlet sets up.  The {@link #setUp()} method
  * establishes a consistent basic environment for the various tests.  The only
  * tests included in this class are simple validations that the basic
- * environment was set up correctly.</p>
+ * environment was set up correctly.
  *
- * @version $Rev$ $Date: 2005-08-14 17:24:39 -0400 (Sun, 14 Aug 2005)
- *          $
+ * @version $Rev$ $Date$
  */
-public class TestMockBase extends TestCase {
+public class TestMockBase {
     // ----------------------------------------------------- Instance Variables
     protected ModuleConfig moduleConfig = null;
     protected ModuleConfig moduleConfig2 = null;
@@ -58,20 +59,8 @@ public class TestMockBase extends TestCase {
     protected MockHttpServletResponse response = null;
     protected MockHttpSession session = null;
 
-    // ----------------------------------------------------------------- Basics
-    public TestMockBase(String name) {
-        super(name);
-    }
-
-    public static void main(String[] args) {
-        junit.awtui.TestRunner.main(new String[] { TestMockBase.class.getName() });
-    }
-
-    public static Test suite() {
-        return (new TestSuite(TestMockBase.class));
-    }
-
     // ----------------------------------------------------- Setup and Teardown
+    @BeforeEach
     public void setUp() {
         // Set up the servlet API objects for a test scenario
         context = new MockServletContext();
@@ -340,6 +329,7 @@ public class TestMockBase extends TestCase {
                 "/context")); // specify module
     }
 
+    @AfterEach
     public void tearDown() {
         moduleConfig3 = null;
         moduleConfig2 = null;
@@ -355,34 +345,35 @@ public class TestMockBase extends TestCase {
 
     // ------------------------------------------------------- Individual Tests
     // Test the basic setup of the mock object environment
+    @Test
     public void testUtilBaseEnvironment() {
         // Validate the servlet API objects and inter-relationships
-        assertNotNull("config is present", config);
-        assertNotNull("context is present", context);
-        assertNotNull("page is present", page);
-        assertNotNull("principal is present", principal);
-        assertNotNull("request is present", request);
-        assertNotNull("response is present", response);
-        assertNotNull("session is present", session);
-        assertEquals("page-->config", config, page.getServletConfig());
-        assertEquals("config-->context", context, config.getServletContext());
-        assertEquals("page-->context", context, page.getServletContext());
-        assertEquals("page-->request", request, page.getRequest());
-        assertEquals("page-->response", response, page.getResponse());
-        assertEquals("page-->session", session, page.getSession());
-        assertEquals("request-->principal", principal,
-            request.getUserPrincipal());
-        assertEquals("request-->session", session, request.getSession());
-        assertEquals("session-->context", context, session.getServletContext());
+        assertNotNull(config, "config is present");
+        assertNotNull(context, "context is present");
+        assertNotNull(page, "page is present");
+        assertNotNull(principal, "principal is present");
+        assertNotNull(request, "request is present");
+        assertNotNull(response, "response is present");
+        assertNotNull(session, "session is present");
+        assertEquals(config, page.getServletConfig(), "page-->config");
+        assertEquals(context, config.getServletContext(), "config-->context");
+        assertEquals(context, page.getServletContext(), "page-->context");
+        assertEquals(request, page.getRequest(), "page-->request");
+        assertEquals(response, page.getResponse(), "page-->response");
+        assertEquals(session, page.getSession(), "page-->session");
+        assertEquals(principal, request.getUserPrincipal(),
+            "request-->principal");
+        assertEquals(session, request.getSession(), "request-->session");
+        assertEquals(context, session.getServletContext(), "session-->context");
 
         // Validate the configuration for the default module
-        assertNotNull("moduleConfig is present", moduleConfig);
-        assertEquals("context-->moduleConfig", moduleConfig,
-            context.getAttribute(Globals.MODULE_KEY));
+        assertNotNull(moduleConfig, "moduleConfig is present");
+        assertEquals(moduleConfig, context.getAttribute(Globals.MODULE_KEY),
+            "context-->moduleConfig");
 
         // Validate the configuration for the second module
-        assertNotNull("moduleConfig2 is present", moduleConfig2);
-        assertEquals("context-->moduleConfig2", moduleConfig2,
-            context.getAttribute(Globals.MODULE_KEY + "/2"));
+        assertNotNull(moduleConfig2, "moduleConfig2 is present");
+        assertEquals(moduleConfig2, context.getAttribute(Globals.MODULE_KEY + "/2"),
+            "context-->moduleConfig2");
     }
 }

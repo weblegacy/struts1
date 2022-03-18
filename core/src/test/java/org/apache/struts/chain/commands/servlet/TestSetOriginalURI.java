@@ -20,7 +20,8 @@
  */
 package org.apache.struts.chain.commands.servlet;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.apache.struts.Globals;
 import org.apache.struts.chain.contexts.ServletActionContext;
@@ -29,24 +30,28 @@ import org.apache.struts.mock.MockHttpServletRequest;
 import org.apache.struts.mock.MockHttpServletResponse;
 import org.apache.struts.mock.MockServletConfig;
 import org.apache.struts.mock.MockServletContext;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-/* JUnitTest case for class: org.apache.struts.chain.commands.servlet.SetOriginalURI */
-public class TestSetOriginalURI extends TestCase {
+/**
+ * JUnitTest case for class: {@link SetOriginalURI}
+ */
+public class TestSetOriginalURI {
     SetOriginalURI command = null;
 
-    public TestSetOriginalURI(String _name) {
-        super(_name);
-    }
-
     /* setUp method for test case */
-    protected void setUp() throws Exception {
+    @BeforeEach
+    protected void setUp() {
         this.command = new SetOriginalURI();
     }
 
     /* tearDown method for test case */
+    @AfterEach    
     protected void tearDown() {
     }
 
+    @Test
     public void testSetOriginalURI()
         throws Exception {
         MockHttpServletRequest request =
@@ -66,21 +71,14 @@ public class TestSetOriginalURI extends TestCase {
 
         boolean result = command.execute(saContext);
 
-        assertTrue(!result);
+        assertFalse(result);
 
         String uri = (String) request.getAttribute(Globals.ORIGINAL_URI_KEY);
 
-        assertTrue("Original uri not correct: " + uri, "bar.do".equals(uri));
+        assertEquals("bar.do", uri, "Original uri not correct: " + uri);
 
         request.setPathElements("foo/", "bar2.do", null, null);
         uri = (String) request.getAttribute(Globals.ORIGINAL_URI_KEY);
-        assertTrue("Original uri not correct: " + uri, "bar.do".equals(uri));
-    }
-
-    /* Executes the test case */
-    public static void main(String[] argv) {
-        String[] testCaseList = { TestSetOriginalURI.class.getName() };
-
-        junit.textui.TestRunner.main(testCaseList);
+        assertEquals("bar.do", uri, "Original uri not correct: " + uri);
     }
 }

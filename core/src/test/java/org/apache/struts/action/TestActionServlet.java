@@ -20,9 +20,18 @@
  */
 package org.apache.struts.action;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.UnavailableException;
 
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ExceptionConfig;
@@ -32,17 +41,15 @@ import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.config.ModuleConfigFactory;
 import org.apache.struts.util.MessageResources;
-
-import javax.servlet.ServletException;
-import javax.servlet.UnavailableException;
-
-import java.util.List;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
- * Suite of unit tests for the <code>org.apache.struts.action.ActionServlet</code>
- * class.
+ * Suite of unit tests for the {@link ActionServlet} class.
  */
-public class TestActionServlet extends TestCase {
+public class TestActionServlet {
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -75,43 +82,15 @@ public class TestActionServlet extends TestCase {
      */
     protected ActionServlet actionServlet = null;
 
-    // ------------------------------------------ Constructors, suite, and main
-
-    /**
-     * Defines the testcase name for JUnit.
-     *
-     * @param theName the testcase's name.
-     */
-    public TestActionServlet(String theName) {
-        super(theName);
-    }
-
-    /**
-     * Start the tests.
-     *
-     * @param theArgs the arguments. Not used
-     */
-    public static void main(String[] theArgs) {
-        junit.awtui.TestRunner.main(new String[] {
-                TestActionServlet.class.getName()
-            });
-    }
-
-    /**
-     * @return a test suite (<code>TestSuite</code>) that includes all methods
-     *         starting with "test"
-     */
-    public static Test suite() {
-        // All methods starting with "test" will be executed in the test suite.
-        return new TestSuite(TestActionServlet.class);
-    }
-
     // ------------------------------------------------- setUp() and tearDown()
 
     /**
      * Set up instance variables required by this test case.
+     *
+     * @throws ServletException if we cannot initialize these resources
      */
-    public void setUp() throws Exception {
+    @BeforeEach
+    public void setUp() throws ServletException {
         actionServlet = new ActionServlet();
         actionServlet.initInternal();
 
@@ -170,6 +149,7 @@ public class TestActionServlet extends TestCase {
     /**
      * Tear down instance variables required by this test case.
      */
+    @AfterEach
     public void tearDown() {
         moduleConfig = null;
     }
@@ -180,6 +160,7 @@ public class TestActionServlet extends TestCase {
      * Verify that we can initialize and destroy our internal message
      * resources object.
      */
+    @Test
     public void testInitDestroyInternal() {
         ActionServlet servlet = new ActionServlet();
 
@@ -189,37 +170,41 @@ public class TestActionServlet extends TestCase {
             fail("initInternal() threw exception: " + e);
         }
 
-        assertTrue("internal was initialized", servlet.getInternal() != null);
-        assertTrue("internal of correct type",
-            servlet.getInternal() instanceof MessageResources);
+        assertNotNull(servlet.getInternal(), "internal was initialized");
+        assertInstanceOf(MessageResources.class, servlet.getInternal(),
+            "internal of correct type");
         servlet.destroyInternal();
-        assertTrue("internal was destroyed", servlet.getInternal() == null);
+        assertNull(servlet.getInternal(), "internal was destroyed");
     }
 
     /**
      * Test class loader resolution and splitting.
+     *
+     * @throws ServletException if a servlet exception is thrown 
      */
+    @Test
+    @Disabled
     public void notestSplitAndResolvePaths()
-        throws Exception {
+        throws ServletException {
         ActionServlet servlet = new ActionServlet();
-        List list =
+        List<?> list =
             servlet.splitAndResolvePaths(
                 "org/apache/struts/config/struts-config.xml");
 
         assertNotNull(list);
-        assertTrue("List size should be 1", list.size() == 1);
+        assertEquals(1, list.size(), "List size should be 1");
 
         list =
             servlet.splitAndResolvePaths(
                 "org/apache/struts/config/struts-config.xml, "
                 + "org/apache/struts/config/struts-config-1.1.xml");
         assertNotNull(list);
-        assertTrue("List size should be 2, was " + list.size(), list.size() == 2);
+        assertEquals(2, list.size(), "List size should be 2, was " + list.size());
 
         list = servlet.splitAndResolvePaths("META-INF/MANIFEST.MF");
         assertNotNull(list);
-        assertTrue("Number of manifests should be more than 5, was "
-            + list.size(), list.size() > 5);
+        assertTrue(list.size() > 5, "Number of manifests should be more than 5, was "
+            + list.size());
 
         // test invalid path
         try {
@@ -237,11 +222,15 @@ public class TestActionServlet extends TestCase {
     /**
      * Verify that nothing happens if no "application" property is defined in
      * the servlet configuration.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
 
     /*
-    public void testInitApplicationNull() throws ServletException
-    {
+    @Test
+    @Disabled
+    public void testInitApplicationNull()
+        throws ServletException {
         ActionServlet servlet = new ActionServlet();
         servlet.init(config);
 
@@ -250,18 +239,22 @@ public class TestActionServlet extends TestCase {
 
         // As no "application" object is found in the servlet config, no
         // attribute should be set in the context
-        assertTrue(config.getServletContext().getAttribute(Action.MESSAGES_KEY) == null);
+        assertNull(config.getServletContext().getAttribute(Action.MESSAGES_KEY));
     }
     */
 
     /**
      * Verify that eveything is fine when only a "application" parameter is
      * defined in the servlet configuration.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
 
     /*
-    public void testInitApplicationOk1() throws ServletException
-    {
+    @Test
+    @Disabled
+    public void testInitApplicationOk1()
+        throws ServletException {
         // initialize config
         config.setInitParameter("application", "org.apache.struts.webapp.example.ApplicationResources");
 
@@ -271,10 +264,10 @@ public class TestActionServlet extends TestCase {
         // Test the initApplication() method
         servlet.initApplication();
 
-        assertTrue(servlet.application != null);
-        assertTrue(servlet.application.getReturnNull() == true);
+        assertNotNull(servlet.application);
+        assertTrue(servlet.application.getReturnNull());
 
-        assertTrue(config.getServletContext().getAttribute(Action.MESSAGES_KEY) != null);
+        assertNotNull(config.getServletContext().getAttribute(Action.MESSAGES_KEY));
         assertEquals(servlet.application, config.getServletContext().getAttribute(Action.MESSAGES_KEY));
 
     }
@@ -285,8 +278,8 @@ public class TestActionServlet extends TestCase {
     /**
      * Test that nothing fails if there are no extensions.
      */
-    public void testInitModuleFormBeansNoExtends()
-        throws ServletException {
+    @Test
+    public void testInitModuleFormBeansNoExtends() {
         moduleConfig.addFormBeanConfig(baseFormBean);
 
         try {
@@ -300,8 +293,8 @@ public class TestActionServlet extends TestCase {
      * Test that initModuleFormBeans throws an exception when a form with a
      * null type is present.
      */
-    public void testInitModuleFormBeansNullFormType()
-        throws ServletException {
+    @Test
+    public void testInitModuleFormBeansNullFormType() {
         FormBeanConfig formBean = new FormBeanConfig();
 
         formBean.setName("noTypeForm");
@@ -321,8 +314,8 @@ public class TestActionServlet extends TestCase {
      * Test that initModuleFormBeans throws an exception when a form whose
      * prop type is null is present.
      */
-    public void testInitModuleFormBeansNullPropType()
-        throws ServletException {
+    @Test
+    public void testInitModuleFormBeansNullPropType() {
         moduleConfig.addFormBeanConfig(baseFormBean);
         baseFormBean.findFormPropertyConfig("name").setType(null);
 
@@ -339,21 +332,25 @@ public class TestActionServlet extends TestCase {
     /**
      * Test that processFormBeanExtension() calls processExtends()
      */
+    @Test
     public void testProcessFormBeanExtension()
         throws ServletException {
         CustomFormBeanConfig form = new CustomFormBeanConfig();
 
         actionServlet.processFormBeanExtension(form, moduleConfig);
 
-        assertTrue("processExtends() was not called", form.processExtendsCalled);
+        assertTrue(form.processExtendsCalled, "processExtends() was not called");
     }
 
     /**
      * Make sure processFormBeanConfigClass() returns an instance of the
      * correct class if the base config is using a custom class.
+     *
+     * @throws ServletException if a servlet exception is thrown 
      */
+    @Test
     public void testProcessFormBeanConfigClass()
-        throws Exception {
+        throws ServletException {
         CustomFormBeanConfig customBase = new CustomFormBeanConfig();
 
         customBase.setName("customBase");
@@ -369,25 +366,28 @@ public class TestActionServlet extends TestCase {
         FormBeanConfig result =
             actionServlet.processFormBeanConfigClass(customSub, moduleConfig);
 
-        assertTrue("Incorrect class of form bean config",
-            result instanceof CustomFormBeanConfig);
-        assertEquals("Incorrect name", customSub.getName(), result.getName());
-        assertEquals("Incorrect type", customSub.getType(), result.getType());
-        assertEquals("Incorrect extends", customSub.getExtends(),
-            result.getExtends());
-        assertEquals("Incorrect 'restricted' value", customSub.isRestricted(),
-            result.isRestricted());
+        assertInstanceOf(CustomFormBeanConfig.class, result,
+            "Incorrect class of form bean config");
+        assertEquals(customSub.getName(), result.getName(), "Incorrect name");
+        assertEquals(customSub.getType(), result.getType(), "Incorrect type");
+        assertEquals(customSub.getExtends(), result.getExtends(),
+            "Incorrect extends");
+        assertEquals(customSub.isRestricted(), result.isRestricted(),
+            "Incorrect 'restricted' value");
 
-        assertSame("Result was not registered in the module config", result,
-            moduleConfig.findFormBeanConfig("customSub"));
+        assertSame(result, moduleConfig.findFormBeanConfig("customSub"),
+            "Result was not registered in the module config");
     }
 
     /**
      * Make sure processFormBeanConfigClass() returns what it was given if the
      * form passed to it doesn't extend anything.
+     *
+     * @throws ServletException if a servlet exception is thrown 
      */
+    @Test
     public void testProcessFormBeanConfigClassNoExtends()
-        throws Exception {
+        throws ServletException {
         moduleConfig.addFormBeanConfig(baseFormBean);
 
         FormBeanConfig result = null;
@@ -400,16 +400,19 @@ public class TestActionServlet extends TestCase {
             fail("An exception should not be thrown when there's nothing to do");
         }
 
-        assertSame("Result should be the same as the input.", baseFormBean,
-            result);
+        assertSame(baseFormBean, result,
+            "Result should be the same as the input.");
     }
 
     /**
      * Make sure processFormBeanConfigClass() returns the same class instance
      * if the base config isn't using a custom class.
+     *
+     * @throws ServletException if a servlet exception is thrown 
      */
+    @Test
     public void testProcessFormBeanConfigClassSubFormCustomClass()
-        throws Exception {
+        throws ServletException {
         moduleConfig.addFormBeanConfig(baseFormBean);
 
         FormBeanConfig customSub = new FormBeanConfig();
@@ -421,16 +424,17 @@ public class TestActionServlet extends TestCase {
         FormBeanConfig result =
             actionServlet.processFormBeanConfigClass(customSub, moduleConfig);
 
-        assertSame("The instance returned should be the param given it.",
-            customSub, result);
+        assertSame(customSub, result,
+            "The instance returned should be the param given it.");
     }
 
     /**
      * Make sure the code throws the correct exception when it can't create an
      * instance of the base config's custom class.
      */
-    public void notestProcessFormBeanConfigClassError()
-        throws Exception {
+    @Test
+    @Disabled
+    public void notestProcessFormBeanConfigClassError() {
         CustomFormBeanConfigArg customBase =
             new CustomFormBeanConfigArg("customBase");
 
@@ -457,8 +461,8 @@ public class TestActionServlet extends TestCase {
      * config class.  If the code still attempts to create a new instance, an
      * error will be thrown.
      */
-    public void testProcessFormBeanConfigClassOverriddenSubFormClass()
-        throws Exception {
+    @Test
+    public void testProcessFormBeanConfigClassOverriddenSubFormClass() {
         CustomFormBeanConfigArg customBase =
             new CustomFormBeanConfigArg("customBase");
 
@@ -481,8 +485,8 @@ public class TestActionServlet extends TestCase {
     /**
      * Test that nothing fails if there are no extensions.
      */
-    public void testInitModuleExceptionConfigsNoExtends()
-        throws ServletException {
+    @Test
+    public void testInitModuleExceptionConfigsNoExtends() {
         moduleConfig.addExceptionConfig(baseException);
 
         try {
@@ -496,8 +500,8 @@ public class TestActionServlet extends TestCase {
      * Test that initModuleExceptionConfigs throws an exception when a handler
      * with a null key is present.
      */
-    public void testInitModuleExceptionConfigsNullFormType()
-        throws ServletException {
+    @Test
+    public void testInitModuleExceptionConfigsNullFormType() {
         ExceptionConfig handler = new ExceptionConfig();
 
         handler.setType("java.lang.NullPointerException");
@@ -515,7 +519,10 @@ public class TestActionServlet extends TestCase {
 
     /**
      * Test that processExceptionExtension() calls processExtends()
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessExceptionExtension()
         throws ServletException {
         CustomExceptionConfig handler = new CustomExceptionConfig();
@@ -524,16 +531,19 @@ public class TestActionServlet extends TestCase {
         moduleConfig.addExceptionConfig(handler);
         actionServlet.processExceptionExtension(handler, moduleConfig, null);
 
-        assertTrue("processExtends() was not called",
-            handler.processExtendsCalled);
+        assertTrue(handler.processExtendsCalled,
+            "processExtends() was not called");
     }
 
     /**
      * Make sure processExceptionConfigClass() returns an instance of the
      * correct class if the base config is using a custom class.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessExceptionConfigClass()
-        throws Exception {
+        throws ServletException {
         CustomExceptionConfig customBase = new CustomExceptionConfig();
 
         customBase.setType("java.lang.NullPointerException");
@@ -550,23 +560,26 @@ public class TestActionServlet extends TestCase {
             actionServlet.processExceptionConfigClass(customSub, moduleConfig,
                 null);
 
-        assertTrue("Incorrect class of exception config",
-            result instanceof CustomExceptionConfig);
-        assertEquals("Incorrect type", customSub.getType(), result.getType());
-        assertEquals("Incorrect key", customSub.getKey(), result.getKey());
-        assertEquals("Incorrect extends", customSub.getExtends(),
-            result.getExtends());
+        assertInstanceOf(CustomExceptionConfig.class, result,
+            "Incorrect class of exception config");
+        assertEquals(customSub.getType(), result.getType(), "Incorrect type");
+        assertEquals(customSub.getKey(), result.getKey(), "Incorrect key");
+        assertEquals(customSub.getExtends(), result.getExtends(),
+            "Incorrect extends");
 
-        assertSame("Result was not registered in the module config", result,
-            moduleConfig.findExceptionConfig("java.lang.IllegalStateException"));
+        assertSame(result, moduleConfig.findExceptionConfig("java.lang.IllegalStateException"),
+            "Result was not registered in the module config");
     }
 
     /**
      * Make sure processExceptionConfigClass() returns what it was given if
      * the handler passed to it doesn't extend anything.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessExceptionConfigClassNoExtends()
-        throws Exception {
+        throws ServletException {
         moduleConfig.addExceptionConfig(baseException);
 
         ExceptionConfig result = null;
@@ -579,16 +592,19 @@ public class TestActionServlet extends TestCase {
             fail("An exception should not be thrown when there's nothing to do");
         }
 
-        assertSame("Result should be the same as the input.", baseException,
-            result);
+        assertSame(baseException, result,
+            "Result should be the same as the input.");
     }
 
     /**
      * Make sure processExceptionConfigClass() returns the same class instance
      * if the base config isn't using a custom class.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessExceptionConfigClassSubConfigCustomClass()
-        throws Exception {
+        throws ServletException {
         moduleConfig.addExceptionConfig(baseException);
 
         ExceptionConfig customSub = new ExceptionConfig();
@@ -601,16 +617,17 @@ public class TestActionServlet extends TestCase {
             actionServlet.processExceptionConfigClass(customSub, moduleConfig,
                 null);
 
-        assertSame("The instance returned should be the param given it.",
-            customSub, result);
+        assertSame(customSub, result,
+            "The instance returned should be the param given it.");
     }
 
     /**
      * Make sure the code throws the correct exception when it can't create an
      * instance of the base config's custom class.
      */
-    public void notestProcessExceptionConfigClassError()
-        throws Exception {
+    @Test
+    @Disabled
+    public void notestProcessExceptionConfigClassError() {
         ExceptionConfig customBase =
             new CustomExceptionConfigArg("java.lang.NullPointerException");
 
@@ -638,8 +655,8 @@ public class TestActionServlet extends TestCase {
      * class.  If the code still attempts to create a new instance, an error
      * will be thrown.
      */
-    public void testProcessExceptionConfigClassOverriddenSubFormClass()
-        throws Exception {
+    @Test
+    public void testProcessExceptionConfigClassOverriddenSubFormClass() {
         moduleConfig.addExceptionConfig(baseException);
 
         ExceptionConfig customSub =
@@ -661,8 +678,8 @@ public class TestActionServlet extends TestCase {
     /**
      * Test that nothing fails if there are no extensions.
      */
-    public void testInitModuleForwardConfigsNoExtends()
-        throws ServletException {
+    @Test
+    public void testInitModuleForwardConfigsNoExtends() {
         moduleConfig.addForwardConfig(baseForward);
 
         try {
@@ -676,8 +693,8 @@ public class TestActionServlet extends TestCase {
      * Test that initModuleForwards throws an exception when a forward with a
      * null path is present.
      */
-    public void testInitModuleForwardsNullFormType()
-        throws ServletException {
+    @Test
+    public void testInitModuleForwardsNullFormType() {
         ActionForward forward = new ActionForward("success", null, false);
 
         moduleConfig.addForwardConfig(forward);
@@ -694,7 +711,10 @@ public class TestActionServlet extends TestCase {
 
     /**
      * Test that processForwardExtension() calls processExtends()
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessForwardExtension()
         throws ServletException {
         CustomForwardConfig forward =
@@ -703,16 +723,19 @@ public class TestActionServlet extends TestCase {
         moduleConfig.addForwardConfig(forward);
         actionServlet.processForwardExtension(forward, moduleConfig, null);
 
-        assertTrue("processExtends() was not called",
-            forward.processExtendsCalled);
+        assertTrue(forward.processExtendsCalled,
+            "processExtends() was not called");
     }
 
     /**
      * Make sure processForwardConfigClass() returns an instance of the
      * correct class if the base config is using a custom class.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessForwardConfigClass()
-        throws Exception {
+        throws ServletException {
         CustomForwardConfig customBase =
             new CustomForwardConfig("success", "/success.jsp");
 
@@ -728,23 +751,26 @@ public class TestActionServlet extends TestCase {
             actionServlet.processForwardConfigClass(customSub, moduleConfig,
                 null);
 
-        assertTrue("Incorrect class of forward config",
-            result instanceof CustomForwardConfig);
-        assertEquals("Incorrect name", customSub.getName(), result.getName());
-        assertEquals("Incorrect path", customSub.getPath(), result.getPath());
-        assertEquals("Incorrect extends", customSub.getExtends(),
-            result.getExtends());
+        assertInstanceOf(CustomForwardConfig.class, result,
+            "Incorrect class of forward config");
+        assertEquals(customSub.getName(), result.getName(), "Incorrect name");
+        assertEquals(customSub.getPath(), result.getPath(), "Incorrect path");
+        assertEquals(customSub.getExtends(), result.getExtends(),
+            "Incorrect extends");
 
-        assertSame("Result was not registered in the module config", result,
-            moduleConfig.findForwardConfig("failure"));
+        assertSame(result, moduleConfig.findForwardConfig("failure"),
+            "Result was not registered in the module config");
     }
 
     /**
      * Make sure processForwardConfigClass() returns what it was given if the
      * forward passed to it doesn't extend anything.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessForwardConfigClassNoExtends()
-        throws Exception {
+        throws ServletException {
         moduleConfig.addForwardConfig(baseForward);
 
         ForwardConfig result = null;
@@ -757,16 +783,19 @@ public class TestActionServlet extends TestCase {
             fail("An exception should not be thrown when there's nothing to do");
         }
 
-        assertSame("Result should be the same as the input.", baseForward,
-            result);
+        assertSame(baseForward, result,
+            "Result should be the same as the input.");
     }
 
     /**
      * Make sure processForwardConfigClass() returns the same class instance
      * if the base config isn't using a custom class.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessForwardConfigClassSubConfigCustomClass()
-        throws Exception {
+        throws ServletException {
         moduleConfig.addForwardConfig(baseForward);
 
         ForwardConfig customSub = new ActionForward();
@@ -779,16 +808,17 @@ public class TestActionServlet extends TestCase {
             actionServlet.processForwardConfigClass(customSub, moduleConfig,
                 null);
 
-        assertSame("The instance returned should be the param given it.",
-            customSub, result);
+        assertSame(customSub, result,
+            "The instance returned should be the param given it.");
     }
 
     /**
      * Make sure the code throws the correct exception when it can't create an
      * instance of the base config's custom class.
      */
-    public void notestProcessForwardConfigClassError()
-        throws Exception {
+    @Test
+    @Disabled
+    public void notestProcessForwardConfigClassError() {
         ForwardConfig customBase =
             new CustomForwardConfigArg("success", "/success.jsp");
 
@@ -816,8 +846,8 @@ public class TestActionServlet extends TestCase {
      * class.  If the code still attempts to create a new instance, an error
      * will be thrown.
      */
-    public void testProcessForwardConfigClassOverriddenSubConfigClass()
-        throws Exception {
+    @Test
+    public void testProcessForwardConfigClassOverriddenSubConfigClass() {
         moduleConfig.addForwardConfig(baseForward);
 
         ForwardConfig customSub =
@@ -839,8 +869,8 @@ public class TestActionServlet extends TestCase {
     /**
      * Test that nothing fails if there are no extensions.
      */
-    public void testInitModuleActionConfigsNoExtends()
-        throws ServletException {
+    @Test
+    public void testInitModuleActionConfigsNoExtends() {
         moduleConfig.addActionConfig(baseAction);
 
         try {
@@ -852,7 +882,10 @@ public class TestActionServlet extends TestCase {
 
     /**
      * Test that processActionConfigExtension() calls processExtends()
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessActionExtension()
         throws ServletException {
         CustomActionConfig action = new CustomActionConfig("/action");
@@ -860,14 +893,17 @@ public class TestActionServlet extends TestCase {
         moduleConfig.addActionConfig(action);
         actionServlet.processActionConfigExtension(action, moduleConfig);
 
-        assertTrue("processExtends() was not called",
-            action.processExtendsCalled);
+        assertTrue(action.processExtendsCalled,
+            "processExtends() was not called");
     }
 
     /**
      * Test that an ActionConfig's ForwardConfig can inherit from a
      * global ForwardConfig.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessActionExtensionWithForwardConfig()
         throws ServletException {
         ForwardConfig forwardConfig = new ForwardConfig();
@@ -881,14 +917,17 @@ public class TestActionServlet extends TestCase {
 
         forwardConfig = baseAction.findForwardConfig("sub");
 
-        assertEquals("'sub' forward's inheritance was not processed.",
-            baseForward.getPath(), forwardConfig.getPath());
+        assertEquals(baseForward.getPath(), forwardConfig.getPath(),
+            "'sub' forward's inheritance was not processed.");
     }
 
     /**
      * Test that an ActionConfig's ExceptionConfig can inherit from a
      * global ExceptionConfig.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessActionExtensionWithExceptionConfig()
         throws ServletException {
         ExceptionConfig exceptionConfig = new ExceptionConfig();
@@ -902,16 +941,19 @@ public class TestActionServlet extends TestCase {
 
         exceptionConfig = baseAction.findExceptionConfig("SomeException");
 
-        assertEquals("SomeException's inheritance was not processed.",
-            baseException.getKey(), exceptionConfig.getKey());
+        assertEquals(baseException.getKey(), exceptionConfig.getKey(),
+            "SomeException's inheritance was not processed.");
     }
 
     /**
      * Make sure processActionConfigClass() returns an instance of the correct
      * class if the base config is using a custom class.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessActionConfigClass()
-        throws Exception {
+        throws ServletException {
         CustomActionConfig customBase = new CustomActionConfig("/base");
 
         moduleConfig.addActionConfig(customBase);
@@ -925,22 +967,25 @@ public class TestActionServlet extends TestCase {
         ActionConfig result =
             actionServlet.processActionConfigClass(customSub, moduleConfig);
 
-        assertTrue("Incorrect class of action config",
-            result instanceof CustomActionConfig);
-        assertEquals("Incorrect path", customSub.getPath(), result.getPath());
-        assertEquals("Incorrect extends", customSub.getExtends(),
-            result.getExtends());
+        assertInstanceOf(CustomActionConfig.class, result,
+            "Incorrect class of action config");
+        assertEquals(customSub.getPath(), result.getPath(), "Incorrect path");
+        assertEquals(customSub.getExtends(), result.getExtends(),
+            "Incorrect extends");
 
-        assertSame("Result was not registered in the module config", result,
-            moduleConfig.findActionConfig("/sub"));
+        assertSame(result, moduleConfig.findActionConfig("/sub"),
+            "Result was not registered in the module config");
     }
 
     /**
      * Make sure processActionConfigClass() returns what it was given if the
      * action passed to it doesn't extend anything.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
+    @Test
     public void testProcessActionConfigClassNoExtends()
-        throws Exception {
+        throws ServletException {
         moduleConfig.addActionConfig(baseAction);
 
         ActionConfig result = null;
@@ -952,15 +997,17 @@ public class TestActionServlet extends TestCase {
             fail("An exception should not be thrown here");
         }
 
-        assertSame("Result should be the same as the input.", baseAction, result);
+        assertSame(baseAction, result, "Result should be the same as the input.");
     }
 
     /**
      * Make sure processActionConfigClass() returns the same class instance if
      * the base config isn't using a custom class.
+     *
+     * @throws ServletException if initialization cannot be performed. 
      */
-    public void testProcessActionConfigClassSubConfigCustomClass()
-        throws Exception {
+    @Test
+    public void testProcessActionConfigClassSubConfigCustomClass() throws ServletException {
         moduleConfig.addActionConfig(baseAction);
 
         ActionConfig customSub = new ActionMapping();
@@ -972,16 +1019,17 @@ public class TestActionServlet extends TestCase {
         ActionConfig result =
             actionServlet.processActionConfigClass(customSub, moduleConfig);
 
-        assertSame("The instance returned should be the param given it.",
-            customSub, result);
+        assertSame(customSub, result,
+            "The instance returned should be the param given it.");
     }
 
     /**
      * Make sure the code throws the correct exception when it can't create an
      * instance of the base config's custom class.
      */
-    public void notestProcessActionConfigClassError()
-        throws Exception {
+    @Test
+    @Disabled
+    public void notestProcessActionConfigClassError() {
         ActionConfig customBase = new CustomActionConfigArg("/index");
 
         moduleConfig.addActionConfig(customBase);
@@ -1007,8 +1055,8 @@ public class TestActionServlet extends TestCase {
      * class.  If the code still attempts to create a new instance, an error
      * will be thrown.
      */
-    public void testProcessActionConfigClassOverriddenSubConfigClass()
-        throws Exception {
+    @Test
+    public void testProcessActionConfigClassOverriddenSubConfigClass() {
         moduleConfig.addActionConfig(baseAction);
 
         ActionConfig customSub = new CustomActionConfigArg("/sub");
@@ -1027,6 +1075,8 @@ public class TestActionServlet extends TestCase {
      * Used for testing custom FormBeanConfig classes.
      */
     public static class CustomFormBeanConfig extends FormBeanConfig {
+        private static final long serialVersionUID = -573022017310455853L;
+
         public boolean processExtendsCalled = false;
 
         public CustomFormBeanConfig() {
@@ -1048,6 +1098,8 @@ public class TestActionServlet extends TestCase {
      * constructor.
      */
     private class CustomFormBeanConfigArg extends FormBeanConfig {
+        private static final long serialVersionUID = -455258948780624575L;
+
         CustomFormBeanConfigArg(String name) {
             super();
             setName(name);
@@ -1058,6 +1110,8 @@ public class TestActionServlet extends TestCase {
      * Used for testing custom ExceptionConfig classes.
      */
     public static class CustomExceptionConfig extends ExceptionConfig {
+        private static final long serialVersionUID = 3648200258159769023L;
+
         public boolean processExtendsCalled = false;
 
         public CustomExceptionConfig() {
@@ -1080,6 +1134,8 @@ public class TestActionServlet extends TestCase {
      * constructor.
      */
     private class CustomExceptionConfigArg extends ExceptionConfig {
+        private static final long serialVersionUID = 4453990369781006902L;
+
         CustomExceptionConfigArg(String type) {
             super();
             setType(type);
@@ -1090,6 +1146,8 @@ public class TestActionServlet extends TestCase {
      * Used for testing custom ForwardConfig classes.
      */
     public static class CustomForwardConfig extends ForwardConfig {
+        private static final long serialVersionUID = -993693513159522038L;
+
         public boolean processExtendsCalled = false;
 
         public CustomForwardConfig() {
@@ -1116,6 +1174,8 @@ public class TestActionServlet extends TestCase {
      * constructor.
      */
     private class CustomForwardConfigArg extends ForwardConfig {
+        private static final long serialVersionUID = -2880188065203315383L;
+
         CustomForwardConfigArg(String name, String path) {
             super();
             setName(name);
@@ -1127,6 +1187,8 @@ public class TestActionServlet extends TestCase {
      * Used for testing custom ActionConfig classes.
      */
     public static class CustomActionConfig extends ActionConfig {
+        private static final long serialVersionUID = -7093772452618953476L;
+
         public boolean processExtendsCalled = false;
 
         public CustomActionConfig() {
@@ -1153,6 +1215,8 @@ public class TestActionServlet extends TestCase {
      * constructor.
      */
     private class CustomActionConfigArg extends ActionConfig {
+		private static final long serialVersionUID = -2205204932709330848L;
+
         CustomActionConfigArg(String path) {
             super();
             setPath(path);

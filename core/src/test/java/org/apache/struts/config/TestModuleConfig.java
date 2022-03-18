@@ -20,21 +20,24 @@
  */
 package org.apache.struts.config;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
-import org.apache.commons.digester.Digester;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.InputStream;
 
+import org.apache.commons.digester.Digester;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
 /**
- * Unit tests for the <code>org.apache.struts.config</code> package.
+ * Unit tests for the {@code org.apache.struts.config} package.
  *
- * @version $Rev$ $Date: 2005-03-01 20:26:14 -0500 (Tue, 01 Mar 2005)
- *          $
+ * @version $Rev$ $Date$
  */
-public class TestModuleConfig extends TestCase {
+public class TestModuleConfig {
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -42,22 +45,12 @@ public class TestModuleConfig extends TestCase {
      */
     protected ModuleConfig config = null;
 
-    // ----------------------------------------------------------- Constructors
-
-    /**
-     * Construct a new instance of this test case.
-     *
-     * @param name Name of the test case
-     */
-    public TestModuleConfig(String name) {
-        super(name);
-    }
-
     // --------------------------------------------------------- Public Methods
 
     /**
      * Set up instance variables required by this test case.
      */
+    @BeforeEach
     public void setUp() {
         ModuleConfigFactory factoryObject = ModuleConfigFactory.createFactory();
 
@@ -65,15 +58,9 @@ public class TestModuleConfig extends TestCase {
     }
 
     /**
-     * Return the tests included in this test suite.
-     */
-    public static Test suite() {
-        return (new TestSuite(TestModuleConfig.class));
-    }
-
-    /**
      * Tear down instance variables required by this test case.
      */
+    @AfterEach
     public void tearDown() {
         config = null;
     }
@@ -92,13 +79,9 @@ public class TestModuleConfig extends TestCase {
             this.getClass().getResource(entityURL).toString());
 
         // Parse the test struts-config.xml file
-        try {
-            InputStream input =
-                this.getClass().getResourceAsStream(strutsConfig);
-
-            assertNotNull("Got an input stream for " + strutsConfig, input);
+        try (InputStream input = this.getClass().getResourceAsStream(strutsConfig)) {
+            assertNotNull(input, "Got an input stream for " + strutsConfig);
             digester.parse(input);
-            input.close();
         } catch (Throwable t) {
             t.printStackTrace(System.out);
             fail("Parsing threw exception:  " + t);
@@ -108,12 +91,14 @@ public class TestModuleConfig extends TestCase {
     /**
      * Test parsing of a struts-config.xml file.
      */
+    @Test
     public void testParse() {
         testParseBase("-//Apache Software Foundation//DTD Struts Configuration 1.2//EN",
             "/org/apache/struts/resources/struts-config_1_2.dtd",
             "/org/apache/struts/config/struts-config.xml");
     }
 
+    @Test
     public void testParse1_1() {
         testParseBase("-//Apache Software Foundation//DTD Struts Configuration 1.1//EN",
             "/org/apache/struts/resources/struts-config_1_1.dtd",
@@ -127,24 +112,25 @@ public class TestModuleConfig extends TestCase {
         // Perform assertion tests on the parsed information
         FormBeanConfig[] fbcs = config.findFormBeanConfigs();
 
-        assertNotNull("Found our form bean configurations", fbcs);
-        assertEquals("Found three form bean configurations", 3, fbcs.length);
+        assertNotNull(fbcs, "Found our form bean configurations");
+        assertEquals(3, fbcs.length, "Found three form bean configurations");
 
         ForwardConfig[] fcs = config.findForwardConfigs();
 
-        assertNotNull("Found our forward configurations", fcs);
-        assertEquals("Found three forward configurations", 3, fcs.length);
+        assertNotNull(fcs, "Found our forward configurations");
+        assertEquals(3, fcs.length, "Found three forward configurations");
 
         ActionConfig logon = config.findActionConfig("/logon");
 
-        assertNotNull("Found logon action configuration", logon);
-        assertEquals("Found correct logon configuration", "logonForm",
-            logon.getName());
+        assertNotNull(logon, "Found logon action configuration");
+        assertEquals("logonForm", logon.getName(),
+            "Found correct logon configuration");
     }
 
     /**
      * Tests a struts-config.xml that contains a custom mapping and property.
      */
+    @Test
     public void testCustomMappingParse() {
         // Prepare a Digester for parsing a struts-config.xml file
         testCustomMappingParseBase("-//Apache Software Foundation//DTD Struts Configuration 1.2//EN",
@@ -155,6 +141,7 @@ public class TestModuleConfig extends TestCase {
     /**
      * Tests a struts-config.xml that contains a custom mapping and property.
      */
+    @Test
     public void testCustomMappingParse1_1() {
         // Prepare a Digester for parsing a struts-config.xml file
         testCustomMappingParseBase("-//Apache Software Foundation//DTD Struts Configuration 1.1//EN",
@@ -173,14 +160,15 @@ public class TestModuleConfig extends TestCase {
         CustomMappingTest map =
             (CustomMappingTest) config.findActionConfig("/editRegistration");
 
-        assertNotNull("Cannot find editRegistration mapping", map);
-        assertTrue("The custom mapping attribute has not been set",
-            map.getPublic());
+        assertNotNull(map, "Cannot find editRegistration mapping");
+        assertTrue(map.getPublic(),
+            "The custom mapping attribute has not been set");
     }
 
     /**
      * Test order of action mappings defined perserved.
      */
+    @Test
     public void testPreserveActionMappingsOrder() {
         parseConfig("-//Apache Software Foundation//DTD Struts Configuration 1.2//EN",
             "/org/apache/struts/resources/struts-config_1_2.dtd",
@@ -195,8 +183,8 @@ public class TestModuleConfig extends TestCase {
         ActionConfig[] actions = config.findActionConfigs();
 
         for (int x = 0; x < paths.length; x++) {
-            assertTrue("Action config out of order:" + actions[x].getPath(),
-                paths[x].equals(actions[x].getPath()));
+            assertEquals(paths[x], actions[x].getPath(),
+                "Action config out of order:" + actions[x].getPath());
         }
     }
 }

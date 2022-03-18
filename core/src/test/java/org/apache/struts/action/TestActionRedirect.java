@@ -20,54 +20,44 @@
  */
 package org.apache.struts.action;
 
-import junit.framework.AssertionFailedError;
-import junit.framework.ComparisonFailure;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Map;
 
+import org.junit.jupiter.api.Test;
+import org.opentest4j.AssertionFailedError;
+
 /**
- * <p>Unit tests for the {@link ActionRedirect} class.</p>
+ * Unit tests for the {@link ActionRedirect} class.
  *
  * @version $Rev$ $Date$
  */
-public class TestActionRedirect extends TestCase {
-    public TestActionRedirect(String s) {
-        super(s);
-    }
-
-    public static TestSuite getSuite() {
-        return new TestSuite(TestActionRedirect.class);
-    }
-
-    public static void main(String[] args) {
-        junit.textui.TestRunner runner = new junit.textui.TestRunner();
-
-        runner.doRun(TestActionRedirect.getSuite());
-    }
+public class TestActionRedirect {
 
     // ----------------------------------------------------- Test Methods
 
     /**
      * Check that the redirect flag is set.
      */
+    @Test
     public void testActionRedirectRedirectFlag() {
         ActionRedirect ar = new ActionRedirect("/path.do");
 
-        assertTrue("Redirect flag should be set to true.", ar.getRedirect());
+        assertTrue(ar.getRedirect(), "Redirect flag should be set to true.");
     }
 
     /**
      * Test all addParameter methods accepting different data types.
      */
+    @Test
     public void testActionRedirectAddParameter() {
         ActionRedirect ar = new ActionRedirect("/path.do");
 
         ar.addParameter("st", "test");
         ar.addParameter("obj", new StringBuffer("someString"));
 
-        assertTrue("Incorrect path", ar.getPath().indexOf("/path.do") == 0);
+        assertEquals(0, ar.getPath().indexOf("/path.do"), "Incorrect path");
         assertHasParameter(ar.parameterValues, "st", "test");
         assertHasParameter(ar.parameterValues, "obj", "someString");
     }
@@ -75,18 +65,20 @@ public class TestActionRedirect extends TestCase {
     /**
      * Test redirect with anchor.
      */
+    @Test
     public void testActionRedirectWithAnchor() {
         ActionRedirect ar = new ActionRedirect("/path.do");
 
         ar.addParameter("st", "test");
         ar.setAnchor("foo");
 
-        assertTrue("Incorrect path", "/path.do?st=test#foo".equals(ar.getPath()));
+        assertEquals(ar.getPath(), "/path.do?st=test#foo", "Incorrect path");
     }
 
     /**
      * Test adding parameters with the same name.
      */
+    @Test
     public void testActionRedirectAddSameNameParameter() {
         ActionRedirect ar = new ActionRedirect("/path.do");
 
@@ -94,18 +86,19 @@ public class TestActionRedirect extends TestCase {
         ar.addParameter("param", "param2");
         ar.addParameter("param", new StringBuffer("someString"));
 
-        assertTrue("Incorrect path", ar.getPath().indexOf("/path.do") == 0);
+        assertEquals(0, ar.getPath().indexOf("/path.do"), "Incorrect path");
         assertHasParameter(ar.parameterValues, "param", "param1");
         assertHasParameter(ar.parameterValues, "param", "param2");
         assertHasParameter(ar.parameterValues, "param", "someString");
-        assertEquals("Incorrect number of parameters", 3,
-            countParameters(ar.parameterValues, "param"));
+        assertEquals(3, countParameters(ar.parameterValues, "param"),
+            "Incorrect number of parameters");
     }
 
     /**
      * Test creating an ActionRedirect which copies its configuration from an
      * existing ActionForward (except for the "redirect" property).
      */
+    @Test
     public void testActionRedirectFromExistingForward() {
         ActionForward forward = new ActionForward("/path.do?param=param1");
         forward.setRedirect(false);
@@ -116,14 +109,14 @@ public class TestActionRedirect extends TestCase {
         ar.addParameter("param", "param2");
         ar.addParameter("object1", new StringBuffer("someString"));
 
-        assertTrue("Incorrect path", ar.getPath().indexOf("/path.do") == 0);
+        assertEquals(0, ar.getPath().indexOf("/path.do"), "Incorrect path");
         assertHasParameter(ar.parameterValues, "param", "param2");
         assertHasParameter(ar.parameterValues, "object1", "someString");
-        assertEquals("Incorrect original path.", forward.getPath(),
-            ar.getOriginalPath());
-        assertEquals("Incorrect or missing property", "value",
-            ar.getProperty("key"));
-        assertTrue("Original had redirect to false", ar.getRedirect());
+        assertEquals(forward.getPath(), ar.getOriginalPath(),
+            "Incorrect original path.");
+        assertEquals("value", ar.getProperty("key"),
+            "Incorrect or missing property");
+        assertTrue(ar.getRedirect(), "Original had redirect to false");
     }
 
     /**
@@ -134,7 +127,7 @@ public class TestActionRedirect extends TestCase {
      * @param paramName  the key of the value to be checked
      * @param paramValue the value to check for
      */
-    static void assertHasParameter(Map parameters, String paramName,
+    static void assertHasParameter(Map<?, ?> parameters, String paramName,
         String paramValue) {
         Object value = parameters.get(paramName);
 
@@ -145,7 +138,7 @@ public class TestActionRedirect extends TestCase {
 
         if (value instanceof String) {
             if (!paramValue.equals(value)) {
-                throw new ComparisonFailure("Incorrect value found",
+                throw new AssertionFailedError("Incorrect value found",
                     paramValue, (String) value);
             }
         } else if (value instanceof String[]) {
@@ -176,7 +169,7 @@ public class TestActionRedirect extends TestCase {
      * @param paramName  the key of the value(s) to count
      * @return the number of values for the specified parameter
      */
-    static int countParameters(Map parameters, String paramName) {
+    static int countParameters(Map<?, ?> parameters, String paramName) {
         Object value = parameters.get(paramName);
 
         if (value == null) {

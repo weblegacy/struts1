@@ -20,7 +20,13 @@
  */
 package org.apache.struts.chain.commands.generic;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.DynaActionForm;
@@ -30,23 +36,23 @@ import org.apache.struts.config.FormBeanConfig;
 import org.apache.struts.config.FormPropertyConfig;
 import org.apache.struts.config.impl.ModuleConfigImpl;
 import org.apache.struts.mock.MockFormBean;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
- * @version $Id: TestCopyFormToContext.java 161516 2005-04-15 19:22:47Z
- *          germuska $
+ * Unit tests for {@link CopyFormToContext}.
+ *
+ * @version $Rev$ $Date$
  */
-public class TestCopyFormToContext extends TestCase {
+public class TestCopyFormToContext {
     private static final String POST_EXECUTION_CONTEXT_KEY = "afterTest";
     private MockActionContext context = null;
 
-    public static void main(String[] args) {
-        junit.textui.TestRunner.run(TestCopyFormToContext.class);
-    }
-
     /*
-     * @see TestCase#setUp()
+     * @see @BeforeEach
      */
-    protected void setUp() throws Exception {
+    @BeforeEach
+    protected void setUp() {
         context = new MockActionContext();
 
         ModuleConfigImpl moduleConfig = new ModuleConfigImpl("/");
@@ -82,6 +88,7 @@ public class TestCopyFormToContext extends TestCase {
         moduleConfig.freeze(); // otherwise, ActionConfigMatcher will be null and we'll get an NPE...
     }
 
+    @Test
     public void testLookupByNameAndRequestScope()
         throws Exception {
         CopyFormToContext command = new CopyFormToContext();
@@ -101,8 +108,8 @@ public class TestCopyFormToContext extends TestCase {
         assertNotNull(context.getRequestScope().get(formName));
         assertNull(context.getSessionScope().get(formName));
 
-        assertSame(context.get(POST_EXECUTION_CONTEXT_KEY),
-            context.getRequestScope().get(formName));
+        assertSame(context.getRequestScope().get(formName),
+            context.get(POST_EXECUTION_CONTEXT_KEY));
 
         ActionForm theForm =
             (ActionForm) context.get(POST_EXECUTION_CONTEXT_KEY);
@@ -110,6 +117,7 @@ public class TestCopyFormToContext extends TestCase {
         assertTrue(theForm instanceof MockFormBean);
     }
 
+    @Test
     public void testLookupByActionPath()
         throws Exception {
         CopyFormToContext command = new CopyFormToContext();
@@ -129,15 +137,16 @@ public class TestCopyFormToContext extends TestCase {
         assertNotNull(context.getRequestScope().get(formName));
         assertNull(context.getSessionScope().get(formName));
 
-        assertSame(context.get(POST_EXECUTION_CONTEXT_KEY),
-            context.getRequestScope().get(formName));
+        assertSame(context.getRequestScope().get(formName),
+            context.get(POST_EXECUTION_CONTEXT_KEY));
 
         ActionForm theForm =
             (ActionForm) context.get(POST_EXECUTION_CONTEXT_KEY);
 
-        assertTrue(theForm instanceof MockFormBean);
+        assertInstanceOf(MockFormBean.class, theForm);
     }
 
+    @Test
     public void testLookupByNameAndSessionScope()
         throws Exception {
         CopyFormToContext command = new CopyFormToContext();
@@ -157,21 +166,21 @@ public class TestCopyFormToContext extends TestCase {
         assertNull(context.getRequestScope().get(formName));
         assertNotNull(context.getSessionScope().get(formName));
 
-        assertSame(context.get(POST_EXECUTION_CONTEXT_KEY),
-            context.getSessionScope().get(formName));
+        assertSame(context.getSessionScope().get(formName),
+            context.get(POST_EXECUTION_CONTEXT_KEY));
 
         ActionForm theForm =
             (ActionForm) context.get(POST_EXECUTION_CONTEXT_KEY);
 
-        assertTrue(theForm instanceof DynaActionForm);
+        assertInstanceOf(DynaActionForm.class, theForm);
 
         DynaActionForm dForm = (DynaActionForm) theForm;
 
         assertEquals("test", dForm.get("property"));
     }
 
-    public void testExceptionHandlingWithNullFormName()
-        throws Exception {
+    @Test
+    public void testExceptionHandlingWithNullFormName() {
         CopyFormToContext command = new CopyFormToContext();
         String formName = "bar";
 
@@ -184,17 +193,13 @@ public class TestCopyFormToContext extends TestCase {
         assertNull(context.getRequestScope().get(formName));
         assertNull(context.getSessionScope().get(formName));
 
-        try {
-            command.execute(context);
-            fail(
-                "Execution should throw an exception when form name is not set.");
-        } catch (IllegalStateException e) {
-            ; // expected.
-        }
+        assertThrows(IllegalStateException.class,
+            () -> command.execute(context),
+            "Execution should throw an exception when form name is not set.");
     }
 
-    public void testExceptionHandlingWithNullEverything()
-        throws Exception {
+    @Test
+    public void testExceptionHandlingWithNullEverything() {
         CopyFormToContext command = new CopyFormToContext();
         String formName = "bar";
 
@@ -206,15 +211,12 @@ public class TestCopyFormToContext extends TestCase {
         assertNull(context.getRequestScope().get(formName));
         assertNull(context.getSessionScope().get(formName));
 
-        try {
-            command.execute(context);
-            fail(
+        assertThrows(IllegalStateException.class,
+                () -> command.execute(context),
                 "Execution should throw an exception when no properties are set.");
-        } catch (IllegalStateException e) {
-            ; // expected.
-        }
     }
 
+    @Test
     public void testCopyToDefaultContextKey()
         throws Exception {
         CopyFormToContext command = new CopyFormToContext();
@@ -233,11 +235,11 @@ public class TestCopyFormToContext extends TestCase {
         assertNotNull(context.getRequestScope().get(formName));
         assertNull(context.getSessionScope().get(formName));
 
-        assertSame(context.getActionForm(),
-            context.getRequestScope().get(formName));
+        assertSame(context.getRequestScope().get(formName),
+            context.getActionForm());
 
         ActionForm theForm = (ActionForm) context.getActionForm();
 
-        assertTrue(theForm instanceof MockFormBean);
+        assertInstanceOf(MockFormBean.class, theForm);
     }
 }

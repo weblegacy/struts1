@@ -20,28 +20,37 @@
  */
 package org.apache.struts.chain.commands.generic;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertSame;
+
+import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.chain.Context;
 import org.apache.commons.chain.impl.ContextBase;
 import org.apache.commons.chain.web.servlet.ServletWebContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-/* JUnitTest case for class: org.apache.struts.chain.commands.generic.WrappingLookupCommand */
-public class TestWrappingLookupCommand extends TestCase {
-    public TestWrappingLookupCommand(String _name) {
-        super(_name);
-    }
+/**
+ *  JUnitTest case for class: {@link WrappingLookupCommand}
+ */
+public class TestWrappingLookupCommand {
 
     /* setUp method for test case */
+    @BeforeEach
     protected void setUp() {
     }
 
     /* tearDown method for test case */
+    @AfterEach
     protected void tearDown() {
     }
 
-    public void testSame() throws Exception {
+    @Test
+    public void testSame() throws ClassNotFoundException, InstantiationException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         WrappingLookupCommand command = new WrappingLookupCommand();
         Context testContext = new ContextBase();
 
@@ -51,8 +60,9 @@ public class TestWrappingLookupCommand extends TestCase {
         assertSame(testContext, wrapped);
     }
 
+    @Test
     public void testWrapContextSubclass()
-        throws Exception {
+        throws ClassNotFoundException, InstantiationException, InvocationTargetException, IllegalAccessException, NoSuchMethodException {
         WrappingLookupCommand command = new WrappingLookupCommand();
 
         command.setWrapperClassName(ServletActionContext.class.getName());
@@ -62,13 +72,6 @@ public class TestWrappingLookupCommand extends TestCase {
         Context wrapped = command.getContext(testContext);
 
         assertNotNull(wrapped);
-        assertTrue(wrapped instanceof ServletActionContext);
-    }
-
-    /* Executes the test case */
-    public static void main(String[] argv) {
-        String[] testCaseList = { TestWrappingLookupCommand.class.getName() };
-
-        junit.textui.TestRunner.main(testCaseList);
+        assertInstanceOf(ServletActionContext.class, wrapped);
     }
 }

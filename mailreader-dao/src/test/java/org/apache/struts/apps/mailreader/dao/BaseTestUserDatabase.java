@@ -1,5 +1,5 @@
 /*
- * $Id: $
+ * $Id$
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -18,10 +18,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.apache.struts.apps.mailreader.dao;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * TODO Complete use case tests for:
@@ -44,14 +49,14 @@ import junit.framework.TestCase;
  *
  */
 
-public abstract class BaseTestUserDatabase extends TestCase {
+public abstract class BaseTestUserDatabase {
 
     protected UserDatabase userDatabase;
     private int userCt = 10;
     private int subscriptionCt = 20;
 
+    @BeforeEach
     protected void setUp() throws Exception {
-        super.setUp();
             userDatabase = getNewUserDatabase();
       generateUsers(userCt, subscriptionCt, "");
     }
@@ -78,31 +83,35 @@ public abstract class BaseTestUserDatabase extends TestCase {
     }
 
 
+    @AfterEach
     protected void tearDown() throws Exception {
-        super.tearDown();
         userDatabase.close();
     }
 
-    public void testCase01() throws Exception{
+    @Test
+    public void testCase01() throws ExpiredPasswordException {
         User user = userDatabase.findUser("user5");
-        assertTrue("Check username", "user5".equals(user.getUsername()));
-        assertTrue("Check fromAddress", "fromAddress5".equals(user.getFromAddress()));
-        assertTrue("Check fullName", "fullName5".equals(user.getFullName()));
-        assertTrue("Check password", "password5".equals(user.getPassword()));
-        assertNull("Check replyToAddress", user.getReplyToAddress());
+        assertEquals("user5", user.getUsername(), "Check username");
+        assertEquals("fromAddress5", user.getFromAddress(), "Check fromAddress");
+        assertEquals("fullName5", user.getFullName(), "Check fullName");
+        assertEquals("password5", user.getPassword(), "Check password");
+        assertNull(user.getReplyToAddress(), "Check replyToAddress");
 
     }
-    public void testCase02() throws Exception{
+    @Test
+    public void testCase02() throws ExpiredPasswordException {
         User user = userDatabase.findUser("bogusName");
         assertNull(user);
     }
 
-    public void testCase03() throws Exception{
+    @Test
+    public void testCase03() {
         User[] users = userDatabase.findUsers();
-        assertTrue("Check users", users.length == userCt);
+        assertEquals(users.length, userCt, "Check users");
     }
 
-    public void testCase04() throws Exception{
+    @Test
+    public void testCase04() throws ExpiredPasswordException {
         String newUserName = "newUser04";
         User newUser = userDatabase.createUser(newUserName);
         newUser.setPassword("pass1");
@@ -110,14 +119,15 @@ public abstract class BaseTestUserDatabase extends TestCase {
         newUser.setReplyToAddress("replyToAddress1");
 
         User newUser2 = userDatabase.findUser(newUserName);
-        assertTrue("Check username", newUserName.equals(newUser2.getUsername()));
-        assertTrue("Check fromAddress", "fromAddress1".equals(newUser2.getFromAddress()));
-        assertTrue("Check replyToAddress", "replyToAddress1".equals(newUser2.getReplyToAddress()));
-        assertTrue("Check password", "pass1".equals(newUser2.getPassword()));
-        assertNull("Check fullName", newUser2.getFullName());
+        assertEquals(newUserName, newUser2.getUsername(), "Check username");
+        assertEquals("fromAddress1", newUser2.getFromAddress(), "Check fromAddress");
+        assertEquals("replyToAddress1", newUser2.getReplyToAddress(), "Check replyToAddress");
+        assertEquals("pass1", newUser2.getPassword(), "Check password");
+        assertNull(newUser2.getFullName(), "Check fullName");
     }
 
-    public void testCase04a() throws Exception{
+    @Test
+    public void testCase04a() throws ExpiredPasswordException {
         String newUserName = "newUser04a";
         int subs = 5;
 
@@ -127,25 +137,26 @@ public abstract class BaseTestUserDatabase extends TestCase {
         newUser.setReplyToAddress("replyToAddress1");
 
         User newUser2 = userDatabase.findUser(newUserName);
-        assertTrue("Check username", newUserName.equals(newUser2.getUsername()));
-        assertTrue("Check fromAddress", "fromAddress1".equals(newUser2.getFromAddress()));
-        assertTrue("Check replyToAddress", "replyToAddress1".equals(newUser2.getReplyToAddress()));
-        assertTrue("Check password", "pass1".equals(newUser2.getPassword()));
-        assertNull("Check fullName", newUser2.getFullName());
+        assertEquals(newUserName, newUser2.getUsername(), "Check username");
+        assertEquals("fromAddress1", newUser2.getFromAddress(), "Check fromAddress");
+        assertEquals("replyToAddress1", newUser2.getReplyToAddress(), "Check replyToAddress");
+        assertEquals("pass1", newUser2.getPassword(), "Check password");
+        assertNull(newUser2.getFullName(), "Check fullName");
 
         generateUsers(3, subs, "04a");
 
         User newUser3 = userDatabase.findUser("04auser1");
         Subscription[] subscriptions = newUser3.getSubscriptions();
-        assertTrue ("Testing subscriptions length", subscriptions.length == subs);
+        assertEquals(subs, subscriptions.length, "Testing subscriptions length");
         newUser3.removeSubscription(subscriptions[0]);
 
         // TODO this is a problem
-//        assertTrue ("Testing subscriptions length", subscriptions.length < subs);
+//        assertTrue(subscriptions.length < subs, "Testing subscriptions length");
 
     }
 
-    public void testCase05() throws Exception{
+    @Test
+    public void testCase05() throws ExpiredPasswordException {
         String newUserName = "anotherNewUser05";
 
         User newUser = userDatabase.createUser(newUserName);
@@ -154,15 +165,16 @@ public abstract class BaseTestUserDatabase extends TestCase {
         newUser.setReplyToAddress("replyToAddress1");
 
         User newUser5 = userDatabase.findUser("user5");
-        assertTrue("Check username", "user5".equals(newUser5.getUsername()));
-        assertTrue("Check fromAddress", "fromAddress5".equals(newUser5.getFromAddress()));
-        assertTrue("Check fullName", "fullName5".equals(newUser5.getFullName()));
-        assertTrue("Check password", "password5".equals(newUser5.getPassword()));
-        assertNull("Check replyToAddress", newUser5.getReplyToAddress());
+        assertEquals("user5", newUser5.getUsername(), "Check username");
+        assertEquals("fromAddress5", newUser5.getFromAddress(), "Check fromAddress");
+        assertEquals("fullName5", newUser5.getFullName(), "Check fullName");
+        assertEquals("password5", newUser5.getPassword(), "Check password");
+        assertNull(newUser5.getReplyToAddress(), "Check replyToAddress");
 
     }
 
-    public void testCase05a() throws Exception{
+    @Test
+    public void testCase05a() throws ExpiredPasswordException {
         String newUserName = "anotherNewUser05a";
 
         User newUser = userDatabase.createUser(newUserName);
@@ -171,18 +183,19 @@ public abstract class BaseTestUserDatabase extends TestCase {
         newUser.setReplyToAddress("replyToAddress1");
 
         User newUser5a = userDatabase.findUser("user5");
-        assertTrue("Check username", "user5".equals(newUser5a.getUsername()));
-        assertTrue("Check fromAddress", "fromAddress5".equals(newUser5a.getFromAddress()));
-        assertTrue("Check fullName", "fullName5".equals(newUser5a.getFullName()));
-        assertTrue("Check password", "password5".equals(newUser5a.getPassword()));
-        assertNull("Check replyToAddress", newUser5a.getReplyToAddress());
+        assertEquals("user5", newUser5a.getUsername(), "Check username");
+        assertEquals("fromAddress5", newUser5a.getFromAddress(), "Check fromAddress");
+        assertEquals("fullName5", newUser5a.getFullName(), "Check fullName");
+        assertEquals("password5", newUser5a.getPassword(), "Check password");
+        assertNull(newUser5a.getReplyToAddress(), "Check replyToAddress");
 
         Subscription[] subscriptions = newUser5a.getSubscriptions();
-        assertTrue ("Testing subscriptions length", subscriptions.length == subscriptionCt);
+        assertEquals(subscriptionCt, subscriptions.length, "Testing subscriptions length");
 
     }
 
-    public void testCase06() throws Exception{
+    @Test
+    public void testCase06() throws ExpiredPasswordException {
         String newUserName = "anotherNewUser06";
 
         User newUser = userDatabase.createUser(newUserName);
@@ -191,15 +204,16 @@ public abstract class BaseTestUserDatabase extends TestCase {
         newUser.setReplyToAddress("replyToAddress1");
 
         User user6 = userDatabase.findUser("user6");
-        assertTrue("Check username", "user6".equals(user6.getUsername()));
-        assertTrue("Check fromAddress", "fromAddress6".equals(user6.getFromAddress()));
-        assertTrue("Check fullName", "fullName6".equals(user6.getFullName()));
-        assertTrue("Check password", "password6".equals(user6.getPassword()));
-        assertNull("Check replyToAddress", user6.getReplyToAddress());
+        assertEquals("user6", user6.getUsername(), "Check username");
+        assertEquals("fromAddress6", user6.getFromAddress(), "Check fromAddress");
+        assertEquals("fullName6", user6.getFullName(), "Check fullName");
+        assertEquals("password6", user6.getPassword(), "Check password");
+        assertNull(user6.getReplyToAddress(), "Check replyToAddress");
 
     }
 
-    public void testCase07() throws Exception{
+    @Test
+    public void testCase07() throws ExpiredPasswordException {
         String newUserName = "anotherNewUser07";
 
         User newUser = userDatabase.createUser(newUserName);
@@ -208,18 +222,19 @@ public abstract class BaseTestUserDatabase extends TestCase {
         newUser.setReplyToAddress("replyToAddress1");
 
         User user7 = userDatabase.findUser("user7");
-        assertTrue("Check username", "user7".equals(user7.getUsername()));
-        assertTrue("Check fromAddress", "fromAddress7".equals(user7.getFromAddress()));
-        assertTrue("Check fullName", "fullName7".equals(user7.getFullName()));
-        assertTrue("Check password", "password7".equals(user7.getPassword()));
-        assertNull("Check replyToAddress", user7.getReplyToAddress());
+        assertEquals("user7", user7.getUsername(), "Check username");
+        assertEquals("fromAddress7", user7.getFromAddress(), "Check fromAddress");
+        assertEquals("fullName7", user7.getFullName(), "Check fullName");
+        assertEquals("password7", user7.getPassword(), "Check password");
+        assertNull(user7.getReplyToAddress(), "Check replyToAddress");
 
         User[] users = userDatabase.findUsers();
-        assertTrue("Check users", users.length == userCt + 1);
+        assertEquals(userCt + 1, users.length, "Check users");
 
     }
 
-    public void testCase08() throws Exception{
+    @Test
+    public void testCase08() throws ExpiredPasswordException {
         String newUserName = "newUser08";
         int subs = 5;
 
@@ -234,17 +249,17 @@ public abstract class BaseTestUserDatabase extends TestCase {
   //            userDatabase.open();
 
       User newUser2 = userDatabase.findUser(newUserName);
-      assertTrue("Check username", newUserName.equals(newUser2.getUsername()));
-      assertTrue("Check fromAddress", "fromAddress1".equals(newUser2.getFromAddress()));
-      assertTrue("Check replyToAddress", "replyToAddress1".equals(newUser2.getReplyToAddress()));
-      assertTrue("Check password", "pass1".equals(newUser2.getPassword()));
-      assertNull("Check fullName", newUser2.getFullName());
+      assertEquals(newUserName, newUser2.getUsername(), "Check username");
+      assertEquals("fromAddress1", newUser2.getFromAddress(), "Check fromAddress");
+      assertEquals("replyToAddress1", newUser2.getReplyToAddress(), "Check replyToAddress");
+      assertEquals("pass1", newUser2.getPassword(), "Check password");
+      assertNull(newUser2.getFullName(), "Check fullName");
 
       generateUsers(3, subs, "08");
 
       User newUser3 = userDatabase.findUser("08user1");
       Subscription[] subscriptions = newUser3.getSubscriptions();
-      assertTrue ("Testing subscriptions length", subscriptions.length == subs);
+      assertEquals(subs, subscriptions.length, "Testing subscriptions length");
 
   //            userDatabase.save();
   //            userDatabase.close();
@@ -252,11 +267,12 @@ public abstract class BaseTestUserDatabase extends TestCase {
 
       User newUser4 = userDatabase.findUser("08user1");
       Subscription[] subscriptions2 = newUser4.getSubscriptions();
-      assertTrue ("Testing subscriptions length", subscriptions2.length == subs);
+      assertEquals(subs, subscriptions2.length, "Testing subscriptions length");
 
     }
 
-    public void testCase09() throws Exception{
+    @Test
+    public void testCase09() {
 
             // TODO fix me, this is not releasing the internal state on close
 //            userDatabase.save();
@@ -264,11 +280,12 @@ public abstract class BaseTestUserDatabase extends TestCase {
 //            userDatabase.open();
 
             User[] users = userDatabase.findUsers();
-            assertTrue("Testing users count", users.length == userCt);
+            assertEquals(userCt, users.length, "Testing users count");
 
     }
 
-    public void testCase010() throws Exception{
+    @Test
+    public void testCase010() throws ExpiredPasswordException {
 
             // TODO fix me, this is not releasing the internal state on close
 //            userDatabase.save();
@@ -276,11 +293,12 @@ public abstract class BaseTestUserDatabase extends TestCase {
 //            userDatabase.open();
 
             User user = userDatabase.findUser("bogus user");
-            assertNull("Find non-existing user", user);
+            assertNull(user, "Find non-existing user");
 
     }
 
-    public void testCase011() throws Exception{
+    @Test
+    public void testCase011() throws ExpiredPasswordException {
 
         String newUserName = "newUser11";
 
@@ -290,11 +308,11 @@ public abstract class BaseTestUserDatabase extends TestCase {
         newUser.setReplyToAddress("replyToAddress1");
 
         User user = userDatabase.findUser(newUserName);
-        assertNotNull("Find non-existing user", user);
+        assertNotNull(user, "Find non-existing user");
 
         userDatabase.removeUser(user);
         User user2 = userDatabase.findUser(newUserName);
-        assertNull("Find non-existing user", user2);
+        assertNull(user2, "Find non-existing user");
 
     }
 

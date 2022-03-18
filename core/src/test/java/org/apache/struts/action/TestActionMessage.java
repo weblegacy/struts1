@@ -20,18 +20,24 @@
  */
 package org.apache.struts.action;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests for the <code>org.apache.struts.action.ActionMessage</code>
- * class.
+ * Unit tests for the {@link ActionMessage} class.
  *
- * @version $Rev$ $Date: 2005-05-19 23:50:06 -0400 (Thu, 19 May 2005)
- *          $
+ * @version $Rev$ $Date$
  */
-public class TestActionMessage extends TestCase {
+public class TestActionMessage {
     protected ActionMessage amWithNoValue = null;
     protected ActionMessage amWithOneValue = null;
     protected ActionMessage amWithTwoValues = null;
@@ -45,35 +51,7 @@ public class TestActionMessage extends TestCase {
             "stringValue1", "stringValue2", "stringValue3", "stringValue4"
         };
 
-    /**
-     * Defines the testcase name for JUnit.
-     *
-     * @param theName the testcase's name.
-     */
-    public TestActionMessage(String theName) {
-        super(theName);
-    }
-
-    /**
-     * Start the tests.
-     *
-     * @param theArgs the arguments. Not used
-     */
-    public static void main(String[] theArgs) {
-        junit.awtui.TestRunner.main(new String[] {
-                TestActionMessage.class.getName()
-            });
-    }
-
-    /**
-     * @return a test suite (<code>TestSuite</code>) that includes all methods
-     *         starting with "test"
-     */
-    public static Test suite() {
-        // All methods starting with "test" will be executed in the test suite.
-        return new TestSuite(TestActionMessage.class);
-    }
-
+    @BeforeEach
     public void setUp() {
         amWithNoValue = new ActionMessage("amWithNoValue");
         amWithOneValue =
@@ -95,6 +73,7 @@ public class TestActionMessage extends TestCase {
         amNoResource = new ActionMessage("amNoResource", false);
     }
 
+    @AfterEach
     public void tearDown() {
         amWithNoValue = null;
         amWithOneValue = null;
@@ -106,96 +85,102 @@ public class TestActionMessage extends TestCase {
         amNoResource = null;
     }
 
+    @Test
     public void testActionMessageWithNoValue() {
-        assertTrue(amWithNoValue.getValues() == null);
+        assertNull(amWithNoValue.getValues());
         assertTrue(amWithNoValue.isResource());
-        assertTrue(amWithNoValue.getKey() == "amWithNoValue");
-        assertTrue(amWithNoValue.toString().equals("amWithNoValue[]"));
+        assertEquals("amWithNoValue", amWithNoValue.getKey());
+        assertEquals("amWithNoValue[]", amWithNoValue.toString());
     }
 
+    @Test
     public void testActionMessageWithAStringValue() {
         Object[] values = amWithOneValue.getValues();
 
-        assertTrue(values != null);
-        assertTrue(values.length == 1);
-        assertTrue(values[0].equals("stringValue"));
+        assertNotNull(values);
+        assertEquals(1, values.length);
+        assertEquals("stringValue", values[0]);
         assertTrue(amWithOneValue.isResource());
-        assertTrue(amWithOneValue.getKey() == "amWithOneValue");
-        assertTrue(amWithOneValue.toString().equals("amWithOneValue[stringValue]"));
+        assertEquals("amWithOneValue", amWithOneValue.getKey());
+        assertEquals("amWithOneValue[stringValue]", amWithOneValue.toString());
     }
 
+    @Test
     public void testActionMessageWithTwoValues() {
         Object[] values = amWithTwoValues.getValues();
 
-        assertTrue(values != null);
-        assertTrue(values.length == 2);
-        assertTrue(values[0].equals("stringValue1"));
-        assertTrue(values[1].equals("stringValue2"));
+        assertNotNull(values != null);
+        assertEquals(2, values.length);
+        assertEquals("stringValue1", values[0]);
+        assertEquals("stringValue2", values[1]);
         assertTrue(amWithTwoValues.isResource());
-        assertTrue(amWithTwoValues.getKey() == "amWithTwoValues");
-        assertTrue(amWithTwoValues.toString().equals("amWithTwoValues[stringValue1, stringValue2]"));
+        assertEquals("amWithTwoValues", amWithTwoValues.getKey());
+        assertEquals("amWithTwoValues[stringValue1, stringValue2]", amWithTwoValues.toString());
     }
 
+    @Test
     public void testActionMessageWithThreeValues() {
         Object[] values = amWithThreeValues.getValues();
 
-        assertTrue(values != null);
-        assertTrue(values.length == 3);
-        assertTrue(values[0].equals("stringValue1"));
-        assertTrue(values[1].equals("stringValue2"));
-        assertTrue(values[2].equals("stringValue3"));
-        assertTrue(amWithThreeValues.getKey() == "amWithThreeValues");
+        assertNotNull(values);
+        assertEquals(3, values.length);
+        assertEquals("stringValue1", values[0]);
+        assertEquals("stringValue2", values[1]);
+        assertEquals("stringValue3", values[2]);
+        assertEquals("amWithThreeValues", amWithThreeValues.getKey());
         assertTrue(amWithThreeValues.isResource());
-        assertTrue(amWithThreeValues.toString().equals("amWithThreeValues[stringValue1, stringValue2, stringValue3]"));
+        assertEquals("amWithThreeValues[stringValue1, stringValue2, stringValue3]", amWithThreeValues.toString());
     }
 
+    @Test
     public void testActionMessageWithFourValues() {
         Object[] values = amWithFourValues.getValues();
 
-        assertTrue(values != null);
-        assertTrue(values.length == 4);
-        assertTrue(values[0].equals("stringValue1"));
-        assertTrue(values[1].equals("stringValue2"));
-        assertTrue(values[2].equals("stringValue3"));
-        assertTrue(values[3].equals("stringValue4"));
+        assertNotNull(values);
+        assertEquals(4, values.length);
+        assertEquals("stringValue1", values[0]);
+        assertEquals("stringValue2", values[1]);
+        assertEquals("stringValue3", values[2]);
+        assertEquals("stringValue4", values[3]);
         assertTrue(amWithFourValues.isResource());
-        assertTrue(amWithFourValues.getKey() == "amWithFourValues");
-        assertTrue(amWithFourValues.toString().equals("amWithFourValues[stringValue1, stringValue2, stringValue3, stringValue4]"));
+        assertEquals("amWithFourValues", amWithFourValues.getKey());
+        assertEquals("amWithFourValues[stringValue1, stringValue2, stringValue3, stringValue4]", amWithFourValues.toString());
     }
 
+    @Test
     public void testActionMessageWithArrayValues() {
         Object[] values = amWithArrayValues.getValues();
 
-        assertTrue(values != null);
-        assertTrue(values.length == test_values.length);
+        assertNotNull(values);
+        assertEquals(test_values.length, values.length);
 
-        for (int i = 0; i < values.length; i++) {
-            assertTrue(values[i] == test_values[i]);
-        }
+        assertArrayEquals(test_values, values);
 
         assertTrue(amWithArrayValues.isResource());
-        assertTrue(amWithArrayValues.getKey() == "amWithArrayValues");
-        assertTrue(amWithArrayValues.toString().equals("amWithArrayValues[stringValue1, stringValue2, stringValue3, stringValue4]"));
+        assertEquals("amWithArrayValues", amWithArrayValues.getKey());
+        assertEquals("amWithArrayValues[stringValue1, stringValue2, stringValue3, stringValue4]", amWithArrayValues.toString());
     }
 
+    @Test
     public void testActionWithTwoIntegers() {
         Object[] values = amWithTwoIntegerValues.getValues();
 
-        assertTrue(values != null);
-        assertTrue(values.length == 2);
-        assertTrue(values[0] instanceof Integer);
-        assertTrue(values[0].toString().equals("5"));
-        assertTrue(values[1] instanceof Integer);
-        assertTrue(values[1].toString().equals("10"));
+        assertNotNull(values);
+        assertEquals(2, values.length);
+        assertInstanceOf(Integer.class, values[0]);
+        assertEquals(5, values[0]);
+        assertInstanceOf(Integer.class, values[1]);
+        assertEquals(10, values[1]);
         assertTrue(amWithTwoIntegerValues.isResource());
-        assertTrue(amWithTwoIntegerValues.getKey() == "amWithTwoIntegerValues");
-        assertTrue(amWithTwoIntegerValues.toString().equals("amWithTwoIntegerValues[5, 10]"));
+        assertEquals("amWithTwoIntegerValues", amWithTwoIntegerValues.getKey());
+        assertEquals("amWithTwoIntegerValues[5, 10]", amWithTwoIntegerValues.toString());
     }
 
+    @Test
     public void testActionNoResource() {
-        assertTrue(amNoResource.getValues() == null);
-        assertTrue(amNoResource.isResource() == false);
-        assertTrue(amNoResource.getKey() == "amNoResource");
-        assertTrue(amNoResource.toString().equals("amNoResource[]"));
+        assertNull(amNoResource.getValues());
+        assertFalse(amNoResource.isResource());
+        assertEquals("amNoResource", amNoResource.getKey());
+        assertEquals("amNoResource[]", amNoResource.toString());
     }
 }

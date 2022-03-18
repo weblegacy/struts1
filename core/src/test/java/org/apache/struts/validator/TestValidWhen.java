@@ -20,55 +20,32 @@
  */
 package org.apache.struts.validator;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.io.StringReader;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.validator.util.ValidatorUtils;
 import org.apache.struts.validator.validwhen.ValidWhenLexer;
 import org.apache.struts.validator.validwhen.ValidWhenParser;
-
-import java.io.StringReader;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
  * Unit tests for the ValidWhen Parser/Lexer.
  */
-public class TestValidWhen extends TestCase {
+public class TestValidWhen {
     /**
      * All logging goes through this logger
      */
     private static Log log = LogFactory.getLog(TestValidWhen.class);
     protected PojoBean testBean;
 
-    /**
-     * Defines the testcase name for JUnit.
-     *
-     * @param theName the testcase's name.
-     */
-    public TestValidWhen(String theName) {
-        super(theName);
-    }
-
-    /**
-     * Start the tests.
-     *
-     * @param theArgs the arguments. Not used
-     */
-    public static void main(String[] theArgs) {
-        junit.awtui.TestRunner.main(new String[] { TestValidWhen.class.getName() });
-    }
-
-    /**
-     * @return a test suite (<code>TestSuite</code>) that includes all methods
-     *         starting with "test"
-     */
-    public static Test suite() {
-        // All methods starting with "test" will be executed in the test suite.
-        return new TestSuite(TestValidWhen.class);
-    }
-
+    @BeforeEach
     public void setUp() {
         testBean = new PojoBean(123, 789);
         testBean.setStringValue1("ABC");
@@ -80,6 +57,7 @@ public class TestValidWhen extends TestCase {
         testBean.setMapped("testKey", "mappedValue");
     }
 
+    @AfterEach
     public void tearDown() {
         testBean = null;
     }
@@ -87,6 +65,7 @@ public class TestValidWhen extends TestCase {
     /**
      * Test Operators.
      */
+    @Test
     public void testProperty() {
         // *this*
         doParse("(*this* == 123)", testBean, 0, "intValue1", true);
@@ -105,6 +84,7 @@ public class TestValidWhen extends TestCase {
     /**
      * Test Operators.
      */
+    @Test
     public void testOperators() {
         // Equal
         doParse("(*this* == 123)", testBean, 0, "intValue1", true);
@@ -128,6 +108,7 @@ public class TestValidWhen extends TestCase {
     /**
      * Test String values.
      */
+    @Test
     public void testString() {
         doParse("(*this* != '--')", "XX", 0, "stringValue1", true);
         doParse("(*this* == '--')", "--", 0, "stringValue1", true);
@@ -152,6 +133,7 @@ public class TestValidWhen extends TestCase {
     /**
      * Test Numeric values.
      */
+    @Test
     public void testNumeric() {
         // Test Zero
         PojoBean numberBean = new PojoBean(0, -50);
@@ -191,6 +173,7 @@ public class TestValidWhen extends TestCase {
     /**
      * Test Null.
      */
+    @Test
     public void testNull() {
         // Not Null
         doParse("(*this* != null)", testBean, 0, "stringValue1", true);
@@ -210,6 +193,7 @@ public class TestValidWhen extends TestCase {
     /**
      * Test Joined expressions ('and' or 'or')
      */
+    @Test
     public void testJoined() {
         // Join with 'or'
         doParse("((*this* == 'ABC') or (stringValue2 == null))", testBean, 0,
@@ -255,9 +239,9 @@ public class TestValidWhen extends TestCase {
         }
 
         if (expected) {
-            assertTrue(test + " didn't return TRUE for " + property, result);
+            assertTrue(result, test + " didn't return TRUE for " + property);
         } else {
-            assertFalse(test + " didn't return FALSE for " + property, result);
+            assertFalse(result, test + " didn't return FALSE for " + property);
         }
     }
 
@@ -270,6 +254,7 @@ public class TestValidWhen extends TestCase {
      * @param index    index value
      * @param property Bean property
      */
+    /*
     private void doParseFail(String test, Object bean, int index,
         String property) {
         try {
@@ -281,6 +266,7 @@ public class TestValidWhen extends TestCase {
             // ignore exception - expected result
         }
     }
+    */
 
     /**
      * Parse the expression returning the result

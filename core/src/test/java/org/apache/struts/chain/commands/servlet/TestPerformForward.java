@@ -20,7 +20,10 @@
  */
 package org.apache.struts.chain.commands.servlet;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import javax.servlet.ServletException;
 
 import org.apache.commons.chain.web.servlet.ServletWebContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
@@ -31,21 +34,23 @@ import org.apache.struts.mock.MockHttpServletResponse;
 import org.apache.struts.mock.MockPrincipal;
 import org.apache.struts.mock.MockServletConfig;
 import org.apache.struts.mock.MockServletContext;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-/* JUnitTest case for class: org.apache.struts.chain.commands.servlet.PerformForward */
-public class TestPerformForward extends TestCase {
+/**
+ * JUnitTest case for class: {@link PerformForward}
+ */
+public class TestPerformForward {
     MockHttpServletRequest request = null;
     MockPrincipal principal = null;
     ServletWebContext swContext = null;
     ServletActionContext saContext = null;
     PerformForward command = null;
 
-    public TestPerformForward(String _name) {
-        super(_name);
-    }
-
     /* setUp method for test case */
-    protected void setUp() throws Exception {
+    @BeforeEach
+    protected void setUp() throws ServletException {
         this.request = new MockHttpServletRequest();
         this.principal =
             new MockPrincipal("Mr. Macri", new String[] { "administrator" });
@@ -67,30 +72,23 @@ public class TestPerformForward extends TestCase {
     }
 
     /* tearDown method for test case */
+    @AfterEach
     protected void tearDown() {
     }
 
+    @Test
     public void testNullForwardPath()
         throws Exception {
         ForwardConfig config = new ForwardConfig();
 
         config.setPath(null);
 
-        try {
-            command.perform(saContext, config);
-            fail(
-                "Didn't throw an illegal argument exception on null forward path");
-        } catch (IllegalArgumentException ex) {
-            System.out.println("exception: " + ex.getMessage());
+        IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+            () -> command.perform(saContext, config),
+            "Didn't throw an illegal argument exception on null forward path");
 
-            // Do nothing, the test passed
-        }
-    }
+        System.out.println("exception: " + ex.getMessage());
 
-    /* Executes the test case */
-    public static void main(String[] argv) {
-        String[] testCaseList = { TestPerformForward.class.getName() };
-
-        junit.textui.TestRunner.main(testCaseList);
+        assertEquals("The path of an ForwardConfig cannot be null", ex.getMessage());
     }
 }

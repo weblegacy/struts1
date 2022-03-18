@@ -20,46 +20,36 @@
  */
 package org.apache.struts.util;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.util.Locale;
+
 import org.apache.struts.config.MessageResourcesConfig;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests for PropertyMessageResources.
+ * Unit tests for {@link PropertyMessageResources}.
  *
  * @version $Revision$
  */
-public class TestPropertyMessageResources extends TestCase {
+public class TestPropertyMessageResources {
 
 
     private static final String FOO_RESOURCES = "org.apache.struts.util.Foo";
 
     private Locale defaultLocale;
     
-    // ----------------------------------------------------------------- Basics
-    public TestPropertyMessageResources(String name) {
-        super(name);
-    }
-
-    public static void main(String[] args) {
-        junit.awtui.TestRunner.main(new String[] {
-                TestPropertyMessageResources.class.getName()
-            });
-    }
-
-    public static Test suite() {
-        return (new TestSuite(TestPropertyMessageResources.class));
-    }
-
     // ----------------------------------------------------- Setup and Teardown
+    @BeforeEach
     public void setUp() {
         // cache the default locale
         defaultLocale = Locale.getDefault();
     }
 
+    @AfterEach
     public void tearDown() {
         // restore the default locale
         Locale.setDefault(defaultLocale);
@@ -70,6 +60,7 @@ public class TestPropertyMessageResources extends TestCase {
     /**
      * Test Struts default PropertyMessageResources behaviour
      */
+    @Test
     public void testDefaultMode() {
 
         Locale.setDefault(Locale.US);
@@ -79,24 +70,24 @@ public class TestPropertyMessageResources extends TestCase {
         MessageResources resources = createMessageResources(FOO_RESOURCES, true, null);
 
         // Test language (& default) only keys
-        assertEquals("key.lang FRANCE",  "LANG default", resources.getMessage(Locale.FRANCE,  "key.lang")); // no cached en_US
-        assertEquals("key.lang English", "LANG en",      resources.getMessage(Locale.ENGLISH, "key.lang"));
-        assertEquals("key.lang US",      "LANG en",      resources.getMessage(Locale.US,      "key.lang"));
-        assertEquals("key.lang ITALY",   "LANG en",      resources.getMessage(Locale.ITALY,   "key.lang")); // cached en_US
-        assertEquals("key.lang German",  "LANG de",      resources.getMessage(Locale.GERMAN,  "key.lang"));
-        assertEquals("key.lang GERMANY", "LANG de",      resources.getMessage(Locale.GERMANY, "key.lang"));
+        assertEquals("LANG default", resources.getMessage(Locale.FRANCE,  "key.lang"), "key.lang FRANCE" ); // no cached en_US
+        assertEquals("LANG en",      resources.getMessage(Locale.ENGLISH, "key.lang"), "key.lang English");
+        assertEquals("LANG en",      resources.getMessage(Locale.US,      "key.lang"), "key.lang US"     );
+        assertEquals("LANG en",      resources.getMessage(Locale.ITALY,   "key.lang"), "key.lang ITALY"  ); // cached en_US
+        assertEquals("LANG de",      resources.getMessage(Locale.GERMAN,  "key.lang"), "key.lang German" );
+        assertEquals("LANG de",      resources.getMessage(Locale.GERMANY, "key.lang"), "key.lang GERMANY");
 
         // Test country (& default) only keys
-        assertEquals("key.country FRANCE",  "COUNTRY en_US", resources.getMessage(Locale.FRANCE,  "key.country"));
-        assertEquals("key.country English", "COUNTRY en_US", resources.getMessage(Locale.ENGLISH, "key.country"));
-        assertEquals("key.country US",      "COUNTRY en_US", resources.getMessage(Locale.US,      "key.country"));
-        assertEquals("key.country ITALY",   "COUNTRY en_US", resources.getMessage(Locale.ITALY,   "key.country"));
-        assertEquals("key.country German",  "COUNTRY en_US", resources.getMessage(Locale.GERMAN,  "key.country"));
-        assertEquals("key.country GERMANY", "COUNTRY de_DE", resources.getMessage(Locale.GERMANY, "key.country"));
+        assertEquals("COUNTRY en_US", resources.getMessage(Locale.FRANCE,  "key.country"), "key.country FRANCE" );
+        assertEquals("COUNTRY en_US", resources.getMessage(Locale.ENGLISH, "key.country"), "key.country English");
+        assertEquals("COUNTRY en_US", resources.getMessage(Locale.US,      "key.country"), "key.country US"     );
+        assertEquals("COUNTRY en_US", resources.getMessage(Locale.ITALY,   "key.country"), "key.country ITALY"  );
+        assertEquals("COUNTRY en_US", resources.getMessage(Locale.GERMAN,  "key.country"), "key.country German" );
+        assertEquals("COUNTRY de_DE", resources.getMessage(Locale.GERMANY, "key.country"), "key.country GERMANY");
 
         // Test Unique Keys with wrong Locale
-        assertEquals("Wrong Locale en only",    null,         resources.getMessage(Locale.GERMAN,  "key.en"));
-        assertEquals("Wrong Locale en_US only", "en_US only", resources.getMessage(Locale.GERMANY, "key.en_US"));
+        assertNull(                resources.getMessage(Locale.GERMAN,  "key.en"),    "Wrong Locale en only"   );
+        assertEquals("en_US only", resources.getMessage(Locale.GERMANY, "key.en_US"), "Wrong Locale en_US only");
 
         // Run tests with common expected results
         commonTests(resources);
@@ -105,6 +96,7 @@ public class TestPropertyMessageResources extends TestCase {
     /**
      * Test JSTL compatible PropertyMessageResources behaviour
      */
+    @Test
     public void testJstlMode() {
 
         Locale.setDefault(Locale.US);
@@ -113,24 +105,24 @@ public class TestPropertyMessageResources extends TestCase {
         MessageResources resources = createMessageResources(FOO_RESOURCES, true, "JSTL");
 
         // Test language (& default) only keys
-        assertEquals("key.lang FRANCE",  "LANG default", resources.getMessage(Locale.FRANCE,  "key.lang"));
-        assertEquals("key.lang English", "LANG en",      resources.getMessage(Locale.ENGLISH, "key.lang"));
-        assertEquals("key.lang US",      "LANG en",      resources.getMessage(Locale.US,      "key.lang"));
-        assertEquals("key.lang ITALY",   "LANG default", resources.getMessage(Locale.ITALY,   "key.lang"));
-        assertEquals("key.lang German",  "LANG de",      resources.getMessage(Locale.GERMAN,  "key.lang"));
-        assertEquals("key.lang GERMANY", "LANG de",      resources.getMessage(Locale.GERMANY, "key.lang"));
+        assertEquals("LANG default", resources.getMessage(Locale.FRANCE,  "key.lang"), "key.lang FRANCE" );
+        assertEquals("LANG en",      resources.getMessage(Locale.ENGLISH, "key.lang"), "key.lang English");
+        assertEquals("LANG en",      resources.getMessage(Locale.US,      "key.lang"), "key.lang US"     );
+        assertEquals("LANG default", resources.getMessage(Locale.ITALY,   "key.lang"), "key.lang ITALY"  );
+        assertEquals("LANG de",      resources.getMessage(Locale.GERMAN,  "key.lang"), "key.lang German" );
+        assertEquals("LANG de",      resources.getMessage(Locale.GERMANY, "key.lang"), "key.lang GERMANY");
 
         // Test country (& default) only keys
-        assertEquals("key.country FRANCE",  "COUNTRY default", resources.getMessage(Locale.FRANCE,  "key.country"));
-        assertEquals("key.country English", "COUNTRY default", resources.getMessage(Locale.ENGLISH, "key.country"));
-        assertEquals("key.country US",      "COUNTRY en_US",   resources.getMessage(Locale.US,      "key.country"));
-        assertEquals("key.country ITALY",   "COUNTRY default", resources.getMessage(Locale.ITALY,   "key.country"));
-        assertEquals("key.country German",  "COUNTRY default", resources.getMessage(Locale.GERMAN,  "key.country"));
-        assertEquals("key.country GERMANY", "COUNTRY de_DE",   resources.getMessage(Locale.GERMANY, "key.country"));
+        assertEquals("COUNTRY default", resources.getMessage(Locale.FRANCE,  "key.country"), "key.country FRANCE" );
+        assertEquals("COUNTRY default", resources.getMessage(Locale.ENGLISH, "key.country"), "key.country English");
+        assertEquals("COUNTRY en_US",   resources.getMessage(Locale.US,      "key.country"), "key.country US"     );
+        assertEquals("COUNTRY default", resources.getMessage(Locale.ITALY,   "key.country"), "key.country ITALY"  );
+        assertEquals("COUNTRY default", resources.getMessage(Locale.GERMAN,  "key.country"), "key.country German" );
+        assertEquals("COUNTRY de_DE",   resources.getMessage(Locale.GERMANY, "key.country"), "key.country GERMANY");
 
         // Test Unique Keys with wrong Locale
-        assertEquals("Wrong Locale en only",    null, resources.getMessage(Locale.GERMAN,  "key.en"));
-        assertEquals("Wrong Locale en_US only", null, resources.getMessage(Locale.GERMANY, "key.en_US"));
+        assertNull(resources.getMessage(Locale.GERMAN,  "key.en"),    "Wrong Locale en only"   );
+        assertNull(resources.getMessage(Locale.GERMANY, "key.en_US"), "Wrong Locale en_US only");
 
         // Run tests with common expected results
         commonTests(resources);
@@ -140,6 +132,7 @@ public class TestPropertyMessageResources extends TestCase {
     /**
      * Test "PropertyResourceBundle" compatible PropertyMessageResources behaviour
      */
+    @Test
     public void testResourceBundleMode() {
 
         Locale.setDefault(Locale.US);
@@ -148,24 +141,24 @@ public class TestPropertyMessageResources extends TestCase {
         MessageResources resources = createMessageResources(FOO_RESOURCES, true, "RESOURCE");
 
         // Test language (& default) only keys
-        assertEquals("key.lang FRANCE",  "LANG en",      resources.getMessage(Locale.FRANCE,  "key.lang"));
-        assertEquals("key.lang English", "LANG en",      resources.getMessage(Locale.ENGLISH, "key.lang"));
-        assertEquals("key.lang US",      "LANG en",      resources.getMessage(Locale.US,      "key.lang"));
-        assertEquals("key.lang ITALY",   "LANG en",      resources.getMessage(Locale.ITALY,   "key.lang"));
-        assertEquals("key.lang German",  "LANG de",      resources.getMessage(Locale.GERMAN,  "key.lang"));
-        assertEquals("key.lang GERMANY", "LANG de",      resources.getMessage(Locale.GERMANY, "key.lang"));
+        assertEquals("LANG en", resources.getMessage(Locale.FRANCE,  "key.lang"), "key.lang FRANCE" );
+        assertEquals("LANG en", resources.getMessage(Locale.ENGLISH, "key.lang"), "key.lang English");
+        assertEquals("LANG en", resources.getMessage(Locale.US,      "key.lang"), "key.lang US"     );
+        assertEquals("LANG en", resources.getMessage(Locale.ITALY,   "key.lang"), "key.lang ITALY"  );
+        assertEquals("LANG de", resources.getMessage(Locale.GERMAN,  "key.lang"), "key.lang German" );
+        assertEquals("LANG de", resources.getMessage(Locale.GERMANY, "key.lang"), "key.lang GERMANY");
 
         // Test country (& default) only keys
-        assertEquals("key.country FRANCE",  "COUNTRY en_US", resources.getMessage(Locale.FRANCE,  "key.country"));
-        assertEquals("key.country English", "COUNTRY en_US", resources.getMessage(Locale.ENGLISH, "key.country"));
-        assertEquals("key.country US",      "COUNTRY en_US", resources.getMessage(Locale.US,      "key.country"));
-        assertEquals("key.country ITALY",   "COUNTRY en_US", resources.getMessage(Locale.ITALY,   "key.country"));
-        assertEquals("key.country German",  "COUNTRY en_US", resources.getMessage(Locale.GERMAN,  "key.country"));
-        assertEquals("key.country GERMANY", "COUNTRY de_DE", resources.getMessage(Locale.GERMANY, "key.country"));
+        assertEquals("COUNTRY en_US", resources.getMessage(Locale.FRANCE,  "key.country"), "key.country FRANCE" );
+        assertEquals("COUNTRY en_US", resources.getMessage(Locale.ENGLISH, "key.country"), "key.country English");
+        assertEquals("COUNTRY en_US", resources.getMessage(Locale.US,      "key.country"), "key.country US"     );
+        assertEquals("COUNTRY en_US", resources.getMessage(Locale.ITALY,   "key.country"), "key.country ITALY"  );
+        assertEquals("COUNTRY en_US", resources.getMessage(Locale.GERMAN,  "key.country"), "key.country German" );
+        assertEquals("COUNTRY de_DE", resources.getMessage(Locale.GERMANY, "key.country"), "key.country GERMANY");
 
         // Test Unique Keys with wrong Locale
-        assertEquals("Wrong Locale en only",    "en only",    resources.getMessage(Locale.GERMAN,  "key.en"));
-        assertEquals("Wrong Locale en_US only", "en_US only", resources.getMessage(Locale.GERMANY, "key.en_US"));
+        assertEquals("en only",    resources.getMessage(Locale.GERMAN,  "key.en"), "Wrong Locale en only"      );
+        assertEquals("en_US only", resources.getMessage(Locale.GERMANY, "key.en_US"), "Wrong Locale en_US only");
 
         // Run tests with common expected results
         commonTests(resources);
@@ -174,33 +167,33 @@ public class TestPropertyMessageResources extends TestCase {
     /**
      * Tests with common expected results
      */
-    public void commonTests(MessageResources resources) {
+    private void commonTests(MessageResources resources) {
 
         // Test "null" Locale
-        assertEquals("null Locale",  "ALL default", resources.getMessage((Locale)null,  "key.all"));
+        assertEquals("ALL default",  resources.getMessage((Locale)null,   "key.all"),     "null Locale");
 
         // Test Default only key with all Locales
-        assertEquals("Check default en",    "default only", resources.getMessage(Locale.ENGLISH, "key.default"));
-        assertEquals("Check default en_US", "default only", resources.getMessage(Locale.US,      "key.default"));
-        assertEquals("Check default de",    "default only", resources.getMessage(Locale.GERMAN,  "key.default"));
-        assertEquals("Check default de_DE", "default only", resources.getMessage(Locale.GERMANY, "key.default"));
+        assertEquals("default only", resources.getMessage(Locale.ENGLISH, "key.default"), "Check default en"   );
+        assertEquals("default only", resources.getMessage(Locale.US,      "key.default"), "Check default en_US");
+        assertEquals("default only", resources.getMessage(Locale.GERMAN,  "key.default"), "Check default de"   );
+        assertEquals("default only", resources.getMessage(Locale.GERMANY, "key.default"), "Check default de_DE");
 
         // Test key in all locales
-        assertEquals("Check ALL en",        "ALL en",       resources.getMessage(Locale.ENGLISH, "key.all"));
-        assertEquals("Check ALL en_US",     "ALL en_US",    resources.getMessage(Locale.US,      "key.all"));
-        assertEquals("Check ALL de",        "ALL de",       resources.getMessage(Locale.GERMAN,  "key.all"));
-        assertEquals("Check ALL de_DE",     "ALL de_DE",    resources.getMessage(Locale.GERMANY, "key.all"));
+        assertEquals("ALL en",       resources.getMessage(Locale.ENGLISH, "key.all"),     "Check ALL en"   );
+        assertEquals("ALL en_US",    resources.getMessage(Locale.US,      "key.all"),     "Check ALL en_US");
+        assertEquals("ALL de",       resources.getMessage(Locale.GERMAN,  "key.all"),     "Check ALL de"   );
+        assertEquals("ALL de_DE",    resources.getMessage(Locale.GERMANY, "key.all"),     "Check ALL de_DE");
 
         // Test key unique to each locale
-        assertEquals("Check en only",       "en only",      resources.getMessage(Locale.ENGLISH, "key.en"));
-        assertEquals("Check en_US only",    "en_US only",   resources.getMessage(Locale.US,      "key.en_US"));
-        assertEquals("Check de only",       "de only",      resources.getMessage(Locale.GERMAN,  "key.de"));
-        assertEquals("Check de_DE only",    "de_DE only",   resources.getMessage(Locale.GERMANY, "key.de_DE"));
+        assertEquals("en only",      resources.getMessage(Locale.ENGLISH, "key.en"),      "Check en only"   );
+        assertEquals("en_US only",   resources.getMessage(Locale.US,      "key.en_US"),   "Check en_US only");
+        assertEquals("de only",      resources.getMessage(Locale.GERMAN,  "key.de"),      "Check de only"   );
+        assertEquals("de_DE only",   resources.getMessage(Locale.GERMANY, "key.de_DE"),   "Check de_DE only");
 
         // Test unique keys with incorrect Locale
-        assertEquals("Missing default",     null,           resources.getMessage(Locale.ENGLISH, "missing"));
-        assertEquals("Missing de only",     null,           resources.getMessage(Locale.US,      "key.de"));
-        assertEquals("Missing de_DE only",  null,           resources.getMessage(Locale.US,      "key.de_DE"));
+        assertNull(                  resources.getMessage(Locale.ENGLISH, "missing"),     "Missing default"   );
+        assertNull(                  resources.getMessage(Locale.US,      "key.de"),      "Missing de only"   );
+        assertNull(                  resources.getMessage(Locale.US,      "key.de_DE"),   "Missing de_DE only");
     }
 
     /**

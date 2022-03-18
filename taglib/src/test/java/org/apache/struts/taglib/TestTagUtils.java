@@ -1,5 +1,5 @@
 /*
- * $Id: $
+ * $Id$
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -20,8 +20,22 @@
  */
 package org.apache.struts.taglib;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.net.MalformedURLException;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Map;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -38,96 +52,64 @@ import org.apache.struts.mock.MockPageContext;
 import org.apache.struts.mock.MockServletConfig;
 import org.apache.struts.mock.MockServletContext;
 import org.apache.struts.taglib.html.Constants;
-
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
-
-import java.net.MalformedURLException;
-
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests for the TagUtils.
+ * Unit tests for the {@link TagUtils}.
  */
 public class TestTagUtils extends TagTestBase {
     private static final Log log = LogFactory.getLog(TestTagUtils.class);
 
     /**
-     * Defines the testcase name for JUnit.
-     *
-     * @param theName the testcase's name.
-     */
-    public TestTagUtils(String theName) {
-        super(theName);
-    }
-
-    /**
-     * Start the tests.
-     *
-     * @param theArgs the arguments. Not used
-     */
-    public static void main(String[] theArgs) {
-        junit.awtui.TestRunner.main(new String[] { TestTagUtils.class.getName() });
-    }
-
-    /**
-     * @return a test suite (<code>TestSuite</code>) that includes all methods
-     *         starting with "test"
-     */
-    public static Test suite() {
-        // All methods starting with "test" will be executed in the test suite.
-        return new TestSuite(TestTagUtils.class);
-    }
-
-    /**
      * Test Operators.
      */
+    @Test
     public void testFilter() {
-        assertNull("Null", null);
+        assertNull(null, "Null");
 
         // Test Null
-        assertNull("Filter Test 1", tagutils.filter(null));
+        assertNull(tagutils.filter(null), "Filter Test 1");
 
         // Test Empty String
-        assertEquals("Filter Test 2", "", tagutils.filter(""));
+        assertEquals("", tagutils.filter(""), "Filter Test 2");
 
         // Test Single Character
-        assertEquals("Filter Test 3", "a", tagutils.filter("a"));
+        assertEquals("a", tagutils.filter("a"), "Filter Test 3");
 
         // Test Multiple Characters
-        assertEquals("Filter Test 4", "adhdfhdfhadhf",
-            tagutils.filter("adhdfhdfhadhf"));
+        assertEquals("adhdfhdfhadhf",
+            tagutils.filter("adhdfhdfhadhf"), "Filter Test 4");
 
         // Test Each filtered Character
-        assertEquals("Filter Test 5", "&lt;", tagutils.filter("<"));
-        assertEquals("Filter Test 6", "&gt;", tagutils.filter(">"));
-        assertEquals("Filter Test 7", "&amp;", tagutils.filter("&"));
-        assertEquals("Filter Test 8", "&quot;", tagutils.filter("\""));
-        assertEquals("Filter Test 9", "&#39;", tagutils.filter("'"));
+        assertEquals("&lt;", tagutils.filter("<"), "Filter Test 5");
+        assertEquals("&gt;", tagutils.filter(">"), "Filter Test 6");
+        assertEquals("&amp;", tagutils.filter("&"), "Filter Test 7");
+        assertEquals("&quot;", tagutils.filter("\""), "Filter Test 8");
+        assertEquals("&#39;", tagutils.filter("'"), "Filter Test 9");
 
         // Test filtering beginning, middle, end
-        assertEquals("Filter Test 10", "a&lt;", tagutils.filter("a<"));
-        assertEquals("Filter Test 11", "&lt;a", tagutils.filter("<a"));
-        assertEquals("Filter Test 12", "a&lt;a", tagutils.filter("a<a"));
+        assertEquals("a&lt;", tagutils.filter("a<"), "Filter Test 10");
+        assertEquals("&lt;a", tagutils.filter("<a"), "Filter Test 11");
+        assertEquals("a&lt;a", tagutils.filter("a<a"), "Filter Test 12");
 
         // Test filtering beginning, middle, end
-        assertEquals("Filter Test 13", "abc&lt;", tagutils.filter("abc<"));
-        assertEquals("Filter Test 14", "&lt;abc", tagutils.filter("<abc"));
-        assertEquals("Filter Test 15", "abc&lt;abc", tagutils.filter("abc<abc"));
+        assertEquals("abc&lt;", tagutils.filter("abc<"), "Filter Test 13");
+        assertEquals("&lt;abc", tagutils.filter("<abc"), "Filter Test 14");
+        assertEquals("abc&lt;abc", tagutils.filter("abc<abc"), "Filter Test 15");
 
         // Test Multiple Characters
-        assertEquals("Filter Test 16",
+        assertEquals(
             "&lt;input type=&quot;text&quot; value=&#39;Me &amp; You&#39;&gt;",
-            tagutils.filter("<input type=\"text\" value='Me & You'>"));
+            tagutils.filter("<input type=\"text\" value='Me & You'>"),
+            "Filter Test 16");
     }
 
     // ---------------------------------------------------- computeParameters()
     // No parameters and no transaction token
+    @Test
     public void testComputeParameters0a() {
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -136,14 +118,15 @@ public class TestTagUtils extends TagTestBase {
             fail("JspException: " + e);
         }
 
-        assertNull("Map is null", map);
+        assertNull(map, "Map is null");
     }
 
     // No parameters but add transaction token
+    @Test
     public void testComputeParameters0b() {
         request.getSession().setAttribute(Globals.TRANSACTION_TOKEN_KEY, "token");
 
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -152,17 +135,18 @@ public class TestTagUtils extends TagTestBase {
             fail("JspException: " + e);
         }
 
-        assertNotNull("Map is not null", map);
-        assertEquals("One parameter in the returned map", 1, map.size());
-        assertTrue("Transaction token parameter present",
-            map.containsKey(Constants.TOKEN_KEY));
-        assertEquals("Transaction token parameter value", "token",
-            (String) map.get(Constants.TOKEN_KEY));
+        assertNotNull(map, "Map is not null");
+        assertEquals(1, map.size(), "One parameter in the returned map");
+        assertTrue(map.containsKey(Constants.TOKEN_KEY),
+            "Transaction token parameter present");
+        assertEquals("token", map.get(Constants.TOKEN_KEY),
+            "Transaction token parameter value");
     }
 
     // invalid scope name is requested
+    @Test
     public void testComputeParametersInvalidScope() {
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -170,13 +154,14 @@ public class TestTagUtils extends TagTestBase {
 
             fail("JspException not thrown");
         } catch (JspException e) {
-            assertNull("map is null", map);
+            assertNull(map, "map is null");
         }
     }
 
     // specified bean is not found
+    @Test
     public void testComputeParametersBeanNotFound() {
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -184,29 +169,31 @@ public class TestTagUtils extends TagTestBase {
 
             fail("JspException not thrown");
         } catch (JspException e) {
-            assertNull("map is null", map);
+            assertNull(map, "map is null");
         }
     }
 
     // accessing this property causes an exception
+    @Test
     public void testComputeParametersPropertyThrowsException() {
         request.getSession().setAttribute("SomeBean", new MockFormBean(true));
 
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
                     null, "SomeBean", "justThrowAnException", null, false);
             fail("JspException not thrown");
         } catch (JspException e) {
-            assertNull("map is null", map);
+            assertNull(map, "map is null");
         }
     }
 
+    @Test
     public void testComputeParametersParamIdParamPropThrowException() {
         request.getSession().setAttribute("SomeBean", new MockFormBean(true));
 
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "paramId",
@@ -215,39 +202,42 @@ public class TestTagUtils extends TagTestBase {
 
             fail("JspException not thrown");
         } catch (JspException e) {
-            assertNull("map is null", map);
+            assertNull(map, "map is null");
         }
     }
 
+    @Test
     public void testComputeParametersParamValueToString() {
         request.getSession().setAttribute("SomeBean",
             new MockFormBean(false, false, new Double(1)));
 
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "paramId",
                     "SomeBean", "doubleValue", null, null, null, null, false);
 
-            assertNotNull("map is null", map);
+            assertNotNull(map, "map is null");
 
             String val = (String) map.get("paramId");
 
-            assertTrue("paramId should be 1.0", "1.0".equals(val));
+            assertEquals("1.0", val, "paramId should be 1.0");
         } catch (JspException e) {
             fail("JspException not thrown");
         }
     }
 
+    @Test
+    @Disabled
     public void skiptestComputeParametersParamIdAsStringArray() {
-        Map params = new HashMap();
+        Map<String, String> params = new HashMap<>();
 
         //        String[] vals = new String[]{"test0, test1"};
         params.put("fooParamId", "fooParamValue");
 
         request.getSession().setAttribute("SomeBean", params);
 
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "fooParamId",
@@ -256,21 +246,22 @@ public class TestTagUtils extends TagTestBase {
             //            map = tagutils.computeParameters(
             //                    page, "paramId", "SomeBean", "stringArray", null,
             //                    null, null, null, false);
-            assertNotNull("map is null", map);
+            assertNotNull(map, "map is null");
 
             String val = (String) map.get("key0");
 
-            assertTrue("paramId should be \"test\"", "1.0".equals(val));
+            assertEquals("1.0", val, "paramId should be \"test\"");
         } catch (JspException e) {
             fail("JspException not thrown");
         }
     }
 
     // Single parameter -- name
+    @Test
     public void testComputeParameters1a() {
         request.getSession().setAttribute("attr", "bar");
 
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "foo", "attr", null,
@@ -279,17 +270,18 @@ public class TestTagUtils extends TagTestBase {
             fail("JspException: " + e);
         }
 
-        assertNotNull("Map is not null", map);
-        assertEquals("One parameter in the returned map", 1, map.size());
-        assertTrue("Parameter present", map.containsKey("foo"));
-        assertEquals("Parameter value", "bar", (String) map.get("foo"));
+        assertNotNull(map, "Map is not null");
+        assertEquals(1, map.size(), "One parameter in the returned map");
+        assertTrue(map.containsKey("foo"), "Parameter present");
+        assertEquals("bar", map.get("foo"), "Parameter value");
     }
 
     // Single parameter -- scope + name
+    @Test
     public void testComputeParameters1b() {
         request.setAttribute("attr", "bar");
 
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "foo", "attr", null,
@@ -298,17 +290,18 @@ public class TestTagUtils extends TagTestBase {
             fail("JspException: " + e);
         }
 
-        assertNotNull("Map is not null", map);
-        assertEquals("One parameter in the returned map", 1, map.size());
-        assertTrue("Parameter present", map.containsKey("foo"));
-        assertEquals("Parameter value", "bar", (String) map.get("foo"));
+        assertNotNull(map, "Map is not null");
+        assertEquals(1, map.size(), "One parameter in the returned map");
+        assertTrue(map.containsKey("foo"), "Parameter present");
+        assertEquals("bar", map.get("foo"), "Parameter value");
     }
 
     // Single parameter -- scope + name + property
+    @Test
     public void testComputeParameters1c() {
         request.setAttribute("attr", new MockFormBean("bar"));
 
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "foo", "attr",
@@ -317,19 +310,22 @@ public class TestTagUtils extends TagTestBase {
             fail("JspException: " + e);
         }
 
-        assertNotNull("Map is not null", map);
-        assertEquals("One parameter in the returned map", 1, map.size());
-        assertTrue("Parameter present", map.containsKey("foo"));
-        assertEquals("Parameter value", "bar", (String) map.get("foo"));
+        assertNotNull(map, "Map is not null");
+        assertEquals(1, map.size(), "One parameter in the returned map");
+        assertTrue(map.containsKey("foo"), "Parameter present");
+        assertEquals("bar", map.get("foo"), "Parameter value");
     }
 
     // Provided map -- name
+    @Test
     public void testComputeParameters2a() {
-        Map map = new HashMap();
+        Map<String, String> params = new HashMap<>();
 
-        map.put("foo1", "bar1");
-        map.put("foo2", "bar2");
-        request.getSession().setAttribute("attr", map);
+        params.put("foo1", "bar1");
+        params.put("foo2", "bar2");
+        request.getSession().setAttribute("attr", params);
+
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -338,21 +334,24 @@ public class TestTagUtils extends TagTestBase {
             fail("JspException: " + e);
         }
 
-        assertNotNull("Map is not null", map);
-        assertEquals("Two parameter in the returned map", 2, map.size());
-        assertTrue("Parameter foo1 present", map.containsKey("foo1"));
-        assertEquals("Parameter foo1 value", "bar1", (String) map.get("foo1"));
-        assertTrue("Parameter foo2 present", map.containsKey("foo2"));
-        assertEquals("Parameter foo2 value", "bar2", (String) map.get("foo2"));
+        assertNotNull(map, "Map is not null");
+        assertEquals(2, map.size(), "Two parameter in the returned map");
+        assertTrue(map.containsKey("foo1"), "Parameter foo1 present");
+        assertEquals("bar1", (String) map.get("foo1"), "Parameter foo1 value");
+        assertTrue(map.containsKey("foo2"), "Parameter foo2 present");
+        assertEquals("bar2", (String) map.get("foo2"), "Parameter foo2 value");
     }
 
     // Provided map -- scope + name
+    @Test
     public void testComputeParameters2b() {
-        Map map = new HashMap();
+        Map<String, String> params = new HashMap<>();
 
-        map.put("foo1", "bar1");
-        map.put("foo2", "bar2");
-        request.setAttribute("attr", map);
+        params.put("foo1", "bar1");
+        params.put("foo2", "bar2");
+        request.setAttribute("attr", params);
+
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -361,19 +360,20 @@ public class TestTagUtils extends TagTestBase {
             fail("JspException: " + e);
         }
 
-        assertNotNull("Map is not null", map);
-        assertEquals("Two parameter in the returned map", 2, map.size());
-        assertTrue("Parameter foo1 present", map.containsKey("foo1"));
-        assertEquals("Parameter foo1 value", "bar1", (String) map.get("foo1"));
-        assertTrue("Parameter foo2 present", map.containsKey("foo2"));
-        assertEquals("Parameter foo2 value", "bar2", (String) map.get("foo2"));
+        assertNotNull(map, "Map is not null");
+        assertEquals(2, map.size(), "Two parameter in the returned map");
+        assertTrue(map.containsKey("foo1"), "Parameter foo1 present");
+        assertEquals("bar1", map.get("foo1"), "Parameter foo1 value");
+        assertTrue(map.containsKey("foo2"), "Parameter foo2 present");
+        assertEquals("bar2", map.get("foo2"), "Parameter foo2 value");
     }
 
     // Provided map -- scope + name + property
+    @Test
     public void testComputeParameters2c() {
         request.setAttribute("attr", new MockFormBean());
 
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -382,20 +382,23 @@ public class TestTagUtils extends TagTestBase {
             fail("JspException: " + e);
         }
 
-        assertNotNull("Map is not null", map);
-        assertEquals("Two parameter in the returned map", 2, map.size());
-        assertTrue("Parameter foo1 present", map.containsKey("foo1"));
-        assertEquals("Parameter foo1 value", "bar1", (String) map.get("foo1"));
-        assertTrue("Parameter foo2 present", map.containsKey("foo2"));
-        assertEquals("Parameter foo2 value", "bar2", (String) map.get("foo2"));
+        assertNotNull(map, "Map is not null");
+        assertEquals(2, map.size(), "Two parameter in the returned map");
+        assertTrue(map.containsKey("foo1"), "Parameter foo1 present");
+        assertEquals("bar1", map.get("foo1"), "Parameter foo1 value");
+        assertTrue(map.containsKey("foo2"), "Parameter foo2 present");
+        assertEquals("bar2", map.get("foo2"), "Parameter foo2 value");
     }
 
     // Provided map -- name with one key and two values
+    @Test
     public void testComputeParameters2d() {
-        Map map = new HashMap();
+        Map<String, String[]> params = new HashMap<>();
 
-        map.put("foo", new String[] { "bar1", "bar2" });
-        request.getSession().setAttribute("attr", map);
+        params.put("foo", new String[] { "bar1", "bar2" });
+        request.getSession().setAttribute("attr", params);
+
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -404,23 +407,24 @@ public class TestTagUtils extends TagTestBase {
             fail("JspException: " + e);
         }
 
-        assertNotNull("Map is not null", map);
-        assertEquals("One parameter in the returned map", 1, map.size());
-        assertTrue("Parameter foo present", map.containsKey("foo"));
-        assertTrue("Parameter foo value type",
-            map.get("foo") instanceof String[]);
+        assertNotNull(map, "Map is not null");
+        assertEquals(1, map.size(), "One parameter in the returned map");
+        assertTrue(map.containsKey("foo"), "Parameter foo present");
+        assertInstanceOf(String[].class, map.get("foo"),
+            "Parameter foo value type");
 
         String[] values = (String[]) map.get("foo");
 
-        assertEquals("Values count", 2, values.length);
+        assertEquals(2, values.length, "Values count");
     }
 
     // Kitchen sink combination of parameters with a merge
+    @Test
     public void testComputeParameters3a() {
         request.setAttribute("attr", new MockFormBean("bar3"));
         request.getSession().setAttribute(Globals.TRANSACTION_TOKEN_KEY, "token");
 
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "foo1", "attr",
@@ -430,33 +434,34 @@ public class TestTagUtils extends TagTestBase {
             fail("JspException: " + e);
         }
 
-        assertNotNull("Map is not null", map);
-        assertEquals("Three parameter in the returned map", 3, map.size());
+        assertNotNull(map, "Map is not null");
+        assertEquals(3, map.size(), "Three parameter in the returned map");
 
-        assertTrue("Parameter foo1 present", map.containsKey("foo1"));
-        assertTrue("Parameter foo1 value type",
-            map.get("foo1") instanceof String[]);
+        assertTrue(map.containsKey("foo1"), "Parameter foo1 present");
+        assertInstanceOf(String[].class, map.get("foo1"), 
+            "Parameter foo1 value type");
 
         String[] values = (String[]) map.get("foo1");
 
-        assertEquals("Values count", 2, values.length);
+        assertEquals(2, values.length, "Values count");
 
-        assertTrue("Parameter foo2 present", map.containsKey("foo2"));
-        assertEquals("Parameter foo2 value", "bar2", (String) map.get("foo2"));
+        assertTrue(map.containsKey("foo2"), "Parameter foo2 present");
+        assertEquals("bar2", map.get("foo2"), "Parameter foo2 value");
 
-        assertTrue("Transaction token parameter present",
-            map.containsKey(Constants.TOKEN_KEY));
-        assertEquals("Transaction token parameter value", "token",
-            (String) map.get(Constants.TOKEN_KEY));
+        assertTrue(map.containsKey(Constants.TOKEN_KEY),
+            "Transaction token parameter present");
+        assertEquals("token", map.get(Constants.TOKEN_KEY),
+            "Transaction token parameter value");
     }
 
     // Kitchen sink combination of parameters with a merge
     // with array values in map
+    @Test
     public void testComputeParameters3aa() {
         request.setAttribute("attr", new MockFormBean("bar3"));
         request.getSession().setAttribute(Globals.TRANSACTION_TOKEN_KEY, "token");
 
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "foo1", "attr",
@@ -466,36 +471,37 @@ public class TestTagUtils extends TagTestBase {
             fail("JspException: " + e);
         }
 
-        assertNotNull("Map is not null", map);
-        assertEquals("Three parameter in the returned map", 3, map.size());
+        assertNotNull(map, "Map is not null");
+        assertEquals(3, map.size(), "Three parameter in the returned map");
 
-        assertTrue("Parameter foo1 present", map.containsKey("foo1"));
-        assertTrue("Parameter foo1 value type",
-            map.get("foo1") instanceof String[]);
+        assertTrue(map.containsKey("foo1"), "Parameter foo1 present");
+        assertInstanceOf(String[].class, map.get("foo1"),
+            "Parameter foo1 value type");
 
         String[] values = (String[]) map.get("foo1");
 
-        assertEquals("Values count", 3, values.length);
+        assertEquals(3, values.length, "Values count");
 
-        assertTrue("Parameter foo2 present", map.containsKey("foo2"));
+        assertTrue(map.containsKey("foo2"), "Parameter foo2 present");
 
         String[] arrayValues = (String[]) map.get("foo2");
         String val = arrayValues[0];
 
-        assertEquals("Parameter foo2 value", "bar2", val);
+        assertEquals("bar2", val, "Parameter foo2 value");
 
-        assertTrue("Transaction token parameter present",
-            map.containsKey(Constants.TOKEN_KEY));
-        assertEquals("Transaction token parameter value", "token",
-            (String) map.get(Constants.TOKEN_KEY));
+        assertTrue(map.containsKey(Constants.TOKEN_KEY),
+            "Transaction token parameter present");
+        assertEquals("token", map.get(Constants.TOKEN_KEY),
+            "Transaction token parameter value");
     }
 
     // Kitchen sink combination of parameters with a merge
+    @Test
     public void testComputeParameters3b() {
         request.setAttribute("attr", new MockFormBean("bar3"));
         request.getSession().setAttribute(Globals.TRANSACTION_TOKEN_KEY, "token");
 
-        Map map = null;
+        Map<?, ?> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "foo1", "attr",
@@ -505,28 +511,29 @@ public class TestTagUtils extends TagTestBase {
             fail("JspException: " + e);
         }
 
-        assertNotNull("Map is not null", map);
-        assertEquals("Three parameter in the returned map", 3, map.size());
+        assertNotNull(map, "Map is not null");
+        assertEquals(3, map.size(), "Three parameter in the returned map");
 
-        assertTrue("Parameter foo1 present", map.containsKey("foo1"));
-        assertTrue("Parameter foo1 value type",
-            map.get("foo1") instanceof String[]);
+        assertTrue(map.containsKey("foo1"), "Parameter foo1 present");
+        assertInstanceOf(String[].class, map.get("foo1"),
+            "Parameter foo1 value type");
 
         String[] values = (String[]) map.get("foo1");
 
-        assertEquals("Values count", 2, values.length);
+        assertEquals(2, values.length, "Values count");
 
-        assertTrue("Parameter foo2 present", map.containsKey("foo2"));
-        assertEquals("Parameter foo2 value", "bar2", (String) map.get("foo2"));
+        assertTrue(map.containsKey("foo2"), "Parameter foo2 present");
+        assertEquals("bar2", map.get("foo2"), "Parameter foo2 value");
 
-        assertTrue("Transaction token parameter present",
-            map.containsKey(Constants.TOKEN_KEY));
-        assertEquals("Transaction token parameter value", "token",
-            (String) map.get(Constants.TOKEN_KEY));
+        assertTrue(map.containsKey(Constants.TOKEN_KEY),
+            "Transaction token parameter present");
+        assertEquals("token", map.get(Constants.TOKEN_KEY),
+            "Transaction token parameter value");
     }
 
     // ----------------------------------------------------------- computeURL()
     // Default module -- Forward only
+    @Test
     public void testComputeURL1a() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
@@ -539,11 +546,12 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "/myapp/bar.jsp", url);
+        assertNotNull(url, "url present");
+        assertEquals("/myapp/bar.jsp", url, "url value");
     }
 
     // Default module -- Href only
+    @Test
     public void testComputeURL1b() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
@@ -556,11 +564,12 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "http://foo.com/bar", url);
+        assertNotNull(url, "url present");
+        assertEquals("http://foo.com/bar", url, "url value");
     }
 
     // Default module -- Page only
+    @Test
     public void testComputeURL1c() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
@@ -573,11 +582,12 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "/myapp/bar", url);
+        assertNotNull(url, "url present");
+        assertEquals("/myapp/bar", url, "url value");
     }
 
     // Default module -- Forward with pattern
+    @Test
     public void testComputeURL1d() {
         moduleConfig.getControllerConfig().setForwardPattern("$C/WEB-INF/pages$M$P");
         request.setPathElements("/myapp", "/action.do", null, null);
@@ -591,11 +601,12 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "/myapp/WEB-INF/pages/bar.jsp", url);
+        assertNotNull(url, "url present");
+        assertEquals("/myapp/WEB-INF/pages/bar.jsp", url, "url value");
     }
 
     // Default module -- Page with pattern
+    @Test
     public void testComputeURL1e() {
         moduleConfig.getControllerConfig().setPagePattern("$C/WEB-INF/pages$M$P");
         request.setPathElements("/myapp", "/action.do", null, null);
@@ -609,11 +620,12 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "/myapp/WEB-INF/pages/bar", url);
+        assertNotNull(url, "url present");
+        assertEquals("/myapp/WEB-INF/pages/bar", url, "url value");
     }
 
     // Default module -- Forward with relative path (non-context-relative)
+    @Test
     public void testComputeURL1f() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
@@ -626,13 +638,15 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value",
+        assertNotNull(url, "url present");
+        assertEquals(
         //                     "/myapp/relative.jsp",
-        "relative.jsp", url);
+        "relative.jsp", url,
+        "url value");
     }
 
     // Default module -- Forward with relative path (context-relative)
+    @Test
     public void testComputeURL1g() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
@@ -645,13 +659,15 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value",
+        assertNotNull(url, "url present");
+        assertEquals(
         //                     "/myapp/relative.jsp",
-        "relative.jsp", url);
+        "relative.jsp", url,
+        "url value");
     }
 
     // Default module -- Forward with external path
+    @Test
     public void testComputeURL1h() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
@@ -664,11 +680,12 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "http://struts.apache.org/", url);
+        assertNotNull(url, "url present");
+        assertEquals("http://struts.apache.org/", url, "url value");
     }
 
     // Second module -- Forward only
+    @Test
     public void testComputeURL2a() {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig2);
         request.setPathElements("/myapp", "/2/action.do", null, null);
@@ -682,11 +699,12 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "/myapp/2/baz.jsp", url);
+        assertNotNull(url, "url present");
+        assertEquals("/myapp/2/baz.jsp", url, "url value");
     }
 
     // Second module -- Href only
+    @Test
     public void testComputeURL2b() {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig2);
         request.setPathElements("/myapp", "/2/action.do", null, null);
@@ -700,11 +718,12 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "http://foo.com/bar", url);
+        assertNotNull(url, "url present");
+        assertEquals("http://foo.com/bar", url, "url value");
     }
 
     // Second module -- Page only
+    @Test
     public void testComputeURL2c() {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig2);
         request.setPathElements("/myapp", "/2/action.do", null, null);
@@ -718,11 +737,12 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "/myapp/2/bar", url);
+        assertNotNull(url, "url present");
+        assertEquals("/myapp/2/bar", url, "url value");
     }
 
     // Default module -- Forward with pattern
+    @Test
     public void testComputeURL2d() {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig2);
         moduleConfig2.getControllerConfig().setForwardPattern("$C/WEB-INF/pages$M$P");
@@ -737,11 +757,12 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "/myapp/WEB-INF/pages/2/baz.jsp", url);
+        assertNotNull(url, "url present");
+        assertEquals("/myapp/WEB-INF/pages/2/baz.jsp", url, "url value");
     }
 
     // Second module -- Page with pattern
+    @Test
     public void testComputeURL2e() {
         moduleConfig2.getControllerConfig().setPagePattern("$C/WEB-INF/pages$M$P");
         request.setAttribute(Globals.MODULE_KEY, moduleConfig2);
@@ -756,11 +777,12 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "/myapp/WEB-INF/pages/2/bar", url);
+        assertNotNull(url, "url present");
+        assertEquals("/myapp/WEB-INF/pages/2/bar", url, "url value");
     }
 
     // Second module -- Forward with relative path (non-context-relative)
+    @Test
     public void testComputeURL2f() {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig2);
         request.setPathElements("/myapp", "/2/action.do", null, null);
@@ -774,13 +796,15 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value",
+        assertNotNull(url, "url present");
+        assertEquals(
         //                     "/myapp/2/relative.jsp",
-        "relative.jsp", url);
+        "relative.jsp", url,
+        "url value");
     }
 
     // Second module -- Forward with relative path (context-relative)
+    @Test
     public void testComputeURL2g() {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig2);
         request.setPathElements("/myapp", "/2/action.do", null, null);
@@ -794,13 +818,15 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value",
+        assertNotNull(url, "url present");
+        assertEquals(
         //                     "/myapp/relative.jsp",
-        "relative.jsp", url);
+        "relative.jsp", url,
+        "url value");
     }
 
     // Second module -- Forward with external path
+    @Test
     public void testComputeURL2h() {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig2);
         request.setPathElements("/myapp", "/2/action.do", null, null);
@@ -814,15 +840,16 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "http://struts.apache.org/", url);
+        assertNotNull(url, "url present");
+        assertEquals("http://struts.apache.org/", url, "url value");
     }
 
     // Add parameters only -- forward URL
+    @Test
     public void testComputeURL3a() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<>();
 
         map.put("foo1", "bar1");
         map.put("foo2", "bar2");
@@ -836,13 +863,15 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertTrue("url value",
+        assertNotNull(url, "url present");
+        assertTrue(
             url.equals("/myapp/bar?foo1=bar1&amp;foo2=bar2")
-            || url.equals("/myapp/bar?foo2=bar2&amp;foo1=bar1"));
+            || url.equals("/myapp/bar?foo2=bar2&amp;foo1=bar1"),
+            "url value");
     }
 
     // Add anchor only -- forward URL
+    @Test
     public void testComputeURL3b() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
@@ -855,15 +884,16 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "/myapp/bar#anchor", url);
+        assertNotNull(url, "url present");
+        assertEquals("/myapp/bar#anchor", url, "url value");
     }
 
     // Add parameters + anchor -- forward URL
+    @Test
     public void testComputeURL3c() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<>();
 
         map.put("foo1", "bar1");
         map.put("foo2", "bar2");
@@ -877,17 +907,19 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertTrue("url value",
+        assertNotNull(url, "url present");
+        assertTrue(
             url.equals("/myapp/bar?foo1=bar1&amp;foo2=bar2#anchor")
-            || url.equals("/myapp/bar?foo2=bar2&amp;foo1=bar1#anchor"));
+            || url.equals("/myapp/bar?foo2=bar2&amp;foo1=bar1#anchor"),
+            "url value");
     }
 
     // Add parameters only -- redirect URL
+    @Test
     public void testComputeURL3d() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<>();
 
         map.put("foo1", "bar1");
         map.put("foo2", "bar2");
@@ -901,13 +933,15 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertTrue("url value",
+        assertNotNull(url, "url present");
+        assertTrue(
             url.equals("/myapp/bar?foo1=bar1&foo2=bar2")
-            || url.equals("/myapp/bar?foo2=bar2&foo1=bar1"));
+            || url.equals("/myapp/bar?foo2=bar2&foo1=bar1"),
+            "url value");
     }
 
     // Add anchor only -- redirect URL
+    @Test
     public void testComputeURL3e() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
@@ -920,15 +954,16 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertEquals("url value", "/myapp/bar#anchor", url);
+        assertNotNull(url, "url present");
+        assertEquals("/myapp/bar#anchor", url, "url value");
     }
 
     // Add parameters + anchor -- redirect URL
+    @Test
     public void testComputeURL3f() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<>();
 
         map.put("foo1", "bar1");
         map.put("foo2", "bar2");
@@ -942,17 +977,19 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertTrue("url value",
+        assertNotNull(url, "url present");
+        assertTrue(
             url.equals("/myapp/bar?foo1=bar1&amp;foo2=bar2#anchor")
-            || url.equals("/myapp/bar?foo2=bar2&amp;foo1=bar1#anchor"));
+            || url.equals("/myapp/bar?foo2=bar2&amp;foo1=bar1#anchor"),
+            "url value");
     }
 
     // Add parameters only -- forward URL -- do not encode seperator
+    @Test
     public void testComputeURL3g() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<>();
 
         map.put("foo1", "bar1");
         map.put("foo2", "bar2");
@@ -966,20 +1003,22 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertTrue("url value",
+        assertNotNull(url, "url present");
+        assertTrue(
             url.equals("/myapp/bar?foo1=bar1&foo2=bar2")
-            || url.equals("/myapp/bar?foo2=bar2&foo1=bar1"));
+            || url.equals("/myapp/bar?foo2=bar2&foo1=bar1"),
+            "url value");
     }
 
     // Add parameters only
     //  -- forward URL
     //  -- do not encode seperator
     //  -- send param with null value
+    @Test
     public void testComputeURL3h() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<>();
 
         map.put("foo1", null);
 
@@ -992,8 +1031,8 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertTrue("url value", url.equals("/myapp/bar?foo1="));
+        assertNotNull(url, "url present");
+        assertEquals(url, "/myapp/bar?foo1=", "url value");
     }
 
     // Add parameters only
@@ -1001,10 +1040,11 @@ public class TestTagUtils extends TagTestBase {
     //  -- do not encode seperator
     //  -- send param with null value
     //  -- add ? to page
+    @Test
     public void testComputeURL3i() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<>();
 
         map.put("foo1", null);
 
@@ -1017,8 +1057,8 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertTrue("url value", url.equals("/myapp/bar?&foo1="));
+        assertNotNull(url, "url present");
+        assertEquals(url, "/myapp/bar?&foo1=", "url value");
     }
 
     // Add parameters only
@@ -1026,10 +1066,11 @@ public class TestTagUtils extends TagTestBase {
     //  -- do not encode seperator
     //  -- send param with null value
     //  -- add ? and param to page
+    @Test
     public void testComputeURL3j() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<>();
 
         map.put("foo1", null);
         map.put("foo2", "bar2");
@@ -1043,18 +1084,20 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertTrue("url value",
+        assertNotNull(url, "url present");
+        assertTrue(
             url.equals("/myapp/bar?a=b&foo1=&foo2=bar2")
-            || url.equals("/myapp/bar?a=b&foo2=bar2&foo1="));
+            || url.equals("/myapp/bar?a=b&foo2=bar2&foo1="),
+            "url value");
     }
 
     // -- Add Parameters
     // -- Parameter as String Array
+    @Test
     public void testComputeURL3k() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
-        Map map = new HashMap();
+        Map<String, String[]> map = new HashMap<>();
 
         map.put("foo1", new String[] { "bar1", "baz1" });
 
@@ -1067,18 +1110,20 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertTrue("url value",
+        assertNotNull(url, "url present");
+        assertTrue(
             url.equals("/myapp/bar?foo1=bar1&amp;foo1=baz1")
-            || url.equals("/myapp/bar?foo1=baz1&amp;foo1=bar1"));
+            || url.equals("/myapp/bar?foo1=baz1&amp;foo1=bar1"),
+            "url value");
     }
 
     // -- Add Parameters
     // -- Parameter as non String or String Array
+    @Test
     public void testComputeURL3l() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
-        Map map = new HashMap();
+        Map<String, Double> map = new HashMap<>();
 
         map.put("foo1", new Double(0));
 
@@ -1091,17 +1136,18 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertTrue("url value", url.equals("/myapp/bar?foo1=0.0"));
+        assertNotNull(url, "url present");
+        assertEquals(url, "/myapp/bar?foo1=0.0", "url value");
     }
 
     // -- Add Parameters
     // -- Parameter as non String or String Array
     // -- with ? on path
+    @Test
     public void testComputeURL3m() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
-        Map map = new HashMap();
+        Map<String, Double> map = new HashMap<>();
 
         map.put("foo1", new Double(0));
 
@@ -1114,10 +1160,11 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertTrue("url value", url.equals("/myapp/bar?&amp;foo1=0.0"));
+        assertNotNull(url, "url present");
+        assertEquals(url, "/myapp/bar?&amp;foo1=0.0", "url value");
     }
 
+    @Test
     public void testComputeURLCharacterEncoding() {
         request.setPathElements("/myapp", "/action.do", null, null);
 
@@ -1130,10 +1177,11 @@ public class TestTagUtils extends TagTestBase {
         } catch (MalformedURLException e) {
             fail("MalformedURLException: " + e);
         } catch (UnsupportedOperationException e) {
-            assertNull("url should be null", url);
+            assertNull(url, "url should be null");
         }
     }
 
+    @Test
     public void testComputeURLCharacterEncodingMultipleSpecifier() {
         verifyBadSetOfSpecifiers("foo", "foo", null, null);
         verifyBadSetOfSpecifiers("foo", null, "foo", null);
@@ -1145,6 +1193,7 @@ public class TestTagUtils extends TagTestBase {
         verifyBadSetOfSpecifiers(null, null, "foo", "foo");
     }
 
+    @Test
     public void testComputeURLCharacterEncodingAction() {
         ActionConfig actionConfig = new ActionConfig();
 
@@ -1155,7 +1204,7 @@ public class TestTagUtils extends TagTestBase {
 
         request.setPathElements("/myapp", "/foo.do", null, null);
 
-        Map map = new HashMap();
+        Map<String, String> map = new HashMap<>();
 
         map.put("foo1", "bar1");
         map.put("foo2", "bar2");
@@ -1169,14 +1218,16 @@ public class TestTagUtils extends TagTestBase {
             fail("MalformedURLException: " + e);
         }
 
-        assertNotNull("url present", url);
-        assertTrue("url value",
+        assertNotNull(url, "url present");
+        assertTrue(
             url.equals("/myapp/baz?foo1=bar1&amp;foo2=bar2#anchor")
-            || url.equals("/myapp/baz?foo2=bar2&amp;foo1=bar1#anchor"));
+            || url.equals("/myapp/baz?foo2=bar2&amp;foo1=bar1#anchor"),
+            "url value");
     }
 
     // -------------------------------------------------------------- pageURL()
     // Default module (default pagePattern)
+    @Test
     public void testPageURL1() {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig);
         request.setPathElements("/myapp", "/action.do", null, null);
@@ -1187,11 +1238,12 @@ public class TestTagUtils extends TagTestBase {
         // Straight substitution
         page = "/mypages/index.jsp";
         result = tagutils.pageURL(request, page, moduleConfig);
-        assertNotNull("straight sub found", result);
-        assertEquals("straight sub value", "/mypages/index.jsp", result);
+        assertNotNull(result, "straight sub found");
+        assertEquals("/mypages/index.jsp", result, "straight sub value");
     }
 
     // Second module (default pagePattern)
+    @Test
     public void testPageURL2() {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig2);
         request.setPathElements("/myapp", "/2/action.do", null, null);
@@ -1202,12 +1254,13 @@ public class TestTagUtils extends TagTestBase {
         // Straight substitution
         page = "/mypages/index.jsp";
         result = tagutils.pageURL(request, page, moduleConfig2);
-        assertNotNull("straight sub found", result);
-        assertEquals("straight sub value", "/2/mypages/index.jsp", result);
+        assertNotNull(result, "straight sub found");
+        assertEquals("/2/mypages/index.jsp", result, "straight sub value");
     }
 
     // Third module (custom pagePattern)
     // TODO finish me
+    @Test
     public void testPageURL3a() {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig3);
         request.setPathElements("/myapp", "/3/action.do", null, null);
@@ -1217,6 +1270,7 @@ public class TestTagUtils extends TagTestBase {
     }
 
     // Third module (custom pagePattern)
+    @Test
     public void testPageURL3b() {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig3);
         request.setPathElements("/myapp", "/3/action.do", null, null);
@@ -1227,8 +1281,8 @@ public class TestTagUtils extends TagTestBase {
         // Straight substitution
         page = "/mypages/index.jsp";
         result = tagutils.pageURL(request, page, moduleConfig3);
-        assertNotNull("straight sub found", result);
-        assertEquals("straight sub value", "/3/mypages/index.jsp", result);
+        assertNotNull(result, "straight sub found");
+        assertEquals("/3/mypages/index.jsp", result, "straight sub value");
     }
 
     /**
@@ -1248,7 +1302,7 @@ public class TestTagUtils extends TagTestBase {
                     href, pageString, action, null, null, null, false, true,
                     false);
         } catch (MalformedURLException e) {
-            assertNull("url should be null", url);
+            assertNull(url, "url should be null");
         } catch (UnsupportedOperationException e) {
             fail("MalformedURLException not thrown");
         }
@@ -1256,15 +1310,17 @@ public class TestTagUtils extends TagTestBase {
 
     // -------------------------------------------------------------- encodeURL()
     // Default module (default pagePattern)
+    @Test
     public void testencodeURL1() {
         String encodedURL = null;
 
         encodedURL = tagutils.encodeURL("foo-bar.baz");
-        assertEquals("encode url", "foo-bar.baz", encodedURL);
+        assertEquals("foo-bar.baz", encodedURL, "encode url");
     }
 
     // ------------------------------------------ getActionErrors()
     // ActionErrors
+    @Test
     public void testGetActionErrors1a() {
         ActionMessages actionErrors = new ActionMessages();
 
@@ -1275,27 +1331,28 @@ public class TestTagUtils extends TagTestBase {
             ActionMessages errors =
                 tagutils.getActionMessages(pageContext, "errors");
 
-            assertNotNull("errors should not be null", errors);
-            assertNotNull("errors prop should not be null", errors.get("prop"));
+            assertNotNull(errors, "errors should not be null");
+            assertNotNull(errors.get("prop"), "errors prop should not be null");
 
             String val = null;
             int i = 0;
 
-            for (Iterator iter = errors.get("prop"); iter.hasNext();) {
+            for (Iterator<?> iter = errors.get("prop"); iter.hasNext();) {
                 ActionMessage error = (ActionMessage) iter.next();
 
                 val = error.getKey();
                 i++;
             }
 
-            assertEquals("only 1 error", i, 1);
-            assertEquals("errors prop should match", val, "key.key");
+            assertEquals(1, i, "only 1 error");
+            assertEquals("key.key", val, "errors prop should match");
         } catch (JspException e) {
             fail(e.getMessage());
         }
     }
 
     // String
+    @Test
     public void testGetActionErrors1b() {
         request.setAttribute("foo", "bar");
 
@@ -1303,13 +1360,13 @@ public class TestTagUtils extends TagTestBase {
             ActionMessages errors =
                 tagutils.getActionMessages(pageContext, "foo");
 
-            assertNotNull("errors should not be null", errors);
-            assertNotNull("errors prop should not be null", errors.get("prop"));
+            assertNotNull(errors, "errors should not be null");
+            assertNotNull(errors.get("prop"), "errors prop should not be null");
 
             String key = null;
             int i = 0;
 
-            for (Iterator iter = errors.get(ActionMessages.GLOBAL_MESSAGE);
+            for (Iterator<?> iter = errors.get(ActionMessages.GLOBAL_MESSAGE);
                 iter.hasNext();) {
                 ActionMessage error = (ActionMessage) iter.next();
 
@@ -1321,14 +1378,15 @@ public class TestTagUtils extends TagTestBase {
                 i++;
             }
 
-            assertEquals("only 1 error", i, 1);
-            assertEquals("key should match", key, "bar");
+            assertEquals(1, i, "only 1 error");
+            assertEquals("bar", key, "key should match");
         } catch (JspException e) {
             fail(e.getMessage());
         }
     }
 
     // String Array
+    @Test
     public void testGetActionErrors1c() {
         String[] vals = new String[] { "bar", "baz" };
 
@@ -1338,13 +1396,13 @@ public class TestTagUtils extends TagTestBase {
             ActionMessages errors =
                 tagutils.getActionMessages(pageContext, "foo");
 
-            assertNotNull("errors should not be null", errors);
-            assertNotNull("errors prop should not be null", errors.get("prop"));
+            assertNotNull(errors, "errors should not be null");
+            assertNotNull(errors.get("prop"), "errors prop should not be null");
 
             String key = null;
             int i = 0;
 
-            for (Iterator iter = errors.get(ActionMessages.GLOBAL_MESSAGE);
+            for (Iterator<?> iter = errors.get(ActionMessages.GLOBAL_MESSAGE);
                 iter.hasNext();) {
                 ActionMessage error = (ActionMessage) iter.next();
 
@@ -1353,17 +1411,18 @@ public class TestTagUtils extends TagTestBase {
                 Object[] values = error.getValues();
 
                 assertNull((values));
-                assertEquals("1st key should match", key, vals[i]);
+                assertEquals(vals[i], key, "1st key should match");
                 i++;
             }
 
-            assertEquals("only 1 error", i, 2);
+            assertEquals(2, i, "only 2 errors");
         } catch (JspException e) {
             fail(e.getMessage());
         }
     }
 
     // String Array (thrown JspException)
+    @Test
     public void testGetActionErrors1d() {
         request.setAttribute("foo", new MockFormBean());
 
@@ -1373,12 +1432,13 @@ public class TestTagUtils extends TagTestBase {
             errors = tagutils.getActionMessages(pageContext, "foo");
             fail("should have thrown JspException");
         } catch (JspException e) {
-            assertNull("errors should be null", errors);
+            assertNull(errors, "errors should be null");
         }
     }
 
     // ActionErrors (thrown Exception)
     // TODO -- currently this does not hit the line for caught Exception
+    @Test
     public void testGetActionErrors1e() {
         ActionMessages actionErrors = new ActionMessages();
 
@@ -1389,10 +1449,10 @@ public class TestTagUtils extends TagTestBase {
             ActionMessages errors =
                 tagutils.getActionMessages(pageContext, "does-not-exist");
 
-            assertNotNull("errors should not be null", errors);
-            assertNotNull("errors prop should not be null", errors.get("prop"));
+            assertNotNull(errors, "errors should not be null");
+            assertNotNull(errors.get("prop"), "errors prop should not be null");
 
-            for (Iterator iter = errors.get("prop"); iter.hasNext();) {
+            for (Iterator<?> iter = errors.get("prop"); iter.hasNext();) {
                 fail("Should not have any errors for does-not-exist");
             }
         } catch (JspException e) {
@@ -1401,6 +1461,7 @@ public class TestTagUtils extends TagTestBase {
     }
 
     // ------------------------------------------ getActionMappingName()
+    @Test
     public void testGetActionMappingName1() {
         String[] paths =
             {
@@ -1426,7 +1487,6 @@ public class TestTagUtils extends TagTestBase {
 
         String path = null;
         String results = null;
-        boolean equality = false;
         int ct = 0;
 
         for (int i = 0; i < appends.length; i++) {
@@ -1436,14 +1496,8 @@ public class TestTagUtils extends TagTestBase {
                 for (int k = 0; k < paths.length; k++) {
                     path = prepends[j][0] + paths[k] + appends[i];
                     results = tagutils.getActionMappingName(path);
-                    equality = finalResult.equals(results);
 
-                    if (!equality) {
-                        fail("Path does not return correct result\n"
-                            + "\nexpected: " + results + "\nfound: " + path);
-                    }
-
-                    assertTrue("Path should translate to result", equality);
+                    assertEquals(finalResult, results, "Path should translate to result");
                     ct++;
                 }
             }
@@ -1452,6 +1506,7 @@ public class TestTagUtils extends TagTestBase {
         log.debug(ct + " assertions run in this test");
     }
 
+    @Test
     public void testString_getActionMappingURL_String_PageContext() {
         ActionConfig actionConfig = new ActionConfig();
 
@@ -1461,11 +1516,12 @@ public class TestTagUtils extends TagTestBase {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig);
         request.setPathElements("/myapp", "/foo.do", null, null);
 
-        assertEquals("Check path /foo",
-            tagutils.getActionMappingURL("/foo", pageContext), "/myapp/foo");
+        assertEquals("/myapp/foo",
+            tagutils.getActionMappingURL("/foo", pageContext), "Check path /foo");
     }
 
     // use servlet mapping (extension mapping)
+    @Test
     public void testString_getActionMappingURL_String_String_PageContext_boolean1() {
         pageContext.getServletContext().setAttribute(Globals.SERVLET_KEY, "*.do");
 
@@ -1477,12 +1533,13 @@ public class TestTagUtils extends TagTestBase {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig);
         request.setPathElements("/myapp", "/baz.do", null, null);
 
-        assertEquals("Check path /foo",
-            tagutils.getActionMappingURL("/foo", pageContext), "/myapp/foo.do");
+        assertEquals("/myapp/foo.do",
+            tagutils.getActionMappingURL("/foo", pageContext), "Check path /foo");
     }
 
     // use servlet mapping (extension mapping)
     //  -- with params
+    @Test
     public void testString_getActionMappingURL_String_String_PageContext_boolean2() {
         pageContext.getServletContext().setAttribute(Globals.SERVLET_KEY, "*.do");
 
@@ -1494,14 +1551,15 @@ public class TestTagUtils extends TagTestBase {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig);
         request.setPathElements("/myapp", "/baz.do?foo=bar", null, null);
 
-        assertEquals("Check path /foo",
+        assertEquals("/myapp/foo.do?foo=bar",
             tagutils.getActionMappingURL("/foo?foo=bar", pageContext),
-            "/myapp/foo.do?foo=bar");
+            "Check path /foo");
     }
 
     // use servlet mapping (extension mapping)
     //  -- path as "/"
     // (this is probably not a realistic use case)
+    @Test
     public void testString_getActionMappingURL_String_String_PageContext_boolean3() {
         pageContext.getServletContext().setAttribute(Globals.SERVLET_KEY, "*.do");
 
@@ -1513,11 +1571,12 @@ public class TestTagUtils extends TagTestBase {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig);
         request.setPathElements("/mycontext", "/baz", null, null);
 
-        assertEquals("Check path /foo",
-            tagutils.getActionMappingURL("/", pageContext), "/mycontext/.do");
+        assertEquals("/mycontext/.do",
+            tagutils.getActionMappingURL("/", pageContext), "Check path /foo");
     }
 
     // use servlet mapping (path mapping)
+    @Test
     public void testString_getActionMappingURL_String_String_PageContext_boolean4() {
         pageContext.getServletContext().setAttribute(Globals.SERVLET_KEY,
             "/myapp/*");
@@ -1530,13 +1589,14 @@ public class TestTagUtils extends TagTestBase {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig);
         request.setPathElements("/mycontext", "/baz", null, null);
 
-        assertEquals("Check path /foo",
+        assertEquals("/mycontext/myapp/foo",
             tagutils.getActionMappingURL("/foo", pageContext),
-            "/mycontext/myapp/foo");
+            "Check path /foo");
     }
 
     // use servlet mapping (path mapping)
     //  -- with params
+    @Test
     public void testString_getActionMappingURL_String_String_PageContext_boolean5() {
         pageContext.getServletContext().setAttribute(Globals.SERVLET_KEY,
             "/myapp/*");
@@ -1549,13 +1609,14 @@ public class TestTagUtils extends TagTestBase {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig);
         request.setPathElements("/mycontext", "/baz?foo=bar", null, null);
 
-        assertEquals("Check path /foo",
+        assertEquals("/mycontext/myapp/foo?foo=bar",
             tagutils.getActionMappingURL("/foo?foo=bar", pageContext),
-            "/mycontext/myapp/foo?foo=bar");
+            "Check path /foo");
     }
 
     // use servlet mapping (path mapping)
     //  -- using "/" as mapping
+    @Test
     public void testString_getActionMappingURL_String_String_PageContext_boolean6() {
         pageContext.getServletContext().setAttribute(Globals.SERVLET_KEY, "/");
 
@@ -1567,12 +1628,13 @@ public class TestTagUtils extends TagTestBase {
         request.setAttribute(Globals.MODULE_KEY, moduleConfig);
         request.setPathElements("/mycontext", "/baz", null, null);
 
-        assertEquals("Check path /foo",
-            tagutils.getActionMappingURL("/", pageContext), "/mycontext/");
+        assertEquals("/mycontext/",
+            tagutils.getActionMappingURL("/", pageContext), "Check path /foo");
     }
 
     // ------------------------------------------ getActionMessages()
     // -- using ActionMessages
+    @Test
     public void testActionMessages_getActionMessages_PageContext_String1() {
         ActionMessages actionMessages = new ActionMessages();
 
@@ -1583,28 +1645,29 @@ public class TestTagUtils extends TagTestBase {
             ActionMessages messages =
                 tagutils.getActionMessages(pageContext, "messages");
 
-            assertNotNull("messages should not be null", messages);
-            assertNotNull("messages prop should not be null",
-                messages.get("prop"));
+            assertNotNull(messages, "messages should not be null");
+            assertNotNull(messages.get("prop"),
+                "messages prop should not be null");
 
             String val = null;
             int i = 0;
 
-            for (Iterator iter = messages.get("prop"); iter.hasNext();) {
+            for (Iterator<?> iter = messages.get("prop"); iter.hasNext();) {
                 ActionMessage message = (ActionMessage) iter.next();
 
                 val = message.getKey();
                 i++;
             }
 
-            assertEquals("only 1 message", i, 1);
-            assertEquals("messages prop should match", val, "key.key");
+            assertEquals(1, i, "only 1 message");
+            assertEquals("key.key", val, "messages prop should match");
         } catch (JspException e) {
             fail(e.getMessage());
         }
     }
 
     // -- using ActionErrors
+    @Test
     public void testActionMessages_getActionMessages_PageContext_String2() {
         ActionMessages actionMessages = new ActionMessages();
 
@@ -1615,28 +1678,29 @@ public class TestTagUtils extends TagTestBase {
             ActionMessages messages =
                 tagutils.getActionMessages(pageContext, "messages");
 
-            assertNotNull("messages should not be null", messages);
-            assertNotNull("messages prop should not be null",
-                messages.get("prop"));
+            assertNotNull(messages, "messages should not be null");
+            assertNotNull(messages.get("prop"),
+                "messages prop should not be null");
 
             String val = null;
             int i = 0;
 
-            for (Iterator iter = messages.get("prop"); iter.hasNext();) {
+            for (Iterator<?> iter = messages.get("prop"); iter.hasNext();) {
                 ActionMessage message = (ActionMessage) iter.next();
 
                 val = message.getKey();
                 i++;
             }
 
-            assertEquals("only 1 message", i, 1);
-            assertEquals("messages prop should match", val, "key.key");
+            assertEquals(1, i, "only 1 message");
+            assertEquals("key.key", val, "messages prop should match");
         } catch (JspException e) {
             fail(e.getMessage());
         }
     }
 
     // -- using String
+    @Test
     public void testActionMessages_getActionMessages_PageContext_String3() {
         request.setAttribute("foo", "bar");
 
@@ -1644,14 +1708,14 @@ public class TestTagUtils extends TagTestBase {
             ActionMessages messages =
                 tagutils.getActionMessages(pageContext, "foo");
 
-            assertNotNull("messages should not be null", messages);
-            assertNotNull("messages prop should not be null",
-                messages.get("prop"));
+            assertNotNull(messages, "messages should not be null");
+            assertNotNull(messages.get("prop"),
+                "messages prop should not be null");
 
             String key = null;
             int i = 0;
 
-            for (Iterator iter = messages.get(ActionMessages.GLOBAL_MESSAGE);
+            for (Iterator<?> iter = messages.get(ActionMessages.GLOBAL_MESSAGE);
                 iter.hasNext();) {
                 ActionMessage message = (ActionMessage) iter.next();
 
@@ -1663,14 +1727,15 @@ public class TestTagUtils extends TagTestBase {
                 i++;
             }
 
-            assertEquals("only 1 message", i, 1);
-            assertEquals("key should match", key, "bar");
+            assertEquals(1, i, "only 1 message");
+            assertEquals("bar", key, "key should match");
         } catch (JspException e) {
             fail(e.getMessage());
         }
     }
 
     // -- using String Array
+    @Test
     public void testActionMessages_getActionMessages_PageContext_String4() {
         String[] vals = new String[] { "bar", "baz" };
 
@@ -1680,14 +1745,14 @@ public class TestTagUtils extends TagTestBase {
             ActionMessages messages =
                 tagutils.getActionMessages(pageContext, "foo");
 
-            assertNotNull("messages should not be null", messages);
-            assertNotNull("messages prop should not be null",
-                messages.get("prop"));
+            assertNotNull(messages, "messages should not be null");
+            assertNotNull(messages.get("prop"),
+                "messages prop should not be null");
 
             String key = null;
             int i = 0;
 
-            for (Iterator iter = messages.get(ActionMessages.GLOBAL_MESSAGE);
+            for (Iterator<?> iter = messages.get(ActionMessages.GLOBAL_MESSAGE);
                 iter.hasNext();) {
                 ActionMessage message = (ActionMessage) iter.next();
 
@@ -1696,17 +1761,18 @@ public class TestTagUtils extends TagTestBase {
                 Object[] values = message.getValues();
 
                 assertNull((values));
-                assertEquals("1st key should match", key, vals[i]);
+                assertEquals(vals[i], key, "1st key should match");
                 i++;
             }
 
-            assertEquals("only 1 message", i, 2);
+            assertEquals(2, i, "only 2 messages");
         } catch (JspException e) {
             fail(e.getMessage());
         }
     }
 
     // String Array (thrown JspException)
+    @Test
     public void testActionMessages_getActionMessages_PageContext_String5() {
         request.setAttribute("foo", new MockFormBean());
 
@@ -1716,12 +1782,13 @@ public class TestTagUtils extends TagTestBase {
             messages = tagutils.getActionMessages(pageContext, "foo");
             fail("should have thrown JspException");
         } catch (JspException e) {
-            assertNull("messages should be null", messages);
+            assertNull(messages, "messages should be null");
         }
     }
 
     // ActionMessages (thrown Exception)
     // TODO -- currently this does not hit the line for caught Exception
+    @Test
     public void testActionMessages_getActionMessages_PageContext_String6() {
         ActionMessages actionMessages = new ActionMessages();
 
@@ -1732,11 +1799,11 @@ public class TestTagUtils extends TagTestBase {
             ActionMessages messages =
                 tagutils.getActionMessages(pageContext, "does-not-exist");
 
-            assertNotNull("messages should not be null", messages);
-            assertNotNull("messages prop should not be null",
-                messages.get("prop"));
+            assertNotNull(messages, "messages should not be null");
+            assertNotNull(messages.get("prop"),
+                "messages prop should not be null");
 
-            for (Iterator iter = messages.get("prop"); iter.hasNext();) {
+            for (Iterator<?> iter = messages.get("prop"); iter.hasNext();) {
                 fail("Should not have any messages for does-not-exist");
             }
         } catch (JspException e) {
@@ -1745,6 +1812,7 @@ public class TestTagUtils extends TagTestBase {
     }
 
     // ----public ModuleConfig getModuleConfig(PageContext pageContext)
+    @Test
     public void testModuleConfig_getModuleConfig_PageContext() {
         MockServletConfig mockServletConfig = new MockServletConfig();
         ModuleConfig moduleConfig = new ModuleConfigImpl("");
@@ -1779,15 +1847,17 @@ public class TestTagUtils extends TagTestBase {
     }
 
     // -- public Locale getUserLocale(PageContext pageContext, String locale)
+    @Test
     public void testLocale_getUserLocale_PageContext_String() {
         request.setLocale(Locale.ENGLISH);
-        assertEquals(tagutils.getUserLocale(pageContext, ""), Locale.ENGLISH);
+        assertEquals(Locale.ENGLISH, tagutils.getUserLocale(pageContext, ""));
 
         request.setLocale(Locale.CANADA);
-        assertEquals(tagutils.getUserLocale(pageContext, ""), Locale.CANADA);
+        assertEquals(Locale.CANADA, tagutils.getUserLocale(pageContext, ""));
     }
 
     // -- public boolean isXhtml(PageContext pageContext)
+    @Test
     public void test_boolean_isXhtml_PageContext() {
         assertFalse(tagutils.isXhtml(pageContext));
         pageContext.setAttribute(Globals.XHTML_KEY, "true");
@@ -1797,6 +1867,7 @@ public class TestTagUtils extends TagTestBase {
 
     // -- public Object lookup(PageContext pageContext, String name, String scopeName)
     // lookup with null scope
+    @Test
     public void test_Object_lookup_PageContext_String__String1() {
         pageContext.setAttribute("bean", new MockFormBean());
 
@@ -1810,6 +1881,7 @@ public class TestTagUtils extends TagTestBase {
     }
 
     // lookup with page scope
+    @Test
     public void test_Object_lookup_PageContext_String__String2() {
         pageContext.setAttribute("bean", new MockFormBean());
 
@@ -1824,6 +1896,7 @@ public class TestTagUtils extends TagTestBase {
 
     // lookup with invalid scope
     // -- (where an exception is thrown)
+    @Test
     public void test_Object_lookup_PageContext_String__String3() {
         pageContext.setAttribute("bean", new MockFormBean());
 
@@ -1838,6 +1911,7 @@ public class TestTagUtils extends TagTestBase {
     }
 
     // try to get the call to throw an IllegalAccessException
+    @Test
     public void test_Object_lookup_PageContext_String_String_String1() {
         //        page.setAttribute("bean", new MockFormBean());
         //        Object val = null;
@@ -1850,6 +1924,7 @@ public class TestTagUtils extends TagTestBase {
     }
 
     // try to get the call to throw an IllegalArgumentException
+    @Test
     public void test_Object_lookup_PageContext_String_String_String2() {
         pageContext.setAttribute("bean", new MockFormBean());
 
@@ -1865,6 +1940,7 @@ public class TestTagUtils extends TagTestBase {
     }
 
     // try to get the call to throw an NoSuchMethodException
+    @Test
     public void test_Object_lookup_PageContext_String_String_String3() {
         pageContext.setAttribute("bean", new MockFormBean());
 
@@ -1884,6 +1960,7 @@ public class TestTagUtils extends TagTestBase {
      * public String message( PageContext pageContext, String bundle, String
      * locale, String key) throws JspException
      */
+    @Test
     public void testMessageBadParams() {
         String val = null;
 
@@ -1898,6 +1975,8 @@ public class TestTagUtils extends TagTestBase {
     // set bundle in page scope
     // message() assumes the bundle will never be in page scope
     // -- bad key
+    @Test
+    @Disabled
     public void donttestMessagePageBadKey() {
         putBundleInScope(PageContext.PAGE_SCOPE, true);
 
@@ -1914,6 +1993,7 @@ public class TestTagUtils extends TagTestBase {
 
     // set bundle in request scope
     // -- bad key
+    @Test
     public void testMessageRequestBadKey() {
         putBundleInScope(PageContext.REQUEST_SCOPE, true);
 
@@ -1935,6 +2015,7 @@ public class TestTagUtils extends TagTestBase {
     //  in session under Globals.MESSAGES_KEY.
     // Perhaps we should check session, and throw/log a rather explicit message
     // for why this is a bad idea, instead of ignoring or returning null.
+    @Test
     public void testMessageSessionBadKey() {
         putBundleInScope(PageContext.SESSION_SCOPE, true);
 
@@ -1951,6 +2032,7 @@ public class TestTagUtils extends TagTestBase {
 
     // set bundle in application scope
     // -- bad key
+    @Test
     public void testMessageApplicationBadKey() {
         putBundleInScope(PageContext.APPLICATION_SCOPE, true);
 
@@ -1967,6 +2049,7 @@ public class TestTagUtils extends TagTestBase {
 
     // set bundle in request scope
     // -- good key
+    @Test
     public void testMessageRequestGoodKey() {
         putBundleInScope(PageContext.REQUEST_SCOPE, true);
 
@@ -1974,7 +2057,7 @@ public class TestTagUtils extends TagTestBase {
 
         try {
             val = tagutils.message(pageContext, null, null, "foo");
-            assertTrue("Validate message value", "bar".equals(val));
+            assertEquals("bar", val, "Validate message value");
         } catch (JspException e) {
             fail("val should be \"bar\"");
         }
@@ -1982,6 +2065,7 @@ public class TestTagUtils extends TagTestBase {
 
     // set bundle in application scope
     // -- good key
+    @Test
     public void testMessageApplicationGoodKey() {
         putBundleInScope(PageContext.APPLICATION_SCOPE, true);
 
@@ -1989,7 +2073,7 @@ public class TestTagUtils extends TagTestBase {
 
         try {
             val = tagutils.message(pageContext, null, null, "foo");
-            assertTrue("Validate message value", "bar".equals(val));
+            assertEquals("bar", val, "Validate message value");
         } catch (JspException e) {
             fail("val should be \"bar\"");
         }
@@ -2001,6 +2085,7 @@ public class TestTagUtils extends TagTestBase {
      * public String message( PageContext pageContext, String bundle, String
      * locale, String key, Object args[]) throws JspException
      */
+    @Test
     public void testMessageRequestGoodKeyWithNullParams() {
         putBundleInScope(PageContext.REQUEST_SCOPE, true);
 
@@ -2010,12 +2095,13 @@ public class TestTagUtils extends TagTestBase {
 
         try {
             val = tagutils.message(pageContext, null, null, "foo", args);
-            assertTrue("Validate message value", "bar".equals(val));
+            assertEquals("bar", val, "Validate message value");
         } catch (JspException e) {
             fail("val should be \"bar\"");
         }
     }
 
+    @Test
     public void testMessageApplicationGoodKeyWithNullParams() {
         putBundleInScope(PageContext.REQUEST_SCOPE, true);
 
@@ -2025,12 +2111,13 @@ public class TestTagUtils extends TagTestBase {
 
         try {
             val = tagutils.message(pageContext, null, null, "foo", args);
-            assertTrue("Validate message value", "bar".equals(val));
+            assertEquals("bar", val, "Validate message value");
         } catch (JspException e) {
             fail("val should be \"bar\"");
         }
     }
 
+    @Test
     public void testMessageRequestGoodKeyWithParams() {
         putBundleInScope(PageContext.REQUEST_SCOPE, true);
 
@@ -2040,12 +2127,13 @@ public class TestTagUtils extends TagTestBase {
 
         try {
             val = tagutils.message(pageContext, null, null, "foo.bar", args);
-            assertTrue("Validate message value", "I love this bar".equals(val));
+            assertEquals("I love this bar", val, "Validate message value");
         } catch (JspException e) {
             fail("val should be \"bar\"");
         }
     }
 
+    @Test
     public void testMessageApplicationGoodKeyWithParams() {
         putBundleInScope(PageContext.REQUEST_SCOPE, true);
 
@@ -2055,7 +2143,7 @@ public class TestTagUtils extends TagTestBase {
 
         try {
             val = tagutils.message(pageContext, null, null, "foo.bar", args);
-            assertTrue("Validate message value", "I love this bar".equals(val));
+            assertEquals("I love this bar", val, "Validate message value");
         } catch (JspException e) {
             fail("val should be \"bar\"");
         }
@@ -2065,6 +2153,7 @@ public class TestTagUtils extends TagTestBase {
      * Tests for: public boolean present( PageContext pageContext, String
      * bundle, String locale, String key) throws JspException {
      */
+    @Test
     public void testPresentNulls() {
         boolean result = false;
 
@@ -2074,10 +2163,11 @@ public class TestTagUtils extends TagTestBase {
         } catch (JspException e) {
             fail("An npe should have been thrown");
         } catch (NullPointerException e) {
-            assertFalse("Correct behaviour", result);
+            assertFalse(result, "Correct behaviour");
         }
     }
 
+    @Test
     public void testPresentBadKey() {
         putBundleInScope(PageContext.REQUEST_SCOPE, true);
 
@@ -2086,14 +2176,15 @@ public class TestTagUtils extends TagTestBase {
         try {
             result =
                 tagutils.present(pageContext, null, null, "foo.bar.not.exist");
-            assertFalse("Value should be null", result);
+            assertFalse(result, "Value should be false");
         } catch (JspException e) {
             fail("An npe should have been thrown");
         } catch (NullPointerException e) {
-            assertFalse("Correct behaviour", result);
+            assertFalse(result, "Correct behaviour");
         }
     }
 
+    @Test
     public void testPresentGoodKey() {
         putBundleInScope(PageContext.REQUEST_SCOPE, true);
 
@@ -2101,7 +2192,7 @@ public class TestTagUtils extends TagTestBase {
 
         try {
             result = tagutils.present(pageContext, null, null, "foo");
-            assertTrue("Key should have been found", result);
+            assertTrue(result, "Key should have been found");
         } catch (JspException e) {
             fail("An exception should have been thrown");
         }
@@ -2111,6 +2202,7 @@ public class TestTagUtils extends TagTestBase {
      * public void write(PageContext pageContext, String text) throws
      * JspException {
      */
+    @Test
     public void testWriteNullParams() {
         try {
             tagutils.write(null, null);
@@ -2122,9 +2214,10 @@ public class TestTagUtils extends TagTestBase {
         }
     }
 
+    @Test
     public void testWrite() {
         MockPageContext pg = new MockPageContext(false, false);
-
+        
         try {
             tagutils.write(pg, null);
         } catch (JspException e) {
@@ -2132,6 +2225,7 @@ public class TestTagUtils extends TagTestBase {
         }
     }
 
+    @Test
     public void testWriteThrowException() {
         MockPageContext pg = new MockPageContext(true, false);
 
@@ -2143,6 +2237,7 @@ public class TestTagUtils extends TagTestBase {
         }
     }
 
+    @Test
     public void testWritePrevious() {
         MockPageContext pg = new MockPageContext(false, false);
 
@@ -2153,6 +2248,7 @@ public class TestTagUtils extends TagTestBase {
         }
     }
 
+    @Test
     public void testWritePreviousThrowException() {
         MockPageContext pg = new MockPageContext(true, false);
 
@@ -2164,6 +2260,7 @@ public class TestTagUtils extends TagTestBase {
         }
     }
 
+    @Test
     public void testWritePreviousBody() {
         MockPageContext pg = new MockPageContext(false, true);
 
@@ -2174,6 +2271,7 @@ public class TestTagUtils extends TagTestBase {
         }
     }
 
+    @Test
     public void testOverrideInstance(){
 
         class CustomTagUtils extends TagUtils{
@@ -2182,15 +2280,15 @@ public class TestTagUtils extends TagTestBase {
             }
         }
         // verify original logic
-        assertNull("Filter Test", TagUtils.getInstance().filter(null));
+        assertNull(TagUtils.getInstance().filter(null), "Filter Test");
 
         // set the custom instance
         TagUtils.setInstance(new CustomTagUtils());
-        assertEquals("Custom Instance Test", TagUtils.getInstance().filter(null), "I HAVE BEEN OVERRIDDEN!");
+        assertEquals("I HAVE BEEN OVERRIDDEN!", TagUtils.getInstance().filter(null), "Custom Instance Test");
 
         // reset back to the cached instance
         TagUtils.setInstance(tagutils);
-        assertNull("Filter Test", TagUtils.getInstance().filter(null));
+        assertNull(TagUtils.getInstance().filter(null), "Filter Test");
 
     }
 }

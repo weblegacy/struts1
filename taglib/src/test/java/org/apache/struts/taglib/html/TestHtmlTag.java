@@ -20,19 +20,21 @@
  */
 package org.apache.struts.taglib.html;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.Locale;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-import junit.framework.TestCase;
+
 import org.apache.struts.mock.MockHttpServletRequest;
 import org.apache.struts.mock.MockHttpServletResponse;
 import org.apache.struts.mock.MockPageContext;
 import org.apache.struts.mock.MockServletConfig;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests for the HtmlTag.
+ * Unit tests for the {@link HtmlTag}.
  */
-public class TestHtmlTag extends TestCase {
+public class TestHtmlTag {
 
     private MockServletConfig       config;
     private MockHttpServletRequest  request;
@@ -41,35 +43,9 @@ public class TestHtmlTag extends TestCase {
     private HtmlTag                 htmlTag;
 
     /**
-     * Defines the testcase name for JUnit.
-     *
-     * @param theName the testcase's name.
-     */
-    public TestHtmlTag(String theName) {
-        super(theName);
-    }
-
-    /**
-     * Start the tests.
-     *
-     * @param theArgs the arguments. Not used
-     */
-    public static void main(String[] theArgs) {
-        junit.awtui.TestRunner.main(new String[] { TestHtmlTag.class.getName() });
-    }
-
-    /**
-     * @return a test suite (<code>TestSuite</code>) that includes all methods
-     *         starting with "test"
-     */
-    public static Test suite() {
-        // All methods starting with "test" will be executed in the test suite.
-        return new TestSuite(TestHtmlTag.class);
-    }
-
-    /**
      * Set up mock objects.
      */
+    @BeforeEach
     public void setUp() {
         config      = new MockServletConfig();
         request     = new MockHttpServletRequest();
@@ -82,6 +58,7 @@ public class TestHtmlTag extends TestCase {
     /**
      * Test the "lang" attribute with valid characters.
      */
+    @Test
     public void testValidLangTrue() {
         
         // switch to render "lang" attribute
@@ -89,21 +66,22 @@ public class TestHtmlTag extends TestCase {
 
         // Render for Locale.US
         request.setLocale(Locale.US);
-        assertEquals("render en_US", "<html lang=\"en-US\">", htmlTag.renderHtmlStartElement());
+        assertEquals("<html lang=\"en-US\">", htmlTag.renderHtmlStartElement(), "render en_US");
 
         // Render for Locale.ENGLISH
         request.setLocale(Locale.ENGLISH);
-        assertEquals("render en", "<html lang=\"en\">", htmlTag.renderHtmlStartElement());
+        assertEquals("<html lang=\"en\">", htmlTag.renderHtmlStartElement(), "render en");
 
         // Test valid characters
         request.setLocale(new Locale("abcd-efghijklmnopqrstuvwxyz", "ABCDEFGHIJKLM-NOPQRSTUVWXYZ", ""));
-        assertEquals("valid characters", "<html lang=\"abcd-efghijklmnopqrstuvwxyz-ABCDEFGHIJKLM-NOPQRSTUVWXYZ\">", htmlTag.renderHtmlStartElement());
+        assertEquals("<html lang=\"abcd-efghijklmnopqrstuvwxyz-ABCDEFGHIJKLM-NOPQRSTUVWXYZ\">", htmlTag.renderHtmlStartElement(), "valid characters");
 
     }
 
     /**
      * Test the "lang" attribute with valid characters.
      */
+    @Test
     public void testValidLangFalse() {
         
         // switch to NOT render "lang" attribute
@@ -111,17 +89,18 @@ public class TestHtmlTag extends TestCase {
 
         // Ignore for Locale.US
         request.setLocale(Locale.US);
-        assertEquals("ignore en_US", "<html>", htmlTag.renderHtmlStartElement());
+        assertEquals("<html>", htmlTag.renderHtmlStartElement(), "ignore en_US");
 
         // Ignore for Locale.ENGLISH
         request.setLocale(Locale.ENGLISH);
-        assertEquals("ignore en", "<html>", htmlTag.renderHtmlStartElement());
+        assertEquals("<html>", htmlTag.renderHtmlStartElement(), "ignore en");
 
     }
 
     /**
      * Test an invalid "language"
      */
+    @Test
     public void testInvalidLanguage() {
         
         // switch to render "lang" attribute
@@ -129,33 +108,34 @@ public class TestHtmlTag extends TestCase {
 
         // make sure HtmlTag is setup to render "lang" using a valid value
         request.setLocale(Locale.US);
-        assertEquals("check valid", "<html lang=\"en-US\">", htmlTag.renderHtmlStartElement());
+        assertEquals("<html lang=\"en-US\">", htmlTag.renderHtmlStartElement(), "check valid");
 
         // Test script injection
         request.setLocale(new Locale("/><script>alert()</script>", "", ""));
-        assertEquals("invalid <script>", "<html>", htmlTag.renderHtmlStartElement());
+        assertEquals("<html>", htmlTag.renderHtmlStartElement(), "invalid <script>");
 
         // Test <
         request.setLocale(new Locale("abc<def", "", ""));
-        assertEquals("invalid LT", "<html>", htmlTag.renderHtmlStartElement());
+        assertEquals("<html>", htmlTag.renderHtmlStartElement(), "invalid LT");
 
         // Test >
         request.setLocale(new Locale("abc>def", "", ""));
-        assertEquals("invalid GT", "<html>", htmlTag.renderHtmlStartElement());
+        assertEquals("<html>", htmlTag.renderHtmlStartElement(), "invalid GT");
 
         // Test /
         request.setLocale(new Locale("abc/def", "", ""));
-        assertEquals("invalid SLASH", "<html>", htmlTag.renderHtmlStartElement());
+        assertEquals("<html>", htmlTag.renderHtmlStartElement(), "invalid SLASH");
 
         // Test &
         request.setLocale(new Locale("abc&def", "", ""));
-        assertEquals("invalid AMP", "<html>", htmlTag.renderHtmlStartElement());
+        assertEquals("<html>", htmlTag.renderHtmlStartElement(), "invalid AMP");
 
     }
 
     /**
      * Test an invalid "country"
      */
+    @Test
     public void testInvalidCountry() {
         
         // switch to render "lang" attribute
@@ -163,27 +143,27 @@ public class TestHtmlTag extends TestCase {
 
         // make sure HtmlTag is setup to render "lang" using a valid value
         request.setLocale(Locale.US);
-        assertEquals("check valid", "<html lang=\"en-US\">", htmlTag.renderHtmlStartElement());
+        assertEquals("<html lang=\"en-US\">", htmlTag.renderHtmlStartElement(), "check valid");
 
         // Test script injection
         request.setLocale(new Locale("en", "/><script>alert()</script>", ""));
-        assertEquals("invalid <script>", "<html lang=\"en\">", htmlTag.renderHtmlStartElement());
+        assertEquals("<html lang=\"en\">", htmlTag.renderHtmlStartElement(), "invalid <script>");
 
         // Test <
         request.setLocale(new Locale("en", "abc<def", ""));
-        assertEquals("invalid LT", "<html lang=\"en\">", htmlTag.renderHtmlStartElement());
+        assertEquals("<html lang=\"en\">", htmlTag.renderHtmlStartElement(), "invalid LT");
 
         // Test >
         request.setLocale(new Locale("en", "abc>def", ""));
-        assertEquals("invalid GT", "<html lang=\"en\">", htmlTag.renderHtmlStartElement());
+        assertEquals("<html lang=\"en\">", htmlTag.renderHtmlStartElement(), "invalid GT");
 
         // Test /
         request.setLocale(new Locale("en", "abc/def", ""));
-        assertEquals("invalid SLASH", "<html lang=\"en\">", htmlTag.renderHtmlStartElement());
+        assertEquals("<html lang=\"en\">", htmlTag.renderHtmlStartElement(), "invalid SLASH");
 
         // Test &
         request.setLocale(new Locale("en", "abc&def", ""));
-        assertEquals("invalid AMP", "<html lang=\"en\">", htmlTag.renderHtmlStartElement());
+        assertEquals("<html lang=\"en\">", htmlTag.renderHtmlStartElement(), "invalid AMP");
 
     }
 }

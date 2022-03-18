@@ -20,49 +20,41 @@
  */
 package org.apache.struts.config;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.config.ActionConfig;
-import org.apache.struts.config.ActionConfigMatcher;
 import org.apache.struts.mock.TestMockBase;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
- * <p>Unit tests for <code>org.apache.struts.util.ActionConfigMatcher</code>.</p>
+ * Unit tests for {@link ActionConfigMatcher}.
  *
- * @version $Rev$ $Date: 2005-10-27 23:25:01 -0400 (Thu, 27 Oct 2005)
- *          $
+ * @version $Rev$ $Date$
  */
 public class TestActionConfigMatcher extends TestMockBase {
-    // ----------------------------------------------------------------- Basics
-    public TestActionConfigMatcher(String name) {
-        super(name);
-    }
-
-    public static void main(String[] args) {
-        junit.awtui.TestRunner.main(new String[] {
-                TestActionConfigMatcher.class.getName()
-            });
-    }
-
-    public static Test suite() {
-        return (new TestSuite(TestActionConfigMatcher.class));
-    }
 
     // ----------------------------------------------------- Instance Variables
     // ----------------------------------------------------- Setup and Teardown
+    @BeforeEach
     public void setUp() {
         super.setUp();
     }
 
+    @AfterEach
     public void tearDown() {
         super.tearDown();
     }
 
     // ------------------------------------------------------- Individual Tests
     // ---------------------------------------------------------- match()
+    @Test
     public void testNoMatch() {
         ActionConfig[] configs = new ActionConfig[1];
         ActionConfig mapping = buildActionConfig("/foo");
@@ -71,7 +63,7 @@ public class TestActionConfigMatcher extends TestMockBase {
 
         ActionConfigMatcher matcher = new ActionConfigMatcher(configs);
 
-        assertNull("ActionConfig shouldn't be matched", matcher.match("/test"));
+        assertNull(matcher.match("/test"), "ActionConfig shouldn't be matched");
     }
 
     /**
@@ -82,6 +74,7 @@ public class TestActionConfigMatcher extends TestMockBase {
      * 
      * @since Struts 1.3.11
      */
+    @Test
     public void testMatchWithKeyInPath() {
         ActionMapping[] mapping = new ActionMapping[1];
         mapping[0] = new ActionMapping();
@@ -90,8 +83,8 @@ public class TestActionConfigMatcher extends TestMockBase {
         ActionConfigMatcher matcher = new ActionConfigMatcher(mapping);
         ActionConfig matched = matcher.match("/page-{0}");
     
-        assertNotNull("ActionConfig should be matched", matched);
-        assertEquals("Path hasn't been replaced", "/page-{0}", matched.getPath());
+        assertNotNull(matched, "ActionConfig should be matched");
+        assertEquals("/page-{0}", matched.getPath(), "Path hasn't been replaced");
     }
 
     /**
@@ -103,6 +96,7 @@ public class TestActionConfigMatcher extends TestMockBase {
      * @since Struts 1.3.11
      * @see #testMatchWithSubstitutionEqualPlaceholderKey1()
      */
+    @Test
     public void testMatchWithSubstitutionEqualPlaceholderKey0() {
         ActionMapping[] mapping = new ActionMapping[1];
         mapping[0] = new ActionMapping();
@@ -112,7 +106,7 @@ public class TestActionConfigMatcher extends TestMockBase {
         ActionConfigMatcher matcher = new ActionConfigMatcher(mapping);
         ActionConfig matched = matcher.match("/page-{1}");
     
-        assertNull("ActionConfig should not be matched", matched);
+        assertNull(matched, "ActionConfig should not be matched");
     }
     
     /**
@@ -124,6 +118,7 @@ public class TestActionConfigMatcher extends TestMockBase {
      * @since Struts 1.3.11
      * @see #testMatchWithSubstitutionEqualPlaceholderKey0()
      */
+    @Test
     public void testMatchWithSubstitutionEqualPlaceholderKey1() {
         ActionMapping[] mapping = new ActionMapping[1];
         mapping[0] = new ActionMapping();
@@ -133,7 +128,7 @@ public class TestActionConfigMatcher extends TestMockBase {
         ActionConfigMatcher matcher = new ActionConfigMatcher(mapping);
         ActionConfig matched = matcher.match("/page-{1}");
     
-        assertNull("ActionConfig should not be matched", matched);
+        assertNull(matched, "ActionConfig should not be matched");
     }
 
     /**
@@ -144,6 +139,7 @@ public class TestActionConfigMatcher extends TestMockBase {
      * 
      * @since Struts 1.3.11
      */
+    @Test
     public void testMatchWhenSubstitutionContainsPlaceholderKey() {
         ActionMapping[] mapping = new ActionMapping[1];
         mapping[0] = new ActionMapping();
@@ -153,9 +149,10 @@ public class TestActionConfigMatcher extends TestMockBase {
         ActionConfigMatcher matcher = new ActionConfigMatcher(mapping);
         ActionConfig matched = matcher.match("/page-{0}");
     
-        assertNull("ActionConfig should not be matched", matched);
+        assertNull(matched, "ActionConfig should not be matched");
     }
 
+    @Test
     public void testNoWildcardMatch() {
         ActionConfig[] configs = new ActionConfig[1];
         ActionConfig mapping = buildActionConfig("/fooBar");
@@ -164,9 +161,10 @@ public class TestActionConfigMatcher extends TestMockBase {
 
         ActionConfigMatcher matcher = new ActionConfigMatcher(configs);
 
-        assertNull("ActionConfig shouldn't be matched", matcher.match("/fooBar"));
+        assertNull(matcher.match("/fooBar"), "ActionConfig shouldn't be matched");
     }
 
+    @Test
     public void testShouldMatch() {
         ActionConfig[] configs = new ActionConfig[1];
         ActionConfig mapping = buildActionConfig("/foo*");
@@ -177,15 +175,16 @@ public class TestActionConfigMatcher extends TestMockBase {
 
         ActionConfig matched = matcher.match("/fooBar");
 
-        assertNotNull("ActionConfig should be matched", matched);
-        assertTrue("ActionConfig should have two action forward",
-            matched.findForwardConfigs().length == 2);
-        assertTrue("ActionConfig should have two exception forward",
-            matched.findExceptionConfigs().length == 2);
-        assertTrue("ActionConfig should have properties",
-            matched.getProperties().size() == 2);
+        assertNotNull(matched, "ActionConfig should be matched");
+        assertEquals(2, matched.findForwardConfigs().length,
+            "ActionConfig should have two action forward");
+        assertEquals(2, matched.findExceptionConfigs().length,
+            "ActionConfig should have two exception forward");
+        assertEquals(2, matched.getProperties().size(),
+            "ActionConfig should have properties");
     }
 
+    @Test
     public void testCheckSubstitutionsMatch() {
         ActionConfig[] configs = new ActionConfig[1];
         ActionConfig mapping = buildActionConfig("/foo*");
@@ -195,33 +194,33 @@ public class TestActionConfigMatcher extends TestMockBase {
         ActionConfigMatcher matcher = new ActionConfigMatcher(configs);
         ActionConfig m = matcher.match("/fooBar");
 
-        assertTrue("Name hasn't been replaced", "name,Bar".equals(m.getName()));
-        assertTrue("Path hasn't been replaced", "/fooBar".equals(m.getPath()));
-        assertTrue("Scope isn't correct", "request".equals(m.getScope()));
-        assertTrue("Unknown isn't correct", !m.getUnknown());
-        assertTrue("Validate isn't correct", m.getValidate());
+        assertEquals("name,Bar", m.getName(), "Name hasn't been replaced");
+        assertEquals("/fooBar", m.getPath(), "Path hasn't been replaced");
+        assertEquals("request", m.getScope(), "Scope isn't correct");
+        assertFalse(m.getUnknown(), "Unknown isn't correct");
+        assertTrue(m.getValidate(), "Validate isn't correct");
 
-        assertTrue("Prefix hasn't been replaced",
-            "foo,Bar".equals(m.getPrefix()));
-        assertTrue("Suffix hasn't been replaced",
-            "bar,Bar".equals(m.getSuffix()));
-        assertTrue("Type hasn't been replaced",
-            "foo.bar.BarAction".equals(m.getType()));
-        assertTrue("Roles hasn't been replaced",
-            "public,Bar".equals(m.getRoles()));
-        assertTrue("Parameter hasn't been replaced",
-            "param,Bar".equals(m.getParameter()));
-        assertTrue("Attribute hasn't been replaced",
-            "attrib,Bar".equals(m.getAttribute()));
-        assertTrue("Forward hasn't been replaced",
-            "fwd,Bar".equals(m.getForward()));
-        assertTrue("Include hasn't been replaced",
-            "include,Bar".equals(m.getInclude()));
-        assertTrue("Input hasn't been replaced",
-            "input,Bar".equals(m.getInput()));
+        assertEquals("foo,Bar", m.getPrefix(),
+            "Prefix hasn't been replaced");
+        assertEquals("bar,Bar", m.getSuffix(),
+            "Suffix hasn't been replaced");
+        assertEquals("foo.bar.BarAction", m.getType(),
+            "Type hasn't been replaced");
+        assertEquals("public,Bar", m.getRoles(),
+            "Roles hasn't been replaced");
+        assertEquals("param,Bar", m.getParameter(),
+            "Parameter hasn't been replaced");
+        assertEquals("attrib,Bar", m.getAttribute(),
+            "Attribute hasn't been replaced");
+        assertEquals("fwd,Bar", m.getForward(),
+            "Forward hasn't been replaced");
+        assertEquals("include,Bar", m.getInclude(),
+            "Include hasn't been replaced");
+        assertEquals("input,Bar", m.getInput(),
+            "Input hasn't been replaced");
 
-        assertTrue("ActionConfig property not replaced",
-            "testBar".equals(m.getProperty("testprop2")));
+        assertEquals("testBar", m.getProperty("testprop2"),
+            "ActionConfig property not replaced");
 
         ForwardConfig[] fConfigs = m.findForwardConfigs();
         boolean found = false;
@@ -231,18 +230,19 @@ public class TestActionConfigMatcher extends TestMockBase {
 
             if ("name".equals(cfg.getName())) {
                 found = true;
-                assertTrue("Path hasn't been replaced",
-                    "path,Bar".equals(cfg.getPath()));
-                assertTrue("Property foo hasn't been replaced",
-                    "bar,Bar".equals(cfg.getProperty("foo")));
-                assertTrue("Module hasn't been replaced",
-                    "modBar".equals(cfg.getModule()));
+                assertEquals("path,Bar", cfg.getPath(),
+                    "Path hasn't been replaced");
+                assertEquals("bar,Bar", cfg.getProperty("foo"),
+                    "Property foo hasn't been replaced");
+                assertEquals("modBar", cfg.getModule(),
+                    "Module hasn't been replaced");
             }
         }
 
-        assertTrue("The forward config 'name' cannot be found", found);
+        assertTrue(found, "The forward config 'name' cannot be found");
     }
 
+    @Test
     public void testCheckMultipleSubstitutions() {
         ActionMapping[] mapping = new ActionMapping[1];
 
@@ -253,8 +253,8 @@ public class TestActionConfigMatcher extends TestMockBase {
         ActionConfigMatcher matcher = new ActionConfigMatcher(mapping);
         ActionConfig m = matcher.match("/fooBar");
 
-        assertTrue("Name hasn't been replaced correctly: " + m.getName(),
-            "name,Bar-Bar".equals(m.getName()));
+        assertEquals("name,Bar-Bar", m.getName(),
+            "Name hasn't been replaced correctly: " + m.getName());
     }
 
     private ActionConfig buildActionConfig(String path) {

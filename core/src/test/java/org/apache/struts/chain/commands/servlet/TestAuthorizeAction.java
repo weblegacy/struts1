@@ -20,7 +20,10 @@
  */
 package org.apache.struts.chain.commands.servlet;
 
-import junit.framework.TestCase;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import javax.servlet.ServletException;
 
 import org.apache.commons.chain.web.servlet.ServletWebContext;
 import org.apache.struts.chain.commands.UnauthorizedActionException;
@@ -32,21 +35,23 @@ import org.apache.struts.mock.MockHttpServletResponse;
 import org.apache.struts.mock.MockPrincipal;
 import org.apache.struts.mock.MockServletConfig;
 import org.apache.struts.mock.MockServletContext;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-/* JUnitTest case for class: org.apache.struts.chain.commands.servlet.AuthorizeAction */
-public class TestAuthorizeAction extends TestCase {
+/**
+ * JUnitTest case for class: {@link AuthorizeAction}
+ */
+public class TestAuthorizeAction {
     MockHttpServletRequest request = null;
     MockPrincipal principal = null;
     ServletWebContext swContext = null;
     ServletActionContext saContext = null;
     AuthorizeAction command = null;
 
-    public TestAuthorizeAction(String _name) {
-        super(_name);
-    }
-
     /* setUp method for test case */
-    protected void setUp() throws Exception {
+    @BeforeEach
+    protected void setUp() throws ServletException {
         this.request = new MockHttpServletRequest();
         this.principal =
             new MockPrincipal("Mr. Macri", new String[] { "administrator" });
@@ -68,9 +73,11 @@ public class TestAuthorizeAction extends TestCase {
     }
 
     /* tearDown method for test case */
+    @AfterEach
     protected void tearDown() {
     }
 
+    @Test
     public void testAuthorizeOneRole()
         throws Exception {
         ActionConfig config = new ActionConfig();
@@ -84,6 +91,7 @@ public class TestAuthorizeAction extends TestCase {
         assertFalse(result);
     }
 
+    @Test
     public void testAuthorizeOneOfManyRoles()
         throws Exception {
         ActionConfig config = new ActionConfig();
@@ -97,6 +105,7 @@ public class TestAuthorizeAction extends TestCase {
         assertFalse(result);
     }
 
+    @Test
     public void testAuthorizeNoRoles()
         throws Exception {
         ActionConfig config = new ActionConfig();
@@ -109,38 +118,27 @@ public class TestAuthorizeAction extends TestCase {
         assertFalse(result);
     }
 
-    public void testNotAuthorizedOneRole()
-        throws Exception {
+    @Test
+    public void testNotAuthorizedOneRole() {
         ActionConfig config = new ActionConfig();
 
         config.setPath("/testNotAuthorizedOneRole");
         config.setRoles("roustabout");
         this.saContext.setActionConfig(config);
 
-        try {
-            boolean result = command.execute(saContext);
-        } catch (UnauthorizedActionException ex) {
-        }
+        assertThrows(UnauthorizedActionException.class,
+            () -> command.execute(saContext)); 
     }
 
-    public void testNotAuthorizedOneOfManyRoles()
-        throws Exception {
+    @Test
+    public void testNotAuthorizedOneOfManyRoles() {
         ActionConfig config = new ActionConfig();
 
         config.setPath("/testNotAuthorizedOneOfManyRoles");
         config.setRoles("roustabout,memory");
         this.saContext.setActionConfig(config);
 
-        try {
-            boolean result = command.execute(saContext);
-        } catch (UnauthorizedActionException ex) {
-        }
-    }
-
-    /* Executes the test case */
-    public static void main(String[] argv) {
-        String[] testCaseList = { TestAuthorizeAction.class.getName() };
-
-        junit.textui.TestRunner.main(testCaseList);
+        assertThrows(UnauthorizedActionException.class,
+            () -> command.execute(saContext));
     }
 }

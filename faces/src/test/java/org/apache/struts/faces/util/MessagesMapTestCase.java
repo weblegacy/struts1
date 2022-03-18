@@ -18,65 +18,52 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.apache.struts.faces.util;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Collections;
 import java.util.Locale;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
-
 import org.apache.struts.util.MessageResources;
-
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
- * <p>Unit tests for <code>MessagesMap</code>.</p>
+ * Unit tests for {@link MessagesMap}.
  */
-
-public class MessagesMapTestCase extends TestCase {
+public class MessagesMapTestCase {
 
 
     // ------------------------------------------------------ Instance Variables
 
 
     /**
-     * <p>The <code>MessagesMap</code> instance to be tested.</p>
+     * The {@code MessagesMap} instance to be tested.
      */
     protected MessagesMap map = null;
 
 
     /**
-     * <p>The <code>MessageResources</code> instance containing the messages
-     * used for testing.</p>
+     * The {@code MessageResources} instance containing the messages
+     * used for testing.
      */
     protected MessageResources resources = null;
-
-
-    // ------------------------------------------------------------ Constructors
-
-
-    /**
-     * <p>Construct a new instance of this test case.</p>
-     *
-     * @param name Name of the test case
-     */
-    public MessagesMapTestCase(String name) {
-
-        super(name);
-
-    }
 
 
     // ---------------------------------------------------- Overall Test Methods
 
 
     /**
-     * <p>Set up instance variables required by this test case.</p>
+     * Set up instance variables required by this test case.
      */
-    public void setUp() throws Exception {
+    @BeforeEach
+    public void setUp() {
 
         resources =
             MessageResources.getMessageResources
@@ -87,19 +74,10 @@ public class MessagesMapTestCase extends TestCase {
 
 
     /**
-     * <p>Return the tests included in this test suite.</p>
+     * Tear down instance variables required by this test case.
      */
-    public static Test suite() {
-
-        return new TestSuite(MessagesMapTestCase.class);
-
-    }
-
-
-    /**
-     * <p>Tear down instance variables required by this test case.</p>
-     */
-    public void teaDown() throws Exception {
+    @AfterEach
+    public void tearDown() {
 
         map = null;
         resources = null;
@@ -107,13 +85,14 @@ public class MessagesMapTestCase extends TestCase {
     }
 
 
-    // -------------------------------------------------- Individal Test Methods
+    // -------------------------------------------------- Individual Test Methods
 
 
     /**
-     * <p>Test the <code>containsKey()</code> method.</p>
+     * Test the {@code containsKey()} method.
      */
-    public void testContainsKey() throws Exception {
+    @Test
+    public void testContainsKey() {
 
         // Positive tests
         assertTrue(map.containsKey("foo"));
@@ -121,20 +100,21 @@ public class MessagesMapTestCase extends TestCase {
         assertTrue(map.containsKey("baz"));
 
         // Negative tests
-        assertTrue(!map.containsKey("bop"));
+        assertFalse(map.containsKey("bop"));
 
     }
 
 
     /**
-     * <p>Test the <code>get()</code> method.</p>
+     * Test the {@code get()} method.
      */
-    public void testGet() throws Exception {
+    @Test
+    public void testGet() {
 
         // Positive tests
-        assertEquals("This is foo", (String) map.get("foo"));
-        assertEquals("And this is bar", (String) map.get("bar"));
-        assertEquals("We also have baz", (String) map.get("baz"));
+        assertEquals("This is foo", map.get("foo"));
+        assertEquals("And this is bar", map.get("bar"));
+        assertEquals("We also have baz", map.get("baz"));
 
         // Negative tests
         assertNull(map.get("bop"));
@@ -143,81 +123,55 @@ public class MessagesMapTestCase extends TestCase {
 
 
     /**
-     * <p>Test a pristine instance, and all unsupported methods.</p>
+     * Test a pristine instance, and all unsupported methods.
      */
-    public void testPristine() throws Exception {
+    @Test
+    public void testPristine() {
 
         // clear()
-        try {
-            map.clear();
-            fail("clear() should have thrown UnsupportedOperationException");
-        } catch (UnsupportedOperationException e) {
-            ; // Expected result
-        }
+        assertThrows(UnsupportedOperationException.class,
+            () -> map.clear(),
+            "clear() should have thrown UnsupportedOperationException");
 
         // containsValue()
-        try {
-            map.containsValue("foo");
-            fail("containsValue() should have thrown UnsupportedOperationException");
-        } catch (UnsupportedOperationException e) {
-            ; // Expected result
-        }
+        assertThrows(UnsupportedOperationException.class,
+            () -> map.containsValue("foo"),
+            "containsValue() should have thrown UnsupportedOperationException");
 
         // entrySet()
-        try {
-            map.entrySet();
-            fail("entrySet() should have thrown UnsupportedOperationException");
-        } catch (UnsupportedOperationException e) {
-            ; // Expected result
-        }
+        assertThrows(UnsupportedOperationException.class,
+            () -> map.entrySet(),
+            "entrySet() should have thrown UnsupportedOperationException");
 
         // keySet()
-        try {
-            map.keySet();
-            fail("keySet() should have thrown UnsupportedOperationException");
-        } catch (UnsupportedOperationException e) {
-            ; // Expected result
-        }
+        assertThrows(UnsupportedOperationException.class,
+            () -> map.keySet(),
+            "keySet() should have thrown UnsupportedOperationException");
 
         // put()
-        try {
-            map.put("foo", "bar");
-            fail("put() should have thrown UnsupportedOperationException");
-        } catch (UnsupportedOperationException e) {
-            ; // Expected result
-        }
+        assertThrows(UnsupportedOperationException.class,
+            () -> map.put("foo", "bar"),
+            "put() should have thrown UnsupportedOperationException");
 
         // putAll()
-        try {
-            map.putAll(Collections.EMPTY_MAP);
-            fail("putAll() should have thrown UnsupportedOperationException");
-        } catch (UnsupportedOperationException e) {
-            ; // Expected result
-        }
+        assertThrows(UnsupportedOperationException.class,
+            () -> map.putAll(Collections.EMPTY_MAP),
+            "putAll() should have thrown UnsupportedOperationException");
 
         // remove()
-        try {
-            map.remove("foo");
-            fail("remove() should have thrown UnsupportedOperationException");
-        } catch (UnsupportedOperationException e) {
-            ; // Expected result
-        }
+        assertThrows(UnsupportedOperationException.class,
+            () -> map.remove("foo"),
+            "remove() should have thrown UnsupportedOperationException");
 
         // size()
-        try {
-            map.size();
-            fail("size() should have thrown UnsupportedOperationException");
-        } catch (UnsupportedOperationException e) {
-            ; // Expected result
-        }
+        assertThrows(UnsupportedOperationException.class,
+            () -> map.size(),
+            "size() should have thrown UnsupportedOperationException");
 
-        // size()
-        try {
-            map.values();
-            fail("values() should have thrown UnsupportedOperationException");
-        } catch (UnsupportedOperationException e) {
-            ; // Expected result
-        }
+        // values()
+        assertThrows(UnsupportedOperationException.class,
+            () -> map.values(),
+            "values() should have thrown UnsupportedOperationException");
 
     }
 

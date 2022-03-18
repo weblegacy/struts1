@@ -18,63 +18,27 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.apache.struts.util;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import javax.servlet.ServletException;
 
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.util.RequestUtils;
 import org.apache.struts.Globals;
-import org.apache.struts.mock.TestMockBase;
+import org.apache.struts.action.ActionMapping;
 import org.apache.struts.mock.MockFormBean;
 import org.apache.struts.mock.MockMultipartRequestHandler;
+import org.apache.struts.mock.TestMockBase;
+import org.junit.jupiter.api.Test;
 
 /**
- * Unit tests for the RequestUtil's <code>populate</code> method.
+ * Unit tests for the RequestUtil's {@code populate} method.
  *
  * @version $Rev$
  */
 public class TestRequestUtilsPopulate extends TestMockBase {
-
-    /**
-     * Defines the testcase name for JUnit.
-     *
-     * @param theName the testcase's name.
-     */
-    public TestRequestUtilsPopulate(String theName) {
-        super(theName);
-    }
-
-    /**
-     * Start the tests.
-     *
-     * @param theArgs the arguments. Not used
-     */
-    public static void main(String[] theArgs) {
-        junit.awtui.TestRunner.main(
-            new String[] { TestRequestUtilsPopulate.class.getName()});
-    }
-
-    /**
-     * @return a test suite (<code>TestSuite</code>) that includes all methods
-     *         starting with "test"
-     */
-    public static Test suite() {
-        // All methods starting with "test" will be executed in the test suite.
-        return new TestSuite(TestRequestUtilsPopulate.class);
-    }
-
-    public void setUp() {
-        super.setUp();
-    }
-
-    public void tearDown() {
-        super.tearDown();
-    }
 
     /**
      * Ensure that the getMultipartRequestHandler cannot be seen in
@@ -83,7 +47,8 @@ public class TestRequestUtilsPopulate extends TestMockBase {
      * The purpose of this test is to ensure that Bug #38534 is fixed.
      *
      */
-    public void testMultipartVisibility() throws Exception {
+    @Test
+    public void testMultipartVisibility() {
 
         String mockMappingName = "mockMapping";
         String stringValue     = "Test";
@@ -102,8 +67,8 @@ public class TestRequestUtilsPopulate extends TestMockBase {
         request.addParameter("multipartRequestHandler.mapping.name", "Bad");
 
         // Check the Mapping/ActionForm before
-        assertNull("Multipart Handler already set",    mockForm.getMultipartRequestHandler());
-        assertEquals("Mapping name not set correctly", mockMappingName, mapping.getName());
+        assertNull(mockForm.getMultipartRequestHandler(), "Multipart Handler already set");
+        assertEquals(mockMappingName, mapping.getName(),  "Mapping name not set correctly");
 
         // Try to populate
         try {
@@ -111,12 +76,12 @@ public class TestRequestUtilsPopulate extends TestMockBase {
         } catch(ServletException se) {
             // Expected BeanUtils.populate() to throw a NestedNullException
             // which gets wrapped in RequestUtils in a ServletException
-            assertEquals("Unexpected type of Exception thrown", "BeanUtils.populate", se.getMessage());
+            assertEquals("BeanUtils.populate", se.getMessage(), "Unexpected type of Exception thrown");
         }
 
         // Check the Mapping/ActionForm after
-        assertNotNull("Multipart Handler Missing", mockForm.getMultipartRequestHandler());
-        assertEquals("Mapping name has been modified", mockMappingName, mapping.getName());
+        assertNotNull(mockForm.getMultipartRequestHandler(), "Multipart Handler Missing");
+        assertEquals(mockMappingName, mapping.getName(), "Mapping name has been modified");
 
     }
 

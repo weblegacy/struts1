@@ -20,18 +20,22 @@
  */
 package org.apache.struts.config;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 /**
- * <p>Unit tests for ForwardConfig.  Currently contains tests for methods
- * supporting configuration inheritance.</p>
+ * Unit tests for {@link ForwardConfig}.  Currently contains tests for
+ * methods supporting configuration inheritance.
  *
- * @version $Rev$ $Date: 2005-05-21 19:06:53 -0400 (Sat, 21 May 2005)
- *          $
+ * @version $Rev$ $Date$
  */
-public class TestForwardConfig extends TestCase {
+public class TestForwardConfig {
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -61,22 +65,12 @@ public class TestForwardConfig extends TestCase {
      */
     protected ActionConfig actionConfig = null;
 
-    // ----------------------------------------------------------- Constructors
-
-    /**
-     * Construct a new instance of this test case.
-     *
-     * @param name Name of the test case
-     */
-    public TestForwardConfig(String name) {
-        super(name);
-    }
-
     // --------------------------------------------------------- Public Methods
 
     /**
      * Set up instance variables required by this test case.
      */
+    @BeforeEach
     public void setUp() {
         ModuleConfigFactory factoryObject = ModuleConfigFactory.createFactory();
 
@@ -107,15 +101,9 @@ public class TestForwardConfig extends TestCase {
     }
 
     /**
-     * Return the tests included in this test suite.
-     */
-    public static Test suite() {
-        return (new TestSuite(TestForwardConfig.class));
-    }
-
-    /**
      * Tear down instance variables required by this test case.
      */
+    @AfterEach
     public void tearDown() {
         moduleConfig = null;
         baseConfig = null;
@@ -127,32 +115,35 @@ public class TestForwardConfig extends TestCase {
      * Make sure checkCircularInheritance() works as expected where there is
      * no inheritance set up.
      */
+    @Test
     public void testCheckCircularInheritanceNoExtends() {
         moduleConfig.addForwardConfig(baseConfig);
 
         boolean result =
             baseConfig.checkCircularInheritance(moduleConfig, null);
 
-        assertTrue("Incorrect result", !result);
+        assertFalse(result, "Incorrect result");
     }
 
     /**
      * Test checkCircularInheritance() for when there is no circular
      * inheritance.
      */
+    @Test
     public void testCheckCircularInheritanceNoConflicts() {
         moduleConfig.addForwardConfig(baseConfig);
         moduleConfig.addForwardConfig(subConfig);
 
         boolean result = subConfig.checkCircularInheritance(moduleConfig, null);
 
-        assertTrue("Incorrect result", !result);
+        assertFalse(result, "Incorrect result");
     }
 
     /**
      * Test checkCircularInheritance() for circular inheritance between global
      * forwards.
      */
+    @Test
     public void testCheckCircularInheritanceBasicGlobal() {
         moduleConfig.addForwardConfig(subConfig);
         moduleConfig.addForwardConfig(baseConfig);
@@ -162,13 +153,14 @@ public class TestForwardConfig extends TestCase {
 
         boolean result = subConfig.checkCircularInheritance(moduleConfig, null);
 
-        assertTrue("Circular inheritance not detected.", result);
+        assertTrue(result, "Circular inheritance not detected.");
     }
 
     /**
      * Test checkCircularInheritance() for circular inheritance between global
      * forwards.
      */
+    @Test
     public void testCheckCircularInheritanceGlobal2Levels() {
         moduleConfig.addForwardConfig(baseConfig);
         moduleConfig.addForwardConfig(subConfig);
@@ -184,13 +176,14 @@ public class TestForwardConfig extends TestCase {
 
         boolean result = grand.checkCircularInheritance(moduleConfig, null);
 
-        assertTrue("Circular inheritance not detected.", result);
+        assertTrue(result, "Circular inheritance not detected.");
     }
 
     /**
      * Test checkCircularInheritance() for circular inheritance between
      * forwards in an action.
      */
+    @Test
     public void testCheckCircularInheritanceActionForwardsNoConflict() {
         actionConfig.addForwardConfig(baseConfig);
         actionConfig.addForwardConfig(subConfig);
@@ -198,13 +191,14 @@ public class TestForwardConfig extends TestCase {
         boolean result =
             subConfig.checkCircularInheritance(moduleConfig, actionConfig);
 
-        assertTrue("Incorrect result", !result);
+        assertFalse(result, "Incorrect result");
     }
 
     /**
      * Test checkCircularInheritance() for circular inheritance between
      * forwards in an action.
      */
+    @Test
     public void testCheckCircularInheritanceActionForwardsBasic() {
         actionConfig.addForwardConfig(baseConfig);
         actionConfig.addForwardConfig(subConfig);
@@ -215,13 +209,14 @@ public class TestForwardConfig extends TestCase {
         boolean result =
             subConfig.checkCircularInheritance(moduleConfig, actionConfig);
 
-        assertTrue("Circular inheritance not detected.", result);
+        assertTrue(result, "Circular inheritance not detected.");
     }
 
     /**
      * Test checkCircularInheritance() for circular inheritance between a
      * forward declared in an action and a global forward.
      */
+    @Test
     public void testCheckCircularInheritanceActionForwardExtendGlobal() {
         actionConfig.addForwardConfig(subConfig);
         moduleConfig.addForwardConfig(baseConfig);
@@ -229,7 +224,7 @@ public class TestForwardConfig extends TestCase {
         boolean result =
             subConfig.checkCircularInheritance(moduleConfig, actionConfig);
 
-        assertTrue("Incorrect result", !result);
+        assertFalse(result, "Incorrect result");
     }
 
     /**
@@ -237,6 +232,7 @@ public class TestForwardConfig extends TestCase {
      * forward declared in an action and a global forward and both forwards
      * have the same name.
      */
+    @Test
     public void testCheckCircularInheritanceActionForwardExtendGlobalSameName() {
         moduleConfig.addForwardConfig(baseConfig);
         actionConfig.addForwardConfig(actionBaseConfig);
@@ -244,30 +240,27 @@ public class TestForwardConfig extends TestCase {
         boolean result =
             actionBaseConfig.checkCircularInheritance(moduleConfig, actionConfig);
 
-        assertTrue("Incorrect result", !result);
+        assertFalse(result, "Incorrect result");
     }
 
     /**
      * Make sure processExtends() throws an error when the config is already
      * configured.
      */
-    public void testProcessExtendsConfigured()
-        throws Exception {
+    @Test
+    public void testProcessExtendsConfigured() {
         baseConfig.configured = true;
         moduleConfig.addForwardConfig(baseConfig);
 
-        try {
-            baseConfig.processExtends(moduleConfig, null);
-            fail(
-                "processExtends should not succeed when object is already configured");
-        } catch (IllegalStateException e) {
-            // success
-        }
+        assertThrows(IllegalStateException.class,
+            () -> baseConfig.processExtends(moduleConfig, null),
+            "processExtends should not succeed when object is already configured");
     }
 
     /**
      * Test processExtends() when nothing is extended.
      */
+    @Test
     public void testProcessExtendsNoExtension()
         throws Exception {
         String path = baseConfig.getPath();
@@ -279,19 +272,20 @@ public class TestForwardConfig extends TestCase {
         moduleConfig.addForwardConfig(baseConfig);
         baseConfig.processExtends(moduleConfig, null);
 
-        assertEquals("Path shouldn't have changed", path, baseConfig.getPath());
-        assertEquals("Module shouldn't have changed", module,
-            baseConfig.getModule());
-        assertEquals("Name shouldn't have changed", name, baseConfig.getName());
-        assertEquals("Extends shouldn't have changed", inherit,
-            baseConfig.getExtends());
-        assertEquals("Redirect shouldn't have changed", redirect,
-            baseConfig.getRedirect());
+        assertEquals(path, baseConfig.getPath(), "Path shouldn't have changed");
+        assertEquals(module, baseConfig.getModule(),
+            "Module shouldn't have changed");
+        assertEquals(name, baseConfig.getName(), "Name shouldn't have changed");
+        assertEquals(inherit, baseConfig.getExtends(),
+            "Extends shouldn't have changed");
+        assertEquals(redirect, baseConfig.getRedirect(),
+            "Redirect shouldn't have changed");
     }
 
     /**
      * Test processExtends() with a basic extension.
      */
+    @Test
     public void testProcessExtendsBasicExtension()
         throws Exception {
         String baseCount = "10";
@@ -317,23 +311,24 @@ public class TestForwardConfig extends TestCase {
         moduleConfig.addForwardConfig(subConfig);
         subConfig.processExtends(moduleConfig, null);
 
-        assertEquals("Path wasn't inherited", path, subConfig.getPath());
-        assertEquals("Module wasn't inherited", module, subConfig.getModule());
-        assertEquals("Name shouldn't have changed", name, subConfig.getName());
-        assertEquals("Extends shouldn't have changed", inherit,
-            subConfig.getExtends());
-        assertEquals("Redirect shouldn't have changed", redirect,
-            subConfig.getRedirect());
-        assertEquals("Arbitrary config property was not inherited", baseCount,
-            subConfig.getProperty("count"));
-        assertEquals("Overridden config property was not retained", subLabel,
-            subConfig.getProperty("label"));
+        assertEquals(path, subConfig.getPath(), "Path wasn't inherited");
+        assertEquals(module, subConfig.getModule(), "Module wasn't inherited");
+        assertEquals(name, subConfig.getName(), "Name shouldn't have changed");
+        assertEquals(inherit, subConfig.getExtends(),
+            "Extends shouldn't have changed");
+        assertEquals(redirect, subConfig.getRedirect(),
+            "Redirect shouldn't have changed");
+        assertEquals(baseCount, subConfig.getProperty("count"),
+            "Arbitrary config property was not inherited");
+        assertEquals(subLabel, subConfig.getProperty("label"),
+            "Overridden config property was not retained");
     }
 
     /**
      * Test processExtends() with a basic extension between an action config
      * and a global config.
      */
+    @Test
     public void testProcessExtendsBasicGlobalExtension()
         throws Exception {
         String path = baseConfig.getPath();
@@ -347,37 +342,34 @@ public class TestForwardConfig extends TestCase {
         actionConfig.addForwardConfig(subConfig);
         subConfig.processExtends(moduleConfig, actionConfig);
 
-        assertEquals("Path wasn't inherited", path, subConfig.getPath());
-        assertEquals("Module wasn't inherited", module, subConfig.getModule());
-        assertEquals("Name shouldn't have changed", name, subConfig.getName());
-        assertEquals("Extends shouldn't have changed", inherit,
-            subConfig.getExtends());
-        assertEquals("Redirect shouldn't have changed", redirect,
-            subConfig.getRedirect());
+        assertEquals(path, subConfig.getPath(), "Path wasn't inherited");
+        assertEquals(module, subConfig.getModule(), "Module wasn't inherited");
+        assertEquals(name, subConfig.getName(), "Name shouldn't have changed");
+        assertEquals(inherit, subConfig.getExtends(),
+            "Extends shouldn't have changed");
+        assertEquals(redirect, subConfig.getRedirect(),
+            "Redirect shouldn't have changed");
     }
 
     /**
      * Test processExtends() with an incorrect setup where a global config
      * attempts to extend an action config.
      */
-    public void testProcessExtendsGlobalExtendingAction()
-        throws Exception {
+    @Test
+    public void testProcessExtendsGlobalExtendingAction() {
         moduleConfig.addForwardConfig(subConfig);
         actionConfig.addForwardConfig(baseConfig);
 
-        try {
-            subConfig.processExtends(moduleConfig, actionConfig);
-            fail(
-                "Should not find config from actionConfig when *this* is global");
-        } catch (NullPointerException npe) {
-            // succeed
-        }
+        assertThrows(NullPointerException.class,
+            () -> subConfig.processExtends(moduleConfig, actionConfig),
+            "Should not find config from actionConfig when *this* is global");
     }
 
     /**
      * Test processExtends() with an action config that extends a global
      * config with the same name.
      */
+    @Test
     public void testProcessExtendsSameNames()
         throws Exception {
         String path = baseConfig.getPath();
@@ -392,15 +384,15 @@ public class TestForwardConfig extends TestCase {
 
         actionBaseConfig.processExtends(moduleConfig, actionConfig);
 
-        assertEquals("Path wasn't inherited", path, actionBaseConfig.getPath());
-        assertEquals("Module shouldn't have changed", module,
-            actionBaseConfig.getModule());
-        assertEquals("Name shouldn't have changed", name,
-            actionBaseConfig.getName());
-        assertEquals("Extends shouldn't have changed", inherit,
-            actionBaseConfig.getExtends());
-        assertEquals("Redirect shouldn't have changed", redirect,
-            actionBaseConfig.getRedirect());
+        assertEquals(path, actionBaseConfig.getPath(), "Path wasn't inherited");
+        assertEquals(module, actionBaseConfig.getModule(),
+            "Module shouldn't have changed");
+        assertEquals(name, actionBaseConfig.getName(),
+            "Name shouldn't have changed");
+        assertEquals(inherit, actionBaseConfig.getExtends(),
+            "Extends shouldn't have changed");
+        assertEquals(redirect, actionBaseConfig.getRedirect(),
+            "Redirect shouldn't have changed");
     }
 
     /**
@@ -408,6 +400,7 @@ public class TestForwardConfig extends TestCase {
      * ForwardConfig, which in turn extends a global ForwardConfig with the
      * same name.
      */
+    @Test
     public void testProcessExtendsActionExtendsActionExtendsGlobalWithSameName()
         throws Exception {
         String path = baseConfig.getPath();
@@ -424,17 +417,17 @@ public class TestForwardConfig extends TestCase {
 
         subConfig.processExtends(moduleConfig, actionConfig);
 
-        assertTrue("baseConfig's processExtends() should've been called",
-            baseConfig.extensionProcessed);
-        assertTrue("actionBaseConfig's processExtends() should've been called",
-            actionBaseConfig.extensionProcessed);
+        assertTrue(baseConfig.extensionProcessed,
+            "baseConfig's processExtends() should've been called");
+        assertTrue(actionBaseConfig.extensionProcessed,
+            "actionBaseConfig's processExtends() should've been called");
 
-        assertEquals("Path wasn't inherited", path, subConfig.getPath());
-        assertEquals("Module wasn't inherited", module, subConfig.getModule());
-        assertEquals("Name shouldn't have changed", name, subConfig.getName());
-        assertEquals("Extends shouldn't have changed", inherit,
-            subConfig.getExtends());
-        assertEquals("Redirect shouldn't have changed", redirect,
-            subConfig.getRedirect());
+        assertEquals(path, subConfig.getPath(), "Path wasn't inherited");
+        assertEquals(module, subConfig.getModule(), "Module wasn't inherited");
+        assertEquals(name, subConfig.getName(), "Name shouldn't have changed");
+        assertEquals(inherit, subConfig.getExtends(),
+            "Extends shouldn't have changed");
+        assertEquals(redirect, subConfig.getRedirect(),
+            "Redirect shouldn't have changed");
     }
 }

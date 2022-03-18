@@ -18,26 +18,32 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.apache.struts.tiles;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.struts.Globals;
+import org.apache.struts.action.PlugIn;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.config.ModuleConfigFactory;
 import org.apache.struts.config.PlugInConfig;
 import org.apache.struts.mock.MockActionServlet;
 import org.apache.struts.mock.TestMockBase;
-import org.apache.struts.Globals;
 import org.apache.struts.tiles.xmlDefinition.I18nFactorySet;
 import org.apache.struts.util.RequestUtils;
-import org.apache.struts.action.PlugIn;
-import org.apache.commons.beanutils.BeanUtils;
-import junit.framework.Test;
-import junit.framework.TestSuite;
-
-import javax.servlet.ServletException;
-import java.util.Locale;
-import java.util.Map;
-import java.util.HashMap;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 public class TestTilesPlugin extends TestMockBase {
 
@@ -46,32 +52,10 @@ public class TestTilesPlugin extends TestMockBase {
   protected ModuleConfig module2;
   protected MockActionServlet actionServlet;
 
-    // ----------------------------------------------------------------- Basics
-
-
-    public TestTilesPlugin(String name) {
-        super(name);
-    }
-
-
-    public static void main(String args[]) {
-        junit.awtui.TestRunner.main
-            (new String[] { TestTilesPlugin.class.getName() } );
-    }
-
-
-    public static Test suite() {
-        return (new TestSuite(TestTilesPlugin.class));
-    }
-
-
-    // ----------------------------------------------------- Instance Variables
-
-
-
     // ----------------------------------------------------- Setup and Teardown
 
 
+    @BeforeEach
     public void setUp()
     {
 
@@ -81,6 +65,7 @@ public class TestTilesPlugin extends TestMockBase {
     }
 
 
+    @AfterEach
     public void tearDown() {
 
         super.tearDown();
@@ -158,6 +143,7 @@ public class TestTilesPlugin extends TestMockBase {
     /**
      * Test multi factory creation when moduleAware=true.
      */
+    @Test
     public void testMultiFactory() {
         // init TilesPlugin
         module1 = createModuleConfig("/module1", "tiles-defs.xml", true);
@@ -172,11 +158,11 @@ public class TestTilesPlugin extends TestMockBase {
         DefinitionsFactory factory1 =
             TilesUtil.getDefinitionsFactory(request, context);
 
-        assertNotNull("factory found", factory1);
+        assertNotNull(factory1, "factory found");
         assertEquals(
-            "factory name",
             "/module1",
-            factory1.getConfig().getFactoryName());
+            factory1.getConfig().getFactoryName(),
+            "factory name");
 
         // mock request context
         request.setAttribute(Globals.MODULE_KEY, module2);
@@ -184,19 +170,20 @@ public class TestTilesPlugin extends TestMockBase {
         // Retrieve factory for module2
         DefinitionsFactory factory2 =
             TilesUtil.getDefinitionsFactory(request, context);
-        assertNotNull("factory found", factory2);
+        assertNotNull(factory2, "factory found");
         assertEquals(
-            "factory name",
             "/module2",
-            factory2.getConfig().getFactoryName());
+            factory2.getConfig().getFactoryName(),
+            "factory name");
 
         // Check that factory are different
-        assertNotSame("Factory from different modules", factory1, factory2);
+        assertNotSame(factory1, factory2, "Factory from different modules");
     }
 
     /**
      * Test single factory creation when moduleAware=false.
      */
+  @Test
   public void testSingleSharedFactory()
   {
     // init TilesPlugin
@@ -210,31 +197,32 @@ public class TestTilesPlugin extends TestMockBase {
   request.setPathElements("/myapp", "/module1/foo.do", null, null);
     // Retrieve factory for module1
   DefinitionsFactory factory1 = TilesUtil.getDefinitionsFactory( request, context);
-  assertNotNull( "factory found", factory1);
-  assertEquals( "factory name", "/module1", factory1.getConfig().getFactoryName() );
+  assertNotNull( factory1, "factory found");
+  assertEquals( "/module1", factory1.getConfig().getFactoryName(), "factory name" );
 
     // mock request context
   request.setAttribute(Globals.MODULE_KEY, module2);
   request.setPathElements("/myapp", "/module2/foo.do", null, null);
     // Retrieve factory for module2
   DefinitionsFactory factory2 = TilesUtil.getDefinitionsFactory( request, context);
-  assertNotNull( "factory found", factory2);
-  assertEquals( "factory name", "/module1", factory2.getConfig().getFactoryName() );
+  assertNotNull( factory2, "factory found");
+  assertEquals( "/module1", factory2.getConfig().getFactoryName(), "factory name" );
 
     // Check that factory are different
-  assertEquals("Same factory", factory1, factory2);
+  assertEquals(factory1, factory2, "Same factory");
   }
 
   /**
    * Test I18nFactorySet.
    */
+  @Test
   public void testI18FactorySet_A() {
 
      Locale locale = null;
      ComponentDefinition definition = null;
      org.apache.struts.tiles.xmlDefinition.DefinitionsFactory factory = null;
 
-     Map properties = new HashMap();
+     Map<String, String> properties = new HashMap<>();
 
      // Set the file name
      properties.put(I18nFactorySet.DEFINITIONS_CONFIG_PARAMETER_NAME,
@@ -247,34 +235,34 @@ public class TestTilesPlugin extends TestMockBase {
          // Default Locale
          locale = new Locale("", "", "");
          factory = i18nFactorySet.createFactory(locale , request, context);
-         assertNotNull("DefinitionsFactory is nullfor locale='" + print(locale) + "'", factory);
+         assertNotNull(factory, "DefinitionsFactory is nullfor locale='" + print(locale) + "'");
          definition = factory.getDefinition(defName, request, context);
-         assertNotNull("Definition '" + defName + "' Not Found for locale='" + print(locale) + "'", definition);
-         assertEquals("Definition '" + defName + "' for locale='" + print(locale) + "'", defName, definition.getName());
+         assertNotNull(definition, "Definition '" + defName + "' Not Found for locale='" + print(locale) + "'");
+         assertEquals(defName, definition.getName(), "Definition '" + defName + "' for locale='" + print(locale) + "'");
 
          // Variant Only
          locale = new Locale("", "", "XX");
          factory = i18nFactorySet.createFactory(locale , request, context);
-         assertNotNull("DefinitionsFactory is null for locale='" + print(locale) + "'", factory);
+         assertNotNull(factory, "DefinitionsFactory is null for locale='" + print(locale) + "'");
          definition = factory.getDefinition(defName, request, context);
-         assertNotNull("Definition '" + defName + "' Not Found for locale='" + print(locale) + "'", definition);
-         assertEquals("Definition '" + defName + "' for locale='" + print(locale) + "'", defName, definition.getName());
+         assertNotNull(definition, "Definition '" + defName + "' Not Found for locale='" + print(locale) + "'");
+         assertEquals(defName, definition.getName(), "Definition '" + defName + "' for locale='" + print(locale) + "'");
 
          // No Language, Country & Variant Locale
          locale = new Locale("", "US", "XX");
          factory = i18nFactorySet.createFactory(locale , request, context);
-         assertNotNull("DefinitionsFactory is null for locale='" + print(locale) + "'", factory);
+         assertNotNull(factory, "DefinitionsFactory is null for locale='" + print(locale) + "'");
          definition = factory.getDefinition(defName, request, context);
-         assertNotNull("Definition '" + defName + "' Not Found for locale='" + print(locale) + "'", definition);
-         assertEquals("Definition '" + defName + "' for locale='" + print(locale) + "'", defName, definition.getName());
+         assertNotNull(definition, "Definition '" + defName + "' Not Found for locale='" + print(locale) + "'");
+         assertEquals(defName, definition.getName(), "Definition '" + defName + "' for locale='" + print(locale) + "'");
 
          // Language & Country
          locale = new Locale("en", "US");
          factory = i18nFactorySet.createFactory(locale , request, context);
-         assertNotNull("DefinitionsFactory is null for locale='" + print(locale) + "'", factory);
+         assertNotNull(factory, "DefinitionsFactory is null for locale='" + print(locale) + "'");
          definition = factory.getDefinition(defName, request, context);
-         assertNotNull("Definition '" + defName + "' Not Found for locale='" + print(locale) + "'", definition);
-         assertEquals("Definition '" + defName + "' for locale='" + print(locale) + "'", defName, definition.getName());
+         assertNotNull(definition, "Definition '" + defName + "' Not Found for locale='" + print(locale) + "'");
+         assertEquals(defName, definition.getName(), "Definition '" + defName + "' for locale='" + print(locale) + "'");
 
      } catch(Exception ex) {
          fail(ex.toString());
@@ -285,13 +273,14 @@ public class TestTilesPlugin extends TestMockBase {
   /**
    * Test I18nFactorySet.
    */
+  @Test
   public void testI18FactorySet_B() {
 
      Locale locale = null;
      ComponentDefinition definition = null;
      org.apache.struts.tiles.xmlDefinition.DefinitionsFactory factory = null;
 
-     Map properties = new HashMap();
+     Map<String, String> properties = new HashMap<>();
 
      // Set the file name
      properties.put(I18nFactorySet.DEFINITIONS_CONFIG_PARAMETER_NAME,
@@ -305,60 +294,60 @@ public class TestTilesPlugin extends TestMockBase {
          // Default Locale
          locale = new Locale("", "", "");
          factory = i18nFactorySet.createFactory(locale , request, context);
-         assertNotNull("1. DefinitionsFactory is nullfor locale='" + print(locale) + "'", factory);
+         assertNotNull(factory, "1. DefinitionsFactory is nullfor locale='" + print(locale) + "'");
          defName = "B-DEFAULT";
          definition = factory.getDefinition(defName, request, context);
-         assertNotNull("2. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'", definition);
-         assertEquals("3. Definition '" + defName + "' for locale='" + print(locale) + "'", defName, definition.getName());
+         assertNotNull(definition, "2. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'");
+         assertEquals(defName, definition.getName(), "3. Definition '" + defName + "' for locale='" + print(locale) + "'");
 
          // Variant Only
          locale = new Locale("", "", "XX");
          factory = i18nFactorySet.createFactory(locale , request, context);
-         assertNotNull("4. DefinitionsFactory is null for locale='" + print(locale) + "'", factory);
+         assertNotNull(factory, "4. DefinitionsFactory is null for locale='" + print(locale) + "'");
          defName = "B___XX";
          definition = factory.getDefinition(defName, request, context);
-         assertNotNull("5. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'", definition);
-         assertEquals("6. Definition '" + defName + "' for locale='" + print(locale) + "'", defName, definition.getName());
+         assertNotNull(definition, "5. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'");
+         assertEquals(defName, definition.getName(), "6. Definition '" + defName + "' for locale='" + print(locale) + "'");
          defName = "B-DEFAULT";
          definition = factory.getDefinition(defName, request, context);
-         assertNotNull("7. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'", definition);
-         assertEquals("8. Definition '" + defName + "' for locale='" + print(locale) + "'", defName, definition.getName());
+         assertNotNull(definition, "7. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'");
+         assertEquals(defName, definition.getName(), "8. Definition '" + defName + "' for locale='" + print(locale) + "'");
 
          // No Language, Country & Unknown Variant
          locale = new Locale("", "US", "XX");
          factory = i18nFactorySet.createFactory(locale , request, context);
-         assertNotNull("9. DefinitionsFactory is null for locale='" + print(locale) + "'", factory);
+         assertNotNull(factory, "9. DefinitionsFactory is null for locale='" + print(locale) + "'");
          defName = "B__US";
          definition = factory.getDefinition(defName, request, context);
-         assertNotNull("10. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'", definition);
-         assertEquals("11. Definition '" + defName + "' for locale='" + print(locale) + "'", defName, definition.getName());
+         assertNotNull(definition, "10. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'");
+         assertEquals(defName, definition.getName(), "11. Definition '" + defName + "' for locale='" + print(locale) + "'");
 
          // Language & Country
          locale = new Locale("en", "US");
          factory = i18nFactorySet.createFactory(locale , request, context);
-         assertNotNull("12. DefinitionsFactory is null for locale='" + print(locale) + "'", factory);
+         assertNotNull(factory, "12. DefinitionsFactory is null for locale='" + print(locale) + "'");
          defName = "B_en_US";
          definition = factory.getDefinition(defName, request, context);
-         assertNotNull("13. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'", definition);
-         assertEquals("14. Definition '" + defName + "' for locale='" + print(locale) + "'", defName, definition.getName());
+         assertNotNull(definition, "13. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'");
+         assertEquals(defName, definition.getName(), "14. Definition '" + defName + "' for locale='" + print(locale) + "'");
 
          // Language, Country & Unknown Variant
          locale = new Locale("en", "GB", "XX");
          factory = i18nFactorySet.createFactory(locale , request, context);
-         assertNotNull("15. DefinitionsFactory is null for locale='" + print(locale) + "'", factory);
+         assertNotNull(factory, "15. DefinitionsFactory is null for locale='" + print(locale) + "'");
          defName = "B_en_GB";
          definition = factory.getDefinition(defName, request, context);
-         assertNotNull("16. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'", definition);
-         assertEquals("17. Definition '" + defName + "' for locale='" + print(locale) + "'", defName, definition.getName());
+         assertNotNull(definition, "16. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'");
+         assertEquals(defName, definition.getName(), "17. Definition '" + defName + "' for locale='" + print(locale) + "'");
 
          // Language, Unknown Country & Unknown Variant
          locale = new Locale("en", "FR", "XX");
          factory = i18nFactorySet.createFactory(locale , request, context);
-         assertNotNull("18. DefinitionsFactory is null for locale='" + print(locale) + "'", factory);
+         assertNotNull(factory, "18. DefinitionsFactory is null for locale='" + print(locale) + "'");
          defName = "B_en";
          definition = factory.getDefinition(defName, request, context);
-         assertNotNull("19. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'", definition);
-         assertEquals("20. Definition '" + defName + "' for locale='" + print(locale) + "'", defName, definition.getName());
+         assertNotNull(definition, "19. Definition '" + defName + "' Not Found for locale='" + print(locale) + "'");
+         assertEquals(defName, definition.getName(), "20. Definition '" + defName + "' for locale='" + print(locale) + "'");
 
      } catch(Exception ex) {
          fail(ex.toString());

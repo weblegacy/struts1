@@ -70,6 +70,12 @@
                </executions>
             </plugin>
             <plugin>
+               <artifactId>maven-jar-plugin</artifactId>
+               <configuration>
+                  <skipIfEmpty>true</skipIfEmpty>
+               </configuration>
+            </plugin>
+            <plugin>
                <groupId>org.codehaus.cargo</groupId>
                <artifactId>cargo-maven3-plugin</artifactId>
                <configuration>

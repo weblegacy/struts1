@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Bump maven-jxr-plugin from 3.1.1 to 3.2.0
 * Bump checkstyle from 10.0 to 10.1
 * Continue processing on `JavaDoc`-error in profile `pre-assembly`
 * Centralize profile `pre-assembly`

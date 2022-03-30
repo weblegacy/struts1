@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Bump checkstyle from 10.0 to 10.1
 * Continue processing on `JavaDoc`-error in profile `pre-assembly`
 * Centralize profile `pre-assembly`
 * STR-3121: Bump Commons Logging to 1.1.1

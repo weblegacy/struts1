@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* IT: Add methods for JDK 1.7-compatibility
 * Convert `testgen4web` to `Selenium` integration tests
 * Add `cargorun`-profile
 * Add forgotten `dispatchValidator.zip` from apache-struts1-clone

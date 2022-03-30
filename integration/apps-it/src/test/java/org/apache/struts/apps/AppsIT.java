@@ -20,19 +20,19 @@
  */
 package org.apache.struts.apps;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.fail;
-
 import java.io.IOException;
 import java.net.URL;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.opentest4j.AssertionFailedError;
 
 import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+
 /**
  * Verify that each of the example apps starts and (at least)
  * displays its default page.
@@ -198,6 +198,25 @@ public class AppsIT {
         } catch (FailingHttpStatusCodeException | IOException e) {
             fail(e);
         }
+    }
+
+    /**
+     * For JDK 1.7 compatibility
+     * <em>Fail</em> the test with the given underlying {@code cause}.
+     */
+    private void fail(Throwable cause) {
+        throw new AssertionFailedError(null, cause);
+    }
+
+    /**
+     * For JDK 1.7 compatibility
+     * <em>Assert</em> that {@code expected} and {@code actual} are equal.
+     * <p>If both are {@code null}, they are considered equal.
+     *
+     * @see Object#equals(Object)
+     */
+    private static void assertEquals(Object expected, Object actual) {
+        Assertions.assertEquals(expected, actual);
     }
 
 }

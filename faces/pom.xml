@@ -70,47 +70,31 @@
    </build>
 
    <dependencies>
-
-      <dependency>
-         <groupId>javax.servlet</groupId>
-         <artifactId>jsp-api</artifactId>
-         <version>2.0</version>
-         <scope>provided</scope>
-      </dependency>
-
-      <dependency>
-         <groupId>javax.servlet</groupId>
-         <artifactId>servlet-api</artifactId>
-         <version>2.3</version>
-         <scope>provided</scope>
-      </dependency>
-
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-core</artifactId>
-         <version>${project.version}</version>
       </dependency>
-
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-taglib</artifactId>
-         <version>${project.version}</version>
       </dependency>
-
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-tiles</artifactId>
-         <version>${project.version}</version>  
       </dependency>
-
-
+      <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>jsp-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>servlet-api</artifactId>
+      </dependency>
       <dependency>
          <groupId>myfaces</groupId>
          <artifactId>myfaces-jsf-api</artifactId>
-         <version>1.0.9</version>
-        <scope>provided</scope>
+         <scope>provided</scope>
       </dependency>
-
    </dependencies>
 
    <reporting>

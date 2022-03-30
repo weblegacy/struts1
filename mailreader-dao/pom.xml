@@ -52,15 +52,12 @@
         <dependency>
             <groupId>commons-digester</groupId>
             <artifactId>commons-digester</artifactId>
-            <version>1.8</version>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
-            <version>1.0.4</version>
         </dependency>
-
-   </dependencies>
+    </dependencies>
 
    <!-- 
    <reporting>

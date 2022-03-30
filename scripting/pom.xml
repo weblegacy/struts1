@@ -55,28 +55,19 @@
       </resources>
    </build>
    
-   <dependencies>
-
-      <dependency>
-         <groupId>javax.servlet</groupId>
-         <artifactId>servlet-api</artifactId>
-         <version>2.3</version>
-         <scope>provided</scope>
-      </dependency>
-
-      <dependency>
-         <groupId>${project.groupId}</groupId>
-         <artifactId>struts-core</artifactId>
-         <version>${project.version}</version>
-      </dependency>
-
-      <dependency>
-         <groupId>bsf</groupId>
-         <artifactId>bsf</artifactId>
-         <version>2.3.0</version>
-      </dependency>
-    
- 
+    <dependencies>
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>struts-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>bsf</groupId>
+            <artifactId>bsf</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+        </dependency>
    </dependencies>
 
    <!-- 

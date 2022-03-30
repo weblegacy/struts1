@@ -173,49 +173,41 @@
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-blank</artifactId>
-         <version>${project.version}</version>
          <type>war</type>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-cookbook</artifactId>
-         <version>${project.version}</version>
          <type>war</type>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-examples</artifactId>
-         <version>${project.version}</version>
          <type>war</type>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-faces-example1</artifactId>
-         <version>${project.version}</version>
          <type>war</type>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-faces-example2</artifactId>
-         <version>${project.version}</version>
          <type>war</type>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-mailreader</artifactId>
-         <version>${project.version}</version>
          <type>war</type>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-scripting-mailreader</artifactId>
-         <version>${project.version}</version>
          <type>war</type>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-el-example</artifactId>
-         <version>${project.version}</version>
          <type>war</type>
       </dependency>
    </dependencies>

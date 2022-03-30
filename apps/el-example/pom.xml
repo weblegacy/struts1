@@ -40,13 +40,10 @@
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-el</artifactId>
-         <version>${project.version}</version>
       </dependency>
       <dependency>
          <groupId>javax.servlet</groupId>
          <artifactId>servlet-api</artifactId>
-         <version>2.3</version>
-         <scope>provided</scope>
       </dependency>
    </dependencies>
    

@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-3152: Pull common dependencies into the parent Struts 1 POM
 * IT: Add `refresh` to Selenium-Test
 * IT: Update `README`
 * IT: Add `WebDriverManager` and activate Selenium-Test

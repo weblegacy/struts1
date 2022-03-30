@@ -40,34 +40,27 @@
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-taglib</artifactId>
-         <version>${project.version}</version>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-extras</artifactId>
-         <version>${project.version}</version>
-      </dependency>
-      <dependency>
-         <groupId>javax.servlet</groupId>
-         <artifactId>servlet-api</artifactId>
-         <version>2.3</version>
-         <scope>provided</scope>
-      </dependency>
-      <dependency>
-         <groupId>javax.servlet</groupId>
-         <artifactId>jstl</artifactId>
-         <version>1.0.6</version>
-      </dependency>
-      <dependency>
-         <groupId>taglibs</groupId>
-         <artifactId>standard</artifactId>
-         <version>1.0.6</version>
       </dependency>
       <dependency>
          <groupId>commons-fileupload</groupId>
          <artifactId>commons-fileupload</artifactId>
-         <version>1.1.1</version>
-     </dependency>
+      </dependency>
+      <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>jstl</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>servlet-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>taglibs</groupId>
+         <artifactId>standard</artifactId>
+      </dependency>
    </dependencies>
    
 </project>

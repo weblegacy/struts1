@@ -16,7 +16,8 @@ Is a clone of <https://github.com/apache/struts1.git> - STRUTS_1_3_BRANCH, aimin
 
  * **assembly** - Create assemblies for distribution
      * Adds the module `assembly`
- * **pre-assembly** - Creates JavaDoc and Sources for distribution
+ * **pre-assembly** - Creates JavaDoc and Sources for each `struts1`-module
+     * `mvn -Ppre-assembly clean package`
  * **apps** - Includes the example-apps into build
      * Adds the module `apps`
  * **itest** - Includes the integration-tests into build

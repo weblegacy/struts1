@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Bump selenium-java from 4.1.2 to 4.1.3
 * Bump htmlunit from 2.59.0 to 2.60.0
 * Bump maven-jxr-plugin from 3.1.1 to 3.2.0
 * Bump checkstyle from 10.0 to 10.1

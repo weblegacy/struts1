@@ -8,20 +8,18 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BlankVerifyWelcomeIT {
   private WebDriver driver;
-  JavascriptExecutor js;
   private String port;
 
   @BeforeEach
   public void setUp() {
-    driver = new FirefoxDriver();
-    js = (JavascriptExecutor) driver;
+    driver = WebDriverManager.getInstance().create();
     port = System.getProperty("cargo.servlet.port");
   }
 

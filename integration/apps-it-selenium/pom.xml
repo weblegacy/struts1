@@ -40,9 +40,15 @@
          <version>4.1.2</version>
          <scope>test</scope>
       </dependency>
+      <dependency>
+         <groupId>io.github.bonigarcia</groupId>
+         <artifactId>webdrivermanager</artifactId>
+         <version>5.1.0</version>
+         <scope>test</scope>
+      </dependency>
    </dependencies>
 
-          <!--build>
+          <build>
             <plugins>
                <plugin>
                   <artifactId>maven-failsafe-plugin</artifactId>
@@ -68,6 +74,6 @@
                   </executions>
                </plugin>
             </plugins>
-         </build-->
+         </build>
 
 </project>

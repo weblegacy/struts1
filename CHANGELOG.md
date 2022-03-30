@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* IT: Correct Selenium-Test and add configurable port-number
 * IT: Add methods for JDK 1.7-compatibility
 * Convert `testgen4web` to `Selenium` integration tests
 * Add `cargorun`-profile

@@ -16,11 +16,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class BlankVerifyWelcomeIT {
   private WebDriver driver;
   JavascriptExecutor js;
+  private String port;
 
   @BeforeEach
   public void setUp() {
     driver = new FirefoxDriver();
     js = (JavascriptExecutor) driver;
+    port = System.getProperty("cargo.servlet.port");
   }
 
   @AfterEach
@@ -33,7 +35,7 @@ public class BlankVerifyWelcomeIT {
     // Test name: blank-verify-welcome
     // Step # | name | target | value | comment
     // 1 | open | struts-blank/Welcome.do |  | 
-    driver.get("http://localhost:8080struts-blank/Welcome.do");
+    driver.get("http://localhost:" + port + "/struts-blank/Welcome.do");
     // 2 | verifyTitle | Struts Blank Application |  | 
     assertEquals("Struts Blank Application", driver.getTitle());
     // 3 | assertElementPresent | xpath=//*[contains(text(),'Welcome!')] |  | 

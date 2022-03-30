@@ -14,12 +14,26 @@
       "targets": [],
       "value": ""
     }, {
-      "id": "e4018044-6c26-4a97-b175-c82327c08749",
+      "id": "f7fb3bd7-e30f-4c9b-9c9b-fc2d6ced913a",
       "comment": "",
       "command": "verifyTitle",
       "target": "Struts Blank Application",
       "targets": [],
       "value": ""
+    }, {
+      "id": "46c3f7e5-b64e-4f57-a958-a96ab0c50f9f",
+      "comment": "",
+      "command": "executeScript",
+      "target": "location.reload(); return document.title;",
+      "targets": [],
+      "value": "title"
+    }, {
+      "id": "e4018044-6c26-4a97-b175-c82327c08749",
+      "comment": "",
+      "command": "verify",
+      "target": "title",
+      "targets": [],
+      "value": "Struts Blank Application"
     }, {
       "id": "7b73f8c7-d08c-4055-bd34-8e1d8b96a027",
       "comment": "",

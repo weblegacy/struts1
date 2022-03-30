@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* IT: Add `refresh` to Selenium-Test
 * IT: Update `README`
 * IT: Add `WebDriverManager` and activate Selenium-Test
 * IT: Correct Selenium-Test and add configurable port-number

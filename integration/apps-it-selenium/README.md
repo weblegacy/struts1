@@ -1,3 +1,31 @@
 # Create Selenium IDE-Integration-Tests
 
-WIP
+### Prerequisites
+* [Selenium IDE](https://www.selenium.dev/selenium-ide/)
+
+## Create Selenium-Tests
+* Record Selenium-Tests with `Selenium IDE`
+* Export with `Java JUnit`
+* Rename exported Java-Class from `...Test` to `...IT`
+* Convert exported Java-Class to JUnit5
+    * [Migrating from JUnit 4](https://junit.org/junit5/docs/current/user-guide/#migrating-from-junit4)
+    * `@Before` to `@BeforeEach`
+    * `@After` to `@AfterEach`
+    * Adapt `assert`s
+    * Change line `driver = new FirefoxDriver();` to `driver = WebDriverManager.getInstance().create();` in method `setUp`
+
+## MAVEN-Run
+### Run with default-browser (Chrome)
+`mvn -Papps,itest -Dcargo.java.home=[JDK_1.7] verify`
+
+### Run with specific browser
+`mvn -Papps,itest -Dcargo.java.home=[JDK_1.7] -Dwdm.defaultBrowser=[browser] verify`
+
+* Values for `browser`
+    * `chrome` - Chrome
+    * `firefox` - Firefox
+    * `opera` - Opera
+    * `edge` - Edge
+    * `iexplorer` - Internet Explorer
+    * `chromium` - Chromium
+    * `safari` - Safari

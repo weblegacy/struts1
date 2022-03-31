@@ -79,10 +79,10 @@ public class TestActionConfigMatcher extends TestMockBase {
         ActionMapping[] mapping = new ActionMapping[1];
         mapping[0] = new ActionMapping();
         mapping[0].setPath("/page-*");
-    
+
         ActionConfigMatcher matcher = new ActionConfigMatcher(mapping);
         ActionConfig matched = matcher.match("/page-{0}");
-    
+
         assertNotNull(matched, "ActionConfig should be matched");
         assertEquals("/page-{0}", matched.getPath(), "Path hasn't been replaced");
     }
@@ -102,10 +102,10 @@ public class TestActionConfigMatcher extends TestMockBase {
         mapping[0] = new ActionMapping();
         mapping[0].setPath("/page-*");
         mapping[0].setParameter("{0}");
-    
+
         ActionConfigMatcher matcher = new ActionConfigMatcher(mapping);
         ActionConfig matched = matcher.match("/page-{1}");
-    
+
         assertNull(matched, "ActionConfig should not be matched");
     }
     
@@ -124,10 +124,10 @@ public class TestActionConfigMatcher extends TestMockBase {
         mapping[0] = new ActionMapping();
         mapping[0].setPath("/page-*");
         mapping[0].setParameter("{1}");
-    
+
         ActionConfigMatcher matcher = new ActionConfigMatcher(mapping);
         ActionConfig matched = matcher.match("/page-{1}");
-    
+
         assertNull(matched, "ActionConfig should not be matched");
     }
 
@@ -145,10 +145,10 @@ public class TestActionConfigMatcher extends TestMockBase {
         mapping[0] = new ActionMapping();
         mapping[0].setPath("/page-*");
         mapping[0].setParameter("{1}");
-    
+
         ActionConfigMatcher matcher = new ActionConfigMatcher(mapping);
         ActionConfig matched = matcher.match("/page-{0}");
-    
+
         assertNull(matched, "ActionConfig should not be matched");
     }
 
@@ -176,12 +176,9 @@ public class TestActionConfigMatcher extends TestMockBase {
         ActionConfig matched = matcher.match("/fooBar");
 
         assertNotNull(matched, "ActionConfig should be matched");
-        assertEquals(2, matched.findForwardConfigs().length,
-            "ActionConfig should have two action forward");
-        assertEquals(2, matched.findExceptionConfigs().length,
-            "ActionConfig should have two exception forward");
-        assertEquals(2, matched.getProperties().size(),
-            "ActionConfig should have properties");
+        assertEquals(2, matched.findForwardConfigs().length, "ActionConfig should have two action forward");
+        assertEquals(2, matched.findExceptionConfigs().length, "ActionConfig should have two exception forward");
+        assertEquals(2, matched.getProperties().size(), "ActionConfig should have properties");
     }
 
     @Test
@@ -200,27 +197,17 @@ public class TestActionConfigMatcher extends TestMockBase {
         assertFalse(m.getUnknown(), "Unknown isn't correct");
         assertTrue(m.getValidate(), "Validate isn't correct");
 
-        assertEquals("foo,Bar", m.getPrefix(),
-            "Prefix hasn't been replaced");
-        assertEquals("bar,Bar", m.getSuffix(),
-            "Suffix hasn't been replaced");
-        assertEquals("foo.bar.BarAction", m.getType(),
-            "Type hasn't been replaced");
-        assertEquals("public,Bar", m.getRoles(),
-            "Roles hasn't been replaced");
-        assertEquals("param,Bar", m.getParameter(),
-            "Parameter hasn't been replaced");
-        assertEquals("attrib,Bar", m.getAttribute(),
-            "Attribute hasn't been replaced");
-        assertEquals("fwd,Bar", m.getForward(),
-            "Forward hasn't been replaced");
-        assertEquals("include,Bar", m.getInclude(),
-            "Include hasn't been replaced");
-        assertEquals("input,Bar", m.getInput(),
-            "Input hasn't been replaced");
+        assertEquals("foo,Bar", m.getPrefix(), "Prefix hasn't been replaced");
+        assertEquals("bar,Bar", m.getSuffix(), "Suffix hasn't been replaced");
+        assertEquals("foo.bar.BarAction", m.getType(), "Type hasn't been replaced");
+        assertEquals("public,Bar", m.getRoles(), "Roles hasn't been replaced");
+        assertEquals("param,Bar", m.getParameter(), "Parameter hasn't been replaced");
+        assertEquals("attrib,Bar", m.getAttribute(), "Attribute hasn't been replaced");
+        assertEquals("fwd,Bar", m.getForward(), "Forward hasn't been replaced");
+        assertEquals("include,Bar", m.getInclude(), "Include hasn't been replaced");
+        assertEquals("input,Bar", m.getInput(), "Input hasn't been replaced");
 
-        assertEquals("testBar", m.getProperty("testprop2"),
-            "ActionConfig property not replaced");
+        assertEquals("testBar", m.getProperty("testprop2"), "ActionConfig property not replaced");
 
         ForwardConfig[] fConfigs = m.findForwardConfigs();
         boolean found = false;
@@ -230,12 +217,9 @@ public class TestActionConfigMatcher extends TestMockBase {
 
             if ("name".equals(cfg.getName())) {
                 found = true;
-                assertEquals("path,Bar", cfg.getPath(),
-                    "Path hasn't been replaced");
-                assertEquals("bar,Bar", cfg.getProperty("foo"),
-                    "Property foo hasn't been replaced");
-                assertEquals("modBar", cfg.getModule(),
-                    "Module hasn't been replaced");
+                assertEquals("path,Bar", cfg.getPath(), "Path hasn't been replaced");
+                assertEquals("bar,Bar", cfg.getProperty("foo"), "Property foo hasn't been replaced");
+                assertEquals("modBar", cfg.getModule(), "Module hasn't been replaced");
             }
         }
 
@@ -253,8 +237,7 @@ public class TestActionConfigMatcher extends TestMockBase {
         ActionConfigMatcher matcher = new ActionConfigMatcher(mapping);
         ActionConfig m = matcher.match("/fooBar");
 
-        assertEquals("name,Bar-Bar", m.getName(),
-            "Name hasn't been replaced correctly: " + m.getName());
+        assertEquals("name,Bar-Bar", m.getName(), "Name hasn't been replaced correctly: " + m.getName());
     }
 
     private ActionConfig buildActionConfig(String path) {

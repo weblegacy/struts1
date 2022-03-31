@@ -207,7 +207,7 @@ public class OptionsCollectionTag extends TagSupport {
             } catch (IllegalAccessException e) {
                 JspException jspe =
                     new JspException(messages.getMessage("getter.access",
-                            label, bean));
+                            label, bean), e);
 
                 TagUtils.getInstance().saveException(pageContext, jspe);
                 throw jspe;
@@ -215,14 +215,14 @@ public class OptionsCollectionTag extends TagSupport {
                 Throwable t = e.getTargetException();
                 JspException jspe =
                     new JspException(messages.getMessage("getter.result",
-                            label, t.toString()));
+                            label, t.toString()), e);
 
                 TagUtils.getInstance().saveException(pageContext, jspe);
                 throw jspe;
             } catch (NoSuchMethodException e) {
                 JspException jspe =
                     new JspException(messages.getMessage("getter.method",
-                            label, bean));
+                            label, bean), e);
 
                 TagUtils.getInstance().saveException(pageContext, jspe);
                 throw jspe;
@@ -238,7 +238,7 @@ public class OptionsCollectionTag extends TagSupport {
             } catch (IllegalAccessException e) {
                 JspException jspe =
                     new JspException(messages.getMessage("getter.access",
-                            value, bean));
+                            value, bean), e);
 
                 TagUtils.getInstance().saveException(pageContext, jspe);
                 throw jspe;
@@ -246,14 +246,14 @@ public class OptionsCollectionTag extends TagSupport {
                 Throwable t = e.getTargetException();
                 JspException jspe =
                     new JspException(messages.getMessage("getter.result",
-                            value, t.toString()));
+                            value, t.toString()), e);
 
                 TagUtils.getInstance().saveException(pageContext, jspe);
                 throw jspe;
             } catch (NoSuchMethodException e) {
                 JspException jspe =
                     new JspException(messages.getMessage("getter.method",
-                            value, bean));
+                            value, bean), e);
 
                 TagUtils.getInstance().saveException(pageContext, jspe);
                 throw jspe;

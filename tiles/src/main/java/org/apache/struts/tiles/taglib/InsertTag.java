@@ -577,7 +577,7 @@ public class InsertTag
                     + "'. Check if this name exist in definitions factory.", ex);
 
         } catch (FactoryNotFoundException ex) {
-            throw new JspException(ex.getMessage());
+            throw new JspException(ex.getMessage(), ex);
 
         } catch (DefinitionsFactoryException ex) {
             if (log.isDebugEnabled()) {
@@ -899,7 +899,7 @@ public class InsertTag
                 String msg =
                     "Can't insert page '" + page + "' : " + e.getMessage();
                 log.error(msg, e);
-                throw new JspException(msg);
+                throw new JspException(msg, e);
 
             } catch (IllegalArgumentException e) {
                 // Can't resolve page uri, should we ignore it?

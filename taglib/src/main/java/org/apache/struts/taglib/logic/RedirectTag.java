@@ -292,7 +292,7 @@ public class RedirectTag extends TagSupport {
         } catch (MalformedURLException e) {
             TagUtils.getInstance().saveException(pageContext, e);
             throw new JspException(messages.getMessage("redirect.url",
-                    e.toString()));
+                    e.toString()), e);
         }
 
         return url;
@@ -314,7 +314,7 @@ public class RedirectTag extends TagSupport {
             response.sendRedirect(url);
         } catch (IOException e) {
             TagUtils.getInstance().saveException(pageContext, e);
-            throw new JspException(e.getMessage());
+            throw new JspException(e.getMessage(), e);
         }
     }
 

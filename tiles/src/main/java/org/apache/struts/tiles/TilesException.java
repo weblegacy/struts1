@@ -31,17 +31,11 @@ public class TilesException extends Exception
 
 
   /**
-   * Any "wrapped" exception will be exposed when this is serialized.
-   * @serial
-   */
-  private Exception exception;
-  /**
     * Constructor.
     */
   public TilesException()
     {
     super();
-    this.exception = null;
   }
 
   /**
@@ -51,71 +45,40 @@ public class TilesException extends Exception
   public TilesException(String message)
     {
     super(message);
-    this.exception = null;
   }
 
 
   /**
     * Create a new <code>TilesException</code> wrapping an existing exception.
     *
-    * <p>The existing exception will be embedded in the new
-    * one, and its message will become the default message for
-    * the TilesException.</p>
-    *
-    * @param e The exception to be wrapped.
+    * @param e The root cause exception
     */
   public TilesException(Exception e)
   {
-    super();
-    this.exception = e;
+    super(e);
   }
 
 
   /**
     * Create a new <code>TilesException</code> from an existing exception.
     *
-    * <p>The existing exception will be embedded in the new
-    * one, but the new exception will have its own message.</p>
-    *
     * @param message The detail message.
-    * @param e The exception to be wrapped.
+    * @param e The root cause exception
     */
   public TilesException(String message, Exception e)
   {
-    super(message);
-    this.exception = e;
-  }
-
-
-  /**
-    * Return a detail message for this exception.
-    *
-    * <p>If there is a embedded exception, and if the TilesException
-    * has no detail message of its own, this method will return
-    * the detail message from the embedded exception.</p>
-    *
-    * @return The error or warning message.
-    */
-  public String getMessage ()
-  {
-    String message = super.getMessage ();
-
-    if (message == null && exception != null) {
-      return exception.getMessage();
-    } else {
-      return message;
-    }
+    super(message, e);
   }
 
 
   /**
     * Return the embedded exception, if any.
     *
-    * @return The embedded exception, or <code>null</code> if there is none.
+    * @return The root cause exception, or <code>null</code> if there is none.
     */
   public Exception getException ()
   {
-    return exception;
+    return (Exception) getCause();
   }
 
 }

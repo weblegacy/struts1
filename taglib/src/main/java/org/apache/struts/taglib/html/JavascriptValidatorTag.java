@@ -348,7 +348,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
         try {
             writer.print(this.renderJavascript());
         } catch (IOException e) {
-            throw new JspException(e.getMessage());
+            throw new JspException(e.getMessage(), e);
         }
 
         return EVAL_BODY_TAG;

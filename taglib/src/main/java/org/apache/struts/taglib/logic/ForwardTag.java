@@ -125,7 +125,7 @@ public class ForwardTag extends TagSupport {
         } catch (Exception e) {
             TagUtils.getInstance().saveException(pageContext, e);
             throw new JspException(messages.getMessage("forward.forward", name,
-                    e.toString()));
+                    e.toString()), e);
         }
     }
 
@@ -153,7 +153,7 @@ public class ForwardTag extends TagSupport {
         } catch (Exception e) {
             TagUtils.getInstance().saveException(pageContext, e);
             throw new JspException(messages.getMessage("forward.redirect",
-                    name, e.toString()));
+                    name, e.toString()), e);
         }
     }
 

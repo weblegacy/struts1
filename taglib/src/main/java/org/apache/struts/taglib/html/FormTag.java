@@ -696,7 +696,7 @@ public class FormTag extends TagSupport {
         try {
             writer.print(results.toString());
         } catch (IOException e) {
-            throw new JspException(messages.getMessage("common.io", e.toString()));
+            throw new JspException(messages.getMessage("common.io", e.toString()), e);
         }
 
         postbackAction = null;

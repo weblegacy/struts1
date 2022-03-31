@@ -188,7 +188,7 @@ public class IncludeTag extends TagSupport {
         } catch (MalformedURLException e) {
             TagUtils.getInstance().saveException(pageContext, e);
             throw new JspException(messages.getMessage("include.url",
-                    e.toString()));
+                    e.toString()), e);
         }
 
         URLConnection conn = null;
@@ -211,7 +211,7 @@ public class IncludeTag extends TagSupport {
         } catch (Exception e) {
             TagUtils.getInstance().saveException(pageContext, e);
             throw new JspException(messages.getMessage("include.open",
-                    url.toString(), e.toString()));
+                    url.toString(), e.toString()), e);
         }
 
         // Copy the contents of this URL
@@ -238,7 +238,7 @@ public class IncludeTag extends TagSupport {
         } catch (Exception e) {
             TagUtils.getInstance().saveException(pageContext, e);
             throw new JspException(messages.getMessage("include.read",
-                    url.toString(), e.toString()));
+                    url.toString(), e.toString()), e);
         }
 
         // Define the retrieved content as a page scope attribute

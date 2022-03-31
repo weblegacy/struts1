@@ -227,15 +227,15 @@ public class MultiboxTag extends BaseHandlerTag {
             }
         } catch (IllegalAccessException e) {
             throw new JspException(messages.getMessage("getter.access",
-                    property, name));
+                    property, name), e);
         } catch (InvocationTargetException e) {
             Throwable t = e.getTargetException();
 
             throw new JspException(messages.getMessage("getter.result",
-                    property, t.toString()));
+                    property, t.toString()), e);
         } catch (NoSuchMethodException e) {
             throw new JspException(messages.getMessage("getter.method",
-                    property, name));
+                    property, name), e);
         }
 
         for (int i = 0; i < values.length; i++) {

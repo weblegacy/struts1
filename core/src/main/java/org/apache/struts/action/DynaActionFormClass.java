@@ -252,7 +252,7 @@ public class DynaActionFormClass implements DynaClass, Serializable {
         } catch (Throwable t) {
             throw new IllegalArgumentException(
                 "Cannot instantiate ActionFormBean class '" + config.getType()
-                + "': " + t);
+                + "'", t);
         }
 
         if (!DynaActionForm.class.isAssignableFrom(beanClass)) {

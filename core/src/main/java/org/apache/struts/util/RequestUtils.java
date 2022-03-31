@@ -589,18 +589,15 @@ public class RequestUtils {
                     (MultipartRequestHandler) applicationInstance(multipartClass);
             } catch (ClassNotFoundException cnfe) {
                 throw new ServletException("Cannot find multipart class \""
-                    + multipartClass + "\"" + ", exception: "
-                    + cnfe.getMessage());
+                    + multipartClass + "\"", cnfe);
             } catch (InstantiationException ie) {
                 throw new ServletException(
                     "InstantiationException when instantiating "
-                    + "multipart class \"" + multipartClass + "\", exception: "
-                    + ie.getMessage());
+                    + "multipart class \"" + multipartClass + "\"", ie);
             } catch (IllegalAccessException iae) {
                 throw new ServletException(
                     "IllegalAccessException when instantiating "
-                    + "multipart class \"" + multipartClass + "\", exception: "
-                    + iae.getMessage());
+                    + "multipart class \"" + multipartClass + "\"", iae);
             }
 
             if (multipartHandler != null) {

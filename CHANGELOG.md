@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-2437: Standardize exception rethrows to contain root cause
 * Some test-code reformating, no change
 * Core: Making some of the fail messages a bit more expressive
 * Bump selenium-java from 4.1.2 to 4.1.3

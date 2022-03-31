@@ -1210,15 +1210,15 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
             return BeanUtils.getProperty(bean, property);
         } catch (IllegalAccessException e) {
             throw new JspException(messages.getMessage("getter.access",
-                    property, beanName));
+                    property, beanName), e);
         } catch (InvocationTargetException e) {
             Throwable t = e.getTargetException();
 
             throw new JspException(messages.getMessage("getter.result",
-                    property, t.toString()));
+                    property, t.toString()), e);
         } catch (NoSuchMethodException e) {
             throw new JspException(messages.getMessage("getter.method",
-                    property, beanName));
+                    property, beanName), e);
         }
     }
 }

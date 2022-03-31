@@ -485,7 +485,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
             try {
                 ((List) prop).set(index, value);
             } catch (ClassCastException e) {
-                throw new ConversionException(e.getMessage());
+                throw new ConversionException(e.getMessage(), e);
             }
         } else {
             throw new IllegalArgumentException("Non-indexed property for '"

@@ -618,7 +618,7 @@ public class ImgTag extends BaseHandlerTag {
             map = (Map) mapObject;
         } catch (ClassCastException e) {
             TagUtils.getInstance().saveException(pageContext, e);
-            throw new JspException(messages.getMessage("imgTag.type"));
+            throw new JspException(messages.getMessage("imgTag.type"), e);
         }
 
         // Append the required query parameters

@@ -200,15 +200,15 @@ public class OptionsTag extends TagSupport {
                     }
                 } catch (IllegalAccessException e) {
                     throw new JspException(messages.getMessage(
-                            "getter.access", property, collection));
+                            "getter.access", property, collection), e);
                 } catch (InvocationTargetException e) {
                     Throwable t = e.getTargetException();
 
                     throw new JspException(messages.getMessage(
-                            "getter.result", property, t.toString()));
+                            "getter.result", property, t.toString()), e);
                 } catch (NoSuchMethodException e) {
                     throw new JspException(messages.getMessage(
-                            "getter.method", property, collection));
+                            "getter.method", property, collection), e);
                 }
 
                 try {
@@ -223,15 +223,15 @@ public class OptionsTag extends TagSupport {
                     }
                 } catch (IllegalAccessException e) {
                     throw new JspException(messages.getMessage(
-                            "getter.access", labelProperty, collection));
+                            "getter.access", labelProperty, collection), e);
                 } catch (InvocationTargetException e) {
                     Throwable t = e.getTargetException();
 
                     throw new JspException(messages.getMessage(
-                            "getter.result", labelProperty, t.toString()));
+                            "getter.result", labelProperty, t.toString()), e);
                 } catch (NoSuchMethodException e) {
                     throw new JspException(messages.getMessage(
-                            "getter.method", labelProperty, collection));
+                            "getter.method", labelProperty, collection), e);
                 }
 
                 String stringValue = value.toString();
@@ -390,15 +390,15 @@ public class OptionsTag extends TagSupport {
                 }
             } catch (IllegalAccessException e) {
                 throw new JspException(messages.getMessage("getter.access",
-                        property, name));
+                        property, name), e);
             } catch (InvocationTargetException e) {
                 Throwable t = e.getTargetException();
 
                 throw new JspException(messages.getMessage("getter.result",
-                        property, t.toString()));
+                        property, t.toString()), e);
             } catch (NoSuchMethodException e) {
                 throw new JspException(messages.getMessage("getter.method",
-                        property, name));
+                        property, name), e);
             }
         }
 

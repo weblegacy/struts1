@@ -149,7 +149,7 @@ public class BaseTag extends TagSupport {
         } catch (IOException e) {
             pageContext.setAttribute(Globals.EXCEPTION_KEY, e,
                 PageContext.REQUEST_SCOPE);
-            throw new JspException(messages.getMessage("common.io", e.toString()));
+            throw new JspException(messages.getMessage("common.io", e.toString()), e);
         }
 
         return EVAL_BODY_INCLUDE;

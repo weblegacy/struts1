@@ -185,11 +185,11 @@ public abstract class CompareTagBase extends ConditionalTagBase {
 
                     TagUtils.getInstance().saveException(pageContext, t);
                     throw new JspException(messages.getMessage(
-                            "logic.property", name, property, t.toString()));
+                            "logic.property", name, property, t.toString()), t);
                 } catch (Throwable t) {
                     TagUtils.getInstance().saveException(pageContext, t);
                     throw new JspException(messages.getMessage(
-                            "logic.property", name, property, t.toString()));
+                            "logic.property", name, property, t.toString()), t);
                 }
             } else {
                 variable = bean;

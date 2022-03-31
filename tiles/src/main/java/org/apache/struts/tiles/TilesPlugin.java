@@ -180,7 +180,7 @@ public class TilesPlugin implements PlugIn {
                         + getTilesUtilImplClassname()
                         + "'. TilesUtil implementation should be a subclass of '"
                         + TilesUtilStrutsImpl.class.getName()
-                        + "'");
+                        + "'", ex);
 
             } catch (Exception ex) {
                 throw new ServletException(

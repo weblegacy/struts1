@@ -237,17 +237,17 @@ public class SelectTag extends BaseHandlerTag {
             } catch (IllegalAccessException e) {
                 TagUtils.getInstance().saveException(pageContext, e);
                 throw new JspException(messages.getMessage("getter.access",
-                        property, name));
+                        property, name), e);
             } catch (InvocationTargetException e) {
                 Throwable t = e.getTargetException();
 
                 TagUtils.getInstance().saveException(pageContext, t);
                 throw new JspException(messages.getMessage("getter.result",
-                        property, t.toString()));
+                        property, t.toString()), e);
             } catch (NoSuchMethodException e) {
                 TagUtils.getInstance().saveException(pageContext, e);
                 throw new JspException(messages.getMessage("getter.method",
-                        property, name));
+                        property, name), e);
             }
         }
     }

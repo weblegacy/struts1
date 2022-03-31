@@ -202,7 +202,7 @@ public class ScriptAction extends Action {
             scriptName = parseScriptName(mapping.getParameter(), bsfManager);
         } catch (Exception ex) {
             LOG.error("Unable to parse " + mapping.getParameter(), ex);
-            throw new Exception("Unable to parse " + mapping.getParameter());
+            throw new Exception("Unable to parse " + mapping.getParameter(), ex);
         }
         if (scriptName == null) {
             LOG.error("No script specified in the parameter attribute");

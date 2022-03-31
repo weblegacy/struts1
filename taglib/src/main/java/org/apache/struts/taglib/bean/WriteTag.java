@@ -343,7 +343,7 @@ public class WriteTag extends TagSupport {
                     } catch (IllegalArgumentException e) {
                         JspException ex =
                             new JspException(messages.getMessage(
-                                    "write.format", formatString));
+                                    "write.format", formatString), e);
 
                         TagUtils.getInstance().saveException(pageContext, ex);
                         throw ex;

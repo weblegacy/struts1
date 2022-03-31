@@ -164,7 +164,7 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
         } catch (Exception e) {
             LOG.warn("Exception from exceptionCommand '" + exceptionCommand
                 + "'", e);
-            throw new IllegalStateException("Exception chain threw exception");
+            throw new IllegalStateException("Exception chain threw exception", e);
         }
 
         return (true);

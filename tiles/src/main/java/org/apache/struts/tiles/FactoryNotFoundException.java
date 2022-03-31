@@ -42,4 +42,14 @@ public class FactoryNotFoundException extends DefinitionsFactoryException
     {
     super(msg);
     }
+
+    /**
+     * Constructor.
+     * 
+     * @param msg Message.
+     * @param e the root cause exception
+     */
+    public FactoryNotFoundException(String msg, Exception e) {
+        super(msg, e);
+    }
 }

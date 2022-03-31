@@ -448,7 +448,7 @@ public class LinkTag extends BaseHandlerTag {
         } catch (MalformedURLException e) {
             TagUtils.getInstance().saveException(pageContext, e);
             throw new JspException(messages.getMessage("rewrite.url",
-                    e.toString()));
+                    e.toString()), e);
         }
 
         return (url);

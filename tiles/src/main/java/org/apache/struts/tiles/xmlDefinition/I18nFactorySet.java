@@ -196,7 +196,7 @@ public class I18nFactorySet extends FactorySet {
             } catch (FileNotFoundException ex) { // A filename is specified, throw appropriate error.
                 log.error(ex.getMessage() + " : Can't find file '" + filename + "'");
                 throw new FactoryNotFoundException(
-                    ex.getMessage() + " : Can't find file '" + filename + "'");
+                    ex.getMessage() + " : Can't find file '" + filename + "'", ex);
             }
 
         } else { // try each default file names

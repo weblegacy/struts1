@@ -141,7 +141,7 @@ public class ResourceTag extends TagSupport {
             pageContext.setAttribute(id, sb.toString());
         } catch (IOException e) {
             TagUtils.getInstance().saveException(pageContext, e);
-            throw new JspException(messages.getMessage("resource.get", name));
+            throw new JspException(messages.getMessage("resource.get", name), e);
         }
 
         return (SKIP_BODY);

@@ -69,7 +69,7 @@ public class RewriteTag extends LinkTag {
         } catch (MalformedURLException e) {
             TagUtils.getInstance().saveException(pageContext, e);
             throw new JspException(messages.getMessage("rewrite.url",
-                    e.toString()));
+                    e.toString()), e);
         }
 
         TagUtils.getInstance().write(pageContext, url);

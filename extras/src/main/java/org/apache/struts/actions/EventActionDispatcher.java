@@ -151,7 +151,7 @@ public class EventActionDispatcher extends ActionDispatcher {
 
             LOG.error(message + " " + mapping.getParameter());
 
-            throw new ServletException(message);
+            throw new ServletException(message, e);
         }
 
         return dispatchMethod(mapping, form, request, response, name, method);

@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-1638: Note that anchor cannot be standalone
 * STR-3150: Use Chain processing constants
 * STR-3119: Add root cause to thrown exceptions that do not accept root cause in the constructor
 * STR-2437: Standardize exception rethrows to contain root cause

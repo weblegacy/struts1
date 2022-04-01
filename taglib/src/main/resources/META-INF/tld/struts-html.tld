@@ -4447,7 +4447,9 @@
                 <![CDATA[
                   <p>Optional anchor tag ("#xxx") to be added to the generated
                   hyperlink.  Specify this value <strong>without</strong> any
-                  "#" character.</p>
+                  "#" character. Exactly one of <code>forward</code>, 
+                  <code>href</code>, or <code>page</code> attribute must still
+                  be specified with the anchor.</p>
                   ]]>
             </description>
         </attribute>

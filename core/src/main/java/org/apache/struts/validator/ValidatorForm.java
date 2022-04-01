@@ -121,7 +121,7 @@ public class ValidatorForm extends ActionForm implements Serializable {
         
         Validator validator =
             Resources.initValidator(validationKey, this, application, request,
-                errors, page);
+                errors, getPage());
 
         try {
             validatorResults = validator.validate();
@@ -152,7 +152,7 @@ public class ValidatorForm extends ActionForm implements Serializable {
      */
     public void reset(ActionMapping mapping, HttpServletRequest request) {
         super.reset(mapping, request);
-        page = 0;
+        setPage(0);
         validatorResults = null;
     }
 

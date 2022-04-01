@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Remove NOTICE.txt from Apache Struts EL
 * STR-3042: Retrieve page through methods
 * STR-2098: Clarify FileNotFoundException depends on underlying implementation
 * STR-2959: File upload has 2GB limit

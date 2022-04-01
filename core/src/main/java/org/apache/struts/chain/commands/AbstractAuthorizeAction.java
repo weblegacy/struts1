@@ -62,7 +62,7 @@ public abstract class AbstractAuthorizeAction extends ActionCommandBase {
 
         // Is this action protected by role requirements?
         if (!isAuthorizationRequired(actionConfig)) {
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         boolean throwEx;
@@ -83,7 +83,7 @@ public abstract class AbstractAuthorizeAction extends ActionCommandBase {
             throw new UnauthorizedActionException(getErrorMessage(actionCtx,
                     actionConfig));
         } else {
-            return (false);
+            return CONTINUE_PROCESSING;
         }
     }
 

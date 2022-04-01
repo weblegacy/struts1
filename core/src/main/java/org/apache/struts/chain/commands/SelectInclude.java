@@ -66,6 +66,6 @@ public class SelectInclude extends ActionCommandBase {
             actionCtx.setInclude(include);
         }
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 }

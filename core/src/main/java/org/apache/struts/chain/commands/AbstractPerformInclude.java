@@ -47,7 +47,7 @@ public abstract class AbstractPerformInclude extends ActionCommandBase {
         String include = actionCtx.getInclude();
 
         if (include == null) {
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         // Determine the currect uri
@@ -56,7 +56,7 @@ public abstract class AbstractPerformInclude extends ActionCommandBase {
         // Perform the appropriate processing on this include uri
         perform(actionCtx, uri);
 
-        return (true);
+        return PROCESSING_COMPLETE;
     }
 
     // ------------------------------------------------------- Protected Methods

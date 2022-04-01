@@ -71,7 +71,7 @@ public class ExecuteCommand extends ActionCommandBase {
             }
         }
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 
     /**

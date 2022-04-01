@@ -47,7 +47,7 @@ public abstract class AbstractSetOriginalURI extends ActionCommandBase {
             setOriginalURI(actionCtx);
         }
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 
     // ------------------------------------------------------- Protected Methods

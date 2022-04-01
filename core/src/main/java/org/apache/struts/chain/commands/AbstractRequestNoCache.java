@@ -51,7 +51,7 @@ public abstract class AbstractRequestNoCache extends ActionCommandBase {
             requestNoCache(actionCtx);
         }
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 
     // ------------------------------------------------------- Protected Methods

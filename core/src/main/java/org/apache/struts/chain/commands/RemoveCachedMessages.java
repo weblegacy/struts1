@@ -56,7 +56,7 @@ public class RemoveCachedMessages extends ActionCommandBase {
         // Remove error messages as needed
         removeAccessedMessages(session, Globals.ERROR_KEY);
 
-        return false;
+        return CONTINUE_PROCESSING;
     }
 
     /**

@@ -30,8 +30,8 @@ import org.apache.struts.config.ForwardConfig;
  * <p>Invoke the appropriate <code>Action</code> for this request, and cache
  * the returned <code>ActionForward</code>.</p>
  *
- * @version $Rev$ $Date: 2005-06-04 10:58:46 -0400 (Sat, 04 Jun 2005)
- *          $
+ * @version $Rev$
+ * @since Struts 1.3
  */
 public abstract class AbstractExecuteAction extends ActionCommandBase {
     // ---------------------------------------------------------- Public Methods
@@ -50,14 +50,14 @@ public abstract class AbstractExecuteAction extends ActionCommandBase {
         Boolean valid = actionCtx.getFormValid();
 
         if ((valid == null) || !valid.booleanValue()) {
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         // Acquire the resources we will need to send to the Action
         Action action = actionCtx.getAction();
 
         if (action == null) {
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         ActionConfig actionConfig = actionCtx.getActionConfig();
@@ -69,7 +69,7 @@ public abstract class AbstractExecuteAction extends ActionCommandBase {
 
         actionCtx.setForwardConfig(forwardConfig);
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 
     // ------------------------------------------------------- Protected Methods

@@ -54,7 +54,7 @@ public abstract class AbstractSetContentType extends ActionCommandBase {
             setContentType(actionCtx, contentType);
         }
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 
     // ------------------------------------------------------- Protected Methods

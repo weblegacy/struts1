@@ -189,7 +189,7 @@ public class WrappingLookupCommand implements Filter {
         if (command != null) {
             return command.execute(getContext(context));
         } else {
-            return false;
+            return CONTINUE_PROCESSING;
         }
     }
 

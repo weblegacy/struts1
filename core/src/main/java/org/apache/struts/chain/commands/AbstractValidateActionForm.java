@@ -97,23 +97,22 @@ public abstract class AbstractValidateActionForm extends ActionCommandBase {
         ActionForm actionForm = actionCtx.getActionForm();
 
         if (actionForm == null) {
-            return false;
+            return CONTINUE_PROCESSING;
         }
 
         // Is validation disabled on this request?
         ActionConfig actionConfig = actionCtx.getActionConfig();
 
         if (!actionConfig.getValidate()) {
-            return false;
+            return CONTINUE_PROCESSING;
         }
 
         // Was this request cancelled?
         if (isCancelled(actionCtx, actionConfig)) {
             if (LOG.isDebugEnabled()) {
-                LOG.debug(" Cancelled transaction, skipping validation");
+                LOG.debug("Cancelled transaction, skipping validation");
             }
-
-            return false;
+            return CONTINUE_PROCESSING;
         }
 
         // Call the validate() method of this form bean
@@ -121,7 +120,7 @@ public abstract class AbstractValidateActionForm extends ActionCommandBase {
 
         // If there were no errors, proceed normally
         if ((errors == null) || (errors.isEmpty())) {
-            return false;
+            return CONTINUE_PROCESSING;
         }
 
         // Flag the validation failure and proceed
@@ -131,7 +130,7 @@ public abstract class AbstractValidateActionForm extends ActionCommandBase {
         actionCtx.saveErrors(errors);
         actionCtx.setFormValid(Boolean.FALSE);
 
-        return false;
+        return CONTINUE_PROCESSING;
     }
 
     // ------------------------------------------------------- Protected Methods

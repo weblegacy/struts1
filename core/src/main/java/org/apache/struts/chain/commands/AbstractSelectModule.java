@@ -76,7 +76,7 @@ public abstract class AbstractSelectModule extends ActionCommandBase {
 
         actionCtx.setMessageResources(messageResources);
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 
     // ------------------------------------------------------- Protected Methods

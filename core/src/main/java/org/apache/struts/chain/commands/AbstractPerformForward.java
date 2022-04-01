@@ -47,13 +47,13 @@ public abstract class AbstractPerformForward extends ActionCommandBase {
         ForwardConfig forwardConfig = actionCtx.getForwardConfig();
 
         if (forwardConfig == null) {
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         // Perform the appropriate processing on this ActionForward
         perform(actionCtx, forwardConfig);
 
-        return (true);
+        return PROCESSING_COMPLETE;
     }
 
     // ------------------------------------------------------- Protected Methods

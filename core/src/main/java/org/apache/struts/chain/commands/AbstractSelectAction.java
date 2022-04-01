@@ -74,7 +74,7 @@ public abstract class AbstractSelectAction extends ActionCommandBase {
 
         actionCtx.setActionConfig(actionConfig);
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 
     // ------------------------------------------------------- Protected Methods

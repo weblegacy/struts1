@@ -58,7 +58,7 @@ public abstract class AbstractSelectInput extends ActionCommandBase {
         Boolean valid = actionCtx.getFormValid();
 
         if ((valid != null) && valid.booleanValue()) {
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         // Acquire configuration objects that we need
@@ -73,9 +73,7 @@ public abstract class AbstractSelectInput extends ActionCommandBase {
             if (LOG.isTraceEnabled()) {
                 LOG.trace("Finding ForwardConfig for '" + input + "'");
             }
-
             forwardConfig = actionConfig.findForwardConfig(input);
-
             if (forwardConfig == null) {
                 forwardConfig = moduleConfig.findForwardConfig(input);
             }
@@ -83,7 +81,6 @@ public abstract class AbstractSelectInput extends ActionCommandBase {
             if (LOG.isTraceEnabled()) {
                 LOG.trace("Delegating to forward() for '" + input + "'");
             }
-
             forwardConfig = forward(actionCtx, moduleConfig, input);
         }
 
@@ -93,7 +90,7 @@ public abstract class AbstractSelectInput extends ActionCommandBase {
 
         actionCtx.setForwardConfig(forwardConfig);
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 
     // ------------------------------------------------------- Protected Methods

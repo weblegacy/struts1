@@ -61,14 +61,14 @@ public abstract class AbstractCreateAction extends ActionCommandBase {
         if ((valid == null) || !valid.booleanValue()) {
             LOG.trace("Invalid form; not going to execute.");
 
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         // Check to see if an action has already been created
         if (actionCtx.getAction() != null) {
             LOG.trace("already have an action [" + actionCtx.getAction() + "]");
 
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         // Look up the class name for the desired Action
@@ -84,7 +84,7 @@ public abstract class AbstractCreateAction extends ActionCommandBase {
                 LOG.trace("no type for " + actionConfig.getPath());
             }
 
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         // Create (if necessary) and cache an Action instance
@@ -96,7 +96,7 @@ public abstract class AbstractCreateAction extends ActionCommandBase {
 
         actionCtx.setAction(action);
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 
     // ------------------------------------------------------- Protected Methods

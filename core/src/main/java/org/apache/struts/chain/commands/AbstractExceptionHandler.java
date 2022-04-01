@@ -64,7 +64,7 @@ public abstract class AbstractExceptionHandler extends ActionCommandBase {
         if (exception == null) {
             LOG.warn("No Exception found in ActionContext");
 
-            return (true);
+            return PROCESSING_COMPLETE;
         }
 
         // Look up the local or global exception handler configuration
@@ -103,9 +103,9 @@ public abstract class AbstractExceptionHandler extends ActionCommandBase {
         if (forwardConfig != null) {
             actionCtx.setForwardConfig(forwardConfig);
 
-            return (false);
+            return CONTINUE_PROCESSING;
         } else {
-            return (true);
+            return PROCESSING_COMPLETE;
         }
     }
 

@@ -60,8 +60,7 @@ public class CreateActionForm extends ActionCommandBase {
 
         if (name == null) {
             actionCtx.setActionForm(null);
-
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         if (LOG.isTraceEnabled()) {
@@ -77,8 +76,7 @@ public class CreateActionForm extends ActionCommandBase {
                 + actionConfig.getModuleConfig().getPrefix() + " under name "
                 + name);
             actionCtx.setActionForm(null);
-
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         Map scope = actionCtx.getScope(actionConfig.getScope());
@@ -107,6 +105,6 @@ public class CreateActionForm extends ActionCommandBase {
 
         scope.put(actionConfig.getAttribute(), instance);
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 }

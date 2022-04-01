@@ -64,7 +64,7 @@ public abstract class AbstractSelectLocale extends ActionCommandBase {
                     + "nothing to do");
             }
 
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         // Retrieve and cache appropriate Locale for this request
@@ -76,7 +76,7 @@ public abstract class AbstractSelectLocale extends ActionCommandBase {
 
         actionCtx.setLocale(locale);
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 
     // ------------------------------------------------------- Protected Methods

@@ -113,7 +113,7 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
         throws Exception {
         actionCtx.setException(null);
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 
     /**

@@ -59,7 +59,7 @@ public abstract class AbstractSelectForward extends ActionCommandBase {
         Boolean valid = actionCtx.getFormValid();
 
         if ((valid == null) || !valid.booleanValue()) {
-            return (false);
+            return CONTINUE_PROCESSING;
         }
 
         // Acquire configuration objects that we need
@@ -79,7 +79,7 @@ public abstract class AbstractSelectForward extends ActionCommandBase {
             actionCtx.setForwardConfig(forwardConfig);
         }
 
-        return (false);
+        return CONTINUE_PROCESSING;
     }
 
     // ------------------------------------------------------- Protected Methods

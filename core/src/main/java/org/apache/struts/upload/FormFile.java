@@ -99,7 +99,9 @@ public interface FormFile {
      * {@link #getInputStream() getInputStream}. </p>
      *
      * @return The file data as a byte array.
-     * @throws FileNotFoundException if the uploaded file is not found.
+     * @throws FileNotFoundException if the uploaded file is not found. Some
+     *              implementations may not deal with files and/or throw
+     *              this exception.
      * @throws IOException           if an error occurred while reading the
      *                               file.
      */
@@ -110,7 +112,9 @@ public interface FormFile {
      * <p> Returns an input stream for this file. The caller must close the
      * stream when it is no longer needed. </p>
      *
-     * @throws FileNotFoundException if the uploaded file is not found.
+     * @throws FileNotFoundException if the uploaded file is not found. Some
+     *              implementations may not deal with files and/or throw
+     *              this exception.
      * @throws IOException           if an error occurred while reading the
      *                               file.
      */

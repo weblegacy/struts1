@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-2020: Explain that NPE is caused by missing ActionServlet
 * STR-1638: Note that anchor cannot be standalone
 * STR-3150: Use Chain processing constants
 * STR-3119: Add root cause to thrown exceptions that do not accept root cause in the constructor

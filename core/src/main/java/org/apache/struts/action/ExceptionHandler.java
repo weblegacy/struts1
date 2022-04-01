@@ -144,8 +144,14 @@ public class ExceptionHandler {
             error = ((ModuleException) ex).getActionMessage();
             property = ((ModuleException) ex).getProperty();
         } else {
-            error = new ActionMessage(ae.getKey(), ex.getMessage());
-            property = error.getKey();
+            // STR-2924
+            if (ae.getKey() != null) {
+                error = new ActionMessage(ae.getKey(), ex.getMessage());
+                property = error.getKey();
+            } else {
+                error = null;
+                property = null;
+            }
         }
 
         this.logException(ex);
@@ -274,8 +280,9 @@ public class ExceptionHandler {
      * generated from an <code>Exception</code> during <code>Action</code>
      * delegation. The default implementation is to set an attribute of the
      * request or session, as defined by the scope provided (the scope from
-     * the exception mapping). An <code>ActionMessages</code> instance is
-     * created, the error is added to the collection and the collection is set
+     * the exception mapping), if <code>error</code> is not <code>null</code>.
+     * Otherwise, an <code>ActionMessages</code> instance is created, the error
+     * is added to the collection and the collection is set
      * under the <code>Globals.ERROR_KEY</code>.</p>
      *
      * @param request  The request we are handling
@@ -288,14 +295,16 @@ public class ExceptionHandler {
      */
     protected void storeException(HttpServletRequest request, String property,
         ActionMessage error, ActionForward forward, String scope) {
-        ActionMessages errors = new ActionMessages();
 
-        errors.add(property, error);
+        if (error != null) {
+            ActionMessages errors = new ActionMessages();
+            errors.add(property, error);
 
-        if ("request".equals(scope)) {
-            request.setAttribute(Globals.ERROR_KEY, errors);
-        } else {
-            request.getSession().setAttribute(Globals.ERROR_KEY, errors);
+            if ("request".equals(scope)) {
+                request.setAttribute(Globals.ERROR_KEY, errors);
+            } else {
+                request.getSession().setAttribute(Globals.ERROR_KEY, errors);
+            }
         }
     }
 

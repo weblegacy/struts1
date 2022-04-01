@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-2700: Correction - Clear input stream on aborted upload (Windows only)
 * Adjust resource definitions in pom.xml
 * STR-2013: Add Spanish translations
 * Move property files into standard Maven resources folder

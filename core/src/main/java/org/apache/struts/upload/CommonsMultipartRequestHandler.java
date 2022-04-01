@@ -33,6 +33,7 @@ import org.apache.struts.config.ModuleConfig;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 
 import java.io.File;

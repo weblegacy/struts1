@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Move property files into standard Maven resources folder
 * Remove NOTICE.txt from Apache Struts EL
 * STR-3042: Retrieve page through methods
 * STR-2098: Clarify FileNotFoundException depends on underlying implementation

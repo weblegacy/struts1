@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-3068: Warn when using the classic RequestProcessor
 * STR-1870: Add debug log message to explain initialization strategy
 * STR-1870: Fail fast when definition is duplicated
 * STR-2924: Allow Exception key to be optional

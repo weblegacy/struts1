@@ -40,6 +40,7 @@ import org.apache.commons.digester.RuleSet;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
+import org.apache.struts.chain.ComposableRequestProcessor;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ConfigRuleSet;
 import org.apache.struts.config.ExceptionConfig;
@@ -54,7 +55,6 @@ import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.MessageResourcesFactory;
 import org.apache.struts.util.ModuleUtils;
 import org.apache.struts.util.RequestUtils;
-import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import javax.servlet.ServletContext;
@@ -72,7 +72,6 @@ import java.math.BigInteger;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
 
 import java.util.ArrayList;
 import java.util.Enumeration;
@@ -618,6 +617,15 @@ public class ActionServlet extends HttpServlet {
                     + config.getControllerConfig().getProcessorClass());
                 e2.initCause(e);
                 throw e2;
+            }
+
+            // Emit a warning to the log if the classic RequestProcessor is 
+            // being used without composition. Hopefully developers will 
+            // heed this message and make the upgrade.
+            if (!(processor instanceof ComposableRequestProcessor)) {
+                log.warn("Use of the classic RequestProcessor is not recommended. " +
+                        "Please upgrade to the ComposableRequestProcessor to " +
+                        "receive the advantage of modern enhancements and fixes.");
             }
 
             processor.init(this, config);

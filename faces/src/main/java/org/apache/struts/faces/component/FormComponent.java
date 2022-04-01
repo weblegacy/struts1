@@ -507,9 +507,11 @@ public class FormComponent extends UIForm {
                         return;
                     }
                 } catch (Throwable t) {
-                    throw new IllegalArgumentException
+                    IllegalArgumentException t2 = new IllegalArgumentException
                         ("Cannot load form bean class '" +
                          fbConfig.getType() + "'");
+                    t2.initCause(t);
+                    throw t2;
                 }
             }
         }
@@ -527,9 +529,11 @@ public class FormComponent extends UIForm {
                     log.trace(" --> " + instance);
                 }
             } catch (Throwable t) {
-                throw new IllegalArgumentException
+                IllegalArgumentException t2 = new IllegalArgumentException
                     ("Cannot create form bean of type '" +
                      fbConfig.getType() + "'");
+                t2.initCause(t);
+                throw t2;
             }
         } else {
             try {
@@ -542,9 +546,11 @@ public class FormComponent extends UIForm {
                     log.trace(" --> " + instance);
                 }
             } catch (Throwable t) {
-                throw new IllegalArgumentException
+                IllegalArgumentException t2 = new IllegalArgumentException
                     ("Cannot create form bean of class '" +
                      fbConfig.getType() + "'");
+                t2.initCause(t);
+                throw t2;
             }
         }
 

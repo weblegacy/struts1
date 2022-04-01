@@ -222,11 +222,11 @@ public final class ActionListenerImpl implements ActionListener {
                 log.error("Cannot instantiate RequestProcessor of class "
                           + config.getControllerConfig().getProcessorClass(),
                           e);
-                throw new IllegalStateException(
+                IllegalStateException e2 = new IllegalStateException(
                     "Cannot initialize RequestProcessor of class "
-                        + config.getControllerConfig().getProcessorClass()
-                        + ": "
-                        + e);
+                        + config.getControllerConfig().getProcessorClass());
+                e2.initCause(e);
+                throw e2;
             }
 
         }

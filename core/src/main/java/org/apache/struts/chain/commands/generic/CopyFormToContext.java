@@ -251,8 +251,10 @@ public class CopyFormToContext extends ActionCommandBase {
         try {
             context = (ActionContextBase) ctx;
         } catch (ClassCastException e) {
-            throw new IllegalStateException("ActionContext [" + ctx + "]"
-                + " must be subclass of ActionContextBase", e);
+            IllegalStateException e2 = new IllegalStateException("ActionContext [" + ctx + "]"
+                + " must be subclass of ActionContextBase");
+            e2.initCause(e);
+            throw e2;
         }
 
         ActionForm form =

@@ -279,9 +279,10 @@ public class TilesPlugin implements PlugIn {
                 log.debug("", ex);
             }
             ex.printStackTrace();
-            throw new UnavailableException(
-                "Can't populate DefinitionsFactoryConfig class from 'web.xml': "
-                    + ex.getMessage());
+            UnavailableException e2 = new UnavailableException(
+                "Can't populate DefinitionsFactoryConfig class from 'web.xml'");
+            e2.initCause(ex);
+            throw e2;
         }
 
         // Get init parameters from struts-config.xml
@@ -294,11 +295,12 @@ public class TilesPlugin implements PlugIn {
                 log.debug("", ex);
             }
 
-            throw new UnavailableException(
+            UnavailableException e2 = new UnavailableException(
                 "Can't populate DefinitionsFactoryConfig class from '"
                     + config.getPrefix()
-                    + "/struts-config.xml':"
-                    + ex.getMessage());
+                    + "/struts-config.xml'");
+            e2.initCause(ex);
+            throw e2;
         }
 
         return factoryConfig;

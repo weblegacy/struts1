@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-3119: Add root cause to thrown exceptions that do not accept root cause in the constructor
 * STR-2437: Standardize exception rethrows to contain root cause
 * Some test-code reformating, no change
 * Core: Making some of the fail messages a bit more expressive

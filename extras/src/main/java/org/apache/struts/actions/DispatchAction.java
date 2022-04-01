@@ -258,7 +258,9 @@ public abstract class DispatchAction extends BaseAction {
 
             String userMsg =
                 messages.getMessage("dispatch.method.user", mapping.getPath());
-            throw new NoSuchMethodException(userMsg);
+            NoSuchMethodException e2 = new NoSuchMethodException(userMsg);
+            e2.initCause(e);
+            throw e2;
         }
 
         ActionForward forward = null;

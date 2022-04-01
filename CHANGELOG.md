@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-2013: Add Spanish translations
 * Move property files into standard Maven resources folder
 * Remove NOTICE.txt from Apache Struts EL
 * STR-3042: Retrieve page through methods

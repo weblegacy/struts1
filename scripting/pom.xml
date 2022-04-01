@@ -46,15 +46,7 @@
          <url>scp://people.apache.org/www/struts.apache.org/1.x/struts-scripting</url>
       </site>
    </distributionManagement>
-   
-   <build>
-      <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-      </resources>
-   </build>
-   
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -68,7 +60,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
         </dependency>
-   </dependencies>
+    </dependencies>
 
    <!-- 
    <reporting>

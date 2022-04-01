@@ -57,9 +57,9 @@
 
    <build>
       <resources>
-        <!-- Include resources under src/main/java in WEB-INF/classes -->
+        <!-- Include resources under src/main/resources in WEB-INF/classes -->
          <resource>
-            <directory>src/main/java</directory>
+            <directory>src/main/resources</directory>
             <includes>
                <include>**/*.properties</include>
                <include>**/*.xml</include>
@@ -91,10 +91,13 @@
                   <id>copy-sources</id>
                   <phase>process-sources</phase>
                   <configuration>
-                     <outputDirectory>${project.build.directory}/${project.artifactId}/WEB-INF/src/java</outputDirectory>
+                     <outputDirectory>${project.build.directory}/${project.artifactId}/WEB-INF/src</outputDirectory>
                      <resources>
                         <resource>
-                           <directory>${project.basedir}/src/main/java</directory>
+                           <directory>${project.basedir}/src/main</directory>
+                           <excludes>
+                               <exclude>webapp/**</exclude>
+                           </excludes>
                         </resource>
                      </resources>
                   </configuration>

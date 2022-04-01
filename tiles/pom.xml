@@ -47,23 +47,6 @@
       </site>
    </distributionManagement>
 
-   <build>
-      <resources>
-         <resource>
-            <directory>src/main/resources</directory>
-         </resource>
-      </resources>
-
-      <testResources>
-         <testResource>
-            <directory>src/test/java</directory>
-            <includes>
-               <include>**/*.xml</include>
-            </includes>
-         </testResource>
-      </testResources>
-   </build>
-
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
@@ -79,7 +62,7 @@
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
         </dependency>
-   </dependencies>
+    </dependencies>
 
    <reporting>
       <plugins>

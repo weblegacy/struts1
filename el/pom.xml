@@ -46,14 +46,6 @@
          <url>scp://people.apache.org/www/struts.apache.org/1.x/struts-el</url>
       </site>
    </distributionManagement>
-   
-   <build>
-      <resources>
-         <resource>
-            <directory>src/main/resources</directory>
-         </resource>
-      </resources>
-   </build>
 
    <dependencies>
       <dependency>

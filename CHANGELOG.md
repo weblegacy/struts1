@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-2700: Clear input stream on aborted upload (Windows only)
 * STR-3068: Warn when using the classic RequestProcessor
 * STR-1870: Add debug log message to explain initialization strategy
 * STR-1870: Fail fast when definition is duplicated

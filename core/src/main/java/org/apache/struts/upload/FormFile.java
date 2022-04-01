@@ -48,15 +48,34 @@ public interface FormFile {
      * <p> Returns the size of this file. </p>
      *
      * @return The size of the file, in bytes.
+     * @throws IllegalStateException if size is greater than 2GB
+     * @see #getFileLength()
+     * @deprecated
      */
     public int getFileSize();
 
     /**
      * <p> Sets the file size. </p>
      *
-     * @param fileSize The size of the file, in bytes,
+     * @param size The size of the file, in bytes,
+     * @see #setFileLength(long)
+     * @deprecated
      */
-    public void setFileSize(int fileSize);
+    public void setFileSize(int size);
+
+    /**
+     * <p> Returns the length of this file. </p>
+     *
+     * @return The length of the file, in bytes.
+     */
+    public long getFileLength();
+
+    /**
+     * <p> Sets the file length. </p>
+     *
+     * @param fileLength The length of the file, in bytes,
+     */
+    public void setFileLength(long fileLength);
 
     /**
      * <p> Returns the file name of this file. This is the base name of the

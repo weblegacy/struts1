@@ -543,9 +543,14 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
          * <p> Returns the size, in bytes, of this file. </p>
          *
          * @return The size of the file, in bytes.
+         * @deprecated
          */
         public int getFileSize() {
-            return (int) fileItem.getSize();
+            long size = fileItem.getSize();
+            if (size > Integer.MAX_VALUE) {
+                throw new IllegalStateException("Size is greater than 2 GB; use getFileLength()");
+            }
+            return (int) size;
         }
 
         /**
@@ -553,10 +558,32 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
          * is not supported in this implementation. </p>
          *
          * @param filesize The size of the file, in bytes.
+         * @deprecated
          */
         public void setFileSize(int filesize) {
             throw new UnsupportedOperationException(
                 "The setFileSize() method is not supported.");
+        }
+
+        /**
+         * <p> Returns the length of this file. </p>
+         *
+         * @return The length of the file, in bytes.
+         * @throws IllegalStateException if size is greater than 2GB
+         */
+        public long getFileLength() {
+            return fileItem.getSize();
+        }
+
+        /**
+         * <p> Sets the length, in bytes, for this file. <p> NOTE: This method
+         * is not supported in this implementation. </p>
+         *
+         * @param fileLength The length of the file, in bytes.
+         */
+        public void setFileLength(long fileLength) {
+            throw new UnsupportedOperationException(
+                "The setFileLength() method is not supported.");
         }
 
         /**

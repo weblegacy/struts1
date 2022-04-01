@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-1870: Fail fast when definition is duplicated
 * STR-2924: Allow Exception key to be optional
 * STR-2020: Explain that NPE is caused by missing ActionServlet
 * STR-1638: Note that anchor cannot be standalone

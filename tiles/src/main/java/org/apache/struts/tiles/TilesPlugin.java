@@ -211,14 +211,12 @@ public class TilesPlugin implements PlugIn {
                 moduleConfig);
 
         if (definitionFactory != null) {
-            log.info(
+            throw new UnavailableException(
                 "Factory already exists for module '"
                     + moduleConfig.getPrefix()
-                    + "'. The factory found is from module '"
-                    + definitionFactory.getConfig().getFactoryName()
-                    + "'. No new creation.");
-
-            return;
+                    + "' and cannot be redefined. " +
+                    "The factory found is from module '"
+                    + definitionFactory.getConfig().getFactoryName() + "'.");
         }
 
         // Create configurable factory

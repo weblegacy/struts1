@@ -33,6 +33,7 @@
     <img src="struts-power.gif">
     </td>
     </tr>
+    <tr>
     <td>
     Struts img tag via page attribute
     </td>
@@ -64,5 +65,6 @@
     <html:img page="/exercise/struts-power.gif" module="/"/>
     </td>
     </tr>
+    </table>
   </body>
 </html>

@@ -151,6 +151,8 @@ public class TilesPlugin implements PlugIn {
     private void initTilesUtil() throws ServletException {
 
         if (TilesUtil.isTilesUtilImplSet()) {
+            log.debug("Skipping re-init of Tiles Plugin. Values defined in the " +
+                    "first initialized plugin take precedence.");
             return;
         }
 

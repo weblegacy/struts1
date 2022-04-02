@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Skip install- and deployment-phase for integration tests
 * Move more property files into standard Maven resources folder
 * Correct `html-img.jsp` in `apps/examples`
 * STR-2700: Correction - Clear input stream on aborted upload (Windows only)

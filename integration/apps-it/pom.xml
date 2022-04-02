@@ -29,7 +29,6 @@
 
    <modelVersion>4.0.0</modelVersion>
    <artifactId>struts-it-apps</artifactId>
-   <packaging>jar</packaging>
    <name>Struts Integration - Apps Tests</name>
    <url>http://struts.apache.org</url>
 

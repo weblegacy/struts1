@@ -50,6 +50,10 @@ public class CreateAction
     protected synchronized Action getAction(ActionContext context, String type,
         ActionConfig actionConfig)
         throws Exception {
+
+        ServletActionContext saContext = (ServletActionContext) context;
+        ActionServlet actionServlet = saContext.getActionServlet();
+
         ModuleConfig moduleConfig = actionConfig.getModuleConfig();
         String actionsKey = Constants.ACTIONS_KEY + moduleConfig.getPrefix();
         Map actions = (Map) context.getApplicationScope().get(actionsKey);
@@ -65,15 +69,19 @@ public class CreateAction
             action = (Action) actions.get(type);
 
             if (action == null) {
-                action = createAction(context, type);
+                try {
+                    action = createAction(context, type);
+                } catch (Exception e) {
+                    log.error(actionServlet.getInternal().getMessage(
+                            "actionCreate", actionConfig.getPath(),
+                            actionConfig.toString()), e);
+                    throw e;
+                }
                 actions.put(type, action);
             }
         }
 
         if (action.getServlet() == null) {
-            ServletActionContext saContext = (ServletActionContext) context;
-            ActionServlet actionServlet = saContext.getActionServlet();
-
             action.setServlet(actionServlet);
         }
 

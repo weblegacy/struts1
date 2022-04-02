@@ -284,7 +284,7 @@ public class RequestProcessor {
                 // instead of returning null.
             } catch (Exception e) {
                 log.error(getInternal().getMessage("actionCreate",
-                        mapping.getPath()), e);
+                        mapping.getPath(), mapping.toString()), e);
 
                 response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                     getInternal().getMessage("actionCreate", mapping.getPath()));

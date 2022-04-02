@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Reorder language specific ActionResources-properties
 * STR-1809: Enhance log error message for when the Action cannot instantiate
 * STR-3085: Configuration post-processing via plug-ins
 * STR-1819: Warn if a form is not declared but later used

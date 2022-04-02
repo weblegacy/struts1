@@ -240,7 +240,8 @@ public class IterateTag extends BodyTagSupport {
 
         if (collection == null) {
             JspException e =
-                new JspException(messages.getMessage("iterate.collection"));
+                new JspException(messages.getMessage("iterate.collection",
+                       name, property));
 
             TagUtils.getInstance().saveException(pageContext, e);
             throw e;
@@ -273,7 +274,8 @@ public class IterateTag extends BodyTagSupport {
             iterator = new IteratorAdapter((Enumeration) collection);
         } else {
             JspException e =
-                new JspException(messages.getMessage("iterate.iterator"));
+                new JspException(messages.getMessage("iterate.iterator", name,
+                       property, collection.getClass().getName()));
 
             TagUtils.getInstance().saveException(pageContext, e);
             throw e;

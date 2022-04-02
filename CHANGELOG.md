@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-2153: Reveal the offending bean and property name when iterating
 * STR-1195: SelectTag should single select when "multiple" attribute equals false
 * STR-3191: Filter attributes
 * STR-2779: Better explain why invalid collection (thanks to Ralf Hauser)

@@ -111,7 +111,7 @@ public class ValidWhen {
         } catch (IllegalArgumentException ex) {
             String logErrorMsg =
                 sysmsgs.getMessage("validation.failed", "validwhen",
-                    field.getProperty(), ex.toString());
+                    field.getProperty(), validator.getFormName(), ex.toString());
 
             log.error(logErrorMsg);
 

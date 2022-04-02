@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-2611: Cite the form name in validation exception message
 * Reorder language specific ActionResources-properties
 * STR-1809: Enhance log error message for when the Action cannot instantiate
 * STR-3085: Configuration post-processing via plug-ins

@@ -147,7 +147,8 @@ public class SizeTag extends TagSupport {
 
         if (value == null) {
             JspException e =
-                new JspException(messages.getMessage("size.collection"));
+                new JspException(messages.getMessage("size.collection",
+                        "value == null"));
 
             TagUtils.getInstance().saveException(pageContext, e);
             throw e;
@@ -159,7 +160,8 @@ public class SizeTag extends TagSupport {
             size = ((Map) value).size();
         } else {
             JspException e =
-                new JspException(messages.getMessage("size.collection"));
+                new JspException(messages.getMessage("size.collection",
+                        value.getClass().getName()));
 
             TagUtils.getInstance().saveException(pageContext, e);
             throw e;

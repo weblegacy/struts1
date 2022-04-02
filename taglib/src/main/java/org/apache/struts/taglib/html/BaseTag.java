@@ -177,18 +177,20 @@ public class BaseTag extends TagSupport {
                     .getContextPath());
 
             contextBase.append("/");
-            tag.append(RequestUtils.createServerUriStringBuffer(scheme,
-                    serverName, port, contextBase.toString()).toString());
+            tag.append(TagUtils.getInstance().filter(
+                    RequestUtils.createServerUriStringBuffer(scheme,
+                    serverName, port, contextBase.toString()).toString()));
         } else {
-            tag.append(RequestUtils.createServerUriStringBuffer(scheme,
-                    serverName, port, uri).toString());
+            tag.append(TagUtils.getInstance().filter(
+                RequestUtils.createServerUriStringBuffer(scheme,
+                    serverName, port, uri).toString()));
         }
 
         tag.append("\"");
 
         if (this.target != null) {
             tag.append(" target=\"");
-            tag.append(this.target);
+            tag.append(TagUtils.getInstance().filter(this.target));
             tag.append("\"");
         }
 

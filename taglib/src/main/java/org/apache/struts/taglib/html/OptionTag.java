@@ -304,31 +304,31 @@ public class OptionTag extends BodyTagSupport {
 
         if (style != null) {
             results.append(" style=\"");
-            results.append(style);
+            results.append(TagUtils.getInstance().filter(style));
             results.append("\"");
         }
 
         if (styleId != null) {
             results.append(" id=\"");
-            results.append(styleId);
+            results.append(TagUtils.getInstance().filter(styleId));
             results.append("\"");
         }
 
         if (styleClass != null) {
             results.append(" class=\"");
-            results.append(styleClass);
+            results.append(TagUtils.getInstance().filter(styleClass));
             results.append("\"");
         }
 
         if (dir != null) {
             results.append(" dir=\"");
-            results.append(dir);
+            results.append(TagUtils.getInstance().filter(dir));
             results.append("\"");
         }
 
         if (lang != null) {
             results.append(" lang=\"");
-            results.append(lang);
+            results.append(TagUtils.getInstance().filter(lang));
             results.append("\"");
         }
 

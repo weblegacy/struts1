@@ -200,7 +200,7 @@ public class MultiboxTag extends BaseHandlerTag {
             throw e;
         }
 
-        prepareAttribute(results, "value", TagUtils.getInstance().filter(value));
+        prepareAttribute(results, "value", value);
 
         return value;
     }

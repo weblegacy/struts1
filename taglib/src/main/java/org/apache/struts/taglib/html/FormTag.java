@@ -608,9 +608,10 @@ public class FormTag extends TagSupport {
             (HttpServletResponse) this.pageContext.getResponse();
 
         results.append(" action=\"");
-        results.append(response.encodeURL(
+        results.append(TagUtils.getInstance().filter(
+            response.encodeURL(
                 TagUtils.getInstance().getActionMappingURL(calcAction,
-                    this.pageContext)));
+                    this.pageContext))));
 
         results.append("\"");
     }
@@ -641,7 +642,7 @@ public class FormTag extends TagSupport {
                 results.append("<div><input type=\"hidden\" name=\"");
                 results.append(Constants.TOKEN_KEY);
                 results.append("\" value=\"");
-                results.append(token);
+                results.append(TagUtils.getInstance().filter(token));
 
                 if (this.isXhtml()) {
                     results.append("\" />");
@@ -663,9 +664,9 @@ public class FormTag extends TagSupport {
         String value) {
         if (value != null) {
             results.append(" ");
-            results.append(attribute);
+            results.append(TagUtils.getInstance().filter(attribute));
             results.append("=\"");
-            results.append(value);
+            results.append(TagUtils.getInstance().filter(value));
             results.append("\"");
         }
     }

@@ -332,13 +332,13 @@ public class OptionsTag extends TagSupport {
 
         if (style != null) {
             sb.append(" style=\"");
-            sb.append(style);
+            sb.append(TagUtils.getInstance().filter(style));
             sb.append("\"");
         }
 
         if (styleClass != null) {
             sb.append(" class=\"");
-            sb.append(styleClass);
+            sb.append(TagUtils.getInstance().filter(styleClass));
             sb.append("\"");
         }
 

@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-2904: Verify only one instance of the plugin is loaded per module
 * STR-2611: Cite the form name in validation exception message
 * Reorder language specific ActionResources-properties
 * STR-1809: Enhance log error message for when the Action cannot instantiate

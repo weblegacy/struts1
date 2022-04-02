@@ -28,6 +28,7 @@ import org.apache.struts.action.PlugIn;
 import org.apache.struts.config.ModuleConfig;
 import org.xml.sax.SAXException;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.UnavailableException;
 
@@ -155,18 +156,24 @@ public class ValidatorPlugIn implements PlugIn {
      */
     public void init(ActionServlet servlet, ModuleConfig config)
         throws ServletException {
+
         // Remember our associated configuration and servlet
         this.config = config;
         this.servlet = servlet;
 
+        // Verify only one instance of the plugin is loaded per module
+        String validatorModuleKey = VALIDATOR_KEY + config.getPrefix();
+        ServletContext servletContext = servlet.getServletContext();
+        if (servletContext.getAttribute(validatorModuleKey) != null) {
+            throw new UnavailableException("ValidatorPlugIn cannot be " +
+                    "redefined for module '" + config.getPrefix() + "'");
+        }
+
         // Load our database from persistent storage
         try {
             this.initResources();
-
-            servlet.getServletContext().setAttribute(VALIDATOR_KEY
-                + config.getPrefix(), resources);
-
-            servlet.getServletContext().setAttribute(STOP_ON_ERROR_KEY + '.'
+            servletContext.setAttribute(validatorModuleKey, resources);
+            servletContext.setAttribute(STOP_ON_ERROR_KEY + '.'
                 + config.getPrefix(),
                 (this.stopOnFirstError ? Boolean.TRUE : Boolean.FALSE));
         } catch (Exception e) {

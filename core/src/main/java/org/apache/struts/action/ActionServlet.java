@@ -1365,6 +1365,18 @@ public class ActionServlet extends HttpServlet {
             ActionConfig actionConfig = actionConfigs[i];
 
             processActionConfigExtension(actionConfig, config);
+
+            // Verify the form, if specified, exists to help the developer
+            // detect a possible typo. It is also possible the missing
+            // reference is a dynamic runtime bean
+            String formName = actionConfig.getName();
+            if (formName != null) {
+                FormBeanConfig formConfig = config.findFormBeanConfig(formName);
+                if (formConfig == null) {
+                    log.warn(getInternal().getMessage("actionFormUnknown",
+                            actionConfig.getPath(), formName));
+                }
+            }
         }
 
         for (int i = 0; i < actionConfigs.length; i++) {

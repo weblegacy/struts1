@@ -7521,7 +7521,7 @@
                         affects the data type of the associated property you
                         should use:</p>
                         <ul>
-                        <li><em>multiple="true" IS NOT selected</em> -
+                        <li><em>multiple="false" or multiple IS NOT selected</em> -
                             The corresponding property should be a scalar
                             value of any supported data type.</li>
                         <li><em>multiple="true" IS selected</em> -
@@ -7703,8 +7703,8 @@
             <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
-                                If set to any arbitrary value, the rendered
-                                select element will support
+                                If set to any arbitrary value except 'false,
+                                the rendered select element will support
                                 multiple selections.
                         ]]>
             </description>

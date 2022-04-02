@@ -52,8 +52,8 @@ public class SelectTag extends BaseHandlerTag {
     protected String[] match = null;
 
     /**
-     * Should multiple selections be allowed.  Any non-null value will trigger
-     * rendering this.
+     * Should multiple selections be allowed.  Any non-null value except for 'false'
+     * will trigger rendering this.
      */
     protected String multiple = null;
 
@@ -192,7 +192,7 @@ public class SelectTag extends BaseHandlerTag {
         prepareAttribute(results, "name", prepareName());
         prepareAttribute(results, "accesskey", getAccesskey());
 
-        if (multiple != null) {
+        if (multiple != null && !multiple.equals("false")) {
             results.append(" multiple=\"multiple\"");
         }
 

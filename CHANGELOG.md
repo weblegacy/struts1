@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-1195: SelectTag should single select when "multiple" attribute equals false
 * STR-3191: Filter attributes
 * STR-2779: Better explain why invalid collection (thanks to Ralf Hauser)
 * STR-2904: Verify only one instance of the plugin is loaded per module

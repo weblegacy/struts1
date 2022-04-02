@@ -42,6 +42,7 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.chain.ComposableRequestProcessor;
 import org.apache.struts.config.ActionConfig;
+import org.apache.struts.config.BaseConfig;
 import org.apache.struts.config.ConfigRuleSet;
 import org.apache.struts.config.ExceptionConfig;
 import org.apache.struts.config.FormBeanConfig;
@@ -50,6 +51,7 @@ import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.config.MessageResourcesConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.config.ModuleConfigFactory;
+import org.apache.struts.config.ModuleConfigPostProcessor;
 import org.apache.struts.config.PlugInConfig;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.MessageResourcesFactory;
@@ -66,13 +68,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.InputStream;
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Iterator;
@@ -360,6 +359,7 @@ public class ActionServlet extends HttpServlet {
             initModuleForwards(moduleConfig);
             initModuleExceptionConfigs(moduleConfig);
             initModuleActions(moduleConfig);
+            postProcessConfig(moduleConfig);
             moduleConfig.freeze();
 
             Enumeration names = getServletConfig().getInitParameterNames();
@@ -382,6 +382,7 @@ public class ActionServlet extends HttpServlet {
                 initModuleForwards(moduleConfig);
                 initModuleExceptionConfigs(moduleConfig);
                 initModuleActions(moduleConfig);
+                postProcessConfig(moduleConfig);
                 moduleConfig.freeze();
             }
 
@@ -921,7 +922,9 @@ public class ActionServlet extends HttpServlet {
         for (int i = 0; i < formBeans.length; i++) {
             FormBeanConfig beanConfig = formBeans[i];
 
+            postProcessConfig(beanConfig, config, true);
             processFormBeanExtension(beanConfig, config);
+            postProcessConfig(beanConfig, config, false);
         }
 
         for (int i = 0; i < formBeans.length; i++) {
@@ -1067,7 +1070,9 @@ public class ActionServlet extends HttpServlet {
         for (int i = 0; i < forwards.length; i++) {
             ForwardConfig forward = forwards[i];
 
+            postProcessConfig(forward, config, true);
             processForwardExtension(forward, config, null);
+            postProcessConfig(forward, config, false);
         }
 
         for (int i = 0; i < forwards.length; i++) {
@@ -1216,7 +1221,9 @@ public class ActionServlet extends HttpServlet {
         for (int i = 0; i < exceptions.length; i++) {
             ExceptionConfig exception = exceptions[i];
 
+            postProcessConfig(exception, config, true);
             processExceptionExtension(exception, config, null);
+            postProcessConfig(exception, config, false);
         }
 
 // STR-2924
@@ -1364,7 +1371,9 @@ public class ActionServlet extends HttpServlet {
         for (int i = 0; i < actionConfigs.length; i++) {
             ActionConfig actionConfig = actionConfigs[i];
 
+            postProcessConfig(actionConfig, config, true);
             processActionConfigExtension(actionConfig, config);
+            postProcessConfig(actionConfig, config, false);
 
             // Verify the form, if specified, exists to help the developer
             // detect a possible typo. It is also possible the missing
@@ -1544,6 +1553,7 @@ public class ActionServlet extends HttpServlet {
                 continue;
             }
 
+            postProcessConfig(mrcs[i], config, true);
             if (log.isDebugEnabled()) {
                 log.debug("Initializing module path '" + config.getPrefix()
                     + "' message resources from '" + mrcs[i].getParameter()
@@ -1564,6 +1574,8 @@ public class ActionServlet extends HttpServlet {
 
             resources.setReturnNull(mrcs[i].getNull());
             resources.setEscape(mrcs[i].isEscape());
+
+            postProcessConfig(mrcs[i], config, false);
             getServletContext().setAttribute(mrcs[i].getKey()
                 + config.getPrefix(), resources);
         }
@@ -1947,4 +1959,68 @@ public class ActionServlet extends HttpServlet {
 
         processor.process(request, response);
     }
+
+    /**
+     * Returns the plugins for the specified module
+     * 
+     * @param moduleConfig the module configuration
+     * @return the array of plugins or <code>null</code>
+     */
+    private PlugIn[] getModulePlugIns(ModuleConfig moduleConfig) {
+        try {
+            String plugInKey = Globals.PLUG_INS_KEY + moduleConfig.getPrefix();
+            return (PlugIn[]) getServletContext().getAttribute(plugInKey);
+        } catch (NullPointerException e) {
+            return null;
+        }
+    }
+
+    /**
+     * Applies the plugin post-processors for the specified configuration
+     * object.
+     *
+     * @param config the configuration
+     * @param moduleConfig the parent module configuration
+     * @param before <code>true</code> if applying before initialization;
+     *          otherwise <code>false</code>
+     */
+    private void postProcessConfig(BaseConfig config, ModuleConfig moduleConfig,
+            boolean before) {
+        PlugIn[] plugIns = getModulePlugIns(moduleConfig);
+        if ((plugIns == null) || (plugIns.length == 0)) {
+            return;
+        }
+
+        for (int i = 0; i < plugIns.length; i++) {
+            PlugIn plugIn = plugIns[i];
+            if (plugIn instanceof ModuleConfigPostProcessor) {
+                ModuleConfigPostProcessor p = (ModuleConfigPostProcessor) plugIn;
+                if (before) {
+                    p.postProcessBeforeInitialization(config, moduleConfig);
+                } else {
+                    p.postProcessAfterInitialization(config, moduleConfig);
+                }
+            }
+        }
+    }
+
+    /**
+     * Applies the plugin post-processors for the specified module.
+     *
+     * @param config the module configuration
+     */
+    private void postProcessConfig(ModuleConfig moduleConfig) {
+        PlugIn[] plugIns = getModulePlugIns(moduleConfig);
+        if ((plugIns == null) || (plugIns.length == 0)) {
+            return;
+        }
+
+        for (int i = 0; i < plugIns.length; i++) {
+            PlugIn plugIn = plugIns[i];
+            if (plugIn instanceof ModuleConfigPostProcessor) {
+                ((ModuleConfigPostProcessor) plugIn).postProcessAfterInitialization(moduleConfig);
+            }
+        }
+    }
+
 }

@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-3085: Configuration post-processing via plug-ins
 * STR-1819: Warn if a form is not declared but later used
 * Skip install- and deployment-phase for integration tests
 * Move more property files into standard Maven resources folder

@@ -1879,7 +1879,7 @@ public ActionForward execute(ActionMapping mapping,
                     and create the appropriate objects initialized
                     to the appropriate default values.
                     See the
-                    <a href="http://commons.apache.org">
+                    <a href="http://commons.apache.org">Apache
                         Commons
                         website</a>
                     for more information about the Digester.

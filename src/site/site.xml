@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -26,13 +26,12 @@
     <bannerRight>
         <name>Apache Struts</name>
         <src>http://struts.apache.org/images/struts.gif</src>
-        <href>http://struts.apache.org/</href>
-    </bannerRight>     
+        <href>http://struts.apache.org/1.x/index.html</href>
+    </bannerRight>
     <body>
         <links>
-            <item name="Apache" href="http://www.apache.org/" /> 
-            <item name="Struts 2" href="http://struts.apache.org/2.x/" />
-            <item name="Struts 1" href="http://struts.apache.org/1.x/" />
+            <item name="Apache" href="http://www.apache.org/" />
+            <item name="Struts" href="http://struts.apache.org/index.html" />
         </links>
         <menu name="Struts 1">
             <item
@@ -50,6 +49,12 @@
             <item
                     name="Releases"
                     href="http://struts.apache.org/downloads.html"/>
+            <item
+                    name="Thanks!"
+                    href="http://apache.org/foundation/thanks.html"/>
+            <item
+                    name="Sponsorship"
+                    href="http://apache.org/foundation/sponsorship.html"/>
         </menu>
 
         <menu name="Documentation">
@@ -72,9 +77,9 @@
             <item
                     name="DTDDoc"
                     href="dtddoc/index.html"
-                    />        
+                    />
         </menu>
-        
+
         <menu name="Support">
             <item
                     name="User Mailing List"
@@ -91,7 +96,7 @@
         </menu>
 
         <menu name="Components">
-        
+
             <item   name="Struts Apps"
                     href="struts-apps/index.html" />
 

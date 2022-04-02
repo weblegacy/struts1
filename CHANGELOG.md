@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Some corrections in `src/site`-docs
 * WW-1974 Add link to release notes form announcement. Correct link in archival copy of 1.2.7 release notes
 * STR-2153: Reveal the offending bean and property name when iterating
 * STR-1195: SelectTag should single select when "multiple" attribute equals false

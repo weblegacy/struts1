@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Remove unnecessary taglib-definitions in `faces-example`s
 * Correct `faces-example`s (wrong DOCTYPEs) and activate Struts-Faces-Examples again
 * Remove unused import
 * Some corrections in `src/site`-docs

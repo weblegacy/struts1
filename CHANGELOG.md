@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Correct `faces-example`s (wrong DOCTYPEs) and activate Struts-Faces-Examples again
 * Remove unused import
 * Some corrections in `src/site`-docs
 * WW-1974 Add link to release notes form announcement. Correct link in archival copy of 1.2.7 release notes

@@ -1,6 +1,6 @@
 <!DOCTYPE tiles-definitions PUBLIC
-  "-//Apache Software Foundation//DTD Tiles Configuration//EN"
-  "http://jakarta.apache.org/struts/dtds/tiles-config.dtd">
+  "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+  "http://struts.apache.org/dtds/tiles-config_1_1.dtd">
 
 <!--
     Licensed to the Apache Software Foundation (ASF) under one or more

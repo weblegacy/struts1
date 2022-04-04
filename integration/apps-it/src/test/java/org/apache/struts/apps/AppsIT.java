@@ -114,11 +114,9 @@ public class AppsIT {
 
     /**
      * Verify that the Struts Faces Example 1 app has started
-     * TODO: Not working in new enviroment
      */
     @Test
-    @Disabled
-    public void noTestStrutsFacesExample1() {
+    public void testStrutsFacesExample1() {
         try (WebClient webClient = new WebClient()) {
             URL url = new URL("http://localhost:"
                     + port + "/struts-faces-example1");
@@ -133,11 +131,9 @@ public class AppsIT {
 
     /**
      * Verify that the Struts Faces Example 2 app has started
-     * TODO: Not working in new enviroment
      */
     @Test
-    @Disabled
-    public void noTestStrutsFacesExample2() {
+    public void testStrutsFacesExample2() {
         try (WebClient webClient = new WebClient()) {
             URL url = new URL("http://localhost:"
                     + port + "/struts-faces-example2");

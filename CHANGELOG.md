@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* apps/[scripting-]mailreader: Add missing gif and remove version from index-title
 * Remove unnecessary taglib-definitions in `faces-example`s
 * Correct `faces-example`s (wrong DOCTYPEs) and activate Struts-Faces-Examples again
 * Remove unused import

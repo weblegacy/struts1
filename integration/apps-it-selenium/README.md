@@ -6,7 +6,7 @@
 ## Create Selenium-Tests
 * Record Selenium-Tests with `Selenium IDE`
 * Export with `Java JUnit`
-* Rename exported Java-Class from `...Test` to `...IT`
+* Rename exported Java-Class from `...Test` to `IT...`, `...IT` or `...ITCase`
 * Convert exported Java-Class to JUnit5
     * [Migrating from JUnit 4](https://junit.org/junit5/docs/current/user-guide/#migrating-from-junit4)
     * `@Before` to `@BeforeEach`

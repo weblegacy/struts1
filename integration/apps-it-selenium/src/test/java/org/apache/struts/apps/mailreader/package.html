@@ -1,4 +1,6 @@
 <!--
+    $Id$
+
     Licensed to the Apache Software Foundation (ASF) under one or more
     contributor license agreements.  See the NOTICE file distributed with
     this work for additional information regarding copyright ownership.
@@ -14,31 +16,20 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-&logon-hermes;
-        &profile-open;
-<clickLink
-        description="Click Add"
-        label="${registration.addSubscription}"/>
-        &subscription-add-page;
-        &save-click;
-<verifyText
-        description="Validation Error on saving with no input"
-        text="${errors.header}"/>
-<setInputField
-        description="Mail Server"
-        name="host"
-        value="  "/>
-<setInputField
-        description="Mail Username"
-        name="username"
-        value="  "/>
-<setInputField
-        description="Mail Password"
-        name="password"
-        value="  "/>
-        <!-- FIXME: Allows blanks for host and other fields
-        &save-click;
-        <verifyText
-            description="Validation Error on saving with spaces"
-            text="${errors.header}" />
-        -->
+<html>
+
+<body>
+
+<p>The tests are based on a set of MailReader Use Cases maintained at the Struts University site
+
+   <a href="http://opensource2.atlassian.com/confluence/oss/display/STRUTS/MailReader">
+      http://opensource2.atlassian.com/confluence/oss/display/STRUTS/MailReader
+   </a>.
+</p>
+
+<p>All tests should run in alphabetic order!</p>
+
+<p>@version $Revision: 1.2 $ $Date$</p>
+
+</body>
+</html>

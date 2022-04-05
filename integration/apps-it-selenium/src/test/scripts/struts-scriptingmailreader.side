@@ -1,0 +1,1470 @@
+{
+  "id": "f1968ca5-8def-4e29-906c-594017ed872d",
+  "version": "2.0",
+  "name": "struts-scripting-mailreader",
+  "url": "http://localhost:8080/",
+  "tests": [{
+    "id": "d090830d-523c-4f42-a405-c54a29b38d07",
+    "name": "1_1_Browse public pages (MSS)",
+    "commands": [{
+      "id": "323a3508-b5e1-4edf-a7c8-205735c00764",
+      "comment": "Open welcome action",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Welcome.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "72f7a361-7894-450d-ba8d-3692fb452e2a",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f022a4b0-fd16-4334-8903-650af0eb23a5",
+      "comment": "Click Register",
+      "command": "click",
+      "target": "linkText=Register with the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bda578cf-5622-40c8-a8ef-ebd85365bb19",
+      "comment": "Registration page title",
+      "command": "verifyTitle",
+      "target": "Register for the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cadd4f42-fe1d-443d-b2bf-bd29bc0be2da",
+      "comment": "Click Welcome",
+      "command": "click",
+      "target": "linkText=MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "14c5a61e-f7e6-4065-b746-d7bd590f7eb5",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b6777d12-829a-4951-bcd2-dbfb8c2e3e44",
+      "comment": "Click Logon",
+      "command": "click",
+      "target": "linkText=Log on to the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d0693ad6-0dec-4d79-a841-494630a8825e",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6f133ce7-50a2-4102-a29b-2cf45b7f5866",
+      "comment": "Click Welcome",
+      "command": "click",
+      "target": "linkText=MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2ecf3a9b-3a1b-4adf-86d5-a2ad75c5180c",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "efe5ca74-6bc0-4453-a54b-3ef2529358e2",
+    "name": "1_2_Browse non-public pages (and fail) (5a)",
+    "commands": [{
+      "id": "b2cfd04a-8cca-45cc-9fc7-23beead7ec74",
+      "comment": "Skip Logon page",
+      "command": "open",
+      "target": "struts-scripting-mailreader/SubmitLogon.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c1ab8350-eefd-4b9a-bb76-8f00befa40fc",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ed7f437d-060f-4a5f-bd1b-9b5d776ab76a",
+      "comment": "Test Validation Error",
+      "command": "assertElementPresent",
+      "target": "xpath=//*[contains(text(),'Validation Error')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "327fde28-8e9a-4f40-985b-7d1b43f5ff01",
+      "comment": "Skip Save RegistrationAction page",
+      "command": "open",
+      "target": "struts-scripting-mailreader/SaveRegistration.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d092fb7b-76cc-4811-b099-481dd19abff0",
+      "comment": "Registration page title",
+      "command": "verifyTitle",
+      "target": "Register for the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "68520da7-fb19-49c3-b17a-94ca2ce751b1",
+      "comment": "Test Validation Error",
+      "command": "assertElementPresent",
+      "target": "xpath=//*[contains(text(),'Validation Error')]",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "eb08058f-1468-41c1-a813-a0b6f1815691",
+    "name": "2_2_Language Options (Russian)",
+    "commands": [{
+      "id": "10ef596b-07d5-4124-9735-e13c396b3806",
+      "comment": "Open welcome action",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Welcome.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7d783eca-d180-4a9b-9e8b-7b8e2935536c",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f67109e2-9b06-43a5-8b7c-5b83c186aee0",
+      "comment": "Change language (Russian)",
+      "command": "click",
+      "target": "linkText=Russian",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d404f4e2-3c2e-4ed3-91c7-242473c42fde",
+      "comment": "Welcome page title (Russian)",
+      "command": "verifyTitle",
+      "target": "Демонстрационное приложение 'Чтение почты'",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "550028d9-6d55-4585-a5fe-f15954812007",
+      "comment": "Click Register (Russian)",
+      "command": "click",
+      "target": "linkText=Зарегистрироваться",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "12c11e47-212e-4cb8-88f5-1731c13f0ee8",
+      "comment": "Registration page title (Russian)",
+      "command": "verifyTitle",
+      "target": "Зарегистрироваться",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "51e7dcc5-e1f5-4084-a3d7-c09584ceb5b1",
+      "comment": "Click Welcome (Russian)",
+      "command": "click",
+      "target": "linkText=Демонстрационное приложение 'Чтение почты'",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a37cf5d0-9439-48ff-a561-b83969fd3c86",
+      "comment": "Welcome page title (Russian)",
+      "command": "verifyTitle",
+      "target": "Демонстрационное приложение 'Чтение почты'",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "684067ce-94f9-4157-a6ac-bd1f65d2c960",
+      "comment": "Click Logon (Russian)",
+      "command": "click",
+      "target": "linkText=Войти как зарегистрированный пользователь",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "698b37be-1b51-4449-9646-45ca9048283a",
+      "comment": "Logon page title (Russian)",
+      "command": "verifyTitle",
+      "target": "Демонстрационное приложение Чтение почты - Проверка имени и пароля.",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3a0c5db9-45b4-4dc8-a522-55c5d434a8ee",
+      "comment": "Click Welcome (Russian)",
+      "command": "click",
+      "target": "linkText=Демонстрационное приложение 'Чтение почты'",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3a7522b9-0b56-426f-9065-b898420d20d8",
+      "comment": "Welcome page title (Russian)",
+      "command": "verifyTitle",
+      "target": "Демонстрационное приложение 'Чтение почты'",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a16763ac-c3aa-4961-883d-6360f2797209",
+      "comment": "Change language (English)",
+      "command": "click",
+      "target": "linkText=English",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a1b41f18-9195-4dba-95a0-af5b75b9ddd8",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "6d06f8ff-0ffb-49fa-a520-d15a11cc3088",
+    "name": "2_1_Language Options (Japanese)",
+    "commands": [{
+      "id": "63dbd490-fcf4-47fa-81f1-726aa15411dd",
+      "comment": "Open welcome action",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Welcome.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "530e6e98-f23e-46f0-8a57-2e07562d6346",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2fd9bc4a-ade5-4ee5-9f85-44f87b3c7547",
+      "comment": "Change language (Japanese)",
+      "command": "click",
+      "target": "linkText=Japanese",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "14acc6d1-c360-4f76-ba22-73ad66a69b4b",
+      "comment": "Welcome page title (Japanese)",
+      "command": "verifyTitle",
+      "target": "MailReaderデモアプリケーション",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "161a5534-fb51-4bb4-b57e-ca862db2f781",
+      "comment": "Click Register (Japanese)",
+      "command": "click",
+      "target": "linkText=MailReaderデモアプリケーション - ユーザ登録",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "69c79591-8e8d-4054-b4f4-dd718059013f",
+      "comment": "Registration page title (Japanese)",
+      "command": "verifyTitle",
+      "target": "MailReaderデモアプリケーション - ユーザ登録",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4e8c6b5c-51a2-4089-91a5-f20fe4ca56fa",
+      "comment": "Click Welcome (Japanese)",
+      "command": "click",
+      "target": "linkText=MailReaderデモアプリケーション",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5fc599bb-4163-4e4b-a86d-03933a6c6141",
+      "comment": "Welcome page title (Japanese)",
+      "command": "verifyTitle",
+      "target": "MailReaderデモアプリケーション",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "14db26bf-8cff-42fc-b3da-a1e216b8086f",
+      "comment": "Click Logon (Japanese)",
+      "command": "click",
+      "target": "linkText=MailReaderデモアプリケーション - ログオン",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e9e1a8a6-7d08-4b1a-b028-c0754666280a",
+      "comment": "Logon page title (Japanese)",
+      "command": "verifyTitle",
+      "target": "MailReaderデモアプリケーション - ログオン",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a1674a85-18f0-4bc5-a21e-e609a8c911e9",
+      "comment": "Click Welcome (Japanese)",
+      "command": "click",
+      "target": "linkText=MailReaderデモアプリケーション",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a612a2c-8d70-4f11-8aea-14536f2b416b",
+      "comment": "Welcome page title (Japanese)",
+      "command": "verifyTitle",
+      "target": "MailReaderデモアプリケーション",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "00ef87ed-5045-457e-aaa8-1a85f97438ec",
+      "comment": "Change language (English)",
+      "command": "click",
+      "target": "linkText=English",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "414aae88-bfde-4aff-878c-262d4e605005",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "26faf425-b455-4a39-8ee2-aabd3a6a038b",
+    "name": "3_1_Register Hermes (MSS)",
+    "commands": [{
+      "id": "9f70ba48-af58-4632-b68b-241bdd3e12e3",
+      "comment": "Open welcome action",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Welcome.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "26874746-bad6-4edd-a1d3-2d9824d4bef3",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e44a9f3a-b2ff-46e9-944c-ea06b9e8311d",
+      "comment": "Click Register",
+      "command": "click",
+      "target": "linkText=Register with the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "32b98521-9d42-4beb-947a-68913756888e",
+      "comment": "Registration page title",
+      "command": "verifyTitle",
+      "target": "Register for the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1b258a1d-fa6d-45cc-b106-c9e5f2447c45",
+      "comment": "username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "hermes"
+    }, {
+      "id": "8c24fe21-f94e-42cd-b49d-345d57d6c402",
+      "comment": "password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "m3dus4"
+    }, {
+      "id": "60a1b657-73dd-4090-ad52-c4f081c532a3",
+      "comment": "password2",
+      "command": "type",
+      "target": "name=password2",
+      "targets": [],
+      "value": "m3dus4"
+    }, {
+      "id": "5dabd69c-0ab6-4add-a9f6-ee3d34510a43",
+      "comment": "fulllName",
+      "command": "type",
+      "target": "name=fullName",
+      "targets": [],
+      "value": "Hermes Katsopolis"
+    }, {
+      "id": "b692d95a-47a9-4bd9-b2e7-0100e27681ff",
+      "comment": "fromAddress",
+      "command": "type",
+      "target": "name=fromAddress",
+      "targets": [],
+      "value": "hermes@somewhere.com"
+    }, {
+      "id": "85dabc80-fa0a-4fd5-a9ff-3c17cff59163",
+      "comment": "Save",
+      "command": "click",
+      "target": "name=DO_SUBMIT",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "955575bf-d5bd-4e08-86d9-d0bb107877ac",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5285d6f8-8814-4de0-b46d-b35599c5b1bb",
+      "comment": "Logoff Hermes",
+      "command": "click",
+      "target": "linkText=Log off MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fb57b4a5-2b5b-458e-870d-e84302a5348a",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "7c718a00-b9a7-45e8-b910-7530eeb649e8",
+    "name": "3_2_Verify data-entry (1a-5a)",
+    "commands": [{
+      "id": "05efbf23-2e3c-441e-ad45-0db232b62c82",
+      "comment": "Open welcome action",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Welcome.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ca40c30f-da7b-47f0-82c7-c136e265e370",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "08f3f36b-c766-4538-8ad0-3ad68a72605f",
+      "comment": "Click Logon",
+      "command": "click",
+      "target": "linkText=Log on to the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f465c745-d74c-4b14-b05e-8ac070550434",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6677f566-bcf4-4815-8499-175568192c78",
+      "comment": "username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "hermes"
+    }, {
+      "id": "c1f2d722-0dd6-4f7c-baa3-57bf42b6388d",
+      "comment": "password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "m3dus4"
+    }, {
+      "id": "6fa36d06-156d-405f-a405-23151acdc8d9",
+      "comment": "Submit",
+      "command": "click",
+      "target": "name=Submit",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7ee53cd3-a400-4a37-a9f3-102a8312d618",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "070310f5-42a9-40e7-8f0b-4abcf9d9dc19",
+      "comment": "Edit user profile",
+      "command": "click",
+      "target": "linkText=Edit your user registration profile",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "44e8f213-d554-47e4-a241-63e8a83f1028",
+      "comment": "Registraion Edit page title",
+      "command": "verifyTitle",
+      "target": "Edit Registration for the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d0eb2cf9-9e0f-4b5c-87eb-0d3c7fa2630d",
+      "comment": "Label username",
+      "command": "verifyText",
+      "target": "css=tr:nth-child(1) > td",
+      "targets": [],
+      "value": "hermes"
+    }, {
+      "id": "73b0ee25-4d30-4928-adb6-36b44d33cca1",
+      "comment": "fullName",
+      "command": "verifyValue",
+      "target": "name=fullName",
+      "targets": [],
+      "value": "Hermes Katsopolis"
+    }, {
+      "id": "fda85654-bc09-4b82-883a-94a5d064b0b8",
+      "comment": "fromAddress",
+      "command": "verifyValue",
+      "target": "name=fromAddress",
+      "targets": [],
+      "value": "hermes@somewhere.com"
+    }, {
+      "id": "f827043a-5983-4a42-b56d-2e00302fe626",
+      "comment": "Cancel",
+      "command": "click",
+      "target": "name=org.apache.struts.taglib.html.CANCEL",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0f23ce3a-c3ed-48e9-b168-88fa6a8da058",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6c02e266-145c-4d3b-b2d8-0726e236ad06",
+      "comment": "Logoff Hermes",
+      "command": "click",
+      "target": "linkText=Log off MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "662d2b6b-9f0b-4d21-982f-c4c186192860",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "35b6bdd4-c3f0-49a0-a478-30bf5044514f",
+    "name": "4_1_Open logon action Default (MSS)",
+    "commands": [{
+      "id": "b688d43e-bc2d-4407-bade-16b069ded56a",
+      "comment": "Pass logon",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Logon.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "955da2c8-a5da-4cc9-bda7-daf92d793689",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "376cc7b5-ec55-4535-a301-95619ad13ed4",
+      "comment": "Default username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "user"
+    }, {
+      "id": "69a0cb72-8a75-474a-81c8-712c87591db9",
+      "comment": "Correct default password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "pass"
+    }, {
+      "id": "12a1278f-c215-4d9d-9b78-d6d2636890d4",
+      "comment": "Submit",
+      "command": "click",
+      "target": "name=Submit",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4dc8c0a8-e70b-41b3-a5e5-2a3e83688ba5",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "1fa0452c-aa56-4ea2-93f5-2f2fde2da8e6",
+    "name": "4_2_Open logon action Hermes (MSS)",
+    "commands": [{
+      "id": "616e8e36-e29f-493d-b013-a7052a933181",
+      "comment": "Pass logon",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Logon.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bbc482ce-21bb-45cc-ac87-28d791ae09a7",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8600868e-c131-439a-8b2c-de6ce3936104",
+      "comment": "Registered username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "hermes"
+    }, {
+      "id": "f812735e-51f7-4026-b899-20d7505f9db0",
+      "comment": "Correct password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "m3dus4"
+    }, {
+      "id": "3682acc7-3d02-41cc-8c04-a97dda0bab97",
+      "comment": "Submit",
+      "command": "click",
+      "target": "name=Submit",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d3a38c71-569a-4c7d-83a6-3439acc990ad",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "5c8982f5-a1dc-403a-a7f2-cb9579a05d6d",
+    "name": "4_3_Logon - Wrong password (1c)",
+    "commands": [{
+      "id": "c0f04e29-921f-4b87-b7c2-18eee1683a40",
+      "comment": "Pass logon",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Logon.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "427ad363-0e0d-4e4b-b45e-d73b9b7bd8a6",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cbed002a-81dd-4077-a3d9-557c3f5ca1a1",
+      "comment": "Registered username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "hermes"
+    }, {
+      "id": "ab79b302-811f-4e9e-9344-12b2ec929d0c",
+      "comment": "Wrong password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "medusa"
+    }, {
+      "id": "96435418-768c-48f9-a831-f58fb0be2a75",
+      "comment": "Submit",
+      "command": "click",
+      "target": "name=Submit",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9313ed07-e2e2-44d6-93b9-43bda5d28640",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1cc9051f-400f-43a8-9c43-9fb6863a5a94",
+      "comment": "Test Validation Error",
+      "command": "assertElementPresent",
+      "target": "xpath=//*[contains(text(),'Validation Error')]",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "a705418a-0554-4eeb-ba91-3cd81f68b0d9",
+    "name": "4_4_Logon - No Account (1a)",
+    "commands": [{
+      "id": "ca84e536-98f5-4a05-980a-49c56965a3a5",
+      "comment": "Pass logon",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Logon.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7c3b319b-b4e4-4b26-8f17-7e12efc02f82",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "814a511f-4658-4c9b-ada6-6bb0a8b10aca",
+      "comment": "Not a username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "zeus"
+    }, {
+      "id": "de3125e4-bc2b-4240-9411-9c4d5280c52b",
+      "comment": "Not a password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "joltBolt"
+    }, {
+      "id": "50728a86-edd7-4044-8e16-a9ca785920d1",
+      "comment": "Submit",
+      "command": "click",
+      "target": "name=Submit",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8b83f286-4853-471a-89ed-6aa1ec334631",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "3de1aa9b-b1d2-469d-a4aa-55c76b444cac",
+      "comment": "Test Validation Error",
+      "command": "assertElementPresent",
+      "target": "xpath=//*[contains(text(),'Validation Error')]",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "1e4216fd-46e8-4300-97ca-5e257a8d293d",
+    "name": "5_1_Add subscription (MSS)",
+    "commands": [{
+      "id": "df4e6050-edfc-4076-86cf-5e4f4e5df553",
+      "comment": "Pass logon",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Logon.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cfa0e061-a6b0-4322-9f8c-9d6cf56b4348",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "bec9b57b-a514-4454-b034-86f5b328c9a7",
+      "comment": "Registered username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "hermes"
+    }, {
+      "id": "dbf90ba0-cd8f-43ec-8ed8-3411a81e27ec",
+      "comment": "Correct password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "m3dus4"
+    }, {
+      "id": "98656b48-b2c3-4862-b12f-989afce63f39",
+      "comment": "Submit",
+      "command": "click",
+      "target": "name=Submit",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "143fadc3-218f-4457-b137-2a99fabb1cc2",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cb3d6c93-1c71-411d-be17-44afb28b1b77",
+      "comment": "Click Edit Profile",
+      "command": "click",
+      "target": "linkText=Edit your user registration profile",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a5fcc5a7-7fbd-4910-ad70-688e4d19a7c2",
+      "comment": "Registraion Edit page title",
+      "command": "verifyTitle",
+      "target": "Edit Registration for the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5b22d57a-5845-4c2c-b80c-f45479ce39aa",
+      "comment": "Click Add",
+      "command": "click",
+      "target": "linkText=Add",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "85764d3d-8b5f-4185-aca5-10cd57046c50",
+      "comment": "Add Subscription title",
+      "command": "verifyTitle",
+      "target": "Create New Mail Subscription",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a7dbaf22-7b7a-4833-8b83-67c519773d83",
+      "comment": "Mail Server",
+      "command": "type",
+      "target": "name=host",
+      "targets": [],
+      "value": "mail.agoraware.com"
+    }, {
+      "id": "ca446d99-bd80-42a2-86bc-65b8ca4e61de",
+      "comment": "Mail Username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "hermes"
+    }, {
+      "id": "34de642b-98a3-47dc-83fb-9616a7518c09",
+      "comment": "Mail Password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "Ar14Dn3"
+    }, {
+      "id": "19bd6ed8-55d1-4993-aebf-d43b8bb4ba19",
+      "comment": "Server Type",
+      "command": "select",
+      "target": "name=type",
+      "targets": [],
+      "value": "value=imap"
+    }, {
+      "id": "4377fbe9-fe36-4fe5-b79f-6bf96e491c8b",
+      "comment": "Auto connect",
+      "command": "check",
+      "target": "name=autoConnect",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "40b1305f-9c8d-4fa1-8a12-297cc49e35db",
+      "comment": "Save subscription",
+      "command": "click",
+      "target": "name=DO_SUBMIT",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "028fe2fb-6f08-4dca-ae96-c3633fd0ffa7",
+      "comment": "Edit registration title",
+      "command": "verifyTitle",
+      "target": "Edit Registration for the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "4415bb42-6027-4241-8ad8-8b83d659c72a",
+      "comment": "Save user",
+      "command": "click",
+      "target": "name=DO_SUBMIT",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "08acb544-76a6-4588-8924-6b88c6dc545b",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6837730b-fc7f-4d1e-be1d-1289298a6ac8",
+      "comment": "Logoff Hermes",
+      "command": "click",
+      "target": "linkText=Log off MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b53d4b06-461a-4b10-8e3e-aefe571fcacd",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "831435fa-aa1b-4b3a-80c3-a2b8e524444d",
+    "name": "5_2_Add duplicate host (3c)",
+    "commands": [{
+      "id": "fd35ea71-e5d8-4056-85e4-de097212315f",
+      "comment": "Pass logon",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Logon.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fc047d6c-e28a-414e-ae4a-e4a97d7a7b3e",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "26b2be7b-44af-402b-ad65-78cbe32293f2",
+      "comment": "Registered username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "hermes"
+    }, {
+      "id": "61d5980c-afa4-4ce6-99f6-290783b50df8",
+      "comment": "Correct password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "m3dus4"
+    }, {
+      "id": "09f25c5a-ef8f-42b5-803e-beb03a1a11cd",
+      "comment": "Submit",
+      "command": "click",
+      "target": "name=Submit",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "984013c4-3985-4c96-90b3-09a6c05cf023",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ce5e2c39-03f0-452f-beed-9490043adb60",
+      "comment": "Click Edit Profile",
+      "command": "click",
+      "target": "linkText=Edit your user registration profile",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "15385494-0166-425e-9703-3d70c3651e9f",
+      "comment": "Registraion Edit page title",
+      "command": "verifyTitle",
+      "target": "Edit Registration for the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "a3855c62-3893-4dc1-9aec-f09e90ea227f",
+      "comment": "Click Add",
+      "command": "click",
+      "target": "linkText=Add",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "568967ed-11e7-4dd3-8311-95fd1eab5bfc",
+      "comment": "Add Subscription title",
+      "command": "verifyTitle",
+      "target": "Create New Mail Subscription",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0e8fc112-92a8-44b8-a286-c0019f216426",
+      "comment": "Mail Server",
+      "command": "type",
+      "target": "name=host",
+      "targets": [],
+      "value": "mail.agoraware.com"
+    }, {
+      "id": "e3f31943-3dfd-4209-9871-75aa7f4bcc65",
+      "comment": "Mail Username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "hermes"
+    }, {
+      "id": "4662217c-cbc1-4721-9c55-636f1f330ff7",
+      "comment": "Mail Password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "Ar14Dn3"
+    }, {
+      "id": "ed39b99f-5684-4223-96fe-8439b1a6443c",
+      "comment": "Server Type",
+      "command": "select",
+      "target": "name=type",
+      "targets": [],
+      "value": "value=imap"
+    }, {
+      "id": "880c37f3-2b29-4dc1-8547-bfb61c4eb9c9",
+      "comment": "Auto connect",
+      "command": "check",
+      "target": "name=autoConnect",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f3646904-6c04-44e9-b84a-24921afd4629",
+      "comment": "Save subscription",
+      "command": "click",
+      "target": "name=DO_SUBMIT",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d87cd48b-f49e-4410-8f0b-ccffef4c09fa",
+      "comment": "FIXME: throws Runtime error, \"Illegal argument\"",
+      "command": "assertElementPresent",
+      "target": "xpath=//*[contains(text(),'An unexpected error has occured')]",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "2697bb94-2dcb-43f6-a5d3-f42b01a0f51d",
+    "name": "5_3_Edit subscription (3a)",
+    "commands": [{
+      "id": "0b0307f7-8f90-4dfd-a379-8072c154ffeb",
+      "comment": "Pass logon",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Logon.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "66de444c-ac12-4f47-b2d7-8963b69723f3",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b0a148c7-27d8-4fb0-bd86-b9868014cef8",
+      "comment": "Registered username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "hermes"
+    }, {
+      "id": "afb0605b-c331-40a1-85ff-90d03dcae265",
+      "comment": "Correct password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "m3dus4"
+    }, {
+      "id": "9e083322-8902-4544-80c3-0f0456894da1",
+      "comment": "Submit",
+      "command": "click",
+      "target": "name=Submit",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8cf2a55f-9811-44ab-9fb0-547ab46806d2",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cf1198f0-b348-41f4-8813-1d855f086610",
+      "comment": "Click Edit Profile",
+      "command": "click",
+      "target": "linkText=Edit your user registration profile",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ef306b53-6857-461d-84a4-85b03bda9206",
+      "comment": "Registraion Edit page title",
+      "command": "verifyTitle",
+      "target": "Edit Registration for the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0977930e-26d4-4e9d-8ad7-ac22366c89a1",
+      "comment": "Click Edit",
+      "command": "click",
+      "target": "linkText=Edit",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "09e0c720-1eee-40e2-a55d-57b8ac9dfc2f",
+      "comment": "Edit Subscription title",
+      "command": "verifyTitle",
+      "target": "Edit Existing Mail Subscription",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "946b773d-5aca-4b3a-99e8-9465d709ebec",
+      "comment": "Change Mail Password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "Fl0r1d4"
+    }, {
+      "id": "61861a49-185a-4246-bc64-d65921666d7e",
+      "comment": "Save subscription",
+      "command": "click",
+      "target": "name=DO_SUBMIT",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cbb21306-5d91-458a-ac27-bb7892b7ef97",
+      "comment": "Edit registration title",
+      "command": "verifyTitle",
+      "target": "Edit Registration for the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "8308804c-c207-459d-88d3-af83f115d78f",
+      "comment": "Save user",
+      "command": "click",
+      "target": "name=DO_SUBMIT",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d1f03e40-0b66-4993-b5ec-1ad19ece7264",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7d3868d3-5deb-4562-b363-12f6e6228fca",
+      "comment": "Logoff Hermes",
+      "command": "click",
+      "target": "linkText=Log off MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5d3c790b-fd15-42e5-91b4-cad1cd03bd3d",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "d2196956-8061-423e-a8ed-f35c7ab2125d",
+    "name": "5_4_Delete subscription (3b)",
+    "commands": [{
+      "id": "21f53cac-2252-4f1b-a3b5-8c5142fc99f2",
+      "comment": "Pass logon",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Logon.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f03bce0d-f970-4e04-b8e4-b77d15e32340",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0fabcdab-54f4-4d3b-860f-760e8052573b",
+      "comment": "Registered username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "hermes"
+    }, {
+      "id": "16942f1f-20ff-40b4-9f21-6bdeb1c7e203",
+      "comment": "Correct password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "m3dus4"
+    }, {
+      "id": "7fd7b82e-b78c-403d-9bdd-bc734fa487bc",
+      "comment": "Submit",
+      "command": "click",
+      "target": "name=Submit",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5c24fb50-4f80-4cb4-abe0-24da7b130ffd",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1a8a1a6b-34f6-49ee-b2ca-728ed82fdfcd",
+      "comment": "Click Edit Profile",
+      "command": "click",
+      "target": "linkText=Edit your user registration profile",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "d9800134-a4c5-4602-aafc-bdb1b260edfe",
+      "comment": "Registraion Edit page title",
+      "command": "verifyTitle",
+      "target": "Edit Registration for the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "33034010-ab26-40dc-8cf1-e910d612cf75",
+      "comment": "Click Delete",
+      "command": "click",
+      "target": "linkText=Delete",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b9ffdfbc-8c3d-4877-b1e6-edefc6eb39a4",
+      "comment": "Delete Subscription title",
+      "command": "verifyTitle",
+      "target": "Delete Existing Mail Subscription",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1915a821-b93e-45bd-b42a-ba69ace512ca",
+      "comment": "Confirm",
+      "command": "click",
+      "target": "name=DO_SUBMIT",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f413ee70-2127-4080-b8bd-72219ec8e341",
+      "comment": "Edit registration title",
+      "command": "verifyTitle",
+      "target": "Edit Registration for the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1623f8e8-f900-43d2-9b0f-ef3a63c44030",
+      "comment": "Save user",
+      "command": "click",
+      "target": "name=DO_SUBMIT",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2c787305-0b3a-4fb4-8389-b215e1eccba5",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "70a36213-d50e-4ed8-863d-d9c6d241a73c",
+      "comment": "Logoff Hermes",
+      "command": "click",
+      "target": "linkText=Log off MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f76a518c-ed7e-41c1-ad8d-83b26ddf84bd",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "718909e9-99cb-45e1-9908-326139bccf04",
+    "name": "6_1_Verify data-entry (5a)",
+    "commands": [{
+      "id": "e0e6693a-1bfa-43eb-bca5-753ee25b9b6f",
+      "comment": "Pass logon",
+      "command": "open",
+      "target": "struts-scripting-mailreader/Logon.do",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "519a9a8e-4410-4c3d-aa26-064cf4d88f75",
+      "comment": "Logon page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Logon",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "32f33bad-8ec9-4f21-9f5c-5ad20cca2d04",
+      "comment": "Registered username",
+      "command": "type",
+      "target": "name=username",
+      "targets": [],
+      "value": "hermes"
+    }, {
+      "id": "d9897145-757e-407b-ac28-820737724b10",
+      "comment": "Correct password",
+      "command": "type",
+      "target": "name=password",
+      "targets": [],
+      "value": "m3dus4"
+    }, {
+      "id": "6e3fbf2d-e0c0-47d6-829c-0011fe629524",
+      "comment": "Submit",
+      "command": "click",
+      "target": "name=Submit",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "adcab88d-bbee-4471-9e80-271be86ec45d",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e250deae-b2d1-4d7d-bd50-8005565d84c3",
+      "comment": "Click Edit Profile",
+      "command": "click",
+      "target": "linkText=Edit your user registration profile",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "10a6102b-7884-4a16-a60c-754d1b7dad70",
+      "comment": "Registraion Edit page title",
+      "command": "verifyTitle",
+      "target": "Edit Registration for the MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ad2f5108-4543-46c2-b40f-f5be71ddba28",
+      "comment": "Click Add",
+      "command": "click",
+      "target": "linkText=Add",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "c44693b1-b79b-4ef2-8637-aedd6dd84e9d",
+      "comment": "Add Subscription title",
+      "command": "verifyTitle",
+      "target": "Create New Mail Subscription",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "58af3a5b-79a4-45fa-b5fa-4bf23ab84f11",
+      "comment": "Save subscription",
+      "command": "click",
+      "target": "name=DO_SUBMIT",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ca861133-e4c3-49ae-809e-8106fca22151",
+      "comment": "Validation Error on saving with no input",
+      "command": "assertElementPresent",
+      "target": "xpath=//*[contains(text(),'Validation Error')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "b7cdf8c9-89f7-476d-b9af-b1347405bbad",
+      "comment": "FIXME: Allows blanks for host and other fields",
+      "command": "echo",
+      "target": "FIXME: Allows blanks for host and other fields",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "74312e51-8c1a-4163-8d36-473483c9e72b",
+      "comment": "Mail Server",
+      "command": "sendKeys",
+      "target": "name=host",
+      "targets": [],
+      "value": "${KEY_SPACE}${KEY_SPACE}"
+    }, {
+      "id": "3e8fedfd-ea57-4707-98eb-1248713508cc",
+      "comment": "Mail Username",
+      "command": "sendKeys",
+      "target": "name=username",
+      "targets": [],
+      "value": "${KEY_SPACE}${KEY_SPACE}"
+    }, {
+      "id": "0e4ac85b-57db-4154-b385-9a51696a6836",
+      "comment": "Mail Password",
+      "command": "sendKeys",
+      "target": "name=password",
+      "targets": [],
+      "value": "${KEY_SPACE}${KEY_SPACE}"
+    }, {
+      "id": "a971b639-0e48-4b42-b564-da486f158322",
+      "comment": "Save subscription",
+      "command": "click",
+      "target": "name=DO_SUBMIT",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "067db3e2-c9ac-4c7c-bef3-f0cdbe59278f",
+      "comment": "Validation Error on saving with no input",
+      "command": "assertElementPresent",
+      "target": "xpath=//*[contains(text(),'Validation Error')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "ec2d090b-42da-4b47-9abe-5a22773a0d95",
+      "comment": "Cancel subscription",
+      "command": "click",
+      "target": "name=org.apache.struts.taglib.html.CANCEL",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f51906a6-bacf-4371-b8b4-5ad27954e89d",
+      "comment": "Save user",
+      "command": "click",
+      "target": "name=DO_SUBMIT",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "893632a5-5451-41b4-b85e-67ea964dab48",
+      "comment": "Menu page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application - Main Menu",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9e81e6f6-d590-4e0a-a570-c8446ec8fcfb",
+      "comment": "Logoff Hermes",
+      "command": "click",
+      "target": "linkText=Log off MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "aaf0fae1-d0b3-41d4-be7a-697688bd43a0",
+      "comment": "Welcome page title",
+      "command": "verifyTitle",
+      "target": "MailReader Demonstration Application",
+      "targets": [],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "541b95ed-4ec1-42d2-ab08-01b313e21d77",
+    "name": "1_Browse",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d090830d-523c-4f42-a405-c54a29b38d07", "efe5ca74-6bc0-4453-a54b-3ef2529358e2"]
+  }, {
+    "id": "2ea8a434-7b75-4dd8-8437-bbc39c03082a",
+    "name": "2_Language Options",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["6d06f8ff-0ffb-49fa-a520-d15a11cc3088", "eb08058f-1468-41c1-a813-a0b6f1815691"]
+  }, {
+    "id": "fcee7432-3dac-48d1-b87e-2eaa7afa4a14",
+    "name": "3_Register",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["26faf425-b455-4a39-8ee2-aabd3a6a038b", "7c718a00-b9a7-45e8-b910-7530eeb649e8"]
+  }, {
+    "id": "1c8969b5-8325-40a5-876f-211235c998b6",
+    "name": "4_Logon",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["35b6bdd4-c3f0-49a0-a478-30bf5044514f", "1fa0452c-aa56-4ea2-93f5-2f2fde2da8e6", "5c8982f5-a1dc-403a-a7f2-cb9579a05d6d", "a705418a-0554-4eeb-ba91-3cd81f68b0d9"]
+  }, {
+    "id": "89223797-efb2-4b3f-b833-cad01d757568",
+    "name": "5_Maintain",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["1e4216fd-46e8-4300-97ca-5e257a8d293d", "831435fa-aa1b-4b3a-80c3-a2b8e524444d", "2697bb94-2dcb-43f6-a5d3-f42b01a0f51d", "d2196956-8061-423e-a8ed-f35c7ab2125d"]
+  }, {
+    "id": "2480bcd8-eccf-436f-a281-a2aefee98a11",
+    "name": "6_Verify",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["718909e9-99cb-45e1-9908-326139bccf04"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}

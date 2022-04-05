@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Update README
 * Reorg integration-tests
 * Correct `html:link`-Tag: params connectect with `&amp;` instead `&`
 * apps/[scripting-]mailreader: Convert `Canoo WebTests` to `Selenium IDE`-tests

@@ -4,6 +4,8 @@ Is a clone of <https://github.com/apache/struts1.git> - STRUTS_1_3_BRANCH, aimin
 
  * **[Done]**
     * Upgrade MAVEN-Plugins
+    * Correct example-apps
+    * Complete JUnit5- and integration-test (rewrite old ones)
  * **[Open]**
     * JDK 1.4 --> JDK 11
     * Servlet-API 2.3 --> 4.0

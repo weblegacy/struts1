@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Correct `html:link`-Tag: params connectect with `&amp;` instead `&`
 * apps/[scripting-]mailreader: Convert `Canoo WebTests` to `Selenium IDE`-tests
 * apps/[scripting-]mailreader: Add missing gif and remove version from index-title
 * Remove unnecessary taglib-definitions in `faces-example`s

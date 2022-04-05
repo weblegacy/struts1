@@ -444,7 +444,7 @@ public class LinkTag extends BaseHandlerTag {
         try {
             url = TagUtils.getInstance().computeURLWithCharEncoding(pageContext,
                     forward, href, page, action, module, params, anchor, false,
-                    useLocalEncoding);
+                    false, useLocalEncoding);
         } catch (MalformedURLException e) {
             TagUtils.getInstance().saveException(pageContext, e);
             throw new JspException(messages.getMessage("rewrite.url",

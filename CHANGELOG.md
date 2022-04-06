@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* STR-2321 and STR-2319: Compare floats and doubles
 * Update README
 * Reorg integration-tests
 * Correct `html:link`-Tag: params connectect with `&amp;` instead `&`

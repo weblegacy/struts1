@@ -50,6 +50,10 @@ public class TestValidWhen {
         testBean = new PojoBean(123, 789);
         testBean.setStringValue1("ABC");
         testBean.setStringValue2(null);
+        testBean.setFloatValue1(0.0f);
+        testBean.setFloatValue2(-3.14f);
+        testBean.setDoubleValue1(0.0);
+        testBean.setDoubleValue2(-3.14);
         testBean.setBeans(new PojoBean[] {
                 new PojoBean(11, 12), new PojoBean(21, 22), new PojoBean(31, 42),
                 new PojoBean(41, 52), new PojoBean(51, 62)
@@ -131,10 +135,10 @@ public class TestValidWhen {
     }
 
     /**
-     * Test Numeric values.
+     * Test integer values.
      */
     @Test
-    public void testNumeric() {
+    public void testInteger() {
         // Test Zero
         PojoBean numberBean = new PojoBean(0, -50);
 
@@ -145,6 +149,8 @@ public class TestValidWhen {
 
         // int
         doParse("(intValue1 == 123)", testBean, 0, "intValue1", true);
+        doParse("(intValue1 == 123.0)", testBean, 0, "intValue1", true);
+        doParse("(intValue1 == 123.1)", testBean, 0, "intValue1", false);
 
         // Integer
         doParse("(integerValue1 == 123)", testBean, 0, "integerValue1", true);
@@ -168,6 +174,50 @@ public class TestValidWhen {
             true);
         doParse("(stringValue1 < stringValue2)", stringBean, 0, "stringValue1",
             false);
+    }
+
+    /**
+     * Test float values
+     */
+    @Test
+    public void testFloat() {
+        // Test zero
+        doParse("(floatValue1 == 0)", testBean, 0, "floatValue1", true);
+        doParse("(floatValue2 != 0)", testBean, 0, "floatValue2", true);
+        doParse("(floatValue1 == 0.0)", testBean, 0, "floatValue1", true);
+        doParse("(floatValue2 != 0.0)", testBean, 0, "floatValue2", true);
+        doParse("(floatValue1 == 00.00)", testBean, 0, "floatValue1", true);
+        doParse("(floatValue2 != 00.00)", testBean, 0, "floatValue2", true);
+
+        // Test precision
+        doParse("(floatValue2 == -3.14)", testBean, 0, "floatValue2", true);
+        doParse("(floatValue2 == -3.140)", testBean, 0, "floatValue2", true);
+        doParse("(floatValue2 == -3.1)", testBean, 0, "floatValue2", false);
+
+        // Test negative
+        doParse("((floatValue2 > -3.15) and (floatValue2 < -3.13))", testBean, 0, "floatValue2", true);
+    }
+
+    /**
+     * Test double values
+     */
+    @Test
+    public void testDouble() {
+        // Test zero
+        doParse("(doubleValue1 == 0)", testBean, 0, "doubleValue1", true);
+        doParse("(doubleValue2 != 0)", testBean, 0, "doubleValue2", true);
+        doParse("(doubleValue1 == 0.0)", testBean, 0, "doubleValue1", true);
+        doParse("(doubleValue2 != 0.0)", testBean, 0, "doubleValue2", true);
+        doParse("(doubleValue1 == 00.00)", testBean, 0, "doubleValue1", true);
+        doParse("(doubleValue2 != 00.00)", testBean, 0, "doubleValue2", true);
+
+        // Test precision
+        doParse("(doubleValue2 == -3.14)", testBean, 0, "doubleValue2", true);
+        doParse("(doubleValue2 == -3.140)", testBean, 0, "doubleValue2", true);
+        doParse("(doubleValue2 == -3.1)", testBean, 0, "doubleValue2", false);
+
+        // Test negative
+        doParse("((doubleValue2 > -3.15) and (doubleValue2 < -3.13))", testBean, 0, "doubleValue2", true);
     }
 
     /**

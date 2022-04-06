@@ -1,4 +1,4 @@
-// $ANTLR 2.7.6 (2005-12-22): "ValidWhenParser.g" -> "ValidWhenParser.java"$
+// $ANTLR 2.7.7 (20060906): "ValidWhenParser.g" -> "ValidWhenParser.java"$
 
 /*
  * $Id$
@@ -23,9 +23,9 @@
 
 package org.apache.struts.validator.validwhen;
 
+import java.math.BigDecimal;
 import java.util.Stack;
 import org.apache.commons.validator.util.ValidatorUtils;
-
 
 import antlr.TokenBuffer;
 import antlr.TokenStreamException;
@@ -43,132 +43,139 @@ import antlr.collections.impl.BitSet;
 
 public class ValidWhenParser extends antlr.LLkParser       implements ValidWhenParserTokenTypes
  {
-Stack argStack = new Stack();
-Object form;
-int index;
-String value;
+
+    Stack argStack = new Stack();
+    Object form;
+    int index;
+    String value;
 
     public void setForm(Object f) { form = f; };
     public void setIndex (int i) { index = i; };
     public void setValue (String v) { value = v; };
 
     public boolean getResult() {
-       return ((Boolean)argStack.peek()).booleanValue();
+        return ((Boolean)argStack.peek()).booleanValue();
     }
 
-    private final int LESS_EQUAL=0;
-    private final int LESS_THAN=1;
-    private final int EQUAL=2;
-    private final int GREATER_THAN=3;
-    private final int GREATER_EQUAL=4;
-    private final int NOT_EQUAL=5;
-    private final int AND=6;
-    private final int OR=7;
+    private final int LESS_EQUAL = 0;
+    private final int LESS_THAN = 1;
+    private final int EQUAL = 2;
+    private final int GREATER_THAN = 3;
+    private final int GREATER_EQUAL = 4;
+    private final int NOT_EQUAL = 5;
+    private final int AND = 6;
+    private final int OR = 7;
 
-    private  boolean evaluateComparison (Object v1, Object compare, Object v2) {
-        boolean intCompare = true;
-	if ((v1 == null) || (v2 == null)) {
-		if (String.class.isInstance(v1)) {
-			if (((String) v1).trim().length() == 0) {
-				v1 = null;
+    private boolean evaluateComparison (Object v1, Object comparison, Object v2) {
+        boolean numCompare = true;
+	
+		if ((v1 == null) || (v2 == null)) {
+			if (String.class.isInstance(v1)) {
+				if (((String) v1).trim().length() == 0) {
+					v1 = null;
+                }
 			}
-		}
-		if (String.class.isInstance(v2)) {
-			if (((String) v2).trim().length() == 0) {
-				v2 = null;
-			}
-		}
-		switch (((Integer)compare).intValue()) {
-		case LESS_EQUAL:
-		case GREATER_THAN:
-		case LESS_THAN:
-		case GREATER_EQUAL:
-			return false;
-		case EQUAL:
-		    return (v1 == v2);
-		case NOT_EQUAL:
-		    return (v1 != v2);
-		}
-	}
-      if ((Integer.class.isInstance(v1) ||
-           String.class.isInstance(v1)) &&
-	    (Integer.class.isInstance(v2) ||
-           String.class.isInstance(v2))) {
-	    intCompare = true;
-      } else {
-	    intCompare = false;
-	}
-	if (intCompare) {
-	    try {
-		int v1i = 0, v2i = 0;
-		if (Integer.class.isInstance(v1)) {
-		    v1i = ((Integer)v1).intValue();
-		} else {
-		    v1i = Integer.parseInt((String) v1);
-		}
-		if (Integer.class.isInstance(v2)) {
-		    v2i = ((Integer)v2).intValue();
-		} else {
-		    v2i = Integer.parseInt((String) v2);
-		}
-		switch (((Integer)compare).intValue()) {
-		case LESS_EQUAL:
-		    return (v1i <= v2i);
+            if (String.class.isInstance(v2)) {
+                if (((String) v2).trim().length() == 0) {
+                    v2 = null;
+                }
+            }
+            
+    		switch (((Integer)comparison).intValue()) {
+    		case LESS_EQUAL:
+    		case GREATER_THAN:
+    		case LESS_THAN:
+    		case GREATER_EQUAL:
+                return false;
+    		case EQUAL:
+                return (v1 == v2);
+    		case NOT_EQUAL:
+                return (v1 != v2);
+    		}
+        }
+        
+        if ( (Integer.class.isInstance(v1) || 
+                BigDecimal.class.isInstance(v1) || 
+                String.class.isInstance(v1)) &&
+             (Integer.class.isInstance(v2) || 
+                BigDecimal.class.isInstance(v2) || 
+                String.class.isInstance(v2))) {
+    	    numCompare = true;
+        } else {
+            numCompare = false;
+        }
+	
+    	if (numCompare) {
+    	    try {
+        		BigDecimal v1i = null;
+        		BigDecimal v2i = null;
+        		
+                if (BigDecimal.class.isInstance(v1)) {
+        		    v1i = (BigDecimal)v1;
+                } else if (Integer.class.isInstance(v1)) {
+                    v1i = new BigDecimal(v1.toString());
+        		} else {
+        		    v1i = new BigDecimal((String) v1);
+        		}
+    		
+        		if (BigDecimal.class.isInstance(v2)) {
+                    v2i = (BigDecimal)v2;
+                } else if (Integer.class.isInstance(v2)) {
+                    v2i = new BigDecimal(v2.toString());
+        		} else {
+                    v2i = new BigDecimal((String) v2);
+        		}
+    
+                int res = v1i.compareTo(v2i);
+                switch (((Integer)comparison).intValue()) {
+                case LESS_EQUAL:
+                    return (res <= 0);
+                case LESS_THAN:
+                    return (res < 0);
+                case EQUAL:
+                    return (res == 0);
+                case GREATER_THAN:
+                    return (res > 0);
+                case GREATER_EQUAL:
+                    return (res >= 0);
+                case NOT_EQUAL:
+                    return (res != 0);
+                }
+            } catch (NumberFormatException ex) {};
+    	}
+	
+    	String v1s = "";
+    	String v2s = "";
+    
+    	if (String.class.isInstance(v1)) {
+            v1s = (String) v1;
+    	} else {
+            v1s = v1.toString();
+    	}
+    
+    	if (String.class.isInstance(v2)) {
+            v2s = (String) v2;
+    	} else {
+            v2s = v2.toString();
+    	}
 
-		case LESS_THAN:
-		    return (v1i < v2i);
-
-		case EQUAL:
-		    return (v1i == v2i);
-
-		case GREATER_THAN:
-		    return (v1i > v2i);
-
-		case GREATER_EQUAL:
-		    return (v1i >= v2i);
-
-		case NOT_EQUAL:
-		    return (v1i != v2i);
-		}
-	    } catch (NumberFormatException ex) {};
-	}
-	String v1s = "", v2s = "";
-
-	if (Integer.class.isInstance(v1)) {
-	    v1s = ((Integer)v1).toString();
-	} else {
-	    v1s = (String) v1;
-	}
-
-	if (Integer.class.isInstance(v2)) {
-	    v2s = ((Integer)v2).toString();
-	} else {
-	    v2s = (String) v2;
-	}
-
-	int res = v1s.compareTo(v2s);
-	switch (((Integer)compare).intValue()) {
-	case LESS_EQUAL:
-	    return (res <= 0);
-
-	case LESS_THAN:
-	    return (res < 0);
-
-	case EQUAL:
-	    return (res == 0);
-
-	case GREATER_THAN:
-	    return (res > 0);
-
-	case GREATER_EQUAL:
-	    return (res >= 0);
-
-	case NOT_EQUAL:
-	    return (res != 0);
-	}
-	return true;
+        int res = v1s.compareTo(v2s);
+        switch (((Integer)comparison).intValue()) {
+        case LESS_EQUAL:
+            return (res <= 0);
+        case LESS_THAN:
+            return (res < 0);
+        case EQUAL:
+            return (res == 0);
+        case GREATER_THAN:
+            return (res > 0);
+        case GREATER_EQUAL:
+            return (res >= 0);
+        case NOT_EQUAL:
+            return (res != 0);
+        }
+        return true;
     }
-
 
 protected ValidWhenParser(TokenBuffer tokenBuf, int k) {
   super(tokenBuf,k);
@@ -193,6 +200,15 @@ public ValidWhenParser(ParserSharedInputState state) {
   tokenNames = _tokenNames;
 }
 
+	public final void decimal() throws RecognitionException, TokenStreamException {
+		
+		Token  d = null;
+		
+		d = LT(1);
+		match(DECIMAL_LITERAL);
+		argStack.push(new BigDecimal(d.getText()));
+	}
+	
 	public final void integer() throws RecognitionException, TokenStreamException {
 		
 		Token  d = null;
@@ -200,25 +216,48 @@ public ValidWhenParser(ParserSharedInputState state) {
 		Token  o = null;
 		
 		switch ( LA(1)) {
-		case DECIMAL_LITERAL:
+		case DEC_INT_LITERAL:
 		{
 			d = LT(1);
-			match(DECIMAL_LITERAL);
+			match(DEC_INT_LITERAL);
 			argStack.push(Integer.decode(d.getText()));
 			break;
 		}
-		case HEX_LITERAL:
+		case HEX_INT_LITERAL:
 		{
 			h = LT(1);
-			match(HEX_LITERAL);
+			match(HEX_INT_LITERAL);
 			argStack.push(Integer.decode(h.getText()));
 			break;
 		}
-		case OCTAL_LITERAL:
+		case OCTAL_INT_LITERAL:
 		{
 			o = LT(1);
-			match(OCTAL_LITERAL);
+			match(OCTAL_INT_LITERAL);
 			argStack.push(Integer.decode(o.getText()));
+			break;
+		}
+		default:
+		{
+			throw new NoViableAltException(LT(1), getFilename());
+		}
+		}
+	}
+	
+	public final void number() throws RecognitionException, TokenStreamException {
+		
+		
+		switch ( LA(1)) {
+		case DECIMAL_LITERAL:
+		{
+			decimal();
+			break;
+		}
+		case DEC_INT_LITERAL:
+		case HEX_INT_LITERAL:
+		case OCTAL_INT_LITERAL:
+		{
+			integer();
 			break;
 		}
 		default:
@@ -258,9 +297,8 @@ public ValidWhenParser(ParserSharedInputState state) {
 			Object i2 = argStack.pop();
 			Object i1 = argStack.pop();
 			argStack.push(ValidatorUtils.getValueAsString(form, i1 + "[" + index + "]" + i2));
-			
 		}
-		else if ((LA(1)==IDENTIFIER) && (LA(2)==LBRACKET) && ((LA(3) >= DECIMAL_LITERAL && LA(3) <= OCTAL_LITERAL)) && (LA(4)==RBRACKET) && (LA(5)==IDENTIFIER)) {
+		else if ((LA(1)==IDENTIFIER) && (LA(2)==LBRACKET) && ((LA(3) >= DEC_INT_LITERAL && LA(3) <= OCTAL_INT_LITERAL)) && (LA(4)==RBRACKET) && (LA(5)==IDENTIFIER)) {
 			identifier();
 			match(LBRACKET);
 			integer();
@@ -271,9 +309,8 @@ public ValidWhenParser(ParserSharedInputState state) {
 			Object i4 = argStack.pop();
 			Object i3 = argStack.pop();
 			argStack.push(ValidatorUtils.getValueAsString(form, i3 + "[" + i4 + "]" + i5));
-			
 		}
-		else if ((LA(1)==IDENTIFIER) && (LA(2)==LBRACKET) && ((LA(3) >= DECIMAL_LITERAL && LA(3) <= OCTAL_LITERAL)) && (LA(4)==RBRACKET) && (_tokenSet_0.member(LA(5)))) {
+		else if ((LA(1)==IDENTIFIER) && (LA(2)==LBRACKET) && ((LA(3) >= DEC_INT_LITERAL && LA(3) <= OCTAL_INT_LITERAL)) && (LA(4)==RBRACKET) && (_tokenSet_0.member(LA(5)))) {
 			identifier();
 			match(LBRACKET);
 			integer();
@@ -282,7 +319,6 @@ public ValidWhenParser(ParserSharedInputState state) {
 			Object i7 = argStack.pop();
 			Object i6 = argStack.pop();
 			argStack.push(ValidatorUtils.getValueAsString(form, i6 + "[" + i7 + "]"));
-			
 		}
 		else if ((LA(1)==IDENTIFIER) && (LA(2)==LBRACKET) && (LA(3)==RBRACKET) && (_tokenSet_0.member(LA(4)))) {
 			identifier();
@@ -291,14 +327,12 @@ public ValidWhenParser(ParserSharedInputState state) {
 			
 			Object i8 = argStack.pop();
 			argStack.push(ValidatorUtils.getValueAsString(form, i8 + "[" + index + "]"));
-			
 		}
 		else if ((LA(1)==IDENTIFIER) && (_tokenSet_0.member(LA(2)))) {
 			identifier();
 			
 			Object i9 = argStack.pop();
 			argStack.push(ValidatorUtils.getValueAsString(form, (String)i9));
-			
 		}
 		else {
 			throw new NoViableAltException(LT(1), getFilename());
@@ -311,10 +345,11 @@ public ValidWhenParser(ParserSharedInputState state) {
 		
 		switch ( LA(1)) {
 		case DECIMAL_LITERAL:
-		case HEX_LITERAL:
-		case OCTAL_LITERAL:
+		case DEC_INT_LITERAL:
+		case HEX_INT_LITERAL:
+		case OCTAL_INT_LITERAL:
 		{
-			integer();
+			number();
 			break;
 		}
 		case STRING_LITERAL:
@@ -351,8 +386,9 @@ public ValidWhenParser(ParserSharedInputState state) {
 			break;
 		}
 		case DECIMAL_LITERAL:
-		case HEX_LITERAL:
-		case OCTAL_LITERAL:
+		case DEC_INT_LITERAL:
+		case HEX_INT_LITERAL:
+		case OCTAL_INT_LITERAL:
 		case STRING_LITERAL:
 		case LITERAL_null:
 		case THIS:
@@ -400,8 +436,8 @@ public ValidWhenParser(ParserSharedInputState state) {
 		comparison();
 		value();
 		
-			    Object v2 = argStack.pop();
-			    Object comp = argStack.pop();
+			   Object v2 = argStack.pop();
+			   Object comp = argStack.pop();
 		Object v1 = argStack.pop();
 		argStack.push(new Boolean(evaluateComparison(v1, comp, v2)));
 		
@@ -502,8 +538,9 @@ public ValidWhenParser(ParserSharedInputState state) {
 		"<2>",
 		"NULL_TREE_LOOKAHEAD",
 		"DECIMAL_LITERAL",
-		"HEX_LITERAL",
-		"OCTAL_LITERAL",
+		"DEC_INT_LITERAL",
+		"HEX_INT_LITERAL",
+		"OCTAL_INT_LITERAL",
 		"STRING_LITERAL",
 		"IDENTIFIER",
 		"LBRACKET",
@@ -524,12 +561,12 @@ public ValidWhenParser(ParserSharedInputState state) {
 	};
 	
 	private static final long[] mk_tokenSet_0() {
-		long[] data = { 8273920L, 0L};
+		long[] data = { 16547840L, 0L};
 		return data;
 	}
 	public static final BitSet _tokenSet_0 = new BitSet(mk_tokenSet_0());
 	private static final long[] mk_tokenSet_1() {
-		long[] data = { 6640L, 0L};
+		long[] data = { 13296L, 0L};
 		return data;
 	}
 	public static final BitSet _tokenSet_1 = new BitSet(mk_tokenSet_1());

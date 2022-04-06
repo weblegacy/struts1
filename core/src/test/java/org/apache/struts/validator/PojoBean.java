@@ -33,6 +33,10 @@ public class PojoBean {
     protected int intValue2;
     protected Integer integerValue1;
     protected Integer integerValue2;
+    protected float floatValue1;
+    protected float floatValue2;
+    protected double doubleValue1;
+    protected double doubleValue2;
     protected PojoBean[] beans;
     protected Map<String, Object> map = new HashMap<>();
 
@@ -191,5 +195,37 @@ public class PojoBean {
      */
     public Object getMapped(String key) {
         return map.get(key);
+    }
+
+    public float getFloatValue1() {
+        return floatValue1;
+    }
+
+    public float getFloatValue2() {
+        return floatValue2;
+    }
+
+    public void setFloatValue1(float floatValue1) {
+        this.floatValue1 = floatValue1;
+    }
+
+    public void setFloatValue2(float floatValue2) {
+        this.floatValue2 = floatValue2;
+    }
+
+    public double getDoubleValue1() {
+        return doubleValue1;
+    }
+
+    public double getDoubleValue2() {
+        return doubleValue2;
+    }
+
+    public void setDoubleValue1(double doubleValue1) {
+        this.doubleValue1 = doubleValue1;
+    }
+
+    public void setDoubleValue2(double doubleValue2) {
+        this.doubleValue2 = doubleValue2;
     }
 }

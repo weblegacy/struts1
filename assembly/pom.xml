@@ -121,6 +121,14 @@
           <outputDirectory>${project.build.directory}/assembly/out</outputDirectory>
           <workDirectory>${project.build.directory}/assembly/work</workDirectory>
         </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>

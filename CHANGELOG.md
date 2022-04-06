@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Generate Assemblies in package-phase
 * apps/faces-examples: remove spaces in comments
 * Add optional dependency `commons-io`
 * Bump MAVEN-Plugins (clean, failsafe, surefire, surefire-report)

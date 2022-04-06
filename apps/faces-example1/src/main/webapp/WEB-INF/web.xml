@@ -37,7 +37,7 @@
       org.apache.myfaces.webapp.StartupServletContextListener
     </listener-class>
   </listener>
-  <!--  MYFACES_END  -->
+  <!-- MYFACES_END -->
 
   <!-- JavaServer Faces Servlet Configuration -->
   <servlet>

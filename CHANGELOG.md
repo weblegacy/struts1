@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* apps/faces-examples: remove spaces in comments
 * Add optional dependency `commons-io`
 * Bump MAVEN-Plugins (clean, failsafe, surefire, surefire-report)
 * STR-2802: Add a test case

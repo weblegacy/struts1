@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Bump MAVEN-Plugins (clean, failsafe, surefire, surefire-report)
 * STR-2802: Add a test case
 * STR-2321 and STR-2319: Compare floats and doubles
 * Update README

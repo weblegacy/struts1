@@ -59,6 +59,7 @@ public class TestValidWhen {
                 new PojoBean(41, 52), new PojoBean(51, 62)
             });
         testBean.setMapped("testKey", "mappedValue");
+        testBean.setStringArray(new String[] {"zero", "one", "two", "three"});
     }
 
     @AfterEach
@@ -264,6 +265,16 @@ public class TestValidWhen {
             "stringValue1", false);
         doParse("((*this* != 'ABC') and (stringValue2 != null))", testBean, 0,
             "stringValue1", false);
+    }
+
+    /**
+     * Test Indexed Property.
+     */
+    @Test
+    public void testIndexedValue() {
+        // Test Case for Jira Issue STR-2802
+        // see https://issues.apache.org/struts/browse/STR-2802
+        doParse("(stringArray[1] == 'one')", testBean, 1, "stringArray[1]", true);
     }
 
     /**

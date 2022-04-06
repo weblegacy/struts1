@@ -166,6 +166,11 @@
       <artifactId>commons-fileupload</artifactId>
       <optional>false</optional>
     </dependency>
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <optional>false</optional>
+    </dependency>
 
   </dependencies>
 

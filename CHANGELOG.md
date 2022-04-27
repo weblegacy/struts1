@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Bump `maven-javadoc-plugin` from 3.3.2 to 3.4.0
 * Bump `checkstyle` from 10.1 to 10.2
 * Use `commons-io` 2.11.0 for integration-tests
 * Add more informations into `README`s, remove `mvn_hints`

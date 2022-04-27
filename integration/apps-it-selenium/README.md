@@ -1,9 +1,11 @@
 # Create Selenium IDE-Integration-Tests
 
+## Create Selenium-Tests
+
 ### Prerequisites
 * [Selenium IDE](https://www.selenium.dev/selenium-ide/)
 
-## Create Selenium-Tests
+### Convert `Selenium-IDE`-Scripts to `JUnit5`-Tests
 * Record Selenium-Tests with `Selenium IDE`
 * Export with `Java JUnit`
 * Rename exported Java-Class from `...Test` to `IT...`, `...IT` or `...ITCase`

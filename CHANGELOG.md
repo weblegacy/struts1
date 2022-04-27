@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Use `commons-io` 2.11.0 for integration-tests
 * Add more informations into `README`s, remove `mvn_hints`
 * Bump `maven-taglib-plugin` 2.4 to `taglib-maven-plugin` 2.5
 * Generate Assemblies in package-phase

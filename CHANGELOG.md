@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Bump `maven-taglib-plugin` 2.4 to `taglib-maven-plugin` 2.5
 * Generate Assemblies in package-phase
 * apps/faces-examples: remove spaces in comments
 * Add optional dependency `commons-io`

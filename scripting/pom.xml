@@ -67,7 +67,7 @@
       <plugins>
          <plugin>
             <groupId>net.sourceforge.maven-taglib</groupId>
-            <artifactId>maven-taglib-plugin</artifactId>
+            <artifactId>taglib-maven-plugin</artifactId>
             <configuration>
                <taglib.src.dir>${project.basedir}/src/tld</taglib.src.dir>
             </configuration>

@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Bump `webdrivermanager` from 5.1.0 to 5.1.1
 * Bump `htmlunit` from 2.60.0 to 2.61.0
 * Bump `cargo-maven3-plugin` from 1.9.10 to 1.9.11
 * Bump `maven-site-plugin` from 3.11.0 to 3.12.0

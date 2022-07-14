@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Downgrade `checkstyle` from 10.2 to 9.3 to use it with Java 8
 * Correct http-adress of the license
 * Use new `taglib-maven-plugin` from `io.github.weblegacy`
 * Bump `webdrivermanager` from 5.1.0 to 5.1.1

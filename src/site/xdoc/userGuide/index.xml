@@ -34,6 +34,130 @@
 
             <ul>
                 <li>
+                    <a href="preface.html">0. Preface</a>
+                    <ul>
+                        <li>
+                            <a href="preface.html#suspects">0.1 The Usual
+                                Suspects</a>
+                        </li>
+                        <li>
+                            <a href="preface.html#http">0.2 HTTP, HTML, and
+                                User Agents</a>
+                        </li>
+                        <li>
+                            <a href="preface.html#cycle">0.3 The HTTP
+                                Request/Response Cycle</a>
+                        </li>
+                        <li>
+                            <a href="preface.html#java">0.4 The Java Language
+                                and Application Frameworks</a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>
+                                    <a href="preface.html#chain">0.4.1 Chain of
+                                        Responsibility</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="preface.html#javabeans">0.5 JavaBeans</a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>
+                                    <a href="preface.html#reflection">0.5.1
+                                        Reflection and Introspection</a>
+                                </li>
+                                <li>
+                                    <a href="preface.html#maps">0.5.2 Maps</a>
+                                </li>
+                                <li>
+                                    <a href="preface.html#dynabeans">0.5.3
+                                        DynaBeans</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="preface.html#resources">0.6 Properties
+                                Files and ResourceBundles</a>
+                        </li>
+                        <li>
+                            <a href="preface.html#servlets">0.7 Java
+                                Servlets</a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>
+                                    <a href="preface.html#threads">0.7.1 Servlets
+                                        and threads</a>
+                                </li>
+                                <li>
+                                    <a href="preface.html#context">0.7.2 Servlet
+                                        Context</a>
+                                </li>
+                                <li>
+                                    <a href="preface.html#request">0.7.3 Servlet
+                                        Request</a>
+                                </li>
+                                <li>
+                                    <a href="preface.html#response">0.7.4 Servlet
+                                        Response</a>
+                                </li>
+                                <li>
+                                    <a href="preface.html#filter">0.7.5
+                                        Filtering</a>
+                                </li>
+                                <li>
+                                    <a href="preface.html#session">0.7.6
+                                        Sessions</a>
+                                </li>
+                                <li>
+                                    <a href="preface.html#dispatch">0.7.7
+                                        Dispatching Requests</a>
+                                </li>
+                                <li>
+                                    <a href="preface.html#webapp">0.7.8 Web
+                                        Applications</a>
+                                </li>
+                                <li>
+                                    <a href="preface.html#events">0.7.9 Web
+                                        application deployment descriptor</a>
+                                </li>
+                                <li>
+                                    <a href="preface.html#security">0.7.10
+                                        Security</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="preface.html#jsp">0.8 JavaServer Pages,
+                                JSP Tag Libraries, and JavaServer Faces</a>
+                        </li>
+                        <li>
+                            <a href="preface.html#xml">0.9 Extensible Markup
+                                Language</a>
+                        </li>
+                        <li>
+                            <ul>
+                                <li>
+                                    <a href="preface.html#descriptors">0.9.1
+                                        Descriptors</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="preface.html#jaas">0.10 JAAS</a>
+                        </li>
+                        <li>
+                            <a href="preface.html#layers">0.11 Other
+                                layers</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li>
                     <a href="introduction.html">1. Introduction</a>
                     <ul>
                         <li>

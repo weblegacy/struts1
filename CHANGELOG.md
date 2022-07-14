@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Add again deleted preface to user-guide
 * Downgrade `checkstyle` from 10.2 to 9.3 to use it with Java 8
 * Correct http-adress of the license
 * Use new `taglib-maven-plugin` from `io.github.weblegacy`

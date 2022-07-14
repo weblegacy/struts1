@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Correct http-adress of the license
 * Use new `taglib-maven-plugin` from `io.github.weblegacy`
 * Bump `webdrivermanager` from 5.1.0 to 5.1.1
 * Bump `htmlunit` from 2.60.0 to 2.61.0

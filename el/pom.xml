@@ -78,7 +78,7 @@
    <reporting>
       <plugins>
          <plugin>
-            <groupId>net.sourceforge.maven-taglib</groupId>
+            <groupId>io.github.weblegacy</groupId>
             <artifactId>taglib-maven-plugin</artifactId>
             <configuration>
                <taglib.src.dir>${project.basedir}/src/main/resources/META-INF/tld</taglib.src.dir>

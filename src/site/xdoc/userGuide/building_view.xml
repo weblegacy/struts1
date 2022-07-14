@@ -34,8 +34,7 @@
            oh, and come out the other side, where people walk upside down."
             </em></p></blockquote>
 
-            <a name="overview"/>
-            <subsection name="3.1 Overview">
+            <subsection name="3.1 Overview" id="overview">
 
                 <p>
                     The framework provides infrastructural support for view
@@ -62,8 +61,7 @@
 
             </subsection>
 
-            <a name="i18n"/>
-            <subsection name="3.2 Internationalized Messages">
+            <subsection name="3.2 Internationalized Messages" id="i18n">
 
                 <p>
                     A few years ago, application developers could count on
@@ -310,8 +308,7 @@
 
             </subsection>
 
-            <a name="form_beans"/>
-            <subsection name="3.3 Forms and FormBean Interactions">
+            <subsection name="3.3 Forms and FormBean Interactions" id="form_beans">
 
                 <p>
                     <strong>Note:</strong>
@@ -327,8 +324,7 @@
 
             </subsection>
 
-            <a name="form_population"/>
-            <subsection name="3.3.1 Automatic Form Population">
+            <subsection name="3.3.1 Automatic Form Population" id="form_population">
 
                 <p>
                     At one time or another, most web developers have built
@@ -409,8 +405,7 @@ value="<%= loginBean.getUsername() >"/>
                 </p>
             </subsection>
 
-            <a name="form_validation"/>
-            <subsection name="3.3.2 Automatic Form Validation">
+            <subsection name="3.3.2 Automatic Form Validation" id="form_validation">
 
                 <p>
                     In addition to the form and bean interactions described
@@ -511,8 +506,7 @@ HttpServletRequest request);
 
             </subsection>
 
-            <a name="validator"/>
-            <subsection name="3.3.3 The Struts Validator">
+            <subsection name="3.3.3 The Struts Validator" id="validator">
 
 
                 <p>
@@ -582,8 +576,7 @@ value="/org/apache/struts/validator/validator-rules.xml,
             </subsection>
 
 
-            <a name="Tiles"/>
-            <subsection name="3.3.4 Page Composition With Tiles">
+            <subsection name="3.3.4 Page Composition With Tiles" id="tiles">
 
                 <p>
                     Tiles is a powerful templating library that allows you to
@@ -685,8 +678,7 @@ parameter="homepage"/>
 
             </subsection>
 
-            <a name="presentation_frameworks"/>
-            <subsection name="3.4 Presentation Frameworks">
+            <subsection name="3.4 Presentation Frameworks" id="presentation_frameworks">
                 <p>
                     The framework is supported by many presentation
                     technologies,
@@ -715,8 +707,7 @@ parameter="homepage"/>
                 </ul>
             </subsection>
 
-            <a name="other_presentations"/>
-            <subsection name="3.5 Other Presentation Techniques">
+            <subsection name="3.5 Other Presentation Techniques" id="other_presentations">
 
                 <p>
                     Although the look and feel of your application can be
@@ -729,8 +720,7 @@ parameter="homepage"/>
 
             </subsection>
 
-            <a name="image_rendering"/>
-            <subsection name="3.5.1 Image Rendering Components">
+            <subsection name="3.5.1 Image Rendering Components" id="image_rendering">
 
                 <p>
                     Some applications require dynamically generated images,
@@ -772,8 +762,7 @@ parameter="homepage"/>
 
             </subsection>
 
-            <a name="text_rendering"/>
-            <subsection name="3.5.2 Rendering Text">
+            <subsection name="3.5.2 Rendering Text" id="text_rendering">
 
                 <p>
                     Some applications require dynamically generated text or

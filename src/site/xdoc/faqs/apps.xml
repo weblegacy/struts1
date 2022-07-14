@@ -151,7 +151,7 @@
                                     <li>Create and maintain a properties file
                                         of the text elements
                                         to be displayed.
-                                        <a href="../userGuide/preface.html#0_6_Properties_Files_and_ResourceBundles">
+                                        <a href="../userGuide/preface.html#resources">
                                             (more...)
                                         </a>
                                     </li>
@@ -234,7 +234,7 @@
                         to
                         reference
                         <code>ActionServlet</code>
-                        <a href="../userGuide/configuration.html#5_4_The_Web_Application_Deployment_Descriptor">
+                        <a href="../userGuide/configuration.html#dd_config">
                             (more...)</a>
                     </li>
                     <li>Parallel Tasks

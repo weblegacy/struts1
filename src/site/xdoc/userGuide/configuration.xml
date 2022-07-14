@@ -34,8 +34,7 @@
             story better than anyone else."
             </em></p></blockquote>
 
-            <a name="config-overview"/>
-            <subsection name="5.1 Overview">
+            <subsection name="5.1 Overview" id="config_overview">
 
                 <p>
                     Before you can build an application, you need to lay a
@@ -49,12 +48,11 @@
 
             </subsection>
 
-            <a name="struts-config"/>
-            <subsection name="5.2 The configuration file">
+            <subsection name="5.2 The configuration file" id="struts_config">
 
                 <p>
                     The
-                    <a href="building_controller.html#4_8_Writing_Action_Mappings">
+                    <a href="building_controller.html#config">
                         Writing Action
                         Mappings</a>
                     section covered writing the
@@ -92,8 +90,7 @@
 
             </subsection>
 
-            <a name="controller_config"/>
-            <subsection name="5.2.1 Controller Configuration">
+            <subsection name="5.2.1 Controller Configuration" id="controller_config">
 
                 <p>
                     The
@@ -363,8 +360,7 @@
 
             </subsection>
 
-            <a name="resources_config"/>
-            <subsection name="5.2.2 Message Resources Configuration">
+            <subsection name="5.2.2 Message Resources Configuration" id="resources_config">
 
                 <p>
                     The framework has built in support for
@@ -480,8 +476,7 @@
 
             </subsection>
 
-            <a name="plugin_config"/>
-            <subsection name="5.2.3 PlugIn Configuration">
+            <subsection name="5.2.3 PlugIn Configuration" id="plugin_config">
 
                 <p>
                     Struts PlugIns are configured using the
@@ -515,8 +510,7 @@
 
             </subsection>
 
-            <a name="dd_config_modules"/>
-            <subsection name="5.3 Configuring Your Application for Modules">
+            <subsection name="5.3 Configuring Your Application for Modules" id="dd_config_modules">
 
                 <p>
                     Very little is required in order to start taking advantage
@@ -543,8 +537,7 @@
 
             </subsection>
 
-            <a name="module_config-files"/>
-            <subsection name="5.3.1 Module Configuration Files">
+            <subsection name="5.3.1 Module Configuration Files" id="module_config_files">
 
                 <p>
                     Back in version 1.0, a few "boot-strap" options were placed
@@ -581,8 +574,7 @@
 
             </subsection>
 
-            <a name="module_config-inform_controller"/>
-            <subsection name="5.3.2 Informing the Controller">
+            <subsection name="5.3.2 Informing the Controller" id="module_config_inform_controller">
 
                 <p>
                     Since version 1.0, you listed your configuration file as an
@@ -665,8 +657,7 @@
             </subsection>
 
 
-            <a name="module_config-switching"/>
-            <subsection name="5.3.3 Switching Modules">
+            <subsection name="5.3.3 Switching Modules" id="module_config_switching">
 
                 <p>
                     There are three approaches for switching from one module
@@ -774,8 +765,7 @@
 
             </subsection>
 
-            <a name="dd_config"/>
-            <subsection name="5.4 The Web Application Deployment Descriptor">
+            <subsection name="5.4 The Web Application Deployment Descriptor" id="dd_config">
 
                 <p>
                     The final step in setting up the application is to
@@ -792,8 +782,7 @@
 
             </subsection>
 
-            <a name="dd_config_servlet"/>
-            <subsection name="5.4.1 Configure the ActionServlet Instance">
+            <subsection name="5.4.1 Configure the ActionServlet Instance" id="dd_config_servlet">
 
                 <p>
                     Add an entry defining the action servlet itself, along
@@ -942,8 +931,7 @@
 
             </subsection>
 
-            <a name="dd_config_mapping"/>
-            <subsection name="5.4.2 Configure the ActionServlet Mapping">
+            <subsection name="5.4.2 Configure the ActionServlet Mapping" id="dd_config_mapping">
 
                 <p>
                     <strong>Note:</strong>
@@ -1054,9 +1042,9 @@
 
             </subsection>
 
-            <a name="dd_config_taglib_uri"/>
             <subsection
-                    name="5.4.3.1 Configure the Struts JSP Tag Libraries (Servlet 2.3/2.4)">
+                    name="5.4.3.1 Configure the Struts JSP Tag Libraries (Servlet 2.3/2.4)"
+                    id="dd_config_taglib_uri">
 
                 <p>
                     The Servlet 2.3 and 2.4 specifications simplify the
@@ -1081,7 +1069,7 @@
                     <strong>must use the full uri</strong>
                     defined in the various
                     tlds (see the
-                    <a href="5_4_3_Configure_the_Struts_Tag_Libraries">
+                    <a href="#dd_config_taglib_uri">
                         example configuration</a>
                     for reference)
                     so that the container knows where to find the tag's class
@@ -1099,8 +1087,7 @@
 
             </subsection>
 
-            <a name="config_add"/>
-            <subsection name="5.5 Add Framework Components To Your Application">
+            <subsection name="5.5 Add Framework Components To Your Application" id="config_add">
 
                 <p>
                     To use the framework, you must copy
@@ -1256,8 +1243,7 @@
                 </div>
 
             </subsection>
-            <a name="config_logging"/>
-            <subsection name="5.6 Logging">
+            <subsection name="5.6 Logging" id="config_logging">
 
                 <p>
                     Since version 1.0, the logging functionality was fairly
@@ -1397,7 +1383,7 @@
                     logging implementation that the framework and the Commons
                     libraries use, by
                     following the instructions in
-                    <a href="building_controller.html#4_11_Commons_Logging_Interface">
+                    <a href="building_controller.html#logging">
                         Section 4.11</a>
                     . If you do
                     this, you are strongly encouraged to follow the same

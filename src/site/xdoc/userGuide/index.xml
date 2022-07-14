@@ -30,7 +30,7 @@
 
         <!-- Omit chapter heading for the list of chapters (also omits authors) -->
 
-        <section name="Table of Contents" href="toc">
+        <section name="Table of Contents" id="toc">
 
             <ul>
                 <li>
@@ -244,7 +244,7 @@
                                         3.3.3 The Struts Validator</a>
                                 </li>
                                 <li>
-                                    <a href="building_view.html#Tiles">3.3.4
+                                    <a href="building_view.html#tiles">3.3.4
                                         Page Composition With Tiles</a>
                                 </li>
                             </ul>
@@ -341,7 +341,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="building_controller.html#module_config-use_actions">
+                            <a href="building_controller.html#module_config_use_actions">
                                 4.9 Using ActionMappings for Pages</a>
                         </li>
                         <li>
@@ -360,11 +360,11 @@
                         Applications</a>
                     <ul>
                         <li>
-                            <a href="configuration.html#config-overview">5.1
+                            <a href="configuration.html#config_overview">5.1
                                 Overview</a>
                         </li>
                         <li>
-                            <a href="configuration.html#struts-config">5.2 The
+                            <a href="configuration.html#struts_config">5.2 The
                                 Configuration File</a>
                             <ul>
                                 <li>
@@ -387,15 +387,15 @@
                                 Configuring your application for modules</a>
                             <ul>
                                 <li>
-                                    <a href="configuration.html#module_config-files">
+                                    <a href="configuration.html#module_config_files">
                                         5.3.1 Module Configuration Files</a>
                                 </li>
                                 <li>
-                                    <a href="configuration.html#module_config-inform_controller">
+                                    <a href="configuration.html#module_config_inform_controller">
                                         5.3.2 Informing the Controller</a>
                                 </li>
                                 <li>
-                                    <a href="configuration.html#module_config-switching">
+                                    <a href="configuration.html#module_config_switching">
                                         5.3.3 Switching Modules</a>
                                 </li>
                             </ul>

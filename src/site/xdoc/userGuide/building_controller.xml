@@ -33,8 +33,7 @@
             "It would be so nice if something made sense for a change."
             </em></p></blockquote>
 
-            <a name="overview"/>
-            <subsection name="4.1 Overview">
+            <subsection name="4.1 Overview" id="overview">
 
                 <p>
                     Now that we understand how to construct the 
@@ -106,8 +105,7 @@
 
             </subsection>
 
-            <a name="action_servlet"/>
-            <subsection name="4.2 The ActionServlet">
+            <subsection name="4.2 The ActionServlet" id="action_servlet">
 
                 <p>
                     For those of you familiar with MVC architecture, the
@@ -188,8 +186,7 @@
 
             </subsection>
 
-            <a name="request_processor"/>
-            <subsection name="4.2.1 Request Processor">
+            <subsection name="4.2.1 Request Processor" id="request_processor">
 
                 <p>
                     The RequestProcessor is where the majority of the core
@@ -470,8 +467,7 @@
 
             </subsection>
 
-            <a name="process"/>
-            <subsection name="4.2.2 Where did they go?">
+            <subsection name="4.2.2 Where did they go?" id="process">
 
                 <p>
                     The Struts 1.2.x RequestProcessor utilized a similar but
@@ -607,8 +603,7 @@
 
             </subsection>
 
-            <a name="action_form_classes"/>
-            <subsection name="4.3 ActionForm Classes">
+            <subsection name="4.3 ActionForm Classes" id="action_form_classes">
 
                 <p>
                     An ActionForm represents an HTML form that the user
@@ -657,7 +652,7 @@
                         automatically validate the
                         input from the form (using your method).
                         See 
-                        <a href="building_view.html#3_3_4_Automatic_Form_Validation">
+                        <a href="building_view.html#form_validation">
                             Automatic Form
                             Validation</a>
                         for details. Of course, you can also ignore the
@@ -739,8 +734,7 @@
 
             </subsection>
 
-            <a name="dyna_action_form_classes"/>
-            <subsection name="4.3.1 DynaActionForm Classes">
+            <subsection name="4.3.1 DynaActionForm Classes" id="dyna_action_form_classes">
 
                 <p>
                     Maintaining a separate concrete ActionForm class for each
@@ -979,8 +973,7 @@
 
             </subsection>
 
-            <a name="lazy_action_form_classes"/>
-            <subsection name="4.3.2 LazyActionForm Classes">
+            <subsection name="4.3.2 LazyActionForm Classes" id="lazy_action_form_classes">
 
                 <p>
                     Struts
@@ -1154,8 +1147,7 @@
             </subsection>
 
 
-            <a name="map_action_form_classes"/>
-            <subsection name="4.3.3 Map-backed ActionForms">
+            <subsection name="4.3.3 Map-backed ActionForms" id="map_action_form_classes">
 
                 <p>
                     The DynaActionForm classes offer the ability to create
@@ -1304,8 +1296,7 @@
 
             </subsection>
 
-            <a name="action_classes"/>
-            <subsection name="4.4 Action Classes">
+            <subsection name="4.4 Action Classes" id="action_classes">
 
                 <p>
                     The Action class defines two methods that could be
@@ -1446,8 +1437,7 @@ public ActionForward execute(ActionMapping mapping,
 
             </subsection>
 
-            <a name="action_design_guide"/>
-            <subsection name="4.4.1 Action Class Design Guidelines">
+            <subsection name="4.4.1 Action Class Design Guidelines" id="action_design_guide">
 
                 <p>
                     Remember the following design guidelines when coding
@@ -1578,8 +1568,7 @@ public ActionForward execute(ActionMapping mapping,
 
             </subsection>
 
-            <a name="exception_handler"/>
-            <subsection name="4.5 Exception Handler">
+            <subsection name="4.5 Exception Handler" id="exception_handler">
 
                 <p>
                     You can define an ExceptionHandler to execute when an
@@ -1758,8 +1747,7 @@ public ActionForward execute(ActionMapping mapping,
 
             </subsection>
 
-            <a name="plugin_classes"/>
-            <subsection name="4.6 PlugIn Classes">
+            <subsection name="4.6 PlugIn Classes" id="plugin_classes">
 
                 <p>
                     The
@@ -1791,15 +1779,14 @@ public ActionForward execute(ActionMapping mapping,
                     within the
                     framework's configuration file.
                     See
-                    <a href="configuration.html#5_2_3_PlugIn_Configuration">
+                    <a href="configuration.html#plugin_config">
                         PlugIn Configuration</a>
                     for details.
                 </p>
 
             </subsection>
 
-            <a name="actionmapping"/>
-            <subsection name="4.7 The ActionMapping Implementation">
+            <subsection name="4.7 The ActionMapping Implementation" id="actionmapping">
 
                 <p>
                     In order to operate successfully, our controller servlet
@@ -1862,8 +1849,7 @@ public ActionForward execute(ActionMapping mapping,
 
             </subsection>
 
-            <a name="config"/>
-            <subsection name="4.8 Writing Action Mappings">
+            <subsection name="4.8 Writing Action Mappings" id="config">
 
                 <p>
                     How does the controller servlet learn about the mappings
@@ -2065,8 +2051,7 @@ public ActionForward execute(ActionMapping mapping,
 
             </subsection>
 
-            <a name="action_mapping_example"/>
-            <subsection name="4.8.1 ActionMapping Example">
+            <subsection name="4.8.1 ActionMapping Example" id="action_mapping_example">
 
                 <p>
                     Here's a mapping entry based on the MailReader example
@@ -2191,8 +2176,7 @@ public ActionForward execute(ActionMapping mapping,
 
             </subsection>
 
-            <a name="module_config-use_actions"/>
-            <subsection name="4.9 Using ActionMappings for Pages">
+            <subsection name="4.9 Using ActionMappings for Pages" id="module_config_use_actions">
 
                 <p>
                     Fronting your pages with ActionMappings is
@@ -2218,8 +2202,7 @@ public ActionForward execute(ActionMapping mapping,
 
             </subsection>
 
-            <a name="action_mapping_wildcards"/>
-            <subsection name="4.10 Using Wildcards in ActionMappings">
+            <subsection name="4.10 Using Wildcards in ActionMappings" id="action_mapping_wildcards">
 
                 <p>
                     [Since Apache Struts 1.2.0] As an application grows in
@@ -2234,7 +2217,7 @@ public ActionForward execute(ActionMapping mapping,
                     how it works. This example modifies the previous mapping
                     in the
                     <a
-                            href="#4_8_1_ActionMapping_Example">ActionMapping
+                            href="#action_mapping_example">ActionMapping
                         Example</a>
                     section to use
                     wildcards to match all pages that start with /edit:
@@ -2384,8 +2367,7 @@ public ActionForward execute(ActionMapping mapping,
 
             </subsection>
 
-            <a name="logging"/>
-            <subsection name="4.11 Commons Logging Interface">
+            <subsection name="4.11 Commons Logging Interface" id="logging">
                 <p>
                     The framework doesn't configure logging itself -- it's all
                     done by

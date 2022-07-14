@@ -171,7 +171,7 @@
                     Meanwhile, DynaActionForms relieve developers of
                     maintaining simple ActionForms.
                     For near zero maintenance, try
-                    <a href="../userGuide/building_controller.html#lazy_action_form_classes/">
+                    <a href="../userGuide/building_controller.html#lazy_action_form_classes">
                         LazyActionForm</a>
                     and Hubert Rabago's
                     <a href="https://formdef.dev.java.net/">FormDef.</a>

@@ -212,7 +212,7 @@
                         ActionForm bean, subclassing the Struts class
                         <code>ActionForm</code>
                         (see
-                        <a href="../userGuide/building_controller.html#4_3_ActionForm_Classes">
+                        <a href="../userGuide/building_controller.html#action_form_classes">
                             Building
                             Controller</a>
                         components).
@@ -235,7 +235,7 @@
                         <code>type</code>
                         attributes. But most often,
                         everything is specified in the
-                        <a href="../userGuide/building_controller.html#4_8_Writing_Action_Mappings">
+                        <a href="../userGuide/building_controller.html#config">
                             Struts Configuration
                             File.</a>
                     </li>

@@ -189,7 +189,7 @@
                 <p>
                     If you declare such beans in your Struts
                     configuration file 
-                    <a href="building_controller.html#4_8_Writing_Action_Mappings">
+                    <a href="building_controller.html#config">
                         (see Writing Action Mappings),</a>
                     the Struts controller servlet
                     will automatically perform the following services for you,
@@ -541,7 +541,7 @@
             </subsection>                
         </section>
 
-        <section>
+        <section name="">
             <p class="right">
                 Next:
                 <a href="building_view.html">Building View Components</a>

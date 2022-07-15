@@ -93,21 +93,6 @@
     </profiles>
 
     <build>
-      <pluginManagement>
-       <plugins>
-          <plugin>
-            <artifactId>maven-changes-plugin</artifactId>
-            <version>2.12.1</version>
-            <configuration>
-              <githubAPIScheme>https</githubAPIScheme>
-              <githubAPIPort>443</githubAPIPort>
-              <teamlist>team.html</teamlist>
-              <onlyMilestoneIssues>false</onlyMilestoneIssues>
-            </configuration>
-          </plugin>
-       </plugins>
-      </pluginManagement>
-
       <plugins>
        <plugin>
           <artifactId>maven-changes-plugin</artifactId>
@@ -143,6 +128,12 @@
           <artifactId>maven-changes-plugin</artifactId>
           <reportSets>
             <reportSet>
+              <configuration>
+                <githubAPIScheme>https</githubAPIScheme>
+                <githubAPIPort>443</githubAPIPort>
+                <teamlist>team.html</teamlist>
+                <onlyMilestoneIssues>false</onlyMilestoneIssues>
+              </configuration>
               <reports>
                 <report>changes-report</report>
                 <report>github-report</report>

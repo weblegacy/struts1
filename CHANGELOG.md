@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Move `maven-changes-plugin`-definition to parent-POM
 * Adapt JXR-generation to resamble 1.3.10-Version
 * Adapt JavaDoc-generation to resamble 1.3.10-Version
 * Correct DTD-copy

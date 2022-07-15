@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Add missing `slf4j-simple`-test-dependency
 * Bump `webdrivermanager` from 5.1.1 to 5.2.1
 * Bump `selenium-java` from 4.1.3 to 4.3.0
 * Bump `htmlunit` from 2.61.0 to 2.63.0

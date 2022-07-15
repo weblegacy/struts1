@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Bump `cargo-maven3-plugin` from 1.9.11 to 1.9.13
 * Bump `maven-surefire-report-plugin` from 3.0.0-M6 to 3.0.0-M7
 * Bump `maven-surefire-plugin` from 3.0.0-M6 to 3.0.0-M7
 * Bump `maven-project-info-reports-plugin` from 3.2.2 to 3.3.0

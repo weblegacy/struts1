@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Add/update XML-Declaration with encoding
 * Adapt internal links in site-docs
 * Delete not used `navigation.xml`'s from FAQs and user-guide
 * Add again deleted preface to user-guide

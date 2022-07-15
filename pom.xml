@@ -412,7 +412,27 @@
                   </links>
                   <failOnError>false</failOnError>
                   <quite>true</quite>
+                  <debug>false</debug>
                 </configuration>
+                <reportSets>
+                  <reportSet>
+                    <id>aggregate</id>
+                    <inherited>false</inherited>
+                    <reports>
+                      <report>aggregate</report>
+                    </reports>
+                    <configuration>
+                      <excludePackageNames>examples:examples.*:org.apache.struts.webapp:org.apache.struts.webapp.*:org.apache.struts.apps.mailreader:org.apache.struts.apps.mailreader.actions:org.apache.struts.apps.mailreader.plugin:org.apache.struts.apps.scriptingmailreader:org.apache.struts.apps.scriptingmailreader.*</excludePackageNames>
+                    </configuration>
+                  </reportSet>
+                  <reportSet>
+                    <id>default</id>
+                    <reports>
+                      <report>javadoc</report>
+                      <report>test-javadoc</report>
+                    </reports>
+                  </reportSet>
+                </reportSets>
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-report-plugin</artifactId>
@@ -425,6 +445,21 @@
             </plugin>
             <plugin>
                 <artifactId>maven-jxr-plugin</artifactId>
+                <reportSets>
+                  <reportSet>
+                    <id>aggregate</id>
+                    <configuration>
+                      <skip>true</skip>
+                    </configuration>
+                  </reportSet>
+                  <reportSet>
+                    <id>default</id>
+                    <reports>
+                      <report>jxr</report>
+                      <report>test-jxr</report>
+                    </reports>
+                  </reportSet>
+                </reportSets>
             </plugin>
             <plugin>
                 <artifactId>maven-pmd-plugin</artifactId>

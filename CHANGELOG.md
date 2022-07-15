@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Adapt JavaDoc-generation to resamble 1.3.10-Version
 * Correct DTD-copy
 * Correct `site.xml` in apps
 * Generate change-report in `scripting`-module

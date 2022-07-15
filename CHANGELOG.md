@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Bump `selenium-java` from 4.1.3 to 4.3.0
 * Bump `htmlunit` from 2.61.0 to 2.63.0
 * Bump `cargo-maven3-plugin` from 1.9.11 to 1.9.13
 * Bump `maven-surefire-report-plugin` from 3.0.0-M6 to 3.0.0-M7

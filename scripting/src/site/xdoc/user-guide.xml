@@ -20,14 +20,15 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
   <properties>
     <title>User Guide</title>
   </properties>
 
   <body>
-    <section name="User Guide">
-      <a name="overview"/>
+    <section name="User Guide" id="overview">
       <p>The entire Struts Scripting component is only a few classes, since most of
       the heavy lifting is done by the 
       <a href="http://jakarta.apache.org/bsf">Bean Scripting Framework</a> 
@@ -38,8 +39,7 @@
         <li><a href="#installation">Installation</a></li>
         <li><a href="#usage">Usage</a></li>
       </ul>  
-    <subsection name="Installation">
-      <a name="installation"/>
+    <subsection name="Installation" id="installation">
          <p>After downloading the Struts Scripting distribution, copy the Struts
          Scripting jar, <code>struts-scripting-1.0.1.jar</code>, to your application's
          libraries directory.  When deployed, this directory will be <code>WEB-INF/lib</code>.
@@ -50,7 +50,7 @@
             <caption>
               <strong>BSF-supported languages and extentions</strong>
             </caption>
-            <thead>
+            <tbody>
             <tr>
              <td>javascript (js)</td>
              <td>jacl (jacl)</td>
@@ -84,7 +84,7 @@
             <tr>
              <td>judoscript (judo, jud)</td>
             </tr>
-            </thead>
+            </tbody>
         </table>   
         <p>Once you have picked a language, you need to download its libraries and install it 
         into your application, which usually means copying its jar files into the same location
@@ -108,8 +108,7 @@
         accessible to the classloader, usually <code>WEB-INF/classes</code>.
         </p>
     </subsection>     
-    <subsection name="Usage">
-      <a name="usage"/>
+    <subsection name="Usage" id="usage">
          <p>To determine what script will be executed, the "parameter" attribute of
            the action mapping should contain the name of the script relative to
            the web application root directory (i.e. http://server/app). In the place of 

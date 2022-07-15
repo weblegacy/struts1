@@ -17,14 +17,16 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<document url="release-notes.html">
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
     <properties>
         <title>Struts Release Notes (since 1.2.4)</title>
     </properties>
     <body>
         <section name="6.1 Release Notes - Version 1.2.7"
-                 href="release_notes">
-            <subsection name="Introduction" href="Introduction">
+                 id="release_notes">
+            <subsection name="Introduction" id="Introduction">
                 <p>
                     This section contains release notes for changes that have
                     taken
@@ -54,7 +56,7 @@
 
             </subsection>
 
-            <subsection name="Highlights of Changes" href="Highlight">
+            <subsection name="Highlights of Changes" id="Highlight">
                 <p>
                     The purpose of this section is to highlight the new
                     features since the
@@ -324,7 +326,7 @@
 
             </subsection>
 
-            <subsection name="Detailed Changes" href="Detail">
+            <subsection name="Detailed Changes" id="Detail">
                 <p>
                     This section contains the details of changes since version
                     1.2.4 with links to
@@ -1604,11 +1606,12 @@
                 </table>
             </subsection>
 
-            <subsection>
-                <p class="right">Next:
-                    <a href="installation.html">Installation</a>
-                </p>
-            </subsection>
+        </section>
+
+        <section name="">
+            <p class="right">Next:
+                <a href="installation.html">Installation</a>
+            </p>
         </section>
     </body>
 </document>

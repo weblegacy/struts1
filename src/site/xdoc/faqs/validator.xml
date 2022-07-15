@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Validator Guide</title>
@@ -95,7 +97,7 @@
                     example).
                 </p>
 
-            <subsection href="i18n" name="Internationalization">
+            <subsection id="i18n" name="Internationalization">
 
                 <p>
                     Each validator form is grouped within a
@@ -224,7 +226,7 @@
 
             </subsection>
 
-            <subsection href="builtin" name="Standard Built In Validations">
+            <subsection id="builtin" name="Standard Built In Validations">
 
                 <p>
                     Validator ships with a set of pre-defined validators, as
@@ -615,7 +617,7 @@
             </subsection>
 
 
-            <subsection href="members" name="Constants/Variables">
+            <subsection id="members" name="Constants/Variables">
 
                 <p>
                     Global constants can be inside the global tags and
@@ -689,7 +691,7 @@
 
             </subsection>
 
-            <subsection href="validwhen"
+            <subsection id="validwhen"
                         name="Designing Complex Validations with validwhen">
                 <p>
                     [Since Struts 1.2.0] A frequent requirement in validation
@@ -868,7 +870,7 @@
                     </li>
                 </ul>
             </subsection>
-            <subsection href="plugs" name="Pluggable Validators">
+            <subsection id="plugs" name="Pluggable Validators">
 
                 <p>
                     By convention, the validators your application uses can
@@ -1128,7 +1130,7 @@ public static boolean validateTwoFields(
 
             </subsection>
 
-            <subsection href="validator-issues" name="Known Issues">
+            <subsection id="validator-issues" name="Known Issues">
 
                 <p>
                     Since the Struts Validator relies on the Commons
@@ -1148,7 +1150,7 @@ public static boolean validateTwoFields(
 
             </subsection>
 
-            <subsection href="conditionals"
+            <subsection id="conditionals"
                         name="Conditionally required fields">
 
                 <p>
@@ -1371,7 +1373,7 @@ public static boolean validateTwoFields(
 
             </subsection>
 
-            <subsection href="stopOnFirstError"
+            <subsection id="stopOnFirstError"
                         name="Unstoppable JavaScript Validations">
 
                 <p>
@@ -1404,7 +1406,7 @@ public static boolean validateTwoFields(
 
             </subsection>
 
-            <subsection href="api" name="Validator API Guide">
+            <subsection id="api" name="Validator API Guide">
 
                 <p>
                     A concise
@@ -1416,7 +1418,7 @@ public static boolean validateTwoFields(
 
             </subsection>
 
-            <subsection href="resources" name="Validator Resources">
+            <subsection id="resources" name="Validator Resources">
 
                 <ul>
                 <li>

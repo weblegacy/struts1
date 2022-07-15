@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Release Notes (since 1.3.1)</title>
@@ -28,7 +30,7 @@
     <body>
         <section name="6.1 Release Notes - Version 1.3.2">
 
-            <subsection>
+            <subsection name="">
                 <p>
                     <strong>SPECIAL NOTE ON UPGRADING - README FIRST!</strong>
                     - If you use the standard
@@ -53,8 +55,7 @@
                 </p>
             </subsection>
 
-            <a name="release_notes"/>
-            <subsection name="Introduction">
+            <subsection name="Introduction" id="release_notes">
                 <p>
                     This section contains release notes for changes that have
                     taken place to the Struts 1 project, previously known
@@ -86,8 +87,7 @@
 
             </subsection>
 
-            <a name="Highlight"/>
-            <subsection name="Highlights of Changes">
+            <subsection name="Highlights of Changes" id="Highlight">
                 <p>
                     The purpose of this section is to highlight the new
                     features since the
@@ -133,6 +133,7 @@
                     The 1.3.x series of Struts has
                     a minumum requirement of the following specification
                     versions:
+                </p>
                     <ul>
                         <li>
                             Java Servlet 2.3 and JavaServer Pages (JSP) 1.2
@@ -141,10 +142,10 @@
                             Java 2 Standard Platform Edition (J2SE) 1.4
                         </li>
                     </ul>
-                </p>
                 <h4>Software Component Changes</h4>
                 <p>
                     A following software dependency change applies to this release:
+                </p>
                     <ul>
                         <li>
                             Upgraded to Commons Validator 1.3 (previously 1.2) -
@@ -155,7 +156,6 @@
                             .
                         </li>
                     </ul>
-                </p>
 
                 <h3>Bug Fixes</h3>
                 <ul>
@@ -165,11 +165,12 @@
                 </ul>
             </subsection>
 
-            <subsection>
-                <p class="right">Next:
-                    <a href="installation.html">Installation</a>
-                </p>
-            </subsection>
+        </section>
+
+        <section name="">
+            <p class="right">Next:
+                <a href="installation.html">Installation</a>
+            </p>
         </section>
     </body>
 </document>

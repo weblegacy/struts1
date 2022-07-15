@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 <properties>
   <title>Installation</title>
 </properties>
@@ -28,7 +30,7 @@
 <body>
 
 <section name="Quick Install"
-         href="QuickInstall">
+         id="QuickInstall">
     <ul>
         <li>
             Create a new web application based on the Struts Blank example.
@@ -48,7 +50,7 @@
 </section>
 
 
-<section name="Configuring the Plugin" href="Installing">
+<section name="Configuring the Plugin" id="Installing">
 
     <p>
         Here's how to use Tiles in your own application:
@@ -93,7 +95,7 @@
 
 </section>
 
-<section name="Avoiding ClassNotFoundExceptions" href="Containers">
+<section name="Avoiding ClassNotFoundExceptions" id="Containers">
     <p><strong>WARNING</strong> - Do <strong>NOT</strong> add
        <code>tiles.jar</code> to the classpath of your servlet container in
        an attempt to avoid placing it in the <code>/WEB-INF/lib</code>

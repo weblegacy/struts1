@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Secure Socket Layer and Web Applications</title>
@@ -28,10 +30,9 @@
 
     <body>
 
-        <section href="ssl" name="Secure Socket Layer and Web Applications">
+        <section id="ssl" name="Secure Socket Layer and Web Applications">
 
-            <a name="overview"/>
-            <subsection name="Overview">
+            <subsection name="Overview" id="overview">
 
                 <p>
                     Many web applications, especially those deployed for
@@ -72,8 +73,7 @@
 
             </subsection>
 
-            <a name="mixing"/>
-            <subsection name="Mixing Protocols in Web Applications">
+            <subsection name="Mixing Protocols in Web Applications" id="mixing">
 
                 <p>
                     Switching back and forth between the two protocols can
@@ -100,8 +100,7 @@
 
             </subsection>
 
-            <a name="help"/>
-            <subsection name="Help from Deployment Descriptor">
+            <subsection name="Help from Deployment Descriptor" id="help">
 
                 <p>
                     To help overcome the problem of non-secure access of
@@ -139,8 +138,7 @@
 
             </subsection>
 
-            <a name="sslext"/>
-            <subsection name="The sslext Extension">
+            <subsection name="The sslext Extension" id="sslext">
 
                 <p>
                     An extension to version 1.1, named sslext, helps solve many
@@ -179,8 +177,7 @@
 
             </subsection>
 
-            <a name="legacy"/>
-            <subsection name="Legacy Browser Issue">
+            <subsection name="Legacy Browser Issue" id="legacy">
 
                 <p>
                     One additional complication faced by developers of web
@@ -206,8 +203,7 @@
 
             </subsection>
 
-            <a name="containers"/>
-            <subsection name="Configuring Containers for SSL">
+            <subsection name="Configuring Containers for SSL" id="containers">
                 <p>
                     The procedure for configuring SSL for a container will be
                     specific to that container. The

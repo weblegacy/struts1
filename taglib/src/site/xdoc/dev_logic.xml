@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Logic Taglib Guide</title>
@@ -28,7 +30,7 @@
     <body>
         <section name="Logic Taglib Guide">
 
-            <subsection href="html" name="The Logic Taglib">
+            <subsection id="html" name="The Logic Taglib">
 
                 <p>
                     <strong>Note:</strong>
@@ -50,7 +52,7 @@
 
             </subsection>
 
-            <subsection href="resources" name="Logic Tag Resources">
+            <subsection id="resources" name="Logic Tag Resources">
 
                 <ul>
                     <li>

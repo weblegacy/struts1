@@ -17,7 +17,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<document url="installation-tc.html">
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>The Struts Framework Project - Installation - Tomcat with
@@ -25,9 +27,9 @@
     </properties>
 
     <body>
-        <section name="6.2 Installation" href="installation">
+        <section name="6.2 Installation" id="installation">
             <subsection name="Installing Struts with your servlet container"
-                        href="Containers">
+                        id="Containers">
                 <h4 id="tc321">Tomcat 3.2.1 With Apache</h4>
                 <p>Note that the instructions for Tomcat 4 will be different
                     than those for Tomcat 3,

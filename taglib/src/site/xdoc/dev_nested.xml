@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Nested Taglib Guide</title>
@@ -28,7 +30,7 @@
     <body>
         <section name="Nested Taglib Guide">
 
-            <subsection href="nested" name="The Nested Taglib">
+            <subsection id="nested" name="The Nested Taglib">
 
                 <p>
                     Nested tags &amp; supporting classes extend the base
@@ -41,7 +43,7 @@
 
             </subsection>
 
-            <subsection href="resources" name="Nested Taglib Resources">
+            <subsection id="resources" name="Nested Taglib Resources">
 
                 <ul>
                     <li>

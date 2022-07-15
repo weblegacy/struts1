@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Welcome</title>
@@ -28,8 +30,7 @@
 
     <body>
 
-        <section name="Welcome to Struts 1">
-            <a name="Welcome"/>
+        <section name="Welcome to Struts 1" id="Welcome">
 
             <p>
                 Struts is a flexible control layer based on
@@ -46,8 +47,7 @@
                 based on published standards and proven design patterns.
             </p>
 
-            <subsection name="Struts in a Nutshell">
-                <a name="nutshell"/>
+            <subsection name="Struts in a Nutshell" id="nutshell">
 
                 <p>
                     The framework provides its own web
@@ -116,8 +116,7 @@
                 </p>
             </subsection>
 
-            <subsection name="Struts Config in a Nutshell">
-                <a name="nutshell-config"/>
+            <subsection name="Struts Config in a Nutshell" id="nutshell-config">
 
                 <p>
                     A web application
@@ -264,7 +263,7 @@
             </subsection>
         </section>
 
-        <section>
+        <section name="">
             <p class="right">
                 Next:
                 <a href="learning.html">Learning about Struts</a>

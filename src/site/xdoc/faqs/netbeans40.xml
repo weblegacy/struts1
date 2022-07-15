@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>How to setup a basic Struts project using
@@ -29,15 +31,16 @@
 
     <body>
 
-        <section href="netbeans"
+        <section id="netbeans"
                  name="How to setup a basic Struts project using NetBeans IDE 4.0"/>
         <section name="Legal Disclamer">
 
+            <p>
             Please read
             <a href="http://jakarta.apache.org/site/idedevelopers.html">
                 this</a>
             first.
-            <br/>
+            </p>
             <p>
                 * DISCLAIMER - This simple How-To shows you how easy it is to
                 use NetBeans IDE 4.0 to write code for the Struts
@@ -64,6 +67,7 @@
 
         <section name="Let's get started">
 
+            <p>
             You will use wizards to set up and deploy the struts-mailreader in
             5 steps.
             <br/>
@@ -79,6 +83,7 @@
             <br/>
             <br/>
             <br/>
+            </p>
             <ol>
                 <li>
                     Create a new project.
@@ -207,10 +212,12 @@
         </section>
 
         <section name="Let's set up a blank application">
+            <p>
             Now you will use wizards to set up a new Struts
             application in NetBeans IDE 4.0, again in 5 steps.
             <br/>
             <br/>
+            </p>
             <ol>
                 <li>
                     Create a new project.

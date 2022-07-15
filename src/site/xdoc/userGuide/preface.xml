@@ -32,8 +32,7 @@ limitations under the License.
             And why the sea is boiling hot -- And whether pigs have wings." 
             </em></p></blockquote>
 
-            <a name="suspects"/>
-            <subsection name="0.1 The Usual Suspects">
+            <subsection name="0.1 The Usual Suspects" id="suspects">
 
                 <p>
                     This User Guide is written for active web developers and

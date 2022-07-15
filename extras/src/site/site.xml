@@ -17,7 +17,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<project name="Struts Extras">
+<project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd"
+  name="Struts Extras">
     <bannerLeft>
         <name>Apache Software Foundation</name>
         <src>http://www.apache.org/images/asf-logo.gif</src>
@@ -76,6 +78,6 @@
                     name="Struts 1"
                     href="../index.html"/>
         </menu>
-        ${reports}
+        <menu ref="reports"/>
     </body>
 </project>

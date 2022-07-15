@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>How to Access a Database</title>
@@ -28,7 +30,7 @@
 
     <body>
 
-        <section name="How to Access a Database" href="database">
+        <section name="How to Access a Database" id="database">
 
             <p>
                 Most developers would consider accessing a database part of
@@ -135,7 +137,7 @@
 
         </section>
 
-        <section name="Using DataSources" href="datasources">
+        <section name="Using DataSources" id="datasources">
 
             <p>
                 When you use the DAO approach, all of the database access
@@ -166,7 +168,7 @@
 
         </section>
 
-        <section name="Persistence Franeworks" href="persistence">
+        <section name="Persistence Franeworks" id="persistence">
 
             <p>
                 There are many useful and mature persistence layer frameworks
@@ -207,7 +209,7 @@
         </section>
 
 
-        <section href="more" name="See Also">
+        <section id="more" name="See Also">
 
             <p>
                 <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg24621.html">
@@ -287,7 +289,7 @@
         </section>
 
 
-        <section href="DynaResultSet" name="Rendering a dynamic result set">
+        <section id="DynaResultSet" name="Rendering a dynamic result set">
 
             <p>
                 The result of most queries will map to the ActionForms you are
@@ -331,4 +333,3 @@
 
     </body>
 </document>
-

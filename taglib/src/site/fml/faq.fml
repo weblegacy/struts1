@@ -21,7 +21,10 @@
 // ======================================================================== 78
 -->
 
-<faqs title="Taglib FAQ">
+<faqs xmlns="http://maven.apache.org/FML/1.0.1"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/FML/1.0.1 https://maven.apache.org/xsd/fml-1.0.1.xsd"
+  title="Taglib FAQ">
         <part id="general">
 
             <faq id="jstl">

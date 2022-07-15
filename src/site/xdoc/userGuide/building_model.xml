@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Building Model Components</title>
@@ -36,8 +38,7 @@
             wouldn't be, it would. You see?"
             </em></p></blockquote>
 
-            <a name="overview"/>
-            <subsection name="2.1 Overview">
+            <subsection name="2.1 Overview" id="overview">
 
                 <p>
                     Many requirements documents used for building web
@@ -67,8 +68,7 @@
 
             </subsection>
 
-            <a name="javabeans"/>
-            <subsection name="2.2 JavaBeans and Scope">
+            <subsection name="2.2 JavaBeans and Scope" id="javabeans">
 
                 <p>
                     Within a web-based application, JavaBeans can be stored in
@@ -156,8 +156,7 @@
 
             </subsection>
 
-            <a name="actionform"/>
-            <subsection name="2.3 ActionForm Beans">
+            <subsection name="2.3 ActionForm Beans" id="actionform">
 
 
                 <p>
@@ -298,8 +297,7 @@
 
             </subsection>
 
-            <a name="system_state"/>
-            <subsection name="2.4 System State Beans">
+            <subsection name="2.4 System State Beans" id="system_state">
 
                 <p>
                     The actual state of a system is normally represented as a
@@ -346,8 +344,7 @@
 
             </subsection>
 
-            <a name="business_logic"/>
-            <subsection name="2.5 Business Logic Beans">
+            <subsection name="2.5 Business Logic Beans" id="business_logic">
 
                 <p>
                     You should encapsulate the functional logic of your
@@ -422,8 +419,7 @@
             </subsection>
             
             
-            <a name="dynabeans"/>
-            <subsection name="2.5.1 DynaBeans">
+            <subsection name="2.5.1 DynaBeans" id="dynabeans">
 
                 <p>
                     DynaBeans combine the extensibility of JavaBeans with the
@@ -467,8 +463,7 @@
 
             </subsection>            
                 
-            <a name="chain"/>
-            <subsection name="2.6 Commons Chain">
+            <subsection name="2.6 Commons Chain" id="chain">
 
                 <p>
                     A popular technique for organizing the execution of

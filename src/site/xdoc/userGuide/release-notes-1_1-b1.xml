@@ -17,7 +17,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<document url="release-notes-1_1-b1.html">
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Struts Release Notes (current nightly build)</title>
@@ -25,7 +27,7 @@
 
     <body>
 
-        <section name="Introduction" href="Introduction">
+        <section name="Introduction" id="Introduction">
 
             <p>This document contains the release notes for
                 <strong>Version 1.1 Beta 1</strong>
@@ -42,7 +44,7 @@
         </section>
 
 
-        <section name="What's Included?" href="Included">
+        <section name="What's Included?" id="Included">
 
             <p>The binary distribution of this release includes the following
                 files relevant to Struts:</p>
@@ -167,7 +169,7 @@
         </section>
 
 
-        <section name="What's New?" href="New">
+        <section name="What's New?" id="New">
 
             <p>
                 <strong>DEPRECATIONS</strong>
@@ -431,7 +433,7 @@
         </section>
 
 
-        <section name="Changes and Bug Fixes" href="Changes">
+        <section name="Changes and Bug Fixes" id="Changes">
 
             <p>The following changes and bug fixes have occurred in the
                 configuration
@@ -632,11 +634,13 @@
                     saved in the page context.</li>
             </ul>
 
-            <p>
+        </section>
+
+        <section name="">
+            <p class="right">
                 Next:
                 <a href="installation.html">Installation</a>
             </p>
-
         </section>
 
     </body>

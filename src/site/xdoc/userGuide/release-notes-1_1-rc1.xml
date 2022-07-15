@@ -17,7 +17,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<document url="release-notes-1_1-rc1.html">
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Struts Release Notes (Version 1.1 Release Candidate 1)</title>
@@ -25,8 +27,8 @@
 
     <body>
 
-        <section name="6.1 Release Notes" href="release_notes">
-            <subsection name="Beta Notes" href="beta">
+        <section name="6.1 Release Notes" id="release_notes">
+            <subsection name="Beta Notes" id="beta">
 
                 <p>This section contains the release notes for
                     <strong>nightly build</strong>
@@ -41,7 +43,7 @@
 
             </subsection>
 
-            <subsection name="Beta Fixes" href="beta.Changes">
+            <subsection name="Beta Fixes" id="beta.Changes">
 
                 <p>
                     <strong>ApplicationConfig:</strong>
@@ -64,7 +66,7 @@
 
             </subsection>
 
-            <subsection name="Introduction" href="Introduction">
+            <subsection name="Introduction" id="Introduction">
 
                 <p>The remainder of this document contains the release notes
                     for
@@ -82,7 +84,7 @@
             </subsection>
 
 
-            <subsection name="What's Included?" href="Included">
+            <subsection name="What's Included?" id="Included">
 
                 <p>The binary distribution of this release includes the
                     following
@@ -213,7 +215,7 @@
 
             </subsection>
 
-            <subsection name="What's New?" href="New">
+            <subsection name="What's New?" id="New">
 
                 <p>Following are highlights of the new features. In the next
                     section, we
@@ -702,7 +704,7 @@
             </subsection>
 
             <subsection name="Operational Changes and Bug Fixes"
-                        href="Changes">
+                        id="Changes">
 
                 <p>
                     <strong>Struts Configuration Changes</strong>
@@ -971,7 +973,7 @@
 
             </subsection>
 
-            <subsection name="What's different?" href="diff">
+            <subsection name="What's different?" id="diff">
 
                 <p>This section provides links to the Struts JavaDoc for any
                     classes that have
@@ -1253,13 +1255,13 @@
 
             </subsection>
 
-            <subsection>
-                <p class="right">
-                    Next:
-                    <a href="installation.html">Installation</a>
-                </p>
-            </subsection>
+        </section>
 
+        <section name="">
+            <p class="right">
+                Next:
+                <a href="installation.html">Installation</a>
+            </p>
         </section>
     </body>
 

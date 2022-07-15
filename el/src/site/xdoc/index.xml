@@ -20,15 +20,16 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
     <properties>
         <title>Welcome</title>
     </properties>
 
     <body>
 
-        <section name="Welcome to Struts EL">
-            <a name="welcome"/>
+        <section name="Welcome to Struts EL" id="welcome">
 
             <p>
                 Struts EL is an extension of the Struts Taglib component 
@@ -47,7 +48,7 @@
             </p>
         </section>
         
-        <section name="Evaluating Expressions">        
+        <section name="Evaluating Expressions">
             <p>
                 Unlike the Struts Taglib component, 
                 Struts EL does not use runtime scriptlet expressions ("rtexprvalues"), 

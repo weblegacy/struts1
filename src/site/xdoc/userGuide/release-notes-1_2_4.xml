@@ -17,21 +17,23 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<document url="release-notes.html">
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
     <properties>
         <title>Struts Release Notes (since 1.1)</title>
     </properties>
     <body>
         <section name="6.1 Release Notes - Version 1.2.4"
-                 href="release_notes">
-            <subsection name="Introduction" href="Introduction">
+                 id="release_notes">
+            <subsection name="Introduction" id="Introduction">
                 <p>This section contains release notes for changes that have
                     taken place since
                     <a href="release-notes-1_1.html">Version 1.1</a>
                     was released.
                 </p>
             </subsection>
-            <subsection name="What's Included?" href="Included">
+            <subsection name="What's Included?" id="Included">
                 <p>The binary distribution of this release includes the
                     following files relevant to Struts:</p>
                 <ul>
@@ -167,7 +169,7 @@
                     .
                 </p>
             </subsection>
-            <subsection name="What's new?" href="New">
+            <subsection name="What's new?" id="New">
                 <p>This section highlights new features added and critical
                     changes made since the last release. Other interesting
                     changes are listed in the
@@ -395,7 +397,7 @@
                 </p>
 
             </subsection>
-            <subsection name="What Changed?" href="Changes">
+            <subsection name="What Changed?" id="Changes">
                 <p>This section highlights some of the changes that have taken
                     place since the last release. Subscribers to the
                     <a href="../using.html#Lists">struts-dev mailing list</a>
@@ -1350,11 +1352,11 @@
                         select-multiple field types.</li>
                 </ul>
             </subsection>
-            <subsection>
-                <p class="right">Next:
-                    <a href="installation.html">Installation</a>
-                </p>
-            </subsection>
+        </section>
+        <section name="">
+            <p class="right">Next:
+                <a href="installation.html">Installation</a>
+            </p>
         </section>
     </body>
 </document>

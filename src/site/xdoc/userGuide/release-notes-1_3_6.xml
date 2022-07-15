@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Release Notes (since 1.3.5)</title>
@@ -35,8 +37,7 @@
             nothing." 
             </em></p></blockquote>
 
-            <a name="release_notes"/>
-            <subsection name="Introduction">
+            <subsection name="Introduction" id="release_notes">
                 <p>
                     This section contains release notes for changes that have
                     taken place to Struts,
@@ -67,8 +68,7 @@
 
             </subsection>
 
-            <a name="dependencies"/>
-            <subsection name="Dependencies">
+            <subsection name="Dependencies" id="dependencies">
                 <p>
                     The following dependencies have changed:
                 </p>
@@ -89,8 +89,7 @@
                 </ul>
             </subsection>
 
-            <a name="Highlight"/>
-            <subsection name="Highlights of Changes">
+            <subsection name="Highlights of Changes" id="Highlight">
                 <p>
                     The purpose of this section is to highlight the new
                     features since the
@@ -245,11 +244,12 @@
     
             </subsection>
 
-            <subsection>
-                <p class="right">Next:
-                    <a href="installation.html">Installation</a>
-                </p>
-            </subsection>
+        </section>
+
+        <section name="">
+            <p class="right">Next:
+                <a href="installation.html">Installation</a>
+            </p>
         </section>
     </body>
 </document>

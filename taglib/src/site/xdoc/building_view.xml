@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>How to Build View Components</title>
@@ -698,8 +700,7 @@ HttpServletRequest request);
 
             </subsection>
 
-            <a name="other_presentations"/>
-            <subsection name="Other Presentation Techniques">
+            <subsection name="Other Presentation Techniques" id="other_presentations">
 
                 <p>
                     Although the look and feel of your application can be

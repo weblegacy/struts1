@@ -20,14 +20,15 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
   <properties>
     <title>Welcome</title>
   </properties>
 
   <body>
-    <section name="Welcome to Struts Scripting">
-    <a name="overview"/>
+    <section name="Welcome to Struts Scripting" id="overview">
       <p>This component allows Struts Actions to be written in the scripting 
       language of one's choice rather than as Java classes.  It uses the 
       <a href="http://jakarta.apache.org/bsf">Bean Scripting Framework</a> 
@@ -47,8 +48,7 @@
         better performance.
       </p>  
       
-      <subsection name="Features">
-      <a name="features"/>
+      <subsection name="Features" id="features">
             <ul>
               <li>Implement Actions with JavaScript, Groovy, etc.</li>
               <li>Supports all BSF languages</li>
@@ -56,8 +56,7 @@
               <li>Ability to pass parameters to script through Struts config</li> 
             </ul>
       </subsection>
-      <subsection name="Documentation">
-        <a name="documentation"/>
+      <subsection name="Documentation" id="documentation">
         <ul>
             <li><a href="user-guide.html">User Guide</a> - Covers installation and usage</li>
             <li><a href="source-guide.html">Source Code Guide</a> - Covers the source layout and how to build Struts Scripting</li>

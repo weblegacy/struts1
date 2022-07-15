@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 <properties>
   <title>Welcome</title>
 </properties>
@@ -43,7 +45,7 @@
     </p>
 </section>
 
-<section name="Tiles Features" href="Features">
+<section name="Tiles Features" id="Features">
      <ul>
           <li>Screen definitions
              <ul>
@@ -124,7 +126,6 @@
           </li>
           <li>
              Internationalization (i18n)
-          </li>
           <ul>
           <li>
              It is possible to load different tiles
@@ -137,9 +138,9 @@
              loaded according to the current Locale.
           </li>
           </ul>
+          </li>
           <li>
              Multi-channels
-          </li>
           <ul>
           <li>
              It is possible to load different Tiles
@@ -157,7 +158,8 @@
              definition file per key. The appropriate definition is
              loaded according to the key.
           </li>
-          </ul>
+       </ul>
+       </li>
        </ul>
 
 </section>

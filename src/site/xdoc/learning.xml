@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Learning</title>
@@ -28,8 +30,7 @@
 
     <body>
 
-        <a name="Docs"/>
-        <section name="Learning About Struts">
+        <section name="Learning About Struts" id="Docs">
 
             <p>
                 The
@@ -68,8 +69,7 @@
                 can also be browsed.
             </p>
 
-            <a name="Versions"/>
-            <subsection name="Documentation Versions">
+            <subsection name="Documentation Versions" id="Versions">
                 <p>
                     You are invited to preview the documentation online,
                     and then install the documentation bundle locally for
@@ -88,8 +88,7 @@
                 </p>
             </subsection>
 
-            <a name="userGuide"/>
-            <subsection name="User Guide">
+            <subsection name="User Guide" id="userGuide">
 
                 <p>
                     Our concise
@@ -109,8 +108,7 @@
                 </p>
             </subsection>
 
-            <a name="faqs"/>
-            <subsection name="FAQS and HOWTOs">
+            <subsection name="FAQS and HOWTOs" id="faqs">
 
                 <p>
                     Our
@@ -168,8 +166,7 @@
                 </p>
             </subsection>
 
-            <a name="Javadocs"/>
-            <subsection name="Javadocs">
+            <subsection name="Javadocs" id="Javadocs">
                 <p>
                     For more detail about a specific class or package,
                     our
@@ -193,8 +190,7 @@
                 </p>
             </subsection>
 
-            <a name="Examples"/>
-            <subsection name="Struts by Example">
+            <subsection name="Struts by Example" id="Examples">
                 <p>
                     To help you see how it all fits together, 
                     several example applications
@@ -291,8 +287,7 @@
                 </ul>
             </subsection>
 
-            <a name="More"/>
-            <subsection name="Learning More About Struts">
+            <subsection name="Learning More About Struts" id="More">
                 <p>
                     The Apache Struts
                     <a href="http://struts.apache.org/mail.html">Mailing
@@ -359,8 +354,7 @@
                 </p>
             </subsection>
 
-            <a name="resources"/>
-            <subsection name="Community Resources">
+            <subsection name="Community Resources" id="resources">
                 <p>
                     The framework has attracted a large and robust community
                     of developers,
@@ -382,8 +376,7 @@
 
             </subsection>
 
-            <a name="books"/>
-            <subsection name="Books about Struts">
+            <subsection name="Books about Struts" id="books">
 
                 <p>
                     The Apache Software Foundation does not provide printed
@@ -399,7 +392,7 @@
             </subsection>
         </section>
 
-        <section>
+        <section name="">
             <p class="right">
                 Next:
                 <a href="roadmap.html">Roadmap</a>

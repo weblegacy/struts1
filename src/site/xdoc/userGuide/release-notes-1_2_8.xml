@@ -17,14 +17,16 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<document url="release-notes.html">
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
     <properties>
         <title>Struts Release Notes (since 1.2.7)</title>
     </properties>
     <body>
         <section name="6.1 Release Notes - Version 1.2.8"
-                 href="release_notes">
-            <subsection name="Introduction" href="Introduction">
+                 id="release_notes">
+            <subsection name="Introduction" id="Introduction">
                 <p>
                     The main motivation for releasing Struts 1.2.8 is to fix a
                     <i>Cross Site Scripting</i>
@@ -358,11 +360,12 @@
 
             </subsection>
 
-            <subsection>
-                <p class="right">Next:
-                    <a href="installation.html">Installation</a>
-                </p>
-            </subsection>
+        </section>
+
+        <section name="">
+            <p class="right">Next:
+                <a href="installation.html">Installation</a>
+            </p>
         </section>
     </body>
 </document>

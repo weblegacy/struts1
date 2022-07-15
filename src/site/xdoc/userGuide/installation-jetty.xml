@@ -18,16 +18,18 @@
     limitations under the License.
 -->
 
-<document url="installation-jetty.html">
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>The Struts Framework Project - Installation - Jetty</title>
     </properties>
 
     <body>
-        <section name="6.2 Installation" href="installation">
+        <section name="6.2 Installation" id="installation">
             <subsection name="Installing Struts with your servlet container"
-                        href="Containers">
+                        id="Containers">
 
                 <h4 id="jetty">Jetty Java HTTP Servlet Server</h4>
 

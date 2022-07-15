@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
   <properties>
     <title>Welcome</title>
@@ -28,8 +30,7 @@
 
   <body>
 
-    <section name="Welcome to Struts Faces">
-    <a name="welcome"/>
+    <section name="Welcome to Struts Faces" id="welcome">
 
   <p>
     The "Struts Faces" component contains an add-on library that supports 
@@ -52,13 +53,14 @@
     wiki page.
   </p>
   
-  <p>Known issues with some JSF implementations:
+  <p>
+    Known issues with some JSF implementations:
+  </p>
     <ul>
       <li><a href="http://issues.apache.org/jira/browse/MYFACES-1421">
       [MYFACES-1421]</a> - MyFaces 1.1.4 does not recognize the family of the
       Struts Faces form component.</li>
     </ul>
-  </p>
   
   <p>
     Note that the Struts Faces component is intended as a "bridge" between 
@@ -74,8 +76,7 @@
   </p>
     </section>
 
-    <section name="Struts-Faces Issue Tracking">
-    <a name="issue"/>
+    <section name="Struts-Faces Issue Tracking" id="issue">
 
       <p>Please report any bugs, or log any enhancement requests, in the
       <a href="http://issues.apache.org/struts/">Struts JIRA Issue Tracker</a> 

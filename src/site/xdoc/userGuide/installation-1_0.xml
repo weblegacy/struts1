@@ -17,7 +17,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<document url="installation-1.0.html">
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Installation (1.0)</title>
@@ -25,7 +27,7 @@
 
     <body>
 
-        <section name="Prerequisite Software" href="Prerequisites">
+        <section name="Prerequisite Software" id="Prerequisites">
 
             <p>The Struts binary distribution needs three other software
                 packages installed to
@@ -158,7 +160,7 @@
         </section>
 
         <section name="Install A Struts Binary Distribution"
-                 href="Installing">
+                 id="Installing">
 
             <p>First, download a binary distribution of Struts by following
                 the
@@ -371,7 +373,7 @@
         </section>
 
         <section name="Installing Struts with your servlet container"
-                 href="Containers">
+                 id="Containers">
 
             <p>
                 <strong>WARNING</strong>
@@ -464,7 +466,7 @@
         </section>
 
 
-        <section name="Building Struts From Source" href="Building">
+        <section name="Building Struts From Source" id="Building">
 
             <p>First, download a source distribution of Struts by following
                 the

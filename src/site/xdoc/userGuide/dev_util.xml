@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Utilities Guide</title>
@@ -28,7 +30,7 @@
     <body>
         <section name="Utilities Guide">
 
-            <subsection href="utils" name="The Utilities Package">
+            <subsection id="utils" name="The Utilities Package">
 
                 <p>
                     The Utilities package provides a variety of families of
@@ -38,7 +40,7 @@
 
             </subsection>
 
-            <subsection href="resources" name="Utilities Resources">
+            <subsection id="resources" name="Utilities Resources">
 
                 <ul>
                     <li>

@@ -20,30 +20,32 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Installation</title>
     </properties>
 
     <body>
-        <section name="6.2 Installation" href="installation">
+        <section name="6.2 Installation" id="installation">
         
-            <blockquote><em><p>
+            <blockquote><p><em>
             "Would you tell me, please, which way I ought to go from here?"
-            </p><p>
+            </em></p><p><em>
             "That depends a good deal on where you want to get to."
-            </p><p>
+            </em></p><p><em>
             "I don't much care where"
-            </p><p>
+            </em></p><p><em>
             "Then it doesn't much matter which way you go."
-            </p><p>
+            </em></p><p><em>
             "so long as I get somewhere."
-            </p><p>
+            </em></p><p><em>
             "Oh, you're sure to do that, if only you walk long enough."
-            </p></em></blockquote>
+            </em></p></blockquote>
              
-            <subsection name="Prerequisite Software" href="Prerequisites">
+            <subsection name="Prerequisite Software" id="Prerequisites">
 
                 <p>The framework's binary distribution needs three other
                     software packages installed to
@@ -101,7 +103,7 @@
             </subsection>
 
             <subsection name="Install a Library Distribution"
-                        href="Installing">
+                        id="Installing">
 
                 <p>First, download a binary distribution of Struts
                     by following the
@@ -213,7 +215,7 @@
             </subsection>
             <subsection
                     name="Installing The Framework With Your Servlet Container"
-                    href="Containers">
+                    id="Containers">
 
                 <p>For most containers, you need only to:</p>
                 <ul>
@@ -320,13 +322,13 @@
                 </ul>
             </subsection>
 
-            <subsection>
-                <p class="right">
-                    Next:
-                    <a href="../faqs/index.html">FAQs and HowTos</a>
-                </p>
-            </subsection>
+        </section>
 
+        <section name="">
+            <p class="right">
+                Next:
+                <a href="../faqs/index.html">FAQs and HowTos</a>
+            </p>
         </section>
     </body>
 </document>

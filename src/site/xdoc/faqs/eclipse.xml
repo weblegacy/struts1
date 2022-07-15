@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>How to setup a basic Struts project using
@@ -50,39 +52,43 @@
                     this page.
                     <br/>
                 </p>
-                In this How-To, I will demonstrate (using Eclipse 2.0.1) how
-                to setup, compile, run,
-                <br/>
-                and debug the struts-mailreader web application that is part
-                of the Struts Applications subproject.
-                <br/>
-                <br/>
-                Next, I will modify the code to pull some data from a MySql
-                database using the popular
-                <br/>
-                relational mapping tool OJB. (This is actually quite simple)
+                <p>
+                    In this How-To, I will demonstrate (using Eclipse 2.0.1) how
+                    to setup, compile, run,
+                    <br/>
+                    and debug the struts-mailreader web application that is part
+                    of the Struts Applications subproject.
+                    <br/>
+                    <br/>
+                    Next, I will modify the code to pull some data from a MySql
+                    database using the popular
+                    <br/>
+                    relational mapping tool OJB. (This is actually quite simple)
+                </p>
 
             </subsection>
 
             <subsection name="Let's get started">
-                Before we begin, you will need to create a directory somewhere
-                to store your project.
-                <br/>
-                I typically use C:\personal\development\Projects\(some
-                project)
-                <br/>
-                Once that's done, extract the struts-mailreader.war to that
-                directory
-                <br/>
-                (using your favorite zip utility)
-                <br/>
-                <br/>
-                Delete the META-INF folder because this will be created during
-                the build/jar/war process.
-                <br/>
+                <p>
+                    Before we begin, you will need to create a directory somewhere
+                    to store your project.
+                    <br/>
+                    I typically use C:\personal\development\Projects\(some
+                    project)
+                    <br/>
+                    Once that's done, extract the struts-mailreader.war to that
+                    directory
+                    <br/>
+                    (using your favorite zip utility)
+                    <br/>
+                    <br/>
+                    Delete the META-INF folder because this will be created during
+                    the build/jar/war process.
+                    <br/>
 
-                Add a build.xml file to the project root. I use something like
-                this:
+                    Add a build.xml file to the project root. I use something like
+                    this:
+                </p>
 
                 <pre>
 

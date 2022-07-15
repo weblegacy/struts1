@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>How to Build Applications</title>
@@ -49,8 +51,9 @@
                   specified version in this example has not been released.
                   Once this has been released, this note can be removed and
                   the archetype will work fine.
+                </p>
+                <pre>
                   <code>
-                    <pre>
                 	   $ cd ~/projects
                 	   
 					   $ mvn archetype:create                                \
@@ -66,9 +69,8 @@
                 	   $ mvn install
                 	   
                 	   $ mvn jetty:run
-                    </pre>
-                  </code>
-                </p>
+                    </code>
+                  </pre>
 
             <subsection name="Caveats">
                 <ol>

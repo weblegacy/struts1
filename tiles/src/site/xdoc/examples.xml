@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 <properties>
   <title>Examples</title>
 </properties>
@@ -47,14 +49,14 @@
        the example.  Then we will examine each method.</p>
        
     <strong>Example Output</strong>
-    <div align="center" width="300" border="2" bordercolor="black" >
+    <div align="center" style="width:300px;border:2px solid black" >
         <table width="100%">
         <tr>
         <td  bgcolor="Blue"><strong>This is the title.</strong></td>
         </tr>
         <tr>
         <td><strong>This is the header</strong>
-        <img src="images/struts-power.gif" align="right" border="0"/>
+        <img src="images/struts-power.gif" align="right" border="0" alt="Powerd by Struts"/>
         </td>
         </tr>
         <tr>
@@ -220,7 +222,7 @@
     <subsection name="Set Attribute With Tag Body">
        
     <strong>Example Output</strong>
-    <div align="center" width="300" border="2" bordercolor="black" >
+    <div align="center" style="width:300px;border:2px solid black" >
         <table width="100%">
         <tr>
         <td  bgcolor="Blue"><strong>Test with tag body.</strong></td>

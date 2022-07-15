@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Configuring Applications</title>
@@ -1395,21 +1397,20 @@
 
             </subsection>
 
+        </section>
 
-            <subsection>
+        <section name="">
 
-                <p>
-                    For more about putting it all together, see the
-                    <a href="../faqs/apps.html">
-                        Building Applications HowTo.</a>
-                </p>
+            <p>
+                For more about putting it all together, see the
+                <a href="../faqs/apps.html">
+                    Building Applications HowTo.</a>
+            </p>
 
-                <p class="right">
-                    Next:
-                    <a href="./release-notes.html">Release Notes</a>
-                </p>
-
-            </subsection>
+            <p class="right">
+                Next:
+                <a href="./release-notes.html">Release Notes</a>
+            </p>
 
         </section>
     </body>

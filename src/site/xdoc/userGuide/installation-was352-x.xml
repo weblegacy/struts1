@@ -17,7 +17,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<document url="installation-was352-x.html">
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>The Struts Framework Project - Installation - WebSphere
@@ -25,9 +27,9 @@
     </properties>
 
     <body>
-        <section name="6.2 Installation" href="installation">
+        <section name="6.2 Installation" id="installation">
             <subsection name="Installing Struts with your servlet container"
-                        href="Containers">
+                        id="Containers">
 
                 <h4 id="was352">WebSphere Application Server 3.5 and the
                     Example Application</h4>

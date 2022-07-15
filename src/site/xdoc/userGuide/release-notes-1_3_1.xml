@@ -20,7 +20,9 @@
 <!--
 // ======================================================================== 78
 -->
-<document>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
         <title>Release Notes (since 1.2.8)</title>
@@ -28,7 +30,7 @@
     <body>
         <section name="6.1 Release Notes - Version 1.3.1">
 
-            <subsection>
+            <subsection name="">
                 <p>
                     <strong>SPECIAL NOTE ON UPGRADING - README FIRST!</strong>
                     - If you use the standard
@@ -53,8 +55,7 @@
                 </p>
             </subsection>
 
-            <a name="release_notes"/>
-            <subsection name="Introduction">
+            <subsection name="Introduction" id="release_notes">
                 <p>
                     This section contains release notes for changes that have
                     taken
@@ -89,8 +90,7 @@
 
             </subsection>
 
-            <a name="Highlight"/>
-            <subsection name="Highlights of Changes">
+            <subsection name="Highlights of Changes" id="Highlight">
                 <p>
                     The purpose of this section is to highlight the new
                     features since the
@@ -180,6 +180,7 @@
                     The 1.3.x series of Struts now has
                     a minumum requirement of the following specification
                     versions:
+                </p>
                     <ul>
                         <li>
                             Java Servlet 2.3 and JavaServer Pages (JSP) 1.2
@@ -188,10 +189,10 @@
                             Java 2 Standard Platform Edition (J2SE) 1.4
                         </li>
                     </ul>
-                </p>
                 <h4>Software Component Changes</h4>
                 <p>
                     A number of software dependency changes apply to this release:
+                </p>
                     <ul>
                         <li>
                             New dependency on Commons Chain 1.0 - see
@@ -224,7 +225,6 @@
                             .
                         </li>
                     </ul>
-                </p>
 
                 <h3>Struts Applications</h3>
 
@@ -295,8 +295,7 @@
                     </li>
                 </ul>
 
-                <a name="composable-request-processor" />
-                <h4>Composable Request Processor</h4>
+                <h4 id="composable-request-processor">Composable Request Processor</h4>
                 <p>
                     In prior versions, the request processing guantlet is
                     represented as a series
@@ -376,8 +375,7 @@
                     Processor.
                 </p>
 
-                <a name="arbitrary-config" />
-                <h4>Arbitrary configuration properties</h4>
+                <h4 id="arbitrary-config">Arbitrary configuration properties</h4>
                 <p>
                     Most every Struts configuration element now accepts a map
                     of key/value pairs.
@@ -408,8 +406,7 @@
                     and other members.
                 </p>
 
-                <a name="opt-in" />
-                <h4>Opt-In Cancel Handling</h4>
+                <h4 id="opt-in">Opt-In Cancel Handling</h4>
 
                 <p>
                     <strong>SPECIAL NOTE ON UPGRADING - README FIRST!</strong>
@@ -466,8 +463,7 @@
                     the legacy Request Processor included in Struts 1.3.
                 </p>
 
-                <a name="enhanced-exception" />
-                <h4>Enhanced Global Exception Handlers</h4>
+                <h4 id="enhanced-exception">Enhanced Global Exception Handlers</h4>
                 <p>
                     We now support use of global exception handlers in cases
                     when no ActionConfig has yet been identified,
@@ -505,8 +501,7 @@
                     />
                 </source>
 
-                <a name="extends-attr" />
-                <h4>Extends attribute</h4>
+                <h4 id="extends-attr">Extends attribute</h4>
                 <p>
                     In the Struts configuration file,
                     we can now use the
@@ -547,8 +542,7 @@
                     it's easier to see the forest for the trees.
                 </p>
 
-                <a name="isCommitted" />
-                <h4>"isCommitted" Exception Handling</h4>
+                <h4 id="isCommitted">"isCommitted" Exception Handling</h4>
                 <p>
                     When using Tiles, sometimes the response is already
                     committed when an exception occurs.
@@ -568,7 +562,7 @@
                     key="GlobalExceptionHandler.default"
                     type="java.lang.Exception"
                     path="/ErrorPage.jsp">
-                    <set-property key="INCLUDE_PATH" value="/error.jsp"/>
+                    &lt;set-property key="INCLUDE_PATH" value="/error.jsp"/>
                     &lt;/exception>
 
                     &lt;exception
@@ -579,8 +573,7 @@
                     &lt;/exception>
                 </source>
 
-                <a name="postback" />
-                <h4>Postback Forms</h4>
+                <h4 id="postback">Postback Forms</h4>
                 <p>
                     The action attribute of the Form taglib is now optional.
                     If omitted, the original URI of the original request is
@@ -591,8 +584,7 @@
                     onsubmit="return validateLogonForm(this);">
                 </source>
 
-                <a name="wildcard-props" />
-                <h4>Wildcard ActionConfig properties</h4>
+                <h4 id="wildcard-props">Wildcard ActionConfig properties</h4>
                 <p>
                     Wildcards can now be used in the properties of an
                     ActionConfig.
@@ -781,11 +773,12 @@
 
             </subsection>
 
-            <subsection>
-                <p class="right">Next:
-                    <a href="installation.html">Installation</a>
-                </p>
-            </subsection>
+        </section>
+
+        <section name="">
+            <p class="right">Next:
+                <a href="installation.html">Installation</a>
+            </p>
         </section>
     </body>
 </document>

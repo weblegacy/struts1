@@ -78,7 +78,9 @@ Full [CHANGELOG](CHANGELOG.md)
 4. Generate source- and javadoc-artifacts  
    `mvn -Papps,pre-assembly -DskipTests package`
 5. Generate documentation  
-   `mvn -Papps -DskipTests site`
+   `mvn -Papps -DskipTests site`  
+   or  
+   `mvn -Papps -DskipTests clean site site:stage`
 6. Generate Assemblies  
    `mvn -Papps,assembly -DskipTests package`
 

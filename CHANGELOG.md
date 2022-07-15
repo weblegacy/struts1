@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Correct title of `Struts Mailreader DAO`
 * Adaptation of the links to the new web-space
 * Add `struts-mailreader-dao` to dependencies-index
 * Correct assembly-definitions to add `apps-it-selenium` and `struts-mailreader-dao`

@@ -19,7 +19,7 @@
 -->
 <project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd"
-  name="Struts Core">
+  name="Struts Mailreader DAO">
     <bannerLeft>
         <name>Apache Software Foundation</name>
         <src>../images/asf-logo.png</src>

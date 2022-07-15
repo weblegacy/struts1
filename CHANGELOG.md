@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Bump `maven-surefire-report-plugin` from 3.0.0-M6 to 3.0.0-M7
 * Bump `maven-surefire-plugin` from 3.0.0-M6 to 3.0.0-M7
 * Bump `maven-project-info-reports-plugin` from 3.2.2 to 3.3.0
 * Bump `maven-pmd-plugin` from 3.16.0 to 3.17.0

@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Add `struts-mailreader-dao` to dependencies-index
 * Correct assembly-definitions to add `apps-it-selenium` and `struts-mailreader-dao`
 * Change groupId from `org.apache.struts` to `io.github.weblegacy`
 * Correct javadoc-options for minimized output and no errors

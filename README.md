@@ -36,8 +36,6 @@ Full [CHANGELOG](CHANGELOG.md)
     * Chromium
     * Safari
   * see also [Integration-Tests README](integration/apps-it-selenium/README.md)
-* for documentation
-  * JDK 11
 
 ### MAVEN-Profiles
 

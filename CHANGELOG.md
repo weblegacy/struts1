@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Correct `README.md`
 * Lint markdown-files
 * Add project-encoding-properties
 * Add quite-config to `javadoc-plugin`

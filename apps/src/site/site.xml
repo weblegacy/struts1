@@ -15,35 +15,39 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<project name="Struts Apps">
+<project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd"
+  name="Struts Apps">
     <bannerLeft>
         <name>Apache Software Foundation</name>
-        <src>http://www.apache.org/images/asf-logo.gif</src>
-        <href>http://www.apache.org/</href>
+        <src>../images/asf-logo.png</src>
+        <href>https://www.apache.org/</href>
     </bannerLeft>
     <bannerRight>
         <name>Apache Struts</name>
-        <src>http://struts.apache.org/images/struts.gif</src>
-        <href>http://struts.apache.org/</href>
-    </bannerRight>     
+        <src>../images/struts.png</src>
+        <href>https://struts.apache.org/index.html</href>
+    </bannerRight>
     <body>
         <links>
-            <item name="Apache" href="http://www.apache.org" /> 
-            <item name="Struts 1" href="http://struts.apache.org/1.x/" />
-            <item name="Struts 2" href="http://struts.apache.org/2.x/" />
+            <item name="Apache" href="https://www.apache.org/" />
+            <item name="Struts" href="https://struts.apache.org/index.html" />
         </links>
 
-        <menu name="Struts Apps">
-        
+        <menu name="Struts Apps" inherit="top">
+
             <item   name="Welcome"
-                    href="index.html" />
-                    
+                    ref="index" />
+
         </menu>
-        
-        <menu name="Components">
-        
+
+        <menu name="Components" inherit="top">
+
             <item   name="Struts Apps"
                     href="../struts-apps/index.html" />
+
+            <item   name="Struts Core"
+                    href="../struts-core/index.html" />
 
             <item   name="Struts EL"
                     href="../struts-el/index.html" />
@@ -64,8 +68,8 @@
                     href="../struts-tiles/index.html" />
 
         </menu>
-        
-        <menu name="Quick Links">
+
+        <menu name="Quick Links" inherit="top">
             <item
                     name="Apache Struts Home"
                     href="http://struts.apache.org/"/>
@@ -73,10 +77,10 @@
                     name="Struts 1"
                     href="../index.html"/>
         </menu>
-        
-        ${modules}
-        
-        ${reports}
-        
+
+        <menu ref="modules"/>
+
+        <menu ref="reports" inherit="top"/>
+
     </body>
 </project>

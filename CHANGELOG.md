@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Correct `site.xml` in apps
 * Generate change-report in `scripting`-module
 * Correct `README.md`
 * Lint markdown-files

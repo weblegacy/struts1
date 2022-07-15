@@ -108,7 +108,7 @@
                 <p>First, download a binary distribution of Struts
                     by following the
                     instructions
-                    <a href="http://struts.apache.org/downloads.html">here,</a>
+                    <a href="https://github.com/weblegacy/struts1/releases">here,</a>
                     Then, make sure
                     you have downloaded and installed the
                     <a href="#Prerequisites">prerequisite</a>
@@ -118,7 +118,7 @@
 
                 <p>Unpack the Library distribution into a convenient
                     directory.
-                    (If you are <a href="http://struts.apache.org/downloads.html#Building">
+                    (If you are <a href="https://github.com/weblegacy/struts1/releases">
                     building from the source distribution,</a>
                     the result of the build will already be an unpacked binary
                     distribution

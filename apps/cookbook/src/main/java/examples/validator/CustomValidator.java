@@ -51,7 +51,7 @@ public class CustomValidator {
     /**
      * Example validator for comparing the equality of two fields
      *
-     * http://struts.apache.org/userGuide/dev_validator.html
+     * https://weblegacy.github.io/struts1/userGuide/building_view.html
      * http://www.raibledesigns.com/page/rd/20030226
      */
     public static boolean validateTwoFields(

@@ -136,10 +136,10 @@
                     <a href="userGuide/building_controller.html#action_form_classes">
                         ActionForms</a>
                     to collect input from users,
-                    <a href="http://struts.apache.org/userGuide/building_controller.html#actionmapping">
+                    <a href="https://weblegacy.github.io/struts1/userGuide/building_controller.html#actionmapping">
                         ActionMappings</a>
                     to direct input to server-side
-                    <a href="http://struts.apache.org/userGuide/building_controller.html#action_classes">
+                    <a href="https://weblegacy.github.io/struts1/userGuide/building_controller.html#action_classes">
                         Actions,</a>
                     and ActionForwards to select output pages.
                 </p>
@@ -204,7 +204,7 @@
                     using the
                     <a href="faqs/validator.html">
                     Struts Validator</a>. A standard extension,
-                    <a href="http://struts.apache.org/struts-tiles/dev_tiles.html">
+                    <a href="https://weblegacy.github.io/struts1/struts-tiles/userGuide.html">
                     Tiles</a>, helps you build pages from smaller fragments.
                 </p>
 

@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Adaptation of the links to the new web-space
 * Add `struts-mailreader-dao` to dependencies-index
 * Correct assembly-definitions to add `apps-it-selenium` and `struts-mailreader-dao`
 * Change groupId from `org.apache.struts` to `io.github.weblegacy`

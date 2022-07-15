@@ -673,7 +673,7 @@ parameter="homepage"/>
 
                 <p>
                     See the
-                    <a href="http://struts.apache.org/struts-tiles/">Struts
+                    <a href="https://weblegacy.github.io/struts1/struts-tiles/">Struts
                         Tiles website</a>
                     for in-depth examples.
                 </p>
@@ -691,7 +691,7 @@ parameter="homepage"/>
                 
                 <ul>
                     <li>
-                        <a href="http://struts.apache.org/struts-taglib/">
+                        <a href="https://weblegacy.github.io/struts1/struts-taglib/">
                             Struts Taglib</a>
                     </li>
                     <li>

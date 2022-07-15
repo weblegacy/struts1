@@ -75,7 +75,7 @@
         <menu name="Quick Links" inherit="top">
             <item
                     name="Apache Struts Home"
-                    href="http://struts.apache.org/"/>
+                    href="https://struts.apache.org/"/>
             <item
                     name="Struts 1"
                     href="../index.html"/>

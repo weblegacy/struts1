@@ -290,12 +290,12 @@
             <subsection name="Learning More About Struts" id="More">
                 <p>
                     The Apache Struts
-                    <a href="http://struts.apache.org/mail.html">Mailing
+                    <a href="https://weblegacy.github.io/struts1/mailing-lists.html">Mailing
                         Lists</a>
                     are a treasure trove of useful, interactive information.
                     The user list tends to carry a high volume,
                     so always check the published documentation and one of the
-                    <a href="http://struts.apache.org/mail.html#Archives">
+                    <a href="https://weblegacy.github.io/struts1/mailing-lists.html#Archives">
                         <strong>MAILING LIST ARCHIVES</strong>
                     </a>
                     before
@@ -310,7 +310,7 @@
                     the
                     <a href="#faqs">FAQs</a>
                     or one of the
-                    <a href="http://struts.apache.org/mail.html#Archives">
+                    <a href="https://weblegacy.github.io/struts1/mailing-lists.html#Archives">
                         list archives,</a>
                     you can post your query to the Apache Struts User list --
                     <strong>BUT YOU MUST SUBSCRIBE TO THE
@@ -337,7 +337,7 @@
                     However, the Wiki is not the place to ask incidental
                     questions.
                     <strong>All support questions should be directed to the
-                        <a href="http://struts.apache.org/mail.html">Struts
+                        <a href="https://weblegacy.github.io/struts1/mailing-lists.html">Struts
                             User list</a>
                         or
                         other support forum.

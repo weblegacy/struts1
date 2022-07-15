@@ -1293,7 +1293,7 @@ limitations under the License.
 
                 <p>
                     One of the components available with the framework is
-                    <a href="http://struts.apache.org/struts-el/index.html">
+                    <a href="https://weblegacy.github.io/struts1/struts-el/index.html">
                         Struts-EL</a>
                     .
                     This taglib is specifically designed to work well with

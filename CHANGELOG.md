@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Bump `maven-failsafe-plugin` from 3.0.0-M6 to 3.0.0-M7
 * Bump `maven-enforcer-plugin` from 3.0.0 to 3.1.0
 * Bump `maven-assembly-plugin` from 3.3.0 to 3.4.1
 * Corr: Adapt JXR-generation to resamble 1.3.10-Version

@@ -445,21 +445,6 @@
             </plugin>
             <plugin>
                 <artifactId>maven-jxr-plugin</artifactId>
-                <reportSets>
-                  <reportSet>
-                    <id>aggregate</id>
-                    <configuration>
-                      <skip>true</skip>
-                    </configuration>
-                  </reportSet>
-                  <reportSet>
-                    <id>default</id>
-                    <reports>
-                      <report>jxr</report>
-                      <report>test-jxr</report>
-                    </reports>
-                  </reportSet>
-                </reportSets>
             </plugin>
             <plugin>
                 <artifactId>maven-pmd-plugin</artifactId>

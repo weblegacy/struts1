@@ -407,6 +407,7 @@
                     <link>https://java.sun.com/j2ee/1.4/docs/api/</link>
                   </links>
                   <failOnError>false</failOnError>
+                  <quite>true</quite>
                 </configuration>
             </plugin>
             <plugin>

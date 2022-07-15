@@ -22,12 +22,12 @@
   name="Struts Scripting">
     <bannerLeft>
         <name>Apache Software Foundation</name>
-        <src>http://www.apache.org/images/asf-logo.gif</src>
+        <src>../images/asf-logo.png</src>
         <href>https://www.apache.org/</href>
     </bannerLeft>
     <bannerRight>
         <name>Apache Struts</name>
-        <src>http://struts.apache.org/images/struts.gif</src>
+        <src>../images/struts.png</src>
         <href>https://struts.apache.org/index.html</href>
     </bannerRight>
     <body>

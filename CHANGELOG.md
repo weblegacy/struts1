@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Bump `maven-assembly-plugin` from 3.3.0 to 3.4.1
 * Corr: Adapt JXR-generation to resamble 1.3.10-Version
 * Add `Struts-Mailreader DAO`-site-doc-files
 * Move `maven-changes-plugin`-definition to parent-POM

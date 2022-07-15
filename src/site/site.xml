@@ -32,8 +32,8 @@
     </bannerRight>
     <body>
         <links>
-            <item name="Apache" href="http://www.apache.org/" />
-            <item name="Struts" href="http://struts.apache.org/index.html" />
+            <item name="Apache" href="https://www.apache.org/" />
+            <item name="Struts" href="https://struts.apache.org/index.html" />
         </links>
         <menu name="Struts 1">
             <item

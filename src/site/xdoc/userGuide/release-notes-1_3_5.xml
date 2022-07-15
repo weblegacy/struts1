@@ -136,27 +136,27 @@
                     a minimum requirement of the following specification
                     versions:
                 </p>
-                    <ul>
-                        <li>
-                            Java Servlet 2.3 and JavaServer Pages (JSP) 1.2
-                        </li>
-                        <li>
-                            Java 2 Standard Platform Edition (J2SE) 1.4
-                        </li>
-                    </ul>
+                <ul>
+                    <li>
+                        Java Servlet 2.3 and JavaServer Pages (JSP) 1.2
+                    </li>
+                    <li>
+                        Java 2 Standard Platform Edition (J2SE) 1.4
+                    </li>
+                </ul>
                 <h4>Dependency Changes</h4>
                 <p>
                     A following software dependency change applies to this distribution:
                 </p>
-                    <ul>
-                        <li>
-                            Upgraded to Commons Validator 1.3 (previously 1.2) -
-                            see
-                            <a href="http://jakarta.apache.org/commons/validator/changes-report.html">
-                                Validator 1.3.0 Change Report.
-                            </a>
-                        </li>
-                    </ul>
+                <ul>
+                    <li>
+                        Upgraded to Commons Validator 1.3 (previously 1.2) -
+                        see
+                        <a href="http://jakarta.apache.org/commons/validator/changes-report.html">
+                            Validator 1.3.0 Change Report.
+                        </a>
+                    </li>
+                </ul>
 
 <h3>Resolved Issues</h3>
 <p>The following issues have been resolved since the 1.3.3 test build:</p>

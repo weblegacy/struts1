@@ -85,7 +85,7 @@
              <td>judoscript (judo, jud)</td>
             </tr>
             </tbody>
-        </table>   
+        </table>
         <p>Once you have picked a language, you need to download its libraries and install it 
         into your application, which usually means copying its jar files into the same location
         you copied the Struts Scripting jar.  If you are not sure, we recommend Groovy

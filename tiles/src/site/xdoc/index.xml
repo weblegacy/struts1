@@ -47,7 +47,8 @@
 
 <section name="Tiles Features" id="Features">
      <ul>
-          <li>Screen definitions
+          <li>
+             Screen definitions
              <ul>
                 <li>Create a screen by assembling
                    <strong><em>Tiles</em></strong> : header, footer,
@@ -69,7 +70,7 @@
              </ul>
           </li>
           <li>
-             Layouts 
+             Layouts
              <ul>
                 <li>
                    Define common page layouts and reuse
@@ -126,40 +127,40 @@
           </li>
           <li>
              Internationalization (i18n)
-          <ul>
-          <li>
-             It is possible to load different tiles
-             according to Locale.
-          </li>
-          <li>
-             A mechanism similar to Java properties
-             files is used for definitions files: you can have one
-             definition file per Locale. The appropriate definition is
-             loaded according to the current Locale.
-          </li>
-          </ul>
+             <ul>
+                <li>
+                   It is possible to load different tiles
+                   according to Locale.
+                </li>
+                <li>
+                   A mechanism similar to Java properties
+                   files is used for definitions files: you can have one
+                   definition file per Locale. The appropriate definition is
+                   loaded according to the current Locale.
+                </li>
+             </ul>
           </li>
           <li>
              Multi-channels
-          <ul>
-          <li>
-             It is possible to load different Tiles
-             according to a key.
+             <ul>
+                <li>
+                   It is possible to load different Tiles
+                   according to a key.
+                </li>
+
+                <li>
+                   For example, the key could represent user privileges,
+                   browser type, arbitrary name stored in session, etc.
+                </li>
+
+                <li>
+                   A mechanism similar to Java properties
+                   files is used for definitions files: you can have one
+                   definition file per key. The appropriate definition is
+                   loaded according to the key.
+                </li>
+             </ul>
           </li>
-          
-          <li>
-             For example, the key could represent user privileges,
-             browser type, arbitrary name stored in session, etc.
-          </li>
-          
-          <li>
-             A mechanism similar to Java properties
-             files is used for definitions files: you can have one
-             definition file per key. The appropriate definition is
-             loaded according to the key.
-          </li>
-       </ul>
-       </li>
        </ul>
 
 </section>

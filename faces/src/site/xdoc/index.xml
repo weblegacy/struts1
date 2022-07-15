@@ -56,11 +56,11 @@
   <p>
     Known issues with some JSF implementations:
   </p>
-    <ul>
-      <li><a href="http://issues.apache.org/jira/browse/MYFACES-1421">
-      [MYFACES-1421]</a> - MyFaces 1.1.4 does not recognize the family of the
-      Struts Faces form component.</li>
-    </ul>
+  <ul>
+    <li><a href="http://issues.apache.org/jira/browse/MYFACES-1421">
+    [MYFACES-1421]</a> - MyFaces 1.1.4 does not recognize the family of the
+    Struts Faces form component.</li>
+  </ul>
   
   <p>
     Note that the Struts Faces component is intended as a "bridge" between 

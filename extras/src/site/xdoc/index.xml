@@ -97,14 +97,14 @@
             source code.</a>
             </p>
 
-                        <blockquote>            
+                        <blockquote>
             <p>
             Note that there is not an "extras" package, per se.
             Each of the "extra" classes uses a relevant package from the core distribution, 
             such as Action, Plugins, or Validator.
             </p>
-                        </blockquote>            
-                        
+                        </blockquote>
+
             <p>
             In some cases, you may like to use these classes as a starting point 
             for your own custom versions. 
@@ -112,8 +112,7 @@
             following the provisions of the 
             <a href="http://www.apache.org/licenses/">Apache License.</a> 
             </p>
-            
+
         </section>
    </body>
 </document>
-

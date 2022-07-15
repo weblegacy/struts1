@@ -36,10 +36,10 @@
         <section name="Legal Disclamer">
 
             <p>
-            Please read
-            <a href="http://jakarta.apache.org/site/idedevelopers.html">
-                this</a>
-            first.
+                Please read
+                <a href="http://jakarta.apache.org/site/idedevelopers.html">
+                    this</a>
+                first.
             </p>
             <p>
                 * DISCLAIMER - This simple How-To shows you how easy it is to
@@ -68,21 +68,21 @@
         <section name="Let's get started">
 
             <p>
-            You will use wizards to set up and deploy the struts-mailreader in
-            5 steps.
-            <br/>
-            <br/>
-            Before we begin, let's create (or reuse) a folder to hold the
-            project. Copy the struts-mailreader.war
-            <br/>
-            from the Struts Applications distribution and extract it, with the
-            result that it looks like this:
-            <br/>
-            <br/>
-            <img alt="" src="../images/how-to/netbeans4/directory.jpg"></img>
-            <br/>
-            <br/>
-            <br/>
+                You will use wizards to set up and deploy the struts-mailreader in
+                5 steps.
+                <br/>
+                <br/>
+                Before we begin, let's create (or reuse) a folder to hold the
+                project. Copy the struts-mailreader.war
+                <br/>
+                from the Struts Applications distribution and extract it, with the
+                result that it looks like this:
+                <br/>
+                <br/>
+                <img alt="" src="../images/how-to/netbeans4/directory.jpg"></img>
+                <br/>
+                <br/>
+                <br/>
             </p>
             <ol>
                 <li>
@@ -213,10 +213,10 @@
 
         <section name="Let's set up a blank application">
             <p>
-            Now you will use wizards to set up a new Struts
-            application in NetBeans IDE 4.0, again in 5 steps.
-            <br/>
-            <br/>
+                Now you will use wizards to set up a new Struts
+                application in NetBeans IDE 4.0, again in 5 steps.
+                <br/>
+                <br/>
             </p>
             <ol>
                 <li>

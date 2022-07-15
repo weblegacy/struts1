@@ -181,50 +181,50 @@
                     a minumum requirement of the following specification
                     versions:
                 </p>
-                    <ul>
-                        <li>
-                            Java Servlet 2.3 and JavaServer Pages (JSP) 1.2
-                        </li>
-                        <li>
-                            Java 2 Standard Platform Edition (J2SE) 1.4
-                        </li>
-                    </ul>
+                <ul>
+                    <li>
+                        Java Servlet 2.3 and JavaServer Pages (JSP) 1.2
+                    </li>
+                    <li>
+                        Java 2 Standard Platform Edition (J2SE) 1.4
+                    </li>
+                </ul>
                 <h4>Software Component Changes</h4>
                 <p>
                     A number of software dependency changes apply to this release:
                 </p>
-                    <ul>
-                        <li>
-                            New dependency on Commons Chain 1.0 - see
-                            <a href="http://jakarta.apache.org/commons/chain/">
-                                Chain Website
-                            </a>
-                            .
-                        </li>
-                        <li>
-                            Upgraded to Commons FileUpload 1.1 (previously 1.0) - see
-                            <a href="http://jakarta.apache.org/commons/fileupload/changes-report.html">
-                                FileUpload 1.1 Release Notes
-                            </a>
-                            .
-                        </li>
-                        <li>
-                            New dependency on Commons IO 1.1 (required by FileUpload
-                            1.1) - see
-                            <a href="http://jakarta.apache.org/commons/io/">
-                                IO Website
-                            </a>
-                            .
-                        </li>
-                        <li>
-                            Upgraded to Commons Validator 1.2 (previously 1.1.4) -
-                            see
-                            <a href="http://jakarta.apache.org/commons/validator/changes-report.html">
-                                Validator 1.2.0 Release Notes
-                            </a>
-                            .
-                        </li>
-                    </ul>
+                <ul>
+                    <li>
+                        New dependency on Commons Chain 1.0 - see
+                        <a href="http://jakarta.apache.org/commons/chain/">
+                            Chain Website
+                        </a>
+                        .
+                    </li>
+                    <li>
+                        Upgraded to Commons FileUpload 1.1 (previously 1.0) - see
+                        <a href="http://jakarta.apache.org/commons/fileupload/changes-report.html">
+                            FileUpload 1.1 Release Notes
+                        </a>
+                        .
+                    </li>
+                    <li>
+                        New dependency on Commons IO 1.1 (required by FileUpload
+                        1.1) - see
+                        <a href="http://jakarta.apache.org/commons/io/">
+                            IO Website
+                        </a>
+                        .
+                    </li>
+                    <li>
+                        Upgraded to Commons Validator 1.2 (previously 1.1.4) -
+                        see
+                        <a href="http://jakarta.apache.org/commons/validator/changes-report.html">
+                            Validator 1.2.0 Release Notes
+                        </a>
+                        .
+                    </li>
+                </ul>
 
                 <h3>Struts Applications</h3>
 

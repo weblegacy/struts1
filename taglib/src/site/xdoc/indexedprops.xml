@@ -562,15 +562,14 @@
                     &lt;/html-el:form&gt;
                     &lt;/body&gt;
                     &lt;/html&gt;</pre>
-                    
-                <p>    
+
+                <p>
                     If you are using JSTL in your application (and we 
                     recommend that you do!), 
                     then use Struts EL in place of Struts Taglib.
                 </p>
-                    
+
             </subsection>
         </section>
     </body>
 </document>
-

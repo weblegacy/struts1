@@ -161,48 +161,48 @@
                 </p>
     
                 <h4 id="struts_1_0">Release 1.0.x (complete)</h4>
-                    <p>
-                        Major refactoring of framework internals to provide support
-                        for modules and a new
-                        "config" object series. Bundles Struts Tiles and Struts
-                        Validator into main distribution.
-                        The initial release of Struts EL is provided as an
-                        optional package.
-                    </p>
+                <p>
+                    Major refactoring of framework internals to provide support
+                    for modules and a new
+                    "config" object series. Bundles Struts Tiles and Struts
+                    Validator into main distribution.
+                    The initial release of Struts EL is provided as an
+                    optional package.
+                </p>
                 
                 <h4 id="struts_1_1">Release 1.1.x (complete)</h4>
-                    <p>
-                        Split internal libraries into their own projects in Jakarta
-                        Commons.  Added support for modules and plugins.
-                    </p>
+                <p>
+                    Split internal libraries into their own projects in Jakarta
+                    Commons.  Added support for modules and plugins.
+                </p>
     
                 <h4 id="struts_1_2">Release 1.2.x (complete)</h4>
-                    <p>
-                        Added support for wildcard mappings, internal project restructuring,
-                        removed deprecations, other minor enhancements.
-                    </p>
+                <p>
+                    Added support for wildcard mappings, internal project restructuring,
+                    removed deprecations, other minor enhancements.
+                </p>
     
                 <h4 id="struts_1_3_x">Release 1.3.x (pending)</h4>
-                    <p>
-                        Evolutionary enhancements to product base,
-                        based on existing features or codebases.
-                    </p>
-                    <ul>
-                        <li>
-                            Divided distribution into components with individual JARs
-                        </li>
-                        <li>
-                            Support for Maven 2 builds
-                        </li>
-                        <li>
-                            Moved action to "Struts Chain" Request Processor
-                        </li>
-                        <li>
-                            Enhanced all configs to extend one configuration
-                            element from another,
-                            as is done with Tiles Definitions
-                        </li>
-                    </ul>
+                <p>
+                    Evolutionary enhancements to product base,
+                    based on existing features or codebases.
+                </p>
+                <ul>
+                    <li>
+                        Divided distribution into components with individual JARs
+                    </li>
+                    <li>
+                        Support for Maven 2 builds
+                    </li>
+                    <li>
+                        Moved action to "Struts Chain" Request Processor
+                    </li>
+                    <li>
+                        Enhanced all configs to extend one configuration
+                        element from another,
+                        as is done with Tiles Definitions
+                    </li>
+                </ul>
             </subsection>
         </section>
 

@@ -23,12 +23,12 @@
     <bannerLeft>
         <name>Apache Software Foundation</name>
         <src>http://www.apache.org/images/asf-logo.gif</src>
-        <href>http://www.apache.org/</href>
+        <href>https://www.apache.org/</href>
     </bannerLeft>
     <bannerRight>
         <name>Apache Struts</name>
         <src>http://struts.apache.org/images/struts.gif</src>
-        <href>http://struts.apache.org/1.x/index.html</href>
+        <href>https://struts.apache.org/index.html</href>
     </bannerRight>
     <body>
         <links>
@@ -50,13 +50,13 @@
                     />
             <item
                     name="Releases"
-                    href="http://struts.apache.org/downloads.html"/>
+                    href="https://struts.apache.org/releases.html"/>
             <item
                     name="Thanks!"
-                    href="http://apache.org/foundation/thanks.html"/>
+                    href="https://www.apache.org/foundation/thanks.html"/>
             <item
                     name="Sponsorship"
-                    href="http://apache.org/foundation/sponsorship.html"/>
+                    href="https://www.apache.org/foundation/sponsorship.html"/>
         </menu>
 
         <menu name="Documentation">
@@ -85,15 +85,15 @@
         <menu name="Support">
             <item
                     name="User Mailing List"
-                    href="http://struts.apache.org/mail.html"
+                    href="https://struts.apache.org/mail.html"
                     />
             <item
                     name="Issue Tracker (JIRA)"
-                    href="http://issues.apache.org/struts/"
+                    href="https://issues.apache.org/jira/browse/WW"
                     />
             <item
                     name="Wiki Pages"
-                    href="http://wiki.apache.org/struts/"
+                    href="https://cwiki.apache.org/confluence/display/WW/Home"
                     />
         </menu>
 

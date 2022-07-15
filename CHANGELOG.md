@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Correct some URLs in site-doc-files
 * Some reformatings in site-doc-files
 * Add XSD to all site-doc-files and correct them
 * Add/update XML-Declaration with encoding

@@ -92,6 +92,10 @@
      <outputDirectory>docs/struts-faces</outputDirectory>
    </fileSet>
    <fileSet>
+     <directory>../mailreader-dao/target/site</directory>
+     <outputDirectory>docs/struts-mailreader-dao</outputDirectory>
+   </fileSet>
+   <fileSet>
      <directory>../scripting/target/site</directory>
      <outputDirectory>docs/struts-scripting</outputDirectory>
    </fileSet>

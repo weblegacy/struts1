@@ -187,6 +187,14 @@
       </includes>
    </fileSet>
    <fileSet>
+     <directory>../integration/apps-it-selenium</directory>
+     <outputDirectory>src/integration/apps-it-selenium</outputDirectory>
+     <includes>
+        <include>pom.xml</include>
+        <include>src/</include>
+      </includes>
+   </fileSet>
+   <fileSet>
      <directory>../mailreader-dao</directory>
      <outputDirectory>src/mailreader-dao</outputDirectory>
      <includes>
@@ -276,6 +284,10 @@
    <fileSet>
      <directory>../faces/target/site</directory>
      <outputDirectory>docs/struts-faces</outputDirectory>
+   </fileSet>
+   <fileSet>
+     <directory>../mailreader-dao/target/site</directory>
+     <outputDirectory>docs/struts-mailreader-dao</outputDirectory>
    </fileSet>
    <fileSet>
      <directory>../scripting/target/site</directory>

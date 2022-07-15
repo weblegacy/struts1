@@ -45,6 +45,8 @@
     <properties>
         <encoding>UTF-8</encoding>
         <propertiesEncoding>ISO-8859-1</propertiesEncoding>
+        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
         <mavenVersion>[3.5.4,4)</mavenVersion>
         <javaVersion>1.4</javaVersion>
         <javaTestVersion>1.8</javaTestVersion>

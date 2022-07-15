@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Add project-encoding-properties
 * Add quite-config to `javadoc-plugin`
 * Also install/deploy parent-`site.xml`-files
 * Correct some typos in site-doc-files

@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Generate change-report in `scripting`-module
 * Correct `README.md`
 * Lint markdown-files
 * Add project-encoding-properties

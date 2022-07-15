@@ -92,5 +92,65 @@
       </profile>
     </profiles>
 
+    <build>
+      <pluginManagement>
+       <plugins>
+          <plugin>
+            <artifactId>maven-changes-plugin</artifactId>
+            <version>2.12.1</version>
+            <configuration>
+              <githubAPIScheme>https</githubAPIScheme>
+              <githubAPIPort>443</githubAPIPort>
+              <teamlist>team.html</teamlist>
+              <onlyMilestoneIssues>false</onlyMilestoneIssues>
+            </configuration>
+          </plugin>
+       </plugins>
+      </pluginManagement>
+
+      <plugins>
+       <plugin>
+          <artifactId>maven-changes-plugin</artifactId>
+          <executions>
+            <execution>
+              <id>check-changes</id>
+              <phase>verify</phase>
+              <goals>
+                <goal>changes-check</goal>
+              </goals>
+              <configuration>
+                <skipSnapshots>true</skipSnapshots>
+              </configuration>
+            </execution>
+            <execution>
+              <id>validate-changes</id>
+              <phase>pre-site</phase>
+              <goals>
+                <goal>changes-validate</goal>
+              </goals>
+              <configuration>
+                <failOnError>true</failOnError>
+              </configuration>
+            </execution>
+          </executions>
+       </plugin>
+      </plugins>
+    </build>
+
+    <reporting>
+      <plugins>
+       <plugin>
+          <artifactId>maven-changes-plugin</artifactId>
+          <reportSets>
+            <reportSet>
+              <reports>
+                <report>changes-report</report>
+                <report>github-report</report>
+              </reports>
+            </reportSet>
+          </reportSets>
+       </plugin>
+      </plugins>
+    </reporting>
 
 </project>

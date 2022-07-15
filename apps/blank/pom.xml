@@ -30,12 +30,6 @@
    <packaging>war</packaging>
    <name>Struts Apps - Blank</name>
    
-    <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/blank/</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/struts/struts1/trunk/apps/blank/</developerConnection>
-        <url>http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/blank/</url>
-    </scm>
-
    <dependencies>
       <dependency>
          <groupId>${project.groupId}</groupId>

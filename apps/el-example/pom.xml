@@ -30,12 +30,6 @@
    <packaging>war</packaging>
    <name>Struts Apps - Struts EL Exercise</name>
    
-    <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/el-example/</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/struts/struts1/trunk/apps/el-example/</developerConnection>
-        <url>http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/el-example/</url>
-    </scm>
-
    <dependencies>
       <dependency>
          <groupId>${project.groupId}</groupId>

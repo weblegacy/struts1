@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Correct SCM-addresses, url's, organization and distribution management
 * Correct title of `Struts Mailreader DAO`
 * Adaptation of the links to the new web-space
 * Add `struts-mailreader-dao` to dependencies-index

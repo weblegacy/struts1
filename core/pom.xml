@@ -32,20 +32,6 @@
     <artifactId>struts-core</artifactId>
     <packaging>jar</packaging>
     <name>Struts Core</name>
-    <url>http://struts.apache.org</url>
-
-    <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/struts/struts1/trunk/core/</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/struts/struts1/trunk/core</developerConnection>
-        <url>http://svn.apache.org/repos/asf/struts/struts1/trunk/core</url>
-    </scm>
-    
-    <distributionManagement>
-        <site>
-            <id>apache-site</id>
-            <url>scp://people.apache.org/www/struts.apache.org/1.x/struts-core</url>
-        </site>
-    </distributionManagement>
 
     <build>
         <plugins>

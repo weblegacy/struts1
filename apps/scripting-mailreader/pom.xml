@@ -30,12 +30,6 @@
    <packaging>war</packaging>
    <name>Struts Apps - Scripting Mailreader</name>
 
-    <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/scripting-mailreader/</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/struts/struts1/trunk/apps/scripting-mailreader/</developerConnection>
-        <url>http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/scripting-mailreader/</url>
-    </scm>
-
    <dependencies>
       <dependency>
          <groupId>${project.groupId}</groupId>

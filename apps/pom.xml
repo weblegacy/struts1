@@ -30,20 +30,6 @@
    <packaging>pom</packaging>
    <name>Struts Apps</name>
 
-    <scm>
-       <connection>scm:svn:http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/</connection>
-       <developerConnection>scm:svn:https://svn.apache.org/repos/asf/struts/struts1/trunk/apps/</developerConnection>
-       <url>http://svn.apache.org/viewcvs.cgi/struts/struts1/trunk/apps/</url>
-    </scm>
-
-   <distributionManagement>
-       <site>
-           <id>apache-site</id>
-           <url>scp://people.apache.org/www/struts.apache.org/1.x/struts-apps</url>
-       </site>
-   </distributionManagement>
-
-
    <modules>
       <module>cookbook</module>
       <module>faces-example1</module>

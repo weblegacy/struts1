@@ -34,12 +34,6 @@
     <version>1.3.11-SNAPSHOT</version>
   </parent>
 
-  <scm>
-    <connection>scm:svn:http://svn.apache.org/repos/asf/struts/action/trunk/assembly</connection>
-    <developerConnection>scm:svn:https://svn.apache.org/repos/asf/struts/action/trunk/assembly</developerConnection>
-    <url>http://svn.apache.org/viewcvs.cgi/struts/action/trunk/assembly</url>
-  </scm>
-  
   <build>
     <plugins>
         <plugin>

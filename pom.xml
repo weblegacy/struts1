@@ -32,15 +32,19 @@
     <version>1.3.11-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Struts</name>
-    <url>http://struts.apache.org/</url>
+    <url>https://weblegacy.github.io/struts1</url>
     <description>Apache Struts</description>
-
     <inceptionYear>2000</inceptionYear>
 
-    <scm>
-       <connection>scm:svn:http://svn.apache.org/repos/asf/struts/struts1/branches/STRUTS_1_3_BRANCH</connection>
-       <developerConnection>scm:svn:https://svn.apache.org/repos/asf/struts/struts1/branches/STRUTS_1_3_BRANCH</developerConnection>
-       <url>http://svn.apache.org/viewvc/struts/struts1/branches/STRUTS_1_3_BRANCH</url>
+    <organization>
+        <name>Web-Legacy</name>
+        <url>https://github.com/weblegacy</url>
+    </organization>
+
+    <scm child.scm.connection.inherit.append.path="false" child.scm.developerConnection.inherit.append.path="false" child.scm.url.inherit.append.path="false" >
+        <connection>scm:git:https://github.com/weblegacy/struts1.git</connection>
+        <developerConnection>scm:git:git@github.com:weblegacy/struts1.git</developerConnection>
+        <url>https://github.com/weblegacy/struts1</url>
     </scm>
 
     <properties>
@@ -184,11 +188,6 @@
             <comments/>
         </license>
     </licenses>
-
-    <organization>
-        <name>Apache Software Foundation</name>
-        <url>http://www.apache.org/</url>
-    </organization>
 
     <build>
         <pluginManagement>
@@ -842,14 +841,19 @@
         </dependency>
     </dependencies>
 
-    <repositories>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
         <repository>
-            <id>apache.snapshots</id>
-            <name>Apache Maven Repository (Snapshots and Test Builds)</name>
-            <url>http://people.apache.org/maven-snapshot-repository</url>
-            <releases><enabled>false</enabled></releases>
-            <snapshots><enabled>true</enabled></snapshots>
+            <id>ossrh</id>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
-    </repositories>
-
+        <site>
+            <id>github</id>
+            <url>scm:git:git@github.com:weblegacy/struts1</url>
+        </site>
+        <downloadUrl>https://github.com/weblegacy/struts1/releases</downloadUrl>
+    </distributionManagement>
 </project>

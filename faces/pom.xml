@@ -32,20 +32,6 @@
    <artifactId>struts-faces</artifactId>
    <packaging>jar</packaging>
    <name>Struts Faces</name>
-   <url>http://struts.apache.org</url>
-
-    <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/struts/struts1/trunk/faces/</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/struts/struts1/trunk/faces/</developerConnection>
-        <url>http://svn.apache.org/repos/asf/struts/struts1/trunk/faces/</url>
-    </scm>
-    
-   <distributionManagement>
-      <site>
-         <id>apache-site</id>
-         <url>scp://people.apache.org/www/struts.apache.org/1.x/struts-faces</url>
-      </site>
-   </distributionManagement>
 
    <dependencies>
       <dependency>

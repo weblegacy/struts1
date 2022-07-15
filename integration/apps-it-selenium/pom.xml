@@ -31,7 +31,6 @@
    <artifactId>struts-it-apps-selenium</artifactId>
    <packaging>jar</packaging>
    <name>Struts Integration - Apps Tests with Selenium</name>
-   <url>http://struts.apache.org</url>
 
    <dependencies>
       <dependency>

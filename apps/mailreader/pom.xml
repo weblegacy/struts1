@@ -30,12 +30,6 @@
    <packaging>war</packaging>
    <name>Struts Apps - Mailreader</name>
    
-    <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/mailreader/</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/struts/struts1/trunk/apps/mailreader/</developerConnection>
-        <url>http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/mailreader/</url>
-    </scm>
-
    <dependencies>
       <dependency>
          <groupId>${project.groupId}</groupId>

@@ -30,12 +30,6 @@
    <packaging>war</packaging>
    <name>Struts Apps - Cookbook</name>
    
-    <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/cookbook/</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/struts/struts1/trunk/apps/cookbook/</developerConnection>
-        <url>http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/cookbook/</url>
-    </scm>
-
    <dependencies>
       <dependency>
          <groupId>${project.groupId}</groupId>

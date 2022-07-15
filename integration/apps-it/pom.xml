@@ -30,7 +30,6 @@
    <modelVersion>4.0.0</modelVersion>
    <artifactId>struts-it-apps</artifactId>
    <name>Struts Integration - Apps Tests</name>
-   <url>http://struts.apache.org</url>
 
    <dependencies>
       <dependency>

@@ -30,12 +30,6 @@
    <packaging>war</packaging>
    <name>Struts Apps - Faces Example 1</name>
    
-    <scm>
-        <connection>scm:svn:http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/faces-example1/</connection>
-        <developerConnection>scm:svn:https://svn.apache.org/repos/asf/struts/struts1/trunk/apps/faces-example1/</developerConnection>
-        <url>http://svn.apache.org/repos/asf/struts/struts1/trunk/apps/faces-example1/</url>
-    </scm>
-
    <dependencies>
       <dependency>
          <groupId>${project.groupId}</groupId>

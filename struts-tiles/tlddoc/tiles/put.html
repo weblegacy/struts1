@@ -1,0 +1,218 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>put (Struts Tiles Tag library documentation)</title>
+<meta name="keywords" content="put (Struts Tiles Tag library documentation)">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="put (Struts Tiles Tag library documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="put.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>
+<font size="-1">tiles</font>
+<br>
+            Tag put</h2>
+<hr>
+      
+      <p><strong>Put an attribute into tile/component/template context.
+      </strong></p>
+      <p>Define an attribute to pass to tile/component/template.
+      This tag can only be used inside 'insert' or 'definition' tag.
+      Value (or content) is specified using attribute 'value' (or 'content'), 
+      or using the tag body.
+      It is also possible to specify the type of the value :</p>
+      <ul>
+        <li>string : Content is written directly.</li>
+        <li>page | template : Content is included from specified URL. Name is used as an URL.</li>
+        <li>definition : Content come from specified definition (from factory). Name is used as definition name.</li>
+      </ul>
+      <p>If 'type' attribute is not specified, content is 'untyped', unless it comes from a typed bean.</p>
+      <p>Note that using 'direct="true"' is equivalent to 'type="string"'.</p>
+      
+      <br>
+<p></p>
+<hr>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+</tr>
+<tr>
+<td>Tag Class</td><td>org.apache.struts.tiles.taglib.PutTag</td>
+</tr>
+<tr>
+<td>TagExtraInfo Class</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Body Content</td><td>JSP</td>
+</tr>
+<tr>
+<td>Display Name</td><td><i>None</i></td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+</tr>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>beanName</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Name of the bean used as value. Bean is retrieved from specified context, if any. Otherwise,
+         method pageContext.findAttribute is used.
+         If beanProperty is specified, retrieve value from the corresponding bean property.</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>beanProperty</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Bean property name. If specified, value is retrieve from this property. Support nested/indexed
+         properties.</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>beanScope</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+         
+         <p>
+         Scope into which bean is searched. If not specified, method pageContext.findAttribute is used.
+         Scope can be any JSP scope, 'tile', 'component', or 'template'.
+         In these three later cases, bean is search in tile/component/template context.
+         </p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>content</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Content that's put into tile scope.
+         Synonym to value. Attribute added for compatibility with JSP Template.
+         </p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>direct</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Determines how content is handled: true means content is
+         printed <em>direct</em></p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>name</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Name of the attribute.</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>role</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>
+         If the user is in the specified role, the tag is taken into account;
+         otherwise, the tag is ignored (skipped).
+         </p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>type</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Specify content type: string, page, template or definition.</p>
+         <ul>
+           <li>String : Content is printed directly.</li>
+           <li>page | template : Content is included from specified URL. Name is used as an URL.</li>
+           <li>definition : Value is the name of a definition defined in factory (xml file). Definition will be searched
+           in the inserted tile, in a <code>&lt;tiles:insert attribute="attributeName"&gt;</code> tag, where 'attributeName'
+           is the name used for this tag.</li>
+         </ul>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>value</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Attribute value. Could be a String or an Object.
+         Value can come from a direct assignment (value="aValue") or from a bean.
+         One of 'value' 'content' or 'beanName' must be present.</p>
+         
+         </td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Variables</b></font></td>
+</tr>
+<td colspan="2"><i>No Variables Defined.</i></td>
+</table>
+<br>
+<p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="put.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Output Generated by
+            <a href="https://weblegacy.github.io/tlddoc/" target="_blank">Tag Library Documentation Generator</a>.
+            Java, JSP, and JavaServer Pages are trademarks or
+            registered trademarks of Sun Microsystems, Inc. in the US and other
+            countries.  Copyright 2002-4 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved.
+            </i></small>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>javascript (Struts Taglib Tag library documentation)</title>
+<meta name="keywords" content="javascript (Struts Taglib Tag library documentation)">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="javascript (Struts Taglib Tag library documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="javascript.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>
+<font size="-1">html</font>
+<br>
+            Tag javascript</h2>
+<hr>
+            
+            <p><strong>
+            Render JavaScript validation based on the
+            validation rules loaded by the ValidatorPlugIn.
+        </strong></p>
+          
+            <p>
+                Render JavaScript validation based on the
+                validation rules loaded by the <code>ValidatorPlugIn</code>.
+                The set of validation rules that should be generated is based
+                on the formName attribute passed in, which should match
+                the name attribute of the form element in the xml file.
+            </p>
+            <p>
+                The dynamicJavascript and staticJavascript attributes
+                default to true, but if dynamicJavascript is set to <code>true</code>
+                and staticJavascript is set to <code>false</code> then only
+                the dynamic JavaScript will be rendered.  If dynamicJavascript
+                is set to <code>false</code>
+                and staticJavascript is set to <code>true</code> then only
+                the static JavaScript will be rendered which can then be put in
+                separate JSP page so the browser can cache the static JavaScript.
+            </p>
+        
+        <br>
+<p></p>
+<hr>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+</tr>
+<tr>
+<td>Tag Class</td><td>org.apache.struts.taglib.html.JavascriptValidatorTag</td>
+</tr>
+<tr>
+<td>TagExtraInfo Class</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Body Content</td><td>empty</td>
+</tr>
+<tr>
+<td>Display Name</td><td><i>None</i></td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+</tr>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>bundle</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                    The servlet context attributes key for the MessageResources
+                    instance to use.  If not specified, defaults to the
+                    application resources configured for our action servlet.
+                
+            <dl><dt><b>Since:</b></dt>
+            <dd>Struts 1.2.7</dd></dl>
+          
+            </td>
+</tr>
+<tr valign="top">
+<td>cdata</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+               <p>
+                  If set to "true" and XHTML has been enabled, the JavaScript will
+                  be wrapped in a CDATA section to prevent XML parsing. The default is
+                  "true" to comply with the W3C's recommendation.
+               </p>
+            
+            <dl><dt><b>Since:</b></dt>
+            <dd>Struts 1.1</dd></dl>
+          
+            </td>
+</tr>
+<tr valign="top">
+<td>dynamicJavascript</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+               <p>
+                  Whether or not to render the dynamic JavaScript.
+                  Defaults to <code>true</code>.
+               </p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>formName</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+               <p>
+                  The key (form name) to retrieve a specific
+                  set of validation rules.  If "dynamicJavascript" is set 
+                  to <code>true</code> and formName is missing or is not 
+                  recognized by the <code>ValidatorPlugIn</code>, a 
+                  JspException will be thrown.
+               </p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>htmlComment</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+               <p>
+                  Whether or not to enclose the javascript
+                  with HTML comments.  This attribute is ignored in XHTML
+                  mode because the script would be deleted by the XML parser.  See
+                  the cdata attribute for details on hiding scripts from XML
+                  parsers. 
+                  Defaults to <code>true</code>.
+               </p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>method</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+               <p>
+                  The alternate JavaScript method name to be used
+                  instead of the of the default.  The default is
+                  'validate' concatenated in front of
+                  the key (form name) passed in (ex: validateRegistrationForm).
+               </p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>page</td><td>false</td><td>true</td><td><code>int</code></td><td>
+                
+               <p>
+                  The current page of a set of validation rules
+                  if the page attribute for the field element
+                  in the xml file is in use.
+               </p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>scriptLanguage</td><td>false</td><td>true</td><td><code>boolean</code></td><td>
+                
+                The &lt;script&gt; element will not contain a language attribute
+                when this is set to false.  The default is true but this property is ignored
+                in XHTML mode.
+            
+            <dl><dt><b>Since:</b></dt>
+            <dd>Struts 1.2</dd></dl>
+          
+            </td>
+</tr>
+<tr valign="top">
+<td>src</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+               <p>
+                  The src attribute's value when defining
+                  the html script element.
+               </p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>staticJavascript</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+               <p>
+                  Whether or not to render the static JavaScript.
+                  Defaults to <code>true</code>.
+               </p>
+            
+            </td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Variables</b></font></td>
+</tr>
+<td colspan="2"><i>No Variables Defined.</i></td>
+</table>
+<br>
+<p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="javascript.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Output Generated by
+            <a href="https://weblegacy.github.io/tlddoc/" target="_blank">Tag Library Documentation Generator</a>.
+            Java, JSP, and JavaServer Pages are trademarks or
+            registered trademarks of Sun Microsystems, Inc. in the US and other
+            countries.  Copyright 2002-4 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved.
+            </i></small>
+</body>
+</html>

@@ -1,0 +1,5 @@
+org.apache.strutsel.taglib.bean
+org.apache.strutsel.taglib.html
+org.apache.strutsel.taglib.logic
+org.apache.strutsel.taglib.tiles
+org.apache.strutsel.taglib.utils

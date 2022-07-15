@@ -1,0 +1,5 @@
+org.apache.struts.webapp.dispatch
+org.apache.struts.webapp.examples
+org.apache.struts.webapp.exercise
+org.apache.struts.webapp.upload
+org.apache.struts.webapp.validator

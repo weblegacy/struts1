@@ -1,0 +1,488 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>frame (Struts Taglib Tag library documentation)</title>
+<meta name="keywords" content="frame (Struts Taglib Tag library documentation)">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="frame (Struts Taglib Tag library documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="frame.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>
+<font size="-1">html</font>
+<br>
+            Tag frame</h2>
+<hr>
+            
+            <p><strong>Render an HTML frame element</strong></p>
+          
+
+            <p>Renders an HTML <code>&lt;frame&gt;</code> element
+            with processing for the <code>src</code> attribute that is
+            identical to that performed by the <code>&lt;html:link&gt;</code>
+            tag for the <code>href</code> attribute.  URL rewriting will be
+            applied automatically, to maintain session state in the
+            absence of cookies.</p>
+
+            <p>The base URL for this frame is calculated based on
+            which of the following attributes you specify (you must
+            specify exactly one of them):</p>
+            <ul>
+            <li><em>forward</em> - Use the value of this attribute as the
+                name of a global <code>ActionForward</code> to be looked
+                up, and use the module-relative or context-relative
+                URI found there.</li>
+            <li><em>href</em> - Use the value of this attribute unchanged.
+                </li>
+            <li><em>page</em> - Use the value of this attribute as a
+                module-relative URI, and generate a server-relative
+                URI by including the context path and application
+                prefix.</li>
+            <li><em>action</em> - Use the value of this attribute as the
+                logical name of a global Action that contains the actual 
+                content-relative URI of the destination of this transfer.</li>
+            </ul>
+
+            <p>Normally, the hyperlink you specify with one of the
+            attributes described in the previous paragraph will be left
+            unchanged (other than URL rewriting if necessary).  However,
+            there are two ways you can append one or more dynamically
+            defined query parameters to the hyperlink -- specify a single
+            parameter with the <code>paramId</code> attribute (and its
+            associated attributes to select the value), or specify the
+            <code>name</code> (and optional <code>property</code>)
+            attributes to select a <code>java.util.Map</code> bean that
+            contains one or more parameter ids and corresponding values.
+            </p>
+
+            <p>To specify a single parameter, use the <code>paramId</code>
+            attribute to define the name of the request parameter to be
+            submitted.  To specify the corresponding value, use one of the
+            following approaches:</p>
+            <ul>
+            <li><em>Specify only the <code>paramName</code> attribute</em>
+                - The named JSP bean (optionally scoped by the value of the
+                <code>paramScope</code> attribute) must identify a value
+                that can be converted to a String.</li>
+            <li><em>Specify both the <code>paramName</code> and
+                <code>paramProperty</code> attributes</em> - The specified
+                property getter method will be called on the JSP bean
+                identified by the <code>paramName</code> (and optional
+                <code>paramScope</code>) attributes, in order to select
+                a value that can be converted to a String.</li>
+            </ul>
+
+            <p>If you prefer to specify a <code>java.util.Map</code> that
+            contains all of the request parameters to be added to the
+            hyperlink, use one of the following techniques:</p>
+            <ul>
+            <li><em>Specify only the <code>name</code> attribute</em> -
+                The named JSP bean (optionally scoped by the value of
+                the <code>scope</code> attribute) must identify a
+                <code>java.util.Map</code> containing the parameters.</li>
+            <li><em>Specify both <code>name</code> and
+                <code>property</code> attributes</em> - The specified
+                property getter method will be called on the bean
+                identified by the <code>name</code> (and optional
+                <code>scope</code>) attributes, in order to return the
+                <code>java.util.Map</code> containing the parameters.</li>
+            </ul>
+
+            <p>As the <code>Map</code> is processed, the keys are assumed
+            to be the names of query parameters to be appended to the
+            hyperlink.  The value associated with each key must be either
+            a String or a String array representing the parameter value(s),
+            or an object whose toString() method will be called.
+            If a String array is specified, more than one value for the
+            same query parameter name will be created.</p>
+
+            <p>Additionally, you can request that the current transaction
+            control token, if any, be included in the generated hyperlink
+            by setting the <code>transaction</code> attribute to
+            <code>true</code>.
+            You can also request that an anchor ("#xxx") be added to the
+            end of the URL that is created by any of the above mechanisms,
+            by using the <code>anchor</code> attribute.</p>
+
+         
+        <br>
+<p></p>
+<hr>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+</tr>
+<tr>
+<td>Tag Class</td><td>org.apache.struts.taglib.html.FrameTag</td>
+</tr>
+<tr>
+<td>TagExtraInfo Class</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Body Content</td><td>JSP</td>
+</tr>
+<tr>
+<td>Display Name</td><td><i>None</i></td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+</tr>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>action</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+               <p>Logical name of a global <code>Action</code> that
+               contains the actual content-relative URI of the destination
+               of this transfer.  This hyperlink may be dynamically
+               modified by the inclusion of query parameters, as described
+               in the tag description.  You <strong>must</strong> specify
+               exactly one of the <code>action</code> attribute, the
+               <code>forward</code> attribute, the
+               <code>href</code> attribute,
+               or the <code>page</code> attribute.</p>
+               
+               <p>Additionally, you can specify a <code>module</code> prefix 
+               for linking to other modules.</p>
+                           
+           
+            </td>
+</tr>
+<tr valign="top">
+<td>anchor</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>Optional anchor tag ("#xxx") to be added to the generated
+                hyperlink.  Specify this value <strong>without</strong> any
+                "#" character.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>bundle</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                    The servlet context attributes key for the MessageResources
+                    instance to use.  If not specified, defaults to the
+                    application resources configured for our action servlet.
+                
+            <dl><dt><b>Since:</b></dt>
+            <dd>Struts 1.2.5</dd></dl>
+          
+            </td>
+</tr>
+<tr valign="top">
+<td>forward</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>Logical name of a global <code>ActionForward</code> that
+                contains the actual content-relative URI of the destination
+                of this transfer.  This hyperlink may be dynamically
+                modified by the inclusion of query parameters, as described
+                in the tag description.  You <strong>must</strong> specify
+                exactly one of the <code>action</code> attribute, the
+                <code>forward</code> attribute, the
+                <code>href</code> attribute,
+                or the <code>page</code> attribute.</p>
+             
+            </td>
+</tr>
+<tr valign="top">
+<td>frameborder</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>Should a frame border be generated around this frame (1)
+                or not (0)?</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>frameName</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>Value for the <code>name</code> attribute of the rendered
+                <code>&lt;frame&gt;</code> element.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>href</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>The URL to which this hyperlink will transfer control
+                 if activated.  This hyperlink may be dynamically modified
+                 by the inclusion of query parameters, as described in the
+                 tag description.  You <strong>must</strong> specify
+                 exactly one of the <code>action</code> attribute, the
+                 <code>forward</code> attribute, the
+                 <code>href</code> attribute,
+                 or the <code>page</code> attribute.</p>
+             
+            </td>
+</tr>
+<tr valign="top">
+<td>longdesc</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>URI of a long description of the frame.  This description
+                should supplement the short description provided by the
+                <code>title</code> attribute, and may be particularly useful
+                for non-visual user agents.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>marginheight</td><td>false</td><td>true</td><td><code>java.lang.Integer</code></td><td>
+                
+                <p>The amount of space (in pixels) to be left between the
+                frame's contents and its top and bottom margins.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>marginwidth</td><td>false</td><td>true</td><td><code>java.lang.Integer</code></td><td>
+                
+                <p>The amount of space (in pixels) to be left between the
+                frame's contents and its left and right margins.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>module</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+               <p>Prefix name of a <code>Module</code> that
+               contains the action mapping for the <code>Action</code>
+               that is specified by the <code>action</code> attribute.
+               You <strong>must</strong> specify an <code>action</code> 
+               attribute for this to have an effect.</p>
+        
+               <p><strong>Note: </strong>Use "" to map to the default module.</p>
+          
+            </td>
+</tr>
+<tr valign="top">
+<td>name</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>The name of a JSP bean that contains a <code>Map</code>
+                representing the query parameters (if <code>property</code>
+                is not specified), or a JSP bean whose property getter is
+                called to return a <code>Map</code> (if <code>property</code>
+                is specified).</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>noresize</td><td>false</td><td>true</td><td><code>boolean</code></td><td>
+                
+                <p>Should users be disallowed from resizing the frame?
+                (true, false).</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>page</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>The module-relative path (beginning with a "/"
+                character) to which this hyperlink will transfer control
+                 if activated.  This hyperlink may be dynamically modified
+                 by the inclusion of query parameters, as described in the
+                 tag description.  You <strong>must</strong> specify exactly
+                 one of the <code>action</code> attribute, the
+                 <code>forward</code> attribute, the
+                 <code>href</code> attribute,
+                 or the <code>page</code> attribute.</p>
+                 
+            </td>
+</tr>
+<tr valign="top">
+<td>paramId</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>The name of the request parameter that will be dynamically
+                added to the generated hyperlink.  The corresponding value is
+                defined by the <code>paramName</code> and (optional)
+                <code>paramProperty</code> attributes, optionally scoped by
+                the <code>paramScope</code> attribute</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>paramName</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>The name of a JSP bean that is a String containing the
+                value for the request parameter named by <code>paramId</code>
+                (if <code>paramProperty</code> is not specified), or a JSP
+                bean whose property getter is called to return a String
+                (if <code>paramProperty</code> is specified).  The JSP bean
+                is constrained to the bean scope specified by the
+                <code>paramScope</code> property, if it is specified.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>paramProperty</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>The name of a property of the bean specified by the
+                <code>paramName</code> attribute, whose return value must
+                be a String containing the value of the request parameter
+                (named by the <code>paramId</code> attribute) that will be
+                dynamically added to this hyperlink.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>paramScope</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>The scope within which to search for the bean specified
+                by the <code>paramName</code> attribute.  If not specified,
+                all scopes are searched.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>property</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>The name of a property of the bean specified by the
+                <code>name</code> attribute, whose return value must be
+                a <code>java.util.Map</code> containing the query parameters
+                to be added to the hyperlink.  You <strong>must</strong>
+                specify the <code>name</code> attribute if you specify
+                this attribute.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>scope</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>The scope within which to search for the bean specified
+                by the <code>name</code> attribute.  If not specified, all
+                scopes are searched.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>scrolling</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>Should scroll bars be created unconditionally (yes),
+                never (no), or only when needed (auto)?</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>style</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>CSS styles to be applied to this element.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>styleClass</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                CSS stylesheet class to be applied to this HTML element
+                (renders a "class" attribute).
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>styleId</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                Identifier to be assigned to this HTML element (renders
+                an "id" attribute).
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>title</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>The advisory title for this element.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>titleKey</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                <p>The message resources key for the advisory title
+                for this element.</p>
+            
+            </td>
+</tr>
+<tr valign="top">
+<td>transaction</td><td>false</td><td>true</td><td><code>boolean</code></td><td>
+                
+                <p>If set to <code>true</code>, any current transaction
+                control token will be included in the generated hyperlink,
+                so that it will pass an <code>isTokenValid()</code> test
+                in the receiving Action.</p>
+            
+            </td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Variables</b></font></td>
+</tr>
+<td colspan="2"><i>No Variables Defined.</i></td>
+</table>
+<br>
+<p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="frame.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Output Generated by
+            <a href="https://weblegacy.github.io/tlddoc/" target="_blank">Tag Library Documentation Generator</a>.
+            Java, JSP, and JavaServer Pages are trademarks or
+            registered trademarks of Sun Microsystems, Inc. in the US and other
+            countries.  Copyright 2002-4 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved.
+            </i></small>
+</body>
+</html>

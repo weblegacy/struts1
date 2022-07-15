@@ -1,0 +1,105 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>nested (&lt;p&gt;[Since Struts 1.1]&lt;/p&gt; &lt;p&gt;This tag library brings a nested context to the functionality of the Struts custom tag library.&lt;/p&gt; &lt;p&gt;It's written in a layer that extends the current Struts tags, building on their logic and functionality. The layer enables the tags to be aware of the tags which surround them so they can correctly provide the nesting property reference to the Struts system. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;It's all about nesting beans...&lt;/strong&gt;&lt;br /&gt; A bean holds a reference to another bean internally, and all access to that bean is handled through the current bean. This act of having one bean's access go through another bean is known as "nesting beans". The first bean is known as the parent bean. The bean which it references, is known as a child bean. The terms "parent" and "child" are commonly used to describe the model's hierarchy. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;A simple example... &lt;/strong&gt;&lt;br /&gt; Take an object which represents a monkey. The monkey's job is to pick bunches of bananas. On each bunch picked hangs many bananas. If this case was translated to bean objects, the monkey object would have a reference to the bunch objects he picked, and each bunch object would hold a reference to the bananas hanging in the bunch. &lt;/p&gt; &lt;p&gt;&lt;strong&gt;To describe this... &lt;/strong&gt;&lt;br /&gt; The monkey object is the parent to the bunch object, and the bunch object is a child of the monkey object. The bunch object is parent to its child banana objects, and the child banana objects children of the bunch object. The monkey is higher in the hierarchy than the bananas, and the bananas lower in the hierarchy to the bunches. &lt;/p&gt; &lt;p&gt;One special term to remember is for the most parent class, which is known as the "root" object which starts the hierarchy.&lt;/p&gt; &lt;p&gt;Nested tags are all about efficiently managing this style of hierarchy structure within your JSP markup.&lt;/p&gt; &lt;p&gt; &lt;strong&gt;Important Note:&lt;/strong&gt; Nearly all these tags extend tags from other libraries to bring their functionality into the nested context. Nesting relies on the tags working against the one bean model, and managing the properties so that they become relative to the properties they are nested within. In doing so, the tags will set the "name" attribute internally (where applicable), and in many cases will rely on the "property" attribute being set so it can be updated internally to become nested. The original tags on occasion provide options that don't use the "name" and "property" attributes. These uses will then fall outside the nested context, and will most likely cause error. To take advantage of these options, markup using the original tag for these cases. For an example see the &lt;code&gt;&amp;lt;nested:options&amp;gt;&lt;/code&gt; tag. &lt;/p&gt;)</title>
+<meta name="keywords" content="nested (<p>[Since Struts 1.1]</p> <p>This tag library brings a nested context to the functionality of the Struts custom tag library.</p> <p>It's written in a layer that extends the current Struts tags, building on their logic and functionality. The layer enables the tags to be aware of the tags which surround them so they can correctly provide the nesting property reference to the Struts system. </p> <p><strong>It's all about nesting beans...</strong><br /> A bean holds a reference to another bean internally, and all access to that bean is handled through the current bean. This act of having one bean's access go through another bean is known as &quot;nesting beans&quot;. The first bean is known as the parent bean. The bean which it references, is known as a child bean. The terms &quot;parent&quot; and &quot;child&quot; are commonly used to describe the model's hierarchy. </p> <p><strong>A simple example... </strong><br /> Take an object which represents a monkey. The monkey's job is to pick bunches of bananas. On each bunch picked hangs many bananas. If this case was translated to bean objects, the monkey object would have a reference to the bunch objects he picked, and each bunch object would hold a reference to the bananas hanging in the bunch. </p> <p><strong>To describe this... </strong><br /> The monkey object is the parent to the bunch object, and the bunch object is a child of the monkey object. The bunch object is parent to its child banana objects, and the child banana objects children of the bunch object. The monkey is higher in the hierarchy than the bananas, and the bananas lower in the hierarchy to the bunches. </p> <p>One special term to remember is for the most parent class, which is known as the &quot;root&quot; object which starts the hierarchy.</p> <p>Nested tags are all about efficiently managing this style of hierarchy structure within your JSP markup.</p> <p> <strong>Important Note:</strong> Nearly all these tags extend tags from other libraries to bring their functionality into the nested context. Nesting relies on the tags working against the one bean model, and managing the properties so that they become relative to the properties they are nested within. In doing so, the tags will set the &quot;name&quot; attribute internally (where applicable), and in many cases will rely on the &quot;property&quot; attribute being set so it can be updated internally to become nested. The original tags on occasion provide options that don't use the &quot;name&quot; and &quot;property&quot; attributes. These uses will then fall outside the nested context, and will most likely cause error. To take advantage of these options, markup using the original tag for these cases. For an example see the <code>&amp;lt;nested:options&amp;gt;</code> tag. </p>)">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+<script>
+              function asd()
+              {
+              parent.document.title="nested (<p>[Since Struts 1.1]</p> <p>This tag library brings a nested context to the functionality of the Struts custom tag library.</p> <p>It's written in a layer that extends the current Struts tags, building on their logic and functionality. The layer enables the tags to be aware of the tags which surround them so they can correctly provide the nesting property reference to the Struts system. </p> <p><strong>It's all about nesting beans...</strong><br /> A bean holds a reference to another bean internally, and all access to that bean is handled through the current bean. This act of having one bean's access go through another bean is known as "nesting beans". The first bean is known as the parent bean. The bean which it references, is known as a child bean. The terms "parent" and "child" are commonly used to describe the model's hierarchy. </p> <p><strong>A simple example... </strong><br /> Take an object which represents a monkey. The monkey's job is to pick bunches of bananas. On each bunch picked hangs many bananas. If this case was translated to bean objects, the monkey object would have a reference to the bunch objects he picked, and each bunch object would hold a reference to the bananas hanging in the bunch. </p> <p><strong>To describe this... </strong><br /> The monkey object is the parent to the bunch object, and the bunch object is a child of the monkey object. The bunch object is parent to its child banana objects, and the child banana objects children of the bunch object. The monkey is higher in the hierarchy than the bananas, and the bananas lower in the hierarchy to the bunches. </p> <p>One special term to remember is for the most parent class, which is known as the "root" object which starts the hierarchy.</p> <p>Nested tags are all about efficiently managing this style of hierarchy structure within your JSP markup.</p> <p> <strong>Important Note:</strong> Nearly all these tags extend tags from other libraries to bring their functionality into the nested context. Nesting relies on the tags working against the one bean model, and managing the properties so that they become relative to the properties they are nested within. In doing so, the tags will set the "name" attribute internally (where applicable), and in many cases will rely on the "property" attribute being set so it can be updated internally to become nested. The original tags on occasion provide options that don't use the "name" and "property" attributes. These uses will then fall outside the nested context, and will most likely cause error. To take advantage of these options, markup using the original tag for these cases. For an example see the <code>&lt;nested:options&gt;</code> tag. </p>)";
+              }
+            </script>
+</head>
+<body bgcolor="white" onload="asd();">
+<font size="+1" class="FrameTitleFont"><a href="tld-summary.html" target="tagFrame">nested</a></font>
+<table border="0" width="100%">
+<tr>
+<td nowrap="true"><font size="+1" class="FrameHeadingFont">
+                      Tags
+                    </font>&nbsp;
+                    <font class="FrameItemFont">
+<br>
+<a href="checkbox.html" target="tagFrame">nested:checkbox</a>
+<br>
+<a href="define.html" target="tagFrame">nested:define</a>
+<br>
+<a href="empty.html" target="tagFrame">nested:empty</a>
+<br>
+<a href="equal.html" target="tagFrame">nested:equal</a>
+<br>
+<a href="errors.html" target="tagFrame">nested:errors</a>
+<br>
+<a href="file.html" target="tagFrame">nested:file</a>
+<br>
+<a href="form.html" target="tagFrame">nested:form</a>
+<br>
+<a href="greaterEqual.html" target="tagFrame">nested:greaterEqual</a>
+<br>
+<a href="greaterThan.html" target="tagFrame">nested:greaterThan</a>
+<br>
+<a href="hidden.html" target="tagFrame">nested:hidden</a>
+<br>
+<a href="image.html" target="tagFrame">nested:image</a>
+<br>
+<a href="img.html" target="tagFrame">nested:img</a>
+<br>
+<a href="iterate.html" target="tagFrame">nested:iterate</a>
+<br>
+<a href="lessEqual.html" target="tagFrame">nested:lessEqual</a>
+<br>
+<a href="lessThan.html" target="tagFrame">nested:lessThan</a>
+<br>
+<a href="link.html" target="tagFrame">nested:link</a>
+<br>
+<a href="match.html" target="tagFrame">nested:match</a>
+<br>
+<a href="message.html" target="tagFrame">nested:message</a>
+<br>
+<a href="messages.html" target="tagFrame">nested:messages</a>
+<br>
+<a href="messagesNotPresent.html" target="tagFrame">nested:messagesNotPresent</a>
+<br>
+<a href="messagesPresent.html" target="tagFrame">nested:messagesPresent</a>
+<br>
+<a href="multibox.html" target="tagFrame">nested:multibox</a>
+<br>
+<a href="nest.html" target="tagFrame">nested:nest</a>
+<br>
+<a href="notEmpty.html" target="tagFrame">nested:notEmpty</a>
+<br>
+<a href="notEqual.html" target="tagFrame">nested:notEqual</a>
+<br>
+<a href="notMatch.html" target="tagFrame">nested:notMatch</a>
+<br>
+<a href="notPresent.html" target="tagFrame">nested:notPresent</a>
+<br>
+<a href="options.html" target="tagFrame">nested:options</a>
+<br>
+<a href="optionsCollection.html" target="tagFrame">nested:optionsCollection</a>
+<br>
+<a href="password.html" target="tagFrame">nested:password</a>
+<br>
+<a href="present.html" target="tagFrame">nested:present</a>
+<br>
+<a href="radio.html" target="tagFrame">nested:radio</a>
+<br>
+<a href="root.html" target="tagFrame">nested:root</a>
+<br>
+<a href="select.html" target="tagFrame">nested:select</a>
+<br>
+<a href="size.html" target="tagFrame">nested:size</a>
+<br>
+<a href="submit.html" target="tagFrame">nested:submit</a>
+<br>
+<a href="text.html" target="tagFrame">nested:text</a>
+<br>
+<a href="textarea.html" target="tagFrame">nested:textarea</a>
+<br>
+<a href="write.html" target="tagFrame">nested:write</a>
+<br>
+<a href="writeNesting.html" target="tagFrame">nested:writeNesting</a></font></td>
+</tr>
+</table>
+</body>
+</html>

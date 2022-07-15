@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>Struts Faces - Checkstyle report</title>
+    <link>https://weblegacy.github.io/struts1/struts-faces</link>
+    <description>Struts Faces - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2000 - 2022 Web-Legacy</copyright>
+    <item>
+      <title>File: 37,
+             Errors: 655,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>https://weblegacy.github.io/struts1/struts-faces/checkstyle.html</link>
+      <description>
+        <p>Click <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.CommandLinkRenderer.java">org/apache/struts/faces/renderer/CommandLinkRenderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  16
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.component.FormComponent.java">org/apache/struts/faces/component/FormComponent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  62
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.component.MessageComponent.java">org/apache/struts/faces/component/MessageComponent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  20
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.taglib.LoadMessagesTag.java">org/apache/struts/faces/taglib/LoadMessagesTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.taglib.WriteTag.java">org/apache/struts/faces/taglib/WriteTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.application.PropertyResolverImpl.java">org/apache/struts/faces/application/PropertyResolverImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  24
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.component.CommandLinkComponent.java">org/apache/struts/faces/component/CommandLinkComponent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  127
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.taglib.BaseTag.java">org/apache/struts/faces/taglib/BaseTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.application.ViewHandlerImpl.java">org/apache/struts/faces/application/ViewHandlerImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  13
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.util.StrutsContext.java">org/apache/struts/faces/util/StrutsContext.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  13
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.Dummy.properties">org/apache/struts/faces/renderer/Dummy.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.component.HtmlComponent.java">org/apache/struts/faces/component/HtmlComponent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  14
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.component.ErrorsComponent.java">org/apache/struts/faces/component/ErrorsComponent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.application.FacesTilesRequestProcessor.java">org/apache/struts/faces/application/FacesTilesRequestProcessor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  21
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.component.BaseComponent.java">org/apache/struts/faces/component/BaseComponent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.taglib.JavascriptValidatorTag.java">org/apache/struts/faces/taglib/JavascriptValidatorTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  49
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.taglib.FormTag.java">org/apache/struts/faces/taglib/FormTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.taglib.HtmlTag.java">org/apache/struts/faces/taglib/HtmlTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.util.MessagesMap.java">org/apache/struts/faces/util/MessagesMap.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  25
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.FormRenderer.java">org/apache/struts/faces/renderer/FormRenderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  13
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.BaseRenderer.java">org/apache/struts/faces/renderer/BaseRenderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  23
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.application.ActionListenerImpl.java">org/apache/struts/faces/application/ActionListenerImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  9
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.taglib.AbstractFacesTag.java">org/apache/struts/faces/taglib/AbstractFacesTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.WriteRenderer.java">org/apache/struts/faces/renderer/WriteRenderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.Constants.java">org/apache/struts/faces/Constants.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.MessageRenderer.java">org/apache/struts/faces/renderer/MessageRenderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.component.StylesheetComponent.java">org/apache/struts/faces/component/StylesheetComponent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.taglib.StylesheetTag.java">org/apache/struts/faces/taglib/StylesheetTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.AbstractRenderer.java">org/apache/struts/faces/renderer/AbstractRenderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  28
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.application.FacesRequestProcessor.java">org/apache/struts/faces/application/FacesRequestProcessor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  18
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.ErrorsRenderer.java">org/apache/struts/faces/renderer/ErrorsRenderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.StylesheetRenderer.java">org/apache/struts/faces/renderer/StylesheetRenderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.taglib.MessageTag.java">org/apache/struts/faces/taglib/MessageTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.HtmlRenderer.java">org/apache/struts/faces/renderer/HtmlRenderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.taglib.ErrorsTag.java">org/apache/struts/faces/taglib/ErrorsTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.component.WriteComponent.java">org/apache/struts/faces/component/WriteComponent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  14
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.taglib.CommandLinkTag.java">org/apache/struts/faces/taglib/CommandLinkTag.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  63
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

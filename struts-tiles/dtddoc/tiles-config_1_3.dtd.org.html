@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html> <head>
+<meta http-equiv='CONTENT-TYPE' content='text/html; charset=UTF-8' />
+<link rel='StyleSheet' href='DTDDocStyle.css' type='text/css' media='screen' />
+<title>tiles-config_1_3.dtd</title>
+</head><body>
+<p class='DTDSource'><b><code>tiles-config_1_3.dtd</code></b>: <a href='tiles-config_1_3.dtd.html'>Elements</a> - <a href='tiles-config_1_3.dtd.entities.html'>Entities</a> - <a href='tiles-config_1_3.dtd.org.html'>Source</a> | <a href='intro.html'>Intro</a> - <a href='elementsIndex.html'>Index</a><br /><a href='index.html' target='_top'>FRAMES</a>&nbsp;/&nbsp;<a href='tiles-config_1_3.dtd.org.html' target='_top'>NO FRAMES</a></p><pre id='dtd_source'><span class="dtd_comment">&lt;!--</span>
+<span class="dtd_comment">    $Id$</span>
+
+<span class="dtd_comment">    Licensed to the Apache Software Foundation (ASF) under one or more</span>
+<span class="dtd_comment">    contributor license agreements.  See the NOTICE file distributed with</span>
+<span class="dtd_comment">    this work for additional information regarding copyright ownership.</span>
+<span class="dtd_comment">    The ASF licenses this file to You under the Apache License, Version 2.0</span>
+<span class="dtd_comment">    (the &quot;License&quot;); you may not use this file except in compliance with</span>
+<span class="dtd_comment">    the License.  You may obtain a copy of the License at</span>
+<span class="dtd_comment">   </span>
+<span class="dtd_comment">         http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="dtd_comment">   </span>
+<span class="dtd_comment">    Unless required by applicable law or agreed to in writing, software</span>
+<span class="dtd_comment">    distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="dtd_comment">    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="dtd_comment">    See the License for the specific language governing permissions and</span>
+<span class="dtd_comment">    limitations under the License.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_comment">&lt;!--</span>
+<span class="dtd_comment">     DTD for the Tile Definition File, Version 1.3</span>
+
+<span class="dtd_comment">     To support validation of your configuration file, include the following</span>
+<span class="dtd_comment">     DOCTYPE element at the beginning (after the &quot;xml&quot; declaration):</span>
+
+<span class="dtd_comment">     &lt;!DOCTYPE tiles-definitions PUBLIC</span>
+<span class="dtd_comment">       &quot;-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN&quot;</span>
+<span class="dtd_comment">       &quot;http://struts.apache.org/dtds/tiles-config_1_3.dtd&quot;&gt;</span>
+
+<span class="dtd_comment">     $Id$</span>
+<span class="dtd_comment">--&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- ========== Defined Types ============================================= --&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- A &quot;Boolean&quot; is the string representation of a boolean (true or false)</span>
+<span class="dtd_comment">     variable.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;(true|false)&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- A &quot;ContentType&quot; is the content type of an attribute passed to a tile</span>
+<span class="dtd_comment">     component.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">ContentType</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;(string|page|template|definition)&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+<span class="dtd_comment">&lt;!-- A &quot;ClassName&quot; is the fully qualified name of a Java class that is</span>
+<span class="dtd_comment">     instantiated to provide the functionality of the enclosing element.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+<span class="dtd_comment">&lt;!-- A &quot;RequestPath&quot; is an module-relative URI path, beginning with a</span>
+<span class="dtd_comment">     slash, that identifies a mapped resource (such as a JSP page or a servlet)</span>
+<span class="dtd_comment">     within this web application.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+<span class="dtd_comment">&lt;!-- A &quot;DefinitionName&quot; is the unique identifier of a definition. This identifier</span>
+<span class="dtd_comment">     is a logical name used to reference the definition.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">DefinitionName</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+<span class="dtd_comment">&lt;!-- A &quot;BeanName&quot; is the identifier of a JavaBean, such as a form bean,</span>
+<span class="dtd_comment">     and also serves as the name of the corresponding scripting variable</span>
+<span class="dtd_comment">     and the name of the JSP attribute under which the bean is accessed.</span>
+<span class="dtd_comment">     Therefore, it must conform to the rules for a Java identifier.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">BeanName</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+<span class="dtd_comment">&lt;!-- A &quot;PropName&quot; is the name of a JavaBeans property, and must begin with</span>
+<span class="dtd_comment">     a lower case letter and contain only characters that are legal in a</span>
+<span class="dtd_comment">     Java identifier.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">PropName</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+<span class="dtd_comment">&lt;!-- A &quot;Location&quot; is a relative path, delimited by &quot;/&quot; characters, that</span>
+<span class="dtd_comment">     defines the location of a resource relative to the location of the</span>
+<span class="dtd_comment">     configuration file itself.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">Location</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;#PCDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+
+<span class="dtd_comment">&lt;!-- ========== Top Level Elements ======================================== --&gt;</span>
+
+
+<span class="dtd_plain">  </span><span class="dtd_comment">&lt;!-- deprecated: use tiles-definitions instead.--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">component-definitions</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">definition</span><span class="dtd_plain">+)</span><span class="dtd_tag_symbols">&gt;</span>
+
+<span class="dtd_comment">&lt;!-- The &quot;tiles-definitions&quot; element is the root of the configuration file</span>
+<span class="dtd_comment">     hierarchy, and contains nested elements for all of the other</span>
+<span class="dtd_comment">     configuration settings.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">tiles-definitions</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">definition</span><span class="dtd_plain">+)</span><span class="dtd_tag_symbols">&gt;</span>
+
+<span class="dtd_comment">&lt;!-- The &quot;definition&quot; element describes a definition that can be inserted in a jsp</span>
+<span class="dtd_comment">     page. This definition is identified by its logical name. A definition allows</span>
+<span class="dtd_comment">     to define all the attributes that can be set in &lt;insert&gt; tag from a jsp page.</span>
+
+<span class="dtd_comment">     controllerClass The fully qualified Java class name of the controller</span>
+<span class="dtd_comment">                     subclass to call immediately before the tiles is inserted.</span>
+<span class="dtd_comment">                     Only one of controllerClass or controllerUrl should be</span>
+<span class="dtd_comment">                     specified.</span>
+
+<span class="dtd_comment">     controllerUrl   The context-relative path to the resource used as controller</span>
+<span class="dtd_comment">                     called immediately before the tiles is inserted.</span>
+<span class="dtd_comment">                     Only one of controllerClass or controllerUrl should be</span>
+<span class="dtd_comment">                     specified.</span>
+
+<span class="dtd_comment">     extends         Name of a definition that is used as ancestor of this definition.</span>
+<span class="dtd_comment">                     All attributes from the ancestor are available to the new</span>
+<span class="dtd_comment">                     definition. Any attribute inherited from the ancestor can</span>
+<span class="dtd_comment">                     be overloaded by providing a new value.</span>
+
+<span class="dtd_comment">     name            The unique identifier for this definition.</span>
+
+<span class="dtd_comment">     page            Same as path.</span>
+
+<span class="dtd_comment">     path            The context-relative path to the resource used as tiles to</span>
+<span class="dtd_comment">                     insert. This tiles will be inserted and a tiles context</span>
+<span class="dtd_comment">                     containing appropriate attributes will be available.</span>
+
+<span class="dtd_comment">     role            Security role name that is allowed access to this definition</span>
+<span class="dtd_comment">                     object. The definition is inserted only if the role name is</span>
+<span class="dtd_comment">                     allowed.</span>
+
+<span class="dtd_comment">     template        Same as path. For compatibility with the template tag library.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">definition</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">icon</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">display-name</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">description</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">put</span><span class="dtd_plain">*, </span><span class="dtd_attribute_name">putList</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">definition</span><span class="dtd_plain">       </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">               </span><span class="dtd_keyword">ID</span><span class="dtd_plain">               </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">definition</span><span class="dtd_plain">       </span><span class="dtd_attribute_name">controllerClass</span><span class="dtd_plain">  %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;      </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">definition</span><span class="dtd_plain">       </span><span class="dtd_attribute_name">controllerUrl</span><span class="dtd_plain">    %</span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain">;    </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">definition</span><span class="dtd_plain">       </span><span class="dtd_attribute_name">extends</span><span class="dtd_plain">          %</span><span class="dtd_attribute_name">DefinitionName</span><span class="dtd_plain">; </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">definition</span><span class="dtd_plain">       </span><span class="dtd_attribute_name">name</span><span class="dtd_plain">             %</span><span class="dtd_attribute_name">DefinitionName</span><span class="dtd_plain">; </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">definition</span><span class="dtd_plain">       </span><span class="dtd_attribute_name">page</span><span class="dtd_plain">             %</span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain">;    </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">definition</span><span class="dtd_plain">       </span><span class="dtd_attribute_name">path</span><span class="dtd_plain">             %</span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain">;    </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">definition</span><span class="dtd_plain">       </span><span class="dtd_attribute_name">role</span><span class="dtd_plain">             </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">            </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">definition</span><span class="dtd_plain">       </span><span class="dtd_attribute_name">template</span><span class="dtd_plain">         %</span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain">;    </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;put&quot; element describes an attribute of a definition. It allows to</span>
+<span class="dtd_comment">     specify the tiles attribute name and its value. The tiles value can be</span>
+<span class="dtd_comment">     specified as an xml attribute, or in the body of the &lt;put&gt; tag.</span>
+
+<span class="dtd_comment">     content         Same as value. For compatibility with the template tag library.</span>
+
+<span class="dtd_comment">     direct          Same as type=&quot;string&quot;. For compatibility with the template</span>
+<span class="dtd_comment">                     tag library.</span>
+
+<span class="dtd_comment">     name            The unique identifier for this put.</span>
+
+<span class="dtd_comment">     type            The type of the value. Can be: string, page, template or definition.</span>
+<span class="dtd_comment">                     By default, no type is associated to a value. If a type is</span>
+<span class="dtd_comment">                     associated, it will be used as a hint to process the value</span>
+<span class="dtd_comment">                     when the attribute will be used in the inserted tiles.</span>
+
+<span class="dtd_comment">     value           The value associated to this tiles attribute. The value should</span>
+<span class="dtd_comment">                     be specified with this tag attribute, or in the body of the tag.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">put</span><span class="dtd_plain"> (</span><span class="dtd_keyword">#PCDATA</span><span class="dtd_plain">)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">put</span><span class="dtd_plain">              </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">               </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">put</span><span class="dtd_plain">              </span><span class="dtd_attribute_name">content</span><span class="dtd_plain">          </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">put</span><span class="dtd_plain">              </span><span class="dtd_attribute_name">direct</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">put</span><span class="dtd_plain">              </span><span class="dtd_attribute_name">name</span><span class="dtd_plain">             </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">put</span><span class="dtd_plain">              </span><span class="dtd_attribute_name">type</span><span class="dtd_plain">             %</span><span class="dtd_attribute_name">ContentType</span><span class="dtd_plain">;   </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">put</span><span class="dtd_plain">              </span><span class="dtd_attribute_name">value</span><span class="dtd_plain">            </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;putList&quot; element describes a list attribute of a definition. It allows to</span>
+<span class="dtd_comment">     specify an attribute that is a java List containing any kind of values. In</span>
+<span class="dtd_comment">     the config file, the list elements are specified by nested &lt;add&gt;, &lt;item&gt; or</span>
+<span class="dtd_comment">     &lt;putList&gt;.</span>
+
+<span class="dtd_comment">     name            The unique identifier for this put list.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">putList</span><span class="dtd_plain"> ( (</span><span class="dtd_attribute_name">add</span><span class="dtd_plain">* | </span><span class="dtd_attribute_name">item</span><span class="dtd_plain">* | </span><span class="dtd_attribute_name">bean</span><span class="dtd_plain">* | </span><span class="dtd_attribute_name">putList</span><span class="dtd_plain">*)+) </span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">putList</span><span class="dtd_plain">          </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">               </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">putList</span><span class="dtd_plain">          </span><span class="dtd_attribute_name">name</span><span class="dtd_plain">             </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+
+<span class="dtd_comment">&lt;!-- ========== Subordinate Elements ====================================== --&gt;</span>
+
+<span class="dtd_comment">&lt;!-- The &quot;add&quot; element describes an element of a list. It is similar to the</span>
+<span class="dtd_comment">     &lt;put&gt; element.</span>
+
+<span class="dtd_comment">     content         Same as value. For compatibility with the template tag library.</span>
+
+<span class="dtd_comment">     direct          Same as type=&quot;string&quot;. For compatibility with the template</span>
+<span class="dtd_comment">                     tag library.</span>
+
+<span class="dtd_comment">     type            The type of the value. Can be: string, page, template or definition.</span>
+<span class="dtd_comment">                     By default, no type is associated to a value. If a type is</span>
+<span class="dtd_comment">                     associated, it will be used as a hint to process the value</span>
+<span class="dtd_comment">                     when the attribute will be used in the inserted tiles.</span>
+
+<span class="dtd_comment">     value           The value associated to this tiles attribute. The value should</span>
+<span class="dtd_comment">                     be specified with this tag attribute, or in the body of the tag.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">add</span><span class="dtd_plain"> (</span><span class="dtd_keyword">#PCDATA</span><span class="dtd_plain">)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">add</span><span class="dtd_plain">              </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">               </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">add</span><span class="dtd_plain">              </span><span class="dtd_attribute_name">content</span><span class="dtd_plain">          </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">add</span><span class="dtd_plain">              </span><span class="dtd_attribute_name">direct</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">add</span><span class="dtd_plain">              </span><span class="dtd_attribute_name">type</span><span class="dtd_plain">             %</span><span class="dtd_attribute_name">ContentType</span><span class="dtd_plain">;   </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">add</span><span class="dtd_plain">              </span><span class="dtd_attribute_name">value</span><span class="dtd_plain">            </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;bean&quot; element describes an element of a list. It create a bean of the</span>
+<span class="dtd_comment">     specified java classtype. This bean is initialized with appropriate nested</span>
+<span class="dtd_comment">     &lt;set-property&gt;.</span>
+
+<span class="dtd_comment">     classtype       The fully qualified classname for this bean.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">bean</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">bean</span><span class="dtd_plain">             </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">               </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">bean</span><span class="dtd_plain">             </span><span class="dtd_attribute_name">classtype</span><span class="dtd_plain">        %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+
+<span class="dtd_comment">&lt;!-- The &quot;set-property&quot; element specifies the method name and initial value of</span>
+<span class="dtd_comment">     a bean property. When the object representing</span>
+<span class="dtd_comment">     the surrounding element is instantiated, the accessor for the indicated</span>
+<span class="dtd_comment">     property is called and passed the indicated value.</span>
+
+<span class="dtd_comment">     property        Name of the JavaBeans property whose setter method</span>
+<span class="dtd_comment">                     will be called.</span>
+
+<span class="dtd_comment">     value           String representation of the value to which this</span>
+<span class="dtd_comment">                     property will be set, after suitable type conversion</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">   </span><span class="dtd_keyword">EMPTY</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">   </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">   </span><span class="dtd_attribute_name">property</span><span class="dtd_plain">       %</span><span class="dtd_attribute_name">PropName</span><span class="dtd_plain">;      </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">   </span><span class="dtd_attribute_name">value</span><span class="dtd_plain">          </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;item&quot; element describes an element of a list. It create a bean added as</span>
+<span class="dtd_comment">     element to the list. Each bean can contain different properties: value, link,</span>
+<span class="dtd_comment">     icon, tooltip. These properties are to be interpreted by the jsp page using</span>
+<span class="dtd_comment">     them.</span>
+<span class="dtd_comment">     By default the bean is of type</span>
+<span class="dtd_comment">     &quot;org.apache.struts.tiles.beans.SimpleMenuItem&quot;. This bean is useful to</span>
+<span class="dtd_comment">     create a list of beans used as menu items.</span>
+
+<span class="dtd_comment">     classtype       The fully qualified classtype for this bean.</span>
+<span class="dtd_comment">                     If specified, the classtype must be a subclass of the interface</span>
+<span class="dtd_comment">                     &quot;org.apache.struts.tiles.beans.MenuItem&quot;.</span>
+
+<span class="dtd_comment">     icon            The bean 'icon' property.</span>
+
+<span class="dtd_comment">     link            The bean 'link' property.</span>
+
+<span class="dtd_comment">     tooltip         The bean 'tooltip' property.</span>
+
+<span class="dtd_comment">     value           The bean 'value' property.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">item</span><span class="dtd_plain"> (</span><span class="dtd_keyword">#PCDATA</span><span class="dtd_plain">)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">item</span><span class="dtd_plain">             </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">               </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">item</span><span class="dtd_plain">             </span><span class="dtd_attribute_name">classtype</span><span class="dtd_plain">        %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">item</span><span class="dtd_plain">             </span><span class="dtd_attribute_name">icon</span><span class="dtd_plain">             </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">item</span><span class="dtd_plain">             </span><span class="dtd_attribute_name">link</span><span class="dtd_plain">             </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">item</span><span class="dtd_plain">             </span><span class="dtd_attribute_name">tooltip</span><span class="dtd_plain">          </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">item</span><span class="dtd_plain">             </span><span class="dtd_attribute_name">value</span><span class="dtd_plain">            </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- ========== Info Elements ====================================== --&gt;</span>
+
+<span class="dtd_comment">&lt;!-- The &quot;description&quot; element contains descriptive (paragraph length) text</span>
+<span class="dtd_comment">     about the surrounding element, suitable for use in GUI tools.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">description</span><span class="dtd_plain">    (</span><span class="dtd_keyword">#PCDATA</span><span class="dtd_plain">)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">description</span><span class="dtd_plain">    </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;display-name&quot; element contains a short (one line) description of</span>
+<span class="dtd_comment">     the surrounding element, suitable for use in GUI tools.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">display-name</span><span class="dtd_plain"> (</span><span class="dtd_keyword">#PCDATA</span><span class="dtd_plain">)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">display-name</span><span class="dtd_plain">   </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;icon&quot; element contains a small-icon and large-icon element which</span>
+<span class="dtd_comment">     specify the location, relative to the Struts configuration file, for small</span>
+<span class="dtd_comment">     and large images used to represent the surrounding element in GUI tools.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">icon</span><span class="dtd_plain">           (</span><span class="dtd_attribute_name">small-icon</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">large-icon</span><span class="dtd_plain">?)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">icon</span><span class="dtd_plain">           </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;large-icon&quot; element specifies the location, relative to the Struts</span>
+<span class="dtd_comment">     configuration file, of a resource containing a large (32x32 pixel)</span>
+<span class="dtd_comment">     icon image.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">large-icon</span><span class="dtd_plain">     (%</span><span class="dtd_attribute_name">Location</span><span class="dtd_plain">;)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">large-icon</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;small-icon&quot; element specifies the location, relative to the Struts</span>
+<span class="dtd_comment">     configuration file, of a resource containing a small (16x16 pixel)</span>
+<span class="dtd_comment">     icon image.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">small-icon</span><span class="dtd_plain">     (%</span><span class="dtd_attribute_name">Location</span><span class="dtd_plain">;)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">small-icon</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+</pre>
+</body></html>

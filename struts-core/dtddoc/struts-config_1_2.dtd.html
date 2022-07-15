@@ -1,0 +1,1158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<meta http-equiv='CONTENT-TYPE' content='text/html; charset=UTF-8' />
+<link rel='StyleSheet' href='DTDDocStyle.css' type='text/css' media='screen' />
+<title>struts-config_1_2.dtd</title>
+</head><body>
+<p class='DTDSource'><b><code>struts-config_1_2.dtd</code></b>: <a href='struts-config_1_2.dtd.html'>Elements</a> - <a href='struts-config_1_2.dtd.entities.html'>Entities</a> - <a href='struts-config_1_2.dtd.org.html'>Source</a> | <a href='intro.html'>Intro</a> - <a href='elementsIndex.html'>Index</a><br /><a href='index.html' target='_top'>FRAMES</a>&nbsp;/&nbsp;<a href='struts-config_1_2.dtd.html' target='_top'>NO FRAMES</a></p><h1>struts-config_1_2.dtd</h1>
+<p>Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements. See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p><br />
+<a name='struts-config'></a>
+<br /><table class='elementTitle' summary="struts-config"><tr><td class='leftElementTitle'>
+&lt;struts-config&gt;</td><td class='rightElementTitle'>
+Root element
+</td></tr></table>
+<p>The "struts-config" element is the root of the configuration file
+hierarchy, and contains nested elements for all of the other
+configuration settings.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;struts-config&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;struts-config&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#action-mappings'>action-mappings</a></td><td>One or none</td></tr>
+<tr><td><a href='#controller'>controller</a></td><td>One or none</td></tr>
+<tr><td><a href='#data-sources'>data-sources</a></td><td>One or none</td></tr>
+<tr><td><a href='#description'>description</a></td><td>One or none</td></tr>
+<tr><td><a href='#display-name'>display-name</a></td><td>One or none</td></tr>
+<tr><td><a href='#form-beans'>form-beans</a></td><td>One or none</td></tr>
+<tr><td><a href='#global-exceptions'>global-exceptions</a></td><td>One or none</td></tr>
+<tr><td><a href='#global-forwards'>global-forwards</a></td><td>One or none</td></tr>
+<tr><td><a href='#message-resources'>message-resources</a></td><td>Any number</td></tr>
+<tr><td><a href='#plug-in'>plug-in</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;struts-config&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;struts-config&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#struts-config_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#display-name'>display-name</a>?, <a href='#description'>description</a>?, <a href='#data-sources'>data-sources</a>?, <a href='#form-beans'>form-beans</a>?, <a href='#global-exceptions'>global-exceptions</a>?, <a href='#global-forwards'>global-forwards</a>?, <a href='#action-mappings'>action-mappings</a>?, <a href='#controller'>controller</a>?, <a href='#message-resources'>message-resources</a>*, <a href='#plug-in'>plug-in</a>*)</p><a name='struts-config_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#struts-config'>struts-config</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='data-sources'></a>
+<br /><table class='elementTitle' summary="data-sources"><tr><td class='leftElementTitle'>
+&lt;data-sources&gt;</td><td class='rightElementTitle'>
+Child of <a href='#struts-config'>struts-config</a>
+</td></tr></table>
+<p>The "data-sources" element describes a set of DataSource objects [JDBC 2.0
+Standard Extension]. The individual DataSource objects are configured through
+nested &lt;data-source> elements.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;data-sources&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;data-sources&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#data-source'>data-source</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;data-sources&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;data-sources&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#data-sources_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#data-source'>data-source</a>*)</p><a name='data-sources_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#data-sources'>data-sources</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='data-source'></a>
+<br /><table class='elementTitle' summary="data-source"><tr><td class='leftElementTitle'>
+&lt;data-source&gt;</td><td class='rightElementTitle'>
+Child of <a href='#data-sources'>data-sources</a>
+</td></tr></table>
+<p>The "data-source" element describes a DataSource object [JDBC 2.0 Standard
+Extension] that will be instantiated, configured, and made available as a
+servlet context attribute (or "application-scope bean"). Any object can be
+specified so long as it implements [javax.sql.DataSource] and can be
+configured entirely from JavaBean properties. The following attributes
+are required:</p><p>className The configuration bean for this DataSource object. If
+specified, the object must be a subclass of the default
+configuration bean.
+["org.apache.struts.config.DataSourceConfig"]</p><p>key Servlet context attribute key under which this data source
+will be stored. Default is the value specified by string
+constant defined by Globals.DATA_SOURCE_KEY. The application
+module prefix (if any) is appended to the key
+(${key}$prefix}).
+[org.apache.struts.Globals.DATA_SOURCE_KEY]</p><p>NOTE: The application module prefix includes the leading
+slash, so the default datasource for a module named "foo" is
+stored under "org.apache.struts.action.DATA_SOURCE/foo".</p><p>type Fully qualified Java class name for this data source object.
+The class must implement DataSource [javax.sql.DataSource],
+and the object must be configurable entirely from JavaBean
+properties.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;data-source&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;data-source&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#set-property'>set-property</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;data-source&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;data-source&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#data-source_className'>className</a></td><td></td><td></td></tr><tr><td><a href='#data-source_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#data-source_key'>key</a></td><td></td><td></td></tr><tr><td><a href='#data-source_type'>type</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#set-property'>set-property</a>*)</p><a name='data-source_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#data-source'>data-source</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='data-source_className'></a>
+<br /><table class='attributeTitle' summary="className"><tr><td class='leftAttributeTitle'>
+@className</td><td class='rightAttributeTitle'>
+Attribute of <a href='#data-source'>data-source</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='data-source_key'></a>
+<br /><table class='attributeTitle' summary="key"><tr><td class='leftAttributeTitle'>
+@key</td><td class='rightAttributeTitle'>
+Attribute of <a href='#data-source'>data-source</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='data-source_type'></a>
+<br /><table class='attributeTitle' summary="type"><tr><td class='leftAttributeTitle'>
+@type</td><td class='rightAttributeTitle'>
+Attribute of <a href='#data-source'>data-source</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='form-beans'></a>
+<br /><table class='elementTitle' summary="form-beans"><tr><td class='leftElementTitle'>
+&lt;form-beans&gt;</td><td class='rightElementTitle'>
+Child of <a href='#struts-config'>struts-config</a>
+</td></tr></table>
+<p>The "form-beans" element describes the set of form bean descriptors for this
+module. The following attributes are defined:</p><p>type Fully qualified Java class to use when instantiating
+ActionFormBean objects. If specified, the object must be a
+subclass of the default class type.</p><p>WARNING: For Struts 1.0, this value is ignored. You
+can set the default implementation class name with the
+"formBean" initialization parameter to the Struts
+controller servlet.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;form-beans&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;form-beans&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#form-bean'>form-bean</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;form-beans&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;form-beans&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#form-beans_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#form-beans_type'>type</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#form-bean'>form-bean</a>*)</p><a name='form-beans_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#form-beans'>form-beans</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='form-beans_type'></a>
+<br /><table class='attributeTitle' summary="type"><tr><td class='leftAttributeTitle'>
+@type</td><td class='rightAttributeTitle'>
+Attribute of <a href='#form-beans'>form-beans</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='form-bean'></a>
+<br /><table class='elementTitle' summary="form-bean"><tr><td class='leftElementTitle'>
+&lt;form-bean&gt;</td><td class='rightElementTitle'>
+Child of <a href='#form-beans'>form-beans</a>
+</td></tr></table>
+<p>The "form-bean" element describes an ActionForm subclass
+[org.apache.struts.action.ActionForm] that can be referenced by an "action"
+element.</p><p>The "form-bean" element describes a particular form bean, which is a
+JavaBean that implements the org.apache.struts.action.ActionForm
+class. The following attributes are defined:</p><p>className The configuration bean for this form bean object. If
+specified, the object must be a subclass of the default
+configuration bean.
+["org.apache.struts.config.FormBeanConfig"]</p><p>name The unique identifier for this form bean. Referenced by the
+&lt;action> element to specify which form bean to use with its
+request.</p><p>type Fully qualified Java class name of the ActionForm subclass
+to use with this form bean.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;form-bean&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;form-bean&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#description'>description</a></td><td>One or none</td></tr>
+<tr><td><a href='#display-name'>display-name</a></td><td>One or none</td></tr>
+<tr><td><a href='#form-property'>form-property</a></td><td>Any number</td></tr>
+<tr><td><a href='#icon'>icon</a></td><td>One or none</td></tr>
+<tr><td><a href='#set-property'>set-property</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;form-bean&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;form-bean&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#form-bean_className'>className</a></td><td></td><td></td></tr><tr><td><a href='#form-bean_dynamic'>dynamic</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#form-bean_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#form-bean_name'>name</a></td><td></td><td></td></tr><tr><td><a href='#form-bean_type'>type</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#icon'>icon</a>?, <a href='#display-name'>display-name</a>?, <a href='#description'>description</a>?, <a href='#set-property'>set-property</a>*, <a href='#form-property'>form-property</a>*)</p><a name='form-bean_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#form-bean'>form-bean</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='form-bean_className'></a>
+<br /><table class='attributeTitle' summary="className"><tr><td class='leftAttributeTitle'>
+@className</td><td class='rightAttributeTitle'>
+Attribute of <a href='#form-bean'>form-bean</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='form-bean_dynamic'></a>
+<br /><table class='attributeTitle' summary="dynamic"><tr><td class='leftAttributeTitle'>
+@dynamic</td><td class='rightAttributeTitle'>
+Attribute of <a href='#form-bean'>form-bean</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false, yes, no</p><a name='form-bean_name'></a>
+<br /><table class='attributeTitle' summary="name"><tr><td class='leftAttributeTitle'>
+@name</td><td class='rightAttributeTitle'>
+Attribute of <a href='#form-bean'>form-bean</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='form-bean_type'></a>
+<br /><table class='attributeTitle' summary="type"><tr><td class='leftAttributeTitle'>
+@type</td><td class='rightAttributeTitle'>
+Attribute of <a href='#form-bean'>form-bean</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='form-property'></a>
+<br /><table class='elementTitle' summary="form-property"><tr><td class='leftElementTitle'>
+&lt;form-property&gt;</td><td class='rightElementTitle'>
+Child of <a href='#form-bean'>form-bean</a>
+</td></tr></table>
+<p>The "form-property" element describes a JavaBean property that can be used to
+configure an instance of a DynaActionForm or a subclass thereof. This element
+is only utilized when the "type" attribute of the enclosing "form-bean" element
+is [org.apache.struts.action.DynaActionForm] or a subclass of DynaActionForm. If
+a custom DynaActionForm subclass is used, then the "dynamic" attribute of the
+enclosing &lt;form-bean> element must be set to "true". Since Struts 1.1.</p><p>className The configuration bean for this form property object. If
+specified, the object must be a subclass of the default
+configuration bean.
+["org.apache.struts.config.FormPropertyConfig"]</p><p>initial String representation of the initial value for this property.
+If not specified, primitives will be initialized to zero and
+objects initialized to the zero-argument instantiation of that
+object class. For example, Strings will be initialized to ""</p><p>name The name of the JavaBean property described by this element.</p><p>size The number of array elements to create if the value of the
+"type" attribute specifies an array, but there is no value
+specified for the "initial" attribute.</p><p>type Fully qualified Java class name of the field underlying this
+property, optionally followed by "[]" to indicate that the
+field is indexed.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;form-property&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;form-property&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#set-property'>set-property</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;form-property&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;form-property&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#form-property_className'>className</a></td><td></td><td></td></tr><tr><td><a href='#form-property_initial'>initial</a></td><td></td><td></td></tr><tr><td><a href='#form-property_name'>name</a></td><td></td><td></td></tr><tr><td><a href='#form-property_size'>size</a></td><td></td><td></td></tr><tr><td><a href='#form-property_type'>type</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#set-property'>set-property</a>*)</p><a name='form-property_className'></a>
+<br /><table class='attributeTitle' summary="className"><tr><td class='leftAttributeTitle'>
+@className</td><td class='rightAttributeTitle'>
+Attribute of <a href='#form-property'>form-property</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='form-property_initial'></a>
+<br /><table class='attributeTitle' summary="initial"><tr><td class='leftAttributeTitle'>
+@initial</td><td class='rightAttributeTitle'>
+Attribute of <a href='#form-property'>form-property</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='form-property_name'></a>
+<br /><table class='attributeTitle' summary="name"><tr><td class='leftAttributeTitle'>
+@name</td><td class='rightAttributeTitle'>
+Attribute of <a href='#form-property'>form-property</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='form-property_size'></a>
+<br /><table class='attributeTitle' summary="size"><tr><td class='leftAttributeTitle'>
+@size</td><td class='rightAttributeTitle'>
+Attribute of <a href='#form-property'>form-property</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='form-property_type'></a>
+<br /><table class='attributeTitle' summary="type"><tr><td class='leftAttributeTitle'>
+@type</td><td class='rightAttributeTitle'>
+Attribute of <a href='#form-property'>form-property</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='global-exceptions'></a>
+<br /><table class='elementTitle' summary="global-exceptions"><tr><td class='leftElementTitle'>
+&lt;global-exceptions&gt;</td><td class='rightElementTitle'>
+Child of <a href='#struts-config'>struts-config</a>
+</td></tr></table>
+<p>The "global-exceptions" element describes a set of exceptions that might be
+thrown by an Action object. The handling of individual exception types is
+configured through nested exception elements. An &lt;action> element may
+override a global exception handler by registering a local exception handler
+for the same exception type. Since Struts 1.1.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;global-exceptions&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;global-exceptions&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#exception'>exception</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;global-exceptions&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;global-exceptions&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#global-exceptions_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#exception'>exception</a>*)</p><a name='global-exceptions_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#global-exceptions'>global-exceptions</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='exception'></a>
+<br /><table class='elementTitle' summary="exception"><tr><td class='leftElementTitle'>
+&lt;exception&gt;</td><td class='rightElementTitle'>
+Child of <a href='#global-exceptions'>global-exceptions</a>, <a href='#action'>action</a>
+</td></tr></table>
+<p>The "exception" element registers an ExceptionHandler for an exception type.
+The following attributes are defined:</p><p>bundle Servlet context attribute for the message resources bundle
+associated with this handler. The default attribute is the
+value specified by the string constant declared at
+Globals.MESSAGES_KEY.
+[org.apache.struts.Globals.MESSAGES_KEY]</p><p>className The configuration bean for this ExceptionHandler object.
+If specified, className must be a subclass of the default
+configuration bean
+["org.apache.struts.config.ExceptionConfig"]</p><p>handler Fully qualified Java class name for this exception handler.
+["org.apache.struts.action.ExceptionHandler"]</p><p>key The key to use with this handler's message resource bundle
+that will retrieve the error message template for this
+exception.</p><p>path The module-relative URI to the resource that will complete
+the request/response if this exception occurs.</p><p>scope The context ("request" or "session") that is used to access
+the ActionError object [org.apache.struts.action.ActionError]
+for this exception.</p><p>type Fully qualified Java class name of the exception type to
+register with this handler.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;exception&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;exception&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#description'>description</a></td><td>One or none</td></tr>
+<tr><td><a href='#display-name'>display-name</a></td><td>One or none</td></tr>
+<tr><td><a href='#icon'>icon</a></td><td>One or none</td></tr>
+<tr><td><a href='#set-property'>set-property</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;exception&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;exception&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#exception_bundle'>bundle</a></td><td></td><td></td></tr><tr><td><a href='#exception_className'>className</a></td><td></td><td></td></tr><tr><td><a href='#exception_handler'>handler</a></td><td></td><td></td></tr><tr><td><a href='#exception_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#exception_key'>key</a></td><td></td><td></td></tr><tr><td><a href='#exception_path'>path</a></td><td></td><td></td></tr><tr><td><a href='#exception_scope'>scope</a></td><td></td><td></td></tr><tr><td><a href='#exception_type'>type</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#icon'>icon</a>?, <a href='#display-name'>display-name</a>?, <a href='#description'>description</a>?, <a href='#set-property'>set-property</a>*)</p><a name='exception_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#exception'>exception</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='exception_bundle'></a>
+<br /><table class='attributeTitle' summary="bundle"><tr><td class='leftAttributeTitle'>
+@bundle</td><td class='rightAttributeTitle'>
+Attribute of <a href='#exception'>exception</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='exception_className'></a>
+<br /><table class='attributeTitle' summary="className"><tr><td class='leftAttributeTitle'>
+@className</td><td class='rightAttributeTitle'>
+Attribute of <a href='#exception'>exception</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='exception_handler'></a>
+<br /><table class='attributeTitle' summary="handler"><tr><td class='leftAttributeTitle'>
+@handler</td><td class='rightAttributeTitle'>
+Attribute of <a href='#exception'>exception</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='exception_key'></a>
+<br /><table class='attributeTitle' summary="key"><tr><td class='leftAttributeTitle'>
+@key</td><td class='rightAttributeTitle'>
+Attribute of <a href='#exception'>exception</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='exception_path'></a>
+<br /><table class='attributeTitle' summary="path"><tr><td class='leftAttributeTitle'>
+@path</td><td class='rightAttributeTitle'>
+Attribute of <a href='#exception'>exception</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='exception_scope'></a>
+<br /><table class='attributeTitle' summary="scope"><tr><td class='leftAttributeTitle'>
+@scope</td><td class='rightAttributeTitle'>
+Attribute of <a href='#exception'>exception</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='exception_type'></a>
+<br /><table class='attributeTitle' summary="type"><tr><td class='leftAttributeTitle'>
+@type</td><td class='rightAttributeTitle'>
+Attribute of <a href='#exception'>exception</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='global-forwards'></a>
+<br /><table class='elementTitle' summary="global-forwards"><tr><td class='leftElementTitle'>
+&lt;global-forwards&gt;</td><td class='rightElementTitle'>
+Child of <a href='#struts-config'>struts-config</a>
+</td></tr></table>
+<p>The "global-forwards" element describes a set of ActionForward objects
+[org.apache.struts.action.ActionForward] that are available to all Action
+objects as a return value. The individual ActionForwards are configured
+through nested &lt;forward> elements. An &lt;action> element may override a global
+forward by defining a local &lt;forward> of the same name.</p><p>type Fully qualified Java class to use when instantiating
+ActionForward objects. If specified, the object must be a
+subclass of the default class type.</p><p>WARNING: For Struts 1.0, this value is ignored. You
+can set the default implementation class name with the
+"forward" initialization parameter to the Struts
+controller servlet.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;global-forwards&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;global-forwards&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#forward'>forward</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;global-forwards&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;global-forwards&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#global-forwards_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#global-forwards_type'>type</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#forward'>forward</a>*)</p><a name='global-forwards_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#global-forwards'>global-forwards</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='global-forwards_type'></a>
+<br /><table class='attributeTitle' summary="type"><tr><td class='leftAttributeTitle'>
+@type</td><td class='rightAttributeTitle'>
+Attribute of <a href='#global-forwards'>global-forwards</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='forward'></a>
+<br /><table class='elementTitle' summary="forward"><tr><td class='leftElementTitle'>
+&lt;forward&gt;</td><td class='rightElementTitle'>
+Child of <a href='#global-forwards'>global-forwards</a>, <a href='#action'>action</a>
+</td></tr></table>
+<p>The "forward" element describes an ActionForward that is to be made
+available to an Action as a return value. An ActionForward is referenced by
+a logical name and encapsulates a URI. A "forward" element may be used to
+describe both global and local ActionForwards. Global forwards are available
+to all the Action objects in the module. Local forwards can be
+nested within an &lt;action> element and only available to an Action object
+when it is invoked through that ActionMapping.</p><p>className Fully qualified Java class name of ActionForward
+subclass to use for this object.
+["org.apache.struts.action.ActionForward"]</p><p>contextRelative Set this to "true" if, in a modular application, the path
+attribute starts with a slash "/" and should be considered
+relative to the entire web application rather than the module.
+Since Struts 1.1.
+DEPRECATED.
+[false]</p><p>module The module prefix to use with this path. This value should
+begin with a slash ("/").</p><p>name The unique identifier for this forward. Referenced by the
+Action object at runtime to select - by its logical name -
+the resource that should complete the request/response.</p><p>path The module-relative or context-relative path to the resources
+that is encapsulated by the logical name of this ActionForward.
+If the path is to be considered context-relative when used in
+a modular application, then the contextRelative attribute
+should be set to "true". This value should begin with a slash
+("/") character.</p><p>redirect Set to "true" if a redirect instruction should be issued to
+the user-agent so that a new request is issued for this
+forward's resource. If true, RequestDispatcher.Redirect is
+called. If "false", RequestDispatcher.forward is called instead.
+[false]</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;forward&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;forward&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#description'>description</a></td><td>One or none</td></tr>
+<tr><td><a href='#display-name'>display-name</a></td><td>One or none</td></tr>
+<tr><td><a href='#icon'>icon</a></td><td>One or none</td></tr>
+<tr><td><a href='#set-property'>set-property</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;forward&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;forward&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#forward_className'>className</a></td><td></td><td></td></tr><tr><td><a href='#forward_contextRelative'>contextRelative</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#forward_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#forward_module'>module</a></td><td></td><td></td></tr><tr><td><a href='#forward_name'>name</a></td><td></td><td></td></tr><tr><td><a href='#forward_path'>path</a></td><td></td><td></td></tr><tr><td><a href='#forward_redirect'>redirect</a></td><td>true, false, yes, no</td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#icon'>icon</a>?, <a href='#display-name'>display-name</a>?, <a href='#description'>description</a>?, <a href='#set-property'>set-property</a>*)</p><a name='forward_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#forward'>forward</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='forward_className'></a>
+<br /><table class='attributeTitle' summary="className"><tr><td class='leftAttributeTitle'>
+@className</td><td class='rightAttributeTitle'>
+Attribute of <a href='#forward'>forward</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='forward_contextRelative'></a>
+<br /><table class='attributeTitle' summary="contextRelative"><tr><td class='leftAttributeTitle'>
+@contextRelative</td><td class='rightAttributeTitle'>
+Attribute of <a href='#forward'>forward</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false, yes, no</p><a name='forward_module'></a>
+<br /><table class='attributeTitle' summary="module"><tr><td class='leftAttributeTitle'>
+@module</td><td class='rightAttributeTitle'>
+Attribute of <a href='#forward'>forward</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='forward_name'></a>
+<br /><table class='attributeTitle' summary="name"><tr><td class='leftAttributeTitle'>
+@name</td><td class='rightAttributeTitle'>
+Attribute of <a href='#forward'>forward</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='forward_path'></a>
+<br /><table class='attributeTitle' summary="path"><tr><td class='leftAttributeTitle'>
+@path</td><td class='rightAttributeTitle'>
+Attribute of <a href='#forward'>forward</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='forward_redirect'></a>
+<br /><table class='attributeTitle' summary="redirect"><tr><td class='leftAttributeTitle'>
+@redirect</td><td class='rightAttributeTitle'>
+Attribute of <a href='#forward'>forward</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false, yes, no</p><a name='action-mappings'></a>
+<br /><table class='elementTitle' summary="action-mappings"><tr><td class='leftElementTitle'>
+&lt;action-mappings&gt;</td><td class='rightElementTitle'>
+Child of <a href='#struts-config'>struts-config</a>
+</td></tr></table>
+<p>The "action-mappings" element describes a set of ActionMapping objects
+[org.apache.struts.action.ActionMapping] that are available to process
+requests matching the url-pattern our ActionServlet registered with the
+container. The individual ActionMappings are configured through nested
+&lt;action> elements. The following attributes are defined:</p><p>type Fully qualified Java class to use when instantiating
+ActionMapping objects. If specified, the object must be a
+subclass of the default class type.</p><p>WARNING: For Struts 1.0, this value is ignored. You
+can set the default implementation class name with the
+"mapping" initialization parameter to the Struts
+controller servlet.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;action-mappings&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;action-mappings&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#action'>action</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;action-mappings&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;action-mappings&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#action-mappings_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#action-mappings_type'>type</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#action'>action</a>*)</p><a name='action-mappings_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action-mappings'>action-mappings</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='action-mappings_type'></a>
+<br /><table class='attributeTitle' summary="type"><tr><td class='leftAttributeTitle'>
+@type</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action-mappings'>action-mappings</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='action'></a>
+<br /><table class='elementTitle' summary="action"><tr><td class='leftElementTitle'>
+&lt;action&gt;</td><td class='rightElementTitle'>
+Child of <a href='#action-mappings'>action-mappings</a>
+</td></tr></table>
+<p>The "action" element describes an ActionMapping object that is to be used
+to process a request for a specific module-relative URI. The following
+attributes are defined:</p><p>attribute Name of the request-scope or session-scope attribute that
+is used to access our ActionForm bean, if it is other than
+the bean's specified "name". Optional if "name" is specified,
+else not valid.</p><p>className The fully qualified Java class name of the ActionMapping
+subclass to use for this action mapping object. Defaults to
+the type specified by the enclosing &lt;action-mappings>
+element or to "org.apache.struts.action.ActionMapping" if
+not specified.
+["org.apache.struts.action.ActionMapping"]</p><p>forward Module-relative path of the servlet or other resource that
+will process this request, instead of the Action class
+specified by "type". The path WILL NOT be processed
+through the "forwardPattern" attribute that is configured
+on the "controller" element for this module.
+Exactly one of "forward", "include", or "type" must be
+specified.</p><p>include Module-relative path of the servlet or other resource that
+will process this request, instead of the Action class
+specified by "type". The path WILL NOT be processed
+through the "forwardPattern" attribute that is configured
+on the "controller" element for this module.
+Exactly one of "forward", "include", or "type" must be
+specified.</p><p>input Module-relative path of the action or other resource to
+which control should be returned if a validation error is
+encountered. Valid only when "name" is specified. Required
+if "name" is specified and the input bean returns
+validation errors. Optional if "name" is specified and the
+input bean does not return validation errors.</p><p>name Name of the form bean, if any, that is associated with this
+action mapping.</p><p>path The module-relative path of the submitted request, starting
+with a "/" character, and without the filename extension if
+extension mapping is used.</p><p>NOTE: Do *not* include a period in your path name,
+because it will look like a filename extension and
+cause your Action to not be located.</p><p>parameter General-purpose configuration parameter that can be used to
+pass extra information to the Action object selected by
+this action mapping.</p><p>prefix Prefix used to match request parameter names to ActionForm
+property names, if any. Optional if "name" is specified,
+else not allowed.</p><p>roles Comma-delimited list of security role names that are allowed
+access to this ActionMapping object. Since Struts 1.1.</p><p>scope The context ("request" or "session") that is used to
+access our ActionForm bean, if any. Optional if "name" is
+specified, else not valid. [session]</p><p>suffix Suffix used to match request parameter names to ActionForm
+bean property names, if any. Optional if "name" is
+specified, else not valid.</p><p>type Fully qualified Java class name of the Action subclass
+[org.apache.struts.action.Action] that will process requests
+for this action mapping. Not valid if either the "forward"
+or "include" attribute is specified. Exactly one of
+"forward", "include", or "type" must be specified.</p><p>unknown Set to "true" if this object should be configured as the
+default action mapping for this module. If a request does not
+match another object, it will be passed to the ActionMapping
+object with unknown set to "true". Only one ActionMapping
+can be marked as "unknown" within a module.
+[false]</p><p>validate Set to "true" if the validate method of the ActionForm bean
+should be called prior to calling the Action object for this
+action mapping, or set to "false" if you do not want the
+validate method called.
+[true]</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;action&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;action&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#description'>description</a></td><td>One or none</td></tr>
+<tr><td><a href='#display-name'>display-name</a></td><td>One or none</td></tr>
+<tr><td><a href='#exception'>exception</a></td><td>Any number</td></tr>
+<tr><td><a href='#forward'>forward</a></td><td>Any number</td></tr>
+<tr><td><a href='#icon'>icon</a></td><td>One or none</td></tr>
+<tr><td><a href='#set-property'>set-property</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;action&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;action&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#action_attribute'>attribute</a></td><td></td><td></td></tr><tr><td><a href='#action_className'>className</a></td><td></td><td></td></tr><tr><td><a href='#action_forward'>forward</a></td><td></td><td></td></tr><tr><td><a href='#action_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#action_include'>include</a></td><td></td><td></td></tr><tr><td><a href='#action_input'>input</a></td><td></td><td></td></tr><tr><td><a href='#action_name'>name</a></td><td></td><td></td></tr><tr><td><a href='#action_parameter'>parameter</a></td><td></td><td></td></tr><tr><td><a href='#action_path'>path</a></td><td></td><td></td></tr><tr><td><a href='#action_prefix'>prefix</a></td><td></td><td></td></tr><tr><td><a href='#action_roles'>roles</a></td><td></td><td></td></tr><tr><td><a href='#action_scope'>scope</a></td><td>request, session</td><td></td></tr><tr><td><a href='#action_suffix'>suffix</a></td><td></td><td></td></tr><tr><td><a href='#action_type'>type</a></td><td></td><td></td></tr><tr><td><a href='#action_unknown'>unknown</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#action_validate'>validate</a></td><td>true, false, yes, no</td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#icon'>icon</a>?, <a href='#display-name'>display-name</a>?, <a href='#description'>description</a>?, <a href='#set-property'>set-property</a>*, <a href='#exception'>exception</a>*, <a href='#forward'>forward</a>*)</p><a name='action_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='action_attribute'></a>
+<br /><table class='attributeTitle' summary="attribute"><tr><td class='leftAttributeTitle'>
+@attribute</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='action_className'></a>
+<br /><table class='attributeTitle' summary="className"><tr><td class='leftAttributeTitle'>
+@className</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='action_forward'></a>
+<br /><table class='attributeTitle' summary="forward"><tr><td class='leftAttributeTitle'>
+@forward</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='action_include'></a>
+<br /><table class='attributeTitle' summary="include"><tr><td class='leftAttributeTitle'>
+@include</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='action_input'></a>
+<br /><table class='attributeTitle' summary="input"><tr><td class='leftAttributeTitle'>
+@input</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='action_name'></a>
+<br /><table class='attributeTitle' summary="name"><tr><td class='leftAttributeTitle'>
+@name</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='action_parameter'></a>
+<br /><table class='attributeTitle' summary="parameter"><tr><td class='leftAttributeTitle'>
+@parameter</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='action_path'></a>
+<br /><table class='attributeTitle' summary="path"><tr><td class='leftAttributeTitle'>
+@path</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='action_prefix'></a>
+<br /><table class='attributeTitle' summary="prefix"><tr><td class='leftAttributeTitle'>
+@prefix</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='action_roles'></a>
+<br /><table class='attributeTitle' summary="roles"><tr><td class='leftAttributeTitle'>
+@roles</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='action_scope'></a>
+<br /><table class='attributeTitle' summary="scope"><tr><td class='leftAttributeTitle'>
+@scope</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: request, session</p><a name='action_suffix'></a>
+<br /><table class='attributeTitle' summary="suffix"><tr><td class='leftAttributeTitle'>
+@suffix</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='action_type'></a>
+<br /><table class='attributeTitle' summary="type"><tr><td class='leftAttributeTitle'>
+@type</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='action_unknown'></a>
+<br /><table class='attributeTitle' summary="unknown"><tr><td class='leftAttributeTitle'>
+@unknown</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false, yes, no</p><a name='action_validate'></a>
+<br /><table class='attributeTitle' summary="validate"><tr><td class='leftAttributeTitle'>
+@validate</td><td class='rightAttributeTitle'>
+Attribute of <a href='#action'>action</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false, yes, no</p><a name='controller'></a>
+<br /><table class='elementTitle' summary="controller"><tr><td class='leftElementTitle'>
+&lt;controller&gt;</td><td class='rightElementTitle'>
+Child of <a href='#struts-config'>struts-config</a>
+</td></tr></table>
+<p>The "controller" element describes the ControllerConfig bean
+[org.apache.struts.config.ControllerConfig] that encapsulates
+a module's runtime configuration. The following
+attributes are defined:</p><p>bufferSize The size of the input buffer used when processing
+file uploads.
+[4096]</p><p>className Fully qualified Java class name of the
+ControllerConfig subclass for this controller object.
+If specified, the object must be a subclass of the
+default class.
+["org.apache.struts.config.ControllerConfig"]</p><p>contentType Default content type (and optional character encoding) to
+be set on each response. May be overridden by the Action,
+JSP, or other resource to which the request is forwarded.
+["text/html"]</p><p>forwardPattern Replacement pattern defining how the "path" attribute of a
+&lt;forward> element is mapped to a context-relative URL when
+it starts with a slash (and when the contextRelative
+property is false). This value may consist of any
+combination of the following:
+- "$M" - Replaced by the module prefix of this module
+- "$P" - Replaced by the "path" attribute of the selected
+"forward" element
+- "$$" - Causes a literal dollar sign to be rendered
+- "$x" - (Where "x" is any character not defined above)
+Silently swallowed, reserved for future use
+If not specified, the default forwardPattern is "$M$P",
+which is consistent with the previous behavior of
+forwards. Since Struts 1.1. ["$M$P"]</p><p>inputForward Set to "true" if you want the "input" attribute of
+&lt;action> elements to be the name of a local or global
+ActionForward, which will then be used to calculate the
+ultimate URL. Set to "false" (the default) to treat the
+"input" parameter of &lt;action> elements as a
+module-relative path to the resource
+to be used as the input form. Since Struts 1.1.
+[false]</p><p>locale Set to "true" if you want a Locale object stored in the
+user's session if not already present.
+[true]</p><p>maxFileSize The maximum size (in bytes) of a file to be accepted as a
+file upload. Can be expressed as a number followed by a
+"K", "M", or "G", which are interpreted to mean kilobytes,
+megabytes, or gigabytes, respectively.
+["250M"]</p><p>memFileSize The maximum size (in bytes) of a file whose contents will
+be retained in memory after uploading. Files larger than
+this threshold will be written to some alternative storage
+medium, typically a hard disk. Can be expressed as a number
+followed by a "K", "M", or "G", which are interpreted to
+mean kilobytes, megabytes, or gigabytes, respectively.
+["256K"]</p><p>multipartClass The fully qualified Java class name of the multipart
+request handler class to be used with this module.
+["org.apache.struts.upload.CommonsMultipartRequestHandler"]</p><p>nocache Set to "true" if you want the controller to add HTTP
+headers for defeating caching to every response from
+this module. [false]</p><p>pagePattern Replacement pattern defining how the "page" attribute of
+custom tags using it is mapped to a context-relative URL
+of the corresponding resource. This value may consist of
+any combination of the following:
+- "$M" - Replaced by the module prefix of this module
+- "$P" - Replaced by the value of the "page" attribute
+- "$$" - Causes a literal dollar sign to be rendered
+- "$x" - (Where "x" is any character not defined above)
+Silently swallowed, reserved for future use
+If not specified, the default forwardPattern is
+"$M$P", which is consistent with previous hard coded
+behavior of URL evaluation for "page" attributes.
+["$M$P"]</p><p>processorClass The fully qualified Java class name of the
+RequestProcessor subclass to be used with this module.
+["org.apache.struts.action.RequestProcessor"]</p><p>tempDir Temporary working directory to use when processing
+file uploads.
+[{Directory provided by servlet container}]</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;controller&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;controller&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#set-property'>set-property</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;controller&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;controller&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#controller_bufferSize'>bufferSize</a></td><td></td><td></td></tr><tr><td><a href='#controller_className'>className</a></td><td></td><td></td></tr><tr><td><a href='#controller_contentType'>contentType</a></td><td></td><td></td></tr><tr><td><a href='#controller_forwardPattern'>forwardPattern</a></td><td></td><td></td></tr><tr><td><a href='#controller_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#controller_inputForward'>inputForward</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#controller_locale'>locale</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#controller_maxFileSize'>maxFileSize</a></td><td></td><td></td></tr><tr><td><a href='#controller_memFileSize'>memFileSize</a></td><td></td><td></td></tr><tr><td><a href='#controller_multipartClass'>multipartClass</a></td><td></td><td></td></tr><tr><td><a href='#controller_nocache'>nocache</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#controller_pagePattern'>pagePattern</a></td><td></td><td></td></tr><tr><td><a href='#controller_processorClass'>processorClass</a></td><td></td><td></td></tr><tr><td><a href='#controller_tempDir'>tempDir</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#set-property'>set-property</a>*)</p><a name='controller_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='controller_bufferSize'></a>
+<br /><table class='attributeTitle' summary="bufferSize"><tr><td class='leftAttributeTitle'>
+@bufferSize</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='controller_className'></a>
+<br /><table class='attributeTitle' summary="className"><tr><td class='leftAttributeTitle'>
+@className</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='controller_contentType'></a>
+<br /><table class='attributeTitle' summary="contentType"><tr><td class='leftAttributeTitle'>
+@contentType</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='controller_forwardPattern'></a>
+<br /><table class='attributeTitle' summary="forwardPattern"><tr><td class='leftAttributeTitle'>
+@forwardPattern</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='controller_inputForward'></a>
+<br /><table class='attributeTitle' summary="inputForward"><tr><td class='leftAttributeTitle'>
+@inputForward</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false, yes, no</p><a name='controller_locale'></a>
+<br /><table class='attributeTitle' summary="locale"><tr><td class='leftAttributeTitle'>
+@locale</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false, yes, no</p><a name='controller_maxFileSize'></a>
+<br /><table class='attributeTitle' summary="maxFileSize"><tr><td class='leftAttributeTitle'>
+@maxFileSize</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='controller_memFileSize'></a>
+<br /><table class='attributeTitle' summary="memFileSize"><tr><td class='leftAttributeTitle'>
+@memFileSize</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='controller_multipartClass'></a>
+<br /><table class='attributeTitle' summary="multipartClass"><tr><td class='leftAttributeTitle'>
+@multipartClass</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='controller_nocache'></a>
+<br /><table class='attributeTitle' summary="nocache"><tr><td class='leftAttributeTitle'>
+@nocache</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false, yes, no</p><a name='controller_pagePattern'></a>
+<br /><table class='attributeTitle' summary="pagePattern"><tr><td class='leftAttributeTitle'>
+@pagePattern</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='controller_processorClass'></a>
+<br /><table class='attributeTitle' summary="processorClass"><tr><td class='leftAttributeTitle'>
+@processorClass</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='controller_tempDir'></a>
+<br /><table class='attributeTitle' summary="tempDir"><tr><td class='leftAttributeTitle'>
+@tempDir</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='message-resources'></a>
+<br /><table class='elementTitle' summary="message-resources"><tr><td class='leftElementTitle'>
+&lt;message-resources&gt;</td><td class='rightElementTitle'>
+Child of <a href='#struts-config'>struts-config</a>
+</td></tr></table>
+<p>The "message-resources" element describes a MessageResources object with
+message templates for this module. The following attributes are defined:</p><p>className The configuration bean for this message resources object.
+If specified, the object must be a subclass of the default
+configuration bean.
+["org.apache.struts.config.MessageResourcesConfig"]</p><p>factory Fully qualified Java class name of the
+MessageResourcesFactory subclass to use for this message
+resources object.
+["org.apache.struts.util.PropertyMessageResourcesFactory"]</p><p>key Servlet context attribute under which this message
+resources bundle will be stored. The default attribute is
+the value specified by the string constant at
+[Globals.MESSAGES_KEY]. The module prefix (if
+any) is appended to the key (${key}${prefix}).
+[org.apache.struts.Globals.MESSAGES_KEY]</p><p>NOTE: The module prefix includes the leading
+slash, so the default message resource bundle for a module
+named "foo" is stored under
+"org.apache.struts.action.MESSAGE/foo".</p><p>null Set to "true" if you want our message resources to return a
+null string for unknown message keys, or "false" to return a
+message with the bad key value.</p><p>parameter Configuration parameter to be passed to the createResources
+method of our factory object.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;message-resources&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;message-resources&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#set-property'>set-property</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;message-resources&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;message-resources&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#message-resources_className'>className</a></td><td></td><td></td></tr><tr><td><a href='#message-resources_factory'>factory</a></td><td></td><td></td></tr><tr><td><a href='#message-resources_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#message-resources_key'>key</a></td><td></td><td></td></tr><tr><td><a href='#message-resources_null'>null</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#message-resources_parameter'>parameter</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#set-property'>set-property</a>*)</p><a name='message-resources_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#message-resources'>message-resources</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='message-resources_className'></a>
+<br /><table class='attributeTitle' summary="className"><tr><td class='leftAttributeTitle'>
+@className</td><td class='rightAttributeTitle'>
+Attribute of <a href='#message-resources'>message-resources</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='message-resources_factory'></a>
+<br /><table class='attributeTitle' summary="factory"><tr><td class='leftAttributeTitle'>
+@factory</td><td class='rightAttributeTitle'>
+Attribute of <a href='#message-resources'>message-resources</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='message-resources_key'></a>
+<br /><table class='attributeTitle' summary="key"><tr><td class='leftAttributeTitle'>
+@key</td><td class='rightAttributeTitle'>
+Attribute of <a href='#message-resources'>message-resources</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='message-resources_null'></a>
+<br /><table class='attributeTitle' summary="null"><tr><td class='leftAttributeTitle'>
+@null</td><td class='rightAttributeTitle'>
+Attribute of <a href='#message-resources'>message-resources</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false, yes, no</p><a name='message-resources_parameter'></a>
+<br /><table class='attributeTitle' summary="parameter"><tr><td class='leftAttributeTitle'>
+@parameter</td><td class='rightAttributeTitle'>
+Attribute of <a href='#message-resources'>message-resources</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='plug-in'></a>
+<br /><table class='elementTitle' summary="plug-in"><tr><td class='leftElementTitle'>
+&lt;plug-in&gt;</td><td class='rightElementTitle'>
+Child of <a href='#struts-config'>struts-config</a>
+</td></tr></table>
+<p>The "plug-in" element specifies the fully qualified class name of a
+general-purpose application plug-in module that receives notification of
+application startup and shutdown events. An instance of the specified class
+is created for each element, and can be configured with nested &lt;set-property>
+elements. The following attributes are supported:</p><p>className Fully qualified Java class name of the plug-in class; must
+implement [org.apache.struts.action.PlugIn].</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;plug-in&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;plug-in&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#set-property'>set-property</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;plug-in&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;plug-in&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#plug-in_className'>className</a></td><td></td><td></td></tr><tr><td><a href='#plug-in_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#set-property'>set-property</a>*)</p><a name='plug-in_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#plug-in'>plug-in</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='plug-in_className'></a>
+<br /><table class='attributeTitle' summary="className"><tr><td class='leftAttributeTitle'>
+@className</td><td class='rightAttributeTitle'>
+Attribute of <a href='#plug-in'>plug-in</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='description'></a>
+<br /><table class='elementTitle' summary="description"><tr><td class='leftElementTitle'>
+&lt;description&gt;</td><td class='rightElementTitle'>
+Child of <a href='#struts-config'>struts-config</a>, <a href='#forward'>forward</a>, <a href='#exception'>exception</a>, <a href='#form-bean'>form-bean</a>, <a href='#action'>action</a>
+</td></tr></table>
+<p>The "description" element contains descriptive (paragraph length) text
+about the surrounding element, suitable for use in GUI tools.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table  summary="&lt;description&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;description&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#description_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<a name='description_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#description'>description</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='display-name'></a>
+<br /><table class='elementTitle' summary="display-name"><tr><td class='leftElementTitle'>
+&lt;display-name&gt;</td><td class='rightElementTitle'>
+Child of <a href='#struts-config'>struts-config</a>, <a href='#forward'>forward</a>, <a href='#exception'>exception</a>, <a href='#form-bean'>form-bean</a>, <a href='#action'>action</a>
+</td></tr></table>
+<p>The "display-name" element contains a short (one line) description of
+the surrounding element, suitable for use in GUI tools.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table  summary="&lt;display-name&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;display-name&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#display-name_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<a name='display-name_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#display-name'>display-name</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='icon'></a>
+<br /><table class='elementTitle' summary="icon"><tr><td class='leftElementTitle'>
+&lt;icon&gt;</td><td class='rightElementTitle'>
+Child of <a href='#forward'>forward</a>, <a href='#exception'>exception</a>, <a href='#form-bean'>form-bean</a>, <a href='#action'>action</a>
+</td></tr></table>
+<p>The "icon" element contains a small-icon and large-icon element which
+specify the location, relative to the Struts configuration file, for small
+and large images used to represent the surrounding element in GUI tools.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;icon&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;icon&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#large-icon'>large-icon</a></td><td>One or none</td></tr>
+<tr><td><a href='#small-icon'>small-icon</a></td><td>One or none</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;icon&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;icon&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#icon_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#small-icon'>small-icon</a>?, <a href='#large-icon'>large-icon</a>?)</p><a name='icon_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#icon'>icon</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='large-icon'></a>
+<br /><table class='elementTitle' summary="large-icon"><tr><td class='leftElementTitle'>
+&lt;large-icon&gt;</td><td class='rightElementTitle'>
+Child of <a href='#icon'>icon</a>
+</td></tr></table>
+<p>The "large-icon" element specifies the location, relative to the Struts
+configuration file, of a resource containing a large (32x32 pixel)
+icon image.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table  summary="&lt;large-icon&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;large-icon&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#large-icon_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<a name='large-icon_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#large-icon'>large-icon</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='set-property'></a>
+<br /><table class='elementTitle' summary="set-property"><tr><td class='leftElementTitle'>
+&lt;set-property/&gt;</td><td class='rightElementTitle'>
+Child of <a href='#data-source'>data-source</a>, <a href='#message-resources'>message-resources</a>, <a href='#forward'>forward</a>, <a href='#form-property'>form-property</a>, <a href='#exception'>exception</a>, <a href='#controller'>controller</a>, <a href='#form-bean'>form-bean</a>, <a href='#action'>action</a>, <a href='#plug-in'>plug-in</a>
+</td></tr></table>
+<p>The "set-property" element specifies the method name and initial value of
+an additional JavaBean configuration property. When the object representing
+the surrounding element is instantiated, the accessor for the indicated
+property is called and passed the indicated value. The "set-property"
+element is especially useful when a custom subclass is used with
+&lt;data-source>, &lt;forward>, &lt;action>, or &lt;plug-in> elements. The subclass
+can be passed whatever other properties may be required to configure the
+object without changing how the struts-config is parsed.</p><p>property Name of the JavaBeans property whose setter method
+will be called.</p><p>value String representation of the value to which this
+property will be set, after suitable type conversion</p><blockquote>
+<table  summary="&lt;set-property&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;set-property&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#set-property_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#set-property_property'>property</a></td><td></td><td></td></tr><tr><td><a href='#set-property_value'>value</a></td><td></td><td></td></tr></table></blockquote>
+<p class='emptyTagNote'>This element is always empty.</p><a name='set-property_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#set-property'>set-property</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='set-property_property'></a>
+<br /><table class='attributeTitle' summary="property"><tr><td class='leftAttributeTitle'>
+@property</td><td class='rightAttributeTitle'>
+Attribute of <a href='#set-property'>set-property</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='set-property_value'></a>
+<br /><table class='attributeTitle' summary="value"><tr><td class='leftAttributeTitle'>
+@value</td><td class='rightAttributeTitle'>
+Attribute of <a href='#set-property'>set-property</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='small-icon'></a>
+<br /><table class='elementTitle' summary="small-icon"><tr><td class='leftElementTitle'>
+&lt;small-icon&gt;</td><td class='rightElementTitle'>
+Child of <a href='#icon'>icon</a>
+</td></tr></table>
+<p>The "small-icon" element specifies the location, relative to the Struts
+configuration file, of a resource containing a small (16x16 pixel)
+icon image.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table  summary="&lt;small-icon&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;small-icon&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#small-icon_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<a name='small-icon_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#small-icon'>small-icon</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p></body></html>

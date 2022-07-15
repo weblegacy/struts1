@@ -1,0 +1,7 @@
+org.apache.struts.action
+org.apache.struts.chain.commands.generic
+org.apache.struts.chain.commands.servlet
+org.apache.struts.config
+org.apache.struts.mock
+org.apache.struts.util
+org.apache.struts.validator

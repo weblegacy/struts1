@@ -1,0 +1,306 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>insert (Struts Tiles Tag library documentation)</title>
+<meta name="keywords" content="insert (Struts Tiles Tag library documentation)">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="insert (Struts Tiles Tag library documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="insert.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>
+<font size="-1">tiles</font>
+<br>
+            Tag insert</h2>
+<hr>
+      
+      <p><strong>Insert a tiles/component/template.</strong></p>
+      <p>Insert a tiles/component/template with the possibility to pass 
+      parameters (called attribute).
+      A tile can be seen as a procedure that can take parameters or attributes.
+      <code>&lt;tiles:insert&gt;</code> allows to define these attributes 
+      and pass them to the inserted jsp page, called template.
+      Attributes are defined using nested tag <code>&lt;tiles:put&gt;</code> or
+      <code>&lt;tiles:putList&gt;</code>.
+      </p>
+      <p>You must specify one of this tag attribute :</p>
+      <ul>
+        
+        <li><code>template</code>, for inserting a tiles/component/template
+        page,</li>
+        
+        <li><code>component</code>, for inserting a tiles/component/template 
+        page, (same as template)</li>
+        
+        <li><code>page</code> for inserting a JSP page, (same as template)</li>
+        
+        <li><code>definition</code>, for inserting a definition from 
+        definitions factory</li>
+        
+        <li><code>attribute</code>, surrounding tiles's attribute name whose 
+        value is used.<br/>If attribute is associated to 'direct' flag 
+        (see put), and flag is true, write attribute value (no insertion).</li>
+                     
+        <li><code>name</code>, to let 'insert' determine the type of entities
+        to insert. In this later case, search is done in this order : 
+        definitions, tiles/components/templates, pages.</li>
+      </ul>
+     
+      <p>In fact, Page, component and template, are equivalent as a tile, 
+      component or template are jsp page.</p>
+      
+      <p><strong>Example : </strong></p>
+      <pre>
+        <code>
+          &lt;tiles:insert page="/basic/myLayout.jsp" flush="true">
+             &lt;tiles:put name="title" value="My first page" />
+             &lt;tiles:put name="header" value="/common/header.jsp" />
+             &lt;tiles:put name="footer" value="/common/footer.jsp" />
+             &lt;tiles:put name="menu" value="/basic/menu.jsp" />
+             &lt;tiles:put name="body" value="/basic/helloBody.jsp" />
+          &lt;/tiles:insert>
+        </code>
+      </pre>
+      
+      <br>
+<p></p>
+<hr>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+</tr>
+<tr>
+<td>Tag Class</td><td>org.apache.struts.tiles.taglib.InsertTag</td>
+</tr>
+<tr>
+<td>TagExtraInfo Class</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Body Content</td><td>JSP</td>
+</tr>
+<tr>
+<td>Display Name</td><td><i>None</i></td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+</tr>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>attribute</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Name of an attribute in current tile/component context. Value of
+         this attribute is passed to 'name' (see attribute 'name').</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>beanName</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Name of the bean used as value. Bean is retrieved from specified
+         context, if any. Otherwise, method pageContext.findAttribute is used.
+         If beanProperty is also specified, retrieve value from the
+         corresponding bean property.</p> 
+         <p>If found bean (or property value)
+         is instance of one of Attribute class (Direct, Instance, ...),
+         insertion is done according to the class type. Otherwise, the toString
+         method is called on the bean, and returned String is used as name to
+         insert (see 'name' attribute).</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>beanProperty</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Bean property name. If specified, value is retrieve from this
+         property. Support nested/indexed properties.</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>beanScope</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+         
+         <p> Scope into which bean is searched. If not specified, method
+         pageContext.findAttribute is used. Scope can be any JSP scope,
+         'component', or 'template'. In these two later cases, bean is search in
+         tile/component/template context.</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>component</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Path (relative or absolute to webapps) of the component to insert.</p>
+         <p>'page', 'component' and 'template' are synonyms : 
+         they have exactly the same behavior.</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>controllerClass</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Class type of a controller called immediately before page is inserted.</p>
+         <p>Controller is used to prepare data to be render by inserted Tile.</p>
+         <p>See also controlerUrl</p>
+         <p>Class must implements or extends one of the following :</p>
+         <ul>
+           <li>org.apache.struts.tiles.Controller</li>
+           <li>org.apache.struts.tiles.ControllerSupport</li>
+           <li>org.apache.struts.action.Action (wrapper org.apache.struts.action.ActionController is used)</li>
+         </ul>
+         <p>See also controllerUrl. Only one of controllerUrl or controllerClass should be used.</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>controllerUrl</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Url of a controller called immediately before page is inserted.</p>
+         <p>Url usually denote a Struts action. Controller (action) is used to 
+         prepare data to be render by inserted Tile.</p>
+         <p>See also controlerClass. Only one of controllerUrl or 
+         controllerClass should be used.</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>definition</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Name of the definition to insert. Definition are defined in a
+         centralized file. For now, only definition from factory can be inserted
+         with this attribute. To insert a definition defined with tag
+         <code>&lt;tiles:definition&gt;</code>, use beanName="".</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>flush</td><td>false</td><td>false</td><td><code>boolean</code></td><td>
+         
+         <p>True or false. If true, current page out stream is flushed 
+         before insertion.</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>ignore</td><td>false</td><td>true</td><td><code>boolean</code></td><td>
+         
+         <p>If this attribute is set to true, and the attribute specified by the
+         name does not exist, simply return without writing anything. The
+         default value is false, which will cause a runtime exception to be
+         thrown.</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>name</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Name of an entity to insert. Search is done in this order : 
+         definition, attribute, [tile/component/template/page].</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>page</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>Path (relative or absolute to webapps) of the page to insert.</p>
+         <p>'page', 'component' and 'template' are synonyms : 
+         they have exactly the same behavior.</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>role</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>If the user is in the specified role, the tag is taken into account;
+         otherwise, the tag is ignored (skipped).</p>
+         
+         </td>
+</tr>
+<tr valign="top">
+<td>template</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+         
+         <p>A string representing the URI of a tile or template (a JSP page).
+         </p>
+         <p>'page', 'component' and 'template' are synonyms : they have 
+         exactly the same behavior.</p>
+         
+         </td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Variables</b></font></td>
+</tr>
+<td colspan="2"><i>No Variables Defined.</i></td>
+</table>
+<br>
+<p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="insert.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Output Generated by
+            <a href="https://weblegacy.github.io/tlddoc/" target="_blank">Tag Library Documentation Generator</a>.
+            Java, JSP, and JavaServer Pages are trademarks or
+            registered trademarks of Sun Microsystems, Inc. in the US and other
+            countries.  Copyright 2002-4 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved.
+            </i></small>
+</body>
+</html>

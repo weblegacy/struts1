@@ -1,0 +1,754 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>Struts Apps - Examples - Checkstyle report</title>
+    <link>https://weblegacy.github.io/struts1/struts-apps/struts-examples</link>
+    <description>Struts Apps - Examples - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2000 - 2022 Web-Legacy</copyright>
+    <item>
+      <title>File: 50,
+             Errors: 399,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html</link>
+      <description>
+        <p>Click <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.MultiRegistrationAction.java">org/apache/struts/webapp/validator/MultiRegistrationAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.DifferentMessageResources.properties">org/apache/struts/webapp/validator/DifferentMessageResources.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.I18nExampleVariables_en_US.properties">org/apache/struts/webapp/validator/I18nExampleVariables_en_US.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.MessageResources_ja.properties">org/apache/struts/webapp/validator/MessageResources_ja.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.MessageResources_fr.properties">org/apache/struts/webapp/validator/MessageResources_fr.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.dispatch.MessageResources.properties">org/apache/struts/webapp/dispatch/MessageResources.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.exercise.SuccessAction.java">org/apache/struts/webapp/exercise/SuccessAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.I18nExample.properties">org/apache/struts/webapp/validator/I18nExample.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.TypeAction.java">org/apache/struts/webapp/validator/TypeAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.RegistrationAction.java">org/apache/struts/webapp/validator/RegistrationAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.I18nExampleVariables_en_GB.properties">org/apache/struts/webapp/validator/I18nExampleVariables_en_GB.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.examples.CustomActionForm.java">org/apache/struts/webapp/examples/CustomActionForm.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.exercise.MessageResources_ja.properties">org/apache/struts/webapp/exercise/MessageResources_ja.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.upload.UploadForm.java">org/apache/struts/webapp/upload/UploadForm.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  32
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.dispatch.EventActionDispatcherExample.java">org/apache/struts/webapp/dispatch/EventActionDispatcherExample.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.examples.CustomActionMapping.java">org/apache/struts/webapp/examples/CustomActionMapping.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.dispatch.EventDispatchActionExample.java">org/apache/struts/webapp/dispatch/EventDispatchActionExample.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  9
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.exercise.MessageResources_fr.properties">org/apache/struts/webapp/exercise/MessageResources_fr.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.examples.MessageResource.properties">org/apache/struts/webapp/examples/MessageResource.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.I18nExample_en_US.properties">org/apache/struts/webapp/validator/I18nExample_en_US.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.I18nExample_jp.properties">org/apache/struts/webapp/validator/I18nExample_jp.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.exercise.HtmlSettersAction.java">org/apache/struts/webapp/exercise/HtmlSettersAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.dispatch.MappingDispatchExampleAction.java">org/apache/struts/webapp/dispatch/MappingDispatchExampleAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.dispatch.ActionDispatcherExample.java">org/apache/struts/webapp/dispatch/ActionDispatcherExample.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.CityStateZip.java">org/apache/struts/webapp/validator/CityStateZip.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.RegistrationForm.java">org/apache/struts/webapp/validator/RegistrationForm.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  22
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.examples.MessageResource_ja.properties">org/apache/struts/webapp/examples/MessageResource_ja.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.dispatch.DispatchExampleAction.java">org/apache/struts/webapp/dispatch/DispatchExampleAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  9
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.exercise.TestBean.java">org/apache/struts/webapp/exercise/TestBean.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  92
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.exercise.MessageResources.properties">org/apache/struts/webapp/exercise/MessageResources.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.upload.UploadResources_ja.properties">org/apache/struts/webapp/upload/UploadResources_ja.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.MessageResources.properties">org/apache/struts/webapp/validator/MessageResources.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.examples.CustomActionForward.java">org/apache/struts/webapp/examples/CustomActionForward.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.examples.CustomFormBean.java">org/apache/struts/webapp/examples/CustomFormBean.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.dispatch.LookupDispatchExampleAction.java">org/apache/struts/webapp/dispatch/LookupDispatchExampleAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.I18nExample_fr.properties">org/apache/struts/webapp/validator/I18nExample_fr.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.TypeForm.java">org/apache/struts/webapp/validator/TypeForm.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  71
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.I18nExampleVariables_fr.properties">org/apache/struts/webapp/validator/I18nExampleVariables_fr.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.LocaleAction.java">org/apache/struts/webapp/validator/LocaleAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.I18nExampleVariables.properties">org/apache/struts/webapp/validator/I18nExampleVariables.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.upload.UploadResources.properties">org/apache/struts/webapp/upload/UploadResources.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.I18nExample_en_GB.properties">org/apache/struts/webapp/validator/I18nExample_en_GB.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.exercise.MessageResources_de.properties">org/apache/struts/webapp/exercise/MessageResources_de.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.ShowFileAction.java">org/apache/struts/webapp/validator/ShowFileAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.OtherMessageResources.properties">org/apache/struts/webapp/validator/OtherMessageResources.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.exercise.ImageAction.java">org/apache/struts/webapp/exercise/ImageAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.dispatch.MessageResources_fr.properties">org/apache/struts/webapp/dispatch/MessageResources_fr.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.EditTypeAction.java">org/apache/struts/webapp/validator/EditTypeAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.validator.MessageResources_es.properties">org/apache/struts/webapp/validator/MessageResources_es.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-apps/struts-examples/checkstyle.html#org.apache.struts.webapp.upload.UploadAction.java">org/apache/struts/webapp/upload/UploadAction.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  24
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

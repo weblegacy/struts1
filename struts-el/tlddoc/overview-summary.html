@@ -1,0 +1,215 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>
+            Overview (Struts EL Tag library documentation)
+          </title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="Style">
+</head>
+<script>
+          function asd() {
+            parent.document.title="Overview (Struts EL Tag library documentation)";
+          }
+        </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"><font CLASS="NavBarFont1Rev"><b>&nbsp;Overview&nbsp;</b></font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Library&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="overview-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<center>
+<h2>Tag Library Documentation Generator - Generated Documentation</h2>
+</center>
+<table BORDER="1" CELLPADDING="3" CELLSPACING="0" WIDTH="100%">
+<tr BGCOLOR="#CCCCFF" CLASS="TableHeadingColor">
+<td COLSPAN="2"><font SIZE="+2"><b>Tag Libraries</b></font></td>
+</tr>
+<tr BGCOLOR="white" valign="top" CLASS="TableRowColor">
+<td WIDTH="20%"><b><a href="bean/tld-summary.html">bean</a></b></td><td>
+        
+   This tag library contains tags useful in accessing beans and their
+  properties, as well as defining new beans (based on these accesses)
+  that are accessible to the remainder of the page via scripting variables
+  and page scope attributes.  Convenient mechanisms to create new beans
+  based on the value of request cookies, headers, and parameters are also
+  provided.Many of the tags in this tag library will throw a
+  JspException at runtime when they are utilized incorrectly
+  (such as when you specify an invalid combination of tag attributes).  JSP
+  allows you to declare an "error page" in the <code>&lt;%@ page %&gt;</code>
+  directive.  If you wish to process the actual exception that caused the
+  problem, it is passed to the error page as a request attribute under key
+  org.apache.struts.action.EXCEPTION.If you are viewing this page from within 
+  the Struts Documentation Application (or online at 
+  http://struts.apache.org), you can learn more about using
+  these tags in the  Bean Tags Developer's Guide.
+  
+    </td>
+</tr>
+<tr BGCOLOR="white" valign="top" CLASS="TableRowColor">
+<td WIDTH="20%"><b><a href="html/tld-summary.html">html</a></b></td><td>
+        
+        This taglib contains tags used to create struts
+        input forms, as well as other tags generally useful
+                in the creation of HTML-based user interfaces.
+  Many of the tags in this tag library will throw a
+  JspException at runtime when they are utilized incorrectly
+  (such as when you specify an invalid combination of tag attributes).  JSP
+  allows you to declare an "error page" in the &lt;%@ page %&gt;
+  directive.  If you wish to process the actual exception that caused the
+  problem, it is passed to the error page as a request attribute under key
+  
+        org.apache.struts.action.EXCEPTION.</td>
+</tr>
+<tr BGCOLOR="white" valign="top" CLASS="TableRowColor">
+<td WIDTH="20%"><b><a href="logic/tld-summary.html">logic</a></b></td><td>
+        
+
+   <p>This tag library contains tags that are useful in managing conditional
+   generation of output text, looping over object collections for repetitive
+   generation of output text, and application flow management.</p>
+   
+   <p>For tags that do value comparisons (equal, greaterEqual, 
+   greaterThan, lessEqual, lessThan, notEqual), the following rules apply:</p>
+   
+   <ul>
+   
+   <li>The specified value is examined. If it can be converted successfully to a
+   double or a long, it is assumed that the ultimate comparison will be numeric
+   (either floating point or integer). Otherwise, a String comparison will be
+   performed.</li>
+   
+      <li>The variable to be 
+      compared to is retrieved, based on the selector
+      attribute(s) (cookie, header, name, parameter, property)
+      present on this tag.  It will be converted to the appropriate type
+      for the comparison, as determined above.</li>
+      
+   <li>If the specified variable or property returns null, it will be
+      coerced to a zero-length string before the comparison occurs.</li>
+      
+   <li>The specific comparison for this tag will be performed, and the nested
+      body content of this tag will be evaluated if the comparison returns
+      a true result.</li>
+      
+   </ul>
+   
+   <p> For tags that do substring matching (match, notMatch), the following
+   rules apply:</p>
+  
+  <ul>
+  
+  <li>The specified variable is retrieved, based on the selector attribute(s)
+  (cookie, header, name, parameter, property) present on this tag.</li>
+      
+  <li>The variable is converted to a String, if necessary.A request time
+  exception will be thrown if the specified variable cannot be retrieved, or has
+  a null value.</li>
+      
+  <li>The specified value is checked for existence as a substring of the
+  variable, in the position specified by the location attribute, as follows: at
+  the beginning (if location is set to start), at the end (if location is set to
+  end), or anywhere (if location is not specified).</li>
+  
+  </ul>
+  
+  <p>Many of the tags in this tag library will throw a JspException at runtime
+  when they are utilized incorrectly (such as when you specify an invalid
+  combination of tag attributes). JSP allows you to declare an "error page" in
+  the &lt;%@ page %&gt; directive. If you wish to process the actual exception
+  that caused the problem, it is passed to the error page as a request attribute
+  under key org.apache.struts.action.EXCEPTION.</p>
+  
+  <p>Struts-logic tags NOT implemented.</p>
+  
+  <p>This library, a derivation of the normal "struts-logic" library, provides
+  the functionality of the Struts logic tags, but assumes the presence of the
+  JavaServer Pages Standard Library (JSTL), and uses the JSTL expression engine
+  (hereafter abbreviated in many places as just "el") to evaluate attribute
+  values instead of using JSP runtime expressions (sometimes called
+  "rtexprvalues").</p>
+
+   <p>Because it is assumed this library will be used with the JSTL and the new
+   EL engine, there are some tags in the struts-logic library which provide
+   functionality which is entirely subsumed by the JSTL. This section lists each
+   struts-logic tag which is NOT implemented in the struts-logic-el library, and
+   describes the JSTL tag which can be used instead of the Struts
+   tag.Struts-Logic TagJSTL Tag</p>
+
+   <p><code>&lt;logic:empty&gt;</code></p>
+   
+   <p>This functionality is subsumed by the JSTL &lt;c:if>, &lt;c:when> tags and
+   the empty function in the JSTL EL.</p>
+
+   <p>Example: &lt;c:if test="${empty var}">CONTENT&lt;/c:if></p>
+     
+     
+    </td>
+</tr>
+<tr BGCOLOR="white" valign="top" CLASS="TableRowColor">
+<td WIDTH="20%"><b><a href="tiles/tld-summary.html">tiles</a></b></td><td>
+        
+      <p>This tag library provides tiles tags.  
+   Tiles were previously called Components. For historical reasons, names, 
+   pages, components and templates are used indifferently to design a tile. 
+   Also, a lot of tags and attribute names are left for backward compatibility.
+   To know more about tags defined in this library, check the associated 
+   documentation: tiles-doc.</p>
+   
+    </td>
+</tr>
+</table>
+<p></p>
+<hr>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"><font CLASS="NavBarFont1Rev"><b>&nbsp;Overview&nbsp;</b></font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Library&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="overview-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+          Output Generated by
+          <a href="https://weblegacy.github.io/tlddoc/" target="_blank">Tag Library Documentation Generator</a>.
+          Java, JSP, and JavaServer Pages are trademarks or
+          registered trademarks of Sun Microsystems, Inc. in the US and other
+          countries.  Copyright 2002-4 Sun Microsystems, Inc.
+          4150 Network Circle
+          Santa Clara, CA 95054, U.S.A.
+          All Rights Reserved.
+          </i></small>
+</body>
+</html>

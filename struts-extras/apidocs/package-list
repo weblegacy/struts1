@@ -1,0 +1,3 @@
+org.apache.struts.actions
+org.apache.struts.plugins
+org.apache.struts.validator

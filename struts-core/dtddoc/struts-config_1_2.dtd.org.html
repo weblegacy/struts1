@@ -1,0 +1,710 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html> <head>
+<meta http-equiv='CONTENT-TYPE' content='text/html; charset=UTF-8' />
+<link rel='StyleSheet' href='DTDDocStyle.css' type='text/css' media='screen' />
+<title>struts-config_1_2.dtd</title>
+</head><body>
+<p class='DTDSource'><b><code>struts-config_1_2.dtd</code></b>: <a href='struts-config_1_2.dtd.html'>Elements</a> - <a href='struts-config_1_2.dtd.entities.html'>Entities</a> - <a href='struts-config_1_2.dtd.org.html'>Source</a> | <a href='intro.html'>Intro</a> - <a href='elementsIndex.html'>Index</a><br /><a href='index.html' target='_top'>FRAMES</a>&nbsp;/&nbsp;<a href='struts-config_1_2.dtd.org.html' target='_top'>NO FRAMES</a></p><pre id='dtd_source'><span class="dtd_comment">&lt;!--</span>
+<span class="dtd_comment">    Licensed to the Apache Software Foundation (ASF) under one or more</span>
+<span class="dtd_comment">    contributor license agreements.  See the NOTICE file distributed with</span>
+<span class="dtd_comment">    this work for additional information regarding copyright ownership.</span>
+<span class="dtd_comment">    The ASF licenses this file to You under the Apache License, Version 2.0</span>
+<span class="dtd_comment">    (the &quot;License&quot;); you may not use this file except in compliance with</span>
+<span class="dtd_comment">    the License.  You may obtain a copy of the License at</span>
+<span class="dtd_comment">   </span>
+<span class="dtd_comment">         http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="dtd_comment">   </span>
+<span class="dtd_comment">    Unless required by applicable law or agreed to in writing, software</span>
+<span class="dtd_comment">    distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="dtd_comment">    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="dtd_comment">    See the License for the specific language governing permissions and</span>
+<span class="dtd_comment">    limitations under the License.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_comment">&lt;!--</span>
+<span class="dtd_comment">     DTD for the Struts Application Configuration File</span>
+
+<span class="dtd_comment">     To support validation of your configuration file, include the following</span>
+<span class="dtd_comment">     DOCTYPE element at the beginning (after the &quot;xml&quot; declaration):</span>
+
+<span class="dtd_comment">     &lt;!DOCTYPE struts-config PUBLIC</span>
+<span class="dtd_comment">       &quot;-//Apache Software Foundation//DTD Struts Configuration 1.2//EN&quot;</span>
+<span class="dtd_comment">       &quot;http://struts.apache.org/dtds/struts-config_1_2.dtd&quot;&gt;</span>
+
+<span class="dtd_comment">     $Id$</span>
+<span class="dtd_comment">--&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- ========== Defined Types ============================================= --&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- An &quot;AttributeName&quot; is the identifier of a page, request, session, or</span>
+<span class="dtd_comment">     application scope attribute.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">AttributeName</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- A &quot;BeanName&quot; is the identifier of a JavaBean, such as a form bean,</span>
+<span class="dtd_comment">     and also serves as the name of the corresponding scripting variable</span>
+<span class="dtd_comment">     and the name of the JSP attribute under which the bean is accessed.</span>
+<span class="dtd_comment">     Therefore, it must conform to the rules for a Java identifier.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">BeanName</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- A &quot;Boolean&quot; is the string representation of a boolean (true or false)</span>
+<span class="dtd_comment">     variable.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;(true|false|yes|no)&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- A &quot;ClassName&quot; is the fully qualified name of a Java class that is</span>
+<span class="dtd_comment">     instantiated to provide the functionality of the enclosing element.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- An &quot;Integer&quot; is a character string consisting solely of numeric digits,</span>
+<span class="dtd_comment">     optionally preceeded by a minus sign, that can be converted to a</span>
+<span class="dtd_comment">     32-bit integer.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">Integer</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- A &quot;Location&quot; is a relative path, delimited by &quot;/&quot; characters, that</span>
+<span class="dtd_comment">     defines the location of a resource relative to the location of the</span>
+<span class="dtd_comment">     Struts configuration file itself.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">Location</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;#PCDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- A &quot;PropName&quot; is the name of a JavaBeans property, and must begin with</span>
+<span class="dtd_comment">     a lower case letter and contain only characters that are legal in a</span>
+<span class="dtd_comment">     Java identifier.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">PropName</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- A &quot;RequestPath&quot; is an module-relative URI path, beginning with a</span>
+<span class="dtd_comment">     slash, that identifies a mapped resource (such as a JSP page or a servlet)</span>
+<span class="dtd_comment">     within this web application.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The name of a JSP bean scope within which such a form bean may be</span>
+<span class="dtd_comment">     accessed.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">RequestScope</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;(request|session)&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- ========== Top Level Elements ======================================== --&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;struts-config&quot; element is the root of the configuration file</span>
+<span class="dtd_comment">     hierarchy, and contains nested elements for all of the other</span>
+<span class="dtd_comment">     configuration settings.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">struts-config</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">display-name</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">description</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">data-sources</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">form-beans</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">global-exceptions</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">global-forwards</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">action-mappings</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">message-resources</span><span class="dtd_plain">*, </span><span class="dtd_attribute_name">plug-in</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">struts-config</span><span class="dtd_plain">  </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;data-sources&quot; element describes a set of DataSource objects [JDBC 2.0</span>
+<span class="dtd_comment">     Standard Extension]. The individual DataSource objects are configured through</span>
+<span class="dtd_comment">     nested &lt;data-source&gt; elements.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">data-sources</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">data-source</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">data-sources</span><span class="dtd_plain">   </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;data-source&quot; element describes a DataSource object [JDBC 2.0 Standard</span>
+<span class="dtd_comment">     Extension] that will be instantiated, configured, and made available as a</span>
+<span class="dtd_comment">     servlet context attribute (or &quot;application-scope bean&quot;). Any object can be</span>
+<span class="dtd_comment">     specified so long as it implements [javax.sql.DataSource] and can be</span>
+<span class="dtd_comment">     configured entirely from JavaBean properties. The following attributes</span>
+<span class="dtd_comment">     are required:</span>
+
+<span class="dtd_comment">     className       The configuration bean for this DataSource object. If</span>
+<span class="dtd_comment">                     specified, the object must be a subclass of the default</span>
+<span class="dtd_comment">                     configuration bean.</span>
+<span class="dtd_comment">                     [&quot;org.apache.struts.config.DataSourceConfig&quot;]</span>
+
+<span class="dtd_comment">     key             Servlet context attribute key under which this data source</span>
+<span class="dtd_comment">                     will be stored.  Default is the value specified by string</span>
+<span class="dtd_comment">                     constant defined by Globals.DATA_SOURCE_KEY. The application</span>
+<span class="dtd_comment">                     module prefix (if any) is appended to the key</span>
+<span class="dtd_comment">                     (${key}$prefix}).</span>
+<span class="dtd_comment">                     [org.apache.struts.Globals.DATA_SOURCE_KEY]</span>
+
+<span class="dtd_comment">                     NOTE: The application module prefix includes the leading</span>
+<span class="dtd_comment">                     slash, so the default datasource for a module named &quot;foo&quot; is</span>
+<span class="dtd_comment">                     stored under &quot;org.apache.struts.action.DATA_SOURCE/foo&quot;.</span>
+
+<span class="dtd_comment">     type          Fully qualified Java class name for this data source object.</span>
+<span class="dtd_comment">                     The class must implement DataSource [javax.sql.DataSource],</span>
+<span class="dtd_comment">                     and the object must be configurable entirely from JavaBean</span>
+<span class="dtd_comment">                     properties.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">data-source</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">data-source</span><span class="dtd_plain">    </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">data-source</span><span class="dtd_plain">    </span><span class="dtd_attribute_name">className</span><span class="dtd_plain">      %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">data-source</span><span class="dtd_plain">    </span><span class="dtd_attribute_name">key</span><span class="dtd_plain">            %</span><span class="dtd_attribute_name">AttributeName</span><span class="dtd_plain">; </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">data-source</span><span class="dtd_plain">    </span><span class="dtd_attribute_name">type</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;form-beans&quot; element describes the set of form bean descriptors for this</span>
+<span class="dtd_comment">     module. The following attributes are defined:</span>
+
+<span class="dtd_comment">     type            Fully qualified Java class to use when instantiating</span>
+<span class="dtd_comment">                     ActionFormBean objects. If specified, the object must be a</span>
+<span class="dtd_comment">                     subclass of the default class type.</span>
+
+<span class="dtd_comment">                     WARNING:  For Struts 1.0, this value is ignored.  You</span>
+<span class="dtd_comment">                     can set the default implementation class name with the</span>
+<span class="dtd_comment">                     &quot;formBean&quot; initialization parameter to the Struts</span>
+<span class="dtd_comment">                     controller servlet.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-beans</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">form-bean</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-beans</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-beans</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">type</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;form-bean&quot; element describes an ActionForm subclass</span>
+<span class="dtd_comment">     [org.apache.struts.action.ActionForm] that can be referenced by an &quot;action&quot;</span>
+<span class="dtd_comment">     element.</span>
+
+
+<span class="dtd_comment">The &quot;form-bean&quot; element describes a particular form bean, which is a</span>
+<span class="dtd_comment">     JavaBean that implements the org.apache.struts.action.ActionForm</span>
+<span class="dtd_comment">     class.  The following attributes are defined:</span>
+
+<span class="dtd_comment">     className       The configuration bean for this form bean object. If</span>
+<span class="dtd_comment">                     specified, the object must be a subclass of the default</span>
+<span class="dtd_comment">                     configuration bean.</span>
+<span class="dtd_comment">                     [&quot;org.apache.struts.config.FormBeanConfig&quot;]</span>
+
+<span class="dtd_comment">     name            The unique identifier for this form bean. Referenced by the</span>
+<span class="dtd_comment">                     &lt;action&gt; element to specify which form bean to use with its</span>
+<span class="dtd_comment">                     request.</span>
+
+<span class="dtd_comment">     type            Fully qualified Java class name of the ActionForm subclass</span>
+<span class="dtd_comment">                     to use with this form bean.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-bean</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">icon</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">display-name</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">description</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">*, </span><span class="dtd_attribute_name">form-property</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-bean</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-bean</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">className</span><span class="dtd_plain">      %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-bean</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">dynamic</span><span class="dtd_plain">        %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-bean</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">name</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">BeanName</span><span class="dtd_plain">;      </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-bean</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">type</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;form-property&quot; element describes a JavaBean property that can be used to</span>
+<span class="dtd_comment">     configure an instance of a DynaActionForm or a subclass thereof. This element</span>
+<span class="dtd_comment">     is only utilized when the &quot;type&quot; attribute of the enclosing &quot;form-bean&quot; element</span>
+<span class="dtd_comment">     is [org.apache.struts.action.DynaActionForm] or a subclass of DynaActionForm. If</span>
+<span class="dtd_comment">     a custom DynaActionForm subclass is used, then the &quot;dynamic&quot; attribute of the</span>
+<span class="dtd_comment">     enclosing &lt;form-bean&gt; element must be set to &quot;true&quot;. Since Struts 1.1.</span>
+
+<span class="dtd_comment">     className       The configuration bean for this form property object. If</span>
+<span class="dtd_comment">                     specified, the object must be a subclass of the default</span>
+<span class="dtd_comment">                     configuration bean.</span>
+<span class="dtd_comment">                     [&quot;org.apache.struts.config.FormPropertyConfig&quot;]</span>
+
+<span class="dtd_comment">     initial         String representation of the initial value for this property.</span>
+<span class="dtd_comment">                     If not specified, primitives will be initialized to zero and</span>
+<span class="dtd_comment">                     objects initialized to the zero-argument instantiation of that</span>
+<span class="dtd_comment">                     object class.  For example, Strings will be initialized to &quot;&quot;</span>
+
+
+<span class="dtd_comment">     name            The name of the JavaBean property described by this element.</span>
+
+<span class="dtd_comment">     size            The number of array elements to create if the value of the</span>
+<span class="dtd_comment">                     &quot;type&quot; attribute specifies an array, but there is no value</span>
+<span class="dtd_comment">                     specified for the &quot;initial&quot; attribute.</span>
+
+<span class="dtd_comment">     type            Fully qualified Java class name of the field underlying this</span>
+<span class="dtd_comment">                     property, optionally followed by &quot;[]&quot; to indicate that the</span>
+<span class="dtd_comment">                     field is indexed.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-property</span><span class="dtd_plain">  (</span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-property</span><span class="dtd_plain">  </span><span class="dtd_attribute_name">className</span><span class="dtd_plain">      %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-property</span><span class="dtd_plain">  </span><span class="dtd_attribute_name">initial</span><span class="dtd_plain">        </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-property</span><span class="dtd_plain">  </span><span class="dtd_attribute_name">name</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">PropName</span><span class="dtd_plain">;      </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-property</span><span class="dtd_plain">  </span><span class="dtd_attribute_name">size</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">Integer</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-property</span><span class="dtd_plain">  </span><span class="dtd_attribute_name">type</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;global-exceptions&quot; element describes a set of exceptions that might be</span>
+<span class="dtd_comment">     thrown by an Action object. The handling of individual exception types is</span>
+<span class="dtd_comment">     configured through nested exception elements. An &lt;action&gt; element may</span>
+<span class="dtd_comment">     override a global exception handler by registering a local exception handler</span>
+<span class="dtd_comment">     for the same exception type. Since Struts 1.1.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">global-exceptions</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">exception</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">global-exceptions</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">          </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;exception&quot; element registers an ExceptionHandler for an exception type.</span>
+<span class="dtd_comment">     The following attributes are defined:</span>
+
+<span class="dtd_comment">    bundle           Servlet context attribute for the message resources bundle</span>
+<span class="dtd_comment">                     associated with this handler. The default attribute is the</span>
+<span class="dtd_comment">                     value specified by the string constant declared at</span>
+<span class="dtd_comment">                     Globals.MESSAGES_KEY.</span>
+<span class="dtd_comment">                     [org.apache.struts.Globals.MESSAGES_KEY]</span>
+
+<span class="dtd_comment">    className        The configuration bean for this ExceptionHandler object.</span>
+<span class="dtd_comment">                     If specified, className must be a subclass of the default</span>
+<span class="dtd_comment">                     configuration bean</span>
+<span class="dtd_comment">                     [&quot;org.apache.struts.config.ExceptionConfig&quot;]</span>
+
+<span class="dtd_comment">    handler          Fully qualified Java class name for this exception handler.</span>
+<span class="dtd_comment">                     [&quot;org.apache.struts.action.ExceptionHandler&quot;]</span>
+
+<span class="dtd_comment">    key              The key to use with this handler's message resource bundle</span>
+<span class="dtd_comment">                     that will retrieve the error message template for this</span>
+<span class="dtd_comment">                     exception.</span>
+
+<span class="dtd_comment">    path             The module-relative URI to the resource that will complete</span>
+<span class="dtd_comment">                     the request/response if this exception occurs.</span>
+
+<span class="dtd_comment">    scope            The context (&quot;request&quot; or &quot;session&quot;) that is used to access</span>
+<span class="dtd_comment">                     the ActionError object [org.apache.struts.action.ActionError]</span>
+<span class="dtd_comment">                     for this exception.</span>
+
+<span class="dtd_comment">    type             Fully qualified Java class name of the exception type to</span>
+<span class="dtd_comment">                     register with this handler.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">exception</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">icon</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">display-name</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">description</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">exception</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">exception</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">bundle</span><span class="dtd_plain">         %</span><span class="dtd_attribute_name">AttributeName</span><span class="dtd_plain">; </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">exception</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">className</span><span class="dtd_plain">      %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">exception</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">handler</span><span class="dtd_plain">        %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">exception</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">key</span><span class="dtd_plain">            </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">exception</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">path</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain">;   </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">exception</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">scope</span><span class="dtd_plain">          </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">exception</span><span class="dtd_plain">      </span><span class="dtd_attribute_name">type</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;global-forwards&quot; element describes a set of ActionForward objects</span>
+<span class="dtd_comment">     [org.apache.struts.action.ActionForward] that are available to all Action</span>
+<span class="dtd_comment">     objects as a return value. The individual ActionForwards are configured</span>
+<span class="dtd_comment">     through nested &lt;forward&gt; elements. An &lt;action&gt; element may override a global</span>
+<span class="dtd_comment">     forward by defining a local &lt;forward&gt; of the same name.</span>
+
+<span class="dtd_comment">     type            Fully qualified Java class to use when instantiating</span>
+<span class="dtd_comment">                     ActionForward objects.  If specified, the object must be a</span>
+<span class="dtd_comment">                     subclass of the default class type.</span>
+
+<span class="dtd_comment">                     WARNING:  For Struts 1.0, this value is ignored.  You</span>
+<span class="dtd_comment">                     can set the default implementation class name with the</span>
+<span class="dtd_comment">                     &quot;forward&quot; initialization parameter to the Struts</span>
+<span class="dtd_comment">                     controller servlet.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">global-forwards</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">forward</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">global-forwards</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">            </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">global-forwards</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">type</span><span class="dtd_plain">          %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;forward&quot; element describes an ActionForward that is to be made</span>
+<span class="dtd_comment">     available to an Action as a return value. An ActionForward is referenced by</span>
+<span class="dtd_comment">     a logical name and encapsulates a URI. A &quot;forward&quot; element may be used to</span>
+<span class="dtd_comment">     describe both global and local ActionForwards. Global forwards are available</span>
+<span class="dtd_comment">     to all the Action objects in the module. Local forwards can be</span>
+<span class="dtd_comment">     nested within an &lt;action&gt; element and only available to an Action object</span>
+<span class="dtd_comment">     when it is invoked through that ActionMapping.</span>
+
+<span class="dtd_comment">     className       Fully qualified Java class name of ActionForward</span>
+<span class="dtd_comment">                     subclass to use for this object.</span>
+<span class="dtd_comment">                     [&quot;org.apache.struts.action.ActionForward&quot;]</span>
+
+<span class="dtd_comment">    contextRelative  Set this to &quot;true&quot; if, in a modular application, the path</span>
+<span class="dtd_comment">                     attribute starts with a slash &quot;/&quot; and should be considered</span>
+<span class="dtd_comment">                     relative to the entire web application rather than the module.</span>
+<span class="dtd_comment">                     Since Struts 1.1.</span>
+<span class="dtd_comment">                     DEPRECATED.</span>
+<span class="dtd_comment">                     [false]</span>
+
+<span class="dtd_comment">     module          The module prefix to use with this path. This value should</span>
+<span class="dtd_comment">                     begin with a slash (&quot;/&quot;).</span>
+
+<span class="dtd_comment">     name            The unique identifier for this forward. Referenced by the</span>
+<span class="dtd_comment">                     Action object at runtime to select - by its logical name -</span>
+<span class="dtd_comment">                     the resource that should complete the request/response.</span>
+
+<span class="dtd_comment">     path            The module-relative or context-relative path to the resources</span>
+<span class="dtd_comment">                     that is encapsulated by the logical name of this ActionForward.</span>
+<span class="dtd_comment">                     If the path is to be considered context-relative when used in</span>
+<span class="dtd_comment">                     a modular application, then the contextRelative attribute</span>
+<span class="dtd_comment">                     should be set to &quot;true&quot;. This value should begin with a slash</span>
+<span class="dtd_comment">                     (&quot;/&quot;) character.</span>
+
+<span class="dtd_comment">     redirect        Set to &quot;true&quot; if a redirect instruction should be issued to</span>
+<span class="dtd_comment">                     the user-agent so that a new request is issued for this</span>
+<span class="dtd_comment">                     forward's resource. If true,  RequestDispatcher.Redirect is</span>
+<span class="dtd_comment">                     called. If &quot;false&quot;, RequestDispatcher.forward is called instead.</span>
+<span class="dtd_comment">                     [false]</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">forward</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">icon</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">display-name</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">description</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">forward</span><span class="dtd_plain">        </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">forward</span><span class="dtd_plain">        </span><span class="dtd_attribute_name">className</span><span class="dtd_plain">      %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">forward</span><span class="dtd_plain">        </span><span class="dtd_attribute_name">contextRelative</span><span class="dtd_plain"> %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;      </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">forward</span><span class="dtd_plain">        </span><span class="dtd_attribute_name">module</span><span class="dtd_plain">         %</span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain">;   </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">forward</span><span class="dtd_plain">        </span><span class="dtd_attribute_name">name</span><span class="dtd_plain">           </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">forward</span><span class="dtd_plain">        </span><span class="dtd_attribute_name">path</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain">;   </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">forward</span><span class="dtd_plain">        </span><span class="dtd_attribute_name">redirect</span><span class="dtd_plain">       %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;action-mappings&quot; element describes a set of ActionMapping objects</span>
+<span class="dtd_comment">     [org.apache.struts.action.ActionMapping] that are available to process</span>
+<span class="dtd_comment">     requests matching the url-pattern our ActionServlet registered with the</span>
+<span class="dtd_comment">     container. The individual ActionMappings are configured through nested</span>
+<span class="dtd_comment">     &lt;action&gt; elements. The following attributes are defined:</span>
+
+<span class="dtd_comment">     type           Fully qualified Java class to use when instantiating</span>
+<span class="dtd_comment">                    ActionMapping objects. If specified, the object must be a</span>
+<span class="dtd_comment">                    subclass of the default class type.</span>
+
+<span class="dtd_comment">                    WARNING:  For Struts 1.0, this value is ignored.  You</span>
+<span class="dtd_comment">                    can set the default implementation class name with the</span>
+<span class="dtd_comment">                    &quot;mapping&quot; initialization parameter to the Struts</span>
+<span class="dtd_comment">                    controller servlet.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action-mappings</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">action</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action-mappings</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action-mappings</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">type</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;action&quot; element describes an ActionMapping object that is to be used</span>
+<span class="dtd_comment">     to process a request for a specific module-relative URI. The following</span>
+<span class="dtd_comment">     attributes are defined:</span>
+
+<span class="dtd_comment">     attribute       Name of the request-scope or session-scope attribute that</span>
+<span class="dtd_comment">                     is used to access our ActionForm bean, if it is other than</span>
+<span class="dtd_comment">                     the bean's specified &quot;name&quot;. Optional if &quot;name&quot; is specified,</span>
+<span class="dtd_comment">                     else not valid.</span>
+
+<span class="dtd_comment">     className       The fully qualified Java class name of the ActionMapping</span>
+<span class="dtd_comment">                     subclass to use for this action mapping object. Defaults to</span>
+<span class="dtd_comment">                     the type specified by the enclosing &lt;action-mappings&gt;</span>
+<span class="dtd_comment">                     element or to &quot;org.apache.struts.action.ActionMapping&quot; if</span>
+<span class="dtd_comment">                     not specified.</span>
+<span class="dtd_comment">                     [&quot;org.apache.struts.action.ActionMapping&quot;]</span>
+
+<span class="dtd_comment">     forward         Module-relative path of the servlet or other resource that</span>
+<span class="dtd_comment">                     will process this request, instead of the Action class</span>
+<span class="dtd_comment">                     specified by &quot;type&quot;.  The path WILL NOT be processed</span>
+<span class="dtd_comment">                     through the &quot;forwardPattern&quot; attribute that is configured</span>
+<span class="dtd_comment">                     on the &quot;controller&quot; element for this module.</span>
+<span class="dtd_comment">                     Exactly one of &quot;forward&quot;, &quot;include&quot;, or &quot;type&quot; must be</span>
+<span class="dtd_comment">                     specified.</span>
+
+<span class="dtd_comment">     include         Module-relative path of the servlet or other resource that</span>
+<span class="dtd_comment">                     will process this request, instead of the Action class</span>
+<span class="dtd_comment">                     specified by &quot;type&quot;.  The path WILL NOT be processed</span>
+<span class="dtd_comment">                     through the &quot;forwardPattern&quot; attribute that is configured</span>
+<span class="dtd_comment">                     on the &quot;controller&quot; element for this module.</span>
+<span class="dtd_comment">                     Exactly one of &quot;forward&quot;, &quot;include&quot;, or &quot;type&quot; must be</span>
+<span class="dtd_comment">                     specified.</span>
+
+<span class="dtd_comment">     input           Module-relative path of the action or other resource to</span>
+<span class="dtd_comment">                     which control should be returned if a validation error is</span>
+<span class="dtd_comment">                     encountered. Valid only when &quot;name&quot; is specified. Required</span>
+<span class="dtd_comment">                     if &quot;name&quot; is specified and the input bean returns</span>
+<span class="dtd_comment">                     validation errors. Optional if &quot;name&quot; is specified and the</span>
+<span class="dtd_comment">                     input bean does not return validation errors.</span>
+
+<span class="dtd_comment">     name            Name of the form bean, if any, that is associated with this</span>
+<span class="dtd_comment">                     action mapping.</span>
+
+<span class="dtd_comment">     path            The module-relative path of the submitted request, starting</span>
+<span class="dtd_comment">                     with a &quot;/&quot; character, and without the filename extension if</span>
+<span class="dtd_comment">                     extension mapping is used.</span>
+
+<span class="dtd_comment">                     NOTE:  Do *not* include a period in your path name,</span>
+<span class="dtd_comment">                     because it will look like a filename extension and</span>
+<span class="dtd_comment">                     cause your Action to not be located.</span>
+
+<span class="dtd_comment">     parameter       General-purpose configuration parameter that can be used to</span>
+<span class="dtd_comment">                     pass extra information to the Action object selected by</span>
+<span class="dtd_comment">                     this action mapping.</span>
+
+<span class="dtd_comment">     prefix          Prefix used to match request parameter names to ActionForm</span>
+<span class="dtd_comment">                     property names, if any. Optional if &quot;name&quot; is specified,</span>
+<span class="dtd_comment">                     else not allowed.</span>
+
+<span class="dtd_comment">     roles           Comma-delimited list of security role names that are allowed</span>
+<span class="dtd_comment">                     access to this ActionMapping object. Since Struts 1.1.</span>
+
+<span class="dtd_comment">     scope           The context (&quot;request&quot; or &quot;session&quot;) that is used to</span>
+<span class="dtd_comment">                     access our ActionForm bean, if any.  Optional if &quot;name&quot; is</span>
+<span class="dtd_comment">                     specified, else not valid. [session]</span>
+
+<span class="dtd_comment">     suffix          Suffix used to match request parameter names to ActionForm</span>
+<span class="dtd_comment">                     bean property names, if any. Optional if &quot;name&quot; is</span>
+<span class="dtd_comment">                     specified, else not valid.</span>
+
+<span class="dtd_comment">     type            Fully qualified Java class name of the Action subclass</span>
+<span class="dtd_comment">                     [org.apache.struts.action.Action] that will process requests</span>
+<span class="dtd_comment">                     for this action mapping. Not valid if either the &quot;forward&quot;</span>
+<span class="dtd_comment">                     or &quot;include&quot; attribute is specified.  Exactly one of</span>
+<span class="dtd_comment">                     &quot;forward&quot;, &quot;include&quot;, or &quot;type&quot; must be specified.</span>
+
+<span class="dtd_comment">     unknown         Set to &quot;true&quot; if this object should be configured as the</span>
+<span class="dtd_comment">                     default action mapping for this module. If a request does not</span>
+<span class="dtd_comment">                     match another object, it will be passed to the ActionMapping</span>
+<span class="dtd_comment">                     object with unknown set to &quot;true&quot;. Only one ActionMapping</span>
+<span class="dtd_comment">                     can be marked as &quot;unknown&quot; within a module.</span>
+<span class="dtd_comment">                     [false]</span>
+
+<span class="dtd_comment">     validate        Set to &quot;true&quot; if the validate method of the ActionForm bean</span>
+<span class="dtd_comment">                     should be called prior to calling the Action object for this</span>
+<span class="dtd_comment">                     action mapping, or set to &quot;false&quot; if you do not want the</span>
+<span class="dtd_comment">                     validate method called.</span>
+<span class="dtd_comment">                     [true]</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">icon</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">display-name</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">description</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">*, </span><span class="dtd_attribute_name">exception</span><span class="dtd_plain">*, </span><span class="dtd_attribute_name">forward</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">attribute</span><span class="dtd_plain">      %</span><span class="dtd_attribute_name">BeanName</span><span class="dtd_plain">;      </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">className</span><span class="dtd_plain">      %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">forward</span><span class="dtd_plain">        %</span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain">;   </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">include</span><span class="dtd_plain">        %</span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain">;   </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">input</span><span class="dtd_plain">          %</span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain">;   </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">name</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">BeanName</span><span class="dtd_plain">;      </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">parameter</span><span class="dtd_plain">      </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">path</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">RequestPath</span><span class="dtd_plain">;   </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">prefix</span><span class="dtd_plain">         </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">roles</span><span class="dtd_plain">          </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">scope</span><span class="dtd_plain">          %</span><span class="dtd_attribute_name">RequestScope</span><span class="dtd_plain">;  </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">suffix</span><span class="dtd_plain">         </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">type</span><span class="dtd_plain">           %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">unknown</span><span class="dtd_plain">        %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">action</span><span class="dtd_plain">         </span><span class="dtd_attribute_name">validate</span><span class="dtd_plain">       %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;controller&quot; element describes the ControllerConfig bean</span>
+<span class="dtd_comment">     [org.apache.struts.config.ControllerConfig] that encapsulates</span>
+<span class="dtd_comment">     a module's runtime configuration. The following</span>
+<span class="dtd_comment">     attributes are defined:</span>
+
+<span class="dtd_comment">     bufferSize      The size of the input buffer used when processing</span>
+<span class="dtd_comment">                     file uploads.</span>
+<span class="dtd_comment">                     [4096]</span>
+
+<span class="dtd_comment">     className       Fully qualified Java class name of the</span>
+<span class="dtd_comment">                     ControllerConfig subclass for this controller object.</span>
+<span class="dtd_comment">                     If specified, the object must be a subclass of the</span>
+<span class="dtd_comment">                     default class.</span>
+<span class="dtd_comment">                     [&quot;org.apache.struts.config.ControllerConfig&quot;]</span>
+
+<span class="dtd_comment">     contentType     Default content type (and optional character encoding) to</span>
+<span class="dtd_comment">                     be set on each response. May be overridden by the Action,</span>
+<span class="dtd_comment">                     JSP, or other resource to which the request is forwarded.</span>
+<span class="dtd_comment">                     [&quot;text/html&quot;]</span>
+
+<span class="dtd_comment">     forwardPattern  Replacement pattern defining how the &quot;path&quot; attribute of a</span>
+<span class="dtd_comment">                     &lt;forward&gt; element is mapped to a context-relative URL when</span>
+<span class="dtd_comment">                     it starts with a slash (and when the contextRelative</span>
+<span class="dtd_comment">                     property is false). This value may consist of any</span>
+<span class="dtd_comment">                     combination of the following:</span>
+<span class="dtd_comment">                     - &quot;$M&quot; - Replaced by the module prefix of this module</span>
+<span class="dtd_comment">                     - &quot;$P&quot; - Replaced by the &quot;path&quot; attribute of the  selected</span>
+<span class="dtd_comment">                     &quot;forward&quot; element</span>
+<span class="dtd_comment">                     - &quot;$$&quot; - Causes a literal dollar sign to be rendered</span>
+<span class="dtd_comment">                     - &quot;$x&quot; - (Where &quot;x&quot; is any character not defined above)</span>
+<span class="dtd_comment">                     Silently swallowed, reserved for future use</span>
+<span class="dtd_comment">                     If not specified, the default forwardPattern is &quot;$M$P&quot;,</span>
+<span class="dtd_comment">                     which is consistent with the previous behavior of</span>
+<span class="dtd_comment">                     forwards.  Since Struts 1.1.  [&quot;$M$P&quot;]</span>
+
+<span class="dtd_comment">     inputForward    Set to &quot;true&quot; if you want the &quot;input&quot; attribute of</span>
+<span class="dtd_comment">                     &lt;action&gt; elements to be the name of a local or global</span>
+<span class="dtd_comment">                     ActionForward, which will then be used to calculate the</span>
+<span class="dtd_comment">                     ultimate URL. Set to &quot;false&quot; (the default) to treat the</span>
+<span class="dtd_comment">                     &quot;input&quot; parameter of &lt;action&gt; elements as a</span>
+<span class="dtd_comment">                     module-relative path to the resource</span>
+<span class="dtd_comment">                     to be used as the input form. Since Struts 1.1.</span>
+<span class="dtd_comment">                     [false]</span>
+
+<span class="dtd_comment">     locale          Set to &quot;true&quot; if you want a Locale object stored in the</span>
+<span class="dtd_comment">                     user's session if not already present.</span>
+<span class="dtd_comment">                     [true]</span>
+
+<span class="dtd_comment">     maxFileSize     The maximum size (in bytes) of a file to be accepted as a</span>
+<span class="dtd_comment">                     file upload.  Can be expressed as a number followed by a</span>
+<span class="dtd_comment">                     &quot;K&quot;, &quot;M&quot;, or &quot;G&quot;, which are interpreted to mean kilobytes,</span>
+<span class="dtd_comment">                     megabytes, or gigabytes, respectively.</span>
+<span class="dtd_comment">                     [&quot;250M&quot;]</span>
+
+<span class="dtd_comment">     memFileSize     The maximum size (in bytes) of a file whose contents will</span>
+<span class="dtd_comment">                     be retained in memory after uploading. Files larger than</span>
+<span class="dtd_comment">                     this threshold will be written to some alternative storage</span>
+<span class="dtd_comment">                     medium, typically a hard disk. Can be expressed as a number</span>
+<span class="dtd_comment">                     followed by a &quot;K&quot;, &quot;M&quot;, or &quot;G&quot;, which are interpreted to</span>
+<span class="dtd_comment">                     mean kilobytes, megabytes, or gigabytes, respectively.</span>
+<span class="dtd_comment">                     [&quot;256K&quot;]</span>
+
+<span class="dtd_comment">     multipartClass  The fully qualified Java class name of the multipart</span>
+<span class="dtd_comment">                     request handler class to be used with this module.</span>
+<span class="dtd_comment">                     [&quot;org.apache.struts.upload.CommonsMultipartRequestHandler&quot;]</span>
+
+<span class="dtd_comment">     nocache         Set to &quot;true&quot; if you want the controller to add HTTP</span>
+<span class="dtd_comment">                     headers for defeating caching to every response from</span>
+<span class="dtd_comment">                     this module.  [false]</span>
+
+<span class="dtd_comment">     pagePattern     Replacement pattern defining how the &quot;page&quot; attribute of</span>
+<span class="dtd_comment">                     custom tags using it is mapped to a context-relative URL</span>
+<span class="dtd_comment">                     of the corresponding resource.  This value may consist of</span>
+<span class="dtd_comment">                     any combination of the following:</span>
+<span class="dtd_comment">                     - &quot;$M&quot; - Replaced by the module prefix of this module</span>
+<span class="dtd_comment">                     - &quot;$P&quot; - Replaced by the value of the &quot;page&quot; attribute</span>
+<span class="dtd_comment">                     - &quot;$$&quot; - Causes a literal dollar sign to be rendered</span>
+<span class="dtd_comment">                     - &quot;$x&quot; - (Where &quot;x&quot; is any character not defined above)</span>
+<span class="dtd_comment">                              Silently swallowed, reserved for future use</span>
+<span class="dtd_comment">                     If not specified, the default forwardPattern is</span>
+<span class="dtd_comment">                     &quot;$M$P&quot;, which is consistent with previous hard coded</span>
+<span class="dtd_comment">                     behavior of URL evaluation for &quot;page&quot; attributes.</span>
+<span class="dtd_comment">                     [&quot;$M$P&quot;]</span>
+
+<span class="dtd_comment">     processorClass  The fully qualified Java class name of the</span>
+<span class="dtd_comment">                     RequestProcessor subclass to be used with this module.</span>
+<span class="dtd_comment">                     [&quot;org.apache.struts.action.RequestProcessor&quot;]</span>
+
+<span class="dtd_comment">     tempDir         Temporary working directory to use when processing</span>
+<span class="dtd_comment">                     file uploads.</span>
+<span class="dtd_comment">                     [{Directory provided by servlet container}]</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     (</span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">bufferSize</span><span class="dtd_plain">     %</span><span class="dtd_attribute_name">Integer</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">className</span><span class="dtd_plain">      %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">contentType</span><span class="dtd_plain">    </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">forwardPattern</span><span class="dtd_plain"> </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">inputForward</span><span class="dtd_plain">   %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">locale</span><span class="dtd_plain">         %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">maxFileSize</span><span class="dtd_plain">    </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">memFileSize</span><span class="dtd_plain">    </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">multipartClass</span><span class="dtd_plain"> %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">nocache</span><span class="dtd_plain">        %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">pagePattern</span><span class="dtd_plain">    </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">processorClass</span><span class="dtd_plain"> %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">tempDir</span><span class="dtd_plain">        </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;message-resources&quot; element describes a MessageResources object with</span>
+<span class="dtd_comment">     message templates for this module. The following attributes are defined:</span>
+
+<span class="dtd_comment">     className       The configuration bean for this message resources object.</span>
+<span class="dtd_comment">                     If specified, the object must be a subclass of the default</span>
+<span class="dtd_comment">                     configuration bean.</span>
+<span class="dtd_comment">                     [&quot;org.apache.struts.config.MessageResourcesConfig&quot;]</span>
+
+<span class="dtd_comment">     factory         Fully qualified Java class name of the</span>
+<span class="dtd_comment">                     MessageResourcesFactory subclass to use for this message</span>
+<span class="dtd_comment">                     resources object.</span>
+<span class="dtd_comment">                     [&quot;org.apache.struts.util.PropertyMessageResourcesFactory&quot;]</span>
+
+<span class="dtd_comment">     key             Servlet context attribute under which this message</span>
+<span class="dtd_comment">                     resources bundle will be stored. The default attribute is</span>
+<span class="dtd_comment">                     the value specified by the string constant at</span>
+<span class="dtd_comment">                     [Globals.MESSAGES_KEY]. The module prefix (if</span>
+<span class="dtd_comment">                     any) is appended to the key (${key}${prefix}).</span>
+<span class="dtd_comment">                     [org.apache.struts.Globals.MESSAGES_KEY]</span>
+
+<span class="dtd_comment">                     NOTE: The module  prefix includes the leading</span>
+<span class="dtd_comment">                     slash, so the default message resource bundle for a module</span>
+<span class="dtd_comment">                     named &quot;foo&quot; is stored under</span>
+<span class="dtd_comment">                     &quot;org.apache.struts.action.MESSAGE/foo&quot;.</span>
+
+<span class="dtd_comment">     null            Set to &quot;true&quot; if you want our message resources to return a</span>
+<span class="dtd_comment">                     null string for unknown message keys, or &quot;false&quot; to return a</span>
+<span class="dtd_comment">                     message with the bad key value.</span>
+
+<span class="dtd_comment">     parameter       Configuration parameter to be passed to the createResources</span>
+<span class="dtd_comment">                     method of our factory object.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">message-resources</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">message-resources</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">          </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">message-resources</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">className</span><span class="dtd_plain">   %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">message-resources</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">factory</span><span class="dtd_plain">     %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">message-resources</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">key</span><span class="dtd_plain">         %</span><span class="dtd_attribute_name">AttributeName</span><span class="dtd_plain">; </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">message-resources</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">null</span><span class="dtd_plain">        %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">message-resources</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">parameter</span><span class="dtd_plain">   </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;plug-in&quot; element specifies the fully qualified class name of a</span>
+<span class="dtd_comment">     general-purpose application plug-in module that receives notification of</span>
+<span class="dtd_comment">     application startup and shutdown events. An instance of the specified class</span>
+<span class="dtd_comment">     is created for each element, and can be configured with nested &lt;set-property&gt;</span>
+<span class="dtd_comment">     elements. The following attributes are supported:</span>
+
+<span class="dtd_comment">     className       Fully qualified Java class name of the plug-in class; must</span>
+<span class="dtd_comment">                     implement [org.apache.struts.action.PlugIn].</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">plug-in</span><span class="dtd_plain">           (</span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">plug-in</span><span class="dtd_plain">           </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">          </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">plug-in</span><span class="dtd_plain">           </span><span class="dtd_attribute_name">className</span><span class="dtd_plain">   %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- ========== Subordinate Elements ====================================== --&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;description&quot; element contains descriptive (paragraph length) text</span>
+<span class="dtd_comment">     about the surrounding element, suitable for use in GUI tools.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">description</span><span class="dtd_plain">    (</span><span class="dtd_keyword">#PCDATA</span><span class="dtd_plain">)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">description</span><span class="dtd_plain">    </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;display-name&quot; element contains a short (one line) description of</span>
+<span class="dtd_comment">     the surrounding element, suitable for use in GUI tools.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">display-name</span><span class="dtd_plain"> (</span><span class="dtd_keyword">#PCDATA</span><span class="dtd_plain">)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">display-name</span><span class="dtd_plain">   </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;icon&quot; element contains a small-icon and large-icon element which</span>
+<span class="dtd_comment">     specify the location, relative to the Struts configuration file, for small</span>
+<span class="dtd_comment">     and large images used to represent the surrounding element in GUI tools.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">icon</span><span class="dtd_plain">           (</span><span class="dtd_attribute_name">small-icon</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">large-icon</span><span class="dtd_plain">?)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">icon</span><span class="dtd_plain">           </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;large-icon&quot; element specifies the location, relative to the Struts</span>
+<span class="dtd_comment">     configuration file, of a resource containing a large (32x32 pixel)</span>
+<span class="dtd_comment">     icon image.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">large-icon</span><span class="dtd_plain">     (%</span><span class="dtd_attribute_name">Location</span><span class="dtd_plain">;)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">large-icon</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;set-property&quot; element specifies the method name and initial value of</span>
+<span class="dtd_comment">     an additional JavaBean configuration property. When the object representing</span>
+<span class="dtd_comment">     the surrounding element is instantiated, the accessor for the indicated</span>
+<span class="dtd_comment">     property is called and passed the indicated value. The &quot;set-property&quot;</span>
+<span class="dtd_comment">     element is especially useful when a custom subclass is used with</span>
+<span class="dtd_comment">     &lt;data-source&gt;, &lt;forward&gt;, &lt;action&gt;, or &lt;plug-in&gt; elements. The subclass</span>
+<span class="dtd_comment">     can be passed whatever other properties may be required to configure the</span>
+<span class="dtd_comment">     object without changing how the struts-config is parsed.</span>
+
+<span class="dtd_comment">     property        Name of the JavaBeans property whose setter method</span>
+<span class="dtd_comment">                     will be called.</span>
+
+<span class="dtd_comment">     value           String representation of the value to which this</span>
+<span class="dtd_comment">                     property will be set, after suitable type conversion</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">   </span><span class="dtd_keyword">EMPTY</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">   </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">   </span><span class="dtd_attribute_name">property</span><span class="dtd_plain">       %</span><span class="dtd_attribute_name">PropName</span><span class="dtd_plain">;      </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">   </span><span class="dtd_attribute_name">value</span><span class="dtd_plain">          </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#REQUIRED</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- The &quot;small-icon&quot; element specifies the location, relative to the Struts</span>
+<span class="dtd_comment">     configuration file, of a resource containing a small (16x16 pixel)</span>
+<span class="dtd_comment">     icon image.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">small-icon</span><span class="dtd_plain">     (%</span><span class="dtd_attribute_name">Location</span><span class="dtd_plain">;)</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">small-icon</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">id</span><span class="dtd_plain">             </span><span class="dtd_keyword">ID</span><span class="dtd_plain">              </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+
+</pre>
+</body></html>

@@ -1,0 +1,994 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>html (Struts EL Tag library documentation)</title>
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="styie">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="html (Struts EL Tag library documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>html</h2>
+<hr>
+<b>Standard Syntax:</b>
+<br>
+<code>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                
+                    &lt;%@ taglib prefix="html" uri="http://struts.apache.org/tags-html-el" %&gt;<br>
+</code>
+<br>
+<b>XML Syntax:</b>
+<br>
+<code>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                
+                    &lt;anyxmlelement xmlns:html="http://struts.apache.org/tags-html-el" /&gt;<br>
+</code>
+<hr>
+        
+        This taglib contains tags used to create struts
+        input forms, as well as other tags generally useful
+                in the creation of HTML-based user interfaces.
+  Many of the tags in this tag library will throw a
+  JspException at runtime when they are utilized incorrectly
+  (such as when you specify an invalid combination of tag attributes).  JSP
+  allows you to declare an "error page" in the &lt;%@ page %&gt;
+  directive.  If you wish to process the actual exception that caused the
+  problem, it is passed to the error page as a request attribute under key
+  
+        org.apache.struts.action.EXCEPTION.<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Library Information</b></font></td>
+</tr>
+<tr>
+<td>Display Name</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Version</td><td>1.3</td>
+</tr>
+<tr>
+<td>Short Name</td><td>html</td>
+</tr>
+<tr>
+<td>URI</td><td>http://struts.apache.org/tags-html-el</td>
+</tr>
+</table>
+            &nbsp;
+            <p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Summary</b></font></td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="base.html">base</a></b></td><td>
+            
+        <p><strong>Render an HTML <code>&lt;base&gt;</code> Element</strong></p>
+        <p>Renders an HTML <code>&lt;base&gt;</code> element with an
+        <code>href</code> attribute pointing to the absolute location of
+        the enclosing JSP page.  This tag is valid only when nested inside
+        an HTML <code>&lt;head&gt;</code> element.</p>
+        <p>This tag is useful because it allows you to use relative URL
+        references in the page that are calculated based on the URL of the
+        page itself, rather than the URL to which the most recent submit
+        took place (which is where the browser would normally resolve
+        relative references against).</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="button.html">button</a></b></td><td>
+            
+            <p><strong>
+            Render A Button Input Field
+        </strong></p>
+          <p>
+                Renders an HTML <code>&lt;input&gt;</code> element of type
+                <code>button</code>, populated from the specified value or the
+                content of this tag body. This tag is only valid when nested
+                inside a form tag body.
+            </p>
+         <p>
+             If a graphical button is needed (a button with an image), then the
+             <a href="#image"><code>image</code></a> tag is more appropriate.
+            </p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="cancel.html">cancel</a></b></td><td>
+            
+          <p><strong>Render a Cancel Button</strong></p>
+          <p>
+             Renders an HTML <code>&lt;input&gt;</code> element of type submit. 
+             This tag is only valid when nested inside a form tag body.
+             Pressing of this submit button causes the action servlet to bypass 
+             calling the associated form bean validate() method. 
+             The action is called normally.
+          </p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="checkbox.html">checkbox</a></b></td><td>
+            
+            <p><strong>
+            Render A Checkbox Input Field
+        </strong></p>
+          <p>Renders an HTML <code>&lt;input&gt;</code> element of type
+                        <code>checkbox</code>, populated from the specified
+                        value or the specified property of the bean associated
+                        with our current form. This tag is only valid when
+                        nested inside a form tag body.</p>
+         <p>
+            <strong>NOTE</strong>:  The underlying property value
+            associated with this field should be of type <code>boolean</code>,
+            and any <code>value</code> you specify should correspond to one
+            of the Strings that indicate a true value ("true", "yes", or
+            "on").  If you wish to utilize a set of related String values,
+            consider using the <code>multibox</code> tag.</p>
+         <p>
+            <strong>WARNING</strong>:  In order to correctly
+                        recognize unchecked checkboxes, the
+                        <code>ActionForm</code> bean associated with this form
+                        must include a statement setting the corresponding
+                        boolean property to <code>false</code> in the
+                        <code>reset()</code> method.</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="errors.html">errors</a></b></td><td>
+            
+            <p><strong>
+                Conditionally display a set of accumulated error messages.
+                </strong></p>
+          <p>Displays a set of error messages prepared by a business
+                logic component and stored as an <code>ActionErrors</code>
+                object, a String, or a String array in any scope.  If
+                such a bean is not found, nothing will be rendered.</p>
+         <p>In order to use this tag successfully, you must have
+                defined an application scope <code>MessageResources</code>
+                bean under the default attribute name, with optional
+                definitions of message keys specified in the following
+                attributes:</p>
+         <ul>
+            <li>
+               <strong>header</strong> - Text that will be rendered
+                before the error messages list.  Typically, this message text
+                will end with <code>&lt;ul&gt;</code> to start the
+                error messages list (default "errors.header").</li>
+            <li>
+               <strong>footer</strong> - Text that will be rendered
+                after the error messages list.  Typically, this message text
+                will begin with <code>&lt;/ul&gt;</code> to end the error
+                messages list (default "errors.footer").</li>
+            <li>
+               <strong>prefix</strong> - Text that will be rendered
+                before each individual error in the list (default "errors.prefix").</li>
+            <li>
+               <strong>suffix</strong> - Text that will be rendered
+                after each individual error in the list (default "errors.suffix").</li>
+         </ul>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="file.html">file</a></b></td><td>
+            
+            <p><strong>
+            Render A File Select Input Field
+        </strong></p>
+          <p>
+                Renders an HTML <code>&lt;input&gt;</code> element of type file, defaulting to
+                the specified value or the specified property of the bean
+                associated with our current form. This tag is only valid when
+                nested inside a form tag body.
+            </p>
+         <p>
+                As with the corresponding HTML <code>&lt;input&gt;</code> element, the
+                enclosing form element must specify "POST" for the <code>method</code>
+                attribute, and "multipart/form-data" for the <code>enctype</code>
+                attribute. For example:
+            </p>
+         <pre>
+    &lt;html:form method="POST" enctype="multipart/form-data">
+        &lt;html:file property="theFile" />
+    &lt;/html:form></pre>
+         <p>
+            WARNING: In order to correctly recognize uploaded files, the ActionForm bean
+            associated with this form must include a statement setting the corresponding
+            org.apache.struts.upload.FormFile property to null in the reset() method.
+            </p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="form.html">form</a></b></td><td>
+            
+            <p><strong>
+            Define An Input Form
+        </strong></p>
+          <p>
+                Renders an HTML <code>&lt;form&gt;</code> element whose contents are described
+                by the body content of this tag. The form implicitly interacts
+                with the specified request scope or session scope bean to populate
+                the input fields with the current property values from the bean.
+            </p>
+         <p>
+                The form bean is located, and created if necessary, based on the 
+                form bean specification for the associated <code>ActionMapping</code>.
+            </p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="frame.html">frame</a></b></td><td>
+            
+            <p><strong>Render an HTML frame element</strong></p>
+          <p>Renders an HTML <code>&lt;frame&gt;</code> element
+            with processing for the <code>src</code> attribute that is
+            identical to that performed by the <code>&lt;html:link&gt;</code>
+            tag for the <code>href</code> attribute.  URL rewriting will be
+            applied automatically, to maintain session state in the
+            absence of cookies.</p>
+         <p>The base URL for this frame is calculated based on
+            which of the following attributes you specify (you must
+            specify exactly one of them):</p>
+         <ul>
+            <li>
+               <em>forward</em> - Use the value of this attribute as the
+                name of a global <code>ActionForward</code> to be looked
+                up, and use the module-relative or context-relative
+                URI found there.</li>
+            <li>
+               <em>href</em> - Use the value of this attribute unchanged.
+                </li>
+            <li>
+               <em>page</em> - Use the value of this attribute as a
+                module-relative URI, and generate a server-relative
+                URI by including the context path and application
+                prefix.</li>
+            <li>
+               <em>action</em> - Use the value of this attribute as the
+                logical name of a global Action that contains the actual 
+                content-relative URI of the destination of this transfer.</li>
+         </ul>
+         <p>Normally, the hyperlink you specify with one of the
+            attributes described in the previous paragraph will be left
+            unchanged (other than URL rewriting if necessary).  However,
+            there are two ways you can append one or more dynamically
+            defined query parameters to the hyperlink -- specify a single
+            parameter with the <code>paramId</code> attribute (and its
+            associated attributes to select the value), or specify the
+            <code>name</code> (and optional <code>property</code>)
+            attributes to select a <code>java.util.Map</code> bean that
+            contains one or more parameter ids and corresponding values.
+            </p>
+         <p>To specify a single parameter, use the <code>paramId</code>
+            attribute to define the name of the request parameter to be
+            submitted.  To specify the corresponding value, use one of the
+            following approaches:</p>
+         <ul>
+            <li>
+               <em>Specify only the <code>paramName</code> attribute</em>
+                - The named JSP bean (optionally scoped by the value of the
+                <code>paramScope</code> attribute) must identify a value
+                that can be converted to a String.</li>
+            <li>
+               <em>Specify both the <code>paramName</code> and
+                <code>paramProperty</code> attributes</em> - The specified
+                property getter method will be called on the JSP bean
+                identified by the <code>paramName</code> (and optional
+                <code>paramScope</code>) attributes, in order to select
+                a value that can be converted to a String.</li>
+         </ul>
+         <p>If you prefer to specify a <code>java.util.Map</code> that
+            contains all of the request parameters to be added to the
+            hyperlink, use one of the following techniques:</p>
+         <ul>
+            <li>
+               <em>Specify only the <code>name</code> attribute</em> -
+                The named JSP bean (optionally scoped by the value of
+                the <code>scope</code> attribute) must identify a
+                <code>java.util.Map</code> containing the parameters.</li>
+            <li>
+               <em>Specify both <code>name</code> and
+                <code>property</code> attributes</em> - The specified
+                property getter method will be called on the bean
+                identified by the <code>name</code> (and optional
+                <code>scope</code>) attributes, in order to return the
+                <code>java.util.Map</code> containing the parameters.</li>
+         </ul>
+         <p>As the <code>Map</code> is processed, the keys are assumed
+            to be the names of query parameters to be appended to the
+            hyperlink.  The value associated with each key must be either
+            a String or a String array representing the parameter value(s),
+            or an object whose toString() method will be called.
+            If a String array is specified, more than one value for the
+            same query parameter name will be created.</p>
+         <p>Additionally, you can request that the current transaction
+            control token, if any, be included in the generated hyperlink
+            by setting the <code>transaction</code> attribute to
+            <code>true</code>.
+            You can also request that an anchor ("#xxx") be added to the
+            end of the URL that is created by any of the above mechanisms,
+            by using the <code>anchor</code> attribute.</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="hidden.html">hidden</a></b></td><td>
+            
+            <p><strong>
+            Render A Hidden Field
+        </strong></p>
+          <p>
+                Renders an HTML <code>&lt;input&gt;</code> element of type hidden, populated
+                from the specified value or the specified property of the bean
+                associated with our current form. This tag is only valid when
+                nested inside a form tag body.
+            </p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="html.html">html</a></b></td><td>
+            
+            <p><strong>Render an HTML <code>&lt;html&gt;</code> Element
+            </strong></p>
+          <p>Renders an HTML <code>&lt;html&gt;</code> element with
+          language attributes extracted from the user's current Locale
+          object, if there is one.</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="image.html">image</a></b></td><td>
+            
+            <p><strong>
+                Render an input tag of type "image"
+                </strong></p>
+          <p>Renders an HTML <code>&lt;input&gt;</code> tag of type
+                "image".  The base URL for this image is calculated directly
+                based on the value specified in the <code>src</code> or
+                <code>page</code> attributes, or indirectly by looking up a
+                message resource string based on the <code>srcKey</code> or
+                <code>pageKey</code> attributes.  You <strong>must</strong>
+                specify exactly one of these attributes.</p>
+         <p>If you would like to obtain the coordinates of the mouse
+                click that submitted this request, see the information below
+                on the <code>property</code> attribute.</p>
+         <p>This tag is only valid when nested inside a form tag body.</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="img.html">img</a></b></td><td>
+            
+            <p><strong>Render an HTML img tag</strong></p>
+          <p>Renders an HTML <code>&lt;img&gt;</code> element with
+                the image at the specified URL.  Like the link tag, URL
+                rewriting will be applied automatically to the value
+                specified in <code>src</code>, <code>page</code>, or
+                <code>action</code> to maintain session state
+                in the absence of cookies.  This will allow dynamic
+                generation of an image where the content displayed for this
+                image will be taken from the attributes of this tag.</p>
+         <p>The base URL for this image is calculated directly based on
+                the value specified in <code>src</code>, <code>page</code>, or
+                <code>action</code> or <code>page</code>,
+                or indirectly by looking up a message resource string based on
+                the <code>srcKey</code> or <code>pageKey</code> attributes.
+                You <strong>must</strong> specify exactly one of these
+                attributes.</p>
+         <p>Normally, the <code>src</code>, <code>page</code>, or
+                <code>action</code> that you specify will be left
+                unchanged (other than URL rewriting if necessary).  However,
+                there are two ways you can append one or more dynamically
+                defined query parameters to the <code>src</code> URL --
+                specify a single parameter with the <code>paramId</code>
+                attribute (at its associated attributes to select the value),
+                or specify the <code>name</code> (and optional
+                <code>property</code>) attributes to select a
+                <code>java.util.Map</code> bean that contains one or more
+                parameter ids and corresponding values.</p>
+         <p>To specify a single parameter, use the <code>paramId</code>
+                attribute to define the name of the request parameter to be
+                submitted.  To specify the corresponding value, use one of the
+                following approaches:</p>
+         <ul>
+            <li>
+               <em>Specify only the <code>paramName</code> attribute</em>
+                    - The named JSP bean (optionally scoped by the value of the
+                    <code>paramScope</code> attribute) must identify a value
+                    that can be converted to a String.</li>
+            <li>
+               <em>Specify both the <code>paramName</code> and
+                    <code>paramProperty</code> attributes</em> - The specified
+                    property getter will be called on the JSP bean identified
+                    by the <code>paramName</code> (and optional
+                    <code>paramScope</code>) attributes, in order to select
+                    a value that can be converted to a String.</li>
+         </ul>
+         <p>If you prefer to specify a <code>java.util.Map</code> that
+                contains all of the request parameters to be added to the
+                hyperlink, use one of the following techniques:</p>
+         <ul>
+            <li>
+               <em>Specify only the <code>name</code> attribute</em> -
+                    The named JSP bean (optionally scoped by the value of
+                    the <code>scope</code> attribute) must identify a
+                    <code>java.util.Map</code> containing the parameters.</li>
+            <li>
+               <em>Specify both <code>name</code> and
+                    <code>property</code> attributes</em> - The specified
+                    property getter method will be called on the bean
+                    identified by the <code>name</code> (and optional
+                    <code>scope</code>) attributes, in order to return the
+                    <code>java.util.Map</code> containing the parameters.</li>
+         </ul>
+         <p>As the <code>Map</code> is processed, the keys are assumed
+                to be the names of query parameters to be appended to the
+                <code>src</code> URL.  The value associated with each key
+                must be either a String or a String array representing the
+                parameter value(s), or an object whose toString() method
+                will be called.  If a String array is specified, more than
+                one value for the same query parameter name will be
+                created.</p>
+         <p>You can specify the alternate text for this image (which
+                most browsers display as pop-up text block when the user
+                hovers the mouse over this image) either directly, through
+                the <code>alt</code> attribute, or indirectly from a message
+                resources bundle, using the <code>bundle</code> and
+                <code>altKey</code> attributes.</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="javascript.html">javascript</a></b></td><td>
+            
+            <p><strong>
+            Render JavaScript validation based on the
+            validation rules loaded by the ValidatorPlugIn.
+        </strong></p>
+          <p>
+                Render JavaScript validation based on the
+                validation rules loaded by the <code>ValidatorPlugIn</code>.
+                The set of validation rules that should be generated is based
+                on the formName attribute passed in, which should match
+                the name attribute of the form element in the xml file.
+            </p>
+         <p>
+                The dynamicJavascript and staticJavascript attributes
+                default to true, but if dynamicJavascript is set to <code>true</code>
+                and staticJavascript is set to <code>false</code> then only
+                the dynamic JavaScript will be rendered.  If dynamicJavascript
+                is set to <code>false</code>
+                and staticJavascript is set to <code>true</code> then only
+                the static JavaScript will be rendered which can then be put in
+                separate JSP page so the browser can cache the static JavaScript.
+            </p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="link.html">link</a></b></td><td>
+            
+            <p><strong>Render an HTML anchor or hyperlink</strong></p>
+          <p>Renders an HTML <code>&lt;a&gt;</code> element as an
+                anchor definition (if "linkName" is specified) or as a
+                hyperlink to the specified URL.  URL rewriting will be
+                applied automatically, to maintain session state in the
+                absence of cookies.  The content displayed for this
+                hyperlink will be taken from the body of this tag.</p>
+         <p>The base URL for this hyperlink is calculated based on
+                which of the following attributes you specify (you must
+                specify exactly one of them):</p>
+         <ul>
+            <li>
+               <em>forward</em> - Use the value of this attribute as the
+                    name of a global <code>ActionForward</code> to be looked
+                    up, and use the module-relative or context-relative
+                    URI found there. If the forward is module-relative then
+                    it must point to an action and NOT to a page.</li>
+            <li>
+               <em>action</em> - Use the value of this attribute as the
+                    name of a <code>Action</code> to be looked
+                    up, and use the module-relative or context-relative
+                    URI found there.</li>
+            <li>
+               <em>href</em> - Use the value of this attribute unchanged.
+                     </li>
+            <li>
+               <em>page</em> - Use the value of this attribute as a
+                    module-relative URI, and generate a server-relative
+                    URI by including the context path and module
+                    prefix.</li>
+         </ul>
+         <p>Normally, the hyperlink you specify with one of the
+                attributes described in the previous paragraph will be left
+                unchanged (other than URL rewriting if necessary).  However,
+                there are two ways you can append one or more dynamically
+                defined query parameters to the hyperlink -- specify a single
+                parameter with the <code>paramId</code> attribute (and its
+                associated attributes to select the value), or specify the
+                <code>name</code> (and optional <code>property</code>)
+                attributes to select a <code>java.util.Map</code> bean that
+                contains one or more parameter ids and corresponding values.
+                </p>
+         <p>To specify a single parameter, use the <code>paramId</code>
+                attribute to define the name of the request parameter to be
+                submitted.  To specify the corresponding value, use one of the
+                following approaches:</p>
+         <ul>
+            <li>
+               <em>Specify only the <code>paramName</code> attribute</em>
+                    - The named JSP bean (optionally scoped by the value of the
+                    <code>paramScope</code> attribute) must identify a value
+                    that can be converted to a String.</li>
+            <li>
+               <em>Specify both the <code>paramName</code> and
+                    <code>paramProperty</code> attributes</em> - The specified
+                    property getter method will be called on the JSP bean
+                    identified by the <code>paramName</code> (and optional
+                    <code>paramScope</code>) attributes, in order to select
+                    a value that can be converted to a String.</li>
+         </ul>
+         <p>If you prefer to specify a <code>java.util.Map</code> that
+                contains all of the request parameters to be added to the
+                hyperlink, use one of the following techniques:</p>
+         <ul>
+            <li>
+               <em>Specify only the <code>name</code> attribute</em> -
+                    The named JSP bean (optionally scoped by the value of
+                    the <code>scope</code> attribute) must identify a
+                    <code>java.util.Map</code> containing the parameters.</li>
+            <li>
+               <em>Specify both <code>name</code> and
+                    <code>property</code> attributes</em> - The specified
+                    property getter method will be called on the bean
+                    identified by the <code>name</code> (and optional
+                    <code>scope</code>) attributes, in order to return the
+                    <code>java.util.Map</code> containing the parameters.</li>
+         </ul>
+         <p>As the <code>Map</code> is processed, the keys are assumed
+                to be the names of query parameters to be appended to the
+                hyperlink.  The value associated with each key must be either
+                a String or a String array representing the parameter value(s),
+                or an object whose toString() method will be called.
+                If a String array is specified, more than one value for the
+                same query parameter name will be created.</p>
+         <p>Additionally, you can request that the current transaction
+                control token, if any, be included in the generated hyperlink
+                by setting the <code>transaction</code> attribute to
+                <code>true</code>.
+                You can also request that an anchor ("#xxx") be added to the
+                end of the URL that is created by any of the above mechanisms,
+                by using the <code>anchor</code> attribute.</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="messages.html">messages</a></b></td><td>
+            
+            <p><strong>
+                Conditionally display a set of accumulated messages.
+                </strong></p>
+          <p>Displays a set of messages prepared by a business
+                logic component and stored as an <code>ActionMessages</code>
+                object, <code>ActionErrors</code> object, a String,
+                or a String array in any scope.  If
+                such a bean is not found, nothing will be rendered.</p>
+         <p>In order to use this tag successfully, you must have
+                defined an application scope <code>MessageResources</code>
+                bean under the default attribute name.</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="multibox.html">multibox</a></b></td><td>
+            
+            <p><strong>
+            Render A Checkbox Input Field
+        </strong></p>
+          <p>Renders an HTML <code>&lt;input&gt;</code> element of type
+                        <code>checkbox</code>, whose "checked" status is
+                        initialized based on whether the specified value
+                        matches one of the elements of the underlying
+                        property's array of current values. This element is
+                        useful when you have large numbers of checkboxes, and
+                        prefer to combine the values into a single
+                        array-valued property instead of multiple boolean
+                        properties.  This tag is only valid when nested
+                        inside a form tag body.</p>
+         <p>
+            <strong>WARNING</strong>:  In order to correctly
+                        recognize cases where none of the associated checkboxes
+                        are selected, the <code>ActionForm</code> bean
+                        associated with this form must include a statement
+                        setting the corresponding array to zero length in the
+                        <code>reset()</code> method.</p>
+         <p>The value to be returned to the server, if this checkbox is
+                selected, must be defined by one of the following methods:</p>
+         <ul>
+            <li>Specify a <code>value</code> attribute, whose contents will
+                be used literally as the value to be returned.</li>
+            <li>Specify no <code>value</code> attribute, and the nested
+                body content of this tag will be used as the value to be
+                returned.</li>
+         </ul>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="option.html">option</a></b></td><td>
+            
+            <p><strong>
+                Render A Select Option
+        </strong></p>
+          <p>Render an HTML <code>&lt;option&gt;</code> element,
+                representing one of the choices for an enclosing
+                <code>&lt;select&gt;</code> element.  The text displayed to the
+                user comes from either the body of this tag, or from a message
+                string looked up based on the <code>bundle</code>,
+                <code>locale</code>, and <code>key</code> attributes.</p>
+         <p>If the value of the corresponding bean property matches the
+                specified value, this option will be marked selected.  This tag
+                is only valid when nested inside a
+                <code>&lt;html:select&gt;</code> tag body.</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="options.html">options</a></b></td><td>
+            
+            <p><strong>
+            Render a Collection of Select Options
+        </strong></p>
+          <p>Renders a set of HTML <code>&lt;option&gt;</code> elements,
+                representing possible choices for a <code>&lt;select&gt;</code>
+                element.  This tag can be used multiple times within a single
+                <code>&lt;html:select&gt;</code> element, either in conjunction
+                with or instead of one or more <code>&lt;html:option&gt;</code>
+                or <code>&lt;html:optionsCollection&gt;</code> elements.</p>
+         <p>This tag operates in one of two major modes, depending on
+                whether or not the <code>collection</code> attribute is
+                specified.  If the <code>collection</code> attribute is
+                included, the following rules apply:</p>
+         <ul>
+            <li>The <strong>collection</strong> attribute is interpreted
+                    as the name of a JSP bean, in some scope, that itself
+                    represents a collection of individual beans, one per option
+                    value to be rendered.</li>
+            <li>The <strong>property</strong> attribute is interpreted as
+                    the name of a property of the individual beans included in
+                    the collection, and is used to retrieve the value that will
+                    be returned to the server if this option is selected.</li>
+            <li>The <strong>labelProperty</strong> attribute is interpreted
+                    as the name of a property of the individual beans included
+                    in the collection, and is used to retrieve the label that
+                    will be displayed to the user for this option.  If the
+                    <code>labelProperty</code> attribute is not specified, the
+                    property named by the <code>property</code> attribute will
+                    be used to select both the value returned to the server and
+                    the label displayed to the user for this option.</li>
+         </ul>
+         <p>If the <code>collection</code> attribute is not specified,
+                the rules described in the remainder of this section apply.</p>
+         <p>The collection of values actually selected depends on the presence or
+                absence of the <code>name</code> and <code>property</code> attributes.  The
+                following combinations are allowed:</p>
+         <ul>
+            <li>
+               <em>Only <code>name</code> is specified</em> - The value of this attribute
+                    is the name of a JSP bean in some scope that is the
+                    collection.</li>
+            <li>
+               <em>Only <code>property</code> is specified</em> - The value of this
+                    attribute is the name of a property of the ActionForm bean associated
+                    with our form, which will return the collection.</li>
+            <li>
+               <em>Both <code>name</code> and <code>property</code> are specified</em> -
+                    The value of the <code>name</code> attribute identifies a JSP bean
+                    in some scope.  The value of the <code>property</code> attribute is the
+                    name of some property of that bean which will return the collection.</li>
+         </ul>
+         <p>The collection of labels displayed to the user can be the same as the
+                option values themselves, or can be different, depending on the presence or
+                absence of the <code>labelName</code> and <code>labelProperty</code>
+                attributes.  If this feature is used, the collection of labels must contain
+                the same number of elements as the corresponding collection of values.
+                The following combinations are allowed:</p>
+         <ul>
+            <li>
+               <em>Neither <code>labelName</code> nor <code>labelProperty</code> is
+                    specified</em> - The labels will be the same as the option values
+                    themselves.</li>
+            <li>
+               <em>Only <code>labelName</code> is specified</em> - The value of this
+                    attribute is the name of a JSP bean in some scope that is the
+                    collection.</li>
+            <li>
+               <em>Only <code>labelProperty</code> is specified</em> - The value of this
+                    attribute is the name of a property of the ActionForm bean associated
+                    with our form, which will return the collection.</li>
+            <li>
+               <em>Both <code>labelName</code> and <code>labelProperty</code> are
+                    specified</em> - The value of the <code>labelName</code> attribute
+                    identifies a JSP bean in some scope.  The value of the
+                    <code>labelProperty</code> attribute is the name of some property of
+                    that bean which will return the collection.</li>
+         </ul>
+         <p>Note that this tag does not support a <code>styleId</code>
+            attribute, as it would have to apply the value to all the
+            <code>option</code> elements created by this element, which would
+            mean that more than one <code>id</code> element might have the same
+            value, which the HTML specification says is illegal.</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="optionsCollection.html">optionsCollection</a></b></td><td>
+            
+            <p><strong>
+            Render a Collection of Select Options
+        </strong></p>
+          <p>Renders a set of HTML <code>&lt;option&gt;</code> elements,
+            representing possible choices for a <code>&lt;select&gt;</code>
+            element.  This tag can be used multiple times within a single
+            <code>&lt;html:select&gt;</code> element, either in conjunction
+            with or instead of one or more <code>&lt;html:option&gt;</code>
+            or <code>&lt;html:options&gt;</code> elements.</p>
+         <p>This tag operates on a collection of beans, where each bean
+            has a <strong>label</strong> property and a <strong>value</strong>
+            property. The actual names of these properties can be configured
+            using the <code>label</code> and <code>value</code> attributes
+            of this tag.</p>
+         <p>This tag differs from the <code>&lt;html:options&gt;</code> tag
+            in that it makes more consistent use of the <code>name</code> and
+            <code>property</code> attributes, and allows the collection to be
+            more easily obtained from the enclosing form bean.</p>
+         <p>Note that this tag does not support a <code>styleId</code>
+            attribute, as it would have to apply the value to all the
+            <code>option</code> elements created by this element, which would
+            mean that more than one <code>id</code> element might have the same
+            value, which the HTML specification says is illegal.</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="param.html">param</a></b></td><td>
+            
+                <p>Adds a parameter to the following tags:
+                    <ol>
+                        <li><code>&lt;html:frame&gt;</code></li>
+                        <li><code>&lt;html:link&gt;</code></li>
+                        <li><code>&lt;html:rewrite&gt;</code></li>
+                    </ol>
+                </p>
+            
+                    <dl><dt><b>Since:</b></dt>
+                    <dd>Struts 1.3.6</dd></dl>
+                
+                </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="password.html">password</a></b></td><td>
+            
+            <p><strong>
+            Render A Password Input Field
+        </strong></p>
+          
+            Renders an HTML <code>&lt;input&gt;</code> element of type password, populated
+            from the specified value or the specified property of the bean
+            associated with our current form. This tag is only valid when
+            nested inside a form tag body.
+        
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="radio.html">radio</a></b></td><td>
+            
+            <p><strong>
+            Render A Radio Button Input Field
+        </strong></p>
+          <p>
+            Renders an HTML <code>&lt;input&gt;</code> element of type radio, populated from
+            the specified property of the bean associated with our current form.
+            This tag is only valid when nested inside a form tag body.
+            </p>
+         <p>
+            If an iterator is used to render a series of radio tags, the
+            idName attribute may be used to specify the name of the bean
+            exposed by the iterator. In this case, the value attribute is
+            used as the name of a property on the idName bean that returns
+            the value of the radio tag in this iteration.
+            </p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="reset.html">reset</a></b></td><td>
+            
+            <p><strong>
+            Render A Reset Button Input Field
+        </strong></p>
+          
+            Renders an HTML <code>&lt;input&gt;</code> element of type reset.
+        
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="rewrite.html">rewrite</a></b></td><td>
+            
+            <p><strong>Render an URI</strong></p>
+          <p>Renders a request URI based on exactly the same rules
+                as the <code>
+<a href="#link">link</a>
+            </code> tag does,
+                but without creating
+                the <code>&lt;a&gt;</code> hyperlink.  This value is useful
+                when you want to generate a string constant for use by
+                a JavaScript procedure.</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="select.html">select</a></b></td><td>
+            
+            <p><strong>
+            Render A Select Element
+        </strong></p>
+          <p>Renders an HTML <code>&lt;select&gt;</code> element, associated
+                        with a bean property specified by our attributes.  This
+                        tag is only valid when nested inside a form tag body.
+                        </p>
+         <p>This tag operates in two modes, depending upon the
+                        state of the <code>multiple</code> attribute, which
+                        affects the data type of the associated property you
+                        should use:</p>
+         <ul>
+            <li>
+               <em>multiple="true" IS NOT selected</em> -
+                            The corresponding property should be a scalar
+                            value of any supported data type.</li>
+            <li>
+               <em>multiple="true" IS selected</em> -
+                            The corresponding property should be an array
+                            of any supported data type.</li>
+         </ul>
+         <p>
+            <strong>WARNING</strong>:  In order to correctly
+                        recognize cases where no selection at all is made, the
+                        <code>ActionForm</code> bean associated with this form
+                        must include a statement resetting the scalar property
+                        to a default value (if <code>multiple</code> is not
+                        set), or the array property to zero length (if
+                        <code>multiple</code> is set) in the
+                        <code>reset()</code> method.</p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="submit.html">submit</a></b></td><td>
+            
+            <p><strong>
+            Render A Submit Button
+        </strong></p>
+          
+            Renders an HTML <code>&lt;input&gt;</code> element of type <code>submit</code>
+         <p>
+             If a graphical button is needed (a button with an image), then the
+             <a href="#image"><code>image</code></a> tag is more appropriate.
+            </p>
+      
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="text.html">text</a></b></td><td>
+            
+            <p><strong>
+            Render An Input Field of Type text
+        </strong></p>
+          
+            Render an input button of type text.  This tag is only valid when nested
+                inside a form tag body.
+        
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="textarea.html">textarea</a></b></td><td>
+            
+            <p><strong>
+            Render A Textarea
+        </strong></p>
+          
+            Render a textarea element.  This tag is only valid when nested
+                inside a form tag body.
+        
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="xhtml.html">xhtml</a></b></td><td>
+            
+            <p><strong>Render HTML tags as XHTML</strong></p>
+          <p>
+            Using this tag in a page tells all other html taglib tags
+            to render themselves as XHTML 1.0.  This is useful
+            when composing pages with JSP includes or Tiles. 
+            <code>&lt;html:html xhtml="true"&gt;</code> has a similar effect.  This
+            tag has no attributes; you use it like this: 
+            <code>&lt;html:xhtml/&gt;</code>.
+          </p>
+         <p>
+            <strong>Note</strong>: Included pages do not inherit the rendering
+            style of the including page.  Each JSP fragment or Tile must use this
+            tag to render as XHTML.  
+          </p>
+      
+        </td>
+</tr>
+</table>
+              &nbsp;
+              <p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Java, JSP, and JavaServer Pages are trademarks or registered
+            trademarks of Sun Microsystems, Inc. in the US and other countries.
+            Copyright 2002-3 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved.
+            </i></small>
+</body>
+</html>

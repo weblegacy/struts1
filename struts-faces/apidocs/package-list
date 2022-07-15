@@ -1,0 +1,6 @@
+org.apache.struts.faces
+org.apache.struts.faces.application
+org.apache.struts.faces.component
+org.apache.struts.faces.renderer
+org.apache.struts.faces.taglib
+org.apache.struts.faces.util

@@ -1,0 +1,260 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>options (Struts EL Tag library documentation)</title>
+<meta name="keywords" content="options (Struts EL Tag library documentation)">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="options (Struts EL Tag library documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="options.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>
+<font size="-1">html</font>
+<br>
+            Tag options</h2>
+<hr>
+            
+            <p><strong>
+            Render a Collection of Select Options
+        </strong></p>
+          <p>Renders a set of HTML <code>&lt;option&gt;</code> elements,
+                representing possible choices for a <code>&lt;select&gt;</code>
+                element.  This tag can be used multiple times within a single
+                <code>&lt;html:select&gt;</code> element, either in conjunction
+                with or instead of one or more <code>&lt;html:option&gt;</code>
+                or <code>&lt;html:optionsCollection&gt;</code> elements.</p>
+         <p>This tag operates in one of two major modes, depending on
+                whether or not the <code>collection</code> attribute is
+                specified.  If the <code>collection</code> attribute is
+                included, the following rules apply:</p>
+         <ul>
+            <li>The <strong>collection</strong> attribute is interpreted
+                    as the name of a JSP bean, in some scope, that itself
+                    represents a collection of individual beans, one per option
+                    value to be rendered.</li>
+            <li>The <strong>property</strong> attribute is interpreted as
+                    the name of a property of the individual beans included in
+                    the collection, and is used to retrieve the value that will
+                    be returned to the server if this option is selected.</li>
+            <li>The <strong>labelProperty</strong> attribute is interpreted
+                    as the name of a property of the individual beans included
+                    in the collection, and is used to retrieve the label that
+                    will be displayed to the user for this option.  If the
+                    <code>labelProperty</code> attribute is not specified, the
+                    property named by the <code>property</code> attribute will
+                    be used to select both the value returned to the server and
+                    the label displayed to the user for this option.</li>
+         </ul>
+         <p>If the <code>collection</code> attribute is not specified,
+                the rules described in the remainder of this section apply.</p>
+         <p>The collection of values actually selected depends on the presence or
+                absence of the <code>name</code> and <code>property</code> attributes.  The
+                following combinations are allowed:</p>
+         <ul>
+            <li>
+               <em>Only <code>name</code> is specified</em> - The value of this attribute
+                    is the name of a JSP bean in some scope that is the
+                    collection.</li>
+            <li>
+               <em>Only <code>property</code> is specified</em> - The value of this
+                    attribute is the name of a property of the ActionForm bean associated
+                    with our form, which will return the collection.</li>
+            <li>
+               <em>Both <code>name</code> and <code>property</code> are specified</em> -
+                    The value of the <code>name</code> attribute identifies a JSP bean
+                    in some scope.  The value of the <code>property</code> attribute is the
+                    name of some property of that bean which will return the collection.</li>
+         </ul>
+         <p>The collection of labels displayed to the user can be the same as the
+                option values themselves, or can be different, depending on the presence or
+                absence of the <code>labelName</code> and <code>labelProperty</code>
+                attributes.  If this feature is used, the collection of labels must contain
+                the same number of elements as the corresponding collection of values.
+                The following combinations are allowed:</p>
+         <ul>
+            <li>
+               <em>Neither <code>labelName</code> nor <code>labelProperty</code> is
+                    specified</em> - The labels will be the same as the option values
+                    themselves.</li>
+            <li>
+               <em>Only <code>labelName</code> is specified</em> - The value of this
+                    attribute is the name of a JSP bean in some scope that is the
+                    collection.</li>
+            <li>
+               <em>Only <code>labelProperty</code> is specified</em> - The value of this
+                    attribute is the name of a property of the ActionForm bean associated
+                    with our form, which will return the collection.</li>
+            <li>
+               <em>Both <code>labelName</code> and <code>labelProperty</code> are
+                    specified</em> - The value of the <code>labelName</code> attribute
+                    identifies a JSP bean in some scope.  The value of the
+                    <code>labelProperty</code> attribute is the name of some property of
+                    that bean which will return the collection.</li>
+         </ul>
+         <p>Note that this tag does not support a <code>styleId</code>
+            attribute, as it would have to apply the value to all the
+            <code>option</code> elements created by this element, which would
+            mean that more than one <code>id</code> element might have the same
+            value, which the HTML specification says is illegal.</p>
+      
+        <br>
+<p></p>
+<hr>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+</tr>
+<tr>
+<td>Tag Class</td><td>org.apache.strutsel.taglib.html.ELOptionsTag</td>
+</tr>
+<tr>
+<td>TagExtraInfo Class</td><td><i>None</i></td>
+</tr>
+<tr>
+<td>Body Content</td><td>empty</td>
+</tr>
+<tr>
+<td>Display Name</td><td><i>None</i></td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+</tr>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>collection</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                Name of the JSP bean (in some scope) which is itself a
+                Collection of other beans, each of which has properties
+                named by the "property" and "labelProperty" attributes
+                that are used to retrieve the value and label for each
+                option, respectively.
+            </td>
+</tr>
+<tr valign="top">
+<td>filter</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                Set to <code>false</code>
+         
+            </td>
+</tr>
+<tr valign="top">
+<td>labelName</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                Name of the JSP bean (in some scope) containing the collection
+                of labels to
+                be displayed to the user for these options.
+            </td>
+</tr>
+<tr valign="top">
+<td>labelProperty</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                Property of the form bean, or the bean specified by the
+                labelName
+                attribute, that will return the collection of labels to be
+                displayed
+                to the user for these options.
+            </td>
+</tr>
+<tr valign="top">
+<td>name</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                Name of the JSP bean (in some scope) containing the collection
+                of
+                values to be returned to the server for these options. If not
+                specified, the form bean associated with our form is assumed.
+            </td>
+</tr>
+<tr valign="top">
+<td>property</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                Property of the form bean, or the bean specified by the name
+                attribute, that will return the collection of values to
+                returned
+                to the server for these options.
+            </td>
+</tr>
+<tr valign="top">
+<td>style</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                CSS styles to be applied to this HTML element.
+            </td>
+</tr>
+<tr valign="top">
+<td>styleClass</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                CSS stylesheet class to be applied to this HTML element
+                (renders a "class" attribute).
+            </td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Variables</b></font></td>
+</tr>
+<td colspan="2"><i>No Variables Defined.</i></td>
+</table>
+<br>
+<p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="options.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Output Generated by
+            <a href="https://weblegacy.github.io/tlddoc/" target="_blank">Tag Library Documentation Generator</a>.
+            Java, JSP, and JavaServer Pages are trademarks or
+            registered trademarks of Sun Microsystems, Inc. in the US and other
+            countries.  Copyright 2002-4 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved.
+            </i></small>
+</body>
+</html>

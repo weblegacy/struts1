@@ -1,0 +1,502 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head>
+<meta http-equiv='CONTENT-TYPE' content='text/html; charset=UTF-8' />
+<link rel='StyleSheet' href='DTDDocStyle.css' type='text/css' media='screen' />
+<title>tiles-config_1_3.dtd</title>
+</head><body>
+<p class='DTDSource'><b><code>tiles-config_1_3.dtd</code></b>: <a href='tiles-config_1_3.dtd.html'>Elements</a> - <a href='tiles-config_1_3.dtd.entities.html'>Entities</a> - <a href='tiles-config_1_3.dtd.org.html'>Source</a> | <a href='intro.html'>Intro</a> - <a href='elementsIndex.html'>Index</a><br /><a href='index.html' target='_top'>FRAMES</a>&nbsp;/&nbsp;<a href='tiles-config_1_3.dtd.html' target='_top'>NO FRAMES</a></p><h1>tiles-config_1_3.dtd</h1>
+<p>$Id$</p><p>Licensed to the Apache Software Foundation (ASF) under one or more
+contributor license agreements. See the NOTICE file distributed with
+this work for additional information regarding copyright ownership.
+The ASF licenses this file to You under the Apache License, Version 2.0
+(the "License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p><br />
+<a name='component-definitions'></a>
+<br /><table class='elementTitle' summary="component-definitions"><tr><td class='leftElementTitle'>
+&lt;component-definitions&gt;</td><td class='rightElementTitle'>
+Root element
+</td></tr></table>
+<p>deprecated: use tiles-definitions instead.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;component-definitions&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;component-definitions&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#definition'>definition</a></td><td>At least one</td></tr>
+</tbody></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#definition'>definition</a>+)</p><a name='tiles-definitions'></a>
+<br /><table class='elementTitle' summary="tiles-definitions"><tr><td class='leftElementTitle'>
+&lt;tiles-definitions&gt;</td><td class='rightElementTitle'>
+Root element
+</td></tr></table>
+<p>The "tiles-definitions" element is the root of the configuration file
+hierarchy, and contains nested elements for all of the other
+configuration settings.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;tiles-definitions&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;tiles-definitions&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#definition'>definition</a></td><td>At least one</td></tr>
+</tbody></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#definition'>definition</a>+)</p><a name='definition'></a>
+<br /><table class='elementTitle' summary="definition"><tr><td class='leftElementTitle'>
+&lt;definition&gt;</td><td class='rightElementTitle'>
+Child of <a href='#component-definitions'>component-definitions</a>, <a href='#tiles-definitions'>tiles-definitions</a>
+</td></tr></table>
+<p>The "definition" element describes a definition that can be inserted in a jsp
+page. This definition is identified by its logical name. A definition allows
+to define all the attributes that can be set in &lt;insert> tag from a jsp page.</p><p>controllerClass The fully qualified Java class name of the controller
+subclass to call immediately before the tiles is inserted.
+Only one of controllerClass or controllerUrl should be
+specified.</p><p>controllerUrl The context-relative path to the resource used as controller
+called immediately before the tiles is inserted.
+Only one of controllerClass or controllerUrl should be
+specified.</p><p>extends Name of a definition that is used as ancestor of this definition.
+All attributes from the ancestor are available to the new
+definition. Any attribute inherited from the ancestor can
+be overloaded by providing a new value.</p><p>name The unique identifier for this definition.</p><p>page Same as path.</p><p>path The context-relative path to the resource used as tiles to
+insert. This tiles will be inserted and a tiles context
+containing appropriate attributes will be available.</p><p>role Security role name that is allowed access to this definition
+object. The definition is inserted only if the role name is
+allowed.</p><p>template Same as path. For compatibility with the template tag library.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;definition&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;definition&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#description'>description</a></td><td>One or none</td></tr>
+<tr><td><a href='#display-name'>display-name</a></td><td>One or none</td></tr>
+<tr><td><a href='#icon'>icon</a></td><td>One or none</td></tr>
+<tr><td><a href='#put'>put</a></td><td>Any number</td></tr>
+<tr><td><a href='#putList'>putList</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;definition&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;definition&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#definition_controllerClass'>controllerClass</a></td><td></td><td></td></tr><tr><td><a href='#definition_controllerUrl'>controllerUrl</a></td><td></td><td></td></tr><tr><td><a href='#definition_extends'>extends</a></td><td></td><td></td></tr><tr><td><a href='#definition_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#definition_name'>name</a></td><td></td><td></td></tr><tr><td><a href='#definition_page'>page</a></td><td></td><td></td></tr><tr><td><a href='#definition_path'>path</a></td><td></td><td></td></tr><tr><td><a href='#definition_role'>role</a></td><td></td><td></td></tr><tr><td><a href='#definition_template'>template</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#icon'>icon</a>?, <a href='#display-name'>display-name</a>?, <a href='#description'>description</a>?, <a href='#put'>put</a>*, <a href='#putList'>putList</a>*)</p><a name='definition_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='definition_controllerClass'></a>
+<br /><table class='attributeTitle' summary="controllerClass"><tr><td class='leftAttributeTitle'>
+@controllerClass</td><td class='rightAttributeTitle'>
+Attribute of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='definition_controllerUrl'></a>
+<br /><table class='attributeTitle' summary="controllerUrl"><tr><td class='leftAttributeTitle'>
+@controllerUrl</td><td class='rightAttributeTitle'>
+Attribute of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='definition_extends'></a>
+<br /><table class='attributeTitle' summary="extends"><tr><td class='leftAttributeTitle'>
+@extends</td><td class='rightAttributeTitle'>
+Attribute of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='definition_name'></a>
+<br /><table class='attributeTitle' summary="name"><tr><td class='leftAttributeTitle'>
+@name</td><td class='rightAttributeTitle'>
+Attribute of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='definition_page'></a>
+<br /><table class='attributeTitle' summary="page"><tr><td class='leftAttributeTitle'>
+@page</td><td class='rightAttributeTitle'>
+Attribute of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='definition_path'></a>
+<br /><table class='attributeTitle' summary="path"><tr><td class='leftAttributeTitle'>
+@path</td><td class='rightAttributeTitle'>
+Attribute of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='definition_role'></a>
+<br /><table class='attributeTitle' summary="role"><tr><td class='leftAttributeTitle'>
+@role</td><td class='rightAttributeTitle'>
+Attribute of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='definition_template'></a>
+<br /><table class='attributeTitle' summary="template"><tr><td class='leftAttributeTitle'>
+@template</td><td class='rightAttributeTitle'>
+Attribute of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='put'></a>
+<br /><table class='elementTitle' summary="put"><tr><td class='leftElementTitle'>
+&lt;put&gt;</td><td class='rightElementTitle'>
+Child of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>The "put" element describes an attribute of a definition. It allows to
+specify the tiles attribute name and its value. The tiles value can be
+specified as an xml attribute, or in the body of the &lt;put> tag.</p><p>content Same as value. For compatibility with the template tag library.</p><p>direct Same as type="string". For compatibility with the template
+tag library.</p><p>name The unique identifier for this put.</p><p>type The type of the value. Can be: string, page, template or definition.
+By default, no type is associated to a value. If a type is
+associated, it will be used as a hint to process the value
+when the attribute will be used in the inserted tiles.</p><p>value The value associated to this tiles attribute. The value should
+be specified with this tag attribute, or in the body of the tag.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table  summary="&lt;put&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;put&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#put_content'>content</a></td><td></td><td></td></tr><tr><td><a href='#put_direct'>direct</a></td><td>true, false</td><td></td></tr><tr><td><a href='#put_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#put_name'>name</a></td><td></td><td></td></tr><tr><td><a href='#put_type'>type</a></td><td>string, page, template, definition</td><td></td></tr><tr><td><a href='#put_value'>value</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<a name='put_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#put'>put</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='put_content'></a>
+<br /><table class='attributeTitle' summary="content"><tr><td class='leftAttributeTitle'>
+@content</td><td class='rightAttributeTitle'>
+Attribute of <a href='#put'>put</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='put_direct'></a>
+<br /><table class='attributeTitle' summary="direct"><tr><td class='leftAttributeTitle'>
+@direct</td><td class='rightAttributeTitle'>
+Attribute of <a href='#put'>put</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false</p><a name='put_name'></a>
+<br /><table class='attributeTitle' summary="name"><tr><td class='leftAttributeTitle'>
+@name</td><td class='rightAttributeTitle'>
+Attribute of <a href='#put'>put</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='put_type'></a>
+<br /><table class='attributeTitle' summary="type"><tr><td class='leftAttributeTitle'>
+@type</td><td class='rightAttributeTitle'>
+Attribute of <a href='#put'>put</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: string, page, template, definition</p><a name='put_value'></a>
+<br /><table class='attributeTitle' summary="value"><tr><td class='leftAttributeTitle'>
+@value</td><td class='rightAttributeTitle'>
+Attribute of <a href='#put'>put</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='putList'></a>
+<br /><table class='elementTitle' summary="putList"><tr><td class='leftElementTitle'>
+&lt;putList&gt;</td><td class='rightElementTitle'>
+Child of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>The "putList" element describes a list attribute of a definition. It allows to
+specify an attribute that is a java List containing any kind of values. In
+the config file, the list elements are specified by nested &lt;add>, &lt;item> or
+&lt;putList>.</p><p>name The unique identifier for this put list.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;putList&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;putList&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#add'>add</a></td><td>Any number</td></tr>
+<tr><td><a href='#bean'>bean</a></td><td>Any number</td></tr>
+<tr><td><a href='#item'>item</a></td><td>Any number</td></tr>
+<tr><td><a href='#putList'>putList</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;putList&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;putList&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#putList_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#putList_name'>name</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>((<a href='#add'>add</a>* | <a href='#item'>item</a>* | <a href='#bean'>bean</a>* | <a href='#putList'>putList</a>*)+)</p><a name='putList_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#putList'>putList</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='putList_name'></a>
+<br /><table class='attributeTitle' summary="name"><tr><td class='leftAttributeTitle'>
+@name</td><td class='rightAttributeTitle'>
+Attribute of <a href='#putList'>putList</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='add'></a>
+<br /><table class='elementTitle' summary="add"><tr><td class='leftElementTitle'>
+&lt;add&gt;</td><td class='rightElementTitle'>
+Child of <a href='#putList'>putList</a>
+</td></tr></table>
+<p>The "add" element describes an element of a list. It is similar to the
+&lt;put> element.</p><p>content Same as value. For compatibility with the template tag library.</p><p>direct Same as type="string". For compatibility with the template
+tag library.</p><p>type The type of the value. Can be: string, page, template or definition.
+By default, no type is associated to a value. If a type is
+associated, it will be used as a hint to process the value
+when the attribute will be used in the inserted tiles.</p><p>value The value associated to this tiles attribute. The value should
+be specified with this tag attribute, or in the body of the tag.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table  summary="&lt;add&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;add&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#add_content'>content</a></td><td></td><td></td></tr><tr><td><a href='#add_direct'>direct</a></td><td>true, false</td><td></td></tr><tr><td><a href='#add_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#add_type'>type</a></td><td>string, page, template, definition</td><td></td></tr><tr><td><a href='#add_value'>value</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<a name='add_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#add'>add</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='add_content'></a>
+<br /><table class='attributeTitle' summary="content"><tr><td class='leftAttributeTitle'>
+@content</td><td class='rightAttributeTitle'>
+Attribute of <a href='#add'>add</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='add_direct'></a>
+<br /><table class='attributeTitle' summary="direct"><tr><td class='leftAttributeTitle'>
+@direct</td><td class='rightAttributeTitle'>
+Attribute of <a href='#add'>add</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false</p><a name='add_type'></a>
+<br /><table class='attributeTitle' summary="type"><tr><td class='leftAttributeTitle'>
+@type</td><td class='rightAttributeTitle'>
+Attribute of <a href='#add'>add</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: string, page, template, definition</p><a name='add_value'></a>
+<br /><table class='attributeTitle' summary="value"><tr><td class='leftAttributeTitle'>
+@value</td><td class='rightAttributeTitle'>
+Attribute of <a href='#add'>add</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='bean'></a>
+<br /><table class='elementTitle' summary="bean"><tr><td class='leftElementTitle'>
+&lt;bean&gt;</td><td class='rightElementTitle'>
+Child of <a href='#putList'>putList</a>
+</td></tr></table>
+<p>The "bean" element describes an element of a list. It create a bean of the
+specified java classtype. This bean is initialized with appropriate nested
+&lt;set-property>.</p><p>classtype The fully qualified classname for this bean.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;bean&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;bean&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#set-property'>set-property</a></td><td>Any number</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;bean&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;bean&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#bean_classtype'>classtype</a></td><td></td><td></td></tr><tr><td><a href='#bean_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#set-property'>set-property</a>*)</p><a name='bean_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#bean'>bean</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='bean_classtype'></a>
+<br /><table class='attributeTitle' summary="classtype"><tr><td class='leftAttributeTitle'>
+@classtype</td><td class='rightAttributeTitle'>
+Attribute of <a href='#bean'>bean</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='set-property'></a>
+<br /><table class='elementTitle' summary="set-property"><tr><td class='leftElementTitle'>
+&lt;set-property/&gt;</td><td class='rightElementTitle'>
+Child of <a href='#bean'>bean</a>
+</td></tr></table>
+<p>The "set-property" element specifies the method name and initial value of
+a bean property. When the object representing
+the surrounding element is instantiated, the accessor for the indicated
+property is called and passed the indicated value.</p><p>property Name of the JavaBeans property whose setter method
+will be called.</p><p>value String representation of the value to which this
+property will be set, after suitable type conversion</p><blockquote>
+<table  summary="&lt;set-property&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;set-property&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#set-property_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#set-property_property'>property</a></td><td></td><td></td></tr><tr><td><a href='#set-property_value'>value</a></td><td></td><td></td></tr></table></blockquote>
+<p class='emptyTagNote'>This element is always empty.</p><a name='set-property_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#set-property'>set-property</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='set-property_property'></a>
+<br /><table class='attributeTitle' summary="property"><tr><td class='leftAttributeTitle'>
+@property</td><td class='rightAttributeTitle'>
+Attribute of <a href='#set-property'>set-property</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='set-property_value'></a>
+<br /><table class='attributeTitle' summary="value"><tr><td class='leftAttributeTitle'>
+@value</td><td class='rightAttributeTitle'>
+Attribute of <a href='#set-property'>set-property</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='item'></a>
+<br /><table class='elementTitle' summary="item"><tr><td class='leftElementTitle'>
+&lt;item&gt;</td><td class='rightElementTitle'>
+Child of <a href='#putList'>putList</a>
+</td></tr></table>
+<p>The "item" element describes an element of a list. It create a bean added as
+element to the list. Each bean can contain different properties: value, link,
+icon, tooltip. These properties are to be interpreted by the jsp page using
+them.
+By default the bean is of type
+"org.apache.struts.tiles.beans.SimpleMenuItem". This bean is useful to
+create a list of beans used as menu items.</p><p>classtype The fully qualified classtype for this bean.
+If specified, the classtype must be a subclass of the interface
+"org.apache.struts.tiles.beans.MenuItem".</p><p>icon The bean 'icon' property.</p><p>link The bean 'link' property.</p><p>tooltip The bean 'tooltip' property.</p><p>value The bean 'value' property.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table  summary="&lt;item&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;item&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#item_classtype'>classtype</a></td><td></td><td></td></tr><tr><td><a href='#item_icon'>icon</a></td><td></td><td></td></tr><tr><td><a href='#item_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#item_link'>link</a></td><td></td><td></td></tr><tr><td><a href='#item_tooltip'>tooltip</a></td><td></td><td></td></tr><tr><td><a href='#item_value'>value</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<a name='item_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#item'>item</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='item_classtype'></a>
+<br /><table class='attributeTitle' summary="classtype"><tr><td class='leftAttributeTitle'>
+@classtype</td><td class='rightAttributeTitle'>
+Attribute of <a href='#item'>item</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='item_icon'></a>
+<br /><table class='attributeTitle' summary="icon"><tr><td class='leftAttributeTitle'>
+@icon</td><td class='rightAttributeTitle'>
+Attribute of <a href='#item'>item</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='item_link'></a>
+<br /><table class='attributeTitle' summary="link"><tr><td class='leftAttributeTitle'>
+@link</td><td class='rightAttributeTitle'>
+Attribute of <a href='#item'>item</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='item_tooltip'></a>
+<br /><table class='attributeTitle' summary="tooltip"><tr><td class='leftAttributeTitle'>
+@tooltip</td><td class='rightAttributeTitle'>
+Attribute of <a href='#item'>item</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='item_value'></a>
+<br /><table class='attributeTitle' summary="value"><tr><td class='leftAttributeTitle'>
+@value</td><td class='rightAttributeTitle'>
+Attribute of <a href='#item'>item</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='description'></a>
+<br /><table class='elementTitle' summary="description"><tr><td class='leftElementTitle'>
+&lt;description&gt;</td><td class='rightElementTitle'>
+Child of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>The "description" element contains descriptive (paragraph length) text
+about the surrounding element, suitable for use in GUI tools.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table  summary="&lt;description&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;description&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#description_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<a name='description_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#description'>description</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='display-name'></a>
+<br /><table class='elementTitle' summary="display-name"><tr><td class='leftElementTitle'>
+&lt;display-name&gt;</td><td class='rightElementTitle'>
+Child of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>The "display-name" element contains a short (one line) description of
+the surrounding element, suitable for use in GUI tools.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table  summary="&lt;display-name&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;display-name&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#display-name_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<a name='display-name_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#display-name'>display-name</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='icon'></a>
+<br /><table class='elementTitle' summary="icon"><tr><td class='leftElementTitle'>
+&lt;icon&gt;</td><td class='rightElementTitle'>
+Child of <a href='#definition'>definition</a>
+</td></tr></table>
+<p>The "icon" element contains a small-icon and large-icon element which
+specify the location, relative to the Struts configuration file, for small
+and large images used to represent the surrounding element in GUI tools.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table summary="&lt;icon&gt;'s children">
+<thead>
+<tr><th class='title' colspan='2'>&lt;icon&gt;'s children</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+<tr><th class='subtitle'>Name</th><th class='subtitle'>Cardinality</th></tr>
+<tr><th colspan='2' height='1' class='ruler'></th></tr>
+</thead>
+<tbody><tr><td><a href='#large-icon'>large-icon</a></td><td>One or none</td></tr>
+<tr><td><a href='#small-icon'>small-icon</a></td><td>One or none</td></tr>
+</tbody></table></td><td class='construct'><table  summary="&lt;icon&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;icon&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#icon_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#small-icon'>small-icon</a>?, <a href='#large-icon'>large-icon</a>?)</p><a name='icon_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#icon'>icon</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='large-icon'></a>
+<br /><table class='elementTitle' summary="large-icon"><tr><td class='leftElementTitle'>
+&lt;large-icon&gt;</td><td class='rightElementTitle'>
+Child of <a href='#icon'>icon</a>
+</td></tr></table>
+<p>The "large-icon" element specifies the location, relative to the Struts
+configuration file, of a resource containing a large (32x32 pixel)
+icon image.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table  summary="&lt;large-icon&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;large-icon&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#large-icon_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<a name='large-icon_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#large-icon'>large-icon</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='small-icon'></a>
+<br /><table class='elementTitle' summary="small-icon"><tr><td class='leftElementTitle'>
+&lt;small-icon&gt;</td><td class='rightElementTitle'>
+Child of <a href='#icon'>icon</a>
+</td></tr></table>
+<p>The "small-icon" element specifies the location, relative to the Struts
+configuration file, of a resource containing a small (16x16 pixel)
+icon image.</p><blockquote><table summary='element info'><tr>
+<td class='construct'><table  summary="&lt;small-icon&gt;'s attributes"><tr>
+<th class='title' colspan='3'>&lt;small-icon&gt;'s attributes</th>
+</tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr>
+<th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
+<tr><th colspan='3' height='1' class='ruler'></th></tr>
+<tr><td><a href='#small-icon_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr></table></td></tr></table></blockquote>
+<a name='small-icon_id'></a>
+<br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
+@id</td><td class='rightAttributeTitle'>
+Attribute of <a href='#small-icon'>small-icon</a>
+</td></tr></table>
+<p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p></body></html>

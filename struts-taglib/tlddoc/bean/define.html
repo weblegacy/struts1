@@ -1,0 +1,257 @@
+<html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>define (Struts Taglib Tag library documentation)</title>
+<meta name="keywords" content="define (Struts Taglib Tag library documentation)">
+<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+</head>
+<script>
+            function asd()
+            {
+            parent.document.title="define (Struts Taglib Tag library documentation)";
+            }
+          </script>
+<body bgcolor="white" onload="asd();">
+<a name="navbar_top"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="define.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<h2>
+<font size="-1">bean</font>
+<br>
+            Tag define</h2>
+<hr>
+            
+            <p><strong>
+    Define a scripting variable based on the value(s) of the specified
+    bean property.
+    </strong></p>
+          
+    <p>Create a new attribute (in the scope specified by the
+    <code>toScope</code> property, if any), and a corresponding scripting
+    variable, both of which are named by the value of the <code>id</code>
+    attribute.  The corresponding value to which this new attribute (and
+    scripting variable) is set are specified via use of exactly one of the
+    following approaches (trying to use more than one will result in a
+    JspException being thrown):</p>
+    <ul>
+    <li>Specify a <code>name</code> attribute (plus optional
+        <code>property</code> and <code>scope</code> attributes) -
+        The created attribute and scripting variable will be of the type of the
+        retrieved JavaBean property, unless it is a Java primitive type,
+        in which case it will be wrapped in the appropriate wrapper class
+        (i.e. int is wrapped by java.lang.Integer).</li>
+    <li>Specify a <code>value</code> attribute - The created attribute and
+        scripting variable will be of type <code>java.lang.String</code>,
+        set to the value of this attribute.</li>
+    <li>Specify nested body content - The created attribute and scripting
+        variable will be of type <code>java.lang.String</code>, set to
+        the value of the nested body content.</li>
+    </ul>
+
+    <p>If a problem occurs while retrieving the specified bean property, a
+    request time exception will be thrown.</p>
+
+    <p>The <code>&lt;bean:define&gt;</code> tag differs from
+    <code>&lt;jsp:useBean&gt;</code> in several ways, including:</p>
+    <ul>
+    <li>Unconditionally creates (or replaces) a bean under the
+        specified identifier.</li>
+    <li>Can create a bean with the value returned by a property getter
+        of a different bean (including properties referenced with a
+        nested and/or indexed property name).</li>
+    <li>Can create a bean whose contents is a literal string (or the result
+        of a runtime expression) specified by the <code>value</code>
+        attribute.</li>
+    <li>Does not support nested content (such as
+        <code>&lt;jsp:setProperty&gt;</code> tags) that are only executed
+        if a bean was actually created.</li>
+    </ul>
+
+    <p><strong>USAGE NOTE</strong> - There is a restriction in the JSP 1.1
+    Specification that disallows using the same value for an <code>id</code>
+    attribute more than once in a single JSP page.  Therefore, you will not
+    be able to use <code>&lt;bean:define&gt;</code> for the same bean
+    name more than once in a single page.</p>
+
+    <p><strong>USAGE NOTE</strong> - If you use another tag to create the
+    body content (e.g. bean:write), that tag must return a non-empty String.
+    An empty String equates to an empty body or a null String, and a new
+    scripting variable cannot be defined as null. Your bean must return a
+    non-empty String, or the define tag must be wrapped within a logic tag
+    to test for an empty or null value.</p>
+
+    <p><strong>USAGE NOTE</strong> - You cannot use bean:define to <strong>instantiate</strong>
+    a DynaActionForm (type="org.apache.struts.action.DynaActionForm") with
+    the properties specified in the struts-config. The mechanics of creating
+    the dyna-properties is complex and cannot be handled by a no-argument
+    constructor. If you need to create an ActionForm this way, you must use
+    a conventional ActionForm.
+    </p>
+
+    <p>See the Bean Developer's Guide section on
+    <a href="../apidocs/org/apache/struts/taglib/bean/package-summary.html#doc.Creation">
+    bean creation</a> for more information about these differences, as well
+    as alternative approaches to introducing beans into a JSP page.</p>
+    
+        <br>
+<p></p>
+<hr>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+</tr>
+<tr>
+<td>Tag Class</td><td>org.apache.struts.taglib.bean.DefineTag</td>
+</tr>
+<tr>
+<td>TagExtraInfo Class</td><td>org.apache.struts.taglib.bean.DefineTei</td>
+</tr>
+<tr>
+<td>Body Content</td><td>JSP</td>
+</tr>
+<tr>
+<td>Display Name</td><td><i>None</i></td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+</tr>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>id</td><td>true</td><td>false</td><td><code>java.lang.String</code></td><td>
+                
+      <p>Specifies the name of the scripting variable (and associated page
+      scope attribute) that will be made available with the value of the
+      specified property.</p>
+      
+            </td>
+</tr>
+<tr valign="top">
+<td>name</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+      <p>Specifies the attribute name of the bean whose property is accessed
+      to define a new page scope attribute (if <code>property</code> is also
+      specified) or the attribute name of the bean that is duplicated with
+      the new reference created by this tag (if <code>property</code> is not
+      also specified).  This attribute is required unless you specify
+      a <code>value</code> attribute or nested body content.</p>
+      
+            </td>
+</tr>
+<tr valign="top">
+<td>property</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+      <p>Specifies the name of the property to be accessed on the bean
+      specified by <code>name</code>.  This value may be a simple, indexed,
+      or nested property reference expression.  If not specified, the bean
+      identified by <code>name</code> is given a new reference identified by
+      <code>id</code>.</p>
+      
+            </td>
+</tr>
+<tr valign="top">
+<td>scope</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+      <p>Specifies the variable scope searched to retrieve the bean specified
+      by <code>name</code>.  If not specified, the default rules applied by
+      <code>PageContext.findAttribute()</code> are applied.</p>
+      
+            </td>
+</tr>
+<tr valign="top">
+<td>toScope</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+      <p>Specifies the variable scope into which the newly defined bean will
+      be created.  If not specified, the bean will be created in
+      <code>page</code> scope.</p>
+      
+            </td>
+</tr>
+<tr valign="top">
+<td>type</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+        <p>Specifies the fully qualified class name of the value to be exposed
+        as the <code>id</code> attribute.</p>
+      
+            </td>
+</tr>
+<tr valign="top">
+<td>value</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+      <p>The <code>java.lang.String</code> value to which the exposed bean
+      should be set.  This attribute is required unless you specify the
+      <code>name</code> attribute or nested body content.</p>
+      
+            </td>
+</tr>
+</table>
+<br>
+<p></p>
+<table border="1" cellpadding="3" cellspacing="0" width="100%">
+<tr bgcolor="#CCCCFF" class="TableHeadingColor">
+<td colspan="5"><font size="+2"><b>Variables</b></font></td>
+</tr>
+<td colspan="2"><i>No Variables Defined.</i></td>
+</table>
+<br>
+<p></p>
+<a name="navbar_bottom"></a>
+<table border="0" width="100%" cellpadding="1" cellspacing="0">
+<tr>
+<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+<tr ALIGN="center" VALIGN="top">
+<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+</tr>
+</table>
+</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+</tr>
+<tr>
+<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+                &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
+                &nbsp;<a href="define.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
+                <script></script>
+<noscript>
+<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+</noscript>
+</font></td>
+</tr>
+</table>
+<hr>
+<small><i>
+            Output Generated by
+            <a href="https://weblegacy.github.io/tlddoc/" target="_blank">Tag Library Documentation Generator</a>.
+            Java, JSP, and JavaServer Pages are trademarks or
+            registered trademarks of Sun Microsystems, Inc. in the US and other
+            countries.  Copyright 2002-4 Sun Microsystems, Inc.
+            4150 Network Circle
+            Santa Clara, CA 95054, U.S.A.
+            All Rights Reserved.
+            </i></small>
+</body>
+</html>

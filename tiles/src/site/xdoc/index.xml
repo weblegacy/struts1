@@ -51,20 +51,20 @@
              Screen definitions
              <ul>
                 <li>Create a screen by assembling
-                   <strong><em>Tiles</em></strong> : header, footer,
+                   <strong><em>Tiles</em></strong>: header, footer,
                    menu, body, etc.
                 </li>
                 <li>
-                   Definitions can take place : 
+                   Definitions can take place:
                    <ul>
                       <li>in a centralized XML file</li>
                       <li>directly in JSP pages</li>
-                      <li>programatically in Actions</li>
+                      <li>programmatically in Actions</li>
                    </ul>
                 </li>
                 <li>
                    Definitions provide an inheritance
-                   mechanism : a definition can extend another one,
+                   mechanism: a definition can extend another one,
                    and override parameters.
                 </li>
              </ul>

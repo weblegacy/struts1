@@ -456,7 +456,7 @@
                     ]
                 </p>
                 <ul>
-                    <li>2003-08-09 - Add two new elements &lt;description-short%gt;
+                    <li>2003-08-09 - Add two new elements &lt;description-short&gt;
                         and &lt;description-long&gt; for use by struts config
                         file tools and document generation.</li>
                 </ul>

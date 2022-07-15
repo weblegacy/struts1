@@ -51,6 +51,9 @@
             <item   name="Struts Apps"
                     href="../struts-apps/index.html" />
 
+            <item   name="Struts Core"
+                    href="../struts-core/index.html" />
+
             <item   name="Struts EL"
                     href="../struts-el/index.html" />
 

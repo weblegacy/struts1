@@ -1,5 +1,6 @@
 # 1.3.11 / YYYY-MM-DD
 
+* Add `Struts-Core`-site-doc-files
 * New body-links in `site.xml`-files
 * Use own images in site-doc-files
 * Correct some URLs in site-doc-files

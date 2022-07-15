@@ -19,7 +19,7 @@
 -->
 <project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd"
-  name="Struts Tiles">
+  name="Struts Core">
     <bannerLeft>
         <name>Apache Software Foundation</name>
         <src>../images/asf-logo.png</src>
@@ -35,13 +35,8 @@
             <item name="Apache" href="https://www.apache.org/" />
             <item name="Struts" href="https://struts.apache.org/index.html" />
         </links>
-        <menu name="Struts Tiles">
-            <item href="index.html" name="Welcome"/>
-            <item href="faq.html" name="FAQ"/>
-            <item href="installation.html" name="Installation"/>
-            <item href="userGuide.html" name="User Guide"/>
-            <item href="examples.html" name="Creating Templates"/>
-            <item href="tagreference.html" name="Taglib Reference"/>    
+        <menu name="Struts Core">
+            <item name="Welcome" href="index.html"/>
         </menu>
         
         <menu name="Components">
@@ -71,7 +66,7 @@
                     href="../struts-tiles/index.html" />
 
         </menu>
- 
+        
         <menu name="Quick Links">
             <item
                     name="Javadoc"
@@ -80,6 +75,7 @@
                     name="Struts 1"
                     href="../index.html"/>
         </menu>
-        <menu ref="reports"/>
+ 
+       <menu ref="reports"/>
     </body>
 </project>

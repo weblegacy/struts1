@@ -16,6 +16,8 @@ Is a clone of <https://github.com/apache/struts1.git> - STRUTS_1_3_BRANCH, aimin
 
 Full [CHANGELOG](CHANGELOG.md)
 
+For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.github.io/struts1)
+
 ## Building Strus1 - Reloaded
 
 ### Prerequesits

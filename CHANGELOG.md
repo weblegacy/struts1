@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Add link to site-documentation into `README.md`
 * Add `maven-scm-publish-plugin` to deploy site-documentation
 * Delete `.htaccess` in `userGuide`
 * Remove parent-POM

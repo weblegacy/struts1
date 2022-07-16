@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Add `maven-scm-publish-plugin` to deploy site-documentation
 * Delete `.htaccess` in `userGuide`
 * Remove parent-POM
 * Correct SCM-addresses, url's, organization and distribution management

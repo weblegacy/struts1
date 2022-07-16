@@ -77,12 +77,18 @@ Full [CHANGELOG](CHANGELOG.md)
        * `safari` - Safari
 4. Generate source- and javadoc-artifacts  
    `mvn -Papps,pre-assembly -DskipTests package`
-5. Generate documentation  
+5. Generate site-documentation  
    `mvn -Papps -DskipTests site`  
    or  
    `mvn -Papps -DskipTests clean site site:stage`
-6. Generate Assemblies  
+6. Publish site-documentation  
+   1. `mvn -Papps -DskipTests clean site site:stage`
+   2. `mvn scm-publish:publish-scm`
+7. Generate Assemblies  
    `mvn -Papps,assembly -DskipTests package`
+8. Deploy all artifacts to `Central-Repo`  
+   * `mvn clean deploy` for SNAPSHOTs
+   * `mvn -Prelease clean deploy` for releases
 
 ### Support runs
 

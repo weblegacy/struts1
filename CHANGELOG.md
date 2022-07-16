@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Delete `.htaccess` in `userGuide`
 * Remove parent-POM
 * Correct SCM-addresses, url's, organization and distribution management
 * Correct title of `Struts Mailreader DAO`

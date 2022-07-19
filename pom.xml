@@ -613,7 +613,7 @@
                 <plugin>
                     <groupId>io.github.weblegacy</groupId>
                     <artifactId>taglib-maven-plugin</artifactId>
-                    <version>2.6-SNAPSHOT</version>
+                    <version>2.6</version>
                     <configuration>
                         <parseHtml>true</parseHtml>
                     </configuration>

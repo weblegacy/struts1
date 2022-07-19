@@ -2,6 +2,7 @@
 
 ## 1.3.11 / YYYY-MM-DD
 
+* Bump `taglib-maven-plugin` from 2.6-SNAPSHOT to 2.6
 * Correct `README.md` for deployment
 * Add link to site-documentation into `README.md`
 * Add `maven-scm-publish-plugin` to deploy site-documentation

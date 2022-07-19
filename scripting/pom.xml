@@ -84,16 +84,6 @@
           <artifactId>maven-changes-plugin</artifactId>
           <executions>
             <execution>
-              <id>check-changes</id>
-              <phase>verify</phase>
-              <goals>
-                <goal>changes-check</goal>
-              </goals>
-              <configuration>
-                <skipSnapshots>true</skipSnapshots>
-              </configuration>
-            </execution>
-            <execution>
               <id>validate-changes</id>
               <phase>pre-site</phase>
               <goals>

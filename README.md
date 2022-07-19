@@ -90,7 +90,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
    `mvn -Papps,assembly -DskipTests package`
 8. Deploy all artifacts to `Central-Repo`  
    * `mvn clean deploy` for SNAPSHOTs
-   * `mvn -Prelease clean deploy` for releases
+   * `mvn -Ppre-assembly,release clean deploy` for releases
 
 ### Support runs
 

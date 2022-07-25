@@ -27,6 +27,9 @@ import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.chain.contexts.ActionContext;
+import org.apache.struts.chain.contexts.ServletActionContext;
+import org.apache.struts.dispatcher.Dispatcher;
 import org.apache.struts.util.MessageResources;
 
 import javax.servlet.ServletException;
@@ -87,7 +90,7 @@ import java.util.HashMap;
  * @version $Rev$ $Date$
  * @since Struts 1.2.7
  */
-public class ActionDispatcher {
+public class ActionDispatcher implements Dispatcher {
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -497,4 +500,14 @@ public class ActionDispatcher {
     protected boolean isCancelled(HttpServletRequest request) {
         return (request.getAttribute(Globals.CANCEL_KEY) != null);
     }
+    
+    /**
+     * @since Struts 1.4
+     */
+    public Object dispatch(ActionContext context) throws Exception {
+        ServletActionContext servletContext = (ServletActionContext) context;
+        return execute((ActionMapping) context.getActionConfig(), context.getActionForm(),
+            servletContext.getRequest(), servletContext.getResponse());
+    }
+
 }

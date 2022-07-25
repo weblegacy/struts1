@@ -104,7 +104,7 @@
 
              processActionCreate     CreateAction
 
-             processActionPerform    ExecuteAction
+             processActionPerform    ExecuteAction / ExecuteDispatcher
         -->
 
 
@@ -191,11 +191,13 @@
         <command
                 className="org.apache.struts.chain.commands.servlet.PerformInclude"/>
 
-
         <!-- Create (if needed) the Action for this request -->
         <command
                 className="org.apache.struts.chain.commands.servlet.CreateAction"/>
 
+        <!-- Dispatch the request -->
+        <command
+                className="org.apache.struts.chain.commands.ExecuteDispatcher"/>
 
         <!-- Execute the Action for this request -->
         <command

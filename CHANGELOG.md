@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* STR-3168: Add dispatching support to Controller and Action configuration
 * Set Version to 1.4.0-SNAPSHOT
 
 ## 1.3.11 / 2022-07-19

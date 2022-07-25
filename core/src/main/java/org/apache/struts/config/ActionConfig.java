@@ -39,6 +39,7 @@ import java.util.HashMap;
  * @since Struts 1.1
  */
 public class ActionConfig extends BaseConfig {
+
     private static final Log log = LogFactory.getLog(ActionConfig.class);
 
     // ----------------------------------------------------- Instance Variables
@@ -228,6 +229,14 @@ public class ActionConfig extends BaseConfig {
      * @since Struts 1.3.0
      */
     protected String catalog = null;
+
+    /**
+     * The name of the {@link org.apache.struts.dispatcher.Dispatcher} implementation
+     * that will dispatch to the end point of this action.
+     * 
+     * @since Struts 1.4
+     */
+    protected String dispatcher;
 
     /**
      * <p>The internal name of this action mapping. If an action has a name, it may be used
@@ -751,6 +760,36 @@ public class ActionConfig extends BaseConfig {
         this.catalog = catalog;
     }
 
+    /**
+     * Retrieves the fully-qualified class name of the 
+     * {@link org.apache.struts.dispatcher.Dispatcher} implementation that will 
+     * dispatch to the this action.
+     *  
+     * @return the dispatcher class name or <code>null</code>
+     * @see #setDispatcher(String)
+     * @since Struts 1.4
+     */
+    public final String getDispatcher() {
+        return dispatcher;
+    }
+
+    /**
+     * Stores the fully-qualified class name of the 
+     * {@link org.apache.struts.dispatcher.Dispatcher} implementation that will 
+     * dispatch to the this action.
+     * 
+     * @param dispatcher the dispatcher class name
+     * @throws IllegalStateException if the configuration is frozen 
+     * @see #getDispatcher()
+     * @since Struts 1.4
+     */
+    public final void setDispatcher(String dispatcher) {
+        if (configured) {
+            throw new IllegalStateException("Configuration is frozen");
+        }
+        this.dispatcher = dispatcher;
+    }
+
     // ------------------------------------------------------ Protected Methods
 
     /**
@@ -1223,9 +1262,9 @@ public class ActionConfig extends BaseConfig {
             sb.append(command);
         }
 
-        if (inherit != null) {
-            sb.append(",extends=");
-            sb.append(inherit);
+        if (dispatcher != null) {
+            sb.append(",dispatcher=");
+            sb.append(dispatcher);
         }
 
         if (forward != null) {
@@ -1236,6 +1275,11 @@ public class ActionConfig extends BaseConfig {
         if (include != null) {
             sb.append(",include=");
             sb.append(include);
+        }
+
+        if (inherit != null) {
+            sb.append(",extends=");
+            sb.append(inherit);
         }
 
         if (input != null) {
@@ -1286,4 +1330,5 @@ public class ActionConfig extends BaseConfig {
         sb.append("]");
         return (sb.toString());
     }
+
 }

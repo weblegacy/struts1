@@ -25,6 +25,7 @@ import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
+import org.apache.struts.action.ActionRedirect;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionServlet;
@@ -481,6 +482,26 @@ public class RequestUtils {
                 // in fact an ActionForm.
                 ((ActionForm) bean).setMultipartRequestHandler(multipartHandler);
             }
+        }
+    }
+
+    /**
+     * <p>Populates the parameters of the specified ActionRedirect from 
+     * the specified HTTP request.</p>
+     *
+     * @param redirect The ActionRedirect whose parameters are to be set
+     * @param request The HTTP request whose parameters are to be used
+     * @since Struts 1.4
+     */
+    public static void populate(ActionRedirect redirect, HttpServletRequest request) {
+        assert (redirect != null) : "redirect is required";
+        assert (request != null) : "request is required";
+
+        Enumeration e = request.getParameterNames();
+        while (e.hasMoreElements()) {
+            String name = (String) e.nextElement();
+            String[] values = request.getParameterValues(name);
+            redirect.addParameter(name, values);
         }
     }
 
@@ -1114,5 +1135,39 @@ public class RequestUtils {
             log.debug(originalPath + " unaliased to " + actionIdPath.toString());
         }
         return actionIdPath.toString();
+    }
+
+    /**
+     * Determines whether the current request is forwarded.
+     * 
+     * @param request current HTTP request 
+     * @return true if the request is forwarded; otherwise false
+     * @since Struts 1.4
+     */
+    public static boolean isRequestForwarded(HttpServletRequest request) {
+        return (request.getAttribute("javax.servlet.forward.request_uri") != null);
+    }
+    
+    /**
+     * Determines whether the current request is included.
+     * 
+     * @param request current HTTP request 
+     * @return true if the request is included; otherwise false
+     * @since Struts 1.4
+     */
+    public static boolean isRequestIncluded(HttpServletRequest request) {
+        return (request.getAttribute("javax.servlet.include.request_uri") != null);
+    }
+    
+    /**
+     * Verifies whether current request is forwarded from one action to
+     * another or not.
+     * 
+     * @param request current HTTP request 
+     * @return true if the request is chained; otherwise false
+     * @since Struts 1.4
+     */
+    public static boolean isRequestChained(HttpServletRequest request) {
+        return (request.getAttribute(Globals.CHAIN_KEY) != null);
     }
 }

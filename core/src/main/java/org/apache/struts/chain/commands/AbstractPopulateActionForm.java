@@ -20,6 +20,8 @@
  */
 package org.apache.struts.chain.commands;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.chain.contexts.ActionContext;
@@ -34,6 +36,9 @@ import java.util.Map;
  *          $
  */
 public abstract class AbstractPopulateActionForm extends ActionCommandBase {
+
+    private static final Log log = LogFactory.getLog(AbstractPopulateActionForm.class);
+
     // ---------------------------------------------------------- Public Methods
 
     /**
@@ -45,26 +50,61 @@ public abstract class AbstractPopulateActionForm extends ActionCommandBase {
      */
     public boolean execute(ActionContext actionCtx)
         throws Exception {
-        // Is there a form bean for this request?
+
+        ActionConfig actionConfig = actionCtx.getActionConfig();
         ActionForm actionForm = actionCtx.getActionForm();
 
+        // First determine if the request was cancelled
+        handleCancel(actionCtx, actionConfig, actionForm);
+
+        // Is there a form bean for this request?
         if (actionForm == null) {
             return (false);
         }
 
-        // Reset the form bean property values
-        ActionConfig actionConfig = actionCtx.getActionConfig();
+        // Reset the form bean only if configured so
+        if (isReset(actionCtx, actionConfig)) {
+            if (log.isDebugEnabled()) {
+                log.debug("Reseting form bean '" + actionConfig.getName() + "'");
+            }
+            reset(actionCtx, actionConfig, actionForm);
+        }
 
-        reset(actionCtx, actionConfig, actionForm);
-
-        populate(actionCtx, actionConfig, actionForm);
-
-        handleCancel(actionCtx, actionConfig, actionForm);
+        // Populate the form bean only if configured so
+        if (isPopulate(actionCtx, actionConfig)) {
+            if (log.isDebugEnabled()) {
+                log.debug("Populating form bean '" + actionConfig.getName() + "'");
+            }
+            populate(actionCtx, actionConfig, actionForm);
+        }
 
         return CONTINUE_PROCESSING;
     }
 
     // ------------------------------------------------------- Protected Methods
+
+    /**
+     * Determines whether an action form should be reset
+     *
+     * @param request current HTTP request
+     * @param actionConfig action config for current request
+     * @return true if action form should be reset
+     *
+     * @since Struts 1.4
+     */
+    protected abstract boolean isReset(ActionContext context,
+            ActionConfig actionConfig);
+
+    /**
+     * Determines whether an action form should be populated.
+     *
+     * @param context      the ActionContext we are processing
+     * @param actionConfig action config for current request
+     * @return true if action form should be populated
+     * @since Struts 1.4
+     */
+    protected abstract boolean isPopulate(ActionContext context,
+            ActionConfig actionConfig);
 
     /**
      * <p>Call the <code>reset()</code> method on the specified form

@@ -179,6 +179,21 @@ public class ActionConfig extends BaseConfig {
     protected String scope = "session";
 
     /**
+     * <p>Identifies conditions for automatic form reset.</p>
+     */
+    protected String reset = PopulateEvent.ALL;
+
+    private String[] resetNames = { PopulateEvent.ALL };
+    
+    /**
+     * <p> Identifies conditions for automatic form population with values
+     * from HTTP request.</p>
+     */
+    protected String populate = PopulateEvent.ALL;
+
+    private String[] populateNames = { PopulateEvent.ALL };
+
+    /**
      * <p> Suffix used to match request parameter names to form bean property
      * names, if any. </p>
      */
@@ -632,6 +647,86 @@ public class ActionConfig extends BaseConfig {
         }
 
         this.scope = scope;
+    }
+
+    /**
+     * <p> Gets the comma-delimiated list of events that specify when this
+     * action should be reset. </p>
+     *
+     * @since Struts 1.4
+     * @see #getResetNames()
+     * @see #setReset(String)
+     */
+    public final String getReset() {
+        return (this.reset);
+    }
+
+    /**
+     * <p> Gets the array of events names that specify when this
+     * action should be reset. </p>
+     * 
+     * @since Struts 1.4
+     * @see #getReset()
+     * @see PopulateEvent
+     */
+    public final String[] getResetNames() {
+        return (this.resetNames);
+    }
+
+    /**
+     * @param reset the comma-delimited list of reset events
+     *
+     * @since Struts 1.4
+     * @see #getReset()
+     * @see #getResetNames()
+     */
+    public final void setReset(String reset) {
+        if (configured) {
+            throw new IllegalStateException("Configuration is frozen");
+        }
+
+        this.reset = reset;
+        this.resetNames = reset.split(",");
+    }
+
+    /**
+     * <p> Gets the comma-delimiated list of events that specify when this
+     * action should be populated. </p>
+     *
+     * @since Struts 1.4
+     * @see #getPopulateNames()
+     * @see #setPopulate(String)
+     */
+    public final String getPopulate() {
+        return (this.populate);
+    }
+    
+    /**
+     * <p> Gets the array of events names that specify when this
+     * action should be populated. </p>
+     * 
+     * @since Struts 1.4
+     * @see #getPopulate()
+     * @see PopulateEvent
+     */
+    public final String[] getPopulateNames() {
+        return (this.populateNames);
+    }
+
+    /**
+     * @param populate the comma-delimited list of populate events
+     *
+     * @since Struts 1.4
+     * @see #getPopulate()
+     * @see #getPopulateNames()
+     */
+    public final void setPopulate(String populate) {
+        if (configured) {
+            throw new IllegalStateException("Configuration is frozen");
+        }
+
+        this.populate = populate;
+        this.populateNames = populate.split(",");
     }
 
     /**
@@ -1315,6 +1410,16 @@ public class ActionConfig extends BaseConfig {
         if (scope != null) {
             sb.append(",scope=");
             sb.append(scope);
+        }
+
+        if (reset != null) {
+            sb.append(",reset=");
+            sb.append(reset);
+        }
+
+        if (populate != null) {
+            sb.append(",populate=");
+            sb.append(populate);
         }
 
         if (suffix != null) {

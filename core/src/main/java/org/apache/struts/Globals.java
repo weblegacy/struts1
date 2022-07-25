@@ -49,6 +49,13 @@ public class Globals implements Serializable {
     public static final String CANCEL_KEY = "org.apache.struts.action.CANCEL";
 
     /**
+     * The request attributes key under which chaining flag is stored.
+     *
+     * @since Struts 1.4
+     */
+    public static final String CHAIN_KEY = "org.apache.struts.action.CHAIN";
+
+    /**
      * <p>The base of the context attributes key under which our
      * <code>ModuleConfig</code> data structure will be stored.  This will be
      * suffixed with the actual module prefix (including the leading "/"
@@ -188,6 +195,15 @@ public class Globals implements Serializable {
      * @since Struts 1.1
      */
     public static final String XHTML_KEY = "org.apache.struts.globals.XHTML";
+
+    /**
+     * The request attributes key under which XHTML version is stored.  The 
+     * version is stored as a {@link java.math.BigDecimal}. The attribute
+     * has no effect if {@link #XHTML_KEY} is not set.
+     *
+     * @since Struts 1.4
+     */
+    public static final String XHTML_VERSION_KEY = "org.apache.struts.globals.XHTML_VERSION";
 
     /**
      * The name of the taglib package.

@@ -52,7 +52,9 @@ public class XmlParser
         "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN",
         "/org/apache/struts/resources/tiles-config_1_1.dtd",
         "-//Apache Software Foundation//DTD Tiles Configuration 1.3//EN",
-        "/org/apache/struts/resources/tiles-config_1_3.dtd"
+        "/org/apache/struts/resources/tiles-config_1_3.dtd",
+        "-//Apache Software Foundation//DTD Tiles Configuration 1.4//EN",
+        "/org/apache/struts/resources/tiles-config_1_4.dtd"
     };
 
      /**

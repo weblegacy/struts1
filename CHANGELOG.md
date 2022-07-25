@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* STR-3004: Update missing 1.4 DTD
 * STR-2986: Build Struts 1 - Tiles 2 integration
 * STR-3004: Create 1.4 DTD
 * STR-286 and STR-1116: ActionForm populate and reset strategy

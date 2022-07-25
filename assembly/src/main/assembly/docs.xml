@@ -107,6 +107,10 @@
      <directory>../tiles/target/site</directory>
      <outputDirectory>docs/struts-tiles</outputDirectory>
    </fileSet>
+   <fileSet>
+     <directory>../tiles2/target/site</directory>
+     <outputDirectory>docs/struts-tiles2</outputDirectory>
+   </fileSet>
    
   </fileSets>
 </assembly>

@@ -213,5 +213,13 @@
         <include>src/</include>
       </includes>
    </fileSet>
+   <fileSet>
+     <directory>../tiles2</directory>
+     <outputDirectory>src/tiles2</outputDirectory>
+     <includes>
+        <include>pom.xml</include>
+        <include>src/</include>
+      </includes>
+   </fileSet>
   </fileSets>
 </assembly>

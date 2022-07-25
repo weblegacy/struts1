@@ -28,6 +28,20 @@
     <dependencySet>
       <outputDirectory>lib</outputDirectory>
       <scope>runtime</scope>
+      <excludes>
+        <exclude>org.apache.tiles:tiles-api</exclude>
+        <exclude>org.apache.tiles:tiles-core</exclude>
+        <exclude>org.apache.tiles:tiles-jsp</exclude>
+      </excludes>
+    </dependencySet>
+    <dependencySet>
+      <outputFileNameMapping>${project.artifactId}-${project.version}-j4.${extension}</outputFileNameMapping>
+      <outputDirectory>lib</outputDirectory>
+      <includes>
+        <include>org.apache.tiles:tiles-api:jar:j4</include>
+        <include>org.apache.tiles:tiles-core:jar:j4</include>
+        <include>org.apache.tiles:tiles-jsp:jar:j4</include>
+      </includes>
       <useProjectArtifact>false</useProjectArtifact>
     </dependencySet>
   </dependencySets>

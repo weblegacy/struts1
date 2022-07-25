@@ -473,6 +473,7 @@
         <module>scripting</module>
         <module>taglib</module>
         <module>tiles</module>
+        <module>tiles2</module>
     </modules>
 
     <licenses>
@@ -838,6 +839,11 @@
                         <artifactId>portlet-api</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>2.1</version>
             </dependency>
             <dependency>
                 <groupId>commons-digester</groupId>

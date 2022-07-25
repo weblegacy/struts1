@@ -1,6 +1,8 @@
 # Changes
 
 ## 1.4.0 // YYYY-DD-MM
+
+* STR-3004: Create 1.4 DTD
 * STR-286 and STR-1116: ActionForm populate and reset strategy
 * STR-3168: Add dispatching support to Controller and Action configuration
 * Set Version to 1.4.0-SNAPSHOT

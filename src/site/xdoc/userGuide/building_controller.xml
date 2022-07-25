@@ -1881,8 +1881,8 @@ public ActionForward execute(ActionMapping mapping,
                     The format of this document is described by the Document
                     Type Definition
                     (DTD) maintained at
-                    <a href="../dtds/struts-config_1_3.dtd">
-                        http://struts.apache.org/dtds/struts-config_1_3.dtd.</a>
+                    <a href="../dtds/struts-config_1_4.dtd">
+                        http://struts.apache.org/dtds/struts-config_1_4.dtd.</a>
                     This chapter covers the configuration elements that you
                     will typically
                     write as part of developing your application.
@@ -2043,9 +2043,9 @@ public ActionForward execute(ActionMapping mapping,
                     For a complete description of the elements that can be
                     used with the
                     action element, see the
-                    <a href="../dtds/struts-config_1_3.dtd">
+                    <a href="../dtds/struts-config_1_4.dtd">
                         configuration DTD</a> or the online
-                    <a href="../struts-core/dtddoc/struts-config_1_3.dtd.html">DTDDoc</a>
+                    <a href="../struts-core/dtddoc/struts-config_1_4.dtd.html">DTDDoc</a>
                     docs, and the
                     <a href="../apidocs/org/apache/struts/action/ActionMapping.html">
                         ActionMapping documentation.</a>

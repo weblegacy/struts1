@@ -110,7 +110,7 @@
                     different modules in the same web application to be
                     configured differently.
                     For full details on available parameters see the
-                    <a href="../struts-core/dtddoc/struts-config_1_3.dtd.html">
+                    <a href="../struts-core/dtddoc/struts-config_1_4.dtd.html">
                         struts-config DTDDoc</a>
                     or the list below.
                 </p>

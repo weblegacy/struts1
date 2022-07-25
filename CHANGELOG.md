@@ -1,5 +1,9 @@
 # Changes
 
+## 1.4.0 // YYYY-DD-MM
+
+* Set Version to 1.4.0-SNAPSHOT
+
 ## 1.3.11 / 2022-07-19
 
 * Remove check-changes during verify-phase

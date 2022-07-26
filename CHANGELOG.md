@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* STR-3052: ImgTag missing actionId support
 * STR-1922: Add message parameter XML-escaping to <html:messages>
 * STR-2072: [taglib] html:option etal need title attribute
 * STR-1175: No inheritance of html:html xhtml="true" in included tiles

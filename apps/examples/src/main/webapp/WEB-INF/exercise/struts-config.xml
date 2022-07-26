@@ -66,10 +66,9 @@
         <action path="/html-img" forward="/html-img.jsp"/>
         <!-- :FIXME: ImageAction should compute module prefix -->
         <action path="/html-img-action"
+                actionId="imgAction"
                 type="org.apache.struts.webapp.exercise.ImageAction"
-                parameter="/exercise/struts-power.gif">
-            <set-property property="actionId" value="imgAction"/>
-        </action>
+                parameter="/exercise/struts-power.gif"/>
         <action path="/html-image" forward="/html-image.jsp"
                 name="testbean" scope="session" validate="false"/>
         <action path="/html-link" forward="/html-link.jsp"/>

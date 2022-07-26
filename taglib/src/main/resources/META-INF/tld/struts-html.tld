@@ -5009,6 +5009,29 @@
             </description>
         </attribute>
         <attribute>
+            <name>filterArgs</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                By default no filtering to escape XML characters like &quot;&lt;&quot;
+                occurs on the replacement values going into the message pattern.
+                If this attribute is set to 'true', the replacement values will 
+                be filtered, while the text of the message pattern itself will 
+                be left intact. This can be useful if you have markup in your 
+                message patterns which you want to keep, but would like to 
+                filter the replacement values going into them, e.g. if they 
+                reflect user input. For instance:
+        
+                <pre>errors.divideZero=The mathematical expression 
+                &lt;strong&gt;{0}&lt;/strong&gt; caused a divide by zero.</pre>
+                
+                <dl><dt><b>Since:</b></dt>
+                <dd>Struts 1.4</dd></dl>
+                ]]>
+            </description>
+        </attribute>
+        <attribute>
             <name>locale</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>

@@ -52,6 +52,12 @@ public class ELMessagesTag extends MessagesTag {
     private String bundleExpr;
 
     /**
+     * Instance variable mapped to "filterArgs" tag attribute. (Mapping set in
+     * associated BeanInfo class.)
+     */
+    private String filterArgsExpr;
+
+    /**
      * Instance variable mapped to "locale" tag attribute. (Mapping set in
      * associated BeanInfo class.)
      */
@@ -101,6 +107,14 @@ public class ELMessagesTag extends MessagesTag {
      */
     public String getBundleExpr() {
         return (bundleExpr);
+    }
+
+    /**
+     * Getter method for "filterArgs" tag attribute. (Mapping set in associated
+     * BeanInfo class.)
+     */
+    public String getFilterArgsExpr() {
+        return (filterArgsExpr);
     }
 
     /**
@@ -168,6 +182,14 @@ public class ELMessagesTag extends MessagesTag {
     }
 
     /**
+     * Setter method for "filterArgs" tag attribute. (Mapping set in associated
+     * BeanInfo class.)
+     */
+    public void setFilterArgsExpr(String filterArgsExpr) {
+        this.filterArgsExpr = filterArgsExpr;
+    }
+
+    /**
      * Setter method for "locale" tag attribute. (Mapping set in associated
      * BeanInfo class.)
      */
@@ -222,6 +244,7 @@ public class ELMessagesTag extends MessagesTag {
         super.release();
         setIdExpr(null);
         setBundleExpr(null);
+        setFilterArgsExpr(null);
         setLocaleExpr(null);
         setNameExpr(null);
         setPropertyExpr(null);
@@ -250,6 +273,7 @@ public class ELMessagesTag extends MessagesTag {
     private void evaluateExpressions()
         throws JspException {
         String string = null;
+        Boolean bool = null;
 
         if ((string =
                 EvalHelper.evalString("id", getIdExpr(), this, pageContext)) != null) {
@@ -260,6 +284,12 @@ public class ELMessagesTag extends MessagesTag {
                 EvalHelper.evalString("bundle", getBundleExpr(), this,
                     pageContext)) != null) {
             setBundle(string);
+        }
+
+        if ((bool =
+                EvalHelper.evalBoolean("filterArgs", getFilterArgsExpr(), this,
+                    pageContext)) != null) {
+            setFilterArgs(bool.booleanValue());
         }
 
         if ((string =

@@ -49,6 +49,12 @@ public class ELMessagesTagBeanInfo extends SimpleBeanInfo {
         }
 
         try {
+            proplist.add(new PropertyDescriptor("filterArgs", ELMessagesTag.class,
+                    null, "setFilterArgsExpr"));
+        } catch (IntrospectionException ex) {
+        }
+
+        try {
             proplist.add(new PropertyDescriptor("locale", ELMessagesTag.class,
                     null, "setLocaleExpr"));
         } catch (IntrospectionException ex) {

@@ -103,6 +103,12 @@ public class MessagesTag extends BodyTagSupport {
      */
     protected String message = null;
 
+    /**
+     * Filter the message replacement values for characters that are 
+     * sensitive in HTML? Default is <code>false</code>.
+     */
+    protected boolean filterArgs = false;
+
     public String getId() {
         return (this.id);
     }
@@ -165,6 +171,14 @@ public class MessagesTag extends BodyTagSupport {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public boolean getFilterArgs() {
+        return (this.filterArgs);
+    }
+
+    public void setFilterArgs(boolean filterArgs) {
+        this.filterArgs = filterArgs;
     }
 
     /**
@@ -256,8 +270,13 @@ public class MessagesTag extends BodyTagSupport {
         String msg = null;
 
         if (report.isResource()) {
+            Object[] values = report.getValues();
+            if (filterArgs) {
+                values = filterMessageReplacementValues(values);
+            }
+
             msg = TagUtils.getInstance().message(pageContext, bundle, locale,
-                    report.getKey(), report.getValues());
+                    report.getKey(), values);
 
             if (msg == null) {
                 String bundleName = (bundle == null) ? "default" : bundle;
@@ -274,6 +293,30 @@ public class MessagesTag extends BodyTagSupport {
         } else {
             pageContext.setAttribute(id, msg);
         }
+    }
+
+    /**
+     * Performs filtering on the elements of specified Array.
+     * Filtering is only performed on elements which are instances of
+     * <code>String</code>.
+     *
+     * @param values The message values to be filtered
+     */
+    private Object[] filterMessageReplacementValues(Object[] values) {
+       if (values == null) {
+           return (null);
+       }
+
+       Object[] filteredArgs = new Object[values.length];
+       for (int i = 0; i < values.length; ++i) {
+           if (values[i] instanceof String) {
+               filteredArgs[i] = TagUtils.getInstance().filter((String) values[i]);     
+           } else {
+               filteredArgs[i] = values[i]; 
+           }
+       }
+
+       return filteredArgs;
     }
 
     /**
@@ -310,5 +353,6 @@ public class MessagesTag extends BodyTagSupport {
         header = null;
         footer = null;
         message = null;
+        filterArgs = false;
     }
 }

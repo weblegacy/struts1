@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Replace invalid UTF-8 code with space
 * Correct typo in `html-link.jsp`
 * STR-2986: Add `Tiles2`-dependency to `assembly`-POM
 * Correct some links in site-documentation

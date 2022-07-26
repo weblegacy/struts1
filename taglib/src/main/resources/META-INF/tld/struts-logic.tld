@@ -1096,6 +1096,23 @@
       ]]>
             </description>
         </attribute>
+        <attribute>
+            <name>count</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                Specifies the name of the page-scoped attribute to set 
+                with the message count. This is useful, for instance, when 
+                needing to total the number of messages or errors produced 
+                by a form submission. The attribute goes out of scope after 
+                the tag executes.
+
+                <dl><dt><b>Since:</b></dt>
+                <dd>Struts 1.4</dd></dl>
+                ]]>
+            </description>
+        </attribute>
     </tag>
     <tag>
         <name>notEmpty</name>

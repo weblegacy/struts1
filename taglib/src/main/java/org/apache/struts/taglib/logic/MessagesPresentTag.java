@@ -39,11 +39,18 @@ import java.util.Iterator;
  * @since Struts 1.1
  */
 public class MessagesPresentTag extends ConditionalTagBase {
+
     /**
      * If this is set to 'true', then the <code>Globals.MESSAGE_KEY</code>
      * will be used to retrieve the messages from scope.
      */
     protected String message = null;
+
+    /**
+     * The name of the page-scoped attribute to be populated
+     * with the message count of the specifie dproperty.
+     */
+    protected String count;
 
     public MessagesPresentTag() {
         name = Globals.ERROR_KEY;
@@ -55,6 +62,14 @@ public class MessagesPresentTag extends ConditionalTagBase {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
+    
+    public String getCount() {
+        return count;
     }
 
     /**
@@ -94,9 +109,30 @@ public class MessagesPresentTag extends ConditionalTagBase {
             throw e;
         }
 
-        Iterator iterator = (property == null) ? am.get() : am.get(property);
+        // Acquire the collection of messages
+        Iterator iterator;
+        int size;
+        if (property == null) {
+            iterator = am.get();
+            size = am.size();
+        } else {
+            iterator = am.get(property); 
+            size = am.size(property);
+        }
+
+        // Expose the count when specified
+        if (count != null) {
+            pageContext.setAttribute(count, new Integer(size));
+        }
 
         return (iterator.hasNext() == desired);
+    }
+
+    public int doEndTag() throws JspException {
+        if (count != null) {
+            pageContext.removeAttribute(count);
+        }
+        return super.doEndTag();
     }
 
     /**
@@ -106,5 +142,6 @@ public class MessagesPresentTag extends ConditionalTagBase {
         super.release();
         name = Globals.ERROR_KEY;
         message = null;
+        count = null;
     }
 }

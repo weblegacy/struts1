@@ -104,6 +104,12 @@ public class MessagesTag extends BodyTagSupport {
     protected String message = null;
 
     /**
+     * The name of the page-scoped attribute to be populated
+     * with the message count of the specifie dproperty.
+     */
+    protected String count;
+
+    /**
      * Filter the message replacement values for characters that are 
      * sensitive in HTML? Default is <code>false</code>.
      */
@@ -181,6 +187,14 @@ public class MessagesTag extends BodyTagSupport {
         this.filterArgs = filterArgs;
     }
 
+    public void setCount(String count) {
+        this.count = count;
+    }
+
+    public String getCount() {
+        return count;
+    }
+
     /**
      * Construct an iterator for the specified collection, and begin looping
      * through the body once per element.
@@ -210,8 +224,19 @@ public class MessagesTag extends BodyTagSupport {
         }
 
         // Acquire the collection we are going to iterate over
-        this.iterator =
-            (property == null) ? messages.get() : messages.get(property);
+        int size;
+        if (property == null) {
+            this.iterator = messages.get();
+            size = messages.size();
+        } else {
+            this.iterator = messages.get(property);
+            size = messages.size(property);
+        }
+
+        // Expose the count when specified
+        if (count != null) {
+            pageContext.setAttribute(count, new Integer(size));
+        }
 
         // Store the first value and evaluate, or skip the body if none
         if (!this.iterator.hasNext()) {
@@ -335,6 +360,10 @@ public class MessagesTag extends BodyTagSupport {
             }
         }
 
+        if (count != null) {
+            pageContext.removeAttribute(count);
+        }
+
         return EVAL_PAGE;
     }
 
@@ -354,5 +383,6 @@ public class MessagesTag extends BodyTagSupport {
         footer = null;
         message = null;
         filterArgs = false;
+        count = null;
     }
 }

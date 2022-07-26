@@ -25,6 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -32,6 +33,8 @@ import java.util.Map;
 import javax.servlet.ServletException;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.action.PlugIn;
 import org.apache.struts.config.ModuleConfig;
@@ -51,6 +54,11 @@ public class TestTilesPlugin extends TestMockBase {
   protected ModuleConfig module1;
   protected ModuleConfig module2;
   protected MockActionServlet actionServlet;
+
+  /**
+   * The logging object.
+   */
+  private static final Log LOG = LogFactory.getLog(TestTilesPlugin.class);
 
     // ----------------------------------------------------- Setup and Teardown
 
@@ -109,31 +117,29 @@ public class TestTilesPlugin extends TestMockBase {
     /**
      * Fake call to init module plugins
      * @param moduleConfig
+     * @throws ServletException If something goes wrong during initialization.
+     * @throws InvocationTargetException Bean properties problems.
+     * @throws InstantiationException Bean properties problems.
+     * @throws IllegalAccessException Bean properties problems.
+     * @throws ClassNotFoundException Bean properties problems.
      */
   public void initModulePlugIns( ModuleConfig moduleConfig)
+          throws ClassNotFoundException, IllegalAccessException,
+          InstantiationException, InvocationTargetException, ServletException
   {
   PlugInConfig plugInConfigs[] = moduleConfig.findPlugInConfigs();
   PlugIn plugIns[] = new PlugIn[plugInConfigs.length];
 
   context.setAttribute(Globals.PLUG_INS_KEY + moduleConfig.getPrefix(), plugIns);
   for (int i = 0; i < plugIns.length; i++) {
-      try {
-          plugIns[i] =
-              (PlugIn) RequestUtils.applicationInstance(plugInConfigs[i].getClassName());
-          BeanUtils.populate(plugIns[i], plugInConfigs[i].getProperties());
-            // Pass the current plugIn config object to the PlugIn.
-            // The property is set only if the plugin declares it.
-            // This plugin config object is needed by Tiles
-          BeanUtils.copyProperty( plugIns[i], "currentPlugInConfigObject", plugInConfigs[i]);
-          plugIns[i].init(actionServlet, moduleConfig);
-      } catch (ServletException e) {
-          // Lets propagate
-          e.printStackTrace();
-          //throw e;
-      } catch (Exception e) {
-          e.printStackTrace();
-          //throw e;
-      }
+      plugIns[i] =
+          (PlugIn) RequestUtils.applicationInstance(plugInConfigs[i].getClassName());
+      BeanUtils.populate(plugIns[i], plugInConfigs[i].getProperties());
+        // Pass the current plugIn config object to the PlugIn.
+        // The property is set only if the plugin declares it.
+        // This plugin config object is needed by Tiles
+      BeanUtils.copyProperty( plugIns[i], "currentPlugInConfigObject", plugInConfigs[i]);
+      plugIns[i].init(actionServlet, moduleConfig);
   }
   }
 
@@ -142,9 +148,17 @@ public class TestTilesPlugin extends TestMockBase {
 
     /**
      * Test multi factory creation when moduleAware=true.
+     *
+     * @throws ServletException If something goes wrong during initialization.
+     * @throws InvocationTargetException Bean properties problems.
+     * @throws InstantiationException Bean properties problems.
+     * @throws IllegalAccessException Bean properties problems.
+     * @throws ClassNotFoundException Bean properties problems.
      */
     @Test
-    public void testMultiFactory() {
+    public void testMultiFactory() throws ClassNotFoundException,
+            IllegalAccessException, InstantiationException,
+            InvocationTargetException, ServletException {
         // init TilesPlugin
         module1 = createModuleConfig("/module1", "tiles-defs.xml", true);
         module2 = createModuleConfig("/module2", "tiles-defs.xml", true);
@@ -182,15 +196,29 @@ public class TestTilesPlugin extends TestMockBase {
 
     /**
      * Test single factory creation when moduleAware=false.
+     *
+     * @throws ServletException If something goes wrong during initialization.
+     * @throws InvocationTargetException Bean properties problems.
+     * @throws InstantiationException Bean properties problems.
+     * @throws IllegalAccessException Bean properties problems.
+     * @throws ClassNotFoundException Bean properties problems.
      */
   @Test
   public void testSingleSharedFactory()
+          throws ClassNotFoundException, IllegalAccessException,
+          InstantiationException, InvocationTargetException, ServletException
   {
     // init TilesPlugin
   module1 = createModuleConfig( "/module1", "tiles-defs.xml", false );
   module2 = createModuleConfig( "/module2", "tiles-defs.xml", false );
   initModulePlugIns(module1);
-  initModulePlugIns(module2);
+  try {
+      initModulePlugIns(module2);
+      fail("An exception should have been thrown");
+  } catch (ServletException e) {
+      // It is ok
+      LOG.debug("Intercepted a ServletException, it is ok", e);
+  }
 
     // mock request context
   request.setAttribute(Globals.MODULE_KEY, module1);

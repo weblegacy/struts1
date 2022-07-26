@@ -179,6 +179,12 @@ public class ActionConfig extends BaseConfig {
     protected String scope = "session";
 
     /**
+     * <p> Should this action be instantiated once per module (singleton)
+     * or once per request (prototype)? </p>
+     */
+    private boolean singleton = true; 
+
+    /**
      * <p>Identifies conditions for automatic form reset.</p>
      */
     protected String reset = PopulateEvent.ALL;
@@ -727,6 +733,30 @@ public class ActionConfig extends BaseConfig {
 
         this.populate = populate;
         this.populateNames = populate.split(",");
+    }
+
+    /**
+     * Determines whether this action is a singleton (one per module) 
+     * or a prototype (one per request). Actions are defaulted to
+     * singletons unless otherwise specified.
+     *
+     * @return <code>true</code> for singleton; otherwise prototype
+     * @see #setSingleton(boolean)
+     * @since Struts 1.4
+     */
+    public final boolean isSingleton() {
+        return this.singleton;
+    }
+
+    /**
+     * Stores whether this action is a singleton.
+     *
+     * @param singleton <code>true</code> for singleton; otherwise prototype
+     * @see #isSingleton()
+     * @since Struts 1.4
+     */
+    public final void setSingleton(boolean singleton) {
+        this.singleton = singleton;
     }
 
     /**
@@ -1421,6 +1451,9 @@ public class ActionConfig extends BaseConfig {
             sb.append(",populate=");
             sb.append(populate);
         }
+
+        sb.append(",singleton=");
+        sb.append(singleton);
 
         if (suffix != null) {
             sb.append(",suffix=");

@@ -65,20 +65,23 @@ public class CreateAction
 
         Action action = null;
 
-        synchronized (actions) {
-            action = (Action) actions.get(type);
-
-            if (action == null) {
-                try {
-                    action = createAction(context, type);
-                } catch (Exception e) {
-                    log.error(actionServlet.getInternal().getMessage(
-                            "actionCreate", actionConfig.getPath(),
-                            actionConfig.toString()), e);
-                    throw e;
+        try {
+            if (actionConfig.isSingleton()) {
+                synchronized (actions) {
+                    action = (Action) actions.get(type);
+                    if (action == null) {
+                        action = createAction(context, type);
+                        actions.put(type, action);
+                    }
                 }
-                actions.put(type, action);
+            } else {
+                action = createAction(context, type);
             }
+        } catch (Exception e) {
+            log.error(actionServlet.getInternal().getMessage(
+                    "actionCreate", actionConfig.getPath(),
+                    actionConfig.toString()), e);
+            throw e;
         }
 
         if (action.getServlet() == null) {
@@ -88,7 +91,6 @@ public class CreateAction
         return (action);
     }
 
-    
     /**
      * <p>Invoked by <code>getAction</code> when the <code>Action</code> 
      * actually has to be created. If the instance is already created and 

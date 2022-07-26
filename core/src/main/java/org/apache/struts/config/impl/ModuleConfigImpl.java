@@ -22,6 +22,7 @@ package org.apache.struts.config.impl;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.struts.Constants;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ActionConfigMatcher;
 import org.apache.struts.config.BaseConfig;
@@ -37,7 +38,9 @@ import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
+import java.util.TreeMap;
 
 /**
  * <p>The collection of static configuration information that describes a
@@ -66,7 +69,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
      * <p>The set of action configurations for this module, if any, keyed by
      * the <code>path</code> property.</p>
      */
-    protected HashMap actionConfigs = null;
+    protected Map actionConfigs = null;
 
     /**
      * <p>The set of action configuration for this module, if any, keyed by
@@ -712,4 +715,20 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
         throwIfConfigured();
         messageResources.remove(config.getKey());
     }
+
+    public void setProperty(String key, String value) {
+        super.setProperty(key, value);
+
+        if (Constants.STRUTS_URL_CASESENSITIVE.equals(key)) {
+            Map actionConfigs2;
+            if (!Boolean.valueOf(value).booleanValue()) {
+                actionConfigs2 = new TreeMap(String.CASE_INSENSITIVE_ORDER);
+            } else {
+                actionConfigs2 = new HashMap();
+            }
+            actionConfigs2.putAll(actionConfigs);
+            actionConfigs = actionConfigs2;
+        }
+    }
+
 }

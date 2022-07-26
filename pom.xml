@@ -365,6 +365,12 @@
         <javaVersion>1.4</javaVersion>
         <javaTestVersion>1.8</javaTestVersion>
         <myfaces.version>1.0.9</myfaces.version>
+        <struts.osgi.symbolicName>org.apache.${artifactId}</struts.osgi.symbolicName>
+        <struts.osgi.export>org.apache.struts.*;version=${pom.version}</struts.osgi.export>
+        <struts.osgi.import>*</struts.osgi.import>
+        <struts.osgi.dynamicImport />
+        <struts.osgi.private />
+        <struts.manifestfile>target/osgi/MANIFEST.MF</struts.manifestfile>
     </properties>
 
     <profiles>
@@ -377,6 +383,18 @@
             </activation>
             <modules>
                 <module>apps</module>
+            </modules>
+        </profile>
+        <profile>
+            <id>dormant</id>
+            <activation>
+                <property>
+                    <name>dormant</name>
+                </property>
+            </activation>
+            <modules>
+                <module>el</module>
+                <module>faces</module>
             </modules>
         </profile>
         <profile>
@@ -466,9 +484,7 @@
 
     <modules>
         <module>core</module>
-        <module>el</module>
         <module>extras</module>
-        <module>faces</module>
         <module>mailreader-dao</module>
         <module>scripting</module>
         <module>taglib</module>
@@ -575,6 +591,7 @@
                     <version>3.2.2</version>
                     <configuration>
                         <archive>
+                            <manifestFile>${struts.manifestfile}</manifestFile>
                             <manifest>
                                 <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
@@ -618,6 +635,12 @@
                     <configuration>
                         <parseHtml>true</parseHtml>
                     </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.felix</groupId>
+                    <artifactId>maven-bundle-plugin</artifactId>
+                    <version>1.4.0</version>
+                    <inherited>true</inherited>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.cargo</groupId>
@@ -715,6 +738,33 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <configuration>
+                    <excludeDependencies>true</excludeDependencies>
+                    <manifestLocation>target/osgi</manifestLocation>
+                    <instructions>
+                        <_nouses>true</_nouses>
+                        <Bundle-SymbolicName>${struts.osgi.symbolicName}</Bundle-SymbolicName>
+                        <Export-Package>${struts.osgi.export}</Export-Package>
+                        <Private-Package>${struts.osgi.private}</Private-Package>
+                        <Import-Package>${struts.osgi.import}</Import-Package>
+                        <DynamicImport-Package>${struts.osgi.dynamicImport}</DynamicImport-Package>
+                        <Bundle-DocURL>${project.url}</Bundle-DocURL>
+                    </instructions>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>bundle-manifest</id>
+                        <phase>process-classes</phase>
+                        <goals>
+                            <goal>manifest</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
 
         <defaultGoal>install</defaultGoal>

@@ -33,6 +33,10 @@
    <packaging>jar</packaging>
    <name>Struts Tiles</name>
 
+   <properties>
+       <struts.osgi.symbolicName>org.apache.struts.tiles</struts.osgi.symbolicName>
+   </properties>
+
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>

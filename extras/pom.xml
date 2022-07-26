@@ -33,6 +33,10 @@
    <packaging>jar</packaging>
    <name>Struts Extras</name>
 
+  <properties>
+       <struts.osgi.symbolicName>org.apache.struts.extras</struts.osgi.symbolicName>
+   </properties>
+
    <dependencies>
       <dependency>
          <groupId>javax.servlet</groupId>

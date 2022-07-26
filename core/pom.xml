@@ -33,6 +33,10 @@
     <packaging>jar</packaging>
     <name>Struts Core</name>
 
+    <properties>
+        <struts.osgi.symbolicName>org.apache.struts.core</struts.osgi.symbolicName>
+    </properties>
+
     <build>
         <plugins>
             <plugin>

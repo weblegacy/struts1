@@ -33,6 +33,10 @@
    <packaging>jar</packaging>
    <name>Struts Mailreader DAO</name>
 
+   <properties>
+       <struts.osgi.symbolicName>org.apache.struts.apps.mailreader.dao</struts.osgi.symbolicName>
+   </properties>
+
     <dependencies>
         <dependency>
             <groupId>commons-digester</groupId>

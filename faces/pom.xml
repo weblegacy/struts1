@@ -33,6 +33,10 @@
    <packaging>jar</packaging>
    <name>Struts Faces</name>
 
+   <properties>
+       <struts.osgi.symbolicName>org.apache.struts.faces</struts.osgi.symbolicName>
+   </properties>
+
    <dependencies>
       <dependency>
          <groupId>${project.groupId}</groupId>

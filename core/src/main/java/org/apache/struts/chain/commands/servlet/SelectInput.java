@@ -21,10 +21,14 @@
 package org.apache.struts.chain.commands.servlet;
 
 import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionServlet;
 import org.apache.struts.chain.commands.AbstractSelectInput;
 import org.apache.struts.chain.contexts.ActionContext;
+import org.apache.struts.chain.contexts.ServletActionContext;
+import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.config.ModuleConfig;
+import org.apache.struts.util.MessageResources;
 
 /**
  * <p>Validate the properties of the form bean for this request.  If there are
@@ -49,4 +53,17 @@ public class SelectInput extends AbstractSelectInput {
         ModuleConfig moduleConfig, String uri) {
         return (new ActionForward(null, uri, false, moduleConfig.getPrefix()));
     }
+
+    protected String getErrorMessage(ActionContext context,
+        ActionConfig actionConfig) {
+        ServletActionContext servletActionContext =
+            (ServletActionContext) context;
+
+        // Retrieve internal message resources
+        ActionServlet servlet = servletActionContext.getActionServlet();
+        MessageResources resources = servlet.getInternal();
+
+        return resources.getMessage("inputUnknown", actionConfig.getPath(), actionConfig.getInput());
+    }
+
 }

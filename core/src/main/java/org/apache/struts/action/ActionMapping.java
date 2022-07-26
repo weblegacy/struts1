@@ -23,6 +23,7 @@ package org.apache.struts.action;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.config.ActionConfig;
+import org.apache.struts.config.ControllerConfig;
 import org.apache.struts.config.ForwardConfig;
 
 import java.util.ArrayList;
@@ -101,16 +102,25 @@ public class ActionMapping extends ActionConfig {
 
     /**
      * <p>Create (if necessary) and return an {@link ActionForward} that
-     * corresponds to the <code>input</code> property of this Action.</p>
-     *
+     * corresponds to the <code>input</code> property of this Action.
+     * <p>
+     * <b>Since Struts 1.4: </b>
+     * If the <code>input</code> property is not specified and the Controller
+     * is configured to interpret the property as a forward, return the
+     * forward named "input" (if it exists) in this action mapping.</p>
+     * 
      * @return The input forward for this action mapping.
+     * @see ControllerConfig#getInputForward()
      * @since Struts 1.1
      */
     public ActionForward getInputForward() {
+        String input = getInput();
         if (getModuleConfig().getControllerConfig().getInputForward()) {
-            return (findForward(getInput()));
-        } else {
-            return (new ActionForward(getInput()));
+            if (input != null) {
+                return findForward(input);
+            }
+            return findForward(Action.INPUT);
         }
+        return (new ActionForward(input));
     }
 }

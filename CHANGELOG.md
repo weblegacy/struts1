@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* STR-3025 and STR-3094: Select input based on convention over configuration and log error when input forward does not exist
 * STR-3024: Added ERROR, INPUT, LOGIN, SUCCESS constants
 * STR-3004: Update missing 1.4 DTD
 * STR-2986: Build Struts 1 - Tiles 2 integration

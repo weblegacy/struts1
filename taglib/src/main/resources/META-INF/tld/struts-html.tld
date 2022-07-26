@@ -4296,6 +4296,359 @@
         </attribute>
     </tag>
     <tag>
+        <name>label</name>
+        <tag-class>org.apache.struts.taglib.html.LabelTag</tag-class>
+        <description>
+            <![CDATA[
+            <p><strong>Render a Label</strong></p>
+            ]]>
+        </description>
+        <attribute>
+            <name>accesskey</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                <p>The keyboard character used to move focus immediately to this
+                element.</p>
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>bundle</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                    The servlet context attributes key for the MessageResources
+                    instance to use when printing the label value. If not 
+                    specified, defaults to the application resources configured
+                    for our action servlet.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>dir</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                <p>The direction for weak/neutral text for this element.</p>
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>errorStyle</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                <p>CSS styles to be applied to this HTML element if
+                an error exists for it.</p>
+
+                <p><strong>N.B.</strong> If present, this overrides the 
+                <code>style</code> attribute in the event of an error.</p>
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>errorStyleClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                <p>CSS stylesheet class to be applied to this HTML element if
+                an error exists for it (renders a "class" attribute).</p>
+
+                <p><strong>N.B.</strong> If present, this overrides the 
+                <code>styleClass</code> attribute in the event of an error.</p>
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>errorStyleId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                <p>Identifier to be assigned to this HTML element if
+                an error exists for it (renders an "id" attribute).</p>
+
+                <p><strong>N.B.</strong> If present, this overrides the 
+                <code>styleId</code> attribute in the event of an error.</p>
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>forId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                <p>Identifier to be attached to this label (renders
+                a "for" attribute) when the identifier is different
+                than the property name.</p>
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>key</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                    If specified, defines the message key to be looked up in
+                    the resource bundle specified by <code>bundle</code> for
+                    the value displayed to the user for this label.  If not
+                    specified, the value to be displayed is taken from the body
+                    content of this tag.
+                    ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>lang</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                <p>The language code for this element.</p>
+                <dl><dt><b>Since:</b></dt>
+                <dd>Struts 1.3.6</dd></dl>
+                ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                The attribute name of the bean whose properties are consulted
+                when rendering the current value of this input field. If not
+                specified, the bean associated with the form tag we are nested
+                within is utilized.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>onblur</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                JavaScript event handler executed when this element loses input
+                focus.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>onclick</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                JavaScript event handler executed when this element receives a
+                mouse click.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>ondblclick</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                JavaScript event handler executed when this element receives a
+                mouse double click.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>onfocus</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                JavaScript event handler executed when this element receives input
+                focus.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>onkeydown</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                JavaScript event handler executed when this element has focus and a
+                key is depressed.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>onkeypress</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                JavaScript event handler executed when this element has focus and a
+                key is depressed and released.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>onkeyup</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                JavaScript event handler executed when this element has focus and a
+                key is released.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>onmousedown</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                JavaScript event handler executed when this element is under the mouse
+                pointer and a mouse button is depressed.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>onmousemove</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                JavaScript event handler executed when this element is under the
+                mouse pointer and the pointer is moved.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>onmouseout</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                JavaScript event handler executed when this element was under the
+                mouse pointer but the pointer was moved outside the element.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>onmouseover</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                JavaScript event handler executed when this element was not under
+                the mouse pointer but the pointer is moved inside the element.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>onmouseup</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                JavaScript event handler executed when this element is under the
+                mouse pointer and a mouse button is released.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>property</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                Name of this input field, and the name of the corresponding bean
+                property if value is not specified. The corresponding bean property
+                (if any) must be of type String.
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>required</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+            <description>
+                <![CDATA[
+                <p>Specifies that this label represents a required field.</p>
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>style</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                <p>CSS styles to be applied to this HTML element.</p>
+
+                <p><strong>N.B.</strong> If present, the <code>errorStyle</code>
+                overrides this attribute in the event of an error for the element.</p>
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>styleClass</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                <p>CSS stylesheet class to be applied to this HTML element
+                (renders a "class" attribute).</p>
+
+                <p><strong>N.B.</strong> If present, the <code>errorStyleClass</code>
+                overrides this attribute in the event of an error for the element.</p>
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>styleId</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                <p>Identifier to be assigned to this HTML element (renders
+                an "id" attribute).</p>
+
+                <p><strong>N.B.</strong> If present, the <code>errorStyleId</code>
+                overrides this attribute in the event of an error for the element.</p>
+            ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>title</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                  <p>The advisory title for this element.</p>
+                  ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>titleKey</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                  <p>The message resources key for the advisory title
+                  for this element.</p>
+                  ]]>
+            </description>
+        </attribute>
+    </tag>
+    <tag>
         <name>link</name>
         <tag-class>org.apache.struts.taglib.html.LinkTag</tag-class>
         <body-content>JSP</body-content>

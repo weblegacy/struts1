@@ -81,19 +81,19 @@ main menu.
             <th align="right">Single Select Allowed:</th>
             <td align="left">
                 <html-el:select property="singleSelect" size="10">
-                    <html-el:option value="Single 0">Single 0</html-el:option>
-                    <html-el:option value="Single 1">Single 1</html-el:option>
-                    <html-el:option value="Single 2">Single 2</html-el:option>
-                    <html-el:option value="Single 3"
+                    <html-el:option value="Single 0" title="0">Single 0</html-el:option>
+                    <html-el:option value="Single 1" title="1">Single 1</html-el:option>
+                    <html-el:option value="Single 2" title="${1+1}">Single 2</html-el:option>
+                    <html-el:option value="Single 3" title="3"
                                     disabled="${!empty pageScope}">
                         Single 3
                     </html-el:option>
-                    <html-el:option value="Single 4">Single 4</html-el:option>
-                    <html-el:option value="Single 5">Single 5</html-el:option>
-                    <html-el:option value="Single 6">Single 6</html-el:option>
-                    <html-el:option value="Single 7">Single 7</html-el:option>
-                    <html-el:option value="Single 8">Single 8</html-el:option>
-                    <html-el:option value="Single 9" styleId="flork">Single
+                    <html-el:option value="Single 4" title="${2+2}">Single 4</html-el:option>
+                    <html-el:option value="Single 5" title="5">Single 5</html-el:option>
+                    <html-el:option value="Single 6" title="${3+3}">Single 6</html-el:option>
+                    <html-el:option value="Single 7" title="7">Single 7</html-el:option>
+                    <html-el:option value="Single 8" title="${4+4}">Single 8</html-el:option>
+                    <html-el:option value="Single 9" titleKey="select.single.9" styleId="flork">Single
                         9</html-el:option>
                 </html-el:select>
             </td>

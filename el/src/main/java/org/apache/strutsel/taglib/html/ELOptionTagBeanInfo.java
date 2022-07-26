@@ -102,6 +102,18 @@ public class ELOptionTagBeanInfo extends SimpleBeanInfo {
         }
 
         try {
+            proplist.add(new PropertyDescriptor("title", ELOptionTag.class,
+                    null, "setTitleExpr"));
+        } catch (IntrospectionException ex) {
+        }
+
+        try {
+            proplist.add(new PropertyDescriptor("titleKey", ELOptionTag.class,
+                    null, "setTitleKeyExpr"));
+        } catch (IntrospectionException ex) {
+        }
+
+        try {
             proplist.add(new PropertyDescriptor("value", ELOptionTag.class,
                     null, "setValueExpr"));
         } catch (IntrospectionException ex) {

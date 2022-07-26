@@ -67,16 +67,16 @@
           <th align="right">Single Select Allowed:</th>
           <td align="left">
             <html:select property="singleSelect" size="10">
-              <html:option value="Single 0">Single 0</html:option>
-              <html:option value="Single 1">Single 1</html:option>
-              <html:option value="Single 2">Single 2</html:option>
-              <html:option value="Single 3">Single 3</html:option>
-              <html:option value="Single 4">Single 4</html:option>
-              <html:option value="Single 5">Single 5</html:option>
-              <html:option value="Single 6">Single 6</html:option>
-              <html:option value="Single 7">Single 7</html:option>
-              <html:option value="Single 8">Single 8</html:option>
-              <html:option value="Single 9">Single 9</html:option>
+              <html:option value="Single 0" title="0">Single 0</html:option>
+              <html:option value="Single 1" title="1">Single 1</html:option>
+              <html:option value="Single 2" title="2">Single 2</html:option>
+              <html:option value="Single 3" title="3">Single 3</html:option>
+              <html:option value="Single 4" title="4">Single 4</html:option>
+              <html:option value="Single 5" title="5">Single 5</html:option>
+              <html:option value="Single 6" title="6">Single 6</html:option>
+              <html:option value="Single 7" title="7">Single 7</html:option>
+              <html:option value="Single 8" title="8">Single 8</html:option>
+              <html:option value="Single 9" title="9">Single 9</html:option>
             </html:select>
           </td>
         </tr>
@@ -105,12 +105,12 @@
           </td>
         </tr>
         <tr>
-          <th align="right">Select With Labels From Resources:</th>
+          <th align="right">Select With Labels and Titles From Resources:</th>
           <td align="left">
             <html:select property="resourcesSelect" size="3">
-              <html:option value="Resources 0" key="resources0" />
-              <html:option value="Resources 1" key="resources1" />
-              <html:option value="Resources 2" key="resources2" />
+              <html:option value="Resources 0" key="resources0" titleKey="resources0" />
+              <html:option value="Resources 1" key="resources1" titleKey="resources1" />
+              <html:option value="Resources 2" key="resources2" titleKey="resources2" />
             </html:select>
           </td>
         </tr>

@@ -98,6 +98,18 @@ public class ELOptionTag extends OptionTag {
     private String styleIdExpr;
 
     /**
+     * Instance variable mapped to "title" tag attribute. (Mapping set in
+     * associated BeanInfo class.)
+     */
+    private String titleExpr;
+
+    /**
+     * Instance variable mapped to "titleKey" tag attribute. (Mapping set in
+     * associated BeanInfo class.)
+     */
+    private String titleKeyExpr;
+
+    /**
      * Instance variable mapped to "value" tag attribute. (Mapping set in
      * associated BeanInfo class.)
      */
@@ -181,6 +193,22 @@ public class ELOptionTag extends OptionTag {
      */
     public String getStyleIdExpr() {
         return (styleIdExpr);
+    }
+
+    /**
+     * Getter method for "title" tag attribute. (Mapping set in associated
+     * BeanInfo class.)
+     */
+    public String getTitleExpr() {
+        return (titleExpr);
+    }
+
+    /**
+     * Getter method for "titleKey" tag attribute. (Mapping set in associated
+     * BeanInfo class.)
+     */
+    public String getTitleKeyExpr() {
+        return (titleKeyExpr);
     }
 
     /**
@@ -272,6 +300,22 @@ public class ELOptionTag extends OptionTag {
     }
 
     /**
+     * Setter method for "title" tag attribute. (Mapping set in associated
+     * BeanInfo class.)
+     */
+    public void setTitleExpr(String titleExpr) {
+        this.titleExpr = titleExpr;
+    }
+
+    /**
+     * Setter method for "titleKey" tag attribute. (Mapping set in associated
+     * BeanInfo class.)
+     */
+    public void setTitleKeyExpr(String titleKeyExpr) {
+        this.titleKeyExpr = titleKeyExpr;
+    }
+
+    /**
      * Setter method for "value" tag attribute. (Mapping set in associated
      * BeanInfo class.)
      */
@@ -294,6 +338,8 @@ public class ELOptionTag extends OptionTag {
         setStyleExpr(null);
         setStyleClassExpr(null);
         setStyleIdExpr(null);
+        setTitleExpr(null);
+        setTitleKeyExpr(null);
         setValueExpr(null);
     }
 
@@ -375,6 +421,18 @@ public class ELOptionTag extends OptionTag {
                 EvalHelper.evalString("styleId", getStyleIdExpr(), this,
                     pageContext)) != null) {
             setStyleId(string);
+        }
+
+        if ((string =
+                EvalHelper.evalString("title", getTitleExpr(), this,
+                    pageContext)) != null) {
+            setTitle(string);
+        }
+
+        if ((string =
+                EvalHelper.evalString("titleKey", getTitleKeyExpr(), this,
+                    pageContext)) != null) {
+            setTitleKey(string);
         }
 
         if ((string =

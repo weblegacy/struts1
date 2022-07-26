@@ -107,6 +107,16 @@ public class OptionTag extends BodyTagSupport {
     private String dir = null;
 
     /**
+     * The advisory title of this element.
+     */
+    private String title = null;
+
+    /**
+     * The message resources key of the advisory title.
+     */
+    private String titleKey = null;
+
+    /**
      * The server value for this option, also used to match against the
      * current property value to determine whether this option should be
      * marked as selected.
@@ -229,6 +239,42 @@ public class OptionTag extends BodyTagSupport {
         this.dir = dir;
     }
 
+    /**
+     * Returns the advisory title attribute.
+     * 
+     * @since Struts 1.4
+     */
+    public String getTitle() {
+        return title;
+    }
+
+    /**
+     * Sets the advisory title attribute.
+     * 
+     * @since Struts 1.4
+     */
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * Returns the message resources key of the advisory title.
+     * 
+     * @since Struts 1.4
+     */
+    public String getTitleKey() {
+        return titleKey;
+    }
+
+    /**
+     * Sets the message resources key of the advisory title.
+     * 
+     * @since Struts 1.4
+     */
+    public void setTitleKey(String titleKey) {
+        this.titleKey = titleKey;
+    }
+
     // --------------------------------------------------------- Public Methods
 
     /**
@@ -332,6 +378,12 @@ public class OptionTag extends BodyTagSupport {
             results.append("\"");
         }
 
+        if (title != null || titleKey != null) {
+            results.append(" title=\"");
+            results.append(message(title, titleKey));
+            results.append("\"");
+        }
+        
         results.append(">");
 
         results.append(text());
@@ -376,10 +428,42 @@ public class OptionTag extends BodyTagSupport {
         style = null;
         styleClass = null;
         text = null;
+        title = null;
+        titleKey = null;
         value = null;
     }
 
     // ------------------------------------------------------ Protected Methods
+
+    /**
+     * Return the text specified by the literal value or the message resources
+     * key, if any; otherwise return <code>null</code>.
+     *
+     * @param literal Literal text value or <code>null</code>
+     * @param key     Message resources key or <code>null</code>
+     * @throws JspException if both arguments are non-null
+     */
+    protected String message(String literal, String key)
+        throws JspException {
+        if (literal != null) {
+            if (key != null) {
+                JspException e =
+                    new JspException(messages.getMessage("common.both"));
+
+                TagUtils.getInstance().saveException(pageContext, e);
+                throw e;
+            } else {
+                return (literal);
+            }
+        } else {
+            if (key != null) {
+                return TagUtils.getInstance().message(pageContext, getBundle(),
+                    getLocale(), key);
+            } else {
+                return null;
+            }
+        }
+    }
 
     /**
      * Return the text to be displayed to the user for this option (if any).

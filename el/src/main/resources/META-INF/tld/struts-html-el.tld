@@ -5239,6 +5239,31 @@
             </description>
         </attribute>
         <attribute>
+            <name>title</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                  <p>The advisory title for this element.</p>
+                  <dl><dt><b>Since:</b></dt>
+                  <dd>Struts 1.4</dd></dl>
+                  ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>titleKey</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                  <p>The message resources key for the advisory title
+                  for this element.</p>
+                  <dl><dt><b>Since:</b></dt>
+                  <dd>Struts 1.4</dd></dl>
+                  ]]>
+            </description>
+        </attribute>
+        <attribute>
             <name>value</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>

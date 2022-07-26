@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* STR-3078: Extend action configs by action id
 * STR-2499: Find required forward or throw exception
 * STR-3052: ImgTag missing actionId support
 * STR-1922: Add message parameter XML-escaping to <html:messages>

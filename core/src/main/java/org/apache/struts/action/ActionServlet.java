@@ -1488,6 +1488,9 @@ public class ActionServlet extends HttpServlet {
 
         // Make sure that this config is of the right class
         ActionConfig baseConfig = moduleConfig.findActionConfig(ancestor);
+        if (baseConfig == null) {
+            baseConfig = moduleConfig.findActionConfigId(ancestor);
+        }
 
         if (baseConfig == null) {
             throw new UnavailableException("Unable to find "

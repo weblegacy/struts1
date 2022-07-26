@@ -366,22 +366,24 @@ public class ActionConfig extends BaseConfig {
     }
 
     /**
-     * <p>Returns the path of the ActionConfig that this object should inherit
-     * properties from.</p>
+     * <p>Returns the <code>path</code> or <code>actionId</code> of the
+     * <code>ActionConfig</code> that this object should inherit properties
+     * from.</p>
      *
-     * @return the path of the ActionConfig that this object should inherit
-     *         properties from.
+     * @return the path or action id of the action mapping that this object
+     *         should inherit properties from.
      */
     public String getExtends() {
         return (this.inherit);
     }
 
     /**
-     * <p>Set the path of the ActionConfig that this object should inherit
-     * properties from.</p>
+     * <p>Set the <code>path</code> or <code>actionId</code> of the
+     * <code>ActionConfig</code> that this object should inherit properties
+     * from.</p>
      *
-     * @param inherit the path of the ActionConfig that this object should
-     *                inherit properties from.
+     * @param inherit the path or action id of the action mapping that this
+     *                object should inherit properties from.
      */
     public void setExtends(String inherit) {
         if (configured) {
@@ -925,21 +927,24 @@ public class ActionConfig extends BaseConfig {
      * @return true if circular inheritance was detected.
      */
     protected boolean checkCircularInheritance(ModuleConfig moduleConfig) {
-        String ancestorPath = getExtends();
+        String ancestor = getExtends();
 
-        while (ancestorPath != null) {
-            // check if we have the same path as an ancestor
-            if (getPath().equals(ancestorPath)) {
+        while (ancestor != null) {
+            // check if we have the same path or id as an ancestor
+            if (getPath().equals(ancestor) || ancestor.equals(getActionId())) {
                 return true;
             }
 
-            // get our ancestor's ancestor
-            ActionConfig ancestor = moduleConfig.findActionConfig(ancestorPath);
+            // get our ancestor's config
+            ActionConfig baseConfig = moduleConfig.findActionConfig(ancestor);
+            if (baseConfig == null) {
+                baseConfig = moduleConfig.findActionConfigId(ancestor); 
+            }
 
-            if (ancestor != null) {
-                ancestorPath = ancestor.getExtends();
+            if (baseConfig != null) {
+                ancestor = baseConfig.getExtends();
             } else {
-                ancestorPath = null;
+                ancestor = null;
             }
         }
 
@@ -1292,15 +1297,18 @@ public class ActionConfig extends BaseConfig {
             throw new IllegalStateException("Configuration is frozen");
         }
 
-        String ancestorPath = getExtends();
+        String ancestor = getExtends();
 
-        if ((!extensionProcessed) && (ancestorPath != null)) {
+        if ((!extensionProcessed) && (ancestor != null)) {
             ActionConfig baseConfig =
-                moduleConfig.findActionConfig(ancestorPath);
-
+                moduleConfig.findActionConfig(ancestor);
+            if (baseConfig == null) {
+                baseConfig = moduleConfig.findActionConfigId(ancestor); 
+            }
+            
             if (baseConfig == null) {
                 throw new NullPointerException("Unable to find "
-                    + "action for '" + ancestorPath + "' to extend.");
+                    + "action for '" + ancestor + "' to extend.");
             }
 
             // Check against circular inheritance and make sure the base

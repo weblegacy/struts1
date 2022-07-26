@@ -111,7 +111,7 @@ main menu.
 
 <tr>
     <th colspan="4" align="center">
-        Hyperlinks To Be Tested (via page attribtue)
+        Hyperlinks To Be Tested (via page attribute)
     </th>
 </tr>
 
@@ -192,7 +192,7 @@ main menu.
 
 <tr>
     <th colspan="4" align="center">
-        Hyperlinks To Be Tested (via action attribtue)
+        Hyperlinks To Be Tested (via action attribute)
     </th>
 </tr>
 

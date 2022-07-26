@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Correct typo in `html-link.jsp`
 * STR-2986: Add `Tiles2`-dependency to `assembly`-POM
 * Correct some links in site-documentation
 * STR-1305: Add <html:label> tag to output HTML label

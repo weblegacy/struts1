@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Remove `provided`-scope for `myfaces-jsf-api`
 * Add `dependency-analyze`-report
 * Create no MANIFEST with OSGi-Entries at IT
 * Correct deprecated maven-properties

@@ -61,7 +61,6 @@
       <dependency>
          <groupId>myfaces</groupId>
          <artifactId>myfaces-jsf-api</artifactId>
-         <scope>provided</scope>
       </dependency>
    </dependencies>
 

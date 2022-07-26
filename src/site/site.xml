@@ -126,6 +126,9 @@
             <item   name="Struts Tiles"
                     href="struts-tiles/index.html" />
 
+            <item   name="Struts Tiles2"
+                    href="struts-tiles2/index.html" />
+
         </menu>
 
         <menu ref="reports"/>

@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Add `Tiles2` to site-documentation
 * Add missing xml-declaration and encoding
 * Little reformating
 * Correct package-description in `tiles` and `tiles2`

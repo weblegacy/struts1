@@ -57,6 +57,9 @@
             <li>
                <a href="struts-tiles/dependencies.html" target="_blank">
                Struts Tiles</a></li>
+            <li>
+               <a href="struts-tiles2/dependencies.html" target="_blank">
+               Struts Tiles 2</a></li>
          </ul>
 
        </section>

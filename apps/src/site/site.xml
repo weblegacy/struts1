@@ -70,6 +70,9 @@
             <item   name="Struts Tiles"
                     href="../struts-tiles/index.html" />
 
+            <item   name="Struts Tiles 2"
+                    href="../struts-tiles2/index.html" />
+
         </menu>
 
         <menu name="Quick Links" inherit="top">

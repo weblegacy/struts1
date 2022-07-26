@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Correct title in site-documentation of `Tiles2`
 * Remove `provided`-scope for `myfaces-jsf-api`
 * Add `dependency-analyze`-report
 * Create no MANIFEST with OSGi-Entries at IT

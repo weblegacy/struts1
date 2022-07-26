@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* STR-3152: Pull common dependencies into the parent Struts 1 POM
 * STR-3107: Case-insensitive URI matching
 * STR-3111: Allow <set-property> as a top-level element
 * STR-3078: Extend action configs by action id

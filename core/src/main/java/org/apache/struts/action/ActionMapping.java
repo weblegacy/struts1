@@ -65,6 +65,7 @@ public class ActionMapping extends ActionConfig {
      * @param forwardName Logical name of the forwarding instance to be
      *                    returned
      * @return The local or global forward with the specified name.
+     * @see #findRequiredForward(String)
      */
     public ActionForward findForward(String forwardName) {
         ForwardConfig config = findForwardConfig(forwardName);
@@ -73,6 +74,7 @@ public class ActionMapping extends ActionConfig {
             config = getModuleConfig().findForwardConfig(forwardName);
         }
 
+        // TODO: remove warning since findRequiredForward takes care of use case? 
         if (config == null) {
             if (log.isWarnEnabled()) {
                 log.warn("Unable to find '" + forwardName + "' forward.");
@@ -80,6 +82,27 @@ public class ActionMapping extends ActionConfig {
         }
 
         return ((ActionForward) config);
+    }
+
+    /**
+     * <p>Find and return the <code>ForwardConfig</code> instance of this
+     * mapping, throwing an exception if not found locally or globally.</p>
+     *
+     * @param forwardName Logical name of the forwarding instance to be
+     *                    returned
+     * @return The local or global forward with the specified name.
+     * @throws IllegalStateException if the forward is not found
+     * @see #findForward(String)
+     * @since Struts 1.4
+     */
+    public ActionForward findRequiredForward(String forwardName) {
+        ActionForward forward = findForward(forwardName);
+        if (forward == null) {
+            throw new IllegalStateException(
+                    "Unable to find '" + forwardName +
+                    "' forward of action path '" + getPath() + "'"); 
+        }
+        return forward;
     }
 
     /**

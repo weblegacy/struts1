@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* STR-3153: Optional build profile for dormant subprojects
 * STR-2913: Message tags to expose count of messages
 * STR-3152: Pull common dependencies into the parent Struts 1 POM
 * STR-3107: Case-insensitive URI matching

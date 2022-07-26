@@ -53,6 +53,9 @@ public class ConfigRuleSet extends RuleSetBase {
     public void addRuleInstances(Digester digester) {
         ClassLoader cl = digester.getClassLoader();
 
+        digester.addRule("struts-config/set-property",
+            new BaseConfigSetPropertyRule());
+
         digester.addRule("struts-config/action-mappings",
             new SetActionMappingClassRule());
 

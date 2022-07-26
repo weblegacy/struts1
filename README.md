@@ -91,7 +91,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 7. Generate Assemblies  
    `mvn -Pdormant,apps,assembly -DskipTests package`
 8. Deploy all artifacts to `Central-Repo`  
-   * `mvn clean deploy` for SNAPSHOTs
+   * `mvn -Pdormant clean deploy` for SNAPSHOTs
    * `mvn -Pdormant,pre-assembly,release clean deploy` for releases
 
 ### Support runs

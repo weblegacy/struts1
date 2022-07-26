@@ -145,7 +145,7 @@
       the body.</p>
     <p>Definitions can be declared in a JSP page, or in one or more centralized 
       files. To enable the definitions from centralized files, you need to initialize 
-      the &quot;definitions factory&amp;&amp;quot; which will parse the definitions from the files
+      the &quot;definitions factory&quot; which will parse the definitions from the files
       and provide them to the Tiles framework.</p>
 <div class="subsection1">
 <h3>Enabling Definition Factory</h3>
@@ -162,13 +162,13 @@
           are optional and can be omitted. The plug-in should be declared in each 
           struts-config file:</p>
 <pre>
-  &lt;plug-in className=&amp;&amp;quot;org.apache.struts.tiles.TilesPlugin&amp;&amp;quot; &gt;
-    &lt;set-property property=&amp;&amp;quot;definitions-config&amp;&amp;quot; 
-	                 value=&amp;&amp;quot;/WEB-INF/tiles-defs.xml,
+  &lt;plug-in className=&quot;org.apache.struts.tiles.TilesPlugin&quot; &gt;
+    &lt;set-property property=&quot;definitions-config&quot; 
+	                 value=&quot;/WEB-INF/tiles-defs.xml,
                             /WEB-INF/tiles-tests-defs.xml,/WEB-INF/tiles-tutorial-defs.xml,
-                            /WEB-INF/tiles-examples-defs.xml&amp;&amp;quot; /&gt;
-    &lt;set-property property=&amp;&amp;quot;moduleAware&amp;&amp;quot; value=&amp;&amp;quot;true&amp;&amp;quot; /&gt;
-    &lt;set-property property=&amp;&amp;quot;definitions-parser-validate&amp;&amp;quot; value=&amp;&amp;quot;true&amp;&amp;quot; /&gt;
+                            /WEB-INF/tiles-examples-defs.xml&quot; /&gt;
+    &lt;set-property property=&quot;moduleAware&quot; value=&quot;true&quot; /&gt;
+    &lt;set-property property=&quot;definitions-parser-validate&quot; value=&quot;true&quot; /&gt;
   &lt;/plug-in&gt;
 </pre>
 <ul>
@@ -209,8 +209,8 @@
  <ul>
     <li>Specify The classname of the TilesUtil implementation to use. The specified class should
 	be a subclass of TilesUtilStrutsImpl. This option disable the moduleAware option.
-	<br>Specifying &amp;&amp;quot;TilesUtilStrutsImpl&amp;&amp;quot; is equivalent to moduleAware = false.</br>
-	<br>Specifying &amp;&amp;quot;TilesUtilStrutsModuleImpl&amp;&amp;quot; is equivalent to moduleAware = true.</br>
+	<br>Specifying &quot;TilesUtilStrutsImpl&quot; is equivalent to moduleAware = false.</br>
+	<br>Specifying &quot;TilesUtilStrutsModuleImpl&quot; is equivalent to moduleAware = true.</br>
 	This option is taken into account only once, when it is first encountered. To avoid problems,
 	it is advice to specify the same values in all TilesPlugin declaration.
     </li>
@@ -290,8 +290,8 @@
 <p>Following is a simple example:</p>
       <pre>
 &lt;!DOCTYPE tiles-definitions PUBLIC
-       &amp;&amp;quot;-//Apache Software Foundation//DTD Tiles Configuration 1.4//EN&amp;&amp;quot;
-       &amp;&amp;quot;http://struts.apache.org/dtds/tiles-config_1_4.dtd&amp;&amp;quot;&gt;
+       &quot;-//Apache Software Foundation//DTD Tiles Configuration 1.4//EN&quot;
+       &quot;http://struts.apache.org/dtds/tiles-config_1_4.dtd&quot;&gt;
 
 &lt;!-- Definitions for Tiles documentation   --&gt;
 &lt;tiles-definitions&gt;
@@ -301,12 +301,12 @@
   &lt;!-- ========================================================== --&gt;
   &lt;!-- Main page layout used as a root for other page definitions --&gt;
 
-  &lt;definition name=&amp;&amp;quot;site.mainLayout&amp;&amp;quot; path=&amp;&amp;quot;/layouts/classicLayout.jsp&amp;&amp;quot;&gt;
-	  &lt;put name=&amp;&amp;quot;title&amp;&amp;quot;  value=&amp;&amp;quot;Tiles Blank Site&amp;&amp;quot; /&gt;
-	  &lt;put name=&amp;&amp;quot;header&amp;&amp;quot; value=&amp;&amp;quot;/tiles/common/header.jsp&amp;&amp;quot; /&gt;
-	  &lt;put name=&amp;&amp;quot;menu&amp;&amp;quot;   value=&amp;&amp;quot;site.menu.bar&amp;&amp;quot; /&gt;
-	  &lt;put name=&amp;&amp;quot;footer&amp;&amp;quot; value=&amp;&amp;quot;/tiles/common/footer.jsp&amp;&amp;quot; /&gt;
-	  &lt;put name=&amp;&amp;quot;body&amp;&amp;quot;   value=&amp;&amp;quot;/tiles/body.jsp&amp;&amp;quot; /&gt;
+  &lt;definition name=&quot;site.mainLayout&quot; path=&quot;/layouts/classicLayout.jsp&quot;&gt;
+	  &lt;put name=&quot;title&quot;  value=&quot;Tiles Blank Site&quot; /&gt;
+	  &lt;put name=&quot;header&quot; value=&quot;/tiles/common/header.jsp&quot; /&gt;
+	  &lt;put name=&quot;menu&quot;   value=&quot;site.menu.bar&quot; /&gt;
+	  &lt;put name=&quot;footer&quot; value=&quot;/tiles/common/footer.jsp&quot; /&gt;
+	  &lt;put name=&quot;body&quot;   value=&quot;/tiles/body.jsp&quot; /&gt;
   &lt;/definition&gt;
 
   &lt;!-- ========================================================== --&gt;
@@ -318,9 +318,9 @@
 	  properties (here header, menu, footer, layout)
 	--&gt;
 
-  &lt;definition name=&amp;&amp;quot;site.index.page&amp;&amp;quot; extends=&amp;&amp;quot;site.mainLayout&amp;&amp;quot; &gt;
-	  &lt;put name=&amp;&amp;quot;title&amp;&amp;quot;  value=&amp;&amp;quot;Tiles Blank Site Index&amp;&amp;quot; /&gt;
-	  &lt;put name=&amp;&amp;quot;body&amp;&amp;quot;   value=&amp;&amp;quot;/tiles/body.jsp&amp;&amp;quot; /&gt;
+  &lt;definition name=&quot;site.index.page&quot; extends=&quot;site.mainLayout&quot; &gt;
+	  &lt;put name=&quot;title&quot;  value=&quot;Tiles Blank Site Index&quot; /&gt;
+	  &lt;put name=&quot;body&quot;   value=&quot;/tiles/body.jsp&quot; /&gt;
   &lt;/definition&gt;
 
 &lt;/tiles-definition&gt;

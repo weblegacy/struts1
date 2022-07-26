@@ -159,6 +159,15 @@
     </dependency>
     <dependency>
       <groupId>${project.groupId}</groupId>
+      <artifactId>struts-tiles2</artifactId>
+    </dependency>
+    <dependency>
+       <groupId>org.apache.tiles</groupId>
+       <artifactId>tiles-jsp</artifactId>
+       <classifier>j4</classifier>
+    </dependency>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
       <artifactId>struts-mailreader-dao</artifactId>
     </dependency>
     

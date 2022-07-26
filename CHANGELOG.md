@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Add `dependency-analyze`-report
 * Create no MANIFEST with OSGi-Entries at IT
 * Correct deprecated maven-properties
 * Correct dependencies for `org.apache.tiles:*` and lib-assembly

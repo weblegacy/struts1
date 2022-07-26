@@ -777,6 +777,9 @@
                 <artifactId>maven-project-info-reports-plugin</artifactId>
             </plugin>
             <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+            <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
                   <links>

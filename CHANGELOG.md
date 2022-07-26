@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* STR-3032: Copy unaccessed messages/errors to session if redirecting
 * STR-3153: Adapt `README.md`
 * STR-3168: Missing dispatching-constants
 * STR-2740: Support for XHTML 1.1 and XHTML 2.0 etc.

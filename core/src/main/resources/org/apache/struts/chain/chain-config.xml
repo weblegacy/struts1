@@ -181,7 +181,6 @@
         <command
                 className="org.apache.struts.chain.commands.servlet.SelectForward"/>
 
-
         <!-- Select the include uri (if any) for the current action mapping -->
         <command
                 className="org.apache.struts.chain.commands.SelectInclude"/>
@@ -206,6 +205,10 @@
         <!-- Perform action postprocess tasks -->
         <command
                 className="org.apache.struts.chain.commands.servlet.ActionPostProcess"/>
+
+        <!-- Add unaccessed messages to the Session only when redirecting -->
+        <command
+                className="org.apache.struts.chain.commands.CacheMessages"/>
     </chain>
 
     <!-- ========== View Processing chain ======================== -->

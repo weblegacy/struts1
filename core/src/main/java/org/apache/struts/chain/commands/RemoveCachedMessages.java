@@ -29,6 +29,7 @@ import org.apache.struts.action.ActionMessages;
  * <p>Remove cached messages stored in the session.</p>
  *
  * @version $Id$
+ * @see CacheMessages
  * @since Struts 1.3.5
  */
 public class RemoveCachedMessages extends ActionCommandBase {

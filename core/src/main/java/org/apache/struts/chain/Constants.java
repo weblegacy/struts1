@@ -20,6 +20,8 @@
  */
 package org.apache.struts.chain;
 
+import org.apache.struts.dispatcher.Dispatcher;
+
 
 /**
  * <p>Global constants for the Chain of Responsibility Library.</p>
@@ -109,6 +111,17 @@ public final class Constants {
      * per module.</p>
      */
     public static final String ACTIONS_KEY = "actions";
+
+    /**
+     * <p>The base part of the context attribute under which a Map containing
+     * the Dispatcher instances associated with this module are stored. This value
+     * must be suffixed with the module prefix in order to create a unique key
+     * per module.</p>
+     * 
+     * @see Dispatcher
+     * @since Struts 1.4
+     */
+    public static final String DISPATCHERS_KEY = "dispatchers";
 
     /**
      * <p>The context attribute under which the Catalog containing our defined

@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Add missing xml-declaration and encoding
 * Little reformating
 * Correct package-description in `tiles` and `tiles2`
 * Consider exception in `initModulePlugIns` in tiles test-case

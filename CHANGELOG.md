@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Correct deprecated maven-properties
 * Correct dependencies for `org.apache.tiles:*` and lib-assembly
 * Add `Tiles2` to site-documentation
 * Add missing xml-declaration and encoding

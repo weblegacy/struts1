@@ -365,8 +365,8 @@
         <javaVersion>1.4</javaVersion>
         <javaTestVersion>1.8</javaTestVersion>
         <myfaces.version>1.0.9</myfaces.version>
-        <struts.osgi.symbolicName>org.apache.${artifactId}</struts.osgi.symbolicName>
-        <struts.osgi.export>org.apache.struts.*;version=${pom.version}</struts.osgi.export>
+        <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
+        <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
         <struts.osgi.import>*</struts.osgi.import>
         <struts.osgi.dynamicImport />
         <struts.osgi.private />

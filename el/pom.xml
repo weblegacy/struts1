@@ -35,7 +35,7 @@
 
    <properties>
        <struts.osgi.symbolicName>org.apache.strutsel.taglib</struts.osgi.symbolicName>
-       <struts.osgi.export>org.apache.strutsel.*;version=${pom.version}</struts.osgi.export>
+       <struts.osgi.export>org.apache.strutsel.*;version=${project.version}</struts.osgi.export>
    </properties>
 
    <dependencies>

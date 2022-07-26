@@ -5650,6 +5650,31 @@
             </description>
         </attribute>
         <attribute>
+            <name>title</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                  <p>The advisory title for this element.</p>
+                  <dl><dt><b>Since:</b></dt>
+                  <dd>Struts 1.4</dd></dl>
+                  ]]>
+            </description>
+        </attribute>
+        <attribute>
+            <name>titleKey</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                  <p>The message resources key for the advisory title
+                  for this element.</p>
+                  <dl><dt><b>Since:</b></dt>
+                  <dd>Struts 1.4</dd></dl>
+                  ]]>
+            </description>
+        </attribute>
+        <attribute>
             <name>value</name>
             <required>true</required>
             <rtexprvalue>true</rtexprvalue>
@@ -9270,16 +9295,28 @@
             Using this tag in a page tells all other html taglib tags
             to render themselves as XHTML 1.0.  This is useful
             when composing pages with JSP includes or Tiles. 
-            &lt;html:html xhtml="true"&gt; has a similar effect.  This
-            tag has no attributes; you use it like this: &lt;html:xhtml/&gt;.
+            &lt;html:html xhtml="true"&gt; has a similar effect.
           </p>
           <p>
             <strong>Note</strong>: Included pages do not inherit the rendering
-            style of the including page.  Each JSP fragment or Tile must use this
-            tag to render as XHTML.  
+            style of the including page by default. Without setting the 
+            <code>scope</code> attribute, which defaults to <code>page</code> 
+            scope, each JSP fragment or Tile must use this tag to render as 
+            XHTML.
           </p>
           ]]>
         </description>
+        <attribute>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+      <p>Specifies the variable scope searched to retrieve the rendering 
+      setting.  If not specified, the default is page scope.</p>
+      ]]>
+            </description>
+        </attribute>
     </tag>
 </taglib>
 

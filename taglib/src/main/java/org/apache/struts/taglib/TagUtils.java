@@ -797,11 +797,14 @@ public class TagUtils {
      * Returns true if the custom tags are in XHTML mode.
      */
     public boolean isXhtml(PageContext pageContext) {
-        String xhtml =
-            (String) pageContext.getAttribute(Globals.XHTML_KEY,
-                PageContext.PAGE_SCOPE);
-
-        return "true".equalsIgnoreCase(xhtml);
+        String xhtml;
+        try {
+            xhtml = (String) lookup(pageContext, Globals.XHTML_KEY, null);
+            return "true".equalsIgnoreCase(xhtml);
+        } catch (JspException e) {
+            log.error("Failed xhtml lookup", e);
+            throw new RuntimeException(e);
+        }
     }
 
     /**

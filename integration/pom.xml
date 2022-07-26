@@ -183,6 +183,17 @@
                   <skip>true</skip>
               </configuration>
           </plugin>
+          <!-- Create no MANIFEST with OSGi-Entries at IT -->
+          <plugin>
+              <groupId>org.apache.felix</groupId>
+              <artifactId>maven-bundle-plugin</artifactId>
+              <executions>
+                  <execution>
+                      <id>bundle-manifest</id>
+                      <phase/>
+                  </execution>
+              </executions>
+          </plugin>
       </plugins>
    </build>
 

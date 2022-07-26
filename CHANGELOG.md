@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Create no MANIFEST with OSGi-Entries at IT
 * Correct deprecated maven-properties
 * Correct dependencies for `org.apache.tiles:*` and lib-assembly
 * Add `Tiles2` to site-documentation

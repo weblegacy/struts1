@@ -77,6 +77,42 @@ public class Action {
      */
     private static TokenProcessor token = TokenProcessor.getInstance();
 
+    /**
+     * The action execution was a failure. Show an error view, possibly asking
+     * the user to retry entering data.
+     * 
+     * @since Struts 1.4
+     */
+    public static final String ERROR = "error";
+
+    /**
+     * The action execution require more input in order to succeed. This 
+     * result is typically used if a form handling action has been executed 
+     * so as to provide defaults for a form. The form associated with the 
+     * handler should be shown to the end user.
+     * <p>
+     * This result is also used if the given input params are invalid, 
+     * meaning the user should try providing input again. 
+     * 
+     * @since Struts 1.4
+     */
+    public static final String INPUT = "input";
+
+    /**
+     * The action could not execute, since the user most was not logged in. 
+     * The login view should be shown.
+     * 
+     * @since Struts 1.4
+     */
+    public static final String LOGIN = "login";
+
+    /**
+     * The action execution was successful. Show result view to the end user.
+     * 
+     * @since Struts 1.4
+     */
+    public static final String SUCCESS = "success";
+
     // NOTE: We can make the tken  variable protected and remove Action's
     // token methods or leave it private and allow the token methods to
     // delegate their calls.

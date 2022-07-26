@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* STR-3024: Added ERROR, INPUT, LOGIN, SUCCESS constants
 * STR-3004: Update missing 1.4 DTD
 * STR-2986: Build Struts 1 - Tiles 2 integration
 * STR-3004: Create 1.4 DTD

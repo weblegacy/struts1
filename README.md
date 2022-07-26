@@ -41,6 +41,8 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 ### MAVEN-Profiles
 
+* **dormant** - Dormant sub-projects
+  * Adds the dormant sub-projects `Faces` and `EL` to the build-process
 * **assembly** - Create assemblies for distribution
   * Adds the module `assembly`
 * **pre-assembly** - Creates JavaDoc and Sources for each `struts1`-module
@@ -56,19 +58,19 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 ### Building-Steps
 
 1. Clean full project
-   `mvn -Papps,assembly,itest clean`
+   `mvn -Pdormant,apps,assembly,itest clean`
 2. Build and test project
    * with example-apps  
-     `mvn -Papps`
+     `mvn -Pdormant,apps`
    * without example-apps  
-     `mvn`
+     `mvn -Pdormant`
    * to skip tests  
-     add `-DskipTests` for example `mvn -Papps -DskipTests`
+     add `-DskipTests` for example `mvn -Pdormant,apps -DskipTests`
 3. Integration-Tests
    * Run with default-browser (Chrome)  
-     `mvn -Papps,itest -Dcargo.java.home=[JDK_1.7]`
+     `mvn -Pdormant,apps,itest -Dcargo.java.home=[JDK_1.7]`
    * Run with specific browser  
-     `mvn -Papps,itest -Dcargo.java.home=[JDK_1.7] -Dwdm.defaultBrowser=[browser]`
+     `mvn -Pdormant,apps,itest -Dcargo.java.home=[JDK_1.7] -Dwdm.defaultBrowser=[browser]`
      * Values for `browser`
        * `chrome` - Chrome
        * `firefox` - Firefox
@@ -78,25 +80,25 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
        * `chromium` - Chromium
        * `safari` - Safari
 4. Generate source- and javadoc-artifacts  
-   `mvn -Papps,pre-assembly -DskipTests package`
+   `mvn -Pdormant,apps,pre-assembly -DskipTests package`
 5. Generate site-documentation  
-   `mvn -Papps -DskipTests site`  
+   `mvn -Pdormant,apps -DskipTests site`  
    or  
-   `mvn -Papps -DskipTests clean site site:stage`
+   `mvn -Pdormant,apps -DskipTests clean site site:stage`
 6. Publish site-documentation  
-   1. `mvn -Papps -DskipTests clean site site:stage`
+   1. `mvn -Pdormant,apps -DskipTests clean site site:stage`
    2. `mvn scm-publish:publish-scm`
 7. Generate Assemblies  
-   `mvn -Papps,assembly -DskipTests package`
+   `mvn -Pdormant,apps,assembly -DskipTests package`
 8. Deploy all artifacts to `Central-Repo`  
    * `mvn clean deploy` for SNAPSHOTs
-   * `mvn -Ppre-assembly,release clean deploy` for releases
+   * `mvn -Pdormant,pre-assembly,release clean deploy` for releases
 
 ### Support runs
 
 * Run Web-Server to manually test example-apps and create test scripts:  
-  `mvn -Papps,itest,cargorun -Dcargo.java.home=[JDK_1.7] -DskipTests`
+  `mvn -Pdormant,apps,itest,cargorun -Dcargo.java.home=[JDK_1.7] -DskipTests`
 * Set version number  
-  `mvn -Papps,itest,assembly versions:set -DnewVersion=...`
+  `mvn -Pdormant,apps,itest,assembly versions:set -DnewVersion=...`
 * Dependency Report  
-  `mvn -Papps,itest,assembly versions:display-dependency-updates versions:display-plugin-updates versions:display-property-updates`
+  `mvn -Pdormant,apps,itest,assembly versions:display-dependency-updates versions:display-plugin-updates versions:display-property-updates`

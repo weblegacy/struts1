@@ -3007,6 +3007,20 @@
           ]]>
             </description>
         </attribute>
+        <attribute>
+            <name>xhtmlVersion</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <description>
+                <![CDATA[
+                <p>Sets the version of XHTML to render in the String form 
+                MAJOR.MINOR. The default is "1.0" when not specified.</p>
+                
+                <dl><dt><b>Since:</b></dt>
+                <dd>Struts 1.4</dd></dl>
+                ]]>
+            </description>
+        </attribute>
     </tag>
     <tag>
         <name>image</name>

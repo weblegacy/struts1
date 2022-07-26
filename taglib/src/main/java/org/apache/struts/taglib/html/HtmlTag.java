@@ -20,6 +20,8 @@
  */
 package org.apache.struts.taglib.html;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.taglib.TagUtils;
 import org.apache.struts.util.MessageResources;
@@ -28,6 +30,7 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import java.math.BigDecimal;
 import java.util.Locale;
 
 /**
@@ -41,6 +44,11 @@ public class HtmlTag extends TagSupport {
     // ------------------------------------------------------------- Properties
 
     /**
+     * Commons Logging instance.
+     */
+    private static Log log = LogFactory.getLog(HtmlTag.class);
+
+	/**
      * The message resources for this package.
      */
     protected static MessageResources messages =
@@ -51,6 +59,13 @@ public class HtmlTag extends TagSupport {
      * Are we rendering an xhtml page?
      */
     protected boolean xhtml = false;
+
+    /**
+     * What version of XHTML is being rendered?
+     *
+     * @since Struts 1.4
+     */
+    private BigDecimal xhtmlVersion = TagUtils.XHTML_1_0;
 
     /**
      * Are we rendering a lang attribute?
@@ -65,6 +80,18 @@ public class HtmlTag extends TagSupport {
 
     public void setXhtml(boolean xhtml) {
         this.xhtml = xhtml;
+    }
+
+    public String getXhtmlVersion() {
+        return this.xhtmlVersion.toString();
+    }
+
+    public void setXhtmlVersion(String xhtmlVersion) {
+        if (xhtmlVersion != null) {
+            this.xhtmlVersion = new BigDecimal(xhtmlVersion);
+        } else {
+            this.xhtmlVersion = TagUtils.XHTML_1_0;
+        }
     }
 
     /**
@@ -117,23 +144,53 @@ public class HtmlTag extends TagSupport {
         boolean validLanguage = isValidRfc2616(language);
         boolean validCountry  = isValidRfc2616(country);
 
+        // XHTML document conformance
         if (this.xhtml) {
             this.pageContext.setAttribute(Globals.XHTML_KEY, "true",
                 PageContext.PAGE_SCOPE);
+            this.pageContext.setAttribute(Globals.XHTML_VERSION_KEY, 
+                xhtmlVersion, PageContext.REQUEST_SCOPE);
 
-            sb.append(" xmlns=\"http://www.w3.org/1999/xhtml\"");
+            // 1.1 
+            if (xhtmlVersion.equals(TagUtils.XHTML_1_1)) {
+                sb.append(" xmlns=\"http://www.w3.org/1999/xhtml\"");
+                sb.append(" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+                sb.append(" xsi:schemaLocation=\"http://www.w3.org/MarkUp/SCHEMA/xhtml11.xsd\"");
+            }
+            // 2.0
+            else if (xhtmlVersion.equals(TagUtils.XHTML_2_0)) {
+                sb.append(" xmlns=\"http://www.w3.org/2002/06/xhtml2/\"");
+                sb.append(" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
+                sb.append(" xsi:schemaLocation=\"http://www.w3.org/2002/06/xhtml2/ http://www.w3.org/MarkUp/SCHEMA/xhtml2.xsd\"");
+            }
+            // 5.0
+            else if (xhtmlVersion.equals(TagUtils.XHTML_5_0)) {
+                sb.append(" xmlns=\"http://www.w3.org/1999/xhtml\"");
+            }
+            // 1.0/Default
+            else {
+                if (!xhtmlVersion.equals(TagUtils.XHTML_1_0)) {
+                    log.warn("Defaulting to XHTML 1.0. Unknown version: " + xhtmlVersion);
+                    xhtmlVersion = TagUtils.XHTML_1_0;
+                }
+                sb.append(" xmlns=\"http://www.w3.org/1999/xhtml\"");
+            }
         }
 
-        if ((this.lang || this.xhtml) && validLanguage) {
-            sb.append(" lang=\"");
-            sb.append(language);
+        // If language is specified, output the attribute
+        // unless XHTML is version >= 1.1
+        if (this.lang && validLanguage) {
+            if (!this.xhtml || (xhtmlVersion.compareTo(TagUtils.XHTML_1_1) < 0)) {
+                sb.append(" lang=\"");
+                sb.append(language);
 
-            if (validCountry) {
-                sb.append("-");
-                sb.append(country);
+                if (validCountry) {
+                    sb.append("-");
+                    sb.append(country);
+                }
+
+                sb.append("\"");
             }
-
-            sb.append("\"");
         }
 
         if (this.xhtml && validLanguage) {

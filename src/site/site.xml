@@ -50,7 +50,7 @@
                     />
             <item
                     name="Releases"
-                    href="https://struts.apache.org/releases.html"/>
+                    href="https://github.com/weblegacy/struts1/releases"/>
             <item
                     name="Thanks!"
                     href="https://www.apache.org/foundation/thanks.html"/>

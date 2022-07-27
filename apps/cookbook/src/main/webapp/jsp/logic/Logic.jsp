@@ -41,91 +41,91 @@
 
 <h3>Cookie</h3>
 <logic:present cookie="JSESSIONID">
-	<p>Session cookie is present.</p>
+    <p>Session cookie is present.</p>
 </logic:present>
 <logic:notPresent cookie="UNKNOWN">
-	<p>UNKNOWN cookie is not present.</p>
+    <p>UNKNOWN cookie is not present.</p>
 </logic:notPresent>
 
 <h3>Parameter</h3>
 <logic:present parameter="param">
-	<bean:parameter name="param" id="test"/>
-	<p><bean:write name="test"/></p>
+    <bean:parameter name="param" id="test"/>
+    <p><bean:write name="test"/></p>
 </logic:present>
 <logic:notPresent parameter="param">
-	<p>Parameter 'param' not present. 
-  	  <html:link action="/prepareLogic?param=The parameter is present">
-	    Redisplay page with parameter present.
-	  </html:link>
-	</p>
+    <p>Parameter 'param' not present. 
+        <html:link action="/prepareLogic?param=The parameter is present">
+        Redisplay page with parameter present.
+      </html:link>
+    </p>
 </logic:notPresent>
 
 <h3>Bean</h3>
 <logic:present name="testBean">
-	<p>'testBean' is present.</p>
+    <p>'testBean' is present.</p>
 </logic:present>
 <logic:notPresent name="anotherTestBean">
-	<p>'anotherTestBean' is not present.</p>
+    <p>'anotherTestBean' is not present.</p>
 </logic:notPresent>
 
 <logic:present name="testBean" property="fred">
-	<p>'fred' property is present on 'testBean'</p>
+    <p>'fred' property is present on 'testBean'</p>
 </logic:present>
 <logic:notPresent name="testBean" property="fred">
-	<p>'fred' property is not present on 'testBean'</p>
+    <p>'fred' property is not present on 'testBean'</p>
 </logic:notPresent>
 <logic:present name="testBean" property="stringValue">
-	<p>'stringValue' property is present on 'testBean'</p>
+    <p>'stringValue' property is present on 'testBean'</p>
 </logic:present>
 
 
 <h2>Empty / Not Empty</h2>
 <logic:present name="items">
-	<p>'items' was found.</p>
+    <p>'items' was found.</p>
 </logic:present>
 <logic:empty name="items">
-	<p>'items' is empty</p>
+    <p>'items' is empty</p>
 </logic:empty>
 <logic:notEmpty name="items">
-	<p>'items' is not empty</p>
-<%--	<bean:size collection="items" id="itemsSize"/>
-	<p>Items has <bean:write name="itemsSize" /> items.</p>
---%>	
+    <p>'items' is not empty</p>
+<%--    <bean:size collection="items" id="itemsSize"/>
+    <p>Items has <bean:write name="itemsSize" /> items.</p>
+--%>    
 </logic:notEmpty>
 
 
 <h2>Comparison tags</h2>
 <logic:equal name="intValue" value="7">
-	<p>intValue == 7</p>
+    <p>intValue == 7</p>
 </logic:equal>
 <logic:greaterEqual name="intValue" value="7">
-	<p>intValue &gt;= 7</p>
+    <p>intValue &gt;= 7</p>
 </logic:greaterEqual>
 <logic:greaterEqual name="intValue" value="6">
-	<p>intValue &gt;= 6</p>
+    <p>intValue &gt;= 6</p>
 </logic:greaterEqual>
 <logic:greaterThan name="intValue" value="6">
-	<p>intValue &gt; 6</p>
+    <p>intValue &gt; 6</p>
 </logic:greaterThan>
 
 <logic:lessEqual name="intValue" value="7">
-	<p>intValue &lt;= 7</p>
+    <p>intValue &lt;= 7</p>
 </logic:lessEqual>
 <logic:lessEqual name="intValue" value="8">
-	<p>intValue &lt;= 8</p>
+    <p>intValue &lt;= 8</p>
 </logic:lessEqual>
 <logic:lessThan name="intValue" value="8">
-	<p>intValue &lt; 8</p>
+    <p>intValue &lt; 8</p>
 </logic:lessThan>
 
 <logic:match name="stringValue" value="world">
-	<p>stringValue matches 'world'</p>
+    <p>stringValue matches 'world'</p>
 </logic:match>
 <logic:notMatch name="stringValue" value="earth">
-	<p>stringValue does not match 'earth'</p>
+    <p>stringValue does not match 'earth'</p>
 </logic:notMatch>
 <logic:notMatch name="stringValue" value="world">
-	<p>stringValue does not match 'world'</p>
+    <p>stringValue does not match 'world'</p>
 </logic:notMatch>
 
 
@@ -133,13 +133,13 @@
 <h4>Book list:</h4>
 <ol>
 <logic:iterate name="books" id="book" indexId="index">
-	<li><bean:write name="book" property="title"/></li>
+    <li><bean:write name="book" property="title"/></li>
 </logic:iterate>
 </ol>
 <h4>Book list (entries 3-5):</h4>
 <ol start="3">
 <logic:iterate name="books" id="book" offset="2" length="3">
-	<li><bean:write name="book" property="title"/></li>
+    <li><bean:write name="book" property="title"/></li>
 </logic:iterate>
 </ol>
 
@@ -162,7 +162,7 @@
 </ul> 
 </logic:messagesPresent>
 <logic:messagesNotPresent>
-	<p>There are no errors</p>
+    <p>There are no errors</p>
 </logic:messagesNotPresent>
 
 
@@ -181,7 +181,7 @@
 </ul> 
 </logic:messagesPresent>
 <logic:messagesNotPresent message="true">
-	<p>There are no messages</p>
+    <p>There are no messages</p>
 </logic:messagesNotPresent>
 
 </body>

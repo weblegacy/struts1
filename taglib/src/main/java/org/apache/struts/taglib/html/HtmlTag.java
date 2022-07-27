@@ -48,7 +48,7 @@ public class HtmlTag extends TagSupport {
      */
     private static Log log = LogFactory.getLog(HtmlTag.class);
 
-	/**
+    /**
      * The message resources for this package.
      */
     protected static MessageResources messages =

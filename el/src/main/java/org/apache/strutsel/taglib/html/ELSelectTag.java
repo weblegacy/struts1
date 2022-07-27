@@ -889,9 +889,9 @@ public class ELSelectTag extends SelectTag {
         }
 
         if ((string =
-        		EvalHelper.evalString("dir", getDirExpr(), this,
-        			pageContext)) != null) {
-        	setDir(string);
+                EvalHelper.evalString("dir", getDirExpr(), this,
+                    pageContext)) != null) {
+            setDir(string);
         }
 
         if ((bool =
@@ -931,9 +931,9 @@ public class ELSelectTag extends SelectTag {
         }
 
         if ((string =
-            	EvalHelper.evalString("lang", getLangExpr(), this,
-            		pageContext)) != null) {
-        	setLang(string);
+                EvalHelper.evalString("lang", getLangExpr(), this,
+                    pageContext)) != null) {
+            setLang(string);
         }
 
         if ((string =

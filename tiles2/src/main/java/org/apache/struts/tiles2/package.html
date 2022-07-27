@@ -164,7 +164,7 @@
 <pre>
   &lt;plug-in className=&quot;org.apache.struts.tiles.TilesPlugin&quot; &gt;
     &lt;set-property property=&quot;definitions-config&quot; 
-	                 value=&quot;/WEB-INF/tiles-defs.xml,
+                     value=&quot;/WEB-INF/tiles-defs.xml,
                             /WEB-INF/tiles-tests-defs.xml,/WEB-INF/tiles-tutorial-defs.xml,
                             /WEB-INF/tiles-examples-defs.xml&quot; /&gt;
     &lt;set-property property=&quot;moduleAware&quot; value=&quot;true&quot; /&gt;
@@ -182,21 +182,20 @@
                 file 
                 <ul>
                   <li>true : validate. DTD should be specified in file header (default)</li>
-<li>false : no validation	  </li>
-
-</ul>
-</li>
+                  <li>false : no validation</li>
+                </ul>
+              </li>
 </ul>
 </li>
 
           <li>moduleAware: (optional)
            <ul>
               <li>Specify if the Tiles definition factory is module aware. If true (default), 
-			there will be one factory for each Struts module. 
-			If false, there will be one common factory for all module. In this later case, 
-			it is still needed to declare one plugin per module. The factory will be 
-			initialized with parameters found in the first initialized plugin (generally the
-			one associated with the default module). 
+            there will be one factory for each Struts module. 
+            If false, there will be one common factory for all module. In this later case, 
+            it is still needed to declare one plugin per module. The factory will be 
+            initialized with parameters found in the first initialized plugin (generally the
+            one associated with the default module). 
             <ul>
              <li>true : Tiles framework is module aware </li>
              <li>false :Tiles framework has one single factoy shared among modules (default)</li>
@@ -208,24 +207,24 @@
 <li>tilesUtilImplClassname: (optional - for advanced user)
  <ul>
     <li>Specify The classname of the TilesUtil implementation to use. The specified class should
-	be a subclass of TilesUtilStrutsImpl. This option disable the moduleAware option.
-	<br>Specifying &quot;TilesUtilStrutsImpl&quot; is equivalent to moduleAware = false.</br>
-	<br>Specifying &quot;TilesUtilStrutsModuleImpl&quot; is equivalent to moduleAware = true.</br>
-	This option is taken into account only once, when it is first encountered. To avoid problems,
-	it is advice to specify the same values in all TilesPlugin declaration.
+    be a subclass of TilesUtilStrutsImpl. This option disable the moduleAware option.
+    <br>Specifying &quot;TilesUtilStrutsImpl&quot; is equivalent to moduleAware = false.</br>
+    <br>Specifying &quot;TilesUtilStrutsModuleImpl&quot; is equivalent to moduleAware = true.</br>
+    This option is taken into account only once, when it is first encountered. To avoid problems,
+    it is advice to specify the same values in all TilesPlugin declaration.
     </li>
  </ul>
 </li>
 
 </ul>
         <p>The TilesPlugin class creates one definition factory for each struts module.
-		</p>
-		<p>
-		If the flag moduleAware is false, only one shared factory is created for all modules. 
-		In this later case, the factory is initialized with parameters found in the first plugin.
-		The plugins should be declared in all modules, and the moduleAware flag should be 
-		the same for the entire application.</p> 
-		<p>
+        </p>
+        <p>
+        If the flag moduleAware is false, only one shared factory is created for all modules. 
+        In this later case, the factory is initialized with parameters found in the first plugin.
+        The plugins should be declared in all modules, and the moduleAware flag should be 
+        the same for the entire application.</p> 
+        <p>
           Paths found in Tiles definitions are relative to the main context.</p>
         <p>You don't need to specify a TilesRequestProcessor, this is automatically 
           done by the plug-in. If, however, you want to specify your own RequestProcessor, 
@@ -238,20 +237,20 @@
         <pre>
   &lt;servlet&gt;
     &lt;servlet-name&gt;action&lt;/servlet-name&gt;
-	&lt;servlet-class&gt;org.apache.struts.tiles.ActionComponentServlet&lt;/servlet-class&gt;   
+    &lt;servlet-class&gt;org.apache.struts.tiles.ActionComponentServlet&lt;/servlet-class&gt;   
         &lt;!-- Tiles Servlet parameter 
-		  Specify configuration file names. There can be several comma 
-		  separated file names
-		--&gt; 	
-	&lt;init-param&gt;
+          Specify configuration file names. There can be several comma 
+          separated file names
+        --&gt;     
+    &lt;init-param&gt;
       &lt;param-name&gt;definitions-config&lt;/param-name&gt;
       &lt;param-value&gt;/WEB-INF/tiles-defs.xml&lt;/param-value&gt;
     &lt;/init-param&gt;
         &lt;!-- Tiles Servlet parameter 
-		Specify if XML parser should validate the Tiles configuration file(s).
-		true : validate. DTD should be specified in file header.
-		false : no validation
-		--&gt; 	
+        Specify if XML parser should validate the Tiles configuration file(s).
+        true : validate. DTD should be specified in file header.
+        false : no validation
+        --&gt;     
     &lt;init-param&gt;
       &lt;param-name&gt;definitions-parser-validate&lt;/param-name&gt;
       &lt;param-value&gt;true&lt;/param-value&gt;
@@ -269,7 +268,7 @@
     &lt;servlet-class&gt;org.apache.struts.tiles.TilesServlet&lt;/servlet-class&gt;
 
 
-	&lt;init-param&gt;
+    &lt;init-param&gt;
       &lt;param-name&gt;definitions-config&lt;/param-name&gt;
       &lt;param-value&gt;/WEB-INF/tiles-defs.xml&lt;/param-value&gt;
     &lt;/init-param&gt;
@@ -302,25 +301,25 @@
   &lt;!-- Main page layout used as a root for other page definitions --&gt;
 
   &lt;definition name=&quot;site.mainLayout&quot; path=&quot;/layouts/classicLayout.jsp&quot;&gt;
-	  &lt;put name=&quot;title&quot;  value=&quot;Tiles Blank Site&quot; /&gt;
-	  &lt;put name=&quot;header&quot; value=&quot;/tiles/common/header.jsp&quot; /&gt;
-	  &lt;put name=&quot;menu&quot;   value=&quot;site.menu.bar&quot; /&gt;
-	  &lt;put name=&quot;footer&quot; value=&quot;/tiles/common/footer.jsp&quot; /&gt;
-	  &lt;put name=&quot;body&quot;   value=&quot;/tiles/body.jsp&quot; /&gt;
+      &lt;put name=&quot;title&quot;  value=&quot;Tiles Blank Site&quot; /&gt;
+      &lt;put name=&quot;header&quot; value=&quot;/tiles/common/header.jsp&quot; /&gt;
+      &lt;put name=&quot;menu&quot;   value=&quot;site.menu.bar&quot; /&gt;
+      &lt;put name=&quot;footer&quot; value=&quot;/tiles/common/footer.jsp&quot; /&gt;
+      &lt;put name=&quot;body&quot;   value=&quot;/tiles/body.jsp&quot; /&gt;
   &lt;/definition&gt;
 
   &lt;!-- ========================================================== --&gt;
   &lt;!-- Index page definition                                      --&gt;
   &lt;!-- ========================================================== --&gt;
     &lt;!-- This definition inherits from the main definition.
-	  It overloads the page title and the body used.
-	  Use the same mechanism to define new pages sharing common 
-	  properties (here header, menu, footer, layout)
-	--&gt;
+      It overloads the page title and the body used.
+      Use the same mechanism to define new pages sharing common 
+      properties (here header, menu, footer, layout)
+    --&gt;
 
   &lt;definition name=&quot;site.index.page&quot; extends=&quot;site.mainLayout&quot; &gt;
-	  &lt;put name=&quot;title&quot;  value=&quot;Tiles Blank Site Index&quot; /&gt;
-	  &lt;put name=&quot;body&quot;   value=&quot;/tiles/body.jsp&quot; /&gt;
+      &lt;put name=&quot;title&quot;  value=&quot;Tiles Blank Site Index&quot; /&gt;
+      &lt;put name=&quot;body&quot;   value=&quot;/tiles/body.jsp&quot; /&gt;
   &lt;/definition&gt;
 
 &lt;/tiles-definition&gt;

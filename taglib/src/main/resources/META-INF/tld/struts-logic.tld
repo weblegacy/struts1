@@ -104,9 +104,9 @@
     <code>empty</code> operator.  For example,
     <br/>
     <code>
-    	&lt;c:if test="${empty sessionScope.myBean.myProperty}"&gt;
-    	  do something
-    	&lt;/c:if&gt;
+        &lt;c:if test="${empty sessionScope.myBean.myProperty}"&gt;
+          do something
+        &lt;/c:if&gt;
     </code>
     </p>
     
@@ -274,8 +274,8 @@
             <description>
                 <![CDATA[
       <p>
-      	The logical name of the global <code>ActionForward</code> entry
-      	that identifies the destination, and forwarding approach, to be used.
+        The logical name of the global <code>ActionForward</code> entry
+        that identifies the destination, and forwarding approach, to be used.
         <strong>Note</strong>: forwarding to Tiles definitions is not supported
         from this tag.  You should forward to them from an Action subclass.
       </p>
@@ -1135,9 +1135,9 @@
     <code>! empty</code> operator.  For example,
     <br/>
     <code>
-    	&lt;c:if test="${ ! empty sessionScope.myBean.myProperty}"&gt;
-    	  do something
-    	&lt;/c:if&gt;
+        &lt;c:if test="${ ! empty sessionScope.myBean.myProperty}"&gt;
+          do something
+        &lt;/c:if&gt;
     </code>
     </p>
     ]]>

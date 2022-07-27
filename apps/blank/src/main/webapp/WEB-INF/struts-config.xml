@@ -130,29 +130,29 @@
   <!-- ======================================================= Tiles plugin -->
   <!--
      This plugin initialize Tiles definition factory. This later can takes some
-	 parameters explained here after. The plugin first read parameters from
-	 web.xml, thenoverload them with parameters defined here. All parameters
-	 are optional.
+     parameters explained here after. The plugin first read parameters from
+     web.xml, thenoverload them with parameters defined here. All parameters
+     are optional.
      The plugin should be declared in each struts-config file.
        - definitions-config: (optional)
             Specify configuration file names. There can be several comma
-		    separated file names (default: ?? )
+            separated file names (default: ?? )
        - moduleAware: (optional - struts1.1)
             Specify if the Tiles definition factory is module aware. If true
             (default), there will be one factory for each Struts module.
-			If false, there will be one common factory for all module. In this
+            If false, there will be one common factory for all module. In this
             later case, it is still needed to declare one plugin per module.
             The factory will be initialized with parameters found in the first
             initialized plugin (generally the one associated with the default
             module).
-			  true : One factory per module. (default)
-			  false : one single shared factory for all modules
-	   - definitions-parser-validate: (optional)
-	        Specify if xml parser should validate the Tiles configuration file.
-			  true : validate. DTD should be specified in file header (default)
-			  false : no validation
+              true : One factory per module. (default)
+              false : one single shared factory for all modules
+       - definitions-parser-validate: (optional)
+            Specify if xml parser should validate the Tiles configuration file.
+              true : validate. DTD should be specified in file header (default)
+              false : no validation
 
-	  Paths found in Tiles definitions are relative to the main context.
+      Paths found in Tiles definitions are relative to the main context.
 
       To use this plugin, download and add the Tiles jar to your WEB-INF/lib
       directory then uncomment the plugin definition below.

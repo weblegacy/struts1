@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Replace tabs with spaces
 * Some encoding-updates to UTF-8
 * Delete `.cvsignore`-files
 * Correct `README.md` - section deployment

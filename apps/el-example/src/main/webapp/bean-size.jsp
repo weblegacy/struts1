@@ -45,7 +45,7 @@
 
 %>
 <%-- Change "${list}" to "${data}" to demonstrate NPE, and need for better
-			 exception in "Sizetag.doStartTag()". --%>
+             exception in "Sizetag.doStartTag()". --%>
 <bean-el:size id="dataSize" collection="${list}"/>
 <bean-el:size id="tempSize" collection="${map}"/>
 

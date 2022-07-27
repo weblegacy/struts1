@@ -58,30 +58,30 @@ options {
 
     private boolean evaluateComparison (Object v1, Object comparison, Object v2) {
         boolean numCompare = true;
-	
-		if ((v1 == null) || (v2 == null)) {
-			if (String.class.isInstance(v1)) {
-				if (((String) v1).trim().length() == 0) {
-					v1 = null;
+    
+        if ((v1 == null) || (v2 == null)) {
+            if (String.class.isInstance(v1)) {
+                if (((String) v1).trim().length() == 0) {
+                    v1 = null;
                 }
-			}
+            }
             if (String.class.isInstance(v2)) {
                 if (((String) v2).trim().length() == 0) {
                     v2 = null;
                 }
             }
             
-    		switch (((Integer)comparison).intValue()) {
-    		case LESS_EQUAL:
-    		case GREATER_THAN:
-    		case LESS_THAN:
-    		case GREATER_EQUAL:
+            switch (((Integer)comparison).intValue()) {
+            case LESS_EQUAL:
+            case GREATER_THAN:
+            case LESS_THAN:
+            case GREATER_EQUAL:
                 return false;
-    		case EQUAL:
+            case EQUAL:
                 return (v1 == v2);
-    		case NOT_EQUAL:
+            case NOT_EQUAL:
                 return (v1 != v2);
-    		}
+            }
         }
         
         if ( (Integer.class.isInstance(v1) || 
@@ -90,31 +90,31 @@ options {
              (Integer.class.isInstance(v2) || 
                 BigDecimal.class.isInstance(v2) || 
                 String.class.isInstance(v2))) {
-    	    numCompare = true;
+            numCompare = true;
         } else {
             numCompare = false;
         }
-	
-    	if (numCompare) {
-    	    try {
-        		BigDecimal v1i = null;
-        		BigDecimal v2i = null;
-        		
+    
+        if (numCompare) {
+            try {
+                BigDecimal v1i = null;
+                BigDecimal v2i = null;
+                
                 if (BigDecimal.class.isInstance(v1)) {
-        		    v1i = (BigDecimal)v1;
+                    v1i = (BigDecimal)v1;
                 } else if (Integer.class.isInstance(v1)) {
                     v1i = new BigDecimal(v1.toString());
-        		} else {
-        		    v1i = new BigDecimal((String) v1);
-        		}
-    		
-        		if (BigDecimal.class.isInstance(v2)) {
+                } else {
+                    v1i = new BigDecimal((String) v1);
+                }
+            
+                if (BigDecimal.class.isInstance(v2)) {
                     v2i = (BigDecimal)v2;
                 } else if (Integer.class.isInstance(v2)) {
                     v2i = new BigDecimal(v2.toString());
-        		} else {
+                } else {
                     v2i = new BigDecimal((String) v2);
-        		}
+                }
     
                 int res = v1i.compareTo(v2i);
                 switch (((Integer)comparison).intValue()) {
@@ -132,22 +132,22 @@ options {
                     return (res != 0);
                 }
             } catch (NumberFormatException ex) {};
-    	}
-	
-    	String v1s = "";
-    	String v2s = "";
+        }
     
-    	if (String.class.isInstance(v1)) {
+        String v1s = "";
+        String v2s = "";
+    
+        if (String.class.isInstance(v1)) {
             v1s = (String) v1;
-    	} else {
+        } else {
             v1s = v1.toString();
-    	}
+        }
     
-    	if (String.class.isInstance(v2)) {
+        if (String.class.isInstance(v2)) {
             v2s = (String) v2;
-    	} else {
+        } else {
             v2s = v2.toString();
-    	}
+        }
 
         int res = v1s.compareTo(v2s);
         switch (((Integer)comparison).intValue()) {
@@ -252,8 +252,8 @@ comparison :
 
 comparisonExpression : 
     value comparison value {
-	   Object v2 = argStack.pop();
-	   Object comp = argStack.pop();
+       Object v2 = argStack.pop();
+       Object comp = argStack.pop();
        Object v1 = argStack.pop();
        argStack.push(new Boolean(evaluateComparison(v1, comp, v2)));
     };

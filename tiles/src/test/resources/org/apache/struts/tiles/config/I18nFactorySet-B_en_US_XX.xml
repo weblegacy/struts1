@@ -27,16 +27,16 @@
 <tiles-definitions>
 
   <!-- =======================================================  -->
-  <!-- Master definition  									-->
+  <!-- Master definition                                        -->
   <!-- =======================================================  -->
 
   <!-- Doc index page description  -->
   <definition name="B_en_US_XX" path="/layout/classicLayout.jsp">
-	  <put name="title"  value="Tiles Library Documentation" />
-	  <put name="header" value="/common/header.jsp" />
-	  <put name="menu"   value="doc.menu.main" />
-	  <put name="footer" value="/common/footer.jsp" />
-	  <put name="body"   value="doc.portal.body" />
+      <put name="title"  value="Tiles Library Documentation" />
+      <put name="header" value="/common/header.jsp" />
+      <put name="menu"   value="doc.menu.main" />
+      <put name="footer" value="/common/footer.jsp" />
+      <put name="body"   value="doc.portal.body" />
   </definition>
 
 </tiles-definitions>

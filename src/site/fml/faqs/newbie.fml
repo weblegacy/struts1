@@ -61,7 +61,7 @@
             </faq>
 
             <faq id="modules">
-	    <question>What is a modular application? What does module-relative mean?</question>                    
+            <question>What is a modular application? What does module-relative mean?</question>                    
             <answer>
                 <p>
                     Since Struts 1.1, the framework supports multiple
@@ -131,7 +131,7 @@
 
             <faq id="actionForms">
             <question>Whither ActionForms?</question>
-	    <answer>
+            <answer>
                 <p>
                     <a href="http://www.mail-archive.com/struts-user@jakarta.apache.org/msg19281.html">
                         http://www.mail-archive.com/struts-user@jakarta.apache.org/msg19281.html</a>
@@ -537,7 +537,7 @@
                     especially in terms of indexed attributes and mapped attributes. 
                     Specific rules are covered in detail in other areas of
                     the documentation, in particular, 
-	    <a href="indexedprops.html">
+                    <a href="indexedprops.html">
                       Indexed Properties, Mapped Properties, and Indexed Tags.
                     </a></p>
 

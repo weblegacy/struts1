@@ -41,10 +41,10 @@
                 </p>
                 
                 <p>
-                	 For those who are short on time and/or patience, 
-                	 you can get a Struts application up and running
-                	 in a matter of minutes thanks to Maven's archetype
-                	 feature.
+                     For those who are short on time and/or patience, 
+                     you can get a Struts application up and running
+                     in a matter of minutes thanks to Maven's archetype
+                     feature.
                 </p>
                 <p>
                   NOTE - as of the time of this writing (10/16/2006), the
@@ -54,21 +54,21 @@
                 </p>
                 <pre>
                   <code>
-                	   $ cd ~/projects
-                	   
-					   $ mvn archetype:create                                \
-					         -DarchetypeGroupId=org.apache.struts            \
-					         -DarchetypeArtifactId=struts-archetype-blank    \
-					         -DarchetypeVersion=1.3.5                        \
-					         -DgroupId=com.example                           \
-					         -DpackageName=com.example.projectname           \
-					         -DartifactId=my-webapp
-					         
-                	   $ cd my-webapp
-                	   
-                	   $ mvn install
-                	   
-                	   $ mvn jetty:run
+                       $ cd ~/projects
+                       
+                       $ mvn archetype:create                                \
+                             -DarchetypeGroupId=org.apache.struts            \
+                             -DarchetypeArtifactId=struts-archetype-blank    \
+                             -DarchetypeVersion=1.3.5                        \
+                             -DgroupId=com.example                           \
+                             -DpackageName=com.example.projectname           \
+                             -DartifactId=my-webapp
+                             
+                       $ cd my-webapp
+                       
+                       $ mvn install
+                       
+                       $ mvn jetty:run
                     </code>
                   </pre>
 

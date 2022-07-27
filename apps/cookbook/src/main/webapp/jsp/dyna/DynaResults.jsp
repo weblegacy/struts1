@@ -29,7 +29,7 @@
 </head>
 <body>
 <html:link page="/jsp/dyna/source.jsp">
-	   <img src="../../images/code.gif" width="24" height="24" alt="View Source" class="icon" />
+       <img src="../../images/code.gif" width="24" height="24" alt="View Source" class="icon" />
 </html:link>
 <a href="../../index.jsp"><img src="../../images/return.gif" height="24" width="24" alt="Return to examples page" class="icon" /></a>
 <h1>DynaActionForm Results</h1>
@@ -42,14 +42,14 @@
     <p>You confirmed that this <em>is</em> your favorite color.</p>
 </logic:equal>
 <logic:notEqual name="dynaForm" property="confirm" value="true">
-	<p>... but you lied. Shame on you!</p>
+    <p>... but you lied. Shame on you!</p>
 </logic:notEqual>
 
 <p><strong>On scale of 1 to 5 you rated your color:</strong> 
-	<bean:write	name="dynaForm" property="rating" />
+    <bean:write name="dynaForm" property="rating" />
 </p>
 <p><strong>This was lurking in a hidden field:</strong><br /> 
-	<bean:write	name="dynaForm" property="hidden" /></p>
+    <bean:write name="dynaForm" property="hidden" /></p>
 <p><strong>You wrote this message:</strong></p>
 <p><bean:write name="dynaForm" property="message" filter="false"/></p>
 </body>

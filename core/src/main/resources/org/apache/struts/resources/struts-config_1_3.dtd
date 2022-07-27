@@ -696,7 +696,7 @@ The "form-bean" element describes a particular form bean, which is a
     the "key" attribute instead of the "property" attribute, you can set 
     arbitrary string properties on the Config object which is populated
     based on the containing element.   NOTE: the "key" attribute is NOT
-	supported for <set-property> inside a <plug-in> element.
+    supported for <set-property> inside a <plug-in> element.
 
      property        Name of the JavaBeans property whose setter method
                      will be called. Exactly one of

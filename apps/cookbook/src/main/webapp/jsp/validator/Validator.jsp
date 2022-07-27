@@ -40,35 +40,35 @@
 <html:errors/>
 <html:form action="validatorAction" method="get">
 
-	<table>
-	<tr><td>Byte:</td><td><html:text property="byteValue" /> -128 .. 127</td></tr>
-	<tr><td>Short:</td><td><html:text property="shortValue" /> -32768 .. 32767</td></tr>
-	<tr><td>Integer:</td><td><html:text property="integerValue" /> -2147483648 .. 2147483647</td></tr>
-	<tr><td>Long:</td><td><html:text property="longValue" /> -9223372036854775808 .. 9223372036854775807</td></tr>
-	<tr><td>Float:</td><td><html:text property="floatValue" /> 1.4E-45 .. 3.4028235E38</td></tr>
-	<tr><td>Double:</td><td><html:text property="doubleValue" /> 4.9E-324 .. 1.7976931348623157E308</td></tr>
-	<tr><td>Credit Card:</td><td><html:text property="creditCard" /> e.g. 4444333322221111 (no spaces) </td></tr>
-	<tr><td>Date:</td><td><html:text property="date" /> mm/dd/yyyy</td></tr>
-	<tr><td>Email:</td><td><html:text property="email" /></td></tr>
-	<tr><td>Mask:</td><td><html:text property="mask" /> US zip code e.g. 90210</td></tr>
-	<tr><td>Min Length:</td><td><html:text property="min" /> (minimum 5 characters)</td></tr>
-	<tr><td>Max Length:</td><td><html:text property="max" /> (maximum 10 characters)</td></tr>
-	<tr><td>Range:</td><td><html:text property="range" /> 100 .. 1000</td></tr>
-	<tr><td>* Required:</td><td><html:text property="required" /></td></tr>
-	</table>
-	<p>These two fields must contain the same value:</p>
-	<table>
-	<tr><td>* Password:</td><td><html:password property="password" redisplay="false"/> (minimum 5 characters)</td></tr>
-	<tr><td>* Password confirmation:</td><td><html:password property="password2"  redisplay="false"/></td></tr>
-	</table>
+    <table>
+    <tr><td>Byte:</td><td><html:text property="byteValue" /> -128 .. 127</td></tr>
+    <tr><td>Short:</td><td><html:text property="shortValue" /> -32768 .. 32767</td></tr>
+    <tr><td>Integer:</td><td><html:text property="integerValue" /> -2147483648 .. 2147483647</td></tr>
+    <tr><td>Long:</td><td><html:text property="longValue" /> -9223372036854775808 .. 9223372036854775807</td></tr>
+    <tr><td>Float:</td><td><html:text property="floatValue" /> 1.4E-45 .. 3.4028235E38</td></tr>
+    <tr><td>Double:</td><td><html:text property="doubleValue" /> 4.9E-324 .. 1.7976931348623157E308</td></tr>
+    <tr><td>Credit Card:</td><td><html:text property="creditCard" /> e.g. 4444333322221111 (no spaces) </td></tr>
+    <tr><td>Date:</td><td><html:text property="date" /> mm/dd/yyyy</td></tr>
+    <tr><td>Email:</td><td><html:text property="email" /></td></tr>
+    <tr><td>Mask:</td><td><html:text property="mask" /> US zip code e.g. 90210</td></tr>
+    <tr><td>Min Length:</td><td><html:text property="min" /> (minimum 5 characters)</td></tr>
+    <tr><td>Max Length:</td><td><html:text property="max" /> (maximum 10 characters)</td></tr>
+    <tr><td>Range:</td><td><html:text property="range" /> 100 .. 1000</td></tr>
+    <tr><td>* Required:</td><td><html:text property="required" /></td></tr>
+    </table>
+    <p>These two fields must contain the same value:</p>
+    <table>
+    <tr><td>* Password:</td><td><html:password property="password" redisplay="false"/> (minimum 5 characters)</td></tr>
+    <tr><td>* Password confirmation:</td><td><html:password property="password2"  redisplay="false"/></td></tr>
+    </table>
 
-	<hr noshade="noshade" />   
-	<p>
-		<html:submit>
-			<bean:message key="button.submit" />
-		</html:submit>
-		<html:cancel/>
-	</p>
+    <hr noshade="noshade" />   
+    <p>
+        <html:submit>
+            <bean:message key="button.submit" />
+        </html:submit>
+        <html:cancel/>
+    </p>
 </html:form>
 
 </body>

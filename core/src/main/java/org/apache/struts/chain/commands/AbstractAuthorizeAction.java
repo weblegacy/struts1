@@ -72,7 +72,7 @@ public abstract class AbstractAuthorizeAction extends ActionCommandBase {
                 !(isAuthorized(actionCtx, actionConfig.getRoleNames(),
                     actionConfig));
         } catch (UnauthorizedActionException ex) {
-        	throw ex;
+            throw ex;
         } catch (Exception ex) {
             throwEx = true;
             LOG.error("Unable to complete authorization process", ex);

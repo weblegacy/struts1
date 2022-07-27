@@ -29,7 +29,7 @@
 </head>
 <body>
 <html:link page="/jsp/options/source.jsp">
-	   <img src="../../images/code.gif" width="24" height="24" alt="View Source" class="icon" />
+       <img src="../../images/code.gif" width="24" height="24" alt="View Source" class="icon" />
 </html:link>
 <a href="../../index.jsp"><img src="../../images/return.gif" height="24" width="24" alt="Return to examples page" class="icon" /></a>
 <h1>Select / Options example results</h1>

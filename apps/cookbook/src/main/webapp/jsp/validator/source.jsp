@@ -28,7 +28,7 @@
 </head>
 <body>
 <html:link action="/processValidator">
-	   <img src="../../images/execute.gif" width="24" height="24" alt="Execute example" class="icon" />
+       <img src="../../images/execute.gif" width="24" height="24" alt="Execute example" class="icon" />
 </html:link>
 <a href="../../index.jsp"><img src="../../images/return.gif" height="24" width="24" alt="Return to examples page" class="icon" /></a>
 <h1>Source Code for Validator Form Example</h1>

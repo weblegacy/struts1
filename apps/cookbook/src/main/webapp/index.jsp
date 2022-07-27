@@ -53,70 +53,70 @@
   <tr valign="top">
     <td>Simple Form using ActionForm</td>
     <td>
-		<html:link action="/prepareSimple">
-		  <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
-		</html:link>
-		<html:link action="/prepareSimple">Execute</html:link>
-	</td>
+        <html:link action="/prepareSimple">
+          <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
+        </html:link>
+        <html:link action="/prepareSimple">Execute</html:link>
+    </td>
     <td>
-	    <html:link page="/jsp/simple/source.jsp">
-	      <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
-		</html:link>
-	    <html:link page="/jsp/simple/source.jsp">
-	      View source
-		</html:link>
-	</td>
+        <html:link page="/jsp/simple/source.jsp">
+          <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
+        </html:link>
+        <html:link page="/jsp/simple/source.jsp">
+          View source
+        </html:link>
+    </td>
   </tr>
   <tr valign="top">
     <td>Simple Form using DynaActionForm</td>
     <td>
-		<html:link action="/prepareDyna">
-		  <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
-		</html:link>
-		<html:link action="/prepareDyna">Execute</html:link>
-	</td>
+        <html:link action="/prepareDyna">
+          <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
+        </html:link>
+        <html:link action="/prepareDyna">Execute</html:link>
+    </td>
     <td>
-	    <html:link page="/jsp/dyna/source.jsp">
-	      <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
-		</html:link>
-	    <html:link page="/jsp/dyna/source.jsp">
-	      View source
-		</html:link>
-	</td>
+        <html:link page="/jsp/dyna/source.jsp">
+          <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
+        </html:link>
+        <html:link page="/jsp/dyna/source.jsp">
+          View source
+        </html:link>
+    </td>
   </tr>
   <tr valign="top">
     <td>Select and Options tags</td>
     <td>
-		<html:link action="/prepareOptions">
-		  <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
-		</html:link>
-		<html:link action="/prepareOptions">Execute</html:link>
-	</td>
+        <html:link action="/prepareOptions">
+          <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
+        </html:link>
+        <html:link action="/prepareOptions">Execute</html:link>
+    </td>
     <td>
-	    <html:link page="/jsp/options/source.jsp">
-	      <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
-		</html:link>
-	    <html:link page="/jsp/options/source.jsp">
-	      View source
-		</html:link>
-	</td>
+        <html:link page="/jsp/options/source.jsp">
+          <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
+        </html:link>
+        <html:link page="/jsp/options/source.jsp">
+          View source
+        </html:link>
+    </td>
   </tr>
   <tr valign="top">
     <td>Multibox (for checkboxes)</td>
     <td>
-		<html:link action="/prepareMultibox">
-		  <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
-		</html:link>
-		<html:link action="/prepareMultibox">Execute</html:link>
-	</td>
+        <html:link action="/prepareMultibox">
+          <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
+        </html:link>
+        <html:link action="/prepareMultibox">Execute</html:link>
+    </td>
     <td>
-	    <html:link page="/jsp/multibox/source.jsp">
-	      <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
-		</html:link>
-	    <html:link page="/jsp/multibox/source.jsp">
-	      View source
-		</html:link>
-	</td>
+        <html:link page="/jsp/multibox/source.jsp">
+          <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
+        </html:link>
+        <html:link page="/jsp/multibox/source.jsp">
+          View source
+        </html:link>
+    </td>
   </tr>
   <tr valign="top">
     <td>Bean tags</td>
@@ -127,91 +127,91 @@
   <tr valign="top">
     <td>Logic tags</td>
     <td><html:link action="/prepareLogic">
-		  <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
-		</html:link>
-		<html:link action="/prepareLogic">Execute</html:link>
-	</td>
+          <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
+        </html:link>
+        <html:link action="/prepareLogic">Execute</html:link>
+    </td>
     <td><html:link page="/jsp/logic/source.jsp">
-		  <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
-		</html:link>
-		<html:link page="/jsp/logic/source.jsp">View source</html:link>
-	</td>
+          <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
+        </html:link>
+        <html:link page="/jsp/logic/source.jsp">View source</html:link>
+    </td>
   </tr>
   <tr valign="top">
     <td>Links</td>
     <td><html:link action="/prepareLinks">
-		  <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
-		</html:link>
-		<html:link action="/prepareLinks">Execute</html:link>
-	</td>
+          <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
+        </html:link>
+        <html:link action="/prepareLinks">Execute</html:link>
+    </td>
     <td><html:link page="/jsp/links/source.jsp">
-		  <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
-		</html:link>
-		<html:link page="/jsp/links/source.jsp">View source</html:link>
-	</td>
+          <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
+        </html:link>
+        <html:link page="/jsp/links/source.jsp">View source</html:link>
+    </td>
   </tr>
   <tr valign="top">
     <td>Validator</td>
     <td><html:link action="/prepareValidator">
-		  <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
-		</html:link>
-		<html:link action="/prepareValidator">Execute</html:link>
-	</td>
+          <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
+        </html:link>
+        <html:link action="/prepareValidator">Execute</html:link>
+    </td>
     <td><html:link page="/jsp/validator/source.jsp">
-		  <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
-		</html:link>
-		<html:link page="/jsp/validator/source.jsp">View source</html:link>
-	</td>
+          <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
+        </html:link>
+        <html:link page="/jsp/validator/source.jsp">View source</html:link>
+    </td>
   </tr>
   <tr valign="top">
     <td>Message resources</td>
     <td><html:link action="/prepareMessages">
-		  <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
-		</html:link>
-	<html:link action="/prepareMessages">Execute</html:link>	</td>
+          <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
+        </html:link>
+    <html:link action="/prepareMessages">Execute</html:link>    </td>
     <td><html:link page="/jsp/messages/source.jsp">
-		  <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
-		</html:link>
-		<html:link page="/jsp/messages/source.jsp">View source</html:link>	</td>
+          <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
+        </html:link>
+        <html:link page="/jsp/messages/source.jsp">View source</html:link>    </td>
   </tr>
   <tr valign="top">
     <td>Localization</td>
     <td><html:link action="/prepareLocalization">
-		  <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
-		</html:link>
-		<html:link action="/prepareLocalization">Execute</html:link>
-	</td>
+          <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
+        </html:link>
+        <html:link action="/prepareLocalization">Execute</html:link>
+    </td>
     <td><html:link page="/jsp/localization/source.jsp">
-		  <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
-		</html:link>
-		<html:link page="/jsp/localization/source.jsp">View source</html:link>
-	</td>
+          <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
+        </html:link>
+        <html:link page="/jsp/localization/source.jsp">View source</html:link>
+    </td>
   </tr>
   <tr valign="top">
     <td>Control duplication form submission</td>
     <td><html:link action="/prepareToken">
-		  <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
-		</html:link>
-		<html:link action="/prepareToken">Execute</html:link>
-	</td>
+          <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
+        </html:link>
+        <html:link action="/prepareToken">Execute</html:link>
+    </td>
     <td><html:link page="/jsp/token/source.jsp">
-		  <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
-		</html:link>
-		<html:link page="/jsp/token/source.jsp">View source</html:link>
-	</td>
+          <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
+        </html:link>
+        <html:link page="/jsp/token/source.jsp">View source</html:link>
+    </td>
   </tr>
   <tr valign="top">
     <td>Wildcard Action Mappings</td>
     <td><html:link action="/PrepareWildcard">
-		  <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
-		</html:link>
-		<html:link action="/PrepareWildcard">Execute</html:link>
-	</td>
+          <img src="images/execute.gif" alt="" hspace="4" border="0"  align="top" class="inline" />
+        </html:link>
+        <html:link action="/PrepareWildcard">Execute</html:link>
+    </td>
     <td><html:link action="/SourceWildcard">
-		  <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
-		</html:link>
-		<html:link action="/SourceWildcard">View source</html:link>
-	</td>
+          <img src="images/code.gif" alt="" width="24" height="24" hspace="4" border="0" align="top" class="inline" />
+        </html:link>
+        <html:link action="/SourceWildcard">View source</html:link>
+    </td>
   </tr>
 
 </table>

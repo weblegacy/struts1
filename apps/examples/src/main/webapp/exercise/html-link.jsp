@@ -124,7 +124,7 @@
  <tr>
    <td colspan="4" align="center">
      <html:link action="/html-link?doubleProperty=321.321&amp;longProperty=321321"
-     			 module="/exercise">
+             module="/exercise">
        Double and long via hard coded changes (module)
      </html:link>
    </td>
@@ -144,7 +144,7 @@
      <html:link action="/html-link"
              paramId="booleanProperty"
              paramName="testbean" paramProperty="nested.booleanProperty"
-     			 module="/exercise">
+             module="/exercise">
        Boolean via paramId, paramName, and paramValue (module)
      </html:link>
    </td>

@@ -41,36 +41,36 @@ This is just to demonstrate the Struts html tags. The information that you enter
 <hr noshade="noshade" />   
 <html:errors/>
 <html:form action="/processDyna">
-	<p>What's your first name?:<br/>
+    <p>What's your first name?:<br/>
 <html:text property="name" size="40" maxlength="50"/></p>
-	<p> Enter a secret word or phrase:<br/>
+    <p> Enter a secret word or phrase:<br/>
 <html:password property="secret" size="40" maxlength="50"/></p>
-	<p>What is your favorite color?:<br/> 
-	  <html:select property="color">
-    	<html:option value="red">Red</html:option>
-	    <html:option value="green">Green</html:option>
-    	<html:option value="blue">Blue</html:option>
-	  </html:select>
+    <p>What is your favorite color?:<br/> 
+      <html:select property="color">
+        <html:option value="red">Red</html:option>
+        <html:option value="green">Green</html:option>
+        <html:option value="blue">Blue</html:option>
+      </html:select>
     </p>
-	<p><html:checkbox property="confirm"/>Is that really your favorite color?</p>
-	<p>How much do you like your chosen color?:<br />
-		<html:radio property="rating" value="1">Actually, I hate it.</html:radio><br />
-		<html:radio property="rating" value="2">Not so much.</html:radio><br />
-		<html:radio property="rating" value="3">I'm indifferent</html:radio><br />
-		<html:radio property="rating" value="4">It's pretty neat</html:radio><br />
-		<html:radio property="rating" value="5">I painted my whole house with it.</html:radio>
-	</p>	
-	<p>Enter a message (you may use html tags):<br />
-		<html:textarea property="message" cols="40" rows="6"/>
-	</p>
-	<html:hidden property="hidden" value="Sssh! It's a secret. Nobody knows I'm here."/>
-	<hr noshade="noshade" />   
-	<p>
-		<html:submit>
-			<bean:message key="button.submit" />
-		</html:submit>
-		<html:cancel/>
-	</p>
+    <p><html:checkbox property="confirm"/>Is that really your favorite color?</p>
+    <p>How much do you like your chosen color?:<br />
+        <html:radio property="rating" value="1">Actually, I hate it.</html:radio><br />
+        <html:radio property="rating" value="2">Not so much.</html:radio><br />
+        <html:radio property="rating" value="3">I'm indifferent</html:radio><br />
+        <html:radio property="rating" value="4">It's pretty neat</html:radio><br />
+        <html:radio property="rating" value="5">I painted my whole house with it.</html:radio>
+    </p>    
+    <p>Enter a message (you may use html tags):<br />
+        <html:textarea property="message" cols="40" rows="6"/>
+    </p>
+    <html:hidden property="hidden" value="Sssh! It's a secret. Nobody knows I'm here."/>
+    <hr noshade="noshade" />   
+    <p>
+        <html:submit>
+            <bean:message key="button.submit" />
+        </html:submit>
+        <html:cancel/>
+    </p>
 </html:form>
 
 </body>

@@ -29,7 +29,7 @@
 </head>
 <body>
 <html:link page="/jsp/multibox/source.jsp">
-	   <img src="../../images/code.gif" width="24" height="24" alt="View Source" class="icon" />
+       <img src="../../images/code.gif" width="24" height="24" alt="View Source" class="icon" />
 </html:link>
 <a href="../../index.jsp"><img src="../../images/return.gif" height="24" width="24" alt="Return to examples page" class="icon" /></a>
 <h1>Multibox Results</h1>
@@ -37,13 +37,13 @@
 
 <p><strong>Selected fruits: </strong>
 <logic:iterate name="multiboxForm" property="fruits" id="fruit">
-	<bean:write name="fruit" />
+    <bean:write name="fruit" />
 </logic:iterate>
 </p>
 
 <p><strong>Selected colors: </strong>
 <logic:iterate name="multiboxForm" property="colors" id="color">
-	<bean:write name="color" />
+    <bean:write name="color" />
 </logic:iterate>
 </p>
 

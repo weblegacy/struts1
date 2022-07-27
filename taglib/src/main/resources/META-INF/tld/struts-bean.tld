@@ -493,9 +493,9 @@
     <strong>JSTL</strong>:  The equivalent JSTL tag is &lt;fmt:message&gt;.  For example,
     <br/>
     <code>
-    	&lt;fmt:message key="my.msg.key"&gt;
-    	  &lt;fmt:param value="replacement text"/&gt;
-    	&lt;/fmt:message&gt;
+        &lt;fmt:message key="my.msg.key"&gt;
+          &lt;fmt:param value="replacement text"/&gt;
+        &lt;/fmt:message&gt;
     </code>
     </p>
     ]]>

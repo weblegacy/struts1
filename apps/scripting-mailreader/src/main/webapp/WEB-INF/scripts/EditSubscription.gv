@@ -45,7 +45,7 @@ if (user == null) {
                   + session.getId());
     }
     struts.setForwardName("Logon");
-	System.out.println(" EditSubscription.gv (debug) -> Logon");
+    System.out.println(" EditSubscription.gv (debug) -> Logon");
     return;
 }
 // Identify the relevant subscription
@@ -57,7 +57,7 @@ if ((subscription == null) && !act.equals("Create")) {
         log.trace(" No subscription for user " +
                   user.getUsername() + " and host " + host);
     }
-	System.out.println(" EditSubscription.gv (debug) -> Failure");
+    System.out.println(" EditSubscription.gv (debug) -> Failure");
     struts.setForwardName("Failure");
     return;
 }
@@ -72,7 +72,7 @@ System.out.println(" EditSubscription.gv (debug) Form:" + form.toString());
 
 form.set("task", act);
 if (!act.equals("Create")) {
-	System.out.println(" EditSubscription.gv (debug) act=" + act);
+    System.out.println(" EditSubscription.gv (debug) act=" + act);
     if (log.isTraceEnabled()) {
         log.trace(" Populating form from " + subscription);
     }

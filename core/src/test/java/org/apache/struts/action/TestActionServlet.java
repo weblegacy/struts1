@@ -1215,7 +1215,7 @@ public class TestActionServlet {
      * constructor.
      */
     private class CustomActionConfigArg extends ActionConfig {
-		private static final long serialVersionUID = -2205204932709330848L;
+        private static final long serialVersionUID = -2205204932709330848L;
 
         CustomActionConfigArg(String path) {
             super();

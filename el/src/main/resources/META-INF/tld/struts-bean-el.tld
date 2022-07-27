@@ -171,9 +171,9 @@
       <code>&lt;fmt:message&gt;</code>.  For example,
       <br/>
       <code>
-    	&lt;fmt:message key="my.msg.key">
-    	  &lt;fmt:param value="replacement text"/>
-    	&lt;/fmt:message>
+        &lt;fmt:message key="my.msg.key">
+          &lt;fmt:param value="replacement text"/>
+        &lt;/fmt:message>
       </code>
       </p>
       ]]>

@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Delete `.cvsignore`-files
 * Correct `README.md` - section deployment
 * Correct title in site-documentation of `Tiles2`
 * Remove `provided`-scope for `myfaces-jsf-api`

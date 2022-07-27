@@ -157,7 +157,7 @@
 
     <!-- Display the "walking tour" documentation -->
     <action    path="/tour"
-            forward="/tour.htm">
+            forward="/tour.html">
     </action>
 
     <!-- Display welcome page -->

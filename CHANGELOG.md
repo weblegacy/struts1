@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Some encoding-updates to UTF-8
 * Delete `.cvsignore`-files
 * Correct `README.md` - section deployment
 * Correct title in site-documentation of `Tiles2`

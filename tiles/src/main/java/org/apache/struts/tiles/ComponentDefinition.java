@@ -276,7 +276,7 @@ public class ComponentDefinition implements Serializable {
      * Put an attribute in template definition.
      * Attribute can be used as content for tag get.
      * @param name Attribute name
-     * @param content Attribute value �
+     * @param content Attribute value
      * @param direct Determines how content is handled by get tag: true means content is printed directly; false, the default, means content is included
      */
     public void put(String name, Object content, boolean direct) {

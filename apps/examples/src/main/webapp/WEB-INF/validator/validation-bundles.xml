@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
     Licensed to the Apache Software Foundation (ASF) under one or more
     contributor license agreements.  See the NOTICE file distributed with
@@ -63,7 +63,7 @@
 
       <!-- Override the "name" field  (non resource message)     -->
       <field property="name" depends="required">
-        <msg name="required" key="Vous avez oublié le nom." resource="false" />
+        <msg name="required" key="Vous avez oubliÃ© le nom." resource="false" />
       </field>
 
       <!-- Override the "age" field                              -->
@@ -72,7 +72,7 @@
         <arg key="bundlesForm.error.age" bundle="different" />
         <msg name="required" key="bundlesForm.errors.required" />
         <msg name="integer" key="bundlesForm.errors.integer" bundle="other"/>
-        <msg name="intRange" key="L'âge doit être entre 16 et 55." resource="false" />
+        <msg name="intRange" key="L'Ã¢ge doit Ãªtre entre 16 et 55." resource="false" />
         <var>
           <var-name>min</var-name>
           <var-value>16</var-value>

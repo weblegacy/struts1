@@ -60,46 +60,46 @@ public class IT_2LanguageOptions {
   public void test21LanguageOptionsJapanese() {
     // Test name: 2_1_Language Options (Japanese)
     // Step # | name | target | value
-    // 1 | open | struts-mailreader/Welcome.do | 
+    // 1 | open | struts-mailreader/Welcome.do |
     // Open welcome action
     driver.get(home + "Welcome.do");
-    // 2 | verifyTitle | MailReader Demonstration Application | 
+    // 2 | verifyTitle | MailReader Demonstration Application |
     // Welcome page title
     assertEquals("MailReader Demonstration Application", driver.getTitle());
-    // 3 | click | linkText=Japanese | 
+    // 3 | click | linkText=Japanese |
     // Change language (Japanese)
     driver.findElement(By.linkText("Japanese")).click();
-    // 4 | verifyTitle | MailReaderデモアプリケーション | 
+    // 4 | verifyTitle | MailReaderデモアプリケーション |
     // Welcome page title (Japanese)
     assertEquals("MailReaderデモアプリケーション", driver.getTitle());
-    // 5 | click | linkText=MailReaderデモアプリケーション - ユーザ登録 | 
+    // 5 | click | linkText=MailReaderデモアプリケーション - ユーザ登録 |
     // Click Register (Japanese)
     driver.findElement(By.linkText("MailReaderデモアプリケーション - ユーザ登録")).click();
-    // 6 | verifyTitle | MailReaderデモアプリケーション - ユーザ登録 | 
+    // 6 | verifyTitle | MailReaderデモアプリケーション - ユーザ登録 |
     // Registration page title (Japanese)
     assertEquals("MailReaderデモアプリケーション - ユーザ登録", driver.getTitle());
-    // 7 | click | linkText=MailReaderデモアプリケーション | 
+    // 7 | click | linkText=MailReaderデモアプリケーション |
     // Click Welcome (Japanese)
     driver.findElement(By.linkText("MailReaderデモアプリケーション")).click();
-    // 8 | verifyTitle | MailReaderデモアプリケーション | 
+    // 8 | verifyTitle | MailReaderデモアプリケーション |
     // Welcome page title (Japanese)
     assertEquals("MailReaderデモアプリケーション", driver.getTitle());
-    // 9 | click | linkText=MailReaderデモアプリケーション - ログオン | 
+    // 9 | click | linkText=MailReaderデモアプリケーション - ログオン |
     // Click Logon (Japanese)
     driver.findElement(By.linkText("MailReaderデモアプリケーション - ログオン")).click();
-    // 10 | verifyTitle | MailReaderデモアプリケーション - ログオン | 
+    // 10 | verifyTitle | MailReaderデモアプリケーション - ログオン |
     // Logon page title (Japanese)
     assertEquals("MailReaderデモアプリケーション - ログオン", driver.getTitle());
-    // 11 | click | linkText=MailReaderデモアプリケーション | 
+    // 11 | click | linkText=MailReaderデモアプリケーション |
     // Click Welcome (Japanese)
     driver.findElement(By.linkText("MailReaderデモアプリケーション")).click();
-    // 12 | verifyTitle | MailReaderデモアプリケーション | 
+    // 12 | verifyTitle | MailReaderデモアプリケーション |
     // Welcome page title (Japanese)
     assertEquals("MailReaderデモアプリケーション", driver.getTitle());
-    // 13 | click | linkText=English | 
+    // 13 | click | linkText=English |
     // Change language (English)
     driver.findElement(By.linkText("English")).click();
-    // 14 | verifyTitle | MailReader Demonstration Application | 
+    // 14 | verifyTitle | MailReader Demonstration Application |
     // Welcome page title
     assertEquals("MailReader Demonstration Application", driver.getTitle());
   }
@@ -107,46 +107,46 @@ public class IT_2LanguageOptions {
   public void test22LanguageOptionsRussian() {
     // Test name: 2_2_Language Options (Russian)
     // Step # | name | target | value
-    // 1 | open | struts-mailreader/Welcome.do | 
+    // 1 | open | struts-mailreader/Welcome.do |
     // Open welcome action
     driver.get(home + "Welcome.do");
-    // 2 | verifyTitle | MailReader Demonstration Application | 
+    // 2 | verifyTitle | MailReader Demonstration Application |
     // Welcome page title
     assertEquals("MailReader Demonstration Application", driver.getTitle());
-    // 3 | click | linkText=Russian | 
+    // 3 | click | linkText=Russian |
     // Change language (Russian)
     driver.findElement(By.linkText("Russian")).click();
-    // 4 | verifyTitle | Демонстрационное приложение 'Чтение почты' | 
+    // 4 | verifyTitle | Демонстрационное приложение 'Чтение почты' |
     // Welcome page title (Russian)
     assertEquals("Демонстрационное приложение \'Чтение почты\'", driver.getTitle());
-    // 5 | click | linkText=Зарегистрироваться | 
+    // 5 | click | linkText=Зарегистрироваться |
     // Click Register (Russian)
     driver.findElement(By.linkText("Зарегистрироваться")).click();
-    // 6 | verifyTitle | Зарегистрироваться | 
+    // 6 | verifyTitle | Зарегистрироваться |
     // Registration page title (Russian)
     assertEquals("Зарегистрироваться", driver.getTitle());
-    // 7 | click | linkText=Демонстрационное приложение 'Чтение почты' | 
+    // 7 | click | linkText=Демонстрационное приложение 'Чтение почты' |
     // Click Welcome (Russian)
     driver.findElement(By.linkText("Демонстрационное приложение \'Чтение почты\'")).click();
-    // 8 | verifyTitle | Демонстрационное приложение 'Чтение почты' | 
+    // 8 | verifyTitle | Демонстрационное приложение 'Чтение почты' |
     // Welcome page title (Russian)
     assertEquals("Демонстрационное приложение \'Чтение почты\'", driver.getTitle());
-    // 9 | click | linkText=Войти как зарегистрированный пользователь | 
+    // 9 | click | linkText=Войти как зарегистрированный пользователь |
     // Click Logon (Russian)
     driver.findElement(By.linkText("Войти как зарегистрированный пользователь")).click();
-    // 10 | verifyTitle | Демонстрационное приложение Чтение почты - Проверка имени и пароля. | 
+    // 10 | verifyTitle | Демонстрационное приложение Чтение почты - Проверка имени и пароля. |
     // Logon page title (Russian)
     assertEquals("Демонстрационное приложение Чтение почты - Проверка имени и пароля.", driver.getTitle());
-    // 11 | click | linkText=Демонстрационное приложение 'Чтение почты' | 
+    // 11 | click | linkText=Демонстрационное приложение 'Чтение почты' |
     // Click Welcome (Russian)
     driver.findElement(By.linkText("Демонстрационное приложение \'Чтение почты\'")).click();
-    // 12 | verifyTitle | Демонстрационное приложение 'Чтение почты' | 
+    // 12 | verifyTitle | Демонстрационное приложение 'Чтение почты' |
     // Welcome page title (Russian)
     assertEquals("Демонстрационное приложение \'Чтение почты\'", driver.getTitle());
-    // 13 | click | linkText=English | 
+    // 13 | click | linkText=English |
     // Change language (English)
     driver.findElement(By.linkText("English")).click();
-    // 14 | verifyTitle | MailReader Demonstration Application | 
+    // 14 | verifyTitle | MailReader Demonstration Application |
     // Welcome page title
     assertEquals("MailReader Demonstration Application", driver.getTitle());
   }

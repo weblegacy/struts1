@@ -155,10 +155,10 @@ public class TestActionConfig {
     /**
      * Test that processExtends() makes sure that a base action's own
      * extension has been processed.
-     * @throws InvocationTargetException 
-     * @throws InstantiationException 
-     * @throws IllegalAccessException 
-     * @throws ClassNotFoundException 
+     * @throws InvocationTargetException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     * @throws ClassNotFoundException
      */
     @Test
     public void testProcessExtendsActionExtends()

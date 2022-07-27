@@ -331,7 +331,7 @@ public class Resources {
      * will not work for alternative resource bundles. This method is
      * deprecated for this reason, and you should use
      * {@link #getActionMessage(Validator,HttpServletRequest,ValidatorAction,Field)}
-     * instead. 
+     * instead.
      *
      * @param request the servlet request
      * @param va      Validator action

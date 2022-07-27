@@ -6,9 +6,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,13 +30,13 @@
 <body>
 <html:link page="/jsp/links/source.jsp">
   <img src="../../images/code.gif" width="24" height="24" alt="View Source" class="icon" />
-</html:link> 
+</html:link>
 <a href="../../index.jsp"><img src="../../images/return.gif" height="24" width="24" alt="Return to examples page" class="icon" /></a>
 <h1>Link Example Results</h1>
 <hr noshade="noshade"/>
 
 <p class="intro">This page doesn't really do much, it's just a convenient target for
-  the links example page. The following text is just filler to push the "Test" anchor down 
+  the links example page. The following text is just filler to push the "Test" anchor down
   the page so you can see that linking to an anchor really does
   work. Apart from that, this is a very dull page.</p>
 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy

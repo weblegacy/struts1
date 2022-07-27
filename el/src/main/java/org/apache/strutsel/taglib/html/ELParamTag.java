@@ -29,7 +29,7 @@ import javax.servlet.jsp.JspException;
  * Adds a new request parameter to its parent {@link ELLinkTag}. This subclass
  * allows all attribute values to be specified as expressions utilizing the
  * JavaServer Pages Standard Library expression language.
- * 
+ *
  * @version $Rev$ $Date$
  * @since Struts 1.3.6
  */
@@ -90,7 +90,7 @@ public class ELParamTag extends ParamTag {
 
     /**
      * Process the start tag.
-     * 
+     *
      * @throws JspException if a JSP exception has occurred
      */
     public int doStartTag() throws JspException {
@@ -102,7 +102,7 @@ public class ELParamTag extends ParamTag {
     /**
      * Processes all attribute values which use the JSTL expression evaluation
      * engine to determine their values.
-     * 
+     *
      * @throws JspException if a JSP exception has occurred
      */
     private void evaluateExpressions() throws JspException {

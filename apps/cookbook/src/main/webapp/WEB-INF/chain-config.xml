@@ -6,9 +6,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -114,31 +114,31 @@
       <!-- Identify the Locale for this request -->
       <command
           className="org.apache.struts.chain.commands.servlet.SelectLocale"/>
- 
+
 
       <!-- Set (if needed) the URI of the original request -->
       <command
           className="org.apache.struts.chain.commands.servlet.SetOriginalURI"/>
-          
-          
+
+
       <!-- Set (if needed) no cache HTTP response headers -->
       <command
           className="org.apache.struts.chain.commands.servlet.RequestNoCache"/>
-          
-          
+
+
       <!-- Set (if needed) the HTTP response content type -->
       <command
-          className="org.apache.struts.chain.commands.servlet.SetContentType"/>        
+          className="org.apache.struts.chain.commands.servlet.SetContentType"/>
 
 
       <!-- Identify the ActionConfig for this request -->
       <command
           className="org.apache.struts.chain.commands.servlet.SelectAction"/>
-          
-          
+
+
       <!-- Authorize the selected ActionConfig for this request -->
       <command
-          className="org.apache.struts.chain.commands.servlet.AuthorizeAction"/>    
+          className="org.apache.struts.chain.commands.servlet.AuthorizeAction"/>
 
 
       <!-- Create (if needed) the ActionForm for this request -->
@@ -159,25 +159,25 @@
       <!-- Select the appropriate ForwardConfig for return to input page -->
       <command
           className="org.apache.struts.chain.commands.servlet.SelectInput"/>
-       
-       
-      <!-- Lookup and execute a chain command if the current ActionConfig is 
+
+
+      <!-- Lookup and execute a chain command if the current ActionConfig is
            so-configured. -->
       <command
           className="org.apache.struts.chain.commands.ExecuteCommand"/>
-       
-       
+
+
       <!-- Select the appropriate ForwardConfig for action mappings that only
            have an ActionForward -->
       <command
           className="org.apache.struts.chain.commands.servlet.SelectForward"/>
-      
-      
+
+
       <!-- Select the include uri (if any) for the current action mapping -->
       <command
           className="org.apache.struts.chain.commands.SelectInclude"/>
-          
-      
+
+
       <!-- Perform the include (if needed) -->
       <command
           className="org.apache.struts.chain.commands.servlet.PerformInclude"/>
@@ -197,7 +197,7 @@
     <chain name="process-view">
 
 
-      <!-- Lookup and execute a chain command if the current ForwardConfig is 
+      <!-- Lookup and execute a chain command if the current ForwardConfig is
            so-configured. -->
       <command
           className="org.apache.struts.chain.commands.ExecuteForwardCommand"/>
@@ -209,7 +209,7 @@
 
       <command
           className="org.apache.struts.tiles.commands.TilesPreProcessor"/>
-      
+
       -->
 
 
@@ -219,7 +219,7 @@
 
 
     </chain>
-    
+
     <!-- ========== Servlet Exception Handler Chain ======================== -->
 
     <chain     name="servlet-exception">

@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -51,7 +51,7 @@
         </menu>
 
        <menu name="Components">
-        
+
             <item   name="Struts Apps"
                     href="../struts-apps/index.html" />
 
@@ -83,7 +83,7 @@
                     href="../struts-tiles2/index.html" />
 
         </menu>
-        
+
         <menu name="Related Resources">
             <item name="Display Tag"
                   href="http://displaytag.sourceforge.net/"/>
@@ -103,7 +103,7 @@
             <item name="Struts Menu"
                   href="http://struts-menu.sourceforge.net/"/>
         </menu>
-       
+
         <menu name="Quick Links">
             <item
                     name="Javadoc"
@@ -112,7 +112,7 @@
                     name="Struts 1"
                     href="../index.html"/>
         </menu>
-        
+
         <menu ref="reports"/>
     </body>
 </project>

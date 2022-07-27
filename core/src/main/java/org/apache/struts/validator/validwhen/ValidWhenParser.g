@@ -58,7 +58,7 @@ options {
 
     private boolean evaluateComparison (Object v1, Object comparison, Object v2) {
         boolean numCompare = true;
-    
+
         if ((v1 == null) || (v2 == null)) {
             if (String.class.isInstance(v1)) {
                 if (((String) v1).trim().length() == 0) {
@@ -70,7 +70,7 @@ options {
                     v2 = null;
                 }
             }
-            
+
             switch (((Integer)comparison).intValue()) {
             case LESS_EQUAL:
             case GREATER_THAN:
@@ -83,23 +83,23 @@ options {
                 return (v1 != v2);
             }
         }
-        
-        if ( (Integer.class.isInstance(v1) || 
-                BigDecimal.class.isInstance(v1) || 
+
+        if ( (Integer.class.isInstance(v1) ||
+                BigDecimal.class.isInstance(v1) ||
                 String.class.isInstance(v1)) &&
-             (Integer.class.isInstance(v2) || 
-                BigDecimal.class.isInstance(v2) || 
+             (Integer.class.isInstance(v2) ||
+                BigDecimal.class.isInstance(v2) ||
                 String.class.isInstance(v2))) {
             numCompare = true;
         } else {
             numCompare = false;
         }
-    
+
         if (numCompare) {
             try {
                 BigDecimal v1i = null;
                 BigDecimal v2i = null;
-                
+
                 if (BigDecimal.class.isInstance(v1)) {
                     v1i = (BigDecimal)v1;
                 } else if (Integer.class.isInstance(v1)) {
@@ -107,7 +107,7 @@ options {
                 } else {
                     v1i = new BigDecimal((String) v1);
                 }
-            
+
                 if (BigDecimal.class.isInstance(v2)) {
                     v2i = (BigDecimal)v2;
                 } else if (Integer.class.isInstance(v2)) {
@@ -115,7 +115,7 @@ options {
                 } else {
                     v2i = new BigDecimal((String) v2);
                 }
-    
+
                 int res = v1i.compareTo(v2i);
                 switch (((Integer)comparison).intValue()) {
                 case LESS_EQUAL:
@@ -133,16 +133,16 @@ options {
                 }
             } catch (NumberFormatException ex) {};
         }
-    
+
         String v1s = "";
         String v2s = "";
-    
+
         if (String.class.isInstance(v1)) {
             v1s = (String) v1;
         } else {
             v1s = v1.toString();
         }
-    
+
         if (String.class.isInstance(v2)) {
             v2s = (String) v2;
         } else {
@@ -175,19 +175,19 @@ decimal:
 integer :
     d:DEC_INT_LITERAL
         { argStack.push(Integer.decode(d.getText())); } |
-    h:HEX_INT_LITERAL 
+    h:HEX_INT_LITERAL
         { argStack.push(Integer.decode(h.getText())); } |
-    o:OCTAL_INT_LITERAL 
+    o:OCTAL_INT_LITERAL
         { argStack.push(Integer.decode(o.getText())); } ;
 
-number : decimal | integer ; 
+number : decimal | integer ;
 
-string : 
-    str:STRING_LITERAL 
+string :
+    str:STRING_LITERAL
         { argStack.push(str.getText().substring(1, str.getText().length()-1)); };
 
 identifier :
-    str:IDENTIFIER 
+    str:IDENTIFIER
         { argStack.push(str.getText()); } ;
 
 field :
@@ -203,7 +203,7 @@ field :
     identifier LBRACKET integer RBRACKET {
         Object i7 = argStack.pop();
         Object i6 = argStack.pop();
-        argStack.push(ValidatorUtils.getValueAsString(form, i6 + "[" + i7 + "]")); } | 
+        argStack.push(ValidatorUtils.getValueAsString(form, i6 + "[" + i7 + "]")); } |
     identifier LBRACKET RBRACKET {
         Object i8 = argStack.pop();
         argStack.push(ValidatorUtils.getValueAsString(form, i8 + "[" + index + "]")); } |
@@ -230,27 +230,27 @@ joinedExpression : expr join expr {
     }
 };
 
-join : 
-    ANDSIGN 
+join :
+    ANDSIGN
         { argStack.push(new Integer(AND)); } |
-    ORSIGN 
+    ORSIGN
         { argStack.push(new Integer(OR)); };
 
 comparison :
-    EQUALSIGN 
+    EQUALSIGN
         { argStack.push(new Integer(EQUAL)); } |
-    GREATERTHANSIGN 
+    GREATERTHANSIGN
         { argStack.push(new Integer(GREATER_THAN)); } |
-    GREATEREQUALSIGN  
+    GREATEREQUALSIGN
         { argStack.push(new Integer(GREATER_EQUAL)); } |
-    LESSTHANSIGN  
+    LESSTHANSIGN
         { argStack.push(new Integer(LESS_THAN)); } |
-    LESSEQUALSIGN  
+    LESSEQUALSIGN
         { argStack.push(new Integer(LESS_EQUAL)); } |
-    NOTEQUALSIGN 
+    NOTEQUALSIGN
         { argStack.push(new Integer(NOT_EQUAL)); } ;
 
-comparisonExpression : 
+comparisonExpression :
     value comparison value {
        Object v2 = argStack.pop();
        Object comp = argStack.pop();
@@ -272,17 +272,17 @@ tokens {
     ORSIGN="or";
 }
 
-WS : 
+WS :
     ( ' ' | '\t' | '\n' | '\r' )+
         { $setType(Token.SKIP); } ;
 
-DECIMAL_LITERAL : 
+DECIMAL_LITERAL :
     (('-')? ('0'..'9')+ ('.')) => (('-')? ('0'..'9')+ ('.') ('0'..'9')+) |
-    ('0') => ('0' ('0'..'7')*) 
+    ('0') => ('0' ('0'..'7')*)
         { $setType(OCTAL_INT_LITERAL); } |
-    ('0' 'x') => ('0' 'x'  ('0'..'9' | 'a'..'f')+) 
+    ('0' 'x') => ('0' 'x'  ('0'..'9' | 'a'..'f')+)
         { $setType(HEX_INT_LITERAL); } |
-    (('-')? ('1'..'9') ('0'..'9')*) 
+    (('-')? ('1'..'9') ('0'..'9')*)
         { $setType(DEC_INT_LITERAL); } ;
 
 STRING_LITERAL : ('\'' (~'\'')+ '\'') | ('\"' (~'\"')+ '\"') ;

@@ -199,7 +199,7 @@ public class FormTag extends TagSupport {
      * The language code of this element.
      */
     private String lang = null;
-    
+
     /**
      * The direction for weak/neutral text of this element.
      */
@@ -439,7 +439,7 @@ public class FormTag extends TagSupport {
 
     /**
      * Returns the language code of this element.
-     * 
+     *
      * @since Struts 1.3.6
      */
     public String getLang() {
@@ -448,7 +448,7 @@ public class FormTag extends TagSupport {
 
     /**
      * Sets the language code of this element.
-     * 
+     *
      * @since Struts 1.3.6
      */
     public void setLang(String lang) {
@@ -457,7 +457,7 @@ public class FormTag extends TagSupport {
 
     /**
      * Returns the direction for weak/neutral text this element.
-     * 
+     *
      * @since Struts 1.3.6
      */
     public String getDir() {
@@ -466,7 +466,7 @@ public class FormTag extends TagSupport {
 
     /**
      * Sets the direction for weak/neutral text of this element.
-     * 
+     *
      * @since Struts 1.3.6
      */
     public void setDir(String dir) {
@@ -738,7 +738,7 @@ public class FormTag extends TagSupport {
             sb.append("]");
             index = sb.toString();
         }
-        
+
         // Construct the control name that will receive focus.
         StringBuffer focusControl = new StringBuffer("document.forms[\"");
         focusControl.append(beanName);

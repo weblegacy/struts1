@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Strip trailing spaces
 * Rename `tour.htm` to `tour.html`
 * Replace tabs with spaces
 * Some encoding-updates to UTF-8

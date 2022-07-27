@@ -197,7 +197,7 @@ public class Globals implements Serializable {
     public static final String XHTML_KEY = "org.apache.struts.globals.XHTML";
 
     /**
-     * The request attributes key under which XHTML version is stored.  The 
+     * The request attributes key under which XHTML version is stored.  The
      * version is stored as a {@link java.math.BigDecimal}. The attribute
      * has no effect if {@link #XHTML_KEY} is not set.
      *

@@ -6,9 +6,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,7 +32,7 @@
 <body>
 <html:link page="/jsp/logic/source.jsp">
   <img src="../../images/code.gif" width="24" height="24" alt="View Source" class="icon" />
-</html:link> 
+</html:link>
 <a href="../../index.jsp"><img src="../../images/return.gif" height="24" width="24" alt="Return to examples page" class="icon" /></a>
 <h1>Logic Tags Example</h1>
 <hr noshade="noshade"/>
@@ -53,7 +53,7 @@
     <p><bean:write name="test"/></p>
 </logic:present>
 <logic:notPresent parameter="param">
-    <p>Parameter 'param' not present. 
+    <p>Parameter 'param' not present.
         <html:link action="/prepareLogic?param=The parameter is present">
         Redisplay page with parameter present.
       </html:link>
@@ -90,7 +90,7 @@
     <p>'items' is not empty</p>
 <%--    <bean:size collection="items" id="itemsSize"/>
     <p>Items has <bean:write name="itemsSize" /> items.</p>
---%>    
+--%>
 </logic:notEmpty>
 
 
@@ -150,16 +150,16 @@
 <logic:messagesPresent>
 <p>Global errors:</p>
 <ul>
- <html:messages id="error" property="<%=ActionErrors.GLOBAL_MESSAGE%>"> 
+ <html:messages id="error" property="<%=ActionErrors.GLOBAL_MESSAGE%>">
  <li><bean:write name="error"/></li>
- </html:messages> 
-</ul> 
+ </html:messages>
+</ul>
 <p>Errors for 'test':</p>
 <ul>
- <html:messages id="error" property="test"> 
+ <html:messages id="error" property="test">
  <li><bean:write name="error"/></li>
- </html:messages> 
-</ul> 
+ </html:messages>
+</ul>
 </logic:messagesPresent>
 <logic:messagesNotPresent>
     <p>There are no errors</p>
@@ -169,16 +169,16 @@
 <h3>Messages:</h3>
 <logic:messagesPresent message="true">
  <ul>
- <html:messages id="msg" message="true" property="<%=ActionMessages.GLOBAL_MESSAGE%>"> 
+ <html:messages id="msg" message="true" property="<%=ActionMessages.GLOBAL_MESSAGE%>">
  <li><bean:write name="msg"/></li>
- </html:messages> 
+ </html:messages>
  </ul>
 <p>Messages for 'test':</p>
 <ul>
- <html:messages id="msg" property="test" message="true"> 
+ <html:messages id="msg" property="test" message="true">
  <li><bean:write name="msg"/></li>
- </html:messages> 
-</ul> 
+ </html:messages>
+</ul>
 </logic:messagesPresent>
 <logic:messagesNotPresent message="true">
     <p>There are no messages</p>

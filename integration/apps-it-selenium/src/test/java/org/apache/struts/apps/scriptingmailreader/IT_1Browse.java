@@ -63,34 +63,34 @@ public class IT_1Browse {
   public void test11BrowsePublicPagesMss() {
     // Test name: 1_1_Browse public pages (MSS)
     // Step # | name | target | value
-    // 1 | open | struts-mailreader/Welcome.do | 
+    // 1 | open | struts-mailreader/Welcome.do |
     // Open welcome action
     driver.get(home + "Welcome.do");
-    // 2 | verifyTitle | MailReader Demonstration Application | 
+    // 2 | verifyTitle | MailReader Demonstration Application |
     // Welcome page title
     assertEquals("MailReader Demonstration Application", driver.getTitle());
-    // 3 | click | linkText=Register with the MailReader Demonstration Application | 
+    // 3 | click | linkText=Register with the MailReader Demonstration Application |
     // Click Register
     driver.findElement(By.linkText("Register with the MailReader Demonstration Application")).click();
-    // 4 | verifyTitle | Register for the MailReader Demonstration Application | 
+    // 4 | verifyTitle | Register for the MailReader Demonstration Application |
     // Registration page title
     assertEquals("Register for the MailReader Demonstration Application", driver.getTitle());
-    // 5 | click | linkText=MailReader Demonstration Application | 
+    // 5 | click | linkText=MailReader Demonstration Application |
     // Click Welcome
     driver.findElement(By.linkText("MailReader Demonstration Application")).click();
-    // 6 | verifyTitle | MailReader Demonstration Application | 
+    // 6 | verifyTitle | MailReader Demonstration Application |
     // Welcome page title
     assertEquals("MailReader Demonstration Application", driver.getTitle());
-    // 7 | click | linkText=Log on to the MailReader Demonstration Application | 
+    // 7 | click | linkText=Log on to the MailReader Demonstration Application |
     // Click Logon
     driver.findElement(By.linkText("Log on to the MailReader Demonstration Application")).click();
-    // 8 | verifyTitle | MailReader Demonstration Application - Logon | 
+    // 8 | verifyTitle | MailReader Demonstration Application - Logon |
     // Logon page title
     assertEquals("MailReader Demonstration Application - Logon", driver.getTitle());
-    // 9 | click | linkText=MailReader Demonstration Application | 
+    // 9 | click | linkText=MailReader Demonstration Application |
     // Click Welcome
     driver.findElement(By.linkText("MailReader Demonstration Application")).click();
-    // 10 | verifyTitle | MailReader Demonstration Application | 
+    // 10 | verifyTitle | MailReader Demonstration Application |
     // Welcome page title
     assertEquals("MailReader Demonstration Application", driver.getTitle());
   }
@@ -98,25 +98,25 @@ public class IT_1Browse {
   public void test12BrowseNonPublicPagesAndFail5a() {
     // Test name: 1_2_Browse non-public pages (and fail) (5a)
     // Step # | name | target | value
-    // 1 | open | struts-mailreader/SubmitLogon.do | 
+    // 1 | open | struts-mailreader/SubmitLogon.do |
     // Skip Logon page
     driver.get(home + "SubmitLogon.do");
-    // 2 | verifyTitle | MailReader Demonstration Application - Logon | 
+    // 2 | verifyTitle | MailReader Demonstration Application - Logon |
     // Logon page title
     assertEquals("MailReader Demonstration Application - Logon", driver.getTitle());
-    // 3 | assertElementPresent | xpath=//*[contains(text(),'Validation Error')] | 
+    // 3 | assertElementPresent | xpath=//*[contains(text(),'Validation Error')] |
     // Test Validation Error
     {
       List<WebElement> elements = driver.findElements(By.xpath("//*[contains(text(),\'Validation Error\')]"));
       assertTrue(elements.size() > 0);
     }
-    // 4 | open | struts-mailreader/SaveRegistration.do | 
+    // 4 | open | struts-mailreader/SaveRegistration.do |
     // Skip Save RegistrationAction page
     driver.get(home + "SaveRegistration.do");
-    // 5 | verifyTitle | Register for the MailReader Demonstration Application | 
+    // 5 | verifyTitle | Register for the MailReader Demonstration Application |
     // Registration page title
     assertEquals("Register for the MailReader Demonstration Application", driver.getTitle());
-    // 6 | assertElementPresent | xpath=//*[contains(text(),'Validation Error')] | 
+    // 6 | assertElementPresent | xpath=//*[contains(text(),'Validation Error')] |
     // Test Validation Error
     {
       List<WebElement> elements = driver.findElements(By.xpath("//*[contains(text(),\'Validation Error\')]"));

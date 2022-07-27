@@ -29,7 +29,7 @@ import java.lang.reflect.Method;
  * extracting its methods from an {@link ActionContext}. A {@link Dispatcher}
  * may use the resolver to separate out its method resolution based on
  * technology (such as servlets, portlets, etc.).
- * 
+ *
  * @version $Rev$
  * @since Struts 1.4
  */
@@ -37,10 +37,10 @@ public interface MethodResolver {
 
     /**
      * Constructs the arguments that will be passed to the dispatched method.
-     * 
+     *
      * @param context the current action context
      * @param method the target method of this dispatch
-     * 
+     *
      * @return the arguments array for the method, or <code>null</code> if the
      *         method does not match any supported signatures
      * @see #resolveMethod(ActionContext, String)
@@ -50,7 +50,7 @@ public interface MethodResolver {
     /**
      * Decides the appropriate method instance for the specified method name.
      * Implementations may introspect for any desired method signature.
-     * 
+     *
      * @param context the current action context
      * @param methodName the method name to use for introspection
      * @return the method to invoke

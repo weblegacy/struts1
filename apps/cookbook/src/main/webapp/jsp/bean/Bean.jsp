@@ -6,9 +6,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -27,9 +27,9 @@
 <link rel="stylesheet" type="text/css" href="../../css/example.css" />
 </head>
 <body>
-<html:link page="/jsp/bean/source.jsp"> 
+<html:link page="/jsp/bean/source.jsp">
     <img src="../../images/code.gif" width="24" height="24" alt="View Source" class="icon" />
-</html:link> 
+</html:link>
 <a href="../../index.jsp"><img src="../../images/return.gif" height="24" width="24" alt="Return to examples page" class="icon" /></a>
 <h1>Bean tag examples</h1>
 <hr noshade="noshade"/>
@@ -108,7 +108,7 @@
   <td><bean:write name="encodings" /></td></tr>
 </table>
 
-<%-- Not working in webappcabaret 
+<%-- Not working in webappcabaret
 <h2>&lt;bean:include&gt;</h2>
 <bean:include page="/jsp/bean/include.inc" id="include"/>
 <div class="result">
@@ -156,10 +156,10 @@
   <td><bean:write name="sess" property="domain"/></td></tr>
   <tr><td class="label">maxAge</td>
   <td><bean:write name="sess" property="maxAge"/></td></tr>
-<%-- Fails on Tomcat 3.3.1a 
+<%-- Fails on Tomcat 3.3.1a
   <tr><td class="label">name</td>
   <td><bean:write name="sess" property="name"/></td></tr>
---%>  
+--%>
   <tr><td class="label">path</td>
   <td><bean:write name="sess" property="path"/></td></tr>
   <tr><td class="label">secure</td>
@@ -180,7 +180,7 @@
   <td><bean:write name="dummy" property="domain"/></td></tr>
   <tr><td class="label">maxAge</td>
   <td><bean:write name="dummy" property="maxAge"/></td></tr>
-<%-- Fails on Tomcat 3.3.1a 
+<%-- Fails on Tomcat 3.3.1a
   <tr><td class="label">name</td>
   <td><bean:write name="dummy" property="name"/></td></tr>
 --%>

@@ -31,7 +31,7 @@ if (act == null) {
         log.debug("EditRegistrationAction:  Processing " + act +
                     " act");
     }
-}    
+}
 
 user = null;
 // Is there a currently logged on user?
@@ -54,7 +54,7 @@ if (user != null) {
     }
     try {
         PropertyUtils.copyProperties((Object)form, user);
-        
+
         form.set("task", act);
         form.set("password", null);
         form.set("password2", null);

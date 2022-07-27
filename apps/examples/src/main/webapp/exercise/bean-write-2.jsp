@@ -5,9 +5,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -38,17 +38,17 @@
               <th>Double format</th>
             </tr>
             <tr>
-              <td>de 
+              <td>de
               <bean:message key="locale.de" /></td>
               <td>1.234.567,89</td>
             </tr>
             <tr>
-              <td>en 
+              <td>en
               <bean:message key="locale.en" /></td>
               <td>1,234,567.89</td>
             </tr>
             <tr>
-              <td>fr 
+              <td>fr
               <bean:message key="locale.fr" /></td>
               <td>1 234 567,89</td>
             </tr>
@@ -65,10 +65,10 @@
               <td>
                 <%= pageContext.getAttribute("test7.double") %>
               </td>
-              <td>[#,000.00] 
+              <td>[#,000.00]
               <bean:write name="test7.double" format="#,000.00" /></td>
               <td>[
-              <bean:message key="double.pattern" />] 
+              <bean:message key="double.pattern" />]
               <bean:write name="test7.double" formatKey="double.pattern" /></td>
             </tr>
           </table>
@@ -85,17 +85,17 @@
               <th>Date format</th>
             </tr>
             <tr>
-              <td>de 
+              <td>de
               <bean:message key="locale.de" /></td>
               <td>Fr, Jan 2, '70</td>
             </tr>
             <tr>
-              <td>en 
+              <td>en
               <bean:message key="locale.en" /></td>
               <td>Fri, Jan 2, '70</td>
             </tr>
             <tr>
-              <td>fr 
+              <td>fr
               <bean:message key="locale.fr" /></td>
               <td>ven., janv. 2, '70</td>
             </tr>
@@ -112,10 +112,10 @@
               <td>
                 <%= pageContext.getAttribute("test7.date") %>
               </td>
-              <td>[EEE, MMM d, ''yy] 
+              <td>[EEE, MMM d, ''yy]
               <bean:write name="test7.date" format="EEE, MMM d, ''yy" /></td>
               <td>[
-              <bean:message key="date.pattern" />] 
+              <bean:message key="date.pattern" />]
               <bean:write name="test7.date" formatKey="date.pattern" /></td>
             </tr>
           </table>

@@ -26,7 +26,7 @@ import javax.servlet.jsp.JspException;
 
 /**
  * Renders an HTML LABEL tag within the Struts framework.
- * 
+ *
  * @version $Rev$
  * @since Struts 1.4
  */
@@ -83,7 +83,7 @@ public class LabelTag extends BaseInputTag {
      * Render the beginning of the hyperlink.
      * <p>
      * Support for indexed property since Struts 1.1
-     * 
+     *
      * @throws JspException if a JSP exception has occurred
      */
     public int doStartTag() throws JspException {
@@ -95,7 +95,7 @@ public class LabelTag extends BaseInputTag {
 
     /**
      * Save the associated label from the body content.
-     * 
+     *
      * @throws JspException if a JSP exception has occurred
      */
     public int doAfterBody() throws JspException {
@@ -111,7 +111,7 @@ public class LabelTag extends BaseInputTag {
 
     /**
      * Render the end of the hyperlink.
-     * 
+     *
      * @throws JspException if a JSP exception has occurred
      */
     public int doEndTag() throws JspException {
@@ -142,7 +142,7 @@ public class LabelTag extends BaseInputTag {
     /**
      * Returns the CSS style class that indicates a "required" styling. If no
      * styling is wanted, return <code>null</code>.
-     * 
+     *
      * @return the style class; can be <code>null</code>
      * @see #prepareAttribute(StringBuffer, String, Object)
      */
@@ -154,7 +154,7 @@ public class LabelTag extends BaseInputTag {
      * If this label is describes a required field, then the CSS style class
      * attribute gets appended with the "required" style, if not null, which
      * takes effect for both the normal and error style.
-     * 
+     *
      * @see #getRequiredStyleClass()
      * @see #prepareValue(String)
      */
@@ -177,7 +177,7 @@ public class LabelTag extends BaseInputTag {
      * <code>span</code> tag with a CSS class attribute of
      * {@link #getRequiredStyleClass()}, if the <code>required</code>
      * property is set.
-     * 
+     *
      * @param handlers The StringBuffer that output will be appended to.
      * @see #getRequiredStyleClass()
      */

@@ -5,9 +5,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -41,12 +41,12 @@
 <html:form action="multiRegistration-submit" onsubmit="return validateMultiRegistrationForm(this);">
   <html:hidden property="action"/>
   <html:hidden property="page" value="2"/>
-  
+
   <html:hidden property="firstName"/>
   <html:hidden property="lastName"/>
   <html:hidden property="addr"/>
   <html:hidden property="cityStateZip.city"/>
-  
+
 
 <table border="0" width="100%">
   <tr>
@@ -93,7 +93,7 @@
       &nbsp;
       <html:cancel onclick="bCancel=true;">
          <bean:message key="button.cancel"/>
-      </html:cancel>    
+      </html:cancel>
     </td>
   </tr>
 </table>

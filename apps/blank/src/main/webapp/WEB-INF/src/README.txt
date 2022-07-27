@@ -7,7 +7,7 @@ What's Struts Blank?
 
 Where do I put my own code?
 
-- The build file is setup so that you can place your own packages anywhere under the WEB-INF/src directory. 
+- The build file is setup so that you can place your own packages anywhere under the WEB-INF/src directory.
 
 What are the references to /javasoft/lib in the build.xml about?
 
@@ -15,9 +15,9 @@ What are the references to /javasoft/lib in the build.xml about?
 
 What targets does the build file accept?
 
-- "clean" to delete the old class, resource, and configuration files. 
+- "clean" to delete the old class, resource, and configuration files.
 
-- "compile" to rebuild the Java class files and copy over the resource and configuration files. 
+- "compile" to rebuild the Java class files and copy over the resource and configuration files.
 
 - "project" to also generate the Javadoc.
 

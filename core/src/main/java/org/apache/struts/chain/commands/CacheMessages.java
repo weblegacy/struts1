@@ -34,7 +34,7 @@ import java.util.Map;
  * the <code>RemoveCachedMessages</code> command. The most common use case for
  * this command is when the validator or exception handler places messages in
  * the request.
- * 
+ *
  * @version $Id$
  * @see RemoveCachedMessages
  * @since Struts 1.4.0
@@ -57,7 +57,7 @@ public class CacheMessages extends ActionCommandBase {
      * Adds any <code>ActionMessages</code> object to the destination scope,
      * stored under the specified key, if the messages were not accessed through
      * the source scope.
-     * 
+     *
      * @param fromScope The scope to check for unacessed messages.
      * @param toScope The scope to copy messages into.
      * @param key The key the messages are stored under.

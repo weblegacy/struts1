@@ -66,37 +66,37 @@ import java.util.Map;
 public class TagUtils {
 
     /**
-     * Constant for 
-     * <a href="http://www.w3.org/TR/xhtml1/#docconf">XHTML 1.0</a> 
+     * Constant for
+     * <a href="http://www.w3.org/TR/xhtml1/#docconf">XHTML 1.0</a>
      * conformance.
-     * 
+     *
      * @since Struts 1.4
      */
     public static final BigDecimal XHTML_1_0 = new BigDecimal("1.0");
 
     /**
-     * Constant for 
+     * Constant for
      * <a href="http://www.w3.org/TR/xhtml11/conformance.html">XHTML 1.1</a>
      * conformance.
-     * 
+     *
      * @since Struts 1.4
      */
     public static final BigDecimal XHTML_1_1 = new BigDecimal("1.1");
 
     /**
-     * Constant for 
-     * <a href="http://www.w3.org/TR/xhtml2/conformance.html#s_conform">XHTML 
+     * Constant for
+     * <a href="http://www.w3.org/TR/xhtml2/conformance.html#s_conform">XHTML
      * 2.0</a> conformance.
-     * 
+     *
      * @since Struts 1.4
      */
     public static final BigDecimal XHTML_2_0 = new BigDecimal("2.0");
 
     /**
-     * Constant for  
+     * Constant for
      * <a href="http://www.w3.org/html/wg/html5/#terminology">XHTML 5.0</a>
      * conformance.
-     * 
+     *
      * @since Struts 1.4
      */
     public static final BigDecimal XHTML_5_0 = new BigDecimal("5.0");

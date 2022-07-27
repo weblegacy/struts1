@@ -148,10 +148,10 @@ public class HtmlTag extends TagSupport {
         if (this.xhtml) {
             this.pageContext.setAttribute(Globals.XHTML_KEY, "true",
                 PageContext.PAGE_SCOPE);
-            this.pageContext.setAttribute(Globals.XHTML_VERSION_KEY, 
+            this.pageContext.setAttribute(Globals.XHTML_VERSION_KEY,
                 xhtmlVersion, PageContext.REQUEST_SCOPE);
 
-            // 1.1 
+            // 1.1
             if (xhtmlVersion.equals(TagUtils.XHTML_1_1)) {
                 sb.append(" xmlns=\"http://www.w3.org/1999/xhtml\"");
                 sb.append(" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"");
@@ -243,7 +243,7 @@ public class HtmlTag extends TagSupport {
         }
         for (int i = 0; i < value.length(); i++) {
             char c = value.charAt(i);
-            
+
             if (!(Character.isLetter(c) || c == '-')) {
                 return false;
             }

@@ -438,7 +438,7 @@ public class TestTagUtils extends TagTestBase {
         assertEquals(3, map.size(), "Three parameter in the returned map");
 
         assertTrue(map.containsKey("foo1"), "Parameter foo1 present");
-        assertInstanceOf(String[].class, map.get("foo1"), 
+        assertInstanceOf(String[].class, map.get("foo1"),
             "Parameter foo1 value type");
 
         String[] values = (String[]) map.get("foo1");
@@ -2217,7 +2217,7 @@ public class TestTagUtils extends TagTestBase {
     @Test
     public void testWrite() {
         MockPageContext pg = new MockPageContext(false, false);
-        
+
         try {
             tagutils.write(pg, null);
         } catch (JspException e) {

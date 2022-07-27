@@ -63,10 +63,10 @@ public class IT_4Logon {
   public void test41OpenLogonActionDefaultMss() {
     // Test name: 4_1_Open logon action Default (MSS)
     // Step # | name | target | value
-    // 1 | open | struts-mailreader/Logon.do | 
+    // 1 | open | struts-mailreader/Logon.do |
     // Pass logon
     driver.get(home + "Logon.do");
-    // 2 | verifyTitle | MailReader Demonstration Application - Logon | 
+    // 2 | verifyTitle | MailReader Demonstration Application - Logon |
     // Logon page title
     assertEquals("MailReader Demonstration Application - Logon", driver.getTitle());
     // 3 | type | name=username | user
@@ -75,10 +75,10 @@ public class IT_4Logon {
     // 4 | type | name=password | pass
     // Correct default password
     driver.findElement(By.name("password")).sendKeys("pass");
-    // 5 | click | name=Submit | 
+    // 5 | click | name=Submit |
     // Submit
     driver.findElement(By.name("Submit")).click();
-    // 6 | verifyTitle | MailReader Demonstration Application - Main Menu | 
+    // 6 | verifyTitle | MailReader Demonstration Application - Main Menu |
     // Menu page title
     assertEquals("MailReader Demonstration Application - Main Menu", driver.getTitle());
   }
@@ -86,10 +86,10 @@ public class IT_4Logon {
   public void test42OpenLogonActionHermesMss() {
     // Test name: 4_2_Open logon action Hermes (MSS)
     // Step # | name | target | value
-    // 1 | open | struts-mailreader/Logon.do | 
+    // 1 | open | struts-mailreader/Logon.do |
     // Pass logon
     driver.get(home + "Logon.do");
-    // 2 | verifyTitle | MailReader Demonstration Application - Logon | 
+    // 2 | verifyTitle | MailReader Demonstration Application - Logon |
     // Logon page title
     assertEquals("MailReader Demonstration Application - Logon", driver.getTitle());
     // 3 | type | name=username | hermes
@@ -98,10 +98,10 @@ public class IT_4Logon {
     // 4 | type | name=password | m3dus4
     // Correct password
     driver.findElement(By.name("password")).sendKeys("m3dus4");
-    // 5 | click | name=Submit | 
+    // 5 | click | name=Submit |
     // Submit
     driver.findElement(By.name("Submit")).click();
-    // 6 | verifyTitle | MailReader Demonstration Application - Main Menu | 
+    // 6 | verifyTitle | MailReader Demonstration Application - Main Menu |
     // Menu page title
     assertEquals("MailReader Demonstration Application - Main Menu", driver.getTitle());
   }
@@ -109,10 +109,10 @@ public class IT_4Logon {
   public void test43LogonWrongPassword1c() {
     // Test name: 4_3_Logon - Wrong password (1c)
     // Step # | name | target | value
-    // 1 | open | struts-mailreader/Logon.do | 
+    // 1 | open | struts-mailreader/Logon.do |
     // Pass logon
     driver.get(home + "Logon.do");
-    // 2 | verifyTitle | MailReader Demonstration Application - Logon | 
+    // 2 | verifyTitle | MailReader Demonstration Application - Logon |
     // Logon page title
     assertEquals("MailReader Demonstration Application - Logon", driver.getTitle());
     // 3 | type | name=username | hermes
@@ -121,13 +121,13 @@ public class IT_4Logon {
     // 4 | type | name=password | medusa
     // Wrong password
     driver.findElement(By.name("password")).sendKeys("medusa");
-    // 5 | click | name=Submit | 
+    // 5 | click | name=Submit |
     // Submit
     driver.findElement(By.name("Submit")).click();
-    // 6 | verifyTitle | MailReader Demonstration Application - Logon | 
+    // 6 | verifyTitle | MailReader Demonstration Application - Logon |
     // Logon page title
     assertEquals("MailReader Demonstration Application - Logon", driver.getTitle());
-    // 7 | assertElementPresent | xpath=//*[contains(text(),'Validation Error')] | 
+    // 7 | assertElementPresent | xpath=//*[contains(text(),'Validation Error')] |
     // Test Validation Error
     {
       List<WebElement> elements = driver.findElements(By.xpath("//*[contains(text(),\'Validation Error\')]"));
@@ -138,10 +138,10 @@ public class IT_4Logon {
   public void test44LogonNoAccount1a() {
     // Test name: 4_4_Logon - No Account (1a)
     // Step # | name | target | value
-    // 1 | open | struts-mailreader/Logon.do | 
+    // 1 | open | struts-mailreader/Logon.do |
     // Pass logon
     driver.get(home + "Logon.do");
-    // 2 | verifyTitle | MailReader Demonstration Application - Logon | 
+    // 2 | verifyTitle | MailReader Demonstration Application - Logon |
     // Logon page title
     assertEquals("MailReader Demonstration Application - Logon", driver.getTitle());
     // 3 | type | name=username | zeus
@@ -150,13 +150,13 @@ public class IT_4Logon {
     // 4 | type | name=password | joltBolt
     // Not a password
     driver.findElement(By.name("password")).sendKeys("joltBolt");
-    // 5 | click | name=Submit | 
+    // 5 | click | name=Submit |
     // Submit
     driver.findElement(By.name("Submit")).click();
-    // 6 | verifyTitle | MailReader Demonstration Application - Logon | 
+    // 6 | verifyTitle | MailReader Demonstration Application - Logon |
     // Logon page title
     assertEquals("MailReader Demonstration Application - Logon", driver.getTitle());
-    // 7 | assertElementPresent | xpath=//*[contains(text(),'Validation Error')] | 
+    // 7 | assertElementPresent | xpath=//*[contains(text(),'Validation Error')] |
     // Test Validation Error
     {
       List<WebElement> elements = driver.findElements(By.xpath("//*[contains(text(),\'Validation Error\')]"));

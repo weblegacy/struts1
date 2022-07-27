@@ -36,20 +36,20 @@ import javax.servlet.http.HttpServletRequest;
  * <p>
  * To configure the use of this action in your configuration, create an entry
  * like this:
- * 
+ *
  * <pre><code>
  *   &lt;action path=&quot;/saveSubscription&quot;
  *           type=&quot;org.example.SubscriptionAction&quot;
- *           dispatcher=&quot;org.apache.struts.dispatcher.servlet.ServletEventMappingDispatcher&quot;/&gt;     
+ *           dispatcher=&quot;org.apache.struts.dispatcher.servlet.ServletEventMappingDispatcher&quot;/&gt;
  *           parameter=&quot;save,back,recalc=recalculate,default=save&quot;/&gt;
  *           name=&quot;subscriptionForm&quot;
  *           scope=&quot;request&quot;
  *           input=&quot;/subscription.jsp&quot;
  * </code></pre>
- * 
+ *
  * where <code>parameter</code> contains three possible methods and one
  * default method if nothing matches (such as the user pressing the enter key).
- * 
+ *
  * @version $Rev$
  * @since Struts 1.4
  */

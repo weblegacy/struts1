@@ -41,7 +41,7 @@ public class TestPropertyMessageResources {
     private static final String FOO_RESOURCES = "org.apache.struts.util.Foo";
 
     private Locale defaultLocale;
-    
+
     // ----------------------------------------------------- Setup and Teardown
     @BeforeEach
     public void setUp() {
@@ -64,7 +64,7 @@ public class TestPropertyMessageResources {
     public void testDefaultMode() {
 
         Locale.setDefault(Locale.US);
-        
+
         // Create message resources - default Struts Behaviour
 //        MessageResources resources = createMessageResources(FOO_RESOURCES, true, "DEFAULT");
         MessageResources resources = createMessageResources(FOO_RESOURCES, true, null);
@@ -100,7 +100,7 @@ public class TestPropertyMessageResources {
     public void testJstlMode() {
 
         Locale.setDefault(Locale.US);
-        
+
         // Create message resources - default Struts Behaviour
         MessageResources resources = createMessageResources(FOO_RESOURCES, true, "JSTL");
 
@@ -136,7 +136,7 @@ public class TestPropertyMessageResources {
     public void testResourceBundleMode() {
 
         Locale.setDefault(Locale.US);
-        
+
         // Create message resources - default Struts Behaviour
         MessageResources resources = createMessageResources(FOO_RESOURCES, true, "RESOURCE");
 

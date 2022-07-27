@@ -1135,7 +1135,7 @@ public class ELImgTag extends ImgTag {
                     pageContext)) != null) {
             setDir(string);
         }
-        
+
         if ((string =
                 EvalHelper.evalString("height", getHeightExpr(), this,
                     pageContext)) != null) {

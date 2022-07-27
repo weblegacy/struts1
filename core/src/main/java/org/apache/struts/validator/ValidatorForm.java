@@ -113,12 +113,12 @@ public class ValidatorForm extends ActionForm implements Serializable {
         } catch (NullPointerException e) {
             IllegalStateException e2 = new IllegalStateException(
                     "Missing ActionServlet instance for bean '" +
-                    mapping.getName() + 
+                    mapping.getName() +
                     "' (created outside of Struts?)");
             e2.initCause(e);
             throw e2;
         }
-        
+
         Validator validator =
             Resources.initValidator(validationKey, this, application, request,
                 errors, getPage());

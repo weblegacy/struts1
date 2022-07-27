@@ -117,7 +117,7 @@ public final class Constants {
      * the Dispatcher instances associated with this module are stored. This value
      * must be suffixed with the module prefix in order to create a unique key
      * per module.</p>
-     * 
+     *
      * @see Dispatcher
      * @since Struts 1.4
      */

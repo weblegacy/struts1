@@ -32,7 +32,7 @@ import java.lang.reflect.Method;
  * <li><code><i>return_type</i> execute()</code></li>
  * <li><code><i>return_type</i> execute(ActionContext context)</code></li>
  * </ul>
- * 
+ *
  * @version $Rev$
  * @since Struts 1.4
  */
@@ -40,14 +40,14 @@ public abstract class AbstractMethodResolver implements MethodResolver {
 
     /**
      * The argument listing for a method without arguments.
-     * 
+     *
      * @see #EMPTY_ARGUMENT_TYPES
      */
     protected static final Object[] EMPTY_ARGUMENTS = new Object[] {};
 
     /**
      * The type listing used for a method without arguments.
-     * 
+     *
      * @see #EMPTY_ARGUMENTS
      */
     protected static final Class[] EMPTY_ARGUMENT_TYPES = new Class[] {};

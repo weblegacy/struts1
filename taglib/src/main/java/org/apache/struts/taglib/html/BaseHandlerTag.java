@@ -242,7 +242,7 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
      * The name of the session attribute key for our locale.
      */
     private String locale = Globals.LOCALE_KEY;
-    
+
     /**
      * The advisory title of this element.
      */
@@ -252,7 +252,7 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
      * The language code of this element.
      */
     private String lang = null;
-    
+
     /**
      * The direction for weak/neutral text of this element.
      */
@@ -740,7 +740,7 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
 
     /**
      * Returns the language code of this element.
-     * 
+     *
      * @since Struts 1.3.6
      */
     public String getLang() {
@@ -749,7 +749,7 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
 
     /**
      * Sets the language code of this element.
-     * 
+     *
      * @since Struts 1.3.6
      */
     public void setLang(String lang) {
@@ -758,7 +758,7 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
 
     /**
      * Returns the direction for weak/neutral text this element.
-     * 
+     *
      * @since Struts 1.3.6
      */
     public String getDir() {
@@ -767,7 +767,7 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
 
     /**
      * Sets the direction for weak/neutral text of this element.
-     * 
+     *
      * @since Struts 1.3.6
      */
     public void setDir(String dir) {
@@ -1030,7 +1030,7 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
         throws JspException {
         return null;
     }
-    
+
     /**
      * Prepares the event handlers for inclusion in the component's HTML tag.
      *

@@ -45,7 +45,7 @@ public class FactoryNotFoundException extends DefinitionsFactoryException
 
     /**
      * Constructor.
-     * 
+     *
      * @param msg Message.
      * @param e the root cause exception
      */

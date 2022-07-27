@@ -47,7 +47,7 @@ public class TestSetOriginalURI {
     }
 
     /* tearDown method for test case */
-    @AfterEach    
+    @AfterEach
     protected void tearDown() {
     }
 

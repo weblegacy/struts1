@@ -28,7 +28,7 @@ import org.apache.struts.chain.contexts.ActionContext;
  * named by the <code>parameter</code> attribute of the corresponding
  * {@link ActionMapping}. The attribute value, if not provided, defaults to
  * <code>execute</code>.
- * 
+ *
  * @version $Rev$
  * @since Struts 1.4
  */
@@ -38,7 +38,7 @@ public abstract class AbstractMappingDispatcher extends AbstractDispatcher {
 
     /**
      * Constructs a new dispatcher with the specified method resolver.
-     * 
+     *
      * @param methodResolver the method resolver
      */
     public AbstractMappingDispatcher(MethodResolver methodResolver) {
@@ -50,7 +50,7 @@ public abstract class AbstractMappingDispatcher extends AbstractDispatcher {
      * Retrieves the default mapping parameter value. This value is used by
      * {@link #resolveMethodName(ActionContext)} if the mapping did not provide
      * a value.
-     * 
+     *
      * @return the mapping parameter value or <code>null</code>
      * @see #setDefaultMappingParameter(String)
      */
@@ -61,7 +61,7 @@ public abstract class AbstractMappingDispatcher extends AbstractDispatcher {
     /**
      * Resolves the method name by obtaining the <code>parameter</code>
      * attribute from the {@link ActionMapping}.
-     * 
+     *
      * @param context {@inheritDoc}
      * @throws IllegalStateException if the parameter cannot be resolved
      * @return the parameter attribute value
@@ -91,7 +91,7 @@ public abstract class AbstractMappingDispatcher extends AbstractDispatcher {
 
     /**
      * Stores the new default mapping parameter value.
-     * 
+     *
      * @param defaultMappingParameter the parameter value
      * @see #getDefaultMappingParameter()
      */

@@ -5,9 +5,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -23,7 +23,7 @@
     <div align="center">
       <h1>Test struts-bean:parameter Tag</h1>
     </div>
-    <p>If called from the 
+    <p>If called from the
     <code>index.html</code>page, two request parameters will be included and their values displayed below. If you call this page without including the appropriate request parameters, you will receive a JSP runtime error instead.</p>
     <bean:parameter id="param1" name="param1" />
     <bean:parameter id="param2" name="param2" />

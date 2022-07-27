@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 /**
  * <p>Performs post-processing functions in command chain</p>
  *
- * @version $Rev$ $Date$ 
+ * @version $Rev$ $Date$
  * @since Struts 1.4
  */
 public class ActionPostProcess extends ActionCommandBase {

@@ -52,7 +52,7 @@ public abstract class AbstractAuthorizeAction extends ActionCommandBase {
      * @param actionCtx The <code>Context</code> for the current request
      * @return <code>false</code> if the user is authorized for the selected
      *         action, else <code>true</code> to abort processing.
-     * @throws UnauthorizedActionException if authorization fails 
+     * @throws UnauthorizedActionException if authorization fails
      * or if an error is encountered in the course of performing the authorization.
      */
     public boolean execute(ActionContext actionCtx)
@@ -112,7 +112,7 @@ public abstract class AbstractAuthorizeAction extends ActionCommandBase {
      * @param actionConfig The current action mapping
      * @return <code>true</code> if the request is authorized, else
      *         <code>false</code>
-     * @throws UnauthorizedActionException If the logic determines that the request is not authorized 
+     * @throws UnauthorizedActionException If the logic determines that the request is not authorized
      * but does not wish to rely upon the default mechanism reporting the error.
      * @throws Exception If the action cannot be tested for authorization
      */

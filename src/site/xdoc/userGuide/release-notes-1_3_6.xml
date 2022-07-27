@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,8 +33,8 @@
             <blockquote><p><em>
             "I've had nothing yet, so I can't take more."
             </em></p><p><em>
-            "You mean you can't take less. It's very easy to take more than 
-            nothing." 
+            "You mean you can't take less. It's very easy to take more than
+            nothing."
             </em></p></blockquote>
 
             <subsection name="Introduction" id="release_notes">
@@ -44,7 +44,7 @@
                     since the
                     <a href="release-notes-1_3_5.html">Version 1.3.5</a>
                     distribution.
-                    To keep up-to-date on all changes to the framework, 
+                    To keep up-to-date on all changes to the framework,
                     subscribe to
                     the (commits at struts.apache.org) list.
                     To preview our plans for upcoming changes,
@@ -108,18 +108,18 @@
                         Subversion client</a>
                     interfaces.
                 </p>
-                
+
                 <h4>Action ID</h4>
                 <p>An action mapping may now may be given an identifier by the new <code>actionId</code>
                 property which uniquely identifies the mapping within a module:</p>
-                
+
 <pre>
 &lt;action path="/person/view" type="..." input="..."&gt;
     &lt;set-property property="actionId" value="viewPersonAction" /&gt;
     &lt;forward name="success" path="person.jsp" /&gt;
 &lt;/action&gt;
 </pre>
-                
+
         <p>Just as the <code>TilesRequestProcessor</code> could recognize a tile definition
         and resolve it to the intended JSP, so does Struts now have built-in
         recognition for URIs that begin with an <code>actionId</code> and will automatically
@@ -133,7 +133,7 @@
 </pre>
 
         <p>You can effectively eliminate all URI management throughout the Struts configuration
-        files <b>and</b> within JSP. The tag libraries are also updated to recognize the 
+        files <b>and</b> within JSP. The tag libraries are also updated to recognize the
         <code>actionId</code>:</p>
 
 <pre>
@@ -146,7 +146,7 @@
 
         <h4>Internationalization (I18N) Tag Properties</h4>
 
-        <p>Struts tag libraries now include the HTML I18N properties. This allows sites that 
+        <p>Struts tag libraries now include the HTML I18N properties. This allows sites that
         specialize in internationalization to specify both bi-directional text and language
         at the tag level:</p>
 
@@ -156,10 +156,10 @@
 
         <h4>Dynamic Link Parameters</h4>
 
-        <p>The Struts <code>&lt;html:link&gt;</code>, <code>&lt;html:frame&gt;</code>, 
-        <code>&lt;html:rewrite&gt;</code> tag libaries now allow their bodies to nest the new 
+        <p>The Struts <code>&lt;html:link&gt;</code>, <code>&lt;html:frame&gt;</code>,
+        <code>&lt;html:rewrite&gt;</code> tag libaries now allow their bodies to nest the new
         <code>&lt;html:param&gt;</code> tag. This is useful when it is awkward (or inappropriate)
-        to pass in existing parameters as a <code>Map</code>, which is still supported and will 
+        to pass in existing parameters as a <code>Map</code>, which is still supported and will
         be appened to any present <code>&lt;html:param&gt;</code> tags:</p>
 
 <pre>
@@ -178,7 +178,7 @@
         the the message resources in the <code>struts-config.xml</code> in the
         following way (<strong>note</strong> the use of the <strong>key</strong> attribute
         in <code>&lt;set-property&gt;</code>): </p>
-                
+
 <pre>
 &lt;message-resources parameter="...."&gt;
     &lt;set-property key="mode" value="JSTL"/&gt;     // JSTL mode
@@ -190,7 +190,7 @@
 </pre>
 
 <h3>Issue Tracking</h3>
-    
+
 <h4>Bug</h4>
 <ul>
 <li>[<a href='http://issues.apache.org/struts/browse/STR-2894'>STR-2894</a>] - The &lt;form-bean&gt; type attribute should be optional</li>
@@ -212,7 +212,7 @@
 <li>[<a href='http://issues.apache.org/struts/browse/STR-2985'>STR-2985</a>] - Validate language and country according to RFC2616 in HtmlTag</li>
 <li>[<a href='http://issues.apache.org/struts/browse/STR-2987'>STR-2987</a>] - Scripting Mailreader: cannot log out</li>
 </ul>
-    
+
 <h4>Improvement</h4>
 <ul>
 <li>[<a href='http://issues.apache.org/struts/browse/STR-2077'>STR-2077</a>] - Provide a <code>PropertyResourceBundle</code> compatibility option for PropertyMessageResources</li>
@@ -225,7 +225,7 @@
 <li>[<a href='http://issues.apache.org/struts/browse/STR-2981'>STR-2981</a>] - Adjust AbstractAuthorizeAction to allow custom code to throw its own UnauthorizedActionException</li>
 <li>[<a href='http://issues.apache.org/struts/browse/STR-2982'>STR-2982</a>] - Complete JavaDoc package summaries</li>
 </ul>
-    
+
 <h4>New Feature</h4>
 <ul>
 <li>[<a href='http://issues.apache.org/struts/browse/STR-746'>STR-746</a>] - Add &lt;html:param&gt; for multiple parameters</li>
@@ -233,7 +233,7 @@
 <li>[<a href='http://issues.apache.org/struts/browse/STR-2864'>STR-2864</a>] - Add actionId attribute to action mapping</li>
 <li>[<a href='http://issues.apache.org/struts/browse/STR-2983'>STR-2983</a>] - Provide a new <i>compressed</i> version of the validator-rules.xml (requires <a href='http://jakarta.apache.org/commons/validator/'>Commons Validator 1.3.1</a>)</li>
 </ul>
-    
+
 <h4>Task</h4>
 <ul>
 <li>[<a href='http://issues.apache.org/struts/browse/STR-2942'>STR-2942</a>] - Use the DTDDoc plugin to generate HTML formatted DTD documentation</li>
@@ -241,7 +241,7 @@
 <li>[<a href='http://issues.apache.org/struts/browse/STR-2968'>STR-2968</a>] - ASF Source Header and Copyright Notice Policy</li>
 <li>[<a href='http://issues.apache.org/struts/browse/STR-2978'>STR-2978</a>] - Struts 1.3.6 omnibus</li>
 </ul>
-    
+
             </subsection>
 
         </section>

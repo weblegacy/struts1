@@ -897,7 +897,7 @@ public class ELRadioTag extends RadioTag {
                     pageContext)) != null) {
             setDir(string);
         }
-        
+
         if ((bool =
                 EvalHelper.evalBoolean("disabled", getDisabledExpr(), this,
                     pageContext)) != null) {

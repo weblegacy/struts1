@@ -182,7 +182,7 @@ public class ActionConfig extends BaseConfig {
      * <p> Should this action be instantiated once per module (singleton)
      * or once per request (prototype)? </p>
      */
-    private boolean singleton = true; 
+    private boolean singleton = true;
 
     /**
      * <p>Identifies conditions for automatic form reset.</p>
@@ -190,7 +190,7 @@ public class ActionConfig extends BaseConfig {
     protected String reset = PopulateEvent.ALL;
 
     private String[] resetNames = { PopulateEvent.ALL };
-    
+
     /**
      * <p> Identifies conditions for automatic form population with values
      * from HTTP request.</p>
@@ -254,7 +254,7 @@ public class ActionConfig extends BaseConfig {
     /**
      * The name of the {@link org.apache.struts.dispatcher.Dispatcher} implementation
      * that will dispatch to the end point of this action.
-     * 
+     *
      * @since Struts 1.4
      */
     protected String dispatcher;
@@ -285,7 +285,7 @@ public class ActionConfig extends BaseConfig {
         if (configured) {
             throw new IllegalStateException("Configuration is frozen");
         }
-        
+
         if ((actionId != null) && (actionId.indexOf("/") > -1)) {
             throw new IllegalArgumentException("actionId '" + actionId + "' may not contain a forward slash");
         }
@@ -672,7 +672,7 @@ public class ActionConfig extends BaseConfig {
     /**
      * <p> Gets the array of events names that specify when this
      * action should be reset. </p>
-     * 
+     *
      * @since Struts 1.4
      * @see #getReset()
      * @see PopulateEvent
@@ -708,11 +708,11 @@ public class ActionConfig extends BaseConfig {
     public final String getPopulate() {
         return (this.populate);
     }
-    
+
     /**
      * <p> Gets the array of events names that specify when this
      * action should be populated. </p>
-     * 
+     *
      * @since Struts 1.4
      * @see #getPopulate()
      * @see PopulateEvent
@@ -738,7 +738,7 @@ public class ActionConfig extends BaseConfig {
     }
 
     /**
-     * Determines whether this action is a singleton (one per module) 
+     * Determines whether this action is a singleton (one per module)
      * or a prototype (one per request). Actions are defaulted to
      * singletons unless otherwise specified.
      *
@@ -888,10 +888,10 @@ public class ActionConfig extends BaseConfig {
     }
 
     /**
-     * Retrieves the fully-qualified class name of the 
-     * {@link org.apache.struts.dispatcher.Dispatcher} implementation that will 
+     * Retrieves the fully-qualified class name of the
+     * {@link org.apache.struts.dispatcher.Dispatcher} implementation that will
      * dispatch to the this action.
-     *  
+     *
      * @return the dispatcher class name or <code>null</code>
      * @see #setDispatcher(String)
      * @since Struts 1.4
@@ -901,12 +901,12 @@ public class ActionConfig extends BaseConfig {
     }
 
     /**
-     * Stores the fully-qualified class name of the 
-     * {@link org.apache.struts.dispatcher.Dispatcher} implementation that will 
+     * Stores the fully-qualified class name of the
+     * {@link org.apache.struts.dispatcher.Dispatcher} implementation that will
      * dispatch to the this action.
-     * 
+     *
      * @param dispatcher the dispatcher class name
-     * @throws IllegalStateException if the configuration is frozen 
+     * @throws IllegalStateException if the configuration is frozen
      * @see #getDispatcher()
      * @since Struts 1.4
      */
@@ -938,7 +938,7 @@ public class ActionConfig extends BaseConfig {
             // get our ancestor's config
             ActionConfig baseConfig = moduleConfig.findActionConfig(ancestor);
             if (baseConfig == null) {
-                baseConfig = moduleConfig.findActionConfigId(ancestor); 
+                baseConfig = moduleConfig.findActionConfigId(ancestor);
             }
 
             if (baseConfig != null) {
@@ -1303,9 +1303,9 @@ public class ActionConfig extends BaseConfig {
             ActionConfig baseConfig =
                 moduleConfig.findActionConfig(ancestor);
             if (baseConfig == null) {
-                baseConfig = moduleConfig.findActionConfigId(ancestor); 
+                baseConfig = moduleConfig.findActionConfigId(ancestor);
             }
-            
+
             if (baseConfig == null) {
                 throw new NullPointerException("Unable to find "
                     + "action for '" + ancestor + "' to extend.");

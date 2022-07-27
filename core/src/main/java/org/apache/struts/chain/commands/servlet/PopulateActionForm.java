@@ -71,7 +71,7 @@ public class PopulateActionForm extends AbstractPopulateActionForm {
 
     /**
      * Determines whether an action form should be populated.
-     * 
+     *
      * @param request current HTTP request
      * @param actionConfig action config for current request
      * @return true if action form should be populated
@@ -84,7 +84,7 @@ public class PopulateActionForm extends AbstractPopulateActionForm {
 
     /**
      * Determines whether an action form should be reset.
-     * 
+     *
      * @param request current HTTP request
      * @param actionConfig action config for current request
      * @return true if action form should be reset
@@ -98,7 +98,7 @@ public class PopulateActionForm extends AbstractPopulateActionForm {
     /**
      * Compares current request state (direct or forwarded) with configuration
      * from action mapping.
-     * 
+     *
      * @param request current HTTP request
      * @param events values of either "reset" or "populate" attributes of
      *        an action mapping
@@ -114,17 +114,17 @@ public class PopulateActionForm extends AbstractPopulateActionForm {
         if ((events == null) || (events.length == 0)) {
             return true;
         }
-        
+
         // First check against events that must be alone
         if (events.length == 1) {
             if (events[0].equals(PopulateEvent.ALL)) {
                 return true;
-            } 
+            }
             if (events[0].equals(PopulateEvent.NONE)) {
                 return false;
             }
         }
-        
+
         // Then check against the list of combinable events
         HttpServletRequest request = ((ServletActionContext) context).getRequest();
         for(int i = 0; i < events.length; i++) {
@@ -151,7 +151,7 @@ public class PopulateActionForm extends AbstractPopulateActionForm {
                 return true;
             }
         }
-        
+
         // Do not reset/populate if a user explicity set anything
         // else besides "request" or "populate".
         return false;

@@ -42,7 +42,7 @@ import javax.servlet.http.HttpServletResponse;
  * <li><code><i>return_type</i> execute(ActionMapping mapping, ActionForm form,
  HttpServletRequest request, HttpServletResponse response)</code></li>
  * </ul>
- * 
+ *
  * @version $Rev$
  * @since Struts 1.4
  */
@@ -51,7 +51,7 @@ public class ServletMethodResolver extends AbstractMethodResolver {
     /**
      * The set of argument type classes for the classic reflected method call.
      * These are the same for all calls, so calculate them only once.
-     * 
+     *
      * @see org.apache.struts.action.Action#execute(ActionMapping, ActionForm,
      *      javax.servlet.ServletRequest, javax.servlet.ServletResponse)
      */
@@ -75,7 +75,7 @@ public class ServletMethodResolver extends AbstractMethodResolver {
     /**
      * Constructs the arguments to invoke the classic <code>execute</code>
      * servlet signature from the specified context.
-     * 
+     *
      * @param context the current context
      * @return the arguments array
      * @throws NullPointerException if context is <code>null</code>
@@ -92,7 +92,7 @@ public class ServletMethodResolver extends AbstractMethodResolver {
     /**
      * Obtains the method instance with the classic <code>execute</code>
      * servlet signature.
-     * 
+     *
      * @param context the current context
      * @param methodName the method name to introspect
      * @return the found method in the action

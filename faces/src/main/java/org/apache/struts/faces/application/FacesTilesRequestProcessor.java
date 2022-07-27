@@ -127,7 +127,7 @@ public class FacesTilesRequestProcessor extends TilesRequestProcessor {
         // Create a FacesContext for this request if necessary
         LifecycleFactory lf = (LifecycleFactory)
             FactoryFinder.getFactory(FactoryFinder.LIFECYCLE_FACTORY);
-        Lifecycle lifecycle = 
+        Lifecycle lifecycle =
             lf.getLifecycle(getLifecycleId());
         boolean created = false;
         FacesContext context = FacesContext.getCurrentInstance();
@@ -452,7 +452,7 @@ public class FacesTilesRequestProcessor extends TilesRequestProcessor {
     {
         String lifecycleId = this.servlet.getServletContext().getInitParameter(LIFECYCLE_ID_ATTR);
         return lifecycleId != null ? lifecycleId : LifecycleFactory.DEFAULT_LIFECYCLE;
-    }  
+    }
 
     /**
      * <p>Return <code>true</code> if the specified context-relative URI

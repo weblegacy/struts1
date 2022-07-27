@@ -111,7 +111,7 @@ import java.util.Properties;
  *          &lt;set-property key="mode" value="resource"/&gt;
  *      &lt;/message-resources&gt;
  * </pre>
- * 
+ *
  * @version $Rev$ $Date$
  */
 public class PropertyMessageResources extends MessageResources {

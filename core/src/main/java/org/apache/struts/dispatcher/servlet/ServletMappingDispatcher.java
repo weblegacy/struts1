@@ -44,7 +44,7 @@ import javax.servlet.http.HttpServletResponse;
  * <li><code>public String save(ActionContext context)</code></li>
  * </ul>
  * for which a corresponding configuration would exist:
- * 
+ *
  * <pre><code>
  *  &lt;action path=&quot;/createSubscription&quot;
  *          type=&quot;org.example.SubscriptionAction&quot;
@@ -52,7 +52,7 @@ import javax.servlet.http.HttpServletResponse;
  *          parameter=&quot;create&quot;&gt;
  *      &lt;forward path=&quot;/editSubscription.jsp&quot;/&gt;
  *  &lt;/action&gt;
- * 
+ *
  *  &lt;action path=&quot;/deleteSubscription&quot;
  *          type=&quot;org.example.SubscriptionAction&quot;
  *          dispatcher=&quot;org.apache.struts.dispatcher.servlet.ServletMappingDispatcher&quot;
@@ -62,21 +62,21 @@ import javax.servlet.http.HttpServletResponse;
  *      &lt;forward path=&quot;/deletedSubscription.jsp&quot;/&gt;
  *      &lt;forward name=&quot;input&quot; path=&quot;/subscription.jsp&quot;
  *  &lt;/action&gt;
- * 
+ *
  *  &lt;action path=&quot;/editSubscription&quot;
  *          type=&quot;org.example.SubscriptionAction&quot;
  *          dispatcher=&quot;org.apache.struts.dispatcher.servlet.ServletMappingDispatcher&quot;
  *          parameter=&quot;edit&quot;&gt;
  *      &lt;forward path=&quot;/editSubscription.jsp&quot;/&gt;
  *  &lt;/action&gt;
- * 
+ *
  *  &lt;action path=&quot;/listSubscriptions&quot;
  *          type=&quot;org.example.SubscriptionAction&quot;
  *          dispatcher=&quot;org.apache.struts.dispatcher.servlet.ServletMappingDispatcher&quot;
  *          parameter=&quot;list&quot;&gt;
  *      &lt;forward path=&quot;/subscriptionList.jsp&quot;/&gt;
  *  &lt;/action&gt;
- *  
+ *
  *  &lt;action path=&quot;/saveSubscription&quot;
  *          type=&quot;org.example.SubscriptionAction&quot;
  *          dispatcher=&quot;org.apache.struts.dispatcher.servlet.ServletMappingDispatcher&quot;
@@ -88,7 +88,7 @@ import javax.servlet.http.HttpServletResponse;
  *      &lt;forward name=&quot;input&quot; path=&quot;/editSubscription.jsp&quot;
  *  &lt;/action&gt;
  * </code></pre>
- * 
+ *
  * @version $Rev$
  * @since Struts 1.4
  */
@@ -105,7 +105,7 @@ public class ServletMappingDispatcher extends AbstractMappingDispatcher {
 
     /**
      * Sends the 404 HTTP error response.
-     * 
+     *
      * @return always <code>null</code> since the response is handled directly
      */
     protected Object unspecified(ActionContext context) throws Exception {

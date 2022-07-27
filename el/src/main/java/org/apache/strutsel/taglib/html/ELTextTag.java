@@ -966,7 +966,7 @@ public class ELTextTag extends TextTag {
                     pageContext)) != null) {
             setDir(string);
         }
-        
+
         if ((bool =
                 EvalHelper.evalBoolean("disabled", getDisabledExpr(), this,
                     pageContext)) != null) {

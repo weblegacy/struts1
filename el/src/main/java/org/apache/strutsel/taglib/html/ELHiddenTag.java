@@ -782,7 +782,7 @@ public class ELHiddenTag extends HiddenTag {
                     pageContext)) != null) {
             setDir(string);
         }
-        
+
         if ((bool =
                 EvalHelper.evalBoolean("disabled", getDisabledExpr(), this,
                     pageContext)) != null) {

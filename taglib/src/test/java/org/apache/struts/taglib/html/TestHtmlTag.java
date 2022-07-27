@@ -60,7 +60,7 @@ public class TestHtmlTag {
      */
     @Test
     public void testValidLangTrue() {
-        
+
         // switch to render "lang" attribute
         htmlTag.setLang(true);
 
@@ -83,7 +83,7 @@ public class TestHtmlTag {
      */
     @Test
     public void testValidLangFalse() {
-        
+
         // switch to NOT render "lang" attribute
         htmlTag.setLang(false);
 
@@ -102,7 +102,7 @@ public class TestHtmlTag {
      */
     @Test
     public void testInvalidLanguage() {
-        
+
         // switch to render "lang" attribute
         htmlTag.setLang(true);
 
@@ -137,7 +137,7 @@ public class TestHtmlTag {
      */
     @Test
     public void testInvalidCountry() {
-        
+
         // switch to render "lang" attribute
         htmlTag.setLang(true);
 

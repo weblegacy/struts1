@@ -67,11 +67,11 @@ public class TestActionConfigMatcher extends TestMockBase {
     }
 
     /**
-     * Verifies that a match succeeds when the substituted value contains a 
+     * Verifies that a match succeeds when the substituted value contains a
      * placeholder key.
      * <p>
      * See STR-3169.
-     * 
+     *
      * @since Struts 1.3.11
      */
     @Test
@@ -89,10 +89,10 @@ public class TestActionConfigMatcher extends TestMockBase {
 
     /**
      * Verifies that an infinite loop is prevented and substitution is skipped when
-     * the substituted value equals the placeholder key. 
+     * the substituted value equals the placeholder key.
      * <p>
      * See STR-3169.
-     * 
+     *
      * @since Struts 1.3.11
      * @see #testMatchWithSubstitutionEqualPlaceholderKey1()
      */
@@ -108,13 +108,13 @@ public class TestActionConfigMatcher extends TestMockBase {
 
         assertNull(matched, "ActionConfig should not be matched");
     }
-    
+
     /**
      * Verifies that an infinite loop is prevented and substitution is skipped when
-     * the substituted value equals the placeholder key. 
+     * the substituted value equals the placeholder key.
      * <p>
      * See STR-3169.
-     * 
+     *
      * @since Struts 1.3.11
      * @see #testMatchWithSubstitutionEqualPlaceholderKey0()
      */
@@ -133,10 +133,10 @@ public class TestActionConfigMatcher extends TestMockBase {
 
     /**
      * Verifies that an infinite loop is prevented and substitution is skipped when
-     * the the placeholder key is contained within the substituted value. 
+     * the the placeholder key is contained within the substituted value.
      * <p>
      * See STR-3169.
-     * 
+     *
      * @since Struts 1.3.11
      */
     @Test

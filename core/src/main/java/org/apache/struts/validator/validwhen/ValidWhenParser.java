@@ -68,7 +68,7 @@ public class ValidWhenParser extends antlr.LLkParser       implements ValidWhenP
 
     private boolean evaluateComparison (Object v1, Object comparison, Object v2) {
         boolean numCompare = true;
-    
+
         if ((v1 == null) || (v2 == null)) {
             if (String.class.isInstance(v1)) {
                 if (((String) v1).trim().length() == 0) {
@@ -80,7 +80,7 @@ public class ValidWhenParser extends antlr.LLkParser       implements ValidWhenP
                     v2 = null;
                 }
             }
-            
+
             switch (((Integer)comparison).intValue()) {
             case LESS_EQUAL:
             case GREATER_THAN:
@@ -93,23 +93,23 @@ public class ValidWhenParser extends antlr.LLkParser       implements ValidWhenP
                 return (v1 != v2);
             }
         }
-        
-        if ( (Integer.class.isInstance(v1) || 
-                BigDecimal.class.isInstance(v1) || 
+
+        if ( (Integer.class.isInstance(v1) ||
+                BigDecimal.class.isInstance(v1) ||
                 String.class.isInstance(v1)) &&
-             (Integer.class.isInstance(v2) || 
-                BigDecimal.class.isInstance(v2) || 
+             (Integer.class.isInstance(v2) ||
+                BigDecimal.class.isInstance(v2) ||
                 String.class.isInstance(v2))) {
             numCompare = true;
         } else {
             numCompare = false;
         }
-    
+
         if (numCompare) {
             try {
                 BigDecimal v1i = null;
                 BigDecimal v2i = null;
-                
+
                 if (BigDecimal.class.isInstance(v1)) {
                     v1i = (BigDecimal)v1;
                 } else if (Integer.class.isInstance(v1)) {
@@ -117,7 +117,7 @@ public class ValidWhenParser extends antlr.LLkParser       implements ValidWhenP
                 } else {
                     v1i = new BigDecimal((String) v1);
                 }
-            
+
                 if (BigDecimal.class.isInstance(v2)) {
                     v2i = (BigDecimal)v2;
                 } else if (Integer.class.isInstance(v2)) {
@@ -125,7 +125,7 @@ public class ValidWhenParser extends antlr.LLkParser       implements ValidWhenP
                 } else {
                     v2i = new BigDecimal((String) v2);
                 }
-    
+
                 int res = v1i.compareTo(v2i);
                 switch (((Integer)comparison).intValue()) {
                 case LESS_EQUAL:
@@ -143,16 +143,16 @@ public class ValidWhenParser extends antlr.LLkParser       implements ValidWhenP
                 }
             } catch (NumberFormatException ex) {};
         }
-    
+
         String v1s = "";
         String v2s = "";
-    
+
         if (String.class.isInstance(v1)) {
             v1s = (String) v1;
         } else {
             v1s = v1.toString();
         }
-    
+
         if (String.class.isInstance(v2)) {
             v2s = (String) v2;
         } else {
@@ -201,20 +201,20 @@ public ValidWhenParser(ParserSharedInputState state) {
 }
 
     public final void decimal() throws RecognitionException, TokenStreamException {
-        
+
         Token  d = null;
-        
+
         d = LT(1);
         match(DECIMAL_LITERAL);
         argStack.push(new BigDecimal(d.getText()));
     }
-    
+
     public final void integer() throws RecognitionException, TokenStreamException {
-        
+
         Token  d = null;
         Token  h = null;
         Token  o = null;
-        
+
         switch ( LA(1)) {
         case DEC_INT_LITERAL:
         {
@@ -243,10 +243,10 @@ public ValidWhenParser(ParserSharedInputState state) {
         }
         }
     }
-    
+
     public final void number() throws RecognitionException, TokenStreamException {
-        
-        
+
+
         switch ( LA(1)) {
         case DECIMAL_LITERAL:
         {
@@ -266,34 +266,34 @@ public ValidWhenParser(ParserSharedInputState state) {
         }
         }
     }
-    
+
     public final void string() throws RecognitionException, TokenStreamException {
-        
+
         Token  str = null;
-        
+
         str = LT(1);
         match(STRING_LITERAL);
         argStack.push(str.getText().substring(1, str.getText().length()-1));
     }
-    
+
     public final void identifier() throws RecognitionException, TokenStreamException {
-        
+
         Token  str = null;
-        
+
         str = LT(1);
         match(IDENTIFIER);
         argStack.push(str.getText());
     }
-    
+
     public final void field() throws RecognitionException, TokenStreamException {
-        
-        
+
+
         if ((LA(1)==IDENTIFIER) && (LA(2)==LBRACKET) && (LA(3)==RBRACKET) && (LA(4)==IDENTIFIER)) {
             identifier();
             match(LBRACKET);
             match(RBRACKET);
             identifier();
-            
+
             Object i2 = argStack.pop();
             Object i1 = argStack.pop();
             argStack.push(ValidatorUtils.getValueAsString(form, i1 + "[" + index + "]" + i2));
@@ -304,7 +304,7 @@ public ValidWhenParser(ParserSharedInputState state) {
             integer();
             match(RBRACKET);
             identifier();
-            
+
             Object i5 = argStack.pop();
             Object i4 = argStack.pop();
             Object i3 = argStack.pop();
@@ -315,7 +315,7 @@ public ValidWhenParser(ParserSharedInputState state) {
             match(LBRACKET);
             integer();
             match(RBRACKET);
-            
+
             Object i7 = argStack.pop();
             Object i6 = argStack.pop();
             argStack.push(ValidatorUtils.getValueAsString(form, i6 + "[" + i7 + "]"));
@@ -324,25 +324,25 @@ public ValidWhenParser(ParserSharedInputState state) {
             identifier();
             match(LBRACKET);
             match(RBRACKET);
-            
+
             Object i8 = argStack.pop();
             argStack.push(ValidatorUtils.getValueAsString(form, i8 + "[" + index + "]"));
         }
         else if ((LA(1)==IDENTIFIER) && (_tokenSet_0.member(LA(2)))) {
             identifier();
-            
+
             Object i9 = argStack.pop();
             argStack.push(ValidatorUtils.getValueAsString(form, (String)i9));
         }
         else {
             throw new NoViableAltException(LT(1), getFilename());
         }
-        
+
     }
-    
+
     public final void literal() throws RecognitionException, TokenStreamException {
-        
-        
+
+
         switch ( LA(1)) {
         case DECIMAL_LITERAL:
         case DEC_INT_LITERAL:
@@ -375,10 +375,10 @@ public ValidWhenParser(ParserSharedInputState state) {
         }
         }
     }
-    
+
     public final void value() throws RecognitionException, TokenStreamException {
-        
-        
+
+
         switch ( LA(1)) {
         case IDENTIFIER:
         {
@@ -402,17 +402,17 @@ public ValidWhenParser(ParserSharedInputState state) {
         }
         }
     }
-    
+
     public final void expression() throws RecognitionException, TokenStreamException {
-        
-        
+
+
         expr();
         match(Token.EOF_TYPE);
     }
-    
+
     public final void expr() throws RecognitionException, TokenStreamException {
-        
-        
+
+
         if ((LA(1)==LPAREN) && (_tokenSet_1.member(LA(2)))) {
             match(LPAREN);
             comparisonExpression();
@@ -426,30 +426,30 @@ public ValidWhenParser(ParserSharedInputState state) {
         else {
             throw new NoViableAltException(LT(1), getFilename());
         }
-        
+
     }
-    
+
     public final void comparisonExpression() throws RecognitionException, TokenStreamException {
-        
-        
+
+
         value();
         comparison();
         value();
-        
+
                Object v2 = argStack.pop();
                Object comp = argStack.pop();
         Object v1 = argStack.pop();
         argStack.push(new Boolean(evaluateComparison(v1, comp, v2)));
-        
+
     }
-    
+
     public final void joinedExpression() throws RecognitionException, TokenStreamException {
-        
-        
+
+
         expr();
         join();
         expr();
-        
+
         Boolean v1 = (Boolean) argStack.pop();
         Integer join = (Integer) argStack.pop();
         Boolean v2 = (Boolean) argStack.pop();
@@ -458,12 +458,12 @@ public ValidWhenParser(ParserSharedInputState state) {
         } else {
         argStack.push(new Boolean(v1.booleanValue() || v2.booleanValue()));
         }
-        
+
     }
-    
+
     public final void join() throws RecognitionException, TokenStreamException {
-        
-        
+
+
         switch ( LA(1)) {
         case ANDSIGN:
         {
@@ -483,10 +483,10 @@ public ValidWhenParser(ParserSharedInputState state) {
         }
         }
     }
-    
+
     public final void comparison() throws RecognitionException, TokenStreamException {
-        
-        
+
+
         switch ( LA(1)) {
         case EQUALSIGN:
         {
@@ -530,8 +530,8 @@ public ValidWhenParser(ParserSharedInputState state) {
         }
         }
     }
-    
-    
+
+
     public static final String[] _tokenNames = {
         "<0>",
         "EOF",
@@ -559,7 +559,7 @@ public ValidWhenParser(ParserSharedInputState state) {
         "NOTEQUALSIGN",
         "WS"
     };
-    
+
     private static final long[] mk_tokenSet_0() {
         long[] data = { 16547840L, 0L};
         return data;
@@ -570,5 +570,5 @@ public ValidWhenParser(ParserSharedInputState state) {
         return data;
     }
     public static final BitSet _tokenSet_1 = new BitSet(mk_tokenSet_1());
-    
+
     }

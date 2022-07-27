@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -31,74 +31,74 @@
     <body>
       <section name="Welcome to Struts Taglib">
           <p>
-            The Struts Taglib component provides a set of JSP custom tag 
-            libraries that help developers create interactive form-based 
+            The Struts Taglib component provides a set of JSP custom tag
+            libraries that help developers create interactive form-based
             applications.
-            There are tags to help with everything from displaying error 
-            messages to dealing with nested ActionForm beans.  
+            There are tags to help with everything from displaying error
+            messages to dealing with nested ActionForm beans.
           </p>
-            
+
           <p>
-            Struts Taglib is composed of four distinct tag libraries: 
-            Bean, HTML, Logic, and Nested. 
+            Struts Taglib is composed of four distinct tag libraries:
+            Bean, HTML, Logic, and Nested.
           </p>
                     <table>
             <tr>
-                <th> 
+                <th>
                 <a href="dev_bean.html">Bean</a>
                 </th>
                 <td>
-                 The bean tags are  useful in defining new beans (in 
-                 any scope) from a variety of possible sources, as well 
-                 as a tag to render  a particular bean (or bean property) 
+                 The bean tags are  useful in defining new beans (in
+                 any scope) from a variety of possible sources, as well
+                 as a tag to render  a particular bean (or bean property)
                  to the output response.
                             </td>
                         </tr>
             <tr>
-                <th> 
+                <th>
                 <a href="dev_html.html">HTML</a>
                 </th>
                 <td>
-                 The HTML tags are used to create input forms, 
+                 The HTML tags are used to create input forms,
                  as well as other tags generally useful in the creation of
-                 HTML-based user interfaces. 
-                 The output is HTML 4.01 compliant or XHTML 1.0 when in 
+                 HTML-based user interfaces.
+                 The output is HTML 4.01 compliant or XHTML 1.0 when in
                  XHTML mode.
                             </td>
                         </tr>
             <tr>
-                <th> 
+                <th>
                 <a href="dev_logic.html">Logic</a>
                 </th>
                 <td>
-                 The Logic tags that are useful in managing conditional 
+                 The Logic tags that are useful in managing conditional
                  generation of output text, looping
-                 over object collections for repetitive generation of output 
+                 over object collections for repetitive generation of output
                  text, and application flow management
                             </td>
                         </tr>
             <tr>
-                <th> 
+                <th>
                 <a href="dev_nested.html">Nested</a>
                 </th>
                 <td>
-                 The Nested tags extend the base Struts tags to allow 
-                 them to relate to each other in a nested nature. 
-                 The fundamental logic of the original tags doesn't change, 
-                 except in that all references to beans and bean properties 
+                 The Nested tags extend the base Struts tags to allow
+                 them to relate to each other in a nested nature.
+                 The fundamental logic of the original tags doesn't change,
+                 except in that all references to beans and bean properties
                  will be managed in a nested context.
                             </td>
                         </tr>
-                        </table>          
+                        </table>
       </section>
-      
+
       <section name="">
             <p class="right">
                 Next:
                 <a href="faq.html">FAQ</a>
-            </p>      
+            </p>
       </section>
-      
+
     </body>
 
 </document>

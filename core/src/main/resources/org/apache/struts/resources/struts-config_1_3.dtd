@@ -5,9 +5,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -139,10 +139,10 @@ The "form-bean" element describes a particular form bean, which is a
      name            The unique identifier for this form bean. Referenced by the
                      <action> element to specify which form bean to use with its
                      request.
-                     
+
      type            Fully qualified Java class name of the ActionForm subclass
                      to use with this form bean.
-                     
+
      enhanced        Reserved for future use.
 -->
 <!ELEMENT form-bean (icon?, display-name?, description?, set-property*, form-property*)>
@@ -173,14 +173,14 @@ The "form-bean" element describes a particular form bean, which is a
 
      name            The name of the JavaBean property described by this element.
 
-     reset           The flag that indicates when this property should be reset 
-                     to its "initial" value when the form's "reset()" method is 
-                     called.  If this is set to "true", the property is always 
-                     reset when "reset()" is called.  This can also be set to 
-                     one or more HTTP methods, such as GET or POST. In such a 
-                     case, the property will be reset only when the HTTP method 
-                     used for the request being processed is included in this 
-                     attribute's value(s).  Multiple HTTP methods can be 
+     reset           The flag that indicates when this property should be reset
+                     to its "initial" value when the form's "reset()" method is
+                     called.  If this is set to "true", the property is always
+                     reset when "reset()" is called.  This can also be set to
+                     one or more HTTP methods, such as GET or POST. In such a
+                     case, the property will be reset only when the HTTP method
+                     used for the request being processed is included in this
+                     attribute's value(s).  Multiple HTTP methods can be
                      specified by separating them with whitespace or commas.
 
      size            The number of array elements to create if the value of the
@@ -224,7 +224,7 @@ The "form-bean" element describes a particular form bean, which is a
                      configuration bean
                      ["org.apache.struts.config.ExceptionConfig"]
 
-    extends          The name of the exception handler that this 
+    extends          The name of the exception handler that this
                      will inherit configuration information from.
 
     handler          Fully qualified Java class name for this exception handler.
@@ -238,8 +238,8 @@ The "form-bean" element describes a particular form bean, which is a
                      the request/response if this exception occurs.
 
     scope            The context ("request" or "session") that is used to access
-                     the ActionMessage object 
-                     [org.apache.struts.action.ActionMessage] for this 
+                     the ActionMessage object
+                     [org.apache.struts.action.ActionMessage] for this
                      exception.
 
     type             Fully qualified Java class name of the exception type to
@@ -296,7 +296,7 @@ The "form-bean" element describes a particular form bean, which is a
      command         The name of a commons-chain command which should be looked up
                      and executed as part of servicing this request.
 
-     extends         The name of the forward configuration that this 
+     extends         The name of the forward configuration that this
                      will inherit configuration information from.
 
      module          The module prefix to use with this path. This value should
@@ -306,7 +306,7 @@ The "form-bean" element describes a particular form bean, which is a
                      Action object at runtime to select - by its logical name -
                      the resource that should complete the request/response.
 
-     path            The module-relative path to the resources that is 
+     path            The module-relative path to the resources that is
                      encapsulated by the logical name of this ActionForward.
                      This value should begin with a slash ("/") character.
 
@@ -376,9 +376,9 @@ The "form-bean" element describes a particular form bean, which is a
                      ["org.apache.struts.action.ActionMapping"]
 
      command         The name of a commons-chain command which should be looked up
-                     and executed as part of servicing this request.  
+                     and executed as part of servicing this request.
 
-     extends         The path of the action mapping configuration that this 
+     extends         The path of the action mapping configuration that this
                      will inherit configuration information from.
 
      forward         Module-relative path of the servlet or other resource that
@@ -693,7 +693,7 @@ The "form-bean" element describes a particular form bean, which is a
      object without changing how the struts-config is parsed.
 
     Since Struts 1.3, an alternate syntax is supported.  By using
-    the "key" attribute instead of the "property" attribute, you can set 
+    the "key" attribute instead of the "property" attribute, you can set
     arbitrary string properties on the Config object which is populated
     based on the containing element.   NOTE: the "key" attribute is NOT
     supported for <set-property> inside a <plug-in> element.

@@ -28,7 +28,7 @@ import org.apache.struts.chain.contexts.ActionContext;
  * execute in an {@link Action}. Unlike the classical <code>execute</code>
  * signature, it is up to the dispatcher implementation to determine the
  * particular arguments and return type.
- * 
+ *
  * @version $Rev$
  * @since Struts 1.4
  */
@@ -36,7 +36,7 @@ public interface Dispatcher {
 
     /**
      * Dispatches to the action referenced by the specified context.
-     * 
+     *
      * @param context the current action context
      * @return the result type, <code>null</code> if the response was handled
      *         directly, or {@link Void} if the executed method has no return

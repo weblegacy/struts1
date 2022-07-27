@@ -218,7 +218,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
         UIComponent form = null;
         UIComponent parent = component.getParent();
         while (parent != null) {
-            if (parent instanceof UIForm || 
+            if (parent instanceof UIForm ||
                 "org.apache.myfaces.trinidad.Form".equals(parent.getFamily()) ||
                 "oracle.adf.Form".equals(parent.getFamily())) {
                 form = parent;

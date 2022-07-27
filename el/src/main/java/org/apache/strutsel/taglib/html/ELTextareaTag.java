@@ -995,7 +995,7 @@ public class ELTextareaTag extends TextareaTag {
                     pageContext)) != null) {
             setDir(string);
         }
-        
+
         if ((bool =
                 EvalHelper.evalBoolean("disabled", getDisabledExpr(), this,
                     pageContext)) != null) {

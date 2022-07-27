@@ -6,9 +6,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -50,7 +50,7 @@
 
         <!-- ======================================= DispatchAction Example -->
         <action path="/dispatch"  forward="/dispatch.jsp"/>
-        <action path="/dispatch-submit" 
+        <action path="/dispatch-submit"
                 type="org.apache.struts.webapp.dispatch.DispatchExampleAction"
                 parameter="dispatchMethod"
                 name="testForm"
@@ -63,7 +63,7 @@
                        path="/dispatch.jsp"/>
             <forward name="success" path="/dispatch.jsp"/>
         </action>
-        <action path="/dispatch-noparam" 
+        <action path="/dispatch-noparam"
                 type="org.apache.struts.webapp.dispatch.DispatchExampleAction"
                 name="testForm"
                 scope="request">
@@ -81,21 +81,21 @@
 
         <!-- ================================ MappingDispatchAction Example -->
         <action path="/mapping"  forward="/mapping.jsp"/>
-        <action path="/mapping-foo" 
+        <action path="/mapping-foo"
                 type="org.apache.struts.webapp.dispatch.MappingDispatchExampleAction"
                 parameter="doFoo"
                 name="testForm"
                 scope="request">
             <forward name="success" path="/mapping.jsp"/>
         </action>
-        <action path="/mapping-bar" 
+        <action path="/mapping-bar"
                 type="org.apache.struts.webapp.dispatch.MappingDispatchExampleAction"
                 parameter="doBar"
                 name="testForm"
                 scope="request">
             <forward name="success" path="/mapping.jsp"/>
         </action>
-        <action path="/mapping-invalid" 
+        <action path="/mapping-invalid"
                 type="org.apache.struts.webapp.dispatch.MappingDispatchExampleAction"
                 parameter="doInvalid"
                 name="testForm"
@@ -108,7 +108,7 @@
                        path="/mapping.jsp"/>
             <forward name="success" path="/mapping.jsp"/>
         </action>
-        <action path="/mapping-execute" 
+        <action path="/mapping-execute"
                 type="org.apache.struts.webapp.dispatch.MappingDispatchExampleAction"
                 parameter="execute"
                 name="testForm"
@@ -121,7 +121,7 @@
                        path="/mapping.jsp"/>
             <forward name="success" path="/mapping.jsp"/>
         </action>
-        <action path="/mapping-noparam" 
+        <action path="/mapping-noparam"
                 type="org.apache.struts.webapp.dispatch.MappingDispatchExampleAction"
                 name="testForm"
                 scope="request">
@@ -139,7 +139,7 @@
 
         <!-- ================================= LookupDispatchAction Example -->
         <action path="/lookup"  forward="/lookup.jsp"/>
-        <action path="/lookup-submit" 
+        <action path="/lookup-submit"
                 type="org.apache.struts.webapp.dispatch.LookupDispatchExampleAction"
                 parameter="dispatchParam"
                 name="testForm"
@@ -149,7 +149,7 @@
                        path="/lookup.jsp"/>
             <forward name="success" path="/lookup.jsp"/>
         </action>
-        <action path="/lookup-noparam" 
+        <action path="/lookup-noparam"
                 type="org.apache.struts.webapp.dispatch.LookupDispatchExampleAction"
                 name="testForm"
                 scope="request">
@@ -168,7 +168,7 @@
 
         <!-- ===================================== ActionDispatcher Example -->
         <action path="/actionDispatcher"  forward="/actionDispatcher.jsp"/>
-        <action path="/actionDispatcher-submit" 
+        <action path="/actionDispatcher-submit"
                 type="org.apache.struts.webapp.dispatch.ActionDispatcherExample"
                 parameter="actionDispatcherMethod"
                 name="testForm"
@@ -181,7 +181,7 @@
                        path="/actionDispatcher.jsp"/>
             <forward name="success" path="/actionDispatcher.jsp"/>
         </action>
-        <action path="/actionDispatcher-noparam" 
+        <action path="/actionDispatcher-noparam"
                 type="org.apache.struts.webapp.dispatch.ActionDispatcherExample"
                 name="testForm"
                 scope="request">
@@ -200,14 +200,14 @@
 
         <!-- ================================ EventActionDispatcher Example -->
         <action path="/eventDispatcher"  forward="/eventDispatcher.jsp"/>
-        <action path="/eventDispatcher-default" 
+        <action path="/eventDispatcher-default"
                 type="org.apache.struts.webapp.dispatch.EventActionDispatcherExample"
                 parameter="doFoo,bar=doBar,default=doBar"
                 name="testForm"
                 scope="request">
             <forward name="success" path="/eventDispatcher.jsp"/>
         </action>
-        <action path="/eventDispatcher-submit" 
+        <action path="/eventDispatcher-submit"
                 type="org.apache.struts.webapp.dispatch.EventActionDispatcherExample"
                 parameter="doFoo,doBar"
                 name="testForm"
@@ -217,7 +217,7 @@
                        path="/eventDispatcher.jsp"/>
             <forward name="success" path="/eventDispatcher.jsp"/>
         </action>
-        <action path="/eventDispatcher-error" 
+        <action path="/eventDispatcher-error"
                 type="org.apache.struts.webapp.dispatch.EventActionDispatcherExample"
                 parameter="execute,methodmissing"
                 name="testForm"
@@ -230,7 +230,7 @@
                        path="/eventDispatcher.jsp"/>
             <forward name="success" path="/eventDispatcher.jsp"/>
         </action>
-        <action path="/eventDispatcher-noparam" 
+        <action path="/eventDispatcher-noparam"
                 type="org.apache.struts.webapp.dispatch.EventActionDispatcherExample"
                 name="testForm"
                 scope="request">
@@ -248,14 +248,14 @@
 
         <!-- ================================== EventDispatchAction Example -->
         <action path="/eventAction"  forward="/eventAction.jsp"/>
-        <action path="/eventAction-default" 
+        <action path="/eventAction-default"
                 type="org.apache.struts.webapp.dispatch.EventDispatchActionExample"
                 parameter="doFoo,bar=doBar,default=doBar"
                 name="testForm"
                 scope="request">
             <forward name="success" path="/eventAction.jsp"/>
         </action>
-        <action path="/eventAction-submit" 
+        <action path="/eventAction-submit"
                 type="org.apache.struts.webapp.dispatch.EventDispatchActionExample"
                 parameter="doFoo,doBar"
                 name="testForm"
@@ -265,7 +265,7 @@
                        path="/eventAction.jsp"/>
             <forward name="success" path="/eventAction.jsp"/>
         </action>
-        <action path="/eventAction-error" 
+        <action path="/eventAction-error"
                 type="org.apache.struts.webapp.dispatch.EventDispatchActionExample"
                 parameter="execute,methodmissing"
                 name="testForm"
@@ -278,7 +278,7 @@
                        path="/eventAction.jsp"/>
             <forward name="success" path="/eventAction.jsp"/>
         </action>
-        <action path="/eventAction-noparam" 
+        <action path="/eventAction-noparam"
                 type="org.apache.struts.webapp.dispatch.EventDispatchActionExample"
                 name="testForm"
                 scope="request">

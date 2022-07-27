@@ -6,9 +6,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,13 +29,13 @@
 <body>
 <html:link page="/jsp/validator/source.jsp">
   <img src="../../images/code.gif" width="24" height="24" alt="View Source" class="icon" />
-</html:link> 
+</html:link>
 <a href="../../index.jsp"><img src="../../images/return.gif" height="24" width="24" alt="Return to examples page" class="icon" /></a>
 <h1>Validator Example using DynaValidatorActionForm</h1>
 <hr noshade="noshade"/>
 <p>Enter information into the fields below. Your entries will be displayed when you Submit the form.</p>
 <p>* = required field. Other fields must be blank or in the required format.</p>
-<hr noshade="noshade" />   
+<hr noshade="noshade" />
 
 <html:errors/>
 <html:form action="validatorAction" method="get">
@@ -62,7 +62,7 @@
     <tr><td>* Password confirmation:</td><td><html:password property="password2"  redisplay="false"/></td></tr>
     </table>
 
-    <hr noshade="noshade" />   
+    <hr noshade="noshade" />
     <p>
         <html:submit>
             <bean:message key="button.submit" />

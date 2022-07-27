@@ -956,7 +956,7 @@ public class ELImageTag extends ImageTag {
                     pageContext)) != null) {
             setDir(string);
         }
-        
+
         if ((bool =
                 EvalHelper.evalBoolean("disabled", getDisabledExpr(), this,
                     pageContext)) != null) {

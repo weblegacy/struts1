@@ -622,8 +622,8 @@ public class ActionServlet extends HttpServlet {
                 throw e2;
             }
 
-            // Emit a warning to the log if the classic RequestProcessor is 
-            // being used without composition. Hopefully developers will 
+            // Emit a warning to the log if the classic RequestProcessor is
+            // being used without composition. Hopefully developers will
             // heed this message and make the upgrade.
             if (!(processor instanceof ComposableRequestProcessor)) {
                 log.warn("Use of the classic RequestProcessor is not recommended. " +
@@ -1967,7 +1967,7 @@ public class ActionServlet extends HttpServlet {
 
     /**
      * Returns the plugins for the specified module
-     * 
+     *
      * @param moduleConfig the module configuration
      * @return the array of plugins or <code>null</code>
      */

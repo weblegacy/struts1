@@ -67,7 +67,7 @@ public class MessagesPresentTag extends ConditionalTagBase {
     public void setCount(String count) {
         this.count = count;
     }
-    
+
     public String getCount() {
         return count;
     }
@@ -116,7 +116,7 @@ public class MessagesPresentTag extends ConditionalTagBase {
             iterator = am.get();
             size = am.size();
         } else {
-            iterator = am.get(property); 
+            iterator = am.get(property);
             size = am.size(property);
         }
 

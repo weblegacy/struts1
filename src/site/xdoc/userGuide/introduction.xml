@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,25 +33,25 @@
         <section name="1. Introduction" id="introduction">
 
             <blockquote><p><em>
-            "Read the directions and directly you will be directed in the right 
+            "Read the directions and directly you will be directed in the right
             direction."
             </em></p></blockquote>
-            
+
                 <p>
-                    The framework documentation is written for active web 
+                    The framework documentation is written for active web
                     developers and assumes a working
                     knowledge about how Java web applications are built.
                     For more about the underlying nuts and bolts,
                     see the <a href="http://struts.apache.org/primer.html">
-                    Key Technologies Primer. 
+                    Key Technologies Primer.
                     </a>
                 </p>
-                                
+
 
             <subsection
                     name="1.1 Forward into the Past! (or a brief history of Struts)"
                     id="history">
-                    
+
                 <p>
                     When Java servlets were first invented, many programmers
                     quickly realized that they were a
@@ -126,17 +126,17 @@
                 </p>
 
             </subsection>
-            
-            <subsection 
+
+            <subsection
                     name="1.2 The Model-View-Controller ('MVC') Design Pattern"
                     id="mvc">
 
                 <p>
-                    The term "MVC" originated with the SmallTalk 
-                    Model-View-Controller framework. Under MVC, 
-                    an application is seen as having three distinct parts. The 
-                    problem domain is represented by the Model. The output to 
-                    the user is represented by the View. And, the input from the 
+                    The term "MVC" originated with the SmallTalk
+                    Model-View-Controller framework. Under MVC,
+                    an application is seen as having three distinct parts. The
+                    problem domain is represented by the Model. The output to
+                    the user is represented by the View. And, the input from the
                     user is represented by Controller.
                 </p>
 
@@ -664,7 +664,7 @@
                     The Struts Taglib component includes several Developer
                     Guides
                     covering various aspects of the custom tags.
-                    A number of sample applications are bundled with the 
+                    A number of sample applications are bundled with the
                     distribution that show how it all comes together.
                 </p>
 

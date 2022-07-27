@@ -5,9 +5,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -28,10 +28,10 @@
 
     <html:form action="validateValidWhenExamples">
       <table border="0">
-        
+
       <!-- Simple Validation -->
       <p><strong><font color="blue"><bean:message key="validWhenForm.example.simple"/></font></strong>
-                 <bean:message key="validWhenForm.example.simple.desc"/></p> 
+                 <bean:message key="validWhenForm.example.simple.desc"/></p>
       <table border="0">
         <tr>
           <td align="right"><b><bean:message key="validWhenForm.firstName" /></b></td>
@@ -44,7 +44,7 @@
 
       <!-- Both Fields -->
       <p><strong><font color="blue"><bean:message key="validWhenForm.example.both"/></font></strong>
-                 <bean:message key="validWhenForm.example.both.desc"/></p> 
+                 <bean:message key="validWhenForm.example.both.desc"/></p>
       <table border="0">
         <tr>
           <td align="left"><b><html:text property="fieldA" size="10" maxlength="10" /></b></td>
@@ -52,10 +52,10 @@
           <td align="left"><font color="red"><html:errors property="fieldA" header="empty"/></font>&nbsp;</td>
         </tr>
       </table>
-        
+
       <!-- Numeric Compare Validation -->
       <p><strong><font color="blue"><bean:message key="validWhenForm.example.numeric"/></font></strong>
-                 <bean:message key="validWhenForm.example.numeric.desc"/></p> 
+                 <bean:message key="validWhenForm.example.numeric.desc"/></p>
       <table border="0">
         <tr>
           <td align="right"><b><bean:message key="validWhenForm.min" /></b></td>
@@ -65,10 +65,10 @@
           <td align="left"><font color="red"><html:errors property="max" header="empty"/></font>&nbsp;</td>
         </tr>
       </table>
-        
+
       <!-- Address Validation -->
       <p><strong><font color="blue"><bean:message key="validWhenForm.example.address"/></font></strong>
-                 <bean:message key="validWhenForm.example.address.desc"/></p> 
+                 <bean:message key="validWhenForm.example.address.desc"/></p>
       <table border="0">
         <tr>
           <td align="right"><b><bean:message key="validWhenForm.address1" /></b></td>

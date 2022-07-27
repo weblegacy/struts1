@@ -180,7 +180,7 @@ public class TestActionServlet {
     /**
      * Test class loader resolution and splitting.
      *
-     * @throws ServletException if a servlet exception is thrown 
+     * @throws ServletException if a servlet exception is thrown
      */
     @Test
     @Disabled
@@ -223,7 +223,7 @@ public class TestActionServlet {
      * Verify that nothing happens if no "application" property is defined in
      * the servlet configuration.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
 
     /*
@@ -247,7 +247,7 @@ public class TestActionServlet {
      * Verify that eveything is fine when only a "application" parameter is
      * defined in the servlet configuration.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
 
     /*
@@ -346,7 +346,7 @@ public class TestActionServlet {
      * Make sure processFormBeanConfigClass() returns an instance of the
      * correct class if the base config is using a custom class.
      *
-     * @throws ServletException if a servlet exception is thrown 
+     * @throws ServletException if a servlet exception is thrown
      */
     @Test
     public void testProcessFormBeanConfigClass()
@@ -383,7 +383,7 @@ public class TestActionServlet {
      * Make sure processFormBeanConfigClass() returns what it was given if the
      * form passed to it doesn't extend anything.
      *
-     * @throws ServletException if a servlet exception is thrown 
+     * @throws ServletException if a servlet exception is thrown
      */
     @Test
     public void testProcessFormBeanConfigClassNoExtends()
@@ -408,7 +408,7 @@ public class TestActionServlet {
      * Make sure processFormBeanConfigClass() returns the same class instance
      * if the base config isn't using a custom class.
      *
-     * @throws ServletException if a servlet exception is thrown 
+     * @throws ServletException if a servlet exception is thrown
      */
     @Test
     public void testProcessFormBeanConfigClassSubFormCustomClass()
@@ -497,7 +497,7 @@ public class TestActionServlet {
     }
 
     /**
-     * Test that initModuleExceptionConfigs does not throw an exception 
+     * Test that initModuleExceptionConfigs does not throw an exception
      * when a handler with a null key is present.
      */
     @Test
@@ -520,7 +520,7 @@ public class TestActionServlet {
     /**
      * Test that processExceptionExtension() calls processExtends()
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessExceptionExtension()
@@ -539,7 +539,7 @@ public class TestActionServlet {
      * Make sure processExceptionConfigClass() returns an instance of the
      * correct class if the base config is using a custom class.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessExceptionConfigClass()
@@ -575,7 +575,7 @@ public class TestActionServlet {
      * Make sure processExceptionConfigClass() returns what it was given if
      * the handler passed to it doesn't extend anything.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessExceptionConfigClassNoExtends()
@@ -600,7 +600,7 @@ public class TestActionServlet {
      * Make sure processExceptionConfigClass() returns the same class instance
      * if the base config isn't using a custom class.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessExceptionConfigClassSubConfigCustomClass()
@@ -712,7 +712,7 @@ public class TestActionServlet {
     /**
      * Test that processForwardExtension() calls processExtends()
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessForwardExtension()
@@ -731,7 +731,7 @@ public class TestActionServlet {
      * Make sure processForwardConfigClass() returns an instance of the
      * correct class if the base config is using a custom class.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessForwardConfigClass()
@@ -766,7 +766,7 @@ public class TestActionServlet {
      * Make sure processForwardConfigClass() returns what it was given if the
      * forward passed to it doesn't extend anything.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessForwardConfigClassNoExtends()
@@ -791,7 +791,7 @@ public class TestActionServlet {
      * Make sure processForwardConfigClass() returns the same class instance
      * if the base config isn't using a custom class.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessForwardConfigClassSubConfigCustomClass()
@@ -883,7 +883,7 @@ public class TestActionServlet {
     /**
      * Test that processActionConfigExtension() calls processExtends()
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessActionExtension()
@@ -901,7 +901,7 @@ public class TestActionServlet {
      * Test that an ActionConfig's ForwardConfig can inherit from a
      * global ForwardConfig.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessActionExtensionWithForwardConfig()
@@ -925,7 +925,7 @@ public class TestActionServlet {
      * Test that an ActionConfig's ExceptionConfig can inherit from a
      * global ExceptionConfig.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessActionExtensionWithExceptionConfig()
@@ -949,7 +949,7 @@ public class TestActionServlet {
      * Make sure processActionConfigClass() returns an instance of the correct
      * class if the base config is using a custom class.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessActionConfigClass()
@@ -981,7 +981,7 @@ public class TestActionServlet {
      * Make sure processActionConfigClass() returns what it was given if the
      * action passed to it doesn't extend anything.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessActionConfigClassNoExtends()
@@ -1004,7 +1004,7 @@ public class TestActionServlet {
      * Make sure processActionConfigClass() returns the same class instance if
      * the base config isn't using a custom class.
      *
-     * @throws ServletException if initialization cannot be performed. 
+     * @throws ServletException if initialization cannot be performed.
      */
     @Test
     public void testProcessActionConfigClassSubConfigCustomClass() throws ServletException {

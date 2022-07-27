@@ -43,7 +43,7 @@ public class ExecuteDispatcher extends ActionCommandBase {
 
     /**
      * Creates the dispatcher of the specified type.
-     * 
+     *
      * @param type the dispatcher class name
      * @param context the current action context
      * @return the dispatcher
@@ -107,7 +107,7 @@ public class ExecuteDispatcher extends ActionCommandBase {
     /**
      * Retrieves the fully-qualified dispatcher class name to instantiate when
      * an action mapping does not specify a dispatcher.
-     * 
+     *
      * @return the default dispatcher type (fully-qualified class name)
      * @see #getDispatcherType(ActionContext)
      * @see #setDefaultDispatcherType(String)
@@ -119,7 +119,7 @@ public class ExecuteDispatcher extends ActionCommandBase {
     /**
      * Retrieves the fully-qualified class name of the dispatcher to instantiate
      * for the specified context.
-     * 
+     *
      * @param context the current action context
      * @return the class name or <code>null</code>
      * @see #getDefaultDispatcherType()
@@ -146,7 +146,7 @@ public class ExecuteDispatcher extends ActionCommandBase {
      * <li>{@link Void} type means the method had no return signature, and
      * select the {@link Action#SUCCESS} action forward and store in the context</li>
      * </ol>
-     * 
+     *
      * @param result the result value
      * @param context the current action context
      * @throws IllegalStateException if unknown result type or the forward
@@ -185,7 +185,7 @@ public class ExecuteDispatcher extends ActionCommandBase {
 
     /**
      * Stores the optional default dispatcher type (fully-qualified class name).
-     * 
+     *
      * @param defaultDispatcherType the dispatcher type or <code>null</code>
      * @see #getDefaultDispatcherType()
      */

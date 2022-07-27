@@ -74,7 +74,7 @@ public class ActionMapping extends ActionConfig {
             config = getModuleConfig().findForwardConfig(forwardName);
         }
 
-        // TODO: remove warning since findRequiredForward takes care of use case? 
+        // TODO: remove warning since findRequiredForward takes care of use case?
         if (config == null) {
             if (log.isWarnEnabled()) {
                 log.warn("Unable to find '" + forwardName + "' forward.");
@@ -100,7 +100,7 @@ public class ActionMapping extends ActionConfig {
         if (forward == null) {
             throw new IllegalStateException(
                     "Unable to find '" + forwardName +
-                    "' forward of action path '" + getPath() + "'"); 
+                    "' forward of action path '" + getPath() + "'");
         }
         return forward;
     }
@@ -131,7 +131,7 @@ public class ActionMapping extends ActionConfig {
      * If the <code>input</code> property is not specified and the Controller
      * is configured to interpret the property as a forward, return the
      * forward named "input" (if it exists) in this action mapping.</p>
-     * 
+     *
      * @return The input forward for this action mapping.
      * @see ControllerConfig#getInputForward()
      * @since Struts 1.1

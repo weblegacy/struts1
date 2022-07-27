@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,15 +33,15 @@
                 </question>
                 <answer>
                 <p>
-                    There is overlap between Struts Taglib and the 
+                    There is overlap between Struts Taglib and the
                     <a href="http://java.sun.com/products/jsp/jstl/">
                         JavaServer Standard Tag Library (JSTL).</a>
-                       To make the best use of JSTL, 
+                       To make the best use of JSTL,
                        use the <a href="../struts-el/index.html">
-                       Struts EL component</a> instead. 
-                   </p>             
+                       Struts EL component</a> instead.
+                   </p>
                 </answer>
-             </faq>                
+             </faq>
 
 
             <faq id="jsf">
@@ -50,23 +50,23 @@
                 </question>
                 <answer>
                 <p>
-                    Struts 1 is <strong>not</strong> the best choice if you'd 
-                    like to use JavaServer Faces components in your 
-                    application. 
-                    The Struts Faces component provides some interoperability 
-                    with JSF, 
-                    but Faces is really only intended as a stop gap for teams 
+                    Struts 1 is <strong>not</strong> the best choice if you'd
+                    like to use JavaServer Faces components in your
+                    application.
+                    The Struts Faces component provides some interoperability
+                    with JSF,
+                    but Faces is really only intended as a stop gap for teams
                     experimenting with JSF.
                 </p>
-                
+
                  <p>
-                    For better JavaServer Faces support, 
-                    consider using Struts 2 or 
+                    For better JavaServer Faces support,
+                    consider using Struts 2 or
                    <a href="http://shale.apache.org/">Apache Shale.</a>
                 </p>
 
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="xhtml">
                 <question>
@@ -79,7 +79,7 @@
                     will render as XHTML (since version 1.1).
                  </p>
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="wml">
                 <question>
@@ -111,7 +111,7 @@
                         WAP up your EAserver.</a>
                 </p>
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="multiple">
                 <question>
@@ -133,7 +133,7 @@
                     And so forth
                 </p>
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="multipleSubmits">
                 <question>
@@ -151,7 +151,7 @@
                     There is more than one way to achieve this functionality.
                 </p>
                 <p>
-                    One popular approach is to use a 
+                    One popular approach is to use a
                     <a href="../api/org/apache/struts/actions/LookupDispatchAction.html">
                         <code>LookupDispatchAction.</code>
                     </a>
@@ -168,7 +168,7 @@
                     to
                     decode the request and invoke the proper action. It also
                     takes advantage of
-                    the 
+                    the
                     <a href="../userGuide/struts-html.html#submit">
                         <code>&lt;html:submit&gt;</code>
                     </a>
@@ -186,7 +186,7 @@
                     your action form if you choose this route.
                 </p>
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="focus">
                 <question>
@@ -210,19 +210,19 @@
                     <a href="http://issues.apache.org/struts/browse/STR-899">
                         JIRA ticket.</a>
                 </p>
-                
+
                 <p>
-                    Another approach is to use a separate JavaScript that 
-                    automatically focusses the first enabled field on the 
-                    first form on a page. 
-                    See the article 
+                    Another approach is to use a separate JavaScript that
+                    automatically focusses the first enabled field on the
+                    first form on a page.
+                    See the article
                     <a href="http://www.codeproject.com/jscript/FocusFirstInput.asp">
                     Set Focus to First Input on Web Page</a>
-                    for a working example that you can use in your own 
-                    applications. 
+                    for a working example that you can use in your own
+                    applications.
                 </p>
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="checkbox">
                 <question>
@@ -265,9 +265,9 @@
                     default values for an ActionForm correctly, and to
                     implement the reset method
                     when the ActionForm might kept in session scope.
-                </p>                
+                </p>
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="javascript.submit">
                 <question>
@@ -346,7 +346,7 @@
                         http://husted.com/struts/tips/003.html</a>
                 </p>
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="javascript">
                 <question>
@@ -386,9 +386,9 @@
                     A very good JavaScript resource is Matt Kruse's site at
                     <a href="http://www.mattkruse.com/javascript/">
                         http://www.mattkruse.com/javascript/</a>
-                </p>                
+                </p>
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="reset">
                 <question>
@@ -409,9 +409,9 @@
                     request scope form, is pointless.
                     If the form is in request scope, everything already just
                     started at the initial value.
-                </p>                
+                </p>
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="scriptlets">
                 <question>
@@ -440,7 +440,7 @@
                 </p>
                 <p>
                     Likewise, there is nothing to prevent you from using
-                    scriptlets along with JSP tags in your pages. Though, 
+                    scriptlets along with JSP tags in your pages. Though,
                     many developers report
                     writing very complex
                     scriplet-free applications and recommend the JSP tag
@@ -455,7 +455,7 @@
                     where there are more people still using these
                     approaches.
                 </p>                </answer>
-             </faq>                
+             </faq>
 
             <faq id="link">
                 <question>
@@ -476,9 +476,9 @@
                     Simply markup the client-side links using the standard
                     <a/>
                     tag.
-                </p>                
+                </p>
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="pager">
                 <question>
@@ -490,10 +490,10 @@
                 <p>
                     <a href="http://jsptags.com/tags/navigation/pager/">
                         http://jsptags.com/tags/navigation/pager/</a>
-                </p>                
+                </p>
                 </answer>
-             </faq>                
-             
+             </faq>
+
 
             <faq id="minimization">
                 <question>
@@ -518,7 +518,7 @@
                         XHTML specification</a>
                 </p>
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="tags">
                 <question>
@@ -550,10 +550,10 @@
                     This leads to better reuse since the same "how to format"
                     code does not need to be repeated in every instance.
                     You can "say it once" in a JavaBean and be done with it.
-                </p>                
+                </p>
                 </answer>
-             </faq>                
-             
+             </faq>
+
 
             <faq id="layout">
                 <question>
@@ -588,9 +588,9 @@
                     DisplayTag is an excellent choice when you have tabular
                     data to present.
                 </p>
-                
+
                 </answer>
-             </faq>                
+             </faq>
 
             <faq id="undocumented">
                 <question>
@@ -606,7 +606,7 @@
                     <li>Why can't I disable URL-encoding in the Struts
                         taglibs?</li>
 
-                </ul>                
+                </ul>
                 </answer>
             </faq>
         </part>

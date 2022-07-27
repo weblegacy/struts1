@@ -25,7 +25,7 @@ import org.apache.struts.chain.contexts.ActionContext;
 /**
  * This abstract class is a template for choosing the target method that is
  * identified by a submission parameter.
- * 
+ *
  * @version $Rev$
  * @since Struts 1.4
  */
@@ -33,14 +33,14 @@ public abstract class AbstractParameterDispatcher extends AbstractDispatcher {
 
     /**
      * The default parameter name if no parameter is set.
-     * 
+     *
      * @see #getDefaultParameterName()
      */
     protected static final String DEFAULT_PARAMETER_NAME = "method";
 
     /**
      * Constructs a new dispatcher with the specified method resolver.
-     * 
+     *
      * @param methodResolver the method resolver
      */
     public AbstractParameterDispatcher(MethodResolver methodResolver) {
@@ -51,7 +51,7 @@ public abstract class AbstractParameterDispatcher extends AbstractDispatcher {
      * Retrieves the name of the parameter to fallback upon if the action
      * configuration did not set the <code>parameter</code> attribute. The
      * default implementation returns {@link #DEFAULT_PARAMETER_NAME}.
-     * 
+     *
      * @return the fallback parameter name; can be <code>null</code>
      * @see #DEFAULT_PARAMETER_NAME
      * @see #getParameter(ActionContext)
@@ -66,7 +66,7 @@ public abstract class AbstractParameterDispatcher extends AbstractDispatcher {
      * that can resolve to one. The default implementation returns the mapping's
      * <code>parameter</code> attribute; otherwise fallback to the default
      * parameter name.
-     * 
+     *
      * @param context the current action context
      * @return the mapping's parameter name
      * @see #getDefaultParameterName()
@@ -94,7 +94,7 @@ public abstract class AbstractParameterDispatcher extends AbstractDispatcher {
 
     /**
      * Extracts the value that is keyed by the specified parameter.
-     * 
+     *
      * @param context the current action context
      * @param parameter the parameter name
      * @return the parameter value

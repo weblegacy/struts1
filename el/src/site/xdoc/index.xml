@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,26 +32,26 @@
         <section name="Welcome to Struts EL" id="welcome">
 
             <p>
-                Struts EL is an extension of the Struts Taglib component 
+                Struts EL is an extension of the Struts Taglib component
                 that uses JSTL (the JavaServer Pages Standard Tag Library)
-                as a foundation technology. 
-                Each JSP custom tag in this library is a JSTL-aware 
+                as a foundation technology.
+                Each JSP custom tag in this library is a JSTL-aware
                 subclass of a corresponding tag in Struts Taglib.
-                Since JSTL is a prerequisite, 
-                only those tags without a JSTL corrollary were ported to 
-                Struts EL. 
+                Since JSTL is a prerequisite,
+                only those tags without a JSTL corrollary were ported to
+                Struts EL.
             </p>
             <p>
-                Since this component utilizes JSTL, the JSTL expression 
-                language ("EL"), and Struts Taglib, an understanding of all 
-                three is a prerequisite. 
+                Since this component utilizes JSTL, the JSTL expression
+                language ("EL"), and Struts Taglib, an understanding of all
+                three is a prerequisite.
             </p>
         </section>
-        
+
         <section name="Evaluating Expressions">
             <p>
-                Unlike the Struts Taglib component, 
-                Struts EL does not use runtime scriptlet expressions ("rtexprvalues"), 
+                Unlike the Struts Taglib component,
+                Struts EL does not use runtime scriptlet expressions ("rtexprvalues"),
                 EL uses the expression evaluation engine in the Jakarta Taglibs
                 implementation of JSTL (version 1.0) to evaluate attribute
                 values.
@@ -84,7 +84,7 @@
                 <![CDATA[<bean-el:message key="${stringvar}"/>]]>
             </source>
         </section>
-        
+
         <section name="Tag Mapping">
             <p>
                 In implementing the Struts-EL library, every Struts tag that

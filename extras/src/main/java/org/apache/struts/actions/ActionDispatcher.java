@@ -500,7 +500,7 @@ public class ActionDispatcher implements Dispatcher {
     protected boolean isCancelled(HttpServletRequest request) {
         return (request.getAttribute(Globals.CANCEL_KEY) != null);
     }
-    
+
     /**
      * @since Struts 1.4
      */

@@ -127,7 +127,7 @@ public class TestAuthorizeAction {
         this.saContext.setActionConfig(config);
 
         assertThrows(UnauthorizedActionException.class,
-            () -> command.execute(saContext)); 
+            () -> command.execute(saContext));
     }
 
     @Test

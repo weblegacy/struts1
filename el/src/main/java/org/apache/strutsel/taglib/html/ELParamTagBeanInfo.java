@@ -31,7 +31,7 @@ import java.util.ArrayList;
  * <code>org.apache.strutsel.taglib.html.ELParamTag</code> class.  It is needed
  * to override the default mapping of custom tag attribute names to class
  * attribute names.
- * 
+ *
  * @version $Rev$ $Date$
  * @since Struts 1.3.6
  */

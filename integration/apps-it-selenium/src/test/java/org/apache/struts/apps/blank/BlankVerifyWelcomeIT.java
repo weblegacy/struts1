@@ -41,15 +41,15 @@ public class BlankVerifyWelcomeIT {
   public void blankVerifyWelcome() {
     // Test name: blank-verify-welcome
     // Step # | name | target | value
-    // 1 | open | struts-blank/Welcome.do | 
+    // 1 | open | struts-blank/Welcome.do |
     driver.get(home + "Welcome.do");
-    // 2 | verifyTitle | Struts Blank Application | 
+    // 2 | verifyTitle | Struts Blank Application |
     assertEquals("Struts Blank Application", driver.getTitle());
     // 3 | executeScript | location.reload(); return document.title; | title
     vars.put("title", js.executeScript("location.reload(); return document.title;"));
     // 4 | verify | title | Struts Blank Application
     assertEquals("Struts Blank Application", vars.get("title").toString());
-    // 5 | assertElementPresent | xpath=//*[contains(text(),'Welcome!')] | 
+    // 5 | assertElementPresent | xpath=//*[contains(text(),'Welcome!')] |
     {
       List<WebElement> elements = driver.findElements(By.xpath("//*[contains(text(),\'Welcome!\')]"));
       assertTrue(elements.size() > 0);

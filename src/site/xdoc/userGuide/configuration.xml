@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -32,7 +32,7 @@
         <section name="5. Configuring Applications">
 
             <blockquote><p><em>
-            "An author doesn't necessarily understand the meaning of his own 
+            "An author doesn't necessarily understand the meaning of his own
             story better than anyone else."
             </em></p></blockquote>
 
@@ -416,9 +416,9 @@
                         <strong>escape</strong>
                         - Set to
                         <code>true</code>
-                         if  
+                         if
                          <i>escape processing</i>
-                         should be performed on the error message string. 
+                         should be performed on the error message string.
                         [true] (optional)
                     </li>
 
@@ -460,12 +460,12 @@
                   <li><b>Default</b> - default, backwardly compatible,
                       Struts behaviour (i.e. the way its always worked).</li>
                   <li><b>JSTL</b> - compatible with how JSTL finds messages.</li>
-                  <li><b>Resource</b> - compatible with how Java's 
+                  <li><b>Resource</b> - compatible with how Java's
                       <code>PropertyResourceBundle</code> finds messages.</li>
                 </ul>
 
                 <p>
-                    The <i>mode</i> can be configured in the struts-config.xml 
+                    The <i>mode</i> can be configured in the struts-config.xml
                    (for more details see <code>PropertyMessageResources</code>
                     <a href="../apidocs/org/apache/struts/util/PropertyMessageResources.html">
                     JavaDoc</a>):.
@@ -602,7 +602,7 @@
                     under a given module, so choose something meaningful!).
                     For example:
                 </p>
-                               
+
                 <source><![CDATA[
     ...
     <init-param>
@@ -665,7 +665,7 @@
                     There are three approaches for switching from one module
                     to another.
                 </p>
-                
+
                 <ol>
                     <li>
                     You can use the
@@ -853,9 +853,9 @@
                         the last one loaded quietly wins.
                         <br/>
                         <strong>WARNING</strong>
-                        - Plugins are not designed 
+                        - Plugins are not designed
                         to be loaded more than once in the same module.
-                        The set of configuration files for a module 
+                        The set of configuration files for a module
                         should load a plugin only once.
                     </li>
 
@@ -1099,10 +1099,10 @@
                     files) into your
                     <code>WEB-INF/lib</code>
                     directory. To use Struts Taglib,
-                    you must also copy the 
+                    you must also copy the
                     <code>struts-taglib-*.jar.</code>
                     Likewise, to use other optional components, like
-                    Extras, Tiles, or the Validator, copy the corresponding 
+                    Extras, Tiles, or the Validator, copy the corresponding
                     <code>struts-*.jar.</code>
                 </p>
 
@@ -1136,7 +1136,7 @@
                     </p>
 
                     <p>
-                        If you have multiple web applications based on the framework, 
+                        If you have multiple web applications based on the framework,
                         it is tempting
                         to consider taking advantage of this container
                         feature, and placing

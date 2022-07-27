@@ -6,9 +6,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -44,10 +44,10 @@
     <!-- Type Actions -->
     <action path="/type" forward="/type.jsp" />
 
-    <action path="/type-submit" 
-            type="org.apache.struts.webapp.validator.TypeAction" 
-            name="typeForm" 
-            scope="request" 
+    <action path="/type-submit"
+            type="org.apache.struts.webapp.validator.TypeAction"
+            name="typeForm"
+            scope="request"
             validate="true"
             cancellable="true"
             input="input">
@@ -58,17 +58,17 @@
     <!-- JavaScript Type Actions -->
     <action path="/jsType" forward="/jsType.jsp" />
 
-    <action path="/editJsType" 
-            type="org.apache.struts.webapp.validator.EditTypeAction" 
-            scope="request" 
+    <action path="/editJsType"
+            type="org.apache.struts.webapp.validator.EditTypeAction"
+            scope="request"
             validate="false">
         <forward name="success" path="/jsType.do" />
     </action>
 
-    <action path="/jsType-submit" 
-            type="org.apache.struts.webapp.validator.TypeAction" 
-            name="jsTypeForm" 
-            scope="request" 
+    <action path="/jsType-submit"
+            type="org.apache.struts.webapp.validator.TypeAction"
+            name="jsTypeForm"
+            scope="request"
             validate="true"
             cancellable="true"
             input="/jsType.jsp">
@@ -76,17 +76,17 @@
     </action>
 
     <!-- Show struts-config.xml -->
-    <action path="/showStrutsConfigType" 
-            type="org.apache.struts.webapp.validator.ShowFileAction" 
-            scope="request" 
+    <action path="/showStrutsConfigType"
+            type="org.apache.struts.webapp.validator.ShowFileAction"
+            scope="request"
             parameter="/WEB-INF/validator/struts-config-type.xml">
         <forward name="success" path="/showFile.jsp" />
     </action>
 
     <!-- Show validations.xml -->
-    <action path="/showValidationType" 
-            type="org.apache.struts.webapp.validator.ShowFileAction" 
-            scope="request" 
+    <action path="/showValidationType"
+            type="org.apache.struts.webapp.validator.ShowFileAction"
+            scope="request"
             parameter="/WEB-INF/validator/validation-type.xml">
         <forward name="success" path="/showFile.jsp" />
     </action>

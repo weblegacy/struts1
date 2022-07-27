@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -36,7 +36,7 @@
             Create a new web application based on the Struts Blank example.
         </li>
         <li>
-            Edit the struts-config and uncomment the section that refers 
+            Edit the struts-config and uncomment the section that refers
             to the "Tiles PlugIn".</li>
         <li>
             Create one or more Tiles Definitions XML files in the /WEB-INF
@@ -58,7 +58,7 @@
 
     <ul>
         <li>
-            Ensure that a <code>struts-tiles.jar</code> is available in 
+            Ensure that a <code>struts-tiles.jar</code> is available in
             the <code>WEB-INF/lib</code> directory of your web application.
         </li>
         <li>
@@ -71,8 +71,8 @@
         <param-value>org/apache/struts/tiles/chain-config.xml</param-value>
     </init-param>
     ]]></source>
-       
-        </li>        
+
+        </li>
         <li>
            Configure the Tiles Plugin to load your definitions.
     <source><![CDATA[

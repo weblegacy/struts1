@@ -47,7 +47,7 @@ import java.util.StringTokenizer;
  * The order of the parameters are guaranteed to be iterated in the order
  * specified. If multiple buttons were accidently submitted, the first match in
  * the list will be dispatched.
- * 
+ *
  * @version $Rev$
  * @since Struts 1.4
  */
@@ -61,7 +61,7 @@ public abstract class AbstractEventMappingDispatcher extends AbstractMappingDisp
 
     /**
      * Constructs a new dispatcher with the specified method resolver.
-     * 
+     *
      * @param methodResolver the method resolver
      */
     public AbstractEventMappingDispatcher(MethodResolver methodResolver) {
@@ -70,7 +70,7 @@ public abstract class AbstractEventMappingDispatcher extends AbstractMappingDisp
 
     /**
      * Determines whether the specified method key is a submission parameter.
-     * 
+     *
      * @param context the current action context
      * @param methodKey the method key
      * @return <code>true</code> if match; otherwise <code>false</code>

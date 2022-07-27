@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -38,9 +38,9 @@
             <subsection name="4.1 Overview" id="overview">
 
                 <p>
-                    Now that we understand how to construct the 
-                    <a href="building_model.html">Model</a> 
-                    and 
+                    Now that we understand how to construct the
+                    <a href="building_model.html">Model</a>
+                    and
                     <a href="building_view.html">View</a>
                     components
                     of your application, it is time to focus on the Controller
@@ -56,7 +56,7 @@
 
                     <li>
                         Write an ActionForm class to mediate between the Model
-                        and the View. 
+                        and the View.
                         <a href="../faqs/actionForm.html">(See also
                 Building an ActionForm.)</a>
                     </li>
@@ -64,7 +64,7 @@
                     <li>
                         Write an Action class for each logical request that
                         may
-                        be received (extend the 
+                        be received (extend the
                         <code>[org.apache.struts.action.Action]</code>
                         class).
                     </li>
@@ -262,8 +262,8 @@
                         <td>
                             Removes any <code>ActionMessages</code> object stored
                             in the session under <code>Globals.MESSAGE_KEY</code>
-                            and <code>Globals.ERROR_KEY</code> if the messages' 
-                            <code>isAccessed</code> method returns true.  This 
+                            and <code>Globals.ERROR_KEY</code> if the messages'
+                            <code>isAccessed</code> method returns true.  This
                             allows messages to be stored in the session, displayed
                             one time, and be released.
                         </td>
@@ -653,7 +653,7 @@
                         standard application resource, The framework will
                         automatically validate the
                         input from the form (using your method).
-                        See 
+                        See
                         <a href="building_view.html#form_validation">
                             Automatic Form
                             Validation</a>
@@ -982,7 +982,7 @@
                     <i>Lazy</i>
                     ActionForm which
                     <i>wraps</i>
-                    a LazyDynaBean 
+                    a LazyDynaBean
                     <a href="http://commons.apache.org/beanutils/apidocs/org/apache/commons/beanutils/package-summary.html#dynamic.lazy">
                         (see Commons BeanUtils JavaDoc).</a>
                 </p>
@@ -1888,7 +1888,7 @@ public ActionForward execute(ActionMapping mapping,
                     write as part of developing your application.
                     There are several other elements that can be placed in the
                     struts-config file to customize your application.
-                    See 
+                    See
                     <a href="configuration.html">Configuring Applications</a>
                     for more
                     about the other elements in the framework's configuration
@@ -2171,7 +2171,7 @@ public ActionForward execute(ActionMapping mapping,
                     The configuration file includes several other elements
                     that you
                     can use to customize your application.
-                    See 
+                    See
                     <a href="configuration.html">Configuring Applications</a>
                     for details.
                 </p>

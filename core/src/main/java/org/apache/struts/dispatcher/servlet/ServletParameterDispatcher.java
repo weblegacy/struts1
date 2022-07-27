@@ -35,12 +35,12 @@ import javax.servlet.http.HttpServletResponse;
  * <p>
  * <code>
  * <pre>
- * &lt;action path=&quot;/saveSubscription&quot; 
+ * &lt;action path=&quot;/saveSubscription&quot;
  *         type=&quot;org.example.SubscriptionAction&quot;
  *         dispatcher=&quot;org.apache.struts.dispatcher.servlet.ServletParameterDispatcher&quot;
  *         parameter=&quot;method&quot;/&gt;
- *         name=&quot;subscriptionForm&quot; 
- *         scope=&quot;request&quot; 
+ *         name=&quot;subscriptionForm&quot;
+ *         scope=&quot;request&quot;
  *         input=&quot;/subscription.jsp&quot;
  * </pre>
  * </code>
@@ -48,7 +48,7 @@ import javax.servlet.http.HttpServletResponse;
  * This example will use the value of the request parameter named "method" to
  * pick the appropriate method. For example, you might have the following three
  * methods in the same action:
- * 
+ *
  * <ul>
  * <li><code>public ActionForward delete(ActionMapping mapping, ActionForm form,
  * HttpServletRequest request, HttpServletResponse response) throws Exception</code></li>
@@ -58,7 +58,7 @@ import javax.servlet.http.HttpServletResponse;
  * and call one of the methods with a URL like this:
  * <p>
  * <code>http://localhost:8080/myapp/saveSubscription.do?method=update</code>
- * 
+ *
  * @version $Rev$
  * @since Struts 1.4
  */
@@ -75,7 +75,7 @@ public class ServletParameterDispatcher extends AbstractParameterDispatcher {
 
     /**
      * Extracts the value from the specified servlet parameter.
-     * 
+     *
      * @param context {@inheritDoc}
      * @param parameter the servlet parameter name
      * @return the servlet parameter value
@@ -87,7 +87,7 @@ public class ServletParameterDispatcher extends AbstractParameterDispatcher {
 
     /**
      * Sends the 404 HTTP error response.
-     * 
+     *
      * @param context {@inheritDoc}
      * @return always <code>null</code> since the response is handled directly
      * @throws Exception if the error code fails to set

@@ -282,7 +282,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
                 do {
                     bytesRead = is.read(data);
                 } while (bytesRead > -1);
-            }   
+            }
         } catch (Exception e) {
             log.error(e.getMessage(), e);
         }

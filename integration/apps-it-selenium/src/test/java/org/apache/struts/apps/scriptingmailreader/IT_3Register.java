@@ -60,16 +60,16 @@ public class IT_3Register {
   public void test31RegisterHermesMss() {
     // Test name: 3_1_Register Hermes (MSS)
     // Step # | name | target | value
-    // 1 | open | struts-mailreader/Welcome.do | 
+    // 1 | open | struts-mailreader/Welcome.do |
     // Open welcome action
     driver.get(home + "Welcome.do");
-    // 2 | verifyTitle | MailReader Demonstration Application | 
+    // 2 | verifyTitle | MailReader Demonstration Application |
     // Welcome page title
     assertEquals("MailReader Demonstration Application", driver.getTitle());
-    // 3 | click | linkText=Register with the MailReader Demonstration Application | 
+    // 3 | click | linkText=Register with the MailReader Demonstration Application |
     // Click Register
     driver.findElement(By.linkText("Register with the MailReader Demonstration Application")).click();
-    // 4 | verifyTitle | Register for the MailReader Demonstration Application | 
+    // 4 | verifyTitle | Register for the MailReader Demonstration Application |
     // Registration page title
     assertEquals("Register for the MailReader Demonstration Application", driver.getTitle());
     // 5 | type | name=username | hermes
@@ -87,16 +87,16 @@ public class IT_3Register {
     // 9 | type | name=fromAddress | hermes@somewhere.com
     // fromAddress
     driver.findElement(By.name("fromAddress")).sendKeys("hermes@somewhere.com");
-    // 10 | click | name=DO_SUBMIT | 
+    // 10 | click | name=DO_SUBMIT |
     // Save
     driver.findElement(By.name("DO_SUBMIT")).click();
-    // 11 | verifyTitle | MailReader Demonstration Application - Main Menu | 
+    // 11 | verifyTitle | MailReader Demonstration Application - Main Menu |
     // Menu page title
     assertEquals("MailReader Demonstration Application - Main Menu", driver.getTitle());
-    // 12 | click | linkText=Log off MailReader Demonstration Application | 
+    // 12 | click | linkText=Log off MailReader Demonstration Application |
     // Logoff Hermes
     driver.findElement(By.linkText("Log off MailReader Demonstration Application")).click();
-    // 13 | verifyTitle | MailReader Demonstration Application | 
+    // 13 | verifyTitle | MailReader Demonstration Application |
     // Welcome page title
     assertEquals("MailReader Demonstration Application", driver.getTitle());
   }
@@ -104,16 +104,16 @@ public class IT_3Register {
   public void test32VerifyDataEntry1a5a() {
     // Test name: 3_2_Verify data-entry (1a-5a)
     // Step # | name | target | value
-    // 1 | open | struts-mailreader/Welcome.do | 
+    // 1 | open | struts-mailreader/Welcome.do |
     // Open welcome action
     driver.get(home + "Welcome.do");
-    // 2 | verifyTitle | MailReader Demonstration Application | 
+    // 2 | verifyTitle | MailReader Demonstration Application |
     // Welcome page title
     assertEquals("MailReader Demonstration Application", driver.getTitle());
-    // 3 | click | linkText=Log on to the MailReader Demonstration Application | 
+    // 3 | click | linkText=Log on to the MailReader Demonstration Application |
     // Click Logon
     driver.findElement(By.linkText("Log on to the MailReader Demonstration Application")).click();
-    // 4 | verifyTitle | MailReader Demonstration Application - Logon | 
+    // 4 | verifyTitle | MailReader Demonstration Application - Logon |
     // Logon page title
     assertEquals("MailReader Demonstration Application - Logon", driver.getTitle());
     // 5 | type | name=username | hermes
@@ -122,16 +122,16 @@ public class IT_3Register {
     // 6 | type | name=password | m3dus4
     // password
     driver.findElement(By.name("password")).sendKeys("m3dus4");
-    // 7 | click | name=Submit | 
+    // 7 | click | name=Submit |
     // Submit
     driver.findElement(By.name("Submit")).click();
-    // 8 | verifyTitle | MailReader Demonstration Application - Main Menu | 
+    // 8 | verifyTitle | MailReader Demonstration Application - Main Menu |
     // Menu page title
     assertEquals("MailReader Demonstration Application - Main Menu", driver.getTitle());
-    // 9 | click | linkText=Edit your user registration profile | 
+    // 9 | click | linkText=Edit your user registration profile |
     // Edit user profile
     driver.findElement(By.linkText("Edit your user registration profile")).click();
-    // 10 | verifyTitle | Edit Registration for the MailReader Demonstration Application | 
+    // 10 | verifyTitle | Edit Registration for the MailReader Demonstration Application |
     // Registraion Edit page title
     assertEquals("Edit Registration for the MailReader Demonstration Application", driver.getTitle());
     // 11 | verifyText | css=tr:nth-child(1) > td | hermes
@@ -149,16 +149,16 @@ public class IT_3Register {
       String value = driver.findElement(By.name("fromAddress")).getAttribute("value");
       assertEquals("hermes@somewhere.com", value);
     }
-    // 14 | click | name=org.apache.struts.taglib.html.CANCEL | 
+    // 14 | click | name=org.apache.struts.taglib.html.CANCEL |
     // Cancel
     driver.findElement(By.name("org.apache.struts.taglib.html.CANCEL")).click();
-    // 15 | verifyTitle | MailReader Demonstration Application - Main Menu | 
+    // 15 | verifyTitle | MailReader Demonstration Application - Main Menu |
     // Menu page title
     assertEquals("MailReader Demonstration Application - Main Menu", driver.getTitle());
-    // 16 | click | linkText=Log off MailReader Demonstration Application | 
+    // 16 | click | linkText=Log off MailReader Demonstration Application |
     // Logoff Hermes
     driver.findElement(By.linkText("Log off MailReader Demonstration Application")).click();
-    // 17 | verifyTitle | MailReader Demonstration Application | 
+    // 17 | verifyTitle | MailReader Demonstration Application |
     // Welcome page title
     assertEquals("MailReader Demonstration Application", driver.getTitle());
   }

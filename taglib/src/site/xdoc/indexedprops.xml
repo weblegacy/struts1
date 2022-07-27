@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -80,7 +80,7 @@
             </subsection>
             <subsection name="Indexed Properties">
                 <p>
-                    The simplest demonstration of using indexed properties 
+                    The simplest demonstration of using indexed properties
                     can be
                     shown with the following simple bean and JSP page:
                 </p>
@@ -311,8 +311,8 @@
             </subsection>
             <subsection name="Dynamic Indexes for Indexed Properties">
                 <p>
-                    People often start using indexed properties with 
-                    enthusiasm, but soon become frustrated by an inconvenient  
+                    People often start using indexed properties with
+                    enthusiasm, but soon become frustrated by an inconvenient
                     reality. The reality is
                     that the "index" for indexed properties often needs to be
                     a dynamic value,
@@ -525,9 +525,9 @@
                     performs these evaluations is often called just "EL"
                     (expression language)
                     for short. After the JSTL was created, a derivative of
-                    Struts Taglib called Struts-EL was created. In short, 
-                    this component does everything that Struts Taglib does, 
-                    but it uses the JSTL EL engine to evaluate attribute 
+                    Struts Taglib called Struts-EL was created. In short,
+                    this component does everything that Struts Taglib does,
+                    but it uses the JSTL EL engine to evaluate attribute
                     values.
                 </p>
                 <p>
@@ -564,8 +564,8 @@
                     &lt;/html&gt;</pre>
 
                 <p>
-                    If you are using JSTL in your application (and we 
-                    recommend that you do!), 
+                    If you are using JSTL in your application (and we
+                    recommend that you do!),
                     then use Struts EL in place of Struts Taglib.
                 </p>
 

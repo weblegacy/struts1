@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -75,7 +75,7 @@
                         given mapping (usually
                         the extension
                         <code>.do</code> is used).
-                        The ActionServlet is the "switchboard" mentioned in the 
+                        The ActionServlet is the "switchboard" mentioned in the
                         opening paragraph.
                         </p>
                         <p>
@@ -87,7 +87,7 @@
                         <p>
                         For now, let's say we are installing the web
                         application on the server using
-                        <code>/myapp</code> as a location, 
+                        <code>/myapp</code> as a location,
                         and we are using the simplest possible configuration
                         from there.
                         </p>
@@ -111,9 +111,9 @@
                         classes (i.e. "login" ==&gt; LoginAction class). This
                         tells the
                         <code>ActionServlet</code>
-                        that for the incoming request 
+                        that for the incoming request
                         <code>http://myhost/myapp/login.do</code>
-                        it should invoke your controller component, 
+                        it should invoke your controller component,
                         <code>LoginAction.</code>
                         </p>
                         <p>
@@ -183,9 +183,9 @@
                         <p>
                         These Beans are automatically made visible to your
                         controller components
-                        (like the 
+                        (like the
                         <code>LoginAction</code>
-                        class) 
+                        class)
                         and any view page that is associated with
                         that controller.
                         </p>

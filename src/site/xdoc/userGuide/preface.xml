@@ -27,9 +27,9 @@ limitations under the License.
         <section name="0. Preface: Key Technologies">
 
             <blockquote><p><em>
-            "The time has come," the Walrus said, "To talk of many things: 
-            Of shoes -- and ships -- and sealing-wax -- Of cabbages -- and kings -- 
-            And why the sea is boiling hot -- And whether pigs have wings." 
+            "The time has come," the Walrus said, "To talk of many things:
+            Of shoes -- and ships -- and sealing-wax -- Of cabbages -- and kings --
+            And why the sea is boiling hot -- And whether pigs have wings."
             </em></p></blockquote>
 
             <subsection name="0.1 The Usual Suspects" id="suspects">
@@ -142,7 +142,7 @@ limitations under the License.
                     the Web and web applications.
                 </p>
 
-                <p>While building web applications, some Java developers 
+                <p>While building web applications, some Java developers
                     write their own HTML. Others leave that responsibility to
                     the
                     page designers.</p>
@@ -435,7 +435,7 @@ limitations under the License.
                     data through other methods.
                     JavaBeans are flexible and powerful objects but are not
                     the only object that programmers use to store data.
-                    Another popular object is the Map 
+                    Another popular object is the Map
                     <code>[java.util.Map].</code>
                     A Map is a simple collection of name and value pairs.
                     Maps are often used "behind the scenes" as a flexible way
@@ -623,11 +623,11 @@ limitations under the License.
 
                 <p>
                     The framework provides a ready-to-use servlet for your
-                    application 
+                    application
                     <code>[org.apache.struts.action.ActionServlet].</code>
                     As a developer, you can then just write objects
                     that the ActionServlet calls when needed.
-                    But it is still helpful to understand the  
+                    But it is still helpful to understand the
                     servlet essentials,
                     and the role they play in a Java web application.
                 </p>
@@ -701,7 +701,7 @@ limitations under the License.
 
                 <p>The
                     <em>ServletContext</em>
-                    interface 
+                    interface
                     <code>[javax.servlet.ServletContext]</code>
                     defines a servlet's view of
                     the web application within which the servlet is running.
@@ -871,7 +871,7 @@ limitations under the License.
                     and convert it into a
                     corresponding response. This is performed by calling
                     appropriate
-                    methods on the servlet response 
+                    methods on the servlet response
                     <code>[javax.servlet.http.HttpServletResponse]</code>
                     interface. Available methods let you:
                 </p>
@@ -1322,7 +1322,7 @@ limitations under the License.
                     For teams looking for a step-wise transition to JSF and Struts 1, we
                     offer Struts-Faces taglib,
                     which lets you use JSF components with your existing
-                    Actions, so that you can migate to JSF one page a time. 
+                    Actions, so that you can migate to JSF one page a time.
                 </p>
                 <p>
                     For an open source implementation of JSF, visit our
@@ -1442,7 +1442,7 @@ limitations under the License.
 
                 <p>
                     For more about creating business and data access layers,
-                    see the 
+                    see the
                     <a href="building_model.html">Building Model
                         Components</a>
                     section.

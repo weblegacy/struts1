@@ -1042,7 +1042,7 @@ public class ELLinkTag extends LinkTag {
                     pageContext)) != null) {
             setDir(string);
         }
-        
+
         if ((string =
                 EvalHelper.evalString("forward", getForwardExpr(), this,
                     pageContext)) != null) {

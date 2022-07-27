@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -93,7 +93,7 @@
             <p><strong>
       Defines a new level of nesting for child tags to reference to
     </strong></p>
-          
+
       <p>
       This tag provides a simple method of defining a logical nesting level in
       the nested hierarchy. It run no explicit logic, is simply a place holder.
@@ -143,7 +143,7 @@
             <p><strong>
       Writes or makes a scripting variable of the current nesting level.
     </strong></p>
-          
+
       This tag provides a way of accessing the nested property reference used by
       the nested tags. Can expose a scripting variable, or simply write out the
       value.
@@ -191,7 +191,7 @@
         <description>
             <![CDATA[
             <p><strong>To start off a nested hierarchy without the need for a form</strong></p>
-          
+
       <p>
         This tag is provided to allow the nested tags to find a common bean
         reference without the need for a form and its relative overhead. As
@@ -240,7 +240,7 @@
       Define a scripting variable based on the value(s) of the specified
       bean property.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;bean:define&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -300,7 +300,7 @@
             <p><strong>Nested Extension -
     Render an internationalized message string to the response.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;bean:message&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -385,7 +385,7 @@
             <p><strong>Nested Extension -
       Define a bean containing the number of elements in a Collection or Map.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;bean:size&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -435,7 +435,7 @@
     Render the value of the specified bean property to the current
     JspWriter.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;bean:write&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -506,7 +506,7 @@
         <description>
             <![CDATA[
             <p><strong>Nested Extension - Render A Checkbox Input Field</strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:checkbox&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -767,7 +767,7 @@
             <p><strong>
         Nested Extension - Conditionally display a set of accumulated error messages.
      </strong></p>
-          
+
        <p>This tag is an extension of the
        <code>&lt;html:errors&gt;</code>
        tag. Please consult its documentation for information on tag attributes
@@ -852,7 +852,7 @@
             <p><strong>Nested Extension -
       Render A File Select Input Field
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:file&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -1129,7 +1129,7 @@
         <description>
             <![CDATA[
             <p><strong>Nested Extension - Define An Input Form</strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:form&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -1273,7 +1273,7 @@
             <p><strong>Nested Extension -
         Render A Hidden Field
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:hidden&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -1382,7 +1382,7 @@
             <p><strong>Nested Extension -
     Render an input tag of type "image"
     </strong></p>
-          
+
     <p>This tag is an extension of the
     <code>&lt;html:image&gt;</code>
     tag. Please consult its documentation for information on tag attributes
@@ -1627,7 +1627,7 @@
         <description>
             <![CDATA[
             <p><strong>Nested Extension - Render an HTML "img" tag</strong></p>
-          
+
     <p>This tag is an extension of the
     <code>&lt;html:img&gt;</code>
     tag. Please consult its documentation for information on tag attributes
@@ -1884,7 +1884,7 @@
         <description>
             <![CDATA[
             <p><strong>Nested Extension - Render an HTML anchor or hyperlink</strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:link&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -2169,7 +2169,7 @@
             <p><strong>
          Nested Extension - Conditionally display a set of accumulated messages.
       </strong></p>
-          
+
          <p>This tag is an extension of the
          <code>&lt;html:messages&gt;</code>
          tag. Please consult its documentation for information on tag attributes
@@ -2234,7 +2234,7 @@
             <p><strong>Nested Extension -
         Render A Checkbox Input Field
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:multibox&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -2462,7 +2462,7 @@
         <description>
             <![CDATA[
             <p><strong>Nested Extension - Render a Collection of Select Options</strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:options&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -2554,7 +2554,7 @@
             <p><strong>Nested Extension -
         Render a Collection of Select Options
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:optionsCollection&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -2614,7 +2614,7 @@
             <p><strong>Nested Extension -
         Render A Password Input Field
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:password&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -2905,7 +2905,7 @@
             <p><strong>Nested Extension -
         Render A Radio Button Input Field
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:radio&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -3148,7 +3148,7 @@
             <p><strong>Nested Extension -
     Render A Select Element
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:select&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -3418,7 +3418,7 @@
         <description>
             <![CDATA[
             <p><strong>Nested Extension - Render A Submit Button</strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:submit&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -3628,7 +3628,7 @@
             <p><strong>Nested Extension -
         Render An Input Field of Type text
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:text&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -3911,7 +3911,7 @@
         <description>
             <![CDATA[
             <p><strong>Nested Extension - Render A Textarea</strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;html:textarea&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4198,7 +4198,7 @@
     Evaluate the nested body content of this tag if the requested variable is
     either null or an empty string.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:empty&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4235,7 +4235,7 @@
     Evaluate the nested body content of this tag if the requested
     variable is equal to the specified value.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:equal&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4295,7 +4295,7 @@
             <p><strong>Nested Extension - Evaluate the nested body content of this tag if the requested
     variable is greater than or equal to the specified value.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:greaterEqual&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4356,7 +4356,7 @@
       Evaluate the nested body content of this tag if the requested
       variable is greater than the specified value.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:greaterThan&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4417,7 +4417,7 @@
             <p><strong>Nested Extension -
       Repeat the nested body content of this tag over a specified collection.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:iterate&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4491,7 +4491,7 @@
       Evaluate the nested body content of this tag if the requested
       variable is greater than or equal to the specified value.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:lessEqual&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4552,7 +4552,7 @@
       Evaluate the nested body content of this tag if the requested
       variable is less than the specified value.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:lessThan&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4613,7 +4613,7 @@
       Evaluate the nested body content of this tag if the specified value
       is an appropriate substring of the requested variable.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:match&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4681,7 +4681,7 @@
        Generate the nested body content of this tag if the specified
        message is not present in this request.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:messagesNotPresent&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4719,7 +4719,7 @@
        Generate the nested body content of this tag if the specified
        message is present in this request.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:messagesPresent&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4756,7 +4756,7 @@
       Evaluate the nested body content of this tag if the requested variable is
       neither null nor an empty string.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:notEmpty&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4793,7 +4793,7 @@
       Evaluate the nested body content of this tag if the requested
       variable is not equal to the specified value.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:notEqual&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4854,7 +4854,7 @@
       Evaluate the nested body content of this tag if the specified value
       is not an appropriate substring of the requested variable.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:notMatch&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4921,7 +4921,7 @@
       Generate the nested body content of this tag if the specified
       value is not present in this request.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:notPresent&gt;</code>
       tag. Please consult its documentation for information on tag attributes
@@ -4988,7 +4988,7 @@
       Generate the nested body content of this tag if the specified
       value is present in this request.
     </strong></p>
-          
+
       <p>This tag is an extension of the
       <code>&lt;logic:present&gt;</code>
       tag. Please consult its documentation for information on tag attributes

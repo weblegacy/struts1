@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -33,7 +33,7 @@
                     creating and maintaining applications to meet the demands
                     of today's public Web sites and enterprise intranets.
                     Struts combines standard Java
-                    technologies into a unified framework. 
+                    technologies into a unified framework.
                 </p>
 
             </answer>
@@ -44,16 +44,16 @@
             <answer>
                 <p>Java Servlets are designed to handle requests made by Web
                     browsers. Server pages are designed to create dynamic web
-                    pages that can turn billboard sites into interactive 
+                    pages that can turn billboard sites into interactive
                     applications. Struts uses a special
                     Servlet as a switchboard to route requests from Web
-                    browsers to the appropriate server page. 
-                    Along the way, a special Java class, called an Action, 
-                    can interact with a data access framework or business 
+                    browsers to the appropriate server page.
+                    Along the way, a special Java class, called an Action,
+                    can interact with a data access framework or business
                     logic classes.
                     A layered architecture makes enterprise-grade web
                     applications easier to create and maintain.
-                    (For more detail, see the longer version of 
+                    (For more detail, see the longer version of
                     <a href="works.html">"How Does Struts Work?".</a>)
                 </p>
             </answer>
@@ -63,7 +63,7 @@
             <question>Is Struts compatible with other Java
                 technologies?</question>
             <answer>
-                <p>Yes. The Apache Struts Project is committed to supporting 
+                <p>Yes. The Apache Struts Project is committed to supporting
                     industry standards.
                     Struts acts as an integrator of Java technologies so that
                     they can be used in the &quot;real world&quot;.</p>
@@ -95,12 +95,12 @@
                 <p>After serving as the co-lead of the JSR 127 specification
                     (JavaServerFaces), Craig created another rendition of
                     Struts
-                    based on JavaServer Faces, called Shale. The new framework 
-                    began as an Apache Struts subproject, but later Shale 
+                    based on JavaServer Faces, called Shale. The new framework
+                    began as an Apache Struts subproject, but later Shale
                     graduated to a  top-level Apache project
-                    in its own right. 
+                    in its own right.
                     <a href="http://shale.apache.org/">
-                      Apache Shale</a> is an excellent choice for teams 
+                      Apache Shale</a> is an excellent choice for teams
                     creating complex applications that utilize JSF
                     as a foundation technology.
                 </p>
@@ -117,7 +117,7 @@
                     Maverick, Tapestry, and Turbine, to name a few. Struts did
                     not enter a "greenfield". Back in the day, there were
                     lively comparisons between the available frameworks,
-                    just as there are today. 
+                    just as there are today.
                </p>
             </answer>
         </faq>
@@ -134,11 +134,11 @@
                     OnJava magazine between their reader surveys for 2005 and
                     2004 the popularity of Struts remained steady. Likewise,
                     the number of Struts articles published in all online
-                    journals also remained constant between 2004 and 2005. 
-                    (For a complete list, see the 
+                    journals also remained constant between 2004 and 2005.
+                    (For a complete list, see the
                     <a href="http://www.StrutsCentral.net/">
-                    Struts Central website</a>.)                    
-                    New and updated books about Struts continue to be 
+                    Struts Central website</a>.)
+                    New and updated books about Struts continue to be
                     published regularly.</p>
                 <p>While some people characterize the space of Java web
                     application framework as being "fragmented", the truth is
@@ -155,7 +155,7 @@
                     that's great! More than anything else, every Struts
                     committer wants every developer to get more out of every
                     work day. (We're developers too!) As these new JSF
-                    applications grow in complexity, we're glad that 
+                    applications grow in complexity, we're glad that
                     <a href="http://shale.apache.org/">
                       Apache Shale</a> is ready to do for
                     <em>JSF</em>
@@ -207,7 +207,7 @@
                     provide
                     <a href="http://struts.apache.org/downloads.html#Building">
                         instructions</a>
-                    for compiling your own Struts JAR from scratch. 
+                    for compiling your own Struts JAR from scratch.
                     (With Maven, building Struts is easy!)
                 </p>
                 <p>Your Struts application can usually be deployed using a
@@ -237,7 +237,7 @@
                 </p>
                 <p>Why is that an important distinction? Because if you are
                     using a servlet container on your development machine to
-                    test your application, the Struts JARs 
+                    test your application, the Struts JARs
                     <strong>must not</strong>
                     be on your CLASSPATH environment variable when running the
                     container. (This is because each Web application must also
@@ -250,7 +250,7 @@
                     <li>
                         <strong>Use Ant or Maven</strong>
                         for building your projects -- it can easily assemble
-                        classpaths for the compiler. 
+                        classpaths for the compiler.
                     </li>
                     <li>
                         <strong>Use an IDE</strong>

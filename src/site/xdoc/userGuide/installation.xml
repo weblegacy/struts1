@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -30,7 +30,7 @@
 
     <body>
         <section name="6.2 Installation" id="installation">
-        
+
             <blockquote><p><em>
             "Would you tell me, please, which way I ought to go from here?"
             </em></p><p><em>
@@ -44,7 +44,7 @@
             </em></p><p><em>
             "Oh, you're sure to do that, if only you walk long enough."
             </em></p></blockquote>
-             
+
             <subsection name="Prerequisite Software" id="Prerequisites">
 
                 <p>The framework's binary distribution needs three other
@@ -61,7 +61,7 @@
                         - You
                         <strong>must</strong>
                         download and install
-                        a Java Development Kit (version 1.4 or later) 
+                        a Java Development Kit (version 1.4 or later)
                         implementation for
                         your operating system platform.
                         A good starting point for locating Java Development
@@ -132,7 +132,7 @@
                         - The struts-*.jars contains Java classes
                         distributed by Apache Struts. The other JAR files
                         contain packages
-                        from other projects that are imported by the 
+                        from other projects that are imported by the
                         framework. When you launch
                         a your application, these JARs need to be available to
                         your
@@ -219,7 +219,7 @@
 
                 <p>For most containers, you need only to:</p>
                 <ul>
-                    <li>Copy the WAR files in your 
+                    <li>Copy the WAR files in your
                         <code>/webapps</code>
                         directory to your
                         containers

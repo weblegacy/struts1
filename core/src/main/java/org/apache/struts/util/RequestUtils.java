@@ -486,7 +486,7 @@ public class RequestUtils {
     }
 
     /**
-     * <p>Populates the parameters of the specified ActionRedirect from 
+     * <p>Populates the parameters of the specified ActionRedirect from
      * the specified HTTP request.</p>
      *
      * @param redirect The ActionRedirect whose parameters are to be set
@@ -506,13 +506,13 @@ public class RequestUtils {
     }
 
     /**
-     * <p>If the given form bean can accept multiple FormFile objects but the user only uploaded a single, then 
+     * <p>If the given form bean can accept multiple FormFile objects but the user only uploaded a single, then
      * the property will not match the form bean type.  This method performs some simple checks to try to accommodate
      * that situation.</p>
      * @param bean
      * @param name
      * @param parameterValue
-     * @return 
+     * @return
      * @throws ServletException if the introspection has any errors.
      */
     private static Object rationalizeMultipleFileProperty(Object bean, String name, Object parameterValue) throws ServletException {
@@ -1139,31 +1139,31 @@ public class RequestUtils {
 
     /**
      * Determines whether the current request is forwarded.
-     * 
-     * @param request current HTTP request 
+     *
+     * @param request current HTTP request
      * @return true if the request is forwarded; otherwise false
      * @since Struts 1.4
      */
     public static boolean isRequestForwarded(HttpServletRequest request) {
         return (request.getAttribute("javax.servlet.forward.request_uri") != null);
     }
-    
+
     /**
      * Determines whether the current request is included.
-     * 
-     * @param request current HTTP request 
+     *
+     * @param request current HTTP request
      * @return true if the request is included; otherwise false
      * @since Struts 1.4
      */
     public static boolean isRequestIncluded(HttpServletRequest request) {
         return (request.getAttribute("javax.servlet.include.request_uri") != null);
     }
-    
+
     /**
      * Verifies whether current request is forwarded from one action to
      * another or not.
-     * 
-     * @param request current HTTP request 
+     *
+     * @param request current HTTP request
      * @return true if the request is chained; otherwise false
      * @since Struts 1.4
      */

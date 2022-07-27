@@ -98,7 +98,7 @@ if (!errors.isEmpty()) {
     struts.setForward(struts.mapping.getInputForward());
     return;
 }
-    
+
 // Update the user's persistent profile information
 try {
     if ("Create".equals(act)) {

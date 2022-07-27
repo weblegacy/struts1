@@ -6,16 +6,16 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<!DOCTYPE struts-config PUBLIC 
+<!DOCTYPE struts-config PUBLIC
           "-//Apache Software Foundation//DTD Struts Configuration 1.4//EN"
           "http://struts.apache.org/dtds/struts-config_1_4.dtd">
 <struts-config>
@@ -39,11 +39,11 @@
     <!-- Bundles Examples -->
     <action path="/viewBundleExamples" forward="/bundleExamples.jsp" />
 
-    <action path="/validateBundleExamples" 
-            type="org.apache.struts.actions.ForwardAction" 
-            name="bundlesForm" 
-            scope="session" 
-            parameter="/welcome.do" 
+    <action path="/validateBundleExamples"
+            type="org.apache.struts.actions.ForwardAction"
+            name="bundlesForm"
+            scope="session"
+            parameter="/welcome.do"
             validate="true"
             cancellable="true"
             input="input" >
@@ -53,11 +53,11 @@
     <!-- JavaScript Bundles Examples -->
     <action path="/viewJsBundleExamples" forward="/bundleExamplesJS.jsp" />
 
-    <action path="/validateJsBundleExamples" 
-            type="org.apache.struts.actions.ForwardAction" 
-            name="bundlesForm" 
-            scope="session" 
-            parameter="/welcome.do" 
+    <action path="/validateJsBundleExamples"
+            type="org.apache.struts.actions.ForwardAction"
+            name="bundlesForm"
+            scope="session"
+            parameter="/welcome.do"
             validate="true"
             cancellable="true"
             input="input" >
@@ -65,17 +65,17 @@
     </action>
 
     <!-- Show struts-config.xml -->
-    <action path="/showStrutsConfigBundles" 
-            type="org.apache.struts.webapp.validator.ShowFileAction" 
-            scope="request" 
+    <action path="/showStrutsConfigBundles"
+            type="org.apache.struts.webapp.validator.ShowFileAction"
+            scope="request"
             parameter="/WEB-INF/validator/struts-config-bundles.xml">
         <forward name="success" path="/showFile.jsp" />
     </action>
 
     <!-- Show validations.xml -->
-    <action path="/showValidationBundles" 
-            type="org.apache.struts.webapp.validator.ShowFileAction" 
-            scope="request" 
+    <action path="/showValidationBundles"
+            type="org.apache.struts.webapp.validator.ShowFileAction"
+            scope="request"
             parameter="/WEB-INF/validator/validation-bundles.xml">
         <forward name="success" path="/showFile.jsp" />
     </action>

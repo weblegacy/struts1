@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -31,11 +31,11 @@
               security issues which have been identified:
           </p>
           <ul>
-              <li><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38374">Bug 38374</a> - 
+              <li><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38374">Bug 38374</a> -
                   Validation always skipped with Globals.CANCEL_KEY.</li>
-              <li><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38534">Bug 38534</a> - 
+              <li><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38534">Bug 38534</a> -
                   DOS attack, application hack.</li>
-              <li><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38749">Bug 38749</a> - 
+              <li><a href="http://issues.apache.org/bugzilla/show_bug.cgi?id=38749">Bug 38749</a> -
                   XSS vulnerability in LookupDispatchAction.</li>
           </ul>
           <p>
@@ -52,11 +52,11 @@
               input so that everyone can benefit from the collective experience.
           </p>
           <p>
-             For the version requirements of each library, see the 
+             For the version requirements of each library, see the
              <a href="installation.html">Installation chapter</a>.
           </p>
- 
-  
+
+
       <h3 id="STRUTS_1_2_9">Version 1.2.9</h3>
 
           <p>

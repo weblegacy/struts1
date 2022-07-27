@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -31,17 +31,17 @@
 
 <section name="Welcome To Struts Tiles">
     <p>
-        Welcome to the Struts Tiles component.Tiles is a templating 
-        system. (Include on steriods.) It can be used to create a common look 
-        and feel for a web application. Tiles can also be used to create 
-        reusable view components. This site will help 
-        you get started with Tiles. 
+        Welcome to the Struts Tiles component.Tiles is a templating
+        system. (Include on steriods.) It can be used to create a common look
+        and feel for a web application. Tiles can also be used to create
+        reusable view components. This site will help
+        you get started with Tiles.
     </p>
     <p>
-        Tiles can also be used without Struts. A new release of Tiles, 
-        Tiles 2, is being prepared. If you would like to use Tiles without 
+        Tiles can also be used without Struts. A new release of Tiles,
+        Tiles 2, is being prepared. If you would like to use Tiles without
         Struts, see the new <a href="http://tiles.apache.org/">Apache Tiles 2
-        project.</a> The focus of this site is using Tiles <em>with</em> Struts. 
+        project.</a> The focus of this site is using Tiles <em>with</em> Struts.
     </p>
 </section>
 
@@ -92,7 +92,7 @@
              </ul>
           </li>
           <li>
-             Dynamic page building 
+             Dynamic page building
              <ul>
                 <li>
                    Tiles can be gathered dynamically during
@@ -104,7 +104,7 @@
           </li>
           <li>
              Reuse of <strong><em>Tiles</em></strong> /
-             Components 
+             Components
              <ul>
                 <li>
                    If well defined, a

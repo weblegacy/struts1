@@ -6,9 +6,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -50,9 +50,9 @@
 
       <!-- Registration Actions -->
       <action path="/registration" forward="/registration.jsp" />
-      <action path="/registration-submit" 
-              type="org.apache.struts.webapp.validator.RegistrationAction" 
-              name="registrationForm" 
+      <action path="/registration-submit"
+              type="org.apache.struts.webapp.validator.RegistrationAction"
+              name="registrationForm"
               scope="request"
               validate="true"
               cancellable="true"
@@ -64,10 +64,10 @@
 
       <!-- Multi-Part Registration Actions -->
       <action path="/multiRegistration" forward="/multiRegistration1.jsp" />
-      <action path="/multiRegistration-submit" 
-              type="org.apache.struts.webapp.validator.MultiRegistrationAction" 
-              name="multiRegistrationForm" 
-              scope="request" 
+      <action path="/multiRegistration-submit"
+              type="org.apache.struts.webapp.validator.MultiRegistrationAction"
+              name="multiRegistrationForm"
+              scope="request"
               validate="false">
           <forward name="success" path="/welcome.do" />
           <forward name="input1" path="/multiRegistration1.jsp" />
@@ -75,25 +75,25 @@
       </action>
 
       <!-- Locale Action -->
-      <action path="/locale" 
-              type="org.apache.struts.webapp.validator.LocaleAction" 
-              name="localeForm" 
+      <action path="/locale"
+              type="org.apache.struts.webapp.validator.LocaleAction"
+              name="localeForm"
               scope="request">
           <forward name="success" path="/welcome.do" />
       </action>
 
     <!-- Show struts-config.xml -->
-    <action path="/showStrutsConfig" 
-            type="org.apache.struts.webapp.validator.ShowFileAction" 
-            scope="request" 
+    <action path="/showStrutsConfig"
+            type="org.apache.struts.webapp.validator.ShowFileAction"
+            scope="request"
             parameter="/WEB-INF/validator/struts-config.xml">
         <forward name="success" path="/showFile.jsp" />
     </action>
 
     <!-- Show validations.xml -->
-    <action path="/showValidation" 
-            type="org.apache.struts.webapp.validator.ShowFileAction" 
-            scope="request" 
+    <action path="/showValidation"
+            type="org.apache.struts.webapp.validator.ShowFileAction"
+            scope="request"
             parameter="/WEB-INF/validator/validation.xml">
         <forward name="success" path="/showFile.jsp" />
     </action>
@@ -111,9 +111,9 @@
 
   <!-- ============================================ Plug Ins Configuration  -->
 
-  <!-- 
-       Add multiple validator resource files by setting the pathnames property 
-       with a comma delimited list of resource files to load. 
+  <!--
+       Add multiple validator resource files by setting the pathnames property
+       with a comma delimited list of resource files to load.
     -->
   <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
     <set-property property="pathnames" value="/org/apache/struts/validator/validator-rules-compressed.xml,

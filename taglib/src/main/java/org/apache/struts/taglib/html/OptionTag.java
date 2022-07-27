@@ -100,7 +100,7 @@ public class OptionTag extends BodyTagSupport {
      * The language code of this element.
      */
     private String lang = null;
-    
+
     /**
      * The direction for weak/neutral text of this element.
      */
@@ -205,7 +205,7 @@ public class OptionTag extends BodyTagSupport {
 
     /**
      * Returns the language code of this element.
-     * 
+     *
      * @since Struts 1.3.6
      */
     public String getLang() {
@@ -214,7 +214,7 @@ public class OptionTag extends BodyTagSupport {
 
     /**
      * Sets the language code of this element.
-     * 
+     *
      * @since Struts 1.3.6
      */
     public void setLang(String lang) {
@@ -223,7 +223,7 @@ public class OptionTag extends BodyTagSupport {
 
     /**
      * Returns the direction for weak/neutral text this element.
-     * 
+     *
      * @since Struts 1.3.6
      */
     public String getDir() {
@@ -232,7 +232,7 @@ public class OptionTag extends BodyTagSupport {
 
     /**
      * Sets the direction for weak/neutral text of this element.
-     * 
+     *
      * @since Struts 1.3.6
      */
     public void setDir(String dir) {
@@ -241,7 +241,7 @@ public class OptionTag extends BodyTagSupport {
 
     /**
      * Returns the advisory title attribute.
-     * 
+     *
      * @since Struts 1.4
      */
     public String getTitle() {
@@ -250,7 +250,7 @@ public class OptionTag extends BodyTagSupport {
 
     /**
      * Sets the advisory title attribute.
-     * 
+     *
      * @since Struts 1.4
      */
     public void setTitle(String title) {
@@ -259,7 +259,7 @@ public class OptionTag extends BodyTagSupport {
 
     /**
      * Returns the message resources key of the advisory title.
-     * 
+     *
      * @since Struts 1.4
      */
     public String getTitleKey() {
@@ -268,7 +268,7 @@ public class OptionTag extends BodyTagSupport {
 
     /**
      * Sets the message resources key of the advisory title.
-     * 
+     *
      * @since Struts 1.4
      */
     public void setTitleKey(String titleKey) {
@@ -383,7 +383,7 @@ public class OptionTag extends BodyTagSupport {
             results.append(message(title, titleKey));
             results.append("\"");
         }
-        
+
         results.append(">");
 
         results.append(text());

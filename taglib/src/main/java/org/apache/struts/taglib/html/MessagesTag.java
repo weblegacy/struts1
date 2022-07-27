@@ -110,7 +110,7 @@ public class MessagesTag extends BodyTagSupport {
     protected String count;
 
     /**
-     * Filter the message replacement values for characters that are 
+     * Filter the message replacement values for characters that are
      * sensitive in HTML? Default is <code>false</code>.
      */
     protected boolean filterArgs = false;
@@ -335,9 +335,9 @@ public class MessagesTag extends BodyTagSupport {
        Object[] filteredArgs = new Object[values.length];
        for (int i = 0; i < values.length; ++i) {
            if (values[i] instanceof String) {
-               filteredArgs[i] = TagUtils.getInstance().filter((String) values[i]);     
+               filteredArgs[i] = TagUtils.getInstance().filter((String) values[i]);
            } else {
-               filteredArgs[i] = values[i]; 
+               filteredArgs[i] = values[i];
            }
        }
 

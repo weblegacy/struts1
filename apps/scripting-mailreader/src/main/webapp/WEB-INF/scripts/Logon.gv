@@ -29,7 +29,7 @@ import org.apache.struts.apps.scriptingmailreader.*;
 form = struts.form;
 
 def getUser(database, username, password, errors) {
-    
+
     user = null;
     if (database == null){
         errors.add(
@@ -51,7 +51,7 @@ def getUser(database, username, password, errors) {
 }
 
 def saveUser(request, user) {
- 
+
     session = request.getSession();
     session.setAttribute(Constants.USER_KEY, user);
     if (log.isDebugEnabled()) {

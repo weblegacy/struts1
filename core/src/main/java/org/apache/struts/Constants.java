@@ -23,7 +23,7 @@ package org.apache.struts;
 /**
  * This class provides a central location for framework configuration keys
  * used to retrieve and store Struts configuration settings.
- * 
+ *
  * @version $Rev$
  * @since Struts 1.4
  */
@@ -31,5 +31,5 @@ public class Constants {
 
     /** Determines whether action mappings have case-sensitive names */
     public static final String STRUTS_URL_CASESENSITIVE = "struts.url.caseSensitive";
-    
+
 }

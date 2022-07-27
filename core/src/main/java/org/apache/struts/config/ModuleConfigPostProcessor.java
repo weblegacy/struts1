@@ -34,7 +34,7 @@ package org.apache.struts.config;
  * querying additional configuration from a repository, extended configuration
  * validation, preparing message resources for a particular domain/host,
  * logging, etc.
- * 
+ *
  * @see BaseConfig
  * @see ActionConfig
  * @see ExceptionConfig
@@ -49,7 +49,7 @@ public interface ModuleConfigPostProcessor {
     /**
      * Applies this post-processor to the specified configuration object after
      * it has been initialized by Struts but before it is frozen.
-     * 
+     *
      * @param config the configuration
      * @param moduleConfig the parent module configuration
      */
@@ -57,7 +57,7 @@ public interface ModuleConfigPostProcessor {
 
     /**
      * Modify the specified module after its standard initialization.
-     * 
+     *
      * @param config the module configuration
      */
     void postProcessAfterInitialization(ModuleConfig moduleConfig);
@@ -66,7 +66,7 @@ public interface ModuleConfigPostProcessor {
      * Applies this post-processor to the specified configuration object
      * <i>before</i> it has been initialized and processed by Struts (such as
      * heirarchy extensions).
-     * 
+     *
      * @param config the configuration
      * @param moduleConfig the parent module configuration
      */

@@ -33,6 +33,6 @@ th { text-align: left; }
 
 .error { color: #FF0000; }
 .icon { float: right; margin: 5px; }
-.intro { font-size: 14px;  line-height: 1.6; font-weight: bold;} 
+.intro { font-size: 14px;  line-height: 1.6; font-weight: bold;}
 .label { font-weight: bold; width: 260px; }
 .result { width: 100%; background: #eef; }

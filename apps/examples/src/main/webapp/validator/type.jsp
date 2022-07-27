@@ -5,9 +5,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -40,7 +40,7 @@
           <td align="left">
             <html:text property="byte" size="15" maxlength="15" errorStyle="background-color: yellow" />
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="byte" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -51,7 +51,7 @@
           <td align="left">
             <html:text property="short" size="15" maxlength="15" errorStyle="background-color: yellow" />
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="short" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -62,7 +62,7 @@
           <td align="left">
             <html:text property="integer" size="15" maxlength="15" errorStyle="background-color: yellow" />
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="integer" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -74,7 +74,7 @@
             <html:text property="intRange" size="15" maxlength="15" errorStyle="background-color: yellow" />
           </td>
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="intRange" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -85,7 +85,7 @@
           <td align="left">
             <html:text property="long" size="15" maxlength="15" errorStyle="background-color: yellow" />
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="long" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -96,7 +96,7 @@
           <td align="left">
             <html:text property="float" size="15" maxlength="15" errorStyle="background-color: yellow" />
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="float" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -107,7 +107,7 @@
           <td align="left">
             <html:text property="floatRange" size="15" maxlength="15" errorStyle="background-color: yellow" />
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="floatRange" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -118,7 +118,7 @@
           <td align="left">
             <html:text property="double" size="15" maxlength="15" errorStyle="background-color: yellow" />
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="double" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -129,7 +129,7 @@
           <td align="left">
             <html:text property="date" size="15" maxlength="15" errorStyle="background-color: yellow" />
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="date" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -152,7 +152,7 @@
           <td align="left">
             <html:text property="email" size="15" maxlength="15" errorStyle="background-color: yellow" />
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="email" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -163,7 +163,7 @@
           <td align="left">
             <html:text property="mask" size="15" maxlength="15" errorStyle="background-color: yellow" />
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="mask" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -174,7 +174,7 @@
           <td align="left">
             <html:textarea property="minMaxLength" rows="2" cols="30" errorStyle="background-color: yellow" />
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="minMaxLength" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -185,7 +185,7 @@
           <td align="left">
             <html:text property="url" size="30" maxlength="100" errorStyle="background-color: yellow" />
           </td>
-          <td align="left">&nbsp; 
+          <td align="left">&nbsp;
             <html:messages property="url" id="error"><bean:write name="error" /></html:messages>
           </td>
         </tr>
@@ -215,10 +215,10 @@
           <td>
           <html:submit property="submit">
             <bean:message key="button.save" />
-          </html:submit>&#160; 
+          </html:submit>&#160;
           <html:reset>
             <bean:message key="button.reset" />
-          </html:reset>&#160; 
+          </html:reset>&#160;
           <html:cancel>
             <bean:message key="button.cancel" />
           </html:cancel></td>

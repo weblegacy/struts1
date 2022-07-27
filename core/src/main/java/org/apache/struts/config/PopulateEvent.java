@@ -24,7 +24,7 @@ import javax.servlet.RequestDispatcher;
 
 /**
  * Constants relating to the reset and population events of action forms.
- * 
+ *
  * @since Struts 1.4
  */
 public abstract class PopulateEvent {
@@ -53,7 +53,7 @@ public abstract class PopulateEvent {
      * Specifies that population occurs when the current requested is part of a
      * forwarded request. Unlike {@link #CHAIN} which is limited to
      * action-to-action behavior, the forward can be from any servlet resource.
-     * 
+     *
      * @see RequestDispatcher#forward(javax.servlet.ServletRequest,
      *      javax.servlet.ServletResponse)
      */
@@ -62,7 +62,7 @@ public abstract class PopulateEvent {
     /**
      * Specifies that population occurs when the current requested is part of
      * any included request.
-     * 
+     *
      * @see RequestDispatcher#include(javax.servlet.ServletRequest,
      *      javax.servlet.ServletResponse)
      */

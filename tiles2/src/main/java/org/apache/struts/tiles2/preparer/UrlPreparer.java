@@ -46,7 +46,7 @@ public class UrlPreparer implements ViewPreparer {
 
     /**
      * Constructor.
-     * 
+     *
      * @param url The URL to be used as a preparer.
      */
     public UrlPreparer(String url) {

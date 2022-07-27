@@ -8,9 +8,9 @@
     The ASF licenses this file to You under the Apache License, Version 2.0
     (the "License"); you may not use this file except in compliance with
     the License.  You may obtain a copy of the License at
-   
+
          http://www.apache.org/licenses/LICENSE-2.0
-   
+
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -45,12 +45,12 @@
             <p>
                 $ mvn site
             </p>
-            
+
             <p>
-            For more help with building the website, visit the 
+            For more help with building the website, visit the
             <a href="http://wiki.apache.org/struts/StrutsMaintenanceWebsite">
-            Struts Maintenance - Website</a> 
-            page. 
+            Struts Maintenance - Website</a>
+            page.
             </p>
 
             <p>
@@ -192,9 +192,9 @@
 
             <subsection name="Struts by Example" id="Examples">
                 <p>
-                    To help you see how it all fits together, 
+                    To help you see how it all fits together,
                     several example applications
-                    are bundled in the "webapp" folder in the distribution 
+                    are bundled in the "webapp" folder in the distribution
                     that demonstrate using the framework.
                 </p>
 
@@ -365,12 +365,12 @@
                         Apache Struts
                         resources.</a>
                 </p>
-                
+
                 <p>
-                    For a comprehensive listing of all resources related to 
-                    Apache Struts, 
-                    including articles, books, and third-party extensions, 
-                    for both Struts 1 and Struts 2, 
+                    For a comprehensive listing of all resources related to
+                    Apache Struts,
+                    including articles, books, and third-party extensions,
+                    for both Struts 1 and Struts 2,
                     visit <a href="http://www.StrutsCentral.net/">Struts Central.</a>
                 </p>
 
@@ -384,8 +384,8 @@
                     but several third-party books about Struts are
                     available.
                     Visit <a href="http://www.StrutsCentral.net/Resources/Action/books.html">
-                    Struts Central</a> 
-                    or the 
+                    Struts Central</a>
+                    or the
                     <a href="http://opensource.atlassian.com/confluence/oss/display/BOOKS/Books+about+Struts">
                     Apache Bookstore</a> for complete listings.
                 </p>

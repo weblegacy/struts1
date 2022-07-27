@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Add `dormant`-profile to `README.md` in IT
 * Strip trailing spaces
 * Rename `tour.htm` to `tour.html`
 * Replace tabs with spaces

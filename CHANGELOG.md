@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Bump `junit-jupiter-engine` from 5.8.2 to 5.9.0
 * Bump `maven-bundle-plugin` from 1.4.0 to 5.1.7 and remove `_nouses`-parameter
 * Add `dormant`-profile to `README.md` in IT
 * Strip trailing spaces

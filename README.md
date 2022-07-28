@@ -25,10 +25,6 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 * Apache Maven 3.5.4\+
 * JDK 1.8
 * for integration-tests
-  * JDK 1.7  
-    *Notice:*
-    JDK 1.8u91 and greater no longer works with Tomcat 5.x - see also [StackOverflow - The type java.io.ObjectInputStream cannot be resolved. It is indirectly referenced from required .class files](https://stackoverflow.com/questions/36963248/the-type-java-io-objectinputstream-cannot-be-resolved-it-is-indirectly-referenc/38444118).
-    Therefore, Tomcat 5.5 must run with a JDK 1.7.
   * Web-Browser:
     * Chrome
     * Firefox
@@ -68,9 +64,9 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
      add `-DskipTests` for example `mvn -Pdormant,apps -DskipTests`
 3. Integration-Tests
    * Run with default-browser (Chrome)  
-     `mvn -Pdormant,apps,itest -Dcargo.java.home=[JDK_1.7]`
+     `mvn -Pdormant,apps,itest`
    * Run with specific browser  
-     `mvn -Pdormant,apps,itest -Dcargo.java.home=[JDK_1.7] -Dwdm.defaultBrowser=[browser]`
+     `mvn -Pdormant,apps,itest -Dwdm.defaultBrowser=[browser]`
      * Values for `browser`
        * `chrome` - Chrome
        * `firefox` - Firefox
@@ -97,7 +93,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 ### Support runs
 
 * Run Web-Server to manually test example-apps and create test scripts:  
-  `mvn -Pdormant,apps,itest,cargorun -Dcargo.java.home=[JDK_1.7] -DskipTests`
+  `mvn -Pdormant,apps,itest,cargorun -DskipTests`
 * Set version number  
   `mvn -Pdormant,apps,itest,assembly versions:set -DnewVersion=...`
 * Dependency Report  

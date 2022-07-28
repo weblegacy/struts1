@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Upgrade `Tomcat5x` to `Tomcat6x`
 * Set Version to 1.4.1-SNAPSHOT
 
 ## 1.4.0 / 2022-07-28

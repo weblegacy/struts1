@@ -22,11 +22,11 @@
 
 ### Run with default-browser (Chrome)
 
-`mvn -Pdormant,apps,itest -Dcargo.java.home=[JDK_1.7] verify`
+`mvn -Pdormant,apps,itest verify`
 
 ### Run with specific browser
 
-`mvn -Pdormant,apps,itest -Dcargo.java.home=[JDK_1.7] -Dwdm.defaultBrowser=[browser] verify`
+`mvn -Pdormant,apps,itest -Dwdm.defaultBrowser=[browser] verify`
 
 * Values for `browser`
   * `chrome` - Chrome

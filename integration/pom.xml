@@ -33,7 +33,6 @@
    <name>Struts Integration Tests</name>
 
    <properties>
-      <javaTestVersion>1.7</javaTestVersion>
       <cargo.servlet.port>8080</cargo.servlet.port>
    </properties>
 
@@ -110,11 +109,11 @@
                <artifactId>cargo-maven3-plugin</artifactId>
                <configuration>
                   <container>
-                     <containerId>tomcat5x</containerId>
+                     <containerId>tomcat6x</containerId>
                      <artifactInstaller>
                         <groupId>org.apache.tomcat</groupId>
                         <artifactId>apache-tomcat</artifactId>
-                        <version>5.5.36</version>
+                        <version>6.0.53</version>
                      </artifactInstaller>
                   </container>
                   <configuration>

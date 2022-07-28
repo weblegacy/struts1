@@ -1,6 +1,6 @@
 # Struts1 - Reloaded
 
-Is a clone of <https://github.com/apache/struts1.git> - STRUTS_1_3_BRANCH, aiming to bring Struts 1 to a current technology:
+Is a clone of <https://github.com/apache/struts1.git> - Branche `trunk`, aiming to bring Struts 1 to a current technology:
 
 * **[Done]**
   * Upgrade MAVEN-Plugins

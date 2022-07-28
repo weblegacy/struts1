@@ -2,6 +2,7 @@
 
 ## 1.4.0 // YYYY-DD-MM
 
+* Bump `maven-bundle-plugin` from 1.4.0 to 5.1.7 and remove `_nouses`-parameter
 * Add `dormant`-profile to `README.md` in IT
 * Strip trailing spaces
 * Rename `tour.htm` to `tour.html`

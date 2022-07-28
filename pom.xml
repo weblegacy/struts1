@@ -639,7 +639,7 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>1.4.0</version>
+                    <version>5.1.7</version>
                     <inherited>true</inherited>
                 </plugin>
                 <plugin>
@@ -745,7 +745,6 @@
                     <excludeDependencies>true</excludeDependencies>
                     <manifestLocation>target/osgi</manifestLocation>
                     <instructions>
-                        <_nouses>true</_nouses>
                         <Bundle-SymbolicName>${struts.osgi.symbolicName}</Bundle-SymbolicName>
                         <Export-Package>${struts.osgi.export}</Export-Package>
                         <Private-Package>${struts.osgi.private}</Private-Package>

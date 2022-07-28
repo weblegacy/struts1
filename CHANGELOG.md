@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `beanutils` from 1.8.0 to 1.9.4
 * Set java-version from `1.4` to `1.8`
 * Upgrade `Tomcat5x` to `Tomcat6x`
 * Set Version to 1.4.1-SNAPSHOT

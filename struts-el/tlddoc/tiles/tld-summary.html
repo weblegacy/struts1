@@ -53,11 +53,11 @@
 </code>
 <hr>
         
-      <p>This tag library provides tiles tags.  
-   Tiles were previously called Components. For historical reasons, names, 
-   pages, components and templates are used indifferently to design a tile. 
+      <p>This tag library provides tiles tags.
+   Tiles were previously called Components. For historical reasons, names,
+   pages, components and templates are used indifferently to design a tile.
    Also, a lot of tags and attribute names are left for backward compatibility.
-   To know more about tags defined in this library, check the associated 
+   To know more about tags defined in this library, check the associated
    documentation: tiles-doc.</p>
    
     <p></p>
@@ -124,8 +124,8 @@
             
       <p><strong>Render the value of the specified tile/component/template
       attribute to the current JspWriter</strong></p>
-      
-      <p>Retrieve the value of the specified tile/component/template attribute 
+
+      <p>Retrieve the value of the specified tile/component/template attribute
       property, and render it to the current JspWriter as a String.
       The usual toString() conversions is applied on found value.</p>
       <p>Throw a JSPException if named value is not found.</p>
@@ -139,7 +139,7 @@
       <p>Import attribute from tile to requested scope.
       Attribute name and scope are optional. If not specified, all tile
       attributes are imported in page scope.
-      Once imported, an attribute can be used as any other beans from jsp 
+      Once imported, an attribute can be used as any other beans from jsp
       contexts.</p>
       
         </td>
@@ -148,12 +148,12 @@
 <td width="15%"><b><a href="initComponentDefinitions.html">initComponentDefinitions</a></b></td><td>
             
          <p><strong>Initialize Tile/Component definitions factory.</strong></p>
-         <p>In order to use Tile/Component definitions factory, you need to 
-         initialize the factory. This is generally done in a initializing 
-         servlet. In particular, it is done in "ComponentActionServlet" if you 
-         use it. If you don't initialize factory in a servlet, you can 
+         <p>In order to use Tile/Component definitions factory, you need to
+         initialize the factory. This is generally done in a initializing
+         servlet. In particular, it is done in "ComponentActionServlet" if you
+         use it. If you don't initialize factory in a servlet, you can
          initialize it using this tag. You need to provide the description file
-         name, and optionally the factory classname. Initialization is done 
+         name, and optionally the factory classname. Initialization is done
          only once, at the first call of this tag. Subsequent calls
          are ignored (tag checks existence of the factory).</p>
       
@@ -163,43 +163,43 @@
 <td width="15%"><b><a href="insert.html">insert</a></b></td><td>
             
          <p><strong>Insert a tiles/component/template.</strong></p>
-         <p>Insert a tiles/component/template with the possibility to pass 
-         parameters (called attribute). A tile can be seen as a procedure that 
-         can take parameters or attributes. <code>&lt;tiles:insert&gt;</code> 
-         allows to define these attributes and pass them to the inserted jsp 
-         page, called template.  Attributes are defined using nested tag 
+         <p>Insert a tiles/component/template with the possibility to pass
+         parameters (called attribute). A tile can be seen as a procedure that
+         can take parameters or attributes. <code>&lt;tiles:insert&gt;</code>
+         allows to define these attributes and pass them to the inserted jsp
+         page, called template.  Attributes are defined using nested tag
          <code>&lt;tiles:put&gt;</code> or <code>&lt;tiles:putList&gt;</code>.
          </p>
          <p>You must specify one of this tag attribute :</p>
             <ul>
-            
-               <li><code>template</code>, for inserting a 
+
+               <li><code>template</code>, for inserting a
                tiles/component/template page,</li>
-               
-               <li><code>component</code>, for inserting a 
+
+               <li><code>component</code>, for inserting a
                tiles/component/template page, (same as template)</li>
-               
+
                <li><code>page</code> for inserting a JSP page,
                (same as template)</li>
-               
-               <li><code>definition</code>, for inserting a definition from 
+
+               <li><code>definition</code>, for inserting a definition from
                definitions factory</li>
-               
-               <li><code>attribute</code>, surrounding tiles's attribute name 
+
+               <li><code>attribute</code>, surrounding tiles's attribute name
                whose value is used.<br/>
-               
-               If attribute is associated to 'direct' flag (see put), 
+
+               If attribute is associated to 'direct' flag (see put),
                and flag is true, write attribute value (no insertion).</li>
-               
-              <li><code>name</code>, to let 'insert' determine the type of 
-              entities to insert. In this later case, search is done in 
+
+              <li><code>name</code>, to let 'insert' determine the type of
+              entities to insert. In this later case, search is done in
               this order : definitions, tiles/components/templates, pages.</li>
-              
+
            </ul>
-         
-        <p>In fact, Page, component and template, are equivalent as a tile, 
+
+        <p>In fact, Page, component and template, are equivalent as a tile,
         component or template are jsp page.</p>
-        
+
         <p><strong>Example : </strong></p>
            <pre>
               <code>
@@ -220,20 +220,20 @@
             
       <p><strong>Put an attribute into tile/component/template context.
       </strong></p>
-          
+
       <p>Define an attribute to pass to tile/component/template. This tag can
       only be used inside 'insert' or 'definition' tag. Value (or content) is
       specified using attribute 'value' (or 'content'), or using the tag body.
       It is also possible to specify the type of the value :</p>
-      
+
       <ul>
          <li>string : Content is written directly.</li>
-         <li>page | template : Content is included from specified URL. 
+         <li>page | template : Content is included from specified URL.
          Name is used as an URL.</li>
-         <li>definition : Content come from specified definition (from factory). 
+         <li>definition : Content come from specified definition (from factory).
          Name is used as definition name.</li>
       </ul>
-      
+
       <p>If 'type' attribute is not specified, content is 'untyped', unless it
       comes from a typed bean.</p>
       <p>Note that using 'direct="true"' is equivalent to 'type="string"'.</p>
@@ -255,9 +255,9 @@
 <td width="15%"><b><a href="useAttribute.html">useAttribute</a></b></td><td>
             
       <p><strong>Use attribute value inside page.</strong></p>
-      <p>Declare a Java variable, and an attribute in the specified scope, 
+      <p>Declare a Java variable, and an attribute in the specified scope,
       using tile attribute value.</p>
-      <p>Java variable and attribute will have the name specified by 'id', 
+      <p>Java variable and attribute will have the name specified by 'id',
       or the original name if not specified.</p>
       
         </td>

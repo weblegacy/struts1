@@ -45,14 +45,14 @@
     Generate the nested body content of this tag if the specified
     message is present in any scope.
     </strong></p>
-          
+
     <p>Evaluates the nested body content of this tag if
        an <code>ActionMessages</code>
        object, <code>ActionErrors</code> object, a String,
        or a String array is present in any scope.  If
        such a bean is not found, nothing will be rendered.
     </p>
-    
+
             <dl><dt><b>Since:</b></dt>
             <dd>Struts 1.1</dd></dl>
           
@@ -86,6 +86,20 @@
 <td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
 </tr>
 <tr valign="top">
+<td>count</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                Specifies the name of the page-scoped attribute to set
+                with the message count. This is useful, for instance, when
+                needing to total the number of messages or errors produced
+                by a form submission. The attribute goes out of scope after
+                the tag executes.
+
+                <dl><dt><b>Since:</b></dt>
+                <dd>Struts 1.4</dd></dl>
+                
+            </td>
+</tr>
+<tr valign="top">
 <td>message</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
       <p>By default the tag will retrieve the bean it will
@@ -101,7 +115,7 @@
 <tr valign="top">
 <td>name</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
-      <p>The parameter key used to retrieve the message from page, request, 
+      <p>The parameter key used to retrieve the message from page, request,
       session, or application scope.</p>
       
             </td>

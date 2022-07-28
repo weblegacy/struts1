@@ -12,6 +12,8 @@ org.apache.struts.chain.commands.util
 org.apache.struts.chain.contexts
 org.apache.struts.config
 org.apache.struts.config.impl
+org.apache.struts.dispatcher
+org.apache.struts.dispatcher.servlet
 org.apache.struts.faces
 org.apache.struts.faces.application
 org.apache.struts.faces.component
@@ -37,6 +39,11 @@ org.apache.struts.tiles.definition
 org.apache.struts.tiles.taglib
 org.apache.struts.tiles.taglib.util
 org.apache.struts.tiles.xmlDefinition
+org.apache.struts.tiles2
+org.apache.struts.tiles2.actions
+org.apache.struts.tiles2.commands
+org.apache.struts.tiles2.preparer
+org.apache.struts.tiles2.util
 org.apache.struts.upload
 org.apache.struts.util
 org.apache.struts.validator

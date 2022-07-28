@@ -90,6 +90,26 @@
             </td>
 </tr>
 <tr valign="top">
+<td>filterArgs</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                By default no filtering to escape XML characters like &quot;&lt;&quot;
+                occurs on the replacement values going into the message pattern.
+                If this attribute is set to 'true', the replacement values will
+                be filtered, while the text of the message pattern itself will
+                be left intact. This can be useful if you have markup in your
+                message patterns which you want to keep, but would like to
+                filter the replacement values going into them, e.g. if they
+                reflect user input. For instance:
+
+                <pre>errors.divideZero=The mathematical expression
+                &lt;strong&gt;{0}&lt;/strong&gt; caused a divide by zero.</pre>
+
+                <dl><dt><b>Since:</b></dt>
+                <dd>Struts 1.4</dd></dl>
+                
+            </td>
+</tr>
+<tr valign="top">
 <td>footer</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 This value is an optional message resource key that will
                 be printed after the iteration of messages has finished.

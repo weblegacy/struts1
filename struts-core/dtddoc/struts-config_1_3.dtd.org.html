@@ -11,9 +11,9 @@
 <span class="dtd_comment">    The ASF licenses this file to You under the Apache License, Version 2.0</span>
 <span class="dtd_comment">    (the &quot;License&quot;); you may not use this file except in compliance with</span>
 <span class="dtd_comment">    the License.  You may obtain a copy of the License at</span>
-<span class="dtd_comment">   </span>
+
 <span class="dtd_comment">         http://www.apache.org/licenses/LICENSE-2.0</span>
-<span class="dtd_comment">   </span>
+
 <span class="dtd_comment">    Unless required by applicable law or agreed to in writing, software</span>
 <span class="dtd_comment">    distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
 <span class="dtd_comment">    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
@@ -145,10 +145,10 @@
 <span class="dtd_comment">     name            The unique identifier for this form bean. Referenced by the</span>
 <span class="dtd_comment">                     &lt;action&gt; element to specify which form bean to use with its</span>
 <span class="dtd_comment">                     request.</span>
-<span class="dtd_comment">                     </span>
+
 <span class="dtd_comment">     type            Fully qualified Java class name of the ActionForm subclass</span>
 <span class="dtd_comment">                     to use with this form bean.</span>
-<span class="dtd_comment">                     </span>
+
 <span class="dtd_comment">     enhanced        Reserved for future use.</span>
 <span class="dtd_comment">--&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ELEMENT</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">form-bean</span><span class="dtd_plain"> (</span><span class="dtd_attribute_name">icon</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">display-name</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">description</span><span class="dtd_plain">?, </span><span class="dtd_attribute_name">set-property</span><span class="dtd_plain">*, </span><span class="dtd_attribute_name">form-property</span><span class="dtd_plain">*)</span><span class="dtd_tag_symbols">&gt;</span>
@@ -179,14 +179,14 @@
 
 <span class="dtd_comment">     name            The name of the JavaBean property described by this element.</span>
 
-<span class="dtd_comment">     reset           The flag that indicates when this property should be reset </span>
-<span class="dtd_comment">                     to its &quot;initial&quot; value when the form's &quot;reset()&quot; method is </span>
-<span class="dtd_comment">                     called.  If this is set to &quot;true&quot;, the property is always </span>
-<span class="dtd_comment">                     reset when &quot;reset()&quot; is called.  This can also be set to </span>
-<span class="dtd_comment">                     one or more HTTP methods, such as GET or POST. In such a </span>
-<span class="dtd_comment">                     case, the property will be reset only when the HTTP method </span>
-<span class="dtd_comment">                     used for the request being processed is included in this </span>
-<span class="dtd_comment">                     attribute's value(s).  Multiple HTTP methods can be </span>
+<span class="dtd_comment">     reset           The flag that indicates when this property should be reset</span>
+<span class="dtd_comment">                     to its &quot;initial&quot; value when the form's &quot;reset()&quot; method is</span>
+<span class="dtd_comment">                     called.  If this is set to &quot;true&quot;, the property is always</span>
+<span class="dtd_comment">                     reset when &quot;reset()&quot; is called.  This can also be set to</span>
+<span class="dtd_comment">                     one or more HTTP methods, such as GET or POST. In such a</span>
+<span class="dtd_comment">                     case, the property will be reset only when the HTTP method</span>
+<span class="dtd_comment">                     used for the request being processed is included in this</span>
+<span class="dtd_comment">                     attribute's value(s).  Multiple HTTP methods can be</span>
 <span class="dtd_comment">                     specified by separating them with whitespace or commas.</span>
 
 <span class="dtd_comment">     size            The number of array elements to create if the value of the</span>
@@ -230,7 +230,7 @@
 <span class="dtd_comment">                     configuration bean</span>
 <span class="dtd_comment">                     [&quot;org.apache.struts.config.ExceptionConfig&quot;]</span>
 
-<span class="dtd_comment">    extends          The name of the exception handler that this </span>
+<span class="dtd_comment">    extends          The name of the exception handler that this</span>
 <span class="dtd_comment">                     will inherit configuration information from.</span>
 
 <span class="dtd_comment">    handler          Fully qualified Java class name for this exception handler.</span>
@@ -244,8 +244,8 @@
 <span class="dtd_comment">                     the request/response if this exception occurs.</span>
 
 <span class="dtd_comment">    scope            The context (&quot;request&quot; or &quot;session&quot;) that is used to access</span>
-<span class="dtd_comment">                     the ActionMessage object </span>
-<span class="dtd_comment">                     [org.apache.struts.action.ActionMessage] for this </span>
+<span class="dtd_comment">                     the ActionMessage object</span>
+<span class="dtd_comment">                     [org.apache.struts.action.ActionMessage] for this</span>
 <span class="dtd_comment">                     exception.</span>
 
 <span class="dtd_comment">    type             Fully qualified Java class name of the exception type to</span>
@@ -302,7 +302,7 @@
 <span class="dtd_comment">     command         The name of a commons-chain command which should be looked up</span>
 <span class="dtd_comment">                     and executed as part of servicing this request.</span>
 
-<span class="dtd_comment">     extends         The name of the forward configuration that this </span>
+<span class="dtd_comment">     extends         The name of the forward configuration that this</span>
 <span class="dtd_comment">                     will inherit configuration information from.</span>
 
 <span class="dtd_comment">     module          The module prefix to use with this path. This value should</span>
@@ -312,7 +312,7 @@
 <span class="dtd_comment">                     Action object at runtime to select - by its logical name -</span>
 <span class="dtd_comment">                     the resource that should complete the request/response.</span>
 
-<span class="dtd_comment">     path            The module-relative path to the resources that is </span>
+<span class="dtd_comment">     path            The module-relative path to the resources that is</span>
 <span class="dtd_comment">                     encapsulated by the logical name of this ActionForward.</span>
 <span class="dtd_comment">                     This value should begin with a slash (&quot;/&quot;) character.</span>
 
@@ -382,9 +382,9 @@
 <span class="dtd_comment">                     [&quot;org.apache.struts.action.ActionMapping&quot;]</span>
 
 <span class="dtd_comment">     command         The name of a commons-chain command which should be looked up</span>
-<span class="dtd_comment">                     and executed as part of servicing this request.  </span>
+<span class="dtd_comment">                     and executed as part of servicing this request.</span>
 
-<span class="dtd_comment">     extends         The path of the action mapping configuration that this </span>
+<span class="dtd_comment">     extends         The path of the action mapping configuration that this</span>
 <span class="dtd_comment">                     will inherit configuration information from.</span>
 
 <span class="dtd_comment">     forward         Module-relative path of the servlet or other resource that</span>
@@ -699,7 +699,7 @@
 <span class="dtd_comment">     object without changing how the struts-config is parsed.</span>
 
 <span class="dtd_comment">    Since Struts 1.3, an alternate syntax is supported.  By using</span>
-<span class="dtd_comment">    the &quot;key&quot; attribute instead of the &quot;property&quot; attribute, you can set </span>
+<span class="dtd_comment">    the &quot;key&quot; attribute instead of the &quot;property&quot; attribute, you can set</span>
 <span class="dtd_comment">    arbitrary string properties on the Config object which is populated</span>
 <span class="dtd_comment">    based on the containing element.   NOTE: the &quot;key&quot; attribute is NOT</span>
 <span class="dtd_comment">    supported for &lt;set-property&gt; inside a &lt;plug-in&gt; element.</span>

@@ -44,13 +44,13 @@
             <p><strong>
                 Conditionally display a set of accumulated messages.
                 </strong></p>
-          
+
                 <p>Displays a set of messages prepared by a business
                 logic component and stored as an <code>ActionMessages</code>
                 object, <code>ActionErrors</code> object, a String,
                 or a String array in any scope.  If
-                such a bean is not found, nothing will be rendered.  The messages are 
-                placed into the page scope in the body of this tag where they can be displayed 
+                such a bean is not found, nothing will be rendered.  The messages are
+                placed into the page scope in the body of this tag where they can be displayed
                 by standard JSP methods. (For example: <code>&lt;bean:write&gt;</code>,<code>&lt;c:out&gt;</code>)
                 </p>
 
@@ -94,6 +94,40 @@
                     instance to use.  If not specified, defaults to the
                     application resources configured for our action servlet.
                     
+            </td>
+</tr>
+<tr valign="top">
+<td>count</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                Specifies the name of the page-scoped attribute to set
+                with the message count for the specified property. This
+                is useful, for instance, when needing to display the number
+                of field errors produced by a form submission.
+                The attribute goes out of scope after the tag executes.
+
+                <dl><dt><b>Since:</b></dt>
+                <dd>Struts 1.4</dd></dl>
+                
+            </td>
+</tr>
+<tr valign="top">
+<td>filterArgs</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+                By default no filtering to escape XML characters like &quot;&lt;&quot;
+                occurs on the replacement values going into the message pattern.
+                If this attribute is set to 'true', the replacement values will
+                be filtered, while the text of the message pattern itself will
+                be left intact. This can be useful if you have markup in your
+                message patterns which you want to keep, but would like to
+                filter the replacement values going into them, e.g. if they
+                reflect user input. For instance:
+
+                <pre>errors.divideZero=The mathematical expression
+                &lt;strong&gt;{0}&lt;/strong&gt; caused a divide by zero.</pre>
+
+                <dl><dt><b>Since:</b></dt>
+                <dd>Struts 1.4</dd></dl>
+                
             </td>
 </tr>
 <tr valign="top">

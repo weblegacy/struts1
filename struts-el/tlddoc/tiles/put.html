@@ -43,20 +43,20 @@
             
       <p><strong>Put an attribute into tile/component/template context.
       </strong></p>
-          
+
       <p>Define an attribute to pass to tile/component/template. This tag can
       only be used inside 'insert' or 'definition' tag. Value (or content) is
       specified using attribute 'value' (or 'content'), or using the tag body.
       It is also possible to specify the type of the value :</p>
-      
+
       <ul>
          <li>string : Content is written directly.</li>
-         <li>page | template : Content is included from specified URL. 
+         <li>page | template : Content is included from specified URL.
          Name is used as an URL.</li>
-         <li>definition : Content come from specified definition (from factory). 
+         <li>definition : Content come from specified definition (from factory).
          Name is used as definition name.</li>
       </ul>
-      
+
       <p>If 'type' attribute is not specified, content is 'untyped', unless it
       comes from a typed bean.</p>
       <p>Note that using 'direct="true"' is equivalent to 'type="string"'.</p>
@@ -111,10 +111,10 @@
 <tr valign="top">
 <td>beanScope</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
                 
-         <p>Scope into which bean is searched. If not specified, method 
+         <p>Scope into which bean is searched. If not specified, method
          pageContext.findAttribute is used.
          Scope can be any JSP scope, 'tile', 'component', or 'template'.
-         In these three later cases, bean is search in tile/component/template 
+         In these three later cases, bean is search in tile/component/template
          context.</p>
          
             </td>
@@ -122,7 +122,7 @@
 <tr valign="top">
 <td>content</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
-         <p>Content that's put into tile scope. Synonym to value. Attribute 
+         <p>Content that's put into tile scope. Synonym to value. Attribute
          added for compatibility with JSP Template.</p>
          
             </td>
@@ -158,9 +158,9 @@
             <li>String : Content is printed directly.</li>
             <li>page | template : Content is included from specified URL.
             Name is used as an URL.</li>
-            <li>definition : Value is the name of a definition defined in 
+            <li>definition : Value is the name of a definition defined in
             factory (xml file). Definition will be searched
-            in the inserted tile, in a <code>&lt;tiles:insert 
+            in the inserted tile, in a <code>&lt;tiles:insert
             attribute="attributeName"&gt;</code> tag, where 'attributeName'
             is the name used for this tag.</li>
          </ul>

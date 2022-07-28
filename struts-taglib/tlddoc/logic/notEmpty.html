@@ -46,19 +46,19 @@
     neither null, nor an empty string, nor an empty java.util.Collection
     (tested by the .isEmpty() method on the java.util.Collection interface).
     </strong></p>
-          
+
     <p>This tag evaluates its nested body content only if the specified value
     is present (i.e. not <code>null</code>) and is not an empty string (i.e. a
     <code>java.lang.String</code> with a length of zero).</p>
-    
+
     <p>
-    <strong>JSTL</strong>:  The equivalent JSTL tag is &lt;c:if&gt; using the 
+    <strong>JSTL</strong>:  The equivalent JSTL tag is &lt;c:if&gt; using the
     <code>! empty</code> operator.  For example,
     <br/>
     <code>
-    	&lt;c:if test="${ ! empty sessionScope.myBean.myProperty}"&gt;
-    	  do something
-    	&lt;/c:if&gt;
+        &lt;c:if test="${ ! empty sessionScope.myBean.myProperty}"&gt;
+          do something
+        &lt;/c:if&gt;
     </code>
     </p>
     

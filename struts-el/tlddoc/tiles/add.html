@@ -82,9 +82,9 @@
 <tr valign="top">
 <td>beanName</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
-         <p>Name of the bean used as value. Bean is retrieved from specified 
+         <p>Name of the bean used as value. Bean is retrieved from specified
          context, if any. Otherwise, method pageContext.findAttribute is used.
-         If beanProperty is specified, retrieve value from the corresponding 
+         If beanProperty is specified, retrieve value from the corresponding
          bean property.</p>
          
             </td>
@@ -92,7 +92,7 @@
 <tr valign="top">
 <td>beanProperty</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
-         <p>Bean property name. If specified, value is retrieved from this 
+         <p>Bean property name. If specified, value is retrieved from this
          property. Supports nested/indexed properties.</p>
          
             </td>
@@ -100,7 +100,7 @@
 <tr valign="top">
 <td>beanScope</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
                 
-         <p>Scope into which bean is searched. If not specified, method 
+         <p>Scope into which bean is searched. If not specified, method
          pageContext.findAttribute is used.
          Scope can be any JSP scope, 'component', or 'template'.
          In these two later cases, bean is search in tile/component/template
@@ -111,7 +111,7 @@
 <tr valign="top">
 <td>content</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
-         <p>Element value. Can be a String or Object.  Synonym to value. 
+         <p>Element value. Can be a String or Object.  Synonym to value.
          Attribute added for compatibility with JSP Template.</p>
          
             </td>
@@ -127,9 +127,9 @@
 <tr valign="top">
 <td>role</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
-            <p>If the user is in the specified role, the tag is taken into 
+            <p>If the user is in the specified role, the tag is taken into
             account; otherwise, the tag is ignored (skipped).</p>
-            <p>The role isn't taken into account if <code>&lt;add&gt;</code> 
+            <p>The role isn't taken into account if <code>&lt;add&gt;</code>
             tag is used in a definition.</p>
          
             </td>
@@ -140,11 +140,11 @@
          <p>Specify content type: string, page, template or instance.</p>
          <ul>
             <li>String : Content is printed directly.</li>
-            <li>page | template : Content is included from specified URL. 
+            <li>page | template : Content is included from specified URL.
             Name is used as an URL.</li>
-            <li>definition : Value denote a definition defined in factory 
+            <li>definition : Value denote a definition defined in factory
             (xml file). Definition will be searched
-            in the inserted tile, in a <code>&lt;insert 
+            in the inserted tile, in a <code>&lt;insert
             attribute="attributeName"&gt;</code> tag, where 'attributeName'
             is the name used for this tag.</li>
          </ul>

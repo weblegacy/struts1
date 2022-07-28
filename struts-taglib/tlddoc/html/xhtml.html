@@ -42,18 +42,19 @@
 <hr>
             
             <p><strong>Render HTML tags as XHTML</strong></p>
-          
+
           <p>
             Using this tag in a page tells all other html taglib tags
             to render themselves as XHTML 1.0.  This is useful
-            when composing pages with JSP includes or Tiles. 
-            &lt;html:html xhtml="true"&gt; has a similar effect.  This
-            tag has no attributes; you use it like this: &lt;html:xhtml/&gt;.
+            when composing pages with JSP includes or Tiles.
+            &lt;html:html xhtml="true"&gt; has a similar effect.
           </p>
           <p>
             <strong>Note</strong>: Included pages do not inherit the rendering
-            style of the including page.  Each JSP fragment or Tile must use this
-            tag to render as XHTML.  
+            style of the including page by default. Without setting the
+            <code>scope</code> attribute, which defaults to <code>page</code>
+            scope, each JSP fragment or Tile must use this tag to render as
+            XHTML.
           </p>
           
         <br>
@@ -82,7 +83,17 @@
 <tr bgcolor="#CCCCFF" class="TableHeadingColor">
 <td colspan="5"><font size="+2"><b>Attributes</b></font></td>
 </tr>
-<td colspan="5"><i>No Attributes Defined.</i></td>
+<tr>
+<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+</tr>
+<tr valign="top">
+<td>scope</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+                
+      <p>Specifies the variable scope searched to retrieve the rendering
+      setting.  If not specified, the default is page scope.</p>
+      
+            </td>
+</tr>
 </table>
 <br>
 <p></p>

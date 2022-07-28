@@ -42,40 +42,40 @@
 <hr>
       
       <p><strong>Insert a tiles/component/template.</strong></p>
-      <p>Insert a tiles/component/template with the possibility to pass 
+      <p>Insert a tiles/component/template with the possibility to pass
       parameters (called attribute).
       A tile can be seen as a procedure that can take parameters or attributes.
-      <code>&lt;tiles:insert&gt;</code> allows to define these attributes 
+      <code>&lt;tiles:insert&gt;</code> allows to define these attributes
       and pass them to the inserted jsp page, called template.
       Attributes are defined using nested tag <code>&lt;tiles:put&gt;</code> or
       <code>&lt;tiles:putList&gt;</code>.
       </p>
       <p>You must specify one of this tag attribute :</p>
       <ul>
-        
+
         <li><code>template</code>, for inserting a tiles/component/template
         page,</li>
-        
-        <li><code>component</code>, for inserting a tiles/component/template 
+
+        <li><code>component</code>, for inserting a tiles/component/template
         page, (same as template)</li>
-        
+
         <li><code>page</code> for inserting a JSP page, (same as template)</li>
-        
-        <li><code>definition</code>, for inserting a definition from 
+
+        <li><code>definition</code>, for inserting a definition from
         definitions factory</li>
-        
-        <li><code>attribute</code>, surrounding tiles's attribute name whose 
-        value is used.<br/>If attribute is associated to 'direct' flag 
+
+        <li><code>attribute</code>, surrounding tiles's attribute name whose
+        value is used.<br/>If attribute is associated to 'direct' flag
         (see put), and flag is true, write attribute value (no insertion).</li>
-                     
+
         <li><code>name</code>, to let 'insert' determine the type of entities
-        to insert. In this later case, search is done in this order : 
+        to insert. In this later case, search is done in this order :
         definitions, tiles/components/templates, pages.</li>
       </ul>
-     
-      <p>In fact, Page, component and template, are equivalent as a tile, 
+
+      <p>In fact, Page, component and template, are equivalent as a tile,
       component or template are jsp page.</p>
-      
+
       <p><strong>Example : </strong></p>
       <pre>
         <code>
@@ -132,7 +132,7 @@
          <p>Name of the bean used as value. Bean is retrieved from specified
          context, if any. Otherwise, method pageContext.findAttribute is used.
          If beanProperty is also specified, retrieve value from the
-         corresponding bean property.</p> 
+         corresponding bean property.</p>
          <p>If found bean (or property value)
          is instance of one of Attribute class (Direct, Instance, ...),
          insertion is done according to the class type. Otherwise, the toString
@@ -163,7 +163,7 @@
 <td>component</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
          
          <p>Path (relative or absolute to webapps) of the component to insert.</p>
-         <p>'page', 'component' and 'template' are synonyms : 
+         <p>'page', 'component' and 'template' are synonyms :
          they have exactly the same behavior.</p>
          
          </td>
@@ -188,9 +188,9 @@
 <td>controllerUrl</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
          
          <p>Url of a controller called immediately before page is inserted.</p>
-         <p>Url usually denote a Struts action. Controller (action) is used to 
+         <p>Url usually denote a Struts action. Controller (action) is used to
          prepare data to be render by inserted Tile.</p>
-         <p>See also controlerClass. Only one of controllerUrl or 
+         <p>See also controlerClass. Only one of controllerUrl or
          controllerClass should be used.</p>
          
          </td>
@@ -208,7 +208,7 @@
 <tr valign="top">
 <td>flush</td><td>false</td><td>false</td><td><code>boolean</code></td><td>
          
-         <p>True or false. If true, current page out stream is flushed 
+         <p>True or false. If true, current page out stream is flushed
          before insertion.</p>
          
          </td>
@@ -226,7 +226,7 @@
 <tr valign="top">
 <td>name</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
          
-         <p>Name of an entity to insert. Search is done in this order : 
+         <p>Name of an entity to insert. Search is done in this order :
          definition, attribute, [tile/component/template/page].</p>
          
          </td>
@@ -235,7 +235,7 @@
 <td>page</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
          
          <p>Path (relative or absolute to webapps) of the page to insert.</p>
-         <p>'page', 'component' and 'template' are synonyms : 
+         <p>'page', 'component' and 'template' are synonyms :
          they have exactly the same behavior.</p>
          
          </td>
@@ -253,7 +253,7 @@
          
          <p>A string representing the URI of a tile or template (a JSP page).
          </p>
-         <p>'page', 'component' and 'template' are synonyms : they have 
+         <p>'page', 'component' and 'template' are synonyms : they have
          exactly the same behavior.</p>
          
          </td>

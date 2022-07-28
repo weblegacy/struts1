@@ -60,7 +60,7 @@
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  <em class="jxr_javadoccomment">     * @param actionCtx The &lt;code&gt;Context&lt;/code&gt; for the current request</em>
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>  <em class="jxr_javadoccomment">     * @return &lt;code&gt;false&lt;/code&gt; if the user is authorized for the selected</em>
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment">     *         action, else &lt;code&gt;true&lt;/code&gt; to abort processing.</em>
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     * @throws UnauthorizedActionException if authorization fails </em>
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     * @throws UnauthorizedActionException if authorization fails</em>
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment">     * or if an error is encountered in the course of performing the authorization.</em>
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> execute(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> actionCtx)
@@ -80,7 +80,7 @@
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>                  !(isAuthorized(actionCtx, actionConfig.getRoleNames(),
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>                      actionConfig));
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>          } <strong class="jxr_keyword">catch</strong> (<a name="UnauthorizedActionException" href="../../../../../org/apache/struts/chain/commands/UnauthorizedActionException.html#UnauthorizedActionException">UnauthorizedActionException</a> ex) {
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>          	<strong class="jxr_keyword">throw</strong> ex;
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>              <strong class="jxr_keyword">throw</strong> ex;
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>          } <strong class="jxr_keyword">catch</strong> (Exception ex) {
 <a class="jxr_linenumber" name="L77" href="#L77">77</a>              throwEx = <strong class="jxr_keyword">true</strong>;
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>              LOG.error(<span class="jxr_string">"Unable to complete authorization process"</span>, ex);
@@ -120,7 +120,7 @@
 <a class="jxr_linenumber" name="L112" href="#L112">112</a> <em class="jxr_javadoccomment">     * @param actionConfig The current action mapping</em>
 <a class="jxr_linenumber" name="L113" href="#L113">113</a> <em class="jxr_javadoccomment">     * @return &lt;code&gt;true&lt;/code&gt; if the request is authorized, else</em>
 <a class="jxr_linenumber" name="L114" href="#L114">114</a> <em class="jxr_javadoccomment">     *         &lt;code&gt;false&lt;/code&gt;</em>
-<a class="jxr_linenumber" name="L115" href="#L115">115</a> <em class="jxr_javadoccomment">     * @throws UnauthorizedActionException If the logic determines that the request is not authorized </em>
+<a class="jxr_linenumber" name="L115" href="#L115">115</a> <em class="jxr_javadoccomment">     * @throws UnauthorizedActionException If the logic determines that the request is not authorized</em>
 <a class="jxr_linenumber" name="L116" href="#L116">116</a> <em class="jxr_javadoccomment">     * but does not wish to rely upon the default mechanism reporting the error.</em>
 <a class="jxr_linenumber" name="L117" href="#L117">117</a> <em class="jxr_javadoccomment">     * @throws Exception If the action cannot be tested for authorization</em>
 <a class="jxr_linenumber" name="L118" href="#L118">118</a> <em class="jxr_javadoccomment">     */</em>

@@ -95,7 +95,7 @@
 <td width="15%"><b><a href="base.html">base</a></b></td><td>
             
             <p><strong>Render an HTML <code>&lt;base&gt;</code> Element</strong></p>
-          
+
           <p>Renders an HTML <code>&lt;base&gt;</code> element with an
           <code>href</code> attribute pointing to the absolute location of
           the enclosing JSP page.  This tag is valid only when nested inside
@@ -113,7 +113,7 @@
 <td width="15%"><b><a href="button.html">button</a></b></td><td>
             
             <p><strong>Render A Button Input Field</strong></p>
-          
+
             <p>
                 Renders an HTML &lt;input&gt; element of type
                 <code>button</code>, populated from the specified value or the
@@ -133,7 +133,7 @@
             <p><strong>
             Render a Cancel Button
         </strong></p>
-          
+
             <p>
                 Renders an HTML &lt;input&gt; element of type submit. This tag is only
                 valid when nested inside a form tag body. Pressing of this submit
@@ -149,7 +149,7 @@
             <p><strong>
             Render A Checkbox Input Field
         </strong></p>
-          
+
             <p>Renders an HTML &lt;input&gt; element of type
                         <code>checkbox</code>, populated from the specified
                         value or the specified property of the bean associated
@@ -168,7 +168,7 @@
                         <code>ActionForm</code> bean associated with this form
                         must include a statement setting the corresponding
                         boolean property to <code>false</code> in the
-                        <code>reset()</code> method.</p>                        
+                        <code>reset()</code> method.</p>
         
         </td>
 </tr>
@@ -178,7 +178,7 @@
             <p><strong>
                 Conditionally display a set of accumulated error messages.
                 </strong></p>
-          
+
                 <p>Displays a set of error messages prepared by a business
                 logic component and stored as an <code>ActionMessages</code>
                 object, an <code>ActionErrors</code>
@@ -204,7 +204,7 @@
                 <li><strong>suffix</strong> - Text that will be rendered
                 after each individual error in the list (default "errors.suffix").</li>
                 </ul>
-                
+
                 <p>See the <code>messages</code> tag for an alternative to this tag that
                     does not rely on HTML in your <code>MessageResources</code>.</p>
 
@@ -217,7 +217,7 @@
             <p><strong>
             Render A File Select Input Field
         </strong></p>
-          
+
             <p>
                 Renders an HTML &lt;input&gt; element of type file, defaulting to
                 the specified value or the specified property of the bean
@@ -249,7 +249,7 @@
             <p><strong>
             Define An Input Form
         </strong></p>
-          
+
             <p>
                 Renders an HTML &lt;form&gt; element whose contents are described
                 by the body content of this tag. The form implicitly interacts
@@ -257,7 +257,7 @@
                 the input fields with the current property values from the bean.
             </p>
             <p>
-                The form bean is located, and created if necessary, based on the 
+                The form bean is located, and created if necessary, based on the
                 form bean specification for the associated <code>ActionMapping</code>.
             </p>
         
@@ -267,7 +267,7 @@
 <td width="15%"><b><a href="frame.html">frame</a></b></td><td>
             
             <p><strong>Render an HTML frame element</strong></p>
-          
+
 
             <p>Renders an HTML <code>&lt;frame&gt;</code> element
             with processing for the <code>src</code> attribute that is
@@ -291,7 +291,7 @@
                 URI by including the context path and application
                 prefix.</li>
             <li><em>action</em> - Use the value of this attribute as the
-                logical name of a global Action that contains the actual 
+                logical name of a global Action that contains the actual
                 content-relative URI of the destination of this transfer.</li>
             </ul>
 
@@ -365,7 +365,7 @@
             <p><strong>
             Render A Hidden Field
         </strong></p>
-          
+
             <p>
                 Renders an HTML &lt;input&gt; element of type hidden, populated
                 from the specified value or the specified property of the bean
@@ -379,7 +379,7 @@
 <td width="15%"><b><a href="html.html">html</a></b></td><td>
             
             <p><strong>Render an HTML <code>&lt;html&gt;</code> Element</strong></p>
-          
+
           <p>Renders an HTML <code>&lt;html&gt;</code> element with
           language attributes extracted from the user's current Locale
           object, if there is one.</p>
@@ -392,7 +392,7 @@
             <p><strong>
                 Render an input tag of type "image"
                 </strong></p>
-          
+
 
                 <p>Renders an HTML <code>&lt;input&gt;</code> tag of type
                 "image".  The base URL for this image is calculated directly
@@ -405,7 +405,7 @@
                 <p>If you would like to obtain the coordinates of the mouse
                 click that submitted this request, see the information below
                 on the <code>property</code> attribute.</p>
-                
+
                 <p>This tag is only valid when nested inside a form tag body.</p>
 
                 
@@ -415,7 +415,7 @@
 <td width="15%"><b><a href="img.html">img</a></b></td><td>
             
             <p><strong>Render an HTML img tag</strong></p>
-          
+
 
                 <p>Renders an HTML <code>&lt;img&gt;</code> element with
                 the image at the specified URL.  Like the link tag, URL
@@ -505,7 +505,7 @@
             Render JavaScript validation based on the
             validation rules loaded by the ValidatorPlugIn.
         </strong></p>
-          
+
             <p>
                 Render JavaScript validation based on the
                 validation rules loaded by the <code>ValidatorPlugIn</code>.
@@ -527,10 +527,17 @@
         </td>
 </tr>
 <tr bgcolor="white" class="TableRowColor">
+<td width="15%"><b><a href="label.html">label</a></b></td><td>
+            
+            <p><strong>Render a Label</strong></p>
+            
+        </td>
+</tr>
+<tr bgcolor="white" class="TableRowColor">
 <td width="15%"><b><a href="link.html">link</a></b></td><td>
             
             <p><strong>Render an HTML anchor or hyperlink</strong></p>
-          
+
 
                 <p>Renders an HTML <code>&lt;a&gt;</code> element as an
                 anchor definition (if "linkName" is specified) or as a
@@ -613,13 +620,13 @@
                 or an object whose toString() method will be called.
                 If a String array is specified, more than one value for the
                 same query parameter name will be created.</p>
-                
-                <p>Supplmenting these two methods, you can nest one or more 
+
+                <p>Supplmenting these two methods, you can nest one or more
                 &lt;html:param&gt; tags to dynamically add parameters in a
-                logic-friendly way (such as executing a for loop that 
+                logic-friendly way (such as executing a for loop that
                 assigns the name/value pairs at runtime). This method does
-                not compete with the aforementioned; it will adds its 
-                parameters <em>in addition</em> to whatever parameters are 
+                not compete with the aforementioned; it will adds its
+                parameters <em>in addition</em> to whatever parameters are
                 already specified.</p>
 
                 <p>Additionally, you can request that the current transaction
@@ -639,13 +646,13 @@
             <p><strong>
                 Conditionally display a set of accumulated messages.
                 </strong></p>
-          
+
                 <p>Displays a set of messages prepared by a business
                 logic component and stored as an <code>ActionMessages</code>
                 object, <code>ActionErrors</code> object, a String,
                 or a String array in any scope.  If
-                such a bean is not found, nothing will be rendered.  The messages are 
-                placed into the page scope in the body of this tag where they can be displayed 
+                such a bean is not found, nothing will be rendered.  The messages are
+                placed into the page scope in the body of this tag where they can be displayed
                 by standard JSP methods. (For example: <code>&lt;bean:write&gt;</code>,<code>&lt;c:out&gt;</code>)
                 </p>
 
@@ -661,7 +668,7 @@
             <p><strong>
             Render A Checkbox Input Field
         </strong></p>
-          
+
                         <p>Renders an HTML &lt;input&gt; element of type
                         <code>checkbox</code>, whose "checked" status is
                         initialized based on whether the specified value
@@ -689,11 +696,11 @@
                 body content of this tag will be used as the value to be
                 returned.</li>
                 </ul>
-              
+
                 <p>
                 Also note that a map backed attribute cannot be used to hold a the String[]
                 for a group of multibox tags.
-               </p>                
+               </p>
 
         
         </td>
@@ -704,7 +711,7 @@
             <p><strong>
                 Render A Select Option
         </strong></p>
-          
+
                 <p>Render an HTML <code>&lt;option&gt;</code> element,
                 representing one of the choices for an enclosing
                 <code>&lt;select&gt;</code> element.  The text displayed to the
@@ -725,7 +732,7 @@
             <p><strong>
             Render a Collection of Select Options
         </strong></p>
-          
+
                 <p>Renders a set of HTML <code>&lt;option&gt;</code> elements,
                 representing possible choices for a <code>&lt;select&gt;</code>
                 element.  This tag can be used multiple times within a single
@@ -814,7 +821,7 @@
             <p><strong>
             Render a Collection of Select Options
         </strong></p>
-          
+
             <p>Renders a set of HTML <code>&lt;option&gt;</code> elements,
             representing possible choices for a <code>&lt;select&gt;</code>
             element.  This tag can be used multiple times within a single
@@ -851,7 +858,7 @@
                     <li>&lt;html:rewrite&gt;</li>
                   </ol>
                 </p>
-            
+
                 <dl><dt><b>Since:</b></dt>
                 <dd>Struts 1.3.6</dd></dl>
             
@@ -863,7 +870,7 @@
             <p><strong>
             Render A Password Input Field
         </strong></p>
-          
+
             Renders an HTML &lt;input&gt; element of type password, populated
             from the specified value or the specified property of the bean
             associated with our current form. This tag is only valid when
@@ -877,7 +884,7 @@
             <p><strong>
             Render A Radio Button Input Field
         </strong></p>
-          
+
             <p>
             Renders an HTML &lt;input&gt; element of type radio, populated from
             the specified property of the bean associated with our current form.
@@ -899,7 +906,7 @@
             <p><strong>
             Render A Reset Button Input Field
         </strong></p>
-          
+
             Renders an HTML &lt;input&gt; element of type reset.
         
         </td>
@@ -908,7 +915,7 @@
 <td width="15%"><b><a href="rewrite.html">rewrite</a></b></td><td>
             
             <p><strong>Render an URI</strong></p>
-          
+
                 <p>Renders a request URI based on exactly the same rules
                 as the <code>&lt;html:link&gt;</code> tag does,
                 but without creating
@@ -924,7 +931,7 @@
             <p><strong>
             Render A Select Element
         </strong></p>
-          
+
                         <p>Renders an HTML &lt;select&gt; element, associated
                         with a bean property specified by our attributes.  This
                         tag is only valid when nested inside a form tag body.
@@ -960,7 +967,7 @@
             <p><strong>
             Render A Submit Button
         </strong></p>
-          
+
             Renders an HTML &lt;input&gt; element of type <code>submit</code>.
             <p>
              If a graphical button is needed (a button with an image), then the
@@ -973,8 +980,8 @@
 <td width="15%"><b><a href="text.html">text</a></b></td><td>
             
             <p><strong>Render An Input Field of Type text</strong></p>
-          
-            <p>Render an input field of type text.  This tag is only valid when 
+
+            <p>Render an input field of type text.  This tag is only valid when
             nested inside a form tag body.</p>
         
         </td>
@@ -985,7 +992,7 @@
             <p><strong>
             Render A Textarea
         </strong></p>
-          
+
             Render a textarea element.  This tag is only valid when nested
                 inside a form tag body.
         
@@ -995,18 +1002,19 @@
 <td width="15%"><b><a href="xhtml.html">xhtml</a></b></td><td>
             
             <p><strong>Render HTML tags as XHTML</strong></p>
-          
+
           <p>
             Using this tag in a page tells all other html taglib tags
             to render themselves as XHTML 1.0.  This is useful
-            when composing pages with JSP includes or Tiles. 
-            &lt;html:html xhtml="true"&gt; has a similar effect.  This
-            tag has no attributes; you use it like this: &lt;html:xhtml/&gt;.
+            when composing pages with JSP includes or Tiles.
+            &lt;html:html xhtml="true"&gt; has a similar effect.
           </p>
           <p>
             <strong>Note</strong>: Included pages do not inherit the rendering
-            style of the including page.  Each JSP fragment or Tile must use this
-            tag to render as XHTML.  
+            style of the including page by default. Without setting the
+            <code>scope</code> attribute, which defaults to <code>page</code>
+            scope, each JSP fragment or Tile must use this tag to render as
+            XHTML.
           </p>
           
         </td>

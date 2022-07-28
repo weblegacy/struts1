@@ -135,7 +135,7 @@
 <a class="jxr_linenumber" name="L127" href="#L127">127</a>         <em class="jxr_comment">// Create a FacesContext for this request if necessary</em>
 <a class="jxr_linenumber" name="L128" href="#L128">128</a>         LifecycleFactory lf = (LifecycleFactory)
 <a class="jxr_linenumber" name="L129" href="#L129">129</a>             FactoryFinder.getFactory(FactoryFinder.LIFECYCLE_FACTORY);
-<a class="jxr_linenumber" name="L130" href="#L130">130</a>         Lifecycle lifecycle = 
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>         Lifecycle lifecycle =
 <a class="jxr_linenumber" name="L131" href="#L131">131</a>             lf.getLifecycle(getLifecycleId());
 <a class="jxr_linenumber" name="L132" href="#L132">132</a>         <strong class="jxr_keyword">boolean</strong> created = false;
 <a class="jxr_linenumber" name="L133" href="#L133">133</a>         FacesContext context = FacesContext.getCurrentInstance();
@@ -446,7 +446,7 @@
 <a class="jxr_linenumber" name="L438" href="#L438">438</a>     {
 <a class="jxr_linenumber" name="L439" href="#L439">439</a>         String lifecycleId = <strong class="jxr_keyword">this</strong>.servlet.getServletContext().getInitParameter(LIFECYCLE_ID_ATTR);
 <a class="jxr_linenumber" name="L440" href="#L440">440</a>         <strong class="jxr_keyword">return</strong> lifecycleId != <strong class="jxr_keyword">null</strong> ? lifecycleId : LifecycleFactory.DEFAULT_LIFECYCLE;
-<a class="jxr_linenumber" name="L441" href="#L441">441</a>     }  
+<a class="jxr_linenumber" name="L441" href="#L441">441</a>     }
 <a class="jxr_linenumber" name="L442" href="#L442">442</a> 
 <a class="jxr_linenumber" name="L443" href="#L443">443</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L444" href="#L444">444</a> <em class="jxr_javadoccomment">     * &lt;p&gt;Return &lt;code&gt;true&lt;/code&gt; if the specified context-relative URI</em>

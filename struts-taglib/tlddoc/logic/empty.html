@@ -45,24 +45,24 @@
     Evaluate the nested body content of this tag if the requested variable is
     either null or an empty string.
     </strong></p>
-          
+
     <p>This tag evaluates its nested body content only if the specified value
     is either absent (i.e. <code>null</code>), an empty string (i.e. a
     <code>java.lang.String</code> with a length of zero), or an empty
     <code>java.util.Collection</code> or <code>java.util.Map</code> (tested by
     the .isEmpty() method on the respective interface).</p>
-    
+
     <p>
-    <strong>JSTL</strong>:  The equivalent JSTL tag is &lt;c:if&gt; using the 
+    <strong>JSTL</strong>:  The equivalent JSTL tag is &lt;c:if&gt; using the
     <code>empty</code> operator.  For example,
     <br/>
     <code>
-    	&lt;c:if test="${empty sessionScope.myBean.myProperty}"&gt;
-    	  do something
-    	&lt;/c:if&gt;
+        &lt;c:if test="${empty sessionScope.myBean.myProperty}"&gt;
+          do something
+        &lt;/c:if&gt;
     </code>
     </p>
-    
+
             <dl><dt><b>Since:</b></dt>
             <dd>Struts 1.1</dd></dl>
           

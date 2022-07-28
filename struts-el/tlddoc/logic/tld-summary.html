@@ -57,60 +57,60 @@
    <p>This tag library contains tags that are useful in managing conditional
    generation of output text, looping over object collections for repetitive
    generation of output text, and application flow management.</p>
-   
-   <p>For tags that do value comparisons (equal, greaterEqual, 
+
+   <p>For tags that do value comparisons (equal, greaterEqual,
    greaterThan, lessEqual, lessThan, notEqual), the following rules apply:</p>
-   
+
    <ul>
-   
+
    <li>The specified value is examined. If it can be converted successfully to a
    double or a long, it is assumed that the ultimate comparison will be numeric
    (either floating point or integer). Otherwise, a String comparison will be
    performed.</li>
-   
-      <li>The variable to be 
+
+      <li>The variable to be
       compared to is retrieved, based on the selector
       attribute(s) (cookie, header, name, parameter, property)
       present on this tag.  It will be converted to the appropriate type
       for the comparison, as determined above.</li>
-      
+
    <li>If the specified variable or property returns null, it will be
       coerced to a zero-length string before the comparison occurs.</li>
-      
+
    <li>The specific comparison for this tag will be performed, and the nested
       body content of this tag will be evaluated if the comparison returns
       a true result.</li>
-      
+
    </ul>
-   
+
    <p> For tags that do substring matching (match, notMatch), the following
    rules apply:</p>
-  
+
   <ul>
-  
+
   <li>The specified variable is retrieved, based on the selector attribute(s)
   (cookie, header, name, parameter, property) present on this tag.</li>
-      
+
   <li>The variable is converted to a String, if necessary.A request time
   exception will be thrown if the specified variable cannot be retrieved, or has
   a null value.</li>
-      
+
   <li>The specified value is checked for existence as a substring of the
   variable, in the position specified by the location attribute, as follows: at
   the beginning (if location is set to start), at the end (if location is set to
   end), or anywhere (if location is not specified).</li>
-  
+
   </ul>
-  
+
   <p>Many of the tags in this tag library will throw a JspException at runtime
   when they are utilized incorrectly (such as when you specify an invalid
   combination of tag attributes). JSP allows you to declare an "error page" in
   the &lt;%@ page %&gt; directive. If you wish to process the actual exception
   that caused the problem, it is passed to the error page as a request attribute
   under key org.apache.struts.action.EXCEPTION.</p>
-  
+
   <p>Struts-logic tags NOT implemented.</p>
-  
+
   <p>This library, a derivation of the normal "struts-logic" library, provides
   the functionality of the Struts logic tags, but assumes the presence of the
   JavaServer Pages Standard Library (JSTL), and uses the JSTL expression engine
@@ -126,12 +126,12 @@
    tag.Struts-Logic TagJSTL Tag</p>
 
    <p><code>&lt;logic:empty&gt;</code></p>
-   
+
    <p>This functionality is subsumed by the JSTL &lt;c:if>, &lt;c:when> tags and
    the empty function in the JSTL EL.</p>
 
    <p>Example: &lt;c:if test="${empty var}">CONTENT&lt;/c:if></p>
-     
+
      
     <p></p>
 <table border="1" cellpadding="3" cellspacing="0" width="100%">

@@ -1,0 +1,5 @@
+org.apache.struts.tiles2
+org.apache.struts.tiles2.actions
+org.apache.struts.tiles2.commands
+org.apache.struts.tiles2.preparer
+org.apache.struts.tiles2.util

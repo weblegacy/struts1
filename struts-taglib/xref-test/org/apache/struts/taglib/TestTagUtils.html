@@ -446,7 +446,7 @@
 <a class="jxr_linenumber" name="L438" href="#L438">438</a>         assertEquals(3, map.size(), <span class="jxr_string">"Three parameter in the returned map"</span>);
 <a class="jxr_linenumber" name="L439" href="#L439">439</a> 
 <a class="jxr_linenumber" name="L440" href="#L440">440</a>         assertTrue(map.containsKey(<span class="jxr_string">"foo1"</span>), <span class="jxr_string">"Parameter foo1 present"</span>);
-<a class="jxr_linenumber" name="L441" href="#L441">441</a>         assertInstanceOf(String[].<strong class="jxr_keyword">class</strong>, map.get(<span class="jxr_string">"foo1"</span>), 
+<a class="jxr_linenumber" name="L441" href="#L441">441</a>         assertInstanceOf(String[].<strong class="jxr_keyword">class</strong>, map.get(<span class="jxr_string">"foo1"</span>),
 <a class="jxr_linenumber" name="L442" href="#L442">442</a>             <span class="jxr_string">"Parameter foo1 value type"</span>);
 <a class="jxr_linenumber" name="L443" href="#L443">443</a> 
 <a class="jxr_linenumber" name="L444" href="#L444">444</a>         String[] values = (String[]) map.get(<span class="jxr_string">"foo1"</span>);
@@ -2225,7 +2225,7 @@
 <a class="jxr_linenumber" name="L2217" href="#L2217">2217</a>     @Test
 <a class="jxr_linenumber" name="L2218" href="#L2218">2218</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testWrite() {
 <a class="jxr_linenumber" name="L2219" href="#L2219">2219</a>         MockPageContext pg = <strong class="jxr_keyword">new</strong> MockPageContext(false, false);
-<a class="jxr_linenumber" name="L2220" href="#L2220">2220</a>         
+<a class="jxr_linenumber" name="L2220" href="#L2220">2220</a> 
 <a class="jxr_linenumber" name="L2221" href="#L2221">2221</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L2222" href="#L2222">2222</a>             tagutils.write(pg, <strong class="jxr_keyword">null</strong>);
 <a class="jxr_linenumber" name="L2223" href="#L2223">2223</a>         } <strong class="jxr_keyword">catch</strong> (JspException e) {

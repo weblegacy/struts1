@@ -8,6 +8,8 @@ org.apache.struts.chain.commands.util
 org.apache.struts.chain.contexts
 org.apache.struts.config
 org.apache.struts.config.impl
+org.apache.struts.dispatcher
+org.apache.struts.dispatcher.servlet
 org.apache.struts.mock
 org.apache.struts.upload
 org.apache.struts.util

@@ -159,7 +159,7 @@
 <a class="jxr_linenumber" name="L151" href="#L151">151</a> <em class="jxr_javadoccomment">     * @param vars A Map of wildcard-matched strings</em>
 <a class="jxr_linenumber" name="L152" href="#L152">152</a> <em class="jxr_javadoccomment">     * @return A cloned ActionConfig with appropriate properties replaced with</em>
 <a class="jxr_linenumber" name="L153" href="#L153">153</a> <em class="jxr_javadoccomment">     *         wildcard-matched values</em>
-<a class="jxr_linenumber" name="L154" href="#L154">154</a> <em class="jxr_javadoccomment">     * @throws IllegalStateException if a placeholder substitution is </em>
+<a class="jxr_linenumber" name="L154" href="#L154">154</a> <em class="jxr_javadoccomment">     * @throws IllegalStateException if a placeholder substitution is</em>
 <a class="jxr_linenumber" name="L155" href="#L155">155</a> <em class="jxr_javadoccomment">     * impossible due to recursion</em>
 <a class="jxr_linenumber" name="L156" href="#L156">156</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L157" href="#L157">157</a>     <strong class="jxr_keyword">protected</strong> <a name="ActionConfig" href="../../../../org/apache/struts/config/ActionConfig.html#ActionConfig">ActionConfig</a> convertActionConfig(String path, <a name="ActionConfig" href="../../../../org/apache/struts/config/ActionConfig.html#ActionConfig">ActionConfig</a> orig,
@@ -240,7 +240,7 @@
 <a class="jxr_linenumber" name="L232" href="#L232">232</a> <em class="jxr_javadoccomment">     * @param orig  The original properties set with placehold values</em>
 <a class="jxr_linenumber" name="L233" href="#L233">233</a> <em class="jxr_javadoccomment">     * @param props The target properties to store the processed values</em>
 <a class="jxr_linenumber" name="L234" href="#L234">234</a> <em class="jxr_javadoccomment">     * @param vars  A Map of wildcard-matched strings</em>
-<a class="jxr_linenumber" name="L235" href="#L235">235</a> <em class="jxr_javadoccomment">     * @throws IllegalStateException if a placeholder substitution is </em>
+<a class="jxr_linenumber" name="L235" href="#L235">235</a> <em class="jxr_javadoccomment">     * @throws IllegalStateException if a placeholder substitution is</em>
 <a class="jxr_linenumber" name="L236" href="#L236">236</a> <em class="jxr_javadoccomment">     * impossible due to recursion</em>
 <a class="jxr_linenumber" name="L237" href="#L237">237</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L238" href="#L238">238</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> replaceProperties(Properties orig, Properties props, Map vars) {
@@ -260,7 +260,7 @@
 <a class="jxr_linenumber" name="L252" href="#L252">252</a> <em class="jxr_javadoccomment">     * @param val  The value to convert</em>
 <a class="jxr_linenumber" name="L253" href="#L253">253</a> <em class="jxr_javadoccomment">     * @param vars A Map of wildcard-matched strings</em>
 <a class="jxr_linenumber" name="L254" href="#L254">254</a> <em class="jxr_javadoccomment">     * @return The new value</em>
-<a class="jxr_linenumber" name="L255" href="#L255">255</a> <em class="jxr_javadoccomment">     * @throws IllegalStateException if a placeholder substitution is </em>
+<a class="jxr_linenumber" name="L255" href="#L255">255</a> <em class="jxr_javadoccomment">     * @throws IllegalStateException if a placeholder substitution is</em>
 <a class="jxr_linenumber" name="L256" href="#L256">256</a> <em class="jxr_javadoccomment">     * impossible due to recursion</em>
 <a class="jxr_linenumber" name="L257" href="#L257">257</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L258" href="#L258">258</a>     <strong class="jxr_keyword">protected</strong> String convertParam(String val, Map vars) {
@@ -280,14 +280,14 @@
 <a class="jxr_linenumber" name="L272" href="#L272">272</a>             entry = (Map.Entry) i.next();
 <a class="jxr_linenumber" name="L273" href="#L273">273</a>             key.setCharAt(1, ((String) entry.getKey()).charAt(0));
 <a class="jxr_linenumber" name="L274" href="#L274">274</a>             keyStr = key.toString();
-<a class="jxr_linenumber" name="L275" href="#L275">275</a>             
+<a class="jxr_linenumber" name="L275" href="#L275">275</a> 
 <a class="jxr_linenumber" name="L276" href="#L276">276</a>             <em class="jxr_comment">// STR-3169</em>
 <a class="jxr_linenumber" name="L277" href="#L277">277</a>             <em class="jxr_comment">// Prevent an infinite loop by retaining the placeholders</em>
 <a class="jxr_linenumber" name="L278" href="#L278">278</a>             <em class="jxr_comment">// that contain itself in the substitution value</em>
 <a class="jxr_linenumber" name="L279" href="#L279">279</a>             <strong class="jxr_keyword">if</strong> (((String) entry.getValue()).contains(keyStr)) {
 <a class="jxr_linenumber" name="L280" href="#L280">280</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalStateException();
 <a class="jxr_linenumber" name="L281" href="#L281">281</a>             }
-<a class="jxr_linenumber" name="L282" href="#L282">282</a>             
+<a class="jxr_linenumber" name="L282" href="#L282">282</a> 
 <a class="jxr_linenumber" name="L283" href="#L283">283</a>             <em class="jxr_comment">// Replace all instances of the placeholder</em>
 <a class="jxr_linenumber" name="L284" href="#L284">284</a>             <strong class="jxr_keyword">while</strong> ((x = ret.toString().indexOf(keyStr)) &gt; -1) {
 <a class="jxr_linenumber" name="L285" href="#L285">285</a>                 ret.replace(x, x + 3, (String) entry.getValue());
@@ -341,7 +341,8 @@
 <a class="jxr_linenumber" name="L333" href="#L333">333</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">this</strong>.config;
 <a class="jxr_linenumber" name="L334" href="#L334">334</a>         }
 <a class="jxr_linenumber" name="L335" href="#L335">335</a>     }
-<a class="jxr_linenumber" name="L336" href="#L336">336</a> }
+<a class="jxr_linenumber" name="L336" href="#L336">336</a> 
+<a class="jxr_linenumber" name="L337" href="#L337">337</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2000&#x2013;2022 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>

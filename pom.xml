@@ -362,7 +362,7 @@
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
         <mavenVersion>[3.5.4,4)</mavenVersion>
-        <javaVersion>1.4</javaVersion>
+        <javaVersion>1.8</javaVersion>
         <javaTestVersion>1.8</javaTestVersion>
         <myfaces.version>1.0.9</myfaces.version>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>

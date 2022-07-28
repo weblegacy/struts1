@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Set java-version from `1.4` to `1.8`
 * Upgrade `Tomcat5x` to `Tomcat6x`
 * Set Version to 1.4.1-SNAPSHOT
 

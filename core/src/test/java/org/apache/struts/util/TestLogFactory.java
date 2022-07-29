@@ -9,8 +9,6 @@ import org.apache.commons.logging.LogFactory;
 
 public class TestLogFactory extends LogFactory {
 
-    private final static TestLogFactory INSTANCE = new TestLogFactory();
-
     /**
      * The {@link org.apache.commons.logging.Log} instances that have
      * already been created, keyed by logger name.
@@ -22,45 +20,11 @@ public class TestLogFactory extends LogFactory {
      */
     protected Map<String, Object> attributes = new ConcurrentHashMap<>();
 
-    @SuppressWarnings("unchecked")
-    private TestLogFactory() {
-        releaseAll();
-        ClassLoader cl = getClassLoader(TestLogFactory.class);
-        if (cl == null) {
-            nullClassLoaderFactory = this;
-        } else {
-            factories.put(cl, this);
-        }
-
-//        PropertyPermission perm = new PropertyPermission(FACTORY_PROPERTY, "write");
-//
-//        // Ensure context already has permission,
-//        //   so privileges are not elevate.
-//        AccessController.checkPermission(perm);
-//
-//        // Execute task with the single permission only.
-//        PermissionCollection perms = perm.newPermissionCollection();
-//        perms.add(perm);
-//        AccessController.doPrivileged(
-//            (PrivilegedAction<Void>) () -> {
-//                System.setProperty(FACTORY_PROPERTY, TestLogFactory.class.getName());
-//                return null;
-//             },
-//             new AccessControlContext(
-//                 new ProtectionDomain[] {
-//                     new ProtectionDomain(null, perms)
-//                 }
-//            )
-//        );
-//      AccessController.doPrivileged(
-//      (PrivilegedAction<Void>) () -> {
-//          System.setProperty(FACTORY_PROPERTY, TestLogFactory.class.getName());
-//          return null;
-//       });
+    public TestLogFactory() {
     }
 
     public static TestLogFactory getInstance() {
-        return INSTANCE;
+        return (TestLogFactory) getFactory();
     }
 
     @Override

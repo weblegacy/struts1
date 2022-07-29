@@ -18,6 +18,10 @@ Full [CHANGELOG](CHANGELOG.md)
 
 For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.github.io/struts1)
 
+## Fixed vulnerabilities
+
+- CVE-2014-0114
+
 ## Building Strus1 - Reloaded
 
 ### Prerequesits

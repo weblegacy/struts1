@@ -55,6 +55,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * <p>General purpose utility methods related to processing a servlet request
@@ -69,6 +70,13 @@ public class RequestUtils {
      * <p>Commons Logging instance.</p>
      */
     protected static Log log = LogFactory.getLog(RequestUtils.class);
+
+    /**
+     * <p>Pattern matching 'class' access.</p>
+     */
+    protected static final Pattern CLASS_ACCESS_PATTERN = Pattern
+            .compile("(.*\\.|^|.*|\\[('|\"))class(\\.|('|\")]|\\[).*",
+                    Pattern.CASE_INSENSITIVE);
 
     // --------------------------------------------------------- Public Methods
 
@@ -460,6 +468,14 @@ public class RequestUtils {
                 parameterValue = rationalizeMultipleFileProperty(bean, name, parameterValue);
             } else {
                 parameterValue = request.getParameterValues(name);
+            }
+
+            // 2014/05/13 - CVE-2014-0114 security problem patch.
+            // Author: NTT DATA Corporation
+            if (CLASS_ACCESS_PATTERN.matcher(stripped).matches()) {
+                // this log output is only for detection of invalid parameters and not an integral part of the bug fix
+                log.trace("ignore parameter: paramName=" + stripped);
+                continue;
             }
 
             // Populate parameters, except "standard" struts attributes

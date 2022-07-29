@@ -20,9 +20,11 @@
  */
 package org.apache.struts.upload;
 
-import org.apache.commons.fileupload.DiskFileUpload;
 import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -44,8 +46,8 @@ import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * <p> This class implements the <code>MultipartRequestHandler</code>
@@ -82,17 +84,17 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
     /**
      * <p> The combined text and file request parameters. </p>
      */
-    private Hashtable elementsAll;
+    private Hashtable<String, Object> elementsAll;
 
     /**
      * <p> The file request parameters. </p>
      */
-    private Hashtable elementsFile;
+    private Hashtable<String, Object> elementsFile;
 
     /**
      * <p> The text request parameters. </p>
      */
-    private Hashtable elementsText;
+    private Hashtable<String, Object> elementsText;
 
     /**
      * <p> The action mapping  with which this handler is associated. </p>
@@ -103,6 +105,12 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * <p> The servlet with which this handler is associated. </p>
      */
     private ActionServlet servlet;
+
+    /**
+     * <p> Indicator if we run on a windows-system. </p>
+     */
+    private final static boolean WIN_SYSTEM =
+            System.getProperty("os.name").toLowerCase(Locale.ROOT).contains("windows");
 
     // ---------------------------------------- MultipartRequestHandler Methods
 
@@ -153,14 +161,24 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * @param request The multipart request to be processed.
      * @throws ServletException if an unrecoverable error occurs.
      */
+    @SuppressWarnings("unchecked")
     public void handleRequest(HttpServletRequest request)
         throws ServletException {
         // Get the app config for the current request.
         ModuleConfig ac =
             (ModuleConfig) request.getAttribute(Globals.MODULE_KEY);
 
-        // Create and configure a DIskFileUpload instance.
-        DiskFileUpload upload = new DiskFileUpload();
+        // Create a factory for disk-based file items
+        DiskFileItemFactory factory = new DiskFileItemFactory();
+
+        // Set the maximum size that will be stored in memory.
+        factory.setSizeThreshold((int) getSizeThreshold(ac));
+
+        // Set the the location for saving data on disk.
+        factory.setRepository(getRepositoryFile(ac));
+
+        // Create a new file upload handler
+        ServletFileUpload upload = new ServletFileUpload(factory);
 
         // The following line is to support an "EncodingFilter"
         // see http://issues.apache.org/bugzilla/show_bug.cgi?id=23255
@@ -169,23 +187,17 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         // Set the maximum size before a FileUploadException will be thrown.
         upload.setSizeMax(getSizeMax(ac));
 
-        // Set the maximum size that will be stored in memory.
-        upload.setSizeThreshold((int) getSizeThreshold(ac));
-
-        // Set the the location for saving data on disk.
-        upload.setRepositoryPath(getRepositoryPath(ac));
-
         // Create the hash tables to be populated.
-        elementsText = new Hashtable();
-        elementsFile = new Hashtable();
-        elementsAll = new Hashtable();
+        elementsText = new Hashtable<>();
+        elementsFile = new Hashtable<>();
+        elementsAll = new Hashtable<>();
 
         // Parse the request into file items.
-        List items = null;
+        List<FileItem> items = null;
 
         try {
             items = upload.parseRequest(request);
-        } catch (DiskFileUpload.SizeLimitExceededException e) {
+        } catch (SizeLimitExceededException e) {
             // Special handling for uploads that are too big.
             request.setAttribute(MultipartRequestHandler.ATTRIBUTE_MAX_LENGTH_EXCEEDED,
                 Boolean.TRUE);
@@ -198,10 +210,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         }
 
         // Partition the items into form fields and files.
-        Iterator iter = items.iterator();
-
-        while (iter.hasNext()) {
-            FileItem item = (FileItem) iter.next();
+        for (FileItem item : items) {
 
             if (item.isFormField()) {
                 addTextParameter(request, item);
@@ -217,7 +226,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      *
      * @return The text request parameters.
      */
-    public Hashtable getTextElements() {
+    public Hashtable<String, Object> getTextElements() {
         return this.elementsText;
     }
 
@@ -227,7 +236,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      *
      * @return The file request parameters.
      */
-    public Hashtable getFileElements() {
+    public Hashtable<String, Object> getFileElements() {
         return this.elementsFile;
     }
 
@@ -237,7 +246,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      *
      * @return The text and file request parameters.
      */
-    public Hashtable getAllElements() {
+    public Hashtable<String, Object> getAllElements() {
         return this.elementsAll;
     }
 
@@ -245,14 +254,10 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * <p> Cleans up when a problem occurs during request processing. </p>
      */
     public void rollback() {
-        Iterator iter = elementsFile.values().iterator();
-
-        Object o;
-        while (iter.hasNext()) {
-            o = iter.next();
+        for (Object o : elementsFile.values()) {
             if (o instanceof List) {
-                for (Iterator i = ((List)o).iterator(); i.hasNext(); ) {
-                    ((FormFile)i.next()).destroy();
+                for (Object i : ((List<?>)o)) {
+                    ((FormFile)i).destroy();
                 }
             } else {
                 ((FormFile)o).destroy();
@@ -275,7 +280,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      */
     protected void clearInputStream(HttpServletRequest request) {
         try {
-            if (System.getProperty("os.name").indexOf("Windows") >= -1) {
+            if (WIN_SYSTEM) {
                 ServletInputStream is = request.getInputStream();
                 byte[] data = new byte[DEFAULT_SIZE_THRESHOLD];
                 int bytesRead = 0;
@@ -371,31 +376,39 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      *           determined.
      * @return The path to the directory to be used to store uploaded files.
      */
-    protected String getRepositoryPath(ModuleConfig mc) {
+    protected File getRepositoryFile(ModuleConfig mc) {
+        File tempDirFile = null;
+
         // First, look for an explicitly defined temp dir.
         String tempDir = mc.getControllerConfig().getTempDir();
 
         // If none, look for a container specified temp dir.
-        if ((tempDir == null) || (tempDir.length() == 0)) {
+        if (tempDir == null || tempDir.isEmpty()) {
             if (servlet != null) {
                 ServletContext context = servlet.getServletContext();
-                File tempDirFile =
+                tempDirFile =
                     (File) context.getAttribute("javax.servlet.context.tempdir");
 
-                tempDir = tempDirFile.getAbsolutePath();
+                if (tempDirFile != null) {
+                    tempDirFile = tempDirFile.getAbsoluteFile();
+                }
             }
 
             // If none, pick up the system temp dir.
-            if ((tempDir == null) || (tempDir.length() == 0)) {
+            if (tempDirFile == null) {
                 tempDir = System.getProperty("java.io.tmpdir");
             }
         }
 
-        if (log.isTraceEnabled()) {
-            log.trace("File upload temp dir: " + tempDir);
+        if (tempDirFile == null && tempDir != null && !tempDir.isEmpty()) {
+            tempDirFile = new File(tempDir);
         }
 
-        return tempDir;
+        if (log.isTraceEnabled()) {
+            log.trace("File upload temp dir: " + tempDirFile);
+        }
+
+        return tempDirFile;
     }
 
     /**
@@ -473,6 +486,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      *
      * @param item The file item for the parameter to add.
      */
+    @SuppressWarnings("unchecked")
     protected void addFileParameter(FileItem item) {
         FormFile formFile = new CommonsFormFile(item);
 
@@ -480,9 +494,9 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         if (elementsFile.containsKey(name)) {
             Object o = elementsFile.get(name);
             if (o instanceof List) {
-                ((List)o).add(formFile);
+                ((List<FormFile>)o).add(formFile);
             } else {
-                List list = new ArrayList();
+                List<FormFile> list = new ArrayList<>();
                 list.add((FormFile)o);
                 list.add(formFile);
                 elementsFile.put(name, list);
@@ -504,6 +518,8 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * </p>
      */
     static class CommonsFormFile implements FormFile, Serializable {
+        private static final long serialVersionUID = -6784594200973351263L;
+
         /**
          * <p> The <code>FileItem</code> instance wrapped by this object.
          * </p>

@@ -102,7 +102,7 @@ public class PrepareOptionsAction extends Action {
         request.setAttribute("colorCodes", colorCodes);
 
         /* A Collection */
-        ArrayList colorList = new ArrayList();
+        ArrayList<String> colorList = new ArrayList<>();
         colorList.add("Red");
         colorList.add("Orange");
         colorList.add("Yellow");
@@ -113,7 +113,7 @@ public class PrepareOptionsAction extends Action {
         request.setAttribute("colorCollection", colorList);
 
         /* A Collection of LabelValue beans */
-        ArrayList days = new ArrayList();
+        ArrayList<LabelValueBean> days = new ArrayList<>();
         days.add(new LabelValueBean("Monday", "1"));
         days.add(new LabelValueBean("Tuesday", "2"));
         days.add(new LabelValueBean("Wednesday", "3"));
@@ -124,7 +124,7 @@ public class PrepareOptionsAction extends Action {
         request.setAttribute("days", days);
 
         /* Collection of custom beans */
-        ArrayList books = new ArrayList();
+        ArrayList<BookBean> books = new ArrayList<>();
         books.add(new BookBean("0596003285", "Programming Jakarta Struts"));
         books.add(new BookBean("1930110502", "Struts in Action"));
         books.add(
@@ -149,12 +149,12 @@ public class PrepareOptionsAction extends Action {
          * other than a String, they will automatically call the toString()
          * method and use the result.
          */
-        HashMap animals = new HashMap();
-        animals.put(new Integer(1), "Cat");
-        animals.put(new Integer(2), "Dog");
-        animals.put(new Integer(3), "Horse");
-        animals.put(new Integer(4), "Rabbit");
-        animals.put(new Integer(5), "Goldfish");
+        HashMap<Integer, String> animals = new HashMap<>();
+        animals.put(1, "Cat");
+        animals.put(2, "Dog");
+        animals.put(3, "Horse");
+        animals.put(4, "Rabbit");
+        animals.put(5, "Goldfish");
         request.setAttribute("animals", animals);
 
         // Forward to form page

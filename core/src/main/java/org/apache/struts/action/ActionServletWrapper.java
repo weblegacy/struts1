@@ -36,6 +36,8 @@ import java.io.Serializable;
  * @since Struts 1.0.1
  */
 public class ActionServletWrapper implements Serializable {
+    private static final long serialVersionUID = 3775546877948572436L;
+
     /**
      * <p>The servlet instance to which we are attached.</p>
      */

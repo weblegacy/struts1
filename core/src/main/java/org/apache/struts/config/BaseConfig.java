@@ -32,6 +32,8 @@ import java.util.Properties;
  * @since Struts 1.3
  */
 public abstract class BaseConfig implements Serializable {
+    private static final long serialVersionUID = 7059240587081363820L;
+
     /**
      * Indicates if configuration of this component been completed. TODO
      * change protected to private and use methods provided by extenders?
@@ -134,7 +136,7 @@ public abstract class BaseConfig implements Serializable {
 
         // Inherit forward properties
         Properties baseProperties = baseConfig.getProperties();
-        Enumeration keys = baseProperties.propertyNames();
+        Enumeration<?> keys = baseProperties.propertyNames();
 
         while (keys.hasMoreElements()) {
             String key = (String) keys.nextElement();
@@ -155,7 +157,7 @@ public abstract class BaseConfig implements Serializable {
     protected Properties copyProperties() {
         Properties copy = new Properties();
 
-        Enumeration keys = properties.propertyNames();
+        Enumeration<?> keys = properties.propertyNames();
 
         while (keys.hasMoreElements()) {
             String key = (String) keys.nextElement();

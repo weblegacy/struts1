@@ -36,6 +36,8 @@ import java.lang.reflect.InvocationTargetException;
  * @since Struts 1.1
  */
 public class FormPropertyConfig extends BaseConfig {
+    private static final long serialVersionUID = 4120657988013574721L;
+
     /**
      * The logging instance
      */
@@ -218,7 +220,7 @@ public class FormPropertyConfig extends BaseConfig {
      * <code>type</code> property, taking into account the trailing "[]" for
      * arrays (as well as the ability to specify primitive Java types).
      */
-    public Class getTypeClass() {
+    public Class<?> getTypeClass() {
         // Identify the base class (in case an array was specified)
         String baseType = getType();
         boolean indexed = false;
@@ -229,7 +231,7 @@ public class FormPropertyConfig extends BaseConfig {
         }
 
         // Construct an appropriate Class instance for the base class
-        Class baseClass = null;
+        Class<?> baseClass = null;
 
         if ("boolean".equals(baseType)) {
             baseClass = Boolean.TYPE;
@@ -319,7 +321,7 @@ public class FormPropertyConfig extends BaseConfig {
         Object initialValue = null;
 
         try {
-            Class clazz = getTypeClass();
+            Class<?> clazz = getTypeClass();
 
             if (clazz.isArray()) {
                 if (initial != null) {

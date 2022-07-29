@@ -80,14 +80,14 @@ public class PrepareLogicAction extends Action {
         TestBean bean = new TestBean();
         request.setAttribute("testBean", bean);
 
-        ArrayList items = new ArrayList();
+        ArrayList<String> items = new ArrayList<>();
         request.setAttribute("items", items);
 
         request.setAttribute("intValue", new Integer(7));
         request.setAttribute("stringValue", "Hello, world!");
 
         /* Collection of custom beans */
-        ArrayList books = new ArrayList();
+        ArrayList<BookBean> books = new ArrayList<>();
         books.add(new BookBean("0596003285", "Programming Jakarta Struts"));
         books.add(new BookBean("1930110502", "Struts in Action"));
         books.add(new BookBean("1861007817", "Professional Struts Applications"));

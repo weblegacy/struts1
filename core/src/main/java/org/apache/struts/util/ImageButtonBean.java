@@ -34,6 +34,8 @@ import java.io.Serializable;
  *          $
  */
 public class ImageButtonBean implements Serializable {
+    private static final long serialVersionUID = -2728467216883854129L;
+
     // ------------------------------------------------------------- Properties
 
     /**

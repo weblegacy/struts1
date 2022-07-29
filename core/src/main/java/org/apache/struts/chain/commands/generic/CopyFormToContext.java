@@ -164,6 +164,7 @@ public class CopyFormToContext extends ActionCommandBase {
      * @return TRUE if processing should halt
      * @throws Exception on any error
      */
+    @SuppressWarnings("unchecked")
     public boolean execute(ActionContext actionContext)
         throws Exception {
         ActionForm form = findOrCreateForm(actionContext);

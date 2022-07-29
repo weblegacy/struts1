@@ -30,6 +30,7 @@
                        org.apache.commons.validator.ValidatorAction,
                        org.apache.commons.validator.Field,
                        org.apache.struts.action.ActionMessages,
+                       org.apache.commons.validator.Validator,
                        javax.servlet.http.HttpServletRequest"
                    msg="errors.twofields" />
     </global>

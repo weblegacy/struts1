@@ -33,7 +33,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Array;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -55,6 +54,8 @@ import java.util.StringTokenizer;
  * @since Struts 1.1
  */
 public class DynaActionForm extends ActionForm implements DynaBean {
+    private static final long serialVersionUID = 1726775935544475430L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -67,7 +68,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
      * <p>The set of property values for this <code>DynaActionForm</code>,
      * keyed by property name.</p>
      */
-    protected HashMap dynaValues = new HashMap();
+    protected HashMap<String, Object> dynaValues = new HashMap<>();
 
     // ----------------------------------------------------- ActionForm Methods
 
@@ -207,7 +208,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
             throw new NullPointerException("No mapped value for '" + name + "("
                 + key + ")'");
         } else if (value instanceof Map) {
-            return (((Map) value).containsKey(key));
+            return (((Map<?, ?>) value).containsKey(key));
         } else {
             throw new IllegalArgumentException("Non-mapped property for '"
                 + name + "(" + key + ")'");
@@ -233,7 +234,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
         }
 
         // Return a null value for a non-primitive property
-        Class type = getDynaProperty(name).getType();
+        Class<?> type = getDynaProperty(name).getType();
 
         if (type == null) {
             throw new NullPointerException("The type for property " + name
@@ -248,19 +249,19 @@ public class DynaActionForm extends ActionForm implements DynaBean {
         if (type == Boolean.TYPE) {
             return (Boolean.FALSE);
         } else if (type == Byte.TYPE) {
-            return (new Byte((byte) 0));
+            return (Byte.valueOf((byte) 0));
         } else if (type == Character.TYPE) {
-            return (new Character((char) 0));
+            return (Character.valueOf((char) 0));
         } else if (type == Double.TYPE) {
-            return (new Double(0.0));
+            return (Double.valueOf(0.0));
         } else if (type == Float.TYPE) {
-            return (new Float((float) 0.0));
+            return (Float.valueOf((float) 0.0));
         } else if (type == Integer.TYPE) {
-            return (new Integer(0));
+            return (Integer.valueOf(0));
         } else if (type == Long.TYPE) {
-            return (new Long(0));
+            return (Long.valueOf(0));
         } else if (type == Short.TYPE) {
-            return (new Short((short) 0));
+            return (Short.valueOf((short) 0));
         } else {
             return (null);
         }
@@ -289,7 +290,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
         } else if (value.getClass().isArray()) {
             return (Array.get(value, index));
         } else if (value instanceof List) {
-            return ((List) value).get(index);
+            return ((List<?>) value).get(index);
         } else {
             throw new IllegalArgumentException("Non-indexed property for '"
                 + name + "[" + index + "]'");
@@ -316,7 +317,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
             throw new NullPointerException("No mapped value for '" + name + "("
                 + key + ")'");
         } else if (value instanceof Map) {
-            return (((Map) value).get(key));
+            return (((Map<?, ?>) value).get(key));
         } else {
             throw new IllegalArgumentException("Non-mapped property for '"
                 + name + "(" + key + ")'");
@@ -391,7 +392,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
      *
      * @return The <code>Map</code> containing the property values.
      */
-    public Map getMap() {
+    public Map<String, Object> getMap() {
         return (dynaValues);
     }
 
@@ -413,7 +414,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
             throw new NullPointerException("No mapped value for '" + name + "("
                 + key + ")'");
         } else if (value instanceof Map) {
-            ((Map) value).remove(key);
+            ((Map<?, ?>) value).remove(key);
         } else {
             throw new IllegalArgumentException("Non-mapped property for '"
                 + name + "(" + key + ")'");
@@ -473,6 +474,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
      * @throws IndexOutOfBoundsException if the specified index is outside the
      *                                   range of the underlying property
      */
+    @SuppressWarnings("unchecked")
     public void set(String name, int index, Object value) {
         Object prop = dynaValues.get(name);
 
@@ -483,7 +485,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
             Array.set(prop, index, value);
         } else if (prop instanceof List) {
             try {
-                ((List) prop).set(index, value);
+                ((List<Object>) prop).set(index, value);
             } catch (ClassCastException e) {
                 throw new ConversionException(e.getMessage(), e);
             }
@@ -504,6 +506,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
      * @throws IllegalArgumentException if the specified property exists, but
      *                                  is not mapped
      */
+    @SuppressWarnings("unchecked")
     public void set(String name, String key, Object value) {
         Object prop = dynaValues.get(name);
 
@@ -511,7 +514,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
             throw new NullPointerException("No mapped value for '" + name + "("
                 + key + ")'");
         } else if (prop instanceof Map) {
-            ((Map) prop).put(key, value);
+            ((Map<String, Object>) prop).put(key, value);
         } else {
             throw new IllegalArgumentException("Non-mapped property for '"
                 + name + "(" + key + ")'");
@@ -565,7 +568,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
 
                 sb.append("}");
             } else if (value instanceof List) {
-                int n = ((List) value).size();
+                int n = ((List<?>) value).size();
 
                 sb.append("{");
 
@@ -574,28 +577,25 @@ public class DynaActionForm extends ActionForm implements DynaBean {
                         sb.append(',');
                     }
 
-                    sb.append(((List) value).get(j));
+                    sb.append(((List<?>) value).get(j));
                 }
 
                 sb.append("}");
             } else if (value instanceof Map) {
-                int n = 0;
-                Iterator keys = ((Map) value).keySet().iterator();
+                boolean first = true;
 
                 sb.append("{");
 
-                while (keys.hasNext()) {
-                    if (n > 0) {
+                for (Map.Entry<?, ?> entry : ((Map<?, ?>) value).entrySet()) {
+                    if (first) {
+                        first = false;
+                    } else {
                         sb.append(',');
                     }
 
-                    n++;
-
-                    Object key = keys.next();
-
-                    sb.append(key);
+                    sb.append(entry.getKey());
                     sb.append('=');
-                    sb.append(((Map) value).get(key));
+                    sb.append(entry.getValue());
                 }
 
                 sb.append("}");
@@ -651,7 +651,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
      * @return <code>true</code> if the source is assignable to the
      *         destination; <code>false</code> otherwise.
      */
-    protected boolean isDynaAssignable(Class dest, Class source) {
+    protected boolean isDynaAssignable(Class<?> dest, Class<?> source) {
         if (dest.isAssignableFrom(source)
             || ((dest == Boolean.TYPE) && (source == Boolean.class))
             || ((dest == Byte.TYPE) && (source == Byte.class))

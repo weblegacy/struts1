@@ -25,11 +25,9 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.util.ResponseUtils;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -56,6 +54,8 @@ import java.util.Map;
  * @version $Rev$ $Date$
  */
 public class ActionRedirect extends ActionForward {
+    private static final long serialVersionUID = 3751872574084528837L;
+
     // ----------------------------------------------------- Manifest constants
 
     /**
@@ -76,7 +76,7 @@ public class ActionRedirect extends ActionForward {
      * <p>Holds the redirect parameters. Each entry is either a String or a
      * String[] depending on whether it has one or more entries.</p>
      */
-    protected Map parameterValues = null;
+    protected Map<String, Object> parameterValues = null;
 
     /**
      * <p>Holds the anchor value.</p>
@@ -142,7 +142,7 @@ public class ActionRedirect extends ActionForward {
      * <p>Initializes the internal objects used to hold parameter values.</p>
      */
     private void initializeParameters() {
-        parameterValues = new HashMap();
+        parameterValues = new HashMap<>();
     }
 
     // ----------------------------------------------------- Public methods
@@ -185,12 +185,11 @@ public class ActionRedirect extends ActionForward {
             parameterValues.put(fieldName, newValue);
         } else if (currentValue instanceof String[]) {
             // add the value to the list of existing values
-            List newValues =
-                new ArrayList(Arrays.asList((Object[]) currentValue));
+            String[] currentValues = (String[]) currentValue;
+            String[] newValues = Arrays.copyOf(currentValues, currentValues.length + 1);
 
-            newValues.add(value);
-            parameterValues.put(fieldName,
-                newValues.toArray(new String[newValues.size()]));
+            newValues[currentValues.length] = value;
+            parameterValues.put(fieldName, newValues);
         }
         return this;
     }
@@ -296,14 +295,16 @@ public class ActionRedirect extends ActionForward {
         StringBuffer strParam = new StringBuffer(DEFAULT_BUFFER_SIZE);
 
         // loop through all parameters
-        Iterator iterator = parameterValues.keySet().iterator();
+        Iterator<Map.Entry<String, Object>> iterator = parameterValues.entrySet().iterator();
 
         while (iterator.hasNext()) {
+            Map.Entry<String, Object> entry = iterator.next();
+
             // get the parameter name
-            String paramName = (String) iterator.next();
+            String paramName = entry.getKey();
 
             // get the value for this parameter
-            Object value = parameterValues.get(paramName);
+            Object value = entry.getValue();
 
             if (value instanceof String) {
                 // just one value for this param

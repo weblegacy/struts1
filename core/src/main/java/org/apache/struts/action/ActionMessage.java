@@ -34,6 +34,8 @@ import java.io.Serializable;
  * @since Struts 1.1
  */
 public class ActionMessage implements Serializable {
+    private static final long serialVersionUID = 5038146636915080725L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**

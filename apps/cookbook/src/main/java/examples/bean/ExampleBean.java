@@ -31,6 +31,7 @@ import java.util.List;
  * @version $Rev$ $Date$
  */
 public class ExampleBean implements Serializable {
+    private static final long serialVersionUID = -7847631250942658121L;
 
     // ------------------------------------------------------ Instance Variables
 
@@ -59,7 +60,7 @@ public class ExampleBean implements Serializable {
     private java.util.Date dateValue = new java.util.Date();
 
     /** A list */
-    private List list = new ArrayList();
+    private List<String> list = new ArrayList<>();
 
     /** An array */
     private String[] array = { "Red", "Green", "Blue", "Black", "Orange" };
@@ -200,7 +201,7 @@ public class ExampleBean implements Serializable {
      * Returns the list.
      * @return List
      */
-    public List getList() {
+    public List<String> getList() {
         return list;
     }
 
@@ -208,7 +209,7 @@ public class ExampleBean implements Serializable {
      * Sets the list.
      * @param list The list to set
      */
-    public void setList(List list) {
+    public void setList(List<String> list) {
         this.list = list;
     }
 

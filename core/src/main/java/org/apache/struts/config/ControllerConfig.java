@@ -31,6 +31,8 @@ package org.apache.struts.config;
  * @since Struts 1.1
  */
 public class ControllerConfig extends BaseConfig {
+    private static final long serialVersionUID = 7704474362520651283L;
+
     // ------------------------------------------------------------- Properties
 
     /**

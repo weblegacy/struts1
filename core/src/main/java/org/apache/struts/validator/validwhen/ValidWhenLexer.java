@@ -23,33 +23,24 @@
 
 package org.apache.struts.validator.validwhen;
 
-import java.math.BigDecimal;
-import java.util.Stack;
-import org.apache.commons.validator.util.ValidatorUtils;
-
 import java.io.InputStream;
 import antlr.TokenStreamException;
 import antlr.TokenStreamIOException;
 import antlr.TokenStreamRecognitionException;
 import antlr.CharStreamException;
 import antlr.CharStreamIOException;
-import antlr.ANTLRException;
 import java.io.Reader;
 import java.util.Hashtable;
-import antlr.CharScanner;
 import antlr.InputBuffer;
 import antlr.ByteBuffer;
 import antlr.CharBuffer;
 import antlr.Token;
-import antlr.CommonToken;
 import antlr.RecognitionException;
 import antlr.NoViableAltForCharException;
-import antlr.MismatchedCharException;
 import antlr.TokenStream;
 import antlr.ANTLRHashString;
 import antlr.LexerSharedInputState;
 import antlr.collections.impl.BitSet;
-import antlr.SemanticException;
 
 public class ValidWhenLexer extends antlr.CharScanner implements ValidWhenParserTokenTypes, TokenStream
  {
@@ -62,21 +53,22 @@ public ValidWhenLexer(Reader in) {
 public ValidWhenLexer(InputBuffer ib) {
     this(new LexerSharedInputState(ib));
 }
+@SuppressWarnings("unchecked")
 public ValidWhenLexer(LexerSharedInputState state) {
     super(state);
     caseSensitiveLiterals = true;
     setCaseSensitive(false);
-    literals = new Hashtable();
+    literals = new Hashtable<ANTLRHashString, Integer>();
     literals.put(new ANTLRHashString("null", this), new Integer(12));
     literals.put(new ANTLRHashString("or", this), new Integer(17));
     literals.put(new ANTLRHashString("and", this), new Integer(16));
 }
 
 public Token nextToken() throws TokenStreamException {
-    Token theRetToken=null;
+//  Token theRetToken=null;
 tryAgain:
     for (;;) {
-        Token _token = null;
+//      Token _token = null;
         int _ttype = Token.INVALID_TYPE;
         resetText();
         try {   // for char stream error handling
@@ -85,7 +77,7 @@ tryAgain:
                 case '\t':  case '\n':  case '\r':  case ' ':
                 {
                     mWS(true);
-                    theRetToken=_returnToken;
+//                  theRetToken=_returnToken;
                     break;
                 }
                 case '-':  case '0':  case '1':  case '2':
@@ -93,43 +85,43 @@ tryAgain:
                 case '7':  case '8':  case '9':
                 {
                     mDECIMAL_LITERAL(true);
-                    theRetToken=_returnToken;
+//                  theRetToken=_returnToken;
                     break;
                 }
                 case '"':  case '\'':
                 {
                     mSTRING_LITERAL(true);
-                    theRetToken=_returnToken;
+//                  theRetToken=_returnToken;
                     break;
                 }
                 case '[':
                 {
                     mLBRACKET(true);
-                    theRetToken=_returnToken;
+//                  theRetToken=_returnToken;
                     break;
                 }
                 case ']':
                 {
                     mRBRACKET(true);
-                    theRetToken=_returnToken;
+//                  theRetToken=_returnToken;
                     break;
                 }
                 case '(':
                 {
                     mLPAREN(true);
-                    theRetToken=_returnToken;
+//                  theRetToken=_returnToken;
                     break;
                 }
                 case ')':
                 {
                     mRPAREN(true);
-                    theRetToken=_returnToken;
+//                  theRetToken=_returnToken;
                     break;
                 }
                 case '*':
                 {
                     mTHIS(true);
-                    theRetToken=_returnToken;
+//                  theRetToken=_returnToken;
                     break;
                 }
                 case '.':  case '_':  case 'a':  case 'b':
@@ -141,37 +133,37 @@ tryAgain:
                 case 'w':  case 'x':  case 'y':  case 'z':
                 {
                     mIDENTIFIER(true);
-                    theRetToken=_returnToken;
+//                  theRetToken=_returnToken;
                     break;
                 }
                 case '=':
                 {
                     mEQUALSIGN(true);
-                    theRetToken=_returnToken;
+//                  theRetToken=_returnToken;
                     break;
                 }
                 case '!':
                 {
                     mNOTEQUALSIGN(true);
-                    theRetToken=_returnToken;
+//                  theRetToken=_returnToken;
                     break;
                 }
                 default:
                     if ((LA(1)=='<') && (LA(2)=='=')) {
                         mLESSEQUALSIGN(true);
-                        theRetToken=_returnToken;
+//                      theRetToken=_returnToken;
                     }
                     else if ((LA(1)=='>') && (LA(2)=='=')) {
                         mGREATEREQUALSIGN(true);
-                        theRetToken=_returnToken;
+//                      theRetToken=_returnToken;
                     }
                     else if ((LA(1)=='<') && (true)) {
                         mLESSTHANSIGN(true);
-                        theRetToken=_returnToken;
+//                      theRetToken=_returnToken;
                     }
                     else if ((LA(1)=='>') && (true)) {
                         mGREATERTHANSIGN(true);
-                        theRetToken=_returnToken;
+//                      theRetToken=_returnToken;
                     }
                 else {
                     if (LA(1)==EOF_CHAR) {uponEOF(); _returnToken = makeToken(Token.EOF_TYPE);}
@@ -202,7 +194,7 @@ tryAgain:
     public final void mWS(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = WS;
-        int _saveIndex;
+//      int _saveIndex;
 
         {
         int _cnt17=0;
@@ -250,7 +242,7 @@ tryAgain:
     public final void mDECIMAL_LITERAL(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = DECIMAL_LITERAL;
-        int _saveIndex;
+//      int _saveIndex;
 
         boolean synPredMatched24 = false;
         if (((_tokenSet_0.member(LA(1))) && (_tokenSet_1.member(LA(2))))) {
@@ -502,7 +494,7 @@ inputState.guessing--;
     public final void mSTRING_LITERAL(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = STRING_LITERAL;
-        int _saveIndex;
+//      int _saveIndex;
 
         switch ( LA(1)) {
         case '\'':
@@ -564,7 +556,7 @@ inputState.guessing--;
     public final void mLBRACKET(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = LBRACKET;
-        int _saveIndex;
+//      int _saveIndex;
 
         match('[');
         if ( _createToken && _token==null && _ttype!=Token.SKIP ) {
@@ -577,7 +569,7 @@ inputState.guessing--;
     public final void mRBRACKET(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = RBRACKET;
-        int _saveIndex;
+//      int _saveIndex;
 
         match(']');
         if ( _createToken && _token==null && _ttype!=Token.SKIP ) {
@@ -590,7 +582,7 @@ inputState.guessing--;
     public final void mLPAREN(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = LPAREN;
-        int _saveIndex;
+//      int _saveIndex;
 
         match('(');
         if ( _createToken && _token==null && _ttype!=Token.SKIP ) {
@@ -603,7 +595,7 @@ inputState.guessing--;
     public final void mRPAREN(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = RPAREN;
-        int _saveIndex;
+//      int _saveIndex;
 
         match(')');
         if ( _createToken && _token==null && _ttype!=Token.SKIP ) {
@@ -616,7 +608,7 @@ inputState.guessing--;
     public final void mTHIS(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = THIS;
-        int _saveIndex;
+//      int _saveIndex;
 
         match("*this*");
         if ( _createToken && _token==null && _ttype!=Token.SKIP ) {
@@ -629,7 +621,7 @@ inputState.guessing--;
     public final void mIDENTIFIER(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = IDENTIFIER;
-        int _saveIndex;
+//      int _saveIndex;
 
         {
         switch ( LA(1)) {
@@ -711,7 +703,7 @@ inputState.guessing--;
     public final void mEQUALSIGN(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = EQUALSIGN;
-        int _saveIndex;
+//      int _saveIndex;
 
         match('=');
         match('=');
@@ -725,7 +717,7 @@ inputState.guessing--;
     public final void mNOTEQUALSIGN(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = NOTEQUALSIGN;
-        int _saveIndex;
+//      int _saveIndex;
 
         match('!');
         match('=');
@@ -739,7 +731,7 @@ inputState.guessing--;
     public final void mLESSTHANSIGN(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = LESSTHANSIGN;
-        int _saveIndex;
+//      int _saveIndex;
 
         match('<');
         if ( _createToken && _token==null && _ttype!=Token.SKIP ) {
@@ -752,7 +744,7 @@ inputState.guessing--;
     public final void mGREATERTHANSIGN(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = GREATERTHANSIGN;
-        int _saveIndex;
+//      int _saveIndex;
 
         match('>');
         if ( _createToken && _token==null && _ttype!=Token.SKIP ) {
@@ -765,7 +757,7 @@ inputState.guessing--;
     public final void mLESSEQUALSIGN(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = LESSEQUALSIGN;
-        int _saveIndex;
+//      int _saveIndex;
 
         match('<');
         match('=');
@@ -779,7 +771,7 @@ inputState.guessing--;
     public final void mGREATEREQUALSIGN(boolean _createToken) throws RecognitionException, CharStreamException, TokenStreamException {
         int _ttype; Token _token=null; int _begin=text.length();
         _ttype = GREATEREQUALSIGN;
-        int _saveIndex;
+//      int _saveIndex;
 
         match('>');
         match('=');

@@ -43,13 +43,15 @@ import java.util.HashMap;
  * @since Struts 1.1
  */
 public class DynaActionFormClass implements DynaClass, Serializable {
+    private static final long serialVersionUID = -2521119905360425245L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**
      * <p>The <code>DynaActionForm</code> implementation <code>Class</code>
      * which we will use to create new bean instances.</p>
      */
-    protected transient Class beanClass = null;
+    protected transient Class<DynaActionForm> beanClass = null;
 
     /**
      * <p>The form bean configuration information for this class.</p>
@@ -72,7 +74,7 @@ public class DynaActionFormClass implements DynaClass, Serializable {
      * descriptor instances will be the same instances as those in the
      * <code>properties</code> list.
      */
-    protected HashMap propertiesMap = new HashMap();
+    protected HashMap<String, DynaProperty> propertiesMap = new HashMap<>();
 
     // ----------------------------------------------------------- Constructors
 
@@ -122,7 +124,7 @@ public class DynaActionFormClass implements DynaClass, Serializable {
             throw new IllegalArgumentException("No property name specified");
         }
 
-        return ((DynaProperty) propertiesMap.get(name));
+        return (propertiesMap.get(name));
     }
 
     /**
@@ -157,7 +159,7 @@ public class DynaActionFormClass implements DynaClass, Serializable {
      */
     public DynaBean newInstance()
         throws IllegalAccessException, InstantiationException {
-        DynaActionForm dynaBean = (DynaActionForm) getBeanClass().newInstance();
+        DynaActionForm dynaBean = getBeanClass().newInstance();
 
         dynaBean.setDynaActionFormClass(this);
 
@@ -224,7 +226,7 @@ public class DynaActionFormClass implements DynaClass, Serializable {
      *
      * @return The implementation class used to construct new instances.
      */
-    protected Class getBeanClass() {
+    protected Class<DynaActionForm> getBeanClass() {
         if (beanClass == null) {
             introspect(config);
         }
@@ -243,12 +245,14 @@ public class DynaActionFormClass implements DynaClass, Serializable {
      *                                  DynaActionForm (or a subclass of
      *                                  DynaActionForm)
      */
+    @SuppressWarnings("unchecked")
     protected void introspect(FormBeanConfig config) {
         this.config = config;
 
         // Validate the ActionFormBean implementation class
+        final Class<?> clazz;
         try {
-            beanClass = RequestUtils.applicationClass(config.getType());
+            clazz = RequestUtils.applicationClass(config.getType());
         } catch (Throwable t) {
             IllegalArgumentException t2 = new IllegalArgumentException(
                 "Cannot instantiate ActionFormBean class '" + config.getType()
@@ -257,11 +261,12 @@ public class DynaActionFormClass implements DynaClass, Serializable {
             throw t2;
         }
 
-        if (!DynaActionForm.class.isAssignableFrom(beanClass)) {
+        if (!DynaActionForm.class.isAssignableFrom(clazz)) {
             throw new IllegalArgumentException("Class '" + config.getType()
                 + "' is not a subclass of "
                 + "'org.apache.struts.action.DynaActionForm'");
         }
+        beanClass = (Class<DynaActionForm>) clazz;
 
         // Set the name we will know ourselves by from the form bean name
         this.name = config.getName();

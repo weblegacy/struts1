@@ -48,6 +48,8 @@ import java.util.HashMap;
  * @since Struts 1.1
  */
 public class FormBeanConfig extends BaseConfig {
+    private static final long serialVersionUID = 3515968502450681140L;
+
     private static final Log log = LogFactory.getLog(FormBeanConfig.class);
 
     // ----------------------------------------------------- Instance Variables
@@ -56,7 +58,7 @@ public class FormBeanConfig extends BaseConfig {
      * The set of FormProperty elements defining dynamic form properties for
      * this form bean, keyed by property name.
      */
-    protected HashMap formProperties = new HashMap();
+    protected HashMap<String, FormPropertyConfig> formProperties = new HashMap<>();
 
     /**
      * <p>The lockable object we can synchronize on when creating
@@ -162,8 +164,8 @@ public class FormBeanConfig extends BaseConfig {
         throwIfConfigured();
         this.type = type;
 
-        Class dynaBeanClass = DynaActionForm.class;
-        Class formBeanClass = formBeanClass();
+        Class<DynaActionForm> dynaBeanClass = DynaActionForm.class;
+        Class<?> formBeanClass = formBeanClass();
 
         if (formBeanClass != null) {
             if (dynaBeanClass.isAssignableFrom(formBeanClass)) {
@@ -380,7 +382,7 @@ public class FormBeanConfig extends BaseConfig {
                 try {
                     // check if the form's class is compatible with the class
                     //      we're configured for
-                    Class formClass = form.getClass();
+                    Class<?> formClass = form.getClass();
 
                     if (form instanceof BeanValidatorForm) {
                         BeanValidatorForm beanValidatorForm =
@@ -398,7 +400,7 @@ public class FormBeanConfig extends BaseConfig {
                         formClass = beanValidatorForm.getInstance().getClass();
                     }
 
-                    Class configClass =
+                    Class<?> configClass =
                         ClassUtils.getApplicationClass(this.getType());
 
                     if (configClass.isAssignableFrom(formClass)) {
@@ -442,7 +444,7 @@ public class FormBeanConfig extends BaseConfig {
      * @param name Form property name to find a configuration for
      */
     public FormPropertyConfig findFormPropertyConfig(String name) {
-        return ((FormPropertyConfig) formProperties.get(name));
+        return (formProperties.get(name));
     }
 
     /**
@@ -453,7 +455,7 @@ public class FormBeanConfig extends BaseConfig {
         FormPropertyConfig[] results =
             new FormPropertyConfig[formProperties.size()];
 
-        return ((FormPropertyConfig[]) formProperties.values().toArray(results));
+        return (formProperties.values().toArray(results));
     }
 
     /**
@@ -600,7 +602,7 @@ public class FormBeanConfig extends BaseConfig {
      * uses the same algorithm as <code>RequestUtils.applicationClass()</code>
      * but is reproduced to avoid a runtime dependence.
      */
-    protected Class formBeanClass() {
+    protected Class<?> formBeanClass() {
         ClassLoader classLoader =
             Thread.currentThread().getContextClassLoader();
 

@@ -74,8 +74,8 @@ public class ComposableRequestProcessor extends RequestProcessor {
      * <p> Cache for constructor discovered by setActionContextClass method.
      * </p>
      */
-    private static final Class[] SERVLET_ACTION_CONTEXT_CTOR_SIGNATURE =
-        new Class[] {
+    private static final Class<?>[] SERVLET_ACTION_CONTEXT_CTOR_SIGNATURE =
+        {
             ServletContext.class, HttpServletRequest.class,
             HttpServletResponse.class
         };
@@ -113,13 +113,13 @@ public class ComposableRequestProcessor extends RequestProcessor {
      * <p> ActionContext class as cached by createActionContextInstance
      * method. </p>
      */
-    private Class actionContextClass;
+    private Class<ActionContext> actionContextClass;
 
     /**
      * <p> ActionContext constructor as cached by createActionContextInstance
      * method. </p>
      */
-    private Constructor servletActionContextConstructor = null;
+    private Constructor<ActionContext> servletActionContextConstructor = null;
 
     // ---------------------------------------------------------- Public Methods
 
@@ -183,7 +183,7 @@ public class ComposableRequestProcessor extends RequestProcessor {
      *
      * @param actionContextClass The ActionContext class to process
      */
-    private void setActionContextClass(Class actionContextClass) {
+    private void setActionContextClass(Class<ActionContext> actionContextClass) {
         this.actionContextClass = actionContextClass;
 
         if (actionContextClass != null) {
@@ -205,6 +205,7 @@ public class ComposableRequestProcessor extends RequestProcessor {
      * @throws UnavailableException if class does not implement ActionContext
      *                              or is not found
      */
+    @SuppressWarnings("unchecked")
     private void setActionContextClassName(String className)
         throws ServletException {
         if ((className != null) && (className.trim().length() > 0)) {
@@ -215,7 +216,7 @@ public class ComposableRequestProcessor extends RequestProcessor {
             }
 
             try {
-                Class actionContextClass =
+                Class<?> actionContextClass =
                     RequestUtils.applicationClass(className);
 
                 if (!ActionContext.class.isAssignableFrom(actionContextClass)) {
@@ -224,7 +225,7 @@ public class ComposableRequestProcessor extends RequestProcessor {
                         + " must implement ActionContext interface.");
                 }
 
-                this.setActionContextClass(actionContextClass);
+                this.setActionContextClass((Class<ActionContext>) actionContextClass);
             } catch (ClassNotFoundException e) {
                 throw new UnavailableException("ActionContextClass "
                     + className + " not found.");
@@ -343,11 +344,11 @@ public class ComposableRequestProcessor extends RequestProcessor {
 
         try {
             if (this.servletActionContextConstructor == null) {
-                return (ActionContext) this.actionContextClass.newInstance();
+                return this.actionContextClass.newInstance();
             }
 
-            return (ActionContext) this.servletActionContextConstructor
-            .newInstance(new Object[] { servletContext, request, response });
+            return this.servletActionContextConstructor
+            .newInstance(servletContext, request, response);
         } catch (Exception e) {
             throw new ServletException(
                 "Error creating ActionContext instance of type "

@@ -27,6 +27,7 @@ import org.apache.struts.config.FormBeanConfig;
  */
 
 public final class CustomFormBean extends FormBeanConfig {
+    private static final long serialVersionUID = 8581014865319104973L;
 
 
     // --------------------------------------------------- Instance Variables

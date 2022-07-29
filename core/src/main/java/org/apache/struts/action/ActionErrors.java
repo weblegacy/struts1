@@ -43,6 +43,8 @@ import java.io.Serializable;
  *          $
  */
 public class ActionErrors extends ActionMessages implements Serializable {
+    private static final long serialVersionUID = -962678529916763747L;
+
     // --------------------------------------------------------- Public Methods
 
     /**

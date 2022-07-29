@@ -57,7 +57,7 @@ public class MockHttpServletRequest implements HttpServletRequest {
     /**
      * <p> The set of request attributes. </p>
      */
-    protected HashMap attributes = new HashMap();
+    protected HashMap<String, Object> attributes = new HashMap<>();
 
     /**
      * <p> The context path for this request. </p>
@@ -73,7 +73,7 @@ public class MockHttpServletRequest implements HttpServletRequest {
      * <p> The set of arrays of parameter values, keyed by parameter name.
      * </p>
      */
-    protected HashMap parameters = new HashMap();
+    protected HashMap<String, String[]> parameters = new HashMap<>();
 
     /**
      * <p> The extra path information for this request. v     * </p>
@@ -135,7 +135,7 @@ public class MockHttpServletRequest implements HttpServletRequest {
 
     // --------------------------------------------------------- Public Methods
     public void addParameter(String name, String value) {
-        String[] values = (String[]) parameters.get(name);
+        String[] values = parameters.get(name);
 
         if (values == null) {
             String[] results = new String[] { value };
@@ -201,11 +201,11 @@ public class MockHttpServletRequest implements HttpServletRequest {
         throw new UnsupportedOperationException();
     }
 
-    public Enumeration getHeaderNames() {
+    public Enumeration<String> getHeaderNames() {
         throw new UnsupportedOperationException();
     }
 
-    public Enumeration getHeaders(String name) {
+    public Enumeration<String> getHeaders(String name) {
         throw new UnsupportedOperationException();
     }
 
@@ -320,8 +320,8 @@ public class MockHttpServletRequest implements HttpServletRequest {
         return (attributes.get(name));
     }
 
-    public Enumeration getAttributeNames() {
-        return (new MockEnumeration(attributes.keySet().iterator()));
+    public Enumeration<String> getAttributeNames() {
+        return (new MockEnumeration<>(attributes.keySet().iterator()));
     }
 
     public String getCharacterEncoding() {
@@ -344,12 +344,12 @@ public class MockHttpServletRequest implements HttpServletRequest {
         return (locale);
     }
 
-    public Enumeration getLocales() {
+    public Enumeration<Locale> getLocales() {
         throw new UnsupportedOperationException();
     }
 
     public String getParameter(String name) {
-        String[] values = (String[]) parameters.get(name);
+        String[] values = parameters.get(name);
 
         if (values != null) {
             return (values[0]);
@@ -358,16 +358,16 @@ public class MockHttpServletRequest implements HttpServletRequest {
         }
     }
 
-    public Map getParameterMap() {
+    public Map<String, String[]> getParameterMap() {
         return (parameters);
     }
 
-    public Enumeration getParameterNames() {
-        return (new MockEnumeration(parameters.keySet().iterator()));
+    public Enumeration<String> getParameterNames() {
+        return (new MockEnumeration<>(parameters.keySet().iterator()));
     }
 
     public String[] getParameterValues(String name) {
-        return ((String[]) parameters.get(name));
+        return (parameters.get(name));
     }
 
     public String getProtocol() {

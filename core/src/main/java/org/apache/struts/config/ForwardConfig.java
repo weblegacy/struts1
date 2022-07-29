@@ -31,6 +31,8 @@ import java.lang.reflect.InvocationTargetException;
  * @since Struts 1.1
  */
 public class ForwardConfig extends BaseConfig {
+    private static final long serialVersionUID = -3983809829201419914L;
+
     // ------------------------------------------------------------- Properties
 
     /**

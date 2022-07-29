@@ -93,7 +93,7 @@ public class UploadAction extends Action
             boolean writeFile = theForm.getWriteFile();
 
             //retrieve the file size
-            String size = (file.getFileSize() + " bytes");
+            String size = (file.getFileLength() + " bytes");
 
             String data = null;
 
@@ -102,8 +102,8 @@ public class UploadAction extends Action
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 InputStream stream = file.getInputStream();
                 if (!writeFile) {
-                    //only write files out that are less than 1MB
-                    if (file.getFileSize() < (4*1024000)) {
+                    //only write files out that are less than 4MB
+                    if (file.getFileLength() < (4*1024000)) {
 
                         byte[] buffer = new byte[8192];
                         int bytesRead = 0;
@@ -115,7 +115,7 @@ public class UploadAction extends Action
                     else {
                         data = new String("The file is greater than 4MB, " +
                                 " and has not been written to stream." +
-                                " File Size: " + file.getFileSize() + " bytes. This is a" +
+                                " File Size: " + file.getFileLength() + " bytes. This is a" +
                                 " limitation of this particular web application, hard-coded" +
                                 " in org.apache.struts.webapp.upload.UploadAction");
                     }

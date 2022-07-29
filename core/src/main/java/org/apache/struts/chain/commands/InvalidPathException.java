@@ -29,6 +29,8 @@ package org.apache.struts.chain.commands;
  *          $
  */
 public class InvalidPathException extends Exception {
+    private static final long serialVersionUID = 5505779860386626636L;
+
     /**
      * Field for Path property.
      */

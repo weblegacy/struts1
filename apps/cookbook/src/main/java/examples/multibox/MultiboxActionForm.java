@@ -33,6 +33,7 @@ import org.apache.struts.action.ActionMapping;
  * @version $Rev$ $Date$
  */
 public class MultiboxActionForm extends ActionForm {
+    private static final long serialVersionUID = -7784260148584459143L;
 
     // ------------------------------------------------------ Instance Variables
 

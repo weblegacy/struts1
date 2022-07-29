@@ -20,6 +20,7 @@
  */
 package org.apache.struts.dispatcher;
 
+import org.apache.struts.action.Action;
 import org.apache.struts.chain.contexts.ActionContext;
 
 import java.lang.reflect.Method;
@@ -43,22 +44,22 @@ public abstract class AbstractMethodResolver implements MethodResolver {
      *
      * @see #EMPTY_ARGUMENT_TYPES
      */
-    protected static final Object[] EMPTY_ARGUMENTS = new Object[] {};
+    protected static final Object[] EMPTY_ARGUMENTS = {};
 
     /**
      * The type listing used for a method without arguments.
      *
      * @see #EMPTY_ARGUMENTS
      */
-    protected static final Class[] EMPTY_ARGUMENT_TYPES = new Class[] {};
+    protected static final Class<?>[] EMPTY_ARGUMENT_TYPES = {};
 
     /**
      * The argument listing for a method accepting the {@link ActionContext}.
      */
-    private static final Class[] ACTION_CONTEXT_ARGUMENT_TYPES = new Class[] { ActionContext.class };
+    private static final Class<?>[] ACTION_CONTEXT_ARGUMENT_TYPES = { ActionContext.class };
 
     public Object[] buildArguments(ActionContext context, Method method) {
-        Class[] parameterTypes = method.getParameterTypes();
+        Class<?>[] parameterTypes = method.getParameterTypes();
         switch (parameterTypes.length) {
         case 0:
             return EMPTY_ARGUMENTS;
@@ -75,7 +76,7 @@ public abstract class AbstractMethodResolver implements MethodResolver {
     }
 
     public Method resolveMethod(ActionContext context, String methodName) throws NoSuchMethodException {
-        Class actionClass = context.getAction().getClass();
+        Class<? extends Action> actionClass = context.getAction().getClass();
 
         // Does the method accept nothing?
         try {

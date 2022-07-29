@@ -32,6 +32,8 @@ import org.apache.struts.Globals;
  * @since Struts 1.1
  */
 public class MessageResourcesConfig extends BaseConfig {
+    private static final long serialVersionUID = -8689874577436806101L;
+
     // ------------------------------------------------------------- Properties
 
     /**

@@ -60,6 +60,8 @@ import java.util.Map;
  */
 public class BeanValidatorForm extends ValidatorForm implements DynaBean,
     Serializable {
+    private static final long serialVersionUID = 8868458759415227879L;
+
     /**
      * Commons Logging
      */
@@ -171,11 +173,11 @@ public class BeanValidatorForm extends ValidatorForm implements DynaBean,
         }
 
         if (value instanceof Map) {
-            return ((Map) value).size();
+            return ((Map<?, ?>) value).size();
         }
 
         if (value instanceof List) {
-            return ((List) value).size();
+            return ((List<?>) value).size();
         }
 
         if ((value.getClass().isArray())) {

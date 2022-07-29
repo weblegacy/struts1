@@ -85,7 +85,7 @@ public interface MultipartRequestHandler {
      * @return A Hashtable where the keys and values are the names and values
      *         of the request input parameters
      */
-    public Hashtable getTextElements();
+    public Hashtable<String, Object> getTextElements();
 
     /**
      * <p> This method is called on to retrieve all the FormFile input
@@ -95,7 +95,7 @@ public interface MultipartRequestHandler {
      *         the values are FormFile objects
      * @see FormFile
      */
-    public Hashtable getFileElements();
+    public Hashtable<String, Object> getFileElements();
 
     /**
      * <p> This method returns all elements of a multipart request. </p>
@@ -103,7 +103,7 @@ public interface MultipartRequestHandler {
      * @return A Hashtable where the keys are input names and values are
      *         either String arrays or FormFiles
      */
-    public Hashtable getAllElements();
+    public Hashtable<String, Object> getAllElements();
 
     /**
      * <p> This method is called on when there's some sort of problem and the

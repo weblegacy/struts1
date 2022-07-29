@@ -45,7 +45,7 @@ import java.util.HashMap;
 public class MockServletConfig implements ServletConfig {
     // ----------------------------------------------------- Instance Variables
     protected ServletContext context = null;
-    protected HashMap parameters = new HashMap();
+    protected HashMap<String, String> parameters = new HashMap<>();
 
     // ----------------------------------------------------------- Constructors
     public MockServletConfig() {
@@ -68,11 +68,11 @@ public class MockServletConfig implements ServletConfig {
 
     // ------------------------------------------------- ServletContext Methods
     public String getInitParameter(String name) {
-        return ((String) parameters.get(name));
+        return (parameters.get(name));
     }
 
-    public Enumeration getInitParameterNames() {
-        return (new MockEnumeration(parameters.keySet().iterator()));
+    public Enumeration<String> getInitParameterNames() {
+        return (new MockEnumeration<>(parameters.keySet().iterator()));
     }
 
     public ServletContext getServletContext() {

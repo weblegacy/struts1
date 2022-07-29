@@ -27,6 +27,8 @@ package org.apache.struts.action;
  * </p>
  */
 public class InvalidCancelException extends Exception {
+    private static final long serialVersionUID = -7157652180106284134L;
+
     /**
      * <p>Default constructor.</p>
      */

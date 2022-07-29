@@ -73,7 +73,7 @@ public class PrepareLinksAction extends Action {
         HttpServletResponse response)
         throws Exception {
 
-        HashMap parms = new HashMap();
+        HashMap<String, String> parms = new HashMap<>();
         parms.put("color", "Red");
         parms.put("fruit", "Apple");
         parms.put("animal", "Rabbit");

@@ -29,6 +29,8 @@ package org.apache.struts.action;
  *          $
  */
 public class RequestActionMapping extends ActionMapping {
+    private static final long serialVersionUID = -2442537211509475925L;
+
     /**
      * <p>Construct a new instance of this class with the desired default form
      * bean scope.</p>

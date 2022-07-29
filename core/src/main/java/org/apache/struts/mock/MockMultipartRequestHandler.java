@@ -43,7 +43,7 @@ public class MockMultipartRequestHandler implements MultipartRequestHandler {
     private ActionMapping mapping = new ActionMapping();
 
     /** request elements. */
-    private Hashtable elements;
+    private Hashtable<String, Object> elements;
 
     /**
      * Convienience method to set a reference to a mock
@@ -90,10 +90,11 @@ public class MockMultipartRequestHandler implements MultipartRequestHandler {
       * processing the request.
       */
     public void handleRequest(HttpServletRequest request) throws ServletException {
-        elements = new Hashtable();
-        Enumeration enumer = request.getParameterNames();
+        elements = new Hashtable<>();
+        @SuppressWarnings("unchecked")
+        Enumeration<String> enumer = request.getParameterNames();
         while (enumer.hasMoreElements()) {
-            String key = enumer.nextElement().toString();
+            String key = enumer.nextElement();
             elements.put(key, request.getParameter(key));
         }
     }
@@ -105,7 +106,7 @@ public class MockMultipartRequestHandler implements MultipartRequestHandler {
      * @return A Hashtable where the keys and values are the names and
      *  values of the request input parameters
      */
-    public Hashtable getTextElements() {
+    public Hashtable<String, Object> getTextElements() {
         return this.elements;
     }
 
@@ -116,8 +117,8 @@ public class MockMultipartRequestHandler implements MultipartRequestHandler {
      * @return This mock implementation returns an empty
      *    <code>Hashtable</code>
      */
-    public Hashtable getFileElements() {
-        return new Hashtable();
+    public Hashtable<String, Object> getFileElements() {
+        return new Hashtable<>();
     }
 
     /**
@@ -126,8 +127,8 @@ public class MockMultipartRequestHandler implements MultipartRequestHandler {
      *   the keys are input names and values are either Strings
      *   (no FormFile elements)
      */
-    public Hashtable getAllElements() {
-        return this.elements;
+    public Hashtable<String, Object> getAllElements() {
+        return new Hashtable<>(this.elements);
     }
 
     /**

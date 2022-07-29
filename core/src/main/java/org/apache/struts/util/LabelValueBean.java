@@ -36,20 +36,15 @@ import java.util.Comparator;
  * @version $Rev$ $Date: 2005-05-07 12:11:38 -0400 (Sat, 07 May 2005)
  *          $
  */
-public class LabelValueBean implements Comparable, Serializable {
+public class LabelValueBean implements Comparable<LabelValueBean>, Serializable {
+    private static final long serialVersionUID = -4583610486738719417L;
+
     /**
      * Comparator that can be used for a case insensitive sort of
      * <code>LabelValueBean</code> objects.
      */
-    public static final Comparator CASE_INSENSITIVE_ORDER =
-        new Comparator() {
-            public int compare(Object o1, Object o2) {
-                String label1 = ((LabelValueBean) o1).getLabel();
-                String label2 = ((LabelValueBean) o2).getLabel();
-
-                return label1.compareToIgnoreCase(label2);
-            }
-        };
+    public static final Comparator<LabelValueBean> CASE_INSENSITIVE_ORDER =
+        (lvb1, lvb2) -> lvb1.getLabel().compareToIgnoreCase(lvb2.getLabel());
 
     // ------------------------------------------------------------- Properties
 
@@ -107,10 +102,10 @@ public class LabelValueBean implements Comparable, Serializable {
      *
      * @see Comparable
      */
-    public int compareTo(Object o) {
+    public int compareTo(LabelValueBean o) {
         // Implicitly tests for the correct type, throwing
         // ClassCastException as required by interface
-        String otherLabel = ((LabelValueBean) o).getLabel();
+        String otherLabel = o.getLabel();
 
         return this.getLabel().compareTo(otherLabel);
     }

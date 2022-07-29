@@ -59,6 +59,8 @@ import java.io.Serializable;
  *          $
  */
 public abstract class ActionForm implements Serializable {
+    private static final long serialVersionUID = -7986260744524429895L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**

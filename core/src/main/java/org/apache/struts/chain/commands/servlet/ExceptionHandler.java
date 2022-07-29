@@ -20,8 +20,6 @@
  */
 package org.apache.struts.chain.commands.servlet;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.chain.commands.AbstractExceptionHandler;
@@ -44,7 +42,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ExceptionHandler extends AbstractExceptionHandler {
     // ------------------------------------------------------ Instance Variables
-    private static final Log log = LogFactory.getLog(ExceptionHandler.class);
+//  private static final Log log = LogFactory.getLog(ExceptionHandler.class);
 
     // ------------------------------------------------------- Protected Methods
     protected ForwardConfig handle(ActionContext context, Exception exception,

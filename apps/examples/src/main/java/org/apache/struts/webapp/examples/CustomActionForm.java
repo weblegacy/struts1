@@ -32,6 +32,7 @@ import org.apache.struts.action.*;
  */
 
 public final class CustomActionForm extends ActionForm {
+    private static final long serialVersionUID = -4725966970767399920L;
 
 
     // --------------------------------------------------- Instance Variables

@@ -29,6 +29,8 @@ package org.apache.struts.action;
  *          $
  */
 public class SessionActionMapping extends ActionMapping {
+    private static final long serialVersionUID = 8077946671068938742L;
+
     /**
      * <p>Construct a new instance of this class with the desired default form
      * bean scope.</p>

@@ -64,7 +64,7 @@ public interface ActionContext extends Context {
      *
      * @return A Map of "application scope" attributes.
      */
-    Map getApplicationScope();
+    Map<String, Object> getApplicationScope();
 
     /**
      * <p>Return a <code>Map</code> of Session scoped values.  A session is
@@ -79,7 +79,7 @@ public interface ActionContext extends Context {
      *
      * @return A Map of "session scope" attributes.
      */
-    Map getSessionScope();
+    Map<String, Object> getSessionScope();
 
     /**
      * <p>Return a <code>Map</code> of request scoped values.  A request is
@@ -95,7 +95,7 @@ public interface ActionContext extends Context {
      *
      * @return a Map of "request scope" attributes.
      */
-    Map getRequestScope();
+    Map<String, Object> getRequestScope();
 
     /**
      * Return the Map representing the scope identified by
@@ -109,7 +109,7 @@ public interface ActionContext extends Context {
      *                  <code>REQUEST_SCOPE</code>.
      * @return A Map of attributes for the specified scope.
      */
-    Map getScope(String scopeName);
+    Map<String, Object> getScope(String scopeName);
 
     /**
      * <p>Return a <code>Map</code> of parameters submitted by the user as
@@ -123,7 +123,7 @@ public interface ActionContext extends Context {
      *
      * @return A map of the request parameter attributes
      */
-    Map getParameterMap();
+    Map<String, String[]> getParameterMap();
 
     // -------------------------------
     // General Struts properties

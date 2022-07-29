@@ -85,14 +85,14 @@ public final class EditTypeAction extends Action {
         log.debug("initFromBeans");
 
         // Initialize
-        ArrayList satisfactionList = new ArrayList();
+        ArrayList<LabelValueBean> satisfactionList = new ArrayList<>();
         satisfactionList.add(new LabelValueBean("Very Satisfied", "4"));
         satisfactionList.add(new LabelValueBean("Satisfied", "3"));
         satisfactionList.add(new LabelValueBean("Not Very Satisfied", "2"));
         satisfactionList.add(new LabelValueBean("Not Satisfied", "1"));
         request.setAttribute("satisfactionList", satisfactionList);
 
-        ArrayList osTypes = new ArrayList();
+        ArrayList<LabelValueBean> osTypes = new ArrayList<>();
         osTypes.add(new LabelValueBean("Mac OsX", "OsX"));
         osTypes.add(new LabelValueBean("Windows 95/98/Me", "Win32"));
         osTypes.add(new LabelValueBean("Windows NT/2000/XP/2003", "WinNT"));
@@ -100,7 +100,7 @@ public final class EditTypeAction extends Action {
         osTypes.add(new LabelValueBean("BSD NetBSD/FreeBSD/OpenBSD", "BSD"));
         request.setAttribute("osTypes", osTypes);
 
-        ArrayList languageTypes = new ArrayList();
+        ArrayList<LabelValueBean> languageTypes = new ArrayList<>();
         languageTypes.add(new LabelValueBean("C++", "C++"));
         languageTypes.add(new LabelValueBean("C#", "C#"));
         languageTypes.add(new LabelValueBean("Java", "java"));

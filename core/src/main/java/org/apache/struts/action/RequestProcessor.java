@@ -41,7 +41,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Locale;
 
 /**
@@ -84,7 +83,7 @@ public class RequestProcessor {
      * initialized, keyed by the fully qualified Java class name of the
      * <code>Action</code> class.</p>
      */
-    protected HashMap actions = new HashMap();
+    protected HashMap<String, Action> actions = new HashMap<>();
 
     /**
      * <p>The <code>ModuleConfiguration</code> with which we are
@@ -104,11 +103,7 @@ public class RequestProcessor {
      */
     public void destroy() {
         synchronized (this.actions) {
-            Iterator actions = this.actions.values().iterator();
-
-            while (actions.hasNext()) {
-                Action action = (Action) actions.next();
-
+            for (Action action : this.actions.values()) {
                 action.setServlet(null);
             }
 
@@ -262,7 +257,7 @@ public class RequestProcessor {
 
         synchronized (actions) {
             // Return any existing Action instance of this class
-            instance = (Action) actions.get(className);
+            instance = actions.get(className);
 
             if (instance != null) {
                 if (log.isTraceEnabled()) {

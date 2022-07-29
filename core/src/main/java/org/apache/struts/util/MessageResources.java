@@ -49,6 +49,8 @@ import java.util.Locale;
  *          $
  */
 public abstract class MessageResources implements Serializable {
+    private static final long serialVersionUID = -3823833250965010653L;
+
     // ------------------------------------------------------------- Properties
 
     /**
@@ -83,7 +85,7 @@ public abstract class MessageResources implements Serializable {
      * The set of previously created MessageFormat objects, keyed by the key
      * computed in <code>messageKey()</code>.
      */
-    protected HashMap formats = new HashMap();
+    protected HashMap<String, MessageFormat> formats = new HashMap<>();
 
     /**
      * Indicate is a <code>null</code> is returned instead of an error message
@@ -293,7 +295,7 @@ public abstract class MessageResources implements Serializable {
         String formatKey = messageKey(locale, key);
 
         synchronized (formats) {
-            format = (MessageFormat) formats.get(formatKey);
+            format = formats.get(formatKey);
 
             if (format == null) {
                 String formatString = getMessage(locale, key);

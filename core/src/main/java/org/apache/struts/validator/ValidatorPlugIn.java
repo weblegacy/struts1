@@ -74,10 +74,10 @@ public class ValidatorPlugIn implements PlugIn {
     public final static String STOP_ON_ERROR_KEY =
         "org.apache.struts.validator.STOP_ON_ERROR";
 
-    /**
+    /*
      * The module configuration for our owning module.
      */
-    private ModuleConfig config = null;
+//   private ModuleConfig config = null;
 
     /**
      * The {@link ActionServlet} owning this application.
@@ -158,7 +158,7 @@ public class ValidatorPlugIn implements PlugIn {
         throws ServletException {
 
         // Remember our associated configuration and servlet
-        this.config = config;
+//      this.config = config;
         this.servlet = servlet;
 
         // Verify only one instance of the plugin is loaded per module
@@ -193,7 +193,7 @@ public class ValidatorPlugIn implements PlugIn {
         }
 
         servlet = null;
-        config = null;
+//      config = null;
 
         destroyResources();
     }
@@ -212,7 +212,7 @@ public class ValidatorPlugIn implements PlugIn {
 
         StringTokenizer st = new StringTokenizer(pathnames, RESOURCE_DELIM);
 
-        List urlList = new ArrayList();
+        List<URL> urlList = new ArrayList<>();
 
         try {
             while (st.hasMoreTokens()) {
@@ -241,12 +241,7 @@ public class ValidatorPlugIn implements PlugIn {
                 }
             }
 
-            int urlSize = urlList.size();
-            URL[] urlArray = new URL[urlSize];
-
-            for (int urlIndex = 0; urlIndex < urlSize; urlIndex++) {
-                urlArray[urlIndex] = (URL) urlList.get(urlIndex);
-            }
+            URL[] urlArray = urlList.toArray(new URL[0]);
 
             this.resources = new ValidatorResources(urlArray);
         } catch (SAXException sex) {

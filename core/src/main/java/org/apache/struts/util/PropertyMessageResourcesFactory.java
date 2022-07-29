@@ -29,6 +29,8 @@ package org.apache.struts.util;
  * @version $Rev$ $Date$
  */
 public class PropertyMessageResourcesFactory extends MessageResourcesFactory {
+    private static final long serialVersionUID = 5604114512308758549L;
+
     // --------------------------------------------------------- Public Methods
 
     /**

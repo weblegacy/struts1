@@ -57,6 +57,8 @@ import java.util.TreeMap;
  */
 public class ModuleConfigImpl extends BaseConfig implements Serializable,
     ModuleConfig {
+    private static final long serialVersionUID = -828038539996220003L;
+
     /**
      * <p>Commons Logging instance. </p>
      */
@@ -69,49 +71,49 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
      * <p>The set of action configurations for this module, if any, keyed by
      * the <code>path</code> property.</p>
      */
-    protected Map actionConfigs = null;
+    protected Map<String, ActionConfig> actionConfigs = null;
 
     /**
      * <p>The set of action configuration for this module, if any, keyed by
      * the <code>actionId</code> property.</p>
      */
-    protected HashMap actionConfigIds = null;
+    protected HashMap<String, ActionConfig> actionConfigIds = null;
 
     /**
      * <p>The set of action configurations for this module, if any, listed in
      * the order in which they are added.</p>
      */
-    protected List actionConfigList = null;
+    protected List<ActionConfig> actionConfigList = null;
 
     /**
      * <p>The set of exception handling configurations for this module, if
      * any, keyed by the <code>type</code> property.</p>
      */
-    protected HashMap exceptions = null;
+    protected HashMap<String, ExceptionConfig> exceptions = null;
 
     /**
      * <p>The set of form bean configurations for this module, if any, keyed
      * by the <code>name</code> property.</p>
      */
-    protected HashMap formBeans = null;
+    protected HashMap<String, FormBeanConfig> formBeans = null;
 
     /**
      * <p>The set of global forward configurations for this module, if any,
      * keyed by the <code>name</code> property.</p>
      */
-    protected HashMap forwards = null;
+    protected HashMap<String, ForwardConfig> forwards = null;
 
     /**
      * <p>The set of message resources configurations for this module, if any,
      * keyed by the <code>key</code> property.</p>
      */
-    protected HashMap messageResources = null;
+    protected HashMap<String, MessageResourcesConfig> messageResources = null;
 
     /**
      * <p>The set of configured plug-in Actions for this module, if any, in
      * the order they were declared and configured.</p>
      */
-    protected ArrayList plugIns = null;
+    protected ArrayList<PlugInConfig> plugIns = null;
 
     /**
      * <p>The controller configuration object for this module.</p>
@@ -171,19 +173,19 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
     public ModuleConfigImpl(String prefix) {
         super();
         this.prefix = prefix;
-        this.actionConfigs = new HashMap();
-        this.actionConfigIds = new HashMap();
-        this.actionConfigList = new ArrayList();
+        this.actionConfigs = new HashMap<>();
+        this.actionConfigIds = new HashMap<>();
+        this.actionConfigList = new ArrayList<>();
         this.actionFormBeanClass = "org.apache.struts.action.ActionFormBean";
         this.actionMappingClass = "org.apache.struts.action.ActionMapping";
         this.actionForwardClass = "org.apache.struts.action.ActionForward";
         this.configured = false;
         this.controllerConfig = null;
-        this.exceptions = new HashMap();
-        this.formBeans = new HashMap();
-        this.forwards = new HashMap();
-        this.messageResources = new HashMap();
-        this.plugIns = new ArrayList();
+        this.exceptions = new HashMap<>();
+        this.formBeans = new HashMap<>();
+        this.forwards = new HashMap<>();
+        this.messageResources = new HashMap<>();
+        this.plugIns = new ArrayList<>();
     }
 
     // --------------------------------------------------------- Public Methods
@@ -298,7 +300,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
         if ((actionId != null) && !actionId.equals("")) {
             if (actionConfigIds.containsKey(actionId)) {
                 if (log.isWarnEnabled()) {
-                    ActionConfig otherConfig = (ActionConfig) actionConfigIds.get(actionId);
+                    ActionConfig otherConfig = actionConfigIds.get(actionId);
                     StringBuffer msg = new StringBuffer("Overriding actionId[");
                     msg.append(actionId);
                     msg.append("] for path[");
@@ -434,7 +436,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
      * @param path Path of the action configuration to return
      */
     public ActionConfig findActionConfig(String path) {
-        ActionConfig config = (ActionConfig) actionConfigs.get(path);
+        ActionConfig config = actionConfigs.get(path);
 
         // If a direct match cannot be found, try to match action configs
         // containing wildcard patterns only if a matcher exists.
@@ -456,7 +458,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
      */
     public ActionConfig findActionConfigId(String actionId) {
         if (actionId != null) {
-            return (ActionConfig) this.actionConfigIds.get(actionId);
+            return this.actionConfigIds.get(actionId);
         }
         return null;
     }
@@ -468,7 +470,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
     public ActionConfig[] findActionConfigs() {
         ActionConfig[] results = new ActionConfig[actionConfigList.size()];
 
-        return ((ActionConfig[]) actionConfigList.toArray(results));
+        return (actionConfigList.toArray(results));
     }
 
     /**
@@ -478,7 +480,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
      * @param type Exception class name to find a configuration for
      */
     public ExceptionConfig findExceptionConfig(String type) {
-        return ((ExceptionConfig) exceptions.get(type));
+        return (exceptions.get(type));
     }
 
     /**
@@ -497,7 +499,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
      * @param type Exception class for which to find a handler
      * @since Struts 1.3.0
      */
-    public ExceptionConfig findException(Class type) {
+    public ExceptionConfig findException(Class<?> type) {
         // Check through the entire superclass hierarchy as needed
         ExceptionConfig config = null;
 
@@ -530,7 +532,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
     public ExceptionConfig[] findExceptionConfigs() {
         ExceptionConfig[] results = new ExceptionConfig[exceptions.size()];
 
-        return ((ExceptionConfig[]) exceptions.values().toArray(results));
+        return (exceptions.values().toArray(results));
     }
 
     /**
@@ -540,7 +542,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
      * @param name Name of the form bean configuration to return
      */
     public FormBeanConfig findFormBeanConfig(String name) {
-        return ((FormBeanConfig) formBeans.get(name));
+        return (formBeans.get(name));
     }
 
     /**
@@ -550,7 +552,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
     public FormBeanConfig[] findFormBeanConfigs() {
         FormBeanConfig[] results = new FormBeanConfig[formBeans.size()];
 
-        return ((FormBeanConfig[]) formBeans.values().toArray(results));
+        return (formBeans.values().toArray(results));
     }
 
     /**
@@ -560,7 +562,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
      * @param name Name of the forward configuration to return
      */
     public ForwardConfig findForwardConfig(String name) {
-        return ((ForwardConfig) forwards.get(name));
+        return (forwards.get(name));
     }
 
     /**
@@ -570,7 +572,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
     public ForwardConfig[] findForwardConfigs() {
         ForwardConfig[] results = new ForwardConfig[forwards.size()];
 
-        return ((ForwardConfig[]) forwards.values().toArray(results));
+        return (forwards.values().toArray(results));
     }
 
     /**
@@ -580,7 +582,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
      * @param key Key of the data source configuration to return
      */
     public MessageResourcesConfig findMessageResourcesConfig(String key) {
-        return ((MessageResourcesConfig) messageResources.get(key));
+        return (messageResources.get(key));
     }
 
     /**
@@ -591,7 +593,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
         MessageResourcesConfig[] results =
             new MessageResourcesConfig[messageResources.size()];
 
-        return ((MessageResourcesConfig[]) messageResources.values().toArray(results));
+        return (messageResources.values().toArray(results));
     }
 
     /**
@@ -601,7 +603,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
     public PlugInConfig[] findPlugInConfigs() {
         PlugInConfig[] results = new PlugInConfig[plugIns.size()];
 
-        return ((PlugInConfig[]) plugIns.toArray(results));
+        return (plugIns.toArray(results));
     }
 
     /**
@@ -720,11 +722,11 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
         super.setProperty(key, value);
 
         if (Constants.STRUTS_URL_CASESENSITIVE.equals(key)) {
-            Map actionConfigs2;
+            Map<String, ActionConfig> actionConfigs2;
             if (!Boolean.valueOf(value).booleanValue()) {
-                actionConfigs2 = new TreeMap(String.CASE_INSENSITIVE_ORDER);
+                actionConfigs2 = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
             } else {
-                actionConfigs2 = new HashMap();
+                actionConfigs2 = new HashMap<>();
             }
             actionConfigs2.putAll(actionConfigs);
             actionConfigs = actionConfigs2;

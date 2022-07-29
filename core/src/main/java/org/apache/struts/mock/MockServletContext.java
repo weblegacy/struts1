@@ -57,7 +57,7 @@ public class MockServletContext implements ServletContext {
     /**
      * <p> The set of servlet context attributes. </p>
      */
-    protected HashMap attributes = new HashMap();
+    protected HashMap<String, Object> attributes = new HashMap<>();
 
     /**
      * <p> Default destination for <code>LOG()</code> output. </p>
@@ -67,7 +67,7 @@ public class MockServletContext implements ServletContext {
     /**
      * <p> The set of context initialization parameters. </p>
      */
-    protected HashMap parameters = new HashMap();
+    protected HashMap<String, String> parameters = new HashMap<>();
 
     // --------------------------------------------------------- Public Methods
     public void addInitParameter(String name, String value) {
@@ -83,8 +83,8 @@ public class MockServletContext implements ServletContext {
         return (attributes.get(name));
     }
 
-    public Enumeration getAttributeNames() {
-        return (new MockEnumeration(attributes.keySet().iterator()));
+    public Enumeration<String> getAttributeNames() {
+        return (new MockEnumeration<>(attributes.keySet().iterator()));
     }
 
     public ServletContext getContext(String uripath) {
@@ -92,11 +92,11 @@ public class MockServletContext implements ServletContext {
     }
 
     public String getInitParameter(String name) {
-        return ((String) parameters.get(name));
+        return (parameters.get(name));
     }
 
-    public Enumeration getInitParameterNames() {
-        return (new MockEnumeration(parameters.keySet().iterator()));
+    public Enumeration<String> getInitParameterNames() {
+        return (new MockEnumeration<>(parameters.keySet().iterator()));
     }
 
     public int getMajorVersion() {
@@ -135,7 +135,7 @@ public class MockServletContext implements ServletContext {
         //throw new UnsupportedOperationException();
     }
 
-    public Set getResourcePaths(String path) {
+    public Set<String> getResourcePaths(String path) {
         throw new UnsupportedOperationException();
     }
 
@@ -151,11 +151,11 @@ public class MockServletContext implements ServletContext {
         return (getServerInfo());
     }
 
-    public Enumeration getServletNames() {
+    public Enumeration<String> getServletNames() {
         throw new UnsupportedOperationException();
     }
 
-    public Enumeration getServlets() {
+    public Enumeration<Servlet> getServlets() {
         throw new UnsupportedOperationException();
     }
 

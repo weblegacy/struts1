@@ -27,7 +27,6 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Locale;
 import java.util.Properties;
 
@@ -115,6 +114,7 @@ import java.util.Properties;
  * @version $Rev$ $Date$
  */
 public class PropertyMessageResources extends MessageResources {
+    private static final long serialVersionUID = 6110925527101249875L;
 
 
     /** Indicates compatibility with how PropertyMessageResources has always looked up messages */
@@ -138,13 +138,13 @@ public class PropertyMessageResources extends MessageResources {
      * The set of locale keys for which we have already loaded messages, keyed
      * by the value calculated in <code>localeKey()</code>.
      */
-    protected HashMap locales = new HashMap();
+    protected HashMap<String, String> locales = new HashMap<>();
 
     /**
      * The cache of messages we have accumulated over time, keyed by the value
      * calculated in <code>messageKey()</code>.
      */
-    protected HashMap messages = new HashMap();
+    protected HashMap<String, String> messages = new HashMap<>();
 
     /**
      * Compatibility mode that PropertyMessageResources is operating in.
@@ -360,10 +360,8 @@ public class PropertyMessageResources extends MessageResources {
         }
 
         synchronized (messages) {
-            Iterator names = props.keySet().iterator();
-
-            while (names.hasNext()) {
-                String key = (String) names.next();
+            for (Object oKey : props.keySet()) {
+                String key = oKey.toString();
 
                 if (log.isTraceEnabled()) {
                     log.trace("  Saving message key '"
@@ -394,7 +392,7 @@ public class PropertyMessageResources extends MessageResources {
 
         // Initialize variables we will require
         String localeKey = localeKey(locale);
-        String messageKey = null;
+//      String messageKey = null;
         String message = null;
         int underscore = 0;
 

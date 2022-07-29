@@ -26,9 +26,9 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.commons.validator.Field;
 import org.apache.commons.validator.GenericTypeValidator;
 import org.apache.commons.validator.GenericValidator;
-import org.apache.commons.validator.UrlValidator;
 import org.apache.commons.validator.Validator;
 import org.apache.commons.validator.ValidatorAction;
+import org.apache.commons.validator.routines.UrlValidator;
 import org.apache.commons.validator.util.ValidatorUtils;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
@@ -51,6 +51,8 @@ import java.util.StringTokenizer;
  * @since Struts 1.1
  */
 public class FieldChecks implements Serializable {
+    private static final long serialVersionUID = 6466045187316462715L;
+
     /**
      * Commons Logging instance.
      */
@@ -96,7 +98,7 @@ public class FieldChecks implements Serializable {
             return ((String[]) value).length > 0 ? value.toString() : "";
 
         } else if (value instanceof Collection) {
-            return ((Collection) value).isEmpty() ? "" : value.toString();
+            return ((Collection<?>) value).isEmpty() ? "" : value.toString();
 
         } else {
             return value.toString();
@@ -1365,7 +1367,7 @@ public class FieldChecks implements Serializable {
             Resources.getVarValue("allowallschemes", field, validator, request,
                 false);
         boolean allowallschemes = "true".equalsIgnoreCase(allowallschemesVar);
-        int options = allowallschemes ? UrlValidator.ALLOW_ALL_SCHEMES : 0;
+        long options = allowallschemes ? UrlValidator.ALLOW_ALL_SCHEMES : 0;
 
         String allow2slashesVar =
             Resources.getVarValue("allow2slashes", field, validator, request,

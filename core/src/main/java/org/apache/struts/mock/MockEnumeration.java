@@ -30,10 +30,10 @@ import java.util.Iterator;
  * @version $Rev$ $Date: 2005-05-07 12:11:38 -0400 (Sat, 07 May 2005)
  *          $
  */
-public class MockEnumeration implements Enumeration {
-    protected Iterator iterator;
+public class MockEnumeration<E> implements Enumeration<E> {
+    protected Iterator<E> iterator;
 
-    public MockEnumeration(Iterator iterator) {
+    public MockEnumeration(Iterator<E> iterator) {
         this.iterator = iterator;
     }
 
@@ -41,7 +41,7 @@ public class MockEnumeration implements Enumeration {
         return (iterator.hasNext());
     }
 
-    public Object nextElement() {
+    public E nextElement() {
         return (iterator.next());
     }
 }

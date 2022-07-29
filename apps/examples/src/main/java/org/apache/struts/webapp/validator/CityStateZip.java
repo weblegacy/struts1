@@ -28,6 +28,7 @@ package org.apache.struts.webapp.validator;
  *
 */
 public class CityStateZip implements java.io.Serializable {
+    private static final long serialVersionUID = -4168043409871895808L;
 
     private String sCity = null;
     private String sStateProv = null;

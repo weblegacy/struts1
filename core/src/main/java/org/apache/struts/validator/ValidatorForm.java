@@ -55,6 +55,8 @@ import java.util.Map;
  * @since Struts 1.1
  */
 public class ValidatorForm extends ActionForm implements Serializable {
+    private static final long serialVersionUID = -1746256002332063637L;
+
     /**
      * Commons Logging instance.
      */
@@ -181,7 +183,7 @@ public class ValidatorForm extends ActionForm implements Serializable {
      *
      * @return <code>Map</code> of non-null values
      */
-    public Map getResultValueMap() {
+    public Map<String, Object> getResultValueMap() {
         return ((validatorResults != null)
         ? validatorResults.getResultValueMap() : null);
     }

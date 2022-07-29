@@ -29,22 +29,17 @@ import org.apache.commons.validator.util.ValidatorUtils;
 
 import antlr.TokenBuffer;
 import antlr.TokenStreamException;
-import antlr.TokenStreamIOException;
-import antlr.ANTLRException;
-import antlr.LLkParser;
 import antlr.Token;
 import antlr.TokenStream;
 import antlr.RecognitionException;
 import antlr.NoViableAltException;
-import antlr.MismatchedTokenException;
-import antlr.SemanticException;
 import antlr.ParserSharedInputState;
 import antlr.collections.impl.BitSet;
 
 public class ValidWhenParser extends antlr.LLkParser       implements ValidWhenParserTokenTypes
  {
 
-    Stack argStack = new Stack();
+    Stack<Object> argStack = new Stack<>();
     Object form;
     int index;
     String value;

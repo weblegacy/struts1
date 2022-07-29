@@ -30,6 +30,7 @@ import java.io.Serializable;
  * @version $Rev$ $Date$
  */
 public class NestedBean implements Serializable {
+    private static final long serialVersionUID = 3815357718640563128L;
 
     // ------------------------------------------------------ Instance Variables
 

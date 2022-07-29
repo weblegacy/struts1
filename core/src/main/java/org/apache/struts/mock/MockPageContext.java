@@ -58,7 +58,7 @@ import java.util.HashMap;
 public class MockPageContext extends PageContext {
     // ----------------------------------------------------- Instance Variables
     protected ServletContext application = null;
-    protected HashMap attributes = new HashMap(); // Page scope attributes
+    protected HashMap<String, Object> attributes = new HashMap<>(); // Page scope attributes
     protected ServletConfig config = null;
     protected ServletRequest request = null;
     protected ServletResponse response = null;
@@ -171,27 +171,28 @@ public class MockPageContext extends PageContext {
         }
     }
 
-    public Enumeration getAttributeNamesInScope(int scope) {
+    @SuppressWarnings("unchecked")
+    public Enumeration<String> getAttributeNamesInScope(int scope) {
         if (scope == PageContext.PAGE_SCOPE) {
-            return (new MockEnumeration(attributes.keySet().iterator()));
+            return (new MockEnumeration<>(attributes.keySet().iterator()));
         } else if (scope == PageContext.REQUEST_SCOPE) {
             if (request != null) {
                 return (request.getAttributeNames());
             }
 
-            return (new MockEnumeration(Collections.EMPTY_LIST.iterator()));
+            return (new MockEnumeration<>(Collections.emptyListIterator()));
         } else if (scope == PageContext.SESSION_SCOPE) {
             if (session != null) {
                 return (session.getAttributeNames());
             }
 
-            return (new MockEnumeration(Collections.EMPTY_LIST.iterator()));
+            return (new MockEnumeration<>(Collections.emptyListIterator()));
         } else if (scope == PageContext.APPLICATION_SCOPE) {
             if (application != null) {
                 return (application.getAttributeNames());
             }
 
-            return new MockEnumeration(Collections.EMPTY_LIST.iterator());
+            return new MockEnumeration<>(Collections.emptyListIterator());
         } else {
             throw new IllegalArgumentException("Invalid scope " + scope);
         }

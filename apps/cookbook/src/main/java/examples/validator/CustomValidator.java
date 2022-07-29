@@ -25,6 +25,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.validator.Field;
 import org.apache.commons.validator.GenericValidator;
+import org.apache.commons.validator.Validator;
 import org.apache.commons.validator.ValidatorAction;
 import org.apache.commons.validator.util.ValidatorUtils;
 import org.apache.struts.action.ActionMessages;
@@ -59,6 +60,7 @@ public class CustomValidator {
         ValidatorAction va,
         Field field,
         ActionMessages errors,
+        Validator validator,
         HttpServletRequest request) {
 
         String value =
@@ -71,14 +73,14 @@ public class CustomValidator {
                 if (!value.equals(value2)) {
                     errors.add(
                         field.getKey(),
-                        Resources.getActionMessage(request, va, field));
+                        Resources.getActionMessage(validator, request, va, field));
 
                     return false;
                 }
             } catch (Exception e) {
                 errors.add(
                     field.getKey(),
-                    Resources.getActionMessage(request, va, field));
+                    Resources.getActionMessage(validator, request, va, field));
                 return false;
             }
         }

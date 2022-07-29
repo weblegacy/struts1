@@ -46,13 +46,15 @@ import java.io.Serializable;
  *          $
  */
 public abstract class MessageResourcesFactory implements Serializable {
+    private static final long serialVersionUID = 4038049321455270344L;
+
     // ------------------------------------------------------ Static Properties
 
     /**
      * The Java class to be used for <code>MessageResourcesFactory</code>
      * instances.
      */
-    protected static transient Class clazz = null;
+    protected static transient Class<MessageResourcesFactory> clazz = null;
 
     /**
      * Commons Logging instance.
@@ -160,15 +162,15 @@ public abstract class MessageResourcesFactory implements Serializable {
      * <code>MessageResources</code> instances.  If no such factory can be
      * created, return <code>null</code> instead.
      */
+    @SuppressWarnings("unchecked")
     public static MessageResourcesFactory createFactory() {
         // Construct a new instance of the specified factory class
         try {
             if (clazz == null) {
-                clazz = RequestUtils.applicationClass(factoryClass);
+                clazz = (Class<MessageResourcesFactory>) RequestUtils.applicationClass(factoryClass);
             }
 
-            MessageResourcesFactory factory =
-                (MessageResourcesFactory) clazz.newInstance();
+            MessageResourcesFactory factory = clazz.newInstance();
 
             return (factory);
         } catch (Throwable t) {

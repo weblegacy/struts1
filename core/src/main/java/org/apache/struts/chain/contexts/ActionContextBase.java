@@ -164,13 +164,13 @@ public abstract class ActionContextBase extends ContextWrapper
         this.token = null;
     }
 
-    public abstract Map getApplicationScope();
+    public abstract Map<String, Object> getApplicationScope();
 
-    public abstract Map getRequestScope();
+    public abstract Map<String, Object> getRequestScope();
 
-    public abstract Map getSessionScope();
+    public abstract Map<String, Object> getSessionScope();
 
-    public Map getScope(String scopeName) {
+    public Map<String, Object> getScope(String scopeName) {
         if (REQUEST_SCOPE.equals(scopeName)) {
             return this.getRequestScope();
         }
@@ -336,7 +336,7 @@ public abstract class ActionContextBase extends ContextWrapper
      */
     public void saveActionMessages(String scopeId, String key,
         ActionMessages messages) {
-        Map scope = getScope(scopeId);
+        Map<String, Object> scope = getScope(scopeId);
 
         if ((messages == null) || messages.isEmpty()) {
             scope.remove(key);
@@ -519,7 +519,7 @@ public abstract class ActionContextBase extends ContextWrapper
     public ActionForm findOrCreateActionForm(String formName, String scopeName,
         ModuleConfig moduleConfig)
         throws IllegalAccessException, InstantiationException {
-        Map scope = this.getScope(scopeName);
+        Map<String, Object> scope = this.getScope(scopeName);
 
         ActionForm instance;
         FormBeanConfig formBeanConfig =

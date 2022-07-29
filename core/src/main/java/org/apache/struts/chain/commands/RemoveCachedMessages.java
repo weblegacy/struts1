@@ -49,7 +49,7 @@ public class RemoveCachedMessages extends ActionCommandBase {
         throws Exception {
 
         // Get session scope
-        Map session = actionCtx.getSessionScope();
+        Map<String, Object> session = actionCtx.getSessionScope();
 
         // Remove messages as needed
         removeAccessedMessages(session, Globals.MESSAGE_KEY);
@@ -68,7 +68,7 @@ public class RemoveCachedMessages extends ActionCommandBase {
      * @param scope The scope to check for messages in.
      * @param key The key the messages are stored under.
      */
-    private void removeAccessedMessages(Map scope, String key) {
+    private void removeAccessedMessages(Map<String, Object> scope, String key) {
         ActionMessages messages = (ActionMessages)scope.get(key);
         if (messages != null && messages.isAccessed()) {
             scope.remove(key);

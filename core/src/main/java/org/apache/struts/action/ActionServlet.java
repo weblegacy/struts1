@@ -70,11 +70,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.Iterator;
 import java.util.List;
 import java.util.MissingResourceException;
 
@@ -202,6 +200,8 @@ import java.util.MissingResourceException;
  *          $
  */
 public class ActionServlet extends HttpServlet {
+    private static final long serialVersionUID = -5339416153175280044L;
+
     /**
      * <p>Commons Logging instance.</p>
      *
@@ -364,7 +364,7 @@ public class ActionServlet extends HttpServlet {
             postProcessConfig(moduleConfig);
             moduleConfig.freeze();
 
-            Enumeration names = getServletConfig().getInitParameterNames();
+            Enumeration<?> names = getServletConfig().getInitParameterNames();
 
             while (names.hasMoreElements()) {
                 String name = (String) names.nextElement();
@@ -416,9 +416,9 @@ public class ActionServlet extends HttpServlet {
      * @since Struts 1.2
      */
     protected void initModulePrefixes(ServletContext context) {
-        ArrayList prefixList = new ArrayList();
+        ArrayList<String> prefixList = new ArrayList<>();
 
-        Enumeration names = context.getAttributeNames();
+        Enumeration<?> names = context.getAttributeNames();
 
         while (names.hasMoreElements()) {
             String name = (String) names.nextElement();
@@ -511,17 +511,14 @@ public class ActionServlet extends HttpServlet {
      * @since Struts 1.1
      */
     protected void destroyModules() {
-        ArrayList values = new ArrayList();
-        Enumeration names = getServletContext().getAttributeNames();
+        ArrayList<String> values = new ArrayList<>();
+        Enumeration<?> names = getServletContext().getAttributeNames();
 
         while (names.hasMoreElements()) {
-            values.add(names.nextElement());
+            values.add((String)names.nextElement());
         }
 
-        Iterator keys = values.iterator();
-
-        while (keys.hasNext()) {
-            String name = (String) keys.next();
+        for (String name : values) {
             Object value = getServletContext().getAttribute(name);
 
             if (!(value instanceof ModuleConfig)) {
@@ -694,11 +691,9 @@ public class ActionServlet extends HttpServlet {
         // Configure the Digester instance we will use
         Digester digester = initConfigDigester();
 
-        List urls = splitAndResolvePaths(paths);
-        URL url;
+        List<URL> urls = splitAndResolvePaths(paths);
 
-        for (Iterator i = urls.iterator(); i.hasNext();) {
-            url = (URL) i.next();
+        for (URL url : urls) {
             digester.push(config);
             this.parseModuleConfigFile(digester, url);
         }
@@ -722,11 +717,11 @@ public class ActionServlet extends HttpServlet {
     protected void parseModuleConfigFile(Digester digester, String path)
         throws UnavailableException {
         try {
-            List paths = splitAndResolvePaths(path);
+            List<URL> paths = splitAndResolvePaths(path);
 
             if (paths.size() > 0) {
                 // Get first path as was the old behavior
-                URL url = (URL) paths.get(0);
+                URL url = paths.get(0);
 
                 parseModuleConfigFile(digester, url);
             } else {
@@ -1730,11 +1725,9 @@ public class ActionServlet extends HttpServlet {
             }
 
             ConfigParser parser = new ConfigParser();
-            List urls = splitAndResolvePaths(chainConfig);
-            URL resource;
+            List<URL> urls = splitAndResolvePaths(chainConfig);
 
-            for (Iterator i = urls.iterator(); i.hasNext();) {
-                resource = (URL) i.next();
+            for (URL resource : urls) {
                 log.info("Loading chain catalog from " + resource);
                 parser.parse(resource);
             }
@@ -1872,7 +1865,7 @@ public class ActionServlet extends HttpServlet {
      * @return A list of resolved URL's for all found resources
      * @throws ServletException if a servlet exception is thrown
      */
-    protected List splitAndResolvePaths(String paths)
+    protected List<URL> splitAndResolvePaths(String paths)
         throws ServletException {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
@@ -1880,7 +1873,7 @@ public class ActionServlet extends HttpServlet {
             loader = this.getClass().getClassLoader();
         }
 
-        ArrayList resolvedUrls = new ArrayList();
+        ArrayList<URL> resolvedUrls = new ArrayList<>();
 
         URL resource;
         String path = null;
@@ -1915,7 +1908,7 @@ public class ActionServlet extends HttpServlet {
                             + "trying classloader.");
                     }
 
-                    Enumeration e = loader.getResources(path);
+                    Enumeration<URL> e = loader.getResources(path);
 
                     if (!e.hasMoreElements()) {
                         String msg = internal.getMessage("configMissing", path);
@@ -1931,8 +1924,6 @@ public class ActionServlet extends HttpServlet {
                     resolvedUrls.add(resource);
                 }
             }
-        } catch (MalformedURLException e) {
-            handleConfigException(path, e);
         } catch (IOException e) {
             handleConfigException(path, e);
         }

@@ -29,6 +29,8 @@ import java.io.Serializable;
  *          $
  */
 public class Globals implements Serializable {
+    private static final long serialVersionUID = 5585920111597892090L;
+
     // ----------------------------------------------------- Manifest Constants
 
     /**

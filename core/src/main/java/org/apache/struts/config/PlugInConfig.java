@@ -40,6 +40,8 @@ import java.util.Map;
  * @since Struts 1.1
  */
 public class PlugInConfig implements Serializable {
+    private static final long serialVersionUID = -7818510438622269230L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -51,7 +53,7 @@ public class PlugInConfig implements Serializable {
      * A <code>Map</code> of the name-value pairs that will be used to
      * configure the property values of a <code>PlugIn</code> instance.
      */
-    protected Map properties = new HashMap();
+    protected Map<String, String> properties = new HashMap<>();
 
     // ------------------------------------------------------------- Properties
 
@@ -97,7 +99,7 @@ public class PlugInConfig implements Serializable {
      * Return the properties that will be used to configure a
      * <code>PlugIn</code> instance.
      */
-    public Map getProperties() {
+    public Map<String, String> getProperties() {
         return (properties);
     }
 }

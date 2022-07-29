@@ -39,6 +39,7 @@ import java.util.HashMap;
  * @since Struts 1.1
  */
 public class ActionConfig extends BaseConfig {
+    private static final long serialVersionUID = -3999561115495765079L;
 
     private static final Log log = LogFactory.getLog(ActionConfig.class);
 
@@ -48,13 +49,13 @@ public class ActionConfig extends BaseConfig {
      * <p> The set of exception handling configurations for this action, if
      * any, keyed by the <code>type</code> property. </p>
      */
-    protected HashMap exceptions = new HashMap();
+    protected HashMap<String, ExceptionConfig> exceptions = new HashMap<>();
 
     /**
      * <p> The set of local forward configurations for this action, if any,
      * keyed by the <code>name</code> property. </p>
      */
-    protected HashMap forwards = new HashMap();
+    protected HashMap<String, ForwardConfig> forwards = new HashMap<>();
 
     // ------------------------------------------------------------- Properties
 
@@ -607,7 +608,7 @@ public class ActionConfig extends BaseConfig {
             return;
         }
 
-        ArrayList list = new ArrayList();
+        ArrayList<String> list = new ArrayList<>();
 
         while (true) {
             int comma = roles.indexOf(',');
@@ -626,7 +627,7 @@ public class ActionConfig extends BaseConfig {
             list.add(roles);
         }
 
-        roleNames = (String[]) list.toArray(new String[list.size()]);
+        roleNames = list.toArray(new String[list.size()]);
     }
 
     /**
@@ -1008,9 +1009,7 @@ public class ActionConfig extends BaseConfig {
         // Inherit forward configs
         ForwardConfig[] baseForwards = baseConfig.findForwardConfigs();
 
-        for (int i = 0; i < baseForwards.length; i++) {
-            ForwardConfig baseForward = baseForwards[i];
-
+        for (ForwardConfig baseForward : baseForwards) {
             // Do we have this forward?
             ForwardConfig copy = this.findForwardConfig(baseForward.getName());
 
@@ -1071,7 +1070,7 @@ public class ActionConfig extends BaseConfig {
      * @param type Exception class name to find a configuration for
      */
     public ExceptionConfig findExceptionConfig(String type) {
-        return ((ExceptionConfig) exceptions.get(type));
+        return (exceptions.get(type));
     }
 
     /**
@@ -1081,7 +1080,7 @@ public class ActionConfig extends BaseConfig {
     public ExceptionConfig[] findExceptionConfigs() {
         ExceptionConfig[] results = new ExceptionConfig[exceptions.size()];
 
-        return ((ExceptionConfig[]) exceptions.values().toArray(results));
+        return (exceptions.values().toArray(results));
     }
 
     /**
@@ -1098,7 +1097,7 @@ public class ActionConfig extends BaseConfig {
      * @param type Exception class for which to find a handler
      * @since Struts 1.2.0
      */
-    public ExceptionConfig findException(Class type) {
+    public ExceptionConfig findException(Class<?> type) {
         // Check through the entire superclass hierarchy as needed
         ExceptionConfig config;
 
@@ -1139,7 +1138,7 @@ public class ActionConfig extends BaseConfig {
      * @param name Name of the forward configuration to return
      */
     public ForwardConfig findForwardConfig(String name) {
-        return ((ForwardConfig) forwards.get(name));
+        return (forwards.get(name));
     }
 
     /**
@@ -1149,7 +1148,7 @@ public class ActionConfig extends BaseConfig {
     public ForwardConfig[] findForwardConfigs() {
         ForwardConfig[] results = new ForwardConfig[forwards.size()];
 
-        return ((ForwardConfig[]) forwards.values().toArray(results));
+        return (forwards.values().toArray(results));
     }
 
     /**

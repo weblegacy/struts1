@@ -30,7 +30,6 @@ import java.io.Serializable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -45,6 +44,8 @@ import java.util.Properties;
  * @since Struts 1.2
  */
 public class ActionConfigMatcher implements Serializable {
+    private static final long serialVersionUID = 6113399731187154520L;
+
     /**
      * <p> The logging instance </p>
      */
@@ -58,7 +59,7 @@ public class ActionConfigMatcher implements Serializable {
     /**
      * <p> The compiled paths and their associated ActionConfig's </p>
      */
-    private List compiledPaths;
+    private List<Mapping> compiledPaths;
 
     /**
      * <p> Finds and precompiles the wildcard patterns from the ActionConfig
@@ -69,7 +70,7 @@ public class ActionConfigMatcher implements Serializable {
      * @param configs An array of ActionConfig's to process
      */
     public ActionConfigMatcher(ActionConfig[] configs) {
-        compiledPaths = new ArrayList();
+        compiledPaths = new ArrayList<>();
 
         int[] pattern;
         String path;
@@ -111,12 +112,9 @@ public class ActionConfigMatcher implements Serializable {
                 path = path.substring(1);
             }
 
-            Mapping m;
-            HashMap vars = new HashMap();
+            HashMap<String, String> vars = new HashMap<>();
 
-            for (Iterator i = compiledPaths.iterator(); i.hasNext();) {
-                m = (Mapping) i.next();
-
+            for (Mapping m : compiledPaths) {
                 if (wildcard.match(vars, path, m.getPattern())) {
                     if (log.isDebugEnabled()) {
                         log.debug("Path matches pattern '"
@@ -155,7 +153,7 @@ public class ActionConfigMatcher implements Serializable {
      * impossible due to recursion
      */
     protected ActionConfig convertActionConfig(String path, ActionConfig orig,
-        Map vars) {
+        Map<String, String> vars) {
         ActionConfig config = null;
 
         try {
@@ -235,11 +233,8 @@ public class ActionConfigMatcher implements Serializable {
      * @throws IllegalStateException if a placeholder substitution is
      * impossible due to recursion
      */
-    protected void replaceProperties(Properties orig, Properties props, Map vars) {
-        Map.Entry entry = null;
-
-        for (Iterator i = orig.entrySet().iterator(); i.hasNext();) {
-            entry = (Map.Entry) i.next();
+    protected void replaceProperties(Properties orig, Properties props, Map<String, String> vars) {
+        for (Map.Entry<Object, Object> entry : orig.entrySet()) {
             props.setProperty((String) entry.getKey(),
                 convertParam((String) entry.getValue(), vars));
         }
@@ -255,28 +250,26 @@ public class ActionConfigMatcher implements Serializable {
      * @throws IllegalStateException if a placeholder substitution is
      * impossible due to recursion
      */
-    protected String convertParam(String val, Map vars) {
+    protected String convertParam(String val, Map<String, String> vars) {
         if (val == null) {
             return null;
         } else if (val.indexOf("{") == -1) {
             return val;
         }
 
-        Map.Entry entry;
-        StringBuffer key = new StringBuffer("{0}");
-        StringBuffer ret = new StringBuffer(val);
+        StringBuilder key = new StringBuilder("{0}");
+        StringBuilder ret = new StringBuilder(val);
         String keyStr;
         int x;
 
-        for (Iterator i = vars.entrySet().iterator(); i.hasNext();) {
-            entry = (Map.Entry) i.next();
-            key.setCharAt(1, ((String) entry.getKey()).charAt(0));
+        for (Map.Entry<String, String> entry : vars.entrySet()) {
+            key.setCharAt(1, entry.getKey().charAt(0));
             keyStr = key.toString();
 
             // STR-3169
             // Prevent an infinite loop by retaining the placeholders
             // that contain itself in the substitution value
-            if (((String) entry.getValue()).contains(keyStr)) {
+            if (entry.getValue().contains(keyStr)) {
                 throw new IllegalStateException();
             }
 
@@ -294,6 +287,8 @@ public class ActionConfigMatcher implements Serializable {
      * from. </p>
      */
     private class Mapping implements Serializable {
+        private static final long serialVersionUID = -4524356639556048603L;
+
         /**
          * <p> The compiled pattern. </p>
          */

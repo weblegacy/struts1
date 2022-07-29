@@ -32,6 +32,7 @@ import org.apache.struts.action.*;
  */
 
 public final class CustomActionForward extends ActionForward {
+    private static final long serialVersionUID = -2271471938424287918L;
 
 
     // --------------------------------------------------- Instance Variables

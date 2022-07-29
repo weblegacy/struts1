@@ -64,7 +64,8 @@ public class WebActionContext extends ActionContextBase {
      *
      * @return A immutable Map of web request header names
      */
-    public Map getHeader() {
+    @SuppressWarnings("unchecked")
+    public Map<String, String> getHeader() {
         return webContext().getHeader();
     }
 
@@ -75,7 +76,8 @@ public class WebActionContext extends ActionContextBase {
      *
      * @return An immutable Map of web request header values
      */
-    public Map getHeaderValues() {
+    @SuppressWarnings("unchecked")
+    public Map<String, String[]> getHeaderValues() {
         return webContext().getHeaderValues();
     }
 
@@ -85,7 +87,8 @@ public class WebActionContext extends ActionContextBase {
      *
      * @return An immutable Map of web context initialization parameters
      */
-    public Map getInitParam() {
+    @SuppressWarnings("unchecked")
+    public Map<String, String> getInitParam() {
         return webContext().getInitParam();
     }
 
@@ -99,7 +102,8 @@ public class WebActionContext extends ActionContextBase {
      *
      * @return A map of web request parameters
      */
-    public Map getParam() {
+    @SuppressWarnings("unchecked")
+    public Map<String, String> getParam() {
         return webContext().getParam();
     }
 
@@ -109,23 +113,27 @@ public class WebActionContext extends ActionContextBase {
      *
      * @return A map of web request parameter values (as an array)
      */
-    public Map getParamValues() {
+    @SuppressWarnings("unchecked")
+    public Map<String, String[]> getParamValues() {
         return webContext().getParamValues();
     }
 
-    public Map getApplicationScope() {
+    @SuppressWarnings("unchecked")
+	public Map<String, Object> getApplicationScope() {
         return webContext().getApplicationScope();
     }
 
-    public Map getRequestScope() {
+    @SuppressWarnings("unchecked")
+	public Map<String, Object> getRequestScope() {
         return webContext().getRequestScope();
     }
 
-    public Map getParameterMap() {
+    public Map<String, String[]> getParameterMap() {
         return getParamValues();
     }
 
-    public Map getSessionScope() {
+    @SuppressWarnings("unchecked")
+	public Map<String, Object> getSessionScope() {
         return webContext().getSessionScope();
     }
 

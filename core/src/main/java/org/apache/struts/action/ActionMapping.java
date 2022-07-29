@@ -26,7 +26,7 @@ import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ControllerConfig;
 import org.apache.struts.config.ForwardConfig;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * <p>An <strong>ActionMapping</strong> represents the information that the
@@ -48,6 +48,8 @@ import java.util.ArrayList;
  *          $
  */
 public class ActionMapping extends ActionConfig {
+    private static final long serialVersionUID = 5152639565031916976L;
+
     /**
      * <p>Commons Logging instance.</p>
      *
@@ -113,14 +115,12 @@ public class ActionMapping extends ActionConfig {
      * @return The forward names for this action mapping.
      */
     public String[] findForwards() {
-        ArrayList results = new ArrayList();
         ForwardConfig[] fcs = findForwardConfigs();
+        String[] results = new String[fcs.length];
 
-        for (int i = 0; i < fcs.length; i++) {
-            results.add(fcs[i].getName());
-        }
+        Arrays.setAll(results, i -> fcs[i].getName());
 
-        return ((String[]) results.toArray(new String[results.size()]));
+        return results;
     }
 
     /**

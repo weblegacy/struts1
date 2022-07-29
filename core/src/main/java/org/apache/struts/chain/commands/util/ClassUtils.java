@@ -37,7 +37,7 @@ public final class ClassUtils {
      * @param className Fully qualified class name
      * @throws ClassNotFoundException if the specified class cannot be loaded
      */
-    public static Class getApplicationClass(String className)
+    public static Class<?> getApplicationClass(String className)
         throws ClassNotFoundException {
         if (className == null) {
             throw new NullPointerException(

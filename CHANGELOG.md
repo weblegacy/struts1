@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* JDK8: Add generics, serialVersionID, for-each-loop, remove warnings, ...
 * Fix: CVE-2014-0114 with test-cases
 * Add `TestLogFactory` and `TestLog` for testing
 * Bump `beanutils` from 1.8.0 to 1.9.4

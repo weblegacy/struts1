@@ -40,6 +40,8 @@ import org.apache.struts.config.FormBeanConfig;
  *          $
  */
 public class ActionFormBean extends FormBeanConfig {
+    private static final long serialVersionUID = -6870747200275478095L;
+
     /**
      * <p>Construct an instance with default vaslues.</p>
      */

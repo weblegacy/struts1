@@ -52,6 +52,7 @@ import java.util.StringTokenizer;
  * @since Struts 1.4
  */
 public abstract class AbstractEventMappingDispatcher extends AbstractMappingDispatcher {
+    private static final long serialVersionUID = -8559616664806617100L;
 
     /**
      * The method key, if present, to use if other specified method keys do not

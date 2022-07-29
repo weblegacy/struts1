@@ -31,40 +31,40 @@ import java.util.Map;
  * <code>requestScope</code>, and <code>parameterMap</code> properties. </p>
  */
 public class MockActionContext extends ActionContextBase {
-    private Map applicationScope = new HashMap();
-    private Map requestScope = new HashMap();
-    private Map sessionScope = new HashMap();
-    private Map parameterMap = new HashMap();
+    private Map<String, Object> applicationScope = new HashMap<>();
+    private Map<String, Object> requestScope = new HashMap<>();
+    private Map<String, Object> sessionScope = new HashMap<>();
+    private Map<String, String[]> parameterMap = new HashMap<>();
 
-    public Map getApplicationScope() {
+    public Map<String, Object> getApplicationScope() {
         return applicationScope;
     }
 
-    public void setApplicationScope(Map applicationScope) {
+    public void setApplicationScope(Map<String, Object> applicationScope) {
         this.applicationScope = applicationScope;
     }
 
-    public Map getParameterMap() {
+    public Map<String, String[]> getParameterMap() {
         return parameterMap;
     }
 
-    public void setParameterMap(Map parameterMap) {
+    public void setParameterMap(Map<String, String[]> parameterMap) {
         this.parameterMap = parameterMap;
     }
 
-    public Map getRequestScope() {
+    public Map<String, Object> getRequestScope() {
         return requestScope;
     }
 
-    public void setRequestScope(Map requestScope) {
+    public void setRequestScope(Map<String, Object> requestScope) {
         this.requestScope = requestScope;
     }
 
-    public Map getSessionScope() {
+    public Map<String, Object> getSessionScope() {
         return sessionScope;
     }
 
-    public void setSessionScope(Map sessionScope) {
+    public void setSessionScope(Map<String, Object> sessionScope) {
         this.sessionScope = sessionScope;
     }
 }

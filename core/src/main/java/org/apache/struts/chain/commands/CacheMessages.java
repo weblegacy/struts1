@@ -44,8 +44,8 @@ public class CacheMessages extends ActionCommandBase {
     public boolean execute(ActionContext actionCtx) throws Exception {
         ForwardConfig forwardConfig = actionCtx.getForwardConfig();
         if ((forwardConfig != null) && forwardConfig.getRedirect()) {
-            Map request = actionCtx.getRequestScope();
-            Map session = actionCtx.getSessionScope();
+            Map<String, Object> request = actionCtx.getRequestScope();
+            Map<String, Object> session = actionCtx.getSessionScope();
             copyUnaccessedMessages(request, session, Globals.MESSAGE_KEY);
             copyUnaccessedMessages(request, session, Globals.ERROR_KEY);
         }
@@ -62,7 +62,7 @@ public class CacheMessages extends ActionCommandBase {
      * @param toScope The scope to copy messages into.
      * @param key The key the messages are stored under.
      */
-    private void copyUnaccessedMessages(Map fromScope, Map toScope, String key) {
+    private void copyUnaccessedMessages(Map<String, Object> fromScope, Map<String, Object> toScope, String key) {
         ActionMessages fromMessages = (ActionMessages) fromScope.get(key);
         if ((fromMessages != null) && !fromMessages.isAccessed()) {
             ActionMessages toMessages = (ActionMessages) toScope.get(key);

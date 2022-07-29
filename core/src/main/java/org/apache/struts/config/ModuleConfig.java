@@ -219,7 +219,7 @@ public interface ModuleConfig {
      * @param type Exception class name to find a configuration for
      * @see ActionConfig findException(Class)
      */
-    ExceptionConfig findException(Class type);
+    ExceptionConfig findException(Class<?> type);
 
     /**
      * <p> Return the exception configurations for this module.  If there are

@@ -156,7 +156,7 @@ public class WildcardHelper {
      * @return True if a match
      * @throws NullPointerException If any parameters are null
      */
-    public boolean match(Map map, String data, int[] expr) {
+    public boolean match(Map<String, String> map, String data, int[] expr) {
         if (map == null) {
             throw new NullPointerException("No map provided");
         }

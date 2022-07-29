@@ -38,7 +38,7 @@ import org.apache.struts.action.ActionMessages;
  */
 public class LookupDispatchExampleAction extends LookupDispatchAction {
 
-    private Map keyMethodMap = new HashMap();
+    private Map<String, String> keyMethodMap = new HashMap<>();
     private int fooCount;
     private int barCount;
 
@@ -106,7 +106,7 @@ public class LookupDispatchExampleAction extends LookupDispatchAction {
      *
      * @return Resource key / method name map.
      */
-    protected Map getKeyMethodMap() {
+    protected Map<String, String> getKeyMethodMap() {
         return keyMethodMap;
     }
 

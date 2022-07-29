@@ -28,7 +28,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Vector;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
@@ -42,6 +41,7 @@ import org.apache.struts.util.LabelValueBean;
  */
 
 public class TestBean extends ActionForm {
+    private static final long serialVersionUID = 1841410529486550126L;
 
 
     // ------------------------------------------------------------- Properties
@@ -51,11 +51,11 @@ public class TestBean extends ActionForm {
      * A collection property where the elements of the collection are
      * of type <code>LabelValueBean</code>.
      */
-    private Collection beanCollection = null;
+    private Collection<LabelValueBean> beanCollection = null;
 
-    public Collection getBeanCollection() {
+    public Collection<LabelValueBean> getBeanCollection() {
         if (beanCollection == null) {
-            Vector entries = new Vector(10);
+            ArrayList<LabelValueBean> entries = new ArrayList<>(10);
 
             entries.add(new LabelValueBean("Label 0", "Value 0"));
             entries.add(new LabelValueBean("Label 1", "Value 1"));
@@ -74,7 +74,7 @@ public class TestBean extends ActionForm {
         return (beanCollection);
     }
 
-    public void setBeanCollection(Collection beanCollection) {
+    public void setBeanCollection(Collection<LabelValueBean> beanCollection) {
         this.beanCollection = beanCollection;
     }
 
@@ -390,33 +390,33 @@ public class TestBean extends ActionForm {
     /**
      * A List property.
      */
-    private List listProperty = null;
+    private List<String> listProperty = null;
 
-    public List getListProperty() {
+    public List<String> getListProperty() {
         if (listProperty == null) {
-            listProperty = new ArrayList();
+            listProperty = new ArrayList<>();
             listProperty.add("dummy");
         }
         return listProperty;
     }
 
-    public void setListProperty(List listProperty) {
+    public void setListProperty(List<String> listProperty) {
         this.listProperty = listProperty;
     }
 
     /**
      * An empty List property.
      */
-    private List emptyListProperty = null;
+    private List<String> emptyListProperty = null;
 
-    public List getEmptyListProperty() {
+    public List<String> getEmptyListProperty() {
         if (emptyListProperty == null) {
-            emptyListProperty = new ArrayList();
+            emptyListProperty = new ArrayList<>();
         }
         return emptyListProperty;
     }
 
-    public void setEmptyListProperty(List emptyListProperty) {
+    public void setEmptyListProperty(List<String> emptyListProperty) {
         this.emptyListProperty = emptyListProperty;
     }
 
@@ -424,33 +424,33 @@ public class TestBean extends ActionForm {
     /**
      * A Map property.
      */
-    private Map mapProperty = null;
+    private Map<String, String> mapProperty = null;
 
-    public Map getMapProperty() {
+    public Map<String, String> getMapProperty() {
         if (mapProperty == null) {
-            mapProperty = new HashMap();
+            mapProperty = new HashMap<>();
             mapProperty.put("dummy", "dummy");
         }
         return mapProperty;
     }
 
-    public void setMapProperty(Map mapProperty) {
+    public void setMapProperty(Map<String, String> mapProperty) {
         this.mapProperty = mapProperty;
     }
 
     /**
      * An empty Map property.
      */
-    private Map emptyMapProperty = null;
+    private Map<String, String> emptyMapProperty = null;
 
-    public Map getEmptyMapProperty() {
+    public Map<String, String> getEmptyMapProperty() {
         if (emptyMapProperty == null) {
-            emptyMapProperty = new HashMap();
+            emptyMapProperty = new HashMap<>();
         }
         return emptyMapProperty;
     }
 
-    public void setEmptyMapProperty(Map emptyMapProperty) {
+    public void setEmptyMapProperty(Map<String, String> emptyMapProperty) {
         this.emptyMapProperty = emptyMapProperty;
     }
 

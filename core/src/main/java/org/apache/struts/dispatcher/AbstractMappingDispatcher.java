@@ -33,6 +33,7 @@ import org.apache.struts.chain.contexts.ActionContext;
  * @since Struts 1.4
  */
 public abstract class AbstractMappingDispatcher extends AbstractDispatcher {
+    private static final long serialVersionUID = 1956815632606733563L;
 
     private String defaultMappingParameter;
 

@@ -56,10 +56,11 @@ public class CreateAction
 
         ModuleConfig moduleConfig = actionConfig.getModuleConfig();
         String actionsKey = Constants.ACTIONS_KEY + moduleConfig.getPrefix();
-        Map actions = (Map) context.getApplicationScope().get(actionsKey);
+        @SuppressWarnings("unchecked")
+        Map<String, Action> actions = (Map<String, Action>) context.getApplicationScope().get(actionsKey);
 
         if (actions == null) {
-            actions = new HashMap();
+            actions = new HashMap<>();
             context.getApplicationScope().put(actionsKey, actions);
         }
 

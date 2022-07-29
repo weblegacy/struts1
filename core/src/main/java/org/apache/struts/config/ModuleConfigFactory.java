@@ -36,7 +36,7 @@ public abstract class ModuleConfigFactory {
      * The Java class to be used for <code>ModuleConfigFactory</code>
      * instances.
      */
-    protected static Class clazz = null;
+    protected static Class<ModuleConfigFactory> clazz = null;
 
     /**
      * Commons Logging instance.
@@ -91,20 +91,17 @@ public abstract class ModuleConfigFactory {
      * <code>ModuleConfig</code> instances.  If no such factory can be
      * created, return <code>null</code> instead.
      */
+    @SuppressWarnings("unchecked")
     public static ModuleConfigFactory createFactory() {
         ModuleConfigFactory factory = null;
 
         try {
             if (clazz == null) {
-                clazz = RequestUtils.applicationClass(factoryClass);
+                clazz = (Class<ModuleConfigFactory>) RequestUtils.applicationClass(factoryClass);
             }
 
-            factory = (ModuleConfigFactory) clazz.newInstance();
-        } catch (ClassNotFoundException e) {
-            LOG.error("ModuleConfigFactory.createFactory()", e);
-        } catch (InstantiationException e) {
-            LOG.error("ModuleConfigFactory.createFactory()", e);
-        } catch (IllegalAccessException e) {
+            factory = clazz.newInstance();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
             LOG.error("ModuleConfigFactory.createFactory()", e);
         }
 

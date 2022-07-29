@@ -23,10 +23,6 @@
 
 package org.apache.struts.validator.validwhen;
 
-import java.math.BigDecimal;
-import java.util.Stack;
-import org.apache.commons.validator.util.ValidatorUtils;
-
 public interface ValidWhenParserTokenTypes {
     int EOF = 1;
     int NULL_TREE_LOOKAHEAD = 3;

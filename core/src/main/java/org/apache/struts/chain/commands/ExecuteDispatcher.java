@@ -78,9 +78,10 @@ public class ExecuteDispatcher extends ActionCommandBase {
 
         // Obtain (or create) the dispatcher cache
         String cacheKey = Constants.DISPATCHERS_KEY + context.getModuleConfig().getPrefix();
-        Map dispatchers = (Map) context.getApplicationScope().get(cacheKey);
+        @SuppressWarnings("unchecked")
+        Map<String, Dispatcher> dispatchers = (Map<String, Dispatcher>) context.getApplicationScope().get(cacheKey);
         if (dispatchers == null) {
-            dispatchers = new HashMap();
+            dispatchers = new HashMap<>();
             context.getApplicationScope().put(cacheKey, dispatchers);
         }
 
@@ -89,7 +90,7 @@ public class ExecuteDispatcher extends ActionCommandBase {
         synchronized (dispatchers) {
             ActionConfig actionConfig = context.getActionConfig();
             String actionType = actionConfig.getType();
-            dispatcher = (Dispatcher) dispatchers.get(actionType);
+            dispatcher = dispatchers.get(actionType);
 
             if (dispatcher == null) {
                 dispatcher = createDispatcher(dispatcherType, context);

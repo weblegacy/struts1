@@ -36,6 +36,8 @@ import org.apache.struts.validator.ValidatorForm;
  *
 */
 public final class TypeForm extends ValidatorForm implements Serializable {
+    private static final long serialVersionUID = -1904944433046066164L;
+
     private String action = null;
     private String name = null;  //Used to test Multiform per page validation when property name is 'name'
     private String sByte = null;
@@ -58,7 +60,7 @@ public final class TypeForm extends ValidatorForm implements Serializable {
     private String sWouldRecommend = null;
     private String[] sUsedLanguages = null;
 
-    private List lNames = initNames();
+    private List<LabelValueBean> lNames = initNames();
 
   public String getAction() {
  return action;
@@ -235,11 +237,11 @@ public final class TypeForm extends ValidatorForm implements Serializable {
         this.sUsedLanguages = anUsedLanguages;
     }
 
-    public List getNameList() {
+    public List<LabelValueBean> getNameList() {
        return lNames;
     }
 
-    public void setNameList(List lNames) {
+    public void setNameList(List<LabelValueBean> lNames) {
        this.lNames = lNames;
     }
 
@@ -279,8 +281,8 @@ public final class TypeForm extends ValidatorForm implements Serializable {
      * Initialize list.
      * @return empty list of LabelValueBeans
     */
-    private static List initNames() {
-       List lResults = new ArrayList();
+    private static List<LabelValueBean> initNames() {
+       List<LabelValueBean> lResults = new ArrayList<>();
 
        for (int i = 0; i < 3; i++) {
           lResults.add(new LabelValueBean(null, null));

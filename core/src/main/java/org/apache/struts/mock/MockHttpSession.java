@@ -43,13 +43,14 @@ import java.util.HashMap;
  * @version $Rev$ $Date: 2005-05-07 12:11:38 -0400 (Sat, 07 May 2005)
  *          $
  */
+@SuppressWarnings("deprecation")
 public class MockHttpSession implements HttpSession {
     // ----------------------------------------------------- Instance Variables
 
     /**
      * <p> The set of session attributes. </p>
      */
-    protected HashMap attributes = new HashMap();
+    protected HashMap<String, Object> attributes = new HashMap<>();
 
     /**
      * <p> The ServletContext with which we are associated. </p>
@@ -76,8 +77,8 @@ public class MockHttpSession implements HttpSession {
         return (attributes.get(name));
     }
 
-    public Enumeration getAttributeNames() {
-        return (new MockEnumeration(attributes.keySet().iterator()));
+    public Enumeration<String> getAttributeNames() {
+        return (new MockEnumeration<>(attributes.keySet().iterator()));
     }
 
     public long getCreationTime() {

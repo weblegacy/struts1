@@ -20,6 +20,7 @@
  */
 package org.apache.struts.dispatcher.servlet;
 
+import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.chain.contexts.ActionContext;
@@ -55,13 +56,13 @@ public class ServletMethodResolver extends AbstractMethodResolver {
      * @see org.apache.struts.action.Action#execute(ActionMapping, ActionForm,
      *      javax.servlet.ServletRequest, javax.servlet.ServletResponse)
      */
-    private static final Class[] CLASSIC_EXECUTE_SIGNATURE = { ActionMapping.class, ActionForm.class,
+    private static final Class<?>[] CLASSIC_EXECUTE_SIGNATURE = { ActionMapping.class, ActionForm.class,
             HttpServletRequest.class, HttpServletResponse.class };
 
     public Object[] buildArguments(ActionContext context, Method method) {
         Object[] args = super.buildArguments(context, method);
         if (args == null) {
-            Class[] parameterTypes = method.getParameterTypes();
+            Class<?>[] parameterTypes = method.getParameterTypes();
             switch (parameterTypes.length) {
             case 4:
                 return buildClassicArguments((ServletActionContext) context);
@@ -103,7 +104,7 @@ public class ServletMethodResolver extends AbstractMethodResolver {
      *      javax.servlet.ServletRequest, javax.servlet.ServletResponse)
      */
     protected final Method resolveClassicMethod(ActionContext context, String methodName) throws NoSuchMethodException {
-        Class actionClass = context.getAction().getClass();
+        Class<? extends Action> actionClass = context.getAction().getClass();
         return actionClass.getMethod(methodName, CLASSIC_EXECUTE_SIGNATURE);
     }
 
@@ -118,8 +119,8 @@ public class ServletMethodResolver extends AbstractMethodResolver {
         // Can the method accept the servlet action context?
         if (context instanceof ServletActionContext) {
             try {
-                Class actionClass = context.getAction().getClass();
-                return actionClass.getMethod(methodName, new Class[] { ServletActionContext.class });
+                Class<? extends Action> actionClass = context.getAction().getClass();
+                return actionClass.getMethod(methodName, ServletActionContext.class);
             } catch (NoSuchMethodException e) {
                 // continue
             }

@@ -311,13 +311,12 @@ public class WrappingLookupCommand implements Filter {
             LOG.debug("Looking for wrapper class: " + wrapperClassName);
         }
 
-        Class wrapperClass = ClassUtils.getApplicationClass(wrapperClassName);
+        Class<?> wrapperClass = ClassUtils.getApplicationClass(wrapperClassName);
 
         if (LOG.isDebugEnabled()) {
             LOG.debug("Instantiating wrapper class");
         }
 
-        return (Context) ConstructorUtils.invokeConstructor(wrapperClass,
-            new Object[] { context });
+        return (Context) ConstructorUtils.invokeConstructor(wrapperClass, context);
     }
 }

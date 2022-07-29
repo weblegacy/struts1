@@ -35,6 +35,8 @@ import java.io.Serializable;
  */
 public class DefaultModuleConfigFactory extends ModuleConfigFactory
     implements Serializable {
+    private static final long serialVersionUID = 1227835615838585786L;
+
     // --------------------------------------------------------- Public Methods
 
     /**

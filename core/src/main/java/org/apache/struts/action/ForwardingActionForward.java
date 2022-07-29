@@ -29,6 +29,8 @@ package org.apache.struts.action;
  *          $
  */
 public class ForwardingActionForward extends ActionForward {
+    private static final long serialVersionUID = 1732442504072379197L;
+
     // ----------------------------------------------------------- Constructors
 
     /**

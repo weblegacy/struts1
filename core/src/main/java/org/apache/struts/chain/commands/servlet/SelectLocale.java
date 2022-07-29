@@ -20,8 +20,6 @@
  */
 package org.apache.struts.chain.commands.servlet;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.chain.commands.AbstractSelectLocale;
 import org.apache.struts.chain.contexts.ActionContext;
@@ -38,7 +36,7 @@ import java.util.Locale;
  *          $
  */
 public class SelectLocale extends AbstractSelectLocale {
-    private static final Log log = LogFactory.getLog(SelectLocale.class);
+//  private static final Log log = LogFactory.getLog(SelectLocale.class);
 
     // ------------------------------------------------------- Protected Methods
 

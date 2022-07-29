@@ -23,10 +23,10 @@ package org.apache.struts.util;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import java.io.UnsupportedEncodingException;
 
 import java.net.URLEncoder;
+import java.nio.charset.Charset;
 
 /**
  * General purpose utility methods related to generating a servlet response in
@@ -46,30 +46,9 @@ public class ResponseUtils {
             "org.apache.struts.util.LocalStrings");
 
     /**
-     * Java 1.4 encode method to use instead of deprecated 1.3 version.
-     */
-    private static Method encode = null;
-
-    /**
      * Commons logging instance.
      */
     private static final Log log = LogFactory.getLog(ResponseUtils.class);
-
-    /**
-     * Initialize the encode variable with the
-     * Java 1.4 method if available.
-     */
-    static {
-        try {
-            // get version of encode method with two String args
-            Class[] args = new Class[] { String.class, String.class };
-
-            encode = URLEncoder.class.getMethod("encode", args);
-        } catch (NoSuchMethodException e) {
-            log.debug("Could not find Java 1.4 encode method.  Using deprecated version.",
-                e);
-        }
-    }
 
     // --------------------------------------------------------- Public Methods
 
@@ -151,33 +130,40 @@ public class ResponseUtils {
     }
 
     /**
-     * Use the new URLEncoder.encode() method from Java 1.4 if available, else
-     * use the old deprecated version.  This method uses reflection to find
-     * the appropriate method; if the reflection operations throw exceptions,
-     * this will return the url encoded with the old URLEncoder.encode()
-     * method.
+     * Use the URLEncoder.encode() with the given encoding. When the
+     * encoding charset didn't found, then it will be tried with the
+     * default-charset.
      *
      * @param enc The character encoding the urlencode is performed on.
      * @return String The encoded url.
      */
     public static String encodeURL(String url, String enc) {
+        String str = null;
+
         try {
             if ((enc == null) || (enc.length() == 0)) {
                 enc = "UTF-8";
             }
 
-            // encode url with new 1.4 method and UTF-8 encoding
-            if (encode != null) {
-                return (String) encode.invoke(null, new Object[] { url, enc });
+            str = URLEncoder.encode(url, enc);
+        } catch (UnsupportedEncodingException e) {
+            if (log.isDebugEnabled()) {
+                log.debug("The named encoding is not supported: " + enc, e);
             }
-        } catch (IllegalAccessException e) {
-            log.debug("Could not find Java 1.4 encode method.  Using deprecated version.",
-                e);
-        } catch (InvocationTargetException e) {
-            log.debug("Could not find Java 1.4 encode method. Using deprecated version.",
-                e);
+
+            try {
+                str = URLEncoder.encode(url, Charset.defaultCharset().toString());
+            } catch (UnsupportedEncodingException e1) {
+                // Should never happen - the system should always have the platform default
+                if (log.isDebugEnabled()) {
+                    log.debug("The default-encoding is not supported: " + enc, e1);
+                }
+
+                str = url;
+            }
         }
 
-        return URLEncoder.encode(url);
+        return str;
+
     }
 }

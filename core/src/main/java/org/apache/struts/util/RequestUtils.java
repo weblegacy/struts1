@@ -103,7 +103,7 @@ public class RequestUtils {
      * @return Class object
      * @throws ClassNotFoundException if the class cannot be found
      */
-    public static Class applicationClass(String className)
+    public static Class<?> applicationClass(String className)
         throws ClassNotFoundException {
         return applicationClass(className, null);
     }
@@ -117,7 +117,7 @@ public class RequestUtils {
      * @return Class object
      * @throws ClassNotFoundException if the class cannot be found
      */
-    public static Class applicationClass(String className,
+    public static Class<?> applicationClass(String className,
         ClassLoader classLoader)
         throws ClassNotFoundException {
         if (classLoader == null) {
@@ -368,17 +368,18 @@ public class RequestUtils {
      * @throws ServletException if an exception is thrown while setting
      *                          property values
      */
+    @SuppressWarnings("unchecked")
     public static void populate(Object bean, String prefix, String suffix,
         HttpServletRequest request)
         throws ServletException {
         // Build a list of relevant request parameters from this request
-        HashMap properties = new HashMap();
+        HashMap<String, Object> properties = new HashMap<>();
 
         // Iterator of parameter names
-        Enumeration names = null;
+        Enumeration<String> names = null;
 
         // Map for multipart parameters
-        Map multipartParameters = null;
+        Map<String, Object> multipartParameters = null;
 
         String contentType = request.getContentType();
         String method = request.getMethod();
@@ -513,7 +514,8 @@ public class RequestUtils {
         assert (redirect != null) : "redirect is required";
         assert (request != null) : "request is required";
 
-        Enumeration e = request.getParameterNames();
+        @SuppressWarnings("unchecked")
+        Enumeration<String> e = request.getParameterNames();
         while (e.hasMoreElements()) {
             String name = (String) e.nextElement();
             String[] values = request.getParameterValues(name);
@@ -538,14 +540,14 @@ public class RequestUtils {
 
         FormFile formFileValue = (FormFile) parameterValue;
         try {
-            Class propertyType = PropertyUtils.getPropertyType(bean, name);
+            Class<?> propertyType = PropertyUtils.getPropertyType(bean, name);
 
             if (propertyType == null) {
                 return parameterValue;
             }
 
             if (List.class.isAssignableFrom(propertyType)) {
-                ArrayList list = new ArrayList(1);
+                ArrayList<FormFile> list = new ArrayList<>(1);
                 list.add(formFileValue);
                 return list;
             }
@@ -554,11 +556,7 @@ public class RequestUtils {
                 return new FormFile[] { formFileValue };
             }
 
-        } catch (IllegalAccessException e) {
-            throw new ServletException(e);
-        } catch (InvocationTargetException e) {
-            throw new ServletException(e);
-        } catch (NoSuchMethodException e) {
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             throw new ServletException(e);
         }
 
@@ -657,16 +655,15 @@ public class RequestUtils {
      *                         request.
      * @return the map containing all parameters for this multipart request.
      */
-    private static Map getAllParametersForMultipartRequest(
+    @SuppressWarnings("unchecked")
+    private static Map<String, Object> getAllParametersForMultipartRequest(
         HttpServletRequest request, MultipartRequestHandler multipartHandler) {
-        Map parameters = new HashMap();
-        Hashtable elements = multipartHandler.getAllElements();
-        Enumeration e = elements.keys();
+        Map<String, Object> parameters = new HashMap<>();
+        Hashtable<String, Object> elements = multipartHandler.getAllElements();
+        Enumeration<String> e = elements.keys();
 
-        while (e.hasMoreElements()) {
-            String key = (String) e.nextElement();
-
-            parameters.put(key, elements.get(key));
+        for (Map.Entry<String, Object> entry : elements.entrySet()) {
+            parameters.put(entry.getKey(), entry.getValue());
         }
 
         if (request instanceof MultipartRequestWrapper) {

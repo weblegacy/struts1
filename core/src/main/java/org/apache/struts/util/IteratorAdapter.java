@@ -33,10 +33,10 @@ import java.util.NoSuchElementException;
  * @version $Rev$ $Date: 2005-05-07 12:11:38 -0400 (Sat, 07 May 2005)
  *          $
  */
-public class IteratorAdapter implements Iterator {
-    private Enumeration e;
+public class IteratorAdapter<E> implements Iterator<E> {
+    private Enumeration<E> e;
 
-    public IteratorAdapter(Enumeration e) {
+    public IteratorAdapter(Enumeration<E> e) {
         this.e = e;
     }
 
@@ -44,7 +44,7 @@ public class IteratorAdapter implements Iterator {
         return e.hasMoreElements();
     }
 
-    public Object next() {
+    public E next() {
         if (!e.hasMoreElements()) {
             throw new NoSuchElementException(
                 "IteratorAdaptor.next() has no more elements");

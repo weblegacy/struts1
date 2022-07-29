@@ -293,14 +293,14 @@ public class Resources {
         }
 
         String msgKey = null;
-        String msgBundle = null;
+//      String msgBundle = null;
         MessageResources messages = defaultMessages;
 
         if (msg == null) {
             msgKey = va.getMsg();
         } else {
             msgKey = msg.getKey();
-            msgBundle = msg.getBundle();
+//          msgBundle = msg.getBundle();
 
             if (msg.getBundle() != null) {
                 messages =

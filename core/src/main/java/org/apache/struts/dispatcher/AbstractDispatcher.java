@@ -41,6 +41,7 @@ import org.apache.commons.logging.LogFactory;
  * @since Struts 1.4
  */
 public abstract class AbstractDispatcher implements Dispatcher, Serializable {
+    private static final long serialVersionUID = 2259767062109056338L;
 
     // Package message bundle keys
     static final String LOCAL_STRINGS = "org.apache.struts.dispatcher.LocalStrings";
@@ -78,7 +79,7 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
      * methods are called, so that introspection needs to occur only once per
      * method name.
      */
-    private transient final HashMap methods;
+    private transient final HashMap<String, Method> methods;
 
     private final MethodResolver methodResolver;
 
@@ -90,7 +91,7 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
     public AbstractDispatcher(MethodResolver methodResolver) {
         this.methodResolver = methodResolver;
         log = LogFactory.getLog(getClass());
-        methods = new HashMap();
+        methods = new HashMap<>();
     }
 
     /**
@@ -209,7 +210,7 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
             keyBuf.append(methodName);
             String key = keyBuf.toString();
 
-            Method method = (Method) methods.get(key);
+            Method method = methods.get(key);
 
             if (method == null) {
                 method = resolveMethod(context, methodName);

@@ -32,6 +32,8 @@ import java.util.Map;
  *          $
  */
 public class MockFormBean extends ActionForm {
+    private static final long serialVersionUID = -8677959176030940512L;
+
     /*
      * <p>
      * Flag to indicate whether certain methods should complete properly
@@ -89,6 +91,7 @@ public class MockFormBean extends ActionForm {
         throw new Exception();
     }
 
+    @SuppressWarnings("unused")
     public Object getThrowIllegalAccessException()
         throws Exception {
         if (true) {
@@ -151,8 +154,8 @@ public class MockFormBean extends ActionForm {
         this.booleanProperty = booleanProperty;
     }
 
-    public Map getMapProperty() {
-        HashMap map = new HashMap();
+    public Map<String, String> getMapProperty() {
+        HashMap<String, String> map = new HashMap<>();
 
         map.put("foo1", "bar1");
         map.put("foo2", "bar2");
@@ -160,8 +163,8 @@ public class MockFormBean extends ActionForm {
         return (map);
     }
 
-    public Map getMapPropertyArrayValues() {
-        HashMap map = new HashMap();
+    public Map<String, String[]> getMapPropertyArrayValues() {
+        HashMap<String, String[]> map = new HashMap<>();
 
         map.put("foo1", new String[] { "bar1", "baz1" });
         map.put("foo2", new String[] { "bar2", "baz2" });

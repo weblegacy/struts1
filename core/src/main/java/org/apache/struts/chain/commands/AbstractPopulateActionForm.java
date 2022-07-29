@@ -186,7 +186,7 @@ public abstract class AbstractPopulateActionForm extends ActionCommandBase {
     protected void handleCancel(ActionContext context,
         ActionConfig actionConfig, ActionForm actionForm)
         throws Exception {
-        Map paramValues = context.getParameterMap();
+        Map<String, String[]> paramValues = context.getParameterMap();
 
         // Set the cancellation attribute if appropriate
         if ((paramValues.get(Globals.CANCEL_PROPERTY) != null)

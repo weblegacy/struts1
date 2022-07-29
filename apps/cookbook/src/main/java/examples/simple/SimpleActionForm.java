@@ -34,6 +34,7 @@ import org.apache.struts.action.ActionMessage;
  * @version $Rev$ $Date$
  */
 public class SimpleActionForm extends ActionForm {
+    private static final long serialVersionUID = 4189849944389346127L;
 
     // ------------------------------------------------------ Instance Variables
 

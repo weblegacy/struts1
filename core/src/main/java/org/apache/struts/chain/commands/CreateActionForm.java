@@ -79,7 +79,7 @@ public class CreateActionForm extends ActionCommandBase {
             return CONTINUE_PROCESSING;
         }
 
-        Map scope = actionCtx.getScope(actionConfig.getScope());
+        Map<String, Object> scope = actionCtx.getScope(actionConfig.getScope());
 
         ActionForm instance;
 

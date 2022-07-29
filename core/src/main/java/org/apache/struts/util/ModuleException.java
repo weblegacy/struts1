@@ -26,6 +26,8 @@ import org.apache.struts.action.ActionMessage;
  * Used for specialized exception handling.
  */
 public class ModuleException extends Exception {
+    private static final long serialVersionUID = 623125126450529319L;
+
     protected String property = null;
 
     /**

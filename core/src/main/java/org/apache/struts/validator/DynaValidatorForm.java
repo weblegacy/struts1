@@ -57,6 +57,8 @@ import java.util.Map;
  */
 public class DynaValidatorForm extends DynaActionForm implements DynaBean,
     Serializable {
+    private static final long serialVersionUID = -8296689613326613142L;
+
     /**
      * Commons Logging instance.
      */
@@ -145,7 +147,7 @@ public class DynaValidatorForm extends DynaActionForm implements DynaBean,
      * @since Struts 1.2
      */
     protected void setPageFromDynaProperty() {
-        Map props = this.getMap();
+        Map<String, Object> props = this.getMap();
 
         if (props.containsKey("page")) {
             Integer p = null;
@@ -206,7 +208,7 @@ public class DynaValidatorForm extends DynaActionForm implements DynaBean,
      * @return Returns a <code>Map</code> of values, otherwise returns null if
      *         no results.
      */
-    public Map getResultValueMap() {
+    public Map<String, Object> getResultValueMap() {
         return ((validatorResults != null)
         ? validatorResults.getResultValueMap() : null);
     }

@@ -43,6 +43,8 @@ import javax.servlet.ServletException;
  *          $
  */
 public class MockActionServlet extends ActionServlet {
+    private static final long serialVersionUID = 7761398622946832174L;
+
     protected ServletContext servletContext;
     protected ServletConfig servletConfig;
 

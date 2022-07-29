@@ -56,15 +56,18 @@ public class ContextWrapper implements Context {
     // -------------------------------
     // Map interface methods
     // -------------------------------
-    public Set entrySet() {
+    @SuppressWarnings("unchecked")
+    public Set<Object> entrySet() {
         return this.base.entrySet();
     }
 
-    public Set keySet() {
+    @SuppressWarnings("unchecked")
+    public Set<String> keySet() {
         return this.base.keySet();
     }
 
-    public Collection values() {
+    @SuppressWarnings("unchecked")
+    public Collection<Object> values() {
         return this.base.values();
     }
 
@@ -72,6 +75,7 @@ public class ContextWrapper implements Context {
         this.base.clear();
     }
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     public void putAll(Map map) {
         // ISSUE: Should we check this call to putAll?
         this.base.putAll(map);
@@ -81,6 +85,7 @@ public class ContextWrapper implements Context {
         return this.base.remove(key);
     }
 
+    @SuppressWarnings("unchecked")
     public Object put(Object key, Object value) {
         // ISSUE: Should we check this call to put?
         return this.base.put(key, value);

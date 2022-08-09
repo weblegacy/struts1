@@ -30,6 +30,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public class NotPresentTag extends PresentTag {
+    private static final long serialVersionUID = 8046936575721630181L;
+
     // ------------------------------------------------------ Protected Methods
 
     /**

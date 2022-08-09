@@ -31,6 +31,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public class HiddenTag extends BaseFieldTag {
+    private static final long serialVersionUID = 5086653576189221269L;
+
     // ------------------------------------------------------------- Properties
 
     /**
@@ -64,6 +66,7 @@ public class HiddenTag extends BaseFieldTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Render the <html:input type="hidden"> tag as before
         super.doStartTag();

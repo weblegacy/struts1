@@ -47,6 +47,8 @@ import java.util.Map;
  *          $
  */
 public class IterateTag extends BodyTagSupport {
+    private static final long serialVersionUID = -5999125654202702585L;
+
     /**
      * The message resources for this package.
      */
@@ -60,7 +62,7 @@ public class IterateTag extends BodyTagSupport {
      * Iterator of the elements of this collection, while we are actually
      * running.
      */
-    protected Iterator iterator = null;
+    protected Iterator<?> iterator = null;
 
     /**
      * The number of elements we have already rendered.
@@ -228,6 +230,7 @@ public class IterateTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Acquire the collection we are going to iterate over
         Object collection = this.collection;
@@ -256,7 +259,7 @@ public class IterateTag extends BodyTagSupport {
             } catch (ClassCastException e) {
                 // Rats -- it is an array of primitives
                 int length = Array.getLength(collection);
-                ArrayList c = new ArrayList(length);
+                ArrayList<Object> c = new ArrayList<>(length);
 
                 for (int i = 0; i < length; i++) {
                     c.add(Array.get(collection, i));
@@ -265,13 +268,15 @@ public class IterateTag extends BodyTagSupport {
                 iterator = c.iterator();
             }
         } else if (collection instanceof Collection) {
-            iterator = ((Collection) collection).iterator();
+            iterator = ((Collection<?>) collection).iterator();
         } else if (collection instanceof Iterator) {
-            iterator = (Iterator) collection;
+            iterator = (Iterator<?>) collection;
         } else if (collection instanceof Map) {
-            iterator = ((Map) collection).entrySet().iterator();
+            iterator = ((Map<?, ?>) collection).entrySet().iterator();
         } else if (collection instanceof Enumeration) {
-            iterator = new IteratorAdapter((Enumeration) collection);
+            @SuppressWarnings("unchecked")
+            Enumeration<Object> enumeration = (Enumeration<Object>) collection;
+            iterator = new IteratorAdapter<Object>(enumeration);
         } else {
             JspException e =
                 new JspException(messages.getMessage("iterate.iterator", name,
@@ -365,6 +370,7 @@ public class IterateTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doAfterBody() throws JspException {
         // Render the output from this iteration to the output stream
         if (bodyContent != null) {

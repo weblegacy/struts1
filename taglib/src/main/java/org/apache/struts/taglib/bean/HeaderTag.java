@@ -38,6 +38,8 @@ import java.util.Enumeration;
  *          $
  */
 public class HeaderTag extends TagSupport {
+    private static final long serialVersionUID = -1858141385102293698L;
+
     /**
      * The message resources for this package.
      */
@@ -126,12 +128,12 @@ public class HeaderTag extends TagSupport {
      */
     protected void handleMultipleHeaders()
         throws JspException {
-        ArrayList values = new ArrayList();
-        Enumeration items =
+        ArrayList<String> values = new ArrayList<>();
+        Enumeration<?> items =
             ((HttpServletRequest) pageContext.getRequest()).getHeaders(name);
 
         while (items.hasMoreElements()) {
-            values.add(items.nextElement());
+            values.add(items.nextElement().toString());
         }
 
         if (values.isEmpty() && (this.value != null)) {

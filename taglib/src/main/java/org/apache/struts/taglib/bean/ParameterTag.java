@@ -34,6 +34,8 @@ import javax.servlet.jsp.tagext.TagSupport;
  *          $
  */
 public class ParameterTag extends TagSupport {
+    private static final long serialVersionUID = -3980455390796879785L;
+
     /**
      * The message resources for this package.
      */

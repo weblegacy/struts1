@@ -40,6 +40,8 @@ import java.util.Map;
  *          $
  */
 public class SizeTag extends TagSupport {
+    private static final long serialVersionUID = 5127140862877418975L;
+
     /**
      * The message resources for this package.
      */
@@ -155,9 +157,9 @@ public class SizeTag extends TagSupport {
         } else if (value.getClass().isArray()) {
             size = Array.getLength(value);
         } else if (value instanceof Collection) {
-            size = ((Collection) value).size();
+            size = ((Collection<?>) value).size();
         } else if (value instanceof Map) {
-            size = ((Map) value).size();
+            size = ((Map<?, ?>) value).size();
         } else {
             JspException e =
                 new JspException(messages.getMessage("size.collection",

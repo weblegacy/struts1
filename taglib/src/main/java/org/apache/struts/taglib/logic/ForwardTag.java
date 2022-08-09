@@ -38,6 +38,8 @@ import javax.servlet.jsp.tagext.TagSupport;
  *          $
  */
 public class ForwardTag extends TagSupport {
+    private static final long serialVersionUID = -6945897858520054480L;
+
     // ----------------------------------------------------------- Properties
 
     /**

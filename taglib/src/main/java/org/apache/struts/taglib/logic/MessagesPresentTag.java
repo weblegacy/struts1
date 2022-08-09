@@ -21,6 +21,7 @@
 package org.apache.struts.taglib.logic;
 
 import org.apache.struts.Globals;
+import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.taglib.TagUtils;
 
@@ -29,7 +30,7 @@ import javax.servlet.jsp.JspException;
 import java.util.Iterator;
 
 /**
- * Evalute to <code>true</code> if an <code>ActionMessages</code> class or a
+ * Evaluate to <code>true</code> if an <code>ActionMessages</code> class or a
  * class that can be converted to an <code>ActionMessages</code> class is in
  * request scope under the specified key and there is at least one message in
  * the class or for the property specified.
@@ -39,6 +40,7 @@ import java.util.Iterator;
  * @since Struts 1.1
  */
 public class MessagesPresentTag extends ConditionalTagBase {
+    private static final long serialVersionUID = 4848602425179872796L;
 
     /**
      * If this is set to 'true', then the <code>Globals.MESSAGE_KEY</code>
@@ -110,7 +112,7 @@ public class MessagesPresentTag extends ConditionalTagBase {
         }
 
         // Acquire the collection of messages
-        Iterator iterator;
+        Iterator<ActionMessage> iterator;
         int size;
         if (property == null) {
             iterator = am.get();

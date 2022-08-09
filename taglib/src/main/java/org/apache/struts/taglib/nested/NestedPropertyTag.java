@@ -43,6 +43,8 @@ import javax.servlet.jsp.tagext.BodyTagSupport;
  */
 public class NestedPropertyTag extends BodyTagSupport
     implements NestedNameSupport {
+    private static final long serialVersionUID = 1282076933811483467L;
+
     /* the usual private member variable */
     private String property = null;
     private String originalNest = null;
@@ -81,6 +83,7 @@ public class NestedPropertyTag extends BodyTagSupport
      *
      * @return int JSP continuation directive.
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         originalProperty = property;
 

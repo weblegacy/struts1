@@ -40,6 +40,8 @@ import java.util.Map;
  *          $
  */
 public class RedirectTag extends TagSupport {
+    private static final long serialVersionUID = -633259759046315419L;
+
     /**
      * The message resources for this package.
      */
@@ -278,7 +280,7 @@ public class RedirectTag extends TagSupport {
      */
     protected String generateRedirectURL()
         throws JspException {
-        Map params =
+        Map<String, Object> params =
             TagUtils.getInstance().computeParameters(pageContext, paramId,
                 paramName, paramProperty, paramScope, name, property, scope,
                 transaction);

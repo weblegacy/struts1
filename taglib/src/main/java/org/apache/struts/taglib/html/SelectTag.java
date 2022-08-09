@@ -37,6 +37,8 @@ import java.lang.reflect.InvocationTargetException;
  *          $
  */
 public class SelectTag extends BaseHandlerTag {
+    private static final long serialVersionUID = -48324910116851733L;
+
     /**
      * The message resources for this package.
      */
@@ -168,6 +170,7 @@ public class SelectTag extends BaseHandlerTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         TagUtils.getInstance().write(pageContext, renderSelectStartElement());
 

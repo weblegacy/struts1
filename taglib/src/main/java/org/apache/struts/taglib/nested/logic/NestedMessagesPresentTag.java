@@ -36,6 +36,8 @@ import javax.servlet.jsp.JspException;
  */
 public class NestedMessagesPresentTag extends MessagesPresentTag
     implements NestedPropertySupport {
+    private static final long serialVersionUID = -2849800682501527193L;
+
     /* the usual private member variables */
     private String originalName = null;
     private String originalProperty = null;

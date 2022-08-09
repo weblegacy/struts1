@@ -31,6 +31,8 @@ import javax.servlet.jsp.JspException;
  * @since Struts 1.1
  */
 public class MessagesNotPresentTag extends MessagesPresentTag {
+    private static final long serialVersionUID = 5634897507730577292L;
+
     // ------------------------------------------------------ Protected Methods
 
     /**

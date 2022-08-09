@@ -38,6 +38,8 @@ import java.io.InputStreamReader;
  *          $
  */
 public class ResourceTag extends TagSupport {
+    private static final long serialVersionUID = -2393578665475166929L;
+
     // ------------------------------------------------------------- Properties
 
     /**

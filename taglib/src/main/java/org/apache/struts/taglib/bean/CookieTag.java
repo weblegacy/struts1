@@ -38,6 +38,8 @@ import java.util.ArrayList;
  *          $
  */
 public class CookieTag extends TagSupport {
+    private static final long serialVersionUID = 8294387396934425648L;
+
     /**
      * The message resources for this package.
      */
@@ -110,7 +112,7 @@ public class CookieTag extends TagSupport {
      */
     public int doStartTag() throws JspException {
         // Retrieve the required cookie value(s)
-        ArrayList values = new ArrayList();
+        ArrayList<Cookie> values = new ArrayList<>();
         Cookie[] cookies =
             ((HttpServletRequest) pageContext.getRequest()).getCookies();
 
@@ -118,9 +120,9 @@ public class CookieTag extends TagSupport {
             cookies = new Cookie[0];
         }
 
-        for (int i = 0; i < cookies.length; i++) {
-            if (name.equals(cookies[i].getName())) {
-                values.add(cookies[i]);
+        for (Cookie cookie : cookies) {
+            if (name.equals(cookie.getName())) {
+                values.add(cookie);
             }
         }
 

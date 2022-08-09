@@ -31,6 +31,8 @@ import javax.servlet.jsp.JspException;
  * @since Struts 1.1
  */
 public class NotEmptyTag extends EmptyTag {
+    private static final long serialVersionUID = 6185805637187223268L;
+
     // ------------------------------------------------------ Protected Methods
 
     /**

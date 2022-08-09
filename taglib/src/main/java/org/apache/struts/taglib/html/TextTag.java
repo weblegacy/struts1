@@ -28,6 +28,8 @@ package org.apache.struts.taglib.html;
  *          $
  */
 public class TextTag extends BaseFieldTag {
+    private static final long serialVersionUID = -1565559380893998552L;
+
     /**
      * Construct a new instance of this tag.
      */

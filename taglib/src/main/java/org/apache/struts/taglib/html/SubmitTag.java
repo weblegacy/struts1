@@ -32,6 +32,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public class SubmitTag extends BaseHandlerTag {
+    private static final long serialVersionUID = 2450065490909394950L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -97,6 +99,7 @@ public class SubmitTag extends BaseHandlerTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Do nothing until doEndTag() is called
         this.text = null;

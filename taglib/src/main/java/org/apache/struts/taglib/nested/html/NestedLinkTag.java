@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @since Struts 1.1
  */
 public class NestedLinkTag extends LinkTag implements NestedNameSupport {
+    private static final long serialVersionUID = 911201643181986632L;
+
     /* hold original property */
     private String origName = null;
     private String origProperty = null;

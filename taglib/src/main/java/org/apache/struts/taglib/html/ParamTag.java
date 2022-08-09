@@ -33,6 +33,7 @@ import javax.servlet.jsp.tagext.Tag;
  * @since Struts 1.3.6
  */
 public class ParamTag extends BodyTagSupport {
+    private static final long serialVersionUID = -1366158296805914170L;
 
     /**
      * The message resources for this package.
@@ -78,6 +79,7 @@ public class ParamTag extends BodyTagSupport {
     /**
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         return (EVAL_BODY_TAG);
     }

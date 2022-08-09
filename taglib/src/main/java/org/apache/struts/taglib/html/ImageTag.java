@@ -20,7 +20,6 @@
  */
 package org.apache.struts.taglib.html;
 
-import org.apache.struts.Globals;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.taglib.TagUtils;
 import org.apache.struts.util.ModuleUtils;
@@ -36,6 +35,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public class ImageTag extends SubmitTag {
+    private static final long serialVersionUID = 6895880639102424412L;
+
     // ------------------------------------------------------------- Properties
 
     /**

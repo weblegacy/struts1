@@ -34,6 +34,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public class MatchTag extends ConditionalTagBase {
+    private static final long serialVersionUID = -4209300919052098694L;
+
     // ------------------------------------------------------------- Properties
 
     /**

@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  */
 public class NestedOptionsCollectionTag extends OptionsCollectionTag
     implements NestedNameSupport {
+    private static final long serialVersionUID = -982402435045422810L;
+
     /* the usual private member variables */
     private String originalName = null;
     private String originalProperty = null;

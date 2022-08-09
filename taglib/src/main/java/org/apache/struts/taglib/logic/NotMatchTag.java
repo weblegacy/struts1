@@ -30,6 +30,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public class NotMatchTag extends MatchTag {
+    private static final long serialVersionUID = 3642422424248062503L;
+
     // ------------------------------------------------------ Protected Methods
 
     /**

@@ -50,6 +50,8 @@ import java.util.Map;
  *          $
  */
 public class IncludeTag extends TagSupport {
+    private static final long serialVersionUID = 7506510616296363473L;
+
     // ------------------------------------------------------------- Properties
 
     /**
@@ -163,7 +165,7 @@ public class IncludeTag extends TagSupport {
      */
     public int doStartTag() throws JspException {
         // Set up a URLConnection to read the requested resource
-        Map params =
+        Map<String, Object> params =
             TagUtils.getInstance().computeParameters(pageContext, null, null,
                 null, null, null, null, null, transaction);
 

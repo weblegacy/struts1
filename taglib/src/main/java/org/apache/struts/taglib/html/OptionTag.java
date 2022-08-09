@@ -36,6 +36,8 @@ import javax.servlet.jsp.tagext.BodyTagSupport;
  *          $
  */
 public class OptionTag extends BodyTagSupport {
+    private static final long serialVersionUID = -7578679181809130326L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -282,6 +284,7 @@ public class OptionTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Initialize the placeholder for our body content
         this.text = null;

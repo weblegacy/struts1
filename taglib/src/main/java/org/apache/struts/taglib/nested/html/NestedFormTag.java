@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @since Struts 1.1
  */
 public class NestedFormTag extends FormTag implements NestedNameSupport {
+    private static final long serialVersionUID = -6573069373335339702L;
+
     //TODO: name property was removed from FormTag but appears to be required
     //      for the nested version to work. See if it can be removed
     //      from here altogether.

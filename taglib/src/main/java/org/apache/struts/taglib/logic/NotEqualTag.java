@@ -30,6 +30,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public class NotEqualTag extends CompareTagBase {
+    private static final long serialVersionUID = -3277118331286876543L;
+
     /**
      * Evaluate the condition that is being tested by this particular tag, and
      * return <code>true</code> if the nested body content of this tag should

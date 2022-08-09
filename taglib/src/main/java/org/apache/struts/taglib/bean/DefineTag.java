@@ -37,6 +37,8 @@ import javax.servlet.jsp.tagext.BodyTagSupport;
  *          $
  */
 public class DefineTag extends BodyTagSupport {
+    private static final long serialVersionUID = 1913737863789666444L;
+
     /**
      * Commons logging instance.
      */
@@ -157,6 +159,7 @@ public class DefineTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         return (EVAL_BODY_TAG);
     }

@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @since Struts 1.1
  */
 public class NestedSubmitTag extends SubmitTag implements NestedPropertySupport {
+    private static final long serialVersionUID = -909359466167523639L;
+
     /* the usual private member variables */
     private String originalProperty = null;
 

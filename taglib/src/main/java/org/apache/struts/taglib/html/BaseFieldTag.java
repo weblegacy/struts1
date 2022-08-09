@@ -31,6 +31,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public abstract class BaseFieldTag extends BaseInputTag {
+    private static final long serialVersionUID = 6316491607452965571L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -76,6 +78,7 @@ public abstract class BaseFieldTag extends BaseInputTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         TagUtils.getInstance().write(this.pageContext, this.renderInputElement());
 

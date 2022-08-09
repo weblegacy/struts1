@@ -37,6 +37,8 @@ import java.util.Map;
  *          $
  */
 public class LinkTag extends BaseHandlerTag {
+    private static final long serialVersionUID = -2086640838393670862L;
+
     /**
      * The message resources for this package.
      */
@@ -143,7 +145,7 @@ public class LinkTag extends BaseHandlerTag {
     /**
      * Additional parameters included programatically.
      */
-    protected Map parameters = new HashMap();
+    protected Map<String, Object> parameters = new HashMap<>();
 
     /**
      * Name of parameter to generate to hold index number
@@ -309,6 +311,7 @@ public class LinkTag extends BaseHandlerTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         this.text = null;
         this.parameters.clear();
@@ -409,7 +412,7 @@ public class LinkTag extends BaseHandlerTag {
     protected String calculateURL()
         throws JspException {
         // Identify the parameters we will add to the completed URL
-        Map params =
+        Map<String, Object> params =
             TagUtils.getInstance().computeParameters(pageContext, paramId,
                 paramName, paramProperty, paramScope, name, property, scope,
                 transaction);
@@ -417,7 +420,7 @@ public class LinkTag extends BaseHandlerTag {
         // Add parameters collected from the tag's inner body
         if (!this.parameters.isEmpty()) {
             if (params == null) {
-                params = new HashMap();
+                params = new HashMap<>();
             }
             params.putAll(this.parameters);
         }
@@ -429,7 +432,7 @@ public class LinkTag extends BaseHandlerTag {
 
             //calculate index, and add as a parameter
             if (params == null) {
-                params = new HashMap(); //create new HashMap if no other params
+                params = new HashMap<>(); //create new HashMap if no other params
             }
 
             if (indexId != null) {

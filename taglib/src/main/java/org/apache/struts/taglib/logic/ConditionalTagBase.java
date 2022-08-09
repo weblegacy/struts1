@@ -32,6 +32,8 @@ import javax.servlet.jsp.tagext.TagSupport;
  *          $
  */
 public abstract class ConditionalTagBase extends TagSupport {
+    private static final long serialVersionUID = 3946322389227285250L;
+
     /**
      * The message resources for this package.
      */

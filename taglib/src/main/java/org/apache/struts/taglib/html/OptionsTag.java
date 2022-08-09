@@ -45,6 +45,8 @@ import java.util.Map;
  * later) platform.
  */
 public class OptionsTag extends TagSupport {
+    private static final long serialVersionUID = -585632142361843380L;
+
     /**
      * The message resources for this package.
      */
@@ -185,7 +187,7 @@ public class OptionsTag extends TagSupport {
 
         // If a collection was specified, use that mode to render options
         if (collection != null) {
-            Iterator collIterator = getIterator(collection, null);
+            Iterator<?> collIterator = getIterator(collection, null);
 
             while (collIterator.hasNext()) {
                 Object bean = collIterator.next();
@@ -243,8 +245,8 @@ public class OptionsTag extends TagSupport {
         // Otherwise, use the separate iterators mode to render options
         else {
             // Construct iterators for the values and labels collections
-            Iterator valuesIterator = getIterator(name, property);
-            Iterator labelsIterator = null;
+            Iterator<?> valuesIterator = getIterator(name, property);
+            Iterator<?> labelsIterator = null;
 
             if ((labelName != null) || (labelProperty != null)) {
                 labelsIterator = getIterator(labelName, labelProperty);
@@ -361,7 +363,7 @@ public class OptionsTag extends TagSupport {
      * @param property Name of the bean property (if any)
      * @throws JspException if an error occurs
      */
-    protected Iterator getIterator(String name, String property)
+    protected Iterator<?> getIterator(String name, String property)
         throws JspException {
         // Identify the bean containing our collection
         String beanName = name;
@@ -408,13 +410,15 @@ public class OptionsTag extends TagSupport {
         }
 
         if (collection instanceof Collection) {
-            return (((Collection) collection).iterator());
+            return (((Collection<?>) collection).iterator());
         } else if (collection instanceof Iterator) {
-            return ((Iterator) collection);
+            return ((Iterator<?>) collection);
         } else if (collection instanceof Map) {
-            return (((Map) collection).entrySet().iterator());
+            return (((Map<?, ?>) collection).entrySet().iterator());
         } else if (collection instanceof Enumeration) {
-            return new IteratorAdapter((Enumeration) collection);
+            @SuppressWarnings("unchecked")
+            Enumeration<Object> enumeration = (Enumeration<Object>) collection;
+            return new IteratorAdapter<Object>(enumeration);
         } else {
             throw new JspException(messages.getMessage("optionsTag.iterator",
                     collection.toString()));

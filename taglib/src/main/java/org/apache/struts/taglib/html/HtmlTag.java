@@ -41,6 +41,8 @@ import java.util.Locale;
  *          $
  */
 public class HtmlTag extends TagSupport {
+    private static final long serialVersionUID = 1110615775165419573L;
+
     // ------------------------------------------------------------- Properties
 
     /**

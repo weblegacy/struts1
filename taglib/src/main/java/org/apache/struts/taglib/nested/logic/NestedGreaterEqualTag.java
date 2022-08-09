@@ -36,6 +36,8 @@ import javax.servlet.jsp.JspException;
  */
 public class NestedGreaterEqualTag extends GreaterEqualTag
     implements NestedNameSupport {
+    private static final long serialVersionUID = 314872298769433364L;
+
     /* the usual private member variables */
     private String originalName = null;
     private String originalProperty = null;

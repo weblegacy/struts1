@@ -46,6 +46,8 @@ import java.lang.reflect.Method;
  * @version $Rev$ $Date$
  */
 public abstract class BaseHandlerTag extends BodyTagSupport {
+    private static final long serialVersionUID = -2120829773020021751L;
+
     /**
      * Commons Logging instance.
      */
@@ -262,9 +264,9 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
      * The message resources key of the advisory title.
      */
     private String titleKey = null;
-    private Class loopTagClass = null;
+    private Class<?> loopTagClass = null;
     private Method loopTagGetStatus = null;
-    private Class loopTagStatusClass = null;
+    private Class<?> loopTagStatusClass = null;
     private Method loopTagStatusGetIndex = null;
     private boolean triedJstlInit = false;
     private boolean triedJstlSuccess = false;
@@ -859,14 +861,14 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
                         "javax.servlet.jsp.jstl.core.LoopTag");
 
                 loopTagGetStatus =
-                    loopTagClass.getDeclaredMethod("getLoopStatus", null);
+                    loopTagClass.getDeclaredMethod("getLoopStatus");
 
                 loopTagStatusClass =
                     RequestUtils.applicationClass(
                         "javax.servlet.jsp.jstl.core.LoopTagStatus");
 
                 loopTagStatusGetIndex =
-                    loopTagStatusClass.getDeclaredMethod("getIndex", null);
+                    loopTagStatusClass.getDeclaredMethod("getIndex");
 
                 triedJstlSuccess = true;
             } catch (ClassNotFoundException ex) {
@@ -884,9 +886,9 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
                     return null;
                 }
 
-                Object status = loopTagGetStatus.invoke(loopTag, null);
+                Object status = loopTagGetStatus.invoke(loopTag);
 
-                return (Integer) loopTagStatusGetIndex.invoke(status, null);
+                return (Integer) loopTagStatusGetIndex.invoke(status);
             } catch (IllegalAccessException ex) {
                 log.error(ex.getMessage(), ex);
             } catch (IllegalArgumentException ex) {

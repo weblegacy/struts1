@@ -31,6 +31,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public class TextareaTag extends BaseInputTag {
+    private static final long serialVersionUID = -7022620739760157338L;
+
     // ----------------------------------------------------- Constructor
     public TextareaTag() {
         super();
@@ -44,6 +46,7 @@ public class TextareaTag extends BaseInputTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         TagUtils.getInstance().write(pageContext, this.renderTextareaElement());
 

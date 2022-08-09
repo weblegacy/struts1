@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @since Struts 1.1
  */
 public class NestedMultiboxTag extends MultiboxTag implements NestedNameSupport {
+    private static final long serialVersionUID = 7519874800744967796L;
+
     /* the usual private member variables */
     private String originalName = null;
     private String originalProperty = null;

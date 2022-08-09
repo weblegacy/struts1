@@ -29,6 +29,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public class ResetTag extends SubmitTag {
+    private static final long serialVersionUID = -5672130608101054935L;
+
     /**
      * Render the opening element.
      *

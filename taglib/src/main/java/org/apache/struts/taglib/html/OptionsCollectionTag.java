@@ -50,6 +50,8 @@ import java.util.Map;
  * @since Struts 1.1
  */
 public class OptionsCollectionTag extends TagSupport {
+    private static final long serialVersionUID = 1914555968585129477L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -187,7 +189,7 @@ public class OptionsCollectionTag extends TagSupport {
         }
 
         // Acquire an iterator over the options collection
-        Iterator iter = getIterator(collection);
+        Iterator<?> iter = getIterator(collection);
 
         StringBuffer sb = new StringBuffer();
 
@@ -350,20 +352,22 @@ public class OptionsCollectionTag extends TagSupport {
      * @param collection Collection to be iterated over
      * @throws JspException if an error occurs
      */
-    protected Iterator getIterator(Object collection)
+    protected Iterator<?> getIterator(Object collection)
         throws JspException {
         if (collection.getClass().isArray()) {
             collection = Arrays.asList((Object[]) collection);
         }
 
         if (collection instanceof Collection) {
-            return (((Collection) collection).iterator());
+            return (((Collection<?>) collection).iterator());
         } else if (collection instanceof Iterator) {
-            return ((Iterator) collection);
+            return ((Iterator<?>) collection);
         } else if (collection instanceof Map) {
-            return (((Map) collection).entrySet().iterator());
+            return (((Map<?, ?>) collection).entrySet().iterator());
         } else if (collection instanceof Enumeration) {
-            return new IteratorAdapter((Enumeration) collection);
+            @SuppressWarnings("unchecked")
+            Enumeration<Object> enumeration = (Enumeration<Object>) collection;
+            return new IteratorAdapter<Object>(enumeration);
         } else {
             throw new JspException(messages.getMessage(
                     "optionsCollectionTag.iterator", collection.toString()));

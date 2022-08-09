@@ -30,7 +30,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
 
-import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -48,6 +47,8 @@ import java.util.Map;
  * @version $Rev$
  */
 public class ImgTag extends BaseHandlerTag {
+    private static final long serialVersionUID = 1462449704516940123L;
+
     /**
      * The message resources for this package.
      */
@@ -372,6 +373,7 @@ public class ImgTag extends BaseHandlerTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Evaluate the body of this tag
         return (EVAL_BODY_TAG);
@@ -560,6 +562,7 @@ public class ImgTag extends BaseHandlerTag {
      *            used)
      * @throws JspException if an error occurs preparing the URL
      */
+    @SuppressWarnings("unchecked")
     protected String url(String url)
         throws JspException {
         if (url == null) {
@@ -612,10 +615,10 @@ public class ImgTag extends BaseHandlerTag {
         // Look up the map we will be using
         Object mapObject =
             TagUtils.getInstance().lookup(pageContext, name, property, scope);
-        Map map = null;
+        Map<String, Object> map = null;
 
         try {
-            map = (Map) mapObject;
+            map = (Map<String, Object>) mapObject;
         } catch (ClassCastException e) {
             TagUtils.getInstance().saveException(pageContext, e);
             throw new JspException(messages.getMessage("imgTag.type"), e);
@@ -623,11 +626,10 @@ public class ImgTag extends BaseHandlerTag {
 
         // Append the required query parameters
         boolean question = (src.toString().indexOf("?") >= 0);
-        Iterator keys = map.keySet().iterator();
 
-        while (keys.hasNext()) {
-            String key = (String) keys.next();
-            Object value = map.get(key);
+        for (Map.Entry<String, Object> entry : map.entrySet()) {
+            String key = entry.getKey();
+            Object value = entry.getValue();
 
             if (value == null) {
                 if (question) {

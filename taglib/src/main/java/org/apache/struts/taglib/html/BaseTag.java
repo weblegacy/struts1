@@ -46,6 +46,8 @@ import java.util.StringTokenizer;
  *          $
  */
 public class BaseTag extends TagSupport {
+    private static final long serialVersionUID = 4758687983139578649L;
+
     /**
      * The message resources for this package.
      */

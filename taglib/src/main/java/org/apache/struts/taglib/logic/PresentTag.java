@@ -38,6 +38,8 @@ import java.util.StringTokenizer;
  *          $
  */
 public class PresentTag extends ConditionalTagBase {
+    private static final long serialVersionUID = 5444827720181318160L;
+
     public static final String ROLE_DELIMITER = ",";
 
     // ------------------------------------------------------ Protected Methods

@@ -38,6 +38,8 @@ import java.util.Map;
  * @since Struts 1.1
  */
 public class EmptyTag extends ConditionalTagBase {
+    private static final long serialVersionUID = 8155134178220490301L;
+
     // ------------------------------------------------------ Protected Methods
 
     /**
@@ -90,11 +92,11 @@ public class EmptyTag extends ConditionalTagBase {
 
             empty = (strValue.length() < 1);
         } else if (value instanceof Collection) {
-            Collection collValue = (Collection) value;
+            Collection<?> collValue = (Collection<?>) value;
 
             empty = collValue.isEmpty();
         } else if (value instanceof Map) {
-            Map mapValue = (Map) value;
+            Map<?, ?> mapValue = (Map<?, ?>) value;
 
             empty = mapValue.isEmpty();
         } else if (value.getClass().isArray()) {

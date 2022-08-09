@@ -36,6 +36,8 @@ import java.util.Map;
  *          $
  */
 public class RewriteTag extends LinkTag {
+    private static final long serialVersionUID = 631087586001555798L;
+
     // --------------------------------------------------------- Public Methods
 
     /**
@@ -45,7 +47,7 @@ public class RewriteTag extends LinkTag {
      */
     public int doEndTag() throws JspException {
         // Generate the hyperlink URL
-        Map params =
+        Map<String, Object> params =
             TagUtils.getInstance().computeParameters(pageContext, paramId,
                 paramName, paramProperty, paramScope, name, property, scope,
                 transaction);
@@ -53,7 +55,7 @@ public class RewriteTag extends LinkTag {
         // Add parameters collected from the tag's inner body
         if (!this.parameters.isEmpty()) {
             if (params == null) {
-                params = new HashMap();
+                params = new HashMap<>();
             }
             params.putAll(this.parameters);
         }

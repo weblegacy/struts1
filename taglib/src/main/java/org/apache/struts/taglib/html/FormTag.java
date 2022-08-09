@@ -48,6 +48,8 @@ import java.io.IOException;
  * @version $Rev$ $Date$
  */
 public class FormTag extends TagSupport {
+    private static final long serialVersionUID = 8974150782496551522L;
+
     /**
      * The line ending string.
      */

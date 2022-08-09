@@ -60,6 +60,8 @@ import java.util.Iterator;
  *          $
  */
 public class ErrorsTag extends TagSupport {
+    private static final long serialVersionUID = -1001104694221127422L;
+
     /**
      * The message resources for this package.
      */
@@ -217,11 +219,11 @@ public class ErrorsTag extends TagSupport {
         StringBuffer results = new StringBuffer();
         boolean headerDone = false;
         String message = null;
-        Iterator reports =
+        Iterator<ActionMessage> reports =
             (property == null) ? errors.get() : errors.get(property);
 
         while (reports.hasNext()) {
-            ActionMessage report = (ActionMessage) reports.next();
+            ActionMessage report = reports.next();
 
             if (!headerDone) {
                 if (headerPresent) {

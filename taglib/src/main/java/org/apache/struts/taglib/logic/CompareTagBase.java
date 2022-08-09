@@ -38,6 +38,8 @@ import java.lang.reflect.InvocationTargetException;
  *          $
  */
 public abstract class CompareTagBase extends ConditionalTagBase {
+    private static final long serialVersionUID = 9080377495065975604L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**

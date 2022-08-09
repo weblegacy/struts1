@@ -46,6 +46,8 @@ import javax.servlet.jsp.tagext.BodyTagSupport;
  * @since Struts 1.1
  */
 public class NestedRootTag extends BodyTagSupport implements NestedNameSupport {
+    private static final long serialVersionUID = 6034271254121373745L;
+
     /* usual member variables */
     private String name = null;
     private String originalName = "";
@@ -93,6 +95,7 @@ public class NestedRootTag extends BodyTagSupport implements NestedNameSupport {
      *
      * @return int JSP continuation directive.
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         /* set the nested reference for possible inclusions etc */
         HttpServletRequest request =

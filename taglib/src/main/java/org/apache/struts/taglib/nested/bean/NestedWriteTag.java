@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @since Struts 1.1
  */
 public class NestedWriteTag extends WriteTag implements NestedNameSupport {
+    private static final long serialVersionUID = 3740778140571147683L;
+
     /* the usual private member variables */
     private String originalName = null;
     private String originalProperty = null;

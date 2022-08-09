@@ -35,6 +35,7 @@ import javax.servlet.jsp.tagext.TagSupport;
  * Example:<br/> &lt;html:xhtml/&gt;</p>
  */
 public class XhtmlTag extends TagSupport {
+    private static final long serialVersionUID = 2280460329323937654L;
 
     /**
      * Commons logging instance.

@@ -38,6 +38,8 @@ import java.util.Map;
  * @since Struts 1.1
  */
 public class NestedIterateTag extends IterateTag implements NestedNameSupport {
+    private static final long serialVersionUID = -8879469068532412076L;
+
     // The current nesting
     private String nesting = null;
 
@@ -110,7 +112,7 @@ public class NestedIterateTag extends IterateTag implements NestedNameSupport {
         Object idObj = pageContext.getAttribute(id);
 
         if (idObj instanceof Map.Entry) {
-            return nesting + "(" + ((Map.Entry) idObj).getKey() + ")";
+            return nesting + "(" + ((Map.Entry<?, ?>) idObj).getKey() + ")";
         } else {
             return nesting + "[" + this.getIndex() + "]";
         }

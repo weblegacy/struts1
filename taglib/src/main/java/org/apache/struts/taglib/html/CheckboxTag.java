@@ -32,6 +32,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public class CheckboxTag extends BaseHandlerTag {
+    private static final long serialVersionUID = -2300329410278177186L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -111,6 +113,7 @@ public class CheckboxTag extends BaseHandlerTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Create an appropriate "input" element based on our parameters
         StringBuffer results = new StringBuffer("<input type=\"checkbox\"");

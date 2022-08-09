@@ -36,6 +36,8 @@ import javax.servlet.jsp.JspException;
  */
 public class NestedNotPresentTag extends NotPresentTag
     implements NestedNameSupport {
+    private static final long serialVersionUID = -6664638236639201701L;
+
     /* the usual private member variables */
     private String originalName = null;
     private String originalProperty = null;

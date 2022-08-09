@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @since Struts 1.1
  */
 public class NestedImageTag extends ImageTag implements NestedPropertySupport {
+    private static final long serialVersionUID = 4814668203571129784L;
+
     /* the usual private member variables */
     private String originalProperty = null;
 

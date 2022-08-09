@@ -52,8 +52,8 @@ import java.math.BigDecimal;
 
 import java.net.MalformedURLException;
 
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 
@@ -124,17 +124,17 @@ public class TagUtils {
      * Maps lowercase JSP scope names to their PageContext integer constant
      * values.
      */
-    private static final Map scopes = new HashMap();
+    private static final Map<String, Integer> scopes = new HashMap<>();
 
     /**
      * Initialize the scope names map and the encode variable with the
      * Java 1.4 method if available.
      */
     static {
-        scopes.put("page", new Integer(PageContext.PAGE_SCOPE));
-        scopes.put("request", new Integer(PageContext.REQUEST_SCOPE));
-        scopes.put("session", new Integer(PageContext.SESSION_SCOPE));
-        scopes.put("application", new Integer(PageContext.APPLICATION_SCOPE));
+        scopes.put("page", PageContext.PAGE_SCOPE);
+        scopes.put("request", PageContext.REQUEST_SCOPE);
+        scopes.put("session", PageContext.SESSION_SCOPE);
+        scopes.put("application", PageContext.APPLICATION_SCOPE);
     }
 
     /**
@@ -187,7 +187,8 @@ public class TagUtils {
      * @throws JspException if a class cast exception occurs on a looked-up
      *                      bean or property
      */
-    public Map computeParameters(PageContext pageContext, String paramId,
+    @SuppressWarnings("unchecked")
+    public Map<String, Object> computeParameters(PageContext pageContext, String paramId,
         String paramName, String paramProperty, String paramScope, String name,
         String property, String scope, boolean transaction)
         throws JspException {
@@ -197,11 +198,11 @@ public class TagUtils {
         }
 
         // Locate the Map containing our multi-value parameters map
-        Map map = null;
+        Map<String, Object> map = null;
 
         try {
             if (name != null) {
-                map = (Map) getInstance().lookup(pageContext, name, property,
+                map = (Map<String, Object>) getInstance().lookup(pageContext, name, property,
                         scope);
             }
 
@@ -216,12 +217,12 @@ public class TagUtils {
         }
 
         // Create a Map to contain our results from the multi-value parameters
-        Map results = null;
+        Map<String, Object> results = null;
 
         if (map != null) {
-            results = new HashMap(map);
+            results = new HashMap<>(map);
         } else {
-            results = new HashMap();
+            results = new HashMap<>();
         }
 
         // Add the single-value parameter (if any)
@@ -252,10 +253,7 @@ public class TagUtils {
                     results.put(paramId, paramString);
                 } else if (mapValue instanceof String[]) {
                     String[] oldValues = (String[]) mapValue;
-                    String[] newValues = new String[oldValues.length + 1];
-
-                    System.arraycopy(oldValues, 0, newValues, 0,
-                        oldValues.length);
+                    String[] newValues = Arrays.copyOf(oldValues, oldValues.length + 1);
                     newValues[oldValues.length] = paramString;
                     results.put(paramId, newValues);
                 } else {
@@ -288,7 +286,7 @@ public class TagUtils {
     }
 
     public String computeURL(PageContext pageContext, String forward,
-        String href, String page, String action, String module, Map params,
+        String href, String page, String action, String module, Map<String, ?> params,
         String anchor, boolean redirect)
         throws MalformedURLException {
         return this.computeURLWithCharEncoding(pageContext, forward, href,
@@ -319,14 +317,14 @@ public class TagUtils {
      */
     public String computeURLWithCharEncoding(PageContext pageContext,
         String forward, String href, String page, String action, String module,
-        Map params, String anchor, boolean redirect, boolean useLocalEncoding)
+        Map<String, ?> params, String anchor, boolean redirect, boolean useLocalEncoding)
         throws MalformedURLException {
         return computeURLWithCharEncoding(pageContext, forward, href, page,
             action, module, params, anchor, redirect, true, useLocalEncoding);
     }
 
     public String computeURL(PageContext pageContext, String forward,
-        String href, String page, String action, String module, Map params,
+        String href, String page, String action, String module, Map<String, ?> params,
         String anchor, boolean redirect, boolean encodeSeparator)
         throws MalformedURLException {
         return computeURLWithCharEncoding(pageContext, forward, href, page,
@@ -365,7 +363,7 @@ public class TagUtils {
      */
     public String computeURLWithCharEncoding(PageContext pageContext,
         String forward, String href, String page, String action, String module,
-        Map params, String anchor, boolean redirect, boolean encodeSeparator,
+        Map<String, ?> params, String anchor, boolean redirect, boolean encodeSeparator,
         boolean useLocalEncoding)
         throws MalformedURLException {
         String charEncoding = "UTF-8";
@@ -487,11 +485,10 @@ public class TagUtils {
 
             // Add the required request parameters
             boolean question = temp.indexOf('?') >= 0;
-            Iterator keys = params.keySet().iterator();
 
-            while (keys.hasNext()) {
-                String key = (String) keys.next();
-                Object value = params.get(key);
+            for (Map.Entry<String, ?> entry : params.entrySet()) {
+                String key = entry.getKey();
+                Object value = entry.getValue();
 
                 if (value == null) {
                     if (!question) {

@@ -109,7 +109,7 @@ public class TestTagUtils extends TagTestBase {
     // No parameters and no transaction token
     @Test
     public void testComputeParameters0a() {
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -126,7 +126,7 @@ public class TestTagUtils extends TagTestBase {
     public void testComputeParameters0b() {
         request.getSession().setAttribute(Globals.TRANSACTION_TOKEN_KEY, "token");
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -146,7 +146,7 @@ public class TestTagUtils extends TagTestBase {
     // invalid scope name is requested
     @Test
     public void testComputeParametersInvalidScope() {
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -161,7 +161,7 @@ public class TestTagUtils extends TagTestBase {
     // specified bean is not found
     @Test
     public void testComputeParametersBeanNotFound() {
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -178,7 +178,7 @@ public class TestTagUtils extends TagTestBase {
     public void testComputeParametersPropertyThrowsException() {
         request.getSession().setAttribute("SomeBean", new MockFormBean(true));
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -193,7 +193,7 @@ public class TestTagUtils extends TagTestBase {
     public void testComputeParametersParamIdParamPropThrowException() {
         request.getSession().setAttribute("SomeBean", new MockFormBean(true));
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "paramId",
@@ -211,7 +211,7 @@ public class TestTagUtils extends TagTestBase {
         request.getSession().setAttribute("SomeBean",
             new MockFormBean(false, false, new Double(1)));
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "paramId",
@@ -237,7 +237,7 @@ public class TestTagUtils extends TagTestBase {
 
         request.getSession().setAttribute("SomeBean", params);
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "fooParamId",
@@ -261,7 +261,7 @@ public class TestTagUtils extends TagTestBase {
     public void testComputeParameters1a() {
         request.getSession().setAttribute("attr", "bar");
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "foo", "attr", null,
@@ -281,7 +281,7 @@ public class TestTagUtils extends TagTestBase {
     public void testComputeParameters1b() {
         request.setAttribute("attr", "bar");
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "foo", "attr", null,
@@ -301,7 +301,7 @@ public class TestTagUtils extends TagTestBase {
     public void testComputeParameters1c() {
         request.setAttribute("attr", new MockFormBean("bar"));
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "foo", "attr",
@@ -325,7 +325,7 @@ public class TestTagUtils extends TagTestBase {
         params.put("foo2", "bar2");
         request.getSession().setAttribute("attr", params);
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -351,7 +351,7 @@ public class TestTagUtils extends TagTestBase {
         params.put("foo2", "bar2");
         request.setAttribute("attr", params);
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -373,7 +373,7 @@ public class TestTagUtils extends TagTestBase {
     public void testComputeParameters2c() {
         request.setAttribute("attr", new MockFormBean());
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -398,7 +398,7 @@ public class TestTagUtils extends TagTestBase {
         params.put("foo", new String[] { "bar1", "bar2" });
         request.getSession().setAttribute("attr", params);
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, null, null, null,
@@ -424,7 +424,7 @@ public class TestTagUtils extends TagTestBase {
         request.setAttribute("attr", new MockFormBean("bar3"));
         request.getSession().setAttribute(Globals.TRANSACTION_TOKEN_KEY, "token");
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "foo1", "attr",
@@ -461,7 +461,7 @@ public class TestTagUtils extends TagTestBase {
         request.setAttribute("attr", new MockFormBean("bar3"));
         request.getSession().setAttribute(Globals.TRANSACTION_TOKEN_KEY, "token");
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "foo1", "attr",
@@ -501,7 +501,7 @@ public class TestTagUtils extends TagTestBase {
         request.setAttribute("attr", new MockFormBean("bar3"));
         request.getSession().setAttribute(Globals.TRANSACTION_TOKEN_KEY, "token");
 
-        Map<?, ?> map = null;
+        Map<String, Object> map = null;
 
         try {
             map = tagutils.computeParameters(pageContext, "foo1", "attr",

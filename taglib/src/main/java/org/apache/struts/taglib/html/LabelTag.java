@@ -31,6 +31,7 @@ import javax.servlet.jsp.JspException;
  * @since Struts 1.4
  */
 public class LabelTag extends BaseInputTag {
+    private static final long serialVersionUID = 4783688183017577922L;
 
     // ----------------------------------------------------- Instance Variables
 

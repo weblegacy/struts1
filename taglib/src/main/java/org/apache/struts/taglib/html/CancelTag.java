@@ -29,6 +29,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public class CancelTag extends SubmitTag {
+    private static final long serialVersionUID = -5445832099296944041L;
+
     // --------------------------------------------------------- Constructor
     public CancelTag() {
         super();

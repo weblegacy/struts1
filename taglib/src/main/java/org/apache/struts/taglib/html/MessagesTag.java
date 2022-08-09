@@ -43,6 +43,8 @@ import java.util.Iterator;
  * @since Struts 1.1
  */
 public class MessagesTag extends BodyTagSupport {
+    private static final long serialVersionUID = -7665117721919199746L;
+
     /**
      * The message resources for this package.
      */
@@ -54,7 +56,7 @@ public class MessagesTag extends BodyTagSupport {
      * Iterator of the elements of this error collection, while we are
      * actually running.
      */
-    protected Iterator iterator = null;
+    protected Iterator<ActionMessage> iterator = null;
 
     /**
      * Whether or not any error messages have been processed.
@@ -201,6 +203,7 @@ public class MessagesTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Initialize for a new request.
         processed = false;
@@ -244,7 +247,7 @@ public class MessagesTag extends BodyTagSupport {
         }
 
         // process the first message
-        processMessage((ActionMessage) iterator.next());
+        processMessage(iterator.next());
 
         if ((header != null) && (header.length() > 0)) {
             String headerMessage =
@@ -269,6 +272,7 @@ public class MessagesTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doAfterBody() throws JspException {
         // Render the output from this iteration to the output stream
         if (bodyContent != null) {
@@ -279,7 +283,7 @@ public class MessagesTag extends BodyTagSupport {
 
         // Decide whether to iterate or quit
         if (iterator.hasNext()) {
-            processMessage((ActionMessage) iterator.next());
+            processMessage(iterator.next());
 
             return (EVAL_BODY_TAG);
         } else {

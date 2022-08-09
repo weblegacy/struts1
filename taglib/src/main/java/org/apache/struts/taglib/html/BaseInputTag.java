@@ -31,6 +31,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public abstract class BaseInputTag extends BaseHandlerTag {
+    private static final long serialVersionUID = -2006750476388177591L;
+
     /**
      * The message resources for this package.
      */
@@ -208,6 +210,7 @@ public abstract class BaseInputTag extends BaseHandlerTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         return (EVAL_BODY_TAG);
     }

@@ -60,34 +60,31 @@ import java.util.StringTokenizer;
  * @since Struts 1.1
  */
 public class JavascriptValidatorTag extends BodyTagSupport {
+    private static final long serialVersionUID = 1844396649370462479L;
+
     /**
      * A Comparator to use when sorting ValidatorAction objects.
      */
-    private static final Comparator actionComparator =
-        new Comparator() {
-            public int compare(Object o1, Object o2) {
-                ValidatorAction va1 = (ValidatorAction) o1;
-                ValidatorAction va2 = (ValidatorAction) o2;
-
-                if (((va1.getDepends() == null)
-                    || (va1.getDepends().length() == 0))
-                    && ((va2.getDepends() == null)
-                    || (va2.getDepends().length() == 0))) {
-                    return 0;
-                } else if (((va1.getDepends() != null)
-                    && (va1.getDepends().length() > 0))
-                    && ((va2.getDepends() == null)
-                    || (va2.getDepends().length() == 0))) {
-                    return 1;
-                } else if (((va1.getDepends() == null)
-                    || (va1.getDepends().length() == 0))
-                    && ((va2.getDepends() != null)
-                    && (va2.getDepends().length() > 0))) {
-                    return -1;
-                } else {
-                    return va1.getDependencyList().size()
-                    - va2.getDependencyList().size();
-                }
+    private static final Comparator<ValidatorAction> actionComparator =
+        (va1, va2) -> {
+            if (((va1.getDepends() == null)
+                || (va1.getDepends().length() == 0))
+                && ((va2.getDepends() == null)
+                || (va2.getDepends().length() == 0))) {
+                return 0;
+            } else if (((va1.getDepends() != null)
+                && (va1.getDepends().length() > 0))
+                && ((va2.getDepends() == null)
+                || (va2.getDepends().length() == 0))) {
+                return 1;
+            } else if (((va1.getDepends() == null)
+                || (va1.getDepends().length() == 0))
+                && ((va2.getDepends() != null)
+                && (va2.getDepends().length() > 0))) {
+                return -1;
+            } else {
+                return va1.getDependencyList().size()
+                - va2.getDependencyList().size();
             }
         };
 
@@ -342,6 +339,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         JspWriter writer = pageContext.getOut();
 
@@ -438,7 +436,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
             (HttpServletRequest) pageContext.getRequest();
         ServletContext application = pageContext.getServletContext();
 
-        List actions = this.createActionList(resources, form);
+        List<ValidatorAction> actions = this.createActionList(resources, form);
 
         final String methods =
             this.createMethods(actions, this.stopOnError(config));
@@ -468,8 +466,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
 
         results.append(this.getJavascriptBegin(methods));
 
-        for (Iterator i = actions.iterator(); i.hasNext();) {
-            ValidatorAction va = (ValidatorAction) i.next();
+        for (ValidatorAction va : actions) {
             int jscriptVar = 0;
             String functionName = null;
 
@@ -483,8 +480,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
             results.append("    function " + jsFormName + "_" + functionName
                 + " () { \n");
 
-            for (Iterator x = form.getFields().iterator(); x.hasNext();) {
-                Field field = (Field) x.next();
+            for (Field field : form.getFields()) {
 
                 // Skip indexed fields for now until there is a good way to
                 // handle error messages (and the length of the list (could
@@ -507,14 +503,12 @@ public class JavascriptValidatorTag extends BodyTagSupport {
 
                 results.append("new Function (\"varName\", \"");
 
-                Map vars = field.getVars();
+                Map<String, Var> vars = field.getVars();
 
                 // Loop through the field's variables.
-                Iterator varsIterator = vars.keySet().iterator();
-
-                while (varsIterator.hasNext()) {
-                    String varName = (String) varsIterator.next();
-                    Var var = (Var) vars.get(varName);
+                for (Map.Entry<String, Var> entry : vars.entrySet()) {
+                    String varName = entry.getKey();
+                    Var var = entry.getValue();
                     String varValue =
                         Resources.getVarValue(var, application, request, false);
                     String jsType = var.getJsType();
@@ -649,14 +643,11 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      *                    validations.
      * @return JavaScript methods.
      */
-    private String createMethods(List actions, boolean stopOnError) {
+    private String createMethods(List<ValidatorAction> actions, boolean stopOnError) {
         StringBuffer methods = new StringBuffer();
         final String methodOperator = stopOnError ? " && " : " & ";
 
-        Iterator iter = actions.iterator();
-
-        while (iter.hasNext()) {
-            ValidatorAction va = (ValidatorAction) iter.next();
+        for (ValidatorAction va : actions) {
 
             if (methods.length() > 0) {
                 methods.append(methodOperator);
@@ -675,31 +666,25 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      * @param form
      * @return A sorted List of ValidatorAction objects.
      */
-    private List createActionList(ValidatorResources resources, Form form) {
-        List actionMethods = new ArrayList();
+    private List<ValidatorAction> createActionList(ValidatorResources resources, Form form) {
+        List<String> actionMethods = new ArrayList<>();
 
-        Iterator iterator = form.getFields().iterator();
+        for (Field field : form.getFields()) {
 
-        while (iterator.hasNext()) {
-            Field field = (Field) iterator.next();
-
-            for (Iterator x = field.getDependencyList().iterator();
-                x.hasNext();) {
-                Object o = x.next();
-
-                if ((o != null) && !actionMethods.contains(o)) {
-                    actionMethods.add(o);
+            for (String depends : field.getDependencyList()) {
+                if ((depends != null) && !actionMethods.contains(depends)) {
+                    actionMethods.add(depends);
                 }
             }
         }
 
-        List actions = new ArrayList();
+        List<ValidatorAction> actions = new ArrayList<>();
 
         // Create list of ValidatorActions based on actionMethods
-        iterator = actionMethods.iterator();
+        Iterator<String> iterator = actionMethods.iterator();
 
         while (iterator.hasNext()) {
-            String depends = (String) iterator.next();
+            String depends = iterator.next();
             ValidatorAction va = resources.getValidatorAction(depends);
 
             // throw nicer NPE for easier debugging
@@ -795,10 +780,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
 
         sb.append("\n\n");
 
-        Iterator actions = resources.getValidatorActions().values().iterator();
-
-        while (actions.hasNext()) {
-            ValidatorAction va = (ValidatorAction) actions.next();
+        for (ValidatorAction va : resources.getValidatorActions().values()) {
 
             if (va != null) {
                 String javascript = va.getJavascript();

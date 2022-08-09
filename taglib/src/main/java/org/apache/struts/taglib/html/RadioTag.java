@@ -32,6 +32,8 @@ import javax.servlet.jsp.JspException;
  *          $
  */
 public class RadioTag extends BaseHandlerTag {
+    private static final long serialVersionUID = 1648444449466462193L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -139,6 +141,7 @@ public class RadioTag extends BaseHandlerTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         String radioTag = renderRadioElement(serverValue(), currentValue());
 

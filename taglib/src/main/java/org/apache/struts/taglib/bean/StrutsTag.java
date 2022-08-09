@@ -35,6 +35,8 @@ import javax.servlet.jsp.tagext.TagSupport;
  *          $
  */
 public class StrutsTag extends TagSupport {
+    private static final long serialVersionUID = 2390431092925036286L;
+
     /**
      * The message resources for this package.
      */

@@ -41,6 +41,8 @@ import java.lang.reflect.InvocationTargetException;
  *          $
  */
 public class MultiboxTag extends BaseHandlerTag {
+    private static final long serialVersionUID = 6615409055421524733L;
+
     /**
      * The message resources for this package.
      */
@@ -121,6 +123,7 @@ public class MultiboxTag extends BaseHandlerTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Defer processing until the end of this tag is encountered
         this.constant = null;

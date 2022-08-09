@@ -38,14 +38,14 @@ public class XmlListAttribute extends XmlAttribute
      * We declare a List to avoid cast.
      * Parent "value" property points to the same list.
      */
-  private List list;
+  private List<Object> list;
 
     /**
      * Constructor.
      */
   public XmlListAttribute()
     {
-    list = new ArrayList();
+    list = new ArrayList<>();
     setValue(list);
     }
 
@@ -54,7 +54,7 @@ public class XmlListAttribute extends XmlAttribute
      * @param name Name.
      * @param value List.
      */
-  public XmlListAttribute( String name, List value)
+  public XmlListAttribute( String name, List<Object> value)
     {
     super( name, value );
     list = value;

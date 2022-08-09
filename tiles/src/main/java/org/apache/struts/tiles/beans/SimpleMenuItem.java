@@ -28,6 +28,7 @@ import java.io.Serializable;
  * Used to read menu items in definitions.
  */
 public class SimpleMenuItem implements MenuItem, Serializable {
+    private static final long serialVersionUID = -5488084076348864047L;
 
     private String value = null;
 

@@ -34,6 +34,7 @@ import org.apache.struts.tiles.ComponentContext;
  *
  */
 public class UseAttributeTag extends TagSupport {
+    private static final long serialVersionUID = 6568135554030718942L;
 
 
     // ----------------------------------------------------- Instance Variables

@@ -21,8 +21,6 @@
 
 package org.apache.struts.tiles.xmlDefinition;
 
-import java.util.Iterator;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.tiles.ComponentDefinition;
@@ -33,6 +31,8 @@ import org.apache.struts.tiles.NoSuchDefinitionException;
   */
 public class XmlDefinition extends ComponentDefinition
 {
+  private static final long serialVersionUID = -3498824883016185787L;
+
   /**
    * Extends attribute value.
    */
@@ -142,10 +142,8 @@ public class XmlDefinition extends ComponentDefinition
     parent.resolveInheritance( definitionsSet );
 
       // Iterate on each parent's attribute and add it if not defined in child.
-    Iterator parentAttributes = parent.getAttributes().keySet().iterator();
-    while( parentAttributes.hasNext() )
+    for( String name : parent.getAttributes().keySet() )
       {
-      String name = (String)parentAttributes.next();
       if( !getAttributes().containsKey(name) )
         putAttribute( name, parent.getAttribute(name) );
       }

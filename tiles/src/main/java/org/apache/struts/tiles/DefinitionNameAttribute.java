@@ -26,6 +26,7 @@ package org.apache.struts.tiles;
  * Such attribute value represent an instance name.
  */
 public class DefinitionNameAttribute extends UntypedAttribute {
+    private static final long serialVersionUID = -7680396673346627828L;
 
     /**
      * Constructor.

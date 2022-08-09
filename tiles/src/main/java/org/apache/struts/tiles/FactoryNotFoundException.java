@@ -27,6 +27,8 @@ package org.apache.struts.tiles;
    */
 public class FactoryNotFoundException extends DefinitionsFactoryException
 {
+    private static final long serialVersionUID = 2856113784339675593L;
+
     /**
      * Constructor.
      */

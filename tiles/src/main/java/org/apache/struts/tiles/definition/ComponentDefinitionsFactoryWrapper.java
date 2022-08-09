@@ -40,7 +40,9 @@ import org.apache.struts.util.RequestUtils;
  * This class provides mapping from the old interface's life cycle to the new life cycle.
  * @since 20020708
  */
+@SuppressWarnings("deprecation")
 public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
+    private static final long serialVersionUID = -1996134499246652941L;
 
     /**
      * The underlying factory.
@@ -157,7 +159,7 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
         throws DefinitionsFactoryException {
 
         try {
-            Class factoryClass = RequestUtils.applicationClass(classname);
+            Class<?> factoryClass = RequestUtils.applicationClass(classname);
             Object factory = factoryClass.newInstance();
             return (ComponentDefinitionsFactory) factory;
 
@@ -199,8 +201,8 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * @param config The DefinitionsFactoryConfig to use.
      * @return Map Map of name/value pairs.
      */
-    public static Map createConfigMap(DefinitionsFactoryConfig config) {
-        Map map = new HashMap(config.getAttributes());
+    public static Map<String, Object> createConfigMap(DefinitionsFactoryConfig config) {
+        Map<String, Object> map = new HashMap<>(config.getAttributes());
         // Add property attributes using old names
         map.put(
             DefinitionsFactoryConfig.DEFINITIONS_CONFIG_PARAMETER_NAME,

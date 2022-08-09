@@ -261,6 +261,7 @@ public class TilesPlugin implements PlugIn {
      * @exception ServletException if this <code>PlugIn</code> cannot
      *  be successfully initialized.
      */
+    @SuppressWarnings("deprecation")
     protected DefinitionsFactoryConfig readFactoryConfig(
         ActionServlet servlet,
         ModuleConfig config)
@@ -287,7 +288,7 @@ public class TilesPlugin implements PlugIn {
 
         // Get init parameters from struts-config.xml
         try {
-            Map strutsProperties = findStrutsPlugInConfigProperties(servlet, config);
+            Map<String, Object> strutsProperties = findStrutsPlugInConfigProperties(servlet, config);
             factoryConfig.populate(strutsProperties);
 
         } catch (Exception ex) {
@@ -318,7 +319,7 @@ public class TilesPlugin implements PlugIn {
      * @exception ServletException if this <code>PlugIn</code> cannot
      *  be successfully initialized.
      */
-    protected Map findStrutsPlugInConfigProperties(
+    protected Map<String, Object> findStrutsPlugInConfigProperties(
         ActionServlet servlet,
         ModuleConfig config)
         throws ServletException {
@@ -344,7 +345,7 @@ public class TilesPlugin implements PlugIn {
         String configProcessorClassname = ctrlConfig.getProcessorClass();
 
         // Check if specified classname exist
-        Class configProcessorClass;
+        Class<?> configProcessorClass;
         try {
             configProcessorClass =
                 RequestUtils.applicationClass(configProcessorClassname);
@@ -373,7 +374,7 @@ public class TilesPlugin implements PlugIn {
         }
 
         // Check if specified request processor is compatible with Tiles.
-        Class tilesProcessorClass = TilesRequestProcessor.class;
+        Class<?> tilesProcessorClass = TilesRequestProcessor.class;
         if (!tilesProcessorClass.isAssignableFrom(configProcessorClass)) {
             // Not compatible
             String msg =

@@ -64,6 +64,7 @@ import org.apache.struts.tiles.PathAttribute;
  * "string", unless tag body define another type.
  */
 public class PutTag extends BodyTagSupport implements ComponentConstants {
+    private static final long serialVersionUID = -235334177334574729L;
 
     /* JSP Tag attributes */
 
@@ -428,6 +429,7 @@ public class PutTag extends BodyTagSupport implements ComponentConstants {
     /**
      * Do start tag.
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
 
         // clear body content

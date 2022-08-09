@@ -32,6 +32,7 @@ import org.apache.struts.config.ModuleConfig;
  * This class is used as the base class for all Struts 1.1 implementations of TilesUtil.
  */
 public class TilesUtilStrutsImpl extends TilesUtilImpl {
+    private static final long serialVersionUID = 6361461121282446038L;
 
     /**
      * Get definition factory for the module attached to the specified moduleConfig.

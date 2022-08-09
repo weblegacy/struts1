@@ -39,6 +39,7 @@ import org.apache.struts.tiles.ComponentContext;
  */
 
 public class ImportAttributeTag extends TagSupport {
+    private static final long serialVersionUID = 627331513872580706L;
 
     /**
      * Class name of object.
@@ -176,10 +177,10 @@ public int doStartTag() throws JspException
       }
      else
       { // set all attributes
-      Iterator names = compContext.getAttributeNames();
+      Iterator<String> names = compContext.getAttributeNames();
       while(names.hasNext())
         {
-        String name = (String)names.next();
+        String name = names.next();
         if(name == null ) {
           if(!isErrorIgnored)
             throw new JspException ( "Error - tag importAttribute : "

@@ -46,7 +46,9 @@ import org.apache.struts.util.RequestUtils;
  * @since Struts 1.1
  * @version $Rev$ $Date$
  */
+@SuppressWarnings("deprecation")
 public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory {
+    private static final long serialVersionUID = 1432127365659932325L;
 
     /**
      * The real factory instance.
@@ -56,7 +58,7 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
     /**
      * Initialization parameters.
      */
-    protected Map properties = null;
+    protected Map<String, Object> properties = null;
 
     /**
      * Name of init property carrying factory class name.
@@ -89,7 +91,7 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
      */
     public ReloadableDefinitionsFactory(
         ServletContext servletContext,
-        Map properties)
+        Map<String, Object> properties)
         throws DefinitionsFactoryException {
 
         this.properties = properties;
@@ -109,7 +111,7 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
     */
     public ComponentDefinitionsFactory createFactoryFromClassname(
         ServletContext servletContext,
-        Map properties,
+        Map<String, Object> properties,
         String classname)
         throws DefinitionsFactoryException {
 
@@ -119,7 +121,7 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
 
         // Try to create from classname
         try {
-            Class factoryClass = RequestUtils.applicationClass(classname);
+            Class<?> factoryClass = RequestUtils.applicationClass(classname);
             ComponentDefinitionsFactory factory =
                 (ComponentDefinitionsFactory) factoryClass.newInstance();
             factory.initFactory(servletContext, properties);
@@ -159,7 +161,7 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
     */
     public ComponentDefinitionsFactory createDefaultFactory(
         ServletContext servletContext,
-        Map properties)
+        Map<String, Object> properties)
         throws DefinitionsFactoryException {
 
         ComponentDefinitionsFactory factory =
@@ -178,7 +180,7 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
     */
     public ComponentDefinitionsFactory createFactory(
         ServletContext servletContext,
-        Map properties)
+        Map<String, Object> properties)
         throws DefinitionsFactoryException {
 
         String classname = (String) properties.get(DEFINITIONS_FACTORY_CLASSNAME);
@@ -246,7 +248,7 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
       * Map can contain more properties than requested.
       * @throws DefinitionsFactoryException An error occur during initialization.
     */
-    public void initFactory(ServletContext servletContext, Map properties)
+    public void initFactory(ServletContext servletContext, Map<String, Object> properties)
         throws DefinitionsFactoryException {
         // do nothing
     }
@@ -265,7 +267,9 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
      * Object of this class is an HashMap containing parameters and values
      * defined in the servlet config file (web.xml).
      */
-    class ServletPropertiesMap extends HashMap {
+    class ServletPropertiesMap extends HashMap<String, Object> {
+        private static final long serialVersionUID = -1834721489197689992L;
+
         /**
          * Constructor.
          */
@@ -273,7 +277,7 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
             // This implementation is very simple.
             // It is possible to avoid creation of a new structure, but this would
             // imply writing all of the Map interface.
-            Enumeration e = config.getInitParameterNames();
+            Enumeration<?> e = config.getInitParameterNames();
             while (e.hasMoreElements()) {
                 String key = (String) e.nextElement();
                 put(key, config.getInitParameter(key));

@@ -45,6 +45,7 @@ import org.apache.struts.util.RequestUtils;
  * is intended to be used without Struts.
  */
 public class TilesUtilImpl implements Serializable {
+    private static final long serialVersionUID = 4942732841978123351L;
 
     /** Commons Logging instance.*/
     protected static final Log log = LogFactory.getLog(TilesUtil.class);
@@ -193,11 +194,12 @@ public class TilesUtilImpl implements Serializable {
      * @return newly created factory.
      * @throws DefinitionsFactoryException If an error occur while initializing factory
      */
+    @SuppressWarnings("deprecation")
     protected DefinitionsFactory createDefinitionFactoryInstance(String classname)
         throws DefinitionsFactoryException {
 
         try {
-            Class factoryClass = RequestUtils.applicationClass(classname);
+            Class<?> factoryClass = RequestUtils.applicationClass(classname);
             Object factory = factoryClass.newInstance();
 
             // Backward compatibility : if factory classes implements old interface,

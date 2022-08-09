@@ -36,6 +36,7 @@ import org.apache.struts.util.RequestUtils;
  * An instance of this class can be used as a bean, and passed to 'insert' tag.
  */
 public class ComponentDefinition implements Serializable {
+    private static final long serialVersionUID = -2272946761382428217L;
 
     /**
      * Commons Logging instance.
@@ -55,7 +56,7 @@ public class ComponentDefinition implements Serializable {
     /**
      * Attributes defined for the component.
      */
-    protected Map attributes = null;
+    protected Map<String, Object> attributes = null;
 
     /**
      * Role associated to definition.
@@ -96,7 +97,7 @@ public class ComponentDefinition implements Serializable {
      * Constructor.
      */
     public ComponentDefinition() {
-        attributes = new HashMap();
+        attributes = new HashMap<>();
     }
 
     /**
@@ -106,7 +107,7 @@ public class ComponentDefinition implements Serializable {
      * containing attributes.
      */
     public ComponentDefinition(ComponentDefinition definition) {
-        attributes = new HashMap(definition.getAttributes());
+        attributes = new HashMap<>(definition.getAttributes());
         this.name = definition.getName();
         this.path = definition.getPath();
         this.role = definition.getRole();
@@ -137,7 +138,7 @@ public class ComponentDefinition implements Serializable {
     /**
      * Constructor.
      */
-    public ComponentDefinition(String name, String path, Map attributes) {
+    public ComponentDefinition(String name, String path, Map<String, Object> attributes) {
         this.name = name;
         this.path = path;
         this.attributes = attributes;
@@ -238,7 +239,7 @@ public class ComponentDefinition implements Serializable {
      * If there is no attributes, return an empty map.
      * @return   the current value of the attributes property
      */
-    public Map getAttributes() {
+    public Map<String, Object> getAttributes() {
         return attributes;
     }
 
@@ -517,7 +518,7 @@ public class ComponentDefinition implements Serializable {
         throws InstantiationException {
 
         try {
-            Class requestedClass = RequestUtils.applicationClass(classname);
+            Class<?> requestedClass = RequestUtils.applicationClass(classname);
             Object instance = requestedClass.newInstance();
 
             if (log.isDebugEnabled()) {

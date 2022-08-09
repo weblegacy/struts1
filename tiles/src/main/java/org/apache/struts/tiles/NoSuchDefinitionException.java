@@ -27,6 +27,8 @@ package org.apache.struts.tiles;
    */
 public class NoSuchDefinitionException extends DefinitionsFactoryException
 {
+    private static final long serialVersionUID = -4188770898592969226L;
+
     /**
      * Constructor.
      */

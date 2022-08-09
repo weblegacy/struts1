@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -57,6 +56,7 @@ import org.xml.sax.SAXException;
  * (ex : <code>templateDefinitions_fr.xml</code>). If no file is found under this name, use default file.
  */
 public class I18nFactorySet extends FactorySet {
+    private static final long serialVersionUID = -5165509575040839305L;
 
     /**
      * Commons Logging instance.
@@ -122,12 +122,12 @@ public class I18nFactorySet extends FactorySet {
     /**
      * Names of files containing instances descriptions.
      */
-    private List filenames = null;
+    private List<String> filenames = null;
 
     /**
      * Collection of already loaded definitions set, referenced by their suffix.
      */
-    private Map loaded = null;
+    private Map<String, DefinitionsFactory> loaded = null;
 
     /**
      * Parameterless Constructor.
@@ -144,7 +144,7 @@ public class I18nFactorySet extends FactorySet {
      * @param properties Map containing all properties.
      * @throws FactoryNotFoundException Can't find factory configuration file.
      */
-    public I18nFactorySet(ServletContext servletContext, Map properties)
+    public I18nFactorySet(ServletContext servletContext, Map<String, Object> properties)
         throws DefinitionsFactoryException {
 
         initFactory(servletContext, properties);
@@ -160,7 +160,7 @@ public class I18nFactorySet extends FactorySet {
      * more properties than requested.
      * @throws DefinitionsFactoryException An error occur during initialization.
      */
-    public void initFactory(ServletContext servletContext, Map properties)
+    public void initFactory(ServletContext servletContext, Map<String, Object> properties)
         throws DefinitionsFactoryException {
 
         // Set some property values
@@ -232,12 +232,12 @@ public class I18nFactorySet extends FactorySet {
 
         // Init list of filenames
         StringTokenizer tokenizer = new StringTokenizer(proposedFilename, ",");
-        this.filenames = new ArrayList(tokenizer.countTokens());
+        this.filenames = new ArrayList<>(tokenizer.countTokens());
         while (tokenizer.hasMoreTokens()) {
             this.filenames.add(tokenizer.nextToken().trim());
         }
 
-        loaded = new HashMap();
+        loaded = new HashMap<>();
         defaultFactory = createDefaultFactory(servletContext);
         if (log.isDebugEnabled())
             log.debug("default factory:" + defaultFactory);
@@ -329,7 +329,7 @@ public class I18nFactorySet extends FactorySet {
         }
 
         // Build possible postfixes
-        List possiblePostfixes = calculateSuffixes((Locale) key);
+        List<String> possiblePostfixes = calculateSuffixes((Locale) key);
 
         // Search last postix corresponding to a config file to load.
         // First check if something is loaded for this postfix.
@@ -340,10 +340,10 @@ public class I18nFactorySet extends FactorySet {
         int i = 0;
 
         for (i = possiblePostfixes.size() - 1; i >= 0; i--) {
-            curPostfix = (String) possiblePostfixes.get(i);
+            curPostfix = possiblePostfixes.get(i);
 
             // Already loaded ?
-            factory = (DefinitionsFactory) loaded.get(curPostfix);
+            factory = loaded.get(curPostfix);
             if (factory != null) { // yes, stop search
                 return factory;
             }
@@ -387,9 +387,9 @@ public class I18nFactorySet extends FactorySet {
      * Calculate the suffixes based on the locale.
      * @param locale the locale
      */
-    private List calculateSuffixes(Locale locale) {
+    private List<String> calculateSuffixes(Locale locale) {
 
-        List suffixes = new ArrayList(3);
+        List<String> suffixes = new ArrayList<>(3);
         String language = locale.getLanguage();
         String country  = locale.getCountry();
         String variant  = locale.getVariant();
@@ -443,10 +443,9 @@ public class I18nFactorySet extends FactorySet {
         }
 
         // Iterate throw each file name in list
-        Iterator i = filenames.iterator();
-        while (i.hasNext()) {
-            String filename = concatPostfix((String) i.next(), postfix);
-            xmlDefinitions = parseXmlFile(servletContext, filename, xmlDefinitions);
+        for (String filename : filenames) {
+            String fn = concatPostfix(filename, postfix);
+            xmlDefinitions = parseXmlFile(servletContext, fn, xmlDefinitions);
         }
 
         return xmlDefinitions;
@@ -566,9 +565,8 @@ public class I18nFactorySet extends FactorySet {
         buff.append("--- default factory ---\n");
         buff.append(defaultFactory.toString());
         buff.append("\n--- other factories ---\n");
-        Iterator i = factories.values().iterator();
-        while (i.hasNext()) {
-            buff.append(i.next().toString()).append("---------- \n");
+        for (Object factory : factories.values()) {
+            buff.append(factory.toString()).append("---------- \n");
         }
         return buff.toString();
     }

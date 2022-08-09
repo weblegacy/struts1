@@ -36,6 +36,7 @@ import org.apache.struts.tiles.UntypedAttribute;
 public class PutListTag
     extends TagSupport
     implements ComponentConstants, AddTagParent, PutListTagParent {
+    private static final long serialVersionUID = -3883044506251009353L;
 
     /**
      * Name of this attribute.
@@ -45,7 +46,7 @@ public class PutListTag
     /**
      * The list itself.
      */
-    private List list = null;
+    private List<Object> list = null;
 
     /**
      * Role attribute.
@@ -107,7 +108,7 @@ public class PutListTag
     /**
      * Get list defined in tag.
      */
-    public List getList() {
+    public List<Object> getList() {
         return list;
     }
 
@@ -116,7 +117,7 @@ public class PutListTag
      */
     public void addElement(Object value) {
         if (list == null) {
-            list = new ArrayList();
+            list = new ArrayList<>();
         }
 
         list.add(value);

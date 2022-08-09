@@ -250,7 +250,7 @@ public class TestTilesPlugin extends TestMockBase {
      ComponentDefinition definition = null;
      org.apache.struts.tiles.xmlDefinition.DefinitionsFactory factory = null;
 
-     Map<String, String> properties = new HashMap<>();
+     Map<String, Object> properties = new HashMap<>();
 
      // Set the file name
      properties.put(I18nFactorySet.DEFINITIONS_CONFIG_PARAMETER_NAME,
@@ -308,7 +308,7 @@ public class TestTilesPlugin extends TestMockBase {
      ComponentDefinition definition = null;
      org.apache.struts.tiles.xmlDefinition.DefinitionsFactory factory = null;
 
-     Map<String, String> properties = new HashMap<>();
+     Map<String, Object> properties = new HashMap<>();
 
      // Set the file name
      properties.put(I18nFactorySet.DEFINITIONS_CONFIG_PARAMETER_NAME,

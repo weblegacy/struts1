@@ -69,6 +69,7 @@ import org.apache.struts.tiles.TilesUtil;
  *
  * @version $Rev$ $Date$
  */
+@SuppressWarnings("deprecation")
 public class DefinitionDispatcherAction extends Action {
 
     /**

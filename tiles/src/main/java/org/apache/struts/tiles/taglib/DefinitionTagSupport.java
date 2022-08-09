@@ -29,6 +29,8 @@ import javax.servlet.jsp.tagext.TagSupport;
  * It also extends TagSupport.
  */
 public class DefinitionTagSupport extends TagSupport implements Serializable {
+    private static final long serialVersionUID = 9149013624370738390L;
+
     /**
      * Associated Controller type
      */

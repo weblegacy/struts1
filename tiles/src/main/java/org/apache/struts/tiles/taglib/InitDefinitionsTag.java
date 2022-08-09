@@ -35,6 +35,7 @@ import org.apache.struts.tiles.TilesUtil;
    */
 public class InitDefinitionsTag extends TagSupport
     implements ComponentConstants {
+  private static final long serialVersionUID = 1471051490484770266L;
 
 
   private String filename = null;

@@ -26,9 +26,6 @@ import org.apache.struts.Globals;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.RequestProcessor;
 import org.apache.struts.config.ModuleConfig;
-import org.apache.struts.tiles.DefinitionsFactory;
-import org.apache.struts.tiles.DefinitionsFactoryException;
-import org.apache.struts.tiles.TilesRequestProcessor;
 
 
 /**
@@ -55,6 +52,8 @@ import org.apache.struts.tiles.TilesRequestProcessor;
  * @since 1.2.1
  */
 public class RedeployableActionServlet extends ActionServlet {
+    private static final long serialVersionUID = -3277829251603784258L;
+
     private TilesRequestProcessor tileProcessor;
 
     protected synchronized RequestProcessor

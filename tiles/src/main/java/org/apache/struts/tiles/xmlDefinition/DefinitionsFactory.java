@@ -23,7 +23,6 @@ package org.apache.struts.tiles.xmlDefinition;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -39,8 +38,10 @@ import org.apache.struts.tiles.NoSuchDefinitionException;
  */
 public class DefinitionsFactory implements Serializable
 {
+   private static final long serialVersionUID = -1606414944612676291L;
+
      /** Underlying map containing all definitions.*/
-   protected Map definitions;
+   protected Map<String, ComponentDefinition> definitions;
 
    /**
      * Get a definition by its name.
@@ -56,7 +57,7 @@ public class DefinitionsFactory implements Serializable
    public ComponentDefinition getDefinition(String name, ServletRequest request, ServletContext servletContext)
              throws NoSuchDefinitionException, DefinitionsFactoryException
    {
-   return (ComponentDefinition)definitions.get(name);
+   return definitions.get(name);
    }
 
   /**
@@ -77,16 +78,14 @@ public class DefinitionsFactory implements Serializable
    public DefinitionsFactory(XmlDefinitionsSet xmlDefinitions)
     throws NoSuchDefinitionException
     {
-    definitions = new HashMap();
+    definitions = new HashMap<>();
 
       // First, resolve inheritance
     xmlDefinitions.resolveInheritances();
 
       // Walk thru xml set and copy each definitions.
-    Iterator i = xmlDefinitions.getDefinitions().values().iterator();
-    while( i.hasNext() )
+    for( XmlDefinition xmlDefinition : xmlDefinitions.getDefinitions().values() )
       {
-      XmlDefinition xmlDefinition = (XmlDefinition)i.next();
         putDefinition( new ComponentDefinition( xmlDefinition) );
       }  // end loop
    }

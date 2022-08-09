@@ -58,6 +58,7 @@ import org.apache.struts.tiles.TilesUtil;
 public class InsertTag
     extends DefinitionTagSupport
     implements PutTagParent, ComponentConstants, PutListTagParent {
+    private static final long serialVersionUID = -5253191090730913992L;
 
     /**
      * The role delimiter.
@@ -803,7 +804,7 @@ public class InsertTag
          * Create insert handler using Component definition.
          */
         public InsertHandler(
-            Map attributes,
+            Map<String, Object> attributes,
             String page,
             String role,
             Controller controller) {

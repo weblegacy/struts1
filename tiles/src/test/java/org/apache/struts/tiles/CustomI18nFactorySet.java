@@ -42,7 +42,7 @@ public class CustomI18nFactorySet extends I18nFactorySet {
      * @param properties Map containing all properties.
      * @throws FactoryNotFoundException Can't find factory configuration file.
      */
-    public CustomI18nFactorySet(ServletContext servletContext, Map<String, String> properties)
+    public CustomI18nFactorySet(ServletContext servletContext, Map<String, Object> properties)
         throws DefinitionsFactoryException {
         super(servletContext, properties);
     }

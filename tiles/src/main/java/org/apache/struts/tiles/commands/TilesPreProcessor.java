@@ -24,7 +24,6 @@ import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.chain.Command;
@@ -40,7 +39,6 @@ import org.apache.struts.tiles.DefinitionsUtil;
 import org.apache.struts.tiles.FactoryNotFoundException;
 import org.apache.struts.tiles.NoSuchDefinitionException;
 import org.apache.struts.tiles.TilesUtil;
-import org.apache.struts.upload.MultipartRequestWrapper;
 
 
 /**
@@ -64,6 +62,7 @@ import org.apache.struts.upload.MultipartRequestWrapper;
  *
  *
  */
+@SuppressWarnings("deprecation")
 public class TilesPreProcessor implements Command
 {
 

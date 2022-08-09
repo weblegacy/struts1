@@ -37,6 +37,7 @@ import org.apache.struts.tiles.ComponentContext;
    * The usual toString() conversion is applied on the found value.
    */
 public class GetAttributeTag extends TagSupport implements ComponentConstants {
+  private static final long serialVersionUID = 6301259591967456357L;
 
   private String attribute = null;
     /** Role attribute */

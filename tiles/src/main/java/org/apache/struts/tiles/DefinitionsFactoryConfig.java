@@ -24,9 +24,7 @@ package org.apache.struts.tiles;
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 import org.apache.commons.beanutils.BeanUtils;
 
@@ -38,6 +36,7 @@ import org.apache.commons.beanutils.BeanUtils;
  * @version $Rev$ $Date$
  */
 public class DefinitionsFactoryConfig implements Serializable {
+    private static final long serialVersionUID = -2587987079011748643L;
 
     /**
      * Fully qualified classname of the factory to create.
@@ -107,7 +106,7 @@ public class DefinitionsFactoryConfig implements Serializable {
     /**
      * Map of extra attribute available.
      */
-    private Map extraAttributes = new HashMap();
+    private Map<String, Object> extraAttributes = new HashMap<>();
 
     /**
      * Default constructor.
@@ -123,7 +122,7 @@ public class DefinitionsFactoryConfig implements Serializable {
      * attribute.
      * @param initParameters Map.
      */
-    public DefinitionsFactoryConfig(Map initParameters) {
+    public DefinitionsFactoryConfig(Map<String, Object> initParameters) {
         super();
     }
 
@@ -214,8 +213,8 @@ public class DefinitionsFactoryConfig implements Serializable {
      * Get additional attributes as a Map.
      * @return Map A Map containing attribute name - value pairs.
      */
-    public Map getAttributes() {
-        Map map = new HashMap(extraAttributes);
+    public Map<String, Object> getAttributes() {
+        Map<String, Object> map = new HashMap<>(extraAttributes);
         // Add property attributes using old names
         /*
           map.put(DEFINITIONS_CONFIG_PARAMETER_NAME, getDefinitionConfigFiles());
@@ -257,7 +256,7 @@ public class DefinitionsFactoryConfig implements Serializable {
      *  throws an exception.
      * @see org.apache.commons.beanutils.BeanUtils
      */
-    public void populate(Map properties)
+    public void populate(Map<String, Object> properties)
         throws IllegalAccessException, InvocationTargetException {
 
         // link old parameter names for backward compatibility
@@ -271,13 +270,9 @@ public class DefinitionsFactoryConfig implements Serializable {
      * @param properties Map keyed by property name, with the
      *  corresponding (String or String[]) value(s) to be set.
      */
-    static public void linkOldPropertyNames(Map properties) {
-        Set entries = properties.entrySet();
-        Map toAdd = new HashMap();
-        Iterator i = entries.iterator();
-        while (i.hasNext()) {
-            Map.Entry entry = (Map.Entry) i.next();
-
+    static public void linkOldPropertyNames(Map<String, Object> properties) {
+        Map<String, Object> toAdd = new HashMap<>();
+        for (Map.Entry<String, ?> entry : properties.entrySet()) {
             if (DEFINITIONS_CONFIG_PARAMETER_NAME.equals(entry.getKey())) {
                 toAdd.put("definitionConfigFiles", entry.getValue());
 

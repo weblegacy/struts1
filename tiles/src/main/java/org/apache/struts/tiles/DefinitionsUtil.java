@@ -96,7 +96,7 @@ public class DefinitionsUtil extends TilesUtil implements ComponentConstants {
      */
     public static DefinitionsFactory createDefinitionsFactory(
         ServletContext servletContext,
-        Map properties,
+        Map<String, Object> properties,
         String classname)
         throws DefinitionsFactoryException {
 
@@ -129,7 +129,7 @@ public class DefinitionsUtil extends TilesUtil implements ComponentConstants {
      */
     public static DefinitionsFactory createDefinitionsFactory(
         ServletContext servletContext,
-        Map properties)
+        Map<String, Object> properties)
         throws DefinitionsFactoryException {
 
         return createDefinitionsFactory(servletContext, properties, null);
@@ -248,7 +248,7 @@ public class DefinitionsUtil extends TilesUtil implements ComponentConstants {
         ServletConfig servletConfig)
         throws IllegalAccessException, InvocationTargetException {
 
-        Map properties = new DefinitionsUtil.ServletPropertiesMap(servletConfig);
+        Map<String, Object> properties = new DefinitionsUtil.ServletPropertiesMap(servletConfig);
         factoryConfig.populate(properties);
     }
 
@@ -288,7 +288,9 @@ public class DefinitionsUtil extends TilesUtil implements ComponentConstants {
      * Object of this class is an hashmap containing parameters and values
      * defined in the servlet config file (web.xml).
      */
-    static class ServletPropertiesMap extends HashMap {
+    static class ServletPropertiesMap extends HashMap<String, Object> {
+        private static final long serialVersionUID = -290349932602484285L;
+
         /**
          * Constructor.
          */
@@ -296,7 +298,7 @@ public class DefinitionsUtil extends TilesUtil implements ComponentConstants {
             // This implementation is very simple.
             // It is possible to avoid creation of a new structure, but this need
             // imply writing all Map interface.
-            Enumeration e = config.getInitParameterNames();
+            Enumeration<?> e = config.getInitParameterNames();
             while (e.hasMoreElements()) {
                 String key = (String) e.nextElement();
                 put(key, config.getInitParameter(key));

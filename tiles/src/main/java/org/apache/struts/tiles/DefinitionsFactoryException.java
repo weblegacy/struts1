@@ -28,6 +28,8 @@ package org.apache.struts.tiles;
    */
 public class DefinitionsFactoryException extends TilesException
 {
+  private static final long serialVersionUID = -5162822984380885363L;
+
   /**
     * Constructor.
     */

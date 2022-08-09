@@ -33,6 +33,7 @@ package org.apache.struts.tiles.taglib;
  * for this tag (default behavior of David Geary's templates).
  */
 public class GetTag extends InsertTag {
+    private static final long serialVersionUID = 8110886541599103180L;
 
 
     /**

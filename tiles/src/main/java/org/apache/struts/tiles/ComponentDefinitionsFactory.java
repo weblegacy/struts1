@@ -59,5 +59,5 @@ public interface ComponentDefinitionsFactory extends Serializable
      * Map can contains more properties than requested.
      * @throws DefinitionsFactoryException An error occur during initialization.
    */
-   public void initFactory(ServletContext servletContext, Map properties) throws DefinitionsFactoryException;
+   public void initFactory(ServletContext servletContext, Map<String, Object> properties) throws DefinitionsFactoryException;
 }

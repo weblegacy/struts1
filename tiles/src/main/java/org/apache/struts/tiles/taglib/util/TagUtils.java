@@ -54,17 +54,17 @@ public class TagUtils {
      * Maps lowercase JSP scope names to their PageContext integer constant
      * values.
      */
-    private static final Map scopes = new HashMap();
+    private static final Map<String, Integer> scopes = new HashMap<>();
 
     /**
      * Initialize the scope names map and the encode variable with the
      * Java 1.4 method if available.
      */
     static {
-        scopes.put("page", new Integer(PageContext.PAGE_SCOPE));
-        scopes.put("request", new Integer(PageContext.REQUEST_SCOPE));
-        scopes.put("session", new Integer(PageContext.SESSION_SCOPE));
-        scopes.put("application", new Integer(PageContext.APPLICATION_SCOPE));
+        scopes.put("page", PageContext.PAGE_SCOPE);
+        scopes.put("request", PageContext.REQUEST_SCOPE);
+        scopes.put("session", PageContext.SESSION_SCOPE);
+        scopes.put("application", PageContext.APPLICATION_SCOPE);
     }
 
 

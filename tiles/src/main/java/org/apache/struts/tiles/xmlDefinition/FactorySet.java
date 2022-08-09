@@ -22,7 +22,6 @@
 package org.apache.struts.tiles.xmlDefinition;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.ServletContext;
@@ -40,11 +39,13 @@ import org.apache.struts.tiles.NoSuchDefinitionException;
  * getDefinition() method first looks for the factory key, retrieves or creates this
  * factory and then calls its getDefinition().
  */
+@SuppressWarnings("deprecation")
 public abstract class FactorySet implements ComponentDefinitionsFactory
 {
+    private static final long serialVersionUID = -3005016733922480701L;
 
     /** Loaded factories */
-  protected Map factories=null;
+  protected Map<Object, Object> factories=null;
 
   /**
    * Extract key that will be used to get the sub factory.
@@ -134,7 +135,7 @@ public abstract class FactorySet implements ComponentDefinitionsFactory
    * @param servletContext Current servlet context
    * @param properties properties used to initialized factory set;
    */
-  abstract public void initFactory(ServletContext servletContext, Map properties)
+  abstract public void initFactory(ServletContext servletContext, Map<String, Object> properties)
     throws DefinitionsFactoryException;
 
   /**
@@ -142,7 +143,7 @@ public abstract class FactorySet implements ComponentDefinitionsFactory
    */
   public FactorySet()
   {
-  factories = new HashMap();
+  factories = new HashMap<>();
   }
 
     /**
@@ -151,11 +152,10 @@ public abstract class FactorySet implements ComponentDefinitionsFactory
      */
   public String toString()
     {
-    Iterator i = factories.values().iterator();
     StringBuffer buff = new StringBuffer( "all FactorySet's factory : \n" );
-    while( i.hasNext() )
+    for (Object factory : factories.values())
       {
-      buff.append( i.next().toString() ).append("\n");
+      buff.append( factory.toString() ).append("\n");
       }
     return buff.toString();
     }

@@ -38,6 +38,7 @@ import org.apache.struts.tiles.UntypedAttribute;
 public class DefinitionTag
     extends DefinitionTagSupport
     implements PutTagParent, PutListTagParent {
+    private static final long serialVersionUID = -1126668990555092082L;
 
     /* JSP Tag attributes */
     /**

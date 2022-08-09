@@ -22,7 +22,6 @@
 package org.apache.struts.tiles.xmlDefinition;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.apache.struts.tiles.NoSuchDefinitionException;
@@ -33,14 +32,14 @@ import org.apache.struts.tiles.NoSuchDefinitionException;
 public class XmlDefinitionsSet
 {
     /** Defined definitions. */
-  protected Map definitions;
+  protected Map<String, XmlDefinition> definitions;
 
      /**
       * Constructor.
       */
   public XmlDefinitionsSet()
    {
-   definitions = new HashMap();
+   definitions = new HashMap<>();
    }
 
   /**
@@ -58,13 +57,13 @@ public class XmlDefinitionsSet
    */
   public XmlDefinition getDefinition(String name)
   {
-  return (XmlDefinition)definitions.get( name );
+  return definitions.get( name );
   }
 
   /**
    * Get definitions map.
    */
-  public Map getDefinitions()
+  public Map<String, XmlDefinition> getDefinitions()
   {
   return definitions;
   }
@@ -75,10 +74,8 @@ public class XmlDefinitionsSet
   public void resolveInheritances() throws NoSuchDefinitionException
     {
       // Walk through all definitions and resolve individual inheritance
-    Iterator i = definitions.values().iterator();
-    while( i.hasNext() )
+    for( XmlDefinition definition : definitions.values() )
       {
-      XmlDefinition definition = (XmlDefinition)i.next();
       definition.resolveInheritance( this );
       }  // end loop
     }
@@ -93,10 +90,8 @@ public class XmlDefinitionsSet
     {
     if(child==null)
       return;
-    Iterator i = child.getDefinitions().values().iterator();
-    while( i.hasNext() )
+    for( XmlDefinition childInstance : child.getDefinitions().values() )
       {
-      XmlDefinition childInstance = (XmlDefinition)i.next();
       XmlDefinition parentInstance = getDefinition(childInstance.getName() );
       if( parentInstance != null )
         {

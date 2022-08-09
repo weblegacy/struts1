@@ -26,7 +26,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.jsp.PageContext;
@@ -37,11 +36,12 @@ import org.apache.struts.tiles.taglib.ComponentConstants;
  * Component context.
  */
 public class ComponentContext implements Serializable {
+    private static final long serialVersionUID = 5887062776582589341L;
 
     /**
      * Component attributes.
      */
-    private Map attributes=null;
+    private Map<String, Object> attributes=null;
 
     /**
      * Constructor.
@@ -55,9 +55,9 @@ public class ComponentContext implements Serializable {
      * Create a context and set specified attributes.
      * @param attributes Attributes to initialize context.
      */
-    public ComponentContext(Map attributes) {
+    public ComponentContext(Map<String, Object> attributes) {
         if (attributes != null) {
-            this.attributes = new HashMap(attributes);
+            this.attributes = new HashMap<>(attributes);
         }
     }
 
@@ -68,9 +68,9 @@ public class ComponentContext implements Serializable {
      * currently in the specified attribute map.
      * @param newAttributes Attributes to add.
      */
-    public void addAll(Map newAttributes) {
+    public void addAll(Map<String, Object> newAttributes) {
         if (attributes == null) {
-            attributes = new HashMap(newAttributes);
+            attributes = new HashMap<>(newAttributes);
             return;
         }
 
@@ -84,20 +84,17 @@ public class ComponentContext implements Serializable {
      * this context.
      * @param defaultAttributes Attributes to add.
      */
-    public void addMissing(Map defaultAttributes) {
+    public void addMissing(Map<String, Object> defaultAttributes) {
         if (defaultAttributes == null) {
             return;
         }
 
         if (attributes == null) {
-            attributes = new HashMap(defaultAttributes);
+            attributes = new HashMap<>(defaultAttributes);
             return;
         }
 
-        Set entries = defaultAttributes.entrySet();
-        Iterator iterator = entries.iterator();
-        while (iterator.hasNext()) {
-            Map.Entry entry = (Map.Entry) iterator.next();
+        for (Map.Entry<String, Object> entry : defaultAttributes.entrySet()) {
             if (!attributes.containsKey(entry.getKey())) {
                 attributes.put(entry.getKey(), entry.getValue());
             }
@@ -121,9 +118,9 @@ public class ComponentContext implements Serializable {
      * Get names of all attributes.
      * @return <{Object}>
      */
-    public Iterator getAttributeNames() {
+    public Iterator<String> getAttributeNames() {
         if (attributes == null) {
-            return Collections.EMPTY_LIST.iterator();
+            return Collections.emptyListIterator();
         }
 
         return attributes.keySet().iterator();
@@ -136,7 +133,7 @@ public class ComponentContext implements Serializable {
      */
     public void putAttribute(String name, Object value) {
         if (attributes == null) {
-            attributes = new HashMap();
+            attributes = new HashMap<>();
         }
 
         attributes.put(name, value);

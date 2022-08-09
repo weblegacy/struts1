@@ -152,6 +152,7 @@ public class TilesRequestProcessor extends RequestProcessor {
      * @return <code>true</code> if the method has processed uri as a
      * definition name, <code>false</code> otherwise.
      */
+    @SuppressWarnings("deprecation")
     protected boolean processTilesDefinition(
         String definitionName,
         HttpServletRequest request,

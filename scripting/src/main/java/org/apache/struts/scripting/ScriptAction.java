@@ -23,7 +23,7 @@ package org.apache.struts.scripting;
 // util imports:
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -130,7 +130,7 @@ public class ScriptAction extends Action {
     private static BSFManagerFilter[] filters = null;
 
     /**  Holds the "compiled" scripts and their information. */
-    private Map scripts = new Hashtable();
+    private Map<String, Script>  scripts = new HashMap<>();
 
     static {
         Properties props = new Properties();
@@ -160,8 +160,8 @@ public class ScriptAction extends Action {
                      + " default engine mappings.");
         }
         int pos = ENGINE_BASE.length();
-        for (Enumeration e = props.propertyNames(); e.hasMoreElements();) {
-            String name = (String) e.nextElement();
+        for (Enumeration<?> e = props.propertyNames(); e.hasMoreElements();) {
+            String name = e.nextElement().toString();
             if (name.startsWith(ENGINE_BASE) && name.endsWith(".class")) {
                 String type = name.substring(pos, name.indexOf('.', pos));
                 String cls = props.getProperty(name);
@@ -307,7 +307,7 @@ public class ScriptAction extends Action {
      */
     protected Script loadScript(String name, ServletContext context) {
 
-        Script script = (Script) scripts.get(name);
+        Script script = scripts.get(name);
         if (script == null) {
             script = new Script();
             script.file = new File(context.getRealPath(name));
@@ -361,15 +361,15 @@ public class ScriptAction extends Action {
      *@return        An array of the loaded filters
      */
     protected static BSFManagerFilter[] loadFilters(Properties props) {
-        ArrayList list = new ArrayList();
-        for (Enumeration e = props.propertyNames(); e.hasMoreElements();) {
-            String prop = (String) e.nextElement();
+        ArrayList<BSFManagerFilter> list = new ArrayList<>();
+        for (Enumeration<?> e = props.propertyNames(); e.hasMoreElements();) {
+            String prop = e.nextElement().toString();
             if (prop.startsWith(FILTERS_BASE) && prop.endsWith("class")) {
                 String type = prop.substring(FILTERS_BASE.length(),
                         prop.indexOf(".", FILTERS_BASE.length()));
                 String claz = props.getProperty(prop);
                 try {
-                    Class cls = Class.forName(claz);
+                    Class<?> cls = Class.forName(claz);
                     BSFManagerFilter f = (BSFManagerFilter) cls.newInstance();
                     f.init(type, props);
                     list.add(f);
@@ -381,9 +381,7 @@ public class ScriptAction extends Action {
                 }
             }
         }
-        BSFManagerFilter[] filters = new BSFManagerFilter[list.size()];
-        filters = (BSFManagerFilter[]) list.toArray(filters);
-        return filters;
+        return list.toArray(new BSFManagerFilter[0]);
     }
 
 
@@ -399,13 +397,12 @@ public class ScriptAction extends Action {
             return new String[]{};
         }
 
-        List lst = new ArrayList();
-        for (Enumeration e = new StringTokenizer(line, delimiter);
-            e.hasMoreElements();) {
-            lst.add(e.nextElement());
+        List<String> lst = new ArrayList<>();
+        for (StringTokenizer st = new StringTokenizer(line, delimiter);
+            st.hasMoreTokens();) {
+            lst.add(st.nextToken());
         }
-        String[] ret = new String[lst.size()];
-        return (String[]) lst.toArray(ret);
+        return lst.toArray(new String[0]);
     }
 
 

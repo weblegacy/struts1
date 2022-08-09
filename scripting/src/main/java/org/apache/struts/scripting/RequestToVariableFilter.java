@@ -67,9 +67,9 @@ public class RequestToVariableFilter implements BSFManagerFilter {
         String name = null;
         String newName = null;
         Object o = null;
-        for (Enumeration e = request.getParameterNames();
+        for (Enumeration<?> e = request.getParameterNames();
                 e.hasMoreElements();) {
-            name = (String) e.nextElement();
+            name = e.nextElement().toString();
             o = mgr.lookupBean(name);
             if (o == null) {
                 newName = name;

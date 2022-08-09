@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* El: Convert all `package.html` to `package-info.java`
 * El: JDK8 - Add generics, serialVersionID, for-each-loop, ...
 * Core: Convert all `package.html` to `package-info.java`
 * JDK8: Add generics, serialVersionID, for-each-loop, remove warnings, ...

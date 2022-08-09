@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* IT: Convert all `package.html` to `package-info.java`
 * Faces: JDK8 - Add generics, serialVersionID, for-each-loop, ...
 * Extras: Convert all `package.html` to `package-info.java`
 * Extras: JDK8 - Add generics, serialVersionID, for-each-loop, ...

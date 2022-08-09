@@ -70,7 +70,7 @@ public abstract class AbstractUser implements User {
     /**
      * The {@link Subscription}s for this User, keyed by hostname.
      */
-    private HashMap subscriptions = new HashMap();
+    private HashMap<String, Subscription> subscriptions = new HashMap<>();
 
 
     /**
@@ -153,8 +153,7 @@ public abstract class AbstractUser implements User {
     public Subscription[] getSubscriptions() {
 
         synchronized (subscriptions) {
-            Subscription results[] = new Subscription[subscriptions.size()];
-            return ((Subscription[]) subscriptions.values().toArray(results));
+            return subscriptions.values().toArray(new Subscription[0]);
         }
 
     }
@@ -208,7 +207,7 @@ public abstract class AbstractUser implements User {
     public Subscription findSubscription(String host) {
 
         synchronized (subscriptions) {
-            return ((Subscription) subscriptions.get(host));
+            return (subscriptions.get(host));
         }
 
     }

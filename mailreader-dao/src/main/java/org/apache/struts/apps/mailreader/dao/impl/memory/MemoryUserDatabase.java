@@ -66,7 +66,7 @@ public class MemoryUserDatabase implements UserDatabase {
     /**
      * The {@link User}s associated with this UserDatabase, keyed by username.
      */
-    private HashMap users = new HashMap();
+    private HashMap<String, MemoryUser> users = new HashMap<>();
 
     private boolean open = false;
 
@@ -132,7 +132,7 @@ public class MemoryUserDatabase implements UserDatabase {
     public User findUser(String username)  {
 
         synchronized (users) {
-            return ((User) users.get(username));
+            return (users.get(username));
         }
 
     }
@@ -142,8 +142,7 @@ public class MemoryUserDatabase implements UserDatabase {
     public User[] findUsers() {
 
         synchronized (users) {
-            User results[] = new User[users.size()];
-            return ((User[]) users.values().toArray(results));
+            return (users.values().toArray(new User[0]));
         }
 
     }

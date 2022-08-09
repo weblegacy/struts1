@@ -30,6 +30,7 @@ package org.apache.struts.apps.mailreader.dao;
 
 
 public class ExpiredPasswordException extends Exception {
+    private static final long serialVersionUID = -3244418598208385319L;
 
 
     /**

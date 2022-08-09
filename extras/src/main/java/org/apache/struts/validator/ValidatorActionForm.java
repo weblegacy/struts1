@@ -44,6 +44,8 @@ import java.io.Serializable;
  * @since Struts 1.1
  */
 public class ValidatorActionForm extends ValidatorForm implements Serializable {
+    private static final long serialVersionUID = -2467421375142988725L;
+
     /**
      * Returns the Validation key.
      *

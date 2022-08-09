@@ -165,7 +165,7 @@ public class ModuleConfigVerifier implements PlugIn {
         }
 
         try {
-            Class amcClass = RequestUtils.applicationClass(amcName);
+            RequestUtils.applicationClass(amcName);
         } catch (ClassNotFoundException e) {
             LOG.error(servlet.getInternal().getMessage("verifyActionMappingClass.invalid",
                     amcName));
@@ -218,7 +218,7 @@ public class ModuleConfigVerifier implements PlugIn {
                 ok = false;
             } else {
                 try {
-                    Class clazz = RequestUtils.applicationClass(factory);
+                    RequestUtils.applicationClass(factory);
                 } catch (ClassNotFoundException e) {
                     LOG.error(servlet.getInternal().getMessage("verifyMessageResourcesConfigs.invalid",
                             factory));
@@ -253,7 +253,7 @@ public class ModuleConfigVerifier implements PlugIn {
                 ok = false;
             } else {
                 try {
-                    Class clazz = RequestUtils.applicationClass(className);
+                    RequestUtils.applicationClass(className);
                 } catch (ClassNotFoundException e) {
                     LOG.error(servlet.getInternal().getMessage("verifyPlugInConfigs.invalid",
                             className));

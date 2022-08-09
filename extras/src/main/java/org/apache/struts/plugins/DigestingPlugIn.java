@@ -334,7 +334,7 @@ public class DigestingPlugIn implements PlugIn {
         throws IOException {
         File file = new File(path);
 
-        return file.toURL();
+        return file.toURI().toURL();
     }
 
     /**

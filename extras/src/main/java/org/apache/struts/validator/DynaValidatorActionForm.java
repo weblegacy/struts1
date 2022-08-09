@@ -46,6 +46,8 @@ import java.io.Serializable;
  */
 public class DynaValidatorActionForm extends DynaValidatorForm
     implements DynaBean, Serializable {
+    private static final long serialVersionUID = 3980068452582336786L;
+
     /**
      * Returns the Validation key.
      *

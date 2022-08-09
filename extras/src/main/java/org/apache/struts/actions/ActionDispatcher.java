@@ -133,7 +133,7 @@ public class ActionDispatcher implements Dispatcher {
     /**
      * The Class instance of this <code>DispatchAction</code> class.
      */
-    protected Class clazz;
+    protected Class<? extends Action> clazz;
 
     /**
      * The set of Method objects we have introspected for this class, keyed by
@@ -141,13 +141,13 @@ public class ActionDispatcher implements Dispatcher {
      * called, so that introspection needs to occur only once per method
      * name.
      */
-    protected HashMap methods = new HashMap();
+    protected HashMap<String, Method> methods = new HashMap<>();
 
     /**
      * The set of argument type classes for the reflected method call.  These
      * are the same for all calls, so calculate them only once.
      */
-    protected Class[] types =
+    protected Class<?>[] types =
         {
             ActionMapping.class, ActionForm.class, HttpServletRequest.class,
             HttpServletResponse.class

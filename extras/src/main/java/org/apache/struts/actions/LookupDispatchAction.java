@@ -35,7 +35,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 
@@ -117,12 +116,12 @@ public abstract class LookupDispatchAction extends DispatchAction {
     /**
      * Reverse lookup map from resource value to resource key.
      */
-    protected Map localeMap = new HashMap();
+    protected Map<Locale, Map<String, String>> localeMap = new HashMap<>();
 
     /**
      * Resource key to method name lookup.
      */
-    protected Map keyMethodMap = null;
+    protected Map<String, String> keyMethodMap = null;
 
     // ---------------------------------------------------------- Public Methods
 
@@ -155,8 +154,8 @@ public abstract class LookupDispatchAction extends DispatchAction {
      * @param userLocale The locale for this request
      * @return The reverse lookup map for the specified locale.
      */
-    private Map initLookupMap(HttpServletRequest request, Locale userLocale) {
-        Map lookupMap = new HashMap();
+    private Map<String, String> initLookupMap(HttpServletRequest request, Locale userLocale) {
+        Map<String, String> lookupMap = new HashMap<>();
 
         this.keyMethodMap = this.getKeyMethodMap();
 
@@ -172,10 +171,7 @@ public abstract class LookupDispatchAction extends DispatchAction {
                 this.getResources(request, mrc[i].getKey());
 
             // Look for key in MessageResources
-            Iterator iter = this.keyMethodMap.keySet().iterator();
-
-            while (iter.hasNext()) {
-                String key = (String) iter.next();
+            for (String key : this.keyMethodMap.keySet()) {
                 String text = resources.getMessage(userLocale, key);
 
                 // Found key and haven't added to Map yet, so add the text
@@ -193,7 +189,7 @@ public abstract class LookupDispatchAction extends DispatchAction {
      *
      * @return Resource key / method name map.
      */
-    protected abstract Map getKeyMethodMap();
+    protected abstract Map<String, String> getKeyMethodMap();
 
     /**
      * Lookup the method name corresponding to the client request's locale.
@@ -209,12 +205,12 @@ public abstract class LookupDispatchAction extends DispatchAction {
         String keyName, ActionMapping mapping)
         throws ServletException {
         // Based on this request's Locale get the lookupMap
-        Map lookupMap = null;
+        Map<String, String> lookupMap = null;
 
         synchronized (localeMap) {
             Locale userLocale = this.getLocale(request);
 
-            lookupMap = (Map) this.localeMap.get(userLocale);
+            lookupMap = this.localeMap.get(userLocale);
 
             if (lookupMap == null) {
                 lookupMap = this.initLookupMap(request, userLocale);
@@ -223,7 +219,7 @@ public abstract class LookupDispatchAction extends DispatchAction {
         }
 
         // Find the key for the resource
-        String key = (String) lookupMap.get(keyName);
+        String key = lookupMap.get(keyName);
 
         if (key == null) {
             String message =
@@ -233,7 +229,7 @@ public abstract class LookupDispatchAction extends DispatchAction {
         }
 
         // Find the method name
-        String methodName = (String) keyMethodMap.get(key);
+        String methodName = keyMethodMap.get(key);
 
         if (methodName == null) {
             String message =

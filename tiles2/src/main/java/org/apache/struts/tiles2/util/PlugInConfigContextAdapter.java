@@ -56,7 +56,7 @@ public class PlugInConfigContextAdapter implements ServletContext {
     /**
      * The set of all parameter names.
      */
-    private Set parameterNames;
+    private Set<String> parameterNames;
 
     /**
      * Constructor.
@@ -68,7 +68,7 @@ public class PlugInConfigContextAdapter implements ServletContext {
             ServletContext servletContext) {
         this.plugInConfigObject = plugInConfigObject;
         this.rootContext = servletContext;
-        parameterNames = new LinkedHashSet();
+        parameterNames = new LinkedHashSet<>();
         parameterNames.addAll(this.plugInConfigObject.getProperties().keySet());
         CollectionUtils.addAll(parameterNames, this.rootContext
                 .getInitParameterNames());
@@ -97,7 +97,8 @@ public class PlugInConfigContextAdapter implements ServletContext {
      *
      * @return The names of all initialization parameters.
      */
-    public Enumeration getInitParameterNames() {
+    @SuppressWarnings("unchecked")
+    public Enumeration<String> getInitParameterNames() {
         return new IteratorEnumeration(parameterNames.iterator());
     }
 
@@ -124,7 +125,8 @@ public class PlugInConfigContextAdapter implements ServletContext {
     }
 
     /** {@inheritDoc} */
-    public Set getResourcePaths(String string) {
+    @SuppressWarnings("unchecked")
+    public Set<String> getResourcePaths(String string) {
         return rootContext.getResourcePaths(string);
     }
 
@@ -149,17 +151,20 @@ public class PlugInConfigContextAdapter implements ServletContext {
     }
 
     /** {@inheritDoc} */
+    @SuppressWarnings("deprecation")
     public Servlet getServlet(String string) throws ServletException {
         return rootContext.getServlet(string);
     }
 
     /** {@inheritDoc} */
-    public Enumeration getServlets() {
+    @SuppressWarnings("deprecation")
+    public Enumeration<?> getServlets() {
         return rootContext.getServlets();
     }
 
     /** {@inheritDoc} */
-    public Enumeration getServletNames() {
+    @SuppressWarnings("deprecation")
+    public Enumeration<?> getServletNames() {
         return rootContext.getServletNames();
     }
 
@@ -169,6 +174,7 @@ public class PlugInConfigContextAdapter implements ServletContext {
     }
 
     /** {@inheritDoc} */
+    @SuppressWarnings("deprecation")
     public void log(Exception exception, String string) {
         rootContext.log(exception, string);
     }
@@ -194,7 +200,7 @@ public class PlugInConfigContextAdapter implements ServletContext {
     }
 
     /** {@inheritDoc} */
-    public Enumeration getAttributeNames() {
+    public Enumeration<?> getAttributeNames() {
         return rootContext.getAttributeNames();
     }
 

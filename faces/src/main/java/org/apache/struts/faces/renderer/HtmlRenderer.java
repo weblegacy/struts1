@@ -28,8 +28,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.servlet.http.HttpSession;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 
 
@@ -44,12 +42,6 @@ public class HtmlRenderer extends AbstractRenderer {
 
 
     // -------------------------------------------------------- Static Variables
-
-
-    /**
-     * <p>The <code>Log</code> instance for this class.</p>
-     */
-    private static Log log = LogFactory.getLog(HtmlRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods

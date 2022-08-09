@@ -118,7 +118,7 @@ public class ErrorsRenderer extends AbstractRenderer {
         }
 
         // Render any JavaServer Faces messages
-        Iterator messages = context.getMessages(property);
+        Iterator<?> messages = context.getMessages(property);
         while (messages.hasNext()) {
             FacesMessage message = (FacesMessage) messages.next();
             if (log.isTraceEnabled()) {
@@ -149,14 +149,14 @@ public class ErrorsRenderer extends AbstractRenderer {
                 log.trace("Processing Struts messages for property '" +
                           property + "'");
             }
-            Iterator reports = null;
+            Iterator<ActionMessage> reports = null;
             if (property == null) {
                 reports = errors.get();
             } else {
                 reports = errors.get(property);
             }
             while (reports.hasNext()) {
-                ActionMessage report = (ActionMessage) reports.next();
+                ActionMessage report = reports.next();
                 if (log.isTraceEnabled()) {
                     log.trace("Processing Struts message key='" +
                               report.getKey() + "'");

@@ -334,7 +334,7 @@ public class PropertyResolverImpl extends PropertyResolver {
      * @exception PropertyNotFoundException if the specified property name
      *  does not exist
      */
-    public Class getType(Object base, Object name)
+    public Class<?> getType(Object base, Object name)
         throws PropertyNotFoundException {
 
         if ((base == null) || (name == null)) {
@@ -370,7 +370,7 @@ public class PropertyResolverImpl extends PropertyResolver {
      *  is <code>null</code>
      * @exception PropertyNotFoundException if some other exception occurs
      */
-    public Class getType(Object base, int index)
+    public Class<?> getType(Object base, int index)
         throws PropertyNotFoundException {
 
         return (resolver.getType(base, index));

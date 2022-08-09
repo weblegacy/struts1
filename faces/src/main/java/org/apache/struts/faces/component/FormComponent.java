@@ -26,7 +26,6 @@ import java.util.Map;
 import javax.faces.component.UIForm;
 import javax.faces.context.FacesContext;
 import javax.faces.el.ValueBinding;
-import javax.servlet.http.HttpSession;
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -368,7 +367,7 @@ public class FormComponent extends UIForm {
         }
 
         // Create the form bean (if necessary)
-        Map params = context.getExternalContext().getRequestParameterMap();
+        Map<?, ?> params = context.getExternalContext().getRequestParameterMap();
         if (params.containsKey(getClientId(context))) {
             createActionForm(context);
         }
@@ -442,6 +441,7 @@ public class FormComponent extends UIForm {
      * @exception IllegalArgumentException if no ModuleConfig can be
      *  located for this application module
      */
+    @SuppressWarnings("unchecked")
     public void createActionForm(FacesContext context) {
 
         // Look up the application module configuration information we need
@@ -476,8 +476,7 @@ public class FormComponent extends UIForm {
             instance = (ActionForm)
                 context.getExternalContext().getRequestMap().get(attribute);
         } else if ("session".equals(scope)) {
-            HttpSession session = (HttpSession)
-                context.getExternalContext().getSession(true);
+            context.getExternalContext().getSession(true);
             instance = (ActionForm)
                 context.getExternalContext().getSessionMap().get(attribute);
         }
@@ -495,7 +494,7 @@ public class FormComponent extends UIForm {
                 }
             } else {
                 try {
-                    Class configClass =
+                    Class<?> configClass =
                         RequestUtils.applicationClass(fbConfig.getType());
                     if (configClass.isAssignableFrom(instance.getClass())) {
                         if (log.isDebugEnabled()) {

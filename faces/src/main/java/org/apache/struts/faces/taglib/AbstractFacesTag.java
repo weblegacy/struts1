@@ -151,6 +151,7 @@ public abstract class AbstractFacesTag extends UIComponentTag {
      * @exception ReferenceSyntaxException if the expression has
      *  invalid syntax
      */
+    @SuppressWarnings("unchecked")
     protected void setBooleanAttribute(UIComponent component,
                                        String name, String value) {
 
@@ -184,6 +185,7 @@ public abstract class AbstractFacesTag extends UIComponentTag {
      * @exception ReferenceSyntaxException if the expression has
      *  invalid syntax
      */
+    @SuppressWarnings("unchecked")
     protected void setIntegerAttribute(UIComponent component,
                                        String name, String value) {
 
@@ -215,6 +217,7 @@ public abstract class AbstractFacesTag extends UIComponentTag {
      * @exception ReferenceSyntaxException if the expression has
      *  invalid syntax
      */
+    @SuppressWarnings("unchecked")
     protected void setStringAttribute(UIComponent component,
                                       String name, String value) {
 

@@ -38,7 +38,7 @@ import org.apache.struts.util.MessageResources;
  * well as JSP 2.0 expression language expressions.
  */
 
-public class MessagesMap implements Map {
+public class MessagesMap implements Map<Object, Object> {
 
 
     // ------------------------------------------------------------ Constructors
@@ -130,7 +130,7 @@ public class MessagesMap implements Map {
     /**
      * <p>The <code>entrySet()</code> method is not supported.</p>
      */
-    public Set entrySet() {
+    public Set<Map.Entry<Object, Object>> entrySet() {
 
         throw new UnsupportedOperationException();
 
@@ -208,7 +208,7 @@ public class MessagesMap implements Map {
     /**
      * <p>The <code>keySet()</code> method is not supported.</p>
      */
-    public Set keySet() {
+    public Set<Object> keySet() {
 
         throw new UnsupportedOperationException();
 
@@ -233,7 +233,7 @@ public class MessagesMap implements Map {
      *
      * @param map Keys and values to store
      */
-    public void putAll(Map map) {
+    public void putAll(Map<?, ?> map) {
 
         throw new UnsupportedOperationException();
 
@@ -265,7 +265,7 @@ public class MessagesMap implements Map {
     /**
      * <p>The <code>values()</code> method is not supported.</p>
      */
-    public Collection values() {
+    public Collection<Object> values() {
 
         throw new UnsupportedOperationException();
 

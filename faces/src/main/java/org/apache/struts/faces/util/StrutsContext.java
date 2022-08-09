@@ -28,8 +28,6 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import javax.sql.DataSource;
-
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;

@@ -304,7 +304,7 @@ public class CommandLinkTag extends AbstractFacesTag {
         }
         if (actionListener != null) {
             if (isValueReference(actionListener)) {
-                Class[] args = {ActionEvent.class};
+                Class<?>[] args = {ActionEvent.class};
                 MethodBinding mb = FacesContext.getCurrentInstance().
                 getApplication().createMethodBinding(actionListener, args);
                 ((ActionSource) component).setActionListener(mb);
@@ -357,7 +357,7 @@ class ConstantMethodBinding extends MethodBinding {
         return (this.outcome);
     }
 
-    public Class getType(FacesContext context) {
+    public Class<?> getType(FacesContext context) {
         return (String.class);
     }
 

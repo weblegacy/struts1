@@ -71,13 +71,14 @@ public class FormRenderer extends AbstractRenderer {
      * @exception NullPointerException if <code>context</code>
      *  or <code>component</code> is null
      */
+    @SuppressWarnings("unchecked")
     public void decode(FacesContext context, UIComponent component) {
 
         if ((context == null) || (component == null)) {
             throw new NullPointerException();
         }
         String clientId = component.getClientId(context);
-        Map map = context.getExternalContext().getRequestParameterMap();
+        Map<?, ?> map = context.getExternalContext().getRequestParameterMap();
         if (log.isDebugEnabled()) {
             log.debug("decode(" + clientId + ") --> " +
                       map.containsKey(clientId));
@@ -104,6 +105,7 @@ public class FormRenderer extends AbstractRenderer {
      * @exception NullPointerException if <code>context</code>
      *  or <code>component</code> is null
      */
+    @SuppressWarnings("unchecked")
     public void encodeBegin(FacesContext context, UIComponent component)
         throws IOException {
 

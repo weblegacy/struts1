@@ -28,9 +28,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 
 /**
  * <p><code>Renderer</code> implementation for the <code>stylesheet</code> tag
@@ -43,12 +40,6 @@ public class StylesheetRenderer extends AbstractRenderer {
 
 
     // -------------------------------------------------------- Static Variables
-
-
-    /**
-     * <p>The <code>Log</code> instance for this class.</p>
-     */
-    private static Log log = LogFactory.getLog(StylesheetRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods

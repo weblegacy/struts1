@@ -30,8 +30,6 @@ import javax.faces.component.UIParameter;
 import javax.faces.component.ValueHolder;
 import javax.faces.context.FacesContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.ResponseUtils;
@@ -48,12 +46,6 @@ public class MessageRenderer extends WriteRenderer {
 
 
     // -------------------------------------------------------- Static Variables
-
-
-    /**
-     * <p>The <code>Log</code> instance for this class.</p>
-     */
-    private static Log log = LogFactory.getLog(MessageRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods
@@ -100,8 +92,8 @@ public class MessageRenderer extends WriteRenderer {
         String key = value.toString();
 
         // Build the substitution arguments list
-        ArrayList list = new ArrayList();
-        Iterator kids = component.getChildren().iterator();
+        ArrayList<Object> list = new ArrayList<>();
+        Iterator<?> kids = component.getChildren().iterator();
         while (kids.hasNext()) {
             UIComponent kid = (UIComponent) kids.next();
             if (!(kid instanceof UIParameter)) {
@@ -109,7 +101,7 @@ public class MessageRenderer extends WriteRenderer {
             }
             list.add(((UIParameter) kid).getValue());
         }
-        Object args[] = list.toArray(new Object[list.size()]);
+        Object args[] = list.toArray(new Object[0]);
 
         // Look up the requested message
         String text = resources.getMessage(context.getViewRoot().getLocale(),

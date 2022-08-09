@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 
-import javax.faces.application.FacesMessage;
 import javax.faces.component.EditableValueHolder;
 import javax.faces.component.UIComponent;
 import javax.faces.component.ValueHolder;
@@ -163,7 +162,7 @@ public abstract class AbstractRenderer extends Renderer {
                     ", family=" + component.getFamily() +
                     ", rendererType=" + component.getRendererType() + ")");
         }
-        Iterator kids = component.getChildren().iterator();
+        Iterator<?> kids = component.getChildren().iterator();
         while (kids.hasNext()) {
             UIComponent kid = (UIComponent) kids.next();
             kid.encodeBegin(context);
@@ -254,7 +253,7 @@ public abstract class AbstractRenderer extends Renderer {
                 log.trace("encodeRecursive(id=" + component.getId() +
                         ") recursing");
             }
-            Iterator kids = component.getChildren().iterator();
+            Iterator<?> kids = component.getChildren().iterator();
             while (kids.hasNext()) {
                 UIComponent kid = (UIComponent) kids.next();
                 encodeRecursive(context, kid);
@@ -376,11 +375,11 @@ public abstract class AbstractRenderer extends Renderer {
         if (names == null) {
             return;
         }
-        Map attributes = component.getAttributes();
+        Map<?, ?> attributes = component.getAttributes();
         boolean flag;
         Object value;
-        for (int i = 0; i < names.length; i++) {
-            value = attributes.get(names[i]);
+        for (String name : names) {
+            value = attributes.get(name);
             if (value != null) {
                 if (value instanceof String) {
                     flag = Boolean.valueOf((String) value).booleanValue();
@@ -388,7 +387,7 @@ public abstract class AbstractRenderer extends Renderer {
                     flag = Boolean.valueOf(value.toString()).booleanValue();
                 }
                 if (flag) {
-                    writer.writeAttribute(names[i], names[i], names[i]);
+                    writer.writeAttribute(name, name, name);
                     flag = false;
                 }
             }
@@ -421,15 +420,15 @@ public abstract class AbstractRenderer extends Renderer {
         if (names == null) {
             return;
         }
-        Map attributes = component.getAttributes();
+        Map<?, ?> attributes = component.getAttributes();
         Object value;
-        for (int i = 0; i < names.length; i++) {
-            value = attributes.get(names[i]);
+        for (String name : names) {
+            value = attributes.get(name);
             if (value != null) {
                 if (value instanceof String) {
-                    writer.writeAttribute(names[i], value, names[i]);
+                    writer.writeAttribute(name, value, name);
                 } else {
-                    writer.writeAttribute(names[i], value.toString(), names[i]);
+                    writer.writeAttribute(name, value.toString(), name);
                 }
             }
         }
@@ -475,6 +474,7 @@ public abstract class AbstractRenderer extends Renderer {
      * @param component <code>EditableValueHolder</code> component whose
      *  submitted value is to be stored
      */
+    @SuppressWarnings("unchecked")
     protected void setSubmittedValue
         (FacesContext context, UIComponent component) {
 
@@ -482,7 +482,7 @@ public abstract class AbstractRenderer extends Renderer {
             return;
         }
         String clientId = component.getClientId(context);
-        Map parameters = context.getExternalContext().getRequestParameterMap();
+        Map<?, ?> parameters = context.getExternalContext().getRequestParameterMap();
         if (parameters.containsKey(clientId)) {
             if (log.isTraceEnabled()) {
                 log.trace("setSubmittedValue(" + clientId + "," +
@@ -651,7 +651,7 @@ public abstract class AbstractRenderer extends Renderer {
         }
         if ((converter == null) && (vb != null)) {
             // Acquire implicit by-type Converter (if any)
-            Class type = vb.getType(context);
+            Class<?> type = vb.getType(context);
             if (type != null) {
                 converter = context.getApplication().createConverter(type);
             }

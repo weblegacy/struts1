@@ -41,6 +41,7 @@ import org.apache.struts.util.MessageResources;
  */
 
 public class LoadMessagesTag extends TagSupport {
+    private static final long serialVersionUID = 6268460679725885904L;
 
 
     // ---------------------------------------------------------- Tag Attributes

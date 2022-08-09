@@ -24,7 +24,6 @@ package org.apache.struts.faces.taglib;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -67,6 +66,7 @@ import org.apache.struts.validator.ValidatorPlugIn;
  * @version $Rev$ $Date$
  */
 public class JavascriptValidatorTag extends BodyTagSupport {
+    private static final long serialVersionUID = 8298861997065841234L;
 
     // ----------------------------------------------------------- Properties
 
@@ -276,6 +276,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      *
      * @exception JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         StringBuffer results = new StringBuffer();
 
@@ -300,27 +301,24 @@ public class JavascriptValidatorTag extends BodyTagSupport {
                         bundle + config.getPrefix(),
                         PageContext.APPLICATION_SCOPE);
 
-                List lActions = new ArrayList();
-                List lActionMethods = new ArrayList();
+                List<ValidatorAction> lActions = new ArrayList<>();
+                List<String> lActionMethods = new ArrayList<>();
 
                 // Get List of actions for this Form
-                for (Iterator i = form.getFields().iterator(); i.hasNext();) {
-                    Field field = (Field) i.next();
+                for (Field field : form.getFields()) {
 
-                    for (Iterator x = field.getDependencyList().iterator();
-                        x.hasNext();) {
-                        Object o = x.next();
+                    for (String depends : field.getDependencyList()) {
 
-                        if (o != null && !lActionMethods.contains(o)) {
-                            lActionMethods.add(o);
+                        if (depends != null && !lActionMethods.contains(depends)) {
+                            lActionMethods.add(depends);
                         }
                     }
 
                 }
 
                 // Create list of ValidatorActions based on lActionMethods
-                for (Iterator i = lActionMethods.iterator(); i.hasNext();) {
-                    String depends = (String) i.next();
+                for (Iterator<String> i = lActionMethods.iterator(); i.hasNext();) {
+                    String depends = i.next();
                     ValidatorAction va = resources.getValidatorAction(depends);
 
                     // throw nicer NPE for easier debugging
@@ -339,38 +337,32 @@ public class JavascriptValidatorTag extends BodyTagSupport {
                     }
                 }
 
-                Collections.sort(lActions, new Comparator() {
-                    public int compare(Object o1, Object o2) {
-                        ValidatorAction va1 = (ValidatorAction) o1;
-                        ValidatorAction va2 = (ValidatorAction) o2;
-
-                        if ((va1.getDepends() == null
-                            || va1.getDepends().length() == 0)
-                            && (va2.getDepends() == null
-                            || va2.getDepends().length() == 0)) {
-                            return 0;
-                        } else if (
-                            (va1.getDepends() != null
-                            && va1.getDepends().length() > 0)
-                            && (va2.getDepends() == null
-                            || va2.getDepends().length() == 0)) {
-                            return 1;
-                        } else if (
-                            (va1.getDepends() == null
-                            || va1.getDepends().length() == 0)
-                            && (va2.getDepends() != null
-                            && va2.getDepends().length() > 0)) {
-                            return -1;
-                        } else {
-                            return va1.getDependencyList().size() -
-                              va2.getDependencyList().size();
-                        }
+                Collections.sort(lActions, (va1, va2) -> {
+                    if ((va1.getDepends() == null
+                        || va1.getDepends().length() == 0)
+                        && (va2.getDepends() == null
+                        || va2.getDepends().length() == 0)) {
+                        return 0;
+                    } else if (
+                        (va1.getDepends() != null
+                        && va1.getDepends().length() > 0)
+                        && (va2.getDepends() == null
+                        || va2.getDepends().length() == 0)) {
+                        return 1;
+                    } else if (
+                        (va1.getDepends() == null
+                        || va1.getDepends().length() == 0)
+                        && (va2.getDepends() != null
+                        && va2.getDepends().length() > 0)) {
+                        return -1;
+                    } else {
+                        return va1.getDependencyList().size() -
+                          va2.getDependencyList().size();
                     }
                 });
 
                 String methods = null;
-                for (Iterator i = lActions.iterator(); i.hasNext();) {
-                    ValidatorAction va = (ValidatorAction) i.next();
+                for (ValidatorAction va : lActions) {
 
                     if (methods == null) {
                         methods = va.getMethod() + "(form)";
@@ -381,8 +373,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
 
                 results.append(getJavascriptBegin(methods));
 
-                for (Iterator i = lActions.iterator(); i.hasNext();) {
-                    ValidatorAction va = (ValidatorAction) i.next();
+                for (ValidatorAction va : lActions) {
                     String jscriptVar = null;
                     String functionName = null;
 
@@ -401,9 +392,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
                           formName + "_" + functionName +
                           " () { \n");
                     }
-                    for (Iterator x = form.getFields().iterator();
-                        x.hasNext();) {
-                        Field field = (Field) x.next();
+                    for (Field field : form.getFields()) {
 
                         // Skip indexed fields for now until there is a good
                         // way to handle error messages (and the length of the
@@ -435,12 +424,11 @@ public class JavascriptValidatorTag extends BodyTagSupport {
 
                         results.append("new Function (\"varName\", \"");
 
-                        Map vars = field.getVars();
+                        Map<String, Var> vars = field.getVars();
                         // Loop through the field's variables.
-                        Iterator varsIterator = vars.keySet().iterator();
-                        while (varsIterator.hasNext()) {
-                            String varName = (String) varsIterator.next();
-                            Var var = (Var) vars.get(varName);
+                        for (Map.Entry<String, Var> entry : vars.entrySet()) {
+                            String varName = entry.getKey();
+                            Var var = entry.getValue();
                             String varValue = var.getValue();
                             String jsType = var.getJsType();
 
@@ -613,9 +601,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
 
         sb.append("\n\n");
 
-        Iterator actions = resources.getValidatorActions().values().iterator();
-        while (actions.hasNext()) {
-            ValidatorAction va = (ValidatorAction) actions.next();
+        for (ValidatorAction va : resources.getValidatorActions().values()) {
             if (va != null) {
                 String javascript = va.getJavascript();
                 if (javascript != null && javascript.length() > 0) {
@@ -784,7 +770,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
         }
 
         // Scan the children of this tag's component
-        Iterator kids = ((UIComponentTag) parent).
+        Iterator<?> kids = ((UIComponentTag) parent).
             getComponentInstance().getChildren().iterator();
         while (kids.hasNext()) {
             UIComponent kid = (UIComponent) kids.next();

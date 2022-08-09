@@ -107,10 +107,10 @@ public class BaseRenderer extends AbstractRenderer {
     protected boolean isPortletRequest(FacesContext context) {
 
         Object request = context.getExternalContext().getRequest();
-        Class clazz = request.getClass();
+        Class<?> clazz = request.getClass();
         while (clazz != null) {
             // Does this class implement PortletRequest?
-            Class interfaces[] = clazz.getInterfaces();
+            Class<?> interfaces[] = clazz.getInterfaces();
             if (interfaces == null) {
                 interfaces = new Class[0];
             }

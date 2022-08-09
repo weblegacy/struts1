@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.util.Iterator;
 
 import javax.faces.component.NamingContainer;
-import javax.faces.component.UICommand;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIForm;
 import javax.faces.component.UIParameter;
@@ -36,9 +35,6 @@ import javax.faces.event.ActionEvent;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts.Globals;
-import org.apache.struts.config.ActionConfig;
-import org.apache.struts.config.ModuleConfig;
 
 
 /**
@@ -147,6 +143,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
      * @exception NullPointerException if <code>context</code>
      *  or <code>component</code> is null
      */
+    @SuppressWarnings("unchecked")
     public void renderStart(FacesContext context, UIComponent component,
                             ResponseWriter writer)
         throws IOException {
@@ -253,7 +250,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
         sb.append("'].value='");
         sb.append(component.getClientId(context));
         sb.append("';");
-        Iterator kids = component.getChildren().iterator();
+        Iterator<?> kids = component.getChildren().iterator();
         while (kids.hasNext()) {
             UIComponent kid = (UIComponent) kids.next();
             if (!(kid instanceof UIParameter)) {

@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELFileTag extends FileTag {
+    private static final long serialVersionUID = -1748655101829476218L;
+
     /**
      * Instance variable mapped to "accesskey" tag attribute. (Mapping set in
      * associated BeanInfo class.)

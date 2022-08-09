@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELPasswordTag extends PasswordTag {
+    private static final long serialVersionUID = -590398173204583927L;
+
     /**
      * Instance variable mapped to "accessKey" tag attribute. (Mapping set in
      * associated BeanInfo class.)

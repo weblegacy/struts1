@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELUseAttributeTag extends UseAttributeTag {
+    private static final long serialVersionUID = -4612124676285197014L;
+
     /**
      * Instance variable mapped to "id" tag attribute. (Mapping set in
      * associated BeanInfo class.)

@@ -34,6 +34,7 @@ import javax.servlet.jsp.JspException;
  * @since Struts 1.3.6
  */
 public class ELParamTag extends ParamTag {
+    private static final long serialVersionUID = 4197541198264717739L;
 
     /**
      * Instance variable mapped to "name" tag attribute. (Mapping set in

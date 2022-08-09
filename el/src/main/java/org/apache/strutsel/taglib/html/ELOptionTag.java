@@ -37,6 +37,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELOptionTag extends OptionTag {
+    private static final long serialVersionUID = -7945066700632645842L;
+
     /**
      * Instance variable mapped to "bundle" tag attribute. (Mapping set in
      * associated BeanInfo class.)

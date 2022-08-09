@@ -37,6 +37,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELJavascriptValidatorTag extends JavascriptValidatorTag {
+    private static final long serialVersionUID = -8327011134210619985L;
+
     /**
      * Instance variable mapped to "cdata" tag attribute. (Mapping set in
      * associated BeanInfo class.)

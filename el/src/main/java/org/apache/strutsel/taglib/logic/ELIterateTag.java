@@ -39,6 +39,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELIterateTag extends IterateTag {
+    private static final long serialVersionUID = -842247071130788967L;
+
     /**
      * Instance variable mapped to "collection" tag attribute. (Mapping set in
      * associated BeanInfo class.)

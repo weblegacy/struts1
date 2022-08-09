@@ -39,6 +39,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELMessagesTag extends MessagesTag {
+    private static final long serialVersionUID = 3054486116951362643L;
+
     /**
      * Instance variable mapped to "id" tag attribute. (Mapping set in
      * associated BeanInfo class.)

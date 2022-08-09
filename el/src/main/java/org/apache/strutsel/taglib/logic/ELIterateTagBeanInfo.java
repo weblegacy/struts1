@@ -39,7 +39,7 @@ import java.util.ArrayList;
  */
 public class ELIterateTagBeanInfo extends SimpleBeanInfo {
     public PropertyDescriptor[] getPropertyDescriptors() {
-        ArrayList proplist = new ArrayList();
+        ArrayList<PropertyDescriptor> proplist = new ArrayList<>();
 
         try {
             proplist.add(new PropertyDescriptor("collection",
@@ -95,8 +95,8 @@ public class ELIterateTagBeanInfo extends SimpleBeanInfo {
         } catch (IntrospectionException ex) {
         }
 
-        PropertyDescriptor[] result = new PropertyDescriptor[proplist.size()];
+        PropertyDescriptor[] result = new PropertyDescriptor[0];
 
-        return ((PropertyDescriptor[]) proplist.toArray(result));
+        return (proplist.toArray(result));
     }
 }

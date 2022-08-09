@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELIncludeTag extends IncludeTag {
+    private static final long serialVersionUID = -7595877115133995485L;
+
     /**
      * Instance variable mapped to "anchor" tag attribute. (Mapping set in
      * associated BeanInfo class.)

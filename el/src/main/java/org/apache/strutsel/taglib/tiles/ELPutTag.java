@@ -73,6 +73,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELPutTag extends PutTag {
+    private static final long serialVersionUID = -4359798324055021493L;
+
     /**
      * Instance variable mapped to "name" tag attribute. (Mapping set in
      * associated BeanInfo class.)

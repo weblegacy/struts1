@@ -39,6 +39,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELMultiboxTag extends MultiboxTag {
+    private static final long serialVersionUID = -78082116366606744L;
+
     /**
      * Instance variable mapped to "accessKey" tag attribute. (Mapping set in
      * associated BeanInfo class.)

@@ -37,6 +37,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELImportAttributeTag extends ImportAttributeTag {
+    private static final long serialVersionUID = -7470431818433041961L;
+
     /**
      * Instance variable mapped to "scope" tag attribute. (Mapping set in
      * associated BeanInfo class.)

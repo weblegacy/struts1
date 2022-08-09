@@ -36,6 +36,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELForwardTag extends ForwardTag {
+    private static final long serialVersionUID = -807354704537809367L;
+
     /**
      * Instance variable mapped to "name" tag attribute. (Mapping set in
      * associated BeanInfo class.)

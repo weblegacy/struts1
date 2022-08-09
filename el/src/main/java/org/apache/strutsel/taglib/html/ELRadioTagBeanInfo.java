@@ -39,7 +39,7 @@ import java.util.ArrayList;
  */
 public class ELRadioTagBeanInfo extends SimpleBeanInfo {
     public PropertyDescriptor[] getPropertyDescriptors() {
-        ArrayList proplist = new ArrayList();
+        ArrayList<PropertyDescriptor> proplist = new ArrayList<>();
 
         try {
             proplist.add(new PropertyDescriptor("accesskey", ELRadioTag.class,
@@ -251,8 +251,8 @@ public class ELRadioTagBeanInfo extends SimpleBeanInfo {
         } catch (IntrospectionException ex) {
         }
 
-        PropertyDescriptor[] result = new PropertyDescriptor[proplist.size()];
+        PropertyDescriptor[] result = new PropertyDescriptor[0];
 
-        return ((PropertyDescriptor[]) proplist.toArray(result));
+        return (proplist.toArray(result));
     }
 }

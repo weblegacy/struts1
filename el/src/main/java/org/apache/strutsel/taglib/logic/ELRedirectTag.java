@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELRedirectTag extends RedirectTag {
+    private static final long serialVersionUID = -5236044713670832763L;
+
     /**
      * Instance variable mapped to "action" tag attribute. (Mapping set in
      * associated BeanInfo class.)

@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELResetTag extends ResetTag {
+    private static final long serialVersionUID = 6276069999994980870L;
+
     /**
      * Instance variable mapped to "accessKey" tag attribute. (Mapping set in
      * associated BeanInfo class.)

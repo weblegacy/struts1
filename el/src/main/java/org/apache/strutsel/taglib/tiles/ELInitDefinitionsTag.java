@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELInitDefinitionsTag extends InitDefinitionsTag {
+    private static final long serialVersionUID = 8400567406387152956L;
+
     /**
      * Instance variable mapped to "file" tag attribute. (Mapping set in
      * associated BeanInfo class.)

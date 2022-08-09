@@ -38,6 +38,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELMessageTag extends MessageTag {
+    private static final long serialVersionUID = 8175639539737588534L;
+
     /**
      * Instance variable mapped to "arg0" tag attribute. (Mapping set in
      * associated BeanInfo class.)

@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELRadioTag extends RadioTag {
+    private static final long serialVersionUID = -7726795572353667410L;
+
     /**
      * Instance variable mapped to "accessKey" tag attribute. (Mapping set in
      * associated BeanInfo class.)

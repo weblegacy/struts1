@@ -39,7 +39,7 @@ import java.util.ArrayList;
  */
 public class ELOptionsTagBeanInfo extends SimpleBeanInfo {
     public PropertyDescriptor[] getPropertyDescriptors() {
-        ArrayList proplist = new ArrayList();
+        ArrayList<PropertyDescriptor> proplist = new ArrayList<>();
 
         try {
             proplist.add(new PropertyDescriptor("collection",
@@ -89,8 +89,8 @@ public class ELOptionsTagBeanInfo extends SimpleBeanInfo {
         } catch (IntrospectionException ex) {
         }
 
-        PropertyDescriptor[] result = new PropertyDescriptor[proplist.size()];
+        PropertyDescriptor[] result = new PropertyDescriptor[0];
 
-        return ((PropertyDescriptor[]) proplist.toArray(result));
+        return (proplist.toArray(result));
     }
 }

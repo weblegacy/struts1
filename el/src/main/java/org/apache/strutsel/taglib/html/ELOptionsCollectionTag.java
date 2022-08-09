@@ -41,6 +41,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELOptionsCollectionTag extends OptionsCollectionTag {
+    private static final long serialVersionUID = 863291584586373412L;
+
     /**
      * Instance variable mapped to "filter" tag attribute. (Mapping set in
      * associated BeanInfo class.)

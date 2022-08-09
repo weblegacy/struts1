@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELTextTag extends TextTag {
+    private static final long serialVersionUID = 407936028228723127L;
+
     /**
      * Instance variable mapped to "accesskey" tag attribute. (Mapping set in
      * associated BeanInfo class.)

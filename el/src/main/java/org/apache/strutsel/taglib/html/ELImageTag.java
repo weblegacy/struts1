@@ -35,6 +35,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELImageTag extends ImageTag {
+    private static final long serialVersionUID = -5691661179386320149L;
+
     /**
      * Instance variable mapped to "accessKey" tag attribute. (Mapping set in
      * associated BeanInfo class.)
@@ -910,6 +912,7 @@ public class ELImageTag extends ImageTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
+    @SuppressWarnings("deprecation")
     private void evaluateExpressions()
         throws JspException {
         String string = null;

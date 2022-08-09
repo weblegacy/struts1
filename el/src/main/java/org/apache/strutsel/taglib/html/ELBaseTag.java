@@ -39,6 +39,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELBaseTag extends BaseTag {
+    private static final long serialVersionUID = 2065911953094898046L;
+
     /**
      * Instance variable mapped to "target" tag attribute. (Mapping set in
      * associated BeanInfo class.)

@@ -36,6 +36,8 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELPresentTag extends PresentTag {
+    private static final long serialVersionUID = -4671013567492758366L;
+
     /**
      * Instance variable mapped to "cookie" tag attribute. (Mapping set in
      * associated BeanInfo class.)

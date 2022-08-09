@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Taglib: Convert all `package.html` to `package-info.java`
 * Taglib: JDK8 - Add generics, serialVersionID, for-each-loop, ...
 * Scripting: Convert all `package.html` to `package-info.java`
 * Scripting: JDK8 - Add generics, serialVersionID, for-each-loop, ...

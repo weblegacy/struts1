@@ -126,7 +126,7 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
      * over those stored here. </p>
      */
     @SuppressWarnings("unchecked")
-	public Map<String, String[]> getParameterMap() {
+    public Map<String, String[]> getParameterMap() {
         Map<String, String[]> map = new HashMap<>(parameters);
 
         map.putAll(getRequest().getParameterMap());

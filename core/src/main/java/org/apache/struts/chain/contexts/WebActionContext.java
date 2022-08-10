@@ -119,12 +119,12 @@ public class WebActionContext extends ActionContextBase {
     }
 
     @SuppressWarnings("unchecked")
-	public Map<String, Object> getApplicationScope() {
+    public Map<String, Object> getApplicationScope() {
         return webContext().getApplicationScope();
     }
 
     @SuppressWarnings("unchecked")
-	public Map<String, Object> getRequestScope() {
+    public Map<String, Object> getRequestScope() {
         return webContext().getRequestScope();
     }
 
@@ -133,7 +133,7 @@ public class WebActionContext extends ActionContextBase {
     }
 
     @SuppressWarnings("unchecked")
-	public Map<String, Object> getSessionScope() {
+    public Map<String, Object> getSessionScope() {
         return webContext().getSessionScope();
     }
 

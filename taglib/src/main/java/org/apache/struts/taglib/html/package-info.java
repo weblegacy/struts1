@@ -742,7 +742,7 @@
  *                 You must specify
  *                 exactly one of the forward attribute, the href attribute,
  *                 the linkName
- *                 attribute, or the page attribute 
+ *                 attribute, or the page attribute
  *             </td>
  *         </tr>
  *         <tr>

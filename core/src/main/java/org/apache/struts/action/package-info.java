@@ -26,22 +26,22 @@
  * <br>
  * <img src="doc-files/actionUML.png" alt="Action Package UML">
  * <br>
- * 
+ *
  * <h2>Package Specification</h2>
  * ##### FILL IN ANY SPECS NEEDED BY JAVA COMPATIBILITY KIT #####
  * <ul>
  * <li><a href="">##### REFER TO ANY FRAMEMAKER SPECIFICATION HERE #####</a>
  * </li>
- * 
+ *
  * </ul>
- * 
+ *
  * <h2>Related Documentation</h2>
  * For overviews, tutorials, examples, guides, and tool documentation,
  * please see:
  * <ul>
  * <li><a href="">##### REFER TO NON-SPEC DOCUMENTATION HERE #####</a>
  * </li>
- * 
+ *
  * </ul>
  */
 package org.apache.struts.action;

@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Strip trailing spaces
 * Replace tabs with spaces
 * Adaptation of `package-info.java` so that output is similar to the old `package.html`
 * Tip-Fix in JavaDoc (Evalute -> Evaluate)

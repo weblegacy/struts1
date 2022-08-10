@@ -21,10 +21,8 @@
 
 /**
  * <p>The tests are based on a set of MailReader Use Cases maintained at the Struts University site
- *    <a href="https://opensource2.atlassian.com/confluence/oss/display/STRUTS/MailReader">
- *       https://opensource2.atlassian.com/confluence/oss/display/STRUTS/MailReader
- *    </a>.
- * </p>
+ *    <a href="https://web.archive.org/web/20070216125230/http://opensource.atlassian.com:80/confluence/oss/display/STRUTS/MailReader">
+ *       http://opensource2.atlassian.com/confluence/oss/display/STRUTS/MailReader (WebArchive)</a>.</p>
  *
  * <p>All tests should run in alphabetic order!</p>
  *

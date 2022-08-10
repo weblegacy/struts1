@@ -245,15 +245,14 @@
  *     your <code>Action</code> class would execute code similar to this:</p>
  *
  * <pre> Customer customer = ... create or acquire a customer reference ...;<br>
- *     request.setAttribute("cust", customer);<br></pre>
+ *    request.setAttribute("cust", customer);<br></pre>
  *
  * <p><em>Session Scope</em> - To store a bean in session scope under name "user"
  *     (perhaps in a logon action), your <code>Action</code> class would execute
  *     code similar to this:</p>
  *
  * <pre> User user = ... look up valid user in the database ...;<br> HttpSession
- *     session = request.getSession();<br> session.setAttribute("user", user);
- *     <br></pre>
+ *    session = request.getSession();<br> session.setAttribute("user", user);<br></pre>
  *
  * <p><em>Application Scope</em> - Generally, application scope beans are
  *     initialized
@@ -264,7 +263,7 @@
  *     like this:</p>
  *
  * <pre> Foo foo = ... create a Foo ...;<br>
- *     servlet.getServletContext().setAttribute("foo", foo);<br></pre>
+ *    servlet.getServletContext().setAttribute("foo", foo);<br></pre>
  *
  * <h5>Java Code in Scriptlets</h5>
  *
@@ -280,16 +279,15 @@
  *     scriptlet must execute code like this:</p>
  *
  * <pre>&lt;%<br> Foo foo = ... create a foo ...;<br>
- *     pageContext.setAttribute("foo", foo, PageContext.PAGE_SCOPE);<br>%&gt;<br>
- * </pre>
+ *    pageContext.setAttribute("foo", foo, PageContext.PAGE_SCOPE);<br>%&gt;<br></pre>
  *
  * <p><em>Request Scope</em> - To store a bean in request scope under name
  *     "cust",
  *     your scriplet must execute code like this:</p>
  *
  * <pre>&lt;%<br> Customer customer = ... create or acquire a customer reference
- *     ...;<br> pageContext.setAttribute("cust", customer,
- *     PageContext.REQUEST_SCOPE);<br>%&gt;<br></pre>
+ *    ...;<br> pageContext.setAttribute("cust", customer,
+ *    PageContext.REQUEST_SCOPE);<br>%&gt;<br></pre>
  *
  * <p><em>Session Scope</em> - To store a bean in session scope under name
  *     "user",
@@ -298,8 +296,7 @@
  *     like this:</p>
  *
  * <pre>&lt;%<br> User user = ... look up valid user in the database ...;<br>
- *     pageContext.setAttribute("user", user, PageContext.SESSION_SCOPE);<br>%&gt;
- *     <br></pre>
+ *    pageContext.setAttribute("user", user, PageContext.SESSION_SCOPE);<br>%&gt;<br></pre>
  *
  * <p><em>Application Scope</em> - Generally, application scope beans are
  *     initialized
@@ -308,8 +305,7 @@
  *     can create such beans, if appropriate, like this:</p>
  *
  * <pre>&lt;%<br> Foo foo = ... create a Foo ...;<br>
- *     pageContext.setAttribute("foo", foo, PageContext.APPLICATION_SCOPE);<br>%&gt;
- *     <br></pre>
+ *    pageContext.setAttribute("foo", foo, PageContext.APPLICATION_SCOPE);<br>%&gt;<br></pre>
  *
  * <p><strong>NOTE</strong> - As mentioned above, using scriptlets in your JSP
  *     pages is strongly discouraged in a Struts based application, unless you
@@ -367,9 +363,8 @@
  * </p>
  *
  * <pre>    &lt;bean:define id="foo" value="This is a new String"/&gt;<br> &lt;bean:define
- *     id="bar" value='&lt;%= "Hello, " + user.getName() %&gt;'/&gt;<br> &lt;bean:define
- *     id="last" scope="session"<br> value='&lt;%= request.getRequestURI() %&gt;'/&gt;
- *     <br></pre>
+ *    id="bar" value='&lt;%= "Hello, " + user.getName() %&gt;'/&gt;<br> &lt;bean:define
+ *    id="last" scope="session"<br> value='&lt;%= request.getRequestURI() %&gt;'/&gt;<br></pre>
  *
  * <p><em>Copy An Existing Bean</em> - You can create a new reference to an
  *     existing
@@ -382,7 +377,7 @@
  *     applications).</p>
  *
  * <pre>    &lt;bean:define id="foo" name="bar"/&gt;<br> &lt;bean:define id="baz"
- *     name="bop" type="com.mycompany.MyBopClass"/&gt;<br></pre>
+ *    name="bop" type="com.mycompany.MyBopClass"/&gt;<br></pre>
  *
  * <p><em>Copy An Existing Bean Property</em> - You can create a new bean that
  *     is initialized to the value returned by a property getter. The value of
@@ -394,8 +389,8 @@
  *     the new bean in session scope (rather than the default page scope).</p>
  *
  * <pre>    &lt;bean:define id="foo" name="bar" property="baz" scope="request"
- *     <br> toScope="session"/&gt;<br> &lt;bean:define id="bop" name="user"
- *     property="role[3].name"/&gt;<br></pre>
+ *    <br> toScope="session"/&gt;<br> &lt;bean:define id="bop" name="user"
+ *    property="role[3].name"/&gt;<br></pre>
  *
  * <h5>Other Struts Copying Tags</h5>
  *
@@ -423,7 +418,7 @@
  *     Cookie).</p>
  *
  * <pre>    &lt;bean:cookie id="foo" name="cookiename"/&gt;<br> &lt;bean:cookie
- *     id="all" name="JSESSIONID" multiple="true"/&gt;<br></pre>
+ *    id="all" name="JSESSIONID" multiple="true"/&gt;<br></pre>
  *
  * <p><em>Copy A Request Header</em> - You can create a new bean containing
  *     the value of an HTTP header included in this request. If no header of the
@@ -436,7 +431,7 @@
  *     will be an array of String values, instead of a single String).</p>
  *
  * <pre>    &lt;bean:header id="agent" name="User-Agent"/&gt;<br> &lt;bean:header
- *     id="languages" name="Accept-Language" multiple="true"/&gt;<br></pre>
+ *    id="languages" name="Accept-Language" multiple="true"/&gt;<br></pre>
  *
  * <p><em>Copy A Dynamically Created Response</em> - You can generate an internal
  *     request to the application you are running, and turn the response data
@@ -450,8 +445,7 @@
  *     request for the include will also include the session identifier (and thus
  *     be considered part of the same session).</p>
  *
- * <pre>    &lt;bean:include id="text" page="/generateXml?param1=a&amp;param2=b"/&gt;
- *     <br></pre>
+ * <pre>    &lt;bean:include id="text" page="/generateXml?param1=a&amp;param2=b"/&gt;<br></pre>
  *
  * <p><em>Copy A JSP Implicitly Defined Object</em> - You can create a bean
  *     that is one of the JSP implicitly defined objects (see the JSP spec for
@@ -461,7 +455,7 @@
  *     the implicit object with a custom tag instead of a scriptlet.</p>
  *
  * <pre>    &lt;bean:page id="app" property="application"/&gt;<br> &lt;bean:page
- *     id="sess" property="session"/&gt;<br></pre>
+ *    id="sess" property="session"/&gt;<br></pre>
  *
  * <p><em>Copy A Request Parameter</em> - You can create a new bean containing
  *     the value of a parameter included in this request. If no parameter of the
@@ -476,7 +470,7 @@
  *     will be an array of String values, instead of a single String).</p>
  *
  * <pre>    &lt;bean:parameter id="name" name="name"/&gt;<br> &lt;bean:header
- *     id="options" name="option" multiple="true"/&gt;<br></pre>
+ *    id="options" name="option" multiple="true"/&gt;<br></pre>
  *
  * <p><em>Copy a Web Application Resource</em> - You can create a new bean
  *     containing
@@ -490,8 +484,7 @@
  *     application object.</p>
  *
  * <pre>    &lt;bean:resource id="deployment" name="/WEB-INF/web.xml"/&gt;<br>
- *     &lt;bean:resource id="stream" name="/WEB-INF/web.xml"<br> input="true"/&gt;
- *     <br></pre>
+ *    &lt;bean:resource id="stream" name="/WEB-INF/web.xml"<br> input="true"/&gt;<br></pre>
  *
  * <p><em>Copy A Struts Configuration Object</em> - You can create a new bean
  *     containing one of the standard Struts framework configuration objects.
@@ -501,8 +494,8 @@
  * </p>
  *
  * <pre>    &lt;bean:struts id="form" formBean="CustomerForm"/&gt;<br> &lt;bean:struts
- *     id="fwd" forward="success"/&gt;<br> &lt;bean:struts id="map"
- *     mapping="/saveCustomer"/&gt;<br></pre>
+ *    id="fwd" forward="success"/&gt;<br> &lt;bean:struts id="map"
+ *    mapping="/saveCustomer"/&gt;<br></pre>
  *
  * <hr>  <a id="doc.Output"></a>
  *
@@ -531,7 +524,7 @@
  *         href="../../../../../../tagreference.html#message">
  *     Bean Tags Reference</a>.</p>
  * <pre>    &lt;bean:message key="label.Cancel"/&gt;<br> &lt;bean:message
- *     key="message.hello" arg0='&lt;%= user.getFullName() %&gt;'/&gt;<br></pre>
+ *    key="message.hello" arg0='&lt;%= user.getFullName() %&gt;'/&gt;<br></pre>
  *
  * <p><em>Render A Bean or Bean Property</em> - The contents of a bean, or bean
  *     property, are converted to a String and then copied to the response
@@ -546,7 +539,7 @@
  *     locate the requested bean.</p>
  *
  * <pre>    &lt;bean:write name="username"/&gt;<br> &lt;bean:write name="user"
- *     property="fullName"/&gt;<br> &lt;bean:write name="customer"
- *     property="orders[2].partNumber"<br> scope="session"/&gt;<br></pre>
+ *    property="fullName"/&gt;<br> &lt;bean:write name="customer"
+ *    property="orders[2].partNumber"<br> scope="session"/&gt;<br></pre>
  */
 package org.apache.struts.taglib.bean;

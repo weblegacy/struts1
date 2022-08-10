@@ -20,8 +20,8 @@
  */
 
 /**
- * The "struts-tiles" tag library contains tags that are useful in
- * creating dynamic reusable components.
- * <br><img src="doc-files/tilesUML.png" alt="TagLib Tiles UML">
+ * <p>The "struts-tiles" tag library contains tags that are useful in
+ * creating dynamic reusable components.</p>
+ * <img src="doc-files/tilesUML.png" alt="TagLib Tiles UML">
  */
 package org.apache.struts.tiles.taglib;

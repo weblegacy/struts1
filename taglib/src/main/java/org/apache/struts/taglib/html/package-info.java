@@ -133,12 +133,12 @@
  * <p>Here's a clip from the Struts Example configuration:</p>
  *
  * <pre>&lt;action-mappings&gt;<br> &lt;!-- Process a user logon --&gt;<br> &lt;action
- *     path="/logon"<br> type="org.apache.struts.webapp.example.LogonAction"<br>
- *     name="logonForm"<br> scope="request"<br> input="/logon.jsp"&gt;<br> &lt;/action&gt;
- *     <br> &lt; ... /&gt;<br>&lt;/action-mappings&gt;<br>&lt;form-beans&gt;<br>
- *     &lt;!-- Logon form bean --&gt;<br> &lt;form-bean name="logonForm"<br>
- *     type="org.apache.struts.webapp.example.LogonForm"/&gt;<br> &lt; ... /&gt;
- *     <br> &lt;/form-beans&gt;<br>&lt;/pre&gt;<br></pre>
+ *    path="/logon"<br> type="org.apache.struts.webapp.example.LogonAction"<br>
+ *    name="logonForm"<br> scope="request"<br> input="/logon.jsp"&gt;<br> &lt;/action&gt;
+ *    <br> &lt; ... /&gt;<br>&lt;/action-mappings&gt;<br>&lt;form-beans&gt;<br>
+ *    &lt;!-- Logon form bean --&gt;<br> &lt;form-bean name="logonForm"<br>
+ *    type="org.apache.struts.webapp.example.LogonForm"/&gt;<br> &lt; ... /&gt;
+ *    <br> &lt;/form-beans&gt;<br>&lt;/pre&gt;<br></pre>
  *
  * <p>Given this configuration, the HTML form tag for <code>logon.jsp</code>
  *     will default to using "<code>logonForm</code>" as its name property and
@@ -181,37 +181,47 @@
  * <h5><a id="doc.Form.attributes.struts">Struts Common</a>
  * </h5>
  *
- * <div style="text-align:center">
- *     <table style="width:90%;border:1px;padding:4px">
- *         <tbody>
- *             <tr>
- *                 <td> name </td>
- *                 <td> The attribute name of the <code>ActionForm</code>
- *                     bean whose
- *                     properties are consulted when rendering the current
- *                     value of this
- *                     input field. If not specified, the bean associated
- *                     with the form
- *                     tag we are nested within is utilized. </td>
- *             </tr>
- *             <tr>
- *                 <td> property </td>
- *                 <td> Name of the request parameter that will be included
- *                     with this
- *                     submission, set to the specified value. </td>
- *             </tr>
- *             <tr>
- *                 <td> value </td>
- *                 <td> Value of the label to be used with this element. This
- *                     value
- *                     will also be submitted as the value of the specified
- *                     request parameter.
- *                     [Body of this tag (if any), or "Click"]&nbsp; </td>
- *             </tr>
+ * <table style="width:90%;border:1px solid black;margin-left:auto;margin-right:auto">
+ *     <tbody>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 name
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 The attribute name of the <code>ActionForm</code>
+ *                 bean whose
+ *                 properties are consulted when rendering the current
+ *                 value of this
+ *                 input field. If not specified, the bean associated
+ *                 with the form
+ *                 tag we are nested within is utilized.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 property
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Name of the request parameter that will be included
+ *                 with this
+ *                 submission, set to the specified value.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 value
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Value of the label to be used with this element. This
+ *                 value
+ *                 will also be submitted as the value of the specified
+ *                 request parameter.
+ *                 [Body of this tag (if any), or "Click"]&nbsp;
+ *             </td>
+ *         </tr>
  *
- *         </tbody>
- *     </table>
- * </div>
+ *     </tbody>
+ * </table>
  *
  * <p>&nbsp;</p>
  *
@@ -233,146 +243,216 @@
  * <h5><a id="doc.Form.attributes.javascript">Javascript Event Handlers</a>
  * </h5>
  *
- * <div style="text-align:center">
- *     <table style="width:90%;border:1px;padding:4px">
- *         <tbody>
- *             <tr>
- *                 <td> onblur </td>
- *                 <td> Executed when this element loses input focus. </td>
- *             </tr>
- *             <tr>
- *                 <td> onchange </td>
- *                 <td> Executed when this element loses input focus and its
- *                     value
- *                     has changed. </td>
- *             </tr>
- *             <tr>
- *                 <td> onclick </td>
- *                 <td> Executed when this element receives a mouse
- *                     click. </td>
- *             </tr>
- *             <tr>
- *                 <td> ondblclick </td>
- *                 <td> Executed when this element receives a mouse - double
- *                     click.
- *                 </td>
- *             </tr>
- *             <tr>
- *                 <td> onfocus </td>
- *                 <td> Executed when this element receives input
- *                     focus. </td>
- *             </tr>
- *             <tr>
- *                 <td> onkeydown </td>
- *                 <td> Executed when this element has focus and a key is
- *                     depressed.&nbsp;
- *                 </td>
- *             </tr>
- *             <tr>
- *                 <td> onkeypress </td>
- *                 <td> Executed when this element has focus and a key is
- *                     depressed
- *                     and released </td>
- *             </tr>
- *             <tr>
- *                 <td> onkeyup </td>
- *                 <td> Executed when this element has focus and a key is
- *                     released
- *                 </td>
- *             </tr>
- *             <tr>
- *                 <td> onmousedown </td>
- *                 <td> Executed when this element is under the mouse pointer
- *                     and
- *                     a mouse button is depressed. </td>
- *             </tr>
- *             <tr>
- *                 <td> onmousemove </td>
- *                 <td> Executed when this element is under the mouse pointer
- *                     and
- *                     the pointer is moved. </td>
- *             </tr>
- *             <tr>
- *                 <td> onmouseout </td>
- *                 <td> Executed when this element was under the mouse
- *                     pointer but
- *                     the pointer was moved outside the element. </td>
- *             </tr>
- *             <tr>
- *                 <td> onmouseover </td>
- *                 <td> Executed when this element was not under the mouse
- *                     pointer
- *                     but the pointer is moved inside the element. </td>
- *             </tr>
- *             <tr>
- *                 <td> onmouseup </td>
- *                 <td> Executed when this element is under the mouse pointer
- *                     and
- *                     a mouse button is released.&nbsp; </td>
- *             </tr>
- *             <tr>
- *                 <td>&nbsp; </td>
- *                 <td><b>"parent" form tag only</b></td>
- *             </tr>
- *             <tr>
- *                 <td> onreset </td>
- *                 <td> Executed if the form is reset. </td>
- *             </tr>
- *             <tr>
- *                 <td> onsubmit </td>
- *                 <td> Executed if the form is submitted.&nbsp; </td>
- *             </tr>
+ * <table style="width:90%;border:1px solid black;margin-left:auto;margin-right:auto">
+ *     <tbody>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onblur
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element loses input focus.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onchange
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element loses input focus and its
+ *                 value
+ *                 has changed.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onclick
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element receives a mouse
+ *                 click.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 ondblclick
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element receives a mouse - double
+ *                 click.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onfocus
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element receives input
+ *                 focus.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onkeydown
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element has focus and a key is
+ *                 depressed.&nbsp;
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onkeypress
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element has focus and a key is
+ *                 depressed
+ *                 and released
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onkeyup
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element has focus and a key is
+ *                 released
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onmousedown
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element is under the mouse pointer
+ *                 and
+ *                 a mouse button is depressed.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onmousemove
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element is under the mouse pointer
+ *                  and
+ *                  the pointer is moved.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onmouseout
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element was under the mouse
+ *                 pointer but
+ *                 the pointer was moved outside the element.
+ *             </td>
+ *          </tr>
+ *          <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onmouseover
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element was not under the mouse
+ *                 pointer
+ *                 but the pointer is moved inside the element.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onmouseup
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed when this element is under the mouse pointer
+ *                 and
+ *                 a mouse button is released.&nbsp;
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 &nbsp;
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 <b>"parent" form tag only</b>
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onreset
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed if the form is reset.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 onsubmit
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 Executed if the form is submitted.&nbsp;
+ *             </td>
+ *         </tr>
  *
- *         </tbody>
- *     </table>
- * </div>
+ *     </tbody>
+ * </table>
  *
  * <h5>&nbsp;</h5>
  *
  * <h5><a id="doc.Form.attributes.navigation">HTML Navigation Attributes</a>
  * </h5>
  *
- * <div style="text-align:center">
- *     <table style="width:90%;border:1px;padding:4px">
- *         <tbody>
- *             <tr>
- *                 <td> accesskey </td>
- *                 <td> The keyboard character used to move focus immediately
- *                     to this
- *                     element. </td>
- *             </tr>
- *             <tr>
- *                 <td> tabindex </td>
- *                 <td> The tab order (ascending positive integers) for this
- *                     element.
- *                 </td>
- *             </tr>
+ * <table style="width:90%;border:1px solid black;margin-left:auto;margin-right:auto">
+ *     <tbody>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 accesskey
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 The keyboard character used to move focus immediately
+ *                 to this
+ *                 element.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                  tabindex
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 The tab order (ascending positive integers) for this
+ *                 element.
+ *             </td>
+ *         </tr>
  *
- *         </tbody>
- *     </table>
- * </div>
+ *     </tbody>
+ * </table>
  *
  * <h5>&nbsp;</h5>
  *
  * <h5><a id="doc.Form.attributes.css">CSS Attributes</a>
  * </h5>
  *
- * <div style="text-align:center">
- *     <table style="width:90%;border:1px;padding:4px">
- *          <tbody>
- *              <tr>
- *                  <td> style </td>
- *                  <td> CSS styles to be applied to this HTML element. </td>
- *              </tr>
- *              <tr>
- *                  <td> styleClass </td>
- *                  <td> CSS stylesheet class to be applied to this HTML
- *                      element. </td>
- *              </tr>
+ * <table style="width:90%;border:1px solid black;margin-left:auto;margin-right:auto">
+ *     <tbody>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 style
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 CSS styles to be applied to this HTML element.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 styleClass
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 CSS stylesheet class to be applied to this HTML
+ *                 element.
+ *             </td>
+ *         </tr>
  *
- *          </tbody>
- *      </table>
- * </div>
+ *     </tbody>
+ * </table>
  *
  * <p>&nbsp;</p>
  *
@@ -417,10 +497,10 @@
  *     corresponding to this Action. :</p>
  *
  * <pre><br> ActionMessages messages = new ActionMessages();<br>
- *     messages.add(ActionMessages.GLOBAL_MESSAGE, new
- *     ActionMessage("userForm.insert", info.getUserName());<br>
- *     messages.add("activationDate", new ActionMessage("userForm.active",
- *     info.getSubscriptionLength());<br></pre>
+ *    messages.add(ActionMessages.GLOBAL_MESSAGE, new
+ *    ActionMessage("userForm.insert", info.getUserName());<br>
+ *    messages.add("activationDate", new ActionMessage("userForm.active",
+ *    info.getSubscriptionLength());<br></pre>
  *
  * <p>This queues two messages, one is a global message and another for the
  *     "activationDate" field. To print all the messages together, simply place
@@ -428,21 +508,21 @@
  *     messages tag anywhere in your JSP.</p>
  *
  * <pre>  &lt;body bgcolor="white"&gt;<br> &lt;ul&gt;<br> &lt;html:messages
- *     id="message"&gt;<br> &lt;li&gt;&lt;bean:write name="message"/&gt;&lt;/li&gt;
- *     <br> &lt;/html:messages&gt;<br> &lt;/ul&gt;<br></pre>
+ *    id="message"&gt;<br> &lt;li&gt;&lt;bean:write name="message"/&gt;&lt;/li&gt;
+ *    <br> &lt;/html:messages&gt;<br> &lt;/ul&gt;<br></pre>
  *
  * <p>Or, you can place specific messages at different locations</p>
  *
  * <pre>  &lt;ul&gt;<br> &lt;html:messages id="message" property="&lt;%=
- *     org.apache.struts.action.ActionMessages.GLOBAL_MESSAGE %&gt;"&gt;<br> &lt;li&gt;&lt;bean:write
- *     name="message"/&gt;&lt;/li&gt;<br> &lt;/html:messages&gt;<br> &lt;/ul&gt;
- *     <br> &lt;table&gt;<br> &lt;tr&gt;<br> &lt;td align="left"&gt;<br> &lt;html:text
- *     property="username" size="16" maxlength="16"/&gt;<br> &lt;/td&gt;<br> &lt;/tr&gt;
- *     <br> &lt;tr&gt;<br> &lt;td align="left"&gt;<br> &lt;html:text
- *     property="activationDate" size="10" maxlength="10"/&gt;<br> &lt;br&gt;<br>
- *     &lt;html:messages id="message" property="activationDate"&gt;<br> &lt;bean:write
- *     name="message"/&gt;&lt;br&gt;<br> &lt;/html:messages&gt;<br> &lt;/td&gt;
- *     <br> &lt;/tr&gt;<br> &lt;/table&gt;<br></pre>
+ *    org.apache.struts.action.ActionMessages.GLOBAL_MESSAGE %&gt;"&gt;<br> &lt;li&gt;&lt;bean:write
+ *    name="message"/&gt;&lt;/li&gt;<br> &lt;/html:messages&gt;<br> &lt;/ul&gt;
+ *    <br> &lt;table&gt;<br> &lt;tr&gt;<br> &lt;td align="left"&gt;<br> &lt;html:text
+ *    property="username" size="16" maxlength="16"/&gt;<br> &lt;/td&gt;<br> &lt;/tr&gt;
+ *    <br> &lt;tr&gt;<br> &lt;td align="left"&gt;<br> &lt;html:text
+ *    property="activationDate" size="10" maxlength="10"/&gt;<br> &lt;br&gt;<br>
+ *    &lt;html:messages id="message" property="activationDate"&gt;<br> &lt;bean:write
+ *    name="message"/&gt;&lt;br&gt;<br> &lt;/html:messages&gt;<br> &lt;/td&gt;
+ *    <br> &lt;/tr&gt;<br> &lt;/table&gt;<br></pre>
  *
  * <p>By default, the actual message is retrieved from the application's standard
  *     message resource. This gives you a master list of the messages used by
@@ -452,7 +532,7 @@
  *     displayed to the user at runtime.</p>
  *
  * <pre> userForm.insert={0} has successfully been inserted.<br>
- *     userForm.active=The account will be active for {0} months.<br></pre>
+ *    userForm.active=The account will be active for {0} months.<br></pre>
  *
  * <p>A header and footer are optional. The header will be rendered before
  *     iteration
@@ -461,11 +541,11 @@
  *     for that attribute.</p>
  *
  * <pre>  &lt;html:messages id="message" header="errors.header"
- *     footer="errors.footer"&gt;<br> &lt;li&gt;&lt;bean:write name="message"/&gt;&lt;/li&gt;
- *     <br> &lt;/html:messages&gt;<br><br> errors.header=&lt;h3&gt;&lt;font
- *     color="red"&gt;Validation Error&lt;/font&gt;&lt;/h3&gt;<br> You must
- *     correct the following error(s) before proceeding:&lt;UL&gt;<br>
- *     errors.footer=&lt;/ul&gt;&lt;hr&gt;<br></pre>
+ *    footer="errors.footer"&gt;<br> &lt;li&gt;&lt;bean:write name="message"/&gt;&lt;/li&gt;
+ *    <br> &lt;/html:messages&gt;<br><br> errors.header=&lt;h3&gt;&lt;font
+ *    color="red"&gt;Validation Error&lt;/font&gt;&lt;/h3&gt;<br> You must
+ *    correct the following error(s) before proceeding:&lt;UL&gt;<br>
+ *    errors.footer=&lt;/ul&gt;&lt;hr&gt;<br></pre>
  *
  * <h4><a id="doc.Other.errors">Displaying Error Messages</a>
  * </h4>
@@ -491,10 +571,10 @@
  *     a snippet from the Struts Example application:</p>
  *
  * <pre> ActionErrors errors = new ActionErrors();<br> if ((username == null) ||
- *     (username.length() &lt; 1))<br> errors.add("username", new
- *     ActionMessage("error.username.required"));<br> if ((password == null) ||
- *     (password.length() &lt; 1))<br> errors.add("password",<br> new
- *     ActionMessage("error.password.required"));<br></pre>
+ *    (username.length() &lt; 1))<br> errors.add("username", new
+ *    ActionMessage("error.username.required"));<br> if ((password == null) ||
+ *    (password.length() &lt; 1))<br> errors.add("password",<br> new
+ *    ActionMessage("error.password.required"));<br></pre>
  *
  * <p>This queues two error messages, one for the "username" field and another
  *     for the "password" field. To print all the messages together, simply place
@@ -505,10 +585,10 @@
  * <p>Or, you can place specific error messages at different locations</p>
  *
  * <pre>  &lt;td align="left"&gt;<br> &lt;html:text property="username" size="16"
- *     maxlength="16"/&gt;<br> &lt;html:errors property="username"/&gt;<br> &lt;/td&gt;
- *     <br> &lt;/tr&gt;&lt;tr&gt;<br> &lt;td align="left"&gt;<br> &lt;html:text
- *     property="password" size="16" maxlength="16"/&gt;<br> &lt;html:errors
- *     property="password"/&gt;<br> &lt;/td&gt;<br></pre>
+ *    maxlength="16"/&gt;<br> &lt;html:errors property="username"/&gt;<br> &lt;/td&gt;
+ *    <br> &lt;/tr&gt;&lt;tr&gt;<br> &lt;td align="left"&gt;<br> &lt;html:text
+ *    property="password" size="16" maxlength="16"/&gt;<br> &lt;html:errors
+ *    property="password"/&gt;<br> &lt;/td&gt;<br></pre>
  *
  * <p>By default, the actual error message is retrieved from the application's
  *     standard message resource. This gives you a master list of the error
@@ -517,8 +597,7 @@
  *     code snippet, the message corresponding to "error.username.required" would
  *     be retrieved and displayed to the user at runtime.</p>
  *
- * <pre> error.username.required=&lt;li&gt;Username is required&lt;/li&gt;<br>
- * </pre>
+ * <pre> error.username.required=&lt;li&gt;Username is required&lt;/li&gt;<br></pre>
  *
  * <p>Most often, error messages are displayed in a particular way. To make it
  *     easy to format your messages, you can also specific an <code>
@@ -530,8 +609,8 @@
  *     JSP until a message actually prints.</p>
  *
  * <pre> errors.header=&lt;h3&gt;&lt;font color="red"&gt;Validation Error&lt;/font&gt;&lt;/h3&gt;
- *     <br> You must correct the following error(s) before proceeding:&lt;UL&gt;
- *     <br> errors.footer=&lt;/ul&gt;&lt;hr&gt;<br></pre>
+ *    <br> You must correct the following error(s) before proceeding:&lt;UL&gt;
+ *    <br> errors.footer=&lt;/ul&gt;&lt;hr&gt;<br></pre>
  *
  * <h4><a id="doc.Other.hyperlinking">Maintaining Hyperlinks</a>
  * </h4>
@@ -609,14 +688,12 @@
  * <p>So, a tag like</p>
  *
  * <pre>   &lt;html:link paramId="target"<br> paramName="linkParams" <br>
- *     paramProperty="target"<br> paramScope="request"<br> &gt;detail.html&lt;/html:link&gt;
- * </pre>
+ *    paramProperty="target"<br> paramScope="request"<br> &gt;detail.html&lt;/html:link&gt;<br></pre>
  *
  * <p>would correspond to something like</p>
  *
  * <pre>  &lt;A HREF="detail.html?&lt;%= <br>
- *     request.getAttribute("linkParams").getTarget()<br> %&gt;"&gt;&lt;/A&gt;
- *     <br></pre>
+ *    request.getAttribute("linkParams").getTarget()<br> %&gt;"&gt;&lt;/A&gt;<br></pre>
  *
  * <p>To search all scopes (request, page, session, and application), omit <code>
  *     paramScope</code>.</p>
@@ -643,199 +720,251 @@
  *     <code>img</code>), and so the tags using each attribute is given.</p>
  *
  * <p>&nbsp;</p>
- *     <table style="width:90%;border:1px;padding:4px">
- *         <tbody>
- *             <tr>
- *                 <th colspan="2">forward, href, and page</th>
- *             </tr>
- *             <tr>
- *                 <td> forward </td>
- *                 <td> [ link rewrite ] - Logical name of a global ActionForward
- *                     that
- *                     contains the actual content-relative URI of the
- *                     destination of this
- *                     transfer. This hyperlink may be dynamically modified by
- *                     the inclusion
- *                     of query parameters, as described in the tag description.
- *                     You must specify
- *                     exactly one of the forward attribute, the href attribute,
- *                     the linkName
- *                     attribute, or the page attribute </td>
- *             </tr>
- *             <tr>
- *                 <td> href </td>
- *                 <td> [ link rewrite ] - The URL to which this hyperlink will
- *                     transfer
- *                     control if activated. This hyperlink may be dynamically
- *                     modified by
- *                     the inclusion of query parameters, as described in the tag
- *                     description.
- *                     You must specify exactly one of the forward attribute, the
- *                     href attribute,
- *                     the linkName attribute, or the page attribute. </td>
- *             </tr>
- *             <tr>
- *                 <td> page </td>
- *                 <td> [ link rewrite ] - The context-relative path, starting
- *                     with a
- *                     slash, of the image to be displayed by this tag. The
- *                     rendered URL
- *                     for this image will automatically prepend the context path
- *                     of this
- *                     web application (in the same manner as the page attribute
- *                     on the link
- *                     tag works), in addition to any necessary URL rewriting.
- *                     You must specify
- *                     either the page attribute or the src attribute. </td>
- *             </tr>
+ * <table style="width:90%;border:1px solid black">
+ *     <tbody>
+ *         <tr>
+ *             <th colspan="2" style="border:1px solid black;padding:4px">
+ *                 forward, href, and page
+ *             </th>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 forward
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ link rewrite ] - Logical name of a global ActionForward
+ *                 that
+ *                 contains the actual content-relative URI of the
+ *                 destination of this
+ *                 transfer. This hyperlink may be dynamically modified by
+ *                 the inclusion
+ *                 of query parameters, as described in the tag description.
+ *                 You must specify
+ *                 exactly one of the forward attribute, the href attribute,
+ *                 the linkName
+ *                 attribute, or the page attribute 
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 href
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ link rewrite ] - The URL to which this hyperlink will
+ *                 transfer
+ *                 control if activated. This hyperlink may be dynamically
+ *                 modified by
+ *                 the inclusion of query parameters, as described in the tag
+ *                 description.
+ *                 You must specify exactly one of the forward attribute, the
+ *                 href attribute,
+ *                 the linkName attribute, or the page attribute.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 page
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ link rewrite ] - The context-relative path, starting
+ *                 with a
+ *                 slash, of the image to be displayed by this tag. The
+ *                 rendered URL
+ *                 for this image will automatically prepend the context path
+ *                 of this
+ *                 web application (in the same manner as the page attribute
+ *                 on the link
+ *                 tag works), in addition to any necessary URL rewriting.
+ *                 You must specify
+ *                 either the page attribute or the src attribute.
+ *             </td>
+ *         </tr>
  *
- *         </tbody>
- *     </table>
- *
- * <p>&nbsp;</p>
- *     <table style="width:90%;border:1px;padding:4px">
- *         <tbody>
- *             <tr>
- *                 <th colspan="2">linkName, Target , and src</th>
- *             </tr>
- *             <tr>
- *                 <td> linkName </td>
- *                 <td>
- *                     <p>[ link ] - The anchor name to be defined within this
- *                         page, so that
- *                         you can reference it with intra-page hyperlinks. In
- *                         other words, the
- *                         value specified here will render a "name" element in
- *                         the generated
- *                         anchor tag. </p>
- *                 </td>
- *             </tr>
- *             <tr>
- *                 <td> target </td>
- *                 <td> [ link img ] - The window target in which the resource
- *                     requested
- *                     by this hyperlink will be displayed, for example in a
- *                     framed presentation.
- *                 </td>
- *             </tr>
- *             <tr>
- *                 <td> src </td>
- *                 <td> [ img ] - The URL to which this image will be transferred
- *                     from
- *                     This image may be dynamically modified by the inclusion of
- *                     query parameters,
- *                     as described in the tag description. This value will be
- *                     used unmodified
- *                     (other than potential URL rewriting) as the value of the
- *                     "src" attribute
- *                     in the rendered tag. You must specify either the page
- *                     attribute or the
- *                     the src attribute. </td>
- *             </tr>
- *
- *         </tbody>
- *     </table>
+ *     </tbody>
+ * </table>
  *
  * <p>&nbsp;</p>
- *     <table style="width:90%;border:1px;padding:4px">
- *         <tbody>
- *             <tr>
- *                 <th colspan="2">paramId, paramName, paramProperty,
- *                     paramScope </th>
- *             </tr>
- *             <tr>
- *                 <td> paramId </td>
- *                 <td> [ link img ] - The name of the request parameter that
- *                     will be
- *                     dynamically added to the generated src URL. The
- *                     corresponding value
- *                     is defined by the paramName and (optional) paramProperty
- *                     attributes,
- *                     optionally scoped by the paramScope attribute</td>
- *             </tr>
- *             <tr>
- *                 <td> paramName </td>
- *                 <td> [ link img ] - The name of a JSP bean that is a String
- *                     containing
- *                     the value for the request parameter named by paramId (if
- *                     paramProperty
- *                     is not specified), or a JSP bean whose property getter is
- *                     called to
- *                     return a String (if paramProperty is specified). The JSP
- *                     bean is constrained
- *                     to the bean scope specified by the paramScope property, if
- *                     it is specified.
- *                 </td>
- *             </tr>
- *             <tr>
- *                 <td> paramProperty </td>
- *                 <td> [ link img ] - The name of a property of the bean
- *                     specified by
- *                     the paramName attribute, whose return value must be a
- *                     String containing
- *                     the value of the request parameter (named by the paramId
- *                     attribute)
- *                     that will be dynamically added to this hyperlink or src
- *                     URL</td>
- *             </tr>
- *             <tr>
- *                 <td> paramScope </td>
- *                 <td> [ link img ] - The scope within which to search for the
- *                     bean specified
- *                     by the paramName attribute. If not specified, all scopes
- *                     are searched.
- *                 </td>
- *             </tr>
+ * <table style="width:90%;border:1px solid black">
+ *     <tbody>
+ *         <tr>
+ *             <th colspan="2" style="border:1px solid black;padding:4px">
+ *                 linkName, Target , and src
+ *             </th>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 linkName
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ link ] - The anchor name to be defined within this
+ *                 page, so that
+ *                 you can reference it with intra-page hyperlinks. In
+ *                 other words, the
+ *                 value specified here will render a "name" element in
+ *                 the generated
+ *                 anchor tag.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 target
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ link img ] - The window target in which the resource
+ *                 requested
+ *                 by this hyperlink will be displayed, for example in a
+ *                 framed presentation.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 src
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ img ] - The URL to which this image will be transferred
+ *                 from
+ *                 This image may be dynamically modified by the inclusion of
+ *                 query parameters,
+ *                 as described in the tag description. This value will be
+ *                 used unmodified
+ *                 (other than potential URL rewriting) as the value of the
+ *                 "src" attribute
+ *                 in the rendered tag. You must specify either the page
+ *                 attribute or the
+ *                 the src attribute.
+ *             </td>
+ *         </tr>
  *
- *         </tbody>
- *     </table>
+ *     </tbody>
+ * </table>
  *
  * <p>&nbsp;</p>
- *     <table style="width:90%;border:1px;padding:4px">
- *         <tbody>
- *             <tr>
- *                 <th colspan="2">
- *                     <p>name, property, scope </p>
- *                 </th>
- *             </tr>
- *             <tr>
- *                 <td> name </td>
- *                 <td> [ link rewrite img ] - The name of a JSP bean that
- *                     contains a
- *                     <code><a
- *                             href="http://java.sun.com/j2se/1.3/docs/api/java/util/Map.html">
- *                         Map</a>
- *                     </code> representing the query parameters (if <code>
- *                     property</code>
- *                     is not specified), or a JSP bean whose property getter is
- *                     called
- *                     to return a <code>Map</code> (if <code>property</code> is
- *                     specified).
- *                 </td>
- *             </tr>
- *             <tr>
- *                 <td> property </td>
- *                 <td>[ link rewrite img ] - The name of a property of the bean
- *                     specified
- *                     by the name attribute, whose return value must be a <code>
- *                     <a href="http://java.sun.com/j2se/1.3/docs/api/java/util/Map.html">
- *                         Map</a>
+ * <table style="width:90%;border:1px solid black">
+ *     <tbody>
+ *         <tr>
+ *             <th colspan="2" style="border:1px solid black;padding:4px">
+ *                 paramId, paramName, paramProperty,
+ *                 paramScope
+ *             </th>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 paramId
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ link img ] - The name of the request parameter that
+ *                 will be
+ *                 dynamically added to the generated src URL. The
+ *                 corresponding value
+ *                 is defined by the paramName and (optional) paramProperty
+ *                 attributes,
+ *                 optionally scoped by the paramScope attribute
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 paramName
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ link img ] - The name of a JSP bean that is a String
+ *                 containing
+ *                 the value for the request parameter named by paramId (if
+ *                 paramProperty
+ *                 is not specified), or a JSP bean whose property getter is
+ *                 called to
+ *                 return a String (if paramProperty is specified). The JSP
+ *                 bean is constrained
+ *                 to the bean scope specified by the paramScope property, if
+ *                 it is specified.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 paramProperty
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ link img ] - The name of a property of the bean
+ *                 specified by
+ *                 the paramName attribute, whose return value must be a
+ *                 String containing
+ *                 the value of the request parameter (named by the paramId
+ *                 attribute)
+ *                 that will be dynamically added to this hyperlink or src
+ *                 URL
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 paramScope
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ link img ] - The scope within which to search for the
+ *                 bean specified
+ *                 by the paramName attribute. If not specified, all scopes
+ *                 are searched.
+ *             </td>
+ *         </tr>
+ *
+ *     </tbody>
+ * </table>
+ *
+ * <p>&nbsp;</p>
+ * <table style="width:90%;border:1px solid black">
+ *     <tbody>
+ *         <tr>
+ *             <th colspan="2" style="border:1px solid black;padding:4px">
+ *                 name, property, scope
+ *             </th>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 name
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ link rewrite img ] - The name of a JSP bean that
+ *                 contains a
+ *                 <code><a
+ *                         href="http://java.sun.com/j2se/1.3/docs/api/java/util/Map.html">
+ *                     Map</a>
+ *                 </code> representing the query parameters (if <code>
+ *                 property</code>
+ *                 is not specified), or a JSP bean whose property getter is
+ *                 called
+ *                 to return a <code>Map</code> (if <code>property</code> is
+ *                 specified).
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 property
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ link rewrite img ] - The name of a property of the bean
+ *                 specified
+ *                 by the name attribute, whose return value must be a <code>
+ *                 <a href="http://java.sun.com/j2se/1.3/docs/api/java/util/Map.html">
+ *                     Map</a>
  *                 </code> containing the query parameters to be added to the src
- *                     URL. You <b>must</b> specify the name attribute if you
- *                     specify this
- *                     attribute </td>
- *             </tr>
- *             <tr>
- *                 <td> scope </td>
- *                 <td> [ link rewrite img ] - The scope within which to search
- *                     for the
- *                     bean specified by the name attribute. If not specified,
- *                     all scopes are
- *                     searched. </td>
- *             </tr>
+ *                 URL. You <b>must</b> specify the name attribute if you
+ *                 specify this
+ *                 attribute
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 scope
+ *             </td>
+ *             <td style="border:1px solid black;padding:4px">
+ *                 [ link rewrite img ] - The scope within which to search
+ *                 for the
+ *                 bean specified by the name attribute. If not specified,
+ *                 all scopes are
+ *                 searched.
+ *             </td>
+ *         </tr>
  *
- *         </tbody>
- *     </table>
+ *     </tbody>
+ * </table>
  *
  * <p>See the <a href="../../../../../../tagreference.html">HTML Tags
  *     Reference</a>

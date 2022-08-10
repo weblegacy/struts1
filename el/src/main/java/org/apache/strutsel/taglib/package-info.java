@@ -86,42 +86,78 @@
  *     will provide that functionality. Examples after the table will demonstrate
  *     these.
  * </p>
- * <table border="1">
+ * <table style="border:1px solid black">
  *     <tr>
- *         <th>Struts-Logic tag</th>
- *         <th>JSTL tags or feature</th>
+ *         <th style="border:1px solid black">
+ *             Struts-Logic tag
+ *         </th>
+ *         <th style="border:1px solid black">
+ *             JSTL tags or feature
+ *         </th>
  *     </tr>
  *     <tr>
- *         <td>empty</td>
- *         <td>c:if, c:when, EL</td>
+ *         <td style="border:1px solid black">
+ *             empty
+ *         </td>
+ *         <td style="border:1px solid black">
+ *             c:if, c:when, EL
+ *         </td>
  *     </tr>
  *     <tr>
- *         <td>equal</td>
- *         <td>c:if, c:when, EL</td>
+ *         <td style="border:1px solid black">
+ *             equal
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:if, c:when, EL
+ *         </td>
  *     </tr>
  *     <tr>
- *         <td>greaterEqual</td>
- *         <td>c:if, c:when, EL</td>
+ *         <td  style="border:1px solid black">
+ *             greaterEqual
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:if, c:when, EL
+ *         </td>
  *     </tr>
  *     <tr>
- *         <td>greaterThan</td>
- *         <td>c:if, c:when, EL</td>
+ *         <td  style="border:1px solid black">
+ *             greaterThan
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:if, c:when, EL
+ *         </td>
  *     </tr>
  *     <tr>
- *         <td>lessEqual</td>
- *         <td>c:if, c:when, EL</td>
+ *         <td  style="border:1px solid black">
+ *             lessEqual
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:if, c:when, EL
+ *         </td>
  *     </tr>
  *     <tr>
- *         <td>lessThan</td>
- *         <td>c:if, c:when, EL</td>
+ *         <td  style="border:1px solid black">
+ *             lessThan
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:if, c:when, EL
+ *         </td>
  *     </tr>
  *     <tr>
- *         <td>notEmpty</td>
- *         <td>c:if, c:when, EL</td>
+ *         <td  style="border:1px solid black">
+ *             notEmpty
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:if, c:when, EL
+ *         </td>
  *     </tr>
  *     <tr>
- *         <td>notEqual</td>
- *         <td>c:if, c:when, EL</td>
+ *         <td  style="border:1px solid black">
+ *             notEqual
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:if, c:when, EL
+ *         </td>
  *     </tr>
  * </table>
  * <p>
@@ -132,77 +168,77 @@
  *
  * <p><i>Struts Example:</i></p>
  * <pre>
- *     &lt;logic:empty name="foo" property="stuff"&gt;
- *     Some stuff
- *     &lt;/logic:empty&gt;</pre>
+ *    &lt;logic:empty name="foo" property="stuff"&gt;
+ *    Some stuff
+ *    &lt;/logic:empty&gt;</pre>
  *
  * <p><i>JSTL Version:</i></p>
  * <pre>
- *     &lt;c:if test="${empty foo.stuff}"&gt;
- *     Some stuff
- *     &lt;/c:if&gt;</pre>
+ *    &lt;c:if test="${empty foo.stuff}"&gt;
+ *    Some stuff
+ *    &lt;/c:if&gt;</pre>
  *
  * <p><i>Struts Example:</i></p>
  * <pre>
- *     &lt;logic:notEmpty name="foo" property="stuff"&gt;
- *     Some stuff
- *     &lt;/logic:notEmpty&gt;</pre>
+ *    &lt;logic:notEmpty name="foo" property="stuff"&gt;
+ *    Some stuff
+ *    &lt;/logic:notEmpty&gt;</pre>
  *
  * <p><i>JSTL Version:</i></p>
  * <pre>
- *     &lt;c:if test="${!empty foo.stuff}"&gt;
- *     Some stuff
- *     &lt;/c:if&gt;</pre>
+ *    &lt;c:if test="${!empty foo.stuff}"&gt;
+ *    Some stuff
+ *    &lt;/c:if&gt;</pre>
  *
  * <p><i>Struts Example:</i></p>
  * <pre>
- *     &lt;logic:equal name="foo" property="stuff" value="&lt;%=thing.getStuff()%&gt;"&gt;
- *     Some stuff
- *     &lt;/logic:equal&gt;</pre>
+ *    &lt;logic:equal name="foo" property="stuff" value="&lt;%=thing.getStuff()%&gt;"&gt;
+ *    Some stuff
+ *    &lt;/logic:equal&gt;</pre>
  *
  * <p><i>JSTL Version:</i></p>
  * <pre>
- *     &lt;%-- Assumes "thing" is a scoped variable --%&gt;
- *     &lt;c:if test="${foo.stuff eq thing.stuff}"&gt;
- *     Some stuff
- *     &lt;/c:if&gt;</pre>
+ *    &lt;%-- Assumes "thing" is a scoped variable --%&gt;
+ *    &lt;c:if test="${foo.stuff eq thing.stuff}"&gt;
+ *    Some stuff
+ *    &lt;/c:if&gt;</pre>
  *
  * <p><i>Struts Example:</i></p>
  * <pre>
- *     &lt;logic:greaterThan name="foo" property="stuff" value="&lt;%=thing.getStuff()%&gt;"&gt;
- *     Some stuff
- *     &lt;/logic:empty&gt;</pre>
+ *    &lt;logic:greaterThan name="foo" property="stuff" value="&lt;%=thing.getStuff()%&gt;"&gt;
+ *    Some stuff
+ *    &lt;/logic:empty&gt;</pre>
  *
  * <p><i>JSTL Version:</i></p>
  * <pre>
- *     &lt;%-- Assumes "thing" is a scoped variable --%&gt;
- *     &lt;c:if test="${foo.stuff ge thing.stuff}"&gt;
- *     Some stuff
- *     &lt;/c:if&gt;</pre>
+ *    &lt;%-- Assumes "thing" is a scoped variable --%&gt;
+ *    &lt;c:if test="${foo.stuff ge thing.stuff}"&gt;
+ *    Some stuff
+ *    &lt;/c:if&gt;</pre>
  *
  * <p><i>Struts Example:</i></p>
  * <pre>
- *     &lt;logic:present cookie="shoppingCart"&gt;
- *     Some stuff
- *     &lt;/logic:present&gt;</pre>
+ *    &lt;logic:present cookie="shoppingCart"&gt;
+ *    Some stuff
+ *    &lt;/logic:present&gt;</pre>
  *
  * <p><i>JSTL Version:</i></p>
  * <pre>
- *     &lt;c:if test='${!empty cookie["shoppingCart"]}"&gt;
- *     Some stuff
- *     &lt;/c:if&gt;</pre>
+ *    &lt;c:if test='${!empty cookie["shoppingCart"]}"&gt;
+ *    Some stuff
+ *    &lt;/c:if&gt;</pre>
  *
  * <p><i>Struts Example:</i></p>
  * <pre>
- *     &lt;logic:present header="User-Agent"&gt;
- *     Some stuff
- *     &lt;/logic:present&gt;</pre>
+ *    &lt;logic:present header="User-Agent"&gt;
+ *    Some stuff
+ *    &lt;/logic:present&gt;</pre>
  *
  * <p><i>JSTL Version:</i></p>
  * <pre>
- *     &lt;c:if test='${!empty header["User-Agent"]}"&gt;
- *     Some stuff
- *     &lt;/c:if&gt;</pre>
+ *    &lt;c:if test='${!empty header["User-Agent"]}"&gt;
+ *    Some stuff
+ *    &lt;/c:if&gt;</pre>
  * <hr>
  *
  * <h3><a id="doc.Bean">Bean-EL tag library</a></h3>
@@ -214,34 +250,62 @@
  *     will provide that functionality. Examples after the table will demonstrate
  *     these.
  * </p>
- * <table border="1">
+ * <table style="border:1px solid black">
  *     <tr>
- *         <th>Struts-Bean tag</th>
- *         <th>JSTL tags or feature</th>
+ *         <th style="border:1px solid black">
+ *             Struts-Bean tag
+ *         </th>
+ *         <th style="border:1px solid black">
+ *             JSTL tags or feature
+ *         </th>
  *     </tr>
  *     <tr>
- *         <td>cookie</td>
- *         <td>c:set, EL</td>
+ *         <td  style="border:1px solid black">
+ *             cookie
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:set, EL
+ *         </td>
  *     </tr>
  *     <tr>
- *         <td>define</td>
- *         <td>c:set, EL</td>
+ *         <td  style="border:1px solid black">
+ *             define
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:set, EL
+ *         </td>
  *     </tr>
  *     <tr>
- *         <td>header</td>
- *         <td>c:set, EL</td>
+ *         <td  style="border:1px solid black">
+ *             header
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:set, EL
+ *         </td>
  *     </tr>
  *     <tr>
- *         <td>include</td>
- *         <td>c:import</td>
+ *         <td  style="border:1px solid black">
+ *             include
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:import
+ *         </td>
  *     </tr>
  *     <tr>
- *         <td>parameter</td>
- *         <td>c:set, EL</td>
+ *         <td  style="border:1px solid black">
+ *             parameter
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:set, EL
+ *         </td>
  *     </tr>
  *     <tr>
- *         <td>write</td>
- *         <td>c:out</td>
+ *         <td  style="border:1px solid black">
+ *             write
+ *         </td>
+ *         <td  style="border:1px solid black">
+ *             c:out
+ *         </td>
  *     </tr>
  * </table>
  * <p>
@@ -275,44 +339,44 @@
  *
  * <p><i>Struts Example:</i></p>
  * <pre>
- *     &lt;bean:cookie id="cookieVal" name="stuff"/&gt;</pre>
+ *    &lt;bean:cookie id="cookieVal" name="stuff"/&gt;</pre>
  *
  * <p><i>JSTL Version:</i></p>
  * <pre>
- *     &lt;c:set var="cookieVal" value='${cookie["stuff"]}'/&gt;</pre>
+ *    &lt;c:set var="cookieVal" value='${cookie["stuff"]}'/&gt;</pre>
  *
  * <p><i>Struts Example:</i></p>
  * <pre>
- *     &lt;bean:define id="thing" name="foo" property="stuff"/&gt;</pre>
+ *    &lt;bean:define id="thing" name="foo" property="stuff"/&gt;</pre>
  *
  * <p><i>JSTL Version:</i></p>
  * <pre>
- *     &lt;c:set var="thing" value="${foo.stuff}"/&gt;</pre>
+ *    &lt;c:set var="thing" value="${foo.stuff}"/&gt;</pre>
  *
  * <p><i>Struts Example:</i></p>
  * <pre>
- *     &lt;bean:header id="headerVal" name="stuff"/&gt;</pre>
+ *    &lt;bean:header id="headerVal" name="stuff"/&gt;</pre>
  *
  * <p><i>JSTL Version:</i></p>
  * <pre>
- *     &lt;c:set var="headerVal" value='${header["stuff"]}'/&gt;</pre>
+ *    &lt;c:set var="headerVal" value='${header["stuff"]}'/&gt;</pre>
  *
  * <p><i>Struts Example:</i></p>
  * <pre>
- *     &lt;bean:include id="stuffOut"
- *     href="http://somewhere.com/stuff.jsp"/&gt;</pre>
+ *    &lt;bean:include id="stuffOut"
+ *    href="http://somewhere.com/stuff.jsp"/&gt;</pre>
  *
  * <p><i>JSTL Version:</i></p>
  * <pre>
- *     &lt;c:import var="stuffOut"
- *     value="http://somewhere.com/stuff.jsp"/&gt;</pre>
+ *    &lt;c:import var="stuffOut"
+ *    value="http://somewhere.com/stuff.jsp"/&gt;</pre>
  *
  * <p><i>Struts Example:</i></p>
  * <pre>
- *     &lt;bean:parameter id="parameterVal" name="stuff"/&gt;</pre>
+ *    &lt;bean:parameter id="parameterVal" name="stuff"/&gt;</pre>
  *
  * <p><i>JSTL Version:</i></p>
  * <pre>
- *     &lt;c:set var="parameterVal" value='${param["stuff"]}'/&gt;</pre>
+ *    &lt;c:set var="parameterVal" value='${param["stuff"]}'/&gt;</pre>
  */
-package org.apache.strutsel;
+package org.apache.strutsel.taglib;

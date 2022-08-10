@@ -194,8 +194,7 @@
  *     be named <code>Messages_fr.properties</code> and contain the following:
  * </p>
  * <pre>
- *     hi=Bonjour
- * </pre>
+ *    hi=Bonjour</pre>
  *
  * <p>while the Spanish and English files would be named
  *     <code>Messages_es.properties</code> and <code>
@@ -225,9 +224,8 @@
  *     main
  *     application class, like this:</p>
  * <pre>
- *     public static MessageResources messages =
- *     MessageResources.getMessageResources("com.mycompany.mypackage.Messages");
- * </pre>
+ *    public static MessageResources messages =
+ *    MessageResources.getMessageResources("com.mycompany.mypackage.Messages");</pre>
  *
  * <p>Note that the "com.mycompany.mypackage" part of the name matches the
  *     package
@@ -247,9 +245,8 @@
  * <p>To access a message string with a particular Locale, execute a statement
  *     like this:</p>
  * <pre>
- *     Locale locale = ... select the locale to be used ...
- *     String message = messages.getMessage(locale, "hi");
- * </pre>
+ *    Locale locale = ... select the locale to be used ...
+ *    String message = messages.getMessage(locale, "hi");</pre>
  *
  * <p>In this case, the variable <code>message</code> will contain the message
  *     string corresponding to the key "hi", in the language that corresponds to
@@ -261,15 +258,13 @@
  *     version
  *     is shown - corresponding changes would be made in the other files):</p>
  * <pre>
- *     hi=Hello {0}
- * </pre>
+ *    hi=Hello {0}</pre>
  *
  * <p>Now, you can personalize the retrieved message like this:</p>
  * <pre>
- *     Locale locale = ... select the locale to be used ...
- *     String name = "Joe";
- *     String message = messages.getMessage(locale, "hi", name);
- * </pre>
+ *    Locale locale = ... select the locale to be used ...
+ *    String name = "Joe";
+ *    String message = messages.getMessage(locale, "hi", name);</pre>
  *
  * <p>and the marker "{0}" will have been replaced by the specified name (Joe),
  *     no matter which language is in use. See the JavaDoc API documentation for
@@ -309,11 +304,10 @@
  *
  * <p>A code example that illustrates this technique is:</p>
  * <pre>
- *     MessageResourcesFactory.setFactoryClass("com.mycompany.mypkg.MyFactory");
- *     MessageResourcesFactory factory = MessageResourcesFactory.createFactory();
- *     MessageResources resources =
- *     factory.createResources("configuration information");
- * </pre>
+ *    MessageResourcesFactory.setFactoryClass("com.mycompany.mypkg.MyFactory");
+ *    MessageResourcesFactory factory = MessageResourcesFactory.createFactory();
+ *    MessageResources resources =
+ *    factory.createResources("configuration information");</pre>
  *
  * <p>Once you have created your custom MessageResources instance, you utilize it
  *     to access message strings (with or without parameter replacement objects),

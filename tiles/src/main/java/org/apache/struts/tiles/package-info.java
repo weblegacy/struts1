@@ -52,35 +52,28 @@
  * <h2>Simple Examples</h2>
  *
  * <h3>Insert a JSP page</h3>
- *   <pre>&lt;tiles:insert <strong>page</strong>=&quot;/layouts/commonLayout.jsp&quot; flush=&quot;true&quot; /&gt;
- * </pre>
+ *   <pre>&lt;tiles:insert <strong>page</strong>=&quot;/layouts/commonLayout.jsp&quot; flush=&quot;true&quot; /&gt;</pre>
  * <p>This example inserts the specified page in place of the tag. The page attribute is any valid URL pointing to a resource inside the current site.</p>
  *
  * <a id="doc.InsertPageWithAttributes"></a>
  * <h3>Insert a Tiles passing some attributes</h3>
- * <pre>
- * &lt;tiles:insert page=&quot;/layouts/classicLayout.jsp&quot; flush=&amp;quot;true&quot;&gt;
- * &lt;tiles:put name=&quot;title&quot;  value=&quot;Page Title&quot; /&gt;
- * &lt;tiles:put name=&quot;header&quot; value=&quot;/common/header.jsp&quot; /&gt;
- * &lt;tiles:put name=&quot;footer&quot; value=&quot;/common/footer.jsp&quot; /&gt;
- * &lt;tiles:put name=&quot;menu&quot;   value=&quot;/common/menu.jsp&quot; /&gt;
- * &lt;tiles:put name=&quot;body&quot;   value=&quot;/tiles/mainBody.jsp&quot; /&gt;
- * &lt;/tiles:insert&gt;
- * </pre>
+ * <pre>&lt;tiles:insert page=&quot;/layouts/classicLayout.jsp&quot; flush=&amp;quot;true&quot;&gt;
+ *  &lt;tiles:put name=&quot;title&quot;  value=&quot;Page Title&quot; /&gt;
+ *  &lt;tiles:put name=&quot;header&quot; value=&quot;/common/header.jsp&quot; /&gt;
+ *  &lt;tiles:put name=&quot;footer&quot; value=&quot;/common/footer.jsp&quot; /&gt;
+ *  &lt;tiles:put name=&quot;menu&quot;   value=&quot;/common/menu.jsp&quot; /&gt;
+ *  &lt;tiles:put name=&quot;body&quot;   value=&quot;/tiles/mainBody.jsp&quot; /&gt;<br>&lt;/tiles:insert&gt;</pre>
+ *
  *   <p>This example inserts the specified page, passing it the attributes. Attributes
  *     are stored in a Tiles context which is passed to the inserted pag and
  *     can then be accesssed by their names.</p>
  *
  * <h3>Retrieve an attribute value as String</h3>
- * <pre>
- * &lt;tiles:getAsString name=&quot;title&quot; /&gt;
- * </pre>
+ * <pre>&lt;tiles:getAsString name=&quot;title&quot; /&gt;</pre>
  * <p>This example retrieves the value of the attribute &quot;title&quot; and prints it as a String in the current output stream. The method toString() is applied on the attribute value, allowing to pass any kind of object as value.</p>
  *
  * <h3>Insert Tiles referenced by an attribute</h3>
- * <pre>
- * &lt;tiles:insert attribute='menu' /&gt;
- * </pre>
+ * <pre>&lt;tiles:insert attribute='menu' /&gt;</pre>
  *   <p>This inserts the Tiles referenced by the attribute &quot;menu&quot; value. The
  *     specified attribute value is first retrieved from current Tiles's context,
  *     and then the value is used as a page target to insert.</p>
@@ -88,36 +81,23 @@
  * <h3>Classic Layout </h3>
  *   <p>This example is a layout assembling a page in the classic header-footer-menu-body
  *     fashion.</p>
- *   <pre>
- * &lt;%@ taglib uri=&quot;/WEB-INF/struts-tiles.tld&quot; prefix=&quot;tiles&quot; %&gt;
- * &lt;HTML&gt;
- * &lt;HEAD&gt;
- * &lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%=request.getContextPath()%&gt;/layouts/stylesheet.css&quot;
- *               type=&quot;text/css&quot;/&gt;
- * &lt;title&gt;&lt;tiles:getAsString name=&quot;title&quot;/&gt;&lt;/title&gt;
- * &lt;/HEAD&gt;
- * &lt;body&gt;
- * &lt;table border=&quot;0&quot; width=&quot;100%&quot; cellspacing=&quot;5&quot;&gt;
- * &lt;tr&gt;
- * &lt;td colspan=&quot;2&quot;&gt;&lt;tiles:insert attribute=&quot;header&quot; /&gt;&lt;/td&gt;
- * &lt;/tr&gt;
- * &lt;tr&gt;
- * &lt;td width=&quot;140&quot; valign=&quot;top&quot;&gt;
- * &lt;tiles:insert attribute='menu' /&gt;
- * &lt;/td&gt;
- * &lt;td valign=&quot;top&quot;  align=&quot;left&quot;&gt;
- * &lt;tiles:insert attribute='body' /&gt;
- * &lt;/td&gt;
- * &lt;/tr&gt;
- * &lt;tr&gt;
- * &lt;td colspan=&quot;2&quot;&gt;
- * &lt;tiles:insert attribute=&quot;footer&quot; /&gt;
- * &lt;/td&gt;
- * &lt;/tr&gt;
- * &lt;/table&gt;
- * &lt;/body&gt;
- * &lt;/html&gt;
- * </pre>
+ *   <pre>&lt;%@ taglib uri=&quot;/WEB-INF/struts-tiles.tld&quot; prefix=&quot;tiles&quot; %&gt;<br>&lt;HTML&gt;
+ *  &lt;HEAD&gt;
+ *    &lt;link rel=&quot;stylesheet&quot; href=&quot;&lt;%=request.getContextPath()%&gt;/layouts/stylesheet.css&quot;
+ *                  type=&quot;text/css&quot;/&gt;
+ *    &lt;title&gt;&lt;tiles:getAsString name=&quot;title&quot;/&gt;&lt;/title&gt;
+ *  &lt;/HEAD&gt;<br>&lt;body&gt;<br>&lt;table border=&quot;0&quot; width=&quot;100%&quot; cellspacing=&quot;5&quot;&gt;<br>&lt;tr&gt;
+ *  &lt;td colspan=&quot;2&quot;&gt;&lt;tiles:insert attribute=&quot;header&quot; /&gt;&lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;tr&gt;
+ *  &lt;td width=&quot;140&quot; valign=&quot;top&quot;&gt;
+ *    &lt;tiles:insert attribute='menu' /&gt;
+ *  &lt;/td&gt;
+ *  &lt;td valign=&quot;top&quot;  align=&quot;left&quot;&gt;
+ *    &lt;tiles:insert attribute='body' /&gt;
+ *  &lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;tr&gt;
+ *  &lt;td colspan=&quot;2&quot;&gt;
+ *    &lt;tiles:insert attribute=&quot;footer&quot; /&gt;
+ *  &lt;/td&gt;<br>&lt;/tr&gt;<br>&lt;/table&gt;<br>&lt;/body&gt;<br>&lt;/html&gt;</pre>
+ *
  *   <p>The layout is declared in a JSP page (ex: /layouts/classicLayout.jsp).
  *     It can be used in conjunction with the tag described in &quot;<a href="#doc.InsertPageWithAttributes">Insert
  *     a page passing some attributes</a>&quot;. </p>
@@ -152,61 +132,65 @@
  *       are optional and can be omitted. The plug-in should be declared in each
  *       struts-config file:</p>
  * <pre>
- * &lt;plug-in className=&quot;org.apache.struts.tiles.TilesPlugin&quot; &gt;
- * &lt;set-property property=&quot;definitions-config&quot;
- *                  value=&quot;/WEB-INF/tiles-defs.xml,
- *                         /WEB-INF/tiles-tests-defs.xml,/WEB-INF/tiles-tutorial-defs.xml,
- *                         /WEB-INF/tiles-examples-defs.xml&quot; /&gt;
- * &lt;set-property property=&quot;moduleAware&quot; value=&quot;true&quot; /&gt;
- * &lt;set-property property=&quot;definitions-parser-validate&quot; value=&quot;true&quot; /&gt;
- * &lt;/plug-in&gt;
- * </pre>
- * <ul>
- * <li>definitions-config: (optional) <ul>
- * <li>Specify configuration file names. There can be several comma separated file names (default: ?? )</li>
- * </ul>
- * </li>
- *       <li>definitions-parser-validate: (optional)
- * <ul>
- *           <li>Specify if XML parser should validate the Tiles configuration
- *             file
- *             <ul>
- *               <li>true : validate. DTD should be specified in file header (default)</li>
- *               <li>false : no validation</li>
- *             </ul>
- *           </li>
- * </ul>
- * </li>
+ *  &lt;plug-in className=&quot;org.apache.struts.tiles.TilesPlugin&quot; &gt;
+ *    &lt;set-property property=&quot;definitions-config&quot;
+ *                     value=&quot;/WEB-INF/tiles-defs.xml,
+ *                            /WEB-INF/tiles-tests-defs.xml,/WEB-INF/tiles-tutorial-defs.xml,
+ *                            /WEB-INF/tiles-examples-defs.xml&quot; /&gt;
+ *    &lt;set-property property=&quot;moduleAware&quot; value=&quot;true&quot; /&gt;
+ *    &lt;set-property property=&quot;definitions-parser-validate&quot; value=&quot;true&quot; /&gt;
+ *  &lt;/plug-in&gt;</pre>
  *
- *       <li>moduleAware: (optional)
- *        <ul>
- *           <li>Specify if the Tiles definition factory is module aware. If true (default),
- *         there will be one factory for each Struts module.
- *         If false, there will be one common factory for all module. In this later case,
- *         it is still needed to declare one plugin per module. The factory will be
- *         initialized with parameters found in the first initialized plugin (generally the
- *         one associated with the default module).
+ * <ul>
+ *   <li>definitions-config: (optional)
+ *     <ul>
+ *       <li>Specify configuration file names. There can be several comma separated file names (default: ?? )</li>
+ *     </ul>
+ *   </li>
+ *   <li>definitions-parser-validate: (optional)
+ *     <ul>
+ *       <li>Specify if XML parser should validate the Tiles configuration
+ *           file
  *         <ul>
- *          <li>true : Tiles framework is module aware </li>
- *          <li>false :Tiles framework has one single factoy shared among modules (default)</li>
+ *           <li>true : validate. DTD should be specified in file header (default)</li>
+ *           <li>false : no validation</li>
  *         </ul>
- *        </li>
- * </ul>
- * </li>
+ *       </li>
+ *     </ul>
+ *   </li>
  *
- * <li>tilesUtilImplClassname: (optional - for advanced user)
- * <ul>
- * <li>Specify The classname of the TilesUtil implementation to use. The specified class should
- * be a subclass of TilesUtilStrutsImpl. This option disable the moduleAware option.
- * <br>Specifying &quot;TilesUtilStrutsImpl&quot; is equivalent to moduleAware = false.
- * <br>Specifying &quot;TilesUtilStrutsModuleImpl&quot; is equivalent to moduleAware = true.
- * This option is taken into account only once, when it is first encountered. To avoid problems,
- * it is advice to specify the same values in all TilesPlugin declaration.
- * </li>
- * </ul>
- * </li>
+ *   <li>moduleAware: (optional)
+ *     <ul>
+ *       <li>Specify if the Tiles definition factory is module aware. If true (default),
+ *           there will be one factory for each Struts module.
+ *           If false, there will be one common factory for all module. In this later case,
+ *           it is still needed to declare one plugin per module. The factory will be
+ *           initialized with parameters found in the first initialized plugin (generally the
+ *           one associated with the default module).
+ *         <ul>
+ *           <li>true : Tiles framework is module aware </li>
+ *           <li>false :Tiles framework has one single factoy shared among modules (default)</li>
+ *         </ul>
+ *       </li>
+ *     </ul>
+ *   </li>
+ *
+ *   <li>tilesUtilImplClassname: (optional - for advanced user)
+ *     <ul>
+ *       <li>Specify The classname of the TilesUtil implementation to use. The specified class should
+ *           be a subclass of TilesUtilStrutsImpl. This option disable the moduleAware option.
+ *           <br>
+ *           Specifying &quot;TilesUtilStrutsImpl&quot; is equivalent to moduleAware = false.<br>
+ *           <br>
+ *           Specifying &quot;TilesUtilStrutsModuleImpl&quot; is equivalent to moduleAware = true.<br>
+ *           This option is taken into account only once, when it is first encountered. To avoid problems,
+ *           it is advice to specify the same values in all TilesPlugin declaration.
+ *       </li>
+ *     </ul>
+ *   </li>
  *
  * </ul>
+ *
  *     <p>The TilesPlugin class creates one definition factory for each struts module.
  *     </p>
  *     <p>
@@ -224,48 +208,47 @@
  * <h4>Struts1.0.x</h4>
  * <p>You need to use a special servlet extending the Struts servlet. This is specified in the web.xml file of your application:</p>
  *     <pre>
- * &lt;servlet&gt;
- * &lt;servlet-name&gt;action&lt;/servlet-name&gt;
- * &lt;servlet-class&gt;org.apache.struts.tiles.ActionComponentServlet&lt;/servlet-class&gt;
- *     &lt;!-- Tiles Servlet parameter
- *       Specify configuration file names. There can be several comma
- *       separated file names
- *     --&gt;
- * &lt;init-param&gt;
- *   &lt;param-name&gt;definitions-config&lt;/param-name&gt;
- *   &lt;param-value&gt;/WEB-INF/tiles-defs.xml&lt;/param-value&gt;
- * &lt;/init-param&gt;
- *     &lt;!-- Tiles Servlet parameter
- *     Specify if XML parser should validate the Tiles configuration file(s).
- *     true : validate. DTD should be specified in file header.
- *     false : no validation
- *     --&gt;
- * &lt;init-param&gt;
- *   &lt;param-name&gt;definitions-parser-validate&lt;/param-name&gt;
- *   &lt;param-value&gt;true&lt;/param-value&gt;
- * &lt;/init-param&gt;
- *  ...
- * &lt;/servlet&gt;
- * </pre>
+ *  &lt;servlet&gt;
+ *    &lt;servlet-name&gt;action&lt;/servlet-name&gt;
+ *    &lt;servlet-class&gt;org.apache.struts.tiles.ActionComponentServlet&lt;/servlet-class&gt;
+ *        &lt;!-- Tiles Servlet parameter
+ *          Specify configuration file names. There can be several comma
+ *          separated file names
+ *        --&gt;
+ *    &lt;init-param&gt;
+ *      &lt;param-name&gt;definitions-config&lt;/param-name&gt;
+ *      &lt;param-value&gt;/WEB-INF/tiles-defs.xml&lt;/param-value&gt;
+ *    &lt;/init-param&gt;
+ *        &lt;!-- Tiles Servlet parameter
+ *        Specify if XML parser should validate the Tiles configuration file(s).
+ *        true : validate. DTD should be specified in file header.
+ *        false : no validation
+ *        --&gt;
+ *    &lt;init-param&gt;
+ *      &lt;param-name&gt;definitions-parser-validate&lt;/param-name&gt;
+ *      &lt;param-value&gt;true&lt;/param-value&gt;
+ *    &lt;/init-param&gt;
+ *     ...
+ *  &lt;/servlet&gt;</pre>
  *
  * <h4>Without Struts</h4>
  * <p>Tiles can be used without Struts. To initialize the definition factory, you can use the provided servlet. Declare it in the web.xml file of your application:</p>
  * <pre>
- * &lt;servlet&gt;
- * &lt;servlet-name&gt;action&lt;/servlet-name&gt;
- * &lt;servlet-class&gt;org.apache.struts.tiles.TilesServlet&lt;/servlet-class&gt;
+ *  &lt;servlet&gt;
+ *    &lt;servlet-name&gt;action&lt;/servlet-name&gt;
+ *    &lt;servlet-class&gt;org.apache.struts.tiles.TilesServlet&lt;/servlet-class&gt;
  *
  *
- * &lt;init-param&gt;
- *   &lt;param-name&gt;definitions-config&lt;/param-name&gt;
- *   &lt;param-value&gt;/WEB-INF/tiles-defs.xml&lt;/param-value&gt;
- * &lt;/init-param&gt;
- * &lt;init-param&gt;
- *   &lt;param-name&gt;definitions-parser-validate&lt;/param-name&gt;
- *   &lt;param-value&gt;true&lt;/param-value&gt;
- * &lt;/init-param&gt;
- * ...
- * </pre>
+ *    &lt;init-param&gt;
+ *      &lt;param-name&gt;definitions-config&lt;/param-name&gt;
+ *      &lt;param-value&gt;/WEB-INF/tiles-defs.xml&lt;/param-value&gt;
+ *    &lt;/init-param&gt;
+ *    &lt;init-param&gt;
+ *      &lt;param-name&gt;definitions-parser-validate&lt;/param-name&gt;
+ *      &lt;param-value&gt;true&lt;/param-value&gt;
+ *    &lt;/init-param&gt;
+ *   ...</pre>
+ *
  * <p>The parameters are the same as for Struts1.1 or 1.0.</p>
  *
  * <h3>Definition File Syntax</h3>
@@ -273,50 +256,43 @@
  * <a href="http://struts.apache.org/dtds/tiles-config_1_4.dtd">tiles-config_1_4.dtd file</a>.
  * </p>
  * <p>Following is a simple example:</p>
- *   <pre>
- * &lt;!DOCTYPE tiles-definitions PUBLIC
- *    &quot;-//Apache Software Foundation//DTD Tiles Configuration 1.4//EN&quot;
- *    &quot;http://struts.apache.org/dtds/tiles-config_1_4.dtd&quot;&gt;
+ *   <pre>&lt;!DOCTYPE tiles-definitions PUBLIC
+ *       &quot;-//Apache Software Foundation//DTD Tiles Configuration 1.4//EN&quot;
+ *       &quot;http://struts.apache.org/dtds/tiles-config_1_4.dtd&quot;&gt;<br><br>&lt;!-- Definitions for Tiles documentation   --&gt;<br>&lt;tiles-definitions&gt;
  *
- * &lt;!-- Definitions for Tiles documentation   --&gt;
- * &lt;tiles-definitions&gt;
+ *  &lt;!-- ========================================================== --&gt;
+ *  &lt;!-- Master definition                                          --&gt;
+ *  &lt;!-- ========================================================== --&gt;
+ *  &lt;!-- Main page layout used as a root for other page definitions --&gt;
  *
- * &lt;!-- ========================================================== --&gt;
- * &lt;!-- Master definition                                          --&gt;
- * &lt;!-- ========================================================== --&gt;
- * &lt;!-- Main page layout used as a root for other page definitions --&gt;
+ *  &lt;definition name=&quot;site.mainLayout&quot; path=&quot;/layouts/classicLayout.jsp&quot;&gt;
+ *      &lt;put name=&quot;title&quot;  value=&quot;Tiles Blank Site&quot; /&gt;
+ *      &lt;put name=&quot;header&quot; value=&quot;/tiles/common/header.jsp&quot; /&gt;
+ *      &lt;put name=&quot;menu&quot;   value=&quot;site.menu.bar&quot; /&gt;
+ *      &lt;put name=&quot;footer&quot; value=&quot;/tiles/common/footer.jsp&quot; /&gt;
+ *      &lt;put name=&quot;body&quot;   value=&quot;/tiles/body.jsp&quot; /&gt;
+ *  &lt;/definition&gt;
  *
- * &lt;definition name=&quot;site.mainLayout&quot; path=&quot;/layouts/classicLayout.jsp&quot;&gt;
- *   &lt;put name=&quot;title&quot;  value=&quot;Tiles Blank Site&quot; /&gt;
- *   &lt;put name=&quot;header&quot; value=&quot;/tiles/common/header.jsp&quot; /&gt;
- *   &lt;put name=&quot;menu&quot;   value=&quot;site.menu.bar&quot; /&gt;
- *   &lt;put name=&quot;footer&quot; value=&quot;/tiles/common/footer.jsp&quot; /&gt;
- *   &lt;put name=&quot;body&quot;   value=&quot;/tiles/body.jsp&quot; /&gt;
- * &lt;/definition&gt;
+ *  &lt;!-- ========================================================== --&gt;
+ *  &lt;!-- Index page definition                                      --&gt;
+ *  &lt;!-- ========================================================== --&gt;
+ *    &lt;!-- This definition inherits from the main definition.
+ *      It overloads the page title and the body used.
+ *      Use the same mechanism to define new pages sharing common
+ *      properties (here header, menu, footer, layout)
+ *    --&gt;
  *
- * &lt;!-- ========================================================== --&gt;
- * &lt;!-- Index page definition                                      --&gt;
- * &lt;!-- ========================================================== --&gt;
- * &lt;!-- This definition inherits from the main definition.
- *   It overloads the page title and the body used.
- *   Use the same mechanism to define new pages sharing common
- *   properties (here header, menu, footer, layout)
- * --&gt;
- *
- * &lt;definition name=&quot;site.index.page&quot; extends=&quot;site.mainLayout&quot; &gt;
- *   &lt;put name=&quot;title&quot;  value=&quot;Tiles Blank Site Index&quot; /&gt;
- *   &lt;put name=&quot;body&quot;   value=&quot;/tiles/body.jsp&quot; /&gt;
- * &lt;/definition&gt;
- *
- * &lt;/tiles-definition&gt;
- * </pre>
+ *  &lt;definition name=&quot;site.index.page&quot; extends=&quot;site.mainLayout&quot; &gt;
+ *      &lt;put name=&quot;title&quot;  value=&quot;Tiles Blank Site Index&quot; /&gt;
+ *      &lt;put name=&quot;body&quot;   value=&quot;/tiles/body.jsp&quot; /&gt;
+ *  &lt;/definition&gt;<br><br>&lt;/tiles-definition&gt;</pre>
  *
  * <h3>Debugging</h3>
  * <p>To debug a page made of Tiles, you can use following advices:</p>
  * <ul>
- * <li>Check each Tiles separatly. Try to access nested Tiles directly to test
- * if thes work properly.</li>
- * <li>Enable Tiles logging. See the commons-logging package help.</li>
+ *   <li>Check each Tiles separatly. Try to access nested Tiles directly to test
+ *       if thes work properly.</li>
+ *   <li>Enable Tiles logging. See the commons-logging package help.</li>
  * </ul>
  */
 package org.apache.struts.tiles;

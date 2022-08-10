@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Adaptation of `package-info.java` so that output is similar to the old `package.html`
 * Tip-Fix in JavaDoc (Evalute -> Evaluate)
 * Apps: JDK8 - Add generics, serialVersionID, for-each-loop, ...
 * Tiles2: Convert all `package.html` to `package-info.java`

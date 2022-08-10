@@ -105,8 +105,8 @@
  *     tag. The html:options tag "must" be surrounded by a parent html:select
  *     tag.</p>
  * <pre>eg:<br> &lt;html:select name="myBean" property="mySelectProperty" &gt;
- *     <br> &lt;html:options name="myBean" property="myOptionsProperty" &gt;<br>
- *     &lt;/html:select&gt;</pre>
+ *    <br> &lt;html:options name="myBean" property="myOptionsProperty" &gt;<br>
+ *    &lt;/html:select&gt;</pre>
  *
  * <p> In the nested context, this would cause undesired results if the select
  *     tag was a parent. The bean reference would become...</p>
@@ -135,207 +135,371 @@
  * </p>
  *
  * <p><b>Root Tags</b></p>
- *     <table border="1">
- *         <tbody>
- *             <tr>
- *                 <th>markup name</th>
- *                 <th>brief description</th>
- *             </tr>
- *             <tr>
- *                 <td>html:form</td>
- *                 <td>For backwards compatibility, you can use the typical form
- *                     tag
- *                     to implement your nested hierarchy.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:form</td>
- *                 <td>An extension of the above <code>html:form</code>, this is
- *                     just
- *                     to provide definition in the nested tag library.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:root</td>
- *                 <td>When you don't want to configure a form, you can use any
- *                     bean
- *                     which is in "scope" by specifying its name within this
- *                     tag.</td>
- *             </tr>
- *         </tbody>
- *     </table>
+ * <table style="border:1px solid black">
+ *     <tbody>
+ *         <tr>
+ *             <th style="border:1px solid black">
+ *                 markup name
+ *             </th>
+ *             <th style="border:1px solid black">
+ *                 brief description
+ *             </th>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 html:form
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 For backwards compatibility, you can use the typical form
+ *                 tag
+ *                 to implement your nested hierarchy.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:form
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 An extension of the above <code>html:form</code>, this is
+ *                 just
+ *                 to provide definition in the nested tag library.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:root
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 When you don't want to configure a form, you can use any
+ *                 bean
+ *                 which is in "scope" by specifying its name within this
+ *                 tag.
+ *             </td>
+ *         </tr>
+ *     </tbody>
+ * </table>
+ * <p></p>
  * <br/>
  *
  * <p><b>Nested Parent Tags</b> (Affect the hierarchy)</p>
- *     <table border="1">
- *         <tbody>
- *             <tr>
- *                 <th>markup name</th>
- *                 <th>brief description</th>
- *             </tr>
- *             <tr>
- *                 <td>nested:nest</td>
- *                 <td>This tag executes no logic, simply representing a nesting
- *                     level
- *                     for the rest of the markup to relate to.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:iterate</td>
- *                 <td>Extension of <code>logic:iterate</code> you can use it to
- *                     iterate
- *                     through a list, and have all child references nest within
- *                     the
- *                     beans returned from this iterated collection.</td>
- *             </tr>
- *         </tbody>
- *     </table>
+ * <table style="border:1px solid black">
+ *     <tbody>
+ *         <tr>
+ *             <th style="border:1px solid black">
+ *                 markup name
+ *             </th>
+ *             <th style="border:1px solid black">
+ *                 brief description
+ *             </th>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:nest
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 This tag executes no logic, simply representing a nesting
+ *                 level
+ *                 for the rest of the markup to relate to.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:iterate
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 Extension of <code>logic:iterate</code> you can use it to
+ *                 iterate
+ *                 through a list, and have all child references nest within
+ *                 the
+ *                 beans returned from this iterated collection.
+ *             </td>
+ *         </tr>
+ *     </tbody>
+ * </table>
+ * <p></p>
  * <br/>
  *
  * <p><b>Markup Parent Tags</b> (marked-up like parent tags, but don't affect
  *     the hierarchy)</p>
- *     <table border="1">
- *         <tbody>
- *             <tr>
- *                 <th>markup name</th>
- *                 <th>brief description</th>
- *             </tr>
- *             <tr>
- *                 <td>nested:select</td>
- *                 <td><code>html:select</code> extension. Provides the logic to
- *                     render
- *                     a select box in Html.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:empty</td>
- *                 <td><code>logic:empty</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:notEmpty</td>
- *                 <td><code>logic:notEmpty</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:equal</td>
- *                 <td><code>logic:equal</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:notEqual</td>
- *                 <td><code>logic:notEqual</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:greaterEqual</td>
- *                 <td><code>logic:greaterEqual</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:greaterThan</td>
- *                 <td><code>logic:greaterThan</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:lessEqual</td>
- *                 <td><code>logic:lessEqual</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:lessThan</td>
- *                 <td><code>logic:lessThan</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:match</td>
- *                 <td><code>logic:match</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:notMatch</td>
- *                 <td><code>logic:notMatch</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:present</td>
- *                 <td><code>logic:present</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:notPresent</td>
- *                 <td><code>logic:notPresent</code> extension.</td>
- *             </tr>
- *         </tbody>
- *     </table>
+ * <table style="border:1px solid black">
+ *     <tbody>
+ *         <tr>
+ *             <th style="border:1px solid black">
+ *                 markup name
+ *             </th>
+ *             <th style="border:1px solid black">
+ *                 brief description
+ *             </th>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:select
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:select</code> extension. Provides the logic to
+ *                 render
+ *                 a select box in Html.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:empty
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>logic:empty</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:notEmpty
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>logic:notEmpty</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:equal
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>logic:equal</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:notEqual
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>logic:notEqual</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:greaterEqual
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>logic:greaterEqual</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:greaterThan
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>logic:greaterThan</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:lessEqual
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>logic:lessEqual</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:lessThan
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>logic:lessThan</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:match
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>logic:match</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:notMatch
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>logic:notMatch</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:present
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>logic:present</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:notPresent
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>logic:notPresent</code> extension.
+ *             </td>
+ *         </tr>
+ *     </tbody>
+ * </table>
+ * <p></p>
  * <br/>
  *
  * <p><b>Basic tags</b> (usually a tag which has no body content)</p>
- *     <table border="1">
- *         <tbody>
- *             <tr>
- *                 <th>markup name</th>
- *                 <th>brief description</th>
- *             </tr>
- *             <tr>
- *                 <td>nested:checkbox</td>
- *                 <td><code>html:</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:hidden</td>
- *                 <td><code>html:hidden</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:define</td>
- *                 <td><code>bean:define</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:image</td>
- *                 <td><code>html:image</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:img</td>
- *                 <td><code>html:img</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:link</td>
- *                 <td><code>html:link</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:message</td>
- *                 <td><code>bean:message</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:multibox</td>
- *                 <td><code>html:multibox</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:options</td>
- *                 <td><code>html:options</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:optionsCollection</td>
- *                 <td><code>html:optionsCollection</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:password</td>
- *                 <td><code>html:password</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:radio</td>
- *                 <td><code>html:radio</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:select</td>
- *                 <td><code>html:select</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:size</td>
- *                 <td><code>bean:size</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:submit</td>
- *                 <td><code>html:submit</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:text</td>
- *                 <td><code>html:text</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:textarea</td>
- *                 <td><code>html:textarea</code> extension.</td>
- *             </tr>
- *             <tr>
- *                 <td>nested:write</td>
- *                 <td><code>bean:write</code> extension.</td>
- *             </tr>
- *         </tbody>
- *     </table>
+ * <table style="border:1px solid black">
+ *     <tbody>
+ *         <tr>
+ *             <th style="border:1px solid black">
+ *                 markup name
+ *             </th>
+ *             <th style="border:1px solid black">
+ *                 brief description
+ *             </th>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:checkbox
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:hidden
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:hidden</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:define
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>bean:define</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:image
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:image</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:img
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:img</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:link
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:link</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:message
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>bean:message</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:multibox
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:multibox</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:options
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:options</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:optionsCollection
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:optionsCollection</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:password
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:password</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:radio
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:radio</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:select
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:select</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:size
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>bean:size</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:submit
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:submit</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:text
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:text</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:textarea
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>html:textarea</code> extension.
+ *             </td>
+ *         </tr>
+ *         <tr>
+ *             <td style="border:1px solid black">
+ *                 nested:write
+ *             </td>
+ *             <td style="border:1px solid black">
+ *                 <code>bean:write</code> extension.
+ *             </td>
+ *         </tr>
+ *     </tbody>
+ * </table>
+ * <p></p>
  * <hr><a id="doc.PropertyProperty"></a>
  *
  * <h3>The relative references and the "property" property.</h3>
@@ -401,13 +565,13 @@
  *     So to be in an iterate block, and to print out the String representation
  *     of the current iterated object, you can now use...</p>
  * <pre>eg:<br> &lt;nested:iterate property="myItemList" &gt;<br> &lt;html:write
- *     property="this/" &gt;&lt;br&gt;<br> &lt;/html:iterate&gt;</pre>
+ *    property="this/" &gt;&lt;br&gt;<br> &lt;/html:iterate&gt;</pre>
  *
  * <p> or if you want to print the string value of a parent the other side
  *     of the object...</p>
  * <pre>eg:<br> &lt;nested:iterate property="myBeanList" &gt;<br> &lt;nested:iterate
- *     property="myItemList" &gt;<br> &lt;html:write property="beanListObject/"
- *     &gt;&lt;br&gt;<br> &lt;/html:iterate&gt;<br> &lt;/html:iterate&gt;</pre>
+ *    property="myItemList" &gt;<br> &lt;html:write property="beanListObject/"
+ *    &gt;&lt;br&gt;<br> &lt;/html:iterate&gt;<br> &lt;/html:iterate&gt;</pre>
  *
  * <p> The fact that it didn't use the special cases of "./" or "this/" means
  *     that it steps back in the hierarchy as a typical relative reference.

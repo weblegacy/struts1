@@ -67,26 +67,26 @@
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;html-el:button onblur="handler('${arg}')"
- *     styleClass='${styleClass["button"]'
- *     titleKey='${titleKey["button"]}'
- *     value='${buttonValue["button"]}' /&gt;</pre>
+ *    &lt;html-el:button onblur="handler('${arg}')"
+ *    styleClass='${styleClass["button"]'
+ *    titleKey='${titleKey["button"]}'
+ *    value='${buttonValue["button"]}' /&gt;</pre>
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;html-el:checkbox property="button" value="${flagValue}"/&gt;</pre>
+ *    &lt;html-el:checkbox property="button" value="${flagValue}"/&gt;</pre>
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;html-el:link page="/doit.do" accesskey='${linkkey["doit"]}' &gt;
- *     A link
- *     &lt;/html-el:link&gt;</pre>
+ *    &lt;html-el:link page="/doit.do" accesskey='${linkkey["doit"]}' &gt;
+ *    A link
+ *    &lt;/html-el:link&gt;</pre>
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;html-el:link page="/doit.do"
- *     onclick="openModal('/editSalary.do?id=${employee.id}')" &gt;
- *     A link
- *     &lt;/html-el:link&gt;</pre>
+ *    &lt;html-el:link page="/doit.do"
+ *    onclick="openModal('/editSalary.do?id=${employee.id}')" &gt;
+ *    A link
+ *    &lt;/html-el:link&gt;</pre>
  */
 package org.apache.strutsel.taglib.html;

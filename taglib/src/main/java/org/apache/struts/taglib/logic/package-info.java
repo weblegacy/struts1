@@ -140,8 +140,7 @@
  *         <ul>
  *             <li>example:
  *                 <pre>&lt;logic:<i>someComparisonTag</i> value="someUserName"
- *                     cookie="userName"&gt;<br> User Logged In<br>&lt;/logic:<i>someComparisonTag</i>&gt;
- *                     <br></pre>
+ *                    cookie="userName"&gt;<br> User Logged In<br>&lt;/logic:<i>someComparisonTag</i>&gt;<br></pre>
  *             </li>
  *
  *         </ul>
@@ -151,8 +150,8 @@
  *         <ul>
  *             <li>example:
  *                 <pre>&lt;logic:<i>someComparisonTag</i> value="en_US"
- *                     header="Accept-Language"&gt;<br> Welcome English-speaking
- *                     User*<br>&lt;/logic:<i>someComparisonTag</i>&gt;<br></pre>
+ *                    header="Accept-Language"&gt;<br> Welcome English-speaking
+ *                    User*<br>&lt;/logic:<i>someComparisonTag</i>&gt;<br></pre>
  *             </li>
  *             <li>
  *                 <p>*Note: See the section in the user's guide on <a
@@ -171,12 +170,11 @@
  *         <ul>
  *             <li>example:
  *                 <pre>&lt;%<br> String testString = "pantalones";<br>
- *                     pageContext.setAttribute("testString", testString,
- *                     PageContext.PAGE_SCOPE);<br>%&gt;<br>&lt;jsp:useBean
- *                     id="testString" scope="page" type="java.lang.String" /&gt;
- *                     <br>&lt;logic:<i>someComparisonTag</i> name="testString"
- *                     value="pantalones"&gt;<br> Usted tiene pantalones!<br>&lt;/logic:<i>someComparison</i>&gt;
- *                     <br></pre>
+ *                    pageContext.setAttribute("testString", testString,
+ *                    PageContext.PAGE_SCOPE);<br>%&gt;<br>&lt;jsp:useBean
+ *                    id="testString" scope="page" type="java.lang.String" /&gt;
+ *                    <br>&lt;logic:<i>someComparisonTag</i> name="testString"
+ *                    value="pantalones"&gt;<br> Usted tiene pantalones!<br>&lt;/logic:<i>someComparison</i>&gt;<br></pre>
  *             </li>
  *
  *         </ul>
@@ -187,9 +185,8 @@
  *         <ul>
  *             <li>example:
  *                 <pre>&lt;logic:<i>someComparisonTag</i> value=""
- *                     parameter="username"&gt;<br> Error: a username must be
- *                     specified<br>&lt;/logic:<i>someComparisonTag</i>&gt;<br>
- *                 </pre>
+ *                    parameter="username"&gt;<br> Error: a username must be
+ *                    specified<br>&lt;/logic:<i>someComparisonTag</i>&gt;<br></pre>
  *             </li>
  *
  *         </ul>
@@ -226,12 +223,11 @@
  *         <ul>
  *             <li>example:
  *                 <pre>&lt;logic:<i>matchTag</i> parameter="action"
- *                     value="processLogin" location="start"&gt;<br> Processing
- *                     Login....<br>&lt;/logic:<i>matchTag</i>&gt;<br><br>In this
- *                     example, a request parameter "action" was compared to see
- *                     if<br>its value started with the String "processLogin". In
- *                     this case,<br><i>matchTag</i> would have to be &lt;logic:match&gt;.
- *                     <br></pre>
+ *                    value="processLogin" location="start"&gt;<br> Processing
+ *                    Login....<br>&lt;/logic:<i>matchTag</i>&gt;<br><br>In this
+ *                    example, a request parameter "action" was compared to see
+ *                    if<br>its value started with the String "processLogin". In
+ *                    this case,<br><i>matchTag</i> would have to be &lt;logic:match&gt;.<br></pre>
  *             </li>
  *
  *         </ul>
@@ -294,8 +290,8 @@
  *         <ul>
  *             <li>example:
  *                 <pre>&lt;%<br> java.util.Vector vector = new
- *                     java.util.Vector();<br> vector.add(new Integer(12));<br>
- *                     vector.add(new Integer(5));<br> %&gt;<br></pre>
+ *                    java.util.Vector();<br> vector.add(new Integer(12));<br>
+ *                    vector.add(new Integer(5));<br> %&gt;<br></pre>
  *             </li>
  *
  *         </ul>
@@ -306,9 +302,8 @@
  * <blockquote>
  *     <blockquote>
  *         <pre>&lt;logic:iterate id="myCollectionElement" collection="&lt;%=
- *             vector %&gt;"&gt;<br><i> Do something with myCollectionElement</i>
- *             &lt;/logic:iterate&gt;
- *         </pre>
+ *            vector %&gt;"&gt;<br><i> Do something with myCollectionElement</i>
+ *            &lt;/logic:iterate&gt;<br></pre>
  *     </blockquote>
  * </blockquote>
  *
@@ -330,19 +325,19 @@
  *         <ul>
  *             <li>example:
  *                 <pre>&lt;%<br>
- *                     java.util.ArrayList list = new java.util.ArrayList();
- *                     list.add("First");
- *                     list.add("Second");
- *                     list.add("Third");
- *                     list.add("Fourth");
- *                     list.add("Fifth");
- *                     pageContext.setAttribute("list", list,
- *                     PageContext.PAGE_SCOPE);
- *                     %&gt;
+ *                    java.util.ArrayList list = new java.util.ArrayList();
+ *                    list.add("First");
+ *                    list.add("Second");
+ *                    list.add("Third");
+ *                    list.add("Fourth");
+ *                    list.add("Fifth");
+ *                    pageContext.setAttribute("list", list,
+ *                    PageContext.PAGE_SCOPE);
+ *                    %&gt;
  *
- *                     &lt;logic:iterate id="myCollectionElement" name="list"&gt;
- *                     <i>Do something with myCollectionElement</i>
- *                     &lt;/logic:iterate&gt;</pre>
+ *                    &lt;logic:iterate id="myCollectionElement" name="list"&gt;
+ *                    <i>Do something with myCollectionElement</i>
+ *                    &lt;/logic:iterate&gt;<br></pre>
  *             </li>
  *
  *         </ul>
@@ -370,15 +365,15 @@
  *         <ul>
  *             <li>example:
  *                 <pre>&lt;% java.util.ArrayList list = new
- *                     java.util.ArrayList();<br>list.add("First");<br>
- *                     list.add("Second");<br>list.add("Third");<br>
- *                     list.add("Fourth");<br>list.add("Fifth");<br>
- *                     pageContext.setAttribute("list", list,
- *                     PageContext.PAGE_SCOPE);<br> %&gt;<br><br>&lt;logic:iterate
- *                     id="myCollectionElement" name="list"
- *                     type="java.lang.String"&gt;<br>  <i>Do something with
- *                     myCollectionElement</i>
- *                     &lt;/logic:iterate&gt;</pre>
+ *                    java.util.ArrayList();<br>list.add("First");<br>
+ *                    list.add("Second");<br>list.add("Third");<br>
+ *                    list.add("Fourth");<br>list.add("Fifth");<br>
+ *                    pageContext.setAttribute("list", list,
+ *                    PageContext.PAGE_SCOPE);<br> %&gt;<br><br>&lt;logic:iterate
+ *                    id="myCollectionElement" name="list"
+ *                    type="java.lang.String"&gt;<br>  <i>Do something with
+ *                    myCollectionElement</i>
+ *                    &lt;/logic:iterate&gt;<br></pre>
  *             </li>
  *
  *         </ul>
@@ -424,10 +419,10 @@
  *     <p>[numberGuess.jsp]</p>
  *
  *     <pre>&lt;form action="numberProcess.jsp" method="GET"&gt;<br>
- *         Please Enter a Number From 1-10: &lt;input type="text"
- *         name="number" /&gt;&lt;br /&gt;<br> &lt;center&gt;<br> &lt;input
- *         type="submit" name="Guess Number" /&gt;<br> &lt;/center&gt;
- *         <br>&lt;/form&gt;<br></pre>
+ *        Please Enter a Number From 1-10: &lt;input type="text"
+ *        name="number" /&gt;&lt;br /&gt;<br> &lt;center&gt;<br> &lt;input
+ *        type="submit" name="Guess Number" /&gt;<br> &lt;/center&gt;
+ *        <br>&lt;/form&gt;<br></pre>
  *     The next step is to create the processing page. It uses the
  *     struts-logic
  *     taglib. For information on how to set this tag library up in your
@@ -439,20 +434,19 @@
  *     <p>[numberProcess.jsp]</p>
  *
  *     <pre>&lt;%@ page language="java" %&gt;<br>&lt;%@ taglib
- *         uri="/WEB-INF/struts-logic.tld" prefix="logic" %&gt;<br></pre>
+ *        uri="/WEB-INF/struts-logic.tld" prefix="logic" %&gt;<br></pre>
  *
  *     <pre>&lt;!-- Is the number guess right? --&gt;<br>&lt;logic:equal
- *         parameter="number" value="7"&gt;<br> You guessed right! You
- *         win a high speed blender!<br>&lt;/logic:equal&gt;<br></pre>
+ *        parameter="number" value="7"&gt;<br> You guessed right! You
+ *        win a high speed blender!<br>&lt;/logic:equal&gt;<br></pre>
  *
  *     <pre>&lt;!-- If the number guessed was wrong --&gt;<br>&lt;logic:notEqual
- *         parameter="number" value="7"&gt;<br> &lt;!-- Less Than --&gt;
- *         <br> &lt;logic:lessThan parameter="number" value="7"&gt;<br> A
- *         little higher...<br> &lt;/logic:lessThan&gt;<br> &lt;!--
- *         Greater Than --&gt;<br> &lt;logic:greaterThan
- *         parameter="number" value="7"&gt;<br> A little lower...<br>
- *         &lt;/logic:greaterThan&gt;<br>&lt;/logic:notEqual&gt;<br>
- *     </pre>
+ *        parameter="number" value="7"&gt;<br> &lt;!-- Less Than --&gt;
+ *        <br> &lt;logic:lessThan parameter="number" value="7"&gt;<br> A
+ *        little higher...<br> &lt;/logic:lessThan&gt;<br> &lt;!--
+ *        Greater Than --&gt;<br> &lt;logic:greaterThan
+ *        parameter="number" value="7"&gt;<br> A little lower...<br>
+ *        &lt;/logic:greaterThan&gt;<br>&lt;/logic:notEqual&gt;<br></pre>
  *
  *     <p>Basically, the numberProcess.jsp page uses the equal tag to
  *         check if the guess is 7, and if so, prints out a
@@ -501,19 +495,19 @@
  *     <p>[sneaky.jsp]</p>
  *
  *     <pre>&lt;%@ page language="java" %&gt;<br>&lt;%@ taglib
- *         uri="/WEB-INF/struts-logic.tld" prefix="logic" %&gt;<br><br>
- *         <br>&lt;!-- Check to see if the "Referer" header is present --&gt;
- *         <br>&lt;logic:present header="Referer"&gt;<br> &lt;logic:match
- *         header="Referer" value="google.com"&gt;<br> I see you found
- *         our site through Google... interesting.<br> &lt;/logic:match&gt;
- *         <br> &lt;logic:notMatch header="Referer" value="google.com"&gt;
- *         <br> Welcome to the site, we're secretly logging what site you
- *         came from,<br> because we're shady...<br> &lt;/logic:notMatch&gt;
- *         <br>&lt;/logic:present&gt;<br><br>&lt;!-- If the header is not
- *         present --&gt;<br>&lt;logic:notPresent header="Referer"&gt;
- *         <br> Hi, welcome to our site. Please fill out our<br> &lt;a
- *         href="nonExistantForm.jsp"&gt;Form&lt;/a&gt; and<br> tell us
- *         where you're coming from.<br>&lt;/logic:notPresent&gt;</pre>
+ *        uri="/WEB-INF/struts-logic.tld" prefix="logic" %&gt;<br><br>
+ *        <br>&lt;!-- Check to see if the "Referer" header is present --&gt;
+ *        <br>&lt;logic:present header="Referer"&gt;<br> &lt;logic:match
+ *        header="Referer" value="google.com"&gt;<br> I see you found
+ *        our site through Google... interesting.<br> &lt;/logic:match&gt;
+ *        <br> &lt;logic:notMatch header="Referer" value="google.com"&gt;
+ *        <br> Welcome to the site, we're secretly logging what site you
+ *        came from,<br> because we're shady...<br> &lt;/logic:notMatch&gt;
+ *        <br>&lt;/logic:present&gt;<br><br>&lt;!-- If the header is not
+ *        present --&gt;<br>&lt;logic:notPresent header="Referer"&gt;
+ *        <br> Hi, welcome to our site. Please fill out our<br> &lt;a
+ *        href="nonExistantForm.jsp"&gt;Form&lt;/a&gt; and<br> tell us
+ *        where you're coming from.<br>&lt;/logic:notPresent&gt;<br></pre>
  *
  *     <p>Note: Another interesting usage of these tags and headers
  *         would be to use the "User-Agent" header to display
@@ -536,18 +530,16 @@
  *     <p>[iterate.jsp]</p>
  *
  *     <pre>&lt;%@ page language="java" %&gt;<br>&lt;%@ taglib
- *         uri="/WEB-INF/struts-bean.tld" prefix="bean" %&gt;<br>&lt;%@
- *         taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %&gt;<br>
- *     </pre>
+ *        uri="/WEB-INF/struts-bean.tld" prefix="bean" %&gt;<br>&lt;%@
+ *        taglib uri="/WEB-INF/struts-logic.tld" prefix="logic" %&gt;<br></pre>
  *
  *     <pre>&lt;%<br>java.util.ArrayList list = new java.util.ArrayList();
- *         <br> list.add("First");<br> list.add("Second");<br>
- *         list.add("Third");<br> list.add("Fourth");<br> list.add("Fifth");
- *         <br> pageContext.setAttribute("list", list,
- *         PageContext.PAGE_SCOPE);<br>%&gt;<br><br>&lt;logic:iterate
- *         id="myCollectionElement" name="list"&gt;<br> Element Value: &lt;bean:write
- *         name="myCollectionElement" /&gt;&lt;br /&gt;<br>&lt;/logic:iterate&gt;
- *     </pre>
+ *        <br> list.add("First");<br> list.add("Second");<br>
+ *        list.add("Third");<br> list.add("Fourth");<br> list.add("Fifth");
+ *        <br> pageContext.setAttribute("list", list,
+ *        PageContext.PAGE_SCOPE);<br>%&gt;<br><br>&lt;logic:iterate
+ *        id="myCollectionElement" name="list"&gt;<br> Element Value: &lt;bean:write
+ *        name="myCollectionElement" /&gt;&lt;br /&gt;<br>&lt;/logic:iterate&gt;<br></pre>
  * </blockquote>
  * </blockquote>
  */

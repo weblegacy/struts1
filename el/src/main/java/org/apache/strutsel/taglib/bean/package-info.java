@@ -78,19 +78,19 @@
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;bean-el:message key="${messKey}" arg0="${arg}"/&gt;</pre>
+ *    &lt;bean-el:message key="${messKey}" arg0="${arg}"/&gt;</pre>
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;bean-el:resource id="var" name="${filename}" /&gt;</pre>
+ *    &lt;bean-el:resource id="var" name="${filename}" /&gt;</pre>
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;%-- Size of pagescope hash table --%&gt;
- *     &lt;bean-el:size id="pageScopeSize" collection="${pageScope}" /&gt;</pre>
+ *    &lt;%-- Size of pagescope hash table --%&gt;
+ *    &lt;bean-el:size id="pageScopeSize" collection="${pageScope}" /&gt;</pre>
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;bean-el:struts id="mapping" mapping="${actionName}" /&gt;</pre>
+ *    &lt;bean-el:struts id="mapping" mapping="${actionName}" /&gt;</pre>
  */
 package org.apache.strutsel.taglib.bean;

@@ -100,41 +100,38 @@
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;logic-el:forward name="${forwardName}"/&gt;</pre>
+ *    &lt;logic-el:forward name="${forwardName}"/&gt;</pre>
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;%-- Iterates through all HTTP headers. --%&gt;
- *     &lt;logic-el:iterate id="item" collection="${header}"&gt;
- *     &lt;tr&gt;
- *     &lt;td&gt;&lt;c:out value="${item}.key"/&gt;&lt;/td&gt;
- *     &lt;td&gt;&lt;c:out value="${item}.value"/&gt;&lt;/td&gt;
- *     &lt;/tr&gt;
- *     &lt;/logic-el:iterate&gt;</pre>
+ *    &lt;%-- Iterates through all HTTP headers. --%&gt;
+ *    &lt;logic-el:iterate id="item" collection="${header}"&gt;
+ *    &lt;tr&gt;
+ *    &lt;td&gt;&lt;c:out value="${item}.key"/&gt;&lt;/td&gt;
+ *    &lt;td&gt;&lt;c:out value="${item}.value"/&gt;&lt;/td&gt;
+ *    &lt;/tr&gt;
+ *    &lt;/logic-el:iterate&gt;</pre>
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;logic-el:match cookie="${cookieName}" value="${cookieValue}"&gt;
- *     Match succeeded.
- *     &lt;/logic-el:match&gt;</pre>
+ *    &lt;logic-el:match cookie="${cookieName}" value="${cookieValue}"&gt;
+ *    Match succeeded.
+ *    &lt;/logic-el:match&gt;</pre>
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;logic-el:match expr='${hash["foo"]}' value="${matchValue}"&gt;
- *     Match succeeded.
- *     &lt;/logic-el:match&gt;</pre>
+ *    &lt;logic-el:match expr='${hash["foo"]}' value="${matchValue}"&gt;
+ *    Match succeeded.
+ *    &lt;/logic-el:match&gt;</pre>
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;logic-el:messagesPresent property="${messageKey}"&gt;
- *     Message found.
- *     &lt;/logic-el:messagesPresent&gt;</pre>
+ *    &lt;logic-el:messagesPresent property="${messageKey}"&gt;
+ *    Message found.
+ *    &lt;/logic-el:messagesPresent&gt;</pre>
  *
  * <p><i>Example:</i></p>
  * <pre>
- *     &lt;logic-el:redirect href="http://localhost:${portnum}/factory" /&gt;
- * </pre>
- *
+ *    &lt;logic-el:redirect href="http://localhost:${portnum}/factory" /&gt;</pre>
  */
-
 package org.apache.strutsel.taglib.logic;

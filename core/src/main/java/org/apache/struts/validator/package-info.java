@@ -20,8 +20,8 @@
  */
 
 /**
- * The validator package provides a series of classes to validate
- * {@code ActionForm} type of input.
+ * <p>The validator package provides a series of classes to validate
+ * {@code ActionForm} type of input.</p>
  * <br>
  * <br>
  * <img src="doc-files/validatorUML.png" alt="Validator Package UML">

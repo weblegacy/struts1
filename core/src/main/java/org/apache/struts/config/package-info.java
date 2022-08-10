@@ -20,9 +20,9 @@
  */
 
 /**
- * The "config" package contains configuration objects that correspond to
+ * <p>The "config" package contains configuration objects that correspond to
  * elements that may be specified in the {@code struts-config.xml}
- * module configuration file.
+ * module configuration file.</p>
  * <img src="doc-files/configUML.png" alt="Config UML">
  */
 package org.apache.struts.config;

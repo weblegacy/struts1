@@ -20,8 +20,8 @@
  */
 
 /**
- * The upload package facilities to upload files using
- * multi-part requests.
+ * <p>The upload package facilities to upload files using
+ * multi-part requests.</p>
  * <br>
  * <br>
  * <img src="doc-files/uploadUML.png" alt="Upload Package UML">

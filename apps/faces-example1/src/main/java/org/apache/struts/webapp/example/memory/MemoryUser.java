@@ -72,7 +72,7 @@ public final class MemoryUser implements User {
     /**
      * The {@link Subscription}s for this User, keyed by hostname.
      */
-    private HashMap subscriptions = new HashMap();
+    private HashMap<String, MemorySubscription> subscriptions = new HashMap<>();
 
 
     /**
@@ -155,8 +155,8 @@ public final class MemoryUser implements User {
     public Subscription[] getSubscriptions() {
 
         synchronized (subscriptions) {
-            Subscription results[] = new Subscription[subscriptions.size()];
-            return ((Subscription[]) subscriptions.values().toArray(results));
+            Subscription results[] = new Subscription[0];
+            return (subscriptions.values().toArray(results));
         }
 
     }
@@ -210,7 +210,7 @@ public final class MemoryUser implements User {
     public Subscription findSubscription(String host) {
 
         synchronized (subscriptions) {
-            return ((Subscription) subscriptions.get(host));
+            return (subscriptions.get(host));
         }
 
     }

@@ -27,8 +27,8 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.util.LabelValueBean;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Vector;
 
 
 /**
@@ -41,6 +41,7 @@ import java.util.Vector;
  */
 
 public class TestBean extends ActionForm {
+    private static final long serialVersionUID = 8323139488730091727L;
 
     // ------------------------------------------------------------- Properties
 
@@ -49,11 +50,11 @@ public class TestBean extends ActionForm {
      * A collection property where the elements of the collection are of type
      * <code>LabelValueBean</code>.
      */
-    private Collection beanCollection = null;
+    private Collection<LabelValueBean> beanCollection = null;
 
-    public Collection getBeanCollection() {
+    public Collection<LabelValueBean> getBeanCollection() {
         if (beanCollection == null) {
-            Vector entries = new Vector(10);
+            ArrayList<LabelValueBean> entries = new ArrayList<>(10);
 
             entries.add(new LabelValueBean("Label 0", "Value 0"));
             entries.add(new LabelValueBean("Label 1", "Value 1"));
@@ -72,7 +73,7 @@ public class TestBean extends ActionForm {
         return (beanCollection);
     }
 
-    public void setBeanCollection(Collection beanCollection) {
+    public void setBeanCollection(Collection<LabelValueBean> beanCollection) {
         this.beanCollection = beanCollection;
     }
 

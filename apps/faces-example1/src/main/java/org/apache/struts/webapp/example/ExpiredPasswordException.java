@@ -31,6 +31,7 @@ import org.apache.struts.util.ModuleException;
 
 
 public class ExpiredPasswordException extends ModuleException {
+    private static final long serialVersionUID = -6558701568513999795L;
 
 
     /**

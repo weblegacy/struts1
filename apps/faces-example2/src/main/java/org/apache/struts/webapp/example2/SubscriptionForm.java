@@ -48,6 +48,7 @@ import org.apache.struts.action.ActionMapping;
  */
 
 public final class SubscriptionForm extends ActionForm  {
+    private static final long serialVersionUID = -5919986074684776364L;
 
 
     // --------------------------------------------------- Instance Variables

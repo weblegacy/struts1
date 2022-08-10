@@ -25,6 +25,8 @@ package org.apache.struts.webapp.el.exercise;
  * Simple bean to use for testing indexed tags.
  */
 public class Coord implements java.io.Serializable {
+    private static final long serialVersionUID = 6586066326943615150L;
+
     private int x;
     private int y;
 

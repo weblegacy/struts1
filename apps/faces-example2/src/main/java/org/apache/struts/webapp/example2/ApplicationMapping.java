@@ -43,6 +43,7 @@ import org.apache.struts.action.ActionMapping;
  */
 
 public final class ApplicationMapping extends ActionMapping {
+    private static final long serialVersionUID = 8451778618992418542L;
 
 
     // --------------------------------------------------- Instance Variables

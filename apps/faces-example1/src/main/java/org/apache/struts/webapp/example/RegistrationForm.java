@@ -55,6 +55,7 @@ import org.apache.struts.validator.ValidatorForm;
  */
 
 public final class RegistrationForm extends ValidatorForm  {
+    private static final long serialVersionUID = -3673472301335623117L;
 
 
     // ----------------------------------------------------- Instance Variables

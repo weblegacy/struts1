@@ -106,6 +106,7 @@ public class LinkSubscriptionTag extends UIComponentTag {
      *
      * @param component Component whose attributes should be overridden
      */
+    @SuppressWarnings("unchecked")
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);

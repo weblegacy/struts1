@@ -38,6 +38,7 @@ import javax.servlet.jsp.tagext.TagSupport;
  */
 
 public final class CheckLogonTag extends TagSupport {
+    private static final long serialVersionUID = -6725525394050394706L;
 
 
     // --------------------------------------------------- Instance Variables

@@ -183,7 +183,7 @@ public final class MemoryDatabasePlugIn implements PlugIn {
     protected void setupCache(ActionServlet servlet, ModuleConfig config) {
 
         // Set up list of server types under "serverTypes"
-        ArrayList serverTypes = new ArrayList();
+        ArrayList<LabelValueBean> serverTypes = new ArrayList<>();
         serverTypes.add(new LabelValueBean("IMAP Protocol", "imap"));
         serverTypes.add(new LabelValueBean("POP3 Protocol", "pop3"));
         servlet.getServletContext().setAttribute("serverTypes", serverTypes);

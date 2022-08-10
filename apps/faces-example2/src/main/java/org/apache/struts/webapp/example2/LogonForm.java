@@ -43,6 +43,7 @@ import org.apache.struts.action.ActionMapping;
  */
 
 public final class LogonForm extends ActionForm {
+    private static final long serialVersionUID = 5262211014326140411L;
 
 
     // --------------------------------------------------- Instance Variables

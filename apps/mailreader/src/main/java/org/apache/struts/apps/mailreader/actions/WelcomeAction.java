@@ -59,7 +59,7 @@ public final class WelcomeAction extends BaseAction {
             throws Exception {
 
         // Setup message array in case there are errors
-        ArrayList messages = new ArrayList();
+        ArrayList<String> messages = new ArrayList<>();
 
         // Confirm message resources loaded
         MessageResources resources = getResources(request);

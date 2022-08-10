@@ -42,6 +42,7 @@ import org.apache.struts.util.ResponseUtils;
  */
 
 public class LinkUserTag extends TagSupport {
+    private static final long serialVersionUID = -9117230747162979755L;
 
 
     // ------------------------------------------------------ Instance Variables

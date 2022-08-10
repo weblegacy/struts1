@@ -26,7 +26,7 @@ import org.apache.strutsel.taglib.utils.EvalHelper;
 import javax.servlet.jsp.JspException;
 
 /**
- * Evalute the nested body content of this tag if the specified value is a
+ * Evaluate the nested body content of this tag if the specified value is a
  * substring of the specified variable. <p> This class is a subclass of the
  * class <code>org.apache.struts.taglib.logic.MatchTag</code> which provides
  * most of the described functionality.  This subclass allows all attribute

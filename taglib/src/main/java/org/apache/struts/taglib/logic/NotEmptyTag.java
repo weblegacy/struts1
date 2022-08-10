@@ -23,7 +23,7 @@ package org.apache.struts.taglib.logic;
 import javax.servlet.jsp.JspException;
 
 /**
- * Evalute the nested body content of this tag if the specified value is not
+ * Evaluate the nested body content of this tag if the specified value is not
  * empty for this request.
  *
  * @version $Rev$ $Date: 2004-10-16 12:38:42 -0400 (Sat, 16 Oct 2004)

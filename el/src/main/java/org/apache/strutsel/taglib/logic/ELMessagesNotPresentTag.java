@@ -26,7 +26,7 @@ import org.apache.strutsel.taglib.utils.EvalHelper;
 import javax.servlet.jsp.JspException;
 
 /**
- * Evalute to <code>false</code> if an <code>ActionMessages</code> class or a
+ * Evaluate to <code>false</code> if an <code>ActionMessages</code> class or a
  * class that can be converted to an <code>ActionMessages</code> class is in
  * request scope under the specified key and there is at least one message in
  * the class or for the property specified. <p> This class is a subclass of

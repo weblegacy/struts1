@@ -27,7 +27,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 
 /**
- * Evalute the nested body content of this tag if the specified value is a
+ * Evaluate the nested body content of this tag if the specified value is a
  * substring of the specified variable.
  *
  * @version $Rev$ $Date: 2004-10-16 12:38:42 -0400 (Sat, 16 Oct 2004)

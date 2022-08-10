@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Tip-Fix in JavaDoc (Evalute -> Evaluate)
 * Apps: JDK8 - Add generics, serialVersionID, for-each-loop, ...
 * Tiles2: Convert all `package.html` to `package-info.java`
 * Tiles2: JDK8 - Add generics, serialVersionID, for-each-loop, ...

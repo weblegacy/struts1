@@ -273,7 +273,7 @@ public class TestValidWhen {
     @Test
     public void testIndexedValue() {
         // Test Case for Jira Issue STR-2802
-        // see https://issues.apache.org/struts/browse/STR-2802
+        // see https://issues.apache.org/jira/browse/STR-2802
         doParse("(stringArray[1] == 'one')", testBean, 1, "stringArray[1]", true);
     }
 

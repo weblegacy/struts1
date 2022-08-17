@@ -157,7 +157,7 @@ public class LabelTag extends BaseInputTag {
      * takes effect for both the normal and error style.
      *
      * @see #getRequiredStyleClass()
-     * @see #prepareValue(String)
+     * @see #prepareValue(StringBuffer)
      */
     protected void prepareAttribute(StringBuffer handlers, String name,
             Object value) {

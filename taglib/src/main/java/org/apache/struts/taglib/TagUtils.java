@@ -67,7 +67,7 @@ public class TagUtils {
 
     /**
      * Constant for
-     * <a href="http://www.w3.org/TR/xhtml1/#docconf">XHTML 1.0</a>
+     * <a href="https://www.w3.org/TR/xhtml1/#docconf">XHTML 1.0</a>
      * conformance.
      *
      * @since Struts 1.4
@@ -76,7 +76,7 @@ public class TagUtils {
 
     /**
      * Constant for
-     * <a href="http://www.w3.org/TR/xhtml11/conformance.html">XHTML 1.1</a>
+     * <a href="https://www.w3.org/TR/xhtml11/conformance.html">XHTML 1.1</a>
      * conformance.
      *
      * @since Struts 1.4
@@ -85,7 +85,7 @@ public class TagUtils {
 
     /**
      * Constant for
-     * <a href="http://www.w3.org/TR/xhtml2/conformance.html#s_conform">XHTML
+     * <a href="https://www.w3.org/TR/xhtml2/conformance.html#s_conform">XHTML
      * 2.0</a> conformance.
      *
      * @since Struts 1.4
@@ -94,7 +94,7 @@ public class TagUtils {
 
     /**
      * Constant for
-     * <a href="http://www.w3.org/html/wg/html5/#terminology">XHTML 5.0</a>
+     * <a href="https://html.spec.whatwg.org/#terminology">XHTML 5.0</a>
      * conformance.
      *
      * @since Struts 1.4

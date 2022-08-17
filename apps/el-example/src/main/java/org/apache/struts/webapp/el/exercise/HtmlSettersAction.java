@@ -49,7 +49,7 @@ public class HtmlSettersAction extends Action {
      * "Cancel" was pressed.
      *
      * @param mapping    The ActionMapping used to select this instance
-     * @param actionForm The optional ActionForm bean for this request
+     * @param form       The optional ActionForm bean for this request
      * @param request    The servlet request we are processing
      * @param response   The servlet response we are creating
      * @throws Exception if business logic throws an exception

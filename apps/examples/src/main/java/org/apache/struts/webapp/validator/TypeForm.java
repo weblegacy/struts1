@@ -128,7 +128,7 @@ public final class TypeForm extends ValidatorForm implements Serializable {
 
    /**
     * Float field with range checking
-    * @return
+    * @return the float field
     */
     public String getFloatRange() {
        return sFloatRange;

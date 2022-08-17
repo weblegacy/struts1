@@ -383,7 +383,7 @@ public abstract class ActionContextBase extends ContextWrapper
     // identifier; what would be a way to do that without depending on the
     // Servlet API?
     // REPLY: uuid's
-    // http://java.sun.com/products/jini/2.0/doc/specs/api/net/jini/id/Uuid.html
+    // https://web.archive.org/web/20040229051153/http://java.sun.com/products/jini/2.0/doc/specs/api/net/jini/id/Uuid.html
     protected String getTokenGeneratorId() {
         return "";
     }

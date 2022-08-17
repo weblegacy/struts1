@@ -61,7 +61,8 @@ public final class LocaleAction extends Action {
      * <code>country</code> properties on the given form, constructs an
      * appropriate Locale object, and sets it as the Struts Locale for this
      * user's session.
-     * Any <code>ActionForm, including a {@link DynaActionForm}, may be used.
+     * Any <code>ActionForm</code>, including a
+     * {@link org.apache.struts.action.DynaActionForm}, may be used.
      * </p>
      * <p>
      * If a <code>page</code> property is also provided, then after

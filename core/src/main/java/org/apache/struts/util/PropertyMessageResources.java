@@ -48,10 +48,10 @@ import java.util.Properties;
  *    <li>1. <b>Default</b> - default, backwardly compatible, Struts behaviour (i.e. the way
  *    its always worked).</li>
  *    <li>2. <b>JSTL</b> - compatible with how JSTL finds messages
- *        (fix for <a href="http://issues.apache.org/struts/browse/STR-2925">STR-2925</a>)</li>
+ *        (fix for <a href="https://issues.apache.org/jira/browse/STR-2925">STR-2925</a>)</li>
  *    <li>3. <b>Resource</b> - compatible with how Java's <code>PropertyResourceBundle</code>
  *        finds messages (fix for
- *        <a href="http://issues.apache.org/struts/browse/STR-2077">STR-2077</a>)</li>
+ *        <a href="https://issues.apache.org/jira/browse/STR-2077">STR-2077</a>)</li>
  * </ul>
  *
  * <h3>1. Default Mode</h3>

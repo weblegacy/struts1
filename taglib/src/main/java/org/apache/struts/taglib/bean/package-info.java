@@ -144,9 +144,9 @@
  *     the actual property getter and setter methods, so your beans can provided
  *     customized method names through the use of a <code>BeanInfo</code> class.
  *     See the JavaBeans Specification, available at <a
- *         href="http://java.sun.com/products/javabeans/">
- *     http://java.sun.com/products/javabeans/</a>
- *     , for more information.</p>
+ *         href="https://www.oracle.com/java/technologies/javase/javabeans-spec.html">
+ *     https://www.oracle.com/java/technologies/javase/javabeans-spec.html/</a>,
+ *     for more information.</p>
  *
  * <p><em>Nested References</em> - Nested references are used to access a
  *     property
@@ -202,7 +202,7 @@
  *     types. Otherwise, JSP runtime exceptions will be thrown.</p>
  *
  * <p>See the JavaDocs for <a
- *         href="http://jakarta.apache.org/commons/beanutils/api/org/apache/commons/beanutils/PropertyUtils.html">PropertyUtils</a>
+ *         href="https://commons.apache.org/proper/commons-beanutils/apidocs/org/apache/commons/beanutils/PropertyUtils.html">PropertyUtils</a>
  *     for more detailed information about the mechanisms that Struts uses to
  *     access
  *     properties in a general way, through Java reflection APIs.</p>
@@ -339,10 +339,9 @@
  *     required.</p>
  *
  * <p>For more information about the <code>&lt;jsp:useBean&gt;</code> tag, see
- *     the JavaServer Pages Specification, available at <a
- *         href="http://java.sun.com/products/jsp/download.html">
- *     http://java.sun.com/products/jsp/download.html</a>
- *     .</p>
+ *     the Jakarta Server Pages Specification, available at <a
+ *         href="https://jakarta.ee/specifications/pages/">
+ *     https://jakarta.ee/specifications/pages/</a>.</p>
  *
  * <h5>The Struts <code>&lt;bean:define&gt;</code> Tag</h5>
  *

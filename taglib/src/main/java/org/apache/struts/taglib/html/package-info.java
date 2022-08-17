@@ -701,18 +701,14 @@
  * <p>The <code>paramProperty</code> attribute may also be omitted, so long as
  *     the named bean identifies a value that can be converted to a String.</p>
  *
- * <p>To pass multiple dynamic parameters, you can store them in a <code><a
- *         href="http://java.sun.com/j2se/1.3/docs/api/java/util/Map.html">
- *     java.util.Map</a>
- * </code>, and use the name of the map for the <code>paramName</code>. The
- *     map must then contain one or more <code>paramIds</code> and their
- *     corresponding
- *     values. As the Map is processed, the keys are assumed to be the names of
- *     query parameters to be appended. The value associated with each key must
- *     be either a String or a String array representing the parameter value(s).
- *     If a String array is specified, more than one value for the same query
- *     parameter
- *     name will be created.</p>
+ * <p>To pass multiple dynamic parameters, you can store them in a
+ *     <code>{@link java.util.Map}</code>, and use the name of the map for the
+ *     {@code paramName}. The map must then contain one or more {@code paramIds}
+ *     and their corresponding values. As the Map is processed, the keys are
+ *     assumed to be the names of query parameters to be appended. The value
+ *     associated with each key must be either a String or a String array
+ *     representing the parameter value(s). If a String array is specified,
+ *     more than one value for the same query parameter name will be created.</p>
  *
  * <p>The HTML session tracking tags use several common attributes, that can
  *     be organized into three groups, as follows. All of these attributes are
@@ -922,16 +918,10 @@
  *             </td>
  *             <td style="border:1px solid black;padding:4px">
  *                 [ link rewrite img ] - The name of a JSP bean that
- *                 contains a
- *                 <code><a
- *                         href="http://java.sun.com/j2se/1.3/docs/api/java/util/Map.html">
- *                     Map</a>
- *                 </code> representing the query parameters (if <code>
- *                 property</code>
- *                 is not specified), or a JSP bean whose property getter is
- *                 called
- *                 to return a <code>Map</code> (if <code>property</code> is
- *                 specified).
+ *                 contains a <code>{@link java.util.Map}</code> representing
+ *                 the query parameters (if {@code property} is not specified),
+ *                 or a JSP bean whose property getter is called to return a
+ *                 {@code Map} (if {@code property} is specified).
  *             </td>
  *         </tr>
  *         <tr>
@@ -940,14 +930,10 @@
  *             </td>
  *             <td style="border:1px solid black;padding:4px">
  *                 [ link rewrite img ] - The name of a property of the bean
- *                 specified
- *                 by the name attribute, whose return value must be a <code>
- *                 <a href="http://java.sun.com/j2se/1.3/docs/api/java/util/Map.html">
- *                     Map</a>
- *                 </code> containing the query parameters to be added to the src
- *                 URL. You <b>must</b> specify the name attribute if you
- *                 specify this
- *                 attribute
+ *                 specified by the name attribute, whose return value must be a
+ *                 <code>{@link java.util.Map}</code> containing the query
+ *                 parameters to be added to the src URL. You <b>must</b> specify
+ *                 the name attribute if you specify this attribute
  *             </td>
  *         </tr>
  *         <tr>

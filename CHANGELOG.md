@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* JavaDoc: Correct links and others
 * Correct generics-adaption in `PluginConfig`
 * Correct link to preface
 * Apps: HTML5-Updates

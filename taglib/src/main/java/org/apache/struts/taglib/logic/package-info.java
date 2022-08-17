@@ -466,10 +466,7 @@
  *         java.lang.String.compareTo()
  *         method. See the javadocs on the compareTo() method for more
  *         information,
- *         located <a
- *             href="http://www.javasoft.com/products/jdk/1.2/docs/api/java/lang/String.html#compareTo%28java.lang.Object%29">
- *         here</a>
- *         .</p>
+ *         located here: {@link java.lang.String#compareTo(java.lang.String)}.</p>
  * </blockquote>
  *
  * <p><span style="text-decoration:underline;">Match and Present Tags (match, notMatch, present,
@@ -485,7 +482,7 @@
  *         requested
  *         URL. We'll use this to check if the user is coming from a link
  *         specified
- *         by a <a href="http://www.google.com">Google</a>
+ *         by a <a href="https://www.google.com">Google</a>
  *         search, and offer a personalized greeting, frightening users
  *         that
  *         find our site through the search engine with our amazing

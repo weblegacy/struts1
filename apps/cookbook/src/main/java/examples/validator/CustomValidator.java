@@ -52,8 +52,16 @@ public class CustomValidator {
     /**
      * Example validator for comparing the equality of two fields
      *
-     * https://weblegacy.github.io/struts1/faqs/validator.html
-     * http://www.raibledesigns.com/page/rd/20030226
+     * <ul>
+     *   <li><a href="https://weblegacy.github.io/struts1/faqs/validator.html">
+     *                https://weblegacy.github.io/struts1/faqs/validator.html
+     *       </a>
+     *   </li>
+     *   <li><a href="https://www.raibledesigns.com/rd/date/20030226">
+     *                https://www.raibledesigns.com/rd/date/20030226
+     *       </a>
+     *   </li>
+     * </ul>
      */
     public static boolean validateTwoFields(
         Object bean,

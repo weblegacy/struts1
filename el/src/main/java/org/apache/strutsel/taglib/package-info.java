@@ -364,12 +364,12 @@
  * <p><i>Struts Example:</i></p>
  * <pre>
  *    &lt;bean:include id="stuffOut"
- *    href="http://somewhere.com/stuff.jsp"/&gt;</pre>
+ *    href="https://somewhere.com/stuff.jsp"/&gt;</pre>
  *
  * <p><i>JSTL Version:</i></p>
  * <pre>
  *    &lt;c:import var="stuffOut"
- *    value="http://somewhere.com/stuff.jsp"/&gt;</pre>
+ *    value="https://somewhere.com/stuff.jsp"/&gt;</pre>
  *
  * <p><i>Struts Example:</i></p>
  * <pre>

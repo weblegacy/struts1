@@ -118,7 +118,7 @@ import java.util.Map;
  *
  * @version $Rev$ $Date: 2005-05-07 12:11:38 -0400 (Sat, 07 May 2005)
  *          $
- * @see <a href="http://commons.apache.org/beanutils/apidocs/org/apache/commons/beanutils/package-summary.html#dynamic.lazy">Commons
+ * @see <a href="https://commons.apache.org/proper/commons-beanutils/apidocs/org/apache/commons/beanutils/package-summary.html#dynamic.lazy">Commons
  *      BeanUtils JavaDoc</a>
  * @since Struts 1.2.6
  */

@@ -153,8 +153,8 @@
  *     <li><em>Internationalization Tutorial</em> - The Java Language Tutorial
  *         has a
  *         comprehensive trail covering internationalization, available at:
- *         <a href="http://java.sun.com/docs/books/tutorial/i18n/index.html">
- *             http://java.sun.com/docs/books/tutorial/i18n/index.html</a>.</li>
+ *         <a href="https://docs.oracle.com/javase/tutorial/i18n/index.html">
+ *             https://docs.oracle.com/javase/tutorial/i18n/index.html</a>.</li>
  *     <li><em>Javadoc APIs</em> - You will want to consult the Javadoc API
  *         documentation for the following standard Java classes:
  *         <ul>

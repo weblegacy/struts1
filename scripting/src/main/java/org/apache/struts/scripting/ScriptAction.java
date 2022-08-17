@@ -66,7 +66,7 @@ import org.apache.bsf.util.IOUtils;
  *  <br />
  *  To determine what script will be executed, the "parameter" attribute of the
  *  action mapping should contain the name of the script relative to the web
- *  application root directory (i.e. http://server/app). <br />
+ *  application root directory (i.e. https://server/app). <br />
  *  <br />
  *  Before the script completes, the next ActionForward needs to be specified.
  *  This can be done one of two ways:

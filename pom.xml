@@ -781,12 +781,31 @@
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <configuration>
+                  <detectLinks>true</detectLinks>
+                  <dependencyLinks>
+                    <dependencyLink>
+                      <groupId>org.junit.jupiter</groupId>
+                      <artifactId>junit-jupiter-engine</artifactId>
+                      <url>https://junit.org/junit5/docs/current/api</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.apache.tiles</groupId>
+                      <artifactId>tiles-jsp</artifactId>
+                      <url>https://tiles.apache.org/2.2/framework/apidocs/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.apache.tiles</groupId>
+                      <artifactId>tiles-core</artifactId>
+                      <url>https://tiles.apache.org/2.2/framework/apidocs/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.apache.tiles</groupId>
+                      <artifactId>tiles-api</artifactId>
+                      <url>https://tiles.apache.org/2.2/framework/apidocs/</url>
+                    </dependencyLink>
+                  </dependencyLinks>
                   <links>
-                    <link>https://commons.apache.org/proper/commons-beanutils/javadocs/v1.8.2/apidocs/</link>
-                    <link>https://commons.apache.org/proper/commons-logging/javadocs/api-1.0.4/</link>
-                    <link>https://commons.apache.org/proper/commons-validator/apidocs/</link>
-                    <link>https://java.sun.com/j2se/1.4.2/docs/api/</link>
-                    <link>https://java.sun.com/j2ee/1.4/docs/api/</link>
+                    <link>https://docs.oracle.com/javaee/6/api</link>
                   </links>
                   <failOnError>false</failOnError>
                   <quiet>true</quiet>

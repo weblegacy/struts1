@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `commons-logging` from 1.1.1 to 1.2
 * JavaDoc: Correct links and others
 * Correct generics-adaption in `PluginConfig`
 * Correct link to preface

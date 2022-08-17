@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Correct link to preface
 * Apps: HTML5-Updates
 * Strip trailing spaces
 * Replace tabs with spaces

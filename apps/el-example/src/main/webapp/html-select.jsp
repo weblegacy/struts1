@@ -15,7 +15,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 --%>
-<%@ page language="java" import="org.apache.struts.util.LabelValueBean, java.util.Vector" %>
+<%@ page language="java" import="org.apache.struts.util.LabelValueBean, java.util.ArrayList" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean-el" prefix="bean-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic-el" prefix="logic-el" %>
@@ -31,7 +31,7 @@
                         "Multiple 8", "Multiple 9" };
         pageContext.setAttribute("multipleValues", multipleValues);
 
-        Vector options = new Vector();
+        ArrayList<LabelValueBean> options = new ArrayList<LabelValueBean>();
         options.add(new LabelValueBean("Label 0", "Value 0"));
         options.add(new LabelValueBean("Label 1", "Value 1"));
         options.add(new LabelValueBean("Label 2", "Value 2"));

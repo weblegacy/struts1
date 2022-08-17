@@ -56,9 +56,9 @@
     <p>Display the request parameter values to show that the multipart request
        retains them in the event of a validation error.</p>
 
-    <b>The Text:</b>&nbsp;<%= request.getParameter("theText") %></br>
-    <b>Write File:</b>&nbsp;<%= request.getParameter("writeFile") %></br>
-    <b>File Path:</b>&nbsp;<%= request.getParameter("filePath") %></br>
+    <b>The Text:</b>&nbsp;<%= request.getParameter("theText") %><br>
+    <b>Write File:</b>&nbsp;<%= request.getParameter("writeFile") %><br>
+    <b>File Path:</b>&nbsp;<%= request.getParameter("filePath") %><br>
 
     <hr />
 

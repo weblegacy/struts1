@@ -33,28 +33,28 @@
       <s:stylesheet path="/stylesheet.css"/>
     </head>
     <body>
-      <table border="1" width="100%" cellspacing="5">
+      <table style="border:1px solid black;width:100%;border-spacing:5px">
         <tr>
-          <th colspan="2" align="center">
+          <th colspan="2" style="border:1px solid black;text-align:center">
             <f:subview id="header">
               <t:insert attribute="header" flush="false"/>
             </f:subview>
           </th>
         </tr>
         <tr>
-          <td width="140" valign="top">
+          <td style="border:1px solid black;width:140px;vertical-align:top">
             <f:subview id="menu">
               <t:insert attribute="menu" flush="false"/>
             </f:subview>
           </td>
-          <td align="left" valign="top">
+          <td style="border:1px solid black;text-align:left;vertical-align:top">
             <f:subview id="body">
               <t:insert attribute="body" flush="false"/>
             </f:subview>
           </td>
         </tr>
         <tr>
-          <td colspan="2" align="center">
+          <td colspan="2" style="border:1px solid black;text-align:center">
             <f:subview id="footer">
               <t:insert attribute="footer" flush="false"/>
             </f:subview>

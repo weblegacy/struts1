@@ -21,7 +21,7 @@
 <html:html>
     <head>
         <title>
-            <title>Test struts-html:cancel Tag</title>
+            Test struts-html:cancel Tag
         </title>
         <html:base/>
     </head>

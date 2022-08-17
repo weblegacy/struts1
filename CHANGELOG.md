@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Apps: HTML5-Updates
 * Strip trailing spaces
 * Replace tabs with spaces
 * Adaptation of `package-info.java` so that output is similar to the old `package.html`

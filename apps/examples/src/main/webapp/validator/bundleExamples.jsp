@@ -27,7 +27,7 @@
        <html:link action="showValidationBundles" target="_blank">validation-bundles.xml</html:link></p>
 
     <html:form action="validateBundleExamples">
-      <table border="0">
+      <table style="border:none">
 
         <!-- Name Field -->
         <tr>

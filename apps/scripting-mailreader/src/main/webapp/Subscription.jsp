@@ -42,7 +42,7 @@
 
 <html:form action="/SaveSubscription" focus="host">
 <html:hidden property="task"/>
-<table border="0" width="100%">
+<table style="border:none;width:100%">
 
 <tr>
     <th align="right">

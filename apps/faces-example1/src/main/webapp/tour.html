@@ -31,7 +31,7 @@
 
 <h2><font face="Arial">A Walking Tour of the Struts Example Application</font></h2>
 <p><i>This article is meant to introduce a new user to Struts by
-&quot;walking through&quot; the example application. See the <a href="http://jakarta.apache.org/struts/">Struts
+&quot;walking through&quot; the example application. See the <a href="https://jakarta.apache.org/struts/">Struts
 Users Guide and Strut's API</a> for more documentation.&nbsp;&nbsp;</i></p>
 <p><i>This article
 is based on the working 1.0 builds of Struts.&nbsp; It is assumed that the
@@ -98,7 +98,7 @@ application.&quot;</p>
 <p>The example is still incomplete, but still a very useful introduction to
 Struts. For more about installing Struts and the example application, see the
 Struts readme.</p>
-<h3><font face="Arial"><a name="index.jsp">index.jsp</a></font></h3>
+<h3><font face="Arial"><a id="index.jsp">index.jsp</a></font></h3>
 <p>Once installed, the example application is entered through a standard welcome
 page, index.jsp. This page offers two links, one to register with the
 application and one to login in (if you have already registered).</p>
@@ -111,7 +111,7 @@ they are absent for any reason, index.jsp displays an error message.</p>
 they can be displayed even if the message resource is missing. In other pages, a message resource is used to lookup and display messages, based on the
 user's locale.&nbsp;</i></p>
 </blockquote>
-<h4><font face="Arial"><a name="web.xml">web.xml</a>&nbsp;and <a name="ApplicationResources.properties">ApplicationResources.properties</a></font></h4>
+<h4><font face="Arial"><a id="web.xml">web.xml</a>&nbsp;and <a id="ApplicationResources.properties">ApplicationResources.properties</a></font></h4>
 <p>If you check the application's web.xml, you will see how these objects are
 loaded. The message resource is loaded by the application parameter to the
 ActionServlet. When the ActionServlet initializes, it parses the
@@ -122,7 +122,7 @@ application, it will appear throughout the application.</p>
 <p><i>You can even reload the configuration and message resources without
 restarting the container. See the end of the web.xml file for details.&nbsp;</i></p>
 </blockquote>
-<h4><font face="Arial"><a name="DatabaseServlet.java">DatabaseServlet.java</a></font></h4>
+<h4><font face="Arial"><a id="DatabaseServlet.java">DatabaseServlet.java</a></font></h4>
 <p>The database object has it's own initialization block. The database servlet
 stores the database contents as a XML file, which is parsed by the Struts
 digester and loaded as a set of nested hashtables. The outer table is the list
@@ -147,7 +147,7 @@ type=&quot;pop3&quot; username=&quot;user1234&quot; password=&quot;bar&quot;
 <blockquote>
   <p><i>In the source to the database servlet, you should notice that the attribute name for the servlet is read from the package's constant file. This is a good way to be sure a name or other string value is uniform between source files.&nbsp;</i></p>
 </blockquote>
-<h4><a name="index.jsp/2"><font face="Arial">index.jsp 2</font></a></h4>
+<h4><a id="index.jsp/2"><font face="Arial">index.jsp 2</font></a></h4>
 <p>Back in the index.jsp, we can find several good uses of Struts custom tags.
 Two worth noting now are the base and the link tags. The base tag returns the
 current URL to the page, to be sure other relative hyperlinks on the page work
@@ -173,7 +173,7 @@ resource.&nbsp;</li>
 <p>At the top of the index.jsp page, you may also note several directives that
 load the tag libraries. These are just the usual red tape that goes with any
 Java source file.</p>
-<h3><font face="Arial"><a name="logon.jsp">logon.jsp</a></font></h3>
+<h3><font face="Arial"><a id="logon.jsp">logon.jsp</a></font></h3>
 <p>Next, if you choose the log on link, the container loads the logon.jsp file.
 You can use the default username and password (user:pass) to login. (Note that
 both the username and password are case sensitive.) Better yet, try omitting or
@@ -188,7 +188,7 @@ display a validation-error above the logon form.&nbsp;</li>
   <li>Whatever username you entered before is defaulted on the form.</li>
 </ol>
 <p>Pretty cool, but how does it work?</p>
-<h4><font face="Arial"><a name="struts-config.xml">struts-config.xml</a> and <a name="LogonForm.java">LogonForm.java</a></font></h4>
+<h4><font face="Arial"><a id="struts-config.xml">struts-config.xml</a> and <a id="LogonForm.java">LogonForm.java</a></font></h4>
 <p>First, the logon.jsp makes use of the custom-tag &quot;form&quot;. This tag can scan the
 application's properties for a form bean related
 to the path /logon.jsp (from the link on the welcome page). In this case, Struts finds one, and then checks&nbsp; for an instance of this particular form bean.
@@ -218,7 +218,7 @@ message than a record was added or deleted.</i>&nbsp;</p>
 </blockquote>
 <p>To get the most out of your form beans, Struts provides a special class, ActionForm, with built-in support for validation and message handling that you can use as the base for your own form beans. Each of your JSP forms will probably have a unique set
 of fields, and would have their own specific form bean.</p>
-<h4><font face="Arial"><a name="LogonAction.java">LogonAction.java</a></font></h4>
+<h4><font face="Arial"><a id="LogonAction.java">LogonAction.java</a></font></h4>
 <p>The initial JSP submits its form to logon.do. If you check the servlet
 mappings in the example's web.xml you will see that requests for *.do files are
 directed to the Struts &quot;action&quot; servlet (an instance of ActionServlet).
@@ -286,7 +286,7 @@ editing struts-config.xml and reloading the application.&nbsp;</i></p>
 </blockquote>
 <p>Go ahead and login successfully now, using the default username and password
 (user and pass).&nbsp;</p>
-<h4><font face="Arial"> <a name="struts-config.xml/2">struts-config.xml
+<h4><font face="Arial"> <a id="struts-config.xml/2">struts-config.xml
 2</a></font></h4>
 <p>As mentioned, on a successful login, LogonAction forwards control to the
 &quot;success&quot; action, and where control actually goes is determined by
@@ -341,13 +341,13 @@ browser requested.</p>
   not append&nbsp; form parameters to the request path, as GET does. This is the
 opposite of the HTML form tag, which uses GET by default.</i></p>
 </blockquote>
-<h3><font face="Arial"><a name="mainMenu.jsp">mainMenu.jsp</a></font></h3>
+<h3><font face="Arial"><a id="mainMenu.jsp">mainMenu.jsp</a></font></h3>
 <p>If you check the source for mainMenu.jsp, you will find some interesting new
 tags. The first is app:checkLogon. This is not a standard Struts custom tag, but
 one designed for the Example application. The directive at the top of the file
 tells us that the app tags are defined in app.tld. Tracing through app.tld, we
 find that source for this tag is (surprise!) CheckLogonTag.</p>
-<h4><font face="Arial"><a name="CheckLoginTag.java">CheckLoginTag.java</a></font></h4>
+<h4><font face="Arial"><a id="CheckLoginTag.java">CheckLoginTag.java</a></font></h4>
 <p>This is an excellent example of using custom tags to encapsulate application
 logic. CheckLoginTag.java looks to see if the user is logged in by checking for
 an object named &quot;User&quot; in the session context. If not, control is
@@ -402,10 +402,10 @@ action is mapped to the (surprise again!), the EditRegistrationAction; it uses a
   <p><i>Hint: Consistent naming conventions, like the ones used throughout the
   Example, make applications much easier to write and understand. Save your
   creativity for the things that matter, and follow an established standard for
-  source code formatting, like the <a href="www.amazon.com/exec/obidos/ISBN=0521777682/">Elements
+  source code formatting, like the <a href="https://www.amazon.com/exec/obidos/ISBN=0521777682/">Elements
   of Java Style</a>.</i></p>
 </blockquote>
-<h4><font face="Arial"><a name="editRegistrationAction.java">EditRegistrationAction.java</a></font></h4>
+<h4><font face="Arial"><a id="editRegistrationAction.java">EditRegistrationAction.java</a></font></h4>
 <p>Many objects in an application may do double-duty. For example, EditRegistrationAction not only lets you update a registration, but is also used to
 create a new one. Which task the object performs is determined by the action
 passed to it. In the case of EditRegistrationAction, it can either edit or
@@ -419,7 +419,7 @@ or form action.</p>
   message and a minimum logging (or debug) level. For more, see the Javadoc in
   your struts-documentation application.</i></p>
 </blockquote>
-<h3><font face="Arial"><a name="registration.jsp">registration.jsp</a> and <a name="RegistrationForm.java">RegistrationForm.java</a></font></h3>
+<h3><font face="Arial"><a id="registration.jsp">registration.jsp</a> and <a id="RegistrationForm.java">RegistrationForm.java</a></font></h3>
 <p>If you follow the &quot;Edit your user registration profile&quot; link from
 the mainMenu, we
 will finally reach the heart of the Example application, the registration page.
@@ -461,7 +461,7 @@ maintain, among other benefits.</i></p>
 &gt;</code></p>
 </blockquote>
 <p>Otherwise, the page just contains the top portion -- a blank data-entry form for creating the user's registration.</p>
-<h4><font face="Arial"><a name="logic:iterate">logic:iterate</a></font></h4>
+<h4><font face="Arial"><a id="logic:iterate">logic:iterate</a></font></h4>
 <p>Beside making the usual conditional tests, you can also use logic tags to
 forward control to other actions, to redirect control to another path, and to
 iterate over collections. The registration page includes a good example of using the
@@ -528,7 +528,7 @@ subscription are written with another custom tag, app:linkSubscription. Writing 
 hyperlink to an action is not difficult, but it can be ugly, and makes an excellent
 case for encapsulation.&nbsp;If you trace through the app.tld, you will find that the source code for the
 linkSubscription tag lives in (<i>come on, take a guess</i>) LinkSubscriptionTag.java.</p>
-<h4><font face="Arial"><a name="LinkSubscriptionTag.java">LinkSubscriptionTag.java</a></font></h4>
+<h4><font face="Arial"><a id="LinkSubscriptionTag.java">LinkSubscriptionTag.java</a></font></h4>
 <p>The Example application uses a subscription's host name (e.g. yahoo.com) as a primary key, which means you can only have one subscription for each host. It also means that to edit a subscription, all you need to know is the user and host. In fact, the
 editSubscription action is designed to create, edit, or delete a subscription if provided a user and host names in the request. The goal of LinkSubscriptionTag is then to output a block like:</p>
 <blockquote>
@@ -562,7 +562,7 @@ the page property to the tag</p>
   &lt;/app:linkUser></code></p>
 </blockquote>
 <p>By this time, you must be ready to flip directly to LinkUserTag.java with nary a glance at the configuration file ...</p>
-<h4><font face="Arial"><a name="LinkUserTag.java">LinkUserTag.java</a></font></h4>
+<h4><font face="Arial"><a id="LinkUserTag.java">LinkUserTag.java</a></font></h4>
 <p>Since they solve the same general problem, LinkUserTag and LinkSubscriptionTag are quite a bit a like, except that LinkUserTag grabs the user bean from the session context, instead of a subscription bean from the iteration. Like the LinkSubscriptionTag, the name for the user bean (e.g.
 &quot;user&quot;) is defaulted,
 and can be omitted from the tag; all that's needed is the page property -- the rest is automatic!</p>
@@ -576,10 +576,10 @@ and can be omitted from the tag; all that's needed is the page property -- the r
   <p><font size="2"><code>&lt;a href=&quot;/struts-example/editSubscription.do?action=Create&amp;amp;username=user"><br>
   &nbsp; Add<br>
   &lt;/a></code></font></p>
-<p><i>Note that anchor links with ampersands should use the character entity &amp;amp; as the LinkUserTag has done here (<a href="http://www.w3.org/TR/html401/appendix/notes.html#h-B.2.2">http://www.w3.org/TR/html401/appendix/notes.html#h-B.2.2</a>).&nbsp;</i></p>
+<p><i>Note that anchor links with ampersands should use the character entity &amp;amp; as the LinkUserTag has done here (<a href="https://www.w3.org/TR/html401/appendix/notes.html#h-B.2.2">https://www.w3.org/TR/html401/appendix/notes.html#h-B.2.2</a>).&nbsp;</i></p>
 </blockquote>
 <p>Let's follow that &quot;Add&quot;&nbsp; link now and see what's up with the editSubcription action anyway.&nbsp;</p>
-<h4><a name="EditSubscriptionAction.java"><font face="Arial">EditSubscriptionAction.java</font></a></h4>
+<h4><a id="EditSubscriptionAction.java"><font face="Arial">EditSubscriptionAction.java</font></a></h4>
 <p>Predictably, we find a some now-familiar mappings in struts-config.xml&nbsp;</p>
 <blockquote>
   <p>    <code>    &lt;!-- Subscription form bean --><br>
@@ -608,14 +608,14 @@ Action form (called &quot;subform&quot; in the code)&nbsp; is created and popula
 <p> <i>Note that the servlet only creates one object for each action. Each request is handled as a separate thread, and passed to the single action object instance. This means your action objects must be multi-thread safe.</i></p>
 </blockquote>
 <p> But before turning to our final JSP, a word about our database model ...</p>
-<h4><font face="Arial"><a name="User.java">User.java</a> and <a name="Subscription.java">Subscription.java</a></font></h4>
+<h4><font face="Arial"><a id="User.java">User.java</a> and <a id="Subscription.java">Subscription.java</a></font></h4>
 <p>If you're used to working with relational databases, the links between the user and subscription objects may be confusing. A conventional relational database would create two distinct tables, one for the users and another for the subscriptions, and
 link them together with a user ID. The Example application implements a different model, a hierarchical database. Here a &quot;table&quot; of subscriptions is stored within each user object, something like the way a filing system stores documents within
 folders.&nbsp;</p>
 <p>In addition to the usual getters and setters, the user object also has two methods for working with subscription objects. findSubscription takes a hostname and returns the subscription object for that host. getSubscriptions returns an array of all the
 subscriptions for the user (ready-made for the iterate tag!). Besides the fields needed to manage the SubscriptionForm data, the object also maintains a runtime link to its user object.</p>
 <p>To create a new subscription, EditSubscriptionAction.java simply creates a new subscription object, and sets its user to the object found in the request, and then forwards control to its input form, subscription.jsp.&nbsp;</p>
-<h3><font face="Arial"><a name="subcription.jsp">subscription.jsp</a></font></h3>
+<h3><font face="Arial"><a id="subcription.jsp">subscription.jsp</a></font></h3>
 Saving the best for last, subscription.jsp demonstrates use of some interesting Struts custom form tags,&nbsp; html:options and html:checkbox.&nbsp;
 <p>In registration.jsp, the Struts iteration tag was used to write a list of subscriptions. Another place where iterations and collections are handy is the option list for a HTML select tag. Since this is such a common situation, Struts offers a
 html:options (plural) tag can take an array of objects as a parameter. The tag then iterates over the members of the array (beans) to place each one inside an standard option tag. So given a block like</p>
@@ -644,7 +644,7 @@ default subscription, a form might list the subscriptions in an options tag.&nbs
 </blockquote>
 <p>A particularly tricky HTML control is the checkbox. A problem with a checkbox is that it is only sent in the request if it is checked. If it is not checked, it is not sent (i.e. null). This can be problematic when trying to validate the form's data
 after it has been translated to a bean. The autoconnect property for a subscription demonstrates how to handle validation of a checkbox.</p>
-<h4><font face="Arial"><a name="SubscriptionForm.java">SubscriptionForm.java&nbsp;</a></font></h4>
+<h4><font face="Arial"><a id="SubscriptionForm.java">SubscriptionForm.java&nbsp;</a></font></h4>
 <p>Struts validation is handled by the reset and validate methods of the ActionForm bean. When creating your own form beans, you should subclass ActionForm, add your own fields and their getters/setters, and implement the reset and validate methods.&nbsp;</p>
 <p>Struts calls reset before populating the form, and calls validate after populating it but before the perform method of the action. Reset should assign default values to each of your form fields, usually null. But in the case of checkboxes, the default
 value should usually be false instead of null.&nbsp;</p>
@@ -667,13 +667,13 @@ using a logic tag to output a different set of buttons for each case. This doesn
 <p>In the case of a request to delete a subscription, the submit button is labeled &quot;Confirm&quot;, since this view is meant to give the user a last chance to cancel, before sending that task along to SaveSubscriptionAction.java.</p>
 <p>The actual action property is placed into the form as a hidden field, and SaveSubscriptionAction checks that property to execute the appropriate task.</p>
   <h4>
-<font face="Arial"><a name="SaveSubscriptionAction.java">
+<font face="Arial"><a id="SaveSubscriptionAction.java">
 SaveSubscriptionAction.java</a></font></h4>
 <p>Our final stop has the job of finishing what EditSubscriptionAction.java and subscription.jsp started. After the usual logic and error checking, SaveSubscriptionAction either deletes or updates the subscription object being handled by this request,
 and cleans up the bean, just to be tidy. By now, you should be very comfortable reading through the source on your own, to pickup the finer points.<p>This concludes our tour. To review, you may wish to trace the path a new user takes when they register with the application for the first
 time&nbsp;You should also read over each of the .java and JSP files carefully, since we only covered the high points here.
 <h3>
-<font face="Arial"><a name="Summary">Summary</a></font></h3>
+<font face="Arial"><a id="Summary">Summary</a></font></h3>
 <ul>
   <li>Struts uses a single controller servlet to route HTTP requests.&nbsp;</li>
   <li>The requests are routed to action objects according to path (or URI).&nbsp;</li>

@@ -43,7 +43,7 @@
     </logic:messagesPresent>
     <html:form action="jsType-submit" onsubmit="return validateJsTypeForm(this);">
       <html:hidden property="action" />
-      <table border="0">
+      <table style="border:none">
         <tr>
           <th align="left">
             <bean:message key="typeForm.name.displayname" />

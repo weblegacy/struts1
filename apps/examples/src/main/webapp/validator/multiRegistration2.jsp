@@ -48,7 +48,7 @@
   <html:hidden property="cityStateZip.city"/>
 
 
-<table border="0" width="100%">
+<table style="border:none;width:100%">
   <tr>
     <th align="left">
       <bean:message key="registrationForm.stateprov.displayname"/>

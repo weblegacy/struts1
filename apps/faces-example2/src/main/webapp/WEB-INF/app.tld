@@ -52,7 +52,7 @@
 
     <name>checkLogon</name>
 
-    <tagclass>org.apache.struts.webapp.example.CheckLogonTag</tagclass>
+    <tagclass>org.apache.struts.webapp.example2.CheckLogonTag</tagclass>
 
     <bodycontent>empty</bodycontent>
 
@@ -106,7 +106,7 @@
 
     <name>linkSubscription</name>
 
-    <tagclass>org.apache.struts.webapp.example.LinkSubscriptionTag</tagclass>
+    <tagclass>org.apache.struts.webapp.example2.LinkSubscriptionTag</tagclass>
 
     <info>
 
@@ -158,7 +158,7 @@
 
     <name>linkUser</name>
 
-    <tagclass>org.apache.struts.webapp.example.LinkUserTag</tagclass>
+    <tagclass>org.apache.struts.webapp.example2.LinkUserTag</tagclass>
 
     <info>
 

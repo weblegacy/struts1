@@ -29,7 +29,7 @@
       pageContext.setAttribute("test7.date", new java.util.Date(123456789));
     %>
     <h4>Doubles</h4>
-    <table border="0">
+    <table style="border:none">
       <tr>
         <td>
           <table border="1">
@@ -76,7 +76,7 @@
       </tr>
     </table>
     <h4>Dates</h4>
-    <table border="0">
+    <table style="border:none">
       <tr>
         <td>
           <table border="1">
@@ -125,15 +125,15 @@
     <h4>Sprache | Language | Langage</h4>
     <ul>
       <li>
-        <html:link action="/locale?page=/bean-write-2.jsp&amp;language=de">German | Deutsch</html:link>
+        <html:link action="/locale?page=/bean-write-2.jsp&language=de">German | Deutsch</html:link>
         <bean:message key="locale.de" />
       </li>
       <li>
-        <html:link action="/locale?page=/bean-write-2.jsp&amp;language=en">English | Anglais</html:link>
+        <html:link action="/locale?page=/bean-write-2.jsp&language=en">English | Anglais</html:link>
         <bean:message key="locale.en" />
       </li>
       <li>
-        <html:link action="/locale?page=/bean-write-2.jsp&amp;language=fr">French | Francais</html:link>
+        <html:link action="/locale?page=/bean-write-2.jsp&language=fr">French | Francais</html:link>
         <bean:message key="locale.fr" />
       </li>
     </ul>

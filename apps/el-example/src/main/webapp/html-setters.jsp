@@ -38,7 +38,7 @@ main menu.
 <table border="0" width="100%">
 
 <tr>
-    <th align="center" colspan="4">Scalar Properties</th align="center">
+    <th align="center" colspan="4">Scalar Properties</th>
 </tr>
 
 <tr>
@@ -108,7 +108,7 @@ main menu.
 </tr>
 
 <tr>
-    <th align="center" colspan="4">Indexed Properties</th align="center">
+    <th align="center" colspan="4">Indexed Properties</th>
 </tr>
 
 <tr>

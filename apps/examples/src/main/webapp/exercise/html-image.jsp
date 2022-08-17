@@ -33,31 +33,40 @@
     </p>
     </div>
     <html:form>
-        <table border="1" cellspacing="2" cellpadding="4" align="center">
+        <table style="border:1px solid black;border-spacing:2px;margin-left:auto;margin-right:auto">
         <tr>
-            <td>Standard image tag</td>
-            <td>
+            <td  style="border:1px solid black;padding:4px">
+                Standard image tag
+            </td>
+            <td  style="border:1px solid black;padding:4px">
                 <input type="image" src="struts-power.gif">
             </td>
         </tr>
         <tr>
-            <td>Struts image tag via page attribute</td>
-            <td>
+            <td  style="border:1px solid black;padding:4px">
+                Struts image tag via page attribute
+            </td>
+            <td  style="border:1px solid black;padding:4px">
                 <html:image page="/struts-power.gif" />
             </td>
         </tr>
         <tr>
-            <td>Struts image tag via page attribute, current module</td>
-            <td>
+            <td  style="border:1px solid black;padding:4px">
+                Struts image tag via page attribute, current module
+            </td>
+            <td  style="border:1px solid black;padding:4px">
                 <html:image page="/struts-power.gif"/>
             </td>
          </tr>
          <tr>
-            <td>Struts image tag via page attribute, default module</td>
-            <td>
+            <td  style="border:1px solid black;padding:4px">
+                Struts image tag via page attribute, default module
+            </td>
+            <td  style="border:1px solid black;padding:4px">
                 <html:image page="/struts-power.gif" module="/validator"/>
             </td>
          </tr>
+         </table>
     </html:form>
   </body>
 </html>

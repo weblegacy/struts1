@@ -104,10 +104,12 @@
 
     <li>
         <a href="#MainMenu.jsp">EditRegistration.do</a>
-    <ul>
-        <li><a href="#RegistrationAction.java">RegistrationAction.java</a>
-        </li>
-    </ul>
+
+        <ul>
+            <li><a href="#RegistrationAction.java">RegistrationAction.java</a></li>
+        </ul>
+    </li>
+
     <li>
         <a href="#Registeration.jsp">Registration.jsp</a>
 
@@ -1220,7 +1222,7 @@
     initial = null;
     }
     String value = null;
-    if ((initial !=null) && (initial.length()>0)) {
+    if ((initial !=null) &amp;&amp; (initial.length()>0)) {
     value = initial.trim();
     if (value.length()==0) value = null;
     }
@@ -1259,7 +1261,7 @@
     }
     else {
     user = <strong>database.</strong>findUser(username);
-    if ((user != null) && !user.getPassword().equals(password)) {
+    if ((user != null) &amp;&amp; !user.getPassword().equals(password)) {
     user = null;
     }
     if (user == null) {
@@ -1286,7 +1288,7 @@
 <p>
     The doGet user is another "facade" method.
     A facade simplifies a complicated call to a business method.
-    Here, doGetUser wrapes the business method with the Error Handling needed
+    Here, doGetUser wraps the business method with the Error Handling needed
     by the Mail Reader application.
 </p>
 
@@ -1681,7 +1683,7 @@
 <hr/>
 
 <p>
-    MailReader uses <a href="http://jakarta.apache.org/commons/logging/">Commons
+    MailReader uses <a href="https://commons.apache.org/proper/commons-logging/">Commons
     Logging</a> from Apache Jakarta.
     Commons Logging is an API utility that can be used with several different
     logging systems.
@@ -2121,7 +2123,7 @@
     subscription = null;
     }
 
-    if ((subscription == null) && (log.isTraceEnabled())) {
+    if ((subscription == null) &amp;&amp; (log.isTraceEnabled())) {
     log.trace(
     " No subscription for user "
     + user.getUsername()
@@ -2255,6 +2257,7 @@
     Saving the best for last, Subscription.jsp utilizes two interesting Struts
     custom form tags,
     "html:options" and "html:checkbox".
+</p>
 
 <p>
     In Registration.jsp, the Struts iteration tag was used to write a list of

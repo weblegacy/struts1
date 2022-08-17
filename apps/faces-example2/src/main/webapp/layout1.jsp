@@ -32,22 +32,22 @@
       </title>
     </head>
     <body>
-      <table border="1" width="100%" cellspacing="5">
+      <table style="border:1px solid black;width:100%;border-spacing:5px">
         <tr>
-          <th colspan="2" align="center">
+          <th colspan="2" style="border:1px solid black;text-align:center">
               <t:insert attribute="header" flush="false"/>
           </th>
         </tr>
         <tr>
-          <td width="140" valign="top">
+          <td style="border:1px solid black;width:140px;vertical-align:top">
               <t:insert attribute="menu" flush="false"/>
           </td>
-          <td align="left" valign="top">
+          <td style="border:1px solid black;text-align:left;vertical-align:top">
               <t:insert attribute="body" flush="false"/>
           </td>
         </tr>
         <tr>
-          <td colspan="2" align="center">
+          <td colspan="2" style="border:1px solid black;text-align:center">
               <t:insert attribute="footer" flush="false"/>
           </td>
         </tr>

@@ -40,7 +40,7 @@
 <html:form action="registration-submit" onsubmit="return validateRegistrationForm(this);">
   <html:hidden property="action"/>
 
-<table border="0" width="100%">
+<table style="border:none;width:100%">
   <tr>
     <th align="left">
       <bean:message key="registrationForm.firstname.displayname"/>
@@ -105,7 +105,7 @@
       <html:text property="email" size="60" maxlength="60"/>
     </td>
   </tr>
-  <tr colspan="1">
+  <tr>
     <td>
       <html:submit property="submit" onclick="bCancel=false;">
          <bean:message key="button.save"/>

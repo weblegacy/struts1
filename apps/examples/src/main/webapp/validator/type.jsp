@@ -32,7 +32,7 @@
     </logic:messagesPresent>
     <html:form action="type-submit">
       <html:hidden property="action" />
-      <table border="0">
+      <table style="border:none">
         <tr>
           <th align="left">
             <bean:message key="typeForm.byte.displayname" />
@@ -72,7 +72,6 @@
           </th>
           <td align="left">
             <html:text property="intRange" size="15" maxlength="15" errorStyle="background-color: yellow" />
-          </td>
           </td>
           <td align="left">&nbsp;
             <html:messages property="intRange" id="error"><bean:write name="error" /></html:messages>

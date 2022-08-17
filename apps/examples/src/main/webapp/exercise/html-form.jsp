@@ -21,7 +21,7 @@
 <html:html>
     <head>
         <title>
-            <title>Test struts-html:form Tag</title>
+            Test struts-html:form Tag
         </title>
         <html:base/>
     </head>
@@ -52,11 +52,11 @@
     <p>
         Use the links below to change the <i>postback</i> action (both return
         to this page).
-        <ul>
-           <li>Switch to <html:link action="html-form">/html-form</html:link></li>
-           <li>Switch to <html:link action="html-form-postback">/html-form-postback</html:link></li>
-        </ul>
     </p>
+    <ul>
+       <li>Switch to <html:link action="html-form">/html-form</html:link></li>
+       <li>Switch to <html:link action="html-form-postback">/html-form-postback</html:link></li>
+    </ul>
     <hr/>
 
     <p><html:link action="welcome">Return to the Taglib Exercises main page</html:link></p>

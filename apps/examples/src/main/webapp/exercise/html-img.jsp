@@ -24,44 +24,44 @@
       <h1>Test struts-html:img Tag</h1>
     </div>
 
-    <table border="1" cellspacing="2" cellpadding="4" align="center">
+    <table style="border:1px solid black;border-spacing:2px;margin-left:auto;margin-right:auto">
     <tr>
-    <td>
+    <td  style="border:1px solid black;padding:4px">
     Standard img tag
     </td>
-    <td>
+    <td  style="border:1px solid black;padding:4px">
     <img src="struts-power.gif">
     </td>
     </tr>
     <tr>
-    <td>
+    <td  style="border:1px solid black;padding:4px">
     Struts img tag via page attribute
     </td>
-    <td>
+    <td  style="border:1px solid black;padding:4px">
     <html:img page="/struts-power.gif" />
     </td>
     </tr>
     <tr>
-    <td>
+    <td  style="border:1px solid black;padding:4px">
     Struts img tag via action attribute
     </td>
-    <td>
+    <td  style="border:1px solid black;padding:4px">
     <html:img action="/html-img-action" />
     </td>
     </tr>
     <tr>
-    <td>
+    <td  style="border:1px solid black;padding:4px">
     Struts img tag via action attribute and actionId
     </td>
-    <td>
+    <td  style="border:1px solid black;padding:4px">
     <html:img action="imgAction" />
     </td>
     </tr>
     <tr>
-    <td>
+    <td  style="border:1px solid black;padding:4px">
     Struts img tag via page attribute, default module
     </td>
-    <td>
+    <td  style="border:1px solid black;padding:4px">
     <html:img page="/exercise/struts-power.gif" module="/"/>
     </td>
     </tr>

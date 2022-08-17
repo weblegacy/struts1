@@ -27,12 +27,11 @@
     <html:link action="showValidationValidwhen" target="_blank">validation-validwhen.xml</html:link></p>
 
     <html:form action="validateValidWhenExamples">
-      <table border="0">
 
       <!-- Simple Validation -->
       <p><strong><font color="blue"><bean:message key="validWhenForm.example.simple"/></font></strong>
                  <bean:message key="validWhenForm.example.simple.desc"/></p>
-      <table border="0">
+      <table style="border:none">
         <tr>
           <td align="right"><b><bean:message key="validWhenForm.firstName" /></b></td>
           <td align="left"><b><html:text property="firstName" size="20" maxlength="50" /></b></td>
@@ -45,7 +44,7 @@
       <!-- Both Fields -->
       <p><strong><font color="blue"><bean:message key="validWhenForm.example.both"/></font></strong>
                  <bean:message key="validWhenForm.example.both.desc"/></p>
-      <table border="0">
+      <table style="border:none">
         <tr>
           <td align="left"><b><html:text property="fieldA" size="10" maxlength="10" /></b></td>
           <td align="left"><b><html:text property="fieldB" size="10" maxlength="10" /></b></td>
@@ -56,7 +55,7 @@
       <!-- Numeric Compare Validation -->
       <p><strong><font color="blue"><bean:message key="validWhenForm.example.numeric"/></font></strong>
                  <bean:message key="validWhenForm.example.numeric.desc"/></p>
-      <table border="0">
+      <table style="border:none">
         <tr>
           <td align="right"><b><bean:message key="validWhenForm.min" /></b></td>
           <td align="left"><b><html:text property="min" size="10" maxlength="10" /></b></td>
@@ -69,7 +68,7 @@
       <!-- Address Validation -->
       <p><strong><font color="blue"><bean:message key="validWhenForm.example.address"/></font></strong>
                  <bean:message key="validWhenForm.example.address.desc"/></p>
-      <table border="0">
+      <table style="border:none">
         <tr>
           <td align="right"><b><bean:message key="validWhenForm.address1" /></b></td>
           <td align="left"><b><html:text property="address1" size="20" maxlength="50" /></b></td>
@@ -93,7 +92,7 @@
       </table>
 
       <!-- Buttons -->
-      <table border="0">
+      <table style="border:none">
         <tr>
           <td><html:submit><bean:message key="button.save" /></html:submit></td>
           <td><html:reset><bean:message key="button.reset" /></html:reset></td>

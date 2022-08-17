@@ -39,7 +39,7 @@
 <html:form action="/SaveRegistration" focus="username"
            onsubmit="return validateRegistrationForm(this);">
     <html:hidden property="task"/>
-    <table border="0" width="100%">
+    <table style="border:none;width:100%">
 
         <tr>
             <th align="right">
@@ -129,41 +129,41 @@
         <h3><bean:message key="heading.subscriptions"/></h3>
     </div>
 
-    <table border="1" width="100%">
+    <table style="border:1px solid black;width:100%">
 
         <tr>
-            <th align="center" width="30%">
+            <th style="border:1px solid black;text-align:center;width:30%">
                 <bean:message key="heading.host"/>
             </th>
-            <th align="center" width="25%">
+            <th style="border:1px solid black;text-align:center;width:25%">
                 <bean:message key="heading.user"/>
             </th>
-            <th align="center" width="10%">
+            <th style="border:1px solid black;text-align:center;width:10%">
                 <bean:message key="heading.type"/>
             </th>
-            <th align="center" width="10%">
+            <th style="border:1px solid black;text-align:center;width:10%">
                 <bean:message key="heading.autoConnect"/>
             </th>
-            <th align="center" width="15%">
+            <th style="border:1px solid black;text-align:center;width:15%">
                 <bean:message key="heading.action"/>
             </th>
         </tr>
 
         <logic:iterate name="user" property="subscriptions" id="subscription">
             <tr>
-                <td align="left">
+                <td style="border:1px solid black;text-align:left">
                     <bean:write name="subscription" property="host"/>
                 </td>
-                <td align="left">
+                <td style="border:1px solid black;text-align:left">
                     <bean:write name="subscription" property="username"/>
                 </td>
-                <td align="center">
+                <td style="border:1px solid black;text-align:center">
                     <bean:write name="subscription" property="type"/>
                 </td>
-                <td align="center">
+                <td style="border:1px solid black;text-align:center">
                     <bean:write name="subscription" property="autoConnect"/>
                 </td>
-                <td align="center">
+                <td style="border:1px solid black;text-align:center">
                     <html:link action="/DeleteSubscription"
                                paramName="subscription" paramId="host"
                                paramProperty="host">
@@ -191,7 +191,7 @@
 <html:javascript formName="RegistrationForm"
                  dynamicJavascript="true"
                  staticJavascript="false"/>
-<script language="Javascript1.1" src="StaticJavascript.jsp"></script>
+<script type="text/javascript" src="StaticJavascript.jsp"></script>
 
 <jsp:include page="Footer.jsp"/>
 </body>

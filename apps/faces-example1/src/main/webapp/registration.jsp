@@ -290,7 +290,7 @@
 <s:javascript    formName="registrationForm"
         dynamicJavascript="true"
          staticJavascript="false"/>
-<script language="Javascript1.1" src="staticJavascript.jsp"></script>
+<script type="text/javascript" src="staticJavascript.jsp"></script>
 
 </body>
 </s:html>

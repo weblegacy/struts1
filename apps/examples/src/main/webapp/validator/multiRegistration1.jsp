@@ -42,7 +42,7 @@
   <html:hidden property="action"/>
   <html:hidden property="page" value="1"/>
 
-<table border="0" width="100%">
+<table style="border:none;width:100%">
   <tr>
     <th align="left">
       <bean:message key="registrationForm.firstname.displayname"/>

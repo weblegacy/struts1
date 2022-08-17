@@ -22,7 +22,7 @@
     <title>Test html:link Tag</title><%
           String newValue = "New string value";
           pageContext.setAttribute("newValue", newValue);
-          java.util.HashMap newValues = new java.util.HashMap();
+          java.util.HashMap<String, Object> newValues = new java.util.HashMap<String, Object>();
           newValues.put("floatProperty", new Float(444.0));
           newValues.put("intProperty", new Integer(555));
           newValues.put("stringArray", new String[]
@@ -36,7 +36,7 @@
     </div>
     <p>The following links should hyperlink back to this page, with various combinations of request parameters used to modify the previous values of the associated form bean. Press the "Cancel" button to return to the main menu.</p>
     <html:form action="/html-link-submit">
-      <table border="0" width="100%">
+      <table style="border:none;width:100%">
         <tr>
           <th colspan="4" align="center">Current Values</th>
         </tr>

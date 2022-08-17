@@ -35,10 +35,10 @@
 <hr noshade="noshade"/>
 
 <p>The form has been submitted.</p>
-<p>You can cause a duplicate submission by either:
+<p>You can cause a duplicate submission by either:</p>
 <ol>
 <li>Using your browser back button to return to the previous page and resubmitting the form.</li>
-<li>Refeshing this page and selecting OK when your browser asks if you want to resubmit the data.</li>
+<li>Refreshing this page and selecting OK when your browser asks if you want to resubmit the data.</li>
 </ol>
 In either case, the input form page will be displayed, along with an error message explaining that the form has been submitted out of sequence.
 

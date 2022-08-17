@@ -29,7 +29,7 @@
 
 <html:form action="/SubmitLogon" focus="username"
            onsubmit="return validateLogonForm(this);">
-    <table border="0" width="100%">
+    <table style="border:none;width:100%">
 
         <tr>
             <th align="right">
@@ -66,7 +66,7 @@
 <html:javascript formName="LogonForm"
                  dynamicJavascript="true"
                  staticJavascript="false"/>
-<script language="Javascript1.1" src="StaticJavascript.jsp"></script>
+<script type="text/javascript" src="StaticJavascript.jsp"></script>
 
 <jsp:include page="Footer.jsp"/>
 </body>

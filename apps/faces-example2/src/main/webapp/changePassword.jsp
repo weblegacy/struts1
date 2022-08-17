@@ -21,7 +21,7 @@
 -->
 
 
-<html:html locale="true">
+<html:html lang="true">
 <head>
 <title><bean:message key="change.title"/></title>
 <html:base/>
@@ -29,7 +29,7 @@
 <body bgcolor="white">
 
 <bean:message key="change.message"/>
-<html:link page="/logon.jsp">
+<html:link page="/logon.faces">
   <bean:message key="change.try"/>
 </html:link>
 

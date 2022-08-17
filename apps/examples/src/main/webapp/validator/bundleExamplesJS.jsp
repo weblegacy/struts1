@@ -29,7 +29,7 @@
     <html:errors prefix="html.li.open" suffix="html.li.close"/>
 
     <html:form action="validateJsBundleExamples" onsubmit="return validateBundlesForm(this);">
-      <table border="0">
+      <table style="border:none">
         <!-- Name Field -->
         <tr>
           <td align="right"><b><bean:message key="bundlesForm.label.name" /></b></td>

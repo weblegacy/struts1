@@ -28,14 +28,14 @@
 
 <%
 
-    java.util.ArrayList data = new java.util.ArrayList();
+    java.util.ArrayList<String> data = new java.util.ArrayList<String>();
     data.add("First");
     data.add("Second");
     data.add("Third");
     data.add("Fourth");
     data.add("Fifth");
     pageContext.setAttribute("list", data, PageContext.PAGE_SCOPE);
-    java.util.HashMap temp = new java.util.HashMap();
+    java.util.HashMap<String, String> temp = new java.util.HashMap<String, String>();
     temp.put("First", "0");
     temp.put("Second", "1");
     temp.put("Third", "2");
@@ -102,5 +102,5 @@
     </tr>
 </table>
 
-</html>
 </body>
+</html>

@@ -25,14 +25,14 @@
     <h2><strong><bean:message key="javascript.desc" bundle="i18nExample"/></strong></h2>
     <p><bean:message key="long.desc" bundle="i18nExample"/></p>
 
-     <table border="0" width="95%">
+     <table style="border:none;width:95%">
        <tr><td align="left">
           <html:link action="/welcome"><bean:message key="label.back" bundle="i18nExample"/></html:link> &nbsp;
           <html:link action="showStrutsConfigI18nExample" target="_blank">struts-config-i18nVariables.xml</html:link> &nbsp;
           <html:link action="showValidationI18nExample" target="_blank">validation-i18nVariables.xml</html:link>
        </td>
        <td align="right">
-          <table border="0"><tr>
+          <table style="border:none"><tr>
             <td><b><bean:message key="label.current" bundle="i18nExample"/></b>: <strong><bean:message key="current.locale" bundle="i18nExample"/></strong></td>
             <td>&nbsp;</td>
             <td><html:link action="/switchJsI18nExample?language=en&country=US"><bean:message key="locale.en_us" bundle="i18nExample"/></html:link></td>
@@ -47,7 +47,7 @@
     <h2><bean:message key="form.heading" bundle="i18nExample"/></h2>
 
     <html:form action="validateI18nExample" onsubmit="return validateI18nForm(this);">
-      <table border="0">
+      <table style="border:none">
 
         <!-- Name -->
         <tr>
@@ -177,11 +177,12 @@
     <p><strong><bean:message key="notes.heading" bundle="i18nExample"/></strong></p>
     <ul>
         <li><bean:message key="notes1" bundle="i18nExample"/></li>
-        <li><bean:message key="notes2" bundle="i18nExample"/></li>
-        <ul>
-            <li><bean:message key="notes3" bundle="i18nExample"/></li>
-            <li><bean:message key="notes4" bundle="i18nExample"/></li>
-        </ul>
+        <li><bean:message key="notes2" bundle="i18nExample"/>
+            <ul>
+                <li><bean:message key="notes3" bundle="i18nExample"/></li>
+                <li><bean:message key="notes4" bundle="i18nExample"/></li>
+            </ul>
+        </li>
         <li><bean:message key="notes5" bundle="i18nExample"/></li>
     </ul>
 

@@ -26,7 +26,7 @@
              "Multiple 5", "Multiple 6", "Multiple 7", "Multiple 8", "Multiple 9" };
           pageContext.setAttribute("multipleValues", multipleValues);
 
-          Vector options = new Vector();
+          ArrayList<LabelValueBean> options = new ArrayList<LabelValueBean>();
           options.add(new LabelValueBean("Label 0", "Value 0"));
           options.add(new LabelValueBean("Label 1", "Value 1"));
           options.add(new LabelValueBean("Label 2", "Value 2"));
@@ -62,7 +62,7 @@
         --%>
     <jsp:useBean id="testbean" scope="session" class="org.apache.struts.webapp.exercise.TestBean" />
     <html:form action="/html-select-submit">
-      <table border="0" width="100%">
+      <table style="border:none;width:100%">
         <tr>
           <th align="right">Single Select Allowed:</th>
           <td align="left">

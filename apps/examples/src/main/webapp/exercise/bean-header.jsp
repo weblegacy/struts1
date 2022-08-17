@@ -25,7 +25,7 @@
   </div>Display the values of the headers included in this request.
   <br />
   <br /><%
-     java.util.Enumeration names =
+     java.util.Enumeration<?> names =
        ((HttpServletRequest) request).getHeaderNames();
   %>
   <table border="1">
@@ -34,7 +34,7 @@
       <th>Header Value</th>
     </tr><%
       while (names.hasMoreElements()) {
-        String name = (String) names.nextElement();
+        String name = names.nextElement().toString();
     %>
     <bean:header id="head" name="<%= name %>" />
     <tr>

@@ -27,7 +27,7 @@
     </div>
     <p>Whatever changes you make to properties should be reflected when the page is redisplayed. Press "Save" to update, or "Cancel" to return to the main menu.</p>
     <html:form action="/html-setters-submit">
-      <table border="0" width="100%">
+      <table style="border:none;width:100%">
         <tr>
           <th align="center" colspan="4">Scalar Properties</th>
         </tr>

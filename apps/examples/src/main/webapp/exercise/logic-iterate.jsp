@@ -23,7 +23,7 @@
   <body bgcolor="white">
     <%
       {
-        java.util.ArrayList list = new java.util.ArrayList();
+        java.util.ArrayList<String> list = new java.util.ArrayList<String>();
         list.add("First");
         list.add("Second");
         list.add("Third");

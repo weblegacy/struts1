@@ -53,7 +53,7 @@ public class PlugInConfig implements Serializable {
      * A <code>Map</code> of the name-value pairs that will be used to
      * configure the property values of a <code>PlugIn</code> instance.
      */
-    protected Map<String, String> properties = new HashMap<>();
+    protected Map<String, Object> properties = new HashMap<>();
 
     // ------------------------------------------------------------- Properties
 
@@ -99,7 +99,7 @@ public class PlugInConfig implements Serializable {
      * Return the properties that will be used to configure a
      * <code>PlugIn</code> instance.
      */
-    public Map<String, String> getProperties() {
+    public Map<String, Object> getProperties() {
         return (properties);
     }
 }

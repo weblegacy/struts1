@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Correct generics-adaption in `PluginConfig`
 * Correct link to preface
 * Apps: HTML5-Updates
 * Strip trailing spaces

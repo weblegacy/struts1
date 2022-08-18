@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `htmlunit` from 2.63.0 to 2.64.0
 * Bump `commons-codec` from 1.2 to 1.15
 * Correct `pom.xml` in `struts-it` - remove `dependencyManagement`
 * Correct `README.md` at profile `cargorun`

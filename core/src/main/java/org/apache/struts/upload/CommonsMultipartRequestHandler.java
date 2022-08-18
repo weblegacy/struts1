@@ -50,7 +50,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * <p> This class implements the <code>MultipartRequestHandler</code>
+ * <p> This class implements the {@code MultipartRequestHandler}
  * interface by providing a wrapper around the Jakarta Commons FileUpload
  * library. </p>
  *
@@ -155,13 +155,12 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
     /**
      * <p> Parses the input stream and partitions the parsed items into a set
      * of form fields and a set of file items. In the process, the parsed
-     * items are translated from Commons FileUpload <code>FileItem</code>
-     * instances to Struts <code>FormFile</code> instances. </p>
+     * items are translated from Commons FileUpload {@code FileItem}
+     * instances to Struts {@code FormFile} instances. </p>
      *
      * @param request The multipart request to be processed.
      * @throws ServletException if an unrecoverable error occurs.
      */
-    @SuppressWarnings("unchecked")
     public void handleRequest(HttpServletRequest request)
         throws ServletException {
         // Get the app config for the current request.
@@ -365,12 +364,12 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * <p> Returns the path to the temporary directory to be used for uploaded
      * files which are written to disk. The directory used is determined from
      * the first of the following to be non-empty. <ol> <li>A temp dir
-     * explicitly defined either using the <code>tempDir</code> servlet init
-     * param, or the <code>tempDir</code> attribute of the &lt;controller&gt;
+     * explicitly defined either using the {@code tempDir} servlet init
+     * param, or the {@code tempDir} attribute of the &lt;controller&gt;
      * element in the Struts config file.</li> <li>The container-specified
-     * temp dir, obtained from the <code>javax.servlet.context.tempdir</code>
+     * temp dir, obtained from the {@code javax.servlet.context.tempdir}
      * servlet context attribute.</li> <li>The temp dir specified by the
-     * <code>java.io.tmpdir</code> system property.</li> (/ol> </p>
+     * {@code java.io.tmpdir} system property.</li> </ol> </p>
      *
      * @param mc The module config instance for which the path should be
      *           determined.
@@ -486,7 +485,6 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      *
      * @param item The file item for the parameter to add.
      */
-    @SuppressWarnings("unchecked")
     protected void addFileParameter(FileItem item) {
         FormFile formFile = new CommonsFormFile(item);
 
@@ -494,7 +492,9 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         if (elementsFile.containsKey(name)) {
             Object o = elementsFile.get(name);
             if (o instanceof List) {
-                ((List<FormFile>)o).add(formFile);
+                @SuppressWarnings("unchecked")
+                List<FormFile> list = (List<FormFile>)o;
+                list.add(formFile);
             } else {
                 List<FormFile> list = new ArrayList<>();
                 list.add((FormFile)o);
@@ -511,17 +511,17 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
     // ---------------------------------------------------------- Inner Classes
 
     /**
-     * <p> This class implements the Struts <code>FormFile</code> interface by
-     * wrapping the Commons FileUpload <code>FileItem</code> interface. This
+     * <p> This class implements the Struts {@code FormFile} interface by
+     * wrapping the Commons FileUpload {@code FileItem} interface. This
      * implementation is <i>read-only</i>; any attempt to modify an instance
-     * of this class will result in an <code>UnsupportedOperationException</code>.
+     * of this class will result in an {@code UnsupportedOperationException}.
      * </p>
      */
     static class CommonsFormFile implements FormFile, Serializable {
         private static final long serialVersionUID = -6784594200973351263L;
 
         /**
-         * <p> The <code>FileItem</code> instance wrapped by this object.
+         * <p> The {@code FileItem} instance wrapped by this object.
          * </p>
          */
         FileItem fileItem;
@@ -665,7 +665,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         /**
          * <p> Returns the base file name from the supplied file path. On the
          * surface, this would appear to be a trivial task. Apparently,
-         * however, some Linux JDKs do not implement <code>File.getName()</code>
+         * however, some Linux JDKs do not implement {@code File.getName()}
          * correctly for Windows paths, so we attempt to take care of that
          * here. </p>
          *

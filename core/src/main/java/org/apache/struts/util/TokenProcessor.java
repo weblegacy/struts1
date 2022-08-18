@@ -219,7 +219,7 @@ public class TokenProcessor {
      * @param buffer The byte array to be converted
      */
     private String toHex(byte[] buffer) {
-        StringBuffer sb = new StringBuffer(buffer.length * 2);
+        StringBuilder sb = new StringBuilder(buffer.length * 2);
 
         for (int i = 0; i < buffer.length; i++) {
             sb.append(Character.forDigit((buffer[i] & 0xf0) >> 4, 16));

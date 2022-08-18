@@ -44,10 +44,10 @@ abstract class AbstractBacking {
      * @param context <code>FacesContext</code> for the current request
      * @param action Name of the requested action
      */
-    protected StringBuffer action(FacesContext context, String action) {
+    protected StringBuilder action(FacesContext context, String action) {
 
         // FIXME - assumes extension mapping for Struts
-        StringBuffer sb = new StringBuffer(action);
+        StringBuilder sb = new StringBuilder(action);
         sb.append(".do");
         return (sb);
 
@@ -82,7 +82,7 @@ abstract class AbstractBacking {
      *
      * @param context <code>FacesContext</code> for the current request
      */
-    protected StringBuffer logoff(FacesContext context) {
+    protected StringBuilder logoff(FacesContext context) {
 
         return (action(context, "/logoff"));
 
@@ -95,7 +95,7 @@ abstract class AbstractBacking {
      *
      * @param context <code>FacesContext</code> for the current request
      */
-    protected StringBuffer logon(FacesContext context) {
+    protected StringBuilder logon(FacesContext context) {
 
         return (action(context, "/logon"));
 
@@ -108,7 +108,7 @@ abstract class AbstractBacking {
      *
      * @param context <code>FacesContext</code> for the current request
      */
-    protected StringBuffer registration(FacesContext context) {
+    protected StringBuilder registration(FacesContext context) {
 
         return (action(context, "/editRegistration"));
 
@@ -121,7 +121,7 @@ abstract class AbstractBacking {
      *
      * @param context <code>FacesContext</code> for the current request
      */
-    protected StringBuffer subscription(FacesContext context) {
+    protected StringBuilder subscription(FacesContext context) {
 
         return (action(context, "/editSubscription"));
 

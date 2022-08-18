@@ -54,7 +54,7 @@ public class RegistrationBacking {
     public String create() {
 
         FacesContext context = FacesContext.getCurrentInstance();
-        StringBuffer url = base(context);
+        StringBuilder url = base(context);
         url.append("?action=Create");
         url.append("&username=");
         User user = (User)
@@ -72,7 +72,7 @@ public class RegistrationBacking {
     public String delete() {
 
         FacesContext context = FacesContext.getCurrentInstance();
-        StringBuffer url = base(context);
+        StringBuilder url = base(context);
         url.append("?action=Delete");
         url.append("&username=");
         User user = (User)
@@ -94,7 +94,7 @@ public class RegistrationBacking {
     public String edit() {
 
         FacesContext context = FacesContext.getCurrentInstance();
-        StringBuffer url = base(context);
+        StringBuilder url = base(context);
         url.append("?action=Edit");
         url.append("&username=");
         User user = (User)
@@ -119,10 +119,10 @@ public class RegistrationBacking {
      *
      * @param context <code>FacesContext</code> for the current request
      */
-    private StringBuffer base(FacesContext context) {
+    private StringBuilder base(FacesContext context) {
 
         // FIXME - assumes extension mapping for Struts
-        return (new StringBuffer("/editSubscription.do"));
+        return (new StringBuilder("/editSubscription.do"));
 
     }
 

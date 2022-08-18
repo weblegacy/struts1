@@ -581,7 +581,7 @@ public class FormBeanConfig extends BaseConfig {
      * Return a String representation of this object.
      */
     public String toString() {
-        StringBuffer sb = new StringBuffer("FormBeanConfig[");
+        StringBuilder sb = new StringBuilder("FormBeanConfig[");
 
         sb.append("name=");
         sb.append(this.name);

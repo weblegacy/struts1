@@ -53,7 +53,7 @@ public class MainMenuBacking extends AbstractBacking {
             log.debug("edit()");
         }
         FacesContext context = FacesContext.getCurrentInstance();
-        StringBuffer sb = registration(context);
+        StringBuilder sb = registration(context);
         sb.append("?action=Edit");
         forward(context, sb.toString());
         return (null);

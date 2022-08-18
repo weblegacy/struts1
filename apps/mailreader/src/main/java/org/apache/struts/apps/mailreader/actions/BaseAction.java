@@ -123,7 +123,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      */
     protected void doCancel(HttpSession session, String method, String key) {
         if (log.isTraceEnabled()) {
-            StringBuffer sb = new StringBuffer(128);
+            StringBuilder sb = new StringBuilder(128);
             sb.append(Constants.LOG_CANCEL);
             sb.append(method);
             log.trace(sb.toString());
@@ -370,7 +370,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      */
     protected void doLogProcess(ActionMapping mapping, String method) {
         if (log.isDebugEnabled()) {
-            StringBuffer sb = new StringBuffer(128);
+            StringBuilder sb = new StringBuilder(128);
             sb.append(" ");
             sb.append(mapping.getPath());
             sb.append(":");

@@ -333,7 +333,7 @@ public class OptionTag extends BodyTagSupport {
      */
     protected String renderOptionElement()
         throws JspException {
-        StringBuffer results = new StringBuffer("<option value=\"");
+        StringBuilder results = new StringBuilder("<option value=\"");
 
         if (filter) {
             results.append(TagUtils.getInstance().filter(this.value));

@@ -388,7 +388,7 @@ public class ImgTag extends BaseHandlerTag {
         // Generate the name definition or image element
         HttpServletResponse response =
             (HttpServletResponse) pageContext.getResponse();
-        StringBuffer results = new StringBuffer("<img");
+        StringBuilder results = new StringBuilder("<img");
         String tmp = src();
         String srcurl = url(tmp);
 
@@ -576,7 +576,7 @@ public class ImgTag extends BaseHandlerTag {
         }
 
         // Start with an unadorned URL as specified
-        StringBuffer src = new StringBuffer(url);
+        StringBuilder src = new StringBuilder(url);
 
         // Append a single-parameter name and value, if requested
         if ((paramId != null) && (paramName != null)) {

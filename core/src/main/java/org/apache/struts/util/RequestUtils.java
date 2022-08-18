@@ -704,7 +704,7 @@ public class RequestUtils {
         if (ref == null) {
             return (file);
         } else {
-            StringBuffer sb = new StringBuffer(file);
+            StringBuilder sb = new StringBuilder(file);
 
             sb.append('#');
             sb.append(ref);
@@ -726,7 +726,7 @@ public class RequestUtils {
      */
     public static String actionURL(HttpServletRequest request,
         ActionConfig action, String pattern) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         if (pattern.endsWith("/*")) {
             sb.append(pattern.substring(0, pattern.length() - 2));
@@ -873,7 +873,7 @@ public class RequestUtils {
             }
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         // Calculate a context relative path for this ForwardConfig
         String forwardPattern =
@@ -938,7 +938,7 @@ public class RequestUtils {
 
     /**
      * <p>Return the URL representing the current request. This is equivalent
-     * to <code>HttpServletRequest.getRequestURL</code> in Servlet 2.3.</p>
+     * to {@code HttpServletRequest.getRequestURL} in Servlet 2.3.</p>
      *
      * @param request The servlet request we are processing
      * @return URL representing the current request
@@ -946,7 +946,7 @@ public class RequestUtils {
      */
     public static URL requestURL(HttpServletRequest request)
         throws MalformedURLException {
-        StringBuffer url = requestToServerUriStringBuffer(request);
+        StringBuilder url = requestToServerUriStringBuilder(request);
 
         return (new URL(url.toString()));
     }
@@ -963,7 +963,7 @@ public class RequestUtils {
      */
     public static URL serverURL(HttpServletRequest request)
         throws MalformedURLException {
-        StringBuffer url = requestToServerStringBuffer(request);
+        StringBuilder url = requestToServerStringBuilder(request);
 
         return (new URL(url.toString()));
     }
@@ -978,10 +978,10 @@ public class RequestUtils {
      *         current request
      * @since Struts 1.2.0
      */
-    public static StringBuffer requestToServerUriStringBuffer(
+    public static StringBuilder requestToServerUriStringBuilder(
         HttpServletRequest request) {
-        StringBuffer serverUri =
-            createServerUriStringBuffer(request.getScheme(),
+        StringBuilder serverUri =
+            createServerUriStringBuilder(request.getScheme(),
                 request.getServerName(), request.getServerPort(),
                 request.getRequestURI());
 
@@ -989,7 +989,7 @@ public class RequestUtils {
     }
 
     /**
-     * <p>Return <code>StringBuffer</code> representing the scheme, server,
+     * <p>Return {@code StringBuilder} representing the scheme, server,
      * and port number of the current request. Server-relative URLs can be
      * created by simply appending the server-relative path (starting with
      * '/') to this.</p>
@@ -999,25 +999,25 @@ public class RequestUtils {
      *         current request
      * @since Struts 1.2.0
      */
-    public static StringBuffer requestToServerStringBuffer(
+    public static StringBuilder requestToServerStringBuilder(
         HttpServletRequest request) {
-        return createServerStringBuffer(request.getScheme(),
+        return createServerStringBuilder(request.getScheme(),
             request.getServerName(), request.getServerPort());
     }
 
     /**
-     * <p>Return <code>StringBuffer</code> representing the scheme, server,
+     * <p>Return {@code StringBuilder} representing the scheme, server,
      * and port number of the current request.</p>
      *
      * @param scheme The scheme name to use
      * @param server The server name to use
      * @param port   The port value to use
-     * @return StringBuffer in the form scheme: server: port
+     * @return StringBuilder in the form scheme: server: port
      * @since Struts 1.2.0
      */
-    public static StringBuffer createServerStringBuffer(String scheme,
+    public static StringBuilder createServerStringBuilder(String scheme,
         String server, int port) {
-        StringBuffer url = new StringBuffer();
+        StringBuilder url = new StringBuilder();
 
         if (port < 0) {
             port = 80; // Work around java.net.URL bug
@@ -1037,19 +1037,19 @@ public class RequestUtils {
     }
 
     /**
-     * <p>Return <code>StringBuffer</code> representing the scheme, server,
+     * <p>Return {@code StringBuilder} representing the scheme, server,
      * and port number of the current request.</p>
      *
      * @param scheme The scheme name to use
      * @param server The server name to use
      * @param port   The port value to use
      * @param uri    The uri value to use
-     * @return StringBuffer in the form scheme: server: port
+     * @return StringBuilder in the form scheme: server: port
      * @since Struts 1.2.0
      */
-    public static StringBuffer createServerUriStringBuffer(String scheme,
+    public static StringBuilder createServerUriStringBuilder(String scheme,
         String server, int port, String uri) {
-        StringBuffer serverUri = createServerStringBuffer(scheme, server, port);
+        StringBuilder serverUri = createServerStringBuilder(scheme, server, port);
 
         serverUri.append(uri);
 
@@ -1118,7 +1118,7 @@ public class RequestUtils {
 
         String path = actionConfig.getPath();
         String mapping = RequestUtils.getServletMapping(servlet);
-        StringBuffer actionIdPath = new StringBuffer();
+        StringBuilder actionIdPath = new StringBuilder();
 
         // Form the path based on the servlet mapping pattern
         if (mapping.startsWith("*")) {

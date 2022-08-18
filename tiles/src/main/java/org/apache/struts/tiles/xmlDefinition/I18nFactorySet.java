@@ -394,7 +394,7 @@ public class I18nFactorySet extends FactorySet {
         String country  = locale.getCountry();
         String variant  = locale.getVariant();
 
-        StringBuffer suffix = new StringBuffer();
+        StringBuilder suffix = new StringBuilder();
         suffix.append('_');
         suffix.append(language);
         if (language.length() > 0) {
@@ -561,7 +561,7 @@ public class I18nFactorySet extends FactorySet {
      * @return String representation.
      */
     public String toString() {
-        StringBuffer buff = new StringBuffer("I18nFactorySet : \n");
+        StringBuilder buff = new StringBuilder("I18nFactorySet : \n");
         buff.append("--- default factory ---\n");
         buff.append(defaultFactory.toString());
         buff.append("\n--- other factories ---\n");

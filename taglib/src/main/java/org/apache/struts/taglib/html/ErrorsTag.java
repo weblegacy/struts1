@@ -216,7 +216,7 @@ public class ErrorsTag extends TagSupport {
                 getSuffix());
 
         // Render the error messages appropriately
-        StringBuffer results = new StringBuffer();
+        StringBuilder results = new StringBuilder();
         boolean headerDone = false;
         String message = null;
         Iterator<ActionMessage> reports =

@@ -301,7 +301,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
             if (actionConfigIds.containsKey(actionId)) {
                 if (log.isWarnEnabled()) {
                     ActionConfig otherConfig = actionConfigIds.get(actionId);
-                    StringBuffer msg = new StringBuffer("Overriding actionId[");
+                    StringBuilder msg = new StringBuilder("Overriding actionId[");
                     msg.append(actionId);
                     msg.append("] for path[");
                     msg.append(otherConfig.getPath());

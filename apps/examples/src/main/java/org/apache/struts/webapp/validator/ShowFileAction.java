@@ -52,7 +52,7 @@ public class ShowFileAction extends Action {
 
         // Get the file name
         String fileName = mapping.getParameter();
-        StringBuffer fileContents = new StringBuffer();
+        StringBuilder fileContents = new StringBuilder();
 
         if(fileName != null) {
 

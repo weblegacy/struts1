@@ -1401,7 +1401,7 @@ public class ActionConfig extends BaseConfig {
      * <p> Return a String representation of this object. </p>
      */
     public String toString() {
-        StringBuffer sb = new StringBuffer("ActionConfig[");
+        StringBuilder sb = new StringBuilder("ActionConfig[");
 
         sb.append("cancellable=");
         sb.append(cancellable);

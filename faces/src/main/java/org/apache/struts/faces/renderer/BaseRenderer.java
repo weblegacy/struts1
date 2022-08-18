@@ -154,7 +154,7 @@ public class BaseRenderer extends AbstractRenderer {
         try {
             String scheme = (String)
                 MethodUtils.invokeMethod(request, "getScheme", null);
-            StringBuffer sb = new StringBuffer(scheme);
+            StringBuilder sb = new StringBuilder(scheme);
             sb.append("://");
             sb.append(MethodUtils.invokeMethod(request, "getServerName", null));
             Integer port = (Integer)
@@ -189,7 +189,7 @@ public class BaseRenderer extends AbstractRenderer {
 
         HttpServletRequest request = (HttpServletRequest)
             context.getExternalContext().getRequest();
-        StringBuffer sb = new StringBuffer(request.getScheme());
+        StringBuilder sb = new StringBuilder(request.getScheme());
         sb.append("://");
         sb.append(request.getServerName());
         if ("http".equals(request.getScheme()) &&

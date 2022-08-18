@@ -278,7 +278,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      */
     @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
-        StringBuffer results = new StringBuffer();
+        StringBuilder results = new StringBuilder();
 
         HttpServletRequest request =
           (HttpServletRequest)pageContext.getRequest();
@@ -551,7 +551,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      * Returns the opening script element and some initial javascript.
      */
     protected String getJavascriptBegin(String methods) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         String name =
             formName.substring(0, 1).toUpperCase()
                 + formName.substring(1, formName.length());
@@ -597,7 +597,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
     }
 
     protected String getJavascriptStaticMethods(ValidatorResources resources) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         sb.append("\n\n");
 
@@ -617,7 +617,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      * Returns the closing script element.
      */
     protected String getJavascriptEnd() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         sb.append("\n");
         if (!this.isXhtml() && "true".equals(htmlComment)){
@@ -688,8 +688,8 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      * xhtml status.
      */
     private String getStartElement() {
-        StringBuffer start =
-          new StringBuffer("<script type=\"text/javascript\"");
+        StringBuilder start =
+          new StringBuilder("<script type=\"text/javascript\"");
 
         // there is no language attribute in xhtml
         if (!this.isXhtml()) {

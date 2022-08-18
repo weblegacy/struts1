@@ -132,7 +132,7 @@ public class HtmlTag extends TagSupport {
      * @since Struts 1.2
      */
     protected String renderHtmlStartElement() {
-        StringBuffer sb = new StringBuffer("<html");
+        StringBuilder sb = new StringBuilder("<html");
 
         String language = null;
         String country = "";

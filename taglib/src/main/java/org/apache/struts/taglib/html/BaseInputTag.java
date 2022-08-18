@@ -237,7 +237,7 @@ public abstract class BaseInputTag extends BaseHandlerTag {
 
         // * @since Struts 1.1
         if (indexed) {
-            StringBuffer results = new StringBuffer();
+            StringBuilder results = new StringBuilder();
 
             prepareIndex(results, name);
             results.append(property);

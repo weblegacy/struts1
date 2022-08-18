@@ -245,7 +245,7 @@ public class FormRenderer extends AbstractRenderer {
             writer.write("<!--\n");
         }
 
-        StringBuffer sb = new StringBuffer("document.forms[\"");
+        StringBuilder sb = new StringBuilder("document.forms[\"");
         sb.append(clientId);
         sb.append("\"].elements[\"");
         sb.append(component.getClientId(context));

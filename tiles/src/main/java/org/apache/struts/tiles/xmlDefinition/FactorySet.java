@@ -152,7 +152,7 @@ public abstract class FactorySet implements ComponentDefinitionsFactory
      */
   public String toString()
     {
-    StringBuffer buff = new StringBuffer( "all FactorySet's factory : \n" );
+    StringBuilder buff = new StringBuilder( "all FactorySet's factory : \n" );
     for (Object factory : factories.values())
       {
       buff.append( factory.toString() ).append("\n");

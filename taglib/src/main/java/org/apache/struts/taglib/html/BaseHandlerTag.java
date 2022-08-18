@@ -909,10 +909,10 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
      * Appends bean name with index in brackets for tags with 'true' value in
      * 'indexed' attribute.
      *
-     * @param handlers The StringBuffer that output will be appended to.
+     * @param handlers The StringBuilder that output will be appended to.
      * @throws JspException if 'indexed' tag used outside of iterate tag.
      */
-    protected void prepareIndex(StringBuffer handlers, String name)
+    protected void prepareIndex(StringBuilder handlers, String name)
         throws JspException {
         if (name != null) {
             handlers.append(TagUtils.getInstance().filter(name));
@@ -968,7 +968,7 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
      */
     protected String prepareStyles()
         throws JspException {
-        StringBuffer styles = new StringBuffer();
+        StringBuilder styles = new StringBuilder();
 
         boolean errorsExist = doErrorsExist();
 
@@ -1039,7 +1039,7 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
      * @return The prepared String for inclusion in the HTML tag.
      */
     protected String prepareEventHandlers() {
-        StringBuffer handlers = new StringBuffer();
+        StringBuilder handlers = new StringBuilder();
 
         prepareMouseEvents(handlers);
         prepareKeyEvents(handlers);
@@ -1051,11 +1051,11 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
 
     /**
      * Prepares the mouse event handlers, appending them to the the given
-     * StringBuffer.
+     * StringBuilder.
      *
-     * @param handlers The StringBuffer that output will be appended to.
+     * @param handlers The StringBuilder that output will be appended to.
      */
-    protected void prepareMouseEvents(StringBuffer handlers) {
+    protected void prepareMouseEvents(StringBuilder handlers) {
         prepareAttribute(handlers, "onclick", getOnclick());
         prepareAttribute(handlers, "ondblclick", getOndblclick());
         prepareAttribute(handlers, "onmouseover", getOnmouseover());
@@ -1067,11 +1067,11 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
 
     /**
      * Prepares the keyboard event handlers, appending them to the the given
-     * StringBuffer.
+     * StringBuilder.
      *
-     * @param handlers The StringBuffer that output will be appended to.
+     * @param handlers The StringBuilder that output will be appended to.
      */
-    protected void prepareKeyEvents(StringBuffer handlers) {
+    protected void prepareKeyEvents(StringBuilder handlers) {
         prepareAttribute(handlers, "onkeydown", getOnkeydown());
         prepareAttribute(handlers, "onkeyup", getOnkeyup());
         prepareAttribute(handlers, "onkeypress", getOnkeypress());
@@ -1079,22 +1079,22 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
 
     /**
      * Prepares the text event handlers, appending them to the the given
-     * StringBuffer.
+     * StringBuilder.
      *
-     * @param handlers The StringBuffer that output will be appended to.
+     * @param handlers The StringBuilder that output will be appended to.
      */
-    protected void prepareTextEvents(StringBuffer handlers) {
+    protected void prepareTextEvents(StringBuilder handlers) {
         prepareAttribute(handlers, "onselect", getOnselect());
         prepareAttribute(handlers, "onchange", getOnchange());
     }
 
     /**
      * Prepares the focus event handlers, appending them to the the given
-     * StringBuffer.
+     * StringBuilder.
      *
-     * @param handlers The StringBuffer that output will be appended to.
+     * @param handlers The StringBuilder that output will be appended to.
      */
-    protected void prepareFocusEvents(StringBuffer handlers) {
+    protected void prepareFocusEvents(StringBuilder handlers) {
         prepareAttribute(handlers, "onblur", getOnblur());
         prepareAttribute(handlers, "onfocus", getOnfocus());
 
@@ -1129,13 +1129,13 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
     }
 
     /**
-     * Prepares the internationalization attribtes, appending them to the the given
-     * StringBuffer.
+     * Prepares the internationalization attributes, appending them to the the given
+     * StringBuilder.
      *
-     * @param handlers The StringBuffer that output will be appended to.
+     * @param handlers The StringBuilder that output will be appended to.
      * @since Struts 1.3.6
      */
-    protected void prepareInternationalization(StringBuffer handlers) {
+    protected void prepareInternationalization(StringBuilder handlers) {
         prepareAttribute(handlers, "lang", getLang());
         prepareAttribute(handlers, "dir", getDir());
     }
@@ -1143,18 +1143,18 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
     /**
      * 'Hook' to enable tags to be extended and additional attributes added.
      *
-     * @param handlers The StringBuffer that output will be appended to.
+     * @param handlers The StringBuilder that output will be appended to.
      */
-    protected void prepareOtherAttributes(StringBuffer handlers) {
+    protected void prepareOtherAttributes(StringBuilder handlers) {
     }
 
     /**
      * Prepares an attribute if the value is not null, appending it to the the
-     * given StringBuffer.
+     * given StringBuilder.
      *
-     * @param handlers The StringBuffer that output will be appended to.
+     * @param handlers The StringBuilder that output will be appended to.
      */
-    protected void prepareAttribute(StringBuffer handlers, String name,
+    protected void prepareAttribute(StringBuilder handlers, String name,
         Object value) {
         if (value != null) {
             handlers.append(" ");

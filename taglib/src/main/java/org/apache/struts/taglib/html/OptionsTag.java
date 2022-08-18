@@ -183,7 +183,7 @@ public class OptionsTag extends TagSupport {
             throw new JspException(messages.getMessage("optionsTag.select"));
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         // If a collection was specified, use that mode to render options
         if (collection != null) {
@@ -300,7 +300,7 @@ public class OptionsTag extends TagSupport {
     // ------------------------------------------------------ Protected Methods
 
     /**
-     * Add an option element to the specified StringBuffer based on the
+     * Add an option element to the specified StringBuilder based on the
      * specified parameters. <p> Note that this tag specifically does not
      * support the <code>styleId</code> tag attribute, which causes the HTML
      * <code>id</code> attribute to be emitted.  This is because the HTML
@@ -311,12 +311,12 @@ public class OptionsTag extends TagSupport {
      * supply an array of <code>id</code> values could be devised, but that
      * doesn't seem to be worth the trouble.
      *
-     * @param sb      StringBuffer accumulating our results
+     * @param sb      StringBuilder accumulating our results
      * @param value   Value to be returned to the server for this option
      * @param label   Value to be shown to the user for this option
      * @param matched Should this value be marked as selected?
      */
-    protected void addOption(StringBuffer sb, String value, String label,
+    protected void addOption(StringBuilder sb, String value, String label,
         boolean matched) {
         sb.append("<option value=\"");
 

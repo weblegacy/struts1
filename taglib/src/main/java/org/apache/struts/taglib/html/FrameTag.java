@@ -149,7 +149,7 @@ private static final long serialVersionUID = -3149862407102709639L;
      */
     public int doEndTag() throws JspException {
         // Print this element to our output writer
-        StringBuffer results = new StringBuffer("<frame");
+        StringBuilder results = new StringBuilder("<frame");
 
         prepareAttribute(results, "src", calculateURL());
         prepareAttribute(results, "name", getFrameName());

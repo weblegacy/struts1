@@ -116,7 +116,7 @@ public class CheckboxTag extends BaseHandlerTag {
     @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Create an appropriate "input" element based on our parameters
-        StringBuffer results = new StringBuffer("<input type=\"checkbox\"");
+        StringBuilder results = new StringBuilder("<input type=\"checkbox\"");
 
         prepareAttribute(results, "name", prepareName());
         prepareAttribute(results, "accesskey", getAccesskey());
@@ -212,7 +212,7 @@ public class CheckboxTag extends BaseHandlerTag {
 
         // * @since Struts 1.1
         if (indexed) {
-            StringBuffer results = new StringBuffer();
+            StringBuilder results = new StringBuilder();
 
             prepareIndex(results, name);
             results.append(property);

@@ -242,7 +242,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
         renderPassThrough(context, component, writer, passThrough);
 
         // Render the JavaScript content of the "onclick" element
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append("document.forms['");
         sb.append(formClientId);
         sb.append("']['");

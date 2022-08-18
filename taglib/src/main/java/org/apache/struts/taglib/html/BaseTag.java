@@ -171,20 +171,20 @@ public class BaseTag extends TagSupport {
      */
     protected String renderBaseElement(String scheme, String serverName,
         int port, String uri) {
-        StringBuffer tag = new StringBuffer("<base href=\"");
+        StringBuilder tag = new StringBuilder("<base href=\"");
 
         if (ref.equals(REF_SITE)) {
-            StringBuffer contextBase =
-                new StringBuffer(((HttpServletRequest) pageContext.getRequest())
+            StringBuilder contextBase =
+                new StringBuilder(((HttpServletRequest) pageContext.getRequest())
                     .getContextPath());
 
             contextBase.append("/");
             tag.append(TagUtils.getInstance().filter(
-                    RequestUtils.createServerUriStringBuffer(scheme,
+                    RequestUtils.createServerUriStringBuilder(scheme,
                     serverName, port, contextBase.toString()).toString()));
         } else {
             tag.append(TagUtils.getInstance().filter(
-                RequestUtils.createServerUriStringBuffer(scheme,
+                RequestUtils.createServerUriStringBuilder(scheme,
                     serverName, port, uri).toString()));
         }
 

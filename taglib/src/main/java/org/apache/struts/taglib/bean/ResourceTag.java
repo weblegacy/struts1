@@ -122,9 +122,9 @@ public class ResourceTag extends TagSupport {
             return (SKIP_BODY);
         }
 
-        // Accumulate the contents of this resource into a StringBuffer
+        // Accumulate the contents of this resource into a StringBuilder
         try {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             InputStreamReader reader = new InputStreamReader(stream);
             char[] buffer = new char[BUFFER_SIZE];
             int n = 0;

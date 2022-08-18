@@ -55,7 +55,7 @@ public class IndexBacking extends AbstractBacking {
             log.debug("create()");
         }
         FacesContext context = FacesContext.getCurrentInstance();
-        StringBuffer sb = registration(context);
+        StringBuilder sb = registration(context);
         sb.append("?action=Create");
         forward(context, sb.toString());
         return (null);

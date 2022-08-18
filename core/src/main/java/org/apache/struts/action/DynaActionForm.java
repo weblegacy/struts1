@@ -529,7 +529,7 @@ public class DynaActionForm extends ActionForm implements DynaBean {
      * @return A string representation of this object.
      */
     public String toString() {
-        StringBuffer sb = new StringBuffer("DynaActionForm[dynaClass=");
+        StringBuilder sb = new StringBuilder("DynaActionForm[dynaClass=");
         DynaClass dynaClass = getDynaClass();
 
         if (dynaClass == null) {

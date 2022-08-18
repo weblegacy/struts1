@@ -83,7 +83,7 @@ public class RegistrationBacking extends AbstractBacking {
             log.debug("create()");
         }
         FacesContext context = FacesContext.getCurrentInstance();
-        StringBuffer url = subscription(context);
+        StringBuilder url = subscription(context);
         url.append("?action=Create");
         url.append("&username=");
         User user = (User)
@@ -104,7 +104,7 @@ public class RegistrationBacking extends AbstractBacking {
             log.debug("delete()");
         }
         FacesContext context = FacesContext.getCurrentInstance();
-        StringBuffer url = subscription(context);
+        StringBuilder url = subscription(context);
         url.append("?action=Delete");
         url.append("&username=");
         User user = (User)
@@ -129,7 +129,7 @@ public class RegistrationBacking extends AbstractBacking {
             log.debug("edit()");
         }
         FacesContext context = FacesContext.getCurrentInstance();
-        StringBuffer url = subscription(context);
+        StringBuilder url = subscription(context);
         url.append("?action=Edit");
         url.append("&username=");
         User user = (User)
@@ -169,7 +169,7 @@ public class RegistrationBacking extends AbstractBacking {
         }
 
         // Forward back to the edit registration page
-        StringBuffer sb = registration(context);
+        StringBuilder sb = registration(context);
         sb.append("?action=Edit");
         forward(context, sb.toString());
         return (null);

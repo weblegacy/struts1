@@ -117,7 +117,7 @@ public class LabelTag extends BaseInputTag {
      */
     public int doEndTag() throws JspException {
         // Generate the opening element
-        StringBuffer results = new StringBuffer("<label");
+        StringBuilder results = new StringBuilder("<label");
         prepareAttribute(results, "accesskey", getAccesskey());
         prepareAttribute(results, "for", getForId() != null ? getForId()
                 : prepareName());
@@ -145,7 +145,7 @@ public class LabelTag extends BaseInputTag {
      * styling is wanted, return <code>null</code>.
      *
      * @return the style class; can be <code>null</code>
-     * @see #prepareAttribute(StringBuffer, String, Object)
+     * @see #prepareAttribute(StringBuilder, String, Object)
      */
     protected String getRequiredStyleClass() {
         return "required";
@@ -157,9 +157,9 @@ public class LabelTag extends BaseInputTag {
      * takes effect for both the normal and error style.
      *
      * @see #getRequiredStyleClass()
-     * @see #prepareValue(StringBuffer)
+     * @see #prepareValue(StringBuilder)
      */
-    protected void prepareAttribute(StringBuffer handlers, String name,
+    protected void prepareAttribute(StringBuilder handlers, String name,
             Object value) {
 
         if ("class".equals(name) && this.required) {
@@ -179,10 +179,10 @@ public class LabelTag extends BaseInputTag {
      * {@link #getRequiredStyleClass()}, if the <code>required</code>
      * property is set.
      *
-     * @param handlers The StringBuffer that output will be appended to.
+     * @param handlers The StringBuilder that output will be appended to.
      * @see #getRequiredStyleClass()
      */
-    protected void prepareValue(StringBuffer handlers) {
+    protected void prepareValue(StringBuilder handlers) {
         handlers.append(this.value);
         if (this.required) {
             handlers.append(" <span class=\"");

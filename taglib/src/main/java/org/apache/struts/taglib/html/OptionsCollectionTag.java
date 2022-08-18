@@ -191,7 +191,7 @@ public class OptionsCollectionTag extends TagSupport {
         // Acquire an iterator over the options collection
         Iterator<?> iter = getIterator(collection);
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         // Render the options
         while (iter.hasNext()) {
@@ -291,7 +291,7 @@ public class OptionsCollectionTag extends TagSupport {
     // ------------------------------------------------------ Protected Methods
 
     /**
-     * Add an option element to the specified StringBuffer based on the
+     * Add an option element to the specified StringBuilder based on the
      * specified parameters. <p> Note that this tag specifically does not
      * support the <code>styleId</code> tag attribute, which causes the HTML
      * <code>id</code> attribute to be emitted.  This is because the HTML
@@ -302,12 +302,12 @@ public class OptionsCollectionTag extends TagSupport {
      * supply an array of <code>id</code> values could be devised, but that
      * doesn't seem to be worth the trouble.
      *
-     * @param sb      StringBuffer accumulating our results
+     * @param sb      StringBuilder accumulating our results
      * @param value   Value to be returned to the server for this option
      * @param label   Value to be shown to the user for this option
      * @param matched Should this value be marked as selected?
      */
-    protected void addOption(StringBuffer sb, String label, String value,
+    protected void addOption(StringBuilder sb, String label, String value,
         boolean matched) {
         sb.append("<option value=\"");
 

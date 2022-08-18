@@ -199,7 +199,7 @@ public class RadioTag extends BaseHandlerTag {
      */
     protected String renderRadioElement(String serverValue, String checkedValue)
         throws JspException {
-        StringBuffer results = new StringBuffer("<input type=\"radio\"");
+        StringBuilder results = new StringBuilder("<input type=\"radio\"");
 
         prepareAttribute(results, "name", prepareName());
         prepareAttribute(results, "accesskey", getAccesskey());
@@ -263,7 +263,7 @@ public class RadioTag extends BaseHandlerTag {
 
         // * @since Struts 1.1
         if (indexed) {
-            StringBuffer results = new StringBuffer();
+            StringBuilder results = new StringBuilder();
 
             prepareIndex(results, name);
             results.append(property);

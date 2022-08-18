@@ -344,7 +344,7 @@ public class LinkTag extends BaseHandlerTag {
      */
     public int doEndTag() throws JspException {
         // Generate the opening anchor element
-        StringBuffer results = new StringBuffer("<a");
+        StringBuilder results = new StringBuilder("<a");
 
         // Special case for name anchors
         prepareAttribute(results, "name", getLinkName());

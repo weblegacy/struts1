@@ -64,7 +64,7 @@ public class ResponseUtils {
             return value;
         }
 
-        StringBuffer result = null;
+        StringBuilder result = null;
         String filtered = null;
 
         for (int i = 0; i < value.length(); i++) {
@@ -99,7 +99,7 @@ public class ResponseUtils {
 
             if (result == null) {
                 if (filtered != null) {
-                    result = new StringBuffer(value.length() + 50);
+                    result = new StringBuilder(value.length() + 50);
 
                     if (i > 0) {
                         result.append(value.substring(0, i));

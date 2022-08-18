@@ -157,9 +157,9 @@ public class ImageTag extends SubmitTag {
     /**
      * Render the button attributes
      *
-     * @param results The StringBuffer that output will be appended to.
+     * @param results The StringBuilder that output will be appended to.
      */
-    protected void prepareButtonAttributes(StringBuffer results)
+    protected void prepareButtonAttributes(StringBuilder results)
         throws JspException {
         String tmp = src();
 

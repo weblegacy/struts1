@@ -280,7 +280,7 @@ public class NestedPropertyHelper {
                 /* append the tokens up to the token difference */
                 count = propCount - count;
 
-                StringBuffer result = new StringBuffer();
+                StringBuilder result = new StringBuilder();
 
                 for (int i = 0; i < count; i++) {
                     result.append(proT.nextToken());

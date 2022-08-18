@@ -132,7 +132,7 @@ public class SubmitTag extends BaseHandlerTag {
      */
     public int doEndTag() throws JspException {
         // Generate an HTML element
-        StringBuffer results = new StringBuffer();
+        StringBuilder results = new StringBuilder();
 
         results.append(getElementOpen());
         prepareAttribute(results, "name", prepareName());
@@ -169,7 +169,7 @@ public class SubmitTag extends BaseHandlerTag {
 
         // * @since Struts 1.1
         if (indexed) {
-            StringBuffer results = new StringBuffer();
+            StringBuilder results = new StringBuilder();
 
             results.append(property);
             prepareIndex(results, null);
@@ -183,9 +183,9 @@ public class SubmitTag extends BaseHandlerTag {
     /**
      * Render the button attributes
      *
-     * @param results The StringBuffer that output will be appended to.
+     * @param results The StringBuilder that output will be appended to.
      */
-    protected void prepareButtonAttributes(StringBuffer results)
+    protected void prepareButtonAttributes(StringBuilder results)
         throws JspException {
         prepareAttribute(results, "accesskey", getAccesskey());
         prepareAttribute(results, "tabindex", getTabindex());
@@ -195,9 +195,9 @@ public class SubmitTag extends BaseHandlerTag {
     /**
      * Render the value element
      *
-     * @param results The StringBuffer that output will be appended to.
+     * @param results The StringBuilder that output will be appended to.
      */
-    protected void prepareValue(StringBuffer results) {
+    protected void prepareValue(StringBuilder results) {
         // Acquire the label value we will be generating
         String label = value;
 

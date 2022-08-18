@@ -55,7 +55,7 @@ public class TestActionRedirect {
         ActionRedirect ar = new ActionRedirect("/path.do");
 
         ar.addParameter("st", "test");
-        ar.addParameter("obj", new StringBuffer("someString"));
+        ar.addParameter("obj", new StringBuilder("someString"));
 
         assertEquals(0, ar.getPath().indexOf("/path.do"), "Incorrect path");
         assertHasParameter(ar.parameterValues, "st", "test");
@@ -84,7 +84,7 @@ public class TestActionRedirect {
 
         ar.addParameter("param", "param1");
         ar.addParameter("param", "param2");
-        ar.addParameter("param", new StringBuffer("someString"));
+        ar.addParameter("param", new StringBuilder("someString"));
 
         assertEquals(0, ar.getPath().indexOf("/path.do"), "Incorrect path");
         assertHasParameter(ar.parameterValues, "param", "param1");
@@ -107,7 +107,7 @@ public class TestActionRedirect {
         ActionRedirect ar = new ActionRedirect(forward);
 
         ar.addParameter("param", "param2");
-        ar.addParameter("object1", new StringBuffer("someString"));
+        ar.addParameter("object1", new StringBuilder("someString"));
 
         assertEquals(0, ar.getPath().indexOf("/path.do"), "Incorrect path");
         assertHasParameter(ar.parameterValues, "param", "param2");

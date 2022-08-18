@@ -93,7 +93,7 @@ public abstract class BaseFieldTag extends BaseInputTag {
      */
     protected String renderInputElement()
         throws JspException {
-        StringBuffer results = new StringBuffer("<input");
+        StringBuilder results = new StringBuilder("<input");
 
         prepareAttribute(results, "type", this.type);
         prepareAttribute(results, "name", prepareName());
@@ -117,9 +117,9 @@ public abstract class BaseFieldTag extends BaseInputTag {
     /**
      * Render the value element
      *
-     * @param results The StringBuffer that output will be appended to.
+     * @param results The StringBuilder that output will be appended to.
      */
-    protected void prepareValue(StringBuffer results)
+    protected void prepareValue(StringBuilder results)
         throws JspException {
         results.append(" value=\"");
 

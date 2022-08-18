@@ -41,7 +41,7 @@ public class MemoryUser extends AbstractUser{
      */
     public String toString() {
 
-        StringBuffer sb = new StringBuffer("<user username=\"");
+        StringBuilder sb = new StringBuilder("<user username=\"");
         sb.append(getUsername());
         sb.append("\"");
         if (getFromAddress() != null) {

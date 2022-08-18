@@ -397,7 +397,7 @@ public class ExceptionConfig extends BaseConfig {
      * Return a String representation of this object.
      */
     public String toString() {
-        StringBuffer sb = new StringBuffer("ExceptionConfig[");
+        StringBuilder sb = new StringBuilder("ExceptionConfig[");
 
         sb.append("type=");
         sb.append(this.type);

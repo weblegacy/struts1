@@ -359,7 +359,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      */
     protected String renderJavascript()
         throws JspException {
-        StringBuffer results = new StringBuffer();
+        StringBuilder results = new StringBuilder();
 
         ModuleConfig config =
             TagUtils.getInstance().getModuleConfig(pageContext);
@@ -426,7 +426,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
     private String createDynamicJavascript(ModuleConfig config,
         ValidatorResources resources, Locale locale, Form form)
         throws JspException {
-        StringBuffer results = new StringBuffer();
+        StringBuilder results = new StringBuilder();
 
         MessageResources messages =
             TagUtils.getInstance().retrieveMessageResources(pageContext,
@@ -556,7 +556,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
             return in;
         }
 
-        StringBuffer buffer = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         StringTokenizer tokenizer = new StringTokenizer(in, "\"", true);
 
         while (tokenizer.hasMoreTokens()) {
@@ -596,7 +596,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
         }
 
         // guess at how many chars we'll be adding...
-        StringBuffer out = new StringBuffer(length + 4);
+        StringBuilder out = new StringBuilder(length + 4);
 
         // run through the string escaping sensitive chars
         for (int i = 0; i < length; i++) {
@@ -644,7 +644,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      * @return JavaScript methods.
      */
     private String createMethods(List<ValidatorAction> actions, boolean stopOnError) {
-        StringBuffer methods = new StringBuffer();
+        StringBuilder methods = new StringBuilder();
         final String methodOperator = stopOnError ? " && " : " & ";
 
         for (ValidatorAction va : actions) {
@@ -727,7 +727,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      * Returns the opening script element and some initial javascript.
      */
     protected String getJavascriptBegin(String methods) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         String name = jsFormName.replace('/', '_'); // remove any '/' characters
 
         name =
@@ -776,7 +776,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
     }
 
     protected String getJavascriptStaticMethods(ValidatorResources resources) {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         sb.append("\n\n");
 
@@ -798,7 +798,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      * Returns the closing script element.
      */
     protected String getJavascriptEnd() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         sb.append("\n");
 
@@ -822,8 +822,8 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      * @since Struts 1.2
      */
     protected String renderStartElement() {
-        StringBuffer start =
-            new StringBuffer("<script type=\"text/javascript\"");
+        StringBuilder start =
+            new StringBuilder("<script type=\"text/javascript\"");
 
         // there is no language attribute in XHTML
         if (!this.isXhtml() && this.scriptLanguage) {

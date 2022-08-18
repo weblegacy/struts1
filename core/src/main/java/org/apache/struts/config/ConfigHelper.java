@@ -364,7 +364,7 @@ public class ConfigHelper implements ConfigHelperInterface {
      * <p> Return the form action converted into a server-relative URL. </p>
      */
     public String getActionMappingURL(String action) {
-        StringBuffer value = new StringBuffer(this.request.getContextPath());
+        StringBuilder value = new StringBuilder(this.request.getContextPath());
 
         // Use our servlet mapping, if one is specified
         String servletMapping = getServletMapping();
@@ -430,7 +430,7 @@ public class ConfigHelper implements ConfigHelperInterface {
     // ------------------------------------------------ Presentation API
 
     /**
-     * <p> Renders the reference for a HTML <base> element </p>
+     * <p> Renders the reference for a HTML &lt;base&gt; element </p>
      */
     public String getOrigRef() {
         // HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();
@@ -438,8 +438,8 @@ public class ConfigHelper implements ConfigHelperInterface {
             return null;
         }
 
-        StringBuffer result =
-            RequestUtils.requestToServerUriStringBuffer(request);
+        StringBuilder result =
+            RequestUtils.requestToServerUriStringBuilder(request);
 
         return result.toString();
     }
@@ -452,7 +452,7 @@ public class ConfigHelper implements ConfigHelperInterface {
             return null;
         }
 
-        StringBuffer result = RequestUtils.requestToServerStringBuffer(request);
+        StringBuilder result = RequestUtils.requestToServerStringBuilder(request);
         String path;
 
         if (forward == null) {
@@ -479,7 +479,7 @@ public class ConfigHelper implements ConfigHelperInterface {
             return null;
         }
 
-        StringBuffer path = new StringBuffer(this.request.getContextPath());
+        StringBuilder path = new StringBuilder(this.request.getContextPath());
 
         path.append(forward.getPath());
 

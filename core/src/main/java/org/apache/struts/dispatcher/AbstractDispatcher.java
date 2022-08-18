@@ -204,7 +204,7 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
     protected final Method getMethod(ActionContext context, String methodName) throws NoSuchMethodException {
         synchronized (methods) {
             // Key the method based on the class-method combination
-            StringBuffer keyBuf = new StringBuffer(100);
+            StringBuilder keyBuf = new StringBuilder(100);
             keyBuf.append(context.getAction().getClass().getName());
             keyBuf.append(":");
             keyBuf.append(methodName);

@@ -490,7 +490,7 @@ public class FormTag extends TagSupport {
         this.lookup();
 
         // Create an appropriate "form" element based on our parameters
-        StringBuffer results = new StringBuffer();
+        StringBuilder results = new StringBuilder();
 
         results.append(this.renderFormStartElement());
 
@@ -554,7 +554,7 @@ public class FormTag extends TagSupport {
      */
     protected String renderFormStartElement()
         throws JspException {
-        StringBuffer results = new StringBuffer("<form");
+        StringBuilder results = new StringBuilder("<form");
 
         // render attributes
         renderName(results);
@@ -587,7 +587,7 @@ public class FormTag extends TagSupport {
      * Renders the name of the form.  If XHTML is set to true, the name will
      * be rendered as an 'id' attribute, otherwise as a 'name' attribute.
      */
-    protected void renderName(StringBuffer results)
+    protected void renderName(StringBuilder results)
         throws JspException {
         if (this.isXhtml()) {
             if (getStyleId() == null) {
@@ -604,7 +604,7 @@ public class FormTag extends TagSupport {
     /**
      * Renders the action attribute
      */
-    protected void renderAction(StringBuffer results) {
+    protected void renderAction(StringBuilder results) {
         String calcAction = (this.action == null ? postbackAction : this.action);
         HttpServletResponse response =
             (HttpServletResponse) this.pageContext.getResponse();
@@ -622,7 +622,7 @@ public class FormTag extends TagSupport {
      * 'Hook' to enable this tag to be extended and additional attributes
      * added.
      */
-    protected void renderOtherAttributes(StringBuffer results) {
+    protected void renderOtherAttributes(StringBuilder results) {
     }
 
     /**
@@ -633,7 +633,7 @@ public class FormTag extends TagSupport {
      * @since Struts 1.1
      */
     protected String renderToken() {
-        StringBuffer results = new StringBuffer();
+        StringBuilder results = new StringBuilder();
         HttpSession session = pageContext.getSession();
 
         if (session != null) {
@@ -662,7 +662,7 @@ public class FormTag extends TagSupport {
     /**
      * Renders attribute="value" if not null
      */
-    protected void renderAttribute(StringBuffer results, String attribute,
+    protected void renderAttribute(StringBuilder results, String attribute,
         String value) {
         if (value != null) {
             results.append(" ");
@@ -686,7 +686,7 @@ public class FormTag extends TagSupport {
             PageContext.REQUEST_SCOPE);
 
         // Render a tag representing the end of our current form
-        StringBuffer results = new StringBuffer("</form>");
+        StringBuilder results = new StringBuilder("</form>");
 
         // Render JavaScript to set the input focus if required
         if (this.focus != null) {
@@ -715,7 +715,7 @@ public class FormTag extends TagSupport {
      * @since Struts 1.1
      */
     protected String renderFocusJavascript() {
-        StringBuffer results = new StringBuffer();
+        StringBuilder results = new StringBuilder();
 
         results.append(lineEnd);
         results.append("<script type=\"text/javascript\"");
@@ -735,14 +735,14 @@ public class FormTag extends TagSupport {
         // Construct the index if needed and insert into focus statement
         String index = "";
         if (this.focusIndex != null) {
-            StringBuffer sb = new StringBuffer("[");
+            StringBuilder sb = new StringBuilder("[");
             sb.append(this.focusIndex);
             sb.append("]");
             index = sb.toString();
         }
 
         // Construct the control name that will receive focus.
-        StringBuffer focusControl = new StringBuffer("document.forms[\"");
+        StringBuilder focusControl = new StringBuilder("document.forms[\"");
         focusControl.append(beanName);
         focusControl.append("\"].elements[\"");
         focusControl.append(this.focus);

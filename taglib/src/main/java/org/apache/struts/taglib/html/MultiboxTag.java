@@ -156,7 +156,7 @@ public class MultiboxTag extends BaseHandlerTag {
      */
     public int doEndTag() throws JspException {
         // Create an appropriate "input" element based on our parameters
-        StringBuffer results = new StringBuffer("<input type=\"checkbox\"");
+        StringBuilder results = new StringBuilder("<input type=\"checkbox\"");
 
         prepareAttribute(results, "name", prepareName());
         prepareAttribute(results, "accesskey", getAccesskey());
@@ -188,9 +188,9 @@ public class MultiboxTag extends BaseHandlerTag {
     /**
      * Render the value element
      *
-     * @param results The StringBuffer that output will be appended to.
+     * @param results The StringBuilder that output will be appended to.
      */
-    protected String prepareValue(StringBuffer results)
+    protected String prepareValue(StringBuilder results)
         throws JspException {
         String value = (this.value == null) ? this.constant : this.value;
 
@@ -211,9 +211,9 @@ public class MultiboxTag extends BaseHandlerTag {
     /**
      * Render the checked element
      *
-     * @param results The StringBuffer that output will be appended to.
+     * @param results The StringBuilder that output will be appended to.
      */
-    protected void prepareChecked(StringBuffer results, String value)
+    protected void prepareChecked(StringBuilder results, String value)
         throws JspException {
         Object bean = TagUtils.getInstance().lookup(pageContext, name, null);
         String[] values = null;

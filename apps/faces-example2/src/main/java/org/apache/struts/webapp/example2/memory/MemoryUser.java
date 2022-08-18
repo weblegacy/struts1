@@ -243,7 +243,7 @@ public final class MemoryUser implements User {
      */
     public String toString() {
 
-        StringBuffer sb = new StringBuffer("<user username=\"");
+        StringBuilder sb = new StringBuilder("<user username=\"");
         sb.append(username);
         sb.append("\"");
         if (fromAddress != null) {

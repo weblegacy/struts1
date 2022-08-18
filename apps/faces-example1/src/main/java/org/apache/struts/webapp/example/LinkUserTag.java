@@ -130,7 +130,7 @@ public class LinkUserTag extends TagSupport {
     // Generate the URL to be encoded
         HttpServletRequest request =
             (HttpServletRequest) pageContext.getRequest();
-        StringBuffer url = new StringBuffer(request.getContextPath());
+        StringBuilder url = new StringBuilder(request.getContextPath());
         url.append(page);
     User user = null;
     try {
@@ -151,7 +151,7 @@ public class LinkUserTag extends TagSupport {
     // Generate the hyperlink start element
     HttpServletResponse response =
       (HttpServletResponse) pageContext.getResponse();
-    StringBuffer results = new StringBuffer("<a href=\"");
+    StringBuilder results = new StringBuilder("<a href=\"");
     results.append(response.encodeURL(url.toString()));
     results.append("\">");
 

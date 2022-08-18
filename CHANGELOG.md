@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Change `StringBuffer` to `StringBuilder`
 * Fix: CVE-2016-1181 and CVE-2016-1182
 * Fix: CVE-2015-0899 with test-cases
 * Bump `tiles*` from 2.0.5 to 2.0.7, remove JDK-1.4 support dependencies

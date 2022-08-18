@@ -105,7 +105,7 @@ public class SimpleMenuItem implements MenuItem, Serializable {
      * Return String representation.
      */
     public String toString() {
-        StringBuffer buff = new StringBuffer("SimpleMenuItem[");
+        StringBuilder buff = new StringBuilder("SimpleMenuItem[");
 
         if (getValue() != null) {
             buff.append("value=").append(getValue()).append(", ");

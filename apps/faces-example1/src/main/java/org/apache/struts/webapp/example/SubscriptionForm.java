@@ -286,7 +286,7 @@ public final class SubscriptionForm extends ActionForm  {
      */
     public String toString() {
 
-        StringBuffer sb = new StringBuffer(super.toString());
+        StringBuilder sb = new StringBuilder(super.toString());
         sb.append(",action=");
         sb.append(action);
         sb.append(",autoConnect=");

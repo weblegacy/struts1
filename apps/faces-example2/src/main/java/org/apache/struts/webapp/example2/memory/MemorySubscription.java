@@ -156,7 +156,7 @@ public final class MemorySubscription implements Subscription {
      */
     public String toString() {
 
-        StringBuffer sb = new StringBuffer("<subscription host=\"");
+        StringBuilder sb = new StringBuilder("<subscription host=\"");
         sb.append(host);
         sb.append("\" autoConnect=\"");
         sb.append(autoConnect);

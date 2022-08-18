@@ -180,7 +180,7 @@ public class ActionMessage implements Serializable {
      * @see java.lang.Object#toString()
      */
     public String toString() {
-        StringBuffer buff = new StringBuffer();
+        StringBuilder buff = new StringBuilder();
 
         buff.append(this.key);
         buff.append("[");

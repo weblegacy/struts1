@@ -114,7 +114,7 @@ public class LabelValueBean implements Comparable<LabelValueBean>, Serializable 
      * Return a string representation of this object.
      */
     public String toString() {
-        StringBuffer sb = new StringBuffer("LabelValueBean[");
+        StringBuilder sb = new StringBuilder("LabelValueBean[");
 
         sb.append(this.label);
         sb.append(", ");

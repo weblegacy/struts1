@@ -23,6 +23,7 @@ package org.apache.struts.config;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -348,6 +349,38 @@ public class TestActionConfig {
         assertTrue(childConfig.getValidate(), "set validate (not inherit false)");
         assertTrue(childConfig.getCancellable(), "set cancellable (not inherit false)");
 
+    }
+
+    /**
+     * Test getter of acceptPage property.
+     */
+    @Test
+    public void testGetAcceptPage() {
+        ActionConfig config = new ActionConfig();
+        assertNull(config.getAcceptPage());
+    }
+
+    /**
+     * Test setter of acceptPage property.
+     */
+    @Test
+    public void testSetAcceptPage() {
+        ActionConfig config = new ActionConfig();
+        Integer acceptPage = 5;
+        config.setAcceptPage(acceptPage);
+        assertEquals(acceptPage, config.getAcceptPage());
+    }
+
+    /**
+     * Test a String object representing the value of the ActionConfig object.
+     */
+    @Test
+    public void testToStringAcceptPage() {
+        ActionConfig config = new ActionConfig();
+        Integer acceptPage = 7;
+        config.setAcceptPage(acceptPage);
+        String test = "acceptPage=" + acceptPage;
+        assertTrue(config.toString().contains(test));
     }
 
     /**

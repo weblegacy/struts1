@@ -260,6 +260,16 @@ public class ActionConfig extends BaseConfig {
      */
     protected String dispatcher;
 
+    // 2014/07/02 - security problem patch.
+    // Author: NTT DATA Corporation
+    /**
+     * Accepted page value for multi-page validation.<br>
+     * If two or more page values are accepted, then acceptPage is set minimum of them.<br>
+     * If multi-page validation is not use, acceptPage is not set. Then multi-page validation is disabled.
+     * @since Struts 1.4.1
+     */
+    protected Integer acceptPage = null;
+
     /**
      * <p>The internal name of this action mapping. If an action has a name, it may be used
      * as a shortcut in a URI. For example, an action with an identification of "editPerson"
@@ -918,6 +928,28 @@ public class ActionConfig extends BaseConfig {
         this.dispatcher = dispatcher;
     }
 
+    // 2014/07/02 - security problem patch.
+    // Author: NTT DATA Corporation
+    /**
+     * Returns accepted page value for multi-page validation.
+     *
+     * @return Accepted page value for multi-page validation
+     * @since  Struts 1.4.1
+     */
+    public Integer getAcceptPage() {
+        return acceptPage;
+    }
+
+    /**
+     * Set accepted page value for multi-page validation.
+     *
+     * @param acceptPage Accepted page value for multi-page validation
+     * @since  Struts 1.4.1
+     */
+    public void setAcceptPage(Integer acceptPage) {
+        this.acceptPage = acceptPage;
+    }
+
     // ------------------------------------------------------ Protected Methods
 
     /**
@@ -1275,6 +1307,12 @@ public class ActionConfig extends BaseConfig {
             setValidate(config.getValidate());
         }
 
+        // 2014/07/02 - security problem patch.
+        // Author: NTT DATA Corporation
+        if (getAcceptPage() == null) {
+            setAcceptPage(config.getAcceptPage());
+        }
+
         inheritExceptionHandlers(config);
         inheritForwards(config);
         inheritProperties(config);
@@ -1470,6 +1508,13 @@ public class ActionConfig extends BaseConfig {
         if (type != null) {
             sb.append(",type=");
             sb.append(type);
+        }
+
+        // 2014/07/02 - security problem patch.
+        // Author: NTT DATA Corporation        
+        if (acceptPage != null) {
+            sb.append(",acceptPage=");
+            sb.append(acceptPage);
         }
 
         sb.append("]");

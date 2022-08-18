@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Fix: CVE-2015-0899 with test-cases
 * Bump `tiles*` from 2.0.5 to 2.0.7, remove JDK-1.4 support dependencies
 * Some corrections in examples-app
 * Bump `commons-validator` from 1.3.1 to 1.7, add old commons-validator-js from 1.4

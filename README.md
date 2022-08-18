@@ -20,6 +20,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 ## Fixed vulnerabilities
 
+- CVE-2015-0899
 - CVE-2014-0114
 
 ## Building Strus1 - Reloaded

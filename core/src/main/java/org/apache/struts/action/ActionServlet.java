@@ -20,9 +20,28 @@
  */
 package org.apache.struts.action;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.List;
+import java.util.MissingResourceException;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.UnavailableException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.commons.beanutils.SuppressPropertiesBeanIntrospector;
 import org.apache.commons.beanutils.converters.BigDecimalConverter;
 import org.apache.commons.beanutils.converters.BigIntegerConverter;
 import org.apache.commons.beanutils.converters.BooleanConverter;
@@ -58,23 +77,6 @@ import org.apache.struts.util.MessageResourcesFactory;
 import org.apache.struts.util.ModuleUtils;
 import org.apache.struts.util.RequestUtils;
 import org.xml.sax.SAXException;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.UnavailableException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
-import java.math.BigInteger;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.MissingResourceException;
 
 /**
  * <p><strong>ActionServlet</strong> provides the "controller" in the
@@ -201,6 +203,21 @@ import java.util.MissingResourceException;
  */
 public class ActionServlet extends HttpServlet {
     private static final long serialVersionUID = -5339416153175280044L;
+
+    /**
+     * A specialized instance which is configured to suppress the special {@code class},
+     * {@code multipartRequestHandler}, {@code resultValueMap} properties of Java beans.
+     * Unintended access to this properties can be a security risk (CVE-2014-0114,
+     * CVE-2016-1181 and CVE-2016-1182). Adding this instance as {@code BeanIntrospector}
+     * to an instance of {@code PropertyUtilsBean} suppresses the @code class},
+     * {@code multipartRequestHandler}, {@code resultValueMap} properties; it can then no
+     * longer be accessed.
+     *
+     * @since Struts 1.4.1
+     */
+    private final static SuppressPropertiesBeanIntrospector SUPPRESS_CLASSES =
+            new SuppressPropertiesBeanIntrospector(
+                    Arrays.asList("class", "multipartRequestHandler", "resultValueMap"));
 
     /**
      * <p>Commons Logging instance.</p>
@@ -1745,6 +1762,9 @@ public class ActionServlet extends HttpServlet {
      */
     protected void initOther()
         throws ServletException {
+        PropertyUtils.addBeanIntrospector(SUPPRESS_CLASSES);
+        PropertyUtils.clearDescriptors();
+
         String value;
 
         value = getServletConfig().getInitParameter("config");

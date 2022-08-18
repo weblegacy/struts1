@@ -56,7 +56,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
   * Add the module `integration`
 * **release** - Signs all of the project's attached artifacts with GnuPG
 * **cargorun** - Starts a web-server to manually test the example-apps
-  * `mvn -Papps,itest,cargorun -Dcargo.java.home=[JDK_1.7]`
+  * `mvn -Pdormant,apps,itest,cargorun`
 
 ### Building-Steps
 

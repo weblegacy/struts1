@@ -33,8 +33,8 @@ import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
-import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.iterators.IteratorEnumeration;
+import org.apache.commons.collections4.CollectionUtils;
+import org.apache.commons.collections4.iterators.IteratorEnumeration;
 import org.apache.struts.config.PlugInConfig;
 
 /**
@@ -64,6 +64,7 @@ public class PlugInConfigContextAdapter implements ServletContext {
      * @param plugInConfigObject The plugin config object to use.
      * @param servletContext The servlet context to use.
      */
+    @SuppressWarnings("unchecked")
     public PlugInConfigContextAdapter(PlugInConfig plugInConfigObject,
             ServletContext servletContext) {
         this.plugInConfigObject = plugInConfigObject;
@@ -97,9 +98,8 @@ public class PlugInConfigContextAdapter implements ServletContext {
      *
      * @return The names of all initialization parameters.
      */
-    @SuppressWarnings("unchecked")
     public Enumeration<String> getInitParameterNames() {
-        return new IteratorEnumeration(parameterNames.iterator());
+        return new IteratorEnumeration<String>(parameterNames.iterator());
     }
 
     // The rest of the methods are wrapping implementations of the interface.

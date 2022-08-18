@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `commons-collections` from 2.1 to 4.4
 * Change `StringBuffer` to `StringBuilder`
 * Fix: CVE-2016-1181 and CVE-2016-1182
 * Fix: CVE-2015-0899 with test-cases

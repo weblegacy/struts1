@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `commons-codec` from 1.2 to 1.15
 * Correct `pom.xml` in `struts-it` - remove `dependencyManagement`
 * Correct `README.md` at profile `cargorun`
 * Solve deprecated in `struts-tiles2`

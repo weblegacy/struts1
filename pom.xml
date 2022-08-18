@@ -894,7 +894,7 @@
             <dependency>
                 <groupId>commons-codec</groupId>
                 <artifactId>commons-codec</artifactId>
-                <version>1.2</version>
+                <version>1.15</version>
             </dependency>
             <dependency>
                 <groupId>commons-chain</groupId>

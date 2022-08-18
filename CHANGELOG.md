@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Correct `pom.xml` in `struts-it` - remove `dependencyManagement`
 * Correct `README.md` at profile `cargorun`
 * Solve deprecated in `struts-tiles2`
 * Bump `commons-fileupload` from 1.2.1 to 1.4

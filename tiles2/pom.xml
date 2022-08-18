@@ -49,10 +49,6 @@
          <type>test-jar</type>
       </dependency>
       <dependency>
-          <groupId>backport-util-concurrent</groupId>
-          <artifactId>backport-util-concurrent</artifactId>
-      </dependency>
-      <dependency>
           <groupId>commons-collections</groupId>
           <artifactId>commons-collections</artifactId>
       </dependency>
@@ -66,23 +62,16 @@
          <scope>test</scope>
       </dependency>
       <dependency>
-          <groupId>net.sf.retrotranslator</groupId>
-          <artifactId>retrotranslator-runtime</artifactId>
-      </dependency>
-      <dependency>
          <groupId>org.apache.tiles</groupId>
          <artifactId>tiles-jsp</artifactId>
-         <classifier>j4</classifier>
       </dependency>
       <dependency>
          <groupId>org.apache.tiles</groupId>
          <artifactId>tiles-core</artifactId>
-         <classifier>j4</classifier>
       </dependency>
       <dependency>
          <groupId>org.apache.tiles</groupId>
          <artifactId>tiles-api</artifactId>
-         <classifier>j4</classifier>
       </dependency>
    </dependencies>
 

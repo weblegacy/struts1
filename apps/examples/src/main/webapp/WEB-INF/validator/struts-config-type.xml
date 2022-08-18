@@ -34,6 +34,7 @@
     <form-bean name="localeForm" type="org.apache.struts.action.DynaActionForm">
         <form-property name="language" type="java.lang.String" />
         <form-property name="country"  type="java.lang.String" />
+        <form-property name="page"     type="java.lang.String" />
     </form-bean>
 
   </form-beans>

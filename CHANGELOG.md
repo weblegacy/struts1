@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `commons-validator` from 1.3.1 to 1.7, add old commons-validator-js from 1.4
 * Bump `commons-logging` from 1.1.1 to 1.2
 * JavaDoc: Correct links and others
 * Correct generics-adaption in `PluginConfig`

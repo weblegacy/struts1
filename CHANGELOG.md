@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Solve deprecated in `struts-tiles2`
 * Bump `commons-fileupload` from 1.2.1 to 1.4
 * Bump `commons-io` from 1.3.2 to 2.11.0
 * Bump `commons-collections` from 2.1 to 4.4

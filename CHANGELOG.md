@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `commons-io` from 1.3.2 to 2.11.0
 * Bump `commons-collections` from 2.1 to 4.4
 * Change `StringBuffer` to `StringBuilder`
 * Fix: CVE-2016-1181 and CVE-2016-1182

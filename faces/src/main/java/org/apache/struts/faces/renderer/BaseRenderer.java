@@ -112,7 +112,7 @@ public class BaseRenderer extends AbstractRenderer {
             // Does this class implement PortletRequest?
             Class<?> interfaces[] = clazz.getInterfaces();
             if (interfaces == null) {
-                interfaces = new Class[0];
+                interfaces = new Class<?>[0];
             }
             for (int i = 0; i < interfaces.length; i++) {
                 if ("javax.portlet.PortletRequest".equals

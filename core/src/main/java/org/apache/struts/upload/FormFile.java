@@ -50,8 +50,9 @@ public interface FormFile {
      * @return The size of the file, in bytes.
      * @throws IllegalStateException if size is greater than 2GB
      * @see #getFileLength()
-     * @deprecated
+     * @deprecated use {@link #getFileLength()}
      */
+    @Deprecated
     public int getFileSize();
 
     /**
@@ -59,8 +60,9 @@ public interface FormFile {
      *
      * @param size The size of the file, in bytes,
      * @see #setFileLength(long)
-     * @deprecated
+     * @deprecated use {@link #setFileLength(long)}
      */
+    @Deprecated
     public void setFileSize(int size);
 
     /**

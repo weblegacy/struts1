@@ -22,7 +22,6 @@ package org.apache.struts.mock;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionContext;
 
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -43,7 +42,6 @@ import java.util.HashMap;
  * @version $Rev$ $Date: 2005-05-07 12:11:38 -0400 (Sat, 07 May 2005)
  *          $
  */
-@SuppressWarnings("deprecation")
 public class MockHttpSession implements HttpSession {
     // ----------------------------------------------------- Instance Variables
 
@@ -101,14 +99,17 @@ public class MockHttpSession implements HttpSession {
         return (this.servletContext);
     }
 
-    public HttpSessionContext getSessionContext() {
+    @SuppressWarnings("deprecation")
+    public javax.servlet.http.HttpSessionContext getSessionContext() {
         throw new UnsupportedOperationException();
     }
 
+    @Deprecated
     public Object getValue(String name) {
         throw new UnsupportedOperationException();
     }
 
+    @Deprecated
     public String[] getValueNames() {
         throw new UnsupportedOperationException();
     }
@@ -121,6 +122,7 @@ public class MockHttpSession implements HttpSession {
         throw new UnsupportedOperationException();
     }
 
+    @Deprecated
     public void putValue(String name, Object value) {
         throw new UnsupportedOperationException();
     }
@@ -129,6 +131,7 @@ public class MockHttpSession implements HttpSession {
         attributes.remove(name);
     }
 
+    @Deprecated
     public void removeValue(String name) {
         throw new UnsupportedOperationException();
     }

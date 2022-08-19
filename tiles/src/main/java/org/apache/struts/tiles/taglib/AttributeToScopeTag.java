@@ -33,6 +33,7 @@ import org.apache.struts.tiles.ComponentContext;
   *  Custom  tag  that  puts  component's  attributes  in  a  scope  (request,  page,  ...).
   *  @deprecated  Is  it  still  in  use  ?
   */
+@Deprecated
 public  final  class  AttributeToScopeTag  extends  TagSupport  {
     private static final long serialVersionUID = -1499789323573667416L;
 

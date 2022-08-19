@@ -440,7 +440,7 @@ public class PropertyMessageResources extends MessageResources {
         boolean addIt = !messageKey.equals(originalKey);
 
         synchronized (messages) {
-            String message = (String) messages.get(messageKey);
+            String message = messages.get(messageKey);
 
             if (message != null) {
                 if (addIt) {

@@ -64,6 +64,7 @@ public class InsertTag
      * The role delimiter.
      * @deprecated This will be removed in a release after Struts 1.2.
      */
+    @Deprecated
     public static final String ROLE_DELIMITER = ",";
 
     /**
@@ -949,6 +950,7 @@ public class InsertTag
          * @param msg An additional message to show in console and to propagate if we can't output exception.
          * @deprecated This method will be removed in a release after Struts 1.2.
          */
+        @Deprecated
         protected void processException(Throwable ex, String msg)
             throws JspException {
 

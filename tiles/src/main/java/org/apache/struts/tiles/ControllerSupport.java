@@ -46,6 +46,7 @@ public class ControllerSupport implements Controller {
      * @deprecated Use execute() instead.  This will be removed after
      *             Struts 1.2.
      */
+    @Deprecated
     public void perform(
             ComponentContext tileContext,
             HttpServletRequest request,

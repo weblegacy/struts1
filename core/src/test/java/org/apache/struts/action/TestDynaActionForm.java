@@ -416,8 +416,8 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
 
         assertNotNull(value, "Got a value");
         assertInstanceOf(Double.class, value, "Got correct type");
-        assertEquals((double) 321.0,
-            (Double) value, (double) 0.005, "Got correct value");
+        assertEquals(321.0,
+            (Double) value, 0.005, "Got correct value");
     }
 
     /**
@@ -442,7 +442,7 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
 
         assertNotNull(value, "Got a value");
         assertInstanceOf(Integer.class, value, "Got correct type");
-        assertEquals((int) 123, (Integer) value, "Got correct value");
+        assertEquals(123, (Integer) value, "Got correct value");
     }
 
     /**
@@ -657,7 +657,7 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
 
         dynaForm.set("doubleProperty", newValue);
         assertEquals(newValue, (Double) dynaForm.get("doubleProperty"),
-            (double) 0.005, "Matched new value");
+            0.005, "Matched new value");
     }
 
     /**

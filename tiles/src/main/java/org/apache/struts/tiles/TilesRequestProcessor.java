@@ -128,6 +128,7 @@ public class TilesRequestProcessor extends RequestProcessor {
      * @deprecated use processTilesDefinition(definitionName, request, response)
      *  instead.  This method will be removed in a version after 1.3.0.
      */
+    @Deprecated
     protected boolean processTilesDefinition(
         String definitionName,
         boolean contextRelative,

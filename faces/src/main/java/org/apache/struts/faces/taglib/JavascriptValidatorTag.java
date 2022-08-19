@@ -79,6 +79,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      * The default locale on our server.
      * @deprecated This variable is no longer used.
      */
+    @Deprecated
     protected static Locale defaultLocale = Locale.getDefault();
 
     /**

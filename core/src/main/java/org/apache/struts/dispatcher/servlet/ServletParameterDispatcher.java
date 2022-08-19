@@ -82,7 +82,7 @@ public class ServletParameterDispatcher extends AbstractParameterDispatcher {
      */
     protected String resolveParameterValue(ActionContext context, String parameter) {
         ServletActionContext servletContext = (ServletActionContext) context;
-        return (String) servletContext.getParam().get(parameter);
+        return servletContext.getParam().get(parameter);
     }
 
     /**

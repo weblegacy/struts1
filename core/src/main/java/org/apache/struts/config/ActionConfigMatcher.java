@@ -123,8 +123,7 @@ public class ActionConfigMatcher implements Serializable {
 
                     try {
                         config =
-                            convertActionConfig(path,
-                                (ActionConfig) m.getActionConfig(), vars);
+                            convertActionConfig(path, m.getActionConfig(), vars);
                     } catch (IllegalStateException e) {
                         log.warn("Path matches pattern '"
                             + m.getActionConfig().getPath() + "' but is "
@@ -275,7 +274,7 @@ public class ActionConfigMatcher implements Serializable {
 
             // Replace all instances of the placeholder
             while ((x = ret.toString().indexOf(keyStr)) > -1) {
-                ret.replace(x, x + 3, (String) entry.getValue());
+                ret.replace(x, x + 3, entry.getValue());
             }
         }
 

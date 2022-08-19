@@ -140,7 +140,7 @@ public class CookieTag extends TagSupport {
 
         // Expose an appropriate variable containing these results
         if (multiple == null) {
-            Cookie cookie = (Cookie) values.get(0);
+            Cookie cookie = values.get(0);
 
             pageContext.setAttribute(id, cookie);
         } else {

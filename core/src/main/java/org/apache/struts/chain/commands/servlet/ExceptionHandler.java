@@ -51,7 +51,7 @@ public class ExceptionHandler extends AbstractExceptionHandler {
         throws Exception {
         // Look up the remaining properties needed for this handler
         ServletActionContext sacontext = (ServletActionContext) context;
-        ActionForm actionForm = (ActionForm) sacontext.getActionForm();
+        ActionForm actionForm = sacontext.getActionForm();
         HttpServletRequest request = sacontext.getRequest();
         HttpServletResponse response = sacontext.getResponse();
 

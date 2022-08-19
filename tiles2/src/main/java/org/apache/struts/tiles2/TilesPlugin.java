@@ -344,7 +344,7 @@ public class TilesPlugin implements PlugIn {
 
             if (request instanceof ServletTilesRequestContext) {
                 HttpServletRequest servletRequest =
-                    (HttpServletRequest) ((ServletTilesRequestContext) request).getRequest();
+                        ((ServletTilesRequestContext) request).getRequest();
                 ModuleConfig config = ModuleUtils.getInstance().getModuleConfig(
                         servletRequest);
 

@@ -84,6 +84,7 @@ public class ImageTag extends SubmitTag {
     /**
      * @deprecated Align attribute is deprecated in HTML 4.x.
      */
+    @Deprecated
     public String getAlign() {
         return (this.align);
     }
@@ -91,6 +92,7 @@ public class ImageTag extends SubmitTag {
     /**
      * @deprecated Align attribute is deprecated in HTML 4.x.
      */
+    @Deprecated
     public void setAlign(String align) {
         this.align = align;
     }

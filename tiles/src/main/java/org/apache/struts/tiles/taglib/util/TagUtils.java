@@ -102,7 +102,7 @@ public class TagUtils {
      * @throws JspException if the scopeName is not a valid name.
      */
     public static int getScope(String scopeName) throws JspException {
-        Integer scope = (Integer) scopes.get(scopeName.toLowerCase());
+        Integer scope = scopes.get(scopeName.toLowerCase());
 
         if (scope == null) {
             //throw new JspException(messages.getMessage("lookup.scope", scope));

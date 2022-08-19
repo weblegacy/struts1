@@ -451,8 +451,7 @@ public class ActionServlet extends HttpServlet {
             }
         }
 
-        String[] prefixes =
-            (String[]) prefixList.toArray(new String[prefixList.size()]);
+        String[] prefixes = prefixList.toArray(new String[0]);
 
         context.setAttribute(Globals.MODULE_PREFIXES_KEY, prefixes);
     }
@@ -731,6 +730,7 @@ public class ActionServlet extends HttpServlet {
      * @deprecated use parseModuleConfigFile(Digester digester, URL url)
      *             instead
      */
+    @Deprecated
     protected void parseModuleConfigFile(Digester digester, String path)
         throws UnavailableException {
         try {

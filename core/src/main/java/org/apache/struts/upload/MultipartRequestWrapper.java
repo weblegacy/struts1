@@ -114,7 +114,7 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
         String[] value = getRequest().getParameterValues(name);
 
         if (value == null) {
-            value = (String[]) parameters.get(name);
+            value = parameters.get(name);
         }
 
         return value;

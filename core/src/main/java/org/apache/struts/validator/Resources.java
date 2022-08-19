@@ -339,6 +339,7 @@ public class Resources {
      * @deprecated Use getActionMessage(Validator, HttpServletRequest,
      *    ValidatorAction, Field) method instead
      */
+    @Deprecated
     public static ActionMessage getActionMessage(HttpServletRequest request,
         ValidatorAction va, Field field) {
         String[] args =

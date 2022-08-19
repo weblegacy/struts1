@@ -805,7 +805,7 @@ public class TagUtils {
      */
     public int getScope(String scopeName)
         throws JspException {
-        Integer scope = (Integer) scopes.get(scopeName.toLowerCase());
+        Integer scope = scopes.get(scopeName.toLowerCase());
 
         if (scope == null) {
             throw new JspException(messages.getMessage("lookup.scope", scope));

@@ -31,7 +31,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts.tiles.ComponentDefinition;
-import org.apache.struts.tiles.ComponentDefinitionsFactory;
 import org.apache.struts.tiles.DefinitionsFactoryException;
 import org.apache.struts.tiles.FactoryNotFoundException;
 import org.apache.struts.tiles.xmlDefinition.I18nFactorySet;
@@ -47,13 +46,13 @@ import org.apache.struts.util.RequestUtils;
  * @version $Rev$ $Date$
  */
 @SuppressWarnings("deprecation")
-public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory {
+public class ReloadableDefinitionsFactory implements org.apache.struts.tiles.ComponentDefinitionsFactory {
     private static final long serialVersionUID = 1432127365659932325L;
 
     /**
      * The real factory instance.
      */
-    protected ComponentDefinitionsFactory factory = null;
+    protected org.apache.struts.tiles.ComponentDefinitionsFactory factory = null;
 
     /**
      * Initialization parameters.
@@ -109,7 +108,7 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
     * @return newly created factory.
     * @throws DefinitionsFactoryException If an error occur while initializing factory
     */
-    public ComponentDefinitionsFactory createFactoryFromClassname(
+    public org.apache.struts.tiles.ComponentDefinitionsFactory createFactoryFromClassname(
         ServletContext servletContext,
         Map<String, Object> properties,
         String classname)
@@ -122,8 +121,8 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
         // Try to create from classname
         try {
             Class<?> factoryClass = RequestUtils.applicationClass(classname);
-            ComponentDefinitionsFactory factory =
-                (ComponentDefinitionsFactory) factoryClass.newInstance();
+            org.apache.struts.tiles.ComponentDefinitionsFactory factory =
+                (org.apache.struts.tiles.ComponentDefinitionsFactory) factoryClass.newInstance();
             factory.initFactory(servletContext, properties);
             return factory;
 
@@ -159,12 +158,12 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
     * @return newly created factory.
     * @throws DefinitionsFactoryException If an error occur while initializing factory
     */
-    public ComponentDefinitionsFactory createDefaultFactory(
+    public org.apache.struts.tiles.ComponentDefinitionsFactory createDefaultFactory(
         ServletContext servletContext,
         Map<String, Object> properties)
         throws DefinitionsFactoryException {
 
-        ComponentDefinitionsFactory factory =
+        org.apache.struts.tiles.ComponentDefinitionsFactory factory =
             new I18nFactorySet(servletContext, properties);
 
         return factory;
@@ -178,7 +177,7 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
     * @param servletContext Servlet Context passed to newly created factory.
     * @param properties Map containing all properties.
     */
-    public ComponentDefinitionsFactory createFactory(
+    public org.apache.struts.tiles.ComponentDefinitionsFactory createFactory(
         ServletContext servletContext,
         Map<String, Object> properties)
         throws DefinitionsFactoryException {
@@ -224,7 +223,7 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
     public void reload(ServletContext servletContext)
         throws DefinitionsFactoryException {
 
-        ComponentDefinitionsFactory newInstance =
+        org.apache.struts.tiles.ComponentDefinitionsFactory newInstance =
             createFactory(servletContext, properties);
 
         factory = newInstance;
@@ -234,7 +233,7 @@ public class ReloadableDefinitionsFactory implements ComponentDefinitionsFactory
      * Get underlying factory instance.
      * @return ComponentDefinitionsFactory
      */
-    public ComponentDefinitionsFactory getFactory() {
+    public org.apache.struts.tiles.ComponentDefinitionsFactory getFactory() {
         return factory;
     }
 

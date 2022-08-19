@@ -36,6 +36,7 @@ import javax.servlet.ServletRequest;
  * having this constraint (Weblogic 6.x).
  * @deprecated Use DefinitionsFactory instead.
 */
+@Deprecated
 public interface ComponentDefinitionsFactory extends Serializable
 {
 

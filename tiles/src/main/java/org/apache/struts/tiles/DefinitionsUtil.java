@@ -39,6 +39,7 @@ import org.apache.struts.tiles.taglib.ComponentConstants;
  * Also define userDebugLevel property (TODO to be moved from this class ?).
  * @deprecated Use {@link TilesUtil#createDefinitionsFactory(ServletContext, DefinitionsFactoryConfig)}
  */
+@Deprecated
 public class DefinitionsUtil extends TilesUtil implements ComponentConstants {
 
     /**
@@ -50,12 +51,14 @@ public class DefinitionsUtil extends TilesUtil implements ComponentConstants {
      * Global user defined debug level.
      * @deprecated This will be removed in a release after Struts 1.2.
      */
+    @Deprecated
     public static int userDebugLevel = 0;
 
     /**
      * User Debug level.
      * @deprecated This will be removed in a release after Struts 1.2.
      */
+    @Deprecated
     public static final int NO_DEBUG = 0;
 
     /**
@@ -94,6 +97,7 @@ public class DefinitionsUtil extends TilesUtil implements ComponentConstants {
      * @throws DefinitionsFactoryException If an error occur while initializing factory
      * @deprecated Use createDefinitionsFactory(ServletContext servletContext, ServletConfig servletConfig)
      */
+    @Deprecated
     public static DefinitionsFactory createDefinitionsFactory(
         ServletContext servletContext,
         Map<String, Object> properties,
@@ -198,6 +202,7 @@ public class DefinitionsUtil extends TilesUtil implements ComponentConstants {
      * @deprecated Use {@link TilesUtil#getDefinitionsFactory(ServletRequest, ServletContext)}
      * @since 20020708
      */
+    @Deprecated
     public static DefinitionsFactory getDefinitionsFactory(ServletContext servletContext) {
         return (DefinitionsFactory) servletContext.getAttribute(DEFINITIONS_FACTORY);
     }

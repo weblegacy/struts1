@@ -56,7 +56,10 @@ public class UrlController implements Controller {
      * @param request Current request.
      * @param response Current response.
      * @param servletContext Current servlet context.
+     * @deprecated Use execute() instead.  This will be removed after
+     *             Struts 1.2.
      */
+    @Deprecated
     public void perform(
         ComponentContext tileContext,
         HttpServletRequest request,

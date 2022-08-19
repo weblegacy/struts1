@@ -35,7 +35,6 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.tiles.ComponentDefinition;
 import org.apache.struts.tiles.DefinitionsFactoryException;
-import org.apache.struts.tiles.DefinitionsUtil;
 import org.apache.struts.tiles.FactoryNotFoundException;
 import org.apache.struts.tiles.NoSuchDefinitionException;
 import org.apache.struts.tiles.TilesUtil;
@@ -69,7 +68,6 @@ import org.apache.struts.tiles.TilesUtil;
  *
  * @version $Rev$ $Date$
  */
-@SuppressWarnings("deprecation")
 public class DefinitionDispatcherAction extends Action {
 
     /**
@@ -91,6 +89,7 @@ public class DefinitionDispatcherAction extends Action {
      *  an exception
      * @since Struts 1.1
      */
+    @SuppressWarnings("deprecation")
     public ActionForward execute(
         ActionMapping mapping,
         ActionForm form,
@@ -126,7 +125,7 @@ public class DefinitionDispatcherAction extends Action {
                 log.debug("Get Definition " + definition);
             }
 
-            DefinitionsUtil.setActionDefinition(request, definition);
+            org.apache.struts.tiles.DefinitionsUtil.setActionDefinition(request, definition);
 
         } catch (FactoryNotFoundException e) {
             log.error("Can't get definition factory.", e);
@@ -152,6 +151,7 @@ public class DefinitionDispatcherAction extends Action {
     /**
      * @deprecated This will be removed after Struts 1.2.
      */
+    @Deprecated
     protected void printError(HttpServletResponse response, String msg)
         throws IOException {
         response.setContentType("text/plain");

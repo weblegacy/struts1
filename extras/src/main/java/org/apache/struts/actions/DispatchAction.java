@@ -344,7 +344,7 @@ public abstract class DispatchAction extends BaseAction {
     protected Method getMethod(String name)
         throws NoSuchMethodException {
         synchronized (methods) {
-            Method method = (Method) methods.get(name);
+            Method method = methods.get(name);
 
             if (method == null) {
                 method = clazz.getMethod(name, types);

@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Clear all compiler-warnings
 * Revision of the dependencies based on the dependency analysis
 * IT: Remove unnecessary JDK-1.7-wrapper
 * Bump `selenium-java` from 4.3.0 to 4.4.0

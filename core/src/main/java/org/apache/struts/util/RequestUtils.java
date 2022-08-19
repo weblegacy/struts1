@@ -442,7 +442,7 @@ public class RequestUtils {
         }
 
         while (names.hasMoreElements()) {
-            String name = (String) names.nextElement();
+            String name = names.nextElement();
             String stripped = name;
 
             if (prefix != null) {
@@ -517,7 +517,7 @@ public class RequestUtils {
         @SuppressWarnings("unchecked")
         Enumeration<String> e = request.getParameterNames();
         while (e.hasMoreElements()) {
-            String name = (String) e.nextElement();
+            String name = e.nextElement();
             String[] values = request.getParameterValues(name);
             redirect.addParameter(name, values);
         }
@@ -673,7 +673,7 @@ public class RequestUtils {
             e = request.getParameterNames();
 
             while (e.hasMoreElements()) {
-                String key = (String) e.nextElement();
+                String key = e.nextElement();
 
                 parameters.put(key, request.getParameterValues(key));
             }

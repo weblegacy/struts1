@@ -35,7 +35,6 @@ import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.tiles.ComponentContext;
 import org.apache.struts.tiles.ComponentDefinition;
 import org.apache.struts.tiles.Controller;
-import org.apache.struts.tiles.DefinitionsUtil;
 import org.apache.struts.tiles.FactoryNotFoundException;
 import org.apache.struts.tiles.NoSuchDefinitionException;
 import org.apache.struts.tiles.TilesUtil;
@@ -54,15 +53,11 @@ import org.apache.struts.tiles.TilesUtil;
  * command simply returns false and lets the chain continue.</p>
  *
  * <p>To initialize the <code>TilesDefinitionFactory</code>, use
- * <code>org.apache.struts.chain.commands.legacy.TilesPlugin</code>.  This class
+ * <code>org.apache.struts.chain.commands.legacy.TilesPlugin</code>. This class
  * is a simple extension to <code>org.apache.struts.tiles.TilesPlugin</code>
  * which simply does not interfere with your choice of <code>RequestProcessor</code>
- * implementation.
- *  </p>
- *
- *
+ * implementation.</p>
  */
-@SuppressWarnings("deprecation")
 public class TilesPreProcessor implements Command
 {
 
@@ -94,6 +89,7 @@ public class TilesPreProcessor implements Command
      * @return <code>false</code> in most cases, but true if we determine
      * that we're processing in "include" mode.
      */
+    @SuppressWarnings("deprecation")
     public boolean execute(Context context) throws Exception {
 
         // Is there a Tiles Definition to be processed?
@@ -163,7 +159,7 @@ public class TilesPreProcessor implements Command
         // may augment the tileContext with additional attributes.
         // :FIXME: the class DefinitionsUtil is deprecated, but I can't find
         // the intended alternative to use.
-        definition = DefinitionsUtil.getActionDefinition(sacontext.getRequest());
+        definition = org.apache.struts.tiles.DefinitionsUtil.getActionDefinition(sacontext.getRequest());
         if (definition != null) { // We have a definition.
                 // We use it to complete missing attribute in context.
                 // We also overload uri and controller if set in definition.

@@ -365,7 +365,7 @@ public class I18nFactorySet extends FactorySet {
         String lastPostfix = curPostfix;
         XmlDefinitionsSet rootXmlConfig = parseXmlFiles(servletContext, "", null);
         for (int j = 0; j < i; j++) {
-            curPostfix = (String) possiblePostfixes.get(j);
+            curPostfix = possiblePostfixes.get(j);
             parseXmlFiles(servletContext, curPostfix, rootXmlConfig);
         }
 

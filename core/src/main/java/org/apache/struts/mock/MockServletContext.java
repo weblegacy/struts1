@@ -143,6 +143,7 @@ public class MockServletContext implements ServletContext {
         return ("MockServletContext/$Version$");
     }
 
+    @Deprecated
     public Servlet getServlet(String name) {
         throw new UnsupportedOperationException();
     }
@@ -151,14 +152,17 @@ public class MockServletContext implements ServletContext {
         return (getServerInfo());
     }
 
+    @Deprecated
     public Enumeration<String> getServletNames() {
         throw new UnsupportedOperationException();
     }
 
+    @Deprecated
     public Enumeration<Servlet> getServlets() {
         throw new UnsupportedOperationException();
     }
 
+    @Deprecated
     public void log(Exception exception, String message) {
         log(message, exception);
     }

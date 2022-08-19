@@ -76,6 +76,7 @@ public class DefinitionsFactoryConfig implements Serializable {
      * Alternate name for parser debug details properties in configuration file.
      * @deprecated This will be removed in a release after Struts 1.2.
      */
+    @Deprecated
     public static final String PARSER_DETAILS_PARAMETER_NAME =
         "definitions-parser-details";
 
@@ -101,6 +102,7 @@ public class DefinitionsFactoryConfig implements Serializable {
      * Alternate name for definition debug details properties in configuration file.
      * @deprecated This will be removed in a release after Struts 1.2.
      */
+    @Deprecated
     public static final String TILES_DETAILS_PARAMETER_NAME = "definitions-debug";
 
     /**

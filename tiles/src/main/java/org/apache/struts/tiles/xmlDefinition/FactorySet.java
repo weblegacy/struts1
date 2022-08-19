@@ -28,7 +28,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
 
 import org.apache.struts.tiles.ComponentDefinition;
-import org.apache.struts.tiles.ComponentDefinitionsFactory;
 import org.apache.struts.tiles.DefinitionsFactoryException;
 import org.apache.struts.tiles.FactoryNotFoundException;
 import org.apache.struts.tiles.NoSuchDefinitionException;
@@ -40,7 +39,7 @@ import org.apache.struts.tiles.NoSuchDefinitionException;
  * factory and then calls its getDefinition().
  */
 @SuppressWarnings("deprecation")
-public abstract class FactorySet implements ComponentDefinitionsFactory
+public abstract class FactorySet implements org.apache.struts.tiles.ComponentDefinitionsFactory
 {
     private static final long serialVersionUID = -3005016733922480701L;
 

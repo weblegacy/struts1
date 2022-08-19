@@ -238,7 +238,7 @@ public class TestCopyFormToContext {
         assertSame(context.getRequestScope().get(formName),
             context.getActionForm());
 
-        ActionForm theForm = (ActionForm) context.getActionForm();
+        ActionForm theForm = context.getActionForm();
 
         assertInstanceOf(MockFormBean.class, theForm);
     }

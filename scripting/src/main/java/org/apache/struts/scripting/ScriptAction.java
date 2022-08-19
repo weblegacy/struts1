@@ -481,6 +481,7 @@ public class ScriptAction extends Action {
      *@deprecated    Use saveErrors(HttpServletRequest, ActionMessages) instead.
      *      This will be removed after Struts 1.2.
      */
+    @Deprecated
     public void saveErrors(HttpServletRequest req, ActionErrors errs) {
         super.saveErrors(req, errs);
     }

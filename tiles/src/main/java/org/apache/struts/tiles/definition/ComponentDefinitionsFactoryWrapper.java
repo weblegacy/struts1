@@ -28,7 +28,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
 
 import org.apache.struts.tiles.ComponentDefinition;
-import org.apache.struts.tiles.ComponentDefinitionsFactory;
 import org.apache.struts.tiles.DefinitionsFactory;
 import org.apache.struts.tiles.DefinitionsFactoryConfig;
 import org.apache.struts.tiles.DefinitionsFactoryException;
@@ -40,14 +39,14 @@ import org.apache.struts.util.RequestUtils;
  * This class provides mapping from the old interface's life cycle to the new life cycle.
  * @since 20020708
  */
-@SuppressWarnings("deprecation")
 public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
     private static final long serialVersionUID = -1996134499246652941L;
 
     /**
      * The underlying factory.
      */
-    private ComponentDefinitionsFactory factory = null;
+    @SuppressWarnings("deprecation")
+    private org.apache.struts.tiles.ComponentDefinitionsFactory factory = null;
 
     /**
      * Factory configuration,
@@ -59,7 +58,8 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * Create new wrapper for specified factory.
      * @param factory The factory to create a wrapper for.
      */
-    public ComponentDefinitionsFactoryWrapper(ComponentDefinitionsFactory factory) {
+    @SuppressWarnings("deprecation")
+    public ComponentDefinitionsFactoryWrapper(org.apache.struts.tiles.ComponentDefinitionsFactory factory) {
         this.factory = factory;
     }
 
@@ -80,6 +80,7 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * @param servletContext Our servlet context.
      * @return ComponentDefition
      */
+    @SuppressWarnings("deprecation")
     public ComponentDefinition getDefinition(
         String name,
         ServletRequest request,
@@ -94,6 +95,7 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * @param config DefinitionsFactoryConfig.
      * @param servletContext Our servlet context.
      */
+    @SuppressWarnings("deprecation")
     public void init(DefinitionsFactoryConfig config, ServletContext servletContext)
         throws DefinitionsFactoryException {
 
@@ -120,12 +122,13 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * @param servletContext Our servlet context.
      *
      */
+    @SuppressWarnings("deprecation")
     public void setConfig(
         DefinitionsFactoryConfig config,
         ServletContext servletContext)
         throws DefinitionsFactoryException {
 
-        ComponentDefinitionsFactory newFactory =
+        org.apache.struts.tiles.ComponentDefinitionsFactory newFactory =
             createFactoryInstance(config.getFactoryClassname());
 
         newFactory.initFactory(servletContext, createConfigMap(config));
@@ -144,7 +147,8 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * Get internal factory.
      * @return The internal ComponentDefitionsFactory.
      */
-    public ComponentDefinitionsFactory getInternalFactory() {
+    @SuppressWarnings("deprecation")
+    public org.apache.struts.tiles.ComponentDefinitionsFactory getInternalFactory() {
         return factory;
     }
 
@@ -155,13 +159,14 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * @return newly created factory.
      * @throws DefinitionsFactoryException If an error occur while initializing factory
      */
-    protected ComponentDefinitionsFactory createFactoryInstance(String classname)
+    @SuppressWarnings("deprecation")
+    protected org.apache.struts.tiles.ComponentDefinitionsFactory createFactoryInstance(String classname)
         throws DefinitionsFactoryException {
 
         try {
             Class<?> factoryClass = RequestUtils.applicationClass(classname);
             Object factory = factoryClass.newInstance();
-            return (ComponentDefinitionsFactory) factory;
+            return (org.apache.struts.tiles.ComponentDefinitionsFactory) factory;
 
         } catch (ClassCastException ex) { // Bad classname
             throw new DefinitionsFactoryException(

@@ -69,7 +69,7 @@ public class CreateAction
         try {
             if (actionConfig.isSingleton()) {
                 synchronized (actions) {
-                    action = (Action) actions.get(type);
+                    action = actions.get(type);
                     if (action == null) {
                         action = createAction(context, type);
                         actions.put(type, action);

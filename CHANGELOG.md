@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Change group-id of `jsp-api` from `javax.servlet` to `javax.servlet.jsp`
 * Apps-Blank: Add missing dependency
 * Replace tabs with spaces
 * Clear all compiler-warnings

@@ -18,7 +18,7 @@
 <%@ page language="java" %>
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean-el" prefix="bean-el" %>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html-el:html>
     <head>
         <title>Test Replacements for struts-bean:parameter Tag</title>
@@ -38,10 +38,10 @@
         runtime
         error instead.</p>
 
-    <c:set var="param1" value='\${param["param1"]}'/>
-    <c:set var="param2" value='\${param["param2"]}'/>
-    <c:set var="param3" value='\${param["param3"]}'/>
-    <c:if test="\${empty param3}">
+    <c:set var="param1" value='${param["param1"]}'/>
+    <c:set var="param2" value='${param["param2"]}'/>
+    <c:set var="param3" value='${param["param3"]}'/>
+    <c:if test="${empty param3}">
         <c:set var="param3" value="UNKNOWN VALUE"/>
     </c:if>
 
@@ -54,17 +54,17 @@
         <tr>
             <td>param1</td>
             <td>value1</td>
-            <td><c:out value="\${param1}"/></td>
+            <td><c:out value="${param1}"/></td>
         </tr>
         <tr>
             <td>param2</td>
             <td>value2</td>
-            <td><c:out value="\${param2}"/></td>
+            <td><c:out value="${param2}"/></td>
         </tr>
         <tr>
             <td>param3</td>
             <td>UNKNOWN VALUE</td>
-            <td><c:out value="\${param3}"/></td>
+            <td><c:out value="${param3}"/></td>
         </tr>
     </table>
 

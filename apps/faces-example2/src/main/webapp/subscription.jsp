@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="a" uri="/WEB-INF/app.tld" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core" %>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html" %>
 <%@ taglib prefix="s" uri="http://struts.apache.org/tags-faces" %>
@@ -32,13 +32,13 @@
 <s:html locale="true">
 <head>
   <title><c:choose>
-    <c:when test="\${subscriptionForm.action == 'Create'}">
+    <c:when test="${subscriptionForm.action == 'Create'}">
       <s:message id="titleCreate" key="subscription.title.create"/>
     </c:when>
-    <c:when test="\${subscriptionForm.action == 'Delete'}">
+    <c:when test="${subscriptionForm.action == 'Delete'}">
       <s:message id="titleDelete" key="subscription.title.delete"/>
     </c:when>
-    <c:when test="\${subscriptionForm.action == 'Edit'}">
+    <c:when test="${subscriptionForm.action == 'Edit'}">
       <s:message id="titleEdit" key="subscription.title.edit"/>
     </c:when>
     <c:otherwise>
@@ -69,13 +69,13 @@
     <f:facet         name="header">
       <h:panelGroup>
         <c:choose>
-          <c:when    test="\${subscriptionForm.action == 'Create'}">
+          <c:when    test="${subscriptionForm.action == 'Create'}">
             <s:message id="headerCreate" key="subscription.title.create"/>
           </c:when>
-          <c:when    test="\${subscriptionForm.action == 'Delete'}">
+          <c:when    test="${subscriptionForm.action == 'Delete'}">
             <s:message id="headerDelete" key="subscription.title.delete"/>
           </c:when>
-          <c:when    test="\${subscriptionForm.action == 'Edit'}">
+          <c:when    test="${subscriptionForm.action == 'Edit'}">
             <s:message id="headerEdit" key="subscription.title.edit"/>
           </c:when>
           <c:otherwise>
@@ -102,7 +102,7 @@
     </h:outputLabel>
 
     <c:choose>
-      <c:when        test="\${subscriptionForm.action == 'Create'}">
+      <c:when        test="${subscriptionForm.action == 'Create'}">
         <h:inputText   id="host"
                      size="50"
                     value="#{subscriptionForm.host}"/>
@@ -158,7 +158,7 @@
                     value="#{subscriptionForm.autoConnect}"/>
 
     <c:choose>
-      <c:when        test="\${subscriptionForm.action == 'Delete'}">
+      <c:when        test="${subscriptionForm.action == 'Delete'}">
         <h:commandButton
                        id="confirm"
                      type="SUBMIT"

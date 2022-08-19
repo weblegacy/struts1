@@ -18,7 +18,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <%@ page language="java" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean-el" prefix="bean-el" %>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Test struts bean-el Size Tag</title>
@@ -44,7 +44,7 @@
     pageContext.setAttribute("map", temp, PageContext.PAGE_SCOPE);
 
 %>
-<%-- Change "\${list}" to "\${data}" to demonstrate NPE, and need for better
+<%-- Change "${list}" to "${data}" to demonstrate NPE, and need for better
              exception in "Sizetag.doStartTag()". --%>
 <bean-el:size id="dataSize" collection="\${list}"/>
 <bean-el:size id="tempSize" collection="\${map}"/>
@@ -71,34 +71,34 @@
     <tr>
         <td>Bean (List)</td>
         <td align="center"><%= list.size() %></td>
-        <td align="center"><c:out value="\${listSize}"/></td>
+        <td align="center"><c:out value="${listSize}"/></td>
     </tr>
     <tr>
         <td>Bean (Map)</td>
         <td align="center"><%= map.size() %></td>
-        <td align="center"><c:out value="\${mapSize}"/></td>
+        <td align="center"><c:out value="${mapSize}"/></td>
     </tr>
     <tr>
         <td>Collection (List)</td>
         <td align="center"><%= data.size() %></td>
-        <td align="center"><c:out value="\${dataSize}"/></td>
+        <td align="center"><c:out value="${dataSize}"/></td>
     </tr>
     <tr>
         <td>Collection (Map)</td>
         <td align="center"><%= temp.size() %></td>
-        <td align="center"><c:out value="\${tempSize}"/></td>
+        <td align="center"><c:out value="${tempSize}"/></td>
     </tr>
     <tr>
         <td>Property (int[])</td>
         <td align="center"><% int intValues[] = bean.getIntArray();
             out.print(intValues.length); %></td>
-        <td align="center"><c:out value="\${intSize}"/></td>
+        <td align="center"><c:out value="${intSize}"/></td>
     </tr>
     <tr>
         <td>Property (String[])</td>
         <td align="center"><% String stringValues[] = bean.getStringArray();
             out.print(stringValues.length); %></td>
-        <td align="center"><c:out value="\${stringSize}"/></td>
+        <td align="center"><c:out value="${stringSize}"/></td>
     </tr>
 </table>
 

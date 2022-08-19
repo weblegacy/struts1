@@ -18,7 +18,7 @@
 <%@ page language="java" %>
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean-el" prefix="bean-el" %>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html-el:html>
 <head>
     <title>Test Replacements for struts bean:write Tag</title>
@@ -49,35 +49,35 @@
     </tr>
     <tr>
         <td>boolean</td>
-            <%-- Notice that the "value" attribute is not "\${test1.boolean}".  This would
+            <%-- Notice that the "value" attribute is not "${test1.boolean}".  This would
                  be interpreted as the "boolean" attribute of the "test1" scoped
                  variable, whereas this scoped variable is really named "test1.boolean".
             --%>
-        <td><c:out value='\${pageScope["test1.boolean"]}'/></td>
+        <td><c:out value='${pageScope["test1.boolean"]}'/></td>
     </tr>
     <tr>
         <td>double</td>
-        <td><c:out value='\${pageScope["test1.double"]}'/></td>
+        <td><c:out value='${pageScope["test1.double"]}'/></td>
     </tr>
     <tr>
         <td>float</td>
-        <td><c:out value='\${pageScope["test1.float"]}'/></td>
+        <td><c:out value='${pageScope["test1.float"]}'/></td>
     </tr>
     <tr>
         <td>int</td>
-        <td><c:out value='\${pageScope["test1.int"]}'/></td>
+        <td><c:out value='${pageScope["test1.int"]}'/></td>
     </tr>
     <tr>
         <td>long</td>
-        <td><c:out value='\${pageScope["test1.long"]}'/></td>
+        <td><c:out value='${pageScope["test1.long"]}'/></td>
     </tr>
     <tr>
         <td>short</td>
-        <td><c:out value='\${pageScope["test1.short"]}'/></td>
+        <td><c:out value='${pageScope["test1.short"]}'/></td>
     </tr>
     <tr>
         <td>String</td>
-        <td><c:out value='\${pageScope["test1.string"]}'/></td>
+        <td><c:out value='${pageScope["test1.string"]}'/></td>
     </tr>
 </table>
 
@@ -93,31 +93,31 @@
     </tr>
     <tr>
         <td>boolean</td>
-        <td><c:out value="\${test2.booleanProperty}"/></td>
+        <td><c:out value="${test2.booleanProperty}"/></td>
     </tr>
     <tr>
         <td>double</td>
-        <td><c:out value="\${test2.doubleProperty}"/></td>
+        <td><c:out value="${test2.doubleProperty}"/></td>
     </tr>
     <tr>
         <td>float</td>
-        <td><c:out value="\${test2.floatProperty}"/></td>
+        <td><c:out value="${test2.floatProperty}"/></td>
     </tr>
     <tr>
         <td>int</td>
-        <td><c:out value="\${test2.intProperty}"/></td>
+        <td><c:out value="${test2.intProperty}"/></td>
     </tr>
     <tr>
         <td>long</td>
-        <td><c:out value="\${test2.longProperty}"/></td>
+        <td><c:out value="${test2.longProperty}"/></td>
     </tr>
     <tr>
         <td>short</td>
-        <td><c:out value="\${test2.shortProperty}"/></td>
+        <td><c:out value="${test2.shortProperty}"/></td>
     </tr>
     <tr>
         <td>String</td>
-        <td><c:out value="\${test2.stringProperty}"/></td>
+        <td><c:out value="${test2.stringProperty}"/></td>
     </tr>
 </table>
 
@@ -132,13 +132,13 @@
         <th>Array Result</th>
         <th>Indexed Result</th>
     </tr>
-    <c:forEach items="\${test3.intArray}" var="item" varStatus="indexId">
+    <c:forEach items="${test3.intArray}" var="item" varStatus="indexId">
         <tr>
-            <td><c:out value="\${indexId.index * 10}"/></td>
-            <td><c:out value="\${test3.intArray[indexId.index]}"/>
+            <td><c:out value="${indexId.index * 10}"/></td>
+            <td><c:out value="${test3.intArray[indexId.index]}"/>
             <td>
                     <%-- Simulated "indexed" arrays, ala Struts, is not available in the EL.
-                    <c:out value="\${test3.intIndexed[indexId.index]}"/>
+                    <c:out value="${test3.intIndexed[indexId.index]}"/>
                     --%>
                 N/A
             </td>
@@ -158,13 +158,13 @@
         <th>Array Result</th>
         <th>Indexed Result</th>
     </tr>
-    <c:forEach items="\${test4.stringArray}" var="item" varStatus="indexId">
+    <c:forEach items="${test4.stringArray}" var="item" varStatus="indexId">
         <tr>
-            <td><c:out value="\${indexId.index}"/></td>
-            <td><c:out value="\${test4.stringArray[indexId.index]}"/></td>
+            <td><c:out value="${indexId.index}"/></td>
+            <td><c:out value="${test4.stringArray[indexId.index]}"/></td>
             <td>
                     <%-- Simulated "indexed" arrays, ala Struts, is not available in the EL.
-                      <c:out value="\${test4.stringIndexed[indexId.index]}"/>
+                      <c:out value="${test4.stringIndexed[indexId.index]}"/>
                     --%>
                 N/A
             </td>
@@ -185,31 +185,31 @@
     </tr>
     <tr>
         <td>boolean</td>
-        <td><c:out value="\${test5.nested.booleanProperty}"/></td>
+        <td><c:out value="${test5.nested.booleanProperty}"/></td>
     </tr>
     <tr>
         <td>double</td>
-        <td><c:out value="\${test5.nested.doubleProperty}"/></td>
+        <td><c:out value="${test5.nested.doubleProperty}"/></td>
     </tr>
     <tr>
         <td>float</td>
-        <td><c:out value="\${test5.nested.floatProperty}"/></td>
+        <td><c:out value="${test5.nested.floatProperty}"/></td>
     </tr>
     <tr>
         <td>int</td>
-        <td><c:out value="\${test5.nested.intProperty}"/></td>
+        <td><c:out value="${test5.nested.intProperty}"/></td>
     </tr>
     <tr>
         <td>long</td>
-        <td><c:out value="\${test5.nested.longProperty}"/></td>
+        <td><c:out value="${test5.nested.longProperty}"/></td>
     </tr>
     <tr>
         <td>short</td>
-        <td><c:out value="\${test5.nested.shortProperty}"/></td>
+        <td><c:out value="${test5.nested.shortProperty}"/></td>
     </tr>
     <tr>
         <td>String</td>
-        <td><c:out value="\${test5.nested.stringProperty}"/></td>
+        <td><c:out value="${test5.nested.stringProperty}"/></td>
     </tr>
 </table>
 
@@ -224,14 +224,14 @@
         <th>Array Result</th>
         <th>Indexed Result</th>
     </tr>
-    <c:forEach items="\${test6.nested.intArray}" var="item"
+    <c:forEach items="${test6.nested.intArray}" var="item"
                varStatus="indexId">
         <tr>
-            <td><c:out value="\${indexId.index * 10}"/></td>
-            <td><c:out value="\${test6.nested.intArray[indexId.index]}"/></td>
+            <td><c:out value="${indexId.index * 10}"/></td>
+            <td><c:out value="${test6.nested.intArray[indexId.index]}"/></td>
             <td>
                     <%-- Simulated "indexed" arrays, ala Struts, is not available in the EL.
-                      <c:out value="\${test6.nested.intIndexed[indexId.index]}"/>
+                      <c:out value="${test6.nested.intIndexed[indexId.index]}"/>
                     --%>
                 N/A
             </td>

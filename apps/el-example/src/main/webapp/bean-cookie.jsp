@@ -19,7 +19,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean-el" prefix="bean-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <html-el:html>
 <head>
@@ -35,7 +35,7 @@
 <p>Display the properties of our current session ID cookie (if there is
     one):</p>
 
-<c:set var="jcookie" value='\${cookie["JSESSIONID"]}'/>
+<c:set var="jcookie" value='${cookie["JSESSIONID"]}'/>
 
 <table border="1">
     <tr>
@@ -44,35 +44,35 @@
     </tr>
     <tr>
         <td>comment</td>
-        <td><c:out value="\${jcookie.comment}"/></td>
+        <td><c:out value="${jcookie.comment}"/></td>
     </tr>
     <tr>
         <td>domain</td>
-        <td><c:out value="\${jcookie.domain}"/></td>
+        <td><c:out value="${jcookie.domain}"/></td>
     </tr>
     <tr>
         <td>maxAge</td>
-        <td><c:out value="\${jcookie.maxAge}"/></td>
+        <td><c:out value="${jcookie.maxAge}"/></td>
     </tr>
     <tr>
         <td>name</td>
-        <td><c:out value="\${jcookie.name}"/></td>
+        <td><c:out value="${jcookie.name}"/></td>
     </tr>
     <tr>
         <td>path</td>
-        <td><c:out value="\${jcookie.path}"/></td>
+        <td><c:out value="${jcookie.path}"/></td>
     </tr>
     <tr>
         <td>secure</td>
-        <td><c:out value="\${jcookie.secure}"/></td>
+        <td><c:out value="${jcookie.secure}"/></td>
     </tr>
     <tr>
         <td>value</td>
-        <td><c:out value="\${jcookie.value}"/></td>
+        <td><c:out value="${jcookie.value}"/></td>
     </tr>
     <tr>
         <td>version</td>
-        <td><c:out value="\${jcookie.version}"/></td>
+        <td><c:out value="${jcookie.version}"/></td>
     </tr>
 </table>
 
@@ -90,35 +90,35 @@
     </tr>
     <tr>
         <td>comment</td>
-        <td><c:out value="\${dummy.comment}"/></td>
+        <td><c:out value="${dummy.comment}"/></td>
     </tr>
     <tr>
         <td>domain</td>
-        <td><c:out value="\${dummy.domain}"/></td>
+        <td><c:out value="${dummy.domain}"/></td>
     </tr>
     <tr>
         <td>maxAge</td>
-        <td><c:out value="\${dummy.maxAge}"/></td>
+        <td><c:out value="${dummy.maxAge}"/></td>
     </tr>
     <tr>
         <td>name</td>
-        <td><c:out value="\${dummy.name}"/></td>
+        <td><c:out value="${dummy.name}"/></td>
     </tr>
     <tr>
         <td>path</td>
-        <td><c:out value="\${dummy.path}"/></td>
+        <td><c:out value="${dummy.path}"/></td>
     </tr>
     <tr>
         <td>secure</td>
-        <td><c:out value="\${dummy.secure}"/></td>
+        <td><c:out value="${dummy.secure}"/></td>
     </tr>
     <tr>
         <td>value</td>
-        <td><c:out value="\${dummy.value}"/></td>
+        <td><c:out value="${dummy.value}"/></td>
     </tr>
     <tr>
         <td>version</td>
-        <td><c:out value="\${dummy.version}"/></td>
+        <td><c:out value="${dummy.version}"/></td>
     </tr>
 </table>
 

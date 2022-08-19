@@ -19,7 +19,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean-el" prefix="bean-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html-el:html>
     <head>
         <title>Test Replacements for struts-bean:header Tag</title>
@@ -38,16 +38,16 @@
             <th>Header Name</th>
             <th>Header Value</th>
         </tr>
-        <c:forEach items="\${pageContext.request.headerNames}" var="name">
+        <c:forEach items="${pageContext.request.headerNames}" var="name">
             <tr>
-                <td><c:out value="\${name}"/></td>
-                <td><c:out value="\${header[name]}"/></td>
+                <td><c:out value="${name}"/></td>
+                <td><c:out value="${header[name]}"/></td>
             </tr>
         </c:forEach>
         <bean:header id="dummy" name="UNKNOWN-HEADER" value="UNKNOWN VALUE"/>
         <tr>
             <td>UNKNOWN HEADER</td>
-            <td><c:out value="\${dummy}"/></td>
+            <td><c:out value="${dummy}"/></td>
         </tr>
     </table>
 

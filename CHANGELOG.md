@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `jstl` and `taglibs.standard` from 1.0.2 to 1.1.2
 * Change deprecated value `EVAL_BODY_TAG` to `EVAL_BODY_BUFFERED`
 * Bump `servlet-api` from 2.3 to 2.4
 * Change group-id of `jsp-api` from `javax.servlet` to `javax.servlet.jsp`

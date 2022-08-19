@@ -19,7 +19,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean-el" prefix="bean-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic-el" prefix="logic-el" %>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html-el:html>
 <head>
     <title>Test Struts presence tags and Replacements</title>
@@ -57,7 +57,7 @@
     <td>present</td>
     <td>
         <c:choose>
-            <c:when test="\${not empty bean}">
+            <c:when test="${not empty bean}">
                 present
             </c:when>
             <c:otherwise>
@@ -71,7 +71,7 @@
     <td>notPresent</td>
     <td>
         <c:choose>
-            <c:when test="\${not empty FOOBAR}">
+            <c:when test="${not empty FOOBAR}">
                 present
             </c:when>
             <c:otherwise>
@@ -84,7 +84,7 @@
     <td>Cookie</td>
     <td>
         <c:choose>
-            <c:when test="\${pageContext.request.requestedSessionIdFromCookie}">
+            <c:when test="${pageContext.request.requestedSessionIdFromCookie}">
                 present
             </c:when>
             <c:otherwise>
@@ -94,7 +94,7 @@
     </td>
     <td>
         <c:choose>
-            <c:when test='\${not empty cookie["JSESSIONID"]}'>
+            <c:when test='${not empty cookie["JSESSIONID"]}'>
                 present
             </c:when>
             <c:otherwise>
@@ -108,7 +108,7 @@
     <td>notPresent</td>
     <td>
         <c:choose>
-            <c:when test='\${not empty cookie["FOOBAR"]}'>
+            <c:when test='${not empty cookie["FOOBAR"]}'>
                 present
             </c:when>
             <c:otherwise>
@@ -122,7 +122,7 @@
     <td>present</td>
     <td>
         <c:choose>
-            <c:when test='\${not empty header["User-Agent"]}'>
+            <c:when test='${not empty header["User-Agent"]}'>
                 present
             </c:when>
             <c:otherwise>
@@ -136,7 +136,7 @@
     <td>notPresent</td>
     <td>
         <c:choose>
-            <c:when test='\${not empty header["FOOBAR"]}'>
+            <c:when test='${not empty header["FOOBAR"]}'>
                 present
             </c:when>
             <c:otherwise>
@@ -150,7 +150,7 @@
     <td>present</td>
     <td>
         <c:choose>
-            <c:when test='\${not empty param["param1"]}'>
+            <c:when test='${not empty param["param1"]}'>
                 present
             </c:when>
             <c:otherwise>
@@ -178,7 +178,7 @@
     <td>present</td>
     <td>
         <c:choose>
-            <c:when test="\${not empty bean.stringProperty}">
+            <c:when test="${not empty bean.stringProperty}">
                 present
             </c:when>
             <c:otherwise>
@@ -192,7 +192,7 @@
     <td>notPresent</td>
     <td>
         <c:choose>
-            <c:when test="\${not empty bean.nullProperty}">
+            <c:when test="${not empty bean.nullProperty}">
                 present
             </c:when>
             <c:otherwise>

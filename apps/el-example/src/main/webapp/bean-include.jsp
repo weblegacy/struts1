@@ -18,7 +18,7 @@
 <%@ page language="java" %>
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean-el" prefix="bean-el" %>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html-el:html>
     <head>
         <title>Test bean-el:include Tag and Replacements</title>
@@ -37,7 +37,7 @@
         using <code>&lt;c:import&gt;</code>, with no filtering.</p>
     <hr>
     <pre>
-        <c:out value="\${index}" escapeXml="false"/>
+        <c:out value="${index}" escapeXml="false"/>
     </pre>
     <hr>
 
@@ -45,7 +45,7 @@
         using <code>&lt;c:import&gt;</code>, with filtering.</p>
     <hr>
     <pre>
-        <c:out value="\${index}" escapeXml="true"/>
+        <c:out value="${index}" escapeXml="true"/>
     </pre>
     <hr>
 
@@ -53,7 +53,7 @@
         using <code>&lt;bean-el:include&gt;</code>, with no filtering.</p>
     <hr>
     <pre>
-        <c:out value="\${index2}" escapeXml="false"/>
+        <c:out value="${index2}" escapeXml="false"/>
     </pre>
     <hr>
 
@@ -61,7 +61,7 @@
         using <code>&lt;bean-el:include&gt;</code>, with filtering.</p>
     <hr>
     <pre>
-        <c:out value="\${index2}" escapeXml="true"/>
+        <c:out value="${index2}" escapeXml="true"/>
     </pre>
     <hr>
 

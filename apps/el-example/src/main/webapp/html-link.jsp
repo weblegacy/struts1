@@ -19,7 +19,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-bean-el" prefix="bean-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic-el" prefix="logic-el" %>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html-el:html xhtml="\${!empty pageScope}">
 <head>
     <title>Test html-el:link Tag</title>
@@ -127,7 +127,7 @@ main menu.
 <tr>
     <td colspan="4" align="center">
         <html-el:link
-                page="/html-link.do?doubleProperty=321.321&amp;longProperty=321321"
+                page="/html-link.do?doubleProperty=321.321&longProperty=321321"
                 accesskey="2" tabindex="4"
                 title="Double and long via hard coded changes">
             Double and long via hard coded changes
@@ -208,7 +208,7 @@ main menu.
 <tr>
     <td colspan="4" align="center">
         <html-el:link
-                action="html-link?doubleProperty=321.321&amp;longProperty=321321"
+                action="html-link?doubleProperty=321.321&longProperty=321321"
                 accesskey="2" tabindex="4"
                 title="Double and long via hard coded changes">
             Double and long via hard coded changes

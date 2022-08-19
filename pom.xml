@@ -366,6 +366,7 @@
         <javaTestVersion>1.8</javaTestVersion>
         <myfacesVersion>1.0.9</myfacesVersion>
         <seleniumVersion>4.4.0</seleniumVersion>
+        <taglibsVersion>1.1.2</taglibsVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
         <struts.osgi.import>*</struts.osgi.import>
@@ -962,6 +963,12 @@
                 </exclusions>
             </dependency>
             <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.4</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
                 <groupId>javax.servlet.jsp</groupId>
                 <artifactId>jsp-api</artifactId>
                 <version>2.0</version>
@@ -970,13 +977,12 @@
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>jstl</artifactId>
-                <version>1.0.2</version>
+                <version>${taglibsVersion}</version>
             </dependency>
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>2.4</version>
-                <scope>provided</scope>
+                <groupId>taglibs</groupId>
+                <artifactId>standard</artifactId>
+                <version>${taglibsVersion}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
@@ -1034,11 +1040,6 @@
                 <groupId>myfaces</groupId>
                 <artifactId>myfaces-jsf-api</artifactId>
                 <version>${myfacesVersion}</version>
-            </dependency>
-            <dependency>
-                <groupId>taglibs</groupId>
-                <artifactId>standard</artifactId>
-                <version>1.0.6</version>
             </dependency>
             <dependency>
                 <groupId>groovy</groupId>

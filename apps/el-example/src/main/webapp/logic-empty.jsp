@@ -18,7 +18,7 @@
 <%@ page language="java" %>
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean-el" prefix="bean-el" %>
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html-el:html>
     <head>
         <title>Test Replacements for struts emptiness tags</title>
@@ -44,7 +44,7 @@
             <td>empty</td>
             <td>
                 <c:choose>
-                    <c:when test="\${empty bean.nullProperty}">
+                    <c:when test="${empty bean.nullProperty}">
                         empty
                     </c:when>
                     <c:otherwise>
@@ -58,7 +58,7 @@
             <td>empty</td>
             <td>
                 <c:choose>
-                    <c:when test="\${empty bean.emptyStringProperty}">
+                    <c:when test="${empty bean.emptyStringProperty}">
                         empty
                     </c:when>
                     <c:otherwise>
@@ -72,7 +72,7 @@
             <td>notEmpty</td>
             <td>
                 <c:choose>
-                    <c:when test="\${empty bean.stringProperty}">
+                    <c:when test="${empty bean.stringProperty}">
                         empty
                     </c:when>
                     <c:otherwise>
@@ -86,7 +86,7 @@
             <td>notEmpty</td>
             <td>
                 <c:choose>
-                    <c:when test="\${empty bean.intProperty}">
+                    <c:when test="${empty bean.intProperty}">
                         empty
                     </c:when>
                     <c:otherwise>

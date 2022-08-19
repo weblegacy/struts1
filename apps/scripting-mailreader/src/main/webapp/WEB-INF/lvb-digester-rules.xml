@@ -15,6 +15,11 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
+
+<!DOCTYPE digester-rules PUBLIC
+          "-//Apache Commons //DTD digester-rules XML V1.0//EN"
+          "http://commons.apache.org/digester/dtds/digester-rules-3.0.dtd">
+
 <digester-rules>
     <object-create-rule pattern="lv-beans" classname="java.util.ArrayList"/>
     <pattern value="lv-beans/lv-bean">

@@ -54,8 +54,8 @@ import org.apache.commons.beanutils.converters.LongConverter;
 import org.apache.commons.beanutils.converters.ShortConverter;
 import org.apache.commons.chain.CatalogFactory;
 import org.apache.commons.chain.config.ConfigParser;
-import org.apache.commons.digester.Digester;
-import org.apache.commons.digester.RuleSet;
+import org.apache.commons.digester3.Digester;
+import org.apache.commons.digester3.RuleSet;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
@@ -182,7 +182,7 @@ import org.xml.sax.SAXException;
  * (rather than 0). (Since Struts 1.1) [false] </li>
  *
  * <li><strong>rulesets </strong> - Comma-delimited list of fully qualified
- * classnames of additional <code>org.apache.commons.digester.RuleSet</code>
+ * classnames of additional <code>org.apache.commons.digester3.RuleSet</code>
  * instances that should be added to the <code>Digester</code> that will be
  * processing <code>struts-config.xml</code> files.  By default, only the
  * <code>RuleSet</code> for the standard configuration elements is loaded.

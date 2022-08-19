@@ -82,8 +82,8 @@
             <artifactId>commons-chain</artifactId>
         </dependency>
         <dependency>
-            <groupId>commons-digester</groupId>
-            <artifactId>commons-digester</artifactId>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-digester3</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-fileupload</groupId>

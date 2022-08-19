@@ -31,8 +31,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.HashMap;
-import org.apache.commons.digester.Digester;
-import org.apache.commons.digester.ObjectCreationFactory;
+import org.apache.commons.digester3.Digester;
+import org.apache.commons.digester3.ObjectCreationFactory;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.webapp.example.Subscription;
@@ -342,7 +342,7 @@ public final class MemoryUserDatabase implements UserDatabase {
 /**
  * Digester object creation factory for subscription instances.
  */
-class MemorySubscriptionCreationFactory implements ObjectCreationFactory {
+class MemorySubscriptionCreationFactory implements ObjectCreationFactory<Subscription> {
 
     public MemorySubscriptionCreationFactory(MemoryUserDatabase database) {
     }
@@ -357,9 +357,9 @@ class MemorySubscriptionCreationFactory implements ObjectCreationFactory {
         this.digester = digester;
     }
 
-    public Object createObject(Attributes attributes) {
+    public Subscription createObject(Attributes attributes) {
         String host = attributes.getValue("host");
-        User user = (User) digester.peek();
+        User user = digester.peek();
         Subscription subscription = user.createSubscription(host);
         String autoConnect = attributes.getValue("autoConnect");
         if (autoConnect == null) {
@@ -383,7 +383,7 @@ class MemorySubscriptionCreationFactory implements ObjectCreationFactory {
 /**
  * Digester object creation factory for user instances.
  */
-class MemoryUserCreationFactory implements ObjectCreationFactory {
+class MemoryUserCreationFactory implements ObjectCreationFactory<User> {
 
     public MemoryUserCreationFactory(MemoryUserDatabase database) {
         this.database = database;
@@ -401,7 +401,7 @@ class MemoryUserCreationFactory implements ObjectCreationFactory {
         this.digester = digester;
     }
 
-    public Object createObject(Attributes attributes) {
+    public User createObject(Attributes attributes) {
         String username = attributes.getValue("username");
         User user = database.createUser(username);
         user.setFromAddress(attributes.getValue("fromAddress"));

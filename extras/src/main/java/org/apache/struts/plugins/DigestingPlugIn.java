@@ -20,9 +20,20 @@
  */
 package org.apache.struts.plugins;
 
-import org.apache.commons.digester.Digester;
-import org.apache.commons.digester.RuleSet;
-import org.apache.commons.digester.xmlrules.DigesterLoader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
+import javax.servlet.ServletException;
+
+import org.apache.commons.digester3.Digester;
+import org.apache.commons.digester3.RuleSet;
+import org.apache.commons.digester3.binder.DigesterLoader;
+import org.apache.commons.digester3.binder.RulesModule;
+import org.apache.commons.digester3.xmlrules.FromXmlRulesModule;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionServlet;
@@ -30,14 +41,6 @@ import org.apache.struts.action.PlugIn;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.util.RequestUtils;
 import org.xml.sax.SAXException;
-
-import javax.servlet.ServletException;
-
-import java.io.File;
-import java.io.IOException;
-
-import java.net.URL;
-import java.net.URLConnection;
 
 /**
  * <p>An implementation of <code>PlugIn</code> which can be configured to
@@ -176,7 +179,7 @@ public class DigestingPlugIn implements PlugIn {
      * override this to provide a subclass of Digester, or to configure the
      * Digester using object methods.</p>
      *
-     * @return a basic instance of <code>org.apache.commons.digester.Digester</code>
+     * @return a basic instance of <code>org.apache.commons.digester3.Digester</code>
      */
     protected Digester newDigesterInstance() {
         return new Digester();
@@ -204,7 +207,13 @@ public class DigestingPlugIn implements PlugIn {
                 + "' found in '" + source + "'");
         }
 
-        return DigesterLoader.createDigester(configURL);
+        RulesModule rules = new FromXmlRulesModule() {
+            @Override
+            protected void loadRules() {
+                loadXMLRules(configURL);
+            }
+        };
+        return DigesterLoader.newLoader(rules).newDigester();
     }
 
     /**
@@ -409,7 +418,7 @@ public class DigestingPlugIn implements PlugIn {
 
     /**
      * <p>A comma-delimited list of one or more classes which implement
-     * <code>org.apache.commons.digester.RuleSet</code>. (Optional)</p>
+     * <code>org.apache.commons.digester3.RuleSet</code>. (Optional)</p>
      */
     public void setRulesets(String ruleSets) {
         this.rulesets = ruleSets;

@@ -28,9 +28,13 @@
    <modelVersion>4.0.0</modelVersion>
    <artifactId>struts-el-example</artifactId>
    <packaging>war</packaging>
-   <name>Struts Apps - Struts EL Exercise</name>
+   <name>Struts Apps - EL Examples</name>
 
    <dependencies>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>struts-core</artifactId>
+      </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-el</artifactId>
@@ -38,6 +42,10 @@
       <dependency>
          <groupId>javax.servlet</groupId>
          <artifactId>servlet-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>jstl</artifactId>
       </dependency>
    </dependencies>
 

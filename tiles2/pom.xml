@@ -57,21 +57,28 @@
          <artifactId>servlet-api</artifactId>
       </dependency>
       <dependency>
-         <groupId>javax.servlet</groupId>
-         <artifactId>jsp-api</artifactId>
-         <scope>test</scope>
-      </dependency>
-      <dependency>
-         <groupId>org.apache.tiles</groupId>
-         <artifactId>tiles-jsp</artifactId>
-      </dependency>
-      <dependency>
          <groupId>org.apache.tiles</groupId>
          <artifactId>tiles-core</artifactId>
       </dependency>
       <dependency>
          <groupId>org.apache.tiles</groupId>
          <artifactId>tiles-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>commons-logging</groupId>
+         <artifactId>commons-logging</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>commons-beanutils</groupId>
+         <artifactId>commons-beanutils</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>commons-chain</groupId>
+         <artifactId>commons-chain</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.junit.jupiter</groupId>
+         <artifactId>junit-jupiter-api</artifactId>
       </dependency>
    </dependencies>
 

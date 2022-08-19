@@ -364,7 +364,8 @@
         <mavenVersion>[3.5.4,4)</mavenVersion>
         <javaVersion>1.8</javaVersion>
         <javaTestVersion>1.8</javaTestVersion>
-        <myfaces.version>1.0.9</myfaces.version>
+        <myfacesVersion>1.0.9</myfacesVersion>
+        <seleniumVersion>4.4.0</seleniumVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
         <struts.osgi.import>*</struts.osgi.import>
@@ -785,7 +786,7 @@
                   <dependencyLinks>
                     <dependencyLink>
                       <groupId>org.junit.jupiter</groupId>
-                      <artifactId>junit-jupiter-engine</artifactId>
+                      <artifactId>junit-jupiter-api</artifactId>
                       <url>https://junit.org/junit5/docs/current/api</url>
                     </dependencyLink>
                     <dependencyLink>
@@ -979,7 +980,7 @@
             </dependency>
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
-                <artifactId>junit-jupiter-engine</artifactId>
+                <artifactId>junit-jupiter-api</artifactId>
                 <version>5.9.0</version>
                 <scope>test</scope>
             </dependency>
@@ -992,7 +993,13 @@
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-java</artifactId>
-                <version>4.4.0</version>
+                <version>${seleniumVersion}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-api</artifactId>
+                <version>${seleniumVersion}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -1004,22 +1011,17 @@
             <dependency>
                 <groupId>myfaces</groupId>
                 <artifactId>myfaces-extensions</artifactId>
-                <version>${myfaces.version}</version>
+                <version>${myfacesVersion}</version>
             </dependency>
             <dependency>
                 <groupId>myfaces</groupId>
                 <artifactId>myfaces-impl</artifactId>
-                <version>${myfaces.version}</version>
+                <version>${myfacesVersion}</version>
             </dependency>
             <dependency>
                 <groupId>myfaces</groupId>
                 <artifactId>myfaces-jsf-api</artifactId>
-                <version>${myfaces.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>oro</groupId>
-                <artifactId>oro</artifactId>
-                <version>2.0.8</version>
+                <version>${myfacesVersion}</version>
             </dependency>
             <dependency>
                 <groupId>taglibs</groupId>
@@ -1247,13 +1249,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-        </dependency>
-    </dependencies>
 
     <distributionManagement>
         <snapshotRepository>

@@ -33,6 +33,14 @@
    <dependencies>
       <dependency>
          <groupId>${project.groupId}</groupId>
+         <artifactId>struts-core</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>struts-extras</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
          <artifactId>struts-scripting</artifactId>
       </dependency>
       <dependency>
@@ -44,16 +52,16 @@
          <artifactId>struts-mailreader-dao</artifactId>
       </dependency>
       <dependency>
-         <groupId>${project.groupId}</groupId>
-         <artifactId>struts-extras</artifactId>
-      </dependency>
-      <dependency>
          <groupId>groovy</groupId>
          <artifactId>groovy-all</artifactId>
       </dependency>
       <dependency>
          <groupId>javax.servlet</groupId>
          <artifactId>servlet-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>commons-logging</groupId>
+         <artifactId>commons-logging</artifactId>
       </dependency>
    </dependencies>
 

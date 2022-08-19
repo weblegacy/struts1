@@ -33,6 +33,10 @@
    <dependencies>
       <dependency>
          <groupId>${project.groupId}</groupId>
+         <artifactId>struts-core</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
          <artifactId>struts-faces</artifactId>
       </dependency>
       <dependency>
@@ -58,6 +62,18 @@
       <dependency>
          <groupId>taglibs</groupId>
          <artifactId>standard</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.commons</groupId>
+         <artifactId>commons-digester3</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>commons-logging</groupId>
+         <artifactId>commons-logging</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>commons-beanutils</groupId>
+         <artifactId>commons-beanutils</artifactId>
       </dependency>
       <!-- Required by MyFaces -->
       <dependency>

@@ -33,6 +33,10 @@
    <dependencies>
       <dependency>
          <groupId>${project.groupId}</groupId>
+         <artifactId>struts-core</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
          <artifactId>struts-taglib</artifactId>
       </dependency>
       <dependency>
@@ -46,6 +50,14 @@
       <dependency>
          <groupId>javax.servlet</groupId>
          <artifactId>servlet-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>commons-logging</groupId>
+         <artifactId>commons-logging</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>commons-beanutils</groupId>
+         <artifactId>commons-beanutils</artifactId>
       </dependency>
    </dependencies>
 

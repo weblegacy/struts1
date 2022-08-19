@@ -237,6 +237,10 @@
          <artifactId>struts-el-example</artifactId>
          <type>war</type>
       </dependency>
+      <dependency>
+         <groupId>org.junit.jupiter</groupId>
+         <artifactId>junit-jupiter-api</artifactId>
+      </dependency>
    </dependencies>
 
 </project>

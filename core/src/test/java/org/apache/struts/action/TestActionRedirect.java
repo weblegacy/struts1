@@ -22,11 +22,11 @@ package org.apache.struts.action;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.opentest4j.AssertionFailedError;
 
 /**
  * Unit tests for the {@link ActionRedirect} class.
@@ -132,15 +132,11 @@ public class TestActionRedirect {
         Object value = parameters.get(paramName);
 
         if (value == null) {
-            throw new AssertionFailedError("Parameter [" + paramName
-                + "] not found");
+            fail("Parameter [" + paramName + "] not found");
         }
 
         if (value instanceof String) {
-            if (!paramValue.equals(value)) {
-                throw new AssertionFailedError("Incorrect value found",
-                    paramValue, (String) value);
-            }
+            assertEquals(paramValue, (String) value, "Incorrect value found");
         } else if (value instanceof String[]) {
             // see if our value is among those in the array
             String[] values = (String[]) value;
@@ -151,13 +147,10 @@ public class TestActionRedirect {
                 }
             }
 
-            throw new AssertionFailedError(
-                "Expected value not found for parameter [" + paramName + "]");
+            fail("Expected value not found for parameter [" + paramName + "]");
         } else {
             // can't recognize the value
-            throw new AssertionFailedError(
-                "Unexpected type found as parameter value for [" + paramName
-                + "]");
+            fail("Unexpected type found as parameter value for [" + paramName + "]");
         }
     }
 
@@ -184,9 +177,10 @@ public class TestActionRedirect {
             return values.length;
         } else {
             // can't recognize the value
-            throw new AssertionFailedError(
-                "Unexpected type found as parameter value for [" + paramName
-                + "]");
+            fail("Unexpected type found as parameter value for [" + paramName + "]");
+
+            // Dead code
+            return -1;
         }
     }
 }

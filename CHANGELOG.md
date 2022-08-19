@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* IT: Remove unnecessary JDK-1.7-wrapper
 * Bump `selenium-java` from 4.3.0 to 4.4.0
 * Bump `commons-digester` from 1.8 to 3.2
 * Bump `webdrivermanager` from 5.2.1 to 5.2.3

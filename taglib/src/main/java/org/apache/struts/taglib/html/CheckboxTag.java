@@ -113,7 +113,6 @@ public class CheckboxTag extends BaseHandlerTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
-    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Create an appropriate "input" element based on our parameters
         StringBuilder results = new StringBuilder("<input type=\"checkbox\"");
@@ -139,7 +138,7 @@ public class CheckboxTag extends BaseHandlerTag {
         // Continue processing this page
         this.text = null;
 
-        return (EVAL_BODY_TAG);
+        return (EVAL_BODY_BUFFERED);
     }
 
     /**

@@ -83,7 +83,6 @@ public class NestedPropertyTag extends BodyTagSupport
      *
      * @return int JSP continuation directive.
      */
-    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         originalProperty = property;
 
@@ -100,7 +99,7 @@ public class NestedPropertyTag extends BodyTagSupport
         NestedPropertyHelper.setName(request, originalName);
 
         // run the body part
-        return (EVAL_BODY_TAG);
+        return (EVAL_BODY_BUFFERED);
     }
 
     /**

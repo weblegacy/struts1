@@ -203,7 +203,6 @@ public class MessagesTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
-    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Initialize for a new request.
         processed = false;
@@ -263,7 +262,7 @@ public class MessagesTag extends BodyTagSupport {
         // doEndTag() knows processing took place
         processed = true;
 
-        return (EVAL_BODY_TAG);
+        return (EVAL_BODY_BUFFERED);
     }
 
     /**
@@ -272,7 +271,6 @@ public class MessagesTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
-    @SuppressWarnings("deprecation")
     public int doAfterBody() throws JspException {
         // Render the output from this iteration to the output stream
         if (bodyContent != null) {
@@ -285,7 +283,7 @@ public class MessagesTag extends BodyTagSupport {
         if (iterator.hasNext()) {
             processMessage(iterator.next());
 
-            return (EVAL_BODY_TAG);
+            return (EVAL_BODY_BUFFERED);
         } else {
             return (SKIP_BODY);
         }

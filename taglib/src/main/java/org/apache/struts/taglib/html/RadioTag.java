@@ -141,7 +141,6 @@ public class RadioTag extends BaseHandlerTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
-    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         String radioTag = renderRadioElement(serverValue(), currentValue());
 
@@ -149,7 +148,7 @@ public class RadioTag extends BaseHandlerTag {
 
         this.text = null;
 
-        return (EVAL_BODY_TAG);
+        return (EVAL_BODY_BUFFERED);
     }
 
     /**

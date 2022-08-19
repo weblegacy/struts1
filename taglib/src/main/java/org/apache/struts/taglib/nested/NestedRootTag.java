@@ -95,7 +95,6 @@ public class NestedRootTag extends BodyTagSupport implements NestedNameSupport {
      *
      * @return int JSP continuation directive.
      */
-    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         /* set the nested reference for possible inclusions etc */
         HttpServletRequest request =
@@ -114,7 +113,7 @@ public class NestedRootTag extends BodyTagSupport implements NestedNameSupport {
         }
 
         // do the JSP thing
-        return (EVAL_BODY_TAG);
+        return (EVAL_BODY_BUFFERED);
     }
 
     /**

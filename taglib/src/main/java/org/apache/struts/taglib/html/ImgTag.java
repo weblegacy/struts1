@@ -373,10 +373,9 @@ public class ImgTag extends BaseHandlerTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
-    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Evaluate the body of this tag
-        return (EVAL_BODY_TAG);
+        return (EVAL_BODY_BUFFERED);
     }
 
     /**

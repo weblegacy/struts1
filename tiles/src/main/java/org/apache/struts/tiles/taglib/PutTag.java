@@ -429,7 +429,6 @@ public class PutTag extends BodyTagSupport implements ComponentConstants {
     /**
      * Do start tag.
      */
-    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
 
         // clear body content
@@ -437,7 +436,7 @@ public class PutTag extends BodyTagSupport implements ComponentConstants {
 
         // Do we need to evaluate body ?
         if (value == null && beanName == null) {
-            return EVAL_BODY_TAG;
+            return EVAL_BODY_BUFFERED;
         }
 
         // Value is set, don't evaluate body.

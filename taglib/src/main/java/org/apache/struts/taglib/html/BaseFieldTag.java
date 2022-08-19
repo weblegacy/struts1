@@ -78,11 +78,10 @@ public abstract class BaseFieldTag extends BaseInputTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
-    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         TagUtils.getInstance().write(this.pageContext, this.renderInputElement());
 
-        return (EVAL_BODY_TAG);
+        return (EVAL_BODY_BUFFERED);
     }
 
     /**

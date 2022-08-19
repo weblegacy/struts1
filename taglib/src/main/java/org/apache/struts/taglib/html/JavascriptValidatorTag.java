@@ -339,7 +339,6 @@ public class JavascriptValidatorTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
-    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         JspWriter writer = pageContext.getOut();
 
@@ -349,7 +348,7 @@ public class JavascriptValidatorTag extends BodyTagSupport {
             throw new JspException(e.getMessage(), e);
         }
 
-        return EVAL_BODY_TAG;
+        return EVAL_BODY_BUFFERED;
     }
 
     /**

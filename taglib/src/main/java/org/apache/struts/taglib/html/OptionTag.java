@@ -284,13 +284,12 @@ public class OptionTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
-    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Initialize the placeholder for our body content
         this.text = null;
 
         // Do nothing until doEndTag() is called
-        return (EVAL_BODY_TAG);
+        return (EVAL_BODY_BUFFERED);
     }
 
     /**

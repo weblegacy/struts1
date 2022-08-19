@@ -230,7 +230,6 @@ public class IterateTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
-    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Acquire the collection we are going to iterate over
         Object collection = this.collection;
@@ -358,7 +357,7 @@ public class IterateTag extends BodyTagSupport {
                 pageContext.setAttribute(indexId, new Integer(getIndex()));
             }
 
-            return (EVAL_BODY_TAG);
+            return (EVAL_BODY_BUFFERED);
         } else {
             return (SKIP_BODY);
         }
@@ -370,7 +369,6 @@ public class IterateTag extends BodyTagSupport {
      *
      * @throws JspException if a JSP exception has occurred
      */
-    @SuppressWarnings("deprecation")
     public int doAfterBody() throws JspException {
         // Render the output from this iteration to the output stream
         if (bodyContent != null) {
@@ -399,7 +397,7 @@ public class IterateTag extends BodyTagSupport {
                 pageContext.setAttribute(indexId, new Integer(getIndex()));
             }
 
-            return (EVAL_BODY_TAG);
+            return (EVAL_BODY_BUFFERED);
         } else {
             return (SKIP_BODY);
         }

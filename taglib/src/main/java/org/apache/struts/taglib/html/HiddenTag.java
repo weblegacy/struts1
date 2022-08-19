@@ -66,14 +66,13 @@ public class HiddenTag extends BaseFieldTag {
      *
      * @throws JspException if a JSP exception has occurred
      */
-    @SuppressWarnings("deprecation")
     public int doStartTag() throws JspException {
         // Render the <html:input type="hidden"> tag as before
         super.doStartTag();
 
         // Is rendering the value separately requested?
         if (!write) {
-            return (EVAL_BODY_TAG);
+            return (EVAL_BODY_BUFFERED);
         }
 
         // Calculate the value to be rendered separately
@@ -95,7 +94,7 @@ public class HiddenTag extends BaseFieldTag {
 
         TagUtils.getInstance().write(pageContext, results);
 
-        return (EVAL_BODY_TAG);
+        return (EVAL_BODY_BUFFERED);
     }
 
     /**

@@ -34,18 +34,18 @@
             if (!jcv_verifyArrayElement(x, oFloat[x])) {
                 continue;
             }
-        	var field = form[oFloat[x][0]];
+            var field = form[oFloat[x][0]];
             if (!jcv_isFieldPresent(field)) {
               continue;
             }
-        	
+
             if ((field.type == 'hidden' ||
                 field.type == 'text' ||
                 field.type == 'textarea' ||
                 field.type == 'select-one' ||
                 field.type == 'radio')) {
-        
-            	var value = '';
+
+                var value = '';
                 // get field's value
                 if (field.type == "select-one") {
                     var si = field.selectedIndex;
@@ -75,14 +75,14 @@
                         fields[i++] = oFloat[x][1];
 
                     } else {
-	                var iValue = parseFloat(value);
-	                if (isNaN(iValue)) {
-	                    if (i == 0) {
-	                        focusField = field;
-	                    }
-	                    fields[i++] = oFloat[x][1];
-	                    bValid = false;
-	                }
+                    var iValue = parseFloat(value);
+                    if (isNaN(iValue)) {
+                        if (i == 0) {
+                            focusField = field;
+                        }
+                        fields[i++] = oFloat[x][1];
+                        bValid = false;
+                    }
                     }
                 }
             }

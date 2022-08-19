@@ -42,7 +42,7 @@
             if ((field.type == 'hidden' ||
                 field.type == 'text' ||
                  field.type == 'textarea' ||
-				 field.type == 'file') &&
+                 field.type == 'file') &&
                  (field.value.length > 0)) {
 
                 if (!jcv_matchPattern(field.value, oMasked[x][2]("mask"))) {

@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Replace tabs with spaces
 * Clear all compiler-warnings
 * Revision of the dependencies based on the dependency analysis
 * IT: Remove unnecessary JDK-1.7-wrapper

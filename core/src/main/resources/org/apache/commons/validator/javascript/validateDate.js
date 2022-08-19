@@ -192,7 +192,7 @@
      *   validation library.
      */
     function jcv_isValidDate(day, month, year) {
-	    if (month < 1 || month > 12) {
+        if (month < 1 || month > 12) {
             return false;
         }
         if (day < 1 || day > 31) {

@@ -1986,7 +1986,7 @@ public class ActionServlet extends HttpServlet {
         try {
             String plugInKey = Globals.PLUG_INS_KEY + moduleConfig.getPrefix();
             return (PlugIn[]) getServletContext().getAttribute(plugInKey);
-        } catch (NullPointerException e) {
+        } catch (NullPointerException | IllegalStateException e) {
             return null;
         }
     }

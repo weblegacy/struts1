@@ -218,4 +218,9 @@ public class PlugInConfigContextAdapter implements ServletContext {
     public String getServletContextName() {
         return rootContext.getServletContextName();
     }
+
+    @Override
+    public String getContextPath() {
+        return rootContext.getContextPath();
+    }
 }

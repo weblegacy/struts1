@@ -35,6 +35,14 @@
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-taglib</artifactId>
       </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
+         <artifactId>struts-tiles</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>javax.servlet</groupId>
+         <artifactId>servlet-api</artifactId>
+      </dependency>
    </dependencies>
 
    <build>

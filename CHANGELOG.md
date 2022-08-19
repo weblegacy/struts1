@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Apps-Blank: Add missing dependency
 * Replace tabs with spaces
 * Clear all compiler-warnings
 * Revision of the dependencies based on the dependency analysis

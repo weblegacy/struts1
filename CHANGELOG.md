@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `selenium-java` from 4.3.0 to 4.4.0
 * Bump `commons-digester` from 1.8 to 3.2
 * Bump `webdrivermanager` from 5.2.1 to 5.2.3
 * Bump `htmlunit` from 2.63.0 to 2.64.0

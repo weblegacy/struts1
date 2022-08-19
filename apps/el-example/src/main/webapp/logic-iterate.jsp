@@ -58,8 +58,8 @@
 <ol>
     <logic-el:iterate id="element" name="bean" property="stringArray"
                       indexId="index">
-        <li><em><c:out value="${element}"/></em>&nbsp;[<c:out
-                value="${index}"/>]</li>
+        <li><em><c:out value="\${element}"/></em>&nbsp;[<c:out
+                value="\${index}"/>]</li>
     </logic-el:iterate>
 </ol>
 
@@ -69,8 +69,8 @@
     <logic-el:iterate id="element" name="bean" property="stringArray"
                       indexId="index"
                       length="3">
-        <li><em><c:out value="${element}"/></em>&nbsp;[<c:out
-                value="${index}"/>]</li>
+        <li><em><c:out value="\${element}"/></em>&nbsp;[<c:out
+                value="\${index}"/>]</li>
     </logic-el:iterate>
 </ol>
 
@@ -80,8 +80,8 @@
     <logic-el:iterate id="element" name="bean" property="stringArray"
                       indexId="index"
                       offset="3">
-        <li><em><c:out value="${element}"/></em>&nbsp;[<c:out
-                value="${index}"/>]</li>
+        <li><em><c:out value="\${element}"/></em>&nbsp;[<c:out
+                value="\${index}"/>]</li>
     </logic-el:iterate>
 </ol>
 
@@ -91,8 +91,8 @@
     <logic-el:iterate id="element" name="bean" property="stringArray"
                       indexId="index"
                       offset="1" length="3">
-        <li><em><c:out value="${element}"/></em>&nbsp;[<c:out
-                value="${index}"/>]</li>
+        <li><em><c:out value="\${element}"/></em>&nbsp;[<c:out
+                value="\${index}"/>]</li>
     </logic-el:iterate>
 </ol>
 
@@ -100,7 +100,7 @@
 
 <ol>
     <logic-el:iterate id="item" name="list" indexId="index">
-        <li><em><c:out value="${item}"/></em>&nbsp;[<c:out value="${index}"/>]
+        <li><em><c:out value="\${item}"/></em>&nbsp;[<c:out value="\${index}"/>]
         </li>
     </logic-el:iterate>
 </ol>
@@ -110,7 +110,7 @@
 <ol>
     <logic-el:iterate id="item" name="list" indexId="index"
                       offset="0" length="3">
-        <li><em><c:out value="${item}"/></em>&nbsp;[<c:out value="${index}"/>]
+        <li><em><c:out value="\${item}"/></em>&nbsp;[<c:out value="\${index}"/>]
         </li>
     </logic-el:iterate>
 </ol>
@@ -120,7 +120,7 @@
 <ol>
     <logic-el:iterate id="item" name="list" indexId="index"
                       offset="2" length="3">
-        <li><em><c:out value="${item}"/></em>&nbsp;[<c:out value="${index}"/>]
+        <li><em><c:out value="\${item}"/></em>&nbsp;[<c:out value="\${index}"/>]
         </li>
     </logic-el:iterate>
 </ol>
@@ -129,7 +129,7 @@
 
 <ol>
     <logic-el:iterate id="item" name="intArray" indexId="index">
-        <li><em><c:out value="${item}"/></em>&nbsp;[<c:out value="${index}"/>]
+        <li><em><c:out value="\${item}"/></em>&nbsp;[<c:out value="\${index}"/>]
         </li>
     </logic-el:iterate>
 </ol>
@@ -139,7 +139,7 @@
 <ol>
     <logic-el:iterate id="item" name="intArray" indexId="index"
                       length="3">
-        <li><em><c:out value="${item}"/></em>&nbsp;[<c:out value="${index}"/>]
+        <li><em><c:out value="\${item}"/></em>&nbsp;[<c:out value="\${index}"/>]
         </li>
     </logic-el:iterate>
 </ol>
@@ -149,7 +149,7 @@
 <ol>
     <logic-el:iterate id="item" name="intArray" indexId="index"
                       offset="2" length="3">
-        <li><em><c:out value="${item}"/></em>&nbsp;[<c:out value="${index}"/>]
+        <li><em><c:out value="\${item}"/></em>&nbsp;[<c:out value="\${index}"/>]
         </li>
     </logic-el:iterate>
 </ol>
@@ -161,10 +161,10 @@
         <th>Key</th>
         <th>Value</th>
     </tr>
-    <logic-el:iterate id="item" collection="${header}" indexId="index">
+    <logic-el:iterate id="item" collection="\${header}" indexId="index">
     <tr>
-        <td><c:out value="${item.key}"/></td>
-        <td><c:out value="${item.value}"/></td>
+        <td><c:out value="\${item.key}"/></td>
+        <td><c:out value="\${item.value}"/></td>
     </tr>
     </logic-el:iterate>
 </table>

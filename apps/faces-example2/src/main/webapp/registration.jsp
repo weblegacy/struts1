@@ -29,10 +29,10 @@
 <s:html locale="true">
 <head>
   <title><c:choose>
-    <c:when test="${registrationForm.action == 'Create'}">
+    <c:when test="\${registrationForm.action == 'Create'}">
       <s:message key="registration.title.create"/>
     </c:when>
-    <c:when test="${registrationForm.action == 'Edit'}">
+    <c:when test="\${registrationForm.action == 'Edit'}">
       <s:message key="registration.title.edit"/>
     </c:when>
     <c:otherwise>
@@ -64,11 +64,11 @@
     <f:facet name="header">
       <h:panelGroup>
         <c:choose>
-          <c:when    test="${registrationForm.action == 'Create'}">
+          <c:when    test="\${registrationForm.action == 'Create'}">
             <s:message
                       key="registration.header.create"/>
           </c:when>
-          <c:when    test="${registrationForm.action == 'Edit'}">
+          <c:when    test="\${registrationForm.action == 'Edit'}">
             <s:message
                       key="registration.header.edit"/>
           </c:when>
@@ -89,12 +89,12 @@
 
     <h:panelGroup>
       <c:choose>
-        <c:when      test="${registrationForm.action == 'Create'}">
+        <c:when      test="\${registrationForm.action == 'Create'}">
           <h:inputText id="username"
                      size="16"
                     value="#{registrationForm.username}"/>
         </c:when>
-        <c:when      test="${registrationForm.action == 'Edit'}">
+        <c:when      test="\${registrationForm.action == 'Edit'}">
           <h:panelGroup
                        id="usernameGroup">
             <s:write
@@ -178,7 +178,7 @@
 
 </s:form>
 
-<c:if test="${registrationForm.action == 'Edit'}">
+<c:if test="\${registrationForm.action == 'Edit'}">
 
 <h:form                id="subscriptions">
 

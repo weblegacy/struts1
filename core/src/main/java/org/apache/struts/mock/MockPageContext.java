@@ -23,12 +23,15 @@ package org.apache.struts.mock;
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.el.ExpressionEvaluator;
+import javax.servlet.jsp.el.VariableResolver;
 import javax.servlet.jsp.tagext.BodyContent;
 
 import java.io.IOException;
@@ -602,5 +605,20 @@ public class MockPageContext extends PageContext {
         } else {
             throw new IllegalArgumentException("Invalid scope " + scope);
         }
+    }
+
+    @Override
+    public void include(String relativeUrlPath, boolean flush) throws ServletException, IOException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public ExpressionEvaluator getExpressionEvaluator() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public VariableResolver getVariableResolver() {
+        throw new UnsupportedOperationException();
     }
 }

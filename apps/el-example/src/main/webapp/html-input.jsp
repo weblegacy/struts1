@@ -40,76 +40,76 @@
             <tr>
                 <td>
                     <html-el:hidden property="stringProperty"
-                                    write="${!empty pageScope}"/>
+                                    write="\${!empty pageScope}"/>
                 </td>
             </tr>
             <tr>
                 <td>
                     <html-el:hidden property="stringProperty"
-                                    write="${empty pageScope}"/>
+                                    write="\${empty pageScope}"/>
                 </td>
             </tr>
             <tr>
                 <td>
                     <html-el:hidden property="stringProperty"
-                                    title="${thing}"/>
+                                    title="\${thing}"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <logic-el:iterate collection="${pageScope}" id="item">
+                    <logic-el:iterate collection="\${pageScope}" id="item">
                         <html-el:hidden property="stringProperty"
-                                        indexed="${!empty pageScope}"/>
+                                        indexed="\${!empty pageScope}"/>
                     </logic-el:iterate>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <logic-el:iterate collection="${pageScope}" id="item">
+                    <logic-el:iterate collection="\${pageScope}" id="item">
                         <html-el:hidden name="testbean"
                                         property="stringProperty"
-                                        indexed="${!empty pageScope}"/>
+                                        indexed="\${!empty pageScope}"/>
                     </logic-el:iterate>
                 </td>
             </tr>
             <tr>
                 <td>
                     <html-el:password property="stringProperty"
-                                      title="${thing}"/>
+                                      title="\${thing}"/>
                 </td>
             </tr>
             <tr>
                 <td>
                     <html-el:password property="stringProperty"
-                                      title="${thing}"
-                                      disabled="${!empty pageScope}"/>
+                                      title="\${thing}"
+                                      disabled="\${!empty pageScope}"/>
                 </td>
             </tr>
             <tr>
                 <td>
                     <html-el:password property="stringProperty"
-                                      title="${thing}"
-                                      maxlength="${3-1}"/>
+                                      title="\${thing}"
+                                      maxlength="\${3-1}"/>
                 </td>
             </tr>
             <tr>
                 <td>
                     <html-el:password property="stringProperty"
-                                      title="${thing}"
-                                      readonly="${!empty pageScope}"/>
+                                      title="\${thing}"
+                                      readonly="\${!empty pageScope}"/>
                 </td>
             </tr>
             <tr>
                 <td>
                     <html-el:password property="stringProperty"
-                                      title="${thing}"
-                                      redisplay="${!empty pageScope}"/>
+                                      title="\${thing}"
+                                      redisplay="\${!empty pageScope}"/>
                 </td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
                 <td align="right">
-                    <html-el:submit disabled="${!empty pageScope}">
+                    <html-el:submit disabled="\${!empty pageScope}">
                         Save</html-el:submit>
                     <html-el:submit>Save</html-el:submit>
                 </td>

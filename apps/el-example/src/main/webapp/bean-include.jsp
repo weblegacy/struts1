@@ -37,7 +37,7 @@
         using <code>&lt;c:import&gt;</code>, with no filtering.</p>
     <hr>
     <pre>
-        <c:out value="${index}" escapeXml="false"/>
+        <c:out value="\${index}" escapeXml="false"/>
     </pre>
     <hr>
 
@@ -45,7 +45,7 @@
         using <code>&lt;c:import&gt;</code>, with filtering.</p>
     <hr>
     <pre>
-        <c:out value="${index}" escapeXml="true"/>
+        <c:out value="\${index}" escapeXml="true"/>
     </pre>
     <hr>
 
@@ -53,7 +53,7 @@
         using <code>&lt;bean-el:include&gt;</code>, with no filtering.</p>
     <hr>
     <pre>
-        <c:out value="${index2}" escapeXml="false"/>
+        <c:out value="\${index2}" escapeXml="false"/>
     </pre>
     <hr>
 
@@ -61,7 +61,7 @@
         using <code>&lt;bean-el:include&gt;</code>, with filtering.</p>
     <hr>
     <pre>
-        <c:out value="${index2}" escapeXml="true"/>
+        <c:out value="\${index2}" escapeXml="true"/>
     </pre>
     <hr>
 

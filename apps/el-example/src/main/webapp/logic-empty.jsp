@@ -44,7 +44,7 @@
             <td>empty</td>
             <td>
                 <c:choose>
-                    <c:when test="${empty bean.nullProperty}">
+                    <c:when test="\${empty bean.nullProperty}">
                         empty
                     </c:when>
                     <c:otherwise>
@@ -58,7 +58,7 @@
             <td>empty</td>
             <td>
                 <c:choose>
-                    <c:when test="${empty bean.emptyStringProperty}">
+                    <c:when test="\${empty bean.emptyStringProperty}">
                         empty
                     </c:when>
                     <c:otherwise>
@@ -72,7 +72,7 @@
             <td>notEmpty</td>
             <td>
                 <c:choose>
-                    <c:when test="${empty bean.stringProperty}">
+                    <c:when test="\${empty bean.stringProperty}">
                         empty
                     </c:when>
                     <c:otherwise>
@@ -86,7 +86,7 @@
             <td>notEmpty</td>
             <td>
                 <c:choose>
-                    <c:when test="${empty bean.intProperty}">
+                    <c:when test="\${empty bean.intProperty}">
                         empty
                     </c:when>
                     <c:otherwise>

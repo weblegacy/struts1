@@ -44,10 +44,10 @@
     pageContext.setAttribute("map", temp, PageContext.PAGE_SCOPE);
 
 %>
-<%-- Change "${list}" to "${data}" to demonstrate NPE, and need for better
+<%-- Change "\${list}" to "\${data}" to demonstrate NPE, and need for better
              exception in "Sizetag.doStartTag()". --%>
-<bean-el:size id="dataSize" collection="${list}"/>
-<bean-el:size id="tempSize" collection="${map}"/>
+<bean-el:size id="dataSize" collection="\${list}"/>
+<bean-el:size id="tempSize" collection="\${map}"/>
 
 <div align="center">
     <h1>Test struts bean-el Size Tag</h1>
@@ -71,34 +71,34 @@
     <tr>
         <td>Bean (List)</td>
         <td align="center"><%= list.size() %></td>
-        <td align="center"><c:out value="${listSize}"/></td>
+        <td align="center"><c:out value="\${listSize}"/></td>
     </tr>
     <tr>
         <td>Bean (Map)</td>
         <td align="center"><%= map.size() %></td>
-        <td align="center"><c:out value="${mapSize}"/></td>
+        <td align="center"><c:out value="\${mapSize}"/></td>
     </tr>
     <tr>
         <td>Collection (List)</td>
         <td align="center"><%= data.size() %></td>
-        <td align="center"><c:out value="${dataSize}"/></td>
+        <td align="center"><c:out value="\${dataSize}"/></td>
     </tr>
     <tr>
         <td>Collection (Map)</td>
         <td align="center"><%= temp.size() %></td>
-        <td align="center"><c:out value="${tempSize}"/></td>
+        <td align="center"><c:out value="\${tempSize}"/></td>
     </tr>
     <tr>
         <td>Property (int[])</td>
         <td align="center"><% int intValues[] = bean.getIntArray();
             out.print(intValues.length); %></td>
-        <td align="center"><c:out value="${intSize}"/></td>
+        <td align="center"><c:out value="\${intSize}"/></td>
     </tr>
     <tr>
         <td>Property (String[])</td>
         <td align="center"><% String stringValues[] = bean.getStringArray();
             out.print(stringValues.length); %></td>
-        <td align="center"><c:out value="${stringSize}"/></td>
+        <td align="center"><c:out value="\${stringSize}"/></td>
     </tr>
 </table>
 

@@ -83,16 +83,16 @@ main menu.
                 <html-el:select property="singleSelect" size="10">
                     <html-el:option value="Single 0" title="0">Single 0</html-el:option>
                     <html-el:option value="Single 1" title="1">Single 1</html-el:option>
-                    <html-el:option value="Single 2" title="${1+1}">Single 2</html-el:option>
+                    <html-el:option value="Single 2" title="\${1+1}">Single 2</html-el:option>
                     <html-el:option value="Single 3" title="3"
-                                    disabled="${!empty pageScope}">
+                                    disabled="\${!empty pageScope}">
                         Single 3
                     </html-el:option>
-                    <html-el:option value="Single 4" title="${2+2}">Single 4</html-el:option>
+                    <html-el:option value="Single 4" title="\${2+2}">Single 4</html-el:option>
                     <html-el:option value="Single 5" title="5">Single 5</html-el:option>
-                    <html-el:option value="Single 6" title="${3+3}">Single 6</html-el:option>
+                    <html-el:option value="Single 6" title="\${3+3}">Single 6</html-el:option>
                     <html-el:option value="Single 7" title="7">Single 7</html-el:option>
-                    <html-el:option value="Single 8" title="${4+4}">Single 8</html-el:option>
+                    <html-el:option value="Single 8" title="\${4+4}">Single 8</html-el:option>
                     <html-el:option value="Single 9" titleKey="select.single.9" styleId="flork">Single
                         9</html-el:option>
                 </html-el:select>
@@ -128,7 +128,7 @@ main menu.
                                 multiple="true">
                     <html-el:optionsCollection name="testbean"
                                                property="beanCollection"
-                                               filter="${empty pageScope}"/>
+                                               filter="\${empty pageScope}"/>
                 </html-el:select>
             </td>
         </tr>
@@ -140,7 +140,7 @@ main menu.
             <td align="left">
                 <html-el:select property="withNulls" size="3">
                     <html-el:options name="withNulls" labelName="withNulls"
-                                     filter="${empty pageScope}"/>
+                                     filter="\${empty pageScope}"/>
                 </html-el:select>
             </td>
         </tr>
@@ -150,10 +150,10 @@ main menu.
                 Disabled select
             </th>
             <td align="left">
-                <html-el:select disabled="${!empty pageScope}"
+                <html-el:select disabled="\${!empty pageScope}"
                                 property="withNulls" size="3">
                     <html-el:options name="withNulls" labelName="withNulls"
-                                     filter="${empty pageScope}"/>
+                                     filter="\${empty pageScope}"/>
                 </html-el:select>
             </td>
         </tr>

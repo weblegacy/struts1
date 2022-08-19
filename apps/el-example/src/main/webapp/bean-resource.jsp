@@ -37,7 +37,7 @@
         web application, with no filtering.</p>
     <hr>
     <pre>
-        <c:out value="${webxml}" escapeXml="false"/>
+        <c:out value="\${webxml}" escapeXml="false"/>
     </pre>
     <hr>
 
@@ -46,7 +46,7 @@
         web application, with filtering.</p>
     <hr>
     <pre>
-        <c:out value="${webxml}" escapeXml="true"/>
+        <c:out value="\${webxml}" escapeXml="true"/>
     </pre>
     <hr>
 

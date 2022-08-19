@@ -40,12 +40,12 @@
         <tr>
             <td>foo</td>
             <td><bean:write name="dynabean" property="foo"/></td>
-            <td><c:out value="${dynabean.map.foo}"/></td>
+            <td><c:out value="\${dynabean.map.foo}"/></td>
         </tr>
         <tr>
             <td>bar</td>
             <td><bean:write name="dynabean" property="bar"/></td>
-            <td><c:out value="${dynabean.map.bar}"/></td>
+            <td><c:out value="\${dynabean.map.bar}"/></td>
         </tr>
         <tr>
             <td>thing</td>
@@ -56,12 +56,12 @@
                     --%>
                     <bean:write name="dynabean" property="thing"/>
                 </c:catch>
-                <c:if test="${!empty ex}">
+                <c:if test="\${!empty ex}">
                     &lt;exception&gt;
                 </c:if>
             </td>
                 <%-- This will just return an empty string --%>
-            <td><c:out value="${dynabean.map.thing}" default="<empty>"/></td>
+            <td><c:out value="\${dynabean.map.thing}" default="<empty>"/></td>
         </tr>
     </table>
     </body>

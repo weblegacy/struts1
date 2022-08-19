@@ -124,7 +124,7 @@
             <html-el:messages property="property1" message="true" id="msg"
                               header="messages.header"
                               footer="messages.footer">
-                <tr><td><c:out value="${msg}"/></td></tr>
+                <tr><td><c:out value="\${msg}"/></td></tr>
             </html-el:messages>
         </td>
     </tr>
@@ -141,7 +141,7 @@
             <html-el:messages property="property2" message="true" id="msg"
                               header="messages.header"
                               footer="messages.footer">
-                <tr><td><c:out value="${msg}"/></td></tr>
+                <tr><td><c:out value="\${msg}"/></td></tr>
             </html-el:messages>
         </td>
     </tr>
@@ -162,7 +162,7 @@
             <html-el:messages message="true" id="msg"
                               header="messages.header"
                               footer="messages.footer">
-                <tr><td><c:out value="${msg}"/></td></tr>
+                <tr><td><c:out value="\${msg}"/></td></tr>
             </html-el:messages>
         </td>
     </tr>

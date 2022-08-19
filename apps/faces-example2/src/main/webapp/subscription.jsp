@@ -32,13 +32,13 @@
 <s:html locale="true">
 <head>
   <title><c:choose>
-    <c:when test="${subscriptionForm.action == 'Create'}">
+    <c:when test="\${subscriptionForm.action == 'Create'}">
       <s:message id="titleCreate" key="subscription.title.create"/>
     </c:when>
-    <c:when test="${subscriptionForm.action == 'Delete'}">
+    <c:when test="\${subscriptionForm.action == 'Delete'}">
       <s:message id="titleDelete" key="subscription.title.delete"/>
     </c:when>
-    <c:when test="${subscriptionForm.action == 'Edit'}">
+    <c:when test="\${subscriptionForm.action == 'Edit'}">
       <s:message id="titleEdit" key="subscription.title.edit"/>
     </c:when>
     <c:otherwise>
@@ -69,13 +69,13 @@
     <f:facet         name="header">
       <h:panelGroup>
         <c:choose>
-          <c:when    test="${subscriptionForm.action == 'Create'}">
+          <c:when    test="\${subscriptionForm.action == 'Create'}">
             <s:message id="headerCreate" key="subscription.title.create"/>
           </c:when>
-          <c:when    test="${subscriptionForm.action == 'Delete'}">
+          <c:when    test="\${subscriptionForm.action == 'Delete'}">
             <s:message id="headerDelete" key="subscription.title.delete"/>
           </c:when>
-          <c:when    test="${subscriptionForm.action == 'Edit'}">
+          <c:when    test="\${subscriptionForm.action == 'Edit'}">
             <s:message id="headerEdit" key="subscription.title.edit"/>
           </c:when>
           <c:otherwise>
@@ -102,7 +102,7 @@
     </h:outputLabel>
 
     <c:choose>
-      <c:when        test="${subscriptionForm.action == 'Create'}">
+      <c:when        test="\${subscriptionForm.action == 'Create'}">
         <h:inputText   id="host"
                      size="50"
                     value="#{subscriptionForm.host}"/>
@@ -158,7 +158,7 @@
                     value="#{subscriptionForm.autoConnect}"/>
 
     <c:choose>
-      <c:when        test="${subscriptionForm.action == 'Delete'}">
+      <c:when        test="\${subscriptionForm.action == 'Delete'}">
         <h:commandButton
                        id="confirm"
                      type="SUBMIT"

@@ -21,17 +21,17 @@
 <%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
 <html-el:html>
     <head>
-        <title>Source for page: <c:out value="${param.path}"/></title>
+        <title>Source for page: <c:out value="\${param.path}"/></title>
     </head>
 
     <body>
     <div align="center">
-        <h1>Source for page: <c:out value="${param.path}"/></h1>
+        <h1>Source for page: <c:out value="\${param.path}"/></h1>
     </div>
-    <bean-el:resource id="pathSource" name="${param.path}"/>
+    <bean-el:resource id="pathSource" name="\${param.path}"/>
     <hr/>
     <!-- Specifically avoiding newlines and spaces inside the "pre" tag. -->
-    <pre><c:out value="${pathSource}" escapeXml="true"/></pre>
+    <pre><c:out value="\${pathSource}" escapeXml="true"/></pre>
     <hr/>
     </body>
 </html-el:html>

@@ -139,19 +139,17 @@ public class ELBaseTag extends BaseTag {
         String string = null;
 
         if ((string =
-                EvalHelper.evalString("target", getTargetExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("target", getTargetExpr(), pageContext)) != null) {
             setTarget(string);
         }
 
         if ((string =
-                EvalHelper.evalString("server", getServerExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("server", getServerExpr(), pageContext)) != null) {
             setServer(string);
         }
 
         if ((string =
-                EvalHelper.evalString("ref", getRefExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("ref", getRefExpr(), pageContext)) != null) {
             setRef(string);
         }
     }

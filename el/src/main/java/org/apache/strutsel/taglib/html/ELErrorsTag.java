@@ -273,49 +273,42 @@ public class ELErrorsTag extends ErrorsTag {
         String string = null;
 
         if ((string =
-                EvalHelper.evalString("bundle", getBundleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("bundle", getBundleExpr(), pageContext)) != null) {
             setBundle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("footer", getFooterExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("footer", getFooterExpr(), pageContext)) != null) {
             setFooter(string);
         }
 
         if ((string =
-                EvalHelper.evalString("header", getHeaderExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("header", getHeaderExpr(), pageContext)) != null) {
             setHeader(string);
         }
 
         if ((string =
-                EvalHelper.evalString("locale", getLocaleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("locale", getLocaleExpr(), pageContext)) != null) {
             setLocale(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("prefix", getPrefixExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("prefix", getPrefixExpr(), pageContext)) != null) {
             setPrefix(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("suffix", getSuffixExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("suffix", getSuffixExpr(), pageContext)) != null) {
             setSuffix(string);
         }
     }

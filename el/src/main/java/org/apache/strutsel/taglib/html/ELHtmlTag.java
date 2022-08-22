@@ -113,13 +113,12 @@ public class ELHtmlTag extends HtmlTag {
         Boolean bool = null;
 
         if ((bool =
-                EvalHelper.evalBoolean("lang", getLangExpr(), this, pageContext)) != null) {
+                EvalHelper.evalBoolean("lang", getLangExpr(), pageContext)) != null) {
             setLang(bool.booleanValue());
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("xhtml", getXhtmlExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("xhtml", getXhtmlExpr(), pageContext)) != null) {
             setXhtml(bool.booleanValue());
         }
     }

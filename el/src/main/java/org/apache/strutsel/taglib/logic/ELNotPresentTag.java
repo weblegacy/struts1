@@ -251,46 +251,42 @@ public class ELNotPresentTag extends NotPresentTag {
         String string = null;
 
         if ((string =
-                EvalHelper.evalString("cookie", getCookieExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("cookie", getCookieExpr(), pageContext)) != null) {
             setCookie(string);
         }
 
         if ((string =
-                EvalHelper.evalString("header", getHeaderExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("header", getHeaderExpr(), pageContext)) != null) {
             setHeader(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("parameter", getParameterExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("parameter", getParameterExpr(), pageContext)) != null) {
             setParameter(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("role", getRoleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("role", getRoleExpr(), pageContext)) != null) {
             setRole(string);
         }
 
         if ((string =
-                EvalHelper.evalString("scope", getScopeExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("scope", getScopeExpr(), pageContext)) != null) {
             setScope(string);
         }
 
         if ((string =
-                EvalHelper.evalString("user", getUserExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("user", getUserExpr(), pageContext)) != null) {
             setUser(string);
         }
     }

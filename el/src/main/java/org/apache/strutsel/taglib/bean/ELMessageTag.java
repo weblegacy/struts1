@@ -322,60 +322,57 @@ public class ELMessageTag extends MessageTag {
         String string = null;
 
         if ((string =
-                EvalHelper.evalString("arg0", getArg0Expr(), this, pageContext)) != null) {
+                EvalHelper.evalString("arg0", getArg0Expr(), pageContext)) != null) {
             setArg0(string);
         }
 
         if ((string =
-                EvalHelper.evalString("arg1", getArg1Expr(), this, pageContext)) != null) {
+                EvalHelper.evalString("arg1", getArg1Expr(), pageContext)) != null) {
             setArg1(string);
         }
 
         if ((string =
-                EvalHelper.evalString("arg2", getArg2Expr(), this, pageContext)) != null) {
+                EvalHelper.evalString("arg2", getArg2Expr(), pageContext)) != null) {
             setArg2(string);
         }
 
         if ((string =
-                EvalHelper.evalString("arg3", getArg3Expr(), this, pageContext)) != null) {
+                EvalHelper.evalString("arg3", getArg3Expr(), pageContext)) != null) {
             setArg3(string);
         }
 
         if ((string =
-                EvalHelper.evalString("arg4", getArg4Expr(), this, pageContext)) != null) {
+                EvalHelper.evalString("arg4", getArg4Expr(), pageContext)) != null) {
             setArg4(string);
         }
 
         if ((string =
-                EvalHelper.evalString("bundle", getBundleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("bundle", getBundleExpr(), pageContext)) != null) {
             setBundle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("key", getKeyExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("key", getKeyExpr(), pageContext)) != null) {
             setKey(string);
         }
 
         if ((string =
-                EvalHelper.evalString("locale", getLocaleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("locale", getLocaleExpr(), pageContext)) != null) {
             setLocale(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("scope", getScopeExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("scope", getScopeExpr(), pageContext)) != null) {
             setScope(string);
         }
     }

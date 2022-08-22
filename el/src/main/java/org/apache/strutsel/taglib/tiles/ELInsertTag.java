@@ -391,82 +391,72 @@ public class ELInsertTag extends InsertTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("template", getTemplateExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("template", getTemplateExpr(), pageContext)) != null) {
             setTemplate(string);
         }
 
         if ((string =
-                EvalHelper.evalString("component", getComponentExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("component", getComponentExpr(), pageContext)) != null) {
             setComponent(string);
         }
 
         if ((string =
-                EvalHelper.evalString("page", getPageExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("page", getPageExpr(), pageContext)) != null) {
             setPage(string);
         }
 
         if ((string =
-                EvalHelper.evalString("definition", getDefinitionExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("definition", getDefinitionExpr(), pageContext)) != null) {
             setDefinition(string);
         }
 
         if ((string =
-                EvalHelper.evalString("attribute", getAttributeExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("attribute", getAttributeExpr(), pageContext)) != null) {
             setAttribute(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("beanName", getBeanNameExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("beanName", getBeanNameExpr(), pageContext)) != null) {
             setBeanName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("beanProperty", getBeanPropertyExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("beanProperty", getBeanPropertyExpr(), pageContext)) != null) {
             setBeanProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("beanScope", getBeanScopeExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("beanScope", getBeanScopeExpr(), pageContext)) != null) {
             setBeanScope(string);
         }
 
         if ((string =
-                EvalHelper.evalString("flush", getFlushExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("flush", getFlushExpr(), pageContext)) != null) {
             setFlush(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("ignore", getIgnoreExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("ignore", getIgnoreExpr(), pageContext)) != null) {
             setIgnore(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("role", getRoleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("role", getRoleExpr(), pageContext)) != null) {
             setRole(string);
         }
 
         if ((string =
-                EvalHelper.evalString("controllerUrl", getControllerUrlExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("controllerUrl", getControllerUrlExpr(), pageContext)) != null) {
             setControllerUrl(string);
         }
 
         if ((string =
-                EvalHelper.evalString("controllerClass",
-                    getControllerClassExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("controllerClass", getControllerClassExpr(), pageContext)) != null) {
             setControllerClass(string);
         }
     }

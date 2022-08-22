@@ -206,34 +206,32 @@ public class ELDefinitionTag extends DefinitionTag {
         String string = null;
 
         if ((string =
-                EvalHelper.evalString("id", getIdExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("id", getIdExpr(), pageContext)) != null) {
             setId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("scope", getScopeExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("scope", getScopeExpr(), pageContext)) != null) {
             setScope(string);
         }
 
         if ((string =
-                EvalHelper.evalString("template", getTemplateExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("template", getTemplateExpr(), pageContext)) != null) {
             setTemplate(string);
         }
 
         if ((string =
-                EvalHelper.evalString("page", getPageExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("page", getPageExpr(), pageContext)) != null) {
             setPage(string);
         }
 
         if ((string =
-                EvalHelper.evalString("role", getRoleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("role", getRoleExpr(), pageContext)) != null) {
             setRole(string);
         }
 
         if ((string =
-                EvalHelper.evalString("extends", getExtendsExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("extends", getExtendsExpr(), pageContext)) != null) {
             setExtends(string);
         }
     }

@@ -368,77 +368,67 @@ public class ELOptionTag extends OptionTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("bundle", getBundleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("bundle", getBundleExpr(), pageContext)) != null) {
             setBundle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("dir", getDirExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("dir", getDirExpr(), pageContext)) != null) {
             setDir(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("disabled", getDisabledExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("disabled", getDisabledExpr(), pageContext)) != null) {
             setDisabled(bool.booleanValue());
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("filter", getFilterExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("filter", getFilterExpr(), pageContext)) != null) {
             setFilter(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("lang", getLangExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("lang", getLangExpr(), pageContext)) != null) {
             setLang(string);
         }
 
         if ((string =
-                EvalHelper.evalString("key", getKeyExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("key", getKeyExpr(), pageContext)) != null) {
             setKey(string);
         }
 
         if ((string =
-                EvalHelper.evalString("locale", getLocaleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("locale", getLocaleExpr(), pageContext)) != null) {
             setLocale(string);
         }
 
         if ((string =
-                EvalHelper.evalString("style", getStyleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("style", getStyleExpr(), pageContext)) != null) {
             setStyle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("styleClass", getStyleClassExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("styleClass", getStyleClassExpr(), pageContext)) != null) {
             setStyleClass(string);
         }
 
         if ((string =
-                EvalHelper.evalString("styleId", getStyleIdExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("styleId", getStyleIdExpr(), pageContext)) != null) {
             setStyleId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("title", getTitleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("title", getTitleExpr(), pageContext)) != null) {
             setTitle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("titleKey", getTitleKeyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("titleKey", getTitleKeyExpr(), pageContext)) != null) {
             setTitleKey(string);
         }
 
         if ((string =
-                EvalHelper.evalString("value", getValueExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("value", getValueExpr(), pageContext)) != null) {
             setValue(string);
         }
     }

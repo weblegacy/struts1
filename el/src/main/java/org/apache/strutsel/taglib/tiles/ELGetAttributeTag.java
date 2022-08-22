@@ -143,18 +143,17 @@ public class ELGetAttributeTag extends GetAttributeTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("ignore", getIgnoreExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("ignore", getIgnoreExpr(), pageContext)) != null) {
             setIgnore(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("role", getRoleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("role", getRoleExpr(), pageContext)) != null) {
             setRole(string);
         }
     }

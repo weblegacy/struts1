@@ -112,13 +112,12 @@ public class ELInitDefinitionsTag extends InitDefinitionsTag {
         String string = null;
 
         if ((string =
-                EvalHelper.evalString("file", getFileExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("file", getFileExpr(), pageContext)) != null) {
             setFile(string);
         }
 
         if ((string =
-                EvalHelper.evalString("classname", getClassnameExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("classname", getClassnameExpr(), pageContext)) != null) {
             setClassname(string);
         }
     }

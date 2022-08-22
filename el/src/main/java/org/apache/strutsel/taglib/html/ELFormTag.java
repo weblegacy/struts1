@@ -459,102 +459,87 @@ public class ELFormTag extends FormTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("action", getActionExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("action", getActionExpr(), pageContext)) != null) {
             setAction(string);
         }
 
         if ((string =
-                EvalHelper.evalString("dir", getDirExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("dir", getDirExpr(), pageContext)) != null) {
             setDir(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("disabled", getDisabledExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("disabled", getDisabledExpr(), pageContext)) != null) {
             setDisabled(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("enctype", getEnctypeExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("enctype", getEnctypeExpr(), pageContext)) != null) {
             setEnctype(string);
         }
 
         if ((string =
-                EvalHelper.evalString("focus", getFocusExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("focus", getFocusExpr(), pageContext)) != null) {
             setFocus(string);
         }
 
         if ((string =
-                EvalHelper.evalString("focusIndex", getFocusIndexExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("focusIndex", getFocusIndexExpr(), pageContext)) != null) {
             setFocusIndex(string);
         }
 
         if ((string =
-                EvalHelper.evalString("lang", getLangExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("lang", getLangExpr(), pageContext)) != null) {
             setLang(string);
         }
 
         if ((string =
-                EvalHelper.evalString("method", getMethodExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("method", getMethodExpr(), pageContext)) != null) {
             setMethod(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onreset", getOnresetExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onreset", getOnresetExpr(), pageContext)) != null) {
             setOnreset(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onsubmit", getOnsubmitExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onsubmit", getOnsubmitExpr(), pageContext)) != null) {
             setOnsubmit(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("readonly", getReadonlyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("readonly", getReadonlyExpr(), pageContext)) != null) {
             setReadonly(bool.booleanValue());
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("scriptLanguage",
-                    getScriptLanguageExpr(), this, pageContext)) != null) {
+                EvalHelper.evalBoolean("scriptLanguage", getScriptLanguageExpr(), pageContext)) != null) {
             setScriptLanguage(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("style", getStyleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("style", getStyleExpr(), pageContext)) != null) {
             setStyle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("styleClass", getStyleClassExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("styleClass", getStyleClassExpr(), pageContext)) != null) {
             setStyleClass(string);
         }
 
         if ((string =
-                EvalHelper.evalString("styleId", getStyleIdExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("styleId", getStyleIdExpr(), pageContext)) != null) {
             setStyleId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("target", getTargetExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("target", getTargetExpr(), pageContext)) != null) {
             setTarget(string);
         }
 
         if ((string =
-                EvalHelper.evalString("acceptCharset", getAcceptCharsetExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("acceptCharset", getAcceptCharsetExpr(), pageContext)) != null) {
             setAcceptCharset(string);
         }
     }

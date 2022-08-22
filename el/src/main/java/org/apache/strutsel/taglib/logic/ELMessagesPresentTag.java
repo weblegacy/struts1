@@ -138,19 +138,17 @@ public class ELMessagesPresentTag extends MessagesPresentTag {
         String string = null;
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("message", getMessageExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("message", getMessageExpr(), pageContext)) != null) {
             setMessage(string);
         }
     }

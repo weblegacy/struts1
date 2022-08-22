@@ -182,29 +182,27 @@ public class ELUseAttributeTag extends UseAttributeTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("id", getIdExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("id", getIdExpr(), pageContext)) != null) {
             setId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("classname", getClassnameExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("classname", getClassnameExpr(), pageContext)) != null) {
             setClassname(string);
         }
 
         if ((string =
-                EvalHelper.evalString("scope", getScopeExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("scope", getScopeExpr(), pageContext)) != null) {
             setScope(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("ignore", getIgnoreExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("ignore", getIgnoreExpr(), pageContext)) != null) {
             setIgnore(bool.booleanValue());
         }
     }

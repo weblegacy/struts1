@@ -159,25 +159,22 @@ public class ELStrutsTag extends StrutsTag {
         String string = null;
 
         if ((string =
-                EvalHelper.evalString("id", getIdExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("id", getIdExpr(), pageContext)) != null) {
             setId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("formBean", getFormBeanExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("formBean", getFormBeanExpr(), pageContext)) != null) {
             setFormBean(string);
         }
 
         if ((string =
-                EvalHelper.evalString("forward", getForwardExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("forward", getForwardExpr(), pageContext)) != null) {
             setForward(string);
         }
 
         if ((string =
-                EvalHelper.evalString("mapping", getMappingExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("mapping", getMappingExpr(), pageContext)) != null) {
             setMapping(string);
         }
     }

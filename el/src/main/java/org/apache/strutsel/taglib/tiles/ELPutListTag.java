@@ -89,7 +89,7 @@ public class ELPutListTag extends PutListTag {
         String string = null;
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
     }

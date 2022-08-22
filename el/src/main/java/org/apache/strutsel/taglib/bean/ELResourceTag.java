@@ -136,17 +136,17 @@ public class ELResourceTag extends ResourceTag {
         String string = null;
 
         if ((string =
-                EvalHelper.evalString("id", getIdExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("id", getIdExpr(), pageContext)) != null) {
             setId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("input", getInputExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("input", getInputExpr(), pageContext)) != null) {
             setInput(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
     }

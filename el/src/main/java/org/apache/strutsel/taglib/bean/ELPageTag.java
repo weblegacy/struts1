@@ -113,13 +113,12 @@ public class ELPageTag extends PageTag {
         String string = null;
 
         if ((string =
-                EvalHelper.evalString("id", getIdExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("id", getIdExpr(), pageContext)) != null) {
             setId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
     }

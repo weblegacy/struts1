@@ -1093,256 +1093,223 @@ public class ELImgTag extends ImgTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("action", getActionExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("action", getActionExpr(), pageContext)) != null) {
             setAction(string);
         }
 
         if ((string =
-                EvalHelper.evalString("module", getModuleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("module", getModuleExpr(), pageContext)) != null) {
             setModule(string);
         }
 
         if ((string =
-                EvalHelper.evalString("align", getAlignExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("align", getAlignExpr(), pageContext)) != null) {
             setAlign(string);
         }
 
         if ((string =
-                EvalHelper.evalString("alt", getAltExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("alt", getAltExpr(), pageContext)) != null) {
             setAlt(string);
         }
 
         if ((string =
-                EvalHelper.evalString("altKey", getAltKeyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("altKey", getAltKeyExpr(), pageContext)) != null) {
             setAltKey(string);
         }
 
         if ((string =
-                EvalHelper.evalString("border", getBorderExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("border", getBorderExpr(), pageContext)) != null) {
             setBorder(string);
         }
 
         if ((string =
-                EvalHelper.evalString("bundle", getBundleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("bundle", getBundleExpr(), pageContext)) != null) {
             setBundle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("dir", getDirExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("dir", getDirExpr(), pageContext)) != null) {
             setDir(string);
         }
 
         if ((string =
-                EvalHelper.evalString("height", getHeightExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("height", getHeightExpr(), pageContext)) != null) {
             setHeight(string);
         }
 
         if ((string =
-                EvalHelper.evalString("hspace", getHspaceExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("hspace", getHspaceExpr(), pageContext)) != null) {
             setHspace(string);
         }
 
         if ((string =
-                EvalHelper.evalString("imageName", getImageNameExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("imageName", getImageNameExpr(), pageContext)) != null) {
             setImageName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("ismap", getIsmapExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("ismap", getIsmapExpr(), pageContext)) != null) {
             setIsmap(string);
         }
 
         if ((string =
-                EvalHelper.evalString("lang", getLangExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("lang", getLangExpr(), pageContext)) != null) {
             setLang(string);
         }
 
         if ((string =
-                EvalHelper.evalString("locale", getLocaleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("locale", getLocaleExpr(), pageContext)) != null) {
             setLocale(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onclick", getOnclickExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onclick", getOnclickExpr(), pageContext)) != null) {
             setOnclick(string);
         }
 
         if ((string =
-                EvalHelper.evalString("ondblclick", getOndblclickExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("ondblclick", getOndblclickExpr(), pageContext)) != null) {
             setOndblclick(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onkeydown", getOnkeydownExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onkeydown", getOnkeydownExpr(), pageContext)) != null) {
             setOnkeydown(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onkeypress", getOnkeypressExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onkeypress", getOnkeypressExpr(), pageContext)) != null) {
             setOnkeypress(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onkeyup", getOnkeyupExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onkeyup", getOnkeyupExpr(), pageContext)) != null) {
             setOnkeyup(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onmousedown", getOnmousedownExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("onmousedown", getOnmousedownExpr(), pageContext)) != null) {
             setOnmousedown(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onmousemove", getOnmousemoveExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("onmousemove", getOnmousemoveExpr(), pageContext)) != null) {
             setOnmousemove(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onmouseout", getOnmouseoutExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onmouseout", getOnmouseoutExpr(), pageContext)) != null) {
             setOnmouseout(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onmouseover", getOnmouseoverExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("onmouseover", getOnmouseoverExpr(), pageContext)) != null) {
             setOnmouseover(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onmouseup", getOnmouseupExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onmouseup", getOnmouseupExpr(), pageContext)) != null) {
             setOnmouseup(string);
         }
 
         if ((string =
-                EvalHelper.evalString("paramId", getParamIdExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("paramId", getParamIdExpr(), pageContext)) != null) {
             setParamId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("page", getPageExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("page", getPageExpr(), pageContext)) != null) {
             setPage(string);
         }
 
         if ((string =
-                EvalHelper.evalString("pageKey", getPageKeyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("pageKey", getPageKeyExpr(), pageContext)) != null) {
             setPageKey(string);
         }
 
         if ((string =
-                EvalHelper.evalString("paramName", getParamNameExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("paramName", getParamNameExpr(), pageContext)) != null) {
             setParamName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("paramProperty", getParamPropertyExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("paramProperty", getParamPropertyExpr(), pageContext)) != null) {
             setParamProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("paramScope", getParamScopeExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("paramScope", getParamScopeExpr(), pageContext)) != null) {
             setParamScope(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("scope", getScopeExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("scope", getScopeExpr(), pageContext)) != null) {
             setScope(string);
         }
 
         if ((string =
-                EvalHelper.evalString("src", getSrcExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("src", getSrcExpr(), pageContext)) != null) {
             setSrc(string);
         }
 
         if ((string =
-                EvalHelper.evalString("srcKey", getSrcKeyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("srcKey", getSrcKeyExpr(), pageContext)) != null) {
             setSrcKey(string);
         }
 
         if ((string =
-                EvalHelper.evalString("style", getStyleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("style", getStyleExpr(), pageContext)) != null) {
             setStyle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("styleClass", getStyleClassExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("styleClass", getStyleClassExpr(), pageContext)) != null) {
             setStyleClass(string);
         }
 
         if ((string =
-                EvalHelper.evalString("styleId", getStyleIdExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("styleId", getStyleIdExpr(), pageContext)) != null) {
             setStyleId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("title", getTitleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("title", getTitleExpr(), pageContext)) != null) {
             setTitle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("titleKey", getTitleKeyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("titleKey", getTitleKeyExpr(), pageContext)) != null) {
             setTitleKey(string);
         }
 
         if ((bool =
                 EvalHelper.evalBoolean("useLocalEncoding",
-                    getUseLocalEncodingExpr(), this, pageContext)) != null) {
+                    getUseLocalEncodingExpr(), pageContext)) != null) {
             setUseLocalEncoding(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("usemap", getUsemapExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("usemap", getUsemapExpr(), pageContext)) != null) {
             setUsemap(string);
         }
 
         if ((string =
-                EvalHelper.evalString("vspace", getVspaceExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("vspace", getVspaceExpr(), pageContext)) != null) {
             setVspace(string);
         }
 
         if ((string =
-                EvalHelper.evalString("width", getWidthExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("width", getWidthExpr(), pageContext)) != null) {
             setWidth(string);
         }
     }

@@ -874,206 +874,177 @@ public class ELSelectTag extends SelectTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("alt", getAltExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("alt", getAltExpr(), pageContext)) != null) {
             setAlt(string);
         }
 
         if ((string =
-                EvalHelper.evalString("altKey", getAltKeyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("altKey", getAltKeyExpr(), pageContext)) != null) {
             setAltKey(string);
         }
 
         if ((string =
-                EvalHelper.evalString("bundle", getBundleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("bundle", getBundleExpr(), pageContext)) != null) {
             setBundle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("dir", getDirExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("dir", getDirExpr(), pageContext)) != null) {
             setDir(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("disabled", getDisabledExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("disabled", getDisabledExpr(), pageContext)) != null) {
             setDisabled(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("errorKey", getErrorKeyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("errorKey", getErrorKeyExpr(), pageContext)) != null) {
             setErrorKey(string);
         }
 
         if ((string =
-                EvalHelper.evalString("errorStyle", getErrorStyleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("errorStyle", getErrorStyleExpr(), pageContext)) != null) {
             setErrorStyle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("errorStyleClass",
-                    getErrorStyleClassExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("errorStyleClass", getErrorStyleClassExpr(), pageContext)) != null) {
             setErrorStyleClass(string);
         }
 
         if ((string =
-                EvalHelper.evalString("errorStyleId", getErrorStyleIdExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("errorStyleId", getErrorStyleIdExpr(), pageContext)) != null) {
             setErrorStyleId(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("indexed", getIndexedExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("indexed", getIndexedExpr(), pageContext)) != null) {
             setIndexed(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("lang", getLangExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("lang", getLangExpr(), pageContext)) != null) {
             setLang(string);
         }
 
         if ((string =
-                EvalHelper.evalString("multiple", getMultipleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("multiple", getMultipleExpr(), pageContext)) != null) {
             setMultiple(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onblur", getOnblurExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onblur", getOnblurExpr(), pageContext)) != null) {
             setOnblur(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onchange", getOnchangeExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onchange", getOnchangeExpr(), pageContext)) != null) {
             setOnchange(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onclick", getOnclickExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onclick", getOnclickExpr(), pageContext)) != null) {
             setOnclick(string);
         }
 
         if ((string =
-                EvalHelper.evalString("ondblclick", getOndblclickExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("ondblclick", getOndblclickExpr(), pageContext)) != null) {
             setOndblclick(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onfocus", getOnfocusExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onfocus", getOnfocusExpr(), pageContext)) != null) {
             setOnfocus(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onkeydown", getOnkeydownExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onkeydown", getOnkeydownExpr(), pageContext)) != null) {
             setOnkeydown(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onkeypress", getOnkeypressExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onkeypress", getOnkeypressExpr(), pageContext)) != null) {
             setOnkeypress(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onkeyup", getOnkeyupExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onkeyup", getOnkeyupExpr(), pageContext)) != null) {
             setOnkeyup(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onmousedown", getOnmousedownExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("onmousedown", getOnmousedownExpr(), pageContext)) != null) {
             setOnmousedown(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onmousemove", getOnmousemoveExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("onmousemove", getOnmousemoveExpr(), pageContext)) != null) {
             setOnmousemove(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onmouseout", getOnmouseoutExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onmouseout", getOnmouseoutExpr(), pageContext)) != null) {
             setOnmouseout(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onmouseover", getOnmouseoverExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("onmouseover", getOnmouseoverExpr(), pageContext)) != null) {
             setOnmouseover(string);
         }
 
         if ((string =
-                EvalHelper.evalString("onmouseup", getOnmouseupExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("onmouseup", getOnmouseupExpr(), pageContext)) != null) {
             setOnmouseup(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("size", getSizeExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("size", getSizeExpr(), pageContext)) != null) {
             setSize(string);
         }
 
         if ((string =
-                EvalHelper.evalString("style", getStyleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("style", getStyleExpr(), pageContext)) != null) {
             setStyle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("styleClass", getStyleClassExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("styleClass", getStyleClassExpr(), pageContext)) != null) {
             setStyleClass(string);
         }
 
         if ((string =
-                EvalHelper.evalString("styleId", getStyleIdExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("styleId", getStyleIdExpr(), pageContext)) != null) {
             setStyleId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("tabindex", getTabindexExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("tabindex", getTabindexExpr(), pageContext)) != null) {
             setTabindex(string);
         }
 
         if ((string =
-                EvalHelper.evalString("title", getTitleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("title", getTitleExpr(), pageContext)) != null) {
             setTitle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("titleKey", getTitleKeyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("titleKey", getTitleKeyExpr(), pageContext)) != null) {
             setTitleKey(string);
         }
 
         if ((string =
-                EvalHelper.evalString("value", getValueExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("value", getValueExpr(), pageContext)) != null) {
             setValue(string);
         }
     }

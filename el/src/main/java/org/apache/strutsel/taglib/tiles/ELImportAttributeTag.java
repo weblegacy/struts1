@@ -138,18 +138,17 @@ public class ELImportAttributeTag extends ImportAttributeTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("scope", getScopeExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("scope", getScopeExpr(), pageContext)) != null) {
             setScope(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("ignore", getIgnoreExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("ignore", getIgnoreExpr(), pageContext)) != null) {
             setIgnore(bool.booleanValue());
         }
     }

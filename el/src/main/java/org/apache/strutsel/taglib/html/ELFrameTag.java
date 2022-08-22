@@ -700,158 +700,137 @@ public class ELFrameTag extends FrameTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("action", getActionExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("action", getActionExpr(), pageContext)) != null) {
             setAction(string);
         }
 
         if ((string =
-                EvalHelper.evalString("module", getModuleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("module", getModuleExpr(), pageContext)) != null) {
             setModule(string);
         }
 
         if ((string =
-                EvalHelper.evalString("anchor", getAnchorExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("anchor", getAnchorExpr(), pageContext)) != null) {
             setAnchor(string);
         }
 
         if ((string =
-                EvalHelper.evalString("bundle", getBundleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("bundle", getBundleExpr(), pageContext)) != null) {
             setBundle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("forward", getForwardExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("forward", getForwardExpr(), pageContext)) != null) {
             setForward(string);
         }
 
         if ((string =
-                EvalHelper.evalString("frameborder", getFrameborderExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("frameborder", getFrameborderExpr(), pageContext)) != null) {
             setFrameborder(string);
         }
 
         if ((string =
-                EvalHelper.evalString("frameName", getFrameNameExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("frameName", getFrameNameExpr(), pageContext)) != null) {
             setFrameName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("href", getHrefExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("href", getHrefExpr(), pageContext)) != null) {
             setHref(string);
         }
 
         if ((string =
-                EvalHelper.evalString("longdesc", getLongdescExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("longdesc", getLongdescExpr(), pageContext)) != null) {
             setLongdesc(string);
         }
 
         if ((integer =
-                EvalHelper.evalInteger("marginheight", getMarginheightExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalInteger("marginheight", getMarginheightExpr(), pageContext)) != null) {
             setMarginheight(integer);
         }
 
         if ((integer =
-                EvalHelper.evalInteger("marginwidth", getMarginwidthExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalInteger("marginwidth", getMarginwidthExpr(), pageContext)) != null) {
             setMarginwidth(integer);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("noresize", getNoresizeExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("noresize", getNoresizeExpr(), pageContext)) != null) {
             setNoresize(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("page", getPageExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("page", getPageExpr(), pageContext)) != null) {
             setPage(string);
         }
 
         if ((string =
-                EvalHelper.evalString("paramId", getParamIdExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("paramId", getParamIdExpr(), pageContext)) != null) {
             setParamId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("paramName", getParamNameExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("paramName", getParamNameExpr(), pageContext)) != null) {
             setParamName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("paramProperty", getParamPropertyExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("paramProperty", getParamPropertyExpr(), pageContext)) != null) {
             setParamProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("paramScope", getParamScopeExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("paramScope", getParamScopeExpr(), pageContext)) != null) {
             setParamScope(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("scope", getScopeExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("scope", getScopeExpr(), pageContext)) != null) {
             setScope(string);
         }
 
         if ((string =
-                EvalHelper.evalString("scrolling", getScrollingExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("scrolling", getScrollingExpr(), pageContext)) != null) {
             setScrolling(string);
         }
 
         if ((string =
-                EvalHelper.evalString("style", getStyleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("style", getStyleExpr(), pageContext)) != null) {
             setStyle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("styleClass", getStyleClassExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("styleClass", getStyleClassExpr(), pageContext)) != null) {
             setStyleClass(string);
         }
 
         if ((string =
-                EvalHelper.evalString("styleId", getStyleIdExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("styleId", getStyleIdExpr(), pageContext)) != null) {
             setStyleId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("title", getTitleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("title", getTitleExpr(), pageContext)) != null) {
             setTitle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("titleKey", getTitleKeyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("titleKey", getTitleKeyExpr(), pageContext)) != null) {
             setTitleKey(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("transaction", getTransactionExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalBoolean("transaction", getTransactionExpr(), pageContext)) != null) {
             setTransaction(bool.booleanValue());
         }
     }

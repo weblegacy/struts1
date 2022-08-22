@@ -311,52 +311,47 @@ public class ELPutTag extends PutTag {
         String string = null;
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("value", getValueExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("value", getValueExpr(), pageContext)) != null) {
             setValue(string);
         }
 
         if ((string =
-                EvalHelper.evalString("content", getContentExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("content", getContentExpr(), pageContext)) != null) {
             setContent(string);
         }
 
         if ((string =
-                EvalHelper.evalString("direct", getDirectExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("direct", getDirectExpr(), pageContext)) != null) {
             setDirect(string);
         }
 
         if ((string =
-                EvalHelper.evalString("type", getTypeExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("type", getTypeExpr(), pageContext)) != null) {
             setType(string);
         }
 
         if ((string =
-                EvalHelper.evalString("beanName", getBeanNameExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("beanName", getBeanNameExpr(), pageContext)) != null) {
             setBeanName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("beanProperty", getBeanPropertyExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("beanProperty", getBeanPropertyExpr(), pageContext)) != null) {
             setBeanProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("beanScope", getBeanScopeExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("beanScope", getBeanScopeExpr(), pageContext)) != null) {
             setBeanScope(string);
         }
 
         if ((string =
-                EvalHelper.evalString("role", getRoleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("role", getRoleExpr(), pageContext)) != null) {
             setRole(string);
         }
     }

@@ -300,59 +300,52 @@ public class ELJavascriptValidatorTag extends JavascriptValidatorTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("cdata", getCdataExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("cdata", getCdataExpr(), pageContext)) != null) {
             setCdata(string);
         }
 
         if ((string =
-                EvalHelper.evalString("dynamicJavascript",
-                    getDynamicJavascriptExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("dynamicJavascript", getDynamicJavascriptExpr(), pageContext)) != null) {
             setDynamicJavascript(string);
         }
 
         if ((string =
-                EvalHelper.evalString("formName", getFormNameExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("formName", getFormNameExpr(), pageContext)) != null) {
             setFormName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("method", getMethodExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("method", getMethodExpr(), pageContext)) != null) {
             setMethod(string);
         }
 
         if ((integer =
-                EvalHelper.evalInteger("page", getPageExpr(), this, pageContext)) != null) {
+                EvalHelper.evalInteger("page", getPageExpr(), pageContext)) != null) {
             setPage(integer.intValue());
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("scriptLanguage",
-                    getScriptLanguageExpr(), this, pageContext)) != null) {
+                EvalHelper.evalBoolean("scriptLanguage", getScriptLanguageExpr(), pageContext)) != null) {
             setScriptLanguage(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("src", getSrcExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("src", getSrcExpr(), pageContext)) != null) {
             setSrc(string);
         }
 
         if ((string =
-                EvalHelper.evalString("staticJavascript",
-                    getStaticJavascriptExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("staticJavascript", getStaticJavascriptExpr(), pageContext)) != null) {
             setStaticJavascript(string);
         }
 
         if ((string =
-                EvalHelper.evalString("htmlComment", getHtmlCommentExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("htmlComment", getHtmlCommentExpr(), pageContext)) != null) {
             setHtmlComment(string);
         }
 
         if ((string =
-                EvalHelper.evalString("bundle", getBundleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("bundle", getBundleExpr(), pageContext)) != null) {
             setBundle(string);
         }
     }

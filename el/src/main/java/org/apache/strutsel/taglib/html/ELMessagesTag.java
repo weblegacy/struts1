@@ -278,54 +278,47 @@ public class ELMessagesTag extends MessagesTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("id", getIdExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("id", getIdExpr(), pageContext)) != null) {
             setId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("bundle", getBundleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("bundle", getBundleExpr(), pageContext)) != null) {
             setBundle(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("filterArgs", getFilterArgsExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("filterArgs", getFilterArgsExpr(), pageContext)) != null) {
             setFilterArgs(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("locale", getLocaleExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("locale", getLocaleExpr(), pageContext)) != null) {
             setLocale(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("header", getHeaderExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("header", getHeaderExpr(), pageContext)) != null) {
             setHeader(string);
         }
 
         if ((string =
-                EvalHelper.evalString("footer", getFooterExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("footer", getFooterExpr(), pageContext)) != null) {
             setFooter(string);
         }
 
         if ((string =
-                EvalHelper.evalString("message", getMessageExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("message", getMessageExpr(), pageContext)) != null) {
             setMessage(string);
         }
     }

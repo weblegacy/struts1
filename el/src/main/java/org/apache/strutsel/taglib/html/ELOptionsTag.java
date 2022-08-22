@@ -256,48 +256,42 @@ public class ELOptionsTag extends OptionsTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("collection", getCollectionExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("collection", getCollectionExpr(), pageContext)) != null) {
             setCollection(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("filter", getFilterExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("filter", getFilterExpr(), pageContext)) != null) {
             setFilter(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("labelName", getLabelNameExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("labelName", getLabelNameExpr(), pageContext)) != null) {
             setLabelName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("labelProperty", getLabelPropertyExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("labelProperty", getLabelPropertyExpr(), pageContext)) != null) {
             setLabelProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("style", getStyleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("style", getStyleExpr(), pageContext)) != null) {
             setStyle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("styleClass", getStyleClassExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("styleClass", getStyleClassExpr(), pageContext)) != null) {
             setStyleClass(string);
         }
 

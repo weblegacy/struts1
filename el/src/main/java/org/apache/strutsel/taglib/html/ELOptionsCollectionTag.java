@@ -234,35 +234,32 @@ public class ELOptionsCollectionTag extends OptionsCollectionTag {
         Boolean bool = null;
 
         if ((bool =
-                EvalHelper.evalBoolean("filter", getFilterExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalBoolean("filter", getFilterExpr(), pageContext)) != null) {
             setFilter(bool.booleanValue());
         }
 
         if ((string =
-                EvalHelper.evalString("label", getLabelExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("label", getLabelExpr(), pageContext)) != null) {
             setLabel(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("style", getStyleExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("style", getStyleExpr(), pageContext)) != null) {
             setStyle(string);
         }
 
         if ((string =
-                EvalHelper.evalString("styleClass", getStyleClassExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("styleClass", getStyleClassExpr(), pageContext)) != null) {
             setStyleClass(string);
         }
 
@@ -273,7 +270,7 @@ public class ELOptionsCollectionTag extends OptionsCollectionTag {
         // one "option" element.  Thus, the base tag, "OptionsCollectionTag"
         // does not support this attribute.
         if ((string =
-                EvalHelper.evalString("value", getValueExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("value", getValueExpr(), pageContext)) != null) {
             setValue(string);
         }
     }

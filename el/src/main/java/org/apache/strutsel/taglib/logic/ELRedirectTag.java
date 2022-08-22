@@ -389,82 +389,72 @@ public class ELRedirectTag extends RedirectTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("action", getActionExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("action", getActionExpr(), pageContext)) != null) {
             setAction(string);
         }
 
         if ((string =
-                EvalHelper.evalString("anchor", getAnchorExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("anchor", getAnchorExpr(), pageContext)) != null) {
             setAnchor(string);
         }
 
         if ((string =
-                EvalHelper.evalString("forward", getForwardExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("forward", getForwardExpr(), pageContext)) != null) {
             setForward(string);
         }
 
         if ((string =
-                EvalHelper.evalString("href", getHrefExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("href", getHrefExpr(), pageContext)) != null) {
             setHref(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("page", getPageExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("page", getPageExpr(), pageContext)) != null) {
             setPage(string);
         }
 
         if ((string =
-                EvalHelper.evalString("paramId", getParamIdExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("paramId", getParamIdExpr(), pageContext)) != null) {
             setParamId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("paramName", getParamNameExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("paramName", getParamNameExpr(), pageContext)) != null) {
             setParamName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("paramProperty", getParamPropertyExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalString("paramProperty", getParamPropertyExpr(), pageContext)) != null) {
             setParamProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("paramScope", getParamScopeExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("paramScope", getParamScopeExpr(), pageContext)) != null) {
             setParamScope(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("scope", getScopeExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("scope", getScopeExpr(), pageContext)) != null) {
             setScope(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("transaction", getTransactionExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalBoolean("transaction", getTransactionExpr(), pageContext)) != null) {
             setTransaction(bool.booleanValue());
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("useLocalEncoding",
-                    getUseLocalEncodingExpr(), this, pageContext)) != null) {
+                EvalHelper.evalBoolean("useLocalEncoding", getUseLocalEncodingExpr(), pageContext)) != null) {
             setUseLocalEncoding(bool.booleanValue());
         }
     }

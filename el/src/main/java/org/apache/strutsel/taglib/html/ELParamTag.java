@@ -109,13 +109,11 @@ public class ELParamTag extends ParamTag {
     private void evaluateExpressions() throws JspException {
         String string = null;
 
-        if ((string = EvalHelper.evalString("name", getNameExpr(), this,
-                pageContext)) != null) {
+        if ((string = EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
-        if ((string = EvalHelper.evalString("value", getValueExpr(), this,
-                pageContext)) != null) {
+        if ((string = EvalHelper.evalString("value", getValueExpr(), pageContext)) != null) {
             setValue(string);
         }
     }

@@ -278,52 +278,47 @@ public class ELIterateTag extends IterateTag {
         Object object = null;
 
         if ((object =
-                EvalHelper.eval("collection", getCollectionExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.eval("collection", getCollectionExpr(), pageContext)) != null) {
             setCollection(object);
         }
 
         if ((string =
-                EvalHelper.evalString("id", getIdExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("id", getIdExpr(), pageContext)) != null) {
             setId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("indexId", getIndexIdExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("indexId", getIndexIdExpr(), pageContext)) != null) {
             setIndexId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("length", getLengthExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("length", getLengthExpr(), pageContext)) != null) {
             setLength(string);
         }
 
         if ((string =
-                EvalHelper.evalString("name", getNameExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
             setName(string);
         }
 
         if ((string =
-                EvalHelper.evalString("offset", getOffsetExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("offset", getOffsetExpr(), pageContext)) != null) {
             setOffset(string);
         }
 
         if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
             setProperty(string);
         }
 
         if ((string =
-                EvalHelper.evalString("scope", getScopeExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("scope", getScopeExpr(), pageContext)) != null) {
             setScope(string);
         }
 
         if ((string =
-                EvalHelper.evalString("type", getTypeExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("type", getTypeExpr(), pageContext)) != null) {
             setType(string);
         }
     }

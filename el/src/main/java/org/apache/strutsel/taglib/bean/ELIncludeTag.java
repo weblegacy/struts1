@@ -205,35 +205,32 @@ public class ELIncludeTag extends IncludeTag {
         Boolean bool = null;
 
         if ((string =
-                EvalHelper.evalString("anchor", getAnchorExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("anchor", getAnchorExpr(), pageContext)) != null) {
             setAnchor(string);
         }
 
         if ((string =
-                EvalHelper.evalString("forward", getForwardExpr(), this,
-                    pageContext)) != null) {
+                EvalHelper.evalString("forward", getForwardExpr(), pageContext)) != null) {
             setForward(string);
         }
 
         if ((string =
-                EvalHelper.evalString("href", getHrefExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("href", getHrefExpr(), pageContext)) != null) {
             setHref(string);
         }
 
         if ((string =
-                EvalHelper.evalString("id", getIdExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("id", getIdExpr(), pageContext)) != null) {
             setId(string);
         }
 
         if ((string =
-                EvalHelper.evalString("page", getPageExpr(), this, pageContext)) != null) {
+                EvalHelper.evalString("page", getPageExpr(), pageContext)) != null) {
             setPage(string);
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("transaction", getTransactionExpr(),
-                    this, pageContext)) != null) {
+                EvalHelper.evalBoolean("transaction", getTransactionExpr(), pageContext)) != null) {
             setTransaction(bool.booleanValue());
         }
     }

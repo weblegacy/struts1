@@ -366,7 +366,7 @@
         <javaTestVersion>1.8</javaTestVersion>
         <myfacesVersion>1.0.9</myfacesVersion>
         <seleniumVersion>4.4.0</seleniumVersion>
-        <taglibsVersion>1.1.2</taglibsVersion>
+        <taglibsVersion>1.2.5</taglibsVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
         <struts.osgi.import>*</struts.osgi.import>
@@ -975,13 +975,13 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>jstl</artifactId>
+                <groupId>org.apache.taglibs</groupId>
+                <artifactId>taglibs-standard-spec</artifactId>
                 <version>${taglibsVersion}</version>
             </dependency>
             <dependency>
-                <groupId>taglibs</groupId>
-                <artifactId>standard</artifactId>
+                <groupId>org.apache.taglibs</groupId>
+                <artifactId>taglibs-standard-impl</artifactId>
                 <version>${taglibsVersion}</version>
             </dependency>
             <dependency>

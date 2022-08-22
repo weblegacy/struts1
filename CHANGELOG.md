@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `taglibs` from 1.1.2 to 1.2.5
 * Adapt `EvalHelper` to jsp 2.1 and remove `tagObject`-parameter
 * Bump `jsp-api` from 2.0 to 2.1
 * Bump `bsf` from 2.3.0 to 2.4.0

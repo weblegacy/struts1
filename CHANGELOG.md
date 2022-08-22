@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `jsp-api` from 2.0 to 2.1
 * Bump `bsf` from 2.3.0 to 2.4.0
 * Bump `servlet-api` from 2.4 to 2.5
 * Bump `jstl` and `taglibs.standard` from 1.0.2 to 1.1.2

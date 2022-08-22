@@ -163,8 +163,8 @@
     </tr>
     <logic-el:iterate id="item" collection="\${header}" indexId="index">
     <tr>
-        <td><c:out value="\${item.key}"/></td>
-        <td><c:out value="\${item.value}"/></td>
+        <td><c:out value="${item.key}"/></td>
+        <td><c:out value="${item.value}"/></td>
     </tr>
     </logic-el:iterate>
 </table>

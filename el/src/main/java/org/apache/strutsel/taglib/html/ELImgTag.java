@@ -1293,8 +1293,7 @@ public class ELImgTag extends ImgTag {
         }
 
         if ((bool =
-                EvalHelper.evalBoolean("useLocalEncoding",
-                    getUseLocalEncodingExpr(), pageContext)) != null) {
+                EvalHelper.evalBoolean("useLocalEncoding", getUseLocalEncodingExpr(), pageContext)) != null) {
             setUseLocalEncoding(bool.booleanValue());
         }
 

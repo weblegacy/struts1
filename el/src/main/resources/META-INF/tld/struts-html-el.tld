@@ -8666,28 +8666,5 @@
             </description>
         </attribute>
     </tag>
-    <tag>
-        <name>xhtml</name>
-        <tag-class>org.apache.struts.taglib.html.XhtmlTag</tag-class>
-        <body-content>empty</body-content>
-        <description>
-            <![CDATA[
-            <p><strong>Render HTML tags as XHTML</strong></p>
-          <p>
-            Using this tag in a page tells all other html taglib tags
-            to render themselves as XHTML 1.0.  This is useful
-            when composing pages with JSP includes or Tiles.
-            <code>&lt;html:html xhtml="true"&gt;</code> has a similar effect.  This
-            tag has no attributes; you use it like this:
-            <code>&lt;html:xhtml/&gt;</code>.
-          </p>
-         <p>
-            <strong>Note</strong>: Included pages do not inherit the rendering
-            style of the including page.  Each JSP fragment or Tile must use this
-            tag to render as XHTML.
-          </p>
-      ]]>
-        </description>
-    </tag>
 </taglib>
 

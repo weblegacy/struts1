@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Corr: Remove `xhtml`-tag from `struts-html-el` duplicated in `struts-html`
 * Bump `webdrivermanager` from 5.2.3 to 5.3.0
 * Bump `taglibs` from 1.1.2 to 1.2.5
 * Adapt `EvalHelper` to jsp 2.1 and remove `tagObject`-parameter

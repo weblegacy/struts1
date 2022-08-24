@@ -17,14 +17,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<!DOCTYPE taglib PUBLIC
-        "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
-        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
-<taglib>
-    <tlib-version>1.3</tlib-version>
-    <jsp-version>1.2</jsp-version>
-    <short-name>bean</short-name>
-    <uri>http://struts.apache.org/tags-bean-el</uri>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+      version="2.1">
     <description>
         <![CDATA[
    This tag library contains tags useful in accessing beans and their
@@ -44,11 +39,10 @@
   these tags in the  Bean Tags Developer's Guide.
   ]]>
     </description>
+    <tlib-version>1.4</tlib-version>
+    <short-name>bean</short-name>
+    <uri>http://struts.apache.org/tags-bean-el</uri>
     <tag>
-        <name>include</name>
-        <tag-class>org.apache.strutsel.taglib.bean.ELIncludeTag</tag-class>
-        <tei-class>org.apache.struts.taglib.bean.IncludeTei</tei-class>
-        <body-content>empty</body-content>
         <description>
             <![CDATA[
       <p><strong>Load the response from a dynamic application request
@@ -81,10 +75,11 @@
       </ul>
       ]]>
         </description>
+        <name>include</name>
+        <tag-class>org.apache.strutsel.taglib.bean.ELIncludeTag</tag-class>
+        <tei-class>org.apache.struts.taglib.bean.IncludeTei</tei-class>
+        <body-content>empty</body-content>
         <attribute>
-            <name>anchor</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
             <p>Optional anchor tag ("#xxx") to be added to the generated
@@ -92,22 +87,24 @@
             "#" character.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>forward</name>
+            <name>anchor</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
             <p>Logical name of a global <code>ActionForward</code> that contains
             the actual content-relative URI of the resource to be included.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>href</name>
+            <name>forward</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
          <p>Absolute URL (including the appropriate protocol prefix such as
@@ -116,11 +113,12 @@
          <strong>not</strong> be included in the request.</p>
          ]]>
             </description>
+            <name>href</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>id</name>
-            <required>true</required>
-            <rtexprvalue>false</rtexprvalue>
             <description>
                 <![CDATA[
          <p>Specifies the name of the scripting variable (and associated page
@@ -128,22 +126,24 @@
          specified web application resource.</p>
          ]]>
             </description>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>page</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
          <p>Module-relative URI (starting with a '/') of the web application
          resource to be included.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>transaction</name>
+            <name>page</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
          <p>Set to <code>true</code> if you want the current
@@ -151,12 +151,13 @@
          URL for this include.</p>
          ]]>
             </description>
+            <name>transaction</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>message</name>
-        <tag-class>org.apache.strutsel.taglib.bean.ELMessageTag</tag-class>
-        <body-content>empty</body-content>
         <description>
             <![CDATA[
       <p><strong>Render an internationalized message string to the response.
@@ -178,60 +179,65 @@
       </p>
       ]]>
         </description>
+        <name>message</name>
+        <tag-class>org.apache.strutsel.taglib.bean.ELMessageTag</tag-class>
+        <body-content>empty</body-content>
         <attribute>
-            <name>arg0</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
             <p>First parametric replacement value, if any.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>arg1</name>
+            <name>arg0</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
             <p>Second parametric replacement value, if any.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>arg2</name>
+            <name>arg1</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
             <p>Third parametric replacement value, if any.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>arg3</name>
+            <name>arg2</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
             <p>Fourth parametric replacement value, if any.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>arg4</name>
+            <name>arg3</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
             <p>Fifth parametric replacement value, if any.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>bundle</name>
+            <name>arg4</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
          <p>The name of the application scope bean under which the
@@ -239,11 +245,12 @@
          is stored.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>key</name>
+            <name>bundle</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
          <p>The message key of the requested message, which must have
@@ -252,22 +259,24 @@
          <code>property</code> attributes.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>locale</name>
+            <name>key</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
          <p>The name of the session scope bean under which our currently
          selected <code>Locale</code> object is stored.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>locale</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
          <p>Specifies the attribute name of the bean whose property is accessed
@@ -276,11 +285,12 @@
          this bean itself will be used as the message resource key.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
          <p>Specifies the name of the property to be accessed on the bean
@@ -290,11 +300,12 @@
          message resource key.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
          <p>Specifies the variable scope searched to retrieve the bean specified
@@ -302,12 +313,13 @@
          <code>PageContext.findAttribute()</code> are applied.</p>
          ]]>
             </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>page</name>
-        <tag-class>org.apache.strutsel.taglib.bean.ELPageTag</tag-class>
-        <body-content>empty</body-content>
         <description>
             <![CDATA[
       <p><strong>Expose a specified item from the page context as a bean.
@@ -319,10 +331,10 @@
       object, a request time exception will be thrown.</p>
       ]]>
         </description>
+        <name>page</name>
+        <tag-class>org.apache.strutsel.taglib.bean.ELPageTag</tag-class>
+        <body-content>empty</body-content>
         <attribute>
-            <name>id</name>
-            <required>true</required>
-            <rtexprvalue>false</rtexprvalue>
             <description>
                 <![CDATA[
          <p>Specifies the name of the scripting variable (and associated
@@ -330,11 +342,12 @@
          the specified page context property.</p>
          ]]>
             </description>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>property</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
          <p>Name of the property from our page context to be retrieved and
@@ -343,13 +356,13 @@
          </p>
          ]]>
             </description>
+            <name>property</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>resource</name>
-        <tag-class>org.apache.strutsel.taglib.bean.ELResourceTag</tag-class>
-        <tei-class>org.apache.struts.taglib.bean.ResourceTei</tei-class>
-        <body-content>empty</body-content>
         <description>
             <![CDATA[
       <p><strong>Load a web application resource and make it available as a
@@ -362,10 +375,11 @@
       request time exception will be thrown.</p>
       ]]>
         </description>
+        <name>resource</name>
+        <tag-class>org.apache.strutsel.taglib.bean.ELResourceTag</tag-class>
+        <tei-class>org.apache.struts.taglib.bean.ResourceTei</tei-class>
+        <body-content>empty</body-content>
         <attribute>
-            <name>id</name>
-            <required>true</required>
-            <rtexprvalue>false</rtexprvalue>
             <description>
                 <![CDATA[
          <p>Specifies the name of the scripting variable (and associated page
@@ -373,11 +387,12 @@
          specified web application resource.</p>
          ]]>
             </description>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>input</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
          <p>If any arbitrary value for this attribute is specified, the resource
@@ -386,24 +401,25 @@
          as a <code>String</code>.</p>
          ]]>
             </description>
+            <name>input</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>name</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
          <p>Module-relative name (starting with a '/') of the web application
          resource to be loaded and made available.</p>
          ]]>
             </description>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>size</name>
-        <tag-class>org.apache.strutsel.taglib.bean.ELSizeTag</tag-class>
-        <tei-class>org.apache.struts.taglib.bean.SizeTei</tei-class>
-        <body-content>empty</body-content>
         <description>
             <![CDATA[
       <p><strong>Define a bean containing the number of elements in a
@@ -421,21 +437,23 @@
          </ul>
       ]]>
         </description>
+        <name>size</name>
+        <tag-class>org.apache.strutsel.taglib.bean.ELSizeTag</tag-class>
+        <tei-class>org.apache.struts.taglib.bean.SizeTei</tei-class>
+        <body-content>empty</body-content>
         <attribute>
-            <name>collection</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
          <p>A runtime expression that evaluates to an array, a Collection, or
          a Map.</p>
          ]]>
             </description>
+            <name>collection</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>id</name>
-            <required>true</required>
-            <rtexprvalue>false</rtexprvalue>
             <description>
                 <![CDATA[
          <p>The name of a page scope JSP bean, of type
@@ -443,11 +461,12 @@
          size of the underlying collection being counted.</p>
          ]]>
             </description>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>name</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
          <p>The name of the JSP bean (optionally constrained to the scope
@@ -457,11 +476,12 @@
          counted (if <code>property</code> is specified.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
          <p>The name of the property, of the bean specified by the
@@ -469,11 +489,12 @@
          collection to be counted.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
          <p>The bean scope within which to search for the JSP bean specified
@@ -481,13 +502,13 @@
          scopes are searched in ascending sequence.</p>
          ]]>
             </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>struts</name>
-        <tag-class>org.apache.strutsel.taglib.bean.ELStrutsTag</tag-class>
-        <tei-class>org.apache.struts.taglib.bean.StrutsTei</tei-class>
-        <body-content>empty</body-content>
         <description>
             <![CDATA[
       <p><strong>Expose a named Struts internal configuration object as a bean.
@@ -502,10 +523,11 @@
       object, a request time exception will be thrown.</p>
       ]]>
         </description>
+        <name>struts</name>
+        <tag-class>org.apache.strutsel.taglib.bean.ELStrutsTag</tag-class>
+        <tei-class>org.apache.struts.taglib.bean.StrutsTei</tei-class>
+        <body-content>empty</body-content>
         <attribute>
-            <name>id</name>
-            <required>true</required>
-            <rtexprvalue>false</rtexprvalue>
             <description>
                 <![CDATA[
          <p>Specifies the name of the scripting variable (and associated
@@ -513,42 +535,46 @@
          the specified Struts internal configuration object.</p>
          ]]>
             </description>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>formBean</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
          <p>Specifies the name of the Struts <code>ActionFormBean</code>
          definition object to be exposed.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>forward</name>
+            <name>formBean</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
          <p>Specifies the name of the global Struts <code>ActionForward</code>
          definition object to be exposed.</p>
          ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>mapping</name>
+            <name>forward</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
          <p>Specifies the matching path of the Struts <code>ActionMapping</code>
          definition object to be exposed.</p>
          ]]>
             </description>
+            <name>mapping</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
 </taglib>
-
-
-

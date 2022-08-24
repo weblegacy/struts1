@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Upgrade all taglibs to 2.1 (except faces to 2.0)
 * Little re-formating in `ELImgTag`
 * Corr: Remove `xhtml`-tag from `struts-html-el` duplicated in `struts-html`
 * Bump `webdrivermanager` from 5.2.3 to 5.3.0

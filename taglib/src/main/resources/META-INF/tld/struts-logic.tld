@@ -17,14 +17,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<!DOCTYPE taglib
-        PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.2//EN"
-        "http://java.sun.com/dtd/web-jsptaglibrary_1_2.dtd">
-<taglib>
-    <tlib-version>1.3</tlib-version>
-    <jsp-version>1.2</jsp-version>
-    <short-name>logic</short-name>
-    <uri>http://struts.apache.org/tags-logic</uri>
+<taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+      version="2.1">
     <description>
         <![CDATA[
   <p><strong>Note:  Some of the features in this taglib are also
@@ -82,10 +77,10 @@
 
   ]]>
     </description>
+    <tlib-version>1.4</tlib-version>
+    <short-name>logic</short-name>
+    <uri>http://struts.apache.org/tags-logic</uri>
     <tag>
-        <name>empty</name>
-        <tag-class>org.apache.struts.taglib.logic.EmptyTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -114,10 +109,10 @@
             <dd>Struts 1.1</dd></dl>
           ]]>
         </description>
+        <name>empty</name>
+        <tag-class>org.apache.struts.taglib.logic.EmptyTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>name</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the JSP bean specified by this
@@ -126,11 +121,12 @@
       is specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the property (of the bean specified
@@ -138,23 +134,25 @@
       The property reference can be simple, nested, and/or indexed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>equal</name>
-        <tag-class>org.apache.struts.taglib.logic.EqualTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -168,21 +166,22 @@
     </p>
     ]]>
         </description>
+        <name>equal</name>
+        <tag-class>org.apache.struts.taglib.logic.EqualTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>cookie</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the value of the cookie whose
       name is specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>header</name>
+            <name>cookie</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the value of the header whose
@@ -190,11 +189,12 @@
       in a case insensitive manner.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>header</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the JSP bean specified by this
@@ -203,22 +203,24 @@
       is specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>parameter</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the first, or only, value of the
       request parameter specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>parameter</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the property (of the bean specified
@@ -226,34 +228,37 @@
       The property reference can be simple, nested, and/or indexed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>value</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The constant value to which the variable, specified by other
       attribute(s) of this tag, will be compared.</p>
       ]]>
             </description>
+            <name>value</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>forward</name>
-        <tag-class>org.apache.struts.taglib.logic.ForwardTag</tag-class>
-        <body-content>empty</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -267,10 +272,10 @@
     rewriting will occur automatically if a redirect is performed.</p>
     ]]>
         </description>
+        <name>forward</name>
+        <tag-class>org.apache.struts.taglib.logic.ForwardTag</tag-class>
+        <body-content>empty</body-content>
         <attribute>
-            <name>name</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>
@@ -281,12 +286,13 @@
       </p>
       ]]>
             </description>
+            <name>name</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>greaterEqual</name>
-        <tag-class>org.apache.struts.taglib.logic.GreaterEqualTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -300,21 +306,22 @@
     to the value.</p>
     ]]>
         </description>
+        <name>greaterEqual</name>
+        <tag-class>org.apache.struts.taglib.logic.GreaterEqualTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>cookie</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the value of the cookie whose
       name is specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>header</name>
+            <name>cookie</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the value of the header whose
@@ -322,11 +329,12 @@
       in a case insensitive manner.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>header</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the JSP bean specified by this
@@ -335,22 +343,24 @@
       is specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>parameter</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the first, or only, value of the
       request parameter specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>parameter</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the property (of the bean specified
@@ -358,34 +368,37 @@
       The property reference can be simple, nested, and/or indexed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>value</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The constant value to which the variable, specified by other
       attribute(s) of this tag, will be compared.</p>
       ]]>
             </description>
+            <name>value</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>greaterThan</name>
-        <tag-class>org.apache.struts.taglib.logic.GreaterThanTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -399,21 +412,22 @@
     the value.</p>
     ]]>
         </description>
+        <name>greaterThan</name>
+        <tag-class>org.apache.struts.taglib.logic.GreaterThanTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>cookie</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the value of the cookie whose
       name is specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>header</name>
+            <name>cookie</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the value of the header whose
@@ -421,11 +435,12 @@
       in a case insensitive manner.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>header</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the JSP bean specified by this
@@ -434,22 +449,24 @@
       is specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>parameter</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the first, or only, value of the
       request parameter specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>parameter</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the property (of the bean specified
@@ -457,35 +474,37 @@
       The property reference can be simple, nested, or indexed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>value</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The constant value to which the variable, specified by other
       attribute(s) of this tag, will be compared.</p>
       ]]>
             </description>
+            <name>value</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>iterate</name>
-        <tag-class>org.apache.struts.taglib.logic.IterateTag</tag-class>
-        <tei-class>org.apache.struts.taglib.logic.IterateTei</tei-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -546,22 +565,23 @@
 
     ]]>
         </description>
+        <name>iterate</name>
+        <tag-class>org.apache.struts.taglib.logic.IterateTag</tag-class>
+        <tei-class>org.apache.struts.taglib.logic.IterateTei</tei-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>collection</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
-            <type>java.lang.Object</type>
             <description>
                 <![CDATA[
       <p>A runtime expression that evaluates to a collection (conforming to
       the requirements listed above) to be iterated over.</p>
       ]]>
             </description>
+            <name>collection</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.Object</type>
         </attribute>
         <attribute>
-            <name>id</name>
-            <required>true</required>
-            <rtexprvalue>false</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The name of a page scope JSP bean that will contain the current
@@ -569,22 +589,24 @@
       <code>null</code>.</p>
       ]]>
             </description>
+            <name>id</name>
+            <required>true</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>indexId</name>
-            <required>false</required>
-            <rtexprvalue>false</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The name of a page scope JSP bean that will contain the current
       index of the collection on each iteration.</p>
       ]]>
             </description>
+            <name>indexId</name>
+            <required>false</required>
+            <rtexprvalue>false</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>length</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The maximum number of entries (from the underlying collection) to be
@@ -595,11 +617,12 @@
       of iterations performed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>length</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The name of the JSP bean containing the collection to be iterated
@@ -608,11 +631,12 @@
       <code>property</code> is specified).</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>offset</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The zero-relative index of the starting point at which entries from
@@ -623,33 +647,36 @@
       that the collection will be iterated from the beginning.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>offset</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Name of the property, of the JSP bean specified by <code>name</code>,
       whose getter returns the collection to be iterated.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>type</name>
+            <name>scope</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Fully qualified Java class name of the element to be exposed through
@@ -659,12 +686,13 @@
       request time ClassCastException will occur.</p>
       ]]>
             </description>
+            <name>type</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>lessEqual</name>
-        <tag-class>org.apache.struts.taglib.logic.LessEqualTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -678,21 +706,22 @@
     to the value.</p>
     ]]>
         </description>
+        <name>lessEqual</name>
+        <tag-class>org.apache.struts.taglib.logic.LessEqualTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>cookie</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the value of the cookie whose
       name is specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>header</name>
+            <name>cookie</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the value of the header whose
@@ -700,11 +729,12 @@
       in a case insensitive manner.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>header</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the JSP bean specified by this
@@ -713,22 +743,24 @@
       is specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>parameter</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the first, or only, value of the
       request parameter specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>parameter</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the property (of the bean specified
@@ -736,34 +768,37 @@
       The property reference can be simple, nested, or indexed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>value</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The constant value to which the variable, specified by other
       attribute(s) of this tag, will be compared.</p>
       ]]>
             </description>
+            <name>value</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>lessThan</name>
-        <tag-class>org.apache.struts.taglib.logic.LessThanTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -777,21 +812,22 @@
     the value.</p>
     ]]>
         </description>
+        <name>lessThan</name>
+        <tag-class>org.apache.struts.taglib.logic.LessThanTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>cookie</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the value of the cookie whose
       name is specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>header</name>
+            <name>cookie</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the value of the header whose
@@ -799,11 +835,12 @@
       in a case insensitive manner.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>header</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the JSP bean specified by this
@@ -812,22 +849,24 @@
       is specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>parameter</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the first, or only, value of the
       request parameter specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>parameter</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the property (of the bean specified
@@ -835,34 +874,37 @@
       The property reference can be simple, nested, and/or indexed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>value</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The constant value to which the variable, specified by other
       attribute(s) of this tag, will be compared.</p>
       ]]>
             </description>
+            <name>value</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>match</name>
-        <tag-class>org.apache.struts.taglib.logic.MatchTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -876,21 +918,22 @@
     attribute), the nested body content of this tag is evaluated.</p>
     ]]>
         </description>
+        <name>match</name>
+        <tag-class>org.apache.struts.taglib.logic.MatchTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>cookie</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The variable to be matched is the value of the cookie whose
       name is specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>header</name>
+            <name>cookie</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be matched is the value of the header whose
@@ -898,11 +941,12 @@
       in a case insensitive manner.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>location</name>
+            <name>header</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>If not specified, a match between the variable and the value may
@@ -911,11 +955,12 @@
       or <code>end</code>) of the variable string.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>location</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be matched is the JSP bean specified by this
@@ -924,22 +969,24 @@
       is specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>parameter</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be matched is the first, or only, value of the
       request parameter specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>parameter</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be matched is the property (of the bean specified
@@ -947,34 +994,37 @@
       The property reference can be simple, nested, and/or indexed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>value</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The constant value which is checked for existence as a substring
       of the specified variable.</p>
       ]]>
             </description>
+            <name>value</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>messagesNotPresent</name>
-        <tag-class>org.apache.struts.taglib.logic.MessagesNotPresentTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -993,21 +1043,22 @@
             <dd>Struts 1.1</dd></dl>
           ]]>
         </description>
+        <name>messagesNotPresent</name>
+        <tag-class>org.apache.struts.taglib.logic.MessagesNotPresentTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>name</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The parameter key used to retrieve the message from page, request,
       session or application scope.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Name of the property for which messages should be
@@ -1016,11 +1067,12 @@
       </p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>message</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>By default the tag will retrieve the bean it will
@@ -1032,12 +1084,13 @@
       </p>
       ]]>
             </description>
+            <name>message</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>messagesPresent</name>
-        <tag-class>org.apache.struts.taglib.logic.MessagesPresentTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -1056,21 +1109,22 @@
             <dd>Struts 1.1</dd></dl>
           ]]>
         </description>
+        <name>messagesPresent</name>
+        <tag-class>org.apache.struts.taglib.logic.MessagesPresentTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>name</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The parameter key used to retrieve the message from page, request,
       session, or application scope.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Name of the property for which messages should be
@@ -1079,11 +1133,12 @@
       </p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>message</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>By default the tag will retrieve the bean it will
@@ -1095,11 +1150,12 @@
       </p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>count</name>
+            <name>message</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                 Specifies the name of the page-scoped attribute to set
@@ -1112,12 +1168,13 @@
                 <dd>Struts 1.4</dd></dl>
                 ]]>
             </description>
+            <name>count</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>notEmpty</name>
-        <tag-class>org.apache.struts.taglib.logic.NotEmptyTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -1142,10 +1199,10 @@
     </p>
     ]]>
         </description>
+        <name>notEmpty</name>
+        <tag-class>org.apache.struts.taglib.logic.NotEmptyTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>name</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the JSP bean specified by this
@@ -1154,11 +1211,12 @@
       is specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the property (of the bean specified
@@ -1166,23 +1224,25 @@
       The property reference can be simple, nested, and/or indexed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>notEqual</name>
-        <tag-class>org.apache.struts.taglib.logic.NotEqualTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -1196,21 +1256,22 @@
     </p>
     ]]>
         </description>
+        <name>notEqual</name>
+        <tag-class>org.apache.struts.taglib.logic.NotEqualTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>cookie</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the value of the cookie whose
       name is specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>header</name>
+            <name>cookie</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the value of the header whose
@@ -1218,11 +1279,12 @@
       in a case insensitive manner.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>header</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the JSP bean specified by this
@@ -1231,22 +1293,24 @@
       is specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>parameter</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the first, or only, value of the
       request parameter specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>parameter</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be compared is the property (of the bean specified
@@ -1254,34 +1318,37 @@
       The property reference can be simple, nested, and/or indexed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>value</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The constant value to which the variable, specified by other
       attribute(s) of this tag, will be compared.</p>
       ]]>
             </description>
+            <name>value</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>notMatch</name>
-        <tag-class>org.apache.struts.taglib.logic.NotMatchTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -1295,21 +1362,22 @@
     attribute), the nested body content of this tag is evaluated.</p>
     ]]>
         </description>
+        <name>notMatch</name>
+        <tag-class>org.apache.struts.taglib.logic.NotMatchTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>cookie</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The variable to be matched is the value of the cookie whose
       name is specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>header</name>
+            <name>cookie</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be matched is the value of the header whose
@@ -1317,11 +1385,12 @@
       in a case insensitive manner.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>location</name>
+            <name>header</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>If not specified, a match between the variable and the value may
@@ -1330,11 +1399,12 @@
       or <code>end</code>) of the variable string.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>location</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be matched is the JSP bean specified by this
@@ -1343,22 +1413,24 @@
       is specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>parameter</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be matched is the first, or only, value of the
       request parameter specified by this attribute.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>parameter</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The variable to be matched is the property (of the bean specified
@@ -1366,34 +1438,37 @@
       The property reference can be simple, nested, and/or indexed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
-            <name>value</name>
-            <required>true</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>The constant value which is checked for existence as a substring
       of the specified variable.</p>
       ]]>
             </description>
+            <name>value</name>
+            <required>true</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>notPresent</name>
-        <tag-class>org.apache.struts.taglib.logic.NotPresentTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -1409,31 +1484,33 @@
     <code>name</code> attribute is also required.</p>
     ]]>
         </description>
+        <name>notPresent</name>
+        <tag-class>org.apache.struts.taglib.logic.NotPresentTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>cookie</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>Checks for the existence of a cookie with the specified name.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>header</name>
+            <name>cookie</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Checks for the existence of an HTTP header with the specified
       name.  The name match is performed in a case insensitive manner.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>header</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Checks for the existence of a JSP bean, in any scope, with the
@@ -1441,11 +1518,12 @@
       for a non-null property value for the specified property.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>parameter</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Checks for the existence of at least one occurrence of the
@@ -1453,11 +1531,12 @@
       value is a zero-length string.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>parameter</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Checks for the existence of a non-null property value, returned
@@ -1466,45 +1545,49 @@
       can be simple, nested, and/or indexed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>role</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Checks whether the currently authenticated user (if any) has been
       associated with the specified security role.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>role</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>user</name>
+            <name>scope</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Checks whether the currently authenticated user principal has the
       specified name.</p>
       ]]>
             </description>
+            <name>user</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>present</name>
-        <tag-class>org.apache.struts.taglib.logic.PresentTag</tag-class>
-        <body-content>JSP</body-content>
         <description>
             <![CDATA[
             <p><strong>
@@ -1520,31 +1603,33 @@
     <code>name</code> attribute is also required.</p>
     ]]>
         </description>
+        <name>present</name>
+        <tag-class>org.apache.struts.taglib.logic.PresentTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>cookie</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
       <p>Checks for the existence of a cookie with the specified name.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>header</name>
+            <name>cookie</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Checks for the existence of an HTTP header with the specified
       name.  The name match is performed in a case insensitive manner.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>header</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Checks for the existence of a JSP bean, in any scope, with the
@@ -1552,11 +1637,12 @@
       for a non-null property value for the specified property.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>parameter</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Checks for the existence of at least one occurrence of the
@@ -1564,11 +1650,12 @@
       value is a zero-length string.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>parameter</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Checks for the existence of a non-null property value, returned
@@ -1577,11 +1664,12 @@
       can be simple, nested, and/or indexed.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>role</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Checks whether the currently authenticated user (if any) has been
@@ -1592,33 +1680,37 @@
             &lt;/logic:present&gt;</code></p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>role</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>The bean scope within which to search for the bean named by the
       <code>name</code> property, or "any scope" if not specified.</p>
       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>user</name>
+            <name>scope</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
       <p>Checks whether the currently authenticated user principal has the
       specified name.</p>
       ]]>
             </description>
+            <name>user</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
     </tag>
     <tag>
-        <name>redirect</name>
-        <tag-class>org.apache.struts.taglib.logic.RedirectTag</tag-class>
         <description>
             <![CDATA[
             <p><strong>Render an HTTP Redirect</strong></p>
@@ -1697,10 +1789,10 @@
                 same query parameter name will be created.</p>
                 ]]>
         </description>
+        <name>redirect</name>
+        <tag-class>org.apache.struts.taglib.logic.RedirectTag</tag-class>
+        <body-content>JSP</body-content>
         <attribute>
-            <name>action</name>
-            <required>false</required>
-            <rtexprvalue>true</rtexprvalue>
             <description>
                 <![CDATA[
                           <p>Logical name of a global <code>Action</code> that
@@ -1714,11 +1806,12 @@
                           or the <code>page</code> attribute.</p>
                       ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>anchor</name>
+            <name>action</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                   <p>Optional anchor tag ("#xxx") to be added to the generated
@@ -1726,11 +1819,12 @@
                   "#" character.</p>
                   ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>forward</name>
+            <name>anchor</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                   <p>Logical name of a global <code>ActionForward</code> that
@@ -1743,11 +1837,12 @@
                   attribute, or the <code>page</code> attribute.</p>
                   ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>href</name>
+            <name>forward</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                   <p>The URL to which this redirect will transfer control.
@@ -1759,11 +1854,12 @@
                   attribute, or the <code>page</code> attribute.</p>
                   ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>name</name>
+            <name>href</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                   <p>The name of a JSP bean that contains a <code>Map</code>
@@ -1773,11 +1869,12 @@
                   is specified).</p>
                   ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>page</name>
+            <name>name</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                   <p>The context-relative path (beginning with a "/"
@@ -1790,11 +1887,12 @@
                   attribute, or the <code>page</code> attribute.</p>
                   ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>paramId</name>
+            <name>page</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                   <p>The name of the request parameter that will be dynamically
@@ -1804,11 +1902,12 @@
                   the <code>paramScope</code> attribute</p>
                   ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>paramName</name>
+            <name>paramId</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                   <p>The name of a JSP bean that is a String containing the
@@ -1820,11 +1919,12 @@
                   <code>paramScope</code> property, if it is specified.</p>
                   ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>paramProperty</name>
+            <name>paramName</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                   <p>The name of a property of the bean specified by the
@@ -1834,11 +1934,12 @@
                   dynamically added to this hyperlink.</p>
                   ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>paramScope</name>
+            <name>paramProperty</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                   <p>The scope within which to search for the bean specified
@@ -1846,11 +1947,12 @@
                   all scopes are searched.</p>
                   ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>property</name>
+            <name>paramScope</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                   <p>The name of a property of the bean specified by the
@@ -1861,11 +1963,12 @@
                   this attribute.</p>
                   ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>scope</name>
+            <name>property</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                   <p>The scope within which to search for the bean specified
@@ -1873,12 +1976,12 @@
                   scopes are searched.</p>
                   ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>transaction</name>
+            <name>scope</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
-            <type>boolean</type>
+            <type>java.lang.String</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
                     <p>Set to <code>true</code> if you want the current
@@ -1886,12 +1989,12 @@
                     URL for this redirect.</p>
                   ]]>
             </description>
-        </attribute>
-        <attribute>
-            <name>useLocalEncoding</name>
+            <name>transaction</name>
             <required>false</required>
             <rtexprvalue>true</rtexprvalue>
             <type>boolean</type>
+        </attribute>
+        <attribute>
             <description>
                 <![CDATA[
               <p>If set to <code>true</code>, LocalCharacterEncoding will be
@@ -1900,9 +2003,10 @@
               URLEncoding is done on parameters of the URL.</p>
               ]]>
             </description>
+            <name>useLocalEncoding</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
         </attribute>
     </tag>
 </taglib>
-
-
-

@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Replace tabs with spaces
 * Fix `maven-bundle-plugin` warning during compiling
 * Fix compile-warning at `CommandLinkRenderer`
 * Add `JavascriptValidatorComponent`-Constructor with default values.

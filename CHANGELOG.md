@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Add `JavascriptValidatorComponent`-Constructor with default values.
 * Convert `LoadMessages`-JSF-Tag to JSF 1.2
 * Tiles-Version as POM-Property
 * Correct some typos in JavaDocs and trim lines

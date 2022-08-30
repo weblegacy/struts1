@@ -40,7 +40,22 @@ import javax.faces.context.FacesContext;
 public class JavascriptValidatorComponent extends UIOutput {
 
 
+    // ------------------------------------------------------------ Constructors
+
+
+    /**
+     * Create a new {@link JavascriptValidatorComponent} with default properties.
+     */
+    public JavascriptValidatorComponent() {
+
+        super();
+        setRendererType("org.apache.struts.faces.JavascriptValidator");
+
+    }
+
+
     // ------------------------------------------------------ Instance Variables
+
 
     /**
      * MessageResources attribute key to use for message lookup.

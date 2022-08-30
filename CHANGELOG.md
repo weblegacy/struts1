@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `groovy` from 1.0 to 3.0.9
 * Fix groovy-compile-error
 * Replace tabs with spaces
 * Fix `maven-bundle-plugin` warning during compiling

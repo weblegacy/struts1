@@ -23,9 +23,11 @@ package org.apache.struts.faces.component;
 
 
 import java.util.Map;
+
+import javax.el.ValueExpression;
 import javax.faces.component.UIForm;
 import javax.faces.context.FacesContext;
-import javax.faces.el.ValueBinding;
+
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -36,6 +38,8 @@ import org.apache.struts.action.DynaActionFormClass;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.FormBeanConfig;
 import org.apache.struts.config.ModuleConfig;
+import org.apache.struts.faces.util.StrutsContext;
+import org.apache.struts.faces.util.Utils;
 import org.apache.struts.util.RequestUtils;
 
 
@@ -53,7 +57,7 @@ public class FormComponent extends UIForm {
 
 
     /**
-     * <p>The <code>Log</code> instance for this class.</p>
+     * The {@code LOG} instance for this class.
      */
     protected static Log log = LogFactory.getLog(FormComponent.class);
 
@@ -61,15 +65,15 @@ public class FormComponent extends UIForm {
     // ------------------------------------------------------ Instance Variables
 
 
-    private String action = null;
-    private String enctype = null;
-    private String focus = null;
-    private String focusIndex = null;
-    private String onreset = null;
-    private String onsubmit = null;
-    private String style = null;
-    private String styleClass = null;
-    private String target = null;
+    private String action;
+    private String enctype;
+    private String focus;
+    private String focusIndex;
+    private String onreset;
+    private String onsubmit;
+    private String style;
+    private String styleClass;
+    private String target;
 
 
     // ---------------------------------------------------- Component Properties
@@ -84,9 +88,9 @@ public class FormComponent extends UIForm {
         if (this.action != null) {
             return (this.action);
         }
-        ValueBinding vb = getValueBinding("action");
+        ValueExpression vb = getValueExpression("action");
         if (vb != null) {
-            return ((String) vb.getValue(getFacesContext()));
+            return ((String) vb.getValue(getFacesContext().getELContext()));
         } else {
             return (null);
         }
@@ -114,9 +118,9 @@ public class FormComponent extends UIForm {
         if (this.enctype != null) {
             return (this.enctype);
         }
-        ValueBinding vb = getValueBinding("enctype");
+        ValueExpression vb = getValueExpression("enctype");
         if (vb != null) {
-            return ((String) vb.getValue(getFacesContext()));
+            return ((String) vb.getValue(getFacesContext().getELContext()));
         } else {
             return (null);
         }
@@ -154,9 +158,9 @@ public class FormComponent extends UIForm {
         if (this.focus != null) {
             return (this.focus);
         }
-        ValueBinding vb = getValueBinding("focus");
+        ValueExpression vb = getValueExpression("focus");
         if (vb != null) {
-            return ((String) vb.getValue(getFacesContext()));
+            return ((String) vb.getValue(getFacesContext().getELContext()));
         } else {
             return (null);
         }
@@ -184,9 +188,9 @@ public class FormComponent extends UIForm {
         if (this.focusIndex != null) {
             return (this.focusIndex);
         }
-        ValueBinding vb = getValueBinding("focusIndex");
+        ValueExpression vb = getValueExpression("focusIndex");
         if (vb != null) {
-            return ((String) vb.getValue(getFacesContext()));
+            return ((String) vb.getValue(getFacesContext().getELContext()));
         } else {
             return (null);
         }
@@ -214,9 +218,9 @@ public class FormComponent extends UIForm {
         if (this.onreset != null) {
             return (this.onreset);
         }
-        ValueBinding vb = getValueBinding("onreset");
+        ValueExpression vb = getValueExpression("onreset");
         if (vb != null) {
-            return ((String) vb.getValue(getFacesContext()));
+            return ((String) vb.getValue(getFacesContext().getELContext()));
         } else {
             return (null);
         }
@@ -244,9 +248,9 @@ public class FormComponent extends UIForm {
         if (this.onsubmit != null) {
             return (this.onsubmit);
         }
-        ValueBinding vb = getValueBinding("onsubmit");
+        ValueExpression vb = getValueExpression("onsubmit");
         if (vb != null) {
-            return ((String) vb.getValue(getFacesContext()));
+            return ((String) vb.getValue(getFacesContext().getELContext()));
         } else {
             return (null);
         }
@@ -271,9 +275,9 @@ public class FormComponent extends UIForm {
      */
     public String getStyle() {
 
-        ValueBinding vb = getValueBinding("style");
+        ValueExpression vb = getValueExpression("style");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return style;
         }
@@ -298,9 +302,9 @@ public class FormComponent extends UIForm {
      */
     public String getStyleClass() {
 
-        ValueBinding vb = getValueBinding("styleClass");
+        ValueExpression vb = getValueExpression("styleClass");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return styleClass;
         }
@@ -325,9 +329,9 @@ public class FormComponent extends UIForm {
      */
     public String getTarget() {
 
-        ValueBinding vb = getValueBinding("target");
+        ValueExpression vb = getValueExpression("target");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return target;
         }
@@ -367,7 +371,7 @@ public class FormComponent extends UIForm {
         }
 
         // Create the form bean (if necessary)
-        Map<?, ?> params = context.getExternalContext().getRequestParameterMap();
+        Map<String, String> params = context.getExternalContext().getRequestParameterMap();
         if (params.containsKey(getClientId(context))) {
             createActionForm(context);
         }
@@ -424,7 +428,6 @@ public class FormComponent extends UIForm {
     }
 
 
-
     // ---------------------------------------------------------- Public Methods
 
 
@@ -441,11 +444,12 @@ public class FormComponent extends UIForm {
      * @exception IllegalArgumentException if no ModuleConfig can be
      *  located for this application module
      */
-    @SuppressWarnings("unchecked")
     public void createActionForm(FacesContext context) {
 
+        final StrutsContext strutsContext = new StrutsContext(context);
+
         // Look up the application module configuration information we need
-        ModuleConfig moduleConfig = lookupModuleConfig(context);
+        ModuleConfig moduleConfig = strutsContext.getModuleConfig();
 
         // Look up the ActionConfig we are processing
         String action = getAction();
@@ -473,12 +477,12 @@ public class FormComponent extends UIForm {
         String scope = actionConfig.getScope();
         ActionForm instance = null;
         if ("request".equals(scope)) {
-            instance = (ActionForm)
-                context.getExternalContext().getRequestMap().get(attribute);
+            instance = Utils.getMapValue(ActionForm.class,
+                    context.getExternalContext().getRequestMap(), attribute);
         } else if ("session".equals(scope)) {
             context.getExternalContext().getSession(true);
-            instance = (ActionForm)
-                context.getExternalContext().getSessionMap().get(attribute);
+            instance = Utils.getMapValue(ActionForm.class,
+                    context.getExternalContext().getSessionMap(), attribute);
         }
         if (instance != null) {
             if (fbConfig.getDynamic()) {
@@ -554,9 +558,9 @@ public class FormComponent extends UIForm {
         }
 
         // Configure and cache the form bean instance in the correct scope
-        ActionServlet servlet = (ActionServlet)
-            context.getExternalContext().getApplicationMap().get
-            (Globals.ACTION_SERVLET_KEY);
+        ActionServlet servlet = Utils.getMapValue(ActionServlet.class,
+                context.getExternalContext().getApplicationMap(),
+                Globals.ACTION_SERVLET_KEY);
         instance.setServlet(servlet);
         if ("request".equals(scope)) {
             context.getExternalContext().getRequestMap().put
@@ -567,35 +571,4 @@ public class FormComponent extends UIForm {
         }
 
     }
-
-
-    /**
-     * <p>Return the <code>ModuleConfig</code> for the application module
-     * this form is being processed for.</p>
-     *
-     * @param context The <code>FacesContext</code> for the current request
-     *
-     * @exception IllegalArgumentException if no <code>ModuleConfig</code>
-     *  can be found
-     */
-    public ModuleConfig lookupModuleConfig(FacesContext context) {
-
-        // Look up the application module configuration information we need
-        ModuleConfig modConfig = (ModuleConfig)
-            context.getExternalContext().getRequestMap().get
-            (Globals.MODULE_KEY);
-        if (modConfig == null) {
-            modConfig = (ModuleConfig)
-                context.getExternalContext().getApplicationMap().get
-                (Globals.MODULE_KEY);
-        }
-        if (modConfig == null) {
-            throw new IllegalArgumentException
-                ("Cannot find module configuration");
-        }
-        return (modConfig);
-
-    }
-
-
 }

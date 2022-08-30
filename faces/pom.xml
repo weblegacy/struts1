@@ -59,8 +59,8 @@
          <artifactId>servlet-api</artifactId>
       </dependency>
       <dependency>
-         <groupId>myfaces</groupId>
-         <artifactId>myfaces-jsf-api</artifactId>
+         <groupId>org.apache.myfaces.core</groupId>
+         <artifactId>myfaces-api</artifactId>
       </dependency>
       <dependency>
          <groupId>commons-logging</groupId>

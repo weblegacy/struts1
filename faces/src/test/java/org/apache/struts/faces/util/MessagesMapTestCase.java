@@ -155,7 +155,7 @@ public class MessagesMapTestCase {
 
         // putAll()
         assertThrows(UnsupportedOperationException.class,
-            () -> map.putAll(Collections.EMPTY_MAP),
+            () -> map.putAll(Collections.emptyMap()),
             "putAll() should have thrown UnsupportedOperationException");
 
         // remove()

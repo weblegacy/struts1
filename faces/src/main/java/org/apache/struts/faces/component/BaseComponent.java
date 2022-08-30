@@ -22,9 +22,9 @@
 package org.apache.struts.faces.component;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIOutput;
 import javax.faces.context.FacesContext;
-import javax.faces.el.ValueBinding;
 
 
 /**
@@ -55,7 +55,7 @@ public class BaseComponent extends UIOutput {
     /**
      * <p>Target frame.</p>
      */
-    private String target = null;
+    private String target;
 
 
     // ---------------------------------------------------- Component Properties
@@ -76,9 +76,9 @@ public class BaseComponent extends UIOutput {
      */
     public String getTarget() {
 
-        ValueBinding vb = getValueBinding("target");
+        ValueExpression vb = getValueExpression("target");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return target;
         }

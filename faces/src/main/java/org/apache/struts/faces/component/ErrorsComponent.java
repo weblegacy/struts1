@@ -22,9 +22,9 @@
 package org.apache.struts.faces.component;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIOutput;
 import javax.faces.context.FacesContext;
-import javax.faces.el.ValueBinding;
 
 
 /**
@@ -55,13 +55,13 @@ public class ErrorsComponent extends UIOutput {
     /**
      * <p>MessageResources attribute key to use for message lookup.</p>
      */
-    private String bundle = null;
+    private String bundle;
 
 
     /**
      * <p>Property name of the property to report errors for.</p>
      */
-    private String property = null;
+    private String property;
 
 
     // ---------------------------------------------------- Component Properties
@@ -72,9 +72,9 @@ public class ErrorsComponent extends UIOutput {
      */
     public String getBundle() {
 
-        ValueBinding vb = getValueBinding("bundle");
+        ValueExpression vb = getValueExpression("bundle");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return bundle;
         }
@@ -109,9 +109,9 @@ public class ErrorsComponent extends UIOutput {
      */
     public String getProperty() {
 
-        ValueBinding vb = getValueBinding("property");
+        ValueExpression vb = getValueExpression("property");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return property;
         }

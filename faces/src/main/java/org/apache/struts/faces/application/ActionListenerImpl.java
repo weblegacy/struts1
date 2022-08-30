@@ -32,6 +32,7 @@ import javax.faces.event.ActionListener;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
@@ -40,12 +41,12 @@ import org.apache.struts.action.RequestProcessor;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.faces.Constants;
 import org.apache.struts.faces.component.FormComponent;
-import org.apache.struts.util.RequestUtils;
 import org.apache.struts.util.ModuleUtils;
+import org.apache.struts.util.RequestUtils;
 
 
 /**
- * <p>Concrete implementation of <code>ActionListener</code> that replaces
+ * <p>Concrete implementation of {@code ActionListener} that replaces
  * the default provided implementation.  It converts application-level events
  * into execution of the corresponding Struts request processing lifecycle.
  * </p>
@@ -56,61 +57,63 @@ import org.apache.struts.util.ModuleUtils;
 public final class ActionListenerImpl implements ActionListener {
 
 
-    // ------------------------------------------------------------ Constructors
+    // -------------------------------------------------------- Static Variables
 
 
     /**
-     * <p>Construct a new default <code>ActionListener</code> instance,
-     * passing it the previously configured one.</p>
-     *
-     * @param original Original default <code>ActionListener</code>
-     *
-     * @exception NullPointerException if <code>original</code>
-     *  is <code>null</code>
+     * The {@code LOG} instance for this class.
      */
-    public ActionListenerImpl(ActionListener original) {
-
-        if (original == null) {
-            throw new NullPointerException();
-        }
-        this.original = original;
-        if (log.isInfoEnabled()) {
-            log.info("Create ActionListener wrapping instance of type '" +
-                     original.getClass().getName() + "'");
-        }
-
-    }
-
+    private static final Log LOG = LogFactory.getLog(ActionListenerImpl.class);
 
 
     // ------------------------------------------------------ Instance Variables
 
 
     /**
-     * <p>The logger for this instance.</p>
+     * The previously configured {@ode ActionListener} instance.
      */
-    private static final Log log = LogFactory.getLog(ActionListenerImpl.class);
+    private final ActionListener oldActionListener;
+
+
+    // ------------------------------------------------------------ Constructors
 
 
     /**
-     * <p>The previously configured <code>ActionListener</code> instance.</p>
+     * Construct a new default {@code ActionListener} instance, passing
+     * it the previously configured one.
+     *
+     * @param original Original default {@code ActionListener}
+     *
+     * @exception NullPointerException if {@code original} is {@code null}
      */
-    private ActionListener original;
+    public ActionListenerImpl(ActionListener oldActionListener) {
+
+        if (oldActionListener == null) {
+            throw new NullPointerException();
+        }
+
+        this.oldActionListener = oldActionListener;
+
+        if (LOG.isInfoEnabled()) {
+            LOG.info("Create ActionListener wrapping instance of type '" +
+                    oldActionListener.getClass().getName() + "'");
+        }
+
+    }
 
 
     // ---------------------------------------------------------- Public Methods
 
 
     /**
-     * <p>Process the specified <code>ActionEvent</code>.</p>
+     * Process the specified {@code ActionEvent}.
      *
-     * @param event The <code>ActionEvent</code> to be processed
+     * @param event The {@code ActionEvent} to be processed
      *
      * @exception AbortProcessingException to signal that no further
-     *  event processing should be performed
+     *     event processing should be performed
      */
-    public void processAction(ActionEvent event)
-        throws AbortProcessingException {
+    public void processAction(ActionEvent event) throws AbortProcessingException {
 
         // If this is an immediate action, or we are NOT nested in a
         // Struts form, perform the standard processing
@@ -130,14 +133,13 @@ public final class ActionListenerImpl implements ActionListener {
             }
         }
         if (standard) {
-            if (log.isDebugEnabled()) {
-                log.debug("Performing standard handling for event " +
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("Performing standard handling for event " +
                           "from source component '" + component.getId() + "'");
             }
-            original.processAction(event);
+            oldActionListener.processAction(event);
             return;
         }
-
 
         // Acquire Servlet API Object References
         FacesContext context = FacesContext.getCurrentInstance();
@@ -149,8 +151,8 @@ public final class ActionListenerImpl implements ActionListener {
             context.getExternalContext().getResponse();
 
         // Log this event if requested
-        if (log.isDebugEnabled()) {
-            log.debug("Performing Struts form submit for event " +
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Performing Struts form submit for event " +
                       " from source component '" +
                       component.getId() + "'");
         }
@@ -161,19 +163,19 @@ public final class ActionListenerImpl implements ActionListener {
             ModuleUtils.getInstance().selectModule(request, servletContext);
             ModuleConfig moduleConfig = (ModuleConfig)
                 request.getAttribute(Globals.MODULE_KEY);
-            if (log.isTraceEnabled()) {
-                log.trace("Assigned to module with prefix '" +
+            if (LOG.isTraceEnabled()) {
+                LOG.trace("Assigned to module with prefix '" +
                           moduleConfig.getPrefix() + "'");
             }
             RequestProcessor processor =
                 getRequestProcessor(moduleConfig, servletContext);
-            if (log.isTraceEnabled()) {
-                log.trace("Invoking request processor instance " + processor);
+            if (LOG.isTraceEnabled()) {
+                LOG.trace("Invoking request processor instance " + processor);
             }
             processor.process(request, response);
             context.responseComplete();
         } catch (Exception e) {
-            log.error("Exception processing action event " + event, e);
+            LOG.error("Exception processing action event " + event, e);
         } finally {
             request.removeAttribute(Constants.ACTION_EVENT_KEY);
         }
@@ -185,14 +187,14 @@ public final class ActionListenerImpl implements ActionListener {
 
 
     /**
-     * <p>Look up and return the <code>RequestProcessor</code> responsible for
+     * <p>Look up and return the {@code RequestProcessor} responsible for
      * the specified module, creating a new one if necessary.  This method is
-     * based on the corresponding code in <code>ActionServlet</code>, which
+     * based on the corresponding code in {@code ActionServlet}, which
      * cannot be used directly because it is a protected method.</p>
      *
      * @param config The module configuration for which to
      *  acquire and return a RequestProcessor
-     * @param context The <code>ServletContext</code> instance
+     * @param context The {@code ServletContext} instance
      *  for this web application
      *
      * @exception IllegalStateException if we cannot instantiate a
@@ -207,8 +209,8 @@ public final class ActionListenerImpl implements ActionListener {
 
         if (processor == null) {
             try {
-                if (log.isDebugEnabled()) {
-                    log.debug("Instantiating RequestProcessor of class " +
+                if (LOG.isDebugEnabled()) {
+                    LOG.debug("Instantiating RequestProcessor of class " +
                               config.getControllerConfig().getProcessorClass());
                 }
                 ActionServlet servlet = (ActionServlet)
@@ -219,7 +221,7 @@ public final class ActionListenerImpl implements ActionListener {
                 processor.init(servlet, config);
                 context.setAttribute(key, processor);
             } catch (Exception e) {
-                log.error("Cannot instantiate RequestProcessor of class "
+                LOG.error("Cannot instantiate RequestProcessor of class "
                           + config.getControllerConfig().getProcessorClass(),
                           e);
                 IllegalStateException e2 = new IllegalStateException(

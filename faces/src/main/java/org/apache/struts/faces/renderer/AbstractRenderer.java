@@ -23,9 +23,10 @@ package org.apache.struts.faces.renderer;
 
 
 import java.io.IOException;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
+import javax.el.ValueExpression;
 import javax.faces.component.EditableValueHolder;
 import javax.faces.component.UIComponent;
 import javax.faces.component.ValueHolder;
@@ -33,57 +34,55 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
-import javax.faces.el.ValueBinding;
 import javax.faces.render.Renderer;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.struts.faces.component.HtmlComponent;
 
 
 /**
- * <p>Abstract base class for concrete implementations of
- * <code>javax.faces.render.Renderer</code> for the
- * <em>Struts-Faces Integration Library</em>.</p>
+ * Abstract base class for concrete implementations of
+ * {@code javax.faces.render.Renderer} for the
+ * <em>Struts-Faces Integration Library</em>.
  *
  * @version $Rev$ $Date$
  */
-
 public abstract class AbstractRenderer extends Renderer {
 
 
     // -------------------------------------------------------- Static Variables
 
 
-    private static final Log log =
-  LogFactory.getLog(AbstractRenderer.class);
+    private final static Log LOG = LogFactory.getLog(AbstractRenderer.class);
 
 
     // -------------------------------------------------------- Renderer Methods
 
 
     /**
-     * <p>Decode any new state of the specified <code>UIComponent</code>
-     * from the request contained in the specified <code>FacesContext</code>,
-     * and store that state on the <code>UIComponent</code>.</p>
+     * Decode any new state of the specified {@code UIComponent} from the
+     * request contained in the specified {@code FacesContext}, and store
+     * that state on the {@code UIComponent}.
      *
-     * <p>The default implementation calls <code>setSubmittedValue()</code>
-     * unless this component has a boolean <code>disabled</code> or
-     * <code>readonly</code> attribute that is set to <code>true</code>.</p>
+     * <p>The default implementation calls {@code setSubmittedValue()}
+     * unless this component has a boolean {@code disabled} or
+     * {@code readonly} attribute that is set to {@code true}.</p>
      *
-     * @param context <code>FacesContext</code> for the current request
-     * @param component <code>UIComponent</code> to be decoded
+     * @param context {@code FacesContext} for the current request
+     * @param component {@code UIComponent} to be decoded
      *
-     * @exception NullPointerException if <code>context</code> or
-     *  <code>component</code> is <code>null</code>
+     * @throws NullPointerException if {@code context} or
+     *     {@code component} is {@code null}
      */
     public void decode(FacesContext context, UIComponent component) {
 
-        // Enforce NPE requirements in the Javadocs
-        if ((context == null) || (component == null)) {
+        // Enforce NPE requirements in the JavaDocs
+        if (context == null || component == null) {
             throw new NullPointerException();
         }
 
-        // Disabled or readonly components are not decoded
+        // Disabled or read-only components are not decoded
         if (isDisabled(component) || isReadOnly(component)) {
             return;
         }
@@ -97,31 +96,31 @@ public abstract class AbstractRenderer extends Renderer {
 
 
     /**
-     * <p>Render the beginning of the specified <code>UIComponent</code>
-     * to the output stream or writer associated with the response we are
-     * creating.</p>
+     * Render the beginning of the specified {@code UIComponent} to the
+     * output stream or writer associated with the response we are
+     * creating.
      *
-     * <p>The default implementation calls <code>renderStart()</code> and
-     * <code>renderAttributes()</code>.</p>
+     * <p>The default implementation calls {@code renderStart()} and
+     * {@code renderAttributes()}.</p>
      *
-     * @param context <code>FacesContext</code> for the current request
-     * @param component <code>UIComponent</code> to be decoded
+     * @param context {@code FacesContext} for the current request
+     * @param component {@code UIComponent} to be decoded
      *
-     * @exception NullPointerException if <code>context</code> or
-     *  <code>component</code> is <code>null</code>
+     * @throws NullPointerException if {@code context} or
+     *     {@code component} is {@code null}
      *
-     * @exception IOException if an input/output error occurs
+     * @throws IOException if an input/output error occurs
      */
     public void encodeBegin(FacesContext context, UIComponent component)
         throws IOException {
 
-        // Enforce NPE requirements in the Javadocs
-        if ((context == null) || (component == null)) {
+        // Enforce NPE requirements in the JavaDocs
+        if (context == null || component == null) {
             throw new NullPointerException();
         }
 
-        if (log.isTraceEnabled()) {
-            log.trace("encodeBegin(id=" + component.getId() +
+        if (LOG.isTraceEnabled()) {
+            LOG.trace("encodeBegin(id=" + component.getId() +
                 ", family=" + component.getFamily() +
                 ", rendererType=" + component.getRendererType() + ")");
         }
@@ -135,20 +134,20 @@ public abstract class AbstractRenderer extends Renderer {
 
 
     /**
-     * <p>Render the children of the specified <code>UIComponent</code>
-     * to the output stream or writer associated with the response we are
-     * creating.</p>
+     * Render the children of the specified {@code UIComponent} to the
+     * output stream or writer associated with the response we are
+     * creating.
      *
      * <p>The default implementation iterates through the children of
      * this component and renders them.</p>
      *
-     * @param context <code>FacesContext</code> for the current request
-     * @param component <code>UIComponent</code> to be decoded
+     * @param context {@code FacesContext} for the current request
+     * @param component {@code UIComponent} to be decoded
      *
-     * @exception NullPointerException if <code>context</code> or
-     *  <code>component</code> is <code>null</code>
+     * @throws NullPointerException if {@code context} or
+     *     {@code component} is {@code null}
      *
-     * @exception IOException if an input/output error occurs
+     * @throws IOException if an input/output error occurs
      */
     public void encodeChildren(FacesContext context, UIComponent component)
         throws IOException {
@@ -157,52 +156,51 @@ public abstract class AbstractRenderer extends Renderer {
             throw new NullPointerException();
         }
 
-        if (log.isTraceEnabled()) {
-            log.trace("encodeChildren(id=" + component.getId() +
+        if (LOG.isTraceEnabled()) {
+            LOG.trace("encodeChildren(id=" + component.getId() +
                     ", family=" + component.getFamily() +
                     ", rendererType=" + component.getRendererType() + ")");
         }
-        Iterator<?> kids = component.getChildren().iterator();
-        while (kids.hasNext()) {
-            UIComponent kid = (UIComponent) kids.next();
+        List<UIComponent> kids = component.getChildren();
+        for (UIComponent kid : kids) {
             kid.encodeBegin(context);
             if (kid.getRendersChildren()) {
                 kid.encodeChildren(context);
             }
             kid.encodeEnd(context);
         }
-        if (log.isTraceEnabled()) {
-            log.trace("encodeChildren(id=" + component.getId() + ") end");
+        if (LOG.isTraceEnabled()) {
+            LOG.trace("encodeChildren(id=" + component.getId() + ") end");
         }
 
     }
 
 
     /**
-     * <p>Render the ending of the specified <code>UIComponent</code>
-     * to the output stream or writer associated with the response we are
-     * creating.</p>
+     * Render the ending of the specified {@code UIComponent} to the
+     * output stream or writer associated with the response we are
+     * creating.
      *
-     * <p>The default implementation calls <code>renderEnd()</code>.</p>
+     * <p>The default implementation calls {@code renderEnd()}.</p>
      *
-     * @param context <code>FacesContext</code> for the current request
-     * @param component <code>UIComponent</code> to be decoded
+     * @param context {@code FacesContext} for the current request
+     * @param component {@code UIComponent} to be decoded
      *
-     * @exception NullPointerException if <code>context</code> or
-     *  <code>component</code> is <code>null</code>
+     * @throws NullPointerException if {@code context} or
+     *     {@code component} is {@code null}
      *
-     * @exception IOException if an input/output error occurs
+     * @throws IOException if an input/output error occurs
      */
     public void encodeEnd(FacesContext context, UIComponent component)
         throws IOException {
 
         // Enforce NPE requirements in the Javadocs
-        if ((context == null) || (component == null)) {
+        if (context == null || component == null) {
             throw new NullPointerException();
         }
 
-        if (log.isTraceEnabled()) {
-            log.trace("encodeEnd(id=" + component.getId() +
+        if (LOG.isTraceEnabled()) {
+            LOG.trace("encodeEnd(id=" + component.getId() +
                     ", family=" + component.getFamily() +
                     ", rendererType=" + component.getRendererType() + ")");
         }
@@ -221,9 +219,9 @@ public abstract class AbstractRenderer extends Renderer {
 
 
     /**
-     * <p>Render nested child components by invoking the encode methods
-     * on those components, but only when the <code>rendered</code>
-     * property is <code>true</code>.</p>
+     * Render nested child components by invoking the encode methods
+     * on those components, but only when the {@code rendered}
+     * property is {@code true}.
      */
     protected void encodeRecursive(FacesContext context, UIComponent component)
         throws IOException {
@@ -235,32 +233,31 @@ public abstract class AbstractRenderer extends Renderer {
         }
 
         // Render this component and its children recursively
-        if (log.isTraceEnabled()) {
-            log.trace("encodeRecursive(id=" + component.getId() +
+        if (LOG.isTraceEnabled()) {
+            LOG.trace("encodeRecursive(id=" + component.getId() +
                     ", family=" + component.getFamily() +
                     ", rendererType=" + component.getRendererType() +
                     ") encodeBegin");
         }
         component.encodeBegin(context);
         if (component.getRendersChildren()) {
-            if (log.isTraceEnabled()) {
-                log.trace("encodeRecursive(id=" + component.getId() +
+            if (LOG.isTraceEnabled()) {
+                LOG.trace("encodeRecursive(id=" + component.getId() +
                         ") delegating");
             }
             component.encodeChildren(context);
         } else {
-            if (log.isTraceEnabled()) {
-                log.trace("encodeRecursive(id=" + component.getId() +
+            if (LOG.isTraceEnabled()) {
+                LOG.trace("encodeRecursive(id=" + component.getId() +
                         ") recursing");
             }
-            Iterator<?> kids = component.getChildren().iterator();
-            while (kids.hasNext()) {
-                UIComponent kid = (UIComponent) kids.next();
+            List<UIComponent> kids = component.getChildren();
+            for (UIComponent kid : kids) {
                 encodeRecursive(context, kid);
             }
         }
-        if (log.isTraceEnabled()) {
-            log.trace("encodeRecursive(id=" + component.getId() + ") encodeEnd");
+        if (LOG.isTraceEnabled()) {
+            LOG.trace("encodeRecursive(id=" + component.getId() + ") encodeEnd");
         }
         component.encodeEnd(context);
 
@@ -268,61 +265,61 @@ public abstract class AbstractRenderer extends Renderer {
 
 
     /**
-     * <p>Return <code>true</code> if the specified component is disabled.</p>
+     * Return {@code true} if the specified component is disabled.
      *
-     * @param component <code>UIComponent</code> to be checked
+     * @param component {@code UIComponent} to be checked
      */
     protected boolean isDisabled(UIComponent component) {
 
         Object disabled = component.getAttributes().get("disabled");
         if (disabled == null) {
-            return (false);
+            return false;
         }
         if (disabled instanceof String) {
-            return (Boolean.valueOf((String) disabled).booleanValue());
+            return Boolean.valueOf((String) disabled).booleanValue();
         } else {
-            return (disabled.equals(Boolean.TRUE));
+            return disabled.equals(Boolean.TRUE);
         }
 
     }
 
 
     /**
-     * <p>Return <code>true</code> if the specified component is read only.</p>
+     * Return {@code true} if the specified component is read only.
      *
-     * @param component <code>UIComponent</code> to be checked
+     * @param component {@code UIComponent} to be checked
      */
     protected boolean isReadOnly(UIComponent component) {
 
         Object readonly = component.getAttributes().get("readonly");
         if (readonly == null) {
-            return (false);
+            return false;
         }
         if (readonly instanceof String) {
-            return (Boolean.valueOf((String) readonly).booleanValue());
+            return Boolean.valueOf((String) readonly).booleanValue();
         } else {
-            return (readonly.equals(Boolean.TRUE));
+            return readonly.equals(Boolean.TRUE);
         }
 
     }
 
 
     /**
-     * <p>Render the element attributes for the generated markup related to this
-     * component.  Simple renderers that create a single markup element
+     * Render the element attributes for the generated markup related to this
+     * component. Simple renderers that create a single markup element
      * for this component should override this method and include calls to
-     * to <code>writeAttribute()</code> and <code>writeURIAttribute</code>
-     * on the specified <code>ResponseWriter</code>.</p>
+     * to {@code writeAttribute()} and {@code writeURIAttribute}
+     * on the specified {@code ResponseWriter}.
      *
      * <p>The default implementation does nothing.</p>
      *
-     * @param context <code>FacesContext</code> for the current request
-     * @param component <code>EditableValueHolder</code> component whose
-     *  submitted value is to be stored
-     * @param writer <code>ResponseWriter</code> to which the element
-     *  start should be rendered
+     * @param context {@code FacesContext} for the current request
+     * @param component {@code EditableValueHolder} component whose
+     *     submitted value is to be stored
+     * @param writer {@code ResponseWriter} to which the element
+     *     start should be rendered
      *
-     * @exception IOException if an input/output error occurs
+     * @throws IOException if an input/output error occurs
      */
     protected void renderAttributes(FacesContext context, UIComponent component,
                                     ResponseWriter writer) throws IOException {
@@ -331,21 +328,20 @@ public abstract class AbstractRenderer extends Renderer {
 
 
     /**
-     * <p>Render the element end for the generated markup related to this
-     * component.  Simple renderers that create a single markup element
+     * Render the element end for the generated markup related to this
+     * component. Simple renderers that create a single markup element
      * for this component should override this method and include a call
-     * to <code>endElement()</code> on the specified
-     * <code>ResponseWriter</code>.</p>
+     * to {@code endElement()} on the specified {@code ResponseWriter}.
      *
      * <p>The default implementation does nothing.</p>
      *
-     * @param context <code>FacesContext</code> for the current request
-     * @param component <code>EditableValueHolder</code> component whose
-     *  submitted value is to be stored
-     * @param writer <code>ResponseWriter</code> to which the element
-     *  start should be rendered
+     * @param context {@code FacesContext} for the current request
+     * @param component {@code EditableValueHolder} component whose
+     *     submitted value is to be stored
+     * @param writer {@code ResponseWriter} to which the element
+     *     start should be rendered
      *
-     * @exception IOException if an input/output error occurs
+     * @throws IOException if an input/output error occurs
      */
     protected void renderEnd(FacesContext context, UIComponent component,
                              ResponseWriter writer) throws IOException {
@@ -354,18 +350,18 @@ public abstract class AbstractRenderer extends Renderer {
 
 
     /**
-     * <p>Render any boolean attributes on the specified list that have
-     * <code>true</code> values on the corresponding attribute of the
-     * specified <code>UIComponent</code>.</p>
+     * Render any boolean attributes on the specified list that have
+     * {@code true} values on the corresponding attribute of the
+     * specified {@code UIComponent}.
      *
-     * @param context <code>FacesContext</code> for the current request
-     * @param component <code>EditableValueHolder</code> component whose
-     *  submitted value is to be stored
-     * @param writer <code>ResponseWriter</code> to which the element
-     *  start should be rendered
+     * @param context {@code FacesContext} for the current request
+     * @param component {@code EditableValueHolder} component whose
+     *     submitted value is to be stored
+     * @param writer {@code ResponseWriter} to which the element
+     *     start should be rendered
      * @param names List of attribute names to be passed through
      *
-     * @exception IOException if an input/output error occurs
+     * @throws IOException if an input/output error occurs
      */
     protected void renderBoolean(FacesContext context,
                                  UIComponent component,
@@ -375,7 +371,7 @@ public abstract class AbstractRenderer extends Renderer {
         if (names == null) {
             return;
         }
-        Map<?, ?> attributes = component.getAttributes();
+        Map<String, Object> attributes = component.getAttributes();
         boolean flag;
         Object value;
         for (String name : names) {
@@ -397,20 +393,20 @@ public abstract class AbstractRenderer extends Renderer {
 
 
     /**
-     * <p>Render any attributes on the specified list directly to the
-     * specified <code>ResponseWriter</code> for which the specified
-     * <code>UIComponent</code> has a non-<code>null</code> attribute value.
+     * Render any attributes on the specified list directly to the
+     * specified {@code ResponseWriter} for which the specified
+     * {@code UIComponent} has a non-{@code null} attribute value.
      * This method may be used to "pass through" commonly used attribute
-     * name/value pairs with a minimum of code.</p>
+     * name/value pairs with a minimum of code.
      *
-     * @param context <code>FacesContext</code> for the current request
-     * @param component <code>EditableValueHolder</code> component whose
-     *  submitted value is to be stored
-     * @param writer <code>ResponseWriter</code> to which the element
-     *  start should be rendered
+     * @param context {@code FacesContext} for the current request
+     * @param component {@code EditableValueHolder} component whose
+     *     submitted value is to be stored
+     * @param writer {@code ResponseWriter} to which the element
+     *     start should be rendered
      * @param names List of attribute names to be passed through
      *
-     * @exception IOException if an input/output error occurs
+     * @throws IOException if an input/output error occurs
      */
     protected void renderPassThrough(FacesContext context,
                                      UIComponent component,
@@ -420,7 +416,7 @@ public abstract class AbstractRenderer extends Renderer {
         if (names == null) {
             return;
         }
-        Map<?, ?> attributes = component.getAttributes();
+        Map<String, Object> attributes = component.getAttributes();
         Object value;
         for (String name : names) {
             value = attributes.get(name);
@@ -437,21 +433,20 @@ public abstract class AbstractRenderer extends Renderer {
 
 
     /**
-     * <p>Render the element start for the generated markup related to this
-     * component.  Simple renderers that create a single markup element
+     * Render the element start for the generated markup related to this
+     * component. Simple renderers that create a single markup element
      * for this component should override this method and include a call
-     * to <code>startElement()</code> on the specified
-     * <code>ResponseWriter</code>.</p>
+     * to {@code startElement()} on the specified {@code ResponseWriter}.
      *
      * <p>The default implementation does nothing.</p>
      *
-     * @param context <code>FacesContext</code> for the current request
-     * @param component <code>EditableValueHolder</code> component whose
+     * @param context {@code FacesContext} for the current request
+     * @param component {@code EditableValueHolder} component whose
      *  submitted value is to be stored
-     * @param writer <code>ResponseWriter</code> to which the element
+     * @param writer {@code ResponseWriter} to which the element
      *  start should be rendered
      *
-     * @exception IOException if an input/output error occurs
+     * @throws IOException if an input/output error occurs
      */
     protected void renderStart(FacesContext context, UIComponent component,
                                ResponseWriter writer) throws IOException {
@@ -460,21 +455,20 @@ public abstract class AbstractRenderer extends Renderer {
 
 
     /**
-     * <p>If a submitted value was included on this request, store it in the
-     * component as appropriate.</p>
+     * If a submitted value was included on this request, store it in the
+     * component as appropriate.
      *
      * <p>The default implementation determines whether this component
-     * implements <code>EditableValueHolder</code>.  If so, it checks for a
-     * request parameter with the same name as the <code>clientId</code>
-     * of this <code>UIComponent</code>.  If there is such a parameter, its
-     * value is passed (as a String) to the <code>setSubmittedValue()</code>
-     * method on the <code>EditableValueHolder</code> component.</p>
+     * implements {@code EditableValueHolder}.  If so, it checks for a
+     * request parameter with the same name as the {@code clientId}
+     * of this {@code UIComponent}. If there is such a parameter, its
+     * value is passed (as a String) to the {@code setSubmittedValue()}
+     * method on the {@code EditableValueHolder} component.</p>
      *
-     * @param context <code>FacesContext</code> for the current request
-     * @param component <code>EditableValueHolder</code> component whose
-     *  submitted value is to be stored
+     * @param context {@code FacesContext} for the current request
+     * @param component {@code EditableValueHolder} component whose
+     *     submitted value is to be stored
      */
-    @SuppressWarnings("unchecked")
     protected void setSubmittedValue
         (FacesContext context, UIComponent component) {
 
@@ -482,11 +476,11 @@ public abstract class AbstractRenderer extends Renderer {
             return;
         }
         String clientId = component.getClientId(context);
-        Map<?, ?> parameters = context.getExternalContext().getRequestParameterMap();
+        Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
         if (parameters.containsKey(clientId)) {
-            if (log.isTraceEnabled()) {
-                log.trace("setSubmittedValue(" + clientId + "," +
-                          (String) parameters.get(clientId));
+            if (LOG.isTraceEnabled()) {
+                LOG.trace("setSubmittedValue(" + clientId + "," +
+                          parameters.get(clientId));
             }
             component.getAttributes().put("submittedValue",
                                           parameters.get(clientId));
@@ -499,20 +493,20 @@ public abstract class AbstractRenderer extends Renderer {
 
 
     /**
-     * <p>Decode the current state of the specified UIComponent from the
-     * request contained in the specified <code>FacesContext</code>, and
+     * Decode the current state of the specified UIComponent from the
+     * request contained in the specified {@code FacesContext}, and
      * attempt to convert this state information into an object of the
-     * type equired for this component.</p>
+     * type equired for this component.
      *
      * @param context FacesContext for the request we are processing
      * @param component UIComponent to be decoded
      *
-     * @exception NullPointerException if context or component is null
+     * @throws NullPointerException if context or component is null
      */
     /*
     public void decode(FacesContext context, UIComponent component) {
 
-        // Enforce NPE requirements in the Javadocs
+        // Enforce NPE requirements in the JavaDocs
         if ((context == null) || (component == null)) {
             throw new NullPointerException();
         }
@@ -536,7 +530,7 @@ public abstract class AbstractRenderer extends Renderer {
 
         // Decode and convert (if needed) the new value
         String clientId = component.getClientId(context);
-        Map map = context.getExternalContext().getRequestParameterMap();
+        Map<String, String> map = context.getExternalContext().getRequestParameterMap();
         String newString = (String) map.get(clientId);
         Object newValue = null;
         try {
@@ -560,11 +554,11 @@ public abstract class AbstractRenderer extends Renderer {
 
 
     /**
-     * <p>Add an error message denoting a conversion failure.</p>
+     * Add an error message denoting a conversion failure.
      *
-     * @param context The <code>FacesContext</code> for this request
-     * @param component The <code>UIComponent</code> that experienced
-     *  the conversion failure
+     * @param context The {@code FacesContext} for this request
+     * @param component The {@code UIComponent} that experienced
+     *     the conversion failure
      * @param text The text of the error message
      */
     /*
@@ -583,17 +577,17 @@ public abstract class AbstractRenderer extends Renderer {
 
 
     /**
-     * <p>Convert the String representation of this component's value
-     * to the corresponding Object representation.  The default
-     * implementation utilizes the <code>getAsObject()</code> method of any
-     * associated <code>Converter</code>.</p>
+     * Convert the String representation of this component's value
+     * to the corresponding Object representation. The default
+     * implementation utilizes the {@code getAsObject()} method of any
+     * associated {@code Converter}.<
      *
-     * @param context The <code>FacesContext</code> for this request
-     * @param component The <code>UIComponent</code> whose value is
-     *  being converted
+     * @param context The {@code FacesContext} for this request
+     * @param component The {@code UIComponent} whose value is
+     *     being converted
      * @param value The String representation to be converted
      *
-     * @exception ConverterException if conversion fails
+     * @throws ConverterException if conversion fails
      */
     /*
     protected Object getAsObject(FacesContext context, UIComponent component,
@@ -606,10 +600,10 @@ public abstract class AbstractRenderer extends Renderer {
             // Acquire explicitly assigned Converter (if any)
             converter = ((ValueHolder) component).getConverter();
         }
-        if ((converter == null) && (vb != null)) {
-            Class type = vb.getType(context);
-            if ((type == null) || (type == String.class)) {
-                return (value); // No conversion required for Strings
+        if (converter == null && vb != null) {
+            Class<?> type = vb.getType(context);
+            if (type == null || type == String.class) {
+                return value; // No conversion required for Strings
             }
             // Acquire implicit by-type Converter (if any)
             converter = context.getApplication().createConverter(type);
@@ -617,9 +611,9 @@ public abstract class AbstractRenderer extends Renderer {
 
         // Convert the result if we identified a Converter
         if (converter != null) {
-            return (converter.getAsObject(context, component, value));
+            return converter.getAsObject(context, component, value);
         } else {
-            return (value);
+            return value;
         }
 
     }
@@ -629,29 +623,29 @@ public abstract class AbstractRenderer extends Renderer {
     /**
      * <p>Convert the Object representation of this component's value
      * to the corresponding String representation.  The default implementation
-     * utilizes the <code>getAsString()</code> method of any associated
-     * <code>Converter</code>.</p>
+     * utilizes the {@code getAsString()} method of any associated
+     * {@code Converter}.</p>
      *
-     * @param context The <code>FacesContext</code> for this request
-     * @param component The <code>UIComponent</code> whose value is
+     * @param context The {@code FacesContext} for this request
+     * @param component The {@code UIComponent} whose value is
      *  being converted
      * @param value The Object representation to be converted
      *
-     * @exception ConverterException if conversion fails
+     * @throws ConverterException if conversion fails
      */
     protected String getAsString(FacesContext context, UIComponent component,
                                  Object value) throws ConverterException {
 
         // Identify any Converter associated with this component value
-        ValueBinding vb = component.getValueBinding("value");
+        ValueExpression vb = component.getValueExpression("value");
         Converter converter = null;
         if (component instanceof ValueHolder) {
             // Acquire explicitly assigned Converter (if any)
             converter = ((ValueHolder) component).getConverter();
         }
-        if ((converter == null) && (vb != null)) {
+        if (converter == null && vb != null) {
             // Acquire implicit by-type Converter (if any)
-            Class<?> type = vb.getType(context);
+            Class<?> type = vb.getType(context.getELContext());
             if (type != null) {
                 converter = context.getApplication().createConverter(type);
             }
@@ -659,16 +653,45 @@ public abstract class AbstractRenderer extends Renderer {
 
         // Convert the result if we identified a Converter
         if (converter != null) {
-            return (converter.getAsString(context, component, value));
+            return converter.getAsString(context, component, value);
         } else if (value == null) {
-            return ("");
+            return "";
         } else if (value instanceof String) {
-            return ((String) value);
+            return (String) value;
         } else {
-            return (value.toString());
+            return value.toString();
         }
 
     }
 
 
+    /**
+     * Return {@code true} if we should render as XHTML.
+     *
+     * @param component The component we are rendering
+     */
+    protected boolean isXhtml(UIComponent component) {
+        final HtmlComponent htmlComponent = searchComponent(HtmlComponent.class, component);
+
+        return htmlComponent == null ? false : htmlComponent.isXhtml();
+    }
+
+
+    /**
+     * Search the give {@code UIComponent} in the component-tree.
+     *
+     * @param component The entry-point into component-tree.
+     *
+     * @return The {@code UIComponent} or {@code null} if the
+     *     {@code component} is not found.
+     */
+    protected <T extends UIComponent> T searchComponent(Class<T> clazz, UIComponent component) {
+        while (component != null) {
+            if (clazz.isInstance(component)) {
+                return clazz.cast(component);
+            }
+            component = component.getParent();
+        }
+        return null;
+    }
 }

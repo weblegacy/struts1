@@ -22,6 +22,7 @@
 package org.apache.struts.faces.taglib;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
 
@@ -44,20 +45,20 @@ public class FormTag extends AbstractFacesTag {
      * <code>formName</code> property on the form tag in the standard
      * HTML RenderKit.</p>
      */
-    protected String action = null;
+    protected ValueExpression _action;
 
-    public void setAction(String action) {
-        this.action = action;
+    public void setAction(ValueExpression action) {
+        this._action = action;
     }
 
 
     /**
      * <p>The content encoding type to use.</p>
      */
-    protected String enctype = null;
+    protected ValueExpression _enctype;
 
-    public void setEnctype(String enctype) {
-        this.enctype = enctype;
+    public void setEnctype(ValueExpression enctype) {
+        this._enctype = enctype;
     }
 
 
@@ -65,50 +66,50 @@ public class FormTag extends AbstractFacesTag {
      * <p>The name of the field to which focus should be set when this
      * form is displayed.</p>
      */
-    protected String focus = null;
+    protected ValueExpression _focus;
 
-    public void setFocus(String focus) {
-        this.focus = focus;
+    public void setFocus(ValueExpression focus) {
+        this._focus = focus;
     }
 
 
     /**
      * <p>The subscript of the focus field array to receive focus.</p>
      */
-    protected String focusIndex = null;
+    protected ValueExpression _focusIndex;
 
-    public void setFocusIndex(String focusIndex) {
-        this.focusIndex = focusIndex;
+    public void setFocusIndex(ValueExpression focusIndex) {
+        this._focusIndex = focusIndex;
     }
 
 
     /**
      * <p>The JavaScript reset event handler.</p>
      */
-    protected String onreset = null;
+    protected ValueExpression _onreset;
 
-    public void setOnreset(String onreset) {
-        this.onreset = onreset;
+    public void setOnreset(ValueExpression onreset) {
+        this._onreset = onreset;
     }
 
 
     /**
      * <p>The JavaScript submit event handler.</p>
      */
-    protected String onsubmit = null;
+    protected ValueExpression _onsubmit;
 
-    public void setOnsubmit(String onsubmit) {
-        this.onsubmit = onsubmit;
+    public void setOnsubmit(ValueExpression onsubmit) {
+        this._onsubmit = onsubmit;
     }
 
 
     /**
      * <p>The window target for this submit.</p>
      */
-    protected String target = null;
+    protected ValueExpression _target;
 
-    public void setTarget(String target) {
-        this.target = target;
+    public void setTarget(ValueExpression target) {
+        this._target = target;
     }
 
 
@@ -121,13 +122,13 @@ public class FormTag extends AbstractFacesTag {
     public void release() {
 
         super.release();
-        action = null;
-        enctype = null;
-        focus = null;
-        focusIndex = null;
-        onreset = null;
-        onsubmit = null;
-        target = null;
+        _action = null;
+        _enctype = null;
+        _focus = null;
+        _focusIndex = null;
+        _onreset = null;
+        _onsubmit = null;
+        _target = null;
 
     }
 
@@ -136,7 +137,7 @@ public class FormTag extends AbstractFacesTag {
 
 
     /**
-     * <p>Return the type of component to be created for this tag.</p>
+     * Return the type of component to be created for this tag.
      */
     public String getComponentType() {
 
@@ -146,8 +147,8 @@ public class FormTag extends AbstractFacesTag {
 
 
     /**
-     * <p>Return the <code>rendererType</code> to be used for rendering
-     * our component.</p>
+     * Return the {@code rendererType} to be used for rendering
+     * our component.
      */
     public String getRendererType() {
 
@@ -167,13 +168,13 @@ public class FormTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setStringAttribute(component, "action", action);
-        setStringAttribute(component, "enctype", enctype);
-        setStringAttribute(component, "focus", focus);
-        setStringAttribute(component, "focusIndex", focusIndex);
-        setStringAttribute(component, "onreset", onreset);
-        setStringAttribute(component, "onsubmit", onsubmit);
-        setStringAttribute(component, "target", target);
+        setStringProperty(component, "action", _action);
+        setStringProperty(component, "enctype", _enctype);
+        setStringProperty(component, "focus", _focus);
+        setStringProperty(component, "focusIndex", _focusIndex);
+        setStringProperty(component, "onreset", _onreset);
+        setStringProperty(component, "onsubmit", _onsubmit);
+        setStringProperty(component, "target", _target);
 
     }
 

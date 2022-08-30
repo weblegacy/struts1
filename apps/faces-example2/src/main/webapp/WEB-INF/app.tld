@@ -16,18 +16,11 @@
     limitations under the License.
 -->
 
-<!--
 <taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 
       xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
 
       version="2.1">
--->
-<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
-      xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
-
-      version="2.0">
 
 
 
@@ -145,11 +138,11 @@
 
       <rtexprvalue>true</rtexprvalue>
 
-      <!-- deferred-value>
+      <deferred-value>
 
         <type>java.lang.String</type>
 
-      </deferred-value-->
+      </deferred-value>
 
     </attribute>
 
@@ -161,11 +154,11 @@
 
       <rtexprvalue>true</rtexprvalue>
 
-      <!-- deferred-value>
+      <deferred-value>
 
         <type>java.lang.String</type>
 
-      </deferred-value-->
+      </deferred-value>
 
     </attribute>
 

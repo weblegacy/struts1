@@ -22,6 +22,7 @@
 package org.apache.struts.faces.taglib;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
 
@@ -43,20 +44,20 @@ public class MessageTag extends AbstractFacesTag {
      * <p>Flag indicating that rendered content should be filtered for
      * characters that are sensitive in HTML.</p>
      */
-    private String filter = null;
+    private ValueExpression _filter;
 
-    public void setFilter(String filter) {
-        this.filter = filter;
+    public void setFilter(ValueExpression filter) {
+        this._filter = filter;
     }
 
 
     /**
      * <p>Message key used to retrieve the requested message
      */
-    private String key = null;
+    private ValueExpression _key;
 
-    public void setKey(String key) {
-        this.key = key;
+    public void setKey(ValueExpression key) {
+        this._key = key;
     }
 
 
@@ -69,8 +70,8 @@ public class MessageTag extends AbstractFacesTag {
     public void release() {
 
         super.release();
-        filter = null;
-        key = null;
+        _filter = null;
+        _key = null;
 
     }
 
@@ -110,8 +111,8 @@ public class MessageTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setBooleanAttribute(component, "filter", filter);
-        setStringAttribute(component, "key", key);
+        setBooleanProperty(component, "filter", _filter);
+        setStringProperty(component, "key", _key);
 
     }
 

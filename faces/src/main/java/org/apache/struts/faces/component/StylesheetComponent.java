@@ -22,9 +22,9 @@
 package org.apache.struts.faces.component;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIOutput;
 import javax.faces.context.FacesContext;
-import javax.faces.el.ValueBinding;
 
 
 /**
@@ -76,9 +76,9 @@ public class StylesheetComponent extends UIOutput {
      */
     public String getPath() {
 
-        ValueBinding vb = getValueBinding("path");
+        ValueExpression vb = getValueExpression("path");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return path;
         }

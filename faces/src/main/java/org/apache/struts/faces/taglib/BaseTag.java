@@ -22,6 +22,7 @@
 package org.apache.struts.faces.taglib;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
 
@@ -42,10 +43,10 @@ public class BaseTag extends AbstractFacesTag {
     /**
      * <p>The target frame for this base URL reference.</p>
      */
-    private String target = null;
+    private ValueExpression _target;
 
-    public void setTarget(String target) {
-        this.target = target;
+    public void setTarget(ValueExpression target) {
+        this._target = target;
     }
 
 
@@ -79,7 +80,7 @@ public class BaseTag extends AbstractFacesTag {
     public void release() {
 
         super.release();
-        this.target = null;
+        this._target = null;
 
     }
 
@@ -95,7 +96,7 @@ public class BaseTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setStringAttribute(component, "target", target);
+        setStringProperty(component, "target", _target);
 
     }
 

@@ -22,11 +22,9 @@
 package org.apache.struts.faces.taglib;
 
 
-import javax.faces.component.ActionSource;
+import javax.el.MethodExpression;
+import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.el.MethodBinding;
-import javax.faces.event.ActionEvent;
 
 
 /**
@@ -42,176 +40,176 @@ public class CommandLinkTag extends AbstractFacesTag {
     // ------------------------------------------------------ Instance Variables
 
 
-    private String accesskey = null;
-    private String action = null;
-    private String actionListener = null;
-    private String charset = null;
-    private String dir = null;
-    private String hreflang = null;
-    private String immediate = null;
-    private String lang = null;
-    private String onblur = null;
-    private String onclick = null;
-    private String ondblclick = null;
-    private String onfocus = null;
-    private String onkeydown = null;
-    private String onkeypress = null;
-    private String onkeyup = null;
-    private String onmousedown = null;
-    private String onmousemove = null;
-    private String onmouseout = null;
-    private String onmouseover = null;
-    private String onmouseup = null;
-    private String rel = null;
-    private String rev = null;
-    private String style = null;
-    private String styleClass = null;
-    private String tabindex = null;
-    private String target = null;
-    private String title = null;
-    private String type = null;
+    private ValueExpression _accesskey;
+    private MethodExpression _action;
+    private MethodExpression _actionListener;
+    private ValueExpression _charset;
+    private ValueExpression _dir;
+    private ValueExpression _hreflang;
+    private ValueExpression _immediate;
+    private ValueExpression _lang;
+    private ValueExpression _onblur;
+    private ValueExpression _onclick;
+    private ValueExpression _ondblclick;
+    private ValueExpression _onfocus;
+    private ValueExpression _onkeydown;
+    private ValueExpression _onkeypress;
+    private ValueExpression _onkeyup;
+    private ValueExpression _onmousedown;
+    private ValueExpression _onmousemove;
+    private ValueExpression _onmouseout;
+    private ValueExpression _onmouseover;
+    private ValueExpression _onmouseup;
+    private ValueExpression _rel;
+    private ValueExpression _rev;
+    private ValueExpression _style;
+    private ValueExpression _styleClass;
+    private ValueExpression _tabindex;
+    private ValueExpression _target;
+    private ValueExpression _title;
+    private ValueExpression _type;
 
 
     // ---------------------------------------------------------- Tag Attributes
 
 
-    public void setAccesskey(String accesskey) {
-        this.accesskey = accesskey;
+    public void setAccesskey(ValueExpression accesskey) {
+        this._accesskey = accesskey;
     }
 
 
-    public void setAction(String action) {
-        this.action = action;
+    public void setAction(MethodExpression action) {
+        this._action = action;
     }
 
 
-    public void setactionListener(String actionListener) {
-        this.actionListener = actionListener;
+    public void setActionListener(MethodExpression actionListener) {
+        this._actionListener = actionListener;
     }
 
 
-    public void setCharset(String charset) {
-        this.charset = charset;
+    public void setCharset(ValueExpression charset) {
+        this._charset = charset;
     }
 
 
-    public void setDir(String dir) {
-        this.dir = dir;
+    public void setDir(ValueExpression dir) {
+        this._dir = dir;
     }
 
 
-    public void setHreflang(String hreflang) {
-        this.hreflang = hreflang;
+    public void setHreflang(ValueExpression hreflang) {
+        this._hreflang = hreflang;
     }
 
 
-    public void setImmediate(String immediate) {
-        this.immediate = immediate;
+    public void setImmediate(ValueExpression immediate) {
+        this._immediate = immediate;
     }
 
 
-    public void setLang(String lang) {
-        this.lang = lang;
+    public void setLang(ValueExpression lang) {
+        this._lang = lang;
     }
 
 
-    public void setOnblur(String onblur) {
-        this.onblur = onblur;
+    public void setOnblur(ValueExpression onblur) {
+        this._onblur = onblur;
     }
 
 
-    public void setOnclick(String onclick) {
-        this.onclick = onclick;
+    public void setOnclick(ValueExpression onclick) {
+        this._onclick = onclick;
     }
 
 
-    public void setOndblclick(String ondblclick) {
-        this.ondblclick = ondblclick;
+    public void setOndblclick(ValueExpression ondblclick) {
+        this._ondblclick = ondblclick;
     }
 
 
-    public void setOnfocus(String onfocus) {
-        this.onfocus = onfocus;
+    public void setOnfocus(ValueExpression onfocus) {
+        this._onfocus = onfocus;
     }
 
 
-    public void setOnkeydown(String onkeydown) {
-        this.onkeydown = onkeydown;
+    public void setOnkeydown(ValueExpression onkeydown) {
+        this._onkeydown = onkeydown;
     }
 
 
-    public void setOnkeypress(String onkeypress) {
-        this.onkeypress = onkeypress;
+    public void setOnkeypress(ValueExpression onkeypress) {
+        this._onkeypress = onkeypress;
     }
 
 
-    public void setOnkeyup(String onkeyup) {
-        this.onkeyup = onkeyup;
+    public void setOnkeyup(ValueExpression onkeyup) {
+        this._onkeyup = onkeyup;
     }
 
 
-    public void setOnmousedown(String onmousedown) {
-        this.onmousedown = onmousedown;
+    public void setOnmousedown(ValueExpression onmousedown) {
+        this._onmousedown = onmousedown;
     }
 
 
-    public void setOnmousemove(String onmousemove) {
-        this.onmousemove = onmousemove;
+    public void setOnmousemove(ValueExpression onmousemove) {
+        this._onmousemove = onmousemove;
     }
 
 
-    public void setOnmouseout(String onmouseout) {
-        this.onmouseout = onmouseout;
+    public void setOnmouseout(ValueExpression onmouseout) {
+        this._onmouseout = onmouseout;
     }
 
 
-    public void setOnmouseover(String onmouseover) {
-        this.onmouseover = onmouseover;
+    public void setOnmouseover(ValueExpression onmouseover) {
+        this._onmouseover = onmouseover;
     }
 
 
-    public void setOnmouseup(String onmouseup) {
-        this.onmouseup = onmouseup;
+    public void setOnmouseup(ValueExpression onmouseup) {
+        this._onmouseup = onmouseup;
     }
 
 
-    public void setRel(String rel) {
-        this.rel = rel;
+    public void setRel(ValueExpression rel) {
+        this._rel = rel;
     }
 
 
-    public void setRev(String rev) {
-        this.rev = rev;
+    public void setRev(ValueExpression rev) {
+        this._rev = rev;
     }
 
 
-    public void setStyle(String style) {
-        this.style = style;
+    public void setStyle(ValueExpression style) {
+        this._style = style;
     }
 
 
-    public void setStyleClass(String styleClass) {
-        this.styleClass = styleClass;
+    public void setStyleClass(ValueExpression styleClass) {
+        this._styleClass = styleClass;
     }
 
 
-    public void setTabindex(String tabindex) {
-        this.tabindex = tabindex;
+    public void setTabindex(ValueExpression tabindex) {
+        this._tabindex = tabindex;
     }
 
 
-    public void setTarget(String target) {
-        this.target = target;
+    public void setTarget(ValueExpression target) {
+        this._target = target;
     }
 
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(ValueExpression title) {
+        this._title = title;
     }
 
 
-    public void setType(String type) {
-        this.type = type;
+    public void setType(ValueExpression type) {
+        this._type = type;
     }
 
 
@@ -224,34 +222,34 @@ public class CommandLinkTag extends AbstractFacesTag {
     public void release() {
 
         super.release();
-        accesskey = null;
-        action = null;
-        actionListener = null;
-        charset = null;
-        dir = null;
-        hreflang = null;
-        immediate = null;
-        lang = null;
-        onblur = null;
-        onclick = null;
-        ondblclick = null;
-        onfocus = null;
-        onkeydown = null;
-        onkeypress = null;
-        onkeyup = null;
-        onmousedown = null;
-        onmousemove = null;
-        onmouseout = null;
-        onmouseover = null;
-        onmouseup = null;
-        rel = null;
-        rev = null;
-        style = null;
-        styleClass = null;
-        tabindex = null;
-        target = null;
-        title = null;
-        type = null;
+        _accesskey = null;
+        _action = null;
+        _actionListener = null;
+        _charset = null;
+        _dir = null;
+        _hreflang = null;
+        _immediate = null;
+        _lang = null;
+        _onblur = null;
+        _onclick = null;
+        _ondblclick = null;
+        _onfocus = null;
+        _onkeydown = null;
+        _onkeypress = null;
+        _onkeyup = null;
+        _onmousedown = null;
+        _onmousemove = null;
+        _onmouseout = null;
+        _onmouseover = null;
+        _onmouseup = null;
+        _rel = null;
+        _rev = null;
+        _style = null;
+        _styleClass = null;
+        _tabindex = null;
+        _target = null;
+        _title = null;
+        _type = null;
 
     }
 
@@ -291,74 +289,37 @@ public class CommandLinkTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        if (action != null) {
-            if (isValueReference(action)) {
-                MethodBinding mb = FacesContext.getCurrentInstance().
-                    getApplication().createMethodBinding(action, null);
-                ((ActionSource) component).setAction(mb);
-            } else {
-                final String outcome = action;
-                MethodBinding mb = new ConstantMethodBinding(outcome);
-                ((ActionSource) component).setAction(mb);
-            }
-        }
-        if (actionListener != null) {
-            if (isValueReference(actionListener)) {
-                Class<?>[] args = {ActionEvent.class};
-                MethodBinding mb = FacesContext.getCurrentInstance().
-                getApplication().createMethodBinding(actionListener, args);
-                ((ActionSource) component).setActionListener(mb);
-            }
-        }
-        setStringAttribute(component, "accesskey", accesskey);
-        setStringAttribute(component, "charset", charset);
-        setStringAttribute(component, "dir", dir);
-        setStringAttribute(component, "hreflang", hreflang);
-        setBooleanAttribute(component, "immediate", immediate);
-        setStringAttribute(component, "lang", lang);
-        setStringAttribute(component, "onblur", onblur);
-        setStringAttribute(component, "onclick", onclick);
-        setStringAttribute(component, "ondblclick", ondblclick);
-        setStringAttribute(component, "onfocus", onfocus);
-        setStringAttribute(component, "onkeydown", onkeydown);
-        setStringAttribute(component, "onkeypress", onkeypress);
-        setStringAttribute(component, "onkeyup", onkeyup);
-        setStringAttribute(component, "onmousedown", onmousedown);
-        setStringAttribute(component, "onmousemove", onmousemove);
-        setStringAttribute(component, "onmouseout", onmouseout);
-        setStringAttribute(component, "onmouseover", onmouseover);
-        setStringAttribute(component, "onmouseup", onmouseup);
-        setStringAttribute(component, "rel", rel);
-        setStringAttribute(component, "rev", rev);
-        setStringAttribute(component, "style", style);
-        setStringAttribute(component, "styleClass", styleClass);
-        setStringAttribute(component, "tabindex", tabindex);
-        setStringAttribute(component, "target", target);
-        setStringAttribute(component, "title", title);
-        setStringAttribute(component, "type", type);
 
-    }
+        setActionProperty(component, _action);
+        setActionListenerProperty(component, _actionListener);
 
+        setStringProperty(component, "accesskey", _accesskey);
+        setStringProperty(component, "charset", _charset);
+        setStringProperty(component, "dir", _dir);
+        setStringProperty(component, "hreflang", _hreflang);
+        setBooleanProperty(component, "immediate", _immediate);
+        setStringProperty(component, "lang", _lang);
+        setStringProperty(component, "onblur", _onblur);
+        setStringProperty(component, "onclick", _onclick);
+        setStringProperty(component, "ondblclick", _ondblclick);
+        setStringProperty(component, "onfocus", _onfocus);
+        setStringProperty(component, "onkeydown", _onkeydown);
+        setStringProperty(component, "onkeypress", _onkeypress);
+        setStringProperty(component, "onkeyup", _onkeyup);
+        setStringProperty(component, "onmousedown", _onmousedown);
+        setStringProperty(component, "onmousemove", _onmousemove);
+        setStringProperty(component, "onmouseout", _onmouseout);
+        setStringProperty(component, "onmouseover", _onmouseover);
+        setStringProperty(component, "onmouseup", _onmouseup);
+        setStringProperty(component, "rel", _rel);
+        setStringProperty(component, "rev", _rev);
+        setStringProperty(component, "style", _style);
+        setStringProperty(component, "styleClass", _styleClass);
+        setStringProperty(component, "tabindex", _tabindex);
+        setStringProperty(component, "target", _target);
+        setStringProperty(component, "title", _title);
+        setStringProperty(component, "type", _type);
 
-}
-
-
-// Private MethodBinding Implementation To Return A Constant Value
-
-class ConstantMethodBinding extends MethodBinding {
-
-    public ConstantMethodBinding(String outcome) {
-        this.outcome = outcome;
-    }
-
-    private String outcome = null;
-
-    public Object invoke(FacesContext context, Object params[]) {
-        return (this.outcome);
-    }
-
-    public Class<?> getType(FacesContext context) {
-        return (String.class);
     }
 
 

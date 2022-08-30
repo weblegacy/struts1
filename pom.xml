@@ -364,7 +364,7 @@
         <mavenVersion>[3.5.4,4)</mavenVersion>
         <javaVersion>1.8</javaVersion>
         <javaTestVersion>1.8</javaTestVersion>
-        <myfacesVersion>1.0.9</myfacesVersion>
+        <myfacesVersion>1.2.12</myfacesVersion>
         <seleniumVersion>4.4.0</seleniumVersion>
         <taglibsVersion>1.2.5</taglibsVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
@@ -1027,18 +1027,13 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>myfaces</groupId>
-                <artifactId>myfaces-extensions</artifactId>
+                <groupId>org.apache.myfaces.core</groupId>
+                <artifactId>myfaces-api</artifactId>
                 <version>${myfacesVersion}</version>
             </dependency>
             <dependency>
-                <groupId>myfaces</groupId>
+                <groupId>org.apache.myfaces.core</groupId>
                 <artifactId>myfaces-impl</artifactId>
-                <version>${myfacesVersion}</version>
-            </dependency>
-            <dependency>
-                <groupId>myfaces</groupId>
-                <artifactId>myfaces-jsf-api</artifactId>
                 <version>${myfacesVersion}</version>
             </dependency>
             <dependency>

@@ -22,9 +22,9 @@
 package org.apache.struts.faces.component;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIOutput;
 import javax.faces.context.FacesContext;
-import javax.faces.el.ValueBinding;
 
 
 /**
@@ -87,9 +87,9 @@ public class HtmlComponent extends UIOutput {
         if (localeSet) {
             return locale;
         }
-        ValueBinding vb = getValueBinding("locale");
+        ValueExpression vb = getValueExpression("locale");
         if (vb != null) {
-            Boolean value = (Boolean) vb.getValue(getFacesContext());
+            Boolean value = (Boolean) vb.getValue(getFacesContext().getELContext());
             if (null == value) {
                 return locale;
             }
@@ -122,9 +122,9 @@ public class HtmlComponent extends UIOutput {
         if (xhtmlSet) {
             return xhtml;
         }
-        ValueBinding vb = getValueBinding("xhtml");
+        ValueExpression vb = getValueExpression("xhtml");
         if (vb != null) {
-            Boolean value = (Boolean) vb.getValue(getFacesContext());
+            Boolean value = (Boolean) vb.getValue(getFacesContext().getELContext());
             if (null == value) {
                 return xhtml;
             }

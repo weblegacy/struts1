@@ -22,9 +22,9 @@
 package org.apache.struts.faces.component;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIOutput;
 import javax.faces.context.FacesContext;
-import javax.faces.el.ValueBinding;
 
 
 /**
@@ -92,9 +92,9 @@ public class WriteComponent extends UIOutput {
         if (filterSet) {
             return filter;
         }
-        ValueBinding vb = getValueBinding("filter");
+        ValueExpression vb = getValueExpression("filter");
         if (vb != null) {
-            Boolean value = (Boolean) vb.getValue(getFacesContext());
+            Boolean value = (Boolean) vb.getValue(getFacesContext().getELContext());
             if (null == value) {
                 return filter;
             }
@@ -124,9 +124,9 @@ public class WriteComponent extends UIOutput {
      */
     public String getStyle() {
 
-        ValueBinding vb = getValueBinding("style");
+        ValueExpression vb = getValueExpression("style");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return style;
         }
@@ -151,9 +151,9 @@ public class WriteComponent extends UIOutput {
      */
     public String getStyleClass() {
 
-        ValueBinding vb = getValueBinding("styleClass");
+        ValueExpression vb = getValueExpression("styleClass");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return styleClass;
         }

@@ -19,22 +19,15 @@
  * under the License.
  */
 
-package org.apache.struts.faces.application;
+package org.apache.struts.webapp.example2;
 
 
-import java.io.IOException;
-import java.util.Locale;
-
-import javax.faces.FacesException;
 import javax.faces.application.ViewHandler;
 import javax.faces.application.ViewHandlerWrapper;
-import javax.faces.component.UIViewRoot;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts.Globals;
 
 
 /**
@@ -101,32 +94,12 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
 
 
     /**
-     * If the Struts application has set a {@code Locale}, pass it
-     * on to JSF prior to delegating the actual rendering.
-     *
-     * @param context {@code FacesContext} for the current request
-     * @param viewToRender {@code UIViewRoot} to be rendered
+     * Replace extension {@code .jsp} with {@code .faces}.
      */
-    @Override
-    public void renderView(FacesContext context, UIViewRoot viewToRender)
-            throws IOException, FacesException {
-
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("renderView(" + viewToRender.getViewId() + ")");
+    public String getActionURL(FacesContext context, String viewId) {
+        if (viewId.endsWith(".jsp")) {
+            viewId = viewId.substring(0, viewId.length() - 4) + ".faces";
         }
-        ExternalContext econtext = context.getExternalContext();
-        if (econtext.getSession(false) != null) {
-            Locale locale = (Locale)
-                econtext.getSessionMap().get(Globals.LOCALE_KEY);
-            if (locale != null) {
-                if (LOG.isTraceEnabled()) {
-                    LOG.trace("Setting view locale to " + locale);
-                }
-                viewToRender.setLocale(locale);
-            }
-        }
-        super.renderView(context, viewToRender);
-
+        return super.getActionURL(context, viewId);
     }
-
 }

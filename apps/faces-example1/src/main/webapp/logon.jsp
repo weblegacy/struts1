@@ -99,7 +99,7 @@
 <s:javascript    formName="logonForm"
         dynamicJavascript="true"
          staticJavascript="false"/>
-<script type="text/javascript" src="staticJavascript.jsp"></script>
+<script type="text/javascript" src="staticJavascript.faces"></script>
 
 </body>
 </s:html>

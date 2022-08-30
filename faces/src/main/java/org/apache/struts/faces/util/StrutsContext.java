@@ -22,12 +22,16 @@
 package org.apache.struts.faces.util;
 
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 
+import javax.faces.FacesException;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.beanutils.MethodUtils;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
@@ -38,12 +42,11 @@ import org.apache.struts.util.MessageResources;
 
 
 /**
- * <p>Context bean providing accessors for the Struts related request,
- * session, and application scope objects reated to this request.  Note
+ * Context bean providing accessors for the Struts related request,
+ * session, and application scope objects related to this request. Note
  * that this bean's methods will trigger exceptions unless there is a
- * <code>FacesContext</code> instance for this request.</p>
+ * {@code FacesContext} instance for this request.
  */
-
 public class StrutsContext {
 
 
@@ -51,158 +54,332 @@ public class StrutsContext {
 
 
     /**
-     * <p>The <code>FacesContext</code> for the current request.</p>
+     * The {@code FacesContext} for the current request.
      */
-    private FacesContext fcontext =
-        FacesContext.getCurrentInstance();
+    private final FacesContext fcontext;
+
+    /**
+     * The {@code ExternalContext} for the current request.
+     */
+    private final ExternalContext econtext;
+
+
+    // ------------------------------------------------------ Constructors
 
 
     /**
-     * <p>The <code>ExternalContext</code> for the current request.</p>
+     * Creates a new instance with
+     * {@link FacesContext#getCurrentInstance()}.
      */
-    private ExternalContext econtext =
-        fcontext.getExternalContext();
+    public StrutsContext() {
+        this(FacesContext.getCurrentInstance());
+    }
+
+    /**
+     * Create a new instance with give {@ode FacesContext}.
+     *
+     * @param facesContext The give {@code FacesContext}
+     */
+    public StrutsContext(FacesContext facesContext) {
+        this.fcontext = facesContext;
+        this.econtext = facesContext.getExternalContext();
+    }
 
 
     // ---------------------------------------------------------- Public Methods
 
 
     /**
-     * <p>Return the <code>ActionEvent</code> for the current request
-     * (if any).</p>
+     * Return the {@code ActionEvent} for the current request
+     * (if any).
      */
     public ActionEvent getActionEvent() {
-
-        return ((ActionEvent) econtext.getRequestMap().
-                get(Constants.ACTION_EVENT_KEY));
-
+        return Utils.getMapValue(ActionEvent.class, econtext.getRequestMap(),
+                Constants.ACTION_EVENT_KEY);
     }
 
-
     /**
-     * <p>Return the <code>ActionMapping</code> for the current
-     * request (if any).</p>
+     * Return the {@code ActionMapping} for the current
+     * request (if any).
      */
     public ActionMapping getActionMapping() {
-
-        return ((ActionMapping) econtext.getRequestMap().
-                get(Globals.MAPPING_KEY));
-
+        return Utils.getMapValue(ActionMapping.class, econtext.getRequestMap(),
+                Globals.MAPPING_KEY);
     }
 
-
     /**
-     * <p>Return the <code>ActionMessages</code> instance containing
-     * application error messages for this request (if any).</p>
+     * Return the {@code ActionMessages} instance containing
+     * application error messages for this request (if any).
      */
     public ActionMessages getActionMessages() {
-
-        return ((ActionMessages) econtext.getRequestMap().
-                get(Globals.MESSAGE_KEY));
-
+        return Utils.getMapValue(ActionMessages.class, econtext.getRequestMap(),
+                Globals.MESSAGE_KEY);
     }
 
-
     /**
-     * <p>Return the <code>ActionServlet</code> instance for this
-     * web application.</p>
+     * Return the {@code ActionServlet} instance for this
+     * web application.
      */
     public ActionServlet getActionServlet() {
-
-        return ((ActionServlet) econtext.getApplicationMap().
-                get(Globals.ACTION_SERVLET_KEY));
-
+        return Utils.getMapValue(ActionServlet.class, econtext.getApplicationMap(),
+                Globals.ACTION_SERVLET_KEY);
     }
 
-
     /**
-     * <p>Return <code>true</code> if a Boolean true value has been stored
+     * Return {@code true} if a Boolean true value has been stored
      * in the request attribute indicating that this request has been
-     * cancelled.</p>
+     * cancelled.
      */
     public boolean isCancelled() {
-
-        Object value = econtext.getRequestMap().get(Globals.CANCEL_KEY);
+        final Object value = econtext.getRequestMap().get(Globals.CANCEL_KEY);
         if (value instanceof Boolean) {
-            return (((Boolean) value).booleanValue());
+            return (Boolean) value;
         } else {
-            return (false);
+            return false;
         }
-
     }
 
-
-
     /**
-     * <p>Return the exception that caused one of the Struts custom tags
-     * to report a JspException (if any).</p>
+     * Return the exception that caused one of the Struts custom tags
+     * to report a JspException (if any).
      */
     public Throwable getException() {
-
-        return ((Throwable) econtext.getRequestMap().
-                get(Globals.EXCEPTION_KEY));
-
+        return Utils.getMapValue(Throwable.class, econtext.getRequestMap(),
+                Globals.EXCEPTION_KEY);
     }
 
-
     /**
-     * <p>Return the <code>ExternalContext</code> for the current request.</p>
+     * Return the {@code ExternalContext} for the current request.
      */
     public ExternalContext getExternalContext() {
-
-        return (econtext);
-
+        return econtext;
     }
 
-
     /**
-     * <p>Return the <code>FacesContext</code> for the current request.</p>
+     * Return the {@code FacesContext} for the current request.
      */
     public FacesContext getFacesContext() {
-
-        return (fcontext);
-
+        return fcontext;
     }
 
-
     /**
-     * <p>Return the <code>Locale</code> stored in the current user's
-     * session (if any) for Struts based localization.</p>
+     * Return the {@code Locale} stored in the current user's
+     * session (if any) for Struts based localization.
      */
     public Locale getLocale() {
-
+        Locale locale = null;
         if (econtext.getSession(false) != null) {
-            return ((Locale) econtext.getSessionMap().
-                    get(Globals.LOCALE_KEY));
-        } else {
-            return (null);
+            locale = Utils.getMapValue(Locale.class, econtext.getSessionMap(),
+                    Globals.LOCALE_KEY);
         }
 
+        if (locale == null) {
+            locale = econtext.getRequestLocale();
+        }
+
+        return locale;
     }
 
-
     /**
-     * <p>Return the <code>MessageResources</code> instance for the
-     * application module that is processing this request (if any).</p>
+     * Return the {@code MessageResources} instance for the
+     * application module that is processing this request
+     * (if any).
      */
     public MessageResources getMessageResources() {
-
-        return ((MessageResources) econtext.getRequestMap().
-                get(Globals.MESSAGES_KEY));
-
+        return Utils.getMapValue(MessageResources.class, econtext.getRequestMap(),
+                Globals.MESSAGES_KEY);
     }
-
 
     /**
-     * <p>Return the <code>ModuleConfig</code> for the application module
-     * to which this request has been assigned (if any).</p>
+     * Return the {@code ModuleConfig} for the application module
+     * to which this request has been assigned (if any).
+     *
+     * @return the {@code ModuleConfig} for the application module
+     *
+     * @throws IllegalArgumentException if no {@code ModuleConfig}
+     *     can be found
      */
     public ModuleConfig getModuleConfig() {
-
-        return ((ModuleConfig) econtext.getRequestMap().
-                get(Globals.MODULE_KEY));
-
+        return getModuleConfig(econtext);
     }
 
+    /**
+     * Return the {@code ModuleConfig} for the application module
+     * to which this request has been assigned (if any).
+     *
+     * @param facesContext The given {@code FacesContext}
+     *
+     * @return the {@code ModuleConfig} for the application module
+     *
+     * @throws IllegalArgumentException if no {@code ModuleConfig}
+     *     can be found
+     */
+    public static ModuleConfig getModuleConfig(FacesContext facesContext) {
+        return getModuleConfig(facesContext.getExternalContext());
+    }
 
+    /**
+     * Return the {@code ModuleConfig} for the application module
+     * to which this request has been assigned (if any).
+     *
+     * @param externalContext The given {@code ExternalContext}
+     *
+     * @return the {@code ModuleConfig} for the application module
+     *
+     * @throws IllegalArgumentException if no {@code ModuleConfig}
+     *     can be found
+     */
+    public static ModuleConfig getModuleConfig(ExternalContext externalContext) {
+        ModuleConfig moduleConfig = Utils.getMapValue(ModuleConfig.class,
+                externalContext.getRequestMap(), Globals.MODULE_KEY);
+
+        if (moduleConfig == null) {
+            moduleConfig = Utils.getMapValue(ModuleConfig.class,
+                    externalContext.getApplicationMap(), Globals.MODULE_KEY);
+        }
+
+        if (moduleConfig == null) {
+            throw new IllegalArgumentException("Cannot find module configuration");
+        }
+
+        return moduleConfig;
+    }
+
+    /**
+     * Return the absolute URI to be rendered as the value of the
+     * {@code href} attribute.
+     *
+     * @param context {@code FacesContext} for the current request
+     *
+     * @throws IllegalArgumentException Request is neither
+     *     {@code HttpServletRequest} nor {@code PortletRequest}.
+     */
+    public static String uri(FacesContext context) {
+        final StringBuilder sb = new StringBuilder();
+
+        final ExternalContext externalContext = context.getExternalContext();
+        if (StrutsContext.isServletRequest(externalContext)) {
+            servletUri(sb, externalContext);
+        } else if (StrutsContext.isPortletRequest(externalContext)) {
+            portletUri(sb, externalContext);
+        } else {
+            throw new IllegalArgumentException
+                    ("Request is neither HttpServletRequest nor PortletRequest");
+        }
+
+        return sb.append(context.getViewRoot().getViewId()).toString();
+    }
+
+    /**
+     * Appends an absolute URI for the current request suitable for use
+     * in a portlet environment.
+     *
+     * <p>NOTE: Implementation must not require portlet API classes to
+     * be present, so use reflection as needed.</p>
+     *
+     * @param context {@code FacesContext} for the current request
+     */
+    private static void portletUri(StringBuilder sb, ExternalContext context) {
+        final Object request = context.getRequest();
+        try {
+            final String scheme = (String)
+                    MethodUtils.invokeMethod(request, "getScheme", null);
+
+            final String serverName = (String)
+                    MethodUtils.invokeMethod(request, "getServerName", null);
+
+            final int serverPort = (Integer)
+                    MethodUtils.invokeMethod(request, "getServerPort", null);
+
+            final String contextPath = (String)
+                    MethodUtils.invokeMethod(request, "getContextPath", null);
+
+            buildUri(sb, scheme, serverName, serverPort, contextPath);
+        } catch (InvocationTargetException e) {
+            throw new FacesException(e.getTargetException());
+        } catch (Exception e) {
+            throw new FacesException(e);
+        }
+    }
+
+    /**
+     * Return {@code true} if this is a portlet request instance.
+     *
+     * <p>NOTE: Implementation must not require portlet API classes to be
+     * present.</p>
+     *
+     * @param context {@code FacesContext} for the current request
+     */
+    private static boolean isPortletRequest(ExternalContext context) {
+        final Object request = context.getRequest();
+        for (Class<?> clazz = request.getClass(); clazz != null; clazz = clazz.getSuperclass()) {
+            Class<?> interfaces[] = clazz.getInterfaces();
+            if (interfaces == null) {
+                continue;
+            }
+
+            // Does this class implement PortletRequest?
+            for (Class<?> inter : interfaces) {
+                if ("javax.portlet.PortletRequest".equals(inter.getName())) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Appends an absolute URI for the current request suitable for use
+     * in a servlet environment.
+     *
+     * @param context {@code FacesContext} for the current request
+     */
+    private static void servletUri(StringBuilder sb, ExternalContext context) {
+        final HttpServletRequest request = (HttpServletRequest)
+            context.getRequest();
+
+        buildUri(sb, request.getScheme(), request.getServerName(),
+                request.getServerPort(), request.getContextPath());
+    }
+
+    /**
+     * Return {@code true} if this is a servlet request instance.
+     *
+     * @param context {@code FacesContext} for the current request
+     */
+    private static boolean isServletRequest(ExternalContext context) {
+        Object request = context.getRequest();
+        return request instanceof HttpServletRequest;
+    }
+
+    /**
+     * Appends a URI into the given StringBuilder from the
+     * given parameters.
+     *
+     * @param sb The given {@Code StringBuilder} where the URI is
+     *     append.
+     * @param scheme The name of the scheme used to make this
+     *     request.
+     * @param serverName The host name of the server to which the
+     *     request was sent.
+     * @param serverPort The port number to which the request was
+     *     sent.
+     * @param contextPath The portion of the request URI that
+     *     indicates the context of the request.
+     */
+    private static void buildUri(final StringBuilder sb, final String scheme, final String serverName, final int serverPort, final String contextPath) {
+        sb.append(scheme)
+          .append("://")
+          .append(serverName);
+
+        if ("http".equals(scheme) && serverPort == 80) {
+        } else if ("https".equals(scheme) && (serverPort == 443)) {
+        } else {
+            sb.append(':')
+              .append(serverPort);
+        }
+
+        sb.append(contextPath);
+    }
 }

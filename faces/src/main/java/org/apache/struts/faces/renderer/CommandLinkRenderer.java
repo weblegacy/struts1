@@ -53,14 +53,14 @@ public class CommandLinkRenderer extends AbstractRenderer {
     /**
      * <p>Token for private names.</p>
      */
-    private static final String TOKEN =
+    private final static String TOKEN =
         "org_apache_struts_faces_renderer_CommandLinkRenderer";
 
 
     /**
      * <p>The <code>Log</code> instance for this class.</p>
      */
-    private static Log log = LogFactory.getLog(CommandLinkRenderer.class);
+    private final static Log LOG = LogFactory.getLog(CommandLinkRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods
@@ -100,7 +100,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
             parent = parent.getParent();
         }
         if (form == null) {
-            log.warn("CommandLinkComponent not nested inside UIForm, ignored");
+            LOG.warn("CommandLinkComponent not nested inside UIForm, ignored");
             return;
         }
 
@@ -109,15 +109,15 @@ public class CommandLinkRenderer extends AbstractRenderer {
         String value = (String)
             context.getExternalContext().getRequestParameterMap().get(paramId);
         if ((value == null) || !value.equals(component.getClientId(context))) {
-            if (log.isTraceEnabled()) {
-                log.trace("decode(" + component.getId() + ") --> not active");
+            if (LOG.isTraceEnabled()) {
+                LOG.trace("decode(" + component.getId() + ") --> not active");
             }
             return;
         }
 
         // Queue an ActionEvent from this component
-        if (log.isTraceEnabled()) {
-            log.trace("decode(" + component.getId() + ") --> queueEvent()");
+        if (LOG.isTraceEnabled()) {
+            LOG.trace("decode(" + component.getId() + ") --> queueEvent()");
         }
         component.queueEvent(new ActionEvent(component));
 
@@ -143,7 +143,6 @@ public class CommandLinkRenderer extends AbstractRenderer {
      * @exception NullPointerException if <code>context</code>
      *  or <code>component</code> is null
      */
-    @SuppressWarnings("unchecked")
     public void renderStart(FacesContext context, UIComponent component,
                             ResponseWriter writer)
         throws IOException {
@@ -165,7 +164,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
             parent = parent.getParent();
         }
         if (form == null) {
-            log.warn("CommandLinkComponent not nested inside UIForm, ignored");
+            LOG.warn("CommandLinkComponent not nested inside UIForm, ignored");
             return;
         }
         String formClientId = form.getClientId(context);
@@ -224,7 +223,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
             parent = parent.getParent();
         }
         if (form == null) {
-            log.warn("CommandLinkComponent not nested inside UIForm, ignored");
+            LOG.warn("CommandLinkComponent not nested inside UIForm, ignored");
             return;
         }
         String formClientId = form.getClientId(context);

@@ -22,9 +22,11 @@
 package org.apache.struts.faces.taglib;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
+
 import org.apache.struts.Globals;
 
 
@@ -44,20 +46,20 @@ public class HtmlTag extends AbstractFacesTag {
     /**
      * <p>Set a locale if not set yet.</p>
      */
-    private String locale = null;
+    private ValueExpression _locale;
 
-    public void setLocale(String locale) {
-        this.locale = locale;
+    public void setLocale(ValueExpression locale) {
+        this._locale = locale;
     }
 
 
     /**
      * <p>Render Struts HTML tags as xhtml.</p>
      */
-    private String xhtml = null;
+    private ValueExpression _xhtml;
 
-    public void setXhtml(String xhtml) {
-        this.xhtml = xhtml;
+    public void setXhtml(ValueExpression xhtml) {
+        this._xhtml = xhtml;
     }
 
 
@@ -81,7 +83,7 @@ public class HtmlTag extends AbstractFacesTag {
     public int doStartTag() throws JspException {
 
         int result = super.doStartTag();
-        if (xhtml != null) {
+        if (_xhtml != null && getBooleanValue(_xhtml)) {
             pageContext.setAttribute(Globals.XHTML_KEY, "true",
                                      PageContext.PAGE_SCOPE);
         }
@@ -107,8 +109,8 @@ public class HtmlTag extends AbstractFacesTag {
     public void release() {
 
         super.release();
-        this.locale = null;
-        this.xhtml = null;
+        this._locale = null;
+        this._xhtml = null;
 
     }
 
@@ -124,8 +126,8 @@ public class HtmlTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setBooleanAttribute(component, "locale", locale);
-        setBooleanAttribute(component, "xhtml", xhtml);
+        setBooleanProperty(component, "locale", _locale);
+        setBooleanProperty(component, "xhtml", _xhtml);
 
     }
 

@@ -22,6 +22,7 @@
 package org.apache.struts.faces.taglib;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
 
@@ -44,10 +45,10 @@ public class WriteTag extends AbstractFacesTag {
      * <p>Flag indicating that rendered content should be filtered for
      * characters that are sensitive in HTML.</p>
      */
-    private String filter = null;
+    private ValueExpression _filter;
 
-    public void setFilter(String filter) {
-        this.filter = filter;
+    public void setFilter(ValueExpression filter) {
+        this._filter = filter;
     }
 
 
@@ -81,7 +82,7 @@ public class WriteTag extends AbstractFacesTag {
     public void release() {
 
         super.release();
-        this.filter = null;
+        this._filter = null;
 
     }
 
@@ -97,7 +98,7 @@ public class WriteTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setBooleanAttribute(component, "filter", filter);
+        setBooleanProperty(component, "filter", _filter);
 
     }
 

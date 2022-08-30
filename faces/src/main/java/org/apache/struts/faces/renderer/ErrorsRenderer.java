@@ -35,8 +35,8 @@ import javax.faces.context.ResponseWriter;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
-import org.apache.struts.action.ActionMessages;
 import org.apache.struts.action.ActionMessage;
+import org.apache.struts.action.ActionMessages;
 import org.apache.struts.util.MessageResources;
 
 
@@ -56,7 +56,7 @@ public class ErrorsRenderer extends AbstractRenderer {
     /**
      * <p>The <code>Log</code> instance for this class.</p>
      */
-    private static Log log = LogFactory.getLog(ErrorsRenderer.class);
+    private final static Log LOG = LogFactory.getLog(ErrorsRenderer.class);
 
 
     /**
@@ -89,8 +89,8 @@ public class ErrorsRenderer extends AbstractRenderer {
             throw new NullPointerException();
         }
 
-        if (log.isDebugEnabled()) {
-            log.debug("encodeEnd() started");
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("encodeEnd() started");
         }
 
         // Look up availability of our predefined resource keys
@@ -121,8 +121,8 @@ public class ErrorsRenderer extends AbstractRenderer {
         Iterator<?> messages = context.getMessages(property);
         while (messages.hasNext()) {
             FacesMessage message = (FacesMessage) messages.next();
-            if (log.isTraceEnabled()) {
-                log.trace("Processing FacesMessage: " + message.getSummary());
+            if (LOG.isTraceEnabled()) {
+                LOG.trace("Processing FacesMessage: " + message.getSummary());
             }
             if (!headerDone) {
                 if (headerPresent) {
@@ -145,8 +145,8 @@ public class ErrorsRenderer extends AbstractRenderer {
             context.getExternalContext().getRequestMap().get
             (Globals.ERROR_KEY);
         if (errors != null) {
-            if (log.isTraceEnabled()) {
-                log.trace("Processing Struts messages for property '" +
+            if (LOG.isTraceEnabled()) {
+                LOG.trace("Processing Struts messages for property '" +
                           property + "'");
             }
             Iterator<ActionMessage> reports = null;
@@ -157,8 +157,8 @@ public class ErrorsRenderer extends AbstractRenderer {
             }
             while (reports.hasNext()) {
                 ActionMessage report = reports.next();
-                if (log.isTraceEnabled()) {
-                    log.trace("Processing Struts message key='" +
+                if (LOG.isTraceEnabled()) {
+                    LOG.trace("Processing Struts message key='" +
                               report.getKey() + "'");
                 }
                 if (!headerDone) {
@@ -190,8 +190,8 @@ public class ErrorsRenderer extends AbstractRenderer {
             writer.endElement("span");
         }
 
-        if (log.isDebugEnabled()) {
-            log.debug("encodeEnd() finished");
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("encodeEnd() finished");
         }
 
     }

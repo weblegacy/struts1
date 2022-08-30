@@ -23,26 +23,23 @@ package org.apache.struts.faces.renderer;
 
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
 
-import javax.faces.FacesException;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
-import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.beanutils.MethodUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.struts.faces.util.StrutsContext;
+import org.apache.struts.faces.util.Utils;
 
 
 /**
- * <p><code>Renderer</code> implementation for the <code>base</code> tag
- * from the <em>Struts-Faces Integration Library</em>.</p>
+ * {@code Renderer} implementation for the {@code base} tag
+ * from the <em>Struts-Faces Integration Library</em>.
  *
  * @version $Rev$ $Date$
  */
-
 public class BaseRenderer extends AbstractRenderer {
 
 
@@ -50,40 +47,42 @@ public class BaseRenderer extends AbstractRenderer {
 
 
     /**
-     * <p>The <code>Log</code> instance for this class.</p>
+     * The {@code Log} instance for this class.
      */
-    private static Log log = LogFactory.getLog(BaseRenderer.class);
+    private final static Log LOG = LogFactory.getLog(BaseRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods
 
 
     /**
-     * <p>Render an HTML <code>base</code> element.</p>
+     * Render an HTML {@code base} element.
      *
-     * @param context FacesContext for the request we are processing
-     * @param component UIComponent to be rendered
+     * @param context {@code FacesContext} for the request we are processing
+     * @param component {@code UIComponent} to be rendered
      *
-     * @exception IOException if an input/output error occurs while rendering
-     * @exception NullPointerException if <code>context</code>
-     *  or <code>component</code> is null
+     * @throws IOException if an input/output error occurs while rendering
+     * @throws NullPointerException if {@code context} or {@code component}
+     *     is null
      */
     public void encodeEnd(FacesContext context, UIComponent component)
         throws IOException {
 
-        if ((context == null) || (component == null)) {
+        if (context == null || component == null) {
             throw new NullPointerException();
         }
 
-        if (log.isTraceEnabled()) {
-            log.trace("viewId='" + context.getViewRoot().getViewId() +
-                      "' --> uri='" + uri(context) + "'");
+        final String uri = StrutsContext.uri(context);
+
+        if (LOG.isTraceEnabled()) {
+            LOG.trace("viewId='" + context.getViewRoot().getViewId() +
+                      "' --> uri='" + uri + "'");
         }
 
         ResponseWriter writer = context.getResponseWriter();
         writer.startElement("base", component);
-        writer.writeURIAttribute("href", uri(context), null);
-        String target = (String) component.getAttributes().get("target");
+        writer.writeURIAttribute("href", uri, null);
+        String target = Utils.getMapValue(String.class, component.getAttributes(), "target");
         if (target != null) {
             writer.writeAttribute("target", target, "target");
         }
@@ -91,141 +90,4 @@ public class BaseRenderer extends AbstractRenderer {
         writer.writeText("\n", null);
 
     }
-
-
-
-    // ------------------------------------------------------- Protected Methods
-
-
-    /**
-     * <p>Return <code>true</code> if this is a portlet request instance.
-     * NOTE:  Implementation must not require portlet API classes to be
-     * present.</p>
-     *
-     * @param context <code>FacesContext</code> for the current request
-     */
-    protected boolean isPortletRequest(FacesContext context) {
-
-        Object request = context.getExternalContext().getRequest();
-        Class<?> clazz = request.getClass();
-        while (clazz != null) {
-            // Does this class implement PortletRequest?
-            Class<?> interfaces[] = clazz.getInterfaces();
-            if (interfaces == null) {
-                interfaces = new Class<?>[0];
-            }
-            for (int i = 0; i < interfaces.length; i++) {
-                if ("javax.portlet.PortletRequest".equals
-                    (interfaces[i].getName())) {
-                    return (true);
-                }
-            }
-            // Try our superclass (if any)
-            clazz = clazz.getSuperclass();
-        }
-        return (false);
-
-    }
-
-
-    /**
-     * <p>Return <code>true</code> if this is a servlet request instance.</p>
-     *
-     * @param context <code>FacesContext</code> for the current request
-     */
-    protected boolean isServletRequest(FacesContext context) {
-
-        Object request = context.getExternalContext().getRequest();
-        return (request instanceof HttpServletRequest);
-
-    }
-
-
-    /**
-     * <p>Return an absolute URI for the current page suitable for use
-     * in a portlet environment.  NOTE:  Implementation must not require
-     * portlet API classes to be present, so use reflection as needed.</p>
-     *
-     * @param context <code>FacesContext</code> for the current request
-     */
-    protected String portletUri(FacesContext context) {
-
-        Object request = context.getExternalContext().getRequest();
-        try {
-            String scheme = (String)
-                MethodUtils.invokeMethod(request, "getScheme", null);
-            StringBuilder sb = new StringBuilder(scheme);
-            sb.append("://");
-            sb.append(MethodUtils.invokeMethod(request, "getServerName", null));
-            Integer port = (Integer)
-                MethodUtils.invokeMethod(request, "getServerPort", null);
-            if ("http".equals(scheme) && (port.intValue() == 80)) {
-                ;
-            } else if ("https".equals(scheme) && (port.intValue() == 443)) {
-                ;
-            } else {
-                sb.append(":" + port);
-            }
-            sb.append
-                (MethodUtils.invokeMethod(request, "getContextPath", null));
-            sb.append(context.getViewRoot().getViewId());
-            return (sb.toString());
-        } catch (InvocationTargetException e) {
-            throw new FacesException(e.getTargetException());
-        } catch (Exception e) {
-            throw new FacesException(e);
-        }
-
-    }
-
-
-    /**
-     * <p>Return an absolute URI for the current page suitable for use
-     * in a servlet environment.</p>
-     *
-     * @param context <code>FacesContext</code> for the current request
-     */
-    protected String servletUri(FacesContext context) {
-
-        HttpServletRequest request = (HttpServletRequest)
-            context.getExternalContext().getRequest();
-        StringBuilder sb = new StringBuilder(request.getScheme());
-        sb.append("://");
-        sb.append(request.getServerName());
-        if ("http".equals(request.getScheme()) &&
-            (80 == request.getServerPort())) {
-            ;
-        } else if ("https".equals(request.getScheme()) &&
-                   (443 == request.getServerPort())) {
-            ;
-        } else {
-            sb.append(":" + request.getServerPort());
-        }
-        sb.append(request.getContextPath());
-        sb.append(context.getViewRoot().getViewId());
-        return (sb.toString());
-
-    }
-
-
-    /**
-     * <p>Return the absolute URI to be rendered as the value of the
-     * <code>href</code> attribute.</p>
-     *
-     * @param context <code>FacesContext</code> for the current request
-     */
-    protected String uri(FacesContext context) {
-
-        if (isServletRequest(context)) {
-            return (servletUri(context));
-        } else if (isPortletRequest(context)) {
-            return (portletUri(context));
-        } else {
-            throw new IllegalArgumentException
-                ("Request is neither HttpServletRequest nor PortletRequest");
-        }
-
-    }
-
-
 }

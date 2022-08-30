@@ -52,16 +52,12 @@
          <artifactId>jsp-api</artifactId>
       </dependency>
       <dependency>
-         <groupId>myfaces</groupId>
+         <groupId>org.apache.myfaces.core</groupId>
+         <artifactId>myfaces-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.myfaces.core</groupId>
          <artifactId>myfaces-impl</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>myfaces</groupId>
-         <artifactId>myfaces-extensions</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>myfaces</groupId>
-         <artifactId>myfaces-jsf-api</artifactId>
       </dependency>
       <dependency>
          <groupId>org.apache.taglibs</groupId>
@@ -87,10 +83,6 @@
       <dependency>
          <groupId>commons-codec</groupId>
          <artifactId>commons-codec</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>commons-el</groupId>
-         <artifactId>commons-el</artifactId>
       </dependency>
    </dependencies>
 

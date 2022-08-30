@@ -22,6 +22,7 @@
 package org.apache.struts.faces.taglib;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
 
@@ -42,10 +43,10 @@ public class ErrorsTag extends AbstractFacesTag {
     /**
      * <p>The property name for which to report errors.</p>
      */
-    protected String property = null;
+    protected ValueExpression _property;
 
-    public void setProperty(String property) {
-        this.property = property;
+    public void setProperty(ValueExpression property) {
+        this._property = property;
     }
 
 
@@ -79,7 +80,7 @@ public class ErrorsTag extends AbstractFacesTag {
     public void release() {
 
         super.release();
-        this.property = null;
+        this._property = null;
 
     }
 
@@ -95,7 +96,7 @@ public class ErrorsTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setStringAttribute(component, "property", property);
+        setStringProperty(component, "property", _property);
 
     }
 

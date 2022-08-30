@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
     $Id$
 
@@ -17,14 +17,9 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<!-- 
 <taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
       version="2.1">
- -->
-<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
-      version="2.0">
   <description><![CDATA[
       <p>This tag library provides custom action functionality that is
     similar to that provided by the Struts 1.1 tag libraries, but
@@ -59,6 +54,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description>
@@ -78,9 +76,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
-      <!--deferred-value>
+      <deferred-value>
         <type>boolean</type>
-      </deferred-value-->
+      </deferred-value>
     </attribute>
     <attribute>
       <description>
@@ -90,6 +88,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
   </tag>
   <tag>
@@ -110,18 +111,18 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
-      <!--deferred-method>
+      <deferred-method>
         <method-signature>java.lang.String action()</method-signature>
-      </deferred-method-->
+      </deferred-method>
     </attribute>
     <attribute>
       <name>actionListener</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
-      <!--deferred-method>
+      <deferred-method>
         <method-signature>void actionListener(javax.faces.event.ActionEvent)</method-signature>
-      </deferred-method-->
+      </deferred-method>
     </attribute>
     <attribute>
       <name>id</name>
@@ -134,171 +135,252 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.Boolean</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>rendered</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
-      <!--deferred-value>
+      <deferred-value>
         <type>boolean</type>
-      </deferred-value-->
+      </deferred-value>
     </attribute>
     <attribute>
       <name>value</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>accesskey</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>charset</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>dir</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>hreflang</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>lang</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>onblur</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>onclick</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>ondblclick</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>onfocus</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>onkeydown</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>onkeypress</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>onkeyup</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>onmousedown</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>onmousemove</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>onmouseout</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>onmouseover</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>onmouseup</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>rel</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>rev</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>style</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>styleClass</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>tabindex</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>target</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>title</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <name>type</name>
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
   </tag>
   <tag>
@@ -324,6 +406,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -336,6 +421,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description>
@@ -355,6 +443,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description>
@@ -365,9 +456,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
-      <!--deferred-value>
+      <deferred-value>
         <type>boolean</type>
-      </deferred-value-->
+      </deferred-value>
     </attribute>
   </tag>
   <tag>
@@ -395,6 +486,9 @@
       <required>true</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -406,6 +500,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -420,6 +517,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -431,9 +531,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
-      <!--deferred-value>
-        <type>boolean</type>
-      </deferred-value-->
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -445,6 +545,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description>
@@ -464,6 +567,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -474,6 +580,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description>
@@ -484,9 +593,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
-      <!--deferred-value>
+      <deferred-value>
         <type>boolean</type>
-      </deferred-value-->
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -497,6 +606,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description>
@@ -506,6 +618,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -517,6 +632,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
   </tag>
   <tag>
@@ -539,6 +657,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description>
@@ -560,6 +681,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description>
@@ -570,9 +694,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
-      <!--deferred-value>
+      <deferred-value>
         <type>boolean</type>
-      </deferred-value-->
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -586,6 +710,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
     </attribute>
   </tag>
   <tag>
@@ -622,8 +749,11 @@
       </description>
       <name>cdata</name>
       <required>false</required>
-      <rtexprvalue>true</rtexprvalue>
+      <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -635,6 +765,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -644,8 +777,11 @@
       </description>
       <name>formName</name>
       <required>false</required>
-      <rtexprvalue>true</rtexprvalue>
+      <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -658,8 +794,11 @@
       </description>
       <name>htmlComment</name>
       <required>false</required>
-      <rtexprvalue>true</rtexprvalue>
+      <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -671,8 +810,11 @@
       </description>
       <name>method</name>
       <required>false</required>
-      <rtexprvalue>true</rtexprvalue>
+      <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -683,8 +825,11 @@
       </description>
       <name>page</name>
       <required>false</required>
-      <rtexprvalue>true</rtexprvalue>
+      <rtexprvalue>false</rtexprvalue>
       <type>int</type>
+      <deferred-value>
+        <type>int</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -694,8 +839,11 @@
       </description>
       <name>src</name>
       <required>false</required>
-      <rtexprvalue>true</rtexprvalue>
+      <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -707,6 +855,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
     </attribute>
   </tag>
   <tag>
@@ -769,6 +920,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -781,6 +935,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -792,6 +949,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -814,6 +974,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description>
@@ -824,9 +987,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
-      <!--deferred-value>
+      <deferred-value>
         <type>boolean</type>
-      </deferred-value-->
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -837,6 +1000,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -847,6 +1013,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -859,6 +1028,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
   </tag>
   <tag>
@@ -881,6 +1053,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description>
@@ -899,6 +1074,9 @@
       <required>true</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description>
@@ -909,9 +1087,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
-      <!--deferred-value>
+      <deferred-value>
         <type>boolean</type>
-      </deferred-value-->
+      </deferred-value>
     </attribute>
   </tag>
   <tag>
@@ -937,6 +1115,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>javax.faces.component.UIComponent</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -948,6 +1129,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>boolean</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -968,9 +1152,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
-      <!--deferred-value>
+      <deferred-value>
         <type>boolean</type>
-      </deferred-value-->
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -981,6 +1165,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -991,6 +1178,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
@@ -1002,6 +1192,9 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
   </tag>
 </taglib>

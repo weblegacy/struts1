@@ -22,6 +22,7 @@
 package org.apache.struts.faces.taglib;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
 
@@ -42,10 +43,10 @@ public class StylesheetTag extends AbstractFacesTag {
     /**
      * <p>The context-relative path for this link.</p>
      */
-    private String path = null;
+    private ValueExpression _path;
 
-    public void setPath(String path) {
-        this.path = path;
+    public void setPath(ValueExpression path) {
+        this._path = path;
     }
 
 
@@ -80,7 +81,7 @@ public class StylesheetTag extends AbstractFacesTag {
     public void release() {
 
         super.release();
-        this.path = null;
+        this._path = null;
 
     }
 
@@ -96,7 +97,7 @@ public class StylesheetTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setStringAttribute(component, "path", path);
+        setStringProperty(component, "path", _path);
 
     }
 

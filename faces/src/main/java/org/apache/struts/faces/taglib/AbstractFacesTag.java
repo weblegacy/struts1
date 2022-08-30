@@ -22,9 +22,13 @@
 package org.apache.struts.faces.taglib;
 
 
+import javax.el.ELException;
+import javax.el.MethodExpression;
+import javax.el.ValueExpression;
+import javax.faces.component.ActionSource2;
 import javax.faces.component.UIComponent;
-import javax.faces.el.ValueBinding;
-import javax.faces.webapp.UIComponentTag;
+import javax.faces.event.MethodExpressionActionListener;
+import javax.faces.webapp.UIComponentELTag;
 
 
 /**
@@ -35,7 +39,7 @@ import javax.faces.webapp.UIComponentTag;
  * @version $Rev$ $Date$
  */
 
-public abstract class AbstractFacesTag extends UIComponentTag {
+public abstract class AbstractFacesTag extends UIComponentELTag {
 
 
     // ---------------------------------------------------------- Tag Attributes
@@ -45,40 +49,40 @@ public abstract class AbstractFacesTag extends UIComponentTag {
      * <p>The servlet context attribute under which our
      * <code>MessageResources</code> bundle is stored.</p>
      */
-    protected String bundle = null;
+    protected ValueExpression _bundle;
 
-    public void setBundle(String bundle) {
-        this.bundle = bundle;
+    public void setBundle(ValueExpression bundle) {
+        this._bundle = bundle;
     }
 
 
     /**
      * <p>The CSS style(s) used to render this component.</p>
      */
-    protected String style = null;
+    protected ValueExpression _style;
 
-    public void setStyle(String style) {
-        this.style = style;
+    public void setStyle(ValueExpression style) {
+        this._style = style;
     }
 
 
     /**
      * <p>The CSS style class(es) used to render this component.</p>
      */
-    protected String styleClass = null;
+    protected ValueExpression _styleClass;
 
-    public void setStyleClass(String styleClass) {
-        this.styleClass = styleClass;
+    public void setStyleClass(ValueExpression styleClass) {
+        this._styleClass = styleClass;
     }
 
 
     /**
      * <p>The literal value to be rendered.</p>
      */
-    protected String value = null;
+    protected ValueExpression _value;
 
-    public void setValue(String value) {
-        this.value = value;
+    public void setValue(ValueExpression value) {
+        this._value = value;
     }
 
 
@@ -105,10 +109,10 @@ public abstract class AbstractFacesTag extends UIComponentTag {
     public void release() {
 
         super.release();
-        this.bundle = null;
-        this.style = null;
-        this.styleClass = null;
-        this.value = null;
+        this._bundle = null;
+        this._style = null;
+        this._styleClass = null;
+        this._value = null;
 
     }
 
@@ -124,10 +128,10 @@ public abstract class AbstractFacesTag extends UIComponentTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setStringAttribute(component, "bundle", bundle);
-        setStringAttribute(component, "style", style);
-        setStringAttribute(component, "styleClass", styleClass);
-        setStringAttribute(component, "value", value);
+        setStringProperty(component, "bundle", _bundle);
+        setStringProperty(component, "style", _style);
+        setStringProperty(component, "styleClass", _styleClass);
+        setStringProperty(component, "value", _value);
 
     }
 
@@ -136,101 +140,183 @@ public abstract class AbstractFacesTag extends UIComponentTag {
 
 
     /**
-     * <p>If the specified attribute value is not <code>null</code>
-     * use it to either store a value binding expression for the
-     * specified attribute name, or store it as the literal value
-     * of the attribute.</p>
+     * Gets the value of the specified value expression.
      *
-     * @param component <code>UIComponent</code> whose attribute
-     *  is to be set
-     * @param name Attribute name
-     * @param value Attribute value (or <code>null</code>)
+     * @param valueExpression Value expression
      *
-     * @exception NumberFormatException if the value does not
-     *  contain a parsable integer
-     * @exception ReferenceSyntaxException if the expression has
-     *  invalid syntax
+     * @return the value
+     *
+     * @since 1.4.1
      */
-    @SuppressWarnings("unchecked")
-    protected void setBooleanAttribute(UIComponent component,
-                                       String name, String value) {
-
-        if (value == null) {
-            return;
-        }
-        if (isValueReference(value)) {
-            ValueBinding vb =
-                getFacesContext().getApplication().createValueBinding(value);
-            component.setValueBinding(name, vb);
-        } else {
-            component.getAttributes().put(name, Boolean.valueOf(value));
+    protected Boolean getBooleanValue(ValueExpression valueExpression) {
+        if (valueExpression.isLiteralText()){
+            return Boolean.valueOf(valueExpression.getExpressionString());
         }
 
+        return (Boolean) valueExpression.getValue(getELContext());
     }
 
-
     /**
-     * <p>If the specified attribute value is not <code>null</code>
-     * use it to either store a value binding expression for the
-     * specified attribute name, or store it as the literal value
-     * of the attribute.</p>
+     * If the specified attribute value is not {@code null} use it
+     * to either store a value binding expression for the specified
+     * attribute name, or store it as the literal value of the
+     * attribute.
      *
-     * @param component <code>UIComponent</code> whose attribute
-     *  is to be set
-     * @param name Attribute name
-     * @param value Attribute value (or <code>null</code>)
+     * @param component {@code UIComponent} whose attribute is to
+     *                  be set
+     * @param propName  Property name
+     * @param value     Property value (or {@code null})
      *
-     * @exception NumberFormatException if the value does not
-     *  contain a parsable integer
-     * @exception ReferenceSyntaxException if the expression has
-     *  invalid syntax
+     * @exception ELException if the expression has invalid syntax
+     *
+     * @since 1.4.1
      */
-    @SuppressWarnings("unchecked")
-    protected void setIntegerAttribute(UIComponent component,
-                                       String name, String value) {
+    protected static void setBooleanProperty(UIComponent component,
+            String propName, ValueExpression value) {
 
         if (value == null) {
             return;
         }
-        if (isValueReference(value)) {
-            ValueBinding vb =
-                getFacesContext().getApplication().createValueBinding(value);
-            component.setValueBinding(name, vb);
-        } else {
-            component.getAttributes().put(name, Integer.valueOf(value));
-        }
 
+        if (value.isLiteralText()) {
+            component.getAttributes().put(propName, Boolean.valueOf(value.getExpressionString()));
+        } else {
+            component.setValueExpression(propName, value);
+        }
     }
 
-
     /**
-     * <p>If the specified attribute value is not <code>null</code>
-     * use it to either store a value binding expression for the
-     * specified attribute name, or store it as the literal value
-     * of the attribute.</p>
+     * If the specified attribute value is not {@code null} use it
+     * to either store a value binding expression for the specified
+     * attribute name, or store it as the literal value of the
+     * attribute.
      *
-     * @param component <code>UIComponent</code> whose attribute
-     *  is to be set
-     * @param name Attribute name
-     * @param value Attribute value (or <code>null</code>)
+     * @param component {@code UIComponent} whose attribute is to
+     *                  be set
+     * @param propName  Property name
+     * @param value     Property value (or {@code null})
      *
-     * @exception ReferenceSyntaxException if the expression has
-     *  invalid syntax
+     * @exception ELException if the expression has invalid syntax
+     *
+     * @since 1.4.1
      */
-    @SuppressWarnings("unchecked")
-    protected void setStringAttribute(UIComponent component,
-                                      String name, String value) {
+    protected static void setStringProperty(UIComponent component,
+            String propName, ValueExpression value) {
 
         if (value == null) {
             return;
         }
-        if (isValueReference(value)) {
-            ValueBinding vb =
-                getFacesContext().getApplication().createValueBinding(value);
-            component.setValueBinding(name, vb);
+
+        if (value.isLiteralText()) {
+            component.getAttributes().put(propName, value.getExpressionString());
         } else {
-            component.getAttributes().put(name, value);
+            component.setValueExpression(propName, value);
+        }
+    }
+
+    /**
+     * Gets the value of the specified value expression.
+     *
+     * @param valueExpression Value expression
+     *
+     * @return the value
+     *
+     * @since 1.4.1
+     */
+    protected Integer getIntegerValue(ValueExpression valueExpression) {
+        if (valueExpression.isLiteralText()){
+            return Integer.valueOf(valueExpression.getExpressionString());
         }
 
+        return (Integer) valueExpression.getValue(getELContext());
+    }
+
+    /**
+     * If the specified attribute value is not {@code null} use it
+     * to either store a value binding expression for the specified
+     * attribute name, or store it as the literal value of the
+     * attribute.
+     *
+     * @param component {@code UIComponent} whose attribute is to
+     *                  be set
+     * @param propName  Property name
+     * @param value     Property value (or {@code null})
+     *
+     * @exception ELException if the expression has invalid syntax
+     *
+     * @since 1.4.1
+     */
+    protected static void setIntegerProperty(UIComponent component,
+            String propName, ValueExpression value) {
+
+        if (value == null) {
+            return;
+        }
+
+        if (value.isLiteralText()) {
+            component.getAttributes().put(propName, Integer.valueOf(value.getExpressionString()));
+        } else {
+            component.setValueExpression(propName, value);
+        }
+    }
+
+    /**
+     * If the specified action is not {@code null} use it to
+     * set the action of the component.
+     *
+     * @param component {@code UIComponent} whose action is to
+     *                  be set
+     * @param action    the Action
+     *
+     * @throws IllegalArgumentException if the component is not an
+     *         instance of {@code ActionSource2}
+     *
+     * @since 1.4.1
+     */
+    public void setActionProperty(UIComponent component, MethodExpression action) {
+        if (action != null) {
+            castActionSource2(component).setActionExpression(action);
+        }
+    }
+
+    /**
+     * If the specified action-listener is not {@code null} use
+     * it to add the action-listener to the component.
+     *
+     * @param component {@code UIComponent} whose action-listener
+     *                  is to be added
+     * @param action    the Action-Listener
+     *
+     * @throws IllegalArgumentException if the component is not an
+     *         instance of {@code ActionSource2}
+     *
+     * @since 1.4.1
+     */
+    public void setActionListenerProperty(UIComponent component, MethodExpression actionListener) {
+        if (actionListener != null) {
+            castActionSource2(component).addActionListener(new MethodExpressionActionListener(actionListener));
+        }
+    }
+
+    /**
+     * Test the component if it's an instance of {@code ActionSource2}
+     * and returns it.
+     *
+     * @param component {@code UIComponent} to test
+     *
+     * @return the component as {@code ActionSource2}
+     *
+     * @throws IllegalArgumentException if the component is not an
+     *         instance of {@code ActionSource2}
+     *
+     * @since 1.4.1
+    */
+    private ActionSource2 castActionSource2(UIComponent component) {
+        if (component instanceof ActionSource2) {
+            return (ActionSource2) component;
+        }
+        throw new IllegalArgumentException("Component "
+                + component.getClientId(getFacesContext())
+                + " is no ActionSource2");
     }
 }

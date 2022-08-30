@@ -37,6 +37,8 @@ import org.apache.struts.Globals;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.faces.component.FormComponent;
+import org.apache.struts.faces.util.StrutsContext;
+import org.apache.struts.faces.util.Utils;
 
 
 /**
@@ -55,7 +57,7 @@ public class FormRenderer extends AbstractRenderer {
     /**
      * <p>The <code>Log</code> instance for this class.</p>
      */
-    private static Log log = LogFactory.getLog(FormRenderer.class);
+    private final static Log LOG = LogFactory.getLog(FormRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods
@@ -71,16 +73,15 @@ public class FormRenderer extends AbstractRenderer {
      * @exception NullPointerException if <code>context</code>
      *  or <code>component</code> is null
      */
-    @SuppressWarnings("unchecked")
     public void decode(FacesContext context, UIComponent component) {
 
         if ((context == null) || (component == null)) {
             throw new NullPointerException();
         }
         String clientId = component.getClientId(context);
-        Map<?, ?> map = context.getExternalContext().getRequestParameterMap();
-        if (log.isDebugEnabled()) {
-            log.debug("decode(" + clientId + ") --> " +
+        Map<String, String> map = context.getExternalContext().getRequestParameterMap();
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("decode(" + clientId + ") --> " +
                       map.containsKey(clientId));
         }
         component.getAttributes().put
@@ -105,7 +106,6 @@ public class FormRenderer extends AbstractRenderer {
      * @exception NullPointerException if <code>context</code>
      *  or <code>component</code> is null
      */
-    @SuppressWarnings("unchecked")
     public void encodeBegin(FacesContext context, UIComponent component)
         throws IOException {
 
@@ -116,7 +116,7 @@ public class FormRenderer extends AbstractRenderer {
         // Calculate and cache the form name
         FormComponent form = (FormComponent) component;
         String action = form.getAction();
-        ModuleConfig moduleConfig = form.lookupModuleConfig(context);
+        ModuleConfig moduleConfig = StrutsContext.getModuleConfig(context);
         ActionConfig actionConfig = moduleConfig.findActionConfig(action);
         if (actionConfig == null) {
             throw new IllegalArgumentException("Cannot find action '" +
@@ -129,11 +129,11 @@ public class FormRenderer extends AbstractRenderer {
 
         // Look up attribute values we need
         String clientId = component.getClientId(context);
-        if (log.isDebugEnabled()) {
-            log.debug("encodeBegin(" + clientId + ")");
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("encodeBegin(" + clientId + ")");
         }
-        String styleClass =
-            (String) component.getAttributes().get("styleClass");
+        String styleClass = Utils.getMapValue(String.class,
+                component.getAttributes(), "styleClass");
 
         // Render the beginning of this form
         ResponseWriter writer = context.getResponseWriter();
@@ -203,8 +203,8 @@ public class FormRenderer extends AbstractRenderer {
             throw new NullPointerException();
         }
         String clientId = component.getClientId(context);
-        if (log.isDebugEnabled()) {
-            log.debug("encodeEnd(" + clientId + ")");
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("encodeEnd(" + clientId + ")");
         }
         ResponseWriter writer = context.getResponseWriter();
 
@@ -241,9 +241,9 @@ public class FormRenderer extends AbstractRenderer {
             writer.writeAttribute("language", "JavaScript", null);
         }
         writer.writeText("\n", null);
-        if (!isXhtml(component)) {
-            writer.write("<!--\n");
-        }
+//        if (!isXhtml(component)) {
+//            writer.write("<!--\n");
+//        }
 
         StringBuilder sb = new StringBuilder("document.forms[\"");
         sb.append(clientId);
@@ -268,9 +268,9 @@ public class FormRenderer extends AbstractRenderer {
         writer.write(".focus();\n");
         writer.write("  }\n");
 
-        if (!isXhtml(component)) {
-            writer.write("// -->\n");
-        }
+//        if (!isXhtml(component)) {
+//            writer.write("// -->\n");
+//        }
         writer.endElement("script");
         writer.writeText("\n", null);
 
@@ -281,7 +281,7 @@ public class FormRenderer extends AbstractRenderer {
 
 
     /**
-     * <p>Calculate and return the value to be specifed for the
+     * <p>Calculate and return the value to be specified for the
      * <code>action</action> attribute on the <code>&lt;form&gt;</code>
      * element to be rendered.</p>
      *
@@ -293,23 +293,11 @@ public class FormRenderer extends AbstractRenderer {
         String actionURL =
             context.getApplication().getViewHandler().
             getActionURL(context, context.getViewRoot().getViewId());
-        if (log.isTraceEnabled()) {
-            log.trace("getActionURL(" + context.getViewRoot().getViewId() +
+        if (LOG.isTraceEnabled()) {
+            LOG.trace("getActionURL(" + context.getViewRoot().getViewId() +
                       ") --> " + actionURL);
         }
         return (context.getExternalContext().encodeActionURL(actionURL));
-
-    }
-
-
-    /**
-     * <p>Return <code>true</code> if we should render as XHTML.</p>
-     *
-     * @param component The component we are rendering
-     */
-    protected boolean isXhtml(UIComponent component) {
-
-        return (false); // FIXME -- check up the hierarchy
 
     }
 

@@ -1,6 +1,7 @@
 <%@ page language="java" %>
 <%-- set document type to Javascript (addresses a bug in Netscape according to a web resource --%>
 <%@ page contentType="application/x-javascript" %>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core" %>
 <%@ taglib prefix="s" uri="http://struts.apache.org/tags-faces" %>
 
 <%--
@@ -20,4 +21,6 @@
     limitations under the License.
 --%>
 
+<f:view>
 <s:javascript dynamicJavascript="false" staticJavascript="true"/>
+</f:view>

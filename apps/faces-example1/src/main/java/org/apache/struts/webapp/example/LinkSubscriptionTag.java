@@ -23,10 +23,11 @@
 package org.apache.struts.webapp.example;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.el.ValueBinding;
-import javax.faces.webapp.UIComponentTag;
+import javax.faces.webapp.UIComponentELTag;
+
+import org.apache.myfaces.shared_impl.taglib.UIComponentELTagUtils;
 
 
 /**
@@ -37,7 +38,7 @@ import javax.faces.webapp.UIComponentTag;
  * @version $Rev$ $Date$
  */
 
-public class LinkSubscriptionTag extends UIComponentTag {
+public class LinkSubscriptionTag extends UIComponentELTag {
 
 
     // -------------------------------------------------------------- Attributes
@@ -46,20 +47,20 @@ public class LinkSubscriptionTag extends UIComponentTag {
     /**
      * The attribute name.
      */
-    protected String name = "subscription";
+    protected ValueExpression _name;
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(ValueExpression name) {
+        this._name = name;
     }
 
 
     /**
      * The context-relative URI.
      */
-    protected String page = null;
+    protected ValueExpression _page;
 
-    public void setPage(String page) {
-        this.page = page;
+    public void setPage(ValueExpression page) {
+        this._page = page;
     }
 
 
@@ -92,8 +93,8 @@ public class LinkSubscriptionTag extends UIComponentTag {
     public void release() {
 
         super.release();
-        this.name = "subscription";
-        this.page = null;
+        this._name = null;
+        this._page = null;
 
     }
 
@@ -106,29 +107,11 @@ public class LinkSubscriptionTag extends UIComponentTag {
      *
      * @param component Component whose attributes should be overridden
      */
-    @SuppressWarnings("unchecked")
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        FacesContext context = getFacesContext();
-        if (name != null) {
-            if (isValueReference(name)) {
-                ValueBinding vb =
-                    context.getApplication().createValueBinding(name);
-                component.setValueBinding("name", vb);
-            } else {
-                component.getAttributes().put("name", name);
-            }
-        }
-        if (page != null) {
-            if (isValueReference(page)) {
-                ValueBinding vb =
-                    context.getApplication().createValueBinding(page);
-                component.setValueBinding("page", vb);
-            } else {
-                component.getAttributes().put("page", page);
-            }
-        }
+        UIComponentELTagUtils.setStringProperty(component, "name", _name, "subscription");
+        UIComponentELTagUtils.setStringProperty(component, "page", _page);
 
     }
 

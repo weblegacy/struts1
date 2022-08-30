@@ -24,7 +24,7 @@ package org.apache.struts.faces.component;
 
 import javax.faces.component.UICommand;
 import javax.faces.context.FacesContext;
-import javax.faces.el.ValueBinding;
+import javax.el.ValueExpression;
 
 
 /**
@@ -54,31 +54,31 @@ public class CommandLinkComponent extends UICommand {
     // ------------------------------------------------------ Instance Variables
 
 
-    private String accesskey = null;
-    private String charset = null;
-    private String dir = null;
-    private String hreflang = null;
-    private String lang = null;
-    private String onblur = null;
-    private String onclick = null;
-    private String ondblclick = null;
-    private String onfocus = null;
-    private String onkeydown = null;
-    private String onkeypress = null;
-    private String onkeyup = null;
-    private String onmousedown = null;
-    private String onmousemove = null;
-    private String onmouseout = null;
-    private String onmouseover = null;
-    private String onmouseup = null;
-    private String rel = null;
-    private String rev = null;
-    private String style = null;
-    private String styleClass = null;
-    private String tabindex = null;
-    private String target = null;
-    private String title = null;
-    private String type = null;
+    private String accesskey;
+    private String charset;
+    private String dir;
+    private String hreflang;
+    private String lang;
+    private String onblur;
+    private String onclick;
+    private String ondblclick;
+    private String onfocus;
+    private String onkeydown;
+    private String onkeypress;
+    private String onkeyup;
+    private String onmousedown;
+    private String onmousemove;
+    private String onmouseout;
+    private String onmouseover;
+    private String onmouseup;
+    private String rel;
+    private String rev;
+    private String style;
+    private String styleClass;
+    private String tabindex;
+    private String target;
+    private String title;
+    private String type;
 
 
 
@@ -86,9 +86,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getAccesskey() {
-        ValueBinding vb = getValueBinding("accesskey");
+        ValueExpression vb = getValueExpression("accesskey");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return accesskey;
         }
@@ -100,9 +100,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getCharset() {
-        ValueBinding vb = getValueBinding("charset");
+        ValueExpression vb = getValueExpression("charset");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return charset;
         }
@@ -114,9 +114,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getDir() {
-        ValueBinding vb = getValueBinding("dir");
+        ValueExpression vb = getValueExpression("dir");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return dir;
         }
@@ -138,9 +138,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getHreflang() {
-        ValueBinding vb = getValueBinding("hreflang");
+        ValueExpression vb = getValueExpression("hreflang");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return hreflang;
         }
@@ -152,9 +152,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getLang() {
-        ValueBinding vb = getValueBinding("lang");
+        ValueExpression vb = getValueExpression("lang");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return lang;
         }
@@ -166,9 +166,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getOnblur() {
-        ValueBinding vb = getValueBinding("onblur");
+        ValueExpression vb = getValueExpression("onblur");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return onblur;
         }
@@ -180,9 +180,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getOnclick() {
-        ValueBinding vb = getValueBinding("onclick");
+        ValueExpression vb = getValueExpression("onclick");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return onclick;
         }
@@ -194,9 +194,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getOndblclick() {
-        ValueBinding vb = getValueBinding("ondblclick");
+        ValueExpression vb = getValueExpression("ondblclick");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return ondblclick;
         }
@@ -208,9 +208,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getOnfocus() {
-        ValueBinding vb = getValueBinding("onfocus");
+        ValueExpression vb = getValueExpression("onfocus");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return onfocus;
         }
@@ -222,9 +222,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getOnkeydown() {
-        ValueBinding vb = getValueBinding("onkeydown");
+        ValueExpression vb = getValueExpression("onkeydown");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return onkeydown;
         }
@@ -236,9 +236,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getOnkeypress() {
-        ValueBinding vb = getValueBinding("onkeypress");
+        ValueExpression vb = getValueExpression("onkeypress");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return onkeypress;
         }
@@ -250,9 +250,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getOnkeyup() {
-        ValueBinding vb = getValueBinding("onkeyup");
+        ValueExpression vb = getValueExpression("onkeyup");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return onkeyup;
         }
@@ -264,9 +264,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getOnmousedown() {
-        ValueBinding vb = getValueBinding("onmousedown");
+        ValueExpression vb = getValueExpression("onmousedown");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return onmousedown;
         }
@@ -278,9 +278,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getOnmousemove() {
-        ValueBinding vb = getValueBinding("onmousemove");
+        ValueExpression vb = getValueExpression("onmousemove");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return onmousemove;
         }
@@ -292,9 +292,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getOnmouseout() {
-        ValueBinding vb = getValueBinding("onmouseout");
+        ValueExpression vb = getValueExpression("onmouseout");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return onmouseout;
         }
@@ -306,9 +306,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getOnmouseover() {
-        ValueBinding vb = getValueBinding("onmouseover");
+        ValueExpression vb = getValueExpression("onmouseover");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return onmouseover;
         }
@@ -320,9 +320,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getOnmouseup() {
-        ValueBinding vb = getValueBinding("onmouseup");
+        ValueExpression vb = getValueExpression("onmouseup");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return onmouseup;
         }
@@ -334,9 +334,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getRel() {
-        ValueBinding vb = getValueBinding("rel");
+        ValueExpression vb = getValueExpression("rel");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return rel;
         }
@@ -348,9 +348,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getRev() {
-        ValueBinding vb = getValueBinding("rev");
+        ValueExpression vb = getValueExpression("rev");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return rev;
         }
@@ -362,9 +362,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getStyle() {
-        ValueBinding vb = getValueBinding("style");
+        ValueExpression vb = getValueExpression("style");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return style;
         }
@@ -376,9 +376,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getStyleClass() {
-        ValueBinding vb = getValueBinding("styleClass");
+        ValueExpression vb = getValueExpression("styleClass");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return styleClass;
         }
@@ -390,9 +390,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getTabindex() {
-        ValueBinding vb = getValueBinding("tabindex");
+        ValueExpression vb = getValueExpression("tabindex");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return tabindex;
         }
@@ -404,9 +404,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getTarget() {
-        ValueBinding vb = getValueBinding("target");
+        ValueExpression vb = getValueExpression("target");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return target;
         }
@@ -418,9 +418,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getTitle() {
-        ValueBinding vb = getValueBinding("title");
+        ValueExpression vb = getValueExpression("title");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return title;
         }
@@ -432,9 +432,9 @@ public class CommandLinkComponent extends UICommand {
 
 
     public String getType() {
-        ValueBinding vb = getValueBinding("type");
+        ValueExpression vb = getValueExpression("type");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return type;
         }

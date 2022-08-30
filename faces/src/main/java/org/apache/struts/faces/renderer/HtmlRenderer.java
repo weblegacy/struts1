@@ -24,11 +24,14 @@ package org.apache.struts.faces.renderer;
 
 import java.io.IOException;
 import java.util.Locale;
+
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.servlet.http.HttpSession;
+
 import org.apache.struts.Globals;
+import org.apache.struts.faces.component.HtmlComponent;
 
 
 /**
@@ -64,6 +67,8 @@ public class HtmlRenderer extends AbstractRenderer {
             throw new NullPointerException();
         }
 
+        final HtmlComponent htmlComponent = (HtmlComponent) component;
+
         Locale currentLocale = getCurrentLocale(context, component);
         String lang = currentLocale.getLanguage();
         boolean validLanguage = ((lang != null) && (lang.length() > 0));
@@ -75,10 +80,10 @@ public class HtmlRenderer extends AbstractRenderer {
             writer.writeAttribute("xmlns",
                                   "http://www.w3.org/1999/xhtml", null);
         }
-        if ((isLocale(component) || isXhtml(component)) && validLanguage) {
+        if ((htmlComponent.isLocale() || htmlComponent.isXhtml()) && validLanguage) {
             writer.writeAttribute("lang", lang, null);
         }
-        if (isXhtml(component) && validLanguage) {
+        if (htmlComponent.isXhtml() && validLanguage) {
             writer.writeAttribute("xml:lang", lang, null);
         }
         writer.writeText("\n", null);
@@ -123,9 +128,11 @@ public class HtmlRenderer extends AbstractRenderer {
     protected Locale getCurrentLocale
         (FacesContext context, UIComponent component) {
 
+        final HtmlComponent htmlComponent = (HtmlComponent) component;
+
         // If locale support not requested, just extract one from the request
-        if (!isLocale(component)) {
-            return (context.getExternalContext().getRequestLocale());
+        if (!htmlComponent.isLocale()) {
+            return context.getExternalContext().getRequestLocale();
         }
 
         // Create a new session if necessary
@@ -140,41 +147,6 @@ public class HtmlRenderer extends AbstractRenderer {
         current = context.getExternalContext().getRequestLocale();
         session.setAttribute(Globals.LOCALE_KEY, current);
         return (current);
-
-    }
-
-
-
-    /**
-     * <p>Return the state of the <code>locale</code> attribute.</p>
-     *
-     * @param component Component to process
-     */
-    protected boolean isLocale(UIComponent component) {
-
-        Boolean locale = (Boolean) component.getAttributes().get("locale");
-        if (locale != null) {
-            return locale.booleanValue();
-        } else {
-            return (false);
-        }
-
-    }
-
-
-    /**
-     * <p>Return the state of the <code>xhtml</code> attribute.</p>
-     *
-     * @param component Component to process
-     */
-    protected boolean isXhtml(UIComponent component) {
-
-        Boolean xhtml = (Boolean) component.getAttributes().get("xhtml");
-        if (xhtml != null) {
-            return xhtml.booleanValue();
-        } else {
-            return (false);
-        }
 
     }
 

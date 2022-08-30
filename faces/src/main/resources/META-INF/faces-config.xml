@@ -1,10 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1"?>
-
-
-<!DOCTYPE faces-config PUBLIC
-  "-//Sun Microsystems, Inc.//DTD JavaServer Faces Config 1.0//EN"
-  "http://java.sun.com/dtd/web-facesconfig_1_0.dtd">
-
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
     $Id$
 
@@ -25,10 +19,9 @@
 -->
 
 <!-- ================== STRUTS-FACES CONFIGURATION FILE =================== -->
-
-
-<faces-config>
-
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_1_2.xsd"
+              version="1.2">
 
   <!-- Custom JSF Lifecycle and Evaluator Objects -->
 
@@ -36,9 +29,12 @@
     <action-listener>
       org.apache.struts.faces.application.ActionListenerImpl
     </action-listener>
-    <property-resolver>
-      org.apache.struts.faces.application.PropertyResolverImpl
-    </property-resolver>
+    <el-resolver>
+      org.apache.struts.faces.application.DynaActionFormELResolver
+    </el-resolver>
+    <el-resolver>
+      org.apache.struts.faces.application.DynaBeanELResolver
+    </el-resolver>
     <view-handler>
       org.apache.struts.faces.application.ViewHandlerImpl
     </view-handler>
@@ -370,7 +366,7 @@
         Name of focus component identifier.
       </description>
       <display-name>Focus Component Name</display-name>
-      <property-name>focusIndex</property-name>
+      <property-name>focus</property-name>
       <property-class>java.lang.String</property-class>
     </property>
 
@@ -464,6 +460,111 @@
 
   <component>
 
+    <component-type>org.apache.struts.faces.JavascriptValidator</component-type>
+    <component-class>
+      org.apache.struts.faces.component.JavascriptValidatorComponent
+    </component-class>
+
+    <property>
+      <description>
+        Application scope attribute key for the MessageResources
+        instance to use for lookup. If not specified, the default
+        MessageResources for the current module will be used.
+      </description>
+      <display-name>MessageResources Key</display-name>
+      <property-name>bundle</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        The name of the form that corresponds with the action name
+        in struts-config.xml. Specifying a form name places a
+        &lt;script&gt; &lt;/script&gt; around the JavaScript.
+      </description>
+      <display-name>Form Name</display-name>
+      <property-name>formName</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        The current page number of a multi-part form. Only valid when
+        the formName attribute is set.
+      </description>
+      <display-name>Page Number</display-name>
+      <property-name>page</property-name>
+      <property-class>int</property-class>
+    </property>
+
+    <property>
+      <description>
+        This will be used as is for the JavaScript validation method
+        name if it has a value. This is the method name of the main
+        JavaScript method that the form calls to perform validations.
+      </description>
+      <display-name>Method Name</display-name>
+      <property-name>method</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        The static JavaScript methods will only be printed if this is
+        set to "true".
+      </description>
+      <display-name>Static JavaScript-Flag</display-name>
+      <property-name>staticJavascript</property-name>
+      <property-class>boolean</property-class>
+    </property>
+
+    <property>
+      <description>
+        The dynamic JavaScript objects will only be generated if this
+        is set to "true".
+      </description>
+      <display-name>Dynamic JavaScript-Flag</display-name>
+      <property-name>dynamicJavascript</property-name>
+      <property-class>boolean</property-class>
+    </property>
+
+    <property>
+      <description>
+        The src attribute for html script element (used to include an
+        external script resource). The src attribute is only recognized
+        when the formName attribute is specified.
+      </description>
+      <display-name>Source-Attribute</display-name>
+      <property-name>src</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        The JavaScript methods will enclosed with html comments if
+        this is set to "true".
+      </description>
+      <display-name>HTML-Comment-Flag</display-name>
+      <property-name>htmlComment</property-name>
+      <property-class>boolean</property-class>
+    </property>
+
+    <property>
+      <description>
+        Hide JavaScript methods in a CDATA section for XHTML when
+        "true".
+      </description>
+      <display-name>CDATA-Section</display-name>
+      <property-name>cdata</property-name>
+      <property-class>boolean</property-class>
+    </property>
+
+
+  </component>
+
+
+  <component>
+
     <component-type>org.apache.struts.faces.Message</component-type>
     <component-class>
       org.apache.struts.faces.component.MessageComponent
@@ -478,6 +579,16 @@
       <display-name>MessageResources Key</display-name>
       <property-name>bundle</property-name>
       <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        Should we filter the output for characters that are sensitive
+        in HTML?  The default value is "true".
+      </description>
+      <display-name>Filtered Flag</display-name>
+      <property-name>filter</property-name>
+      <property-class>boolean</property-class>
     </property>
 
     <property>
@@ -620,6 +731,14 @@
       <renderer-type>org.apache.struts.faces.Html</renderer-type>
       <renderer-class>
         org.apache.struts.faces.renderer.HtmlRenderer
+      </renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.apache.struts.faces.JavascriptValidator</component-family>
+      <renderer-type>org.apache.struts.faces.JavascriptValidator</renderer-type>
+      <renderer-class>
+        org.apache.struts.faces.renderer.JavascriptValidatorRenderer
       </renderer-class>
     </renderer>
 

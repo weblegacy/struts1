@@ -22,9 +22,9 @@
 package org.apache.struts.faces.component;
 
 
+import javax.el.ValueExpression;
 import javax.faces.component.UIOutput;
 import javax.faces.context.FacesContext;
-import javax.faces.el.ValueBinding;
 
 
 /**
@@ -91,9 +91,9 @@ public class MessageComponent extends UIOutput {
      */
     public String getBundle() {
 
-        ValueBinding vb = getValueBinding("bundle");
+        ValueExpression vb = getValueExpression("bundle");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return bundle;
         }
@@ -131,9 +131,9 @@ public class MessageComponent extends UIOutput {
         if (filterSet) {
             return filter;
         }
-        ValueBinding vb = getValueBinding("filter");
+        ValueExpression vb = getValueExpression("filter");
         if (vb != null) {
-            Boolean value = (Boolean) vb.getValue(getFacesContext());
+            Boolean value = (Boolean) vb.getValue(getFacesContext().getELContext());
             if (null == value) {
                 return filter;
             }
@@ -163,9 +163,9 @@ public class MessageComponent extends UIOutput {
      */
     public String getKey() {
 
-        ValueBinding vb = getValueBinding("key");
+        ValueExpression vb = getValueExpression("key");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return key;
         }
@@ -190,9 +190,9 @@ public class MessageComponent extends UIOutput {
      */
     public String getStyle() {
 
-        ValueBinding vb = getValueBinding("style");
+        ValueExpression vb = getValueExpression("style");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return style;
         }
@@ -217,9 +217,9 @@ public class MessageComponent extends UIOutput {
      */
     public String getStyleClass() {
 
-        ValueBinding vb = getValueBinding("styleClass");
+        ValueExpression vb = getValueExpression("styleClass");
         if (vb != null) {
-            return (String) vb.getValue(getFacesContext());
+            return (String) vb.getValue(getFacesContext().getELContext());
         } else {
             return styleClass;
         }

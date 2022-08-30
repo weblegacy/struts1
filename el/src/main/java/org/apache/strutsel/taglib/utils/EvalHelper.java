@@ -131,7 +131,7 @@ public final class EvalHelper {
     /**
      * Evaluate a value expression. To support optional attributes, if the expression is null then
      * null will be returned.
-     * 
+     *
      * @param <T> the expected type of the expression
      * @param attrName the name of the attribute
      * @param attrValue the value/expression of the attribute

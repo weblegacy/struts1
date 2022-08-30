@@ -20,7 +20,7 @@
     * Fields are not checked if they are disabled.
     * @param form The form validation is taking place on.
     * @deprecated The JS part of commons validation is deprecated
-    *   Please consider using http://parsleyjs.org/ or another 
+    *   Please consider using http://parsleyjs.org/ or another
     *   validation library.
     */
     function validateByte(form) {
@@ -28,7 +28,7 @@
         var focusField = null;
         var i = 0;
         var fields = new Array();
-        
+
         var oByte = eval('new ' + jcv_retrieveFormName(form) + '_ByteValidations()');
 
         for (var x in oByte) {

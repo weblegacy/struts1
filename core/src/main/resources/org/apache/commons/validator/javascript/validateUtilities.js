@@ -24,7 +24,7 @@
    * Retreive the name of the form
    * @param form The form validation is taking place on.
    * @deprecated The JS part of commons validation is deprecated
-   *   Please consider using http://parsleyjs.org/ or another 
+   *   Please consider using http://parsleyjs.org/ or another
    *   validation library.
    */
   function jcv_retrieveFormName(form) {
@@ -59,14 +59,14 @@
 
       return formName;
 
-  }  
+  }
 
   /**
    * Handle error messages.
    * @param messages Array of error messages.
    * @param focusField Field to set focus on.
    * @deprecated The JS part of commons validation is deprecated
-   *   Please consider using http://parsleyjs.org/ or another 
+   *   Please consider using http://parsleyjs.org/ or another
    *   validation library.
    */
   function jcv_handleErrors(messages, focusField) {
@@ -75,8 +75,8 @@
           if (focusField.disabled || focusField.type == 'hidden') {
               doFocus = false;
           }
-          if (doFocus && 
-              focusField.style && 
+          if (doFocus &&
+              focusField.style &&
               focusField.style.visibility &&
               focusField.style.visibility == 'hidden') {
               doFocus = false;
@@ -97,7 +97,7 @@
    * @param name The element name.
    * @param value The element value.
    * @deprecated The JS part of commons validation is deprecated
-   *   Please consider using http://parsleyjs.org/ or another 
+   *   Please consider using http://parsleyjs.org/ or another
    *   validation library.
    */
   function jcv_verifyArrayElement(name, element) {
@@ -112,7 +112,7 @@
    * Checks whether the field is present on the form.
    * @param field The form field.
    * @deprecated The JS part of commons validation is deprecated
-   *   Please consider using http://parsleyjs.org/ or another 
+   *   Please consider using http://parsleyjs.org/ or another
    *   validation library.
    */
   function jcv_isFieldPresent(field) {
@@ -131,7 +131,7 @@
    * Check a value only contains valid numeric digits
    * @param argvalue The value to check.
    * @deprecated The JS part of commons validation is deprecated
-   *   Please consider using http://parsleyjs.org/ or another 
+   *   Please consider using http://parsleyjs.org/ or another
    *   validation library.
    */
   function jcv_isAllDigits(argvalue) {
@@ -158,7 +158,7 @@
    * Check a value only contains valid decimal digits
    * @param argvalue The value to check.
    * @deprecated The JS part of commons validation is deprecated
-   *   Please consider using http://parsleyjs.org/ or another 
+   *   Please consider using http://parsleyjs.org/ or another
    *   validation library.
    */
   function jcv_isDecimalDigits(argvalue) {
@@ -175,11 +175,11 @@
       }
       return true;
   }
-    
+
   /**
    * Trim whitespace from left and right sides of s.
    * @deprecated The JS part of commons validation is deprecated
-   *   Please consider using http://parsleyjs.org/ or another 
+   *   Please consider using http://parsleyjs.org/ or another
    *   validation library.
    */
   function trim(s) {
@@ -187,7 +187,7 @@
   }
 
 
-  // Log a message to the console which states that this validation library 
+  // Log a message to the console which states that this validation library
   // is deprecated.
   if (typeof(console) !== 'undefined' && typeof(console.warn) === 'function') {
       console.warn('The JS part of commons validation is deprecated. ' +

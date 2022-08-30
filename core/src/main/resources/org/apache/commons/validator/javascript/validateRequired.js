@@ -21,7 +21,7 @@
     *
     * @param form The form validation is taking place on.
     * @deprecated The JS part of commons validation is deprecated
-    *   Please consider using http://parsleyjs.org/ or another 
+    *   Please consider using http://parsleyjs.org/ or another
     *   validation library.
     */
     function validateRequired(form) {
@@ -73,7 +73,7 @@
                     fields[i++] = oRequired[x][1];
                     isValid = false;
                 }
-            } else if (field.type == "select-multiple") { 
+            } else if (field.type == "select-multiple") {
                 var numOptions = field.options.length;
                 lastSelected=-1;
                 for(loop=numOptions-1;loop>=0;loop--) {
@@ -105,7 +105,7 @@
                     fields[i++] = oRequired[x][1];
                     isValid=false;
                 }
-            }   
+            }
         }
         if (fields.length > 0) {
            jcv_handleErrors(fields, focusField);

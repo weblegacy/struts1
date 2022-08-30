@@ -20,7 +20,7 @@
     * Fields are not checked if they are disabled.
     * @param form The form validation is taking place on.
     * @deprecated The JS part of commons validation is deprecated
-    *   Please consider using http://parsleyjs.org/ or another 
+    *   Please consider using http://parsleyjs.org/ or another
     *   validation library.
     */
     function validateFloat(form) {
@@ -28,7 +28,7 @@
         var focusField = null;
         var i = 0;
         var fields = new Array();
- 
+
         var oFloat = eval('new ' + jcv_retrieveFormName(form) +  '_FloatValidations()');
         for (var x in oFloat) {
             if (!jcv_verifyArrayElement(x, oFloat[x])) {
@@ -55,7 +55,7 @@
                 } else {
                     value = field.value;
                 }
-        
+
                 if (value.length > 0) {
                     // remove '.' before checking digits
                     var tempArray = value.split('.');

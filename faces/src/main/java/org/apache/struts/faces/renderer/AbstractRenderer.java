@@ -496,7 +496,7 @@ public abstract class AbstractRenderer extends Renderer {
      * Decode the current state of the specified UIComponent from the
      * request contained in the specified {@code FacesContext}, and
      * attempt to convert this state information into an object of the
-     * type equired for this component.
+     * type required for this component.
      *
      * @param context FacesContext for the request we are processing
      * @param component UIComponent to be decoded

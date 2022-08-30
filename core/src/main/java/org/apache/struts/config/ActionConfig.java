@@ -1511,7 +1511,7 @@ public class ActionConfig extends BaseConfig {
         }
 
         // 2014/07/02 - security problem patch.
-        // Author: NTT DATA Corporation        
+        // Author: NTT DATA Corporation
         if (acceptPage != null) {
             sb.append(",acceptPage=");
             sb.append(acceptPage);

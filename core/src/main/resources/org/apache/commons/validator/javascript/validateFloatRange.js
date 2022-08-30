@@ -20,7 +20,7 @@
     * Fields are not checked if they are disabled.
     * @param form The form validation is taking place on.
     * @deprecated The JS part of commons validation is deprecated
-    *   Please consider using http://parsleyjs.org/ or another 
+    *   Please consider using http://parsleyjs.org/ or another
     *   validation library.
     */
     function validateFloatRange(form) {
@@ -28,7 +28,7 @@
         var focusField = null;
         var i = 0;
         var fields = new Array();
-        
+
         var oRange = eval('new ' + jcv_retrieveFormName(form) +  '_floatRange()');
         for (var x in oRange) {
             if (!jcv_verifyArrayElement(x, oRange[x])) {
@@ -38,11 +38,11 @@
             if (!jcv_isFieldPresent(field)) {
               continue;
             }
-            
+
             if ((field.type == 'hidden' ||
                 field.type == 'text' || field.type == 'textarea') &&
                 (field.value.length > 0)) {
-        
+
                 var fMin = parseFloat(oRange[x][2]("min"));
                 var fMax = parseFloat(oRange[x][2]("max"));
                 var fValue = parseFloat(field.value);

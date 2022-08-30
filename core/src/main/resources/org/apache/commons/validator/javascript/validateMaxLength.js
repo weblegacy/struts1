@@ -19,12 +19,12 @@
     * A field is considered valid if less than the specified maximum.
     * Fields are not checked if they are disabled.
     *
-    *  Caution: Using validateMaxLength() on a password field in a 
+    *  Caution: Using validateMaxLength() on a password field in a
     *  login page gives unnecessary information away to hackers. While it only slightly
     *  weakens security, we suggest using it only when modifying a password.
     * @param form The form validation is taking place on.
     * @deprecated The JS part of commons validation is deprecated
-    *   Please consider using http://parsleyjs.org/ or another 
+    *   Please consider using http://parsleyjs.org/ or another
     *   validation library.
     */
     function validateMaxLength(form) {
@@ -32,8 +32,8 @@
         var focusField = null;
         var i = 0;
         var fields = new Array();
- 
-        var oMaxLength = eval('new ' + jcv_retrieveFormName(form) +  '_maxlength()');        
+
+        var oMaxLength = eval('new ' + jcv_retrieveFormName(form) +  '_maxlength()');
         for (var x in oMaxLength) {
             if (!jcv_verifyArrayElement(x, oMaxLength[x])) {
                 continue;

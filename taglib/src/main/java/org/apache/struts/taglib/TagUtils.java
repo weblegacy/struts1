@@ -589,7 +589,7 @@ public class TagUtils {
     }
 
     /**
-     * Filter the specified string for characters that are senstive to HTML
+     * Filter the specified string for characters that are sensitive to HTML
      * interpreters, returning the string with these characters replaced by
      * the corresponding character entities.
      *

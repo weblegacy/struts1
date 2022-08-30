@@ -429,7 +429,7 @@ public class InsertTag
             // Additional fix for Bug 20034 (2005-04-28)
             cachedCurrentContext = null;
 
-        // Check role immediatly to avoid useless stuff.
+        // Check role immediately to avoid useless stuff.
         // In case of insertion of a "definition", definition's role still checked later.
         // This lead to a double check of "role" ;-(
         HttpServletRequest request =

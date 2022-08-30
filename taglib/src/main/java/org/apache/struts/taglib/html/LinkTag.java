@@ -143,7 +143,7 @@ public class LinkTag extends BaseHandlerTag {
     protected boolean transaction = false;
 
     /**
-     * Additional parameters included programatically.
+     * Additional parameters included programmatically.
      */
     protected Map<String, Object> parameters = new HashMap<>();
 
@@ -306,8 +306,9 @@ public class LinkTag extends BaseHandlerTag {
     // --------------------------------------------------------- Public Methods
 
     /**
-     * Render the beginning of the hyperlink. <p> Support for indexed property
-     * since Struts 1.1
+     * Render the beginning of the hyperlink.
+     *
+     * <p>Support for indexed property since Struts 1.1</p>
      *
      * @throws JspException if a JSP exception has occurred
      */

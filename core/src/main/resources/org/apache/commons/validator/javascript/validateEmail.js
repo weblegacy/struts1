@@ -20,7 +20,7 @@
     * Fields are not checked if they are disabled.
     * @param form The form validation is taking place on.
     * @deprecated The JS part of commons validation is deprecated
-    *   Please consider using http://parsleyjs.org/ or another 
+    *   Please consider using http://parsleyjs.org/ or another
     *   validation library.
     */
     function validateEmail(form) {
@@ -39,7 +39,7 @@
             if (!jcv_isFieldPresent(field)) {
               continue;
             }
-            if ((field.type == 'hidden' || 
+            if ((field.type == 'hidden' ||
                  field.type == 'text' ||
                  field.type == 'textarea') &&
                 (field.value.length > 0)) {
@@ -62,7 +62,7 @@
      * Reference: Sandeep V. Tamhankar (stamhankar@hotmail.com),
      * http://javascript.internet.com
      * @deprecated The JS part of commons validation is deprecated
-     *   Please consider using http://parsleyjs.org/ or another 
+     *   Please consider using http://parsleyjs.org/ or another
      *   validation library.
      */
     function jcv_checkEmail(emailStr) {
@@ -117,7 +117,7 @@
                 return false;
             }
         }
-        if (checkTLD && domArr[domArr.length-1].length!=2 && 
+        if (checkTLD && domArr[domArr.length-1].length!=2 &&
             domArr[domArr.length-1].search(knownDomsPat)==-1) {
             return false;
         }

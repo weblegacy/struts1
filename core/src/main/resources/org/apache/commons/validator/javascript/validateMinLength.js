@@ -19,12 +19,12 @@
     * A field is considered valid if greater than the specified minimum.
     * Fields are not checked if they are disabled.
     *
-    *  Caution: Using validateMinLength() on a password field in a 
+    *  Caution: Using validateMinLength() on a password field in a
     *  login page gives unnecessary information away to hackers. While it only slightly
     *  weakens security, we suggest using it only when modifying a password.
     * @param form The form validation is taking place on.
     * @deprecated The JS part of commons validation is deprecated
-    *   Please consider using http://parsleyjs.org/ or another 
+    *   Please consider using http://parsleyjs.org/ or another
     *   validation library.
     */
     function validateMinLength(form) {

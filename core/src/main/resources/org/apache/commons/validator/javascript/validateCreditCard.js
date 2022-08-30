@@ -20,7 +20,7 @@
     * Fields are not checked if they are disabled.
     * @param form The form validation is taking place on.
     * @deprecated The JS part of commons validation is deprecated
-    *   Please consider using http://parsleyjs.org/ or another 
+    *   Please consider using http://parsleyjs.org/ or another
     *   validation library.
     */
     function validateCreditCard(form) {
@@ -28,7 +28,7 @@
         var focusField = null;
         var i = 0;
         var fields = new Array();
- 
+
         var oCreditCard = eval('new ' + jcv_retrieveFormName(form) +  '_creditCard()');
 
         for (var x in oCreditCard) {
@@ -63,7 +63,7 @@
      * Reference: http://www.speech.cs.cmu.edu/~sburke/pub/luhn_lib.html
      *
      * @deprecated The JS part of commons validation is deprecated
-     *   Please consider using http://parsleyjs.org/ or another 
+     *   Please consider using http://parsleyjs.org/ or another
      *   validation library.
      */
     function jcv_luhnCheck(cardNumber) {
@@ -87,7 +87,7 @@
 
     /**
      * @deprecated The JS part of commons validation is deprecated
-     *   Please consider using http://parsleyjs.org/ or another 
+     *   Please consider using http://parsleyjs.org/ or another
      *   validation library.
      */
     function jcv_isLuhnNum(argvalue) {

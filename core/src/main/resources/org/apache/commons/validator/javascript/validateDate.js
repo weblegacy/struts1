@@ -20,7 +20,7 @@
     * Fields are not checked if they are disabled.
     * @param form The form validation is taking place on.
     * @deprecated The JS part of commons validation is deprecated
-    *   Please consider using http://parsleyjs.org/ or another 
+    *   Please consider using http://parsleyjs.org/ or another
     *   validation library.
     */
     function validateDate(form) {
@@ -28,7 +28,7 @@
        var focusField = null;
        var i = 0;
        var fields = new Array();
- 
+
        var oDate = eval('new ' + jcv_retrieveFormName(form) +  '_DateValidations()');
 
        for (var x in oDate) {
@@ -46,7 +46,7 @@
            if (datePattern == null) {
                datePattern = oDate[x][2]("datePattern");
                isStrict = false;
-           }    
+           }
            if ((field.type == 'hidden' ||
                 field.type == 'text' ||
                 field.type == 'textarea') &&
@@ -63,11 +63,11 @@
                      var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
                      var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
                      if (iDelim1 == orderDay && iDelim2 == orderYear) {
-                        dateRegexp = isStrict 
-                             ? new RegExp("^(\\d{2})(\\d{2})(\\d{4})$") 
+                        dateRegexp = isStrict
+                             ? new RegExp("^(\\d{2})(\\d{2})(\\d{4})$")
                              : new RegExp("^(\\d{1,2})(\\d{1,2})(\\d{4})$");
                      } else if (iDelim1 == orderDay) {
-                        dateRegexp = isStrict 
+                        dateRegexp = isStrict
                              ? new RegExp("^(\\d{2})(\\d{2})[" + delim2 + "](\\d{4})$")
                              : new RegExp("^(\\d{1,2})(\\d{1,2})[" + delim2 + "](\\d{4})$");
                      } else if (iDelim2 == orderYear) {
@@ -101,7 +101,7 @@
                      var delim1 = datePattern.substring(iDelim1, iDelim1 + 1);
                      var delim2 = datePattern.substring(iDelim2, iDelim2 + 1);
                      if (iDelim1 == orderMonth && iDelim2 == orderYear) {
-                         dateRegexp = isStrict 
+                         dateRegexp = isStrict
                             ? new RegExp("^(\\d{2})(\\d{2})(\\d{4})$")
                             : new RegExp("^(\\d{1,2})(\\d{1,2})(\\d{4})$");
                      } else if (iDelim1 == orderMonth) {
@@ -185,10 +185,10 @@
        }
        return bValid;
     }
-    
+
     /**
      * @deprecated The JS part of commons validation is deprecated
-     *   Please consider using http://parsleyjs.org/ or another 
+     *   Please consider using http://parsleyjs.org/ or another
      *   validation library.
      */
     function jcv_isValidDate(day, month, year) {

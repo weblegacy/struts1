@@ -21,7 +21,7 @@
     *
     * @param form The form validation is taking place on.
     * @deprecated The JS part of commons validation is deprecated
-    *   Please consider using http://parsleyjs.org/ or another 
+    *   Please consider using http://parsleyjs.org/ or another
     *   validation library.
     */
     function validateShort(form) {
@@ -29,7 +29,7 @@
         var focusField = null;
         var i = 0;
         var fields = new Array();
- 
+
         var oShort = eval('new ' + jcv_retrieveFormName(form) +  '_ShortValidations()');
 
         for (var x in oShort) {

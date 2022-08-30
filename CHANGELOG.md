@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Tiles-Version as POM-Property
 * Correct some typos in JavaDocs and trim lines
 * Upgrade `jsf` (`myfaces`) from 1.0.9 to 1.2.12
 * Upgrade all taglibs to 2.1 (except faces to 2.0)

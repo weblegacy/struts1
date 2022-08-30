@@ -881,16 +881,23 @@
       <required>false</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
     <attribute>
       <description><![CDATA[
-      <p>Request scope key under which the Map will be stored.</p>
+      <p>Request scope key under which the MessagesMap will be
+        stored.</p>
       ]]>
       </description>
       <name>var</name>
       <required>true</required>
       <rtexprvalue>false</rtexprvalue>
       <type>java.lang.String</type>
+      <deferred-value>
+        <type>java.lang.String</type>
+      </deferred-value>
     </attribute>
   </tag>
   <tag>

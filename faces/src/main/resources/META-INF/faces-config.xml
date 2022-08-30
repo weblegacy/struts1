@@ -559,6 +559,35 @@
       <property-class>boolean</property-class>
     </property>
 
+  </component>
+
+
+  <component>
+
+    <component-type>org.apache.struts.faces.LoadMessages</component-type>
+    <component-class>
+      org.apache.struts.faces.component.LoadMessagesComponent
+    </component-class>
+
+    <property>
+      <description>
+        The name of the "MessageResources" to expose, or "null" for
+        the default "MessageResources" for this application module.
+      </description>
+      <display-name>MessageResources Key</display-name>
+      <property-name>messages</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
+
+    <property>
+      <description>
+        The request attribute key under which the "MessagesMap" will
+        be exposed.
+      </description>
+      <display-name>Variable Name</display-name>
+      <property-name>var</property-name>
+      <property-class>java.lang.String</property-class>
+    </property>
 
   </component>
 
@@ -651,7 +680,7 @@
     <property>
       <description>
         Flag indicating that the rendered output should be filtered
-        for characters that are sensitive in HTML.  Default value is
+        for characters that are sensitive in HTML. Default value is
         "true".
       </description>
       <display-name>Filtered Flag</display-name>
@@ -739,6 +768,14 @@
       <renderer-type>org.apache.struts.faces.JavascriptValidator</renderer-type>
       <renderer-class>
         org.apache.struts.faces.renderer.JavascriptValidatorRenderer
+      </renderer-class>
+    </renderer>
+
+    <renderer>
+      <component-family>org.apache.struts.faces.LoadMessages</component-family>
+      <renderer-type>org.apache.struts.faces.LoadMessages</renderer-type>
+      <renderer-class>
+        org.apache.struts.faces.renderer.LoadMessagesRenderer
       </renderer-class>
     </renderer>
 

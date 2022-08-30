@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Convert `LoadMessages`-JSF-Tag to JSF 1.2
 * Tiles-Version as POM-Property
 * Correct some typos in JavaDocs and trim lines
 * Upgrade `jsf` (`myfaces`) from 1.0.9 to 1.2.12

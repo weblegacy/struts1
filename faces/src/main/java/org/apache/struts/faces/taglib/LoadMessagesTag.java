@@ -21,50 +21,40 @@
 
 package org.apache.struts.faces.taglib;
 
-
-import java.util.Locale;
-
-import javax.faces.context.FacesContext;
-
-import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.tagext.TagSupport;
-
-import org.apache.struts.Globals;
-import org.apache.struts.faces.util.MessagesMap;
-import org.apache.struts.util.MessageResources;
-
+import javax.el.ValueExpression;
+import javax.faces.component.UIComponent;
 
 /**
- * <p>Tag that exposes a specified <code>MessageResources</code> instance
- * as <code>Map</code>, so that the embedded messages may be retrieved via
- * value binding expressions.</p>
+ * Tag that exposes a specified {@code MessageResources} instance
+ * as {@code MessagesMap}, so that the embedded messages may be
+ * retrieved via value binding expressions.
  */
-
-public class LoadMessagesTag extends TagSupport {
-    private static final long serialVersionUID = 6268460679725885904L;
+public class LoadMessagesTag extends AbstractFacesTag {
 
 
     // ---------------------------------------------------------- Tag Attributes
 
 
     /**
-     * <p>The name of the <code>MessageResources</code> to expose, or
-     * <code>null</code> for the default <code>MessageResources</code>
-     * for this application module.</p>
+     * The name of the {@code MessageResources} to expose, or
+     * {@code null} for the default {@code MessageResources}
+     * for this application module.
      */
-    private String messages = null;
-    public void setMessages(String messages) {
-        this.messages = messages;
+    private ValueExpression _messages;
+
+    public void setMessages(ValueExpression messages) {
+        this._messages = messages;
     }
 
 
     /**
-     * <p>The request attribute key under which a <code>Map</code>
-     * will be exposed.</p>
+     * The request attribute key under which a
+     * {@code MessagesMap} will be exposed.
      */
-    private String var = null;
-    public void setVar(String var) {
-        this.var = var;
+    private ValueExpression _var;
+
+    public void setVar(ValueExpression var) {
+        this._var = var;
     }
 
 
@@ -72,53 +62,46 @@ public class LoadMessagesTag extends TagSupport {
 
 
     /**
-     * <p>Expose a <code>Map</code> wrapping the specified
-     * <code>MessageResources</code> instance, for the <code>Locale</code>
-     * specified in the view root component of the current view.</p>
+     * Release any allocated resources.
      */
-    public int doStartTag() {
+    public void release() {
+        super.release();
+        _messages = null;
+        _var = null;
+    }
 
-        // Acquire the Locale to be wrapped
-        Locale locale =
-            FacesContext.getCurrentInstance().getViewRoot().getLocale();
 
-        // Acquire the MessageResources to be wrapped
-        MessageResources messages = null;
-        if (this.messages == null) {
-            messages = (MessageResources)
-                pageContext.getAttribute(Globals.MESSAGES_KEY,
-                                         PageContext.REQUEST_SCOPE);
-            if (messages == null) {
-                messages = (MessageResources)
-                    pageContext.getAttribute(Globals.MESSAGES_KEY,
-                                             PageContext.APPLICATION_SCOPE);
-            }
-        } else {
-            messages = (MessageResources)
-                pageContext.getAttribute(this.messages,
-                                         PageContext.APPLICATION_SCOPE);
-        }
+    // ---------------------------------------------------------- Public Methods
 
-        // Expose a Map instance under the specified request attribute key
-        pageContext.setAttribute(var,
-                                 new MessagesMap(messages, locale),
-                                 PageContext.REQUEST_SCOPE);
 
-        // Skip the body of this tag (if any)
-        return (SKIP_BODY);
-
+    /**
+     * Return the type of component to be created for this tag.
+     */
+    public String getComponentType() {
+        return "org.apache.struts.faces.LoadMessages";
     }
 
 
     /**
-     * <p>Release any resources allocated by this tag instance.</p>
+     * Return the {@code rendererType} to be used for rendering
+     * our component.
      */
-    public void release() {
-
-        this.messages = null;
-        this.var = null;
-
+    public String getRendererType() {
+        return "org.apache.struts.faces.Message";
     }
 
 
+    // ------------------------------------------------------- Protected Methods
+
+
+    /**
+     * Override attributes set on this tag instance.
+     *
+     * @param component Component whose attributes should be overridden
+     */
+    protected void setProperties(UIComponent component) {
+        super.setProperties(component);
+        setStringProperty(component, "messages", _messages);
+        setStringProperty(component, "var", _var);
+    }
 }

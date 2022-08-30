@@ -106,8 +106,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
 
         // Was this the component that submitted this form?
         String paramId = TOKEN;
-        String value = (String)
-            context.getExternalContext().getRequestParameterMap().get(paramId);
+        String value = context.getExternalContext().getRequestParameterMap().get(paramId);
         if ((value == null) || !value.equals(component.getClientId(context))) {
             if (LOG.isTraceEnabled()) {
                 LOG.trace("decode(" + component.getId() + ") --> not active");

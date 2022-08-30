@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Fix groovy-compile-error
 * Replace tabs with spaces
 * Fix `maven-bundle-plugin` warning during compiling
 * Fix compile-warning at `CommandLinkRenderer`

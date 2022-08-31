@@ -365,6 +365,7 @@
         <javaVersion>1.8</javaVersion>
         <javaTestVersion>1.8</javaTestVersion>
         <myfacesVersion>1.2.12</myfacesVersion>
+        <groovyVersion>4.0.4</groovyVersion>
         <seleniumVersion>4.4.0</seleniumVersion>
         <taglibsVersion>1.2.5</taglibsVersion>
         <tilesVersion>2.0.7</tilesVersion>
@@ -1037,14 +1038,14 @@
                 <version>${myfacesVersion}</version>
             </dependency>
             <dependency>
-                <groupId>org.codehaus.groovy</groupId>
+                <groupId>org.apache.groovy</groupId>
                 <artifactId>groovy</artifactId>
-                <version>3.0.9</version>
+                <version>${groovyVersion}</version>
             </dependency>
             <dependency>
-                <groupId>org.codehaus.groovy</groupId>
+                <groupId>org.apache.groovy</groupId>
                 <artifactId>groovy-jsr223</artifactId>
-                <version>3.0.9</version>
+                <version>${groovyVersion}</version>
             </dependency>
             <dependency>
                <groupId>org.apache.tiles</groupId>

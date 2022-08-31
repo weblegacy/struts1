@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Replace `bsf`-dependency with JSR-223 `javax.script`
 * Bump `groovy` from 1.0 to 3.0.9
 * Fix groovy-compile-error
 * Replace tabs with spaces

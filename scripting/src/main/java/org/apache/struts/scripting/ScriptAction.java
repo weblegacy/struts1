@@ -20,27 +20,33 @@
  */
 package org.apache.struts.scripting;
 
-// util imports:
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Enumeration;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Properties;
-import java.util.StringTokenizer;
+import java.util.concurrent.ConcurrentHashMap;
 
-// io imports:
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
+import javax.script.Bindings;
+import javax.script.ScriptContext;
+import javax.script.ScriptEngineFactory;
+import javax.script.ScriptEngineManager;
+import javax.script.ScriptException;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-// logging imports:
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-// struts imports:
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -48,74 +54,69 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
 
-// misc imports:
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.apache.bsf.BSFException;
-import org.apache.bsf.BSFManager;
-import org.apache.bsf.util.IOUtils;
-
 
 /**
- *  This Action uses scripts to perform its action. The scripting framework is
- *  Apache's Bean Scripting Framework which allows the scripts to be written
- *  many of the popular scripting languages including JavaScript, Perl, Python,
- *  and even VBA. <br />
- *  <br />
- *  To determine what script will be executed, the "parameter" attribute of the
- *  action mapping should contain the name of the script relative to the web
- *  application root directory (i.e. https://server/app). <br />
- *  <br />
- *  Before the script completes, the next ActionForward needs to be specified.
- *  This can be done one of two ways:
- *  <ol>
- *    <li> Set <code>struts.forwardName</code> to the name of the forward</li>
+ * This Action uses scripts to perform its action. The scripting framework is
+ * Bean Scripting Framework 3.0 (JSR 223) which allows the scripts to be written
+ * many of the popular scripting languages including JavaScript, Perl, Python,
+ * and even VBA.
  *
- *    <li> Set <code>struts.forward</code> to the actual ActionForward object
- *    </li>
+ * <p>To determine what script will be executed, the "parameter" attribute of the
+ * action mapping should contain the name of the script relative to the web
+ * application root directory (i.e. https://server/app).</p>
+ *
+ * <p>Before the script completes, the next {@code ActionForward} needs to be
+ * specified. This can be done one of two ways:</p>
+ *
+ * <ol>
+ *   <li>Set {@code struts.forwardName} to the name of the forward</li>
+ *   <li>Set {@code struts.forward} to the actual ActionForward object</li>
  *  </ol>
- *  A number of pre-defined variables are available to the script:
- *  <ul>
- *    <li> <code>request</code> - The HTTP request</li>
- *    <li> <code>response</code> - The HTTP response</li>
- *    <li> <code>session</code> - The session</li>
- *    <li> <code>application</code> - The servlet context</li>
- *    <li> <code>struts</code> - A grouping of all Struts-related objects</li>
  *
- *    <li> <code>log</code> - A logging instance</li>
- *  </ul>
- *  You can add your own variables by creating a BSFManagerFilter and
- *  configuring it in struts-scripting.properties:
- *  <ul>
- *    <li> <code>struts-scripting.filters.FILTER_NAME.class=FILTER_CLASS</code>
- *    - The class implementing BSFManagerFilter where FILTER_NAME is the name
- *    you are calling the filter.</li>
- *    <li> <code>
- *     struts-scripting.filters.FILTER_NAME.PROPERTY_NAME=PROPERTY_VALUE
- *      </code> - A property to be used by the filter.</li>
- *  </ul>
- *  <br />
- *  <br />
- *  To use other scripting engines other than BeanShell, create a file called
- *  <code>struts-scripting.properties</code> and add two properties for each
- *  engine:
- *  <ul>
- *    <li> <code>struts-scripting.engine.ENGINE_NAME.class</code> - The class of
- *    the BSF engine where ENGINE_NAME is the name you are calling the engine.
- *    </li>
- *    <li> <code>struts-scripting.engine.ENGINE_NAME.extensions</code> - A
- *    comma-delimited list of file extensions that will be used to identify the
- *    engine to use to execute the script.</li>
- *  </ul>
- *  This code was originally based off code from JPublish, but has since been
- *  almost completely rewritten.
+ * <p>A number of pre-defined variables are available to the script:</p>
+ *
+ * <ul>
+ *   <li> {@code request} - The HTTP request</li>
+ *   <li> {@code response} - The HTTP response</li>
+ *   <li> {@code session} - The session</li>
+ *   <li> {@code application} - The servlet context</li>
+ *   <li> {@code struts} - A grouping of all Struts-related objects</li>
+ *   <li> {@code log} - A logging instance</li>
+ * </ul>
+ *
+ * <p>You can add your own variables by creating a {@link ScriptContextFilter}
+ * and configuring it in struts-scripting.properties:</p>
+ *
+ * <ul>
+ *   <li>{@code struts-scripting.filters.FILTER_NAME.class=FILTER_CLASS}
+ *       - The class implementing {@code ScriptContextFilter} where FILTER_NAME
+ *         is the name you are calling the filter.</li>
+ *   <li> {@code struts-scripting.filters.FILTER_NAME.PROPERTY_NAME=PROPERTY_VALUE}
+ *       - A property to be used by the filter.</li>
+ * </ul>
+ *
+ * <p>To use other scripting engines, add them to the classpath.</p>
+ *
+ * <p>To register more extensions to a scripting engine, create a file called
+ * {@code struts-scripting.properties} and add one propertie for each
+ * engine:</p>
+ *
+ * <ul>
+ *    <li>{@code struts-scripting.engine.ENGINE_NAME.extensions}
+ *        - A comma-delimited list of file extensions that will be used to
+ *        identify the engine to use to execute the script.</li>
+ * </ul>
+ *
+ * <p>This code was originally based off code from JPublish, but has since been
+ * almost completely rewritten.</p>
  */
 public class ScriptAction extends Action {
 
     /**  The logging instance. */
     protected static final Log LOG = LogFactory.getLog(ScriptAction.class);
+
+    /** The entry-point to JSR223-scripting */
+    private static final ScriptEngineManager SCRIPT_ENGINE_MANAGER = new ScriptEngineManager();
 
     /**  The default path to the properties file. */
     protected static final String PROPS_PATH = "/struts-scripting.properties";
@@ -127,13 +128,13 @@ public class ScriptAction extends Action {
     protected static final String FILTERS_BASE = "struts-scripting.filters.";
 
     /**  A list of initialized filters. */
-    private static BSFManagerFilter[] filters = null;
+    private static ScriptContextFilter[] filters = null;
 
     /**  Holds the "compiled" scripts and their information. */
-    private Map<String, Script>  scripts = new HashMap<>();
+    private Map<String, Script>  scripts = new ConcurrentHashMap<>();
 
     static {
-        Properties props = new Properties();
+        final Properties props = new Properties();
         try {
             InputStream in =
                     ScriptAction.class.getClassLoader()
@@ -159,20 +160,75 @@ public class ScriptAction extends Action {
             LOG.warn("Unable to load struts-scripting.properties, using "
                      + " default engine mappings.");
         }
-        int pos = ENGINE_BASE.length();
+
+        final List<ScriptEngineFactory> allSefs = SCRIPT_ENGINE_MANAGER.getEngineFactories();
+
+        final int pos = ENGINE_BASE.length();
         for (Enumeration<?> e = props.propertyNames(); e.hasMoreElements();) {
-            String name = e.nextElement().toString();
-            if (name.startsWith(ENGINE_BASE) && name.endsWith(".class")) {
-                String type = name.substring(pos, name.indexOf('.', pos));
-                String cls = props.getProperty(name);
-                String ext = props.getProperty(ENGINE_BASE + type
-                         + ".extensions", "");
-                String[] exts = split(ext, ",");
-                if (LOG.isInfoEnabled()) {
-                    LOG.info("Loading BSF engine name:" + type + " class:"
-                             + cls + " ext:" + ext);
+            final String propName = e.nextElement().toString();
+            if (propName.startsWith(ENGINE_BASE) && propName.endsWith(".extensions")) {
+                final String name = propName.substring(pos, propName.indexOf('.', pos));
+
+                ScriptEngineFactory[] sefs =
+                        allSefs.stream().filter((sef) -> sef.getNames().contains(name))
+                        .toArray(ScriptEngineFactory[]::new);
+
+                if (sefs.length == 0) {
+                    if (LOG.isWarnEnabled()) {
+                        LOG.warn("No ScriptEngineFactory found - name: '" + name + "'");
+                    }
+                    continue;
+                } else if (sefs.length > 1) {
+                    if (LOG.isWarnEnabled()) {
+                        LOG.warn("More than one ScriptEngineFactory found, taking the first one - name: '" + name + "'");
+                    }
                 }
-                BSFManager.registerScriptingEngine(type, cls, exts);
+
+                final ScriptEngineFactory sef = sefs[0];
+                if (LOG.isInfoEnabled()) {
+                    LOG.info("Found ScriptingEngineFactory - name: " + name
+                            + " language: " + sef.getLanguageName()
+                            + " " + sef.getLanguageVersion());
+                }
+
+                final String propValue = props.getProperty(propName).trim();
+                final String[] exts = propValue.split(",");
+                if (exts.length == 0) {
+                    continue;
+                }
+
+                if (LOG.isInfoEnabled()) {
+                    final StringBuilder sb = new StringBuilder();
+                    sb.append("Registering extension");
+                    if (exts.length > 1) {
+                        sb.append('s');
+                    }
+                    sb
+                        .append(" to ScriptingEngineFactory - name: '")
+                        .append(name)
+                        .append("' ext");
+
+                    if (exts.length > 1) {
+                        sb.append('s');
+                    }
+                    sb.append(": ");
+                    if (exts.length == 1) {
+                        sb
+                            .append('\'')
+                            .append(exts[0])
+                            .append('\'');
+                    } else {
+                        sb.append(Arrays.toString(exts));
+                    }
+                    LOG.info(sb.toString());
+                }
+
+                for (String ext : exts) {
+                    ext = ext.trim();
+                    if (!ext.isEmpty()) {
+                        SCRIPT_ENGINE_MANAGER.registerEngineExtension(ext, sef);
+                    }
+                }
             }
         }
         filters = loadFilters(props);
@@ -180,14 +236,16 @@ public class ScriptAction extends Action {
 
 
     /**
-     *  Executes the script.
+     * Executes the script.
      *
-     *@param  mapping        The action mapping
-     *@param  form           The action form
-     *@param  request        The request object
-     *@param  response       The response object
-     *@return                The action forward
-     *@exception  Exception  If something goes wrong
+     * @param  mapping  The action mapping
+     * @param  form     The action form
+     * @param  request  The request object
+     * @param  response The response object
+     *
+     * @return The action forward
+     *
+     * @throws Exception If something goes wrong
      */
     public ActionForward execute(ActionMapping mapping,
             ActionForm form,
@@ -195,17 +253,12 @@ public class ScriptAction extends Action {
             HttpServletResponse response)
              throws Exception {
 
-        BSFManager bsfManager = new BSFManager();
-
-        String scriptName = null;
-        try {
-            scriptName = parseScriptName(mapping.getParameter(), bsfManager);
-        } catch (Exception ex) {
-            LOG.error("Unable to parse " + mapping.getParameter(), ex);
-            throw new Exception("Unable to parse " + mapping.getParameter(), ex);
-        }
+        final Map<String, String> params = new LinkedHashMap<>();
+        final String scriptName = parseScriptName(mapping.getParameter(), params);
         if (scriptName == null) {
-            LOG.error("No script specified in the parameter attribute");
+            if (LOG.isErrorEnabled()) {
+                LOG.error("No script specified in the parameter attribute");
+            }
             throw new Exception("No script specified");
         }
 
@@ -218,32 +271,32 @@ public class ScriptAction extends Action {
 
         Script script = loadScript(scriptName, application);
 
-        bsfManager.declareBean("request", request,
-                HttpServletRequest.class);
+        Bindings bindings = script.getBindings();
+        bindings.putAll(params);
 
-        bsfManager.declareBean("response", response,
-                HttpServletResponse.class);
+        bindings.put("request", request);
+
+        bindings.put("response", response);
 
         if (session == null) {
             LOG.debug("HTTP session is null");
         } else {
-            bsfManager.declareBean("session", session, HttpSession.class);
+            bindings.put("session", session);
         }
 
-        bsfManager.declareBean("application", application,
-                ServletContext.class);
+        bindings.put("application", application);
 
-        bsfManager.declareBean("log", LOG, Log.class);
+        bindings.put("log", LOG);
         StrutsInfo struts = new StrutsInfo(this, mapping, form,
                 getResources(request));
-        bsfManager.declareBean("struts", struts, StrutsInfo.class);
+        bindings.put("struts", struts);
 
-        for (int x = 0; x < filters.length; x++) {
-            filters[x].apply(bsfManager);
+        final ScriptContext scriptContext = script.scriptEngine.getContext();
+        for (ScriptContextFilter filter : filters) {
+            filter.apply(scriptContext);
         }
 
-        bsfManager.exec(script.lang, script.file.getCanonicalPath(), 0, 0,
-                script.string);
+        script.eval();
 
         ActionForward af = struts.getForward();
         return af;
@@ -251,49 +304,92 @@ public class ScriptAction extends Action {
 
 
     /**
-     *  Parses the script name and puts any url parameters in the context.
+     * Parses the script name and puts any URL parameters in
+     * the context.
      *
-     *@param  url            The script url consisting of a path and optional
-     *      parameters
-     *@param  manager        The BSF manager to declare new parameters in
-     *@return                The name of the script to execute
-     *@exception  Exception  If something goes wrong
+     * @param url The script URL consisting of a path and
+     *     optional parameters
+     * @param params A parameter-map to declare new parameters in
+     *
+     * @return The name of the script to execute
      */
-    protected String parseScriptName(String url, BSFManager manager)
-             throws Exception {
+    protected String parseScriptName(String url, Map<String, String> params) {
+
         if (LOG.isDebugEnabled()) {
             LOG.debug("Parsing " + url);
         }
-        String name = null;
-        if (url != null) {
-            String[] parsed = split(url, "?");
-            name = parsed[0];
-            if (parsed.length == 2) {
-                if (LOG.isDebugEnabled()) {
-                    LOG.debug("Found a query string");
-                }
-                String[] args = split(parsed[1], "&");
-                for (int x = 0; x < args.length; x++) {
-                    String[] param = split(args[x], "=");
-                    Object o = manager.lookupBean(param[0]);
-                    if (o != null) {
-                        LOG.warn("BSF variable " + param[0]
-                                 + " already exists");
-                        param[0] = "_" + param[0];
-                    }
-                    manager.declareBean(param[0], param[1], String.class);
-                    if (LOG.isDebugEnabled()) {
-                        LOG.debug("Registering param " + param[0]
-                                 + " with value " + param[1]);
-                    }
-                }
-            } else {
-                if (LOG.isDebugEnabled()) {
-                    LOG.debug("No query string:" + parsed.length);
-                }
+
+        if (url == null) {
+            return null;
+        }
+
+        final String[] parsed = url.split("\\?", 2);
+
+        if (parsed.length == 0) {
+            return null;
+        }
+
+        if (parsed.length == 1) {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("No query string:" + parsed[0]);
+            }
+            return parsed[0];
+        }
+
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Found a query string");
+        }
+
+        final String[] args = parsed[1].split("&");
+        for (String arg : args) {
+            final int i = arg.indexOf('=');
+            String key = urlDecode(i > 0 ? arg.substring(0, i) : arg);
+
+            while (params.containsKey(key)) {
+                LOG.warn("Script variable " + key
+                         + " already exists");
+                key = "_" + key;
+            }
+
+            final String value = i > 0 && arg.length() > i + 1
+                    ? urlDecode(arg.substring(i + 1))
+                    : null;
+
+            params.put(key, value);
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("Registering param " + key
+                         + " with value " + value);
             }
         }
-        return name;
+
+        return parsed[0];
+    }
+
+    /**
+     * Decodes a {@code application/x-www-form-urlencoded} string
+     * using a the UTF-8-encoding scheme.
+     *
+     * @param s the {@code String} to decode
+     *
+     * @return the newly decoded {@code String}
+     *
+     * @see URLDecoder#decode(java.lang.String, java.lang.String)
+     */
+    private String urlDecode(final String s) {
+        if (s == null) {
+            return null;
+        }
+
+        try {
+            return URLDecoder.decode(s, StandardCharsets.UTF_8.toString());
+        } catch (UnsupportedEncodingException e) {
+            // Should never thrown
+            if (LOG.isErrorEnabled()) {
+                LOG.error("URL-Decode: ", e);
+            }
+        }
+
+        return null;
     }
 
 
@@ -301,55 +397,39 @@ public class ScriptAction extends Action {
      *  Loads the script from cache if possible. Reloads if the script has been
      *  recently modified.
      *
-     *@param  name     The name of the script
-     *@param  context  The servlet context
-     *@return          The script object
+     * @param  name    The name of the script
+     * @param  context The servlet context
+     *
+     * @return         The script object
+     *
+     * @throws IOException if an I/O error occurs
+     * @throws ScriptException if compilation fails
      */
-    protected Script loadScript(String name, ServletContext context) {
+    protected Script loadScript(final String name, final ServletContext context)
+            throws IOException, ScriptException {
 
-        Script script = scripts.get(name);
-        if (script == null) {
-            script = new Script();
-            script.file = new File(context.getRealPath(name));
-            try {
-                script.lang =
-                        BSFManager.getLangFromFilename(script.file.getName());
-            } catch (BSFException ex) {
-                LOG.warn(ex, ex);
+        final Script script = scripts.compute(name, (key, oldValue) -> {
+            if (oldValue == null) {
+                return new Script(SCRIPT_ENGINE_MANAGER, context, key);
             }
-        }
 
-        boolean reloadScript = false;
-        long scriptLastModified = script.file.lastModified();
-        if (scriptLastModified > script.timeLastLoaded) {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("Loading updated or new script: "
-                        + script.file.getName());
+            oldValue.checkNewContent();
+            return oldValue;
+        });
+
+        try {
+            script.checkExceptions();
+        } catch (IOException e) {
+            if (LOG.isErrorEnabled()) {
+                LOG.error("Unable to load script: " + script.name, e);
             }
-            reloadScript = true;
-        }
-
-        if (reloadScript || script.string == null) {
-            synchronized (this) {
-                script.timeLastLoaded = System.currentTimeMillis();
-                FileReader reader = null;
-                try {
-                    reader = new FileReader(script.file);
-                    script.string = IOUtils.getStringFromReader(reader);
-                } catch (IOException ex) {
-                    LOG.error("Unable to load script: " + script.file, ex);
-                } finally {
-                    if (reader != null) {
-                        try {
-                            reader.close();
-                        } catch (IOException ex) {
-                            LOG.debug(ex, ex);
-                        }
-                    }
-                }
+            throw e;
+        } catch (ScriptException e) {
+            if (LOG.isErrorEnabled()) {
+                LOG.error("Unable to compile script: " + script.name, e);
             }
+            throw e;
         }
-
         return script;
     }
 
@@ -360,146 +440,104 @@ public class ScriptAction extends Action {
      *@param  props  The properties defining the filters
      *@return        An array of the loaded filters
      */
-    protected static BSFManagerFilter[] loadFilters(Properties props) {
-        ArrayList<BSFManagerFilter> list = new ArrayList<>();
+    protected static ScriptContextFilter[] loadFilters(Properties props) {
+        ArrayList<ScriptContextFilter> list = new ArrayList<>();
         for (Enumeration<?> e = props.propertyNames(); e.hasMoreElements();) {
-            String prop = e.nextElement().toString();
-            if (prop.startsWith(FILTERS_BASE) && prop.endsWith("class")) {
-                String type = prop.substring(FILTERS_BASE.length(),
-                        prop.indexOf(".", FILTERS_BASE.length()));
-                String claz = props.getProperty(prop);
+            final String propName = e.nextElement().toString().trim();
+            if (propName.startsWith(FILTERS_BASE) && propName.endsWith("class")) {
+                String name = propName.substring(FILTERS_BASE.length(),
+                        propName.indexOf(".", FILTERS_BASE.length()));
+                String clazz = props.getProperty(propName).trim();
                 try {
-                    Class<?> cls = Class.forName(claz);
-                    BSFManagerFilter f = (BSFManagerFilter) cls.newInstance();
-                    f.init(type, props);
+                    Class<? extends ScriptContextFilter> cls =
+                            Class.forName(clazz).asSubclass(ScriptContextFilter.class);
+                    ScriptContextFilter f = cls.getDeclaredConstructor().newInstance();
+                    f.init(name, props);
                     list.add(f);
                     if (LOG.isInfoEnabled()) {
-                        LOG.info("Loaded " + type + " filter: " + claz);
+                        LOG.info("Loaded " + name + " filter: " + clazz);
                     }
                 } catch (Exception ex) {
-                    LOG.error("Unable to load " + type + " filter: " + claz);
+                    LOG.error("Unable to load " + name + " filter: " + clazz);
                 }
             }
         }
-        return list.toArray(new BSFManagerFilter[0]);
+        return list.toArray(new ScriptContextFilter[0]);
     }
-
-
-    /**
-     *  Splits a line with the given delimiter.
-     *
-     *@param  line       The line to split
-     *@param  delimiter  The string to split with
-     *@return            An array of substrings
-     */
-    protected static String[] split(String line, String delimiter) {
-        if (line == null || "".equals(line)) {
-            return new String[]{};
-        }
-
-        List<String> lst = new ArrayList<>();
-        for (StringTokenizer st = new StringTokenizer(line, delimiter);
-            st.hasMoreTokens();) {
-            lst.add(st.nextToken());
-        }
-        return lst.toArray(new String[0]);
-    }
-
+    
 
     // These methods seem necessary as some scripting engines are not able to
     // access Action's protected methods.  Ugly? yes... any suggestions?
 
     /**
-     *  Saves a token.
+     * Saves a token.
      *
-     *@param  req  The request object
+     * @param  req  The request object
      */
     public void saveToken(HttpServletRequest req) {
         super.saveToken(req);
     }
 
-
     /**
-     *  Checks to see if the request is cancelled.
+     * Checks to see if the request is cancelled.
      *
-     *@param  req  The request object
-     *@return      True if cancelled
+     * @param  req  The request object
+     * @return True if cancelled
      */
     public boolean isCancelled(HttpServletRequest req) {
         return super.isCancelled(req);
     }
 
-
     /**
-     *  Checks to see if the token is valid.
+     * Checks to see if the token is valid.
      *
-     *@param  req  The request object
-     *@return      True if valid
+     * @param  req  The request object
+     * @return True if valid
      */
     public boolean isTokenValid(HttpServletRequest req) {
         return super.isTokenValid(req);
     }
 
-
     /**
-     *  Resets the token.
+     * Resets the token.
      *
-     *@param  req  The request object
+     * @param  req  The request object
      */
     public void resetToken(HttpServletRequest req) {
         super.resetToken(req);
     }
 
-
     /**
-     *  Gets the locale.
+     * Gets the locale.
      *
-     *@param  req  The request object
-     *@return      The locale value
+     * @param  req  The request object
+     * @return The locale value
      */
     public Locale getLocale(HttpServletRequest req) {
         return super.getLocale(req);
     }
 
-
     /**
-     *  Saves the messages to the request.
+     * Saves the messages to the request.
      *
-     *@param  req  The request object
-     *@param  mes  The action messages
+     * @param  req  The request object
+     * @param  mes  The action messages
      */
     public void saveMessages(HttpServletRequest req, ActionMessages mes) {
         super.saveMessages(req, mes);
     }
 
-
     /**
-     *  Saves the errors to the request.
+     * Saves the errors to the request.
      *
-     *@param  req    The request object
-     *@param  errs   The action errors
-     *@deprecated    Use saveErrors(HttpServletRequest, ActionMessages) instead.
-     *      This will be removed after Struts 1.2.
+     * @param  req    The request object
+     * @param  errs   The action errors
+     *
+     * @deprecated Use saveErrors(HttpServletRequest, ActionMessages) instead.
+     *     This will be removed after Struts 1.2.
      */
     @Deprecated
     public void saveErrors(HttpServletRequest req, ActionErrors errs) {
         super.saveErrors(req, errs);
-    }
-
-
-    /**  Represents a saved script. */
-    class Script {
-
-        /**  The script file. */
-        public File file;
-
-        /**  The language the script is in. */
-        public String lang = null;
-
-        /**  The time when the script was last used. */
-        public long timeLastLoaded = 0;
-
-        /**  The contents of the script file. */
-        public String string = null;
     }
 }

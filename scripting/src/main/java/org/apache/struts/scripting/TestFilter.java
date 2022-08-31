@@ -21,27 +21,24 @@
 
 package org.apache.struts.scripting;
 
-// util imports:
 import java.util.Properties;
 
-// logging imports:
+import javax.script.ScriptContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-// misc imports:
-import org.apache.bsf.BSFManager;
-
 
 /**
- *  Tests to make sure the filtering system is working.
+ * Tests to make sure the filtering system is working.
  */
-public class TestFilter implements BSFManagerFilter {
+public class TestFilter implements ScriptContextFilter {
 
     /** Logging instance. */
     private static final Log LOG = LogFactory.getLog(TestFilter.class);
 
     /**
-     *  Initializes the filter.
+     * Initializes the filter.
      *
      * @param name The name of the filter
      * @param props The properties
@@ -51,13 +48,14 @@ public class TestFilter implements BSFManagerFilter {
     }
 
     /**
-     *  Applies the filter.
+     * Applies the filter.
      *
-     * @param mgr The bsf manager
-     * @return The bsf manager
+     * @param context The scripting context
+     *
+     * @return The scripting context
      */
-    public BSFManager apply(BSFManager mgr) {
+    public ScriptContext apply(ScriptContext context) {
         LOG.info("Filtering in TestFilter");
-        return mgr;
+        return context;
     }
 }

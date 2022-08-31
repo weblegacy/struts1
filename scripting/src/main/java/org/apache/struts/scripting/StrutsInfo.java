@@ -21,7 +21,6 @@
 
 package org.apache.struts.scripting;
 
-// struts imports:
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -29,7 +28,7 @@ import org.apache.struts.util.MessageResources;
 
 
 /**
- *  Holds Struts objects.
+ * Holds Struts objects.
  */
 public class StrutsInfo {
 
@@ -52,7 +51,7 @@ public class StrutsInfo {
     private MessageResources res = null;
 
     /**
-     *  Constructor.
+     * Constructor.
      *
      * @param action The action instance
      * @param mapping The action mapping
@@ -68,7 +67,7 @@ public class StrutsInfo {
     }
 
     /**
-     *  Sets the forward name.
+     * Sets the forward name.
      *
      * @param f The forward name
      */
@@ -77,8 +76,8 @@ public class StrutsInfo {
     }
 
     /**
-     *  Gets the forward object.  If none is set, it tries to find the set
-     *  forward name.
+     * Gets the forward object. If none is set, it tries to find the set
+     * forward name.
      *
      * @return The action forward
      */
@@ -92,7 +91,7 @@ public class StrutsInfo {
     }
 
     /**
-     *  Sets the action forward object.
+     * Sets the action forward object.
      *
      * @param f The action forward
      */
@@ -101,7 +100,7 @@ public class StrutsInfo {
     }
 
     /**
-     *  Sets the action form.
+     * Sets the action form.
      *
      * @param form The action form
      */
@@ -110,7 +109,7 @@ public class StrutsInfo {
     }
 
     /**
-     *  Sets the action mapping.
+     * Sets the action mapping.
      *
      * @param mapping The action mapping
      */
@@ -119,7 +118,7 @@ public class StrutsInfo {
     }
 
     /**
-     *  Sets the action instance.
+     * Sets the action instance.
      *
      * @param action The Struts action
      */
@@ -128,7 +127,7 @@ public class StrutsInfo {
     }
 
     /**
-     *  Sets the message resources.
+     * Sets the message resources.
      *
      * @param res The message resources
      */
@@ -137,7 +136,7 @@ public class StrutsInfo {
     }
 
     /**
-     *  Gets the action form.
+     * Gets the action form.
      *
      * @return The action form
      */
@@ -146,7 +145,7 @@ public class StrutsInfo {
     }
 
     /**
-     *  Gets the action mapping.
+     * Gets the action mapping.
      *
      * @return The action mapping
      */
@@ -155,7 +154,7 @@ public class StrutsInfo {
     }
 
     /**
-     *  Gets the action instance.
+     * Gets the action instance.
      *
      * @return The Struts action
      */
@@ -164,7 +163,7 @@ public class StrutsInfo {
     }
 
     /**
-     *  Gets the message resources.
+     * Gets the message resources.
      *
      * @return The message resources
      */

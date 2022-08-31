@@ -43,10 +43,6 @@
             <artifactId>struts-core</artifactId>
         </dependency>
         <dependency>
-            <groupId>bsf</groupId>
-            <artifactId>bsf</artifactId>
-        </dependency>
-        <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
         </dependency>

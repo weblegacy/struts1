@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Correct renderer-type in `LoadMessagesTag`
 * Bump `groovy` from 3.0.9 to 4.0.4
 * Replace `bsf`-dependency with JSR-223 `javax.script`
 * Bump `groovy` from 1.0 to 3.0.9

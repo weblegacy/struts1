@@ -87,7 +87,7 @@ public class LoadMessagesTag extends AbstractFacesTag {
      * our component.
      */
     public String getRendererType() {
-        return "org.apache.struts.faces.Message";
+        return "org.apache.struts.faces.LoadMessages";
     }
 
 

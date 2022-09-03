@@ -464,7 +464,7 @@ public class ScriptAction extends Action {
         }
         return list.toArray(new ScriptContextFilter[0]);
     }
-    
+
 
     // These methods seem necessary as some scripting engines are not able to
     // access Action's protected methods.  Ugly? yes... any suggestions?

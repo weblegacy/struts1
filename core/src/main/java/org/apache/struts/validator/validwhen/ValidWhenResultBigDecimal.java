@@ -1,5 +1,3 @@
-// $ANTLR 2.7.7 (20060906): "ValidWhenParser.g" -> "ValidWhenParser.java"$
-
 /*
  * $Id$
  *
@@ -20,31 +18,34 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.apache.struts.validator.validwhen;
 
-public interface ValidWhenParserTokenTypes {
-    int EOF = 1;
-    int NULL_TREE_LOOKAHEAD = 3;
-    int DECIMAL_LITERAL = 4;
-    int DEC_INT_LITERAL = 5;
-    int HEX_INT_LITERAL = 6;
-    int OCTAL_INT_LITERAL = 7;
-    int STRING_LITERAL = 8;
-    int IDENTIFIER = 9;
-    int LBRACKET = 10;
-    int RBRACKET = 11;
-    int LITERAL_null = 12;
-    int THIS = 13;
-    int LPAREN = 14;
-    int RPAREN = 15;
-    int ANDSIGN = 16;
-    int ORSIGN = 17;
-    int EQUALSIGN = 18;
-    int GREATERTHANSIGN = 19;
-    int GREATEREQUALSIGN = 20;
-    int LESSTHANSIGN = 21;
-    int LESSEQUALSIGN = 22;
-    int NOTEQUALSIGN = 23;
-    int WS = 24;
+/**
+ * Holds the (interim) result during processing the parsing-tree.
+ * The result has is a {@code BigDecimal}.
+ *
+ * @author Graff Stefan
+ *
+ * @since Struts 1.4.1
+ */
+import java.math.BigDecimal;
+
+/**
+ * Holds the (interim) result during processing the parsing-tree.
+ *
+ * @author Graff Stefan
+ *
+ * @param <T> the current type of the result
+ */
+public class ValidWhenResultBigDecimal extends ValidWhenResult<BigDecimal> {
+
+    /**
+     * Constructs this class with the type {@code BigDecimal}.
+     *
+     * @param value the current value of
+     *     the result
+     */
+    public ValidWhenResultBigDecimal(String value) {
+        super(BigDecimal.class, new BigDecimal(value));
+    }
 }

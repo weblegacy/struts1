@@ -49,6 +49,21 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.antlr</groupId>
+                <artifactId>antlr4-maven-plugin</artifactId>
+                <configuration>
+                    <visitor>true</visitor>
+                    <listener>false</listener>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>antlr4</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
      </build>
 
@@ -70,8 +85,8 @@
 
     <dependencies>
         <dependency>
-            <groupId>antlr</groupId>
-            <artifactId>antlr</artifactId>
+            <groupId>org.antlr</groupId>
+            <artifactId>antlr4-runtime</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>

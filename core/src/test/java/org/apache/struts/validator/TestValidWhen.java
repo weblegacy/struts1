@@ -24,13 +24,16 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import java.io.StringReader;
-
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.validator.util.ValidatorUtils;
+import org.apache.struts.validator.validwhen.ValidWhenEvaluator;
 import org.apache.struts.validator.validwhen.ValidWhenLexer;
 import org.apache.struts.validator.validwhen.ValidWhenParser;
+import org.apache.struts.validator.validwhen.ValidWhenParser.ExpressionContext;
+import org.apache.struts.validator.validwhen.ValidWhenResult;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -293,8 +296,12 @@ public class TestValidWhen {
         boolean result = false;
 
         try {
+//            System.out.println("---------------------------");
+//            System.out.println(test + " " + expected);
             result = doParse(test, bean, index, property);
         } catch (Exception ex) {
+//            System.out.println("Exception: " + ex);
+//            ex.printStackTrace();
             log.error("Parsing " + test + " for property '" + property + "'", ex);
             fail("Parsing " + test + " threw " + ex);
         }
@@ -349,16 +356,15 @@ public class TestValidWhen {
                                           : ValidatorUtils.getValueAsString(bean,
                 property);
 
-        ValidWhenLexer lexer = new ValidWhenLexer(new StringReader(test));
+        ValidWhenLexer lexer = new ValidWhenLexer(CharStreams.fromString(test));
 
-        ValidWhenParser parser = new ValidWhenParser(lexer);
+        ValidWhenParser parser = new ValidWhenParser(new CommonTokenStream(lexer));
 
-        parser.setForm(bean);
-        parser.setIndex(index);
-        parser.setValue(value);
+        ValidWhenEvaluator validWhenEvaluator = new ValidWhenEvaluator(bean, value, index);
 
-        parser.expression();
+        ExpressionContext expressionContext = parser.expression();
+        ValidWhenResult<?> result = validWhenEvaluator.visitExpression(expressionContext);
 
-        return parser.getResult();
+        return result == null ? false : result.toBoolean();
     }
 }

@@ -20,6 +20,10 @@
  */
 package org.apache.struts.validator.validwhen;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.commons.validator.Field;
@@ -30,10 +34,7 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.validator.Resources;
-
-import javax.servlet.http.HttpServletRequest;
-
-import java.io.StringReader;
+import org.apache.struts.validator.validwhen.ValidWhenParser.ExpressionContext;
 
 /**
  * This class contains the validwhen validation that is used in the
@@ -126,7 +127,7 @@ public class ValidWhen {
         ValidWhenLexer lexer = null;
 
         try {
-            lexer = new ValidWhenLexer(new StringReader(test));
+            lexer = new ValidWhenLexer(CharStreams.fromString(test));
         } catch (Exception ex) {
             String logErrorMsg =
                 "ValidWhenLexer Error for field ' " + field.getKey() + "' - "
@@ -145,7 +146,7 @@ public class ValidWhen {
         ValidWhenParser parser = null;
 
         try {
-            parser = new ValidWhenParser(lexer);
+            parser = new ValidWhenParser(new CommonTokenStream(lexer));
         } catch (Exception ex) {
             String logErrorMsg =
                 "ValidWhenParser Error for field ' " + field.getKey() + "' - "
@@ -160,13 +161,12 @@ public class ValidWhen {
             return false;
         }
 
-        parser.setForm(form);
-        parser.setIndex(index);
-        parser.setValue(value);
+        ValidWhenEvaluator validWhenEvaluator = new ValidWhenEvaluator(form, value, index);
 
         try {
-            parser.expression();
-            valid = parser.getResult();
+            ExpressionContext expressionContext = parser.expression();
+            ValidWhenResult<?> result = validWhenEvaluator.visitExpression(expressionContext);
+            valid = result == null ? false : result.toBoolean();
         } catch (Exception ex) {
             String logErrorMsg =
                 "ValidWhen Error for field ' " + field.getKey() + "' - " + ex;

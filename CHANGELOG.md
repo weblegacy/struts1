@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `antlr` from 2.7.7 to 4.10.1 and always generate grammar
 * Correct renderer-type in `LoadMessagesTag`
 * Bump `groovy` from 3.0.9 to 4.0.4
 * Replace `bsf`-dependency with JSR-223 `javax.script`

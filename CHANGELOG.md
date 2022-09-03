@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Comment out forgotten debug-output
 * Downgrade `antlr` from 4.10.1 to 4.9.3 because JDK-1.8
 * Trim lines
 * Bump `antlr` from 2.7.7 to 4.10.1 and always generate grammar

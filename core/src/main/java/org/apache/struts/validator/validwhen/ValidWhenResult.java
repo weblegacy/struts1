@@ -45,7 +45,7 @@ public class ValidWhenResult<T> {
      *     the result
      */
     protected ValidWhenResult(Class<T> type, T value) {
-        System.out.println(">>> " + type + " " + value);
+//        System.out.println(">>> " + type + " " + value);
         this.type = type;
         this.value = value;
     }

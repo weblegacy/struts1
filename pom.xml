@@ -369,7 +369,7 @@
         <seleniumVersion>4.4.0</seleniumVersion>
         <taglibsVersion>1.2.5</taglibsVersion>
         <tilesVersion>2.0.7</tilesVersion>
-        <antlrVersion>4.10.1</antlrVersion>
+        <antlrVersion>4.9.3</antlrVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
         <struts.osgi.import>*</struts.osgi.import>

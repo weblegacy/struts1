@@ -60,7 +60,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 ### Building-Steps
 
-1. Clean full project
+1. Clean full project  
    `mvn -Pdormant,apps,assembly,itest clean`
 2. Build and test project
    * with example-apps  

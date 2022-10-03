@@ -28,6 +28,10 @@ import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.tiles.TilesContainer;
 import org.apache.tiles.access.TilesAccess;
+import org.apache.tiles.request.ApplicationContext;
+import org.apache.tiles.request.Request;
+import org.apache.tiles.request.servlet.ServletRequest;
+import org.apache.tiles.request.servlet.ServletUtil;
 
 
 /**
@@ -97,17 +101,18 @@ public class TilesPreProcessor implements Command {
         }
 
 
-        TilesContainer container = TilesAccess.getContainer(sacontext
-                .getContext());
+        ApplicationContext applicationContext = ServletUtil
+                .getApplicationContext(sacontext.getContext());
+        Request request = new ServletRequest(applicationContext,
+                sacontext.getRequest(), sacontext.getResponse());
+        TilesContainer container = TilesAccess.getContainer(applicationContext);
         if (container == null) {
             LOG.debug("Tiles container not found, so pass to next command.");
             return false;
         }
 
-        if (container.isValidDefinition(forwardConfig.getPath(), new Object[] {
-                sacontext.getRequest(), sacontext.getResponse() })) {
-            container.render(forwardConfig.getPath(), new Object[] {
-                    sacontext.getRequest(), sacontext.getResponse() });
+        if (container.isValidDefinition(forwardConfig.getPath(), request)) {
+            container.render(forwardConfig.getPath(), request);
             sacontext.setForwardConfig(null);
         } else {
             // ignore not found

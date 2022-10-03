@@ -21,42 +21,31 @@
 
 package org.apache.struts.tiles2.util;
 
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Enumeration;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
 
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.collections4.iterators.IteratorEnumeration;
 import org.apache.struts.config.PlugInConfig;
+import org.apache.tiles.request.servlet.ServletApplicationContext;
+
 
 /**
  * Adapts a {@link PlugInConfig} object to become a ServletContext object,
  * exposing init parameters methods.
  */
-public class PlugInConfigContextAdapter implements ServletContext {
+public class PlugInConfigContextAdapter extends ServletApplicationContext {
 
     /**
      * The internal plugin config object.
      */
-    private PlugInConfig plugInConfigObject;
+    private final PlugInConfig plugInConfigObject;
 
     /**
-     * The servlet context.
+     * The <code>Map</code> of context initialization parameters.
      */
-    private ServletContext rootContext;
-
-    /**
-     * The set of all parameter names.
-     */
-    private Set<String> parameterNames;
+    private final Map<String, String> initParam;
 
     /**
      * Constructor.
@@ -64,163 +53,29 @@ public class PlugInConfigContextAdapter implements ServletContext {
      * @param plugInConfigObject The plugin config object to use.
      * @param servletContext The servlet context to use.
      */
-    @SuppressWarnings("unchecked")
     public PlugInConfigContextAdapter(PlugInConfig plugInConfigObject,
             ServletContext servletContext) {
+        super(servletContext);
         this.plugInConfigObject = plugInConfigObject;
-        this.rootContext = servletContext;
-        parameterNames = new LinkedHashSet<>();
-        parameterNames.addAll(this.plugInConfigObject.getProperties().keySet());
-        CollectionUtils.addAll(parameterNames, this.rootContext
-                .getInitParameterNames());
-    }
 
-    /**
-     * Returns an initialization parameter.
-     *
-     * @param parameterName The name of the parameter.
-     * @return The value of the parameter.
-     */
-    public String getInitParameter(String parameterName) {
-        String retValue;
-
-        retValue = (String) plugInConfigObject.getProperties()
-                .get(parameterName);
-        if (retValue == null) {
-            retValue = rootContext.getInitParameter(parameterName);
+        HashMap<String, String> initParam_ = new HashMap<>(super.getInitParams());
+        for (Map.Entry<String, Object> entry : plugInConfigObject.getProperties().entrySet()) {
+            initParam_.put(entry.getKey(), entry.getValue().toString());
         }
-
-        return retValue;
-    }
-
-    /**
-     * Returns the names of all initialization parameters.
-     *
-     * @return The names of all initialization parameters.
-     */
-    public Enumeration<String> getInitParameterNames() {
-        return new IteratorEnumeration<String>(parameterNames.iterator());
-    }
-
-    // The rest of the methods are wrapping implementations of the interface.
-
-    /** {@inheritDoc} */
-    public ServletContext getContext(String string) {
-        return rootContext.getContext(string);
-    }
-
-    /** {@inheritDoc} */
-    public int getMajorVersion() {
-        return rootContext.getMajorVersion();
-    }
-
-    /** {@inheritDoc} */
-    public int getMinorVersion() {
-        return rootContext.getMinorVersion();
-    }
-
-    /** {@inheritDoc} */
-    public String getMimeType(String string) {
-        return rootContext.getMimeType(string);
-    }
-
-    /** {@inheritDoc} */
-    @SuppressWarnings("unchecked")
-    public Set<String> getResourcePaths(String string) {
-        return rootContext.getResourcePaths(string);
-    }
-
-    /** {@inheritDoc} */
-    public URL getResource(String string) throws MalformedURLException {
-        return rootContext.getResource(string);
-    }
-
-    /** {@inheritDoc} */
-    public InputStream getResourceAsStream(String string) {
-        return rootContext.getResourceAsStream(string);
-    }
-
-    /** {@inheritDoc} */
-    public RequestDispatcher getRequestDispatcher(String string) {
-        return rootContext.getRequestDispatcher(string);
-    }
-
-    /** {@inheritDoc} */
-    public RequestDispatcher getNamedDispatcher(String string) {
-        return rootContext.getNamedDispatcher(string);
-    }
-
-    /** {@inheritDoc} */
-    @SuppressWarnings("deprecation")
-    public Servlet getServlet(String string) throws ServletException {
-        return rootContext.getServlet(string);
-    }
-
-    /** {@inheritDoc} */
-    @SuppressWarnings("deprecation")
-    public Enumeration<?> getServlets() {
-        return rootContext.getServlets();
-    }
-
-    /** {@inheritDoc} */
-    @SuppressWarnings("deprecation")
-    public Enumeration<?> getServletNames() {
-        return rootContext.getServletNames();
-    }
-
-    /** {@inheritDoc} */
-    public void log(String string) {
-        rootContext.log(string);
-    }
-
-    /** {@inheritDoc} */
-    @SuppressWarnings("deprecation")
-    public void log(Exception exception, String string) {
-        rootContext.log(exception, string);
-    }
-
-    /** {@inheritDoc} */
-    public void log(String string, Throwable throwable) {
-        rootContext.log(string, throwable);
-    }
-
-    /** {@inheritDoc} */
-    public String getRealPath(String string) {
-        return rootContext.getRealPath(string);
-    }
-
-    /** {@inheritDoc} */
-    public String getServerInfo() {
-        return rootContext.getServerInfo();
-    }
-
-    /** {@inheritDoc} */
-    public Object getAttribute(String string) {
-        return rootContext.getAttribute(string);
-    }
-
-    /** {@inheritDoc} */
-    public Enumeration<?> getAttributeNames() {
-        return rootContext.getAttributeNames();
-    }
-
-    /** {@inheritDoc} */
-    public void setAttribute(String string, Object object) {
-        rootContext.setAttribute(string, object);
-    }
-
-    /** {@inheritDoc} */
-    public void removeAttribute(String string) {
-        rootContext.removeAttribute(string);
-    }
-
-    /** {@inheritDoc} */
-    public String getServletContextName() {
-        return rootContext.getServletContextName();
+        initParam = Collections.unmodifiableMap(initParam_);
     }
 
     @Override
-    public String getContextPath() {
-        return rootContext.getContextPath();
+    public Map<String, String> getInitParams() {
+        return initParam;
+    }
+
+    /**
+     * Returns the internal plugin config object.
+     *
+     * @return the internal plugin config object
+     */
+    public PlugInConfig getPlugInConfigObject() {
+        return plugInConfigObject;
     }
 }

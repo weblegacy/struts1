@@ -368,7 +368,8 @@
         <groovyVersion>4.0.4</groovyVersion>
         <seleniumVersion>4.4.0</seleniumVersion>
         <taglibsVersion>1.2.5</taglibsVersion>
-        <tilesVersion>2.0.7</tilesVersion>
+        <tilesVersion>3.0.8</tilesVersion>
+        <tilesRequestVersion>1.0.7</tilesRequestVersion>
         <antlrVersion>4.9.3</antlrVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
@@ -811,17 +812,27 @@
                     <dependencyLink>
                       <groupId>org.apache.tiles</groupId>
                       <artifactId>tiles-api</artifactId>
-                      <url>https://tiles.apache.org/2.2/framework/apidocs/</url>
+                      <url>https://tiles.apache.org/framework/apidocs/</url>
                     </dependencyLink>
                     <dependencyLink>
                       <groupId>org.apache.tiles</groupId>
                       <artifactId>tiles-core</artifactId>
-                      <url>https://tiles.apache.org/2.2/framework/apidocs/</url>
+                      <url>https://tiles.apache.org/framework/apidocs/</url>
                     </dependencyLink>
                     <dependencyLink>
                       <groupId>org.apache.tiles</groupId>
                       <artifactId>tiles-jsp</artifactId>
-                      <url>https://tiles.apache.org/2.2/framework/apidocs/</url>
+                      <url>https://tiles.apache.org/framework/apidocs/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.apache.tiles</groupId>
+                      <artifactId>tiles-request-api</artifactId>
+                      <url>https://tiles.apache.org/tiles-request/apidocs/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.apache.tiles</groupId>
+                      <artifactId>tiles-request-servlet</artifactId>
+                      <url>https://tiles.apache.org/tiles-request/apidocs/</url>
                     </dependencyLink>
                   </dependencyLinks>
                   <links>
@@ -1067,6 +1078,16 @@
                <groupId>org.apache.tiles</groupId>
                <artifactId>tiles-jsp</artifactId>
                <version>${tilesVersion}</version>
+            </dependency>
+            <dependency>
+               <groupId>org.apache.tiles</groupId>
+               <artifactId>tiles-request-api</artifactId>
+               <version>${tilesRequestVersion}</version>
+            </dependency>
+            <dependency>
+               <groupId>org.apache.tiles</groupId>
+               <artifactId>tiles-request-servlet</artifactId>
+               <version>${tilesRequestVersion}</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>

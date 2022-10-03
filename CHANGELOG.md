@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `apache tiles` from 2.0.7 to 3.0.8
 * Comment out forgotten debug-output
 * Downgrade `antlr` from 4.10.1 to 4.9.3 because JDK-1.8
 * Trim lines

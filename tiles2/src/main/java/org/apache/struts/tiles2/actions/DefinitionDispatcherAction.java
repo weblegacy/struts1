@@ -32,6 +32,10 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.tiles.TilesContainer;
 import org.apache.tiles.access.TilesAccess;
+import org.apache.tiles.request.ApplicationContext;
+import org.apache.tiles.request.Request;
+import org.apache.tiles.request.servlet.ServletRequest;
+import org.apache.tiles.request.servlet.ServletUtil;
 
 /**
  * <p>An <strong>Action</strong> that dispatches to a Tiles Definition
@@ -76,8 +80,8 @@ public class DefinitionDispatcherAction extends Action {
      *
      * @param mapping The ActionMapping used to select this instance
      * @param form The optional ActionForm bean for this request (if any)
-     * @param request The HTTP request we are processing
-     * @param response The HTTP response we are creating
+     * @param req The HTTP request we are processing
+     * @param res The HTTP response we are creating
      *
      * @throws Exception if the application business logic throws
      *  an exception
@@ -87,8 +91,8 @@ public class DefinitionDispatcherAction extends Action {
     public ActionForward execute(
         ActionMapping mapping,
         ActionForm form,
-        HttpServletRequest request,
-        HttpServletResponse response)
+        HttpServletRequest req,
+        HttpServletResponse res)
         throws Exception {
 
         // Identify the request parameter containing the method name
@@ -99,7 +103,7 @@ public class DefinitionDispatcherAction extends Action {
         }
 
         // Identify the method name to be dispatched to
-        String name = request.getParameter(parameter);
+        String name = req.getParameter(parameter);
         if (name == null) {
             log.error("Can't get parameter '" + parameter + "'.");
 
@@ -108,12 +112,14 @@ public class DefinitionDispatcherAction extends Action {
 
         // Try to dispatch to requested definition
         // Read definition from factory, but we can create it here.
-        TilesContainer container = TilesAccess.getContainer(request
-                .getSession().getServletContext());
+        ApplicationContext applicationContext = ServletUtil
+                .getApplicationContext(req.getSession().getServletContext());
+        Request request = new ServletRequest(applicationContext,
+                req, res);
+        TilesContainer container = TilesAccess.getContainer(applicationContext);
         if (container != null
-                && container.isValidDefinition(name, new Object[] { request,
-                        response })) {
-            container.render(name, new Object[] { request, response });
+                && container.isValidDefinition(name, request)) {
+            container.render(name, request);
         } else {
             log.error("Can't get definition '" + name + "'.");
             return mapping.findForward("error");

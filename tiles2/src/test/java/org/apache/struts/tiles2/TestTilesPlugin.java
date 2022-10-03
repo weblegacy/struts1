@@ -45,8 +45,10 @@ import org.apache.struts.util.RequestUtils;
 import org.apache.tiles.TilesContainer;
 import org.apache.tiles.access.TilesAccess;
 import org.apache.tiles.definition.DefinitionsFactory;
-import org.apache.tiles.impl.BasicTilesContainer;
-import org.apache.tiles.impl.KeyedDefinitionsFactoryTilesContainer;
+import org.apache.tiles.request.ApplicationAccess;
+import org.apache.tiles.request.ApplicationContext;
+import org.apache.tiles.request.servlet.ServletApplicationContext;
+import org.apache.tiles.request.servlet.ServletUtil;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -86,6 +88,10 @@ public class TestTilesPlugin extends TestMockBase {
 
         super.setUp();
         actionServlet = new MockActionServlet(context, config);
+
+        ApplicationContext applicationContext = new ServletApplicationContext(
+                actionServlet.getServletContext());
+        ApplicationAccess.register(applicationContext);
     }
 
     /** {@inheritDoc} */
@@ -129,14 +135,15 @@ public class TestTilesPlugin extends TestMockBase {
         request.setPathElements("/myapp", "/module1/foo.do", null, null);
 
         // Retrieve TilesContainer
-        TilesContainer container = TilesAccess.getContainer(actionServlet
-                .getServletContext());
-        assertSame(KeyedDefinitionsFactoryTilesContainer.class.getName(),
+        ApplicationContext applicationContext = ServletUtil
+                .getApplicationContext(actionServlet.getServletContext());
+        TilesContainer container = TilesAccess.getContainer(applicationContext);
+        assertSame(TilesPluginContainer.class.getName(),
                 container.getClass().getName());
 
         // Retrieve factory for module1
-        DefinitionsFactory factory1 = ((KeyedDefinitionsFactoryTilesContainer) container)
-                .getDefinitionsFactory("/module1");
+        DefinitionsFactory factory1 = ((TilesPluginContainer) container)
+                .getProperDefinitionsFactory("/module1");
 
         assertNotNull(factory1, "factory found");
 
@@ -144,8 +151,8 @@ public class TestTilesPlugin extends TestMockBase {
         request.setAttribute(Globals.MODULE_KEY, module2);
         request.setPathElements("/myapp", "/module2/foo.do", null, null);
         // Retrieve factory for module2
-        DefinitionsFactory factory2 = ((KeyedDefinitionsFactoryTilesContainer) container)
-                .getDefinitionsFactory("/module2");
+        DefinitionsFactory factory2 = ((TilesPluginContainer) container)
+                .getProperDefinitionsFactory("/module2");
         assertNotNull(factory2, "factory found");
 
         // Check that factory are different
@@ -211,13 +218,14 @@ public class TestTilesPlugin extends TestMockBase {
         request.setAttribute(Globals.MODULE_KEY, module1);
         request.setPathElements("/myapp", "/module1/foo.do", null, null);
         // Retrieve TilesContainer
-        TilesContainer container = TilesAccess.getContainer(actionServlet
-                .getServletContext());
-        assertSame(BasicTilesContainer.class.getName(), container.getClass()
+        ApplicationContext applicationContext = ServletUtil
+                .getApplicationContext(actionServlet.getServletContext());
+        TilesContainer container = TilesAccess.getContainer(applicationContext);
+        assertSame(TilesPluginContainer.class.getName(), container.getClass()
                 .getName());
 
         // Retrieve factory for module1
-        DefinitionsFactory factory1 = ((BasicTilesContainer) container)
+        DefinitionsFactory factory1 = ((TilesPluginContainer) container)
                 .getDefinitionsFactory();
         assertNotNull(factory1, "factory found");
 
@@ -225,7 +233,7 @@ public class TestTilesPlugin extends TestMockBase {
         request.setAttribute(Globals.MODULE_KEY, module2);
         request.setPathElements("/myapp", "/module2/foo.do", null, null);
         // Retrieve factory for module2
-        DefinitionsFactory factory2 = ((BasicTilesContainer) container)
+        DefinitionsFactory factory2 = ((TilesPluginContainer) container)
                 .getDefinitionsFactory();
         assertNotNull(factory2, "factory found");
 

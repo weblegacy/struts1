@@ -37,6 +37,10 @@ import org.apache.struts.config.ModuleConfig;
 import org.apache.tiles.TilesContainer;
 import org.apache.tiles.TilesException;
 import org.apache.tiles.access.TilesAccess;
+import org.apache.tiles.request.ApplicationContext;
+import org.apache.tiles.request.Request;
+import org.apache.tiles.request.servlet.ServletRequest;
+import org.apache.tiles.request.servlet.ServletUtil;
 
 /**
  * <p><strong>RequestProcessor</strong> contains the processing logic that
@@ -89,8 +93,8 @@ public class TilesRequestProcessor extends RequestProcessor {
      * <code>false</code> otherwise.
      *
      * @param definitionName Definition name to insert.
-     * @param request Current page request.
-     * @param response Current page response.
+     * @param req Current page request.
+     * @param res Current page response.
      * @throws IOException If something goes wrong during writing the
      * definition.
      * @throws ServletException If something goes wrong during the evaluation
@@ -100,12 +104,15 @@ public class TilesRequestProcessor extends RequestProcessor {
      */
     protected boolean processTilesDefinition(
         String definitionName,
-        HttpServletRequest request,
-        HttpServletResponse response)
+        HttpServletRequest req,
+        HttpServletResponse res)
         throws IOException, ServletException {
 
-        TilesContainer container = TilesAccess.getContainer(servlet
-                .getServletContext());
+        ApplicationContext applicationContext = ServletUtil
+                .getApplicationContext(getServletContext());
+        Request request = new ServletRequest(applicationContext,
+                req, res);
+        TilesContainer container = TilesAccess.getContainer(applicationContext);
         if (container == null) {
             log.debug("Tiles container not found, so pass to next command.");
             return false;
@@ -113,12 +120,10 @@ public class TilesRequestProcessor extends RequestProcessor {
 
         boolean retValue = false;
 
-        if (container.isValidDefinition(definitionName, new Object[] { request,
-                response })) {
+        if (container.isValidDefinition(definitionName, request)) {
             retValue = true;
             try {
-                container.render(definitionName, new Object[] { request,
-                        response });
+                container.render(definitionName, request);
             } catch (TilesException e) {
                 throw new ServletException("Cannot render definition '"
                         + definitionName + "'");

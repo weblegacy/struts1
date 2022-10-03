@@ -73,6 +73,14 @@
          <artifactId>tiles-jsp</artifactId>
       </dependency>
       <dependency>
+         <groupId>org.apache.tiles</groupId>
+         <artifactId>tiles-request-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.tiles</groupId>
+         <artifactId>tiles-request-servlet</artifactId>
+      </dependency>
+      <dependency>
          <groupId>commons-logging</groupId>
          <artifactId>commons-logging</artifactId>
       </dependency>
@@ -87,6 +95,10 @@
       <dependency>
          <groupId>org.junit.jupiter</groupId>
          <artifactId>junit-jupiter-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-simple</artifactId>
       </dependency>
    </dependencies>
 

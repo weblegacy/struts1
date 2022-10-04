@@ -21,9 +21,6 @@
 package org.apache.strutsel.taglib.tiles;
 
 import org.apache.struts.tiles.taglib.PutListTag;
-import org.apache.strutsel.taglib.utils.EvalHelper;
-
-import javax.servlet.jsp.JspException;
 
 /**
  * PutList tag implementation. <p> This class is a subclass of the class
@@ -35,62 +32,5 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELPutListTag extends PutListTag {
-    private static final long serialVersionUID = -1714440590588161116L;
-
-    /**
-     * Instance variable mapped to "name" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String nameExpr;
-
-    /**
-     * Getter method for "name" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getNameExpr() {
-        return (nameExpr);
-    }
-
-    /**
-     * Setter method for "name" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setNameExpr(String nameExpr) {
-        this.nameExpr = nameExpr;
-    }
-
-    /**
-     * Resets attribute values for tag reuse.
-     */
-    public void release() {
-        super.release();
-        setNameExpr(null);
-    }
-
-    /**
-     * Process the start tag.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    public int doStartTag() throws JspException {
-        evaluateExpressions();
-
-        return (super.doStartTag());
-    }
-
-    /**
-     * Processes all attribute values which use the JSTL expression evaluation
-     * engine to determine their values.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    private void evaluateExpressions()
-        throws JspException {
-        String string = null;
-
-        if ((string =
-                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
-            setName(string);
-        }
-    }
+    private static final long serialVersionUID = -5590841545745764688L;
 }

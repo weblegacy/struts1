@@ -43,15 +43,15 @@
                 <td>As String property, disabled if not empty pageScope</td>
                 <td>
                     <html-el:file property="stringProperty"
-                                  disabled="\${!empty pageScope}"/>
+                                  disabled="${!empty pageScope}"/>
                 </td>
             </tr>
             <tr>
                 <td>Iterating over a collection as String properties</td>
                 <td>
-                    <logic-el:iterate collection="\${pageScope}" id="item">
+                    <logic-el:iterate collection="${pageScope}" id="item">
                         <html-el:file property="stringProperty"
-                                      indexed="\${!empty pageScope}"/>
+                                      indexed="${!empty pageScope}"/>
                     </logic-el:iterate>
                 </td>
             </tr>

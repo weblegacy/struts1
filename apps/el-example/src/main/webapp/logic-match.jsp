@@ -60,10 +60,10 @@
             <c:when test="${not empty jcookie}">
                 <%-- The functionality of "logic:match" will eventually be available
                      through a string function in the EL expression. --%>
-                <logic-el:match expr="\${jcookie}" value="0">
+                <logic-el:match expr="${jcookie}" value="0">
                     match
                 </logic-el:match>
-                <logic-el:notMatch expr="\${jcookie}" value="0">
+                <logic-el:notMatch expr="${jcookie}" value="0">
                     notMatch
                 </logic-el:notMatch>
             </c:when>
@@ -81,10 +81,10 @@
     <td>
         <c:choose>
             <c:when test="${not empty jcookie}">
-                <logic-el:match expr="\${jcookie}" location="end" value="0">
+                <logic-el:match expr="${jcookie}" location="end" value="0">
                     match
                 </logic-el:match>
-                <logic-el:notMatch expr="\${jcookie}" location="end" value="0">
+                <logic-el:notMatch expr="${jcookie}" location="end" value="0">
                     notMatch
                 </logic-el:notMatch>
             </c:when>
@@ -102,10 +102,10 @@
     <td>
         <c:choose>
             <c:when test="${not empty jcookie}">
-                <logic-el:match expr="\${jcookie}" location="start" value="0">
+                <logic-el:match expr="${jcookie}" location="start" value="0">
                     match
                 </logic-el:match>
-                <logic-el:notMatch expr="\${jcookie}" location="start"
+                <logic-el:notMatch expr="${jcookie}" location="start"
                                    value="0">
                     notMatch
                 </logic-el:notMatch>
@@ -124,10 +124,10 @@
     <td>
         <c:choose>
             <c:when test="${not empty uaheader}">
-                <logic-el:match expr="\${uaheader}" value="Mozilla">
+                <logic-el:match expr="${uaheader}" value="Mozilla">
                     match
                 </logic-el:match>
-                <logic-el:notMatch expr="\${uaheader}" value="Mozilla">
+                <logic-el:notMatch expr="${uaheader}" value="Mozilla">
                     notMatch
                 </logic-el:notMatch>
             </c:when>
@@ -145,11 +145,11 @@
     <td>
         <c:choose>
             <c:when test="${not empty uaheader}">
-                <logic-el:match expr="\${uaheader}" location="end"
+                <logic-el:match expr="${uaheader}" location="end"
                                 value="Mozilla">
                     match
                 </logic-el:match>
-                <logic-el:notMatch expr="\${uaheader}" location="end"
+                <logic-el:notMatch expr="${uaheader}" location="end"
                                    value="Mozilla">
                     notMatch
                 </logic-el:notMatch>
@@ -168,11 +168,11 @@
     <td>
         <c:choose>
             <c:when test="${not empty uaheader}">
-                <logic-el:match expr="\${uaheader}" location="start"
+                <logic-el:match expr="${uaheader}" location="start"
                                 value="Mozilla">
                     match
                 </logic-el:match>
-                <logic-el:notMatch expr="\${uaheader}" location="start"
+                <logic-el:notMatch expr="${uaheader}" location="start"
                                    value="Mozilla">
                     notMatch
                 </logic-el:notMatch>
@@ -233,10 +233,10 @@
     <td>
         <c:choose>
             <c:when test="${not empty rparam}">
-                <logic-el:match expr="\${rparam}" value="value1">
+                <logic-el:match expr="${rparam}" value="value1">
                     match
                 </logic-el:match>
-                <logic-el:notMatch expr="\${rparam}" value="value1">
+                <logic-el:notMatch expr="${rparam}" value="value1">
                     notMatch
                 </logic-el:notMatch>
             </c:when>
@@ -254,11 +254,11 @@
     <td>
         <c:choose>
             <c:when test="${not empty rparam}">
-                <logic-el:match expr="\${rparam}" location="end"
+                <logic-el:match expr="${rparam}" location="end"
                                 value="value1">
                     match
                 </logic-el:match>
-                <logic-el:notMatch expr="\${rparam}" location="end"
+                <logic-el:notMatch expr="${rparam}" location="end"
                                    value="value1">
                     notMatch
                 </logic-el:notMatch>
@@ -277,11 +277,11 @@
     <td>
         <c:choose>
             <c:when test="${not empty rparam}">
-                <logic-el:match expr="\${rparam}" location="start"
+                <logic-el:match expr="${rparam}" location="start"
                                 value="value1">
                     match
                 </logic-el:match>
-                <logic-el:notMatch expr="\${rparam}" location="start"
+                <logic-el:notMatch expr="${rparam}" location="start"
                                    value="value1">
                     notMatch
                 </logic-el:notMatch>
@@ -298,10 +298,10 @@
     <td>FOO</td>
     <td>contains</td>
     <td>
-        <logic-el:match expr="\${bean.stringProperty}" value="FOO">
+        <logic-el:match expr="${bean.stringProperty}" value="FOO">
             match
         </logic-el:match>
-        <logic-el:notMatch expr="\${bean.stringProperty}" value="FOO">
+        <logic-el:notMatch expr="${bean.stringProperty}" value="FOO">
             notMatch
         </logic-el:notMatch>
     </td>
@@ -312,11 +312,11 @@
     <td>FOO</td>
     <td>ends with</td>
     <td>
-        <logic-el:match expr="\${bean.stringProperty}" location="end"
+        <logic-el:match expr="${bean.stringProperty}" location="end"
                         value="FOO">
             match
         </logic-el:match>
-        <logic-el:notMatch expr="\${bean.stringProperty}"
+        <logic-el:notMatch expr="${bean.stringProperty}"
                            location="end" value="FOO">
             notMatch
         </logic-el:notMatch>
@@ -328,11 +328,11 @@
     <td>FOO</td>
     <td>starts with</td>
     <td>
-        <logic-el:match expr="\${bean.stringProperty}"
+        <logic-el:match expr="${bean.stringProperty}"
                         location="start" value="FOO">
             match
         </logic-el:match>
-        <logic-el:notMatch expr="\${bean.stringProperty}"
+        <logic-el:notMatch expr="${bean.stringProperty}"
                            location="start" value="FOO">
             notMatch
         </logic-el:notMatch>

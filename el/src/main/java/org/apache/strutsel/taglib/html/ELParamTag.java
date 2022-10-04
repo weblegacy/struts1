@@ -21,9 +21,6 @@
 package org.apache.strutsel.taglib.html;
 
 import org.apache.struts.taglib.html.ParamTag;
-import org.apache.strutsel.taglib.utils.EvalHelper;
-
-import javax.servlet.jsp.JspException;
 
 /**
  * Adds a new request parameter to its parent {@link ELLinkTag}. This subclass
@@ -34,87 +31,5 @@ import javax.servlet.jsp.JspException;
  * @since Struts 1.3.6
  */
 public class ELParamTag extends ParamTag {
-    private static final long serialVersionUID = 4197541198264717739L;
-
-    /**
-     * Instance variable mapped to "name" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String nameExpr;
-
-    /**
-     * Instance variable mapped to "value" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String valueExpr;
-
-    /**
-     * Getter method for "name" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getNameExpr() {
-        return (nameExpr);
-    }
-
-    /**
-     * Getter method for "value" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getValueExpr() {
-        return (valueExpr);
-    }
-
-    /**
-     * Setter method for "name" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setNameExpr(String nameExpr) {
-        this.nameExpr = nameExpr;
-    }
-
-    /**
-     * Setter method for "value" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setValueExpr(String valueExpr) {
-        this.valueExpr = valueExpr;
-    }
-
-    /**
-     * Resets attribute values for tag reuse.
-     */
-    public void release() {
-        super.release();
-        setNameExpr(null);
-        setValueExpr(null);
-    }
-
-    /**
-     * Process the start tag.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    public int doStartTag() throws JspException {
-        evaluateExpressions();
-
-        return (super.doStartTag());
-    }
-
-    /**
-     * Processes all attribute values which use the JSTL expression evaluation
-     * engine to determine their values.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    private void evaluateExpressions() throws JspException {
-        String string = null;
-
-        if ((string = EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
-            setName(string);
-        }
-
-        if ((string = EvalHelper.evalString("value", getValueExpr(), pageContext)) != null) {
-            setValue(string);
-        }
-    }
+    private static final long serialVersionUID = -7836106796089690313L;
 }

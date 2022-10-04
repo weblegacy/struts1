@@ -20,7 +20,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-logic-el" prefix="logic-el" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<html-el:html xhtml="\${!empty pageScope}">
+<html-el:html xhtml="${!empty pageScope}">
 <head>
     <title>Test html-el:link Tag</title>
     <%
@@ -150,7 +150,7 @@ main menu.
         <html-el:link page="/html-link.do" accesskey="3" tabindex="3"
                       title="String via nested param tag">
             String via nested param tag
-            <html-el:param name="stringProperty" value="\${newValue}" />
+            <html-el:param name="stringProperty" value="${newValue}" />
         </html-el:link>
     </td>
 </tr>

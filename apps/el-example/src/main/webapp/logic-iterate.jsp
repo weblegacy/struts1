@@ -161,7 +161,7 @@
         <th>Key</th>
         <th>Value</th>
     </tr>
-    <logic-el:iterate id="item" collection="\${header}" indexId="index">
+    <logic-el:iterate id="item" collection="${header}" indexId="index">
     <tr>
         <td><c:out value="${item.key}"/></td>
         <td><c:out value="${item.value}"/></td>

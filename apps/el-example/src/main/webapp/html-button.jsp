@@ -41,14 +41,14 @@
             <tr>
                 <td>
                     <html-el:button property="stringProperty"
-                                    disabled="\${!empty pageScope}"/>
+                                    disabled="${!empty pageScope}"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <logic-el:iterate collection="\${pageScope}" id="item">
+                    <logic-el:iterate collection="${pageScope}" id="item">
                         <html-el:button property="stringIndexed"
-                                        indexed="\${!empty pageScope}"/>
+                                        indexed="${!empty pageScope}"/>
                     </logic-el:iterate>
                 </td>
             </tr>
@@ -60,14 +60,14 @@
             <tr>
                 <td>
                     <html-el:checkbox property="stringProperty"
-                                      disabled="\${!empty pageScope}"/>
+                                      disabled="${!empty pageScope}"/>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <logic-el:iterate collection="\${pageScope}" id="item">
+                    <logic-el:iterate collection="${pageScope}" id="item">
                         <html-el:checkbox property="stringProperty"
-                                          indexed="\${!empty pageScope}"/>
+                                          indexed="${!empty pageScope}"/>
                     </logic-el:iterate>
                 </td>
             </tr>
@@ -79,7 +79,7 @@
             <tr>
                 <td>
                     <html-el:cancel property="stringProperty"
-                                    disabled="\${!empty pageScope}"/>
+                                    disabled="${!empty pageScope}"/>
                 </td>
             </tr>
             <tr>
@@ -90,7 +90,7 @@
             <tr>
                 <td>
                     <html-el:reset property="stringProperty"
-                                   disabled="\${!empty pageScope}"/>
+                                   disabled="${!empty pageScope}"/>
                 </td>
             </tr>
         </table>

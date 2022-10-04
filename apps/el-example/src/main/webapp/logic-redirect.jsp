@@ -23,14 +23,14 @@
 <c:if test='${not empty param["redirectType"]}'>
     <c:choose>
         <c:when test='${param["redirectType"] eq "forward"}'>
-            <logic-el:redirect forward='\${param["param1"]}'
-                               transaction="\${!empty pageScope}"/>
+            <logic-el:redirect forward='${param["param1"]}'
+                               transaction="${!empty pageScope}"/>
         </c:when>
         <c:when test='${param["redirectType"] eq "href"}'>
-            <logic-el:redirect href='\${param["param1"]}'/>
+            <logic-el:redirect href='${param["param1"]}'/>
         </c:when>
         <c:when test='${param["redirectType"] eq "page"}'>
-            <logic-el:redirect page='\${param["param1"]}'/>
+            <logic-el:redirect page='${param["param1"]}'/>
         </c:when>
     </c:choose>
 </c:if>

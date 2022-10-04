@@ -21,9 +21,6 @@
 package org.apache.strutsel.taglib.bean;
 
 import org.apache.struts.taglib.bean.PageTag;
-import org.apache.strutsel.taglib.utils.EvalHelper;
-
-import javax.servlet.jsp.JspException;
 
 /**
  * Define a scripting variable that exposes the requested page context item as
@@ -36,90 +33,5 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELPageTag extends PageTag {
-    private static final long serialVersionUID = -4046270538732978343L;
-
-    /**
-     * Instance variable mapped to "id" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String idExpr;
-
-    /**
-     * Instance variable mapped to "property" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String propertyExpr;
-
-    /**
-     * Getter method for "id" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getIdExpr() {
-        return (idExpr);
-    }
-
-    /**
-     * Getter method for "property" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getPropertyExpr() {
-        return (propertyExpr);
-    }
-
-    /**
-     * Setter method for "id" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setIdExpr(String idExpr) {
-        this.idExpr = idExpr;
-    }
-
-    /**
-     * Setter method for "property" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setPropertyExpr(String propertyExpr) {
-        this.propertyExpr = propertyExpr;
-    }
-
-    /**
-     * Resets attribute values for tag reuse.
-     */
-    public void release() {
-        super.release();
-        setIdExpr(null);
-        setPropertyExpr(null);
-    }
-
-    /**
-     * Process the start tag.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    public int doStartTag() throws JspException {
-        evaluateExpressions();
-
-        return (super.doStartTag());
-    }
-
-    /**
-     * Processes all attribute values which use the JSTL expression evaluation
-     * engine to determine their values.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    private void evaluateExpressions()
-        throws JspException {
-        String string = null;
-
-        if ((string =
-                EvalHelper.evalString("id", getIdExpr(), pageContext)) != null) {
-            setId(string);
-        }
-
-        if ((string =
-                EvalHelper.evalString("property", getPropertyExpr(), pageContext)) != null) {
-            setProperty(string);
-        }
-    }
+    private static final long serialVersionUID = -2021614166767406432L;
 }

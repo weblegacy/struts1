@@ -21,105 +21,18 @@
 package org.apache.strutsel.taglib.html;
 
 import org.apache.struts.taglib.html.HtmlTag;
-import org.apache.strutsel.taglib.utils.EvalHelper;
-
-import javax.servlet.jsp.JspException;
 
 /**
- * Renders an HTML <html> element with appropriate language attributes if
- * there is a current Locale available in the user's session. <p> This class
- * is a subclass of the class <code>org.apache.struts.taglib.html.HtmlTag</code>
- * which provides most of the described functionality.  This subclass allows
- * all attribute values to be specified as expressions utilizing the
- * JavaServer Pages Standard Library expression language.
+ * Renders an HTML &lt;html&gt; element with appropriate language attributes if
+ * there is a current Locale available in the user's session.
+ * <p>This class is a subclass of the class
+ * {@code org.apache.struts.taglib.html.HtmlTag} which provides most of the
+ * described functionality. This subclass allows all attribute values to be
+ * specified as expressions utilizing the JavaServer Pages Standard Library
+ * expression language.</p>
  *
  * @version $Rev$
  */
 public class ELHtmlTag extends HtmlTag {
-    private static final long serialVersionUID = 1402498158730347290L;
-
-    /**
-     * Instance variable mapped to "lang" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String langExpr;
-
-    /**
-     * Instance variable mapped to "xhtml" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String xhtmlExpr;
-
-    /**
-     * Getter method for "lang" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getLangExpr() {
-        return (langExpr);
-    }
-
-    /**
-     * Getter method for "xhtml" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getXhtmlExpr() {
-        return (xhtmlExpr);
-    }
-
-    /**
-     * Setter method for "lang" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setLangExpr(String langExpr) {
-        this.langExpr = langExpr;
-    }
-
-    /**
-     * Setter method for "xhtml" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setXhtmlExpr(String xhtmlExpr) {
-        this.xhtmlExpr = xhtmlExpr;
-    }
-
-    /**
-     * Resets attribute values for tag reuse.
-     */
-    public void release() {
-        super.release();
-        setLangExpr(null);
-        setXhtmlExpr(null);
-    }
-
-    /**
-     * Process the start tag.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    public int doStartTag() throws JspException {
-        evaluateExpressions();
-
-        return (super.doStartTag());
-    }
-
-    /**
-     * Processes all attribute values which use the JSTL expression evaluation
-     * engine to determine their values.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    private void evaluateExpressions()
-        throws JspException {
-        Boolean bool = null;
-
-        if ((bool =
-                EvalHelper.evalBoolean("lang", getLangExpr(), pageContext)) != null) {
-            setLang(bool.booleanValue());
-        }
-
-        if ((bool =
-                EvalHelper.evalBoolean("xhtml", getXhtmlExpr(), pageContext)) != null) {
-            setXhtml(bool.booleanValue());
-        }
-    }
+    private static final long serialVersionUID = -8077272944996947640L;
 }

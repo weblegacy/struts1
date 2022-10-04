@@ -184,7 +184,7 @@ main menu.
     <th align="right">(nested) 50</th>
     <td align="left">
         <html-el:multibox property="nested.intMultibox"
-                          disabled="\${!empty pageScope}">
+                          disabled="${!empty pageScope}">
             50
         </html-el:multibox>
     </td>

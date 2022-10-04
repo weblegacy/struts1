@@ -28,7 +28,7 @@
     <div align="center">
         <h1>Source for page: <c:out value="${param.path}"/></h1>
     </div>
-    <bean-el:resource id="pathSource" name="\${param.path}"/>
+    <bean-el:resource id="pathSource" name="${param.path}"/>
     <hr/>
     <!-- Specifically avoiding newlines and spaces inside the "pre" tag. -->
     <pre><c:out value="${pathSource}" escapeXml="true"/></pre>

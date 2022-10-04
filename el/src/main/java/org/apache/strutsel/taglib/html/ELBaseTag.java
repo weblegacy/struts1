@@ -21,9 +21,6 @@
 package org.apache.strutsel.taglib.html;
 
 import org.apache.struts.taglib.html.BaseTag;
-import org.apache.strutsel.taglib.utils.EvalHelper;
-
-import javax.servlet.jsp.JspException;
 
 /**
  * Renders an HTML <base> element with an href attribute pointing to the
@@ -39,118 +36,5 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELBaseTag extends BaseTag {
-    private static final long serialVersionUID = 2065911953094898046L;
-
-    /**
-     * Instance variable mapped to "target" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String targetExpr;
-
-    /**
-     * Instance variable mapped to "server" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String serverExpr;
-
-    /**
-     * Instance variable mapped to "ref" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String refExpr;
-
-    /**
-     * Getter method for "target" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getTargetExpr() {
-        return (targetExpr);
-    }
-
-    /**
-     * Getter method for "server" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getServerExpr() {
-        return (serverExpr);
-    }
-
-    /**
-     * Getter method for "ref" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getRefExpr() {
-        return (refExpr);
-    }
-
-    /**
-     * Setter method for "target" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setTargetExpr(String targetExpr) {
-        this.targetExpr = targetExpr;
-    }
-
-    /**
-     * Setter method for "server" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setServerExpr(String serverExpr) {
-        this.serverExpr = serverExpr;
-    }
-
-    /**
-     * Setter method for "ref" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setRefExpr(String refExpr) {
-        this.refExpr = refExpr;
-    }
-
-    /**
-     * Resets attribute values for tag reuse.
-     */
-    public void release() {
-        super.release();
-        setTargetExpr(null);
-        setServerExpr(null);
-        setRefExpr(null);
-    }
-
-    /**
-     * Process the start tag.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    public int doStartTag() throws JspException {
-        evaluateExpressions();
-
-        return (super.doStartTag());
-    }
-
-    /**
-     * Processes all attribute values which use the JSTL expression evaluation
-     * engine to determine their values.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    private void evaluateExpressions()
-        throws JspException {
-        String string = null;
-
-        if ((string =
-                EvalHelper.evalString("target", getTargetExpr(), pageContext)) != null) {
-            setTarget(string);
-        }
-
-        if ((string =
-                EvalHelper.evalString("server", getServerExpr(), pageContext)) != null) {
-            setServer(string);
-        }
-
-        if ((string =
-                EvalHelper.evalString("ref", getRefExpr(), pageContext)) != null) {
-            setRef(string);
-        }
-    }
+    private static final long serialVersionUID = 7608557778237763976L;
 }

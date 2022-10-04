@@ -32,7 +32,7 @@
 
     <html-el:form action="html-indexed.do">
         <table>
-            <logic-el:iterate collection="\${testbean.coords}"
+            <logic-el:iterate collection="${testbean.coords}"
                               id="coord" indexId="ctr">
                 <tr>
                     <td>
@@ -54,23 +54,23 @@
             </tr>
         </table>
         (
-        <logic-el:iterate collection="\${testbean.coords}"
+        <logic-el:iterate collection="${testbean.coords}"
                           id="coord" indexId="ctr">
             [<c:out value="${coord.x}"/>,<c:out value="${coord.y}"/>]
         </logic-el:iterate>
         )
         <table>
             <tr>
-                <logic-el:iterate collection="\${testbean.images}" id="image"
+                <logic-el:iterate collection="${testbean.images}" id="image"
                                   indexId="ctr">
                     <td>
-                        <html-el:image src="\${image}" property="imageCoords"
+                        <html-el:image src="${image}" property="imageCoords"
                                        indexed="true"/>
                     </td>
                 </logic-el:iterate>
             </tr>
             <tr>
-                <logic-el:iterate collection="\${testbean.imageCoords}"
+                <logic-el:iterate collection="${testbean.imageCoords}"
                                   id="coord"
                                   indexId="ctr">
                     <td>

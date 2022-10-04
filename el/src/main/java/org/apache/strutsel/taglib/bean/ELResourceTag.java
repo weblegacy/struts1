@@ -21,9 +21,6 @@
 package org.apache.strutsel.taglib.bean;
 
 import org.apache.struts.taglib.bean.ResourceTag;
-import org.apache.strutsel.taglib.utils.EvalHelper;
-
-import javax.servlet.jsp.JspException;
 
 /**
  * Define a scripting variable based on the contents of the specified web
@@ -36,118 +33,5 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELResourceTag extends ResourceTag {
-    private static final long serialVersionUID = -7889578706037504110L;
-
-    /**
-     * Instance variable mapped to "id" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String idExpr;
-
-    /**
-     * Instance variable mapped to "input" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String inputExpr;
-
-    /**
-     * Instance variable mapped to "name" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String nameExpr;
-
-    /**
-     * Getter method for "id" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getIdExpr() {
-        return (idExpr);
-    }
-
-    /**
-     * Getter method for "input" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getInputExpr() {
-        return (inputExpr);
-    }
-
-    /**
-     * Getter method for "name" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getNameExpr() {
-        return (nameExpr);
-    }
-
-    /**
-     * Setter method for "id" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setIdExpr(String idExpr) {
-        this.idExpr = idExpr;
-    }
-
-    /**
-     * Setter method for "input" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setInputExpr(String inputExpr) {
-        this.inputExpr = inputExpr;
-    }
-
-    /**
-     * Setter method for "name" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setNameExpr(String nameExpr) {
-        this.nameExpr = nameExpr;
-    }
-
-    /**
-     * Resets attribute values for tag reuse.
-     */
-    public void release() {
-        super.release();
-        setIdExpr(null);
-        setInputExpr(null);
-        setNameExpr(null);
-    }
-
-    /**
-     * Process the start tag.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    public int doStartTag() throws JspException {
-        evaluateExpressions();
-
-        return (super.doStartTag());
-    }
-
-    /**
-     * Processes all attribute values which use the JSTL expression evaluation
-     * engine to determine their values.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    private void evaluateExpressions()
-        throws JspException {
-        String string = null;
-
-        if ((string =
-                EvalHelper.evalString("id", getIdExpr(), pageContext)) != null) {
-            setId(string);
-        }
-
-        if ((string =
-                EvalHelper.evalString("input", getInputExpr(), pageContext)) != null) {
-            setInput(string);
-        }
-
-        if ((string =
-                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
-            setName(string);
-        }
-    }
+    private static final long serialVersionUID = 5748871138055936783L;
 }

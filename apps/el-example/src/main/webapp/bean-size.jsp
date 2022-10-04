@@ -46,8 +46,8 @@
 %>
 <%-- Change "${list}" to "${data}" to demonstrate NPE, and need for better
              exception in "Sizetag.doStartTag()". --%>
-<bean-el:size id="dataSize" collection="\${list}"/>
-<bean-el:size id="tempSize" collection="\${map}"/>
+<bean-el:size id="dataSize" collection="${list}"/>
+<bean-el:size id="tempSize" collection="${map}"/>
 
 <div align="center">
     <h1>Test struts bean-el Size Tag</h1>

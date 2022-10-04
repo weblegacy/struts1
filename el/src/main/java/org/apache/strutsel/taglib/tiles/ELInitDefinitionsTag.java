@@ -21,9 +21,6 @@
 package org.apache.strutsel.taglib.tiles;
 
 import org.apache.struts.tiles.taglib.InitDefinitionsTag;
-import org.apache.strutsel.taglib.utils.EvalHelper;
-
-import javax.servlet.jsp.JspException;
 
 /**
  * Init definitions factory. <p> This class is a subclass of the class
@@ -35,90 +32,5 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELInitDefinitionsTag extends InitDefinitionsTag {
-    private static final long serialVersionUID = 8400567406387152956L;
-
-    /**
-     * Instance variable mapped to "file" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String fileExpr;
-
-    /**
-     * Instance variable mapped to "classname" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String classnameExpr;
-
-    /**
-     * Getter method for "file" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getFileExpr() {
-        return (fileExpr);
-    }
-
-    /**
-     * Getter method for "classname" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getClassnameExpr() {
-        return (classnameExpr);
-    }
-
-    /**
-     * Setter method for "file" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setFileExpr(String fileExpr) {
-        this.fileExpr = fileExpr;
-    }
-
-    /**
-     * Setter method for "classname" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setClassnameExpr(String classnameExpr) {
-        this.classnameExpr = classnameExpr;
-    }
-
-    /**
-     * Resets attribute values for tag reuse.
-     */
-    public void release() {
-        super.release();
-        setFileExpr(null);
-        setClassnameExpr(null);
-    }
-
-    /**
-     * Process the start tag.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    public int doStartTag() throws JspException {
-        evaluateExpressions();
-
-        return (super.doStartTag());
-    }
-
-    /**
-     * Processes all attribute values which use the JSTL expression evaluation
-     * engine to determine their values.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    private void evaluateExpressions()
-        throws JspException {
-        String string = null;
-
-        if ((string =
-                EvalHelper.evalString("file", getFileExpr(), pageContext)) != null) {
-            setFile(string);
-        }
-
-        if ((string =
-                EvalHelper.evalString("classname", getClassnameExpr(), pageContext)) != null) {
-            setClassname(string);
-        }
-    }
+    private static final long serialVersionUID = -5627510418370676433L;
 }

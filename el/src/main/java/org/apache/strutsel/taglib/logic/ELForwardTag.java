@@ -21,9 +21,6 @@
 package org.apache.strutsel.taglib.logic;
 
 import org.apache.struts.taglib.logic.ForwardTag;
-import org.apache.strutsel.taglib.utils.EvalHelper;
-
-import javax.servlet.jsp.JspException;
 
 /**
  * Perform a forward or redirect to a page that is looked up in the
@@ -36,62 +33,5 @@ import javax.servlet.jsp.JspException;
  * @version $Rev$
  */
 public class ELForwardTag extends ForwardTag {
-    private static final long serialVersionUID = -807354704537809367L;
-
-    /**
-     * Instance variable mapped to "name" tag attribute. (Mapping set in
-     * associated BeanInfo class.)
-     */
-    private String nameExpr;
-
-    /**
-     * Getter method for "name" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public String getNameExpr() {
-        return (nameExpr);
-    }
-
-    /**
-     * Setter method for "name" tag attribute. (Mapping set in associated
-     * BeanInfo class.)
-     */
-    public void setNameExpr(String nameExpr) {
-        this.nameExpr = nameExpr;
-    }
-
-    /**
-     * Resets attribute values for tag reuse.
-     */
-    public void release() {
-        super.release();
-        setNameExpr(null);
-    }
-
-    /**
-     * Process the start tag.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    public int doStartTag() throws JspException {
-        evaluateExpressions();
-
-        return (super.doStartTag());
-    }
-
-    /**
-     * Processes all attribute values which use the JSTL expression evaluation
-     * engine to determine their values.
-     *
-     * @throws JspException if a JSP exception has occurred
-     */
-    private void evaluateExpressions()
-        throws JspException {
-        String string = null;
-
-        if ((string =
-                EvalHelper.evalString("name", getNameExpr(), pageContext)) != null) {
-            setName(string);
-        }
-    }
+    private static final long serialVersionUID = -791780574854272086L;
 }

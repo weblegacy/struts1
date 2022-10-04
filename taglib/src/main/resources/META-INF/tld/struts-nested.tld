@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
     $Id$
 
@@ -1615,10 +1615,10 @@
             <type>java.lang.String</type>
         </attribute>
         <attribute>
-<name>module</name>
-<required>false</required>
-<rtexprvalue>true</rtexprvalue>
-<type>java.lang.String</type>
+            <name>module</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
             <description/>
@@ -3145,10 +3145,10 @@
             <type>java.lang.String</type>
         </attribute>
         <attribute>
-<name>onselect</name>
-<required>false</required>
-<rtexprvalue>true</rtexprvalue>
-<type>java.lang.String</type>
+            <name>onselect</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
         <attribute>
             <description/>

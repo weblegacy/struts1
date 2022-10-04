@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Small reformats in `tld`-files
 * Correct `strutsel` to work with JSP 2.1
 * Tipfix in `README.md`
 * Bump `apache tiles` from 2.0.7 to 3.0.8

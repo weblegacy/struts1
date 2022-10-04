@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
     $Id$
 
@@ -2080,10 +2080,10 @@
         <!-- autocomplete is a non-standard and not supported, uncomment to enable -->
         <!--
         <attribute>
-<name>autocomplete</name>
-<required>false</required>
-<rtexprvalue>true</rtexprvalue>
-<type>java.lang.String</type>
+            <name>autocomplete</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>java.lang.String</type>
         </attribute>
          -->
         <attribute>

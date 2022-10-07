@@ -377,6 +377,7 @@
         <struts.osgi.dynamicImport />
         <struts.osgi.private />
         <struts.manifestfile>target/osgi/MANIFEST.MF</struts.manifestfile>
+        <struts.jpms.moduleName>${struts.osgi.symbolicName}</struts.jpms.moduleName>
     </properties>
 
     <profiles>
@@ -608,6 +609,9 @@
                                 <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
                                 <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
                             </manifest>
+                            <manifestEntries>
+                                <Automatic-Module-Name>${struts.jpms.moduleName}</Automatic-Module-Name>
+                            </manifestEntries>
                         </archive>
                     </configuration>
                 </plugin>

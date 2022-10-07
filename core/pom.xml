@@ -34,6 +34,7 @@
     <name>Struts Core</name>
 
     <properties>
+        <struts.jpms.moduleName>org.apache.struts</struts.jpms.moduleName>
         <struts.osgi.symbolicName>org.apache.struts.core</struts.osgi.symbolicName>
     </properties>
 

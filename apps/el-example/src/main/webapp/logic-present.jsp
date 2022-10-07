@@ -164,7 +164,7 @@
     <td>notPresent</td>
     <td>
         <c:choose>
-            <c:when test='\W${not empty param["FOOBAR"]}'>
+            <c:when test='${not empty param["FOOBAR"]}'>
                 present
             </c:when>
             <c:otherwise>

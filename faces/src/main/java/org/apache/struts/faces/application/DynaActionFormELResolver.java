@@ -52,7 +52,7 @@ import org.apache.struts.action.DynaActionForm;
  *
  * @see CompositeELResolver
  * @see ELResolver
- * @see DynaActionFormMap
+ * @see DynaActionForm#getMap()
  * @since Struts 1.4.1
  */
 public class DynaActionFormELResolver extends ELResolver {

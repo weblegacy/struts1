@@ -34,8 +34,6 @@ import java.math.BigDecimal;
  * Holds the (interim) result during processing the parsing-tree.
  *
  * @author Graff Stefan
- *
- * @param <T> the current type of the result
  */
 public class ValidWhenResultBigDecimal extends ValidWhenResult<BigDecimal> {
 

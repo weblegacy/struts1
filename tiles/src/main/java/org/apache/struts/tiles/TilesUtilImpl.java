@@ -188,7 +188,8 @@ public class TilesUtilImpl implements Serializable {
     /**
      * Create Definition factory of specified classname.
      * Factory class must extend the {@link DefinitionsFactory} class.
-     * The factory is wrapped appropriately with {@link ComponentDefinitionsFactoryWrapper}
+     * The factory is wrapped appropriately with
+     * {@link org.apache.struts.tiles.definition.ComponentDefinitionsFactoryWrapper}
      * if it is an instance of the deprecated ComponentDefinitionsFactory class.
      * @param classname Class name of the factory to create.
      * @return newly created factory.

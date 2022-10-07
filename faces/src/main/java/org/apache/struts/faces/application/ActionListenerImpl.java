@@ -82,7 +82,7 @@ public final class ActionListenerImpl implements ActionListener {
      * Construct a new default {@code ActionListener} instance, passing
      * it the previously configured one.
      *
-     * @param original Original default {@code ActionListener}
+     * @param oldActionListener Original default {@code ActionListener}
      *
      * @exception NullPointerException if {@code original} is {@code null}
      */

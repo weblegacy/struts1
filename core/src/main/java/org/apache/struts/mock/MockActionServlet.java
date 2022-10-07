@@ -49,7 +49,10 @@ public class MockActionServlet extends ActionServlet {
     protected ServletConfig servletConfig;
 
     /**
-     * <p>Constructor.</p>
+     * Constructor.
+     *
+     * @param servletContext the ServletContext
+     * @param servletConfig the ServletConfig
      */
     public MockActionServlet(ServletContext servletContext,
         ServletConfig servletConfig) {
@@ -58,51 +61,51 @@ public class MockActionServlet extends ActionServlet {
     }
 
     /**
-     * <p>Constructor.</p>
+     * Constructor.
      */
     public MockActionServlet() {
         ; // do nothing
     }
 
     /**
-     * <p> Set property </p>
+     * Set property
      *
-     * @param servletContext
+     * @param servletContext the ServletContext
      */
     public void setServletContext(ServletContext servletContext) {
         this.servletContext = servletContext;
     }
 
     /**
-     * <p> Get property </p>
+     * Get property
      *
-     * @return
+     * @return the ServletContext
      */
     public ServletContext getServletContext() {
         return servletContext;
     }
 
     /**
-     * <p> Set property
+     * Set property
      *
-     * @param servletConfig
+     * @param servletConfig the ServletConfig
      */
     public void setServletConfig(ServletConfig servletConfig) {
         this.servletConfig = servletConfig;
     }
 
     /**
-     * <p> Get property </p>
+     * Get property
      *
-     * @return
+     * @return the ServletConfig
      */
     public ServletConfig getServletConfig() {
         return servletConfig;
     }
 
     /**
-     * <p> Expose as public so that test classes can exercise things which
-     * retrieve messages. </p>
+     * Expose as public so that test classes can exercise things which
+     * retrieve messages.
      */
     public void initInternal()
         throws ServletException {

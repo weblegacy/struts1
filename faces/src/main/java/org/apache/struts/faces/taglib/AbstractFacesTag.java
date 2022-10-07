@@ -283,9 +283,9 @@ public abstract class AbstractFacesTag extends UIComponentELTag {
      * If the specified action-listener is not {@code null} use
      * it to add the action-listener to the component.
      *
-     * @param component {@code UIComponent} whose action-listener
-     *                  is to be added
-     * @param action    the Action-Listener
+     * @param component      {@code UIComponent} whose action-listener
+     *                       is to be added
+     * @param actionListener the Action-Listener
      *
      * @throws IllegalArgumentException if the component is not an
      *         instance of {@code ActionSource2}

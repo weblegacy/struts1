@@ -72,7 +72,7 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
      * Construct a {@code ViewHandlerImpl} decorating the
      * specified {@code ViewHandler} instance.
      *
-     * @param handler {@code ViewHandler} to be decorated
+     * @param oldViewHandler {@code ViewHandler} to be decorated
      */
     public ViewHandlerImpl(ViewHandler oldViewHandler) {
         if (LOG.isDebugEnabled()) {

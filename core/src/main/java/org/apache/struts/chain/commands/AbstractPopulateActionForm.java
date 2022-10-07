@@ -86,8 +86,9 @@ public abstract class AbstractPopulateActionForm extends ActionCommandBase {
     /**
      * Determines whether an action form should be reset
      *
-     * @param request current HTTP request
+     * @param context      the ActionContext we are processing
      * @param actionConfig action config for current request
+     *
      * @return true if action form should be reset
      *
      * @since Struts 1.4
@@ -98,7 +99,7 @@ public abstract class AbstractPopulateActionForm extends ActionCommandBase {
     /**
      * Determines whether an action form should be populated.
      *
-     * @param context      the ActionContext we are processing
+     * @param context the ActionContext we are processing
      * @param actionConfig action config for current request
      * @return true if action form should be populated
      * @since Struts 1.4
@@ -180,8 +181,8 @@ public abstract class AbstractPopulateActionForm extends ActionCommandBase {
      * @param actionConfig The ActionConfig we are processing
      * @param actionForm   The ActionForm we are processing
      * @throws Exception On an unexpected error
-     * @see Globals.CANCEL_PROPERTY
-     * @see Globals.CANCEL_PROPERTY_X
+     * @see Globals#CANCEL_PROPERTY
+     * @see Globals#CANCEL_PROPERTY_X
      */
     protected void handleCancel(ActionContext context,
         ActionConfig actionConfig, ActionForm actionForm)

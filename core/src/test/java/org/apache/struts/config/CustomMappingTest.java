@@ -23,7 +23,7 @@ package org.apache.struts.config;
 import org.apache.struts.action.ActionMapping;
 
 /**
- * Custom action mapping used by {@link TestModuleConfing}
+ * Custom action mapping used by {@link TestModuleConfig}
  */
 public class CustomMappingTest extends ActionMapping {
     private static final long serialVersionUID = -6767297240958404965L;

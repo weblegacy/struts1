@@ -373,19 +373,19 @@ public interface ActionContext extends Context {
     // -------------------------------
 
     /**
-     * <p> Indicate if the "cancel event" state is set for for this context,
-     * </p>
+     * Indicate if the "cancel event" state is set for for this context,
      *
-     * @see ActionContextBase.CANCEL_KEY
+     * @see ActionContextBase#CANCEL_KEY
      */
     Boolean getCancelled();
 
     /**
-     * <p> Set the "cancel event" state for this context. </p> <p>
+     * Set the "cancel event" state for this context.
      *
      * @param cancelled On true, set the cancel event state to true. On false,
      *                  set the cancel event state to false.
-     * @see ActionContextBase.CANCEL_KEY
+     *
+     * @see ActionContextBase#CANCEL_KEY
      */
     void setCancelled(Boolean cancelled);
 

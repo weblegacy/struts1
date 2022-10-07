@@ -72,9 +72,11 @@ public class PopulateActionForm extends AbstractPopulateActionForm {
     /**
      * Determines whether an action form should be populated.
      *
-     * @param request current HTTP request
+     * @param context the ActionContext we are processing
      * @param actionConfig action config for current request
+     *
      * @return true if action form should be populated
+     *
      * @since Struts 1.4
      */
     protected boolean isPopulate(ActionContext context, ActionConfig actionConfig) {
@@ -85,9 +87,11 @@ public class PopulateActionForm extends AbstractPopulateActionForm {
     /**
      * Determines whether an action form should be reset.
      *
-     * @param request current HTTP request
+     * @param context the ActionContext we are processing
      * @param actionConfig action config for current request
+     *
      * @return true if action form should be reset
+     *
      * @since Struts 1.4
      */
     protected boolean isReset(ActionContext context, ActionConfig actionConfig) {

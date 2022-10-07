@@ -37,7 +37,10 @@ import org.apache.struts.util.RequestUtils;
 /**
  * Wrapper from new definition factory interface to old interface.
  * This class provides mapping from the old interface's life cycle to the new life cycle.
+ *
  * @since 20020708
+ *
+ * @deprecated Use DefinitionsFactory instead.
  */
 public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
     private static final long serialVersionUID = -1996134499246652941L;
@@ -67,7 +70,7 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * Constructor.
      * Create new wrapper.
      * The config object passed to init method should reference a factory implementing
-     * {@link ComponentDefinitionsFactory}.
+     * {@link org.apache.struts.tiles.ComponentDefinitionsFactory}.
      */
     public ComponentDefinitionsFactoryWrapper() {
         super();
@@ -153,10 +156,14 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
     }
 
     /**
-     * Create Definition factory from provided classname which must implement {@link ComponentDefinitionsFactory}.
-     * Factory class must extend {@link DefinitionsFactory}.
+     * Create Definition factory from provided classname which must implement
+     * {@link org.apache.struts.tiles.ComponentDefinitionsFactory}. Factory
+     * class must extend {@link DefinitionsFactory}.
+     *
      * @param classname Class name of the factory to create.
+     *
      * @return newly created factory.
+     *
      * @throws DefinitionsFactoryException If an error occur while initializing factory
      */
     @SuppressWarnings("deprecation")

@@ -838,6 +838,41 @@
                       <artifactId>tiles-request-servlet</artifactId>
                       <url>https://tiles.apache.org/tiles-request/apidocs/</url>
                     </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.antlr</groupId>
+                      <artifactId>antlr4-runtime</artifactId>
+                      <url>https://www.antlr.org/api/Java/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.apache.myfaces.core</groupId>
+                      <artifactId>myfaces-api</artifactId>
+                      <url>https://javadoc.io/doc/org.apache.myfaces.core/myfaces-api/${myfacesVersion}/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.apache.myfaces.core</groupId>
+                      <artifactId>myfaces-impl</artifactId>
+                      <url>https://javadoc.io/doc/org.apache.myfaces.core/myfaces-impl/${myfacesVersion}/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.apache.taglibs</groupId>
+                      <artifactId>taglibs-standard-spec</artifactId>
+                      <url>https://javadoc.io/doc/org.apache.taglibs/taglibs-standard-spec/${taglibsVersion}/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.apache.taglibs</groupId>
+                      <artifactId>taglibs-standard-impl</artifactId>
+                      <url>https://javadoc.io/doc/org.apache.taglibs/taglibs-standard-impl/${taglibsVersion}/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.apache.groovy</groupId>
+                      <artifactId>groovy</artifactId>
+                      <url>https://javadoc.io/doc/org.apache.groovy/groovy-all/${groovyVersion}/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.apache.groovy</groupId>
+                      <artifactId>groovy-jsr223</artifactId>
+                      <url>https://javadoc.io/doc/org.apache.groovy/groovy-all/${groovyVersion}/</url>
+                    </dependencyLink>
                   </dependencyLinks>
                   <links>
                     <link>https://docs.oracle.com/javaee/6/api</link>

@@ -76,7 +76,7 @@ public class StrutsContext {
     }
 
     /**
-     * Create a new instance with give {@ode FacesContext}.
+     * Create a new instance with give {@code FacesContext}.
      *
      * @param facesContext The give {@code FacesContext}
      */

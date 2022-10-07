@@ -114,7 +114,7 @@ public class TestLog implements Log {
     /**
      * Do the actual logging.
      *
-     * @param type the log-level
+     * @param level the log-level
      * @param message The message itself (typically a String)
      * @param t The exception whose stack trace should be logged
      */

@@ -58,7 +58,7 @@ public interface ModuleConfigPostProcessor {
     /**
      * Modify the specified module after its standard initialization.
      *
-     * @param config the module configuration
+     * @param moduleConfig the module configuration
      */
     void postProcessAfterInitialization(ModuleConfig moduleConfig);
 

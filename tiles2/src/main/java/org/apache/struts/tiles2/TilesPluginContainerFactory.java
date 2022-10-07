@@ -64,7 +64,6 @@ public class TilesPluginContainerFactory extends BasicTilesContainerFactory {
      * list containing the URL point to "definitions-config".
      *
      * @param applicationContext The Tiles application context.
-     * @param contextFactory The Tiles context factory.
      *
      * @return The source URLs.
      * @since Struts 1.4.1

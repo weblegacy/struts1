@@ -29,11 +29,9 @@ import java.net.URLConnection;
 
 import javax.servlet.ServletException;
 
-import org.apache.commons.digester3.Digester;
-import org.apache.commons.digester3.RuleSet;
-import org.apache.commons.digester3.binder.DigesterLoader;
-import org.apache.commons.digester3.binder.RulesModule;
-import org.apache.commons.digester3.xmlrules.FromXmlRulesModule;
+import org.apache.commons.digester.Digester;
+import org.apache.commons.digester.RuleSet;
+import org.apache.commons.digester.xmlrules.DigesterLoader;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionServlet;
@@ -179,7 +177,7 @@ public class DigestingPlugIn implements PlugIn {
      * override this to provide a subclass of Digester, or to configure the
      * Digester using object methods.</p>
      *
-     * @return a basic instance of <code>org.apache.commons.digester3.Digester</code>
+     * @return a basic instance of <code>org.apache.commons.digester.Digester</code>
      */
     protected Digester newDigesterInstance() {
         return new Digester();
@@ -207,13 +205,15 @@ public class DigestingPlugIn implements PlugIn {
                 + "' found in '" + source + "'");
         }
 
-        RulesModule rules = new FromXmlRulesModule() {
-            @Override
-            protected void loadRules() {
-                loadXMLRules(configURL);
-            }
-        };
-        return DigesterLoader.newLoader(rules).newDigester();
+//        Digester3:
+//        RulesModule rules = new FromXmlRulesModule() {
+//            @Override
+//            protected void loadRules() {
+//                loadXMLRules(configURL);
+//            }
+//        };
+//        return DigesterLoader.newLoader(rules).newDigester();
+        return DigesterLoader.createDigester(configURL);
     }
 
     /**
@@ -418,7 +418,7 @@ public class DigestingPlugIn implements PlugIn {
 
     /**
      * <p>A comma-delimited list of one or more classes which implement
-     * <code>org.apache.commons.digester3.RuleSet</code>. (Optional)</p>
+     * <code>org.apache.commons.digester.RuleSet</code>. (Optional)</p>
      */
     public void setRulesets(String ruleSets) {
         this.rulesets = ruleSets;

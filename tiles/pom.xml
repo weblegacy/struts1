@@ -65,8 +65,8 @@
             <artifactId>commons-chain</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-digester3</artifactId>
+            <groupId>commons-digester</groupId>
+            <artifactId>commons-digester</artifactId>
         </dependency>
         <dependency>
             <groupId>commons-logging</groupId>

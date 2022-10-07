@@ -20,11 +20,11 @@
  */
 package org.apache.struts.config;
 
-import org.apache.commons.digester3.AbstractObjectCreationFactory;
-import org.apache.commons.digester3.Digester;
-import org.apache.commons.digester3.Rule;
-import org.apache.commons.digester3.RuleSetBase;
-import org.apache.commons.digester3.SetPropertyRule;
+import org.apache.commons.digester.AbstractObjectCreationFactory;
+import org.apache.commons.digester.Digester;
+import org.apache.commons.digester.Rule;
+import org.apache.commons.digester.RuleSetBase;
+import org.apache.commons.digester.SetPropertyRule;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.util.RequestUtils;
@@ -178,7 +178,7 @@ final class PlugInSetPropertyRule extends Rule {
 
     public void begin(String namespace, String names, Attributes attributes)
         throws Exception {
-        PlugInConfig plugInConfig = getDigester().peek();
+        PlugInConfig plugInConfig = (PlugInConfig) getDigester().peek();
 
         plugInConfig.addProperty(attributes.getValue("property"),
             attributes.getValue("value"));
@@ -201,7 +201,7 @@ final class SetActionFormBeanClassRule extends Rule {
         String className = attributes.getValue("type");
 
         if (className != null) {
-            ModuleConfig mc = getDigester().peek();
+            ModuleConfig mc = (ModuleConfig) getDigester().peek();
 
             mc.setActionFormBeanClass(className);
         }
@@ -262,7 +262,9 @@ final class BaseConfigSetPropertyRule extends SetPropertyRule {
  * top of the stack, which must be a <code>org.apache.struts.config.ModuleConfig</code>.
  * </p>
  */
-final class ActionFormBeanFactory extends AbstractObjectCreationFactory<FormBeanConfig> {
+final class ActionFormBeanFactory extends AbstractObjectCreationFactory {
+    // Digester3: FormBeanConfig
+
     private ClassLoader cl;
 
     public ActionFormBeanFactory(ClassLoader cl) {
@@ -275,7 +277,7 @@ final class ActionFormBeanFactory extends AbstractObjectCreationFactory<FormBean
         String className = attributes.getValue("className");
 
         if (className == null) {
-            ModuleConfig mc = getDigester().peek();
+            ModuleConfig mc = (ModuleConfig) getDigester().peek();
 
             className = mc.getActionFormBeanClass();
         }
@@ -309,7 +311,7 @@ final class SetActionMappingClassRule extends Rule {
         String className = attributes.getValue("type");
 
         if (className != null) {
-            ModuleConfig mc = getDigester().peek();
+            ModuleConfig mc = (ModuleConfig) getDigester().peek();
 
             mc.setActionMappingClass(className);
         }
@@ -324,7 +326,9 @@ final class SetActionMappingClassRule extends Rule {
  * top of the stack, which must be a <code>org.apache.struts.config.ModuleConfig</code>.
  * </p>
  */
-final class ActionMappingFactory extends AbstractObjectCreationFactory<ActionMapping> {
+final class ActionMappingFactory extends AbstractObjectCreationFactory {
+    // Digester3: ActionMapping
+
     private ClassLoader cl;
 
     public ActionMappingFactory(ClassLoader cl) {
@@ -337,7 +341,7 @@ final class ActionMappingFactory extends AbstractObjectCreationFactory<ActionMap
         String className = attributes.getValue("className");
 
         if (className == null) {
-            ModuleConfig mc = getDigester().peek();
+            ModuleConfig mc = (ModuleConfig) getDigester().peek();
 
             className = mc.getActionMappingClass();
         }
@@ -371,7 +375,7 @@ final class SetActionForwardClassRule extends Rule {
         String className = attributes.getValue("type");
 
         if (className != null) {
-            ModuleConfig mc = getDigester().peek();
+            ModuleConfig mc = (ModuleConfig) getDigester().peek();
 
             mc.setActionForwardClass(className);
         }
@@ -386,7 +390,9 @@ final class SetActionForwardClassRule extends Rule {
  * top of the stack, which must be a <code>org.apache.struts.config.ModuleConfig</code>.
  * </p>
  */
-final class GlobalForwardFactory extends AbstractObjectCreationFactory<ActionForward> {
+final class GlobalForwardFactory extends AbstractObjectCreationFactory {
+    // Digester3: ActionForward
+
     private ClassLoader cl;
 
     public GlobalForwardFactory(ClassLoader cl) {
@@ -399,7 +405,7 @@ final class GlobalForwardFactory extends AbstractObjectCreationFactory<ActionFor
         String className = attributes.getValue("className");
 
         if (className == null) {
-            ModuleConfig mc = getDigester().peek();
+            ModuleConfig mc = (ModuleConfig) getDigester().peek();
 
             className = mc.getActionForwardClass();
         }
@@ -425,7 +431,9 @@ final class GlobalForwardFactory extends AbstractObjectCreationFactory<ActionFor
  * top of the stack, which must be a <code>org.apache.struts.config.ModuleConfig</code>.
  * </p>
  */
-final class ActionForwardFactory extends AbstractObjectCreationFactory<ActionForward> {
+final class ActionForwardFactory extends AbstractObjectCreationFactory {
+    // Digester3: ActionForward
+
     private ClassLoader cl;
 
     public ActionForwardFactory(ClassLoader cl) {
@@ -438,7 +446,7 @@ final class ActionForwardFactory extends AbstractObjectCreationFactory<ActionFor
         String className = attributes.getValue("className");
 
         if (className == null) {
-            ModuleConfig mc = getDigester().peek(1);
+            ModuleConfig mc = (ModuleConfig) getDigester().peek(1);
 
             className = mc.getActionForwardClass();
         }

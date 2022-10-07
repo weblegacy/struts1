@@ -31,8 +31,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.HashMap;
-import org.apache.commons.digester3.Digester;
-import org.apache.commons.digester3.ObjectCreationFactory;
+import org.apache.commons.digester.Digester;
+import org.apache.commons.digester.ObjectCreationFactory;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.webapp.example.Subscription;
@@ -342,7 +342,8 @@ public final class MemoryUserDatabase implements UserDatabase {
 /**
  * Digester object creation factory for subscription instances.
  */
-class MemorySubscriptionCreationFactory implements ObjectCreationFactory<Subscription> {
+class MemorySubscriptionCreationFactory implements ObjectCreationFactory {
+    // Digester3: Subscription
 
     public MemorySubscriptionCreationFactory(MemoryUserDatabase database) {
     }
@@ -359,7 +360,7 @@ class MemorySubscriptionCreationFactory implements ObjectCreationFactory<Subscri
 
     public Subscription createObject(Attributes attributes) {
         String host = attributes.getValue("host");
-        User user = digester.peek();
+        User user = (User) digester.peek();
         Subscription subscription = user.createSubscription(host);
         String autoConnect = attributes.getValue("autoConnect");
         if (autoConnect == null) {
@@ -383,7 +384,8 @@ class MemorySubscriptionCreationFactory implements ObjectCreationFactory<Subscri
 /**
  * Digester object creation factory for user instances.
  */
-class MemoryUserCreationFactory implements ObjectCreationFactory<User> {
+class MemoryUserCreationFactory implements ObjectCreationFactory {
+    // Digester3: User
 
     public MemoryUserCreationFactory(MemoryUserDatabase database) {
         this.database = database;

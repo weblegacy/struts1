@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Use `digester` instead `digester3` to optimize dependencies
 * Corrections at TLD-parameters
 * Resolve compiler-warnings
 * Resolve javadoc-warnings

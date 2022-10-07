@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Corrections at TLD-parameters
 * Resolve compiler-warnings
 * Resolve javadoc-warnings
 * Add `Automatic-Module-Name` to `MANIFEST.MF`-files

@@ -225,7 +225,7 @@
             <name>flush</name>
             <required>false</required>
             <rtexprvalue>false</rtexprvalue>
-            <type>java.lang.String</type>
+            <type>boolean</type>
         </attribute>
         <attribute>
             <description>
@@ -730,7 +730,7 @@
             <name>flush</name>
             <required>false</required>
             <rtexprvalue>false</rtexprvalue>
-            <type>java.lang.String</type>
+            <type>boolean</type>
         </attribute>
         <attribute>
             <description>

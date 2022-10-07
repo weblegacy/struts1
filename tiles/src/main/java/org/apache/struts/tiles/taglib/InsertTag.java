@@ -287,14 +287,6 @@ public class InsertTag
     }
 
     /**
-     * Set flush.
-     * Method added for compatibility with JSP1.1
-     */
-    public void setFlush(String flush) {
-        this.flush = (Boolean.valueOf(flush).booleanValue());
-    }
-
-    /**
      * Set ignore.
      */
     public void setIgnore(boolean ignore) {

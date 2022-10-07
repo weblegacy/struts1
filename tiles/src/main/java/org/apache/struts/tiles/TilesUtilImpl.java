@@ -23,9 +23,8 @@ package org.apache.struts.tiles;
 
 import java.io.IOException;
 import java.io.Serializable;
-
-import java.lang.reflect.Method;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -36,7 +35,6 @@ import javax.servlet.jsp.PageContext;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.struts.tiles.definition.ComponentDefinitionsFactoryWrapper;
 import org.apache.struts.util.RequestUtils;
 
 /**
@@ -207,7 +205,7 @@ public class TilesUtilImpl implements Serializable {
             // provide appropriate wrapper
             if (factory instanceof ComponentDefinitionsFactory) {
                 factory =
-                    new ComponentDefinitionsFactoryWrapper(
+                    new org.apache.struts.tiles.definition.ComponentDefinitionsFactoryWrapper(
                         (ComponentDefinitionsFactory) factory);
             }
             return (DefinitionsFactory) factory;

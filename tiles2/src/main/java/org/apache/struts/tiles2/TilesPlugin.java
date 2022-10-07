@@ -156,17 +156,10 @@ public class TilesPlugin implements PlugIn {
                                         + moduleConfig.getPrefix()
                                         + "' has already been configured");
                     }
-                    if (factory instanceof TilesPluginContainerFactory) {
-                        DefinitionsFactory defsFactory =
-                                ((TilesPluginContainerFactory) factory)
-                                .createDefinitionsFactory(pluginContainer, currentPlugInConfigContextAdapter);
-                        pluginContainer.setDefinitionsFactory(moduleConfig.getPrefix(),
-                                        defsFactory);
-                    } else {
-                        log.warn("The created factory is not instance of "
-                                + "TilesPluginContainerFactory"
-                                + " and cannot be configured correctly");
-                    }
+
+                    DefinitionsFactory defsFactory = factory
+                            .createDefinitionsFactory(pluginContainer, currentPlugInConfigContextAdapter);
+                    pluginContainer.setDefinitionsFactory(moduleConfig.getPrefix(), defsFactory);
                 } else {
                     log.warn("The created container is not instance of "
                             + "TilesPluginContainer"

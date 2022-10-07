@@ -42,13 +42,13 @@ import org.apache.struts.util.RequestUtils;
  *
  * @deprecated Use DefinitionsFactory instead.
  */
+@Deprecated
 public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
     private static final long serialVersionUID = -1996134499246652941L;
 
     /**
      * The underlying factory.
      */
-    @SuppressWarnings("deprecation")
     private org.apache.struts.tiles.ComponentDefinitionsFactory factory = null;
 
     /**
@@ -61,7 +61,6 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * Create new wrapper for specified factory.
      * @param factory The factory to create a wrapper for.
      */
-    @SuppressWarnings("deprecation")
     public ComponentDefinitionsFactoryWrapper(org.apache.struts.tiles.ComponentDefinitionsFactory factory) {
         this.factory = factory;
     }
@@ -83,7 +82,6 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * @param servletContext Our servlet context.
      * @return ComponentDefition
      */
-    @SuppressWarnings("deprecation")
     public ComponentDefinition getDefinition(
         String name,
         ServletRequest request,
@@ -98,7 +96,6 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * @param config DefinitionsFactoryConfig.
      * @param servletContext Our servlet context.
      */
-    @SuppressWarnings("deprecation")
     public void init(DefinitionsFactoryConfig config, ServletContext servletContext)
         throws DefinitionsFactoryException {
 
@@ -125,7 +122,6 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * @param servletContext Our servlet context.
      *
      */
-    @SuppressWarnings("deprecation")
     public void setConfig(
         DefinitionsFactoryConfig config,
         ServletContext servletContext)
@@ -150,7 +146,6 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      * Get internal factory.
      * @return The internal ComponentDefitionsFactory.
      */
-    @SuppressWarnings("deprecation")
     public org.apache.struts.tiles.ComponentDefinitionsFactory getInternalFactory() {
         return factory;
     }
@@ -166,7 +161,6 @@ public class ComponentDefinitionsFactoryWrapper implements DefinitionsFactory {
      *
      * @throws DefinitionsFactoryException If an error occur while initializing factory
      */
-    @SuppressWarnings("deprecation")
     protected org.apache.struts.tiles.ComponentDefinitionsFactory createFactoryInstance(String classname)
         throws DefinitionsFactoryException {
 

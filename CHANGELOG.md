@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Resolve compiler-warnings
 * Resolve javadoc-warnings
 * Add `Automatic-Module-Name` to `MANIFEST.MF`-files
 * Prepare `struts-extras` for JPMS (add `extras` to packages)

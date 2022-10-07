@@ -49,7 +49,7 @@
     <action path="/viewI18nExample" forward="/i18nExample.jsp" />
 
     <action path="/validateI18nExample"
-            type="org.apache.struts.actions.ForwardAction"
+            type="org.apache.struts.extras.actions.ForwardAction"
             name="i18nForm"
             scope="request"
             parameter="/welcome.do"
@@ -62,7 +62,7 @@
     <!-- JavaScript i18n Example Actions -->
     <action path="/viewJsI18nExample" forward="/i18nExampleJS.jsp" />
     <action path="/validateJsI18nExample"
-            type="org.apache.struts.actions.ForwardAction"
+            type="org.apache.struts.extras.actions.ForwardAction"
             name="i18nForm"
             scope="request"
             parameter="/welcome.do"

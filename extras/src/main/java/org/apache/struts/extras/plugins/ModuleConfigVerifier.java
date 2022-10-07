@@ -18,8 +18,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.struts.plugins;
+package org.apache.struts.extras.plugins;
 
+import javax.servlet.ServletException;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;
 import org.apache.struts.config.ForwardConfig;
@@ -27,10 +31,6 @@ import org.apache.struts.config.MessageResourcesConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.config.PlugInConfig;
 import org.apache.struts.util.RequestUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
-import javax.servlet.ServletException;
 
 /**
  * <p>Convenient implementation of {@link PlugIn} that performs as many

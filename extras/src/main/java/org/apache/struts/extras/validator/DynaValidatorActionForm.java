@@ -18,14 +18,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.struts.validator;
+package org.apache.struts.extras.validator;
 
-import org.apache.commons.beanutils.DynaBean;
-import org.apache.struts.action.ActionMapping;
+import java.io.Serializable;
 
 import javax.servlet.http.HttpServletRequest;
 
-import java.io.Serializable;
+import org.apache.commons.beanutils.DynaBean;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.validator.DynaValidatorForm;
 
 /**
  * <p>This class extends <strong>DynaValidatorForm</strong> and provides basic

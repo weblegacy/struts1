@@ -18,22 +18,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.struts.actions;
+package org.apache.struts.extras.actions;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-import java.util.HashMap;
 
 /**
  * <p>An abstract <strong>Action</strong> that dispatches to a public method
@@ -46,9 +45,10 @@ import java.util.HashMap;
  * <p>To configure the use of this action in your <code>struts-config.xml</code>
  * file, create an entry like this:</p>
  *
- * <code> &lt;action path="/saveSubscription" type="org.apache.struts.actions.DispatchAction"
+ * {@code &lt;action path="/saveSubscription"
+ * type="org.apache.struts.extras.actions.DispatchAction"
  * name="subscriptionForm" scope="request" input="/subscription.jsp"
- * parameter="method"/&gt; </code>
+ * parameter="method"/&gt;}
  *
  * <p>which will use the value of the request parameter named "method" to pick
  * the appropriate "execute" method, which must have the same signature (other

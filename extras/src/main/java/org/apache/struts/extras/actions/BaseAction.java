@@ -18,7 +18,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.struts.actions;
+package org.apache.struts.extras.actions;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.util.MessageResources;
@@ -37,5 +37,5 @@ public abstract class BaseAction extends Action {
      */
     protected static MessageResources messages =
         MessageResources.getMessageResources(
-            "org.apache.struts.actions.LocalStrings");
+            "org.apache.struts.extras.actions.LocalStrings");
 }

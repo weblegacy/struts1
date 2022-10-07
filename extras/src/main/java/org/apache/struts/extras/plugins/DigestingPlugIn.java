@@ -18,7 +18,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.struts.plugins;
+package org.apache.struts.extras.plugins;
 
 import java.io.File;
 import java.io.FileNotFoundException;

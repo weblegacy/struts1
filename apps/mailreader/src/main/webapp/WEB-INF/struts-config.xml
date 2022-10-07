@@ -251,7 +251,7 @@
 
     <!-- ===== Plug Ins Configuration ==== -->
     <plug-in
-            className="org.apache.struts.plugins.ModuleConfigVerifier"/>
+            className="org.apache.struts.extras.plugins.ModuleConfigVerifier"/>
 
     <plug-in
             className="org.apache.struts.apps.mailreader.plugin.MemoryDatabasePlugIn">
@@ -269,7 +269,7 @@
     </plug-in>
 
     <plug-in
-            className="org.apache.struts.plugins.DigestingPlugIn">
+            className="org.apache.struts.extras.plugins.DigestingPlugIn">
         <set-property
                 property="key"
                 value="serverTypes"/>

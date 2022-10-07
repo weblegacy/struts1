@@ -18,7 +18,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.struts.actions;
+package org.apache.struts.extras.actions;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.HashMap;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -31,15 +39,6 @@ import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.dispatcher.Dispatcher;
 import org.apache.struts.util.MessageResources;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
-import java.util.HashMap;
 
 /**
  * <p>Action <i>helper</i> class that dispatches to a public method in an
@@ -118,7 +117,7 @@ public class ActionDispatcher implements Dispatcher {
      */
     protected static MessageResources messages =
         MessageResources.getMessageResources(
-            "org.apache.struts.actions.LocalStrings");
+            "org.apache.struts.extras.actions.LocalStrings");
 
     /**
      * The associated Action to dispatch to.

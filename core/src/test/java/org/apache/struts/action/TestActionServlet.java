@@ -131,7 +131,7 @@ public class TestActionServlet {
         // Setup the action config
         baseAction = new ActionMapping();
         baseAction.setPath("/index");
-        baseAction.setType("org.apache.struts.actions.DummyAction");
+        baseAction.setType("org.apache.struts.extras.actions.DummyAction");
         baseAction.setName("someForm");
         baseAction.setInput("/input.jsp");
         baseAction.addForwardConfig(new ActionForward("next", "/next.jsp", false));

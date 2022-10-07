@@ -652,7 +652,7 @@ value="/org/apache/struts/validator/validator-rules.xml,
                         <source><![CDATA[
 <action
 path="/index"
-type="org.apache.struts.actions.ForwardAction"
+type="org.apache.struts.extras.actions.ForwardAction"
 parameter="homepage"/>
 ]]></source>
                     </li>

@@ -40,7 +40,7 @@
     <action path="/viewBundleExamples" forward="/bundleExamples.jsp" />
 
     <action path="/validateBundleExamples"
-            type="org.apache.struts.actions.ForwardAction"
+            type="org.apache.struts.extras.actions.ForwardAction"
             name="bundlesForm"
             scope="session"
             parameter="/welcome.do"
@@ -54,7 +54,7 @@
     <action path="/viewJsBundleExamples" forward="/bundleExamplesJS.jsp" />
 
     <action path="/validateJsBundleExamples"
-            type="org.apache.struts.actions.ForwardAction"
+            type="org.apache.struts.extras.actions.ForwardAction"
             name="bundlesForm"
             scope="session"
             parameter="/welcome.do"

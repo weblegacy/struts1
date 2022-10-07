@@ -67,7 +67,7 @@ public class TestActionConfig {
         // setup the base form
         baseConfig = new ActionConfig();
         baseConfig.setPath("/base");
-        baseConfig.setType("org.apache.struts.actions.DummyAction");
+        baseConfig.setType("org.apache.struts.extras.actions.DummyAction");
 
         // set up success and failure forward
         ForwardConfig forward =

@@ -18,7 +18,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.struts.actions;
+package org.apache.struts.extras.actions;
+
+import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.logging.Log;
@@ -27,12 +33,6 @@ import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import java.util.Locale;
 
 /**
  * Implementation of <strong>Action</strong> that changes the user's {@link

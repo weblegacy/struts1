@@ -18,13 +18,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.struts.validator;
+package org.apache.struts.extras.validator;
 
-import org.apache.struts.action.ActionMapping;
+import java.io.Serializable;
 
 import javax.servlet.http.HttpServletRequest;
 
-import java.io.Serializable;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.validator.ValidatorForm;
 
 /**
  * <p>This class extends <strong>ValidatorForm</strong> and provides basic

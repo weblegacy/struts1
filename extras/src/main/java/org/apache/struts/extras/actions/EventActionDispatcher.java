@@ -18,8 +18,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.struts.actions;
 
+package org.apache.struts.extras.actions;
+
+import java.lang.reflect.Method;
 import java.util.StringTokenizer;
 
 import javax.servlet.ServletException;
@@ -28,19 +30,20 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
 
 /**
- * <p>An <strong>Action</strong> that dispatches to to one of the public methods
+ * <p>An Action helper class that dispatches to to one of the public methods
  * that are named in the <code>parameter</code> attribute of the corresponding
  * ActionMapping and matches a submission parameter. This is useful for
  * developers who prefer to use many submit buttons, images, or submit links
  * on a single form and whose related actions exist in a single Action class.</p>
  *
- * <p>The method(s) must have the same signature (other than method name) of the
- * standard Action.execute method.</p>
+ * <p>The method(s) in the associated <code>Action</code> must have the same
+ * signature (other than method name) of the standard Action.execute method.</p>
  *
  * <p>To configure the use of this action in your
  * <code>struts-config.xml</code> file, create an entry like this:</p>
@@ -72,14 +75,33 @@ import org.apache.struts.action.ActionForward;
  * specified. If multiple buttons were accidently submitted, the first match in
  * the list will be dispatched.</p>
  *
+ * <p>To implement this <i>dispatch</i> behaviour in an <code>Action</code>,
+ * class create your custom Action as follows, along with the methods you require
+ * (and optionally "cancelled" and "unspecified" methods):</p> <p/>
+ * <pre>
+ *   public class MyCustomAction extends Action {
+ *
+ *       protected ActionDispatcher dispatcher = new EventActionDispatcher(this);
+ *
+ *       public ActionForward execute(ActionMapping mapping,
+ *                                    ActionForm form,
+ *                                    HttpServletRequest request,
+ *                                    HttpServletResponse response)
+ *                           throws Exception {
+ *           return dispatcher.execute(mapping, form, request, response);
+ *       }
+ *   }
+ * </pre>
+ * <p/>
+ *
  * @since Struts 1.2.9
  */
-public class EventDispatchAction extends DispatchAction {
+public class EventActionDispatcher extends ActionDispatcher {
 
     /**
      * Commons Logging instance.
      */
-    private static final Log LOG = LogFactory.getLog(EventDispatchAction.class);
+    private static final Log LOG = LogFactory.getLog(EventActionDispatcher.class);
 
     /**
      * The method key, if present, to use if other specified method keys
@@ -87,13 +109,23 @@ public class EventDispatchAction extends DispatchAction {
      */
     private static final String DEFAULT_METHOD_KEY = "default";
 
-    // --------------------------------------------------------- Protected Methods
+    /**
+     * Constructs a new object for the specified action.
+     * @param action the action
+     */
+    public EventActionDispatcher(Action action) {
+        // N.B. MAPPING_FLAVOR causes the getParameter() method
+        //      in ActionDispatcher to throw an exception if the
+        //      parameter is missing
+        super(action, ActionDispatcher.MAPPING_FLAVOR);
+    }
 
     /**
-     * Method which is dispatched to when there is no value for specified
-     * request parameter included in the request.  Subclasses of
-     * <code>DispatchAction</code> should override this method if they wish to
-     * provide default behavior different than throwing a ServletException.
+     * <p>Dispatches to the target class' <code>unspecified</code> method, if
+     * present, otherwise throws a ServletException. Classes utilizing
+     * <code>EventActionDispatcher</code> should provide an <code>unspecified</code>
+     * method if they wish to provide behavior different than throwing a
+     * ServletException.</p>
      *
      * @param mapping  The ActionMapping used to select this instance
      * @param form     The optional ActionForm bean for this request (if any)
@@ -107,13 +139,22 @@ public class EventDispatchAction extends DispatchAction {
     protected ActionForward unspecified(ActionMapping mapping, ActionForm form,
         HttpServletRequest request, HttpServletResponse response)
         throws Exception {
-        String message =
-            messages.getMessage("event.parameter", mapping.getPath(),
-                mapping.getParameter());
+        // Identify if there is an "unspecified" method to be dispatched to
+        String name = "unspecified";
+        Method method = null;
 
-        LOG.error(message + " " + mapping.getParameter());
+        try {
+            method = getMethod(name);
+        } catch (NoSuchMethodException e) {
+            String message =
+                messages.getMessage("event.parameter", mapping.getPath());
 
-        throw new ServletException(message);
+            LOG.error(message + " " + mapping.getParameter());
+
+            throw new ServletException(message, e);
+        }
+
+        return dispatchMethod(mapping, form, request, response, name, method);
     }
 
     /**

@@ -44,4 +44,4 @@
  *
  * </ul>
 */
-package org.apache.struts.actions;
+package org.apache.struts.extras.actions;

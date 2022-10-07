@@ -18,7 +18,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.struts.actions;
+package org.apache.struts.extras.actions;
+
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -29,14 +37,6 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.config.MessageResourcesConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.util.MessageResources;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
 
 /**
  * <p> An abstract <strong>Action</strong> that dispatches to the subclass

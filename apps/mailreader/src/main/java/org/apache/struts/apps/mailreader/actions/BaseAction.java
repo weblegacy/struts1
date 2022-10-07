@@ -21,6 +21,10 @@
 
 package org.apache.struts.apps.mailreader.actions;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -30,16 +34,12 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.action.DynaActionForm;
-import org.apache.struts.actions.MappingDispatchAction;
 import org.apache.struts.apps.mailreader.Constants;
 import org.apache.struts.apps.mailreader.dao.ExpiredPasswordException;
 import org.apache.struts.apps.mailreader.dao.Subscription;
 import org.apache.struts.apps.mailreader.dao.User;
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import org.apache.struts.extras.actions.MappingDispatchAction;
 
 /**
  * <p>

@@ -18,19 +18,18 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.struts.actions;
+package org.apache.struts.extras.actions;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 /**
- * <p>An <strong>Action</strong> that includes the context-relative URI
+ * <p>An <strong>Action</strong> that forwards to the context-relative URI
  * specified by the <code>parameter</code> property of our associated
  * <code>ActionMapping</code>.  This can be used to integrate Struts with
  * other business logic components that are implemented as servlets (or JSP
@@ -40,18 +39,18 @@ import javax.servlet.http.HttpServletResponse;
  * <p>To configure the use of this Action in your <code>struts-config.xml</code>
  * file, create an entry like this:</p>
  *
- * <code> &lt;action path="/saveSubscription"
- * type="org.apache.struts.actions.IncludeAction"
+ * {ſ@code &lt;action path="/saveSubscription"
+ * type="org.apache.struts.extras.actions.ForwardAction"
  * name="subscriptionForm" scope="request" input="/subscription.jsp"
- * parameter="/path/to/processing/servlet"&gt; </code>
+ * parameter="/path/to/processing/servlet"/&gt;}
  *
- * <p>which will include the context-relative URI specified by the
+ * <p>which will forward control to the context-relative URI specified by the
  * <code>parameter</code> attribute.</p>
  *
- * @version $Rev$ $Date: 2005-11-09 00:11:45 -0500 (Wed, 09 Nov 2005)
+ * @version $Rev$ $Date: 2005-08-14 17:24:39 -0400 (Sun, 14 Aug 2005)
  *          $
  */
-public class IncludeAction extends BaseAction {
+public class ForwardAction extends BaseAction {
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -76,20 +75,12 @@ public class IncludeAction extends BaseAction {
         String path = mapping.getParameter();
 
         if (path == null) {
-            throw new ServletException(messages.getMessage("include.path"));
+            throw new ServletException(messages.getMessage("forward.path"));
         }
 
-        RequestDispatcher rd =
-            servlet.getServletContext().getRequestDispatcher(path);
+        // Let the controller handle the request
+        ActionForward retVal = new ActionForward(path);
 
-        if (rd == null) {
-            throw new ServletException(messages.getMessage("include.rd", path));
-        }
-
-        // Forward control to the specified resource
-        rd.include(request, response);
-
-        // Tell the controller servlet that the response has been created
-        return (null);
+        return retVal;
     }
 }

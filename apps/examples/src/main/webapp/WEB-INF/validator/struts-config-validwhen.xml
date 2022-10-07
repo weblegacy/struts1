@@ -46,7 +46,7 @@
     <action path="/viewValidWhenExamples" forward="/validWhenExamples.jsp" />
 
     <action path="/validateValidWhenExamples"
-            type="org.apache.struts.actions.ForwardAction"
+            type="org.apache.struts.extras.actions.ForwardAction"
             name="validWhenForm"
             scope="request"
             parameter="/welcome.do"

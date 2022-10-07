@@ -97,7 +97,7 @@
 
         <action
             path="/Input"
-            type="org.apache.struts.actions.ForwardAction"
+            type="org.apache.struts.extras.actions.ForwardAction"
             parameter="/pages/Input.jsp"/>
 
         <action

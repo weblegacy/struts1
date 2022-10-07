@@ -669,7 +669,7 @@
                 <ol>
                     <li>
                     You can use the
-                    <code>org.apache.struts.actions.SwitchAction</code>
+                    <code>org.apache.struts.extras.actions.SwitchAction</code>
                     from the Extras JAR,
                   </li>
                   <li>
@@ -687,7 +687,7 @@
 
                 <p>
                     You can use
-                    <code>org.apache.struts.actions.SwitchAction</code>
+                    <code>org.apache.struts.extras.actions.SwitchAction</code>
                     like so:
                 </p>
 
@@ -695,7 +695,7 @@
     ...
     <action-mappings>
     <action path="/toModule"
-    type="org.apache.struts.actions.SwitchAction"/>
+    type="org.apache.struts.extras.actions.SwitchAction"/>
     ...
     </action-mappings>
     ...

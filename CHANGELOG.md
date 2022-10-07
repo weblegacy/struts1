@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Prepare `struts-extras` for JPMS (add `extras` to packages)
 * Small reformats in `tld`-files
 * Correct `strutsel` to work with JSP 2.1
 * Tipfix in `README.md`

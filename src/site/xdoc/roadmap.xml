@@ -192,7 +192,7 @@
                         Divided distribution into components with individual JARs
                     </li>
                     <li>
-                        Support for Maven 2 builds
+                        Support for Maven 3 builds
                     </li>
                     <li>
                         Moved action to "Struts Chain" Request Processor

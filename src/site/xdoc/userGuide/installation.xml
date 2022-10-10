@@ -61,15 +61,14 @@
                         - You
                         <strong>must</strong>
                         download and install
-                        a Java Development Kit (version 1.4 or later)
+                        a Java SE Development Kit (version 8 or later)
                         implementation for
                         your operating system platform.
-                        A good starting point for locating Java Development
+                        A good starting point for locating Java SE Development
                         Kit distributions is
-                        <a href="http://java.sun.com/j2se">
-                            http://java.sun.com/j2se.</a>
-                        To build the framework, Java 1.4.2 (the latest
-                        production JDK) is suggested and
+                        <a href="https://www.oracle.com/java/technologies/downloads/#java8">
+                            https://www.oracle.com/java/technologies/downloads/#java8</a>.
+                        To build the framework, Java 8 is suggested and
                         required if you use our Maven build system.
                     </li>
 
@@ -82,10 +81,10 @@
                         API Specification,
                         version 2.3 or later, and the JavaServer Pages (JSP)
                         Specification,
-                        version 1.2 or later. One popular choice is to
+                        version 2.0 or later. One popular choice is to
                         download Apache's
-                        <a href="http://jakarta.apache.org/tomcat/">Tomcat</a>
-                        , but any compliant
+                        <a href="https://tomcat.apache.org/">Tomcat</a>,
+                        but any compliant
                         container should work well with the framework.
                     </li>
 
@@ -93,9 +92,9 @@
                         <strong>Maven Build System</strong>
                         - (optional) If you are building the framework from the
                         source distribution, you must download and install the
-                        <a href="http://maven.apache.org/">Apache
-                            Maven 2</a>
-                        build system (2.0.4 or later).
+                        <a href="https://maven.apache.org/">Apache
+                            Maven 3</a>
+                        build system (3.5.4 or later).
                     </li>
 
                 </ul>

@@ -25,17 +25,17 @@
   xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
-        <title>Release Notes (since 1.3.9)</title>
+        <title>Release Notes (since 1.3.10)</title>
     </properties>
     <body>
-        <section name="6.1 Release Notes - Version 1.3.10">
+        <section name="6.1 Release Notes - Version 1.3.11">
 
             <subsection name="Introduction" id="release_notes">
                 <p>
                     This section contains release notes for changes that have
                     taken place to Struts,
                     since the
-                    <a href="release-notes-1_3_9.html">Version 1.3.9</a>
+                    <a href="release-notes-1_3_10.html">Version 1.3.10</a>
                     distribution.
                     To keep up-to-date on all changes to the framework,
                     subscribe to
@@ -64,43 +64,78 @@
             <subsection name="Issue Tracking" id="Highlight">
 <h4>Bug</h4>
 <ul>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-2630'>STR-2630</a>] - Taglib documentation does not render embedded HTML</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-2802'>STR-2802</a>] - Validator validwhen cannot test between two different indices in array</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3026'>STR-3026</a>] - Linked examples hosted by &quot;Planet Struts&quot; nonexistant</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3052'>STR-3052</a>] - ImgTag missing actionId support</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3054'>STR-3054</a>] - EL-Example errors</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3070'>STR-3070</a>] - Postback forms cause NPE with classic RequestProcessor</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3076'>STR-3076</a>] - PasswordTag doesn't define the attribute onselect</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3080'>STR-3080</a>] - XLST instead of XSLT</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3081'>STR-3081</a>] - Uploading a File using LazyDynaBean causes ClassCastException</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3082'>STR-3082</a>] - Incomplete error message when failing to create a form bean</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3084'>STR-3084</a>] - Error on Tiles examples page</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3088'>STR-3088</a>] - N-length empty strings not treated as *null* by validwhen</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3093'>STR-3093</a>] - Taglibs TLD do not match tag implementations</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3097'>STR-3097</a>] - Generating site fails</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3110'>STR-3110</a>] - PropertyUtils.clearDescriptors() call in ActionServlet.destroy() method is causing appliction classloader memory leak on Weblogic Portal</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3112'>STR-3112</a>] - Generated javascript is wrong to set focus on control that is of array</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3143'>STR-3143</a>] - Struts jar remains &quot;in-use&quot; preventing dynamic redeployment</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3144'>STR-3144</a>] - Bean Taglib Documentation Has Been Unreadable FOR YEARS...</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3146'>STR-3146</a>] - TLD reports contain broken hyperlinks</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3161'>STR-3161</a>] - Servlet not injected into newly created action in higly concurrent env</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2700'>STR-2700</a>] - Validator validwhen cannot test between two different indices in array</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2802'>STR-2802</a>] - File upload has 2GB limit</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2959'>STR-2959</a>] - Sufficently filter HTML tag attribute names and values</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3191'>STR-3191</a>] - SelectTag should single select when "multiple" attribute equals false</li>
+<li>Correct SCM-addresses, url's, organization and distribution management</li>
+<li>Correct javadoc-options for minimized output and no errors</li>
+<li>Correct &quot;struts-apps&quot;</li>
 </ul>
 
 <h4>Improvement</h4>
 <ul>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-1496'>STR-1496</a>] - html:form focus and focusIndex problem</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-1709'>STR-1709</a>] - FormTag: Add check for nonexistent form field in focus javascript</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-2810'>STR-2810</a>] - autocomplete attribute</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1195'>STR-1195</a>] - MalformedURLException: You must specify exactly one of "forward", "href", or "page"</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1638'>STR-1638</a>] - Enhance log error message for when the Action cannot instantiate</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1809'>STR-1809</a>] - Warn if a form is not declared but used by an action</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1819'>STR-1819</a>] - Tiles1 plugin should fail-fast when loaded twice</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1870'>STR-1870</a>] - Spanish translations of message bundles</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2013'>STR-2013</a>] - Improve error detail when form validation fails from absent ActionServlet</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2020'>STR-2020</a>] - FormFile needs clarification about FileNotFoundException</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2098'>STR-2098</a>] - Report the bean and property name when iteration fails</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2153'>STR-2153</a>] - Validator validwhen comparisons of floats</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2319'>STR-2319</a>] - Validator validwhen comparisons of doubles</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2321'>STR-2321</a>] - Standardize exception rethrows to contain root cause</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2437'>STR-2437</a>] - Cite the form name in validation exception message</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2611'>STR-2611</a>] - Provide better error message for "No valid collection specified for size tag"</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2779'>STR-2779</a>] - Validator plugin should fail-fast when loaded twice</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2904'>STR-2904</a>] - Exception configuration should not require key</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2924'>STR-2924</a>] - ValidatorForm to use dynamic page number</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3042'>STR-3042</a>] - Warn about using the classic RequestProcessor</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3068'>STR-3068</a>] - Standardize exception rethrows to contain root cause (initCause)</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3119'>STR-3119</a>] - Configuration post-processing via plug-ins</li>
+<li>Add &quot;maven-scm-publish-plugin&quot; to deploy site-documentation</li>
+<li>Reorganize integration-tests</li>
+<li>Centralize profile &quot;pre-assembly&quot;</li>
+<li>Convert &quot;testgen4web&quot; to &quot;Selenium&quot; integration tests</li>
+<li>Add &quot;cargorun&quot;-profile</li>
+<li>Move &quot;TestMockBase&quot; in module &quot;core&quot; from main into test</li>
+<li>Add &quot;maven-resources-plugin&quot;: Define encoding</li>
+<li>Add &quot;maven-enforcer-plugin&quot;: Enforces required MAVEN-Version</li>
+</ul>
+
+<h4>New Feature</h4>
+<ul>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3085'>STR-3085</a>] - Upgrade Commons FileUpload</li>
+<li>Add CHANGELOG, LICENSE, NOTICE and README.md</li>
 </ul>
 
 <h4>Task</h4>
 <ul>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3055'>STR-3055</a>] - Figure out the 'disabled=&quot;${!empty pageScope}&quot; in EL-Example</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3134'>STR-3134</a>] - Upgrade JSTL from 1.0.2 to latest 1.0.6</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3150'>STR-3150</a>] - Upgrade Commons Chain to 1.2</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3163'>STR-3163</a>] - Upgrade Commons BeanUtils</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3171'>STR-3171</a>] - Lock down Maven plugin dependencies</li>
-<li>[<a href='https://issues.apache.org/struts/browse/STR-3172'>STR-3172</a>] - Require Tomcat 5.5 for integration testing</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3059'>STR-3059</a>] - Upgrade Commons Logging</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3121'>STR-3121</a>] - Upgrade Commons Chain to 1.2</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3150'>STR-3150</a>] - Migrate dependencies to Dependency Management</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3152'>STR-3152</a>] - Struts 2.0.9 omnibus ticket</li>
+<li>[<a href='https://issues.apache.org/jira/browse/WW-1974'>WW-1974</a>] - Struts 2.0.9 omnibus ticket</li>
+<li>Upgrade &quot;taglib-maven-plugin&quot; to 2.6</li>
+<li>Upgrade &quot;webdrivermanager&quot; to 5.2.1</li>
+<li>Upgrade &quot;selenium-java&quot; to 4.3.0</li>
+<li>Upgrade &quot;htmlunit&quot; to 2.63.0</li>
+<li>Upgrade &quot;cargo-maven3-plugin&quot; to 1.9.13</li>
+<li>Upgrade &quot;maven-surefire-report-plugin&quot; to 3.0.0-M7</li>
+<li>Upgrade &quot;maven-surefire-plugin&quot; to 3.0.0-M7</li>
+<li>Upgrade &quot;maven-project-info-reports-plugin&quot; to 3.3.0</li>
+<li>Upgrade &quot;maven-pmd-plugin&quot; to 3.17.0</li>
+<li>Upgrade &quot;maven-failsafe-plugin&quot; to 3.0.0-M7</li>
+<li>Upgrade &quot;maven-enforcer-plugin&quot; to 3.1.0</li>
+<li>Upgrade &quot;maven-assembly-plugin&quot; to 3.4.1</li>
+<li>Upgrade &quot;maven-site-plugin&quot;  to 3.12.0</li>
+<li>Upgrade &quot;maven-javadoc-plugin&quot;  to 3.4.0</li>
+<li>Upgrade &quot;checkstyle&quot; to 9.3</li>
+<li>Upgrade &quot;maven-jxr-plugin&quot; to 3.2.0</li>
+<li>Upgrade &quot;JUnit&quot; to JUnit5 5.8.2 and upgrade tests</li>
+<li>Update deprecated MAVEN-Vars</li>
+<li>Upgrade and correct documentations</li>
 </ul>
 </subsection>
 

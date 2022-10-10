@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+    <properties>
+        <title>Release Notes (since 1.3.10)</title>
+    </properties>
+    <body>
+        <section name="6.1 Release Notes - Version 1.3.11">
+
+            <subsection name="Introduction" id="release_notes">
+                <p>
+                    This section contains release notes for changes that have
+                    taken place to Struts,
+                    since the
+                    <a href="release-notes-1_3_10.html">Version 1.3.10</a>
+                    distribution.
+                    To keep up-to-date on all changes to the framework,
+                    subscribe to
+                    the (commits at struts.apache.org) list.
+                    To preview our plans for upcoming changes,
+                    please visit the
+                    <a href="../roadmap.html">Roadmap page.</a>
+                </p>
+                <ul><li>
+                    <b>Notes on upgrading</b>
+                    are maintained in the
+                    <a href="http://wiki.apache.org/struts/StrutsUpgrade">Wiki
+                        Upgrade pages.</a>
+                    The wiki is a community maintained resource - please feel
+                    free to add your
+                    input so that everyone can benefit from the collective
+                    experience.
+                </li></ul>
+                <p>
+                    For the version requirements of each library, see the
+                    <a href="installation.html">Installation chapter.</a>
+                </p>
+
+            </subsection>
+
+            <subsection name="Issue Tracking" id="Highlight">
+<h4>Bug</h4>
+<ul>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2700'>STR-2700</a>] - Validator validwhen cannot test between two different indices in array</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2802'>STR-2802</a>] - File upload has 2GB limit</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2959'>STR-2959</a>] - Sufficently filter HTML tag attribute names and values</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3191'>STR-3191</a>] - SelectTag should single select when "multiple" attribute equals false</li>
+<li>Correct SCM-addresses, url's, organization and distribution management</li>
+<li>Correct javadoc-options for minimized output and no errors</li>
+<li>Correct &quot;struts-apps&quot;</li>
+</ul>
+
+<h4>Improvement</h4>
+<ul>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1195'>STR-1195</a>] - MalformedURLException: You must specify exactly one of "forward", "href", or "page"</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1638'>STR-1638</a>] - Enhance log error message for when the Action cannot instantiate</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1809'>STR-1809</a>] - Warn if a form is not declared but used by an action</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1819'>STR-1819</a>] - Tiles1 plugin should fail-fast when loaded twice</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1870'>STR-1870</a>] - Spanish translations of message bundles</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2013'>STR-2013</a>] - Improve error detail when form validation fails from absent ActionServlet</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2020'>STR-2020</a>] - FormFile needs clarification about FileNotFoundException</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2098'>STR-2098</a>] - Report the bean and property name when iteration fails</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2153'>STR-2153</a>] - Validator validwhen comparisons of floats</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2319'>STR-2319</a>] - Validator validwhen comparisons of doubles</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2321'>STR-2321</a>] - Standardize exception rethrows to contain root cause</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2437'>STR-2437</a>] - Cite the form name in validation exception message</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2611'>STR-2611</a>] - Provide better error message for "No valid collection specified for size tag"</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2779'>STR-2779</a>] - Validator plugin should fail-fast when loaded twice</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2904'>STR-2904</a>] - Exception configuration should not require key</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2924'>STR-2924</a>] - ValidatorForm to use dynamic page number</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3042'>STR-3042</a>] - Warn about using the classic RequestProcessor</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3068'>STR-3068</a>] - Standardize exception rethrows to contain root cause (initCause)</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3119'>STR-3119</a>] - Configuration post-processing via plug-ins</li>
+<li>Add &quot;maven-scm-publish-plugin&quot; to deploy site-documentation</li>
+<li>Reorganize integration-tests</li>
+<li>Centralize profile &quot;pre-assembly&quot;</li>
+<li>Convert &quot;testgen4web&quot; to &quot;Selenium&quot; integration tests</li>
+<li>Add &quot;cargorun&quot;-profile</li>
+<li>Move &quot;TestMockBase&quot; in module &quot;core&quot; from main into test</li>
+<li>Add &quot;maven-resources-plugin&quot;: Define encoding</li>
+<li>Add &quot;maven-enforcer-plugin&quot;: Enforces required MAVEN-Version</li>
+</ul>
+
+<h4>New Feature</h4>
+<ul>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3085'>STR-3085</a>] - Upgrade Commons FileUpload</li>
+<li>Add CHANGELOG, LICENSE, NOTICE and README.md</li>
+</ul>
+
+<h4>Task</h4>
+<ul>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3059'>STR-3059</a>] - Upgrade Commons Logging</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3121'>STR-3121</a>] - Upgrade Commons Chain to 1.2</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3150'>STR-3150</a>] - Migrate dependencies to Dependency Management</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3152'>STR-3152</a>] - Struts 2.0.9 omnibus ticket</li>
+<li>[<a href='https://issues.apache.org/jira/browse/WW-1974'>WW-1974</a>] - Struts 2.0.9 omnibus ticket</li>
+<li>Upgrade &quot;taglib-maven-plugin&quot; to 2.6</li>
+<li>Upgrade &quot;webdrivermanager&quot; to 5.2.1</li>
+<li>Upgrade &quot;selenium-java&quot; to 4.3.0</li>
+<li>Upgrade &quot;htmlunit&quot; to 2.63.0</li>
+<li>Upgrade &quot;cargo-maven3-plugin&quot; to 1.9.13</li>
+<li>Upgrade &quot;maven-surefire-report-plugin&quot; to 3.0.0-M7</li>
+<li>Upgrade &quot;maven-surefire-plugin&quot; to 3.0.0-M7</li>
+<li>Upgrade &quot;maven-project-info-reports-plugin&quot; to 3.3.0</li>
+<li>Upgrade &quot;maven-pmd-plugin&quot; to 3.17.0</li>
+<li>Upgrade &quot;maven-failsafe-plugin&quot; to 3.0.0-M7</li>
+<li>Upgrade &quot;maven-enforcer-plugin&quot; to 3.1.0</li>
+<li>Upgrade &quot;maven-assembly-plugin&quot; to 3.4.1</li>
+<li>Upgrade &quot;maven-site-plugin&quot;  to 3.12.0</li>
+<li>Upgrade &quot;maven-javadoc-plugin&quot;  to 3.4.0</li>
+<li>Upgrade &quot;checkstyle&quot; to 9.3</li>
+<li>Upgrade &quot;maven-jxr-plugin&quot; to 3.2.0</li>
+<li>Upgrade &quot;JUnit&quot; to JUnit5 5.8.2 and upgrade tests</li>
+<li>Update deprecated MAVEN-Vars</li>
+<li>Upgrade and correct documentations</li>
+</ul>
+</subsection>
+
+        </section>
+        <section name="">
+            <p class="right">Next:
+                <a href="installation.html">Installation</a>
+            </p>
+        </section>
+    </body>
+</document>

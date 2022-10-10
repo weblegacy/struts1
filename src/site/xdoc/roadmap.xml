@@ -182,7 +182,7 @@
                     removed deprecations, other minor enhancements.
                 </p>
 
-                <h4 id="struts_1_3_x">Release 1.3.x (pending)</h4>
+                <h4 id="struts_1_3_x">Release 1.3.x (complete)</h4>
                 <p>
                     Evolutionary enhancements to product base,
                     based on existing features or codebases.
@@ -201,6 +201,17 @@
                         Enhanced all configs to extend one configuration
                         element from another,
                         as is done with Tiles Definitions
+                    </li>
+                </ul>
+
+                <h4 id="struts_1_4_x">Release 1.4.x (pending)</h4>
+                <p>
+                    Evolutionary enhancements to product base,
+                    based on existing features or codebases.
+                </p>
+                <ul>
+                    <li>
+                        Upgrade to Java EE 5
                     </li>
                 </ul>
             </subsection>

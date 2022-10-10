@@ -114,6 +114,14 @@
         <include>src/</include>
       </includes>
     </fileSet>
+   <fileSet>
+     <directory>../apps/mailreader-dao</directory>
+     <outputDirectory>src/apps/mailreader-dao</outputDirectory>
+     <includes>
+        <include>pom.xml</include>
+        <include>src/</include>
+      </includes>
+   </fileSet>
     <fileSet>
       <directory>../apps/scripting-mailreader</directory>
       <outputDirectory>src/apps/scripting-mailreader</outputDirectory>
@@ -195,14 +203,6 @@
       </includes>
    </fileSet>
    <fileSet>
-     <directory>../mailreader-dao</directory>
-     <outputDirectory>src/mailreader-dao</outputDirectory>
-     <includes>
-        <include>pom.xml</include>
-        <include>src/</include>
-      </includes>
-   </fileSet>
-   <fileSet>
      <directory>../scripting</directory>
      <outputDirectory>src/scripting</outputDirectory>
      <includes>
@@ -270,6 +270,10 @@
      <outputDirectory>docs/struts-apps/struts-mailreader</outputDirectory>
    </fileSet>
    <fileSet>
+     <directory>../apps/mailreader-dao/target/site</directory>
+     <outputDirectory>docs/struts-apps/struts-mailreader-dao</outputDirectory>
+   </fileSet>
+   <fileSet>
      <directory>../apps/scripting-mailreader/target/site</directory>
      <outputDirectory>docs/struts-apps/struts-scripting-mailreader</outputDirectory>
    </fileSet>
@@ -292,10 +296,6 @@
    <fileSet>
      <directory>../faces/target/site</directory>
      <outputDirectory>docs/struts-faces</outputDirectory>
-   </fileSet>
-   <fileSet>
-     <directory>../mailreader-dao/target/site</directory>
-     <outputDirectory>docs/struts-mailreader-dao</outputDirectory>
    </fileSet>
    <fileSet>
      <directory>../scripting/target/site</directory>

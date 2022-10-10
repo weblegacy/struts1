@@ -102,6 +102,14 @@
       </includes>
     </fileSet>
     <fileSet>
+      <directory>../apps/mailreader-dao</directory>
+      <outputDirectory>src/apps/mailreader-dao</outputDirectory>
+      <includes>
+        <include>pom.xml</include>
+        <include>src/</include>
+      </includes>
+    </fileSet>
+    <fileSet>
       <directory>../apps/scripting-mailreader</directory>
       <outputDirectory>src/apps/scripting-mailreader</outputDirectory>
       <includes>
@@ -176,14 +184,6 @@
    <fileSet>
      <directory>../integration/apps-it-selenium</directory>
      <outputDirectory>src/integration/apps-it-selenium</outputDirectory>
-     <includes>
-        <include>pom.xml</include>
-        <include>src/</include>
-      </includes>
-   </fileSet>
-   <fileSet>
-     <directory>../mailreader-dao</directory>
-     <outputDirectory>src/mailreader-dao</outputDirectory>
      <includes>
         <include>pom.xml</include>
         <include>src/</include>

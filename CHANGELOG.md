@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Move `struts-mailreader-dao` into `struts-apps` and adapt documentations
 * Use `struts-mailreader-dao` in `faces-examples`
 * Rework dependencies-usages
 * Rework `slf4j`-dependencies-usage

@@ -24,14 +24,14 @@
 
    <parent>
       <groupId>io.github.weblegacy</groupId>
-      <artifactId>struts-parent</artifactId>
+      <artifactId>struts-apps</artifactId>
       <version>1.4.1-SNAPSHOT</version>
    </parent>
 
    <modelVersion>4.0.0</modelVersion>
    <artifactId>struts-mailreader-dao</artifactId>
    <packaging>jar</packaging>
-   <name>Struts Mailreader DAO</name>
+   <name>Struts Apps - Mailreader DAO</name>
 
    <properties>
        <struts.osgi.symbolicName>org.apache.struts.apps.mailreader.dao</struts.osgi.symbolicName>
@@ -55,35 +55,6 @@
             <artifactId>junit-jupiter-api</artifactId>
         </dependency>
     </dependencies>
-
-   <!--
-   <reporting>
-      <plugins>
-         <plugin>
-            <groupId>io.github.weblegacy</groupId>
-            <artifactId>taglib-maven-plugin</artifactId>
-            <configuration>
-               <srcDir>${project.basedir}/src/tld</srcDir>
-            </configuration>
-         </plugin>
-      </plugins>
-   </reporting>
-   -->
-     <profiles>
-       <profile>
-        <id>pre-assembly</id>
-        <build>
-        <plugins>
-          <plugin>
-            <artifactId>maven-javadoc-plugin</artifactId>
-          </plugin>
-          <plugin>
-            <artifactId>maven-source-plugin</artifactId>
-          </plugin>
-       </plugins>
-       </build>
-      </profile>
-    </profiles>
 
 
 </project>

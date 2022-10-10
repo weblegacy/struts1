@@ -37,6 +37,7 @@
       <module>examples</module>
       <module>blank</module>
       <module>mailreader</module>
+      <module>mailreader-dao</module>
       <module>el-example</module>
       <module>scripting-mailreader</module>
    </modules>

@@ -78,6 +78,16 @@
             </td></tr>
 
             <tr><th>
+            MailReader DAO
+            </th><td>
+            Struts MailReader DAO is a <strong>Data Access Object</strong>
+            (DAO) interface describing the available operations for retrieving
+            and storing Users (and their associated Subscriptions) in some
+            persistence layer whose characteristics are an in-memory database
+            backed by an XML data file.
+            </td></tr>
+
+            <tr><th>
             EL Example
             </th><td>
             Struts EL Example demonstrates and tests the

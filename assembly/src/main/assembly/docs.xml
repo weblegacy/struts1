@@ -68,6 +68,10 @@
      <outputDirectory>docs/struts-apps/struts-mailreader</outputDirectory>
    </fileSet>
    <fileSet>
+     <directory>../apps/mailreader-dao/target/site</directory>
+     <outputDirectory>docs/struts-apps/struts-mailreader-dao</outputDirectory>
+   </fileSet>
+   <fileSet>
      <directory>../apps/scripting-mailreader/target/site</directory>
      <outputDirectory>docs/struts-apps/struts-scripting-mailreader</outputDirectory>
    </fileSet>
@@ -90,10 +94,6 @@
    <fileSet>
      <directory>../faces/target/site</directory>
      <outputDirectory>docs/struts-faces</outputDirectory>
-   </fileSet>
-   <fileSet>
-     <directory>../mailreader-dao/target/site</directory>
-     <outputDirectory>docs/struts-mailreader-dao</outputDirectory>
    </fileSet>
    <fileSet>
      <directory>../scripting/target/site</directory>

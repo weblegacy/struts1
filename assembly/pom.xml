@@ -161,10 +161,6 @@
       <groupId>${project.groupId}</groupId>
       <artifactId>struts-tiles2</artifactId>
     </dependency>
-    <dependency>
-      <groupId>${project.groupId}</groupId>
-      <artifactId>struts-mailreader-dao</artifactId>
-    </dependency>
 
     <!-- Include optional dependencies -->
     <dependency>

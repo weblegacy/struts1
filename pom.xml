@@ -493,7 +493,6 @@
     <modules>
         <module>core</module>
         <module>extras</module>
-        <module>mailreader-dao</module>
         <module>scripting</module>
         <module>taglib</module>
         <module>tiles</module>

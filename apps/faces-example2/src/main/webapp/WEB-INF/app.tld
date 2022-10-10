@@ -56,14 +56,6 @@
 
       which will typically be a logon form.
 
-
-
-      name - Name of the session-scope bean to check for [user]
-
-
-
-      page - Context-relative path to the logon page [/logon.jsp]
-
     </description>
 
     <name>checkLogon</name>
@@ -73,6 +65,12 @@
     <body-content>empty</body-content>
 
     <attribute>
+
+      <description>
+
+        Name of the session-scope bean to check for [user]
+
+      </description>
 
       <name>name</name>
 
@@ -85,6 +83,12 @@
     </attribute>
 
     <attribute>
+
+      <description>
+
+        Context-relative path to the logon page [/logon.jsp]
+
+      </description>
 
       <name>page</name>
 
@@ -112,16 +116,6 @@
 
       select the specified Subscription object.
 
-
-
-      name     - Name of the attribute containing the specified
-
-                 Subscription.  [subscription]
-
-
-
-      page     - Context-relative URL of the generated link
-
     </description>
 
     <name>linkSubscription</name>
@@ -132,11 +126,19 @@
 
     <attribute>
 
+      <description>
+
+        Name of the attribute containing the specified Subscription.  [subscription]
+
+      </description>
+
       <name>name</name>
 
       <required>false</required>
 
       <rtexprvalue>true</rtexprvalue>
+
+      <type>javax.el.ValueExpression</type>
 
       <deferred-value>
 
@@ -148,11 +150,19 @@
 
     <attribute>
 
+      <description>
+
+        Context-relative URL of the generated link
+
+      </description>
+
       <name>page</name>
 
       <required>true</required>
 
       <rtexprvalue>true</rtexprvalue>
+
+      <type>javax.el.ValueExpression</type>
 
       <deferred-value>
 
@@ -178,16 +188,6 @@
 
       select the specified User object.
 
-
-
-      name     - Name of the attribute containing the specified user.
-
-                 [user]
-
-
-
-      href     - Context-relative URL of the generated link
-
     </description>
 
     <name>linkUser</name>
@@ -197,6 +197,12 @@
     <body-content>JSP</body-content>
 
     <attribute>
+
+      <description>
+
+        Name of the attribute containing the specified user. [user]
+
+      </description>
 
       <name>name</name>
 
@@ -209,6 +215,12 @@
     </attribute>
 
     <attribute>
+
+      <description>
+
+        Context-relative URL of the generated link
+
+      </description>
 
       <name>page</name>
 

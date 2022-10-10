@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Correct `tld`-files from `faces-examples`
 * Add `tld`-documentation of `faces-examples`
 * Use the new `srcDir`-Parameter in the `taglib-maven-plugin`
 * Remove unused `cargo-maven3-plugin` at `apps/pom.xml`

@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Use the new `srcDir`-Parameter in the `taglib-maven-plugin`
 * Remove unused `cargo-maven3-plugin` at `apps/pom.xml`
 * Tipfix at `el-example/logic-present.jsp`
 * Use `digester` instead `digester3` to optimize dependencies

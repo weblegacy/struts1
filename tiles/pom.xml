@@ -84,7 +84,7 @@
             <groupId>io.github.weblegacy</groupId>
             <artifactId>taglib-maven-plugin</artifactId>
             <configuration>
-               <taglib.src.dir>${project.basedir}/src/main/resources/META-INF/tld</taglib.src.dir>
+               <srcDir>${project.basedir}/src/main/resources/META-INF/tld</srcDir>
                <parseHtml>true</parseHtml>
             </configuration>
          </plugin>

@@ -59,7 +59,7 @@
             <groupId>io.github.weblegacy</groupId>
             <artifactId>taglib-maven-plugin</artifactId>
             <configuration>
-               <taglib.src.dir>${project.basedir}/src/tld</taglib.src.dir>
+               <srcDir>${project.basedir}/src/tld</srcDir>
             </configuration>
          </plugin>
       </plugins>

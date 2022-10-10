@@ -826,11 +826,6 @@
                     </dependencyLink>
                     <dependencyLink>
                       <groupId>org.apache.tiles</groupId>
-                      <artifactId>tiles-jsp</artifactId>
-                      <url>https://tiles.apache.org/framework/apidocs/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.apache.tiles</groupId>
                       <artifactId>tiles-request-api</artifactId>
                       <url>https://tiles.apache.org/tiles-request/apidocs/</url>
                     </dependencyLink>
@@ -863,11 +858,6 @@
                       <groupId>org.apache.taglibs</groupId>
                       <artifactId>taglibs-standard-impl</artifactId>
                       <url>https://javadoc.io/doc/org.apache.taglibs/taglibs-standard-impl/${taglibsVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.apache.groovy</groupId>
-                      <artifactId>groovy</artifactId>
-                      <url>https://javadoc.io/doc/org.apache.groovy/groovy-all/${groovyVersion}/</url>
                     </dependencyLink>
                     <dependencyLink>
                       <groupId>org.apache.groovy</groupId>
@@ -958,11 +948,6 @@
                 <version>1.9.4</version>
             </dependency>
             <dependency>
-                <groupId>commons-codec</groupId>
-                <artifactId>commons-codec</artifactId>
-                <version>1.15</version>
-            </dependency>
-            <dependency>
                 <groupId>commons-chain</groupId>
                 <artifactId>commons-chain</artifactId>
                 <version>1.2</version>
@@ -978,19 +963,9 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-collections4</artifactId>
-                <version>4.4</version>
-            </dependency>
-            <dependency>
                 <groupId>commons-digester</groupId>
                 <artifactId>commons-digester</artifactId>
                 <version>2.1</version>
-            </dependency>
-            <dependency>
-                <groupId>commons-el</groupId>
-                <artifactId>commons-el</artifactId>
-                <version>1.0</version>
             </dependency>
             <dependency>
                 <groupId>commons-fileupload</groupId>
@@ -1013,12 +988,6 @@
                 <groupId>commons-validator</groupId>
                 <artifactId>commons-validator</artifactId>
                 <version>1.7</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>xml-apis</groupId>
-                        <artifactId>xml-apis</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>
@@ -1108,11 +1077,6 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.groovy</groupId>
-                <artifactId>groovy</artifactId>
-                <version>${groovyVersion}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.groovy</groupId>
                 <artifactId>groovy-jsr223</artifactId>
                 <version>${groovyVersion}</version>
             </dependency>
@@ -1131,11 +1095,6 @@
                      <artifactId>jcl-over-slf4j</artifactId>
                   </exclusion>
                </exclusions>
-            </dependency>
-            <dependency>
-               <groupId>org.apache.tiles</groupId>
-               <artifactId>tiles-jsp</artifactId>
-               <version>${tilesVersion}</version>
             </dependency>
             <dependency>
                <groupId>org.apache.tiles</groupId>

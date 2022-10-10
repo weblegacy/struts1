@@ -50,6 +50,10 @@
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
+         <artifactId>struts-taglib</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>${project.groupId}</groupId>
          <artifactId>struts-faces</artifactId>
       </dependency>
       <dependency>
@@ -87,11 +91,6 @@
       <dependency>
          <groupId>commons-beanutils</groupId>
          <artifactId>commons-beanutils</artifactId>
-      </dependency>
-      <!-- Required by MyFaces -->
-      <dependency>
-         <groupId>commons-codec</groupId>
-         <artifactId>commons-codec</artifactId>
       </dependency>
    </dependencies>
 

@@ -39,6 +39,10 @@
 
     <dependencies>
         <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>struts-core</artifactId>
+        </dependency>
+        <dependency>
             <groupId>commons-digester</groupId>
             <artifactId>commons-digester</artifactId>
         </dependency>

@@ -20,7 +20,7 @@
  */
 
 
-package org.apache.struts.webapp.example.memory;
+package org.apache.struts.webapp.example.plugin;
 
 
 import java.io.BufferedInputStream;
@@ -29,11 +29,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+
 import javax.servlet.ServletException;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;
+import org.apache.struts.apps.mailreader.dao.impl.memory.MemoryUserDatabase;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.util.LabelValueBean;
 import org.apache.struts.webapp.example.Constants;
@@ -117,11 +120,10 @@ public final class MemoryDatabasePlugIn implements PlugIn {
             }
         }
 
-    servlet.getServletContext().removeAttribute(Constants.DATABASE_KEY);
+        servlet.getServletContext().removeAttribute(Constants.DATABASE_KEY);
         database = null;
         servlet = null;
         database = null;
-
     }
 
 
@@ -129,15 +131,15 @@ public final class MemoryDatabasePlugIn implements PlugIn {
      * Initialize and load our initial database from persistent storage.
      *
      * @param servlet The ActionServlet for this web application
-     * @param config The ApplicationConfig for our owning module
+     * @param config  The ApplicationConfig for our owning module
      *
-     * @exception ServletException if we cannot configure ourselves correctly
+     * @throws ServletException if we cannot configure ourselves correctly
      */
     public void init(ActionServlet servlet, ModuleConfig config)
-        throws ServletException {
+            throws ServletException {
 
         log.info("Initializing memory database plug in from '" +
-                 pathname + "'");
+                pathname + "'");
 
         // Remember our associated configuration and servlet
         this.servlet = servlet;
@@ -154,12 +156,12 @@ public final class MemoryDatabasePlugIn implements PlugIn {
         } catch (Exception e) {
             log.error("Opening memory database", e);
             throw new ServletException("Cannot load database from '" +
-                                       pathname + "'", e);
+                    pathname + "'", e);
         }
 
         // Make the initialized database available
         servlet.getServletContext().setAttribute(Constants.DATABASE_KEY,
-                                                 database);
+                database);
 
         // Setup and cache other required data
         setupCache(servlet, config);
@@ -200,7 +202,7 @@ public final class MemoryDatabasePlugIn implements PlugIn {
      * Calculate and return an absolute pathname to the XML file to contain
      * our persistent storage information.
      *
-     * @exception Exception if an input/output error occurs
+     * @throws Exception if an input/output error occurs
      */
     private String calculatePath() throws Exception {
 
@@ -212,8 +214,8 @@ public final class MemoryDatabasePlugIn implements PlugIn {
 
         // Does a copy of this file already exist in our temporary directory
         File dir = (File)
-            servlet.getServletContext().getAttribute
-            ("javax.servlet.context.tempdir");
+                servlet.getServletContext().getAttribute
+                        ("javax.servlet.context.tempdir");
         File file = new File(dir, "struts-example-database.xml");
         if (file.exists()) {
             return (file.getAbsolutePath());
@@ -221,10 +223,10 @@ public final class MemoryDatabasePlugIn implements PlugIn {
 
         // Copy the static resource to a temporary file and return its path
         InputStream is =
-            servlet.getServletContext().getResourceAsStream(pathname);
+                servlet.getServletContext().getResourceAsStream(pathname);
         BufferedInputStream bis = new BufferedInputStream(is, 1024);
         FileOutputStream os =
-            new FileOutputStream(file);
+                new FileOutputStream(file);
         BufferedOutputStream bos = new BufferedOutputStream(os, 1024);
         byte buffer[] = new byte[1024];
         while (true) {
@@ -239,6 +241,5 @@ public final class MemoryDatabasePlugIn implements PlugIn {
         return (file.getAbsolutePath());
 
     }
-
 
 }

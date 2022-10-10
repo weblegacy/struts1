@@ -18,6 +18,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+
 package org.apache.struts.apps.mailreader.dao;
 
 
@@ -28,9 +30,11 @@ package org.apache.struts.apps.mailreader.dao;
  * whose characteristics are not specified here.  One or more implementations
  * will be created to perform the actual I/O that is required.</p>
  *
+ * @author Craig R. McClanahan
  * @version $Rev$ $Date$
  * @since Struts 1.1
  */
+
 public interface UserDatabase {
 
 

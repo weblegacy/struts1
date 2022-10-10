@@ -178,7 +178,7 @@
 
   <!-- ========== Plug Ins Configuration ================================== -->
 
-  <plug-in className="org.apache.struts.webapp.example.memory.MemoryDatabasePlugIn">
+  <plug-in className="org.apache.struts.webapp.example.plugin.MemoryDatabasePlugIn">
     <set-property property="pathname" value="/WEB-INF/database.xml"/>
   </plug-in>
 

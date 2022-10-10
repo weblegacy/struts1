@@ -191,7 +191,7 @@
                      value="/WEB-INF/tiles-defs.xml"/>
   </plug-in>
 
-  <plug-in className="org.apache.struts.webapp.example2.memory.MemoryDatabasePlugIn">
+  <plug-in className="org.apache.struts.webapp.example2.plugin.MemoryDatabasePlugIn">
     <set-property property="pathname" value="/WEB-INF/database.xml"/>
   </plug-in>
 

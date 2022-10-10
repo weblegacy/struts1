@@ -1,5 +1,5 @@
 /*
- * $Id: $
+ * $Id$
  *
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -19,7 +19,9 @@
  * under the License.
  */
 
+
 package org.apache.struts.apps.mailreader.dao.impl.memory;
+
 
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
 import org.apache.struts.apps.mailreader.dao.impl.AbstractUser;
@@ -29,13 +31,31 @@ import org.apache.struts.apps.mailreader.dao.impl.AbstractUser;
  * <p>Concrete implementation of {@link AbstractUser} used for an in-memory
  * database backed by an XML data file.</p>
  *
- * @version $Rev$
+ * @author Craig R. McClanahan
+ * @version $Rev$ $Date$
+ * @since Struts 1.1
  */
-public class MemoryUser extends AbstractUser{
 
+public final class MemoryUser extends AbstractUser{
+
+
+    // ----------------------------------------------------------- Constructors
+
+
+    /**
+     * <p>Construct a new User associated with the specified
+     * {@link UserDatabase}.
+     *
+     * @param database The user database with which we are associated
+     * @param username The username of this user
+     */
     public MemoryUser(UserDatabase database, String username) {
+
         super(database, username);
+
     }
+
+
     /**
      * Return a String representation of this object.
      */

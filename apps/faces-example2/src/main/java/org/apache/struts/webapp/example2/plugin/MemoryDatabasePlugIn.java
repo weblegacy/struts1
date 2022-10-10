@@ -20,7 +20,7 @@
  */
 
 
-package org.apache.struts.webapp.example2.memory;
+package org.apache.struts.webapp.example2.plugin;
 
 
 import java.io.BufferedInputStream;
@@ -29,11 +29,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+
 import javax.servlet.ServletException;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;
+import org.apache.struts.apps.mailreader.dao.impl.memory.MemoryUserDatabase;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.util.LabelValueBean;
 import org.apache.struts.webapp.example2.Constants;

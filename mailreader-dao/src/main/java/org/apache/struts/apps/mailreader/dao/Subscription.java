@@ -27,6 +27,7 @@ package org.apache.struts.apps.mailreader.dao;
  * <p>A <strong>Subscription</strong> which is stored, along with the
  * associated {@link User}, in a {@link UserDatabase}.</p>
  *
+ * @author Craig R. McClanahan
  * @version $Rev$ $Date$
  */
 

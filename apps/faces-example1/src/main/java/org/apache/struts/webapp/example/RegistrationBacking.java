@@ -25,8 +25,12 @@ package org.apache.struts.webapp.example;
 
 import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.struts.apps.mailreader.dao.Subscription;
+import org.apache.struts.apps.mailreader.dao.User;
+import org.apache.struts.apps.mailreader.dao.UserDatabase;
 
 
 /**

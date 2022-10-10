@@ -23,13 +23,15 @@
 package org.apache.struts.apps.mailreader.dao;
 
 
+import org.apache.struts.util.ModuleException;
+
 /**
  * Example of an application-specific exception for which a handler
  * can be configured.
  */
 
 
-public class ExpiredPasswordException extends Exception {
+public class ExpiredPasswordException extends ModuleException {
     private static final long serialVersionUID = -3244418598208385319L;
 
 
@@ -39,7 +41,7 @@ public class ExpiredPasswordException extends Exception {
      * @param username Username whose password has expired
      */
     public ExpiredPasswordException(String username) {
-        super("Password for " + username + " has expired.");
+        super("error.password.expired", username);
     }
 
 

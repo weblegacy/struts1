@@ -44,11 +44,12 @@ import org.xml.sax.Attributes;
  * <p>Concrete implementation of {@link UserDatabase} for an in-memory
  * database backed by an XML data file.</p>
  *
+ * @author Craig R. McClanahan
  * @version $Rev$ $Date$
  * @since Struts 1.1
  */
 
-public class MemoryUserDatabase implements UserDatabase {
+public final class MemoryUserDatabase implements UserDatabase {
 
 
     // ----------------------------------------------------------- Constructors
@@ -305,9 +306,6 @@ public class MemoryUserDatabase implements UserDatabase {
     public boolean isOpen() {
         return this.open;
     }
-
-
-
 
 }
 

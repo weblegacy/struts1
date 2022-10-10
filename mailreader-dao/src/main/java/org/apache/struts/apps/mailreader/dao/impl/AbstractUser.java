@@ -22,6 +22,7 @@
 
 package org.apache.struts.apps.mailreader.dao.impl;
 
+
 import java.util.HashMap;
 
 import org.apache.struts.apps.mailreader.dao.Subscription;
@@ -32,7 +33,8 @@ import org.apache.struts.apps.mailreader.dao.UserDatabase;
 /**
  * <p>Concrete implementation of {@link AbstractUser}.</p>
  *
- * @version $Rev$
+ * @author Craig R. McClanahan
+ * @version $Rev$ $Date$
  * @since Struts 1.1
  */
 

@@ -18,23 +18,26 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+
+
 package org.apache.struts.apps.scriptingmailreader.plugin;
 
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.action.ActionServlet;
-import org.apache.struts.action.PlugIn;
-import org.apache.struts.apps.scriptingmailreader.Constants;
-import org.apache.struts.apps.mailreader.dao.impl.memory.MemoryUserDatabase;
-import org.apache.struts.config.ModuleConfig;
-
-import javax.servlet.ServletException;
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+
+import javax.servlet.ServletException;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.apache.struts.action.ActionServlet;
+import org.apache.struts.action.PlugIn;
+import org.apache.struts.apps.mailreader.dao.impl.memory.MemoryUserDatabase;
+import org.apache.struts.apps.scriptingmailreader.Constants;
+import org.apache.struts.config.ModuleConfig;
 
 /**
  * <p><strong>MemoryDatabasePlugIn</strong> initializes and finalizes the
@@ -50,12 +53,15 @@ import java.io.InputStream;
  * <strong>NOT</strong> assume that files written here will survive a restart
  * of your servlet container.</p>
  *
+ * @author Craig R. McClanahan
  * @version $Rev$ $Date$
  */
 
 public final class MemoryDatabasePlugIn implements PlugIn {
 
-    // ---- Instance Variables ----
+
+    // ----------------------------------------------------- Instance Variables
+
 
     /**
      * The {@link MemoryUserDatabase} object we construct and make available.
@@ -74,7 +80,9 @@ public final class MemoryDatabasePlugIn implements PlugIn {
      */
     private ActionServlet servlet = null;
 
-    // ---- Properties ----
+
+    // ------------------------------------------------------------- Properties
+
 
     /**
      * The web application resource path of our persistent database
@@ -90,7 +98,8 @@ public final class MemoryDatabasePlugIn implements PlugIn {
         this.pathname = pathname;
     }
 
-    // ---- PlugIn Methods ----
+
+    // --------------------------------------------------------- PlugIn Methods
 
 
     /**
@@ -121,6 +130,7 @@ public final class MemoryDatabasePlugIn implements PlugIn {
      *
      * @param servlet The ActionServlet for this web application
      * @param config  The ApplicationConfig for our owning module
+     *
      * @throws ServletException if we cannot configure ourselves correctly
      */
     public void init(ActionServlet servlet, ModuleConfig config)
@@ -153,7 +163,14 @@ public final class MemoryDatabasePlugIn implements PlugIn {
 
     }
 
-    // ---- Private Methods ----
+
+    // --------------------------------------------------------- Public Methods
+
+
+
+
+    // -------------------------------------------------------- Private Methods
+
 
     /**
      * Calculate and return an absolute pathname to the XML file to contain

@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Rework `slf4j`-dependencies-usage
 * Correct `tld`-files from `faces-examples`
 * Add `tld`-documentation of `faces-examples`
 * Use the new `srcDir`-Parameter in the `taglib-maven-plugin`

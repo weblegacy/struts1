@@ -367,6 +367,7 @@
         <myfacesVersion>1.2.12</myfacesVersion>
         <groovyVersion>4.0.4</groovyVersion>
         <seleniumVersion>4.4.0</seleniumVersion>
+        <slf4jVersion>1.7.36</slf4jVersion>
         <taglibsVersion>1.2.5</taglibsVersion>
         <tilesVersion>3.0.8</tilesVersion>
         <tilesRequestVersion>1.0.7</tilesRequestVersion>
@@ -1043,8 +1044,20 @@
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4jVersion}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-simple</artifactId>
-                <version>1.7.36</version>
+                <version>${slf4jVersion}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-jcl</artifactId>
+                <version>${slf4jVersion}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -1112,6 +1125,12 @@
                <groupId>org.apache.tiles</groupId>
                <artifactId>tiles-core</artifactId>
                <version>${tilesVersion}</version>
+               <exclusions>
+                  <exclusion>
+                     <groupId>org.slf4j</groupId>
+                     <artifactId>jcl-over-slf4j</artifactId>
+                  </exclusion>
+               </exclusions>
             </dependency>
             <dependency>
                <groupId>org.apache.tiles</groupId>

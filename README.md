@@ -18,12 +18,20 @@ Full [CHANGELOG](CHANGELOG.md)
 
 For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.github.io/struts1)
 
+## Versions-Overview
+
+| Version                                                             | JEE-Version | Java-Version | Servlet | JSP | EL  | JSF | JSTL |
+|--------------------------------------------------------------------:|------------:|-------------:|--------:|----:|----:|----:|-----:|
+|   [1.4.1](https://github.com/weblegacy/struts1/releases/tag/v1.4.1) |   Java EE 5 |            8 |     2.5 | 2.1 | 2.1 | 1.2 |  1.2 |
+|   [1.4.0](https://github.com/weblegacy/struts1/releases/tag/v1.4.0) |    J2EE 1.4 |          1.4 |     2.3 | 2.0 | 2.0 | 1.0 |  1.0 |
+| [1.3.11](https://github.com/weblegacy/struts1/releases/tag/v1.3.11) |    J2EE 1.4 |          1.4 |     2.3 | 2.0 | 2.0 | 1.0 |  1.0 |
+
 ## Fixed vulnerabilities
 
-- CVE-2014-0114
-- CVE-2015-0899
-- CVE-2016-1181
-- CVE-2016-1182
+* CVE-2014-0114
+* CVE-2015-0899
+* CVE-2016-1181
+* CVE-2016-1182
 
 ## Building Strus1 - Reloaded
 

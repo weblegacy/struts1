@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Add versions-overview to `README.md`
 * Add release-documentation for 1.3.11
 * Move `struts-mailreader-dao` into `struts-apps` and adapt documentations
 * Use `struts-mailreader-dao` in `faces-examples`

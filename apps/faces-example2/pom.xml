@@ -30,6 +30,19 @@
    <packaging>war</packaging>
    <name>Struts Apps - Faces Example 2</name>
 
+   <reporting>
+      <plugins>
+         <plugin>
+            <groupId>io.github.weblegacy</groupId>
+            <artifactId>taglib-maven-plugin</artifactId>
+            <configuration>
+               <srcDir>${project.basedir}/src/main/webapp/WEB-INF</srcDir>
+               <parseHtml>true</parseHtml>
+            </configuration>
+         </plugin>
+      </plugins>
+   </reporting>
+
    <dependencies>
       <dependency>
          <groupId>${project.groupId}</groupId>

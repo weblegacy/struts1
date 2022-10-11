@@ -6,13 +6,13 @@ Is a clone of <https://github.com/apache/struts1.git> - Branche `trunk`, aiming 
   * Upgrade MAVEN-Plugins
   * Correct example-apps
   * Complete JUnit5- and integration-test (rewrite old ones)
+  * JSTL 1.0.2 --> 1.2
+  * Taglibs-Standard 1.0.6 --> 1.2
 * **[Open]**
   * JDK 1.4 --> JDK 11
   * Servlet-API 2.3 --> 4.0
-  * JSTL 1.0.2 --> 1.2
   * JSP 2.0 --> 2.3
   * MyFaces 1.0.9 --> 2.3
-  * Taglibs-Standard 1.0.6 --> 1.2
 
 Full [CHANGELOG](CHANGELOG.md)
 

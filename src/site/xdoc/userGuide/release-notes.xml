@@ -97,6 +97,7 @@
 <h4>Task</h4>
 <ul>
 <li>Remove unused dependencies</li>
+<li>Upgrade &quot;junit-jupiter-api&quot; to 5.9.1</li>
 <li>Upgrade &quot;apache tiles&quot; to 3.0.8, remove JDK-1.4 support dependencies</li>
 <li>Upgrade &quot;antlr&quot; to 4.10.1 and always generate grammar</li>
 <li>Upgrade &quot;groovy&quot; to 4.0.5</li>

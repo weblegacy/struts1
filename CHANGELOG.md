@@ -1,7 +1,8 @@
 # Changes
 
-## 1.4.1 / YYYY-MM-DD
+## 1.4.1 / 2022-10-11
 
+* Set Version to 1.4.1
 * Update upgrade-status in `README.md`
 * Add version to checkin-comment to `maven-scm-publish-plugin`
 * Bump `spotbugs-annotations` from 4.7.1 to 4.7.2

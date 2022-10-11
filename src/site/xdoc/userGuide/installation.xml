@@ -79,9 +79,9 @@
                         download and install a
                         servlet container that is compatible with the Servlet
                         API Specification,
-                        version 2.3 or later, and the JavaServer Pages (JSP)
+                        version 2.5 or later, and the JavaServer Pages (JSP)
                         Specification,
-                        version 2.0 or later. One popular choice is to
+                        version 2.1 or later. One popular choice is to
                         download Apache's
                         <a href="https://tomcat.apache.org/">Tomcat</a>,
                         but any compliant

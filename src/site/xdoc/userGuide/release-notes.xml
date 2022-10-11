@@ -25,17 +25,17 @@
   xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
-        <title>Release Notes (since 1.3.11)</title>
+        <title>Release Notes (since 1.4.0)</title>
     </properties>
     <body>
-        <section name="6.1 Release Notes - Version 1.4.0">
+        <section name="6.1 Release Notes - Version 1.4.1">
 
             <subsection name="Introduction" id="release_notes">
                 <p>
                     This section contains release notes for changes that have
                     taken place to Struts,
                     since the
-                    <a href="release-notes-1_3_11.html">Version 1.3.11</a>
+                    <a href="release-notes-1_4_0.html">Version 1.4.0</a>
                     distribution.
                     To keep up-to-date on all changes to the framework,
                     subscribe to
@@ -64,45 +64,57 @@
             <subsection name="Issue Tracking" id="Highlight">
 <h4>Bug</h4>
 <ul>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-3052'>STR-3052</a>] - ImgTag missing actionId support</li>
-<li>Corrections in documentation</li>
-<li>Correct deprecated maven-properties</li>
+<li>Correct &quot;tld&quot;-files from &quot;faces-examples&quot; and add documentation for them</li>
+<li>Fix groovy-compile-error</li>
+<li>Apps-Blank: Add missing dependency</li>
+<li>Fix: CVE-2016-1181 and CVE-2016-1182</li>
+<li>Fix: CVE-2015-0899 with test-cases</li>
+<li>Fix: CVE-2014-0114 with test-cases</li>
+<li>Some corrections in examples-app</li>
+<li>JavaDoc: Correct links and others</li>
 </ul>
 
 <h4>Improvement</h4>
 <ul>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-1175'>STR-1175</a>] - No inheritance of html:html xhtml="true" in included tiles</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-1922'>STR-1922</a>] - Add message parameter XML-escaping to &lt;html:messages&gt;</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-2072'>STR-2072</a>] - [taglib] html:option etal need title attribute</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-2499'>STR-2499</a>] - Find required forward or throw exception</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-2740'>STR-2740</a>] - Support for XHTML 1.1 and XHTML 2.0 etc.</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-2913'>STR-2913</a>] - Message tags to expose count of messages</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-3024'>STR-3024</a>] - Add S2-like Action constants</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-3025'>STR-3025</a>] - Select input based on convention over configuration</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-3078'>STR-3078</a>] - Extend action configs by action id</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-3094'>STR-3094</a>] - Emit error to log when input forward does not exist</li>
+<li>Move &quot;struts-mailreader-dao&quot; into &quot;struts-apps&quot; and adapt documentations</li>
+<li>Use &quot;struts-mailreader-dao&quot; in &quot;faces-examples&quot;</li>
+<li>Resolve compiler- and javadoc-warnings</li>
+<li>Set java-version to &quot;1.8&quot;</li>
+<li>Apps: JDK8 - Add generics, serialVersionID, for-each-loop, ...</li>
+<li>Change &quot;StringBuffer&quot; to &quot;StringBuilder&quot;</li>
+<li>Apps: HTML5-Updates</li>
+<li>Create &quot;package-info.java&quot; instead of old &quot;package.html&quot;</li>
+<li>Adapt &quot;EvalHelper&quot; to jsp 2.1 and remove &quot;tagObject&quot;-parameter</li>
 </ul>
 
 <h4>New Feature</h4>
 <ul>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-286'>STR-286</a>] - ActionForm populate strategy</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-1116'>STR-1116</a>] - ActionForm reset strategy</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-1305'>STR-1305</a>] - Add &lt;html:label&gt; tag to output HTML label</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-2986'>STR-2986</a>] - Build Struts 1 - Tiles 2 integration</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-3032'>STR-3032</a>] - Copy unaccessed messages/errors to session if redirecting</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-3107'>STR-3107</a>] - Case-insensitive URI matching</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-3111'>STR-3111</a>] - Module level properties</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-3168'>STR-3168</a>] - Add dispatching support to Controller and Action configuration</li>
-<li>Add &quot;dependency-analyze&quot;-report</li>
+<li>Prepare &quot;struts-extras&quot; for JPMS (add &quot;extras&quot; to package-name)</li>
+<li>Add &quot;Automatic-Module-Name&quot; to &quot;MANIFEST.MF&quot;-files</li>
+<li>Replace &quot;bsf&quot;-dependency with JSR-223 &quot;javax.script&quot;</li>
 </ul>
 
 <h4>Task</h4>
 <ul>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-3004'>STR-3004</a>] - Create 1.4 DTD</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-3152'>STR-3152</a>] - Migrate dependencies to Dependency Management</li>
-<li>[<a href='https://issues.apache.org/jira/browse/STR-3153'>STR-3153</a>] - Optional build profile for dormant subprojects</li>
-<li>Upgrade &quot;junit-jupiter-engine&quot; to 5.9.0</li>
-<li>Upgrade &quot;maven-bundle-plugin&quot; to 5.1.7 and remove &quot;_nouses&quot;-parameter</li>
+<li>Remove unused dependencies</li>
+<li>Upgrade &quot;apache tiles&quot; to 3.0.8, remove JDK-1.4 support dependencies</li>
+<li>Upgrade &quot;antlr&quot; to 4.10.1 and always generate grammar</li>
+<li>Upgrade &quot;groovy&quot; to 4.0.4</li>
+<li>Upgrade &quot;jsf&quot; (&quot;myfaces&quot;) to 1.2.12</li>
+<li>Upgrade &quot;webdrivermanager&quot; to 5.3.0</li>
+<li>Upgrade &quot;taglibs&quot; to 1.2.5</li>
+<li>Upgrade &quot;jsp-api&quot; to 2.1</li>
+<li>Upgrade &quot;servlet-api&quot; to 2.5</li>
+<li>Upgrade &quot;jstl&quot; and &quot;taglibs.standard&quot; to 1.1.2</li>
+<li>Upgrade &quot;selenium-java&quot; to 4.4.0</li>
+<li>Upgrade &quot;commons-digester&quot; to 2.1</li>
+<li>Upgrade &quot;htmlunit&quot; to 2.64.0</li>
+<li>Upgrade &quot;commons-fileupload&quot; to 1.4</li>
+<li>Upgrade &quot;commons-io&quot; to 2.11.0</li>
+<li>Upgrade &quot;commons-validator&quot; to 1.7, add old commons-validator-js from 1.4</li>
+<li>Upgrade &quot;commons-logging&quot; to 1.2</li>
+<li>Upgrade &quot;beanutils&quot; to 1.9.4</li>
+<li>Upgrade &quot;Tomcat5x&quot; to &quot;Tomcat6x&quot;</li>
 </ul>
 </subsection>
 

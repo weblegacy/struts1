@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Add release-documentation for 1.4.1
 * Add release-documentation for 1.4.0
 * Add versions-overview to `README.md`
 * Add release-documentation for 1.3.11

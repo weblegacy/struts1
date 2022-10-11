@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+    <properties>
+        <title>Release Notes (since 1.3.11)</title>
+    </properties>
+    <body>
+        <section name="6.1 Release Notes - Version 1.4.0">
+
+            <subsection name="Introduction" id="release_notes">
+                <p>
+                    This section contains release notes for changes that have
+                    taken place to Struts,
+                    since the
+                    <a href="release-notes-1_3_11.html">Version 1.3.11</a>
+                    distribution.
+                    To keep up-to-date on all changes to the framework,
+                    subscribe to
+                    the (commits at struts.apache.org) list.
+                    To preview our plans for upcoming changes,
+                    please visit the
+                    <a href="../roadmap.html">Roadmap page.</a>
+                </p>
+                <ul><li>
+                    <b>Notes on upgrading</b>
+                    are maintained in the
+                    <a href="http://wiki.apache.org/struts/StrutsUpgrade">Wiki
+                        Upgrade pages.</a>
+                    The wiki is a community maintained resource - please feel
+                    free to add your
+                    input so that everyone can benefit from the collective
+                    experience.
+                </li></ul>
+                <p>
+                    For the version requirements of each library, see the
+                    <a href="installation.html">Installation chapter.</a>
+                </p>
+
+            </subsection>
+
+            <subsection name="Issue Tracking" id="Highlight">
+<h4>Bug</h4>
+<ul>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3052'>STR-3052</a>] - ImgTag missing actionId support</li>
+<li>Corrections in documentation</li>
+<li>Correct deprecated maven-properties</li>
+</ul>
+
+<h4>Improvement</h4>
+<ul>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1175'>STR-1175</a>] - No inheritance of html:html xhtml="true" in included tiles</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1922'>STR-1922</a>] - Add message parameter XML-escaping to &lt;html:messages&gt;</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2072'>STR-2072</a>] - [taglib] html:option etal need title attribute</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2499'>STR-2499</a>] - Find required forward or throw exception</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2740'>STR-2740</a>] - Support for XHTML 1.1 and XHTML 2.0 etc.</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2913'>STR-2913</a>] - Message tags to expose count of messages</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3024'>STR-3024</a>] - Add S2-like Action constants</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3025'>STR-3025</a>] - Select input based on convention over configuration</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3078'>STR-3078</a>] - Extend action configs by action id</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3094'>STR-3094</a>] - Emit error to log when input forward does not exist</li>
+</ul>
+
+<h4>New Feature</h4>
+<ul>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-286'>STR-286</a>] - ActionForm populate strategy</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1116'>STR-1116</a>] - ActionForm reset strategy</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-1305'>STR-1305</a>] - Add &lt;html:label&gt; tag to output HTML label</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-2986'>STR-2986</a>] - Build Struts 1 - Tiles 2 integration</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3032'>STR-3032</a>] - Copy unaccessed messages/errors to session if redirecting</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3107'>STR-3107</a>] - Case-insensitive URI matching</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3111'>STR-3111</a>] - Module level properties</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3168'>STR-3168</a>] - Add dispatching support to Controller and Action configuration</li>
+<li>Add &quot;dependency-analyze&quot;-report</li>
+</ul>
+
+<h4>Task</h4>
+<ul>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3004'>STR-3004</a>] - Create 1.4 DTD</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3152'>STR-3152</a>] - Migrate dependencies to Dependency Management</li>
+<li>[<a href='https://issues.apache.org/jira/browse/STR-3153'>STR-3153</a>] - Optional build profile for dormant subprojects</li>
+<li>Upgrade &quot;junit-jupiter-engine&quot; to 5.9.0</li>
+<li>Upgrade &quot;maven-bundle-plugin&quot; to 5.1.7 and remove &quot;_nouses&quot;-parameter</li>
+</ul>
+</subsection>
+
+        </section>
+        <section name="">
+            <p class="right">Next:
+                <a href="installation.html">Installation</a>
+            </p>
+        </section>
+    </body>
+</document>

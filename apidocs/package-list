@@ -1,6 +1,5 @@
 org.apache.struts
 org.apache.struts.action
-org.apache.struts.actions
 org.apache.struts.apps.mailreader.dao
 org.apache.struts.apps.mailreader.dao.impl
 org.apache.struts.apps.mailreader.dao.impl.memory
@@ -14,6 +13,9 @@ org.apache.struts.config
 org.apache.struts.config.impl
 org.apache.struts.dispatcher
 org.apache.struts.dispatcher.servlet
+org.apache.struts.extras.actions
+org.apache.struts.extras.plugins
+org.apache.struts.extras.validator
 org.apache.struts.faces
 org.apache.struts.faces.application
 org.apache.struts.faces.component
@@ -21,7 +23,6 @@ org.apache.struts.faces.renderer
 org.apache.struts.faces.taglib
 org.apache.struts.faces.util
 org.apache.struts.mock
-org.apache.struts.plugins
 org.apache.struts.scripting
 org.apache.struts.taglib
 org.apache.struts.taglib.bean
@@ -48,8 +49,8 @@ org.apache.struts.upload
 org.apache.struts.util
 org.apache.struts.validator
 org.apache.struts.validator.validwhen
+org.apache.strutsel.taglib
 org.apache.strutsel.taglib.bean
 org.apache.strutsel.taglib.html
 org.apache.strutsel.taglib.logic
 org.apache.strutsel.taglib.tiles
-org.apache.strutsel.taglib.utils

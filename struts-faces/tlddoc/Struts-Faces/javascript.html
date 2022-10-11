@@ -59,7 +59,7 @@
       the static JavaScript will be rendered which can then be put in
       separate JSP page so the browser can cache the static JavaScript.</p>
       
-      <br>
+    <br>
 <p></p>
 <hr>
 <table border="1" cellpadding="3" cellspacing="0" width="100%">
@@ -67,8 +67,7 @@
 <td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
 </tr>
 <tr>
-<td>Tag Class</td><td>org.apache.struts.faces.taglib.JavascriptValidatorTag
-    </td>
+<td>Tag Class</td><td>org.apache.struts.faces.taglib.JavascriptValidatorTag</td>
 </tr>
 <tr>
 <td>TagExtraInfo Class</td><td><i>None</i></td>
@@ -90,7 +89,9 @@
 <td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
 </tr>
 <tr valign="top">
-<td>cdata</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+<td>cdata</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>boolean</code>)
+                    </td><td>
       <p>If set to "true" and XHTML has been enabled, the JavaScript will
         be wrapped in a CDATA section to prevent XML parsing. The default is
         "true" to comply with the W3C's recommendation.</p>
@@ -98,21 +99,27 @@
       </td>
 </tr>
 <tr valign="top">
-<td>dynamicJavascript</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>dynamicJavascript</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>boolean</code>)
+                    </td><td>
       <p>Whether or not to render the dynamic JavaScript.
         Defaults to <code>true</code>.</p>
       
       </td>
 </tr>
 <tr valign="top">
-<td>formName</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+<td>formName</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>The key (form name) to retrieve a specific
         set of validation rules.</p>
       
       </td>
 </tr>
 <tr valign="top">
-<td>htmlComment</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+<td>htmlComment</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>Whether or not to enclose the javascript
         with HTML comments.  This attribute is ignored in XHTML
         mode because the script would be deleted by the XML parser.  See
@@ -122,7 +129,9 @@
       </td>
 </tr>
 <tr valign="top">
-<td>method</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+<td>method</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>The alternate JavaScript method name to be used
         instead of the of the default.  The default is
         'validate' concatenated in front of
@@ -131,7 +140,9 @@
       </td>
 </tr>
 <tr valign="top">
-<td>page</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+<td>page</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.Integer</code>)
+                    </td><td>
       <p>The current page of a set of validation rules
         if the page attribute for the field element
         in the xml file is in use.</p>
@@ -139,14 +150,18 @@
       </td>
 </tr>
 <tr valign="top">
-<td>src</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+<td>src</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>The src attribute's value when defining
         the html script element.</p>
       
       </td>
 </tr>
 <tr valign="top">
-<td>staticJavascript</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>staticJavascript</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>boolean</code>)
+                    </td><td>
       <p>Whether or not to render the static JavaScript.
         Defaults to <code>true</code>.</p>
       

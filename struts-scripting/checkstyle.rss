@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2000 - 2022 Web-Legacy</copyright>
     <item>
-      <title>File: 5,
-             Errors: 9,
+      <title>File: 8,
+             Errors: 33,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,20 +46,6 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-scripting/checkstyle.html#org.apache.struts.scripting.BSFManagerFilter.java">org/apache/struts/scripting/BSFManagerFilter.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://weblegacy.github.io/struts1/struts-scripting/checkstyle.html#org.apache.struts.scripting.StrutsInfo.java">org/apache/struts/scripting/StrutsInfo.java</a>
                 </td>
                 <td>
@@ -69,7 +55,35 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-scripting/checkstyle.html#org.apache.struts.scripting.package-info.java">org/apache/struts/scripting/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-scripting/checkstyle.html#org.apache.struts.scripting.IOUtils.java">org/apache/struts/scripting/IOUtils.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
                 </td>
               </tr>
                           <tr>
@@ -83,7 +97,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  5
+                  4
                 </td>
               </tr>
                           <tr>
@@ -97,7 +111,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-scripting/checkstyle.html#org.apache.struts.scripting.ScriptContextFilter.java">org/apache/struts/scripting/ScriptContextFilter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
                 </td>
               </tr>
                           <tr>
@@ -111,7 +139,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-scripting/checkstyle.html#org.apache.struts.scripting.Script.java">org/apache/struts/scripting/Script.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  13
                 </td>
               </tr>
                       </tbody>

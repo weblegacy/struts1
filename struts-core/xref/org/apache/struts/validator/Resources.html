@@ -301,14 +301,14 @@
 <a class="jxr_linenumber" name="L293" href="#L293">293</a>         }
 <a class="jxr_linenumber" name="L294" href="#L294">294</a> 
 <a class="jxr_linenumber" name="L295" href="#L295">295</a>         String msgKey = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L296" href="#L296">296</a>         String msgBundle = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L296" href="#L296">296</a> <em class="jxr_comment">//      String msgBundle = null;</em>
 <a class="jxr_linenumber" name="L297" href="#L297">297</a>         <a name="MessageResources" href="../../../../org/apache/struts/util/MessageResources.html#MessageResources">MessageResources</a> messages = defaultMessages;
 <a class="jxr_linenumber" name="L298" href="#L298">298</a> 
 <a class="jxr_linenumber" name="L299" href="#L299">299</a>         <strong class="jxr_keyword">if</strong> (msg == <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L300" href="#L300">300</a>             msgKey = va.getMsg();
 <a class="jxr_linenumber" name="L301" href="#L301">301</a>         } <strong class="jxr_keyword">else</strong> {
 <a class="jxr_linenumber" name="L302" href="#L302">302</a>             msgKey = msg.getKey();
-<a class="jxr_linenumber" name="L303" href="#L303">303</a>             msgBundle = msg.getBundle();
+<a class="jxr_linenumber" name="L303" href="#L303">303</a> <em class="jxr_comment">//          msgBundle = msg.getBundle();</em>
 <a class="jxr_linenumber" name="L304" href="#L304">304</a> 
 <a class="jxr_linenumber" name="L305" href="#L305">305</a>             <strong class="jxr_keyword">if</strong> (msg.getBundle() != <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L306" href="#L306">306</a>                 messages =
@@ -347,186 +347,187 @@
 <a class="jxr_linenumber" name="L339" href="#L339">339</a> <em class="jxr_javadoccomment">     * @deprecated Use getActionMessage(Validator, HttpServletRequest,</em>
 <a class="jxr_linenumber" name="L340" href="#L340">340</a> <em class="jxr_javadoccomment">     *    ValidatorAction, Field) method instead</em>
 <a class="jxr_linenumber" name="L341" href="#L341">341</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L342" href="#L342">342</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a> getActionMessage(HttpServletRequest request,
-<a class="jxr_linenumber" name="L343" href="#L343">343</a>         ValidatorAction va, Field field) {
-<a class="jxr_linenumber" name="L344" href="#L344">344</a>         String[] args =
-<a class="jxr_linenumber" name="L345" href="#L345">345</a>             getArgs(va.getName(), getMessageResources(request),
-<a class="jxr_linenumber" name="L346" href="#L346">346</a>                 RequestUtils.getUserLocale(request, <strong class="jxr_keyword">null</strong>), field);
-<a class="jxr_linenumber" name="L347" href="#L347">347</a> 
-<a class="jxr_linenumber" name="L348" href="#L348">348</a>         String msg =
-<a class="jxr_linenumber" name="L349" href="#L349">349</a>             (field.getMsg(va.getName()) != <strong class="jxr_keyword">null</strong>) ? field.getMsg(va.getName())
-<a class="jxr_linenumber" name="L350" href="#L350">350</a>                                                  : va.getMsg();
-<a class="jxr_linenumber" name="L351" href="#L351">351</a> 
-<a class="jxr_linenumber" name="L352" href="#L352">352</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a>(msg, args);
-<a class="jxr_linenumber" name="L353" href="#L353">353</a>     }
-<a class="jxr_linenumber" name="L354" href="#L354">354</a> 
-<a class="jxr_linenumber" name="L355" href="#L355">355</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L356" href="#L356">356</a> <em class="jxr_javadoccomment">     * Gets the &lt;code&gt;ActionMessage&lt;/code&gt; based on the</em>
-<a class="jxr_linenumber" name="L357" href="#L357">357</a> <em class="jxr_javadoccomment">     * &lt;code&gt;ValidatorAction&lt;/code&gt; message and the &lt;code&gt;Field&lt;/code&gt;'s arg</em>
-<a class="jxr_linenumber" name="L358" href="#L358">358</a> <em class="jxr_javadoccomment">     * objects.</em>
-<a class="jxr_linenumber" name="L359" href="#L359">359</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L360" href="#L360">360</a> <em class="jxr_javadoccomment">     * @param validator the Validator</em>
-<a class="jxr_linenumber" name="L361" href="#L361">361</a> <em class="jxr_javadoccomment">     * @param request   the servlet request</em>
-<a class="jxr_linenumber" name="L362" href="#L362">362</a> <em class="jxr_javadoccomment">     * @param va        Validator action</em>
-<a class="jxr_linenumber" name="L363" href="#L363">363</a> <em class="jxr_javadoccomment">     * @param field     the validator Field</em>
-<a class="jxr_linenumber" name="L364" href="#L364">364</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L365" href="#L365">365</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a> getActionMessage(Validator validator,
-<a class="jxr_linenumber" name="L366" href="#L366">366</a>         HttpServletRequest request, ValidatorAction va, Field field) {
-<a class="jxr_linenumber" name="L367" href="#L367">367</a>         Msg msg = field.getMessage(va.getName());
-<a class="jxr_linenumber" name="L368" href="#L368">368</a> 
-<a class="jxr_linenumber" name="L369" href="#L369">369</a>         <strong class="jxr_keyword">if</strong> ((msg != <strong class="jxr_keyword">null</strong>) &amp;&amp; !msg.isResource()) {
-<a class="jxr_linenumber" name="L370" href="#L370">370</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a>(msg.getKey(), false);
-<a class="jxr_linenumber" name="L371" href="#L371">371</a>         }
-<a class="jxr_linenumber" name="L372" href="#L372">372</a> 
-<a class="jxr_linenumber" name="L373" href="#L373">373</a>         String msgKey = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L374" href="#L374">374</a>         String msgBundle = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L375" href="#L375">375</a> 
-<a class="jxr_linenumber" name="L376" href="#L376">376</a>         <strong class="jxr_keyword">if</strong> (msg == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L377" href="#L377">377</a>             msgKey = va.getMsg();
-<a class="jxr_linenumber" name="L378" href="#L378">378</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="L379" href="#L379">379</a>             msgKey = msg.getKey();
-<a class="jxr_linenumber" name="L380" href="#L380">380</a>             msgBundle = msg.getBundle();
-<a class="jxr_linenumber" name="L381" href="#L381">381</a>         }
-<a class="jxr_linenumber" name="L382" href="#L382">382</a> 
-<a class="jxr_linenumber" name="L383" href="#L383">383</a>         <strong class="jxr_keyword">if</strong> ((msgKey == <strong class="jxr_keyword">null</strong>) || (msgKey.length() == 0)) {
-<a class="jxr_linenumber" name="L384" href="#L384">384</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a>(<span class="jxr_string">"??? "</span> + va.getName() + <span class="jxr_string">"."</span>
-<a class="jxr_linenumber" name="L385" href="#L385">385</a>                 + field.getProperty() + <span class="jxr_string">" ???"</span>, false);
-<a class="jxr_linenumber" name="L386" href="#L386">386</a>         }
-<a class="jxr_linenumber" name="L387" href="#L387">387</a> 
-<a class="jxr_linenumber" name="L388" href="#L388">388</a>         ServletContext application =
-<a class="jxr_linenumber" name="L389" href="#L389">389</a>             (ServletContext) validator.getParameterValue(SERVLET_CONTEXT_PARAM);
-<a class="jxr_linenumber" name="L390" href="#L390">390</a>         <a name="MessageResources" href="../../../../org/apache/struts/util/MessageResources.html#MessageResources">MessageResources</a> messages =
-<a class="jxr_linenumber" name="L391" href="#L391">391</a>             getMessageResources(application, request, msgBundle);
-<a class="jxr_linenumber" name="L392" href="#L392">392</a>         Locale locale = RequestUtils.getUserLocale(request, <strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="L393" href="#L393">393</a> 
-<a class="jxr_linenumber" name="L394" href="#L394">394</a>         Arg[] args = field.getArgs(va.getName());
-<a class="jxr_linenumber" name="L395" href="#L395">395</a>         String[] argValues =
-<a class="jxr_linenumber" name="L396" href="#L396">396</a>             getArgValues(application, request, messages, locale, args);
-<a class="jxr_linenumber" name="L397" href="#L397">397</a> 
-<a class="jxr_linenumber" name="L398" href="#L398">398</a>         <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a> actionMessage = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L399" href="#L399">399</a> 
-<a class="jxr_linenumber" name="L400" href="#L400">400</a>         <strong class="jxr_keyword">if</strong> (msgBundle == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L401" href="#L401">401</a>             actionMessage = <strong class="jxr_keyword">new</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a>(msgKey, argValues);
-<a class="jxr_linenumber" name="L402" href="#L402">402</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="L403" href="#L403">403</a>             String message = messages.getMessage(locale, msgKey, argValues);
-<a class="jxr_linenumber" name="L404" href="#L404">404</a> 
-<a class="jxr_linenumber" name="L405" href="#L405">405</a>             actionMessage = <strong class="jxr_keyword">new</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a>(message, false);
-<a class="jxr_linenumber" name="L406" href="#L406">406</a>         }
-<a class="jxr_linenumber" name="L407" href="#L407">407</a> 
-<a class="jxr_linenumber" name="L408" href="#L408">408</a>         <strong class="jxr_keyword">return</strong> actionMessage;
-<a class="jxr_linenumber" name="L409" href="#L409">409</a>     }
-<a class="jxr_linenumber" name="L410" href="#L410">410</a> 
-<a class="jxr_linenumber" name="L411" href="#L411">411</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L412" href="#L412">412</a> <em class="jxr_javadoccomment">     * Gets the message arguments based on the current &lt;code&gt;ValidatorAction&lt;/code&gt;</em>
-<a class="jxr_linenumber" name="L413" href="#L413">413</a> <em class="jxr_javadoccomment">     * and &lt;code&gt;Field&lt;/code&gt;.</em>
-<a class="jxr_linenumber" name="L414" href="#L414">414</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L415" href="#L415">415</a> <em class="jxr_javadoccomment">     * @param actionName action name</em>
-<a class="jxr_linenumber" name="L416" href="#L416">416</a> <em class="jxr_javadoccomment">     * @param messages   message resources</em>
-<a class="jxr_linenumber" name="L417" href="#L417">417</a> <em class="jxr_javadoccomment">     * @param locale     the locale</em>
-<a class="jxr_linenumber" name="L418" href="#L418">418</a> <em class="jxr_javadoccomment">     * @param field      the validator field</em>
-<a class="jxr_linenumber" name="L419" href="#L419">419</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L420" href="#L420">420</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> String[] getArgs(String actionName,
-<a class="jxr_linenumber" name="L421" href="#L421">421</a>         <a name="MessageResources" href="../../../../org/apache/struts/util/MessageResources.html#MessageResources">MessageResources</a> messages, Locale locale, Field field) {
-<a class="jxr_linenumber" name="L422" href="#L422">422</a>         String[] argMessages = <strong class="jxr_keyword">new</strong> String[4];
-<a class="jxr_linenumber" name="L423" href="#L423">423</a> 
-<a class="jxr_linenumber" name="L424" href="#L424">424</a>         Arg[] args =
-<a class="jxr_linenumber" name="L425" href="#L425">425</a>             <strong class="jxr_keyword">new</strong> Arg[] {
-<a class="jxr_linenumber" name="L426" href="#L426">426</a>                 field.getArg(actionName, 0), field.getArg(actionName, 1),
-<a class="jxr_linenumber" name="L427" href="#L427">427</a>                 field.getArg(actionName, 2), field.getArg(actionName, 3)
-<a class="jxr_linenumber" name="L428" href="#L428">428</a>             };
-<a class="jxr_linenumber" name="L429" href="#L429">429</a> 
-<a class="jxr_linenumber" name="L430" href="#L430">430</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; args.length; i++) {
-<a class="jxr_linenumber" name="L431" href="#L431">431</a>             <strong class="jxr_keyword">if</strong> (args[i] == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L432" href="#L432">432</a>                 <strong class="jxr_keyword">continue</strong>;
-<a class="jxr_linenumber" name="L433" href="#L433">433</a>             }
-<a class="jxr_linenumber" name="L434" href="#L434">434</a> 
-<a class="jxr_linenumber" name="L435" href="#L435">435</a>             <strong class="jxr_keyword">if</strong> (args[i].isResource()) {
-<a class="jxr_linenumber" name="L436" href="#L436">436</a>                 argMessages[i] = getMessage(messages, locale, args[i].getKey());
-<a class="jxr_linenumber" name="L437" href="#L437">437</a>             } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="L438" href="#L438">438</a>                 argMessages[i] = args[i].getKey();
-<a class="jxr_linenumber" name="L439" href="#L439">439</a>             }
-<a class="jxr_linenumber" name="L440" href="#L440">440</a>         }
-<a class="jxr_linenumber" name="L441" href="#L441">441</a> 
-<a class="jxr_linenumber" name="L442" href="#L442">442</a>         <strong class="jxr_keyword">return</strong> argMessages;
-<a class="jxr_linenumber" name="L443" href="#L443">443</a>     }
-<a class="jxr_linenumber" name="L444" href="#L444">444</a> 
-<a class="jxr_linenumber" name="L445" href="#L445">445</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L446" href="#L446">446</a> <em class="jxr_javadoccomment">     * Gets the message arguments based on the current &lt;code&gt;ValidatorAction&lt;/code&gt;</em>
-<a class="jxr_linenumber" name="L447" href="#L447">447</a> <em class="jxr_javadoccomment">     * and &lt;code&gt;Field&lt;/code&gt;.</em>
-<a class="jxr_linenumber" name="L448" href="#L448">448</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L449" href="#L449">449</a> <em class="jxr_javadoccomment">     * @param application     the servlet context</em>
-<a class="jxr_linenumber" name="L450" href="#L450">450</a> <em class="jxr_javadoccomment">     * @param request         the servlet request</em>
-<a class="jxr_linenumber" name="L451" href="#L451">451</a> <em class="jxr_javadoccomment">     * @param defaultMessages Default message resources</em>
-<a class="jxr_linenumber" name="L452" href="#L452">452</a> <em class="jxr_javadoccomment">     * @param locale          the locale</em>
-<a class="jxr_linenumber" name="L453" href="#L453">453</a> <em class="jxr_javadoccomment">     * @param args            The arguments for the message</em>
-<a class="jxr_linenumber" name="L454" href="#L454">454</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L455" href="#L455">455</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> String[] getArgValues(ServletContext application,
-<a class="jxr_linenumber" name="L456" href="#L456">456</a>         HttpServletRequest request, <a name="MessageResources" href="../../../../org/apache/struts/util/MessageResources.html#MessageResources">MessageResources</a> defaultMessages,
-<a class="jxr_linenumber" name="L457" href="#L457">457</a>         Locale locale, Arg[] args) {
-<a class="jxr_linenumber" name="L458" href="#L458">458</a>         <strong class="jxr_keyword">if</strong> ((args == <strong class="jxr_keyword">null</strong>) || (args.length == 0)) {
-<a class="jxr_linenumber" name="L459" href="#L459">459</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L460" href="#L460">460</a>         }
-<a class="jxr_linenumber" name="L461" href="#L461">461</a> 
-<a class="jxr_linenumber" name="L462" href="#L462">462</a>         String[] values = <strong class="jxr_keyword">new</strong> String[args.length];
-<a class="jxr_linenumber" name="L463" href="#L463">463</a> 
-<a class="jxr_linenumber" name="L464" href="#L464">464</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; args.length; i++) {
-<a class="jxr_linenumber" name="L465" href="#L465">465</a>             <strong class="jxr_keyword">if</strong> (args[i] != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L466" href="#L466">466</a>                 <strong class="jxr_keyword">if</strong> (args[i].isResource()) {
-<a class="jxr_linenumber" name="L467" href="#L467">467</a>                     <a name="MessageResources" href="../../../../org/apache/struts/util/MessageResources.html#MessageResources">MessageResources</a> messages = defaultMessages;
-<a class="jxr_linenumber" name="L468" href="#L468">468</a> 
-<a class="jxr_linenumber" name="L469" href="#L469">469</a>                     <strong class="jxr_keyword">if</strong> (args[i].getBundle() != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L470" href="#L470">470</a>                         messages =
-<a class="jxr_linenumber" name="L471" href="#L471">471</a>                             getMessageResources(application, request,
-<a class="jxr_linenumber" name="L472" href="#L472">472</a>                                 args[i].getBundle());
-<a class="jxr_linenumber" name="L473" href="#L473">473</a>                     }
-<a class="jxr_linenumber" name="L474" href="#L474">474</a> 
-<a class="jxr_linenumber" name="L475" href="#L475">475</a>                     values[i] = messages.getMessage(locale, args[i].getKey());
-<a class="jxr_linenumber" name="L476" href="#L476">476</a>                 } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="L477" href="#L477">477</a>                     values[i] = args[i].getKey();
-<a class="jxr_linenumber" name="L478" href="#L478">478</a>                 }
-<a class="jxr_linenumber" name="L479" href="#L479">479</a>             }
-<a class="jxr_linenumber" name="L480" href="#L480">480</a>         }
-<a class="jxr_linenumber" name="L481" href="#L481">481</a> 
-<a class="jxr_linenumber" name="L482" href="#L482">482</a>         <strong class="jxr_keyword">return</strong> values;
-<a class="jxr_linenumber" name="L483" href="#L483">483</a>     }
-<a class="jxr_linenumber" name="L484" href="#L484">484</a> 
-<a class="jxr_linenumber" name="L485" href="#L485">485</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L486" href="#L486">486</a> <em class="jxr_javadoccomment">     * Initialize the &lt;code&gt;Validator&lt;/code&gt; to perform validation.</em>
-<a class="jxr_linenumber" name="L487" href="#L487">487</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L488" href="#L488">488</a> <em class="jxr_javadoccomment">     * @param key         The key that the validation rules are under (the</em>
-<a class="jxr_linenumber" name="L489" href="#L489">489</a> <em class="jxr_javadoccomment">     *                    form elements name attribute).</em>
-<a class="jxr_linenumber" name="L490" href="#L490">490</a> <em class="jxr_javadoccomment">     * @param bean        The bean validation is being performed on.</em>
-<a class="jxr_linenumber" name="L491" href="#L491">491</a> <em class="jxr_javadoccomment">     * @param application servlet context</em>
-<a class="jxr_linenumber" name="L492" href="#L492">492</a> <em class="jxr_javadoccomment">     * @param request     The current request object.</em>
-<a class="jxr_linenumber" name="L493" href="#L493">493</a> <em class="jxr_javadoccomment">     * @param errors      The object any errors will be stored in.</em>
-<a class="jxr_linenumber" name="L494" href="#L494">494</a> <em class="jxr_javadoccomment">     * @param page        This in conjunction with  the page property of a</em>
-<a class="jxr_linenumber" name="L495" href="#L495">495</a> <em class="jxr_javadoccomment">     *                    &lt;code&gt;Field&lt;code&gt; can control the processing of</em>
-<a class="jxr_linenumber" name="L496" href="#L496">496</a> <em class="jxr_javadoccomment">     *                    fields.  If the field's page is less than or equal</em>
-<a class="jxr_linenumber" name="L497" href="#L497">497</a> <em class="jxr_javadoccomment">     *                    to this page value, it will be processed.</em>
-<a class="jxr_linenumber" name="L498" href="#L498">498</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L499" href="#L499">499</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Validator initValidator(String key, Object bean,
-<a class="jxr_linenumber" name="L500" href="#L500">500</a>         ServletContext application, HttpServletRequest request,
-<a class="jxr_linenumber" name="L501" href="#L501">501</a>         <a name="ActionMessages" href="../../../../org/apache/struts/action/ActionMessages.html#ActionMessages">ActionMessages</a> errors, <strong class="jxr_keyword">int</strong> page) {
-<a class="jxr_linenumber" name="L502" href="#L502">502</a>         ValidatorResources resources =
-<a class="jxr_linenumber" name="L503" href="#L503">503</a>             Resources.getValidatorResources(application, request);
-<a class="jxr_linenumber" name="L504" href="#L504">504</a> 
-<a class="jxr_linenumber" name="L505" href="#L505">505</a>         Locale locale = RequestUtils.getUserLocale(request, <strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="L506" href="#L506">506</a> 
-<a class="jxr_linenumber" name="L507" href="#L507">507</a>         Validator validator = <strong class="jxr_keyword">new</strong> Validator(resources, key);
-<a class="jxr_linenumber" name="L508" href="#L508">508</a> 
-<a class="jxr_linenumber" name="L509" href="#L509">509</a>         validator.setUseContextClassLoader(<strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="L510" href="#L510">510</a> 
-<a class="jxr_linenumber" name="L511" href="#L511">511</a>         validator.setPage(page);
-<a class="jxr_linenumber" name="L512" href="#L512">512</a> 
-<a class="jxr_linenumber" name="L513" href="#L513">513</a>         validator.setParameter(SERVLET_CONTEXT_PARAM, application);
-<a class="jxr_linenumber" name="L514" href="#L514">514</a>         validator.setParameter(HTTP_SERVLET_REQUEST_PARAM, request);
-<a class="jxr_linenumber" name="L515" href="#L515">515</a>         validator.setParameter(Validator.LOCALE_PARAM, locale);
-<a class="jxr_linenumber" name="L516" href="#L516">516</a>         validator.setParameter(ACTION_MESSAGES_PARAM, errors);
-<a class="jxr_linenumber" name="L517" href="#L517">517</a>         validator.setParameter(Validator.BEAN_PARAM, bean);
-<a class="jxr_linenumber" name="L518" href="#L518">518</a> 
-<a class="jxr_linenumber" name="L519" href="#L519">519</a>         <strong class="jxr_keyword">return</strong> validator;
-<a class="jxr_linenumber" name="L520" href="#L520">520</a>     }
-<a class="jxr_linenumber" name="L521" href="#L521">521</a> }
+<a class="jxr_linenumber" name="L342" href="#L342">342</a>     @Deprecated
+<a class="jxr_linenumber" name="L343" href="#L343">343</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a> getActionMessage(HttpServletRequest request,
+<a class="jxr_linenumber" name="L344" href="#L344">344</a>         ValidatorAction va, Field field) {
+<a class="jxr_linenumber" name="L345" href="#L345">345</a>         String[] args =
+<a class="jxr_linenumber" name="L346" href="#L346">346</a>             getArgs(va.getName(), getMessageResources(request),
+<a class="jxr_linenumber" name="L347" href="#L347">347</a>                 RequestUtils.getUserLocale(request, <strong class="jxr_keyword">null</strong>), field);
+<a class="jxr_linenumber" name="L348" href="#L348">348</a> 
+<a class="jxr_linenumber" name="L349" href="#L349">349</a>         String msg =
+<a class="jxr_linenumber" name="L350" href="#L350">350</a>             (field.getMsg(va.getName()) != <strong class="jxr_keyword">null</strong>) ? field.getMsg(va.getName())
+<a class="jxr_linenumber" name="L351" href="#L351">351</a>                                                  : va.getMsg();
+<a class="jxr_linenumber" name="L352" href="#L352">352</a> 
+<a class="jxr_linenumber" name="L353" href="#L353">353</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a>(msg, args);
+<a class="jxr_linenumber" name="L354" href="#L354">354</a>     }
+<a class="jxr_linenumber" name="L355" href="#L355">355</a> 
+<a class="jxr_linenumber" name="L356" href="#L356">356</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L357" href="#L357">357</a> <em class="jxr_javadoccomment">     * Gets the &lt;code&gt;ActionMessage&lt;/code&gt; based on the</em>
+<a class="jxr_linenumber" name="L358" href="#L358">358</a> <em class="jxr_javadoccomment">     * &lt;code&gt;ValidatorAction&lt;/code&gt; message and the &lt;code&gt;Field&lt;/code&gt;'s arg</em>
+<a class="jxr_linenumber" name="L359" href="#L359">359</a> <em class="jxr_javadoccomment">     * objects.</em>
+<a class="jxr_linenumber" name="L360" href="#L360">360</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L361" href="#L361">361</a> <em class="jxr_javadoccomment">     * @param validator the Validator</em>
+<a class="jxr_linenumber" name="L362" href="#L362">362</a> <em class="jxr_javadoccomment">     * @param request   the servlet request</em>
+<a class="jxr_linenumber" name="L363" href="#L363">363</a> <em class="jxr_javadoccomment">     * @param va        Validator action</em>
+<a class="jxr_linenumber" name="L364" href="#L364">364</a> <em class="jxr_javadoccomment">     * @param field     the validator Field</em>
+<a class="jxr_linenumber" name="L365" href="#L365">365</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L366" href="#L366">366</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a> getActionMessage(Validator validator,
+<a class="jxr_linenumber" name="L367" href="#L367">367</a>         HttpServletRequest request, ValidatorAction va, Field field) {
+<a class="jxr_linenumber" name="L368" href="#L368">368</a>         Msg msg = field.getMessage(va.getName());
+<a class="jxr_linenumber" name="L369" href="#L369">369</a> 
+<a class="jxr_linenumber" name="L370" href="#L370">370</a>         <strong class="jxr_keyword">if</strong> ((msg != <strong class="jxr_keyword">null</strong>) &amp;&amp; !msg.isResource()) {
+<a class="jxr_linenumber" name="L371" href="#L371">371</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a>(msg.getKey(), false);
+<a class="jxr_linenumber" name="L372" href="#L372">372</a>         }
+<a class="jxr_linenumber" name="L373" href="#L373">373</a> 
+<a class="jxr_linenumber" name="L374" href="#L374">374</a>         String msgKey = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L375" href="#L375">375</a>         String msgBundle = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L376" href="#L376">376</a> 
+<a class="jxr_linenumber" name="L377" href="#L377">377</a>         <strong class="jxr_keyword">if</strong> (msg == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L378" href="#L378">378</a>             msgKey = va.getMsg();
+<a class="jxr_linenumber" name="L379" href="#L379">379</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L380" href="#L380">380</a>             msgKey = msg.getKey();
+<a class="jxr_linenumber" name="L381" href="#L381">381</a>             msgBundle = msg.getBundle();
+<a class="jxr_linenumber" name="L382" href="#L382">382</a>         }
+<a class="jxr_linenumber" name="L383" href="#L383">383</a> 
+<a class="jxr_linenumber" name="L384" href="#L384">384</a>         <strong class="jxr_keyword">if</strong> ((msgKey == <strong class="jxr_keyword">null</strong>) || (msgKey.length() == 0)) {
+<a class="jxr_linenumber" name="L385" href="#L385">385</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a>(<span class="jxr_string">"??? "</span> + va.getName() + <span class="jxr_string">"."</span>
+<a class="jxr_linenumber" name="L386" href="#L386">386</a>                 + field.getProperty() + <span class="jxr_string">" ???"</span>, false);
+<a class="jxr_linenumber" name="L387" href="#L387">387</a>         }
+<a class="jxr_linenumber" name="L388" href="#L388">388</a> 
+<a class="jxr_linenumber" name="L389" href="#L389">389</a>         ServletContext application =
+<a class="jxr_linenumber" name="L390" href="#L390">390</a>             (ServletContext) validator.getParameterValue(SERVLET_CONTEXT_PARAM);
+<a class="jxr_linenumber" name="L391" href="#L391">391</a>         <a name="MessageResources" href="../../../../org/apache/struts/util/MessageResources.html#MessageResources">MessageResources</a> messages =
+<a class="jxr_linenumber" name="L392" href="#L392">392</a>             getMessageResources(application, request, msgBundle);
+<a class="jxr_linenumber" name="L393" href="#L393">393</a>         Locale locale = RequestUtils.getUserLocale(request, <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L394" href="#L394">394</a> 
+<a class="jxr_linenumber" name="L395" href="#L395">395</a>         Arg[] args = field.getArgs(va.getName());
+<a class="jxr_linenumber" name="L396" href="#L396">396</a>         String[] argValues =
+<a class="jxr_linenumber" name="L397" href="#L397">397</a>             getArgValues(application, request, messages, locale, args);
+<a class="jxr_linenumber" name="L398" href="#L398">398</a> 
+<a class="jxr_linenumber" name="L399" href="#L399">399</a>         <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a> actionMessage = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L400" href="#L400">400</a> 
+<a class="jxr_linenumber" name="L401" href="#L401">401</a>         <strong class="jxr_keyword">if</strong> (msgBundle == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L402" href="#L402">402</a>             actionMessage = <strong class="jxr_keyword">new</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a>(msgKey, argValues);
+<a class="jxr_linenumber" name="L403" href="#L403">403</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L404" href="#L404">404</a>             String message = messages.getMessage(locale, msgKey, argValues);
+<a class="jxr_linenumber" name="L405" href="#L405">405</a> 
+<a class="jxr_linenumber" name="L406" href="#L406">406</a>             actionMessage = <strong class="jxr_keyword">new</strong> <a name="ActionMessage" href="../../../../org/apache/struts/action/ActionMessage.html#ActionMessage">ActionMessage</a>(message, false);
+<a class="jxr_linenumber" name="L407" href="#L407">407</a>         }
+<a class="jxr_linenumber" name="L408" href="#L408">408</a> 
+<a class="jxr_linenumber" name="L409" href="#L409">409</a>         <strong class="jxr_keyword">return</strong> actionMessage;
+<a class="jxr_linenumber" name="L410" href="#L410">410</a>     }
+<a class="jxr_linenumber" name="L411" href="#L411">411</a> 
+<a class="jxr_linenumber" name="L412" href="#L412">412</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L413" href="#L413">413</a> <em class="jxr_javadoccomment">     * Gets the message arguments based on the current &lt;code&gt;ValidatorAction&lt;/code&gt;</em>
+<a class="jxr_linenumber" name="L414" href="#L414">414</a> <em class="jxr_javadoccomment">     * and &lt;code&gt;Field&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L415" href="#L415">415</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L416" href="#L416">416</a> <em class="jxr_javadoccomment">     * @param actionName action name</em>
+<a class="jxr_linenumber" name="L417" href="#L417">417</a> <em class="jxr_javadoccomment">     * @param messages   message resources</em>
+<a class="jxr_linenumber" name="L418" href="#L418">418</a> <em class="jxr_javadoccomment">     * @param locale     the locale</em>
+<a class="jxr_linenumber" name="L419" href="#L419">419</a> <em class="jxr_javadoccomment">     * @param field      the validator field</em>
+<a class="jxr_linenumber" name="L420" href="#L420">420</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L421" href="#L421">421</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> String[] getArgs(String actionName,
+<a class="jxr_linenumber" name="L422" href="#L422">422</a>         <a name="MessageResources" href="../../../../org/apache/struts/util/MessageResources.html#MessageResources">MessageResources</a> messages, Locale locale, Field field) {
+<a class="jxr_linenumber" name="L423" href="#L423">423</a>         String[] argMessages = <strong class="jxr_keyword">new</strong> String[4];
+<a class="jxr_linenumber" name="L424" href="#L424">424</a> 
+<a class="jxr_linenumber" name="L425" href="#L425">425</a>         Arg[] args =
+<a class="jxr_linenumber" name="L426" href="#L426">426</a>             <strong class="jxr_keyword">new</strong> Arg[] {
+<a class="jxr_linenumber" name="L427" href="#L427">427</a>                 field.getArg(actionName, 0), field.getArg(actionName, 1),
+<a class="jxr_linenumber" name="L428" href="#L428">428</a>                 field.getArg(actionName, 2), field.getArg(actionName, 3)
+<a class="jxr_linenumber" name="L429" href="#L429">429</a>             };
+<a class="jxr_linenumber" name="L430" href="#L430">430</a> 
+<a class="jxr_linenumber" name="L431" href="#L431">431</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; args.length; i++) {
+<a class="jxr_linenumber" name="L432" href="#L432">432</a>             <strong class="jxr_keyword">if</strong> (args[i] == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L433" href="#L433">433</a>                 <strong class="jxr_keyword">continue</strong>;
+<a class="jxr_linenumber" name="L434" href="#L434">434</a>             }
+<a class="jxr_linenumber" name="L435" href="#L435">435</a> 
+<a class="jxr_linenumber" name="L436" href="#L436">436</a>             <strong class="jxr_keyword">if</strong> (args[i].isResource()) {
+<a class="jxr_linenumber" name="L437" href="#L437">437</a>                 argMessages[i] = getMessage(messages, locale, args[i].getKey());
+<a class="jxr_linenumber" name="L438" href="#L438">438</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L439" href="#L439">439</a>                 argMessages[i] = args[i].getKey();
+<a class="jxr_linenumber" name="L440" href="#L440">440</a>             }
+<a class="jxr_linenumber" name="L441" href="#L441">441</a>         }
+<a class="jxr_linenumber" name="L442" href="#L442">442</a> 
+<a class="jxr_linenumber" name="L443" href="#L443">443</a>         <strong class="jxr_keyword">return</strong> argMessages;
+<a class="jxr_linenumber" name="L444" href="#L444">444</a>     }
+<a class="jxr_linenumber" name="L445" href="#L445">445</a> 
+<a class="jxr_linenumber" name="L446" href="#L446">446</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L447" href="#L447">447</a> <em class="jxr_javadoccomment">     * Gets the message arguments based on the current &lt;code&gt;ValidatorAction&lt;/code&gt;</em>
+<a class="jxr_linenumber" name="L448" href="#L448">448</a> <em class="jxr_javadoccomment">     * and &lt;code&gt;Field&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L449" href="#L449">449</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L450" href="#L450">450</a> <em class="jxr_javadoccomment">     * @param application     the servlet context</em>
+<a class="jxr_linenumber" name="L451" href="#L451">451</a> <em class="jxr_javadoccomment">     * @param request         the servlet request</em>
+<a class="jxr_linenumber" name="L452" href="#L452">452</a> <em class="jxr_javadoccomment">     * @param defaultMessages Default message resources</em>
+<a class="jxr_linenumber" name="L453" href="#L453">453</a> <em class="jxr_javadoccomment">     * @param locale          the locale</em>
+<a class="jxr_linenumber" name="L454" href="#L454">454</a> <em class="jxr_javadoccomment">     * @param args            The arguments for the message</em>
+<a class="jxr_linenumber" name="L455" href="#L455">455</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L456" href="#L456">456</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> String[] getArgValues(ServletContext application,
+<a class="jxr_linenumber" name="L457" href="#L457">457</a>         HttpServletRequest request, <a name="MessageResources" href="../../../../org/apache/struts/util/MessageResources.html#MessageResources">MessageResources</a> defaultMessages,
+<a class="jxr_linenumber" name="L458" href="#L458">458</a>         Locale locale, Arg[] args) {
+<a class="jxr_linenumber" name="L459" href="#L459">459</a>         <strong class="jxr_keyword">if</strong> ((args == <strong class="jxr_keyword">null</strong>) || (args.length == 0)) {
+<a class="jxr_linenumber" name="L460" href="#L460">460</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L461" href="#L461">461</a>         }
+<a class="jxr_linenumber" name="L462" href="#L462">462</a> 
+<a class="jxr_linenumber" name="L463" href="#L463">463</a>         String[] values = <strong class="jxr_keyword">new</strong> String[args.length];
+<a class="jxr_linenumber" name="L464" href="#L464">464</a> 
+<a class="jxr_linenumber" name="L465" href="#L465">465</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; args.length; i++) {
+<a class="jxr_linenumber" name="L466" href="#L466">466</a>             <strong class="jxr_keyword">if</strong> (args[i] != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L467" href="#L467">467</a>                 <strong class="jxr_keyword">if</strong> (args[i].isResource()) {
+<a class="jxr_linenumber" name="L468" href="#L468">468</a>                     <a name="MessageResources" href="../../../../org/apache/struts/util/MessageResources.html#MessageResources">MessageResources</a> messages = defaultMessages;
+<a class="jxr_linenumber" name="L469" href="#L469">469</a> 
+<a class="jxr_linenumber" name="L470" href="#L470">470</a>                     <strong class="jxr_keyword">if</strong> (args[i].getBundle() != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L471" href="#L471">471</a>                         messages =
+<a class="jxr_linenumber" name="L472" href="#L472">472</a>                             getMessageResources(application, request,
+<a class="jxr_linenumber" name="L473" href="#L473">473</a>                                 args[i].getBundle());
+<a class="jxr_linenumber" name="L474" href="#L474">474</a>                     }
+<a class="jxr_linenumber" name="L475" href="#L475">475</a> 
+<a class="jxr_linenumber" name="L476" href="#L476">476</a>                     values[i] = messages.getMessage(locale, args[i].getKey());
+<a class="jxr_linenumber" name="L477" href="#L477">477</a>                 } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L478" href="#L478">478</a>                     values[i] = args[i].getKey();
+<a class="jxr_linenumber" name="L479" href="#L479">479</a>                 }
+<a class="jxr_linenumber" name="L480" href="#L480">480</a>             }
+<a class="jxr_linenumber" name="L481" href="#L481">481</a>         }
+<a class="jxr_linenumber" name="L482" href="#L482">482</a> 
+<a class="jxr_linenumber" name="L483" href="#L483">483</a>         <strong class="jxr_keyword">return</strong> values;
+<a class="jxr_linenumber" name="L484" href="#L484">484</a>     }
+<a class="jxr_linenumber" name="L485" href="#L485">485</a> 
+<a class="jxr_linenumber" name="L486" href="#L486">486</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L487" href="#L487">487</a> <em class="jxr_javadoccomment">     * Initialize the &lt;code&gt;Validator&lt;/code&gt; to perform validation.</em>
+<a class="jxr_linenumber" name="L488" href="#L488">488</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L489" href="#L489">489</a> <em class="jxr_javadoccomment">     * @param key         The key that the validation rules are under (the</em>
+<a class="jxr_linenumber" name="L490" href="#L490">490</a> <em class="jxr_javadoccomment">     *                    form elements name attribute).</em>
+<a class="jxr_linenumber" name="L491" href="#L491">491</a> <em class="jxr_javadoccomment">     * @param bean        The bean validation is being performed on.</em>
+<a class="jxr_linenumber" name="L492" href="#L492">492</a> <em class="jxr_javadoccomment">     * @param application servlet context</em>
+<a class="jxr_linenumber" name="L493" href="#L493">493</a> <em class="jxr_javadoccomment">     * @param request     The current request object.</em>
+<a class="jxr_linenumber" name="L494" href="#L494">494</a> <em class="jxr_javadoccomment">     * @param errors      The object any errors will be stored in.</em>
+<a class="jxr_linenumber" name="L495" href="#L495">495</a> <em class="jxr_javadoccomment">     * @param page        This in conjunction with  the page property of a</em>
+<a class="jxr_linenumber" name="L496" href="#L496">496</a> <em class="jxr_javadoccomment">     *                    &lt;code&gt;Field&lt;code&gt; can control the processing of</em>
+<a class="jxr_linenumber" name="L497" href="#L497">497</a> <em class="jxr_javadoccomment">     *                    fields.  If the field's page is less than or equal</em>
+<a class="jxr_linenumber" name="L498" href="#L498">498</a> <em class="jxr_javadoccomment">     *                    to this page value, it will be processed.</em>
+<a class="jxr_linenumber" name="L499" href="#L499">499</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L500" href="#L500">500</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Validator initValidator(String key, Object bean,
+<a class="jxr_linenumber" name="L501" href="#L501">501</a>         ServletContext application, HttpServletRequest request,
+<a class="jxr_linenumber" name="L502" href="#L502">502</a>         <a name="ActionMessages" href="../../../../org/apache/struts/action/ActionMessages.html#ActionMessages">ActionMessages</a> errors, <strong class="jxr_keyword">int</strong> page) {
+<a class="jxr_linenumber" name="L503" href="#L503">503</a>         ValidatorResources resources =
+<a class="jxr_linenumber" name="L504" href="#L504">504</a>             Resources.getValidatorResources(application, request);
+<a class="jxr_linenumber" name="L505" href="#L505">505</a> 
+<a class="jxr_linenumber" name="L506" href="#L506">506</a>         Locale locale = RequestUtils.getUserLocale(request, <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L507" href="#L507">507</a> 
+<a class="jxr_linenumber" name="L508" href="#L508">508</a>         Validator validator = <strong class="jxr_keyword">new</strong> Validator(resources, key);
+<a class="jxr_linenumber" name="L509" href="#L509">509</a> 
+<a class="jxr_linenumber" name="L510" href="#L510">510</a>         validator.setUseContextClassLoader(<strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="L511" href="#L511">511</a> 
+<a class="jxr_linenumber" name="L512" href="#L512">512</a>         validator.setPage(page);
+<a class="jxr_linenumber" name="L513" href="#L513">513</a> 
+<a class="jxr_linenumber" name="L514" href="#L514">514</a>         validator.setParameter(SERVLET_CONTEXT_PARAM, application);
+<a class="jxr_linenumber" name="L515" href="#L515">515</a>         validator.setParameter(HTTP_SERVLET_REQUEST_PARAM, request);
+<a class="jxr_linenumber" name="L516" href="#L516">516</a>         validator.setParameter(Validator.LOCALE_PARAM, locale);
+<a class="jxr_linenumber" name="L517" href="#L517">517</a>         validator.setParameter(ACTION_MESSAGES_PARAM, errors);
+<a class="jxr_linenumber" name="L518" href="#L518">518</a>         validator.setParameter(Validator.BEAN_PARAM, bean);
+<a class="jxr_linenumber" name="L519" href="#L519">519</a> 
+<a class="jxr_linenumber" name="L520" href="#L520">520</a>         <strong class="jxr_keyword">return</strong> validator;
+<a class="jxr_linenumber" name="L521" href="#L521">521</a>     }
+<a class="jxr_linenumber" name="L522" href="#L522">522</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2000&#x2013;2022 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>

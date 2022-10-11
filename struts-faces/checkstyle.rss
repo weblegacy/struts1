@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2000 - 2022 Web-Legacy</copyright>
     <item>
-      <title>File: 37,
-             Errors: 650,
+      <title>File: 43,
+             Errors: 739,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,6 +46,20 @@ under the License.
           <tbody>
                           <tr>
                 <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.util.Utils.java">org/apache/struts/faces/util/Utils.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.CommandLinkRenderer.java">org/apache/struts/faces/renderer/CommandLinkRenderer.java</a>
                 </td>
                 <td>
@@ -55,7 +69,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  15
+                  13
                 </td>
               </tr>
                           <tr>
@@ -69,7 +83,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  62
+                  58
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.LoadMessagesRenderer.java">org/apache/struts/faces/renderer/LoadMessagesRenderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
                 </td>
               </tr>
                           <tr>
@@ -97,7 +125,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.application.DynaBeanELResolver.java">org/apache/struts/faces/application/DynaBeanELResolver.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
                 </td>
               </tr>
                           <tr>
@@ -111,21 +153,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.application.PropertyResolverImpl.java">org/apache/struts/faces/application/PropertyResolverImpl.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  24
+                  5
                 </td>
               </tr>
                           <tr>
@@ -153,7 +181,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
+                  5
                 </td>
               </tr>
                           <tr>
@@ -167,7 +195,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  13
+                  3
                 </td>
               </tr>
                           <tr>
@@ -181,7 +209,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  13
+                  25
                 </td>
               </tr>
                           <tr>
@@ -265,7 +293,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  49
+                  19
                 </td>
               </tr>
                           <tr>
@@ -279,7 +307,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  10
+                  17
                 </td>
               </tr>
                           <tr>
@@ -293,7 +321,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  7
+                  9
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.JavascriptValidatorRenderer.java">org/apache/struts/faces/renderer/JavascriptValidatorRenderer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  34
                 </td>
               </tr>
                           <tr>
@@ -335,7 +377,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  23
+                  3
                 </td>
               </tr>
                           <tr>
@@ -363,7 +405,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  7
+                  15
                 </td>
               </tr>
                           <tr>
@@ -433,7 +475,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.component.LoadMessagesComponent.java">org/apache/struts/faces/component/LoadMessagesComponent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
                 </td>
               </tr>
                           <tr>
@@ -447,7 +503,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  28
+                  31
                 </td>
               </tr>
                           <tr>
@@ -466,6 +522,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.application.DynaActionFormELResolver.java">org/apache/struts/faces/application/DynaActionFormELResolver.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.renderer.ErrorsRenderer.java">org/apache/struts/faces/renderer/ErrorsRenderer.java</a>
                 </td>
                 <td>
@@ -475,7 +545,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  10
+                  11
                 </td>
               </tr>
                           <tr>
@@ -503,7 +573,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  6
+                  8
                 </td>
               </tr>
                           <tr>
@@ -517,7 +587,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  5
+                  3
                 </td>
               </tr>
                           <tr>
@@ -531,7 +601,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
+                  5
                 </td>
               </tr>
                           <tr>
@@ -559,7 +629,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  63
+                  88
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://weblegacy.github.io/struts1/struts-faces/checkstyle.html#org.apache.struts.faces.component.JavascriptValidatorComponent.java">org/apache/struts/faces/component/JavascriptValidatorComponent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  50
                 </td>
               </tr>
                       </tbody>

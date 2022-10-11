@@ -88,14 +88,14 @@
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>          <a name="TestBean" href="../../examples/TestBean.html#TestBean">TestBean</a> bean = <strong class="jxr_keyword">new</strong> <a name="TestBean" href="../../examples/TestBean.html#TestBean">TestBean</a>();
 <a class="jxr_linenumber" name="L81" href="#L81">81</a>          request.setAttribute(<span class="jxr_string">"testBean"</span>, bean);
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>  
-<a class="jxr_linenumber" name="L83" href="#L83">83</a>          ArrayList items = <strong class="jxr_keyword">new</strong> ArrayList();
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>          ArrayList&lt;String&gt; items = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L84" href="#L84">84</a>          request.setAttribute(<span class="jxr_string">"items"</span>, items);
 <a class="jxr_linenumber" name="L85" href="#L85">85</a>  
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>          request.setAttribute(<span class="jxr_string">"intValue"</span>, <strong class="jxr_keyword">new</strong> Integer(7));
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>          request.setAttribute(<span class="jxr_string">"stringValue"</span>, <span class="jxr_string">"Hello, world!"</span>);
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>  
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>          <em class="jxr_comment">/* Collection of custom beans */</em>
-<a class="jxr_linenumber" name="L90" href="#L90">90</a>          ArrayList books = <strong class="jxr_keyword">new</strong> ArrayList();
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>          ArrayList&lt;BookBean&gt; books = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>          books.add(<strong class="jxr_keyword">new</strong> <a name="BookBean" href="../../examples/options/BookBean.html#BookBean">BookBean</a>(<span class="jxr_string">"0596003285"</span>, <span class="jxr_string">"Programming Jakarta Struts"</span>));
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>          books.add(<strong class="jxr_keyword">new</strong> <a name="BookBean" href="../../examples/options/BookBean.html#BookBean">BookBean</a>(<span class="jxr_string">"1930110502"</span>, <span class="jxr_string">"Struts in Action"</span>));
 <a class="jxr_linenumber" name="L93" href="#L93">93</a>          books.add(<strong class="jxr_keyword">new</strong> <a name="BookBean" href="../../examples/options/BookBean.html#BookBean">BookBean</a>(<span class="jxr_string">"1861007817"</span>, <span class="jxr_string">"Professional Struts Applications"</span>));

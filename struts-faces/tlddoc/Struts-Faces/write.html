@@ -47,7 +47,7 @@
 <p>Additional control over the rendering process is specified by the
       following optional attributes, with default values as indicated:</p>
       
-      <br>
+    <br>
 <p></p>
 <hr>
 <table border="1" cellpadding="3" cellspacing="0" width="100%">
@@ -77,14 +77,18 @@
 <td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
 </tr>
 <tr valign="top">
-<td>binding</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>binding</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>javax.faces.component.UIComponent</code>)
+                    </td><td>
       <p>Value binding expression to bind this component to
         a backing bean property.</p>
       
       </td>
 </tr>
 <tr valign="top">
-<td>filter</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>filter</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>boolean</code>)
+                    </td><td>
       <p>Should we filter the output for characters that are sensitive
         in HTML?  The default value is <code>true</code>.</p>
       
@@ -97,25 +101,33 @@
       </td>
 </tr>
 <tr valign="top">
-<td>rendered</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>rendered</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>boolean</code>)
+                    </td><td>
         Boolean attribute indicating whether this component should be
         rendered or not.
       </td>
 </tr>
 <tr valign="top">
-<td>style</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>style</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>CSS styles used to render this component.</p>
       
       </td>
 </tr>
 <tr valign="top">
-<td>styleClass</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>styleClass</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>Name of the CSS style class used to render this component.</p>
       
       </td>
 </tr>
 <tr valign="top">
-<td>value</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>value</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>Literal text to be rendered, or value reference expression
         to retrieve the text to be rendered.</p>
       

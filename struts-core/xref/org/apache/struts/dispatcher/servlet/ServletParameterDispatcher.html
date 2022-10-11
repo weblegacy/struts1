@@ -90,7 +90,7 @@
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L83" href="#L83">83</a>      <strong class="jxr_keyword">protected</strong> String resolveParameterValue(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> context, String parameter) {
 <a class="jxr_linenumber" name="L84" href="#L84">84</a>          <a name="ServletActionContext" href="../../../../../org/apache/struts/chain/contexts/ServletActionContext.html#ServletActionContext">ServletActionContext</a> servletContext = (<a name="ServletActionContext" href="../../../../../org/apache/struts/chain/contexts/ServletActionContext.html#ServletActionContext">ServletActionContext</a>) context;
-<a class="jxr_linenumber" name="L85" href="#L85">85</a>          <strong class="jxr_keyword">return</strong> (String) servletContext.getParam().get(parameter);
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>          <strong class="jxr_keyword">return</strong> servletContext.getParam().get(parameter);
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>      }
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>  
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>      <em class="jxr_javadoccomment">/**</em>

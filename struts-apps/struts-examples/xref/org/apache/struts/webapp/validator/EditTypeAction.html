@@ -93,14 +93,14 @@
 <a class="jxr_linenumber" name="L85" href="#L85">85</a>          log.debug(<span class="jxr_string">"initFromBeans"</span>);
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>  
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>          <em class="jxr_comment">// Initialize</em>
-<a class="jxr_linenumber" name="L88" href="#L88">88</a>          ArrayList satisfactionList = <strong class="jxr_keyword">new</strong> ArrayList();
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>          ArrayList&lt;LabelValueBean&gt; satisfactionList = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>          satisfactionList.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Very Satisfied"</span>, <span class="jxr_string">"4"</span>));
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>          satisfactionList.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Satisfied"</span>, <span class="jxr_string">"3"</span>));
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>          satisfactionList.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Not Very Satisfied"</span>, <span class="jxr_string">"2"</span>));
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>          satisfactionList.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Not Satisfied"</span>, <span class="jxr_string">"1"</span>));
 <a class="jxr_linenumber" name="L93" href="#L93">93</a>          request.setAttribute(<span class="jxr_string">"satisfactionList"</span>, satisfactionList);
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>  
-<a class="jxr_linenumber" name="L95" href="#L95">95</a>          ArrayList osTypes = <strong class="jxr_keyword">new</strong> ArrayList();
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>          ArrayList&lt;LabelValueBean&gt; osTypes = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>          osTypes.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Mac OsX"</span>, <span class="jxr_string">"OsX"</span>));
 <a class="jxr_linenumber" name="L97" href="#L97">97</a>          osTypes.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Windows 95/98/Me"</span>, <span class="jxr_string">"Win32"</span>));
 <a class="jxr_linenumber" name="L98" href="#L98">98</a>          osTypes.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Windows NT/2000/XP/2003"</span>, <span class="jxr_string">"WinNT"</span>));
@@ -108,7 +108,7 @@
 <a class="jxr_linenumber" name="L100" href="#L100">100</a>         osTypes.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"BSD NetBSD/FreeBSD/OpenBSD"</span>, <span class="jxr_string">"BSD"</span>));
 <a class="jxr_linenumber" name="L101" href="#L101">101</a>         request.setAttribute(<span class="jxr_string">"osTypes"</span>, osTypes);
 <a class="jxr_linenumber" name="L102" href="#L102">102</a> 
-<a class="jxr_linenumber" name="L103" href="#L103">103</a>         ArrayList languageTypes = <strong class="jxr_keyword">new</strong> ArrayList();
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>         ArrayList&lt;LabelValueBean&gt; languageTypes = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L104" href="#L104">104</a>         languageTypes.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"C++"</span>, <span class="jxr_string">"C++"</span>));
 <a class="jxr_linenumber" name="L105" href="#L105">105</a>         languageTypes.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"C#"</span>, <span class="jxr_string">"C#"</span>));
 <a class="jxr_linenumber" name="L106" href="#L106">106</a>         languageTypes.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Java"</span>, <span class="jxr_string">"java"</span>));

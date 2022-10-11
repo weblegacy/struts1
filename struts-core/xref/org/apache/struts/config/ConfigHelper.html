@@ -372,7 +372,7 @@
 <a class="jxr_linenumber" name="L364" href="#L364">364</a> <em class="jxr_javadoccomment">     * &lt;p&gt; Return the form action converted into a server-relative URL. &lt;/p&gt;</em>
 <a class="jxr_linenumber" name="L365" href="#L365">365</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L366" href="#L366">366</a>     <strong class="jxr_keyword">public</strong> String getActionMappingURL(String action) {
-<a class="jxr_linenumber" name="L367" href="#L367">367</a>         StringBuffer value = <strong class="jxr_keyword">new</strong> StringBuffer(<strong class="jxr_keyword">this</strong>.request.getContextPath());
+<a class="jxr_linenumber" name="L367" href="#L367">367</a>         StringBuilder value = <strong class="jxr_keyword">new</strong> StringBuilder(<strong class="jxr_keyword">this</strong>.request.getContextPath());
 <a class="jxr_linenumber" name="L368" href="#L368">368</a> 
 <a class="jxr_linenumber" name="L369" href="#L369">369</a>         <em class="jxr_comment">// Use our servlet mapping, if one is specified</em>
 <a class="jxr_linenumber" name="L370" href="#L370">370</a>         String servletMapping = getServletMapping();
@@ -438,7 +438,7 @@
 <a class="jxr_linenumber" name="L430" href="#L430">430</a>     <em class="jxr_comment">// ------------------------------------------------ Presentation API</em>
 <a class="jxr_linenumber" name="L431" href="#L431">431</a> 
 <a class="jxr_linenumber" name="L432" href="#L432">432</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L433" href="#L433">433</a> <em class="jxr_javadoccomment">     * &lt;p&gt; Renders the reference for a HTML &lt;base&gt; element &lt;/p&gt;</em>
+<a class="jxr_linenumber" name="L433" href="#L433">433</a> <em class="jxr_javadoccomment">     * &lt;p&gt; Renders the reference for a HTML &amp;lt;base&amp;gt; element &lt;/p&gt;</em>
 <a class="jxr_linenumber" name="L434" href="#L434">434</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L435" href="#L435">435</a>     <strong class="jxr_keyword">public</strong> String getOrigRef() {
 <a class="jxr_linenumber" name="L436" href="#L436">436</a>         <em class="jxr_comment">// HttpServletRequest request = (HttpServletRequest)pageContext.getRequest();</em>
@@ -446,8 +446,8 @@
 <a class="jxr_linenumber" name="L438" href="#L438">438</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L439" href="#L439">439</a>         }
 <a class="jxr_linenumber" name="L440" href="#L440">440</a> 
-<a class="jxr_linenumber" name="L441" href="#L441">441</a>         StringBuffer result =
-<a class="jxr_linenumber" name="L442" href="#L442">442</a>             RequestUtils.requestToServerUriStringBuffer(request);
+<a class="jxr_linenumber" name="L441" href="#L441">441</a>         StringBuilder result =
+<a class="jxr_linenumber" name="L442" href="#L442">442</a>             RequestUtils.requestToServerUriStringBuilder(request);
 <a class="jxr_linenumber" name="L443" href="#L443">443</a> 
 <a class="jxr_linenumber" name="L444" href="#L444">444</a>         <strong class="jxr_keyword">return</strong> result.toString();
 <a class="jxr_linenumber" name="L445" href="#L445">445</a>     }
@@ -460,7 +460,7 @@
 <a class="jxr_linenumber" name="L452" href="#L452">452</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L453" href="#L453">453</a>         }
 <a class="jxr_linenumber" name="L454" href="#L454">454</a> 
-<a class="jxr_linenumber" name="L455" href="#L455">455</a>         StringBuffer result = RequestUtils.requestToServerStringBuffer(request);
+<a class="jxr_linenumber" name="L455" href="#L455">455</a>         StringBuilder result = RequestUtils.requestToServerStringBuilder(request);
 <a class="jxr_linenumber" name="L456" href="#L456">456</a>         String path;
 <a class="jxr_linenumber" name="L457" href="#L457">457</a> 
 <a class="jxr_linenumber" name="L458" href="#L458">458</a>         <strong class="jxr_keyword">if</strong> (forward == <strong class="jxr_keyword">null</strong>) {
@@ -487,7 +487,7 @@
 <a class="jxr_linenumber" name="L479" href="#L479">479</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L480" href="#L480">480</a>         }
 <a class="jxr_linenumber" name="L481" href="#L481">481</a> 
-<a class="jxr_linenumber" name="L482" href="#L482">482</a>         StringBuffer path = <strong class="jxr_keyword">new</strong> StringBuffer(<strong class="jxr_keyword">this</strong>.request.getContextPath());
+<a class="jxr_linenumber" name="L482" href="#L482">482</a>         StringBuilder path = <strong class="jxr_keyword">new</strong> StringBuilder(<strong class="jxr_keyword">this</strong>.request.getContextPath());
 <a class="jxr_linenumber" name="L483" href="#L483">483</a> 
 <a class="jxr_linenumber" name="L484" href="#L484">484</a>         path.append(forward.getPath());
 <a class="jxr_linenumber" name="L485" href="#L485">485</a> 

@@ -47,7 +47,7 @@
       under the specified attribute name, with optinal definitions for
       the following message keys:</p>
       
-      <br>
+    <br>
 <p></p>
 <hr>
 <table border="1" cellpadding="3" cellspacing="0" width="100%">
@@ -77,14 +77,18 @@
 <td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
 </tr>
 <tr valign="top">
-<td>binding</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>binding</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>javax.faces.component.UIComponent</code>)
+                    </td><td>
       <p>Value binding expression to bind this component to
         a backing bean property.</p>
       
       </td>
 </tr>
 <tr valign="top">
-<td>bundle</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>bundle</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>Name of the servlet context attribute under which the desired
         <code>MessageResources</code> bundle is stored.  If not specified,
         the default bundle for this sub-application will be used.</p>
@@ -97,13 +101,17 @@
       </td>
 </tr>
 <tr valign="top">
-<td>property</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>property</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
         Component of the component for which to render errors.  If not
         specified, all messages (regardless of property) are displayed.
       </td>
 </tr>
 <tr valign="top">
-<td>rendered</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>rendered</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>boolean</code>)
+                    </td><td>
         Boolean attribute indicating whether this component should be
         rendered or not.
       </td>

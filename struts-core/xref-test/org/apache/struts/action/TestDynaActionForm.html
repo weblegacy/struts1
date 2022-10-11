@@ -424,8 +424,8 @@
 <a class="jxr_linenumber" name="L416" href="#L416">416</a> 
 <a class="jxr_linenumber" name="L417" href="#L417">417</a>         assertNotNull(value, <span class="jxr_string">"Got a value"</span>);
 <a class="jxr_linenumber" name="L418" href="#L418">418</a>         assertInstanceOf(Double.<strong class="jxr_keyword">class</strong>, value, <span class="jxr_string">"Got correct type"</span>);
-<a class="jxr_linenumber" name="L419" href="#L419">419</a>         assertEquals((<strong class="jxr_keyword">double</strong>) 321.0,
-<a class="jxr_linenumber" name="L420" href="#L420">420</a>             (Double) value, (<strong class="jxr_keyword">double</strong>) 0.005, <span class="jxr_string">"Got correct value"</span>);
+<a class="jxr_linenumber" name="L419" href="#L419">419</a>         assertEquals(321.0,
+<a class="jxr_linenumber" name="L420" href="#L420">420</a>             (Double) value, 0.005, <span class="jxr_string">"Got correct value"</span>);
 <a class="jxr_linenumber" name="L421" href="#L421">421</a>     }
 <a class="jxr_linenumber" name="L422" href="#L422">422</a> 
 <a class="jxr_linenumber" name="L423" href="#L423">423</a>     <em class="jxr_javadoccomment">/**</em>
@@ -450,7 +450,7 @@
 <a class="jxr_linenumber" name="L442" href="#L442">442</a> 
 <a class="jxr_linenumber" name="L443" href="#L443">443</a>         assertNotNull(value, <span class="jxr_string">"Got a value"</span>);
 <a class="jxr_linenumber" name="L444" href="#L444">444</a>         assertInstanceOf(Integer.<strong class="jxr_keyword">class</strong>, value, <span class="jxr_string">"Got correct type"</span>);
-<a class="jxr_linenumber" name="L445" href="#L445">445</a>         assertEquals((<strong class="jxr_keyword">int</strong>) 123, (Integer) value, <span class="jxr_string">"Got correct value"</span>);
+<a class="jxr_linenumber" name="L445" href="#L445">445</a>         assertEquals(123, (Integer) value, <span class="jxr_string">"Got correct value"</span>);
 <a class="jxr_linenumber" name="L446" href="#L446">446</a>     }
 <a class="jxr_linenumber" name="L447" href="#L447">447</a> 
 <a class="jxr_linenumber" name="L448" href="#L448">448</a>     <em class="jxr_javadoccomment">/**</em>
@@ -665,7 +665,7 @@
 <a class="jxr_linenumber" name="L657" href="#L657">657</a> 
 <a class="jxr_linenumber" name="L658" href="#L658">658</a>         dynaForm.set(<span class="jxr_string">"doubleProperty"</span>, newValue);
 <a class="jxr_linenumber" name="L659" href="#L659">659</a>         assertEquals(newValue, (Double) dynaForm.get(<span class="jxr_string">"doubleProperty"</span>),
-<a class="jxr_linenumber" name="L660" href="#L660">660</a>             (<strong class="jxr_keyword">double</strong>) 0.005, <span class="jxr_string">"Matched new value"</span>);
+<a class="jxr_linenumber" name="L660" href="#L660">660</a>             0.005, <span class="jxr_string">"Matched new value"</span>);
 <a class="jxr_linenumber" name="L661" href="#L661">661</a>     }
 <a class="jxr_linenumber" name="L662" href="#L662">662</a> 
 <a class="jxr_linenumber" name="L663" href="#L663">663</a>     <em class="jxr_javadoccomment">/**</em>

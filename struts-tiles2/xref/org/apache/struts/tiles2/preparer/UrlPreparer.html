@@ -37,10 +37,10 @@
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> javax.servlet.http.HttpServletResponse;
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.tiles.AttributeContext;
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> org.apache.tiles.context.TilesRequestContext;
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.tiles.preparer.PreparerException;
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.tiles.preparer.ViewPreparer;
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">import</strong> org.apache.tiles.servlet.context.ServletTilesRequestContext;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> org.apache.tiles.preparer.PreparerException;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.tiles.preparer.ViewPreparer;
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.tiles.request.Request;
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">import</strong> org.apache.tiles.request.servlet.ServletRequest;
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>  
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>  <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment"> * @version $Rev$ $Date$</em>
@@ -62,12 +62,12 @@
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>      }
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>      <em class="jxr_javadoccomment">/** {@inheritDoc} */</em>
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> execute(TilesRequestContext tilesContext,
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> execute(Request tilesContext,
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>              AttributeContext attributeContext) <strong class="jxr_keyword">throws</strong> PreparerException {
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>  
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>          <strong class="jxr_keyword">if</strong> (tilesContext instanceof ServletTilesRequestContext) {
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>              ServletTilesRequestContext servletTilesContext =
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>                  (ServletTilesRequestContext) tilesContext;
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          <strong class="jxr_keyword">if</strong> (tilesContext instanceof ServletRequest) {
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>              ServletRequest servletTilesContext =
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>                  (ServletRequest) tilesContext;
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>              HttpServletRequest request = servletTilesContext.getRequest();
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>              HttpServletResponse response = servletTilesContext.getResponse();
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>              RequestDispatcher rd = request.getSession().getServletContext()

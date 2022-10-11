@@ -46,14 +46,14 @@
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">     * We declare a List to avoid cast.</em>
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     * Parent "value" property points to the same list.</em>
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>    <strong class="jxr_keyword">private</strong> List list;
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>    <strong class="jxr_keyword">private</strong> List&lt;Object&gt; list;
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>  
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  <em class="jxr_javadoccomment">     * Constructor.</em>
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>    <strong class="jxr_keyword">public</strong> <a name="XmlListAttribute" href="../../../../../org/apache/struts/tiles/xmlDefinition/XmlListAttribute.html#XmlListAttribute">XmlListAttribute</a>()
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>      {
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>      list = <strong class="jxr_keyword">new</strong> ArrayList();
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>      list = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>      setValue(list);
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>      }
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>  
@@ -62,7 +62,7 @@
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment">     * @param name Name.</em>
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     * @param value List.</em>
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>    <strong class="jxr_keyword">public</strong> <a name="XmlListAttribute" href="../../../../../org/apache/struts/tiles/xmlDefinition/XmlListAttribute.html#XmlListAttribute">XmlListAttribute</a>( String name, List value)
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>    <strong class="jxr_keyword">public</strong> <a name="XmlListAttribute" href="../../../../../org/apache/struts/tiles/xmlDefinition/XmlListAttribute.html#XmlListAttribute">XmlListAttribute</a>( String name, List&lt;Object&gt; value)
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>      {
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">super</strong>( name, value );
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>      list = value;

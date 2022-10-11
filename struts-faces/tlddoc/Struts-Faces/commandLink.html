@@ -47,7 +47,7 @@
       and the command link element, without providing a portable
       mechanism to allow intermixed libraries.</p>
       
-      <br>
+    <br>
 <p></p>
 <hr>
 <table border="1" cellpadding="3" cellspacing="0" width="100%">
@@ -77,97 +77,157 @@
 <td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
 </tr>
 <tr valign="top">
-<td>accesskey</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>accesskey</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>action</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>action</td><td>false</td><td>false</td><td><code>javax.el.MethodExpression</code>
+<br>(<i>signature must match </i><code>java.lang.String action()</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>actionListener</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>actionListener</td><td>false</td><td>false</td><td><code>javax.el.MethodExpression</code>
+<br>(<i>signature must match </i><code>void actionListener(javax.faces.event.ActionEvent)</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>charset</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>charset</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>dir</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>dir</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>hreflang</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>hreflang</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
 <td>id</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>immediate</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>immediate</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.Boolean</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>lang</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>lang</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>onblur</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>onblur</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>onclick</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>onclick</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>ondblclick</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>ondblclick</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>onfocus</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>onfocus</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>onkeydown</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>onkeydown</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>onkeypress</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>onkeypress</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>onkeyup</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>onkeyup</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>onmousedown</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>onmousedown</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>onmousemove</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>onmousemove</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>onmouseout</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>onmouseout</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>onmouseover</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>onmouseover</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>onmouseup</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>onmouseup</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>rel</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>rel</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>rendered</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>rendered</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>boolean</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>rev</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>rev</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>style</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>style</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>styleClass</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>styleClass</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>tabindex</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>tabindex</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>target</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>target</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>title</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>title</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>type</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>type</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 <tr valign="top">
-<td>value</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td><i>No Description</i></td>
+<td>value</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td><i>No Description</i></td>
 </tr>
 </table>
 <br>

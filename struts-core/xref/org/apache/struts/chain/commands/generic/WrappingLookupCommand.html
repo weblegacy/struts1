@@ -319,16 +319,15 @@
 <a class="jxr_linenumber" name="L311" href="#L311">311</a>             LOG.debug(<span class="jxr_string">"Looking for wrapper class: "</span> + wrapperClassName);
 <a class="jxr_linenumber" name="L312" href="#L312">312</a>         }
 <a class="jxr_linenumber" name="L313" href="#L313">313</a> 
-<a class="jxr_linenumber" name="L314" href="#L314">314</a>         Class wrapperClass = ClassUtils.getApplicationClass(wrapperClassName);
+<a class="jxr_linenumber" name="L314" href="#L314">314</a>         Class&lt;?&gt; wrapperClass = ClassUtils.getApplicationClass(wrapperClassName);
 <a class="jxr_linenumber" name="L315" href="#L315">315</a> 
 <a class="jxr_linenumber" name="L316" href="#L316">316</a>         <strong class="jxr_keyword">if</strong> (LOG.isDebugEnabled()) {
 <a class="jxr_linenumber" name="L317" href="#L317">317</a>             LOG.debug(<span class="jxr_string">"Instantiating wrapper class"</span>);
 <a class="jxr_linenumber" name="L318" href="#L318">318</a>         }
 <a class="jxr_linenumber" name="L319" href="#L319">319</a> 
-<a class="jxr_linenumber" name="L320" href="#L320">320</a>         <strong class="jxr_keyword">return</strong> (Context) ConstructorUtils.invokeConstructor(wrapperClass,
-<a class="jxr_linenumber" name="L321" href="#L321">321</a>             <strong class="jxr_keyword">new</strong> Object[] { context });
-<a class="jxr_linenumber" name="L322" href="#L322">322</a>     }
-<a class="jxr_linenumber" name="L323" href="#L323">323</a> }
+<a class="jxr_linenumber" name="L320" href="#L320">320</a>         <strong class="jxr_keyword">return</strong> (Context) ConstructorUtils.invokeConstructor(wrapperClass, context);
+<a class="jxr_linenumber" name="L321" href="#L321">321</a>     }
+<a class="jxr_linenumber" name="L322" href="#L322">322</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2000&#x2013;2022 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>

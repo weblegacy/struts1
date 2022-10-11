@@ -110,7 +110,7 @@
 <a class="jxr_linenumber" name="L102" href="#L102">102</a>         request.setAttribute(<span class="jxr_string">"colorCodes"</span>, colorCodes);
 <a class="jxr_linenumber" name="L103" href="#L103">103</a> 
 <a class="jxr_linenumber" name="L104" href="#L104">104</a>         <em class="jxr_comment">/* A Collection */</em>
-<a class="jxr_linenumber" name="L105" href="#L105">105</a>         ArrayList colorList = <strong class="jxr_keyword">new</strong> ArrayList();
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>         ArrayList&lt;String&gt; colorList = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L106" href="#L106">106</a>         colorList.add(<span class="jxr_string">"Red"</span>);
 <a class="jxr_linenumber" name="L107" href="#L107">107</a>         colorList.add(<span class="jxr_string">"Orange"</span>);
 <a class="jxr_linenumber" name="L108" href="#L108">108</a>         colorList.add(<span class="jxr_string">"Yellow"</span>);
@@ -121,7 +121,7 @@
 <a class="jxr_linenumber" name="L113" href="#L113">113</a>         request.setAttribute(<span class="jxr_string">"colorCollection"</span>, colorList);
 <a class="jxr_linenumber" name="L114" href="#L114">114</a> 
 <a class="jxr_linenumber" name="L115" href="#L115">115</a>         <em class="jxr_comment">/* A Collection of LabelValue beans */</em>
-<a class="jxr_linenumber" name="L116" href="#L116">116</a>         ArrayList days = <strong class="jxr_keyword">new</strong> ArrayList();
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>         ArrayList&lt;LabelValueBean&gt; days = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L117" href="#L117">117</a>         days.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Monday"</span>, <span class="jxr_string">"1"</span>));
 <a class="jxr_linenumber" name="L118" href="#L118">118</a>         days.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Tuesday"</span>, <span class="jxr_string">"2"</span>));
 <a class="jxr_linenumber" name="L119" href="#L119">119</a>         days.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Wednesday"</span>, <span class="jxr_string">"3"</span>));
@@ -132,7 +132,7 @@
 <a class="jxr_linenumber" name="L124" href="#L124">124</a>         request.setAttribute(<span class="jxr_string">"days"</span>, days);
 <a class="jxr_linenumber" name="L125" href="#L125">125</a> 
 <a class="jxr_linenumber" name="L126" href="#L126">126</a>         <em class="jxr_comment">/* Collection of custom beans */</em>
-<a class="jxr_linenumber" name="L127" href="#L127">127</a>         ArrayList books = <strong class="jxr_keyword">new</strong> ArrayList();
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>         ArrayList&lt;BookBean&gt; books = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L128" href="#L128">128</a>         books.add(<strong class="jxr_keyword">new</strong> <a name="BookBean" href="../../examples/options/BookBean.html#BookBean">BookBean</a>(<span class="jxr_string">"0596003285"</span>, <span class="jxr_string">"Programming Jakarta Struts"</span>));
 <a class="jxr_linenumber" name="L129" href="#L129">129</a>         books.add(<strong class="jxr_keyword">new</strong> <a name="BookBean" href="../../examples/options/BookBean.html#BookBean">BookBean</a>(<span class="jxr_string">"1930110502"</span>, <span class="jxr_string">"Struts in Action"</span>));
 <a class="jxr_linenumber" name="L130" href="#L130">130</a>         books.add(
@@ -157,12 +157,12 @@
 <a class="jxr_linenumber" name="L149" href="#L149">149</a> <em class="jxr_comment">         * other than a String, they will automatically call the toString()</em>
 <a class="jxr_linenumber" name="L150" href="#L150">150</a> <em class="jxr_comment">         * method and use the result.</em>
 <a class="jxr_linenumber" name="L151" href="#L151">151</a> <em class="jxr_comment">         */</em>
-<a class="jxr_linenumber" name="L152" href="#L152">152</a>         HashMap animals = <strong class="jxr_keyword">new</strong> HashMap();
-<a class="jxr_linenumber" name="L153" href="#L153">153</a>         animals.put(<strong class="jxr_keyword">new</strong> Integer(1), <span class="jxr_string">"Cat"</span>);
-<a class="jxr_linenumber" name="L154" href="#L154">154</a>         animals.put(<strong class="jxr_keyword">new</strong> Integer(2), <span class="jxr_string">"Dog"</span>);
-<a class="jxr_linenumber" name="L155" href="#L155">155</a>         animals.put(<strong class="jxr_keyword">new</strong> Integer(3), <span class="jxr_string">"Horse"</span>);
-<a class="jxr_linenumber" name="L156" href="#L156">156</a>         animals.put(<strong class="jxr_keyword">new</strong> Integer(4), <span class="jxr_string">"Rabbit"</span>);
-<a class="jxr_linenumber" name="L157" href="#L157">157</a>         animals.put(<strong class="jxr_keyword">new</strong> Integer(5), <span class="jxr_string">"Goldfish"</span>);
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>         HashMap&lt;Integer, String&gt; animals = <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>         animals.put(1, <span class="jxr_string">"Cat"</span>);
+<a class="jxr_linenumber" name="L154" href="#L154">154</a>         animals.put(2, <span class="jxr_string">"Dog"</span>);
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>         animals.put(3, <span class="jxr_string">"Horse"</span>);
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>         animals.put(4, <span class="jxr_string">"Rabbit"</span>);
+<a class="jxr_linenumber" name="L157" href="#L157">157</a>         animals.put(5, <span class="jxr_string">"Goldfish"</span>);
 <a class="jxr_linenumber" name="L158" href="#L158">158</a>         request.setAttribute(<span class="jxr_string">"animals"</span>, animals);
 <a class="jxr_linenumber" name="L159" href="#L159">159</a> 
 <a class="jxr_linenumber" name="L160" href="#L160">160</a>         <em class="jxr_comment">// Forward to form page</em>

@@ -46,7 +46,7 @@
       accepts a Struts <code>&lt;action&gt;</code> path as a parameter,
       and triggers the creation of a Struts form bean if needed.</p>
       
-      <br>
+    <br>
 <p></p>
 <hr>
 <table border="1" cellpadding="3" cellspacing="0" width="100%">
@@ -76,7 +76,9 @@
 <td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
 </tr>
 <tr valign="top">
-<td>action</td><td>true</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>action</td><td>true</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>Struts <code>Action</code> to which this form should be
         submitted.  This value must exactly match the <code>path</code>
         attribute of the corresponding <code>&lt;action&gt;</code>
@@ -86,14 +88,18 @@
       </td>
 </tr>
 <tr valign="top">
-<td>binding</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>binding</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>javax.faces.component.UIComponent</code>)
+                    </td><td>
       <p>Value binding expression to bind this component to
         a backing bean property.</p>
       
       </td>
 </tr>
 <tr valign="top">
-<td>enctype</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>enctype</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>The content encoding to be used to submit this form, if the
         method is <code>POST</code>.  This must be set to
         "<code>multipart/form-data</code>" if your form includes file upload
@@ -103,14 +109,18 @@
       </td>
 </tr>
 <tr valign="top">
-<td>focus</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>focus</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>The identifier of the form field that should receive focus
         when this form is rendered.</p>
       
       </td>
 </tr>
 <tr valign="top">
-<td>focusIndex</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>focusIndex</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>If the focus field is an array, such as a radio button group,
         you can specify the index of the array element to receive focus.</p>
       
@@ -122,36 +132,48 @@
       </td>
 </tr>
 <tr valign="top">
-<td>onreset</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>onreset</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>JavaScript event handler executed if this form is reset.</p>
       
       </td>
 </tr>
 <tr valign="top">
-<td>onsubmit</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>onsubmit</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>JavaScript event handler executed if this form is submitted.</p>
       
       </td>
 </tr>
 <tr valign="top">
-<td>rendered</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>rendered</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>boolean</code>)
+                    </td><td>
         Boolean attribute indicating whether this component should be
         rendered or not.
       </td>
 </tr>
 <tr valign="top">
-<td>style</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>style</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>CSS styles to be applied to this HTML element.</p>
       
       </td>
 </tr>
 <tr valign="top">
-<td>styleClass</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>styleClass</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
         CSS style class to use when rendering this component.
       </td>
 </tr>
 <tr valign="top">
-<td>target</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>target</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>Window target to which this form is submitted, such as for use
         in framed presentations.</p>
       

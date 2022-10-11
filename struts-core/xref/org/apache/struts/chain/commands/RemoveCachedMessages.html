@@ -57,7 +57,7 @@
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>          <strong class="jxr_keyword">throws</strong> Exception {
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>          <em class="jxr_comment">// Get session scope</em>
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>          Map session = actionCtx.getSessionScope();
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          Map&lt;String, Object&gt; session = actionCtx.getSessionScope();
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>  
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>          <em class="jxr_comment">// Remove messages as needed</em>
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>          removeAccessedMessages(session, Globals.MESSAGE_KEY);
@@ -76,7 +76,7 @@
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>  <em class="jxr_javadoccomment">     * @param scope The scope to check for messages in.</em>
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>  <em class="jxr_javadoccomment">     * @param key The key the messages are stored under.</em>
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> removeAccessedMessages(Map scope, String key) {
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> removeAccessedMessages(Map&lt;String, Object&gt; scope, String key) {
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>          <a name="ActionMessages" href="../../../../../org/apache/struts/action/ActionMessages.html#ActionMessages">ActionMessages</a> messages = (<a name="ActionMessages" href="../../../../../org/apache/struts/action/ActionMessages.html#ActionMessages">ActionMessages</a>)scope.get(key);
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>          <strong class="jxr_keyword">if</strong> (messages != <strong class="jxr_keyword">null</strong> &amp;&amp; messages.isAccessed()) {
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>              scope.remove(key);

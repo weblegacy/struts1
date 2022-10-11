@@ -117,7 +117,7 @@
 <a class="jxr_linenumber" name="L109" href="#L109">109</a>     <em class="jxr_comment">// No parameters and no transaction token</em>
 <a class="jxr_linenumber" name="L110" href="#L110">110</a>     @Test
 <a class="jxr_linenumber" name="L111" href="#L111">111</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComputeParameters0a() {
-<a class="jxr_linenumber" name="L112" href="#L112">112</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L113" href="#L113">113</a> 
 <a class="jxr_linenumber" name="L114" href="#L114">114</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L115" href="#L115">115</a>             map = tagutils.computeParameters(pageContext, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
@@ -134,7 +134,7 @@
 <a class="jxr_linenumber" name="L126" href="#L126">126</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComputeParameters0b() {
 <a class="jxr_linenumber" name="L127" href="#L127">127</a>         request.getSession().setAttribute(Globals.TRANSACTION_TOKEN_KEY, <span class="jxr_string">"token"</span>);
 <a class="jxr_linenumber" name="L128" href="#L128">128</a> 
-<a class="jxr_linenumber" name="L129" href="#L129">129</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L130" href="#L130">130</a> 
 <a class="jxr_linenumber" name="L131" href="#L131">131</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L132" href="#L132">132</a>             map = tagutils.computeParameters(pageContext, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
@@ -154,7 +154,7 @@
 <a class="jxr_linenumber" name="L146" href="#L146">146</a>     <em class="jxr_comment">// invalid scope name is requested</em>
 <a class="jxr_linenumber" name="L147" href="#L147">147</a>     @Test
 <a class="jxr_linenumber" name="L148" href="#L148">148</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComputeParametersInvalidScope() {
-<a class="jxr_linenumber" name="L149" href="#L149">149</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L149" href="#L149">149</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L150" href="#L150">150</a> 
 <a class="jxr_linenumber" name="L151" href="#L151">151</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L152" href="#L152">152</a>             map = tagutils.computeParameters(pageContext, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
@@ -169,7 +169,7 @@
 <a class="jxr_linenumber" name="L161" href="#L161">161</a>     <em class="jxr_comment">// specified bean is not found</em>
 <a class="jxr_linenumber" name="L162" href="#L162">162</a>     @Test
 <a class="jxr_linenumber" name="L163" href="#L163">163</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComputeParametersBeanNotFound() {
-<a class="jxr_linenumber" name="L164" href="#L164">164</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L164" href="#L164">164</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L165" href="#L165">165</a> 
 <a class="jxr_linenumber" name="L166" href="#L166">166</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L167" href="#L167">167</a>             map = tagutils.computeParameters(pageContext, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
@@ -186,7 +186,7 @@
 <a class="jxr_linenumber" name="L178" href="#L178">178</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComputeParametersPropertyThrowsException() {
 <a class="jxr_linenumber" name="L179" href="#L179">179</a>         request.getSession().setAttribute(<span class="jxr_string">"SomeBean"</span>, <strong class="jxr_keyword">new</strong> MockFormBean(<strong class="jxr_keyword">true</strong>));
 <a class="jxr_linenumber" name="L180" href="#L180">180</a> 
-<a class="jxr_linenumber" name="L181" href="#L181">181</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L181" href="#L181">181</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L182" href="#L182">182</a> 
 <a class="jxr_linenumber" name="L183" href="#L183">183</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L184" href="#L184">184</a>             map = tagutils.computeParameters(pageContext, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
@@ -201,7 +201,7 @@
 <a class="jxr_linenumber" name="L193" href="#L193">193</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComputeParametersParamIdParamPropThrowException() {
 <a class="jxr_linenumber" name="L194" href="#L194">194</a>         request.getSession().setAttribute(<span class="jxr_string">"SomeBean"</span>, <strong class="jxr_keyword">new</strong> MockFormBean(<strong class="jxr_keyword">true</strong>));
 <a class="jxr_linenumber" name="L195" href="#L195">195</a> 
-<a class="jxr_linenumber" name="L196" href="#L196">196</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L197" href="#L197">197</a> 
 <a class="jxr_linenumber" name="L198" href="#L198">198</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L199" href="#L199">199</a>             map = tagutils.computeParameters(pageContext, <span class="jxr_string">"paramId"</span>,
@@ -219,7 +219,7 @@
 <a class="jxr_linenumber" name="L211" href="#L211">211</a>         request.getSession().setAttribute(<span class="jxr_string">"SomeBean"</span>,
 <a class="jxr_linenumber" name="L212" href="#L212">212</a>             <strong class="jxr_keyword">new</strong> MockFormBean(false, false, <strong class="jxr_keyword">new</strong> Double(1)));
 <a class="jxr_linenumber" name="L213" href="#L213">213</a> 
-<a class="jxr_linenumber" name="L214" href="#L214">214</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L214" href="#L214">214</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L215" href="#L215">215</a> 
 <a class="jxr_linenumber" name="L216" href="#L216">216</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L217" href="#L217">217</a>             map = tagutils.computeParameters(pageContext, <span class="jxr_string">"paramId"</span>,
@@ -245,7 +245,7 @@
 <a class="jxr_linenumber" name="L237" href="#L237">237</a> 
 <a class="jxr_linenumber" name="L238" href="#L238">238</a>         request.getSession().setAttribute(<span class="jxr_string">"SomeBean"</span>, params);
 <a class="jxr_linenumber" name="L239" href="#L239">239</a> 
-<a class="jxr_linenumber" name="L240" href="#L240">240</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L240" href="#L240">240</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L241" href="#L241">241</a> 
 <a class="jxr_linenumber" name="L242" href="#L242">242</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L243" href="#L243">243</a>             map = tagutils.computeParameters(pageContext, <span class="jxr_string">"fooParamId"</span>,
@@ -269,7 +269,7 @@
 <a class="jxr_linenumber" name="L261" href="#L261">261</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComputeParameters1a() {
 <a class="jxr_linenumber" name="L262" href="#L262">262</a>         request.getSession().setAttribute(<span class="jxr_string">"attr"</span>, <span class="jxr_string">"bar"</span>);
 <a class="jxr_linenumber" name="L263" href="#L263">263</a> 
-<a class="jxr_linenumber" name="L264" href="#L264">264</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L264" href="#L264">264</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L265" href="#L265">265</a> 
 <a class="jxr_linenumber" name="L266" href="#L266">266</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L267" href="#L267">267</a>             map = tagutils.computeParameters(pageContext, <span class="jxr_string">"foo"</span>, <span class="jxr_string">"attr"</span>, <strong class="jxr_keyword">null</strong>,
@@ -289,7 +289,7 @@
 <a class="jxr_linenumber" name="L281" href="#L281">281</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComputeParameters1b() {
 <a class="jxr_linenumber" name="L282" href="#L282">282</a>         request.setAttribute(<span class="jxr_string">"attr"</span>, <span class="jxr_string">"bar"</span>);
 <a class="jxr_linenumber" name="L283" href="#L283">283</a> 
-<a class="jxr_linenumber" name="L284" href="#L284">284</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L284" href="#L284">284</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L285" href="#L285">285</a> 
 <a class="jxr_linenumber" name="L286" href="#L286">286</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L287" href="#L287">287</a>             map = tagutils.computeParameters(pageContext, <span class="jxr_string">"foo"</span>, <span class="jxr_string">"attr"</span>, <strong class="jxr_keyword">null</strong>,
@@ -309,7 +309,7 @@
 <a class="jxr_linenumber" name="L301" href="#L301">301</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComputeParameters1c() {
 <a class="jxr_linenumber" name="L302" href="#L302">302</a>         request.setAttribute(<span class="jxr_string">"attr"</span>, <strong class="jxr_keyword">new</strong> MockFormBean(<span class="jxr_string">"bar"</span>));
 <a class="jxr_linenumber" name="L303" href="#L303">303</a> 
-<a class="jxr_linenumber" name="L304" href="#L304">304</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L304" href="#L304">304</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L305" href="#L305">305</a> 
 <a class="jxr_linenumber" name="L306" href="#L306">306</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L307" href="#L307">307</a>             map = tagutils.computeParameters(pageContext, <span class="jxr_string">"foo"</span>, <span class="jxr_string">"attr"</span>,
@@ -333,7 +333,7 @@
 <a class="jxr_linenumber" name="L325" href="#L325">325</a>         params.put(<span class="jxr_string">"foo2"</span>, <span class="jxr_string">"bar2"</span>);
 <a class="jxr_linenumber" name="L326" href="#L326">326</a>         request.getSession().setAttribute(<span class="jxr_string">"attr"</span>, params);
 <a class="jxr_linenumber" name="L327" href="#L327">327</a> 
-<a class="jxr_linenumber" name="L328" href="#L328">328</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L328" href="#L328">328</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L329" href="#L329">329</a> 
 <a class="jxr_linenumber" name="L330" href="#L330">330</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L331" href="#L331">331</a>             map = tagutils.computeParameters(pageContext, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
@@ -359,7 +359,7 @@
 <a class="jxr_linenumber" name="L351" href="#L351">351</a>         params.put(<span class="jxr_string">"foo2"</span>, <span class="jxr_string">"bar2"</span>);
 <a class="jxr_linenumber" name="L352" href="#L352">352</a>         request.setAttribute(<span class="jxr_string">"attr"</span>, params);
 <a class="jxr_linenumber" name="L353" href="#L353">353</a> 
-<a class="jxr_linenumber" name="L354" href="#L354">354</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L354" href="#L354">354</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L355" href="#L355">355</a> 
 <a class="jxr_linenumber" name="L356" href="#L356">356</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L357" href="#L357">357</a>             map = tagutils.computeParameters(pageContext, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
@@ -381,7 +381,7 @@
 <a class="jxr_linenumber" name="L373" href="#L373">373</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComputeParameters2c() {
 <a class="jxr_linenumber" name="L374" href="#L374">374</a>         request.setAttribute(<span class="jxr_string">"attr"</span>, <strong class="jxr_keyword">new</strong> MockFormBean());
 <a class="jxr_linenumber" name="L375" href="#L375">375</a> 
-<a class="jxr_linenumber" name="L376" href="#L376">376</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L376" href="#L376">376</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L377" href="#L377">377</a> 
 <a class="jxr_linenumber" name="L378" href="#L378">378</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L379" href="#L379">379</a>             map = tagutils.computeParameters(pageContext, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
@@ -406,7 +406,7 @@
 <a class="jxr_linenumber" name="L398" href="#L398">398</a>         params.put(<span class="jxr_string">"foo"</span>, <strong class="jxr_keyword">new</strong> String[] { <span class="jxr_string">"bar1"</span>, <span class="jxr_string">"bar2"</span> });
 <a class="jxr_linenumber" name="L399" href="#L399">399</a>         request.getSession().setAttribute(<span class="jxr_string">"attr"</span>, params);
 <a class="jxr_linenumber" name="L400" href="#L400">400</a> 
-<a class="jxr_linenumber" name="L401" href="#L401">401</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L401" href="#L401">401</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L402" href="#L402">402</a> 
 <a class="jxr_linenumber" name="L403" href="#L403">403</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L404" href="#L404">404</a>             map = tagutils.computeParameters(pageContext, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
@@ -432,7 +432,7 @@
 <a class="jxr_linenumber" name="L424" href="#L424">424</a>         request.setAttribute(<span class="jxr_string">"attr"</span>, <strong class="jxr_keyword">new</strong> MockFormBean(<span class="jxr_string">"bar3"</span>));
 <a class="jxr_linenumber" name="L425" href="#L425">425</a>         request.getSession().setAttribute(Globals.TRANSACTION_TOKEN_KEY, <span class="jxr_string">"token"</span>);
 <a class="jxr_linenumber" name="L426" href="#L426">426</a> 
-<a class="jxr_linenumber" name="L427" href="#L427">427</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L427" href="#L427">427</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L428" href="#L428">428</a> 
 <a class="jxr_linenumber" name="L429" href="#L429">429</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L430" href="#L430">430</a>             map = tagutils.computeParameters(pageContext, <span class="jxr_string">"foo1"</span>, <span class="jxr_string">"attr"</span>,
@@ -469,7 +469,7 @@
 <a class="jxr_linenumber" name="L461" href="#L461">461</a>         request.setAttribute(<span class="jxr_string">"attr"</span>, <strong class="jxr_keyword">new</strong> MockFormBean(<span class="jxr_string">"bar3"</span>));
 <a class="jxr_linenumber" name="L462" href="#L462">462</a>         request.getSession().setAttribute(Globals.TRANSACTION_TOKEN_KEY, <span class="jxr_string">"token"</span>);
 <a class="jxr_linenumber" name="L463" href="#L463">463</a> 
-<a class="jxr_linenumber" name="L464" href="#L464">464</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L464" href="#L464">464</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L465" href="#L465">465</a> 
 <a class="jxr_linenumber" name="L466" href="#L466">466</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L467" href="#L467">467</a>             map = tagutils.computeParameters(pageContext, <span class="jxr_string">"foo1"</span>, <span class="jxr_string">"attr"</span>,
@@ -509,7 +509,7 @@
 <a class="jxr_linenumber" name="L501" href="#L501">501</a>         request.setAttribute(<span class="jxr_string">"attr"</span>, <strong class="jxr_keyword">new</strong> MockFormBean(<span class="jxr_string">"bar3"</span>));
 <a class="jxr_linenumber" name="L502" href="#L502">502</a>         request.getSession().setAttribute(Globals.TRANSACTION_TOKEN_KEY, <span class="jxr_string">"token"</span>);
 <a class="jxr_linenumber" name="L503" href="#L503">503</a> 
-<a class="jxr_linenumber" name="L504" href="#L504">504</a>         Map&lt;?, ?&gt; map = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L504" href="#L504">504</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L505" href="#L505">505</a> 
 <a class="jxr_linenumber" name="L506" href="#L506">506</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L507" href="#L507">507</a>             map = tagutils.computeParameters(pageContext, <span class="jxr_string">"foo1"</span>, <span class="jxr_string">"attr"</span>,

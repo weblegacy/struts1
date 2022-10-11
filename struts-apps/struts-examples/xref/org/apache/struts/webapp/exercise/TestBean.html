@@ -36,20 +36,20 @@
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> java.util.HashMap;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> java.util.List;
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> java.util.Vector;
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> javax.servlet.http.HttpServletRequest;
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.ActionForm;
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.ActionMapping;
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.util.LabelValueBean;
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> javax.servlet.http.HttpServletRequest;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.ActionForm;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.ActionMapping;
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.util.LabelValueBean;
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>  
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment"> * General purpose test bean for Struts custom tag tests.</em>
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment"> * @version $Rev$ $Date$</em>
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="TestBean" href="../../../../../org/apache/struts/webapp/exercise/TestBean.html#TestBean">TestBean</a> <strong class="jxr_keyword">extends</strong> ActionForm {
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment"> * General purpose test bean for Struts custom tag tests.</em>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment"> * @version $Rev$ $Date$</em>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="TestBean" href="../../../../../org/apache/struts/webapp/exercise/TestBean.html#TestBean">TestBean</a> <strong class="jxr_keyword">extends</strong> ActionForm {
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> serialVersionUID = 1841410529486550126L;
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>  
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>      <em class="jxr_comment">// ------------------------------------------------------------- Properties</em>
@@ -59,11 +59,11 @@
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>  <em class="jxr_javadoccomment">     * A collection property where the elements of the collection are</em>
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  <em class="jxr_javadoccomment">     * of type &lt;code&gt;LabelValueBean&lt;/code&gt;.</em>
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">private</strong> Collection beanCollection = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">private</strong> Collection&lt;LabelValueBean&gt; beanCollection = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">public</strong> Collection getBeanCollection() {
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">public</strong> Collection&lt;LabelValueBean&gt; getBeanCollection() {
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>          <strong class="jxr_keyword">if</strong> (beanCollection == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>              Vector entries = <strong class="jxr_keyword">new</strong> Vector(10);
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>              ArrayList&lt;LabelValueBean&gt; entries = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;(10);
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>  
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>              entries.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Label 0"</span>, <span class="jxr_string">"Value 0"</span>));
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>              entries.add(<strong class="jxr_keyword">new</strong> LabelValueBean(<span class="jxr_string">"Label 1"</span>, <span class="jxr_string">"Value 1"</span>));
@@ -82,7 +82,7 @@
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>          <strong class="jxr_keyword">return</strong> (beanCollection);
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>      }
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>  
-<a class="jxr_linenumber" name="L77" href="#L77">77</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setBeanCollection(Collection beanCollection) {
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setBeanCollection(Collection&lt;LabelValueBean&gt; beanCollection) {
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>          <strong class="jxr_keyword">this</strong>.beanCollection = beanCollection;
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>      }
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>  
@@ -398,33 +398,33 @@
 <a class="jxr_linenumber" name="L390" href="#L390">390</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L391" href="#L391">391</a> <em class="jxr_javadoccomment">     * A List property.</em>
 <a class="jxr_linenumber" name="L392" href="#L392">392</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L393" href="#L393">393</a>     <strong class="jxr_keyword">private</strong> List listProperty = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L393" href="#L393">393</a>     <strong class="jxr_keyword">private</strong> List&lt;String&gt; listProperty = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L394" href="#L394">394</a> 
-<a class="jxr_linenumber" name="L395" href="#L395">395</a>     <strong class="jxr_keyword">public</strong> List getListProperty() {
+<a class="jxr_linenumber" name="L395" href="#L395">395</a>     <strong class="jxr_keyword">public</strong> List&lt;String&gt; getListProperty() {
 <a class="jxr_linenumber" name="L396" href="#L396">396</a>         <strong class="jxr_keyword">if</strong> (listProperty == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L397" href="#L397">397</a>             listProperty = <strong class="jxr_keyword">new</strong> ArrayList();
+<a class="jxr_linenumber" name="L397" href="#L397">397</a>             listProperty = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L398" href="#L398">398</a>             listProperty.add(<span class="jxr_string">"dummy"</span>);
 <a class="jxr_linenumber" name="L399" href="#L399">399</a>         }
 <a class="jxr_linenumber" name="L400" href="#L400">400</a>         <strong class="jxr_keyword">return</strong> listProperty;
 <a class="jxr_linenumber" name="L401" href="#L401">401</a>     }
 <a class="jxr_linenumber" name="L402" href="#L402">402</a> 
-<a class="jxr_linenumber" name="L403" href="#L403">403</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setListProperty(List listProperty) {
+<a class="jxr_linenumber" name="L403" href="#L403">403</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setListProperty(List&lt;String&gt; listProperty) {
 <a class="jxr_linenumber" name="L404" href="#L404">404</a>         <strong class="jxr_keyword">this</strong>.listProperty = listProperty;
 <a class="jxr_linenumber" name="L405" href="#L405">405</a>     }
 <a class="jxr_linenumber" name="L406" href="#L406">406</a> 
 <a class="jxr_linenumber" name="L407" href="#L407">407</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L408" href="#L408">408</a> <em class="jxr_javadoccomment">     * An empty List property.</em>
 <a class="jxr_linenumber" name="L409" href="#L409">409</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L410" href="#L410">410</a>     <strong class="jxr_keyword">private</strong> List emptyListProperty = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L410" href="#L410">410</a>     <strong class="jxr_keyword">private</strong> List&lt;String&gt; emptyListProperty = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L411" href="#L411">411</a> 
-<a class="jxr_linenumber" name="L412" href="#L412">412</a>     <strong class="jxr_keyword">public</strong> List getEmptyListProperty() {
+<a class="jxr_linenumber" name="L412" href="#L412">412</a>     <strong class="jxr_keyword">public</strong> List&lt;String&gt; getEmptyListProperty() {
 <a class="jxr_linenumber" name="L413" href="#L413">413</a>         <strong class="jxr_keyword">if</strong> (emptyListProperty == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L414" href="#L414">414</a>             emptyListProperty = <strong class="jxr_keyword">new</strong> ArrayList();
+<a class="jxr_linenumber" name="L414" href="#L414">414</a>             emptyListProperty = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L415" href="#L415">415</a>         }
 <a class="jxr_linenumber" name="L416" href="#L416">416</a>         <strong class="jxr_keyword">return</strong> emptyListProperty;
 <a class="jxr_linenumber" name="L417" href="#L417">417</a>     }
 <a class="jxr_linenumber" name="L418" href="#L418">418</a> 
-<a class="jxr_linenumber" name="L419" href="#L419">419</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setEmptyListProperty(List emptyListProperty) {
+<a class="jxr_linenumber" name="L419" href="#L419">419</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setEmptyListProperty(List&lt;String&gt; emptyListProperty) {
 <a class="jxr_linenumber" name="L420" href="#L420">420</a>         <strong class="jxr_keyword">this</strong>.emptyListProperty = emptyListProperty;
 <a class="jxr_linenumber" name="L421" href="#L421">421</a>     }
 <a class="jxr_linenumber" name="L422" href="#L422">422</a> 
@@ -432,33 +432,33 @@
 <a class="jxr_linenumber" name="L424" href="#L424">424</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L425" href="#L425">425</a> <em class="jxr_javadoccomment">     * A Map property.</em>
 <a class="jxr_linenumber" name="L426" href="#L426">426</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L427" href="#L427">427</a>     <strong class="jxr_keyword">private</strong> Map mapProperty = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L427" href="#L427">427</a>     <strong class="jxr_keyword">private</strong> Map&lt;String, String&gt; mapProperty = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L428" href="#L428">428</a> 
-<a class="jxr_linenumber" name="L429" href="#L429">429</a>     <strong class="jxr_keyword">public</strong> Map getMapProperty() {
+<a class="jxr_linenumber" name="L429" href="#L429">429</a>     <strong class="jxr_keyword">public</strong> Map&lt;String, String&gt; getMapProperty() {
 <a class="jxr_linenumber" name="L430" href="#L430">430</a>         <strong class="jxr_keyword">if</strong> (mapProperty == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L431" href="#L431">431</a>             mapProperty = <strong class="jxr_keyword">new</strong> HashMap();
+<a class="jxr_linenumber" name="L431" href="#L431">431</a>             mapProperty = <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
 <a class="jxr_linenumber" name="L432" href="#L432">432</a>             mapProperty.put(<span class="jxr_string">"dummy"</span>, <span class="jxr_string">"dummy"</span>);
 <a class="jxr_linenumber" name="L433" href="#L433">433</a>         }
 <a class="jxr_linenumber" name="L434" href="#L434">434</a>         <strong class="jxr_keyword">return</strong> mapProperty;
 <a class="jxr_linenumber" name="L435" href="#L435">435</a>     }
 <a class="jxr_linenumber" name="L436" href="#L436">436</a> 
-<a class="jxr_linenumber" name="L437" href="#L437">437</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setMapProperty(Map mapProperty) {
+<a class="jxr_linenumber" name="L437" href="#L437">437</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setMapProperty(Map&lt;String, String&gt; mapProperty) {
 <a class="jxr_linenumber" name="L438" href="#L438">438</a>         <strong class="jxr_keyword">this</strong>.mapProperty = mapProperty;
 <a class="jxr_linenumber" name="L439" href="#L439">439</a>     }
 <a class="jxr_linenumber" name="L440" href="#L440">440</a> 
 <a class="jxr_linenumber" name="L441" href="#L441">441</a>     <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L442" href="#L442">442</a> <em class="jxr_javadoccomment">     * An empty Map property.</em>
 <a class="jxr_linenumber" name="L443" href="#L443">443</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L444" href="#L444">444</a>     <strong class="jxr_keyword">private</strong> Map emptyMapProperty = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L444" href="#L444">444</a>     <strong class="jxr_keyword">private</strong> Map&lt;String, String&gt; emptyMapProperty = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L445" href="#L445">445</a> 
-<a class="jxr_linenumber" name="L446" href="#L446">446</a>     <strong class="jxr_keyword">public</strong> Map getEmptyMapProperty() {
+<a class="jxr_linenumber" name="L446" href="#L446">446</a>     <strong class="jxr_keyword">public</strong> Map&lt;String, String&gt; getEmptyMapProperty() {
 <a class="jxr_linenumber" name="L447" href="#L447">447</a>         <strong class="jxr_keyword">if</strong> (emptyMapProperty == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L448" href="#L448">448</a>             emptyMapProperty = <strong class="jxr_keyword">new</strong> HashMap();
+<a class="jxr_linenumber" name="L448" href="#L448">448</a>             emptyMapProperty = <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
 <a class="jxr_linenumber" name="L449" href="#L449">449</a>         }
 <a class="jxr_linenumber" name="L450" href="#L450">450</a>         <strong class="jxr_keyword">return</strong> emptyMapProperty;
 <a class="jxr_linenumber" name="L451" href="#L451">451</a>     }
 <a class="jxr_linenumber" name="L452" href="#L452">452</a> 
-<a class="jxr_linenumber" name="L453" href="#L453">453</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setEmptyMapProperty(Map emptyMapProperty) {
+<a class="jxr_linenumber" name="L453" href="#L453">453</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setEmptyMapProperty(Map&lt;String, String&gt; emptyMapProperty) {
 <a class="jxr_linenumber" name="L454" href="#L454">454</a>         <strong class="jxr_keyword">this</strong>.emptyMapProperty = emptyMapProperty;
 <a class="jxr_linenumber" name="L455" href="#L455">455</a>     }
 <a class="jxr_linenumber" name="L456" href="#L456">456</a> 

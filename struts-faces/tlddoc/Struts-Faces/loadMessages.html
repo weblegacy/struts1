@@ -44,7 +44,7 @@
       will return localized messages based on the Locale stored in the
       view root component of the current view.</p>
       
-      <br>
+    <br>
 <p></p>
 <hr>
 <table border="1" cellpadding="3" cellspacing="0" width="100%">
@@ -74,7 +74,9 @@
 <td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
 </tr>
 <tr valign="top">
-<td>messages</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>messages</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
       <p>Application scope key containing the MessageResources instance
         to be exposed.  If not specified, the default MessageResources
         instance for the current application module is exposed.</p>
@@ -82,8 +84,11 @@
       </td>
 </tr>
 <tr valign="top">
-<td>var</td><td>true</td><td>false</td><td><code>java.lang.String</code></td><td>
-      <p>Request scope key under which the Map will be stored.</p>
+<td>var</td><td>true</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
+      <p>Request scope key under which the MessagesMap will be
+        stored.</p>
       
       </td>
 </tr>

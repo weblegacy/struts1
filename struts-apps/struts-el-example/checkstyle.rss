@@ -19,14 +19,14 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>Struts Apps - Struts EL Exercise - Checkstyle report</title>
+    <title>Struts Apps - EL Examples - Checkstyle report</title>
     <link>https://weblegacy.github.io/struts1/struts-apps/struts-el-example</link>
-    <description>Struts Apps - Struts EL Exercise - Checkstyle report</description>
+    <description>Struts Apps - EL Examples - Checkstyle report</description>
     <language>en-us</language>
     <copyright>&#169;2000 - 2022 Web-Legacy</copyright>
     <item>
       <title>File: 5,
-             Errors: 112,
+             Errors: 110,
              Warnings: 0,
              Infos: 0
       </title>
@@ -55,7 +55,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  5
+                  3
                 </td>
               </tr>
                           <tr>

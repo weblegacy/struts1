@@ -52,8 +52,8 @@
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> execute(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> actionCtx) <strong class="jxr_keyword">throws</strong> Exception {
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>          <a name="ForwardConfig" href="../../../../../org/apache/struts/config/ForwardConfig.html#ForwardConfig">ForwardConfig</a> forwardConfig = actionCtx.getForwardConfig();
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>          <strong class="jxr_keyword">if</strong> ((forwardConfig != <strong class="jxr_keyword">null</strong>) &amp;&amp; forwardConfig.getRedirect()) {
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>              Map request = actionCtx.getRequestScope();
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>              Map session = actionCtx.getSessionScope();
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>              Map&lt;String, Object&gt; request = actionCtx.getRequestScope();
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>              Map&lt;String, Object&gt; session = actionCtx.getSessionScope();
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>              copyUnaccessedMessages(request, session, Globals.MESSAGE_KEY);
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>              copyUnaccessedMessages(request, session, Globals.ERROR_KEY);
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>          }
@@ -70,7 +70,7 @@
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>  <em class="jxr_javadoccomment">     * @param toScope The scope to copy messages into.</em>
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>  <em class="jxr_javadoccomment">     * @param key The key the messages are stored under.</em>
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> copyUnaccessedMessages(Map fromScope, Map toScope, String key) {
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> copyUnaccessedMessages(Map&lt;String, Object&gt; fromScope, Map&lt;String, Object&gt; toScope, String key) {
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>          <a name="ActionMessages" href="../../../../../org/apache/struts/action/ActionMessages.html#ActionMessages">ActionMessages</a> fromMessages = (<a name="ActionMessages" href="../../../../../org/apache/struts/action/ActionMessages.html#ActionMessages">ActionMessages</a>) fromScope.get(key);
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>          <strong class="jxr_keyword">if</strong> ((fromMessages != <strong class="jxr_keyword">null</strong>) &amp;&amp; !fromMessages.isAccessed()) {
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>              <a name="ActionMessages" href="../../../../../org/apache/struts/action/ActionMessages.html#ActionMessages">ActionMessages</a> toMessages = (<a name="ActionMessages" href="../../../../../org/apache/struts/action/ActionMessages.html#ActionMessages">ActionMessages</a>) toScope.get(key);

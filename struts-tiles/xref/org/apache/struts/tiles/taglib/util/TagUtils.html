@@ -62,17 +62,17 @@
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment">     * Maps lowercase JSP scope names to their PageContext integer constant</em>
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     * values.</em>
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> Map scopes = <strong class="jxr_keyword">new</strong> HashMap();
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> Map&lt;String, Integer&gt; scopes = <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>  
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  <em class="jxr_javadoccomment">     * Initialize the scope names map and the encode variable with the</em>
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>  <em class="jxr_javadoccomment">     * Java 1.4 method if available.</em>
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>      <strong class="jxr_keyword">static</strong> {
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>          scopes.put(<span class="jxr_string">"page"</span>, <strong class="jxr_keyword">new</strong> Integer(PageContext.PAGE_SCOPE));
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>          scopes.put(<span class="jxr_string">"request"</span>, <strong class="jxr_keyword">new</strong> Integer(PageContext.REQUEST_SCOPE));
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>          scopes.put(<span class="jxr_string">"session"</span>, <strong class="jxr_keyword">new</strong> Integer(PageContext.SESSION_SCOPE));
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>          scopes.put(<span class="jxr_string">"application"</span>, <strong class="jxr_keyword">new</strong> Integer(PageContext.APPLICATION_SCOPE));
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>          scopes.put(<span class="jxr_string">"page"</span>, PageContext.PAGE_SCOPE);
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>          scopes.put(<span class="jxr_string">"request"</span>, PageContext.REQUEST_SCOPE);
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          scopes.put(<span class="jxr_string">"session"</span>, PageContext.SESSION_SCOPE);
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          scopes.put(<span class="jxr_string">"application"</span>, PageContext.APPLICATION_SCOPE);
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>      }
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>  
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>  
@@ -110,7 +110,7 @@
 <a class="jxr_linenumber" name="L102" href="#L102">102</a> <em class="jxr_javadoccomment">     * @throws JspException if the scopeName is not a valid name.</em>
 <a class="jxr_linenumber" name="L103" href="#L103">103</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L104" href="#L104">104</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> getScope(String scopeName) <strong class="jxr_keyword">throws</strong> JspException {
-<a class="jxr_linenumber" name="L105" href="#L105">105</a>         Integer scope = (Integer) scopes.get(scopeName.toLowerCase());
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>         Integer scope = scopes.get(scopeName.toLowerCase());
 <a class="jxr_linenumber" name="L106" href="#L106">106</a> 
 <a class="jxr_linenumber" name="L107" href="#L107">107</a>         <strong class="jxr_keyword">if</strong> (scope == <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L108" href="#L108">108</a>             <em class="jxr_comment">//throw new JspException(messages.getMessage("lookup.scope", scope));</em>

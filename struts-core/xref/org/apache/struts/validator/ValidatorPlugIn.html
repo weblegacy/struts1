@@ -82,10 +82,10 @@
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">static</strong> String STOP_ON_ERROR_KEY =
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>          <span class="jxr_string">"org.apache.struts.validator.STOP_ON_ERROR"</span>;
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>  
-<a class="jxr_linenumber" name="L77" href="#L77">77</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L78" href="#L78">78</a>  <em class="jxr_javadoccomment">     * The module configuration for our owning module.</em>
-<a class="jxr_linenumber" name="L79" href="#L79">79</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L80" href="#L80">80</a>      <strong class="jxr_keyword">private</strong> <a name="ModuleConfig" href="../../../../org/apache/struts/config/ModuleConfig.html#ModuleConfig">ModuleConfig</a> config = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>      <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>  <em class="jxr_comment">     * The module configuration for our owning module.</em>
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>  <em class="jxr_comment">     */</em>
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>  <em class="jxr_comment">//   private ModuleConfig config = null;</em>
 <a class="jxr_linenumber" name="L81" href="#L81">81</a>  
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L83" href="#L83">83</a>  <em class="jxr_javadoccomment">     * The {@link ActionServlet} owning this application.</em>
@@ -166,7 +166,7 @@
 <a class="jxr_linenumber" name="L158" href="#L158">158</a>         <strong class="jxr_keyword">throws</strong> ServletException {
 <a class="jxr_linenumber" name="L159" href="#L159">159</a> 
 <a class="jxr_linenumber" name="L160" href="#L160">160</a>         <em class="jxr_comment">// Remember our associated configuration and servlet</em>
-<a class="jxr_linenumber" name="L161" href="#L161">161</a>         <strong class="jxr_keyword">this</strong>.config = config;
+<a class="jxr_linenumber" name="L161" href="#L161">161</a> <em class="jxr_comment">//      this.config = config;</em>
 <a class="jxr_linenumber" name="L162" href="#L162">162</a>         <strong class="jxr_keyword">this</strong>.servlet = servlet;
 <a class="jxr_linenumber" name="L163" href="#L163">163</a> 
 <a class="jxr_linenumber" name="L164" href="#L164">164</a>         <em class="jxr_comment">// Verify only one instance of the plugin is loaded per module</em>
@@ -201,7 +201,7 @@
 <a class="jxr_linenumber" name="L193" href="#L193">193</a>         }
 <a class="jxr_linenumber" name="L194" href="#L194">194</a> 
 <a class="jxr_linenumber" name="L195" href="#L195">195</a>         servlet = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L196" href="#L196">196</a>         config = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L196" href="#L196">196</a> <em class="jxr_comment">//      config = null;</em>
 <a class="jxr_linenumber" name="L197" href="#L197">197</a> 
 <a class="jxr_linenumber" name="L198" href="#L198">198</a>         destroyResources();
 <a class="jxr_linenumber" name="L199" href="#L199">199</a>     }
@@ -220,7 +220,7 @@
 <a class="jxr_linenumber" name="L212" href="#L212">212</a> 
 <a class="jxr_linenumber" name="L213" href="#L213">213</a>         StringTokenizer st = <strong class="jxr_keyword">new</strong> StringTokenizer(pathnames, RESOURCE_DELIM);
 <a class="jxr_linenumber" name="L214" href="#L214">214</a> 
-<a class="jxr_linenumber" name="L215" href="#L215">215</a>         List urlList = <strong class="jxr_keyword">new</strong> ArrayList();
+<a class="jxr_linenumber" name="L215" href="#L215">215</a>         List&lt;URL&gt; urlList = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L216" href="#L216">216</a> 
 <a class="jxr_linenumber" name="L217" href="#L217">217</a>         <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L218" href="#L218">218</a>             <strong class="jxr_keyword">while</strong> (st.hasMoreTokens()) {
@@ -249,27 +249,22 @@
 <a class="jxr_linenumber" name="L241" href="#L241">241</a>                 }
 <a class="jxr_linenumber" name="L242" href="#L242">242</a>             }
 <a class="jxr_linenumber" name="L243" href="#L243">243</a> 
-<a class="jxr_linenumber" name="L244" href="#L244">244</a>             <strong class="jxr_keyword">int</strong> urlSize = urlList.size();
-<a class="jxr_linenumber" name="L245" href="#L245">245</a>             URL[] urlArray = <strong class="jxr_keyword">new</strong> URL[urlSize];
-<a class="jxr_linenumber" name="L246" href="#L246">246</a> 
-<a class="jxr_linenumber" name="L247" href="#L247">247</a>             <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> urlIndex = 0; urlIndex &lt; urlSize; urlIndex++) {
-<a class="jxr_linenumber" name="L248" href="#L248">248</a>                 urlArray[urlIndex] = (URL) urlList.get(urlIndex);
-<a class="jxr_linenumber" name="L249" href="#L249">249</a>             }
-<a class="jxr_linenumber" name="L250" href="#L250">250</a> 
-<a class="jxr_linenumber" name="L251" href="#L251">251</a>             <strong class="jxr_keyword">this</strong>.resources = <strong class="jxr_keyword">new</strong> ValidatorResources(urlArray);
-<a class="jxr_linenumber" name="L252" href="#L252">252</a>         } <strong class="jxr_keyword">catch</strong> (SAXException sex) {
-<a class="jxr_linenumber" name="L253" href="#L253">253</a>             log.error(<span class="jxr_string">"Skipping all validation"</span>, sex);
-<a class="jxr_linenumber" name="L254" href="#L254">254</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> ServletException(sex);
-<a class="jxr_linenumber" name="L255" href="#L255">255</a>         }
-<a class="jxr_linenumber" name="L256" href="#L256">256</a>     }
-<a class="jxr_linenumber" name="L257" href="#L257">257</a> 
-<a class="jxr_linenumber" name="L258" href="#L258">258</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L259" href="#L259">259</a> <em class="jxr_javadoccomment">     * Destroy &lt;code&gt;ValidatorResources&lt;/code&gt;.</em>
-<a class="jxr_linenumber" name="L260" href="#L260">260</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L261" href="#L261">261</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> destroyResources() {
-<a class="jxr_linenumber" name="L262" href="#L262">262</a>         resources = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L263" href="#L263">263</a>     }
-<a class="jxr_linenumber" name="L264" href="#L264">264</a> }
+<a class="jxr_linenumber" name="L244" href="#L244">244</a>             URL[] urlArray = urlList.toArray(<strong class="jxr_keyword">new</strong> URL[0]);
+<a class="jxr_linenumber" name="L245" href="#L245">245</a> 
+<a class="jxr_linenumber" name="L246" href="#L246">246</a>             <strong class="jxr_keyword">this</strong>.resources = <strong class="jxr_keyword">new</strong> ValidatorResources(urlArray);
+<a class="jxr_linenumber" name="L247" href="#L247">247</a>         } <strong class="jxr_keyword">catch</strong> (SAXException sex) {
+<a class="jxr_linenumber" name="L248" href="#L248">248</a>             log.error(<span class="jxr_string">"Skipping all validation"</span>, sex);
+<a class="jxr_linenumber" name="L249" href="#L249">249</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> ServletException(sex);
+<a class="jxr_linenumber" name="L250" href="#L250">250</a>         }
+<a class="jxr_linenumber" name="L251" href="#L251">251</a>     }
+<a class="jxr_linenumber" name="L252" href="#L252">252</a> 
+<a class="jxr_linenumber" name="L253" href="#L253">253</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L254" href="#L254">254</a> <em class="jxr_javadoccomment">     * Destroy &lt;code&gt;ValidatorResources&lt;/code&gt;.</em>
+<a class="jxr_linenumber" name="L255" href="#L255">255</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L256" href="#L256">256</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> destroyResources() {
+<a class="jxr_linenumber" name="L257" href="#L257">257</a>         resources = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L258" href="#L258">258</a>     }
+<a class="jxr_linenumber" name="L259" href="#L259">259</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2000&#x2013;2022 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>

@@ -44,7 +44,7 @@
       relative reference to a <code>text/css</code> stylesheet at
       the specified context-relative path.</p>
       
-      <br>
+    <br>
 <p></p>
 <hr>
 <table border="1" cellpadding="3" cellspacing="0" width="100%">
@@ -74,7 +74,9 @@
 <td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
 </tr>
 <tr valign="top">
-<td>binding</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>binding</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>javax.faces.component.UIComponent</code>)
+                    </td><td>
       <p>Value binding expression to bind this component to
         a backing bean property.</p>
       
@@ -86,12 +88,16 @@
       </td>
 </tr>
 <tr valign="top">
-<td>path</td><td>true</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>path</td><td>true</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>java.lang.String</code>)
+                    </td><td>
         Context-relative path to the resource for this relative link.
       </td>
 </tr>
 <tr valign="top">
-<td>rendered</td><td>false</td><td>false</td><td><code>java.lang.String</code></td><td>
+<td>rendered</td><td>false</td><td>false</td><td><code>javax.el.ValueExpression</code>
+<br>(<i>must evaluate to </i><code>boolean</code>)
+                    </td><td>
         Boolean attribute indicating whether this component should be
         rendered or not.
       </td>

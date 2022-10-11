@@ -246,7 +246,7 @@
 <a class="jxr_linenumber" name="L238" href="#L238">238</a>         assertSame(context.getRequestScope().get(formName),
 <a class="jxr_linenumber" name="L239" href="#L239">239</a>             context.getActionForm());
 <a class="jxr_linenumber" name="L240" href="#L240">240</a> 
-<a class="jxr_linenumber" name="L241" href="#L241">241</a>         ActionForm theForm = (ActionForm) context.getActionForm();
+<a class="jxr_linenumber" name="L241" href="#L241">241</a>         ActionForm theForm = context.getActionForm();
 <a class="jxr_linenumber" name="L242" href="#L242">242</a> 
 <a class="jxr_linenumber" name="L243" href="#L243">243</a>         assertInstanceOf(MockFormBean.<strong class="jxr_keyword">class</strong>, theForm);
 <a class="jxr_linenumber" name="L244" href="#L244">244</a>     }

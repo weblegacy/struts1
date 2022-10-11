@@ -76,7 +76,7 @@
 <td>Display Name</td><td><i>None</i></td>
 </tr>
 <tr>
-<td>Version</td><td>1.3</td>
+<td>Version</td><td>1.4</td>
 </tr>
 <tr>
 <td>Short Name</td><td>html</td>
@@ -1007,7 +1007,9 @@
             Using this tag in a page tells all other html taglib tags
             to render themselves as XHTML 1.0.  This is useful
             when composing pages with JSP includes or Tiles.
-            &lt;html:html xhtml="true"&gt; has a similar effect.
+            <code>&lt;html:html xhtml="true"&gt;</code> has a similar effect.  This
+            tag has no attributes; you use it like this:
+            <code>&lt;html:xhtml/&gt;</code>.
           </p>
           <p>
             <strong>Note</strong>: Included pages do not inherit the rendering

@@ -101,7 +101,7 @@
 <a class="jxr_linenumber" name="L93" href="#L93">93</a>              <strong class="jxr_keyword">boolean</strong> writeFile = theForm.getWriteFile();
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>  
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>              <em class="jxr_comment">//retrieve the file size</em>
-<a class="jxr_linenumber" name="L96" href="#L96">96</a>              String size = (file.getFileSize() + <span class="jxr_string">" bytes"</span>);
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>              String size = (file.getFileLength() + <span class="jxr_string">" bytes"</span>);
 <a class="jxr_linenumber" name="L97" href="#L97">97</a>  
 <a class="jxr_linenumber" name="L98" href="#L98">98</a>              String data = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L99" href="#L99">99</a>  
@@ -110,8 +110,8 @@
 <a class="jxr_linenumber" name="L102" href="#L102">102</a>                 ByteArrayOutputStream baos = <strong class="jxr_keyword">new</strong> ByteArrayOutputStream();
 <a class="jxr_linenumber" name="L103" href="#L103">103</a>                 InputStream stream = file.getInputStream();
 <a class="jxr_linenumber" name="L104" href="#L104">104</a>                 <strong class="jxr_keyword">if</strong> (!writeFile) {
-<a class="jxr_linenumber" name="L105" href="#L105">105</a>                     <em class="jxr_comment">//only write files out that are less than 1MB</em>
-<a class="jxr_linenumber" name="L106" href="#L106">106</a>                     <strong class="jxr_keyword">if</strong> (file.getFileSize() &lt; (4*1024000)) {
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>                     <em class="jxr_comment">//only write files out that are less than 4MB</em>
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>                     <strong class="jxr_keyword">if</strong> (file.getFileLength() &lt; (4*1024000)) {
 <a class="jxr_linenumber" name="L107" href="#L107">107</a> 
 <a class="jxr_linenumber" name="L108" href="#L108">108</a>                         byte[] buffer = <strong class="jxr_keyword">new</strong> byte[8192];
 <a class="jxr_linenumber" name="L109" href="#L109">109</a>                         <strong class="jxr_keyword">int</strong> bytesRead = 0;
@@ -123,7 +123,7 @@
 <a class="jxr_linenumber" name="L115" href="#L115">115</a>                     <strong class="jxr_keyword">else</strong> {
 <a class="jxr_linenumber" name="L116" href="#L116">116</a>                         data = <strong class="jxr_keyword">new</strong> String(<span class="jxr_string">"The file is greater than 4MB, "</span> +
 <a class="jxr_linenumber" name="L117" href="#L117">117</a>                                 <span class="jxr_string">" and has not been written to stream."</span> +
-<a class="jxr_linenumber" name="L118" href="#L118">118</a>                                 <span class="jxr_string">" File Size: "</span> + file.getFileSize() + <span class="jxr_string">" bytes. This is a"</span> +
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>                                 <span class="jxr_string">" File Size: "</span> + file.getFileLength() + <span class="jxr_string">" bytes. This is a"</span> +
 <a class="jxr_linenumber" name="L119" href="#L119">119</a>                                 <span class="jxr_string">" limitation of this particular web application, hard-coded"</span> +
 <a class="jxr_linenumber" name="L120" href="#L120">120</a>                                 <span class="jxr_string">" in org.apache.struts.webapp.upload.UploadAction"</span>);
 <a class="jxr_linenumber" name="L121" href="#L121">121</a>                     }

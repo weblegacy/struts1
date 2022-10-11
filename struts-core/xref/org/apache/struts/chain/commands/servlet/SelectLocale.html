@@ -28,56 +28,54 @@
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">package</strong> org.apache.struts.chain.commands.servlet;
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>  
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.logging.Log;
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.logging.LogFactory;
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.Globals;
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.chain.commands.AbstractSelectLocale;
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.chain.contexts.ActionContext;
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.chain.contexts.ServletActionContext;
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.Globals;
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.chain.commands.AbstractSelectLocale;
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.chain.contexts.ActionContext;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.chain.contexts.ServletActionContext;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> javax.servlet.http.HttpSession;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> javax.servlet.http.HttpSession;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> java.util.Locale;
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> java.util.Locale;
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <em class="jxr_javadoccomment"> * &lt;p&gt;Select the &lt;code&gt;Locale&lt;/code&gt; to be used for this request.&lt;/p&gt;</em>
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <em class="jxr_javadoccomment"> * @version $Rev$ $Date: 2005-05-07 12:11:38 -0400 (Sat, 07 May 2005)</em>
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment"> *          $</em>
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="SelectLocale" href="../../../../../../org/apache/struts/chain/commands/servlet/SelectLocale.html#SelectLocale">SelectLocale</a> <strong class="jxr_keyword">extends</strong> <a name="AbstractSelectLocale" href="../../../../../../org/apache/struts/chain/commands/AbstractSelectLocale.html#AbstractSelectLocale">AbstractSelectLocale</a> {
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> Log log = LogFactory.getLog(SelectLocale.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_javadoccomment"> * &lt;p&gt;Select the &lt;code&gt;Locale&lt;/code&gt; to be used for this request.&lt;/p&gt;</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <em class="jxr_javadoccomment"> * @version $Rev$ $Date: 2005-05-07 12:11:38 -0400 (Sat, 07 May 2005)</em>
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment"> *          $</em>
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="SelectLocale" href="../../../../../../org/apache/struts/chain/commands/servlet/SelectLocale.html#SelectLocale">SelectLocale</a> <strong class="jxr_keyword">extends</strong> <a name="AbstractSelectLocale" href="../../../../../../org/apache/struts/chain/commands/AbstractSelectLocale.html#AbstractSelectLocale">AbstractSelectLocale</a> {
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_comment">//  private static final Log log = LogFactory.getLog(SelectLocale.class);</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <em class="jxr_comment">// ------------------------------------------------------- Protected Methods</em>
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>  
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>      <em class="jxr_comment">// ------------------------------------------------------- Protected Methods</em>
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>  
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment">     * &lt;p&gt;Return the &lt;code&gt;Locale&lt;/code&gt; to be used for this request.&lt;/p&gt;</em>
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  <em class="jxr_javadoccomment">     * @param context The &lt;code&gt;Context&lt;/code&gt; for this request</em>
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>      <strong class="jxr_keyword">protected</strong> Locale getLocale(<a name="ActionContext" href="../../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> context) {
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>          <a name="ServletActionContext" href="../../../../../../org/apache/struts/chain/contexts/ServletActionContext.html#ServletActionContext">ServletActionContext</a> saContext = (<a name="ServletActionContext" href="../../../../../../org/apache/struts/chain/contexts/ServletActionContext.html#ServletActionContext">ServletActionContext</a>) context;
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>  
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>          <em class="jxr_comment">// Has a Locale already been selected?</em>
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>          HttpSession session = saContext.getRequest().getSession();
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>          Locale locale = (Locale) session.getAttribute(Globals.LOCALE_KEY);
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>  
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>          <strong class="jxr_keyword">if</strong> (locale != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>              <strong class="jxr_keyword">return</strong> (locale);
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>          }
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>  
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>          <em class="jxr_comment">// Select and cache the Locale to be used</em>
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>          locale = saContext.getRequest().getLocale();
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>  
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>          <strong class="jxr_keyword">if</strong> (locale == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>              locale = Locale.getDefault();
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>          }
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  <em class="jxr_javadoccomment">     * &lt;p&gt;Return the &lt;code&gt;Locale&lt;/code&gt; to be used for this request.&lt;/p&gt;</em>
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment">     * @param context The &lt;code&gt;Context&lt;/code&gt; for this request</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>      <strong class="jxr_keyword">protected</strong> Locale getLocale(<a name="ActionContext" href="../../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> context) {
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          <a name="ServletActionContext" href="../../../../../../org/apache/struts/chain/contexts/ServletActionContext.html#ServletActionContext">ServletActionContext</a> saContext = (<a name="ServletActionContext" href="../../../../../../org/apache/struts/chain/contexts/ServletActionContext.html#ServletActionContext">ServletActionContext</a>) context;
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          <em class="jxr_comment">// Has a Locale already been selected?</em>
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          HttpSession session = saContext.getRequest().getSession();
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>          Locale locale = (Locale) session.getAttribute(Globals.LOCALE_KEY);
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>          <strong class="jxr_keyword">if</strong> (locale != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>              <strong class="jxr_keyword">return</strong> (locale);
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          }
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          <em class="jxr_comment">// Select and cache the Locale to be used</em>
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          locale = saContext.getRequest().getLocale();
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>  
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          <strong class="jxr_keyword">if</strong> (locale == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>              locale = Locale.getDefault();
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>          }
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          session.setAttribute(Globals.LOCALE_KEY, locale);
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>  
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>          session.setAttribute(Globals.LOCALE_KEY, locale);
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>  
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>          <strong class="jxr_keyword">return</strong> (locale);
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>      }
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>  }
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          <strong class="jxr_keyword">return</strong> (locale);
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>      }
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2000&#x2013;2022 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>

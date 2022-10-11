@@ -85,6 +85,7 @@
 <li>Apps: HTML5-Updates</li>
 <li>Create &quot;package-info.java&quot; instead of old &quot;package.html&quot;</li>
 <li>Adapt &quot;EvalHelper&quot; to jsp 2.1 and remove &quot;tagObject&quot;-parameter</li>
+<li>Add version to checkin-comment to &quot;maven-scm-publish-plugin&quot;</li>
 </ul>
 
 <h4>New Feature</h4>

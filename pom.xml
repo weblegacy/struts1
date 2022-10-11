@@ -734,6 +734,7 @@
                 <configuration>
                     <scmBranch>gh-pages</scmBranch>
                     <tryUpdate>true</tryUpdate>
+                    <checkinComment>Site checkin for project ${project.name}, version ${project.version}.</checkinComment>
                 </configuration>
                 <executions>
                     <execution>

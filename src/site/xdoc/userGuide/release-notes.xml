@@ -109,7 +109,7 @@
 <li>Upgrade &quot;jstl&quot; and &quot;taglibs.standard&quot; to 1.1.2</li>
 <li>Upgrade &quot;selenium-java&quot; to 4.5.0</li>
 <li>Upgrade &quot;commons-digester&quot; to 2.1</li>
-<li>Upgrade &quot;htmlunit&quot; to 2.64.0</li>
+<li>Upgrade &quot;htmlunit&quot; to 2.65.1</li>
 <li>Upgrade &quot;commons-fileupload&quot; to 1.4</li>
 <li>Upgrade &quot;commons-io&quot; to 2.11.0</li>
 <li>Upgrade &quot;commons-validator&quot; to 1.7, add old commons-validator-js from 1.4</li>

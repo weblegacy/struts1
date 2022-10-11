@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `htmlunit` from 2.64.0 to 2.65.1
 * Bump `junit-jupiter-api` from 5.9.0 to 5.9.1
 * Bump `selenium-java` from 4.4.0 to 4.5.0
 * Bump `groovy` from 4.0.4 to 4.0.5

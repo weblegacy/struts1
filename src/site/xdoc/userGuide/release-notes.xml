@@ -99,7 +99,7 @@
 <li>Remove unused dependencies</li>
 <li>Upgrade &quot;apache tiles&quot; to 3.0.8, remove JDK-1.4 support dependencies</li>
 <li>Upgrade &quot;antlr&quot; to 4.10.1 and always generate grammar</li>
-<li>Upgrade &quot;groovy&quot; to 4.0.4</li>
+<li>Upgrade &quot;groovy&quot; to 4.0.5</li>
 <li>Upgrade &quot;jsf&quot; (&quot;myfaces&quot;) to 1.2.12</li>
 <li>Upgrade &quot;webdrivermanager&quot; to 5.3.0</li>
 <li>Upgrade &quot;taglibs&quot; to 1.2.5</li>

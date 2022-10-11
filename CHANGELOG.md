@@ -2,6 +2,7 @@
 
 ## 1.4.1 / YYYY-MM-DD
 
+* Bump `groovy` from 4.0.4 to 4.0.5
 * Add release-documentation for 1.4.1
 * Add release-documentation for 1.4.0
 * Add versions-overview to `README.md`

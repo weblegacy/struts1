@@ -106,7 +106,7 @@
 <li>Upgrade &quot;jsp-api&quot; to 2.1</li>
 <li>Upgrade &quot;servlet-api&quot; to 2.5</li>
 <li>Upgrade &quot;jstl&quot; and &quot;taglibs.standard&quot; to 1.1.2</li>
-<li>Upgrade &quot;selenium-java&quot; to 4.4.0</li>
+<li>Upgrade &quot;selenium-java&quot; to 4.5.0</li>
 <li>Upgrade &quot;commons-digester&quot; to 2.1</li>
 <li>Upgrade &quot;htmlunit&quot; to 2.64.0</li>
 <li>Upgrade &quot;commons-fileupload&quot; to 1.4</li>

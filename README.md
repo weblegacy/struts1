@@ -38,7 +38,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 ### Prerequesits
 
 * Apache Maven 3.5.4\+
-* JDK 1.8
+* JDK 11\+
 * for integration-tests
   * Web-Browser:
     * Chrome

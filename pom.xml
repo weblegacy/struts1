@@ -362,8 +362,8 @@
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
         <mavenVersion>[3.5.4,4)</mavenVersion>
-        <javaVersion>1.8</javaVersion>
-        <javaTestVersion>1.8</javaTestVersion>
+        <javaVersion>8</javaVersion>
+        <javaTestVersion>8</javaTestVersion>
         <myfacesVersion>1.2.12</myfacesVersion>
         <groovyVersion>4.0.5</groovyVersion>
         <seleniumVersion>4.5.0</seleniumVersion>
@@ -538,8 +538,7 @@
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>3.10.1</version>
                     <configuration>
-                        <source>${javaVersion}</source>
-                        <target>${javaVersion}</target>
+                        <release>${javaVersion}</release>
                         <showDeprecation>true</showDeprecation>
                         <showWarnings>true</showWarnings>
                         <compilerArgs>
@@ -721,6 +720,9 @@
                         </goals>
                         <configuration>
                             <rules>
+                                <requireJavaVersion>
+                                    <version>[11,)</version>
+                                </requireJavaVersion>
                                 <requireMavenVersion>
                                     <version>${mavenVersion}</version>
                                 </requireMavenVersion>

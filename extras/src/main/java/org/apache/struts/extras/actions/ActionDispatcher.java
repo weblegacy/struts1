@@ -28,8 +28,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -39,6 +37,8 @@ import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.dispatcher.Dispatcher;
 import org.apache.struts.util.MessageResources;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Action <i>helper</i> class that dispatches to a public method in an
@@ -108,9 +108,9 @@ public class ActionDispatcher implements Dispatcher {
     public static final int DISPATCH_FLAVOR = 2;
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    protected static Log log = LogFactory.getLog(ActionDispatcher.class);
+    protected static Logger log = LoggerFactory.getLogger(ActionDispatcher.class);
 
     /**
      * The message resources for this package.
@@ -325,10 +325,9 @@ public class ActionDispatcher implements Dispatcher {
         try {
             method = getMethod(name);
         } catch (NoSuchMethodException e) {
-            String message =
-                messages.getMessage("dispatch.method", mapping.getPath(), name);
-
-            log.error(message, e);
+            log.atError()
+                .setMessage(() -> messages.getMessage("dispatch.method", mapping.getPath(), name))
+                .setCause(e).log();
 
             String userMsg =
                 messages.getMessage("dispatch.method.user", mapping.getPath());
@@ -365,16 +364,14 @@ public class ActionDispatcher implements Dispatcher {
 
             forward = (ActionForward) method.invoke(actionInstance, args);
         } catch (ClassCastException e) {
-            String message =
-                messages.getMessage("dispatch.return", mapping.getPath(), name);
-
-            log.error(message, e);
+            log.atError()
+                .setMessage(() -> messages.getMessage("dispatch.return", mapping.getPath(), name))
+                .setCause(e).log();
             throw e;
         } catch (IllegalAccessException e) {
-            String message =
-                messages.getMessage("dispatch.error", mapping.getPath(), name);
-
-            log.error(message, e);
+            log.atError()
+                .setMessage(() -> messages.getMessage("dispatch.error", mapping.getPath(), name))
+                .setCause(e).log();
             throw e;
         } catch (InvocationTargetException e) {
             // Rethrow the target exception if possible so that the
@@ -384,11 +381,10 @@ public class ActionDispatcher implements Dispatcher {
             if (t instanceof Exception) {
                 throw ((Exception) t);
             } else {
-                String message =
-                    messages.getMessage("dispatch.error", mapping.getPath(),
-                        name);
-
-                log.error(message, e);
+                log.atError()
+                    .setMessage(() -> messages.getMessage("dispatch.error", mapping.getPath(),
+                        name))
+                    .setCause(e).log();
                 throw new ServletException(t);
             }
         }
@@ -508,5 +504,4 @@ public class ActionDispatcher implements Dispatcher {
         return execute((ActionMapping) context.getActionConfig(), context.getActionForm(),
             servletContext.getRequest(), servletContext.getResponse());
     }
-
 }

@@ -27,12 +27,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Implementation of <strong>Action</strong> that changes the user's {@link
@@ -41,10 +41,10 @@ import org.apache.struts.action.ActionMapping;
  */
 public final class LocaleAction extends BaseAction {
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    private Log log =
-        LogFactory.getFactory().getInstance(this.getClass().getName());
+    private Logger log =
+        LoggerFactory.getLogger(this.getClass().getName());
 
     /**
      * <p> Change the user's {@link java.util.Locale} based on {@link

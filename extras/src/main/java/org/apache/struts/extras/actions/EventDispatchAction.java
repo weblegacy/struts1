@@ -26,11 +26,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>An <strong>Action</strong> that dispatches to to one of the public methods
@@ -77,9 +77,9 @@ import org.apache.struts.action.ActionMapping;
 public class EventDispatchAction extends DispatchAction {
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    private static final Log LOG = LogFactory.getLog(EventDispatchAction.class);
+    private static final Logger LOG = LoggerFactory.getLogger(EventDispatchAction.class);
 
     /**
      * The method key, if present, to use if other specified method keys
@@ -111,7 +111,7 @@ public class EventDispatchAction extends DispatchAction {
             messages.getMessage("event.parameter", mapping.getPath(),
                 mapping.getParameter());
 
-        LOG.error(message + " " + mapping.getParameter());
+        LOG.error("{} {}", message, mapping.getParameter());
 
         throw new ServletException(message);
     }

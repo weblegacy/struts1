@@ -32,12 +32,12 @@ import javax.servlet.ServletException;
 import org.apache.commons.digester.Digester;
 import org.apache.commons.digester.RuleSet;
 import org.apache.commons.digester.xmlrules.DigesterLoader;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.util.RequestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
 /**
@@ -51,9 +51,10 @@ import org.xml.sax.SAXException;
  */
 public class DigestingPlugIn implements PlugIn {
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    private static Log log = LogFactory.getLog(DigestingPlugIn.class);
+    private static Logger log = LoggerFactory.getLogger(DigestingPlugIn.class);
+
     protected static final String SOURCE_CLASSPATH = "classpath";
     protected static final String SOURCE_FILE = "file";
     protected static final String SOURCE_SERVLET = "servlet";
@@ -109,8 +110,8 @@ public class DigestingPlugIn implements PlugIn {
         }
 
         try {
-            log.debug("XML data file: [path: " + this.configPath + ", source: "
-                + this.configSource + "]");
+            log.debug("XML data file: [path: {}, source: {}]",
+                this.configPath, this.configSource);
 
             URL configURL =
                 this.getConfigURL(this.configPath, this.configSource);
@@ -152,14 +153,13 @@ public class DigestingPlugIn implements PlugIn {
 
         if ((this.digesterPath != null) && (this.digesterSource != null)) {
             try {
-                log.debug("Initialize digester from XML [path: "
-                    + this.digesterPath + "; source: " + this.digesterSource
-                    + "]");
+                log.debug("Initialize digester from XML [path: {}; source: {}]",
+                    this.digesterPath, this.digesterSource);
                 digester =
                     this.digesterFromXml(this.digesterPath, this.digesterSource);
             } catch (IOException e) {
                 // TODO Internationalize msg
-                log.error("Exception instantiating digester from XML ", e);
+                log.error("Exception instantiating digester from XML", e);
                 throw new ServletException(e);
             }
         } else {
@@ -245,11 +245,9 @@ public class DigestingPlugIn implements PlugIn {
                 rulesets = rulesets.substring(comma + 1).trim();
             }
 
-            if (log.isDebugEnabled()) {
-                // TODO Internationalize msg
-                log.debug("Configuring custom Digester Ruleset of type "
-                    + ruleSet);
-            }
+            // TODO Internationalize msg
+            log.debug("Configuring custom Digester Ruleset of type {}"
+                , ruleSet);
 
             try {
                 RuleSet instance =
@@ -395,8 +393,8 @@ public class DigestingPlugIn implements PlugIn {
      * @param obj The object to save.
      */
     protected void storeGeneratedObject(Object obj) {
-        log.debug("Put [" + obj + "] into application context [key:" + this.key
-            + "]");
+        log.debug("Put [{}] into application context [key:{}]",
+            obj, this.key);
         this.servlet.getServletContext().setAttribute(this.getKey(), obj);
     }
 

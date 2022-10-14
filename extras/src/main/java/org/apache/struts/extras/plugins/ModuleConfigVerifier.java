@@ -22,8 +22,6 @@ package org.apache.struts.extras.plugins;
 
 import javax.servlet.ServletException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;
 import org.apache.struts.config.ForwardConfig;
@@ -31,6 +29,8 @@ import org.apache.struts.config.MessageResourcesConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.config.PlugInConfig;
 import org.apache.struts.util.RequestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Convenient implementation of {@link PlugIn} that performs as many
@@ -49,7 +49,7 @@ public class ModuleConfigVerifier implements PlugIn {
     /**
      * Commons Logging instance.
      */
-    private static Log LOG = LogFactory.getLog(ModuleConfigVerifier.class);
+    private static Logger LOG = LoggerFactory.getLogger(ModuleConfigVerifier.class);
 
     // ----------------------------------------------------- Instance Variables
 
@@ -103,7 +103,7 @@ public class ModuleConfigVerifier implements PlugIn {
 
         boolean ok = true;
 
-        LOG.info(servlet.getInternal().getMessage("configVerifying"));
+        LOG.atInfo().log(() -> servlet.getInternal().getMessage("configVerifying"));
 
         // Perform detailed validations of each portion of ModuleConfig
         // :TODO: Complete methods to verify Action, Controller, et al, configurations.
@@ -141,7 +141,7 @@ public class ModuleConfigVerifier implements PlugIn {
         }
 
         // Throw an exception on a fatal error
-        LOG.info(servlet.getInternal().getMessage("configCompleted"));
+        LOG.atInfo().log(() -> servlet.getInternal().getMessage("configCompleted"));
 
         if (!ok && isFatal()) {
             throw new ServletException(servlet.getInternal().getMessage("configFatal"));
@@ -159,7 +159,7 @@ public class ModuleConfigVerifier implements PlugIn {
         String amcName = config.getActionMappingClass();
 
         if (amcName == null) {
-            LOG.error(servlet.getInternal().getMessage("verifyActionMappingClass.missing"));
+            LOG.atError().log(() -> servlet.getInternal().getMessage("verifyActionMappingClass.missing"));
 
             return (false);
         }
@@ -167,7 +167,7 @@ public class ModuleConfigVerifier implements PlugIn {
         try {
             RequestUtils.applicationClass(amcName);
         } catch (ClassNotFoundException e) {
-            LOG.error(servlet.getInternal().getMessage("verifyActionMappingClass.invalid",
+            LOG.atError().log(() -> servlet.getInternal().getMessage("verifyActionMappingClass.invalid",
                     amcName));
 
             return (false);
@@ -185,16 +185,16 @@ public class ModuleConfigVerifier implements PlugIn {
         boolean ok = true;
         ForwardConfig[] fcs = config.findForwardConfigs();
 
-        for (int i = 0; i < fcs.length; i++) {
-            String path = fcs[i].getPath();
+        for (ForwardConfig fc : fcs) {
+            String path = fc.getPath();
 
             if (path == null) {
-                LOG.error(servlet.getInternal().getMessage("verifyForwardConfigs.missing",
-                        fcs[i].getName()));
+                LOG.atError().log(() -> servlet.getInternal().getMessage("verifyForwardConfigs.missing",
+                        fc.getName()));
                 ok = false;
             } else if (!path.startsWith("/")) {
-                LOG.error(servlet.getInternal().getMessage("verifyForwardConfigs.invalid",
-                        path, fcs[i].getName()));
+                LOG.atError().log(() -> servlet.getInternal().getMessage("verifyForwardConfigs.invalid",
+                        path, fc.getName()));
             }
         }
 
@@ -214,13 +214,13 @@ public class ModuleConfigVerifier implements PlugIn {
             String factory = mrcs[i].getFactory();
 
             if (factory == null) {
-                LOG.error(servlet.getInternal().getMessage("verifyMessageResourcesConfigs.missing"));
+                LOG.atError().log(() -> servlet.getInternal().getMessage("verifyMessageResourcesConfigs.missing"));
                 ok = false;
             } else {
                 try {
                     RequestUtils.applicationClass(factory);
                 } catch (ClassNotFoundException e) {
-                    LOG.error(servlet.getInternal().getMessage("verifyMessageResourcesConfigs.invalid",
+                    LOG.atError().log(() -> servlet.getInternal().getMessage("verifyMessageResourcesConfigs.invalid",
                             factory));
                     ok = false;
                 }
@@ -229,7 +229,7 @@ public class ModuleConfigVerifier implements PlugIn {
             String key = mrcs[i].getKey();
 
             if (key == null) {
-                LOG.error(servlet.getInternal().getMessage("verifyMessageResourcesConfigs.key"));
+                LOG.atError().log(() -> servlet.getInternal().getMessage("verifyMessageResourcesConfigs.key"));
             }
         }
 
@@ -249,13 +249,13 @@ public class ModuleConfigVerifier implements PlugIn {
             String className = pics[i].getClassName();
 
             if (className == null) {
-                LOG.error(servlet.getInternal().getMessage("verifyPlugInConfigs.missing"));
+                LOG.atError().log(() -> servlet.getInternal().getMessage("verifyPlugInConfigs.missing"));
                 ok = false;
             } else {
                 try {
                     RequestUtils.applicationClass(className);
                 } catch (ClassNotFoundException e) {
-                    LOG.error(servlet.getInternal().getMessage("verifyPlugInConfigs.invalid",
+                    LOG.atError().log(() -> servlet.getInternal().getMessage("verifyPlugInConfigs.invalid",
                             className));
                     ok = false;
                 }

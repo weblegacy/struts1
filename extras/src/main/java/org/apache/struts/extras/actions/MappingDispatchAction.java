@@ -24,11 +24,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>An abstract <strong>Action</strong> that dispatches to a public method
@@ -133,9 +133,9 @@ public class MappingDispatchAction extends DispatchAction {
     // -------------------------------------------------------- Class Variables
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    private static Log log = LogFactory.getLog(MappingDispatchAction.class);
+    private static Logger log = LoggerFactory.getLogger(MappingDispatchAction.class);
 
     // --------------------------------------------------------- Public Methods
 

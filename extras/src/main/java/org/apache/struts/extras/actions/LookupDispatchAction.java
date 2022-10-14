@@ -28,8 +28,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -37,6 +35,8 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.config.MessageResourcesConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.util.MessageResources;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p> An abstract <strong>Action</strong> that dispatches to the subclass
@@ -109,9 +109,9 @@ import org.apache.struts.util.MessageResources;
 public abstract class LookupDispatchAction extends DispatchAction {
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    private static final Log LOG = LogFactory.getLog(LookupDispatchAction.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LookupDispatchAction.class);
 
     /**
      * Reverse lookup map from resource value to resource key.
@@ -224,7 +224,7 @@ public abstract class LookupDispatchAction extends DispatchAction {
         if (key == null) {
             String message =
                 messages.getMessage("dispatch.resource", mapping.getPath());
-            LOG.error(message + " '" + keyName + "'");
+            LOG.error("{} '{}'", message, keyName);
             throw new ServletException(message);
         }
 

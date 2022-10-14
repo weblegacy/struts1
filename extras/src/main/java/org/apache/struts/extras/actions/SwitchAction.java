@@ -24,13 +24,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.util.ModuleUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>A standard <strong>Action</strong> that switches to a new module and
@@ -60,9 +60,9 @@ public class SwitchAction extends BaseAction {
     // ----------------------------------------------------- Instance Variables
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    protected static Log log = LogFactory.getLog(SwitchAction.class);
+    protected static Logger log = LoggerFactory.getLogger(SwitchAction.class);
 
     /**
      * Process the specified HTTP request, and create the corresponding HTTP

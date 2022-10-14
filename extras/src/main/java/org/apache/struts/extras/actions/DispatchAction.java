@@ -28,11 +28,11 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>An abstract <strong>Action</strong> that dispatches to a public method
@@ -93,9 +93,9 @@ import org.apache.struts.action.ActionMapping;
  */
 public abstract class DispatchAction extends BaseAction {
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    protected static Log log = LogFactory.getLog(DispatchAction.class);
+    protected static Logger log = LoggerFactory.getLogger(DispatchAction.class);
 
     // ----------------------------------------------------- Instance Variables
 
@@ -251,10 +251,9 @@ public abstract class DispatchAction extends BaseAction {
         try {
             method = getMethod(name);
         } catch (NoSuchMethodException e) {
-            String message =
-                messages.getMessage("dispatch.method", mapping.getPath(), name);
-
-            log.error(message, e);
+            log.atError()
+                .setMessage(() -> messages.getMessage("dispatch.method", mapping.getPath(), name))
+                .setCause(e).log();
 
             String userMsg =
                 messages.getMessage("dispatch.method.user", mapping.getPath());
@@ -270,16 +269,14 @@ public abstract class DispatchAction extends BaseAction {
 
             forward = (ActionForward) method.invoke(this, args);
         } catch (ClassCastException e) {
-            String message =
-                messages.getMessage("dispatch.return", mapping.getPath(), name);
-
-            log.error(message, e);
+            log.atError()
+                .setMessage(() -> messages.getMessage("dispatch.return", mapping.getPath(), name))
+                .setCause(e).log();
             throw e;
         } catch (IllegalAccessException e) {
-            String message =
-                messages.getMessage("dispatch.error", mapping.getPath(), name);
-
-            log.error(message, e);
+            log.atError()
+                .setMessage(() -> messages.getMessage("dispatch.error", mapping.getPath(), name))
+                .setCause(e).log();
             throw e;
         } catch (InvocationTargetException e) {
             // Rethrow the target exception if possible so that the
@@ -289,11 +286,10 @@ public abstract class DispatchAction extends BaseAction {
             if (t instanceof Exception) {
                 throw ((Exception) t);
             } else {
-                String message =
-                    messages.getMessage("dispatch.error", mapping.getPath(),
-                        name);
-
-                log.error(message, e);
+                log.atError()
+                    .setMessage(() -> messages.getMessage("dispatch.error", mapping.getPath(),
+                        name))
+                    .setCause(e).log();
                 throw new ServletException(t);
             }
         }

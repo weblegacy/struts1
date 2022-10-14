@@ -20,10 +20,10 @@
  */
 package org.apache.struts.chain.commands;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.config.ActionConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Determine whether the requested action is authorized for the current
@@ -39,8 +39,8 @@ public abstract class AbstractAuthorizeAction extends ActionCommandBase {
     /**
      * Provide a Commons logging instance for this class.
      */
-    private static final Log LOG =
-        LogFactory.getLog(AbstractAuthorizeAction.class);
+    private static final Logger LOG =
+        LoggerFactory.getLogger(AbstractAuthorizeAction.class);
 
     // ---------------------------------------------------------- Public Methods
 

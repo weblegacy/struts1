@@ -22,8 +22,12 @@ package org.apache.struts.chain.commands.servlet;
 
 import java.io.IOException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.chain.commands.AbstractPerformForward;
 import org.apache.struts.chain.contexts.ActionContext;
@@ -31,14 +35,10 @@ import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.util.MessageResources;
-import org.apache.struts.util.RequestUtils;
 import org.apache.struts.util.ModuleUtils;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.apache.struts.util.RequestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Perform forwarding or redirection based on the specified
@@ -47,7 +47,7 @@ import javax.servlet.http.HttpServletResponse;
  * @version $Rev$ $Date$
  */
 public class PerformForward extends AbstractPerformForward {
-    private static final Log LOG = LogFactory.getLog(PerformForward.class);
+    private static final Logger LOG = LoggerFactory.getLogger(PerformForward.class);
 
     // ------------------------------------------------------- Protected Methods
 
@@ -106,9 +106,7 @@ public class PerformForward extends AbstractPerformForward {
     private void handleAsForward(String uri, ServletContext servletContext, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = servletContext.getRequestDispatcher(uri);
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Forwarding to " + uri);
-        }
+        LOG.debug("Forwarding to {}", uri);
 
         rd.forward(request, response);
     }
@@ -118,9 +116,7 @@ public class PerformForward extends AbstractPerformForward {
             uri = request.getContextPath() + uri;
         }
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Redirecting to " + uri);
-        }
+        LOG.debug("Redirecting to {}", uri);
 
         response.sendRedirect(response.encodeRedirectURL(uri));
     }
@@ -134,9 +130,7 @@ public class PerformForward extends AbstractPerformForward {
             return;
         }
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Including " + uri);
-        }
+        LOG.debug("Including {}", uri);
 
         rd.include(request, response);
     }

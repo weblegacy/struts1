@@ -20,8 +20,9 @@
  */
 package org.apache.struts.chain.commands.servlet;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.chain.Constants;
@@ -30,9 +31,8 @@ import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ModuleConfig;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Concrete implementation of <code>AbstractCreateAction</code> for use in
@@ -42,7 +42,7 @@ import java.util.Map;
 public class CreateAction
     extends org.apache.struts.chain.commands.AbstractCreateAction {
     // ------------------------------------------------------ Instance Variables
-    private static final Log log = LogFactory.getLog(CreateAction.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CreateAction.class);
 
     /* :TODO The Action class' dependency on having its "servlet" property set
      * requires this API-dependent subclass of AbstractCreateAction.
@@ -79,9 +79,11 @@ public class CreateAction
                 action = createAction(context, type);
             }
         } catch (Exception e) {
-            log.error(actionServlet.getInternal().getMessage(
+            LOG.atError()
+                .setMessage(() -> actionServlet.getInternal().getMessage(
                     "actionCreate", actionConfig.getPath(),
-                    actionConfig.toString()), e);
+                    actionConfig.toString()))
+                .setCause(e).log();
             throw e;
         }
 
@@ -105,7 +107,7 @@ public class CreateAction
      * @since Struts 1.3.7
      */
     protected Action createAction(ActionContext context, String type) throws Exception {
-        log.info("Initialize action of type: " + type);
+        LOG.info("Initialize action of type: {}", type);
         return (Action) ClassUtils.getApplicationInstance(type);
     }
 }

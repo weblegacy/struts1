@@ -20,8 +20,11 @@
  */
 package org.apache.struts.validator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.util.Locale;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.validator.Arg;
 import org.apache.commons.validator.Field;
 import org.apache.commons.validator.Msg;
@@ -36,11 +39,8 @@ import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.ModuleUtils;
 import org.apache.struts.util.RequestUtils;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-
-import java.util.Locale;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class helps provides some useful methods for retrieving objects from
@@ -61,7 +61,7 @@ public class Resources {
     /**
      * <p>Commons Logging instance.</p>
      */
-    private static Log log = LogFactory.getLog(Resources.class);
+    private static Logger LOG = LoggerFactory.getLogger(Resources.class);
 
     /**
      * Resources key the <code>ServletContext</code> is stored under.
@@ -165,9 +165,7 @@ public class Resources {
                 throw new IllegalArgumentException(msg);
             }
 
-            if (log.isDebugEnabled()) {
-                log.debug(field.getProperty() + ": " + msg);
-            }
+            LOG.debug("{}: {}", field.getProperty(), msg);
 
             return null;
         }
@@ -212,10 +210,8 @@ public class Resources {
                     "variable.resource.notfound", varName, varValue, bundle));
         }
 
-        if (log.isDebugEnabled()) {
-            log.debug("Var=[" + varName + "], " + "bundle=[" + bundle + "], "
-                + "key=[" + varValue + "], " + "value=[" + value + "]");
-        }
+        LOG.debug("Var=[{}], bundle=[{}], key=[{}], value=[{}]",
+            varName, bundle, varValue, value);
 
         return value;
     }

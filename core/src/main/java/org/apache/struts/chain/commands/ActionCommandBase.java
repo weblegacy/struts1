@@ -20,10 +20,10 @@
  */
 package org.apache.struts.chain.commands;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.commons.chain.Context;
 import org.apache.struts.chain.contexts.ActionContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Simple abstract class which avoids frequent casting to
@@ -35,8 +35,8 @@ public abstract class ActionCommandBase implements ActionCommand {
     /**
      * <p> Provide Commons Logging instance for this class. </p>
      */
-    private static final Log LOG =
-        LogFactory.getLog(ActionCommandBase.class);
+    private static final Logger LOG =
+        LoggerFactory.getLogger(ActionCommandBase.class);
 
     // See interface for Javadoc
     public abstract boolean execute(ActionContext actionContext)
@@ -45,9 +45,7 @@ public abstract class ActionCommandBase implements ActionCommand {
     // See interface for Javadoc
     public boolean execute(Context context)
         throws Exception {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Executing " + getClass().getName());
-        }
+        LOG.debug("Executing {}", getClass().getName());
         return execute((ActionContext) context);
     }
 }

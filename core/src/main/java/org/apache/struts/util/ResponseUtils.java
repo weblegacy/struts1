@@ -20,13 +20,12 @@
  */
 package org.apache.struts.util;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import java.io.UnsupportedEncodingException;
-
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * General purpose utility methods related to generating a servlet response in
@@ -48,7 +47,7 @@ public class ResponseUtils {
     /**
      * Commons logging instance.
      */
-    private static final Log log = LogFactory.getLog(ResponseUtils.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ResponseUtils.class);
 
     // --------------------------------------------------------- Public Methods
 
@@ -147,17 +146,13 @@ public class ResponseUtils {
 
             str = URLEncoder.encode(url, enc);
         } catch (UnsupportedEncodingException e) {
-            if (log.isDebugEnabled()) {
-                log.debug("The named encoding is not supported: " + enc, e);
-            }
+            LOG.debug("The named encoding is not supported: {}", enc, e);
 
             try {
                 str = URLEncoder.encode(url, Charset.defaultCharset().toString());
             } catch (UnsupportedEncodingException e1) {
                 // Should never happen - the system should always have the platform default
-                if (log.isDebugEnabled()) {
-                    log.debug("The default-encoding is not supported: " + enc, e1);
-                }
+                LOG.debug("The default-encoding is not supported: {}", enc, e1);
 
                 str = url;
             }

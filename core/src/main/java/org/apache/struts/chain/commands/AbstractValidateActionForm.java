@@ -20,13 +20,13 @@
  */
 package org.apache.struts.chain.commands;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.InvalidCancelException;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.config.ActionConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Validate the properties of the form bean for this request.  If there are
@@ -42,8 +42,8 @@ public abstract class AbstractValidateActionForm extends ActionCommandBase {
     /**
      * <p> Provide Commons Logging instance for this class. </p>
      */
-    private static final Log LOG =
-        LogFactory.getLog(AbstractSelectForward.class);
+    private static final Logger LOG =
+        LoggerFactory.getLogger(AbstractSelectForward.class);
 
     // ------------------------------------------------------ Protected Methods
 
@@ -109,9 +109,7 @@ public abstract class AbstractValidateActionForm extends ActionCommandBase {
 
         // Was this request cancelled?
         if (isCancelled(actionCtx, actionConfig)) {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("Cancelled transaction, skipping validation");
-            }
+            LOG.debug("Cancelled transaction, skipping validation");
             return CONTINUE_PROCESSING;
         }
 

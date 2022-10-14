@@ -20,15 +20,15 @@
  */
 package org.apache.struts.action;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.config.ForwardConfig;
-import org.apache.struts.util.ResponseUtils;
-
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
+import org.apache.struts.config.ForwardConfig;
+import org.apache.struts.util.ResponseUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p> A subclass of {@link ActionForward} which is designed for use in
@@ -68,7 +68,7 @@ public class ActionRedirect extends ActionForward {
     /**
      * <p>Commons logging instance.</p>
      */
-    protected static final Log LOG = LogFactory.getLog(ActionRedirect.class);
+    protected static final Logger LOG = LoggerFactory.getLogger(ActionRedirect.class);
 
     // ----------------------------------------------------- Instance variables
 

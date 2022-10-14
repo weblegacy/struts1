@@ -20,13 +20,13 @@
  */
 package org.apache.struts.chain.commands;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ExceptionConfig;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.config.ModuleConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Invoke the local or global exception handler configured for the
@@ -41,8 +41,8 @@ public abstract class AbstractExceptionHandler extends ActionCommandBase {
     /**
      * Provide a Commons logging instance for this class.
      */
-    private static final Log LOG =
-        LogFactory.getLog(AbstractExceptionHandler.class);
+    private static final Logger LOG =
+        LoggerFactory.getLogger(AbstractExceptionHandler.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -73,19 +73,13 @@ public abstract class AbstractExceptionHandler extends ActionCommandBase {
         ModuleConfig moduleConfig = actionCtx.getModuleConfig();
 
         if (actionConfig != null) {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("See if actionConfig " + actionConfig
-                    + " has an exceptionConfig for "
-                    + exception.getClass().getName());
-            }
+            LOG.debug("See if actionConfig {} has an exceptionConfig for {}",
+                actionConfig, exception.getClass().getName());
 
             exceptionConfig = actionConfig.findException(exception.getClass());
         } else if (moduleConfig != null) {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("No action yet, see if moduleConfig " + moduleConfig
-                    + " has an exceptionConfig "
-                    + exception.getClass().getName());
-            }
+            LOG.debug("No action yet, see if moduleConfig {} has an exceptionConfig {}",
+                moduleConfig, exception.getClass().getName());
 
             exceptionConfig = moduleConfig.findException(exception.getClass());
         }

@@ -20,8 +20,13 @@
  */
 package org.apache.struts.config.impl;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 import org.apache.struts.Constants;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ActionConfigMatcher;
@@ -33,14 +38,8 @@ import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.config.MessageResourcesConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.config.PlugInConfig;
-
-import java.io.Serializable;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.TreeMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>The collection of static configuration information that describes a
@@ -62,7 +61,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
     /**
      * <p>Commons Logging instance. </p>
      */
-    protected static Log log = LogFactory.getLog(ModuleConfigImpl.class);
+    protected static Logger LOG = LoggerFactory.getLogger(ModuleConfigImpl.class);
 
     // ----------------------------------------------------- Instance Variables
     // Instance Variables at end to make comparing Interface and implementation easier.
@@ -293,23 +292,18 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
 
         String path = config.getPath();
         if (actionConfigs.containsKey(path)) {
-            log.warn("Overriding ActionConfig of path " + path);
+            LOG.warn("Overriding ActionConfig of path {}", path);
         }
 
         String actionId = config.getActionId();
         if ((actionId != null) && !actionId.equals("")) {
             if (actionConfigIds.containsKey(actionId)) {
-                if (log.isWarnEnabled()) {
-                    ActionConfig otherConfig = actionConfigIds.get(actionId);
-                    StringBuilder msg = new StringBuilder("Overriding actionId[");
-                    msg.append(actionId);
-                    msg.append("] for path[");
-                    msg.append(otherConfig.getPath());
-                    msg.append("] with path[");
-                    msg.append(path);
-                    msg.append("]");
-                    log.warn(msg);
-                }
+                LOG.atWarn()
+                    .setMessage("Overriding actionId[{}] for path[{}] with path[{}]")
+                    .addArgument(actionId)
+                    .addArgument(() -> actionConfigIds.get(actionId).getPath())
+                    .addArgument(path)
+                    .log();
             }
             actionConfigIds.put(actionId, config);
         }
@@ -332,7 +326,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
         String key = config.getType();
 
         if (exceptions.containsKey(key)) {
-            log.warn("Overriding ExceptionConfig of type " + key);
+            LOG.warn("Overriding ExceptionConfig of type {}", key);
         }
 
         exceptions.put(key, config);
@@ -352,7 +346,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
         String key = config.getName();
 
         if (formBeans.containsKey(key)) {
-            log.warn("Overriding ActionForm of name " + key);
+            LOG.warn("Overriding ActionForm of name {}", key);
         }
 
         formBeans.put(key, config);
@@ -391,7 +385,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
         String key = config.getName();
 
         if (forwards.containsKey(key)) {
-            log.warn("Overriding global ActionForward of name " + key);
+            LOG.warn("Overriding global ActionForward of name {}", key);
         }
 
         forwards.put(key, config);
@@ -411,7 +405,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
         String key = config.getKey();
 
         if (messageResources.containsKey(key)) {
-            log.warn("Overriding MessageResources bundle of key " + key);
+            LOG.warn("Overriding MessageResources bundle of key {}", key);
         }
 
         messageResources.put(key, config);
@@ -507,7 +501,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
             // Check for a locally defined handler
             String name = type.getName();
 
-            log.debug("findException: look locally for " + name);
+            LOG.debug("findException: look locally for {}", name);
             config = findExceptionConfig(name);
 
             if (config != null) {

@@ -20,33 +20,9 @@
  */
 package org.apache.struts.util;
 
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.Globals;
-import org.apache.struts.action.ActionRedirect;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionServlet;
-import org.apache.struts.action.ActionServletWrapper;
-import org.apache.struts.config.ActionConfig;
-import org.apache.struts.config.FormBeanConfig;
-import org.apache.struts.config.ForwardConfig;
-import org.apache.struts.config.ModuleConfig;
-import org.apache.struts.upload.FormFile;
-import org.apache.struts.upload.MultipartRequestHandler;
-import org.apache.struts.upload.MultipartRequestWrapper;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -56,6 +32,29 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.apache.struts.Globals;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionRedirect;
+import org.apache.struts.action.ActionServlet;
+import org.apache.struts.action.ActionServletWrapper;
+import org.apache.struts.config.ActionConfig;
+import org.apache.struts.config.FormBeanConfig;
+import org.apache.struts.config.ForwardConfig;
+import org.apache.struts.config.ModuleConfig;
+import org.apache.struts.upload.FormFile;
+import org.apache.struts.upload.MultipartRequestHandler;
+import org.apache.struts.upload.MultipartRequestWrapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>General purpose utility methods related to processing a servlet request
@@ -69,7 +68,7 @@ public class RequestUtils {
     /**
      * <p>Commons Logging instance.</p>
      */
-    protected static Log log = LogFactory.getLog(RequestUtils.class);
+    protected static Logger LOG = LoggerFactory.getLogger(RequestUtils.class);
 
     /**
      * <p>Pattern matching 'class' access.</p>
@@ -206,7 +205,7 @@ public class RequestUtils {
         FormBeanConfig config = moduleConfig.findFormBeanConfig(name);
 
         if (config == null) {
-            log.warn("No FormBeanConfig found under '" + name + "'");
+            LOG.warn("No FormBeanConfig found under '{}'", name);
 
             return (null);
         }
@@ -225,10 +224,8 @@ public class RequestUtils {
     private static ActionForm lookupActionForm(HttpServletRequest request,
         String attribute, String scope) {
         // Look up any existing form bean instance
-        if (log.isDebugEnabled()) {
-            log.debug(" Looking for ActionForm bean instance in scope '"
-                + scope + "' under attribute key '" + attribute + "'");
-        }
+        LOG.debug(" Looking for ActionForm bean instance in scope '{}' "
+            + "under attribute key '{}'", scope, attribute);
 
         ActionForm instance = null;
         HttpSession session = null;
@@ -267,15 +264,18 @@ public class RequestUtils {
         try {
             instance = config.createActionForm(servlet);
 
-            if (log.isDebugEnabled()) {
-                log.debug(" Creating new "
-                    + (config.getDynamic() ? "DynaActionForm" : "ActionForm")
-                    + " instance of type '" + config.getType() + "'");
-                log.trace(" --> " + instance);
-            }
+            LOG.atDebug()
+                .setMessage(" Creating new {} instance of type '{}'")
+                .addArgument(() -> config.getDynamic() ? "DynaActionForm" : "ActionForm")
+                .addArgument(config.getType())
+                .log();
+            LOG.trace(" --> {}", instance);
         } catch (Throwable t) {
-            log.error(servlet.getInternal().getMessage("formBean",
-                    config.getType()), t);
+            LOG.atError()
+                .setMessage(() -> servlet.getInternal().getMessage("formBean",
+                    config.getType()))
+                .setCause(t)
+                .log();
         }
 
         return (instance);
@@ -475,7 +475,7 @@ public class RequestUtils {
             // Author: NTT DATA Corporation
             if (CLASS_ACCESS_PATTERN.matcher(stripped).matches()) {
                 // this log output is only for detection of invalid parameters and not an integral part of the bug fix
-                log.trace("ignore parameter: paramName=" + stripped);
+                LOG.trace("ignore parameter: paramName={}", stripped);
                 continue;
             }
 
@@ -592,19 +592,19 @@ public class RequestUtils {
                 multipartHandler =
                     (MultipartRequestHandler) applicationInstance(multipartClass);
             } catch (ClassNotFoundException cnfe) {
-                log.error("MultipartRequestHandler class \"" + multipartClass
-                    + "\" in mapping class not found, "
-                    + "defaulting to global multipart class");
+                LOG.error("MultipartRequestHandler class \"{}\" "
+                    + "in mapping class not found, "
+                    + "defaulting to global multipart class", multipartClass);
             } catch (InstantiationException ie) {
-                log.error("InstantiationException when instantiating "
-                    + "MultipartRequestHandler \"" + multipartClass + "\", "
-                    + "defaulting to global multipart class, exception: "
-                    + ie.getMessage());
+                LOG.error("InstantiationException when instantiating "
+                    + "MultipartRequestHandler \"{}\", "
+                    + "defaulting to global multipart class, exception: {}",
+                    multipartClass, ie.getMessage());
             } catch (IllegalAccessException iae) {
-                log.error("IllegalAccessException when instantiating "
-                    + "MultipartRequestHandler \"" + multipartClass + "\", "
-                    + "defaulting to global multipart class, exception: "
-                    + iae.getMessage());
+                LOG.error("IllegalAccessException when instantiating "
+                    + "MultipartRequestHandler \"{}\", "
+                    + "defaulting to global multipart class, exception: {}",
+                    multipartClass, iae.getMessage());
             }
 
             if (multipartHandler != null) {
@@ -678,7 +678,7 @@ public class RequestUtils {
                 parameters.put(key, request.getParameterValues(key));
             }
         } else {
-            log.debug("Gathering multipart parameters for unwrapped request");
+            LOG.debug("Gathering multipart parameters for unwrapped request");
         }
 
         return parameters;
@@ -1110,9 +1110,7 @@ public class RequestUtils {
         // Find the action of the given actionId
         ActionConfig actionConfig = moduleConfig.findActionConfigId(actionId);
         if (actionConfig == null) {
-            if (log.isDebugEnabled()) {
-                log.debug("No actionId found for " + actionId);
-            }
+            LOG.debug("No actionId found for {}", actionId);
             return null;
         }
 
@@ -1134,7 +1132,7 @@ public class RequestUtils {
                 actionIdPath.append(path);
             }
         } else {
-            log.warn("Unknown servlet mapping pattern");
+            LOG.warn("Unknown servlet mapping pattern");
             actionIdPath.append(path);
         }
 
@@ -1144,9 +1142,7 @@ public class RequestUtils {
         }
 
         // Return the path
-        if (log.isDebugEnabled()) {
-            log.debug(originalPath + " unaliased to " + actionIdPath.toString());
-        }
+        LOG.debug("{} unaliased to {}", originalPath, actionIdPath);
         return actionIdPath.toString();
     }
 

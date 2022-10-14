@@ -20,20 +20,18 @@
  */
 package org.apache.struts.mock;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
 
-import java.io.InputStream;
-
-import java.net.URL;
-
-import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.Set;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Mock <strong>ServletContext</strong> object for low-level unit tests of
@@ -62,7 +60,7 @@ public class MockServletContext implements ServletContext {
     /**
      * <p> Default destination for <code>LOG()</code> output. </p>
      */
-    protected Log log = LogFactory.getLog(MockServletContext.class);
+    protected Logger log = LoggerFactory.getLogger(MockServletContext.class);
 
     /**
      * <p> The set of context initialization parameters. </p>
@@ -74,8 +72,8 @@ public class MockServletContext implements ServletContext {
         parameters.put(name, value);
     }
 
-    public void setLog(Log log) {
-        this.log = log;
+    public void setLog(Logger logger) {
+        this.log = logger;
     }
 
     // ------------------------------------------------- ServletContext Methods

@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Core: Replace `commons-logging` with `slf4j`
 * Bump `checkstyle` from 9.3 to 10.3.4
 * Bump `antlr` from 4.9.3 to 4.11.1
 * Set minimum JDK-Version to 11

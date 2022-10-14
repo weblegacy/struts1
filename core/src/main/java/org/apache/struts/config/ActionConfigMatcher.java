@@ -20,19 +20,18 @@
  */
 package org.apache.struts.config;
 
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.util.WildcardHelper;
-
 import java.io.Serializable;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
+
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.util.WildcardHelper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p> Matches paths against pre-compiled wildcard expressions pulled from
@@ -49,7 +48,7 @@ public class ActionConfigMatcher implements Serializable {
     /**
      * <p> The logging instance </p>
      */
-    private static final Log log = LogFactory.getLog(ActionConfigMatcher.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ActionConfigMatcher.class);
 
     /**
      * <p> Handles all wildcard pattern matching. </p>
@@ -83,9 +82,7 @@ public class ActionConfigMatcher implements Serializable {
                     path = path.substring(1);
                 }
 
-                if (log.isDebugEnabled()) {
-                    log.debug("Compiling action config path '" + path + "'");
-                }
+                LOG.debug("Compiling action config path '{}'", path);
 
                 pattern = wildcard.compilePattern(path);
                 compiledPaths.add(new Mapping(pattern, configs[x]));
@@ -103,10 +100,8 @@ public class ActionConfigMatcher implements Serializable {
         ActionConfig config = null;
 
         if (compiledPaths.size() > 0) {
-            if (log.isDebugEnabled()) {
-                log.debug("Attempting to match '" + path
-                    + "' to a wildcard pattern");
-            }
+            LOG.debug("Attempting to match '{}' to a wildcard pattern",
+                path);
 
             if ((path.length() > 0) && (path.charAt(0) == '/')) {
                 path = path.substring(1);
@@ -116,20 +111,17 @@ public class ActionConfigMatcher implements Serializable {
 
             for (Mapping m : compiledPaths) {
                 if (wildcard.match(vars, path, m.getPattern())) {
-                    if (log.isDebugEnabled()) {
-                        log.debug("Path matches pattern '"
-                            + m.getActionConfig().getPath() + "'");
-                    }
+                    LOG.debug("Path matches pattern '{}'",
+                        m.getActionConfig().getPath());
 
                     try {
                         config =
                             convertActionConfig(path, m.getActionConfig(), vars);
                     } catch (IllegalStateException e) {
-                        log.warn("Path matches pattern '"
-                            + m.getActionConfig().getPath() + "' but is "
+                        LOG.warn("Path matches pattern '{}' but is "
                             + "incompatible with the matching config due "
-                            + "to recursive substitution: "
-                            + path);
+                            + "to recursive substitution: {}",
+                            m.getActionConfig().getPath(), path);
                         config = null;
                     }
                 }
@@ -158,7 +150,7 @@ public class ActionConfigMatcher implements Serializable {
         try {
             config = (ActionConfig) BeanUtils.cloneBean(orig);
         } catch (Exception ex) {
-            log.warn("Unable to clone action config, recommend not using "
+            LOG.warn("Unable to clone action config, recommend not using "
                 + "wildcards", ex);
 
             return null;
@@ -191,7 +183,7 @@ public class ActionConfigMatcher implements Serializable {
             try {
                 cfg = (ActionForward) BeanUtils.cloneBean(fConfigs[x]);
             } catch (Exception ex) {
-                log.warn("Unable to clone action config, recommend not using "
+                LOG.warn("Unable to clone action config, recommend not using "
                         + "wildcards", ex);
                 return null;
             }

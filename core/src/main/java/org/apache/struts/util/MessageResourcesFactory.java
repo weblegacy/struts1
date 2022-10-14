@@ -20,11 +20,11 @@
  */
 package org.apache.struts.util;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.config.MessageResourcesConfig;
-
 import java.io.Serializable;
+
+import org.apache.struts.config.MessageResourcesConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Factory for <code>MessageResources</code> instances.  The general usage
@@ -59,7 +59,7 @@ public abstract class MessageResourcesFactory implements Serializable {
     /**
      * Commons Logging instance.
      */
-    private static Log LOG = LogFactory.getLog(MessageResourcesFactory.class);
+    private static Logger LOG = LoggerFactory.getLogger(MessageResourcesFactory.class);
 
     /**
      * The fully qualified class name to be used for <code>MessageResourcesFactory</code>

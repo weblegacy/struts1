@@ -20,11 +20,12 @@
  */
 package org.apache.struts.config;
 
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.MutableDynaClass;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.DynaActionForm;
@@ -34,10 +35,8 @@ import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.util.RequestUtils;
 import org.apache.struts.validator.BeanValidatorForm;
-
-import java.lang.reflect.InvocationTargetException;
-
-import java.util.HashMap;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>A JavaBean representing the configuration information of a
@@ -50,7 +49,7 @@ import java.util.HashMap;
 public class FormBeanConfig extends BaseConfig {
     private static final long serialVersionUID = 3515968502450681140L;
 
-    private static final Log log = LogFactory.getLog(FormBeanConfig.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FormBeanConfig.class);
 
     // ----------------------------------------------------- Instance Variables
 
@@ -374,7 +373,7 @@ public class FormBeanConfig extends BaseConfig {
                 String className = ((DynaBean) form).getDynaClass().getName();
 
                 if (className.equals(this.getName())) {
-                    log.debug("Can reuse existing instance (dynamic)");
+                    LOG.debug("Can reuse existing instance (dynamic)");
 
                     return (true);
                 }
@@ -391,7 +390,7 @@ public class FormBeanConfig extends BaseConfig {
                         if (beanValidatorForm.getInstance() instanceof DynaBean) {
                             String formName = beanValidatorForm.getStrutsConfigFormName();
                             if (getName().equals(formName)) {
-                                log.debug("Can reuse existing instance (BeanValidatorForm)");
+                                LOG.debug("Can reuse existing instance (BeanValidatorForm)");
                                 return true;
                             } else {
                                 return false;
@@ -404,12 +403,12 @@ public class FormBeanConfig extends BaseConfig {
                         ClassUtils.getApplicationClass(this.getType());
 
                     if (configClass.isAssignableFrom(formClass)) {
-                        log.debug("Can reuse existing instance (non-dynamic)");
+                        LOG.debug("Can reuse existing instance (non-dynamic)");
 
                         return (true);
                     }
                 } catch (Exception e) {
-                    log.debug("Error testing existing instance for reusability; just create a new instance",
+                    LOG.debug("Error testing existing instance for reusability; just create a new instance",
                         e);
                 }
             }

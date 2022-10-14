@@ -20,6 +20,9 @@
  */
 package org.apache.struts.chain.commands.servlet;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.chain.commands.AbstractExceptionHandler;
@@ -31,9 +34,6 @@ import org.apache.struts.config.ExceptionConfig;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.config.ModuleConfig;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 /**
  * <p>Handle the specified exception.</p>
  *
@@ -42,7 +42,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ExceptionHandler extends AbstractExceptionHandler {
     // ------------------------------------------------------ Instance Variables
-//  private static final Log log = LogFactory.getLog(ExceptionHandler.class);
+//  private static final Logger LOG = LoggerFactory.getLogger(ExceptionHandler.class);
 
     // ------------------------------------------------------- Protected Methods
     protected ForwardConfig handle(ActionContext context, Exception exception,

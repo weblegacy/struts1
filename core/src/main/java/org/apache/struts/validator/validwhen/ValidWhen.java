@@ -24,8 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.commons.validator.Field;
 import org.apache.commons.validator.Validator;
 import org.apache.commons.validator.ValidatorAction;
@@ -35,6 +33,8 @@ import org.apache.struts.action.ActionMessages;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.validator.Resources;
 import org.apache.struts.validator.validwhen.ValidWhenParser.ExpressionContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This class contains the validwhen validation that is used in the
@@ -46,7 +46,7 @@ public class ValidWhen {
     /**
      * Commons Logging instance.
      */
-    private static final Log log = LogFactory.getLog(ValidWhen.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ValidWhen.class);
 
     /**
      * The message resources for this package.
@@ -110,11 +110,8 @@ public class ValidWhen {
             test =
                 Resources.getVarValue("test", field, validator, request, true);
         } catch (IllegalArgumentException ex) {
-            String logErrorMsg =
-                sysmsgs.getMessage("validation.failed", "validwhen",
-                    field.getProperty(), validator.getFormName(), ex.toString());
-
-            log.error(logErrorMsg);
+            LOG.atError().log(() -> sysmsgs.getMessage("validation.failed", "validwhen",
+                field.getProperty(), validator.getFormName(), ex.toString()));
 
             String userErrorMsg = sysmsgs.getMessage("system.error");
 
@@ -129,11 +126,8 @@ public class ValidWhen {
         try {
             lexer = new ValidWhenLexer(CharStreams.fromString(test));
         } catch (Exception ex) {
-            String logErrorMsg =
-                "ValidWhenLexer Error for field ' " + field.getKey() + "' - "
-                + ex;
-
-            log.error(logErrorMsg);
+            LOG.error("ValidWhenLexer Error for field '{}'",
+                field.getKey(), ex);
 
             String userErrorMsg = sysmsgs.getMessage("system.error");
 
@@ -148,11 +142,8 @@ public class ValidWhen {
         try {
             parser = new ValidWhenParser(new CommonTokenStream(lexer));
         } catch (Exception ex) {
-            String logErrorMsg =
-                "ValidWhenParser Error for field ' " + field.getKey() + "' - "
-                + ex;
-
-            log.error(logErrorMsg);
+            LOG.error("ValidWhenParser Error for field '{}'",
+                field.getKey(), ex);
 
             String userErrorMsg = sysmsgs.getMessage("system.error");
 
@@ -168,10 +159,8 @@ public class ValidWhen {
             ValidWhenResult<?> result = validWhenEvaluator.visitExpression(expressionContext);
             valid = result == null ? false : result.toBoolean();
         } catch (Exception ex) {
-            String logErrorMsg =
-                "ValidWhen Error for field ' " + field.getKey() + "' - " + ex;
-
-            log.error(logErrorMsg);
+            LOG.error("ValidWhen Error for field '{}'",
+                field.getKey(), ex);
 
             String userErrorMsg = sysmsgs.getMessage("system.error");
 

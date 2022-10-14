@@ -20,15 +20,15 @@
  */
 package org.apache.struts.chain.commands;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.util.Map;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.FormBeanConfig;
-
-import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Create (if necessary) and cache a form bean for this request.</p>
@@ -41,7 +41,7 @@ public class CreateActionForm extends ActionCommandBase {
     /**
      * <p> Provide Commons Logging instance for this class. </p>
      */
-    private static final Log LOG = LogFactory.getLog(CreateActionForm.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CreateActionForm.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -63,18 +63,15 @@ public class CreateActionForm extends ActionCommandBase {
             return CONTINUE_PROCESSING;
         }
 
-        if (LOG.isTraceEnabled()) {
-            LOG.trace("Look up form-bean " + name);
-        }
+        LOG.trace("Look up form-bean {}", name);
 
         // Look up the corresponding FormBeanConfig (if any)
         FormBeanConfig formBeanConfig =
             actionConfig.getModuleConfig().findFormBeanConfig(name);
 
         if (formBeanConfig == null) {
-            LOG.warn("No FormBeanConfig found in module "
-                + actionConfig.getModuleConfig().getPrefix() + " under name "
-                + name);
+            LOG.warn("No FormBeanConfig found in module {} under name {}",
+                actionConfig.getModuleConfig().getPrefix(), name);
             actionCtx.setActionForm(null);
             return CONTINUE_PROCESSING;
         }

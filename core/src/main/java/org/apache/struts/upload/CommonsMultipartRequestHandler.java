@@ -20,34 +20,33 @@
  */
 package org.apache.struts.upload;
 
-import org.apache.commons.fileupload.disk.DiskFileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.Globals;
-import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionServlet;
-import org.apache.struts.config.ModuleConfig;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.Serializable;
-
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.List;
-import java.util.Locale;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.struts.Globals;
+import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionServlet;
+import org.apache.struts.config.ModuleConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p> This class implements the {@code MultipartRequestHandler}
@@ -78,8 +77,8 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
     /**
      * <p> Commons Logging instance. </p>
      */
-    protected static Log log =
-        LogFactory.getLog(CommonsMultipartRequestHandler.class);
+    protected static Logger LOG =
+        LoggerFactory.getLogger(CommonsMultipartRequestHandler.class);
 
     /**
      * <p> The combined text and file request parameters. </p>
@@ -203,7 +202,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
             clearInputStream(request);
             return;
         } catch (FileUploadException e) {
-            log.error("Failed to parse multipart request", e);
+            LOG.error("Failed to parse multipart request", e);
             clearInputStream(request);
             throw new ServletException(e);
         }
@@ -288,7 +287,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
                 } while (bytesRead > -1);
             }
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            LOG.error(e.getMessage(), e);
         }
     }
 
@@ -351,8 +350,8 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         try {
             size = Long.parseLong(sizeString);
         } catch (NumberFormatException nfe) {
-            log.warn("Invalid format for file size ('" + sizeString
-                + "'). Using default.");
+            LOG.warn("Invalid format for file size ('{}'). Using default.",
+                sizeString);
             size = defaultSize;
             multiplier = 1;
         }
@@ -403,9 +402,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
             tempDirFile = new File(tempDir);
         }
 
-        if (log.isTraceEnabled()) {
-            log.trace("File upload temp dir: " + tempDirFile);
-        }
+        LOG.trace("File upload temp dir: {}", tempDirFile);
 
         return tempDirFile;
     }
@@ -427,16 +424,12 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
 
         if (item instanceof DiskFileItem) {
             encoding = ((DiskFileItem)item).getCharSet();
-            if (log.isDebugEnabled()) {
-                log.debug("DiskFileItem.getCharSet=[" + encoding + "]");
-            }
+            LOG.debug("DiskFileItem.getCharSet=[{}]", encoding);
         }
 
         if (encoding == null) {
             encoding = request.getCharacterEncoding();
-            if (log.isDebugEnabled()) {
-                log.debug("request.getCharacterEncoding=[" + encoding + "]");
-            }
+            LOG.debug("request.getCharacterEncoding=[{}]", encoding);
         }
 
         if (encoding != null) {

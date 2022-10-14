@@ -20,13 +20,13 @@
  */
 package org.apache.struts.chain.commands;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.config.ModuleConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Select and cache a <code>ForwardConfig</code> that returns us to the
@@ -41,7 +41,7 @@ public abstract class AbstractSelectInput extends ActionCommandBase {
     /**
      * <p> Provide Commons Logging instance for this class. </p>
      */
-    private static final Log LOG = LogFactory.getLog(AbstractSelectInput.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractSelectInput.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -71,23 +71,17 @@ public abstract class AbstractSelectInput extends ActionCommandBase {
         String input = actionConfig.getInput();
 
         if (moduleConfig.getControllerConfig().getInputForward()) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Finding ForwardConfig for '" + input + "'");
-            }
+            LOG.trace("Finding ForwardConfig for '{}'", input);
             forwardConfig = inputForward(actionConfig, moduleConfig, input);
             if (forwardConfig == null) {
-                LOG.error(getErrorMessage(actionCtx, actionConfig));
+                LOG.atError().log(() -> getErrorMessage(actionCtx, actionConfig));
             }
         } else {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Delegating to forward() for '" + input + "'");
-            }
+            LOG.trace("Delegating to forward() for '{}'", input);
             forwardConfig = forward(actionCtx, moduleConfig, input);
         }
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Forwarding back to " + forwardConfig);
-        }
+        LOG.debug("Forwarding back to {}", forwardConfig);
 
         actionCtx.setForwardConfig(forwardConfig);
 

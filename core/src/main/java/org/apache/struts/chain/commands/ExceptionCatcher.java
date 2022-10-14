@@ -25,9 +25,9 @@ import org.apache.commons.chain.CatalogFactory;
 import org.apache.commons.chain.Command;
 import org.apache.commons.chain.Context;
 import org.apache.commons.chain.Filter;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.chain.contexts.ActionContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Intercept any exception thrown by a subsequent <code>Command</code> in
@@ -42,7 +42,7 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
     /**
      * <p> Provide Commons Logging instance for this class. </p>
      */
-    private static final Log LOG = LogFactory.getLog(ExceptionCatcher.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ExceptionCatcher.class);
 
     // ------------------------------------------------------ Instance Variables
 
@@ -137,9 +137,7 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
         }
 
         // Stash the exception in the specified context attribute
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Attempting to handle a thrown exception");
-        }
+        LOG.debug("Attempting to handle a thrown exception");
 
         ActionContext actionCtx = (ActionContext) context;
 
@@ -150,20 +148,18 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
             Command command = lookupExceptionCommand();
 
             if (command == null) {
-                LOG.error("Cannot find exceptionCommand '" + exceptionCommand
-                    + "'");
+                LOG.error("Cannot find exceptionCommand '{}'",
+                    exceptionCommand);
                 throw new IllegalStateException(
                     "Cannot find exceptionCommand '" + exceptionCommand + "'");
             }
 
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Calling exceptionCommand '" + exceptionCommand + "'");
-            }
+            LOG.trace("Calling exceptionCommand '{}'", exceptionCommand);
 
             command.execute(context);
         } catch (Exception e) {
-            LOG.warn("Exception from exceptionCommand '" + exceptionCommand
-                + "'", e);
+            LOG.warn("Exception from exceptionCommand '{}'",
+                exceptionCommand, e);
             IllegalStateException e2 = new IllegalStateException("Exception chain threw exception");
             e2.initCause(e);
             throw e2;
@@ -195,7 +191,7 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
             catalog = CatalogFactory.getInstance().getCatalog(catalogName);
 
             if (catalog == null) {
-                LOG.error("Cannot find catalog '" + catalogName + "'");
+                LOG.error("Cannot find catalog '{}'", catalogName);
                 throw new IllegalArgumentException("Cannot find catalog '"
                     + catalogName + "'");
             }

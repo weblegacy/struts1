@@ -20,12 +20,12 @@
  */
 package org.apache.struts.config;
 
-import org.apache.commons.beanutils.ConvertUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import java.lang.reflect.Array;
 import java.lang.reflect.InvocationTargetException;
+
+import org.apache.commons.beanutils.ConvertUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>A JavaBean representing the configuration information of a
@@ -41,7 +41,7 @@ public class FormPropertyConfig extends BaseConfig {
     /**
      * The logging instance
      */
-    private static final Log log = LogFactory.getLog(FormPropertyConfig.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FormPropertyConfig.class);
 
     // ----------------------------------------------------- Instance Variables
     // ------------------------------------------------------------- Properties
@@ -260,8 +260,8 @@ public class FormPropertyConfig extends BaseConfig {
             try {
                 baseClass = classLoader.loadClass(baseType);
             } catch (ClassNotFoundException ex) {
-                log.error("Class '" + baseType +
-                          "' not found for property '" + name + "'");
+                LOG.error("Class '{}' not found for property '{}'",
+                    baseType, name);
                 baseClass = null;
             }
         }
@@ -336,10 +336,9 @@ public class FormPropertyConfig extends BaseConfig {
                                 Array.set(initialValue, i,
                                     clazz.getComponentType().newInstance());
                             } catch (Throwable t) {
-                                log.error("Unable to create instance of "
-                                    + clazz.getName() + " for property=" + name
-                                    + ", type=" + type + ", initial=" + initial
-                                    + ", size=" + size + ".");
+                                LOG.error("Unable to create instance of {} for property={}, "
+                                    + "type={}, initial={}, size={}.",
+                                    clazz.getName(), name, type, initial, size);
 
                                 //FIXME: Should we just dump the entire application/module ?
                             }

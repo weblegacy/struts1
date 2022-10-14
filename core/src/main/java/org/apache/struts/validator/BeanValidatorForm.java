@@ -20,23 +20,21 @@
  */
 package org.apache.struts.validator;
 
+import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.beanutils.ConvertUtils;
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.DynaClass;
 import org.apache.commons.beanutils.WrapDynaBean;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.config.FormBeanConfig;
-
-import javax.servlet.http.HttpServletRequest;
-
-import java.io.Serializable;
-
-import java.lang.reflect.Array;
-
-import java.util.List;
-import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Struts <i>validator</i> <code>ActionForm</code> backed by either a
@@ -65,7 +63,7 @@ public class BeanValidatorForm extends ValidatorForm implements DynaBean,
     /**
      * Commons Logging
      */
-    protected static Log logger = LogFactory.getLog(BeanValidatorForm.class);
+    protected static Logger LOG = LoggerFactory.getLogger(BeanValidatorForm.class);
 
     /**
      * The <code>DynaBean</code> that this ActionForm is backed by.
@@ -217,11 +215,8 @@ public class BeanValidatorForm extends ValidatorForm implements DynaBean,
             validationKey = mapping.getAttribute();
         }
 
-        if (logger.isDebugEnabled()) {
-            logger.debug("Validating ActionForm '" + mapping.getName()
-                + "' using key '" + validationKey + "' for mapping '"
-                + mapping.getPath() + "'");
-        }
+        LOG.debug("Validating ActionForm '{}' using key '{}' for mapping '{}'",
+            mapping.getName(), validationKey, mapping.getPath());
 
         return validationKey;
     }

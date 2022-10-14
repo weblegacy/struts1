@@ -20,14 +20,14 @@
  */
 package org.apache.struts.chain.commands;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.util.Map;
+
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.config.ActionConfig;
-
-import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Populate the form bean (if any) for this request.</p>
@@ -37,7 +37,7 @@ import java.util.Map;
  */
 public abstract class AbstractPopulateActionForm extends ActionCommandBase {
 
-    private static final Log log = LogFactory.getLog(AbstractPopulateActionForm.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AbstractPopulateActionForm.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -64,17 +64,13 @@ public abstract class AbstractPopulateActionForm extends ActionCommandBase {
 
         // Reset the form bean only if configured so
         if (isReset(actionCtx, actionConfig)) {
-            if (log.isDebugEnabled()) {
-                log.debug("Reseting form bean '" + actionConfig.getName() + "'");
-            }
+            LOG.debug("Reseting form bean '{}'",  actionConfig.getName());
             reset(actionCtx, actionConfig, actionForm);
         }
 
         // Populate the form bean only if configured so
         if (isPopulate(actionCtx, actionConfig)) {
-            if (log.isDebugEnabled()) {
-                log.debug("Populating form bean '" + actionConfig.getName() + "'");
-            }
+            LOG.debug("Populating form bean '{}'", actionConfig.getName());
             populate(actionCtx, actionConfig, actionForm);
         }
 

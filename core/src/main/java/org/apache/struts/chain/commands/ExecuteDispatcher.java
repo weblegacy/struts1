@@ -20,6 +20,9 @@
  */
 package org.apache.struts.chain.commands;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.chain.Constants;
@@ -28,16 +31,12 @@ import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.dispatcher.Dispatcher;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class ExecuteDispatcher extends ActionCommandBase {
 
-    private static final Log log = LogFactory.getLog(ExecuteDispatcher.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ExecuteDispatcher.class);
 
     private String defaultDispatcherType;
 
@@ -51,7 +50,7 @@ public class ExecuteDispatcher extends ActionCommandBase {
      * @see ClassUtils#getApplicationInstance(String)
      */
     protected Dispatcher createDispatcher(String type, ActionContext context) throws Exception {
-        log.info("Initializing dispatcher of type: " + type);
+        LOG.info("Initializing dispatcher of type: {}", type);
         return (Dispatcher) ClassUtils.getApplicationInstance(type);
     }
 

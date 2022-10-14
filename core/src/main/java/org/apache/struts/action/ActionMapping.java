@@ -20,13 +20,13 @@
  */
 package org.apache.struts.action;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.util.Arrays;
+
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ControllerConfig;
 import org.apache.struts.config.ForwardConfig;
-
-import java.util.Arrays;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>An <strong>ActionMapping</strong> represents the information that the
@@ -55,7 +55,7 @@ public class ActionMapping extends ActionConfig {
      *
      * @since Struts 1.2.8
      */
-    private static Log log = LogFactory.getLog(ActionMapping.class);
+    private static Logger LOG = LoggerFactory.getLogger(ActionMapping.class);
 
     /**
      * <p>Find and return the <code>ForwardConfig</code> instance defining how
@@ -78,9 +78,7 @@ public class ActionMapping extends ActionConfig {
 
         // TODO: remove warning since findRequiredForward takes care of use case?
         if (config == null) {
-            if (log.isWarnEnabled()) {
-                log.warn("Unable to find '" + forwardName + "' forward.");
-            }
+            LOG.warn("Unable to find '{}' forward.", forwardName);
         }
 
         return ((ActionForward) config);

@@ -20,9 +20,9 @@
  */
 package org.apache.struts.config;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.util.RequestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * A factory interface for creating {@link ModuleConfig}s.
@@ -41,7 +41,7 @@ public abstract class ModuleConfigFactory {
     /**
      * Commons Logging instance.
      */
-    private static final Log LOG = LogFactory.getLog(ModuleConfigFactory.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ModuleConfigFactory.class);
 
     /**
      * The fully qualified class name to be used for <code>ModuleConfigFactory</code>

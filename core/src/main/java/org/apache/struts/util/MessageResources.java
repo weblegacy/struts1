@@ -20,15 +20,13 @@
  */
 package org.apache.struts.util;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import java.io.Serializable;
-
 import java.text.MessageFormat;
-
 import java.util.HashMap;
 import java.util.Locale;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * General purpose abstract class that describes an API for retrieving
@@ -56,7 +54,7 @@ public abstract class MessageResources implements Serializable {
     /**
      * Commons Logging instance.
      */
-    protected static Log log = LogFactory.getLog(MessageResources.class);
+    protected static Logger LOG = LoggerFactory.getLogger(MessageResources.class);
 
     // --------------------------------------------------------- Static Methods
 
@@ -496,7 +494,7 @@ public abstract class MessageResources implements Serializable {
      * @param message The message to be logged
      */
     public void log(String message) {
-        log.debug(message);
+        LOG.debug(message);
     }
 
     /**
@@ -507,6 +505,6 @@ public abstract class MessageResources implements Serializable {
      * @param throwable The exception to be logged
      */
     public void log(String message, Throwable throwable) {
-        log.debug(message, throwable);
+        LOG.debug(message, throwable);
     }
 }

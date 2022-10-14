@@ -20,21 +20,20 @@
  */
 package org.apache.struts.validator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.io.Serializable;
+import java.util.Map;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.validator.Validator;
 import org.apache.commons.validator.ValidatorException;
 import org.apache.commons.validator.ValidatorResults;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-
-import java.io.Serializable;
-
-import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>This class extends <strong>ActionForm</strong> and provides basic field
@@ -60,7 +59,7 @@ public class ValidatorForm extends ActionForm implements Serializable {
     /**
      * Commons Logging instance.
      */
-    private static Log log = LogFactory.getLog(ValidatorForm.class);
+    private static Logger LOG = LoggerFactory.getLogger(ValidatorForm.class);
 
     /**
      * The results returned from the validation performed by the
@@ -132,7 +131,7 @@ public class ValidatorForm extends ActionForm implements Serializable {
         try {
             validatorResults = validator.validate();
         } catch (ValidatorException e) {
-            log.error(e.getMessage(), e);
+            LOG.error(e.getMessage(), e);
         }
 
         return errors;

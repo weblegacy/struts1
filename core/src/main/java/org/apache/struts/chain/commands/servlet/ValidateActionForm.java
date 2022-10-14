@@ -20,8 +20,6 @@
  */
 package org.apache.struts.chain.commands.servlet;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
@@ -29,6 +27,8 @@ import org.apache.struts.chain.commands.AbstractValidateActionForm;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ActionConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Validate the properties of the form bean for this request.  If there are
@@ -41,7 +41,7 @@ import org.apache.struts.config.ActionConfig;
  */
 public class ValidateActionForm extends AbstractValidateActionForm {
     // ------------------------------------------------------ Instance Variables
-    private static final Log log = LogFactory.getLog(ValidateActionForm.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ValidateActionForm.class);
 
     // ------------------------------------------------------- Protected Methods
 
@@ -62,9 +62,7 @@ public class ValidateActionForm extends AbstractValidateActionForm {
         // Special handling for multipart request
         if ((errors != null) && !errors.isEmpty()) {
             if (actionForm.getMultipartRequestHandler() != null) {
-                if (log.isTraceEnabled()) {
-                    log.trace("  Rolling back multipart request");
-                }
+                LOG.trace("  Rolling back multipart request");
 
                 actionForm.getMultipartRequestHandler().rollback();
             }

@@ -20,12 +20,12 @@
  */
 package org.apache.struts.chain.commands;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.util.Locale;
+
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.config.ModuleConfig;
-
-import java.util.Locale;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Select the <code>Locale</code> to be used for this request.</p>
@@ -39,8 +39,8 @@ public abstract class AbstractSelectLocale extends ActionCommandBase {
     /**
      * <p> Provide Commons Logging instance for this class. </p>
      */
-    private static final Log LOG =
-        LogFactory.getLog(AbstractSelectLocale.class);
+    private static final Logger LOG =
+        LoggerFactory.getLogger(AbstractSelectLocale.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -59,10 +59,8 @@ public abstract class AbstractSelectLocale extends ActionCommandBase {
         ModuleConfig moduleConfig = actionCtx.getModuleConfig();
 
         if (!moduleConfig.getControllerConfig().getLocale()) {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("module is not configured for a specific locale; "
-                    + "nothing to do");
-            }
+            LOG.debug("module is not configured for a specific locale; "
+                + "nothing to do");
 
             return CONTINUE_PROCESSING;
         }
@@ -70,9 +68,7 @@ public abstract class AbstractSelectLocale extends ActionCommandBase {
         // Retrieve and cache appropriate Locale for this request
         Locale locale = getLocale(actionCtx);
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("set context locale to " + locale);
-        }
+        LOG.debug("set context locale to {}", locale);
 
         actionCtx.setLocale(locale);
 

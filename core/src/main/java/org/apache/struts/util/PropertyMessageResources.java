@@ -20,15 +20,14 @@
  */
 package org.apache.struts.util;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import java.io.IOException;
 import java.io.InputStream;
-
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Concrete subclass of <code>MessageResources</code> that reads message keys
@@ -129,8 +128,8 @@ public class PropertyMessageResources extends MessageResources {
     /**
      * The <code>Log</code> instance for this class.
      */
-    protected static final Log log =
-        LogFactory.getLog(PropertyMessageResources.class);
+    protected static final Logger LOG =
+        LoggerFactory.getLogger(PropertyMessageResources.class);
 
     // ------------------------------------------------------------- Properties
 
@@ -163,7 +162,7 @@ public class PropertyMessageResources extends MessageResources {
     public PropertyMessageResources(MessageResourcesFactory factory,
         String config) {
         super(factory, config);
-        log.trace("Initializing, config='" + config + "'");
+        LOG.trace("Initializing, config='{}'", config);
     }
 
     /**
@@ -178,8 +177,8 @@ public class PropertyMessageResources extends MessageResources {
     public PropertyMessageResources(MessageResourcesFactory factory,
         String config, boolean returnNull) {
         super(factory, config, returnNull);
-        log.trace("Initializing, config='" + config + "', returnNull="
-            + returnNull);
+        LOG.trace("Initializing, config='{}', returnNull={}",
+            config, returnNull);
     }
 
     // --------------------------------------------------------- Public Methods
@@ -195,19 +194,13 @@ public class PropertyMessageResources extends MessageResources {
         String value = (mode == null ? null : mode.trim());
         if ("jstl".equalsIgnoreCase(value)) {
             this.mode = MODE_JSTL;
-            if (log.isDebugEnabled()) {
-                log.info("Operating in JSTL compatible mode [" + mode + "]");
-            }
+            LOG.debug("Operating in JSTL compatible mode [{}]", mode);
         } else if ("resource".equalsIgnoreCase(value)) {
             this.mode = MODE_RESOURCE_BUNDLE;
-            if (log.isDebugEnabled()) {
-                log.info("Operating in PropertyResourceBundle compatible mode [" + mode + "]");
-            }
+            LOG.debug("Operating in PropertyResourceBundle compatible mode [{}]", mode);
         } else {
             this.mode = MODE_DEFAULT;
-            if (log.isDebugEnabled()) {
-                log.info("Operating in Default mode [" + mode + "]");
-            }
+            LOG.debug("Operating in Default mode [{}]", mode);
         }
     }
 
@@ -225,9 +218,7 @@ public class PropertyMessageResources extends MessageResources {
      * @return text message for the specified key and locale
      */
     public String getMessage(Locale locale, String key) {
-        if (log.isDebugEnabled()) {
-            log.debug("getMessage(" + locale + "," + key + ")");
-        }
+        LOG.debug("getMessage({},{})", locale, key);
 
         // Initialize variables we will require
         String localeKey = localeKey(locale);
@@ -295,9 +286,7 @@ public class PropertyMessageResources extends MessageResources {
      * @param localeKey Locale key for the messages to be retrieved
      */
     protected synchronized void loadLocale(String localeKey) {
-        if (log.isTraceEnabled()) {
-            log.trace("loadLocale(" + localeKey + ")");
-        }
+        LOG.trace("loadLocale({})", localeKey);
 
         // Have we already attempted to load messages for this locale?
         if (locales.get(localeKey) != null) {
@@ -319,9 +308,7 @@ public class PropertyMessageResources extends MessageResources {
         Properties props = new Properties();
 
         // Load the specified property resource
-        if (log.isTraceEnabled()) {
-            log.trace("  Loading resource '" + name + "'");
-        }
+        LOG.trace("  Loading resource '{}'", name);
 
         ClassLoader classLoader =
             Thread.currentThread().getContextClassLoader();
@@ -336,21 +323,17 @@ public class PropertyMessageResources extends MessageResources {
             try {
                 props.load(is);
             } catch (IOException e) {
-                log.error("loadLocale()", e);
+                LOG.error("loadLocale()", e);
             } finally {
                 try {
                     is.close();
                 } catch (IOException e) {
-                    log.error("loadLocale()", e);
+                    LOG.error("loadLocale()", e);
                 }
             }
-            if (log.isTraceEnabled()) {
-                log.trace("  Loading resource completed");
-            }
+            LOG.trace("  Loading resource completed");
         } else {
-            if (log.isWarnEnabled()) {
-                log.warn("  Resource "+name+" Not Found.");
-            }
+            LOG.warn("  Resource {} Not Found.", name);
         }
 
 
@@ -363,10 +346,9 @@ public class PropertyMessageResources extends MessageResources {
             for (Object oKey : props.keySet()) {
                 String key = oKey.toString();
 
-                if (log.isTraceEnabled()) {
-                    log.trace("  Saving message key '"
-                        + messageKey(localeKey, key));
-                }
+                LOG.atTrace()
+                    .setMessage("  Saving message key '{}'")
+                    .log(() -> messageKey(localeKey, key));
 
                 messages.put(messageKey(localeKey, key), props.getProperty(key));
             }

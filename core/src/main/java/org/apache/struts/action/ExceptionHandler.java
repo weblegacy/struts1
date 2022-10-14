@@ -20,19 +20,19 @@
  */
 package org.apache.struts.action;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.Globals;
-import org.apache.struts.config.ExceptionConfig;
-import org.apache.struts.util.MessageResources;
-import org.apache.struts.util.ModuleException;
+import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import java.io.IOException;
+import org.apache.struts.Globals;
+import org.apache.struts.config.ExceptionConfig;
+import org.apache.struts.util.MessageResources;
+import org.apache.struts.util.ModuleException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>An <strong>ExceptionHandler</strong> is configured in the Struts
@@ -97,7 +97,7 @@ public class ExceptionHandler {
     /**
      * <p>Commons logging instance.</p>
      */
-    private static final Log LOG = LogFactory.getLog(ExceptionHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ExceptionHandler.class);
 
     /**
      * <p>The message resources for this package.</p>
@@ -125,7 +125,7 @@ public class ExceptionHandler {
         ActionMapping mapping, ActionForm formInstance,
         HttpServletRequest request, HttpServletResponse response)
         throws ServletException {
-        LOG.debug("ExceptionHandler executing for exception " + ex);
+        LOG.debug("ExceptionHandler executing for exception ", ex);
 
         ActionForward forward;
         ActionMessage error;
@@ -171,8 +171,8 @@ public class ExceptionHandler {
             handleCommittedResponse(ex, ae, mapping, formInstance, request,
                 response, forward);
         } else {
-            LOG.warn("ExceptionHandler configured with " + SILENT_IF_COMMITTED
-                + " and response is committed.", ex);
+            LOG.warn("ExceptionHandler configured with {}"
+                + " and response is committed.", SILENT_IF_COMMITTED, ex);
         }
 
         return null;
@@ -215,15 +215,15 @@ public class ExceptionHandler {
                     return;
                 } catch (IOException e) {
                     LOG.error("IOException when trying to include "
-                        + "the error page path " + includePath, e);
+                        + "the error page path {}", includePath, e);
                 } catch (ServletException e) {
                     LOG.error("ServletException when trying to include "
-                        + "the error page path " + includePath, e);
+                        + "the error page path {}", includePath, e);
                 }
             } else {
                 LOG.warn("Suspicious includePath doesn't seem likely to work, "
-                    + "so skipping it: " + includePath
-                    + "; expected path to start with '/'");
+                    + "so skipping it: {}"
+                    + "; expected path to start with '/'", includePath);
             }
         }
 
@@ -272,7 +272,9 @@ public class ExceptionHandler {
      * @since Struts 1.2
      */
     protected void logException(Exception e) {
-        LOG.debug(messages.getMessage("exception.LOG"), e);
+        LOG.atDebug()
+            .setMessage(() -> messages.getMessage("exception.LOG"))
+            .setCause(e).log();
     }
 
     /**

@@ -20,14 +20,14 @@
  */
 package org.apache.struts.chain.commands.servlet;
 
+import java.util.Locale;
+
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.Globals;
 import org.apache.struts.chain.commands.AbstractSelectLocale;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
-
-import javax.servlet.http.HttpSession;
-
-import java.util.Locale;
 
 /**
  * <p>Select the <code>Locale</code> to be used for this request.</p>
@@ -36,7 +36,7 @@ import java.util.Locale;
  *          $
  */
 public class SelectLocale extends AbstractSelectLocale {
-//  private static final Log log = LogFactory.getLog(SelectLocale.class);
+//  private static final Logger LOG = LoggerFactory.getLogger(SelectLocale.class);
 
     // ------------------------------------------------------- Protected Methods
 

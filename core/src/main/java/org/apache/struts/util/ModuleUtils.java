@@ -20,15 +20,15 @@
  */
 package org.apache.struts.util;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.struts.Globals;
 import org.apache.struts.action.RequestProcessor;
 import org.apache.struts.config.MessageResourcesConfig;
 import org.apache.struts.config.ModuleConfig;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * General purpose utility methods related to module processing.
@@ -45,7 +45,7 @@ public class ModuleUtils {
     /**
      * Commons logging instance.
      */
-    private static final Log log = LogFactory.getLog(ModuleUtils.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ModuleUtils.class);
 
     /**
      * Constructor for ModuleUtils.
@@ -167,9 +167,7 @@ public class ModuleUtils {
      * @return The module prefix or ""
      */
     public String getModuleName(String matchPath, ServletContext context) {
-        if (log.isDebugEnabled()) {
-            log.debug("Get module name for path " + matchPath);
-        }
+        LOG.debug("Get module name for path {}", matchPath);
 
         String prefix = ""; // Initialize prefix before we try lookup
         String[] prefixes = getModulePrefixes(context);
@@ -177,7 +175,7 @@ public class ModuleUtils {
         // Get all other possible prefixes
         int lastSlash = 0; // Initialize before loop
 
-        while (prefix.equals("")
+        while (prefix.isEmpty()
             && ((lastSlash = matchPath.lastIndexOf("/")) > 0)) {
             // We may be in a non-default module.  Try to get it's prefix.
             matchPath = matchPath.substring(0, lastSlash);
@@ -192,9 +190,9 @@ public class ModuleUtils {
             }
         }
 
-        if (log.isDebugEnabled()) {
-            log.debug("Module name found: "
-                + (prefix.equals("") ? "default" : prefix));
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Module name found: {}",
+                prefix.isEmpty() ? "default" : prefix);
         }
 
         return prefix;

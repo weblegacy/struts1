@@ -20,11 +20,11 @@
  */
 package org.apache.struts.chain.commands;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.config.ActionConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p> Create (if necessary) and cache an <code>Action</code> for this
@@ -39,8 +39,8 @@ public abstract class AbstractCreateAction extends ActionCommandBase {
     /**
      * Provide a Commons logging instance for this class.
      */
-    private static final Log LOG =
-        LogFactory.getLog(AbstractCreateAction.class);
+    private static final Logger LOG =
+        LoggerFactory.getLogger(AbstractCreateAction.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -66,7 +66,7 @@ public abstract class AbstractCreateAction extends ActionCommandBase {
 
         // Check to see if an action has already been created
         if (actionCtx.getAction() != null) {
-            LOG.trace("already have an action [" + actionCtx.getAction() + "]");
+            LOG.trace("already have an action [{}]", actionCtx.getAction());
 
             return CONTINUE_PROCESSING;
         }
@@ -79,9 +79,9 @@ public abstract class AbstractCreateAction extends ActionCommandBase {
             String command = actionConfig.getCommand();
             if ((command == null) && (actionConfig.getForward() == null)
                 && (actionConfig.getInclude() == null)) {
-                LOG.error("no type or command for " + actionConfig.getPath());
+                LOG.error("no type or command for {}", actionConfig.getPath());
             } else {
-                LOG.trace("no type for " + actionConfig.getPath());
+                LOG.trace("no type for {}", actionConfig.getPath());
             }
 
             return CONTINUE_PROCESSING;
@@ -90,9 +90,7 @@ public abstract class AbstractCreateAction extends ActionCommandBase {
         // Create (if necessary) and cache an Action instance
         Action action = getAction(actionCtx, type, actionConfig);
 
-        if (LOG.isTraceEnabled()) {
-            LOG.trace("setting action to " + action);
-        }
+        LOG.trace("setting action to {}", action);
 
         actionCtx.setAction(action);
 

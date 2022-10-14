@@ -20,18 +20,17 @@
  */
 package org.apache.struts.dispatcher;
 
-import org.apache.struts.action.Action;
-import org.apache.struts.chain.contexts.ActionContext;
-import org.apache.struts.config.ActionConfig;
-import org.apache.struts.util.MessageResources;
-
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.struts.action.Action;
+import org.apache.struts.chain.contexts.ActionContext;
+import org.apache.struts.config.ActionConfig;
+import org.apache.struts.util.MessageResources;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This abstract class is the stock template for {@link Dispatcher}
@@ -71,7 +70,7 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
     /**
      * Shared commons Logging instance among subclasses.
      */
-    protected transient final Log log;
+    protected transient final Logger log;
 
     /**
      * The dictionary of {@link Method} objects we have introspected for this
@@ -90,7 +89,7 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
      */
     public AbstractDispatcher(MethodResolver methodResolver) {
         this.methodResolver = methodResolver;
-        log = LogFactory.getLog(getClass());
+        log = LoggerFactory.getLogger(getClass());
         methods = new HashMap<>();
     }
 
@@ -133,8 +132,10 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
         } catch (NoSuchMethodException e) {
             // The log message reveals the offending method name...
             String path = context.getActionConfig().getPath();
-            String message = messages.getMessage(MSG_KEY_MISSING_METHOD_LOG, path, methodName);
-            log.error(message, e);
+            if (log.isErrorEnabled()) {
+                String message = messages.getMessage(MSG_KEY_MISSING_METHOD_LOG, path, methodName);
+                log.error(message, e);
+            }
 
             // ...but the exception thrown does not
             // See r383718 (XSS vulnerability)
@@ -240,8 +241,11 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
             }
             return retval;
         } catch (IllegalAccessException e) {
-            String message = messages.getMessage(MSG_KEY_DISPATCH_ERROR, path);
-            log.error(message + ":" + method.getName(), e);
+            log.atError()
+                .setMessage("{}:{}")
+                .addArgument(() -> messages.getMessage(MSG_KEY_DISPATCH_ERROR, path))
+                .addArgument(method.getName())
+                .setCause(e).log();
             throw e;
         } catch (InvocationTargetException e) {
             // Rethrow the target exception if possible so that the
@@ -250,8 +254,11 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
             if (t instanceof Exception) {
                 throw (Exception) t;
             } else {
-                String message = messages.getMessage(MSG_KEY_DISPATCH_ERROR, path);
-                log.error(message + ":" + method.getName(), e);
+                log.atError()
+                    .setMessage("{}:{}")
+                    .addArgument(() -> messages.getMessage(MSG_KEY_DISPATCH_ERROR, path))
+                    .addArgument(method.getName())
+                    .setCause(e).log();
                 throw new Exception(t);
             }
         }

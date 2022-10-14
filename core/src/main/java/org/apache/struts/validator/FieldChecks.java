@@ -20,9 +20,14 @@
  */
 package org.apache.struts.validator;
 
+import java.io.Serializable;
+import java.util.Collection;
+import java.util.Locale;
+import java.util.StringTokenizer;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.commons.validator.Field;
 import org.apache.commons.validator.GenericTypeValidator;
 import org.apache.commons.validator.GenericValidator;
@@ -34,13 +39,8 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.RequestUtils;
-
-import javax.servlet.http.HttpServletRequest;
-
-import java.io.Serializable;
-import java.util.Collection;
-import java.util.Locale;
-import java.util.StringTokenizer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p> This class contains the default validations that are used in the
@@ -56,7 +56,7 @@ public class FieldChecks implements Serializable {
     /**
      * Commons Logging instance.
      */
-    private static final Log log = LogFactory.getLog(FieldChecks.class);
+    private static final Logger LOG = LoggerFactory.getLogger(FieldChecks.class);
 
     /**
      * The message resources for this package.
@@ -895,7 +895,7 @@ public class FieldChecks implements Serializable {
                     GenericTypeValidator.formatDate(value, datePattern, isStrict);
             }
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            LOG.error(e.getMessage(), e);
         }
 
         if (result == null) {
@@ -1435,12 +1435,11 @@ public class FieldChecks implements Serializable {
      */
     private static void processFailure(ActionMessages errors, Field field,
         String formName, String validatorName, Throwable t) {
-        // Log the error
-        String logErrorMsg =
-            sysmsgs.getMessage("validation.failed", validatorName,
-                field.getProperty(), formName, t.toString());
-
-        log.error(logErrorMsg, t);
+        // Logger the error
+        LOG.atError()
+            .setMessage(() -> sysmsgs.getMessage("validation.failed",
+                validatorName, field.getProperty(), formName, t.toString()))
+            .setCause(t).log();
 
         // Add general "system error" message to show to the user
         String userErrorMsg = sysmsgs.getMessage("system.error");

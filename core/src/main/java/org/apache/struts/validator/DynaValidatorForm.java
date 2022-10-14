@@ -20,22 +20,21 @@
  */
 package org.apache.struts.validator;
 
+import java.io.Serializable;
+import java.util.Map;
+
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.beanutils.DynaBean;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.commons.validator.Validator;
 import org.apache.commons.validator.ValidatorException;
 import org.apache.commons.validator.ValidatorResults;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.DynaActionForm;
-
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-
-import java.io.Serializable;
-
-import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>This class extends <strong>DynaActionForm</strong> and provides basic
@@ -62,7 +61,7 @@ public class DynaValidatorForm extends DynaActionForm implements DynaBean,
     /**
      * Commons Logging instance.
      */
-    private static Log log = LogFactory.getLog(DynaValidatorForm.class);
+    private static Logger LOG = LoggerFactory.getLogger(DynaValidatorForm.class);
 
     /**
      * The results returned from the validation performed by the
@@ -125,7 +124,7 @@ public class DynaValidatorForm extends DynaActionForm implements DynaBean,
         try {
             validatorResults = validator.validate();
         } catch (ValidatorException e) {
-            log.error(e.getMessage(), e);
+            LOG.error(e.getMessage(), e);
         }
 
         return errors;
@@ -180,7 +179,7 @@ public class DynaValidatorForm extends DynaActionForm implements DynaBean,
             try {
                 p = (Integer) props.get("page");
             } catch (ClassCastException e) {
-                log.error("Dyna 'page' property must be of type java.lang.Integer.",
+                LOG.error("Dyna 'page' property must be of type java.lang.Integer.",
                     e);
                 throw e;
             }

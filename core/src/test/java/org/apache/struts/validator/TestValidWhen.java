@@ -26,8 +26,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.commons.validator.util.ValidatorUtils;
 import org.apache.struts.validator.validwhen.ValidWhenEvaluator;
 import org.apache.struts.validator.validwhen.ValidWhenLexer;
@@ -37,6 +35,8 @@ import org.apache.struts.validator.validwhen.ValidWhenResult;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Unit tests for the ValidWhen Parser/Lexer.
@@ -45,7 +45,7 @@ public class TestValidWhen {
     /**
      * All logging goes through this logger
      */
-    private static Log log = LogFactory.getLog(TestValidWhen.class);
+    private static Logger LOG = LoggerFactory.getLogger(TestValidWhen.class);
     protected PojoBean testBean;
 
     @BeforeEach
@@ -302,7 +302,7 @@ public class TestValidWhen {
         } catch (Exception ex) {
 //            System.out.println("Exception: " + ex);
 //            ex.printStackTrace();
-            log.error("Parsing " + test + " for property '" + property + "'", ex);
+            LOG.error("Parsing {} for property '{}'", test, property, ex);
             fail("Parsing " + test + " threw " + ex);
         }
 

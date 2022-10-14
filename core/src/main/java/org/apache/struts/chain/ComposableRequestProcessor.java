@@ -20,12 +20,19 @@
  */
 package org.apache.struts.chain;
 
+import java.io.IOException;
+import java.lang.reflect.Constructor;
+
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.UnavailableException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.beanutils.ConstructorUtils;
 import org.apache.commons.chain.Catalog;
 import org.apache.commons.chain.CatalogFactory;
 import org.apache.commons.chain.Command;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.RequestProcessor;
 import org.apache.struts.chain.contexts.ActionContext;
@@ -34,16 +41,8 @@ import org.apache.struts.config.ControllerConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.upload.MultipartRequestWrapper;
 import org.apache.struts.util.RequestUtils;
-
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.UnavailableException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.io.IOException;
-
-import java.lang.reflect.Constructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p> ComposableRequestProcessor uses the Chain Of Resposibility design
@@ -89,8 +88,8 @@ public class ComposableRequestProcessor extends RequestProcessor {
     /**
      * <p>The <code>Log</code> instance for this class.</p>
      */
-    protected static final Log LOG =
-        LogFactory.getLog(ComposableRequestProcessor.class);
+    protected static final Logger LOG =
+        LoggerFactory.getLogger(ComposableRequestProcessor.class);
 
     /**
      * <p>The {@link CatalogFactory} from which catalog containing the the

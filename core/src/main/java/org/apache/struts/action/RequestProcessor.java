@@ -20,16 +20,9 @@
  */
 package org.apache.struts.action;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.Globals;
-import org.apache.struts.config.ActionConfig;
-import org.apache.struts.config.ExceptionConfig;
-import org.apache.struts.config.ForwardConfig;
-import org.apache.struts.config.ModuleConfig;
-import org.apache.struts.upload.MultipartRequestWrapper;
-import org.apache.struts.util.MessageResources;
-import org.apache.struts.util.RequestUtils;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
@@ -38,10 +31,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import java.io.IOException;
-
-import java.util.HashMap;
-import java.util.Locale;
+import org.apache.struts.Globals;
+import org.apache.struts.config.ActionConfig;
+import org.apache.struts.config.ExceptionConfig;
+import org.apache.struts.config.ForwardConfig;
+import org.apache.struts.config.ModuleConfig;
+import org.apache.struts.upload.MultipartRequestWrapper;
+import org.apache.struts.util.MessageResources;
+import org.apache.struts.util.RequestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p><strong>RequestProcessor</strong> contains the processing logic that the
@@ -74,7 +73,7 @@ public class RequestProcessor {
     /**
      * <p>Commons Logging instance.</p>
      */
-    protected static Log log = LogFactory.getLog(RequestProcessor.class);
+    protected static Logger LOG = LoggerFactory.getLogger(RequestProcessor.class);
 
     // ----------------------------------------------------- Instance Variables
 
@@ -152,10 +151,8 @@ public class RequestProcessor {
             return;
         }
 
-        if (log.isDebugEnabled()) {
-            log.debug("Processing a '" + request.getMethod() + "' for path '"
-                + path + "'");
-        }
+        LOG.debug("Processing a '{}' for path '{}'",
+            request.getMethod(), path);
 
         // Select a Locale for the current user if requested
         processLocale(request, response);
@@ -246,9 +243,7 @@ public class RequestProcessor {
         // Acquire the Action instance we will be using (if there is one)
         String className = mapping.getType();
 
-        if (log.isDebugEnabled()) {
-            log.debug(" Looking for Action instance for class " + className);
-        }
+        LOG.debug(" Looking for Action instance for class {}", className);
 
         // If there were a mapping property indicating whether
         // an Action were a singleton or not ([true]),
@@ -260,17 +255,13 @@ public class RequestProcessor {
             instance = actions.get(className);
 
             if (instance != null) {
-                if (log.isTraceEnabled()) {
-                    log.trace("  Returning existing Action instance");
-                }
+                LOG.trace("  Returning existing Action instance");
 
                 return (instance);
             }
 
             // Create and return a new Action instance
-            if (log.isTraceEnabled()) {
-                log.trace("  Creating new Action instance");
-            }
+            LOG.trace("  Creating new Action instance");
 
             try {
                 instance = (Action) RequestUtils.applicationInstance(className);
@@ -278,8 +269,10 @@ public class RequestProcessor {
                 // Maybe we should propagate this exception
                 // instead of returning null.
             } catch (Exception e) {
-                log.error(getInternal().getMessage("actionCreate",
-                        mapping.getPath(), mapping.toString()), e);
+                LOG.atError()
+                    .setMessage(() -> getInternal().getMessage("actionCreate",
+                        mapping.getPath(), mapping.toString()))
+                    .setCause(e).log();
 
                 response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                     getInternal().getMessage("actionCreate", mapping.getPath()));
@@ -320,11 +313,9 @@ public class RequestProcessor {
         }
 
         // Store the new instance in the appropriate scope
-        if (log.isDebugEnabled()) {
-            log.debug(" Storing ActionForm bean instance in scope '"
-                + mapping.getScope() + "' under attribute key '"
-                + mapping.getAttribute() + "'");
-        }
+        LOG.debug(" Storing ActionForm bean instance in scope '{}' "
+            + "under attribute key '{}'",
+            mapping.getScope(), mapping.getAttribute());
 
         if ("request".equals(mapping.getScope())) {
             request.setAttribute(mapping.getAttribute(), instance);
@@ -355,9 +346,7 @@ public class RequestProcessor {
             return;
         }
 
-        if (log.isDebugEnabled()) {
-            log.debug("processForwardConfig(" + forward + ")");
-        }
+        LOG.debug("processForwardConfig({})", forward);
 
         String forwardPath = forward.getPath();
         String uri;
@@ -504,7 +493,7 @@ public class RequestProcessor {
         ExceptionConfig config = mapping.findException(exception.getClass());
 
         if (config == null) {
-            log.warn(getInternal().getMessage("unhandledException",
+            LOG.atWarn().log(() -> getInternal().getMessage("unhandledException",
                     exception.getClass()));
 
             if (exception instanceof IOException) {
@@ -624,9 +613,7 @@ public class RequestProcessor {
         Locale locale = request.getLocale();
 
         if (locale != null) {
-            if (log.isDebugEnabled()) {
-                log.debug(" Setting user locale '" + locale + "'");
-            }
+            LOG.debug(" Setting user locale '{}'", locale);
 
             session.setAttribute(Globals.LOCALE_KEY, locale);
         }
@@ -673,7 +660,7 @@ public class RequestProcessor {
         // No mapping can be found to process this request
         String msg = getInternal().getMessage("processInvalid");
 
-        log.error(msg + " " + path);
+        LOG.error("{} {}", msg, path);
         response.sendError(HttpServletResponse.SC_NOT_FOUND, msg);
 
         return null;
@@ -764,7 +751,7 @@ public class RequestProcessor {
         if (!path.startsWith(prefix)) {
             String msg = getInternal().getMessage("processPath");
 
-            log.error(msg + " " + request.getRequestURI());
+            LOG.error("{} {}", msg, request.getRequestURI());
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, msg);
 
             return null;
@@ -803,9 +790,7 @@ public class RequestProcessor {
         }
 
         // Populate the bean properties of this ActionForm instance
-        if (log.isDebugEnabled()) {
-            log.debug(" Populating bean properties from this request");
-        }
+        LOG.debug(" Populating bean properties from this request");
 
         form.setServlet(this.servlet);
         form.reset(mapping, request);
@@ -868,20 +853,16 @@ public class RequestProcessor {
         // Check the current user against the list of required roles
         for (int i = 0; i < roles.length; i++) {
             if (request.isUserInRole(roles[i])) {
-                if (log.isDebugEnabled()) {
-                    log.debug(" User '" + request.getRemoteUser()
-                        + "' has role '" + roles[i] + "', granting access");
-                }
+                LOG.debug(" User '{}' has role '{}', granting access",
+                    request.getRemoteUser(), roles[i]);
 
                 return (true);
             }
         }
 
         // The current user is not authorized for this action
-        if (log.isDebugEnabled()) {
-            log.debug(" User '" + request.getRemoteUser()
-                + "' does not have any required role, denying access");
-        }
+        LOG.debug(" User '{}' does not have any required role, denying access",
+            request.getRemoteUser());
 
         response.sendError(HttpServletResponse.SC_FORBIDDEN,
             getInternal().getMessage("notAuthorized", mapping.getPath()));
@@ -927,9 +908,7 @@ public class RequestProcessor {
         // error or a spoof.
         if (request.getAttribute(Globals.CANCEL_KEY) != null) {
             if (mapping.getCancellable()) {
-                if (log.isDebugEnabled()) {
-                    log.debug(" Cancelled transaction, skipping validation");
-                }
+                LOG.debug(" Cancelled transaction, skipping validation");
                 return (true);
             } else {
                 request.removeAttribute(Globals.CANCEL_KEY);
@@ -938,25 +917,19 @@ public class RequestProcessor {
         }
 
         // Call the form bean's validation method
-        if (log.isDebugEnabled()) {
-            log.debug(" Validating input form properties");
-        }
+        LOG.debug(" Validating input form properties");
 
         ActionMessages errors = form.validate(mapping, request);
 
         if ((errors == null) || errors.isEmpty()) {
-            if (log.isTraceEnabled()) {
-                log.trace("  No errors detected, accepting input");
-            }
+            LOG.trace("  No errors detected, accepting input");
 
             return (true);
         }
 
         // Special handling for multipart request
         if (form.getMultipartRequestHandler() != null) {
-            if (log.isTraceEnabled()) {
-                log.trace("  Rolling back multipart request");
-            }
+            LOG.trace("  Rolling back multipart request");
 
             form.getMultipartRequestHandler().rollback();
         }
@@ -965,9 +938,7 @@ public class RequestProcessor {
         String input = mapping.getInput();
 
         if (input == null) {
-            if (log.isTraceEnabled()) {
-                log.trace("  Validation failed but no input form available");
-            }
+            LOG.trace("  Validation failed but no input form available");
 
             response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
                 getInternal().getMessage("noInput", mapping.getPath()));
@@ -976,9 +947,7 @@ public class RequestProcessor {
         }
 
         // Save our error messages and return to the input form if possible
-        if (log.isDebugEnabled()) {
-            log.debug(" Validation failed, returning to '" + input + "'");
-        }
+        LOG.debug(" Validation failed, returning to '{}'", input);
 
         request.setAttribute(Globals.ERROR_KEY, errors);
 
@@ -1015,9 +984,7 @@ public class RequestProcessor {
 
         // Delegate the processing of this request
         // :FIXME: - exception handling?
-        if (log.isDebugEnabled()) {
-            log.debug(" Delegating via forward to '" + uri + "'");
-        }
+        LOG.debug(" Delegating via forward to '{}'", uri);
 
         doForward(uri, request, response);
     }
@@ -1044,9 +1011,7 @@ public class RequestProcessor {
 
         // Delegate the processing of this request
         // FIXME - exception handling?
-        if (log.isDebugEnabled()) {
-            log.debug(" Delegating via include to '" + uri + "'");
-        }
+        LOG.debug(" Delegating via include to '{}'", uri);
 
         doInclude(uri, request, response);
     }

@@ -20,25 +20,23 @@
  */
 package org.apache.struts.validator;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.commons.validator.ValidatorResources;
-import org.apache.struts.action.ActionServlet;
-import org.apache.struts.action.PlugIn;
-import org.apache.struts.config.ModuleConfig;
-import org.xml.sax.SAXException;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.UnavailableException;
 
-import java.io.IOException;
-
-import java.net.URL;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.StringTokenizer;
+import org.apache.commons.validator.ValidatorResources;
+import org.apache.struts.action.ActionServlet;
+import org.apache.struts.action.PlugIn;
+import org.apache.struts.config.ModuleConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.xml.sax.SAXException;
 
 /**
  * Loads <code>ValidatorResources</code> based on configuration in the
@@ -52,7 +50,7 @@ public class ValidatorPlugIn implements PlugIn {
     /**
      * Commons Logging instance.
      */
-    private static Log log = LogFactory.getLog(ValidatorPlugIn.class);
+    private static Logger LOG = LoggerFactory.getLogger(ValidatorPlugIn.class);
 
     /**
      * Delimitter for Validator resources.
@@ -177,7 +175,7 @@ public class ValidatorPlugIn implements PlugIn {
                 + config.getPrefix(),
                 (this.stopOnFirstError ? Boolean.TRUE : Boolean.FALSE));
         } catch (Exception e) {
-            log.error(e.getMessage(), e);
+            LOG.error(e.getMessage(), e);
             throw new UnavailableException(
                 "Cannot load a validator resource from '" + pathnames + "'");
         }
@@ -188,9 +186,7 @@ public class ValidatorPlugIn implements PlugIn {
      * initialization.
      */
     public void destroy() {
-        if (log.isDebugEnabled()) {
-            log.debug("Destroying ValidatorPlugin");
-        }
+        LOG.debug("Destroying ValidatorPlugin");
 
         servlet = null;
 //      config = null;
@@ -218,10 +214,8 @@ public class ValidatorPlugIn implements PlugIn {
             while (st.hasMoreTokens()) {
                 String validatorRules = st.nextToken().trim();
 
-                if (log.isInfoEnabled()) {
-                    log.info("Loading validation rules file from '"
-                        + validatorRules + "'");
-                }
+                LOG.info("Loading validation rules file from '{}'",
+                    validatorRules);
 
                 URL input =
                     servlet.getServletContext().getResource(validatorRules);
@@ -245,7 +239,7 @@ public class ValidatorPlugIn implements PlugIn {
 
             this.resources = new ValidatorResources(urlArray);
         } catch (SAXException sex) {
-            log.error("Skipping all validation", sex);
+            LOG.error("Skipping all validation", sex);
             throw new ServletException(sex);
         }
     }

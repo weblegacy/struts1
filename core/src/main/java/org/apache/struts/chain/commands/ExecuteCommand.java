@@ -23,10 +23,10 @@ package org.apache.struts.chain.commands;
 import org.apache.commons.chain.Catalog;
 import org.apache.commons.chain.CatalogFactory;
 import org.apache.commons.chain.Command;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.config.ActionConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>Invoke the appropriate <code>Command</code> for this request.  If the
@@ -48,7 +48,7 @@ public class ExecuteCommand extends ActionCommandBase {
     /**
      * Provide Commons Logging instance for this class.
      */
-    private static final Log LOG = LogFactory.getLog(ExecuteCommand.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ExecuteCommand.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -129,8 +129,8 @@ public class ExecuteCommand extends ActionCommandBase {
             catalog = CatalogFactory.getInstance().getCatalog(catalogName);
 
             if (catalog == null) {
-                LOG.warn("When looking up " + commandName + ","
-                    + " no catalog found under " + catalogName);
+                LOG.warn("When looking up {}, no catalog found under {}",
+                    commandName, catalogName);
 
                 return null;
             }
@@ -139,17 +139,15 @@ public class ExecuteCommand extends ActionCommandBase {
             catalog = CatalogFactory.getInstance().getCatalog();
 
             if (catalog == null) {
-                LOG.warn("When looking up " + commandName + ","
-                    + " no default catalog found.");
+                LOG.warn("When looking up {}, no default catalog found.",
+                    commandName);
 
                 return null;
             }
         }
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("looking up command " + commandName + " in "
-                + catalogName);
-        }
+        LOG.debug("looking up command {} in {}",
+            commandName, catalogName);
 
         return catalog.getCommand(commandName);
     }

@@ -20,15 +20,14 @@
  */
 package org.apache.struts.config;
 
-import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.util.RequestUtils;
-
 import java.lang.reflect.InvocationTargetException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.struts.util.RequestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>A JavaBean representing the configuration information of an
@@ -41,7 +40,7 @@ import java.util.HashMap;
 public class ActionConfig extends BaseConfig {
     private static final long serialVersionUID = -3999561115495765079L;
 
-    private static final Log log = LogFactory.getLog(ActionConfig.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ActionConfig.class);
 
     // ----------------------------------------------------- Instance Variables
 
@@ -1137,7 +1136,7 @@ public class ActionConfig extends BaseConfig {
             // Check for a locally defined handler
             String name = type.getName();
 
-            log.debug("findException: look locally for " + name);
+            LOG.debug("findException: look locally for {}", name);
             config = findExceptionConfig(name);
 
             if (config != null) {
@@ -1145,7 +1144,7 @@ public class ActionConfig extends BaseConfig {
             }
 
             // Check for a globally defined handler
-            log.debug("findException: look globally for " + name);
+            LOG.debug("findException: look globally for {}", name);
             config = getModuleConfig().findExceptionConfig(name);
 
             if (config != null) {

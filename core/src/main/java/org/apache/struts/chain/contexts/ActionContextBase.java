@@ -20,10 +20,11 @@
  */
 package org.apache.struts.chain.contexts;
 
+import java.util.Locale;
+import java.util.Map;
+
 import org.apache.commons.chain.Context;
 import org.apache.commons.chain.impl.ContextBase;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMessages;
@@ -34,9 +35,8 @@ import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.TokenProcessor;
-
-import java.util.Locale;
-import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p> Provide an abstract but semi-complete implementation of ActionContext
@@ -134,9 +134,9 @@ public abstract class ActionContextBase extends ContextWrapper
     protected TokenProcessor token = null;
 
     /**
-     * Store the Log instance for this Context.
+     * Store the Logger instance for this Context.
      */
-    private Log logger = null;
+    private Logger logger = null;
 
     /**
      * Instantiate ActionContextBase, wrapping the given Context.
@@ -146,7 +146,7 @@ public abstract class ActionContextBase extends ContextWrapper
     public ActionContextBase(Context context) {
         super(context);
         token = TokenProcessor.getInstance();
-        logger = LogFactory.getLog(this.getClass());
+        logger = LoggerFactory.getLogger(this.getClass());
     }
 
     /**
@@ -465,20 +465,22 @@ public abstract class ActionContextBase extends ContextWrapper
      * <p> Provide the currently configured commons-logging <code>Log</code>
      * instance. </p>
      *
-     * @return Log instance for this context
+     * @return Logger instance for this context
      */
-    public Log getLogger() {
+    public Logger getLogger() {
         return this.logger;
     }
 
     /**
-     * <p> Set the commons-logging <code>Log</code> instance which should be
+     * Set the slf4j {@code Logger} instance which should be
      * used to LOG messages. This is initialized at instantiation time but may
      * be overridden. Be advised not to set the value to null, as
-     * <code>ActionContextBase</code> uses the logger for some of its own
-     * operations. </p>
+     * {@code ActionContextBase} uses the logger for some of its own
+     * operations.
+     *
+     * @param logger instance for this context
      */
-    public void setLogger(Log logger) {
+    public void setLogger(Logger logger) {
         this.logger = logger;
     }
 

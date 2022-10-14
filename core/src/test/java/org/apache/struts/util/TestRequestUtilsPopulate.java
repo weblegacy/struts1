@@ -41,6 +41,7 @@ import org.apache.struts.mock.TestMockBase;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.slf4j.LoggerFactory;
 
 /**
  * Unit tests for the RequestUtil's {@code populate} method.
@@ -51,17 +52,17 @@ public class TestRequestUtilsPopulate extends TestMockBase {
 
     private final static String STRING_VALUE = "Test";
 
-    protected static TestLogFactory logFactory;
+    protected static TestLoggerFactory logFactory;
 
     // ----------------------------------------------------- Setup and Teardown
     @BeforeAll
     public static void setUpAll() {
-        logFactory = TestLogFactory.getInstance();
+        logFactory = (TestLoggerFactory) LoggerFactory.getILoggerFactory();
     }
 
     @AfterAll
     public static void tearDownAll() {
-        TestLogFactory.releaseAll();
+        logFactory.release();
     }
 
     // ------------------------------------------------------- Individual Tests
@@ -238,5 +239,4 @@ public class TestRequestUtilsPopulate extends TestMockBase {
 
         return ignoreSet;
     }
-
 }

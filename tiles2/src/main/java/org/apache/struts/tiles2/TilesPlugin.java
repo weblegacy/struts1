@@ -23,8 +23,6 @@ package org.apache.struts.tiles2;
 
 import javax.servlet.ServletException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;
 import org.apache.struts.action.RequestProcessor;
@@ -38,6 +36,10 @@ import org.apache.tiles.TilesContainer;
 import org.apache.tiles.TilesException;
 import org.apache.tiles.access.TilesAccess;
 import org.apache.tiles.definition.DefinitionsFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 
 /**
  * Tiles Plugin used to initialize Tiles.
@@ -68,9 +70,14 @@ import org.apache.tiles.definition.DefinitionsFactory;
 public class TilesPlugin implements PlugIn {
 
     /**
-     * Commons Logging instance.
+     * Marker for logging of fatal errors.
      */
-    protected static Log log = LogFactory.getLog(TilesPlugin.class);
+    private final static Marker FATAL = MarkerFactory.getMarker("FATAL");
+
+    /**
+     * SLF4J Logging instance.
+     */
+    protected static Logger log = LoggerFactory.getLogger(TilesPlugin.class);
 
     /**
      * Is the factory module aware?
@@ -178,7 +185,7 @@ public class TilesPlugin implements PlugIn {
                         container);
             }
         } catch (TilesException e) {
-            log.fatal("Unable to retrieve tiles factory.", e);
+            log.error(FATAL, "Unable to retrieve tiles factory.", e);
             throw new IllegalStateException("Unable to instantiate container.");
         }
     }
@@ -218,10 +225,8 @@ public class TilesPlugin implements PlugIn {
                 RequestUtils.applicationClass(configProcessorClassname);
 
         } catch (ClassNotFoundException ex) {
-            log.fatal(
-                "Can't set TilesRequestProcessor: bad class name '"
-                    + configProcessorClassname
-                    + "'.");
+            log.error(FATAL, "Can't set TilesRequestProcessor: bad class name '{}'.",
+                configProcessorClassname);
             throw new ServletException(ex);
         }
 
@@ -246,9 +251,7 @@ public class TilesPlugin implements PlugIn {
             // Not compatible
             String msg =
                 "TilesPlugin : Specified RequestProcessor not compatible with TilesRequestProcessor";
-            if (log.isFatalEnabled()) {
-                log.fatal(msg);
-            }
+            log.error(FATAL, msg);
             throw new ServletException(msg);
         }
     }

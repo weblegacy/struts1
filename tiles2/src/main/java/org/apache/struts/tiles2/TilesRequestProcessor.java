@@ -28,8 +28,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.RequestProcessor;
 import org.apache.struts.config.ForwardConfig;
@@ -41,6 +39,8 @@ import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.Request;
 import org.apache.tiles.request.servlet.ServletRequest;
 import org.apache.tiles.request.servlet.ServletUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p><strong>RequestProcessor</strong> contains the processing logic that
@@ -63,9 +63,9 @@ import org.apache.tiles.request.servlet.ServletUtil;
 public class TilesRequestProcessor extends RequestProcessor {
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    protected static Log log = LogFactory.getLog(TilesRequestProcessor.class);
+    protected static Logger log = LoggerFactory.getLogger(TilesRequestProcessor.class);
 
     /**
      * The used servlet context.
@@ -130,9 +130,7 @@ public class TilesRequestProcessor extends RequestProcessor {
             }
         } else {
             // ignore not found
-            if (log.isDebugEnabled()) {
-                log.debug("Cannot find definition '" + definitionName + "'");
-            }
+            log.debug("Cannot find definition '{}'", definitionName);
         }
 
         return retValue;
@@ -189,27 +187,16 @@ public class TilesRequestProcessor extends RequestProcessor {
             return;
         }
 
-        if (log.isDebugEnabled()) {
-            log.debug(
-                "processForwardConfig("
-                    + forward.getPath()
-                    + ")");
-        }
+        log.debug("processForwardConfig({})", forward.getPath());
 
         // Try to process the definition.
         if (processTilesDefinition(forward.getPath(),
-            request,
-            response)) {
-            if (log.isDebugEnabled()) {
-                log.debug(
-                    "  '" + forward.getPath() + "' - processed as definition");
-            }
+                request, response)) {
+            log.debug("  '{}' - processed as definition", forward.getPath());
             return;
         }
 
-        if (log.isDebugEnabled()) {
-            log.debug("  '" + forward.getPath() + "' - processed as uri");
-        }
+        log.debug("  '{}' - processed as uri", forward.getPath());
 
         // forward doesn't contain a definition, let parent do processing
         super.processForwardConfig(request, response, forward);

@@ -74,10 +74,6 @@
          <artifactId>tiles-request-servlet</artifactId>
       </dependency>
       <dependency>
-         <groupId>commons-logging</groupId>
-         <artifactId>commons-logging</artifactId>
-      </dependency>
-      <dependency>
          <groupId>commons-beanutils</groupId>
          <artifactId>commons-beanutils</artifactId>
       </dependency>
@@ -91,7 +87,7 @@
       </dependency>
       <dependency>
          <groupId>org.slf4j</groupId>
-         <artifactId>slf4j-jcl</artifactId>
+         <artifactId>slf4j-api</artifactId>
       </dependency>
    </dependencies>
 

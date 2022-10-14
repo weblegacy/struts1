@@ -22,8 +22,8 @@ package org.apache.struts.tiles2.commands;
 
 import org.apache.commons.chain.Command;
 import org.apache.commons.chain.Context;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.tiles.TilesContainer;
@@ -64,7 +64,7 @@ public class TilesPreProcessor implements Command {
     /**
      * The logging object.
      */
-    private static final Log LOG = LogFactory.getLog(TilesPreProcessor.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TilesPreProcessor.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -116,10 +116,7 @@ public class TilesPreProcessor implements Command {
             sacontext.setForwardConfig(null);
         } else {
             // ignore not found
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("Cannot find definition '" + forwardConfig.getPath()
-                        + "'");
-            }
+            LOG.debug("Cannot find definition '{}'", forwardConfig.getPath());
         }
 
         return false;

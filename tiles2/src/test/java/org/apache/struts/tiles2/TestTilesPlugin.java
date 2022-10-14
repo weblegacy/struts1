@@ -32,8 +32,6 @@ import java.lang.reflect.InvocationTargetException;
 import javax.servlet.ServletException;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.action.PlugIn;
 import org.apache.struts.config.ModuleConfig;
@@ -52,6 +50,8 @@ import org.apache.tiles.request.servlet.ServletUtil;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Tests the Tiles plugin.
@@ -78,7 +78,7 @@ public class TestTilesPlugin extends TestMockBase {
     /**
      * The logging object.
      */
-    private static final Log LOG = LogFactory.getLog(TestTilesPlugin.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TestTilesPlugin.class);
 
     // ----------------------------------------------------- Setup and Teardown
 

@@ -24,8 +24,6 @@ package org.apache.struts.tiles2.actions;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -36,6 +34,8 @@ import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.Request;
 import org.apache.tiles.request.servlet.ServletRequest;
 import org.apache.tiles.request.servlet.ServletUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>An <strong>Action</strong> that dispatches to a Tiles Definition
@@ -69,9 +69,9 @@ import org.apache.tiles.request.servlet.ServletUtil;
 public class DefinitionDispatcherAction extends Action {
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    protected static Log log = LogFactory.getLog(DefinitionDispatcherAction.class);
+    protected static Logger log = LoggerFactory.getLogger(DefinitionDispatcherAction.class);
 
     /**
      * Process the specified HTTP request, and create the corresponding HTTP
@@ -105,7 +105,7 @@ public class DefinitionDispatcherAction extends Action {
         // Identify the method name to be dispatched to
         String name = req.getParameter(parameter);
         if (name == null) {
-            log.error("Can't get parameter '" + parameter + "'.");
+            log.error("Can't get parameter '{}'.", parameter);
 
             return mapping.findForward("error");
         }
@@ -121,11 +121,10 @@ public class DefinitionDispatcherAction extends Action {
                 && container.isValidDefinition(name, request)) {
             container.render(name, request);
         } else {
-            log.error("Can't get definition '" + name + "'.");
+            log.error("Can't get definition '{}'.", name);
             return mapping.findForward("error");
         }
 
         return mapping.findForward("success");
-
     }
 }

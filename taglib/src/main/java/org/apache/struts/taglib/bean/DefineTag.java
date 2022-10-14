@@ -20,14 +20,14 @@
  */
 package org.apache.struts.taglib.bean;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.taglib.TagUtils;
-import org.apache.struts.util.MessageResources;
-
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.BodyTagSupport;
+
+import org.apache.struts.taglib.TagUtils;
+import org.apache.struts.util.MessageResources;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Define a scripting variable based on the value(s) of the specified bean
@@ -40,9 +40,9 @@ public class DefineTag extends BodyTagSupport {
     private static final long serialVersionUID = 1913737863789666444L;
 
     /**
-     * Commons logging instance.
+     * SLF4J logging instance.
      */
-    private static final Log log = LogFactory.getLog(DefineTag.class);
+    private static final Logger LOG = LoggerFactory.getLogger(DefineTag.class);
 
     // ---------------------------------------------------- Protected variables
 
@@ -242,7 +242,7 @@ public class DefineTag extends BodyTagSupport {
                 inScope = TagUtils.getInstance().getScope(toScope);
             }
         } catch (JspException e) {
-            log.warn("toScope was invalid name so we default to PAGE_SCOPE", e);
+            LOG.warn("toScope was invalid name so we default to PAGE_SCOPE", e);
         }
 
         pageContext.setAttribute(id, value, inScope);

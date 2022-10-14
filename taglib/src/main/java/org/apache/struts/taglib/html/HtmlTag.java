@@ -20,18 +20,18 @@
  */
 package org.apache.struts.taglib.html;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.Globals;
-import org.apache.struts.taglib.TagUtils;
-import org.apache.struts.util.MessageResources;
+import java.math.BigDecimal;
+import java.util.Locale;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import java.math.BigDecimal;
-import java.util.Locale;
+import org.apache.struts.Globals;
+import org.apache.struts.taglib.TagUtils;
+import org.apache.struts.util.MessageResources;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Renders an HTML <html> element with appropriate language attributes if
@@ -46,9 +46,9 @@ public class HtmlTag extends TagSupport {
     // ------------------------------------------------------------- Properties
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    private static Log log = LogFactory.getLog(HtmlTag.class);
+    private final static Logger LOG = LoggerFactory.getLogger(HtmlTag.class);
 
     /**
      * The message resources for this package.
@@ -172,7 +172,7 @@ public class HtmlTag extends TagSupport {
             // 1.0/Default
             else {
                 if (!xhtmlVersion.equals(TagUtils.XHTML_1_0)) {
-                    log.warn("Defaulting to XHTML 1.0. Unknown version: " + xhtmlVersion);
+                    LOG.warn("Defaulting to XHTML 1.0. Unknown version: {}", xhtmlVersion);
                     xhtmlVersion = TagUtils.XHTML_1_0;
                 }
                 sb.append(" xmlns=\"http://www.w3.org/1999/xhtml\"");

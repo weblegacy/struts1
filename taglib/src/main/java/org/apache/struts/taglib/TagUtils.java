@@ -20,9 +20,24 @@
  */
 package org.apache.struts.taglib;
 
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.math.BigDecimal;
+import java.net.MalformedURLException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.JspWriter;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.BodyContent;
+
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMessage;
@@ -35,27 +50,8 @@ import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.ModuleUtils;
 import org.apache.struts.util.RequestUtils;
 import org.apache.struts.util.ResponseUtils;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.JspWriter;
-import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.tagext.BodyContent;
-
-import java.io.IOException;
-
-import java.lang.reflect.InvocationTargetException;
-
-import java.math.BigDecimal;
-
-import java.net.MalformedURLException;
-
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Provides helper methods for JSP tags.
@@ -108,9 +104,9 @@ public class TagUtils {
     private static TagUtils instance = new TagUtils();
 
     /**
-     * Commons logging instance.
+     * SLF4J logging instance.
      */
-    private static final Log log = LogFactory.getLog(TagUtils.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TagUtils.class);
 
     /**
      * The message resources for this package. TODO We need to move the
@@ -752,8 +748,8 @@ public class TagUtils {
             } catch (JspException e) {
                 throw e;
             } catch (Exception e) {
-                log.warn("Unable to retieve ActionMessage for paramName : "
-                    + paramName, e);
+                LOG.warn("Unable to retieve ActionMessage for paramName : {}",
+                    paramName, e);
             }
         }
 
@@ -838,7 +834,7 @@ public class TagUtils {
             xhtml = (String) lookup(pageContext, Globals.XHTML_KEY, null);
             return "true".equalsIgnoreCase(xhtml);
         } catch (JspException e) {
-            log.error("Failed xhtml lookup", e);
+            LOG.error("Failed xhtml lookup", e);
             throw new RuntimeException(e);
         }
     }
@@ -1004,9 +1000,9 @@ public class TagUtils {
             message = resources.getMessage(userLocale, key, args);
         }
 
-        if ((message == null) && log.isDebugEnabled()) {
+        if (message == null) {
             // log missing key to ease debugging
-            log.debug(resources.getMessage("message.resources", key, bundle,
+            LOG.atDebug().log(() -> resources.getMessage("message.resources", key, bundle,
                     locale));
         }
 

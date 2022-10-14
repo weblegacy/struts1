@@ -20,14 +20,14 @@
  */
 package org.apache.struts.taglib.html;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.Globals;
-import org.apache.struts.taglib.TagUtils;
-
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.TagSupport;
+
+import org.apache.struts.Globals;
+import org.apache.struts.taglib.TagUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This tag tells all other html taglib tags to render themselves in xhtml.
@@ -38,9 +38,9 @@ public class XhtmlTag extends TagSupport {
     private static final long serialVersionUID = 2280460329323937654L;
 
     /**
-     * Commons logging instance.
+     * SLF4J logging instance.
      */
-    private static final Log log = LogFactory.getLog(XhtmlTag.class);
+    private static final Logger LOG = LoggerFactory.getLogger(XhtmlTag.class);
 
     /**
      * The scope within which to store the markup format.
@@ -64,7 +64,7 @@ public class XhtmlTag extends TagSupport {
                 inScope = TagUtils.getInstance().getScope(this.scope);
             }
         } catch (JspException e) {
-            log.warn("invalid scope name - defaulting to PAGE_SCOPE", e);
+            LOG.warn("invalid scope name - defaulting to PAGE_SCOPE", e);
         }
 
         this.pageContext.setAttribute(Globals.XHTML_KEY, "true", inScope);

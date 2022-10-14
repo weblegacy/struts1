@@ -20,22 +20,22 @@
  */
 package org.apache.struts.taglib.html;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.BodyTagSupport;
+
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.taglib.TagUtils;
 import org.apache.struts.taglib.logic.IterateTag;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.RequestUtils;
-
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
-import javax.servlet.jsp.tagext.BodyTagSupport;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Base class for tags that render form elements capable of including
@@ -49,9 +49,9 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
     private static final long serialVersionUID = -2120829773020021751L;
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    private static Log log = LogFactory.getLog(BaseHandlerTag.class);
+    private static Logger log = LoggerFactory.getLogger(BaseHandlerTag.class);
 
     // ----------------------------------------------------- Instance Variables
 
@@ -889,15 +889,9 @@ public abstract class BaseHandlerTag extends BodyTagSupport {
                 Object status = loopTagGetStatus.invoke(loopTag);
 
                 return (Integer) loopTagStatusGetIndex.invoke(status);
-            } catch (IllegalAccessException ex) {
-                log.error(ex.getMessage(), ex);
-            } catch (IllegalArgumentException ex) {
-                log.error(ex.getMessage(), ex);
-            } catch (InvocationTargetException ex) {
-                log.error(ex.getMessage(), ex);
-            } catch (NullPointerException ex) {
-                log.error(ex.getMessage(), ex);
-            } catch (ExceptionInInitializerError ex) {
+            } catch (IllegalAccessException | IllegalArgumentException |
+                    InvocationTargetException | NullPointerException |
+                    ExceptionInInitializerError ex) {
                 log.error(ex.getMessage(), ex);
             }
         }

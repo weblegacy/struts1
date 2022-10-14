@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Taglib: Replace `commons-logging` with `slf4j`
 * Scripting: Replace `commons-logging` with `slf4j`
 * Extras: Replace `commons-logging` with `slf4j`
 * Core: Replace `commons-logging` with `slf4j`

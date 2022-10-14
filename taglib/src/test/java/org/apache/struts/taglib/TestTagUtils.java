@@ -37,8 +37,6 @@ import java.util.Map;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
@@ -54,12 +52,14 @@ import org.apache.struts.mock.MockServletContext;
 import org.apache.struts.taglib.html.Constants;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Unit tests for the {@link TagUtils}.
  */
 public class TestTagUtils extends TagTestBase {
-    private static final Log log = LogFactory.getLog(TestTagUtils.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TestTagUtils.class);
 
     /**
      * Test Operators.
@@ -1503,7 +1503,7 @@ public class TestTagUtils extends TagTestBase {
             }
         }
 
-        log.debug(ct + " assertions run in this test");
+        LOG.debug("{} assertions run in this test", ct);
     }
 
     @Test

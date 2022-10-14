@@ -19,8 +19,8 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import javax.servlet.ServletContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Represents a saved script.
@@ -34,7 +34,7 @@ import org.apache.commons.logging.LogFactory;
 class Script {
 
     /**  The logging instance. */
-    private final static Log LOG = LogFactory.getLog(Script.class);
+    private final static Logger LOG = LoggerFactory.getLogger(Script.class);
 
     /**  The name of the script file. */
     public final String name;
@@ -116,9 +116,7 @@ class Script {
                     ? IOUtils.getLastModifiedTime(path)
                     : null;
 
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("Loading new script: " + name);
-            }
+            LOG.debug("Loading new script: {}", name);
 
             setContent(IOUtils.getStringFromReader(r));
         } catch (IOException e) {
@@ -151,9 +149,7 @@ class Script {
             }
 
             synchronized (this) {
-                if (LOG.isDebugEnabled()) {
-                    LOG.debug("Loading updated script: " + name);
-                }
+                LOG.debug("Loading updated script: {}", name);
 
                 this.lastModifiedTime = lastModifiedTime;
 

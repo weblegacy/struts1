@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Scripting: Replace `commons-logging` with `slf4j`
 * Extras: Replace `commons-logging` with `slf4j`
 * Core: Replace `commons-logging` with `slf4j`
 * Bump `checkstyle` from 9.3 to 10.3.4

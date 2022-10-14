@@ -25,8 +25,8 @@ import java.util.Properties;
 
 import javax.script.ScriptContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -35,7 +35,7 @@ import org.apache.commons.logging.LogFactory;
 public class TestFilter implements ScriptContextFilter {
 
     /** Logging instance. */
-    private static final Log LOG = LogFactory.getLog(TestFilter.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TestFilter.class);
 
     /**
      * Initializes the filter.

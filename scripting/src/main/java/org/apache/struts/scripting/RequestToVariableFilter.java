@@ -27,8 +27,8 @@ import javax.script.Bindings;
 import javax.script.ScriptContext;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -39,7 +39,7 @@ import org.apache.commons.logging.LogFactory;
 public class RequestToVariableFilter implements ScriptContextFilter {
 
     /** The logging instance. */
-    private static final Log LOG = LogFactory.getLog(TestFilter.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TestFilter.class);
 
     /**
      * Initializes the filter.
@@ -74,19 +74,13 @@ public class RequestToVariableFilter implements ScriptContextFilter {
             final String[] values = request.getParameterValues(name);
             if (values.length > 1) {
                 bindings.put(newName, values);
-                if (LOG.isDebugEnabled()) {
-                    LOG.debug("creating array var " + newName);
-                }
+                LOG.debug("creating array var {}", newName);
             } else {
                 bindings.put(newName, values[0]);
-                if (LOG.isDebugEnabled()) {
-                    LOG.debug("creating string var " + newName);
-                }
+                LOG.debug("creating string var {}", newName);
             }
         }
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Done filtering");
-        }
+        LOG.debug("Done filtering");
         return context;
     }
 }

@@ -45,14 +45,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -113,7 +113,7 @@ import org.apache.struts.action.ActionMessages;
 public class ScriptAction extends Action {
 
     /**  The logging instance. */
-    protected static final Log LOG = LogFactory.getLog(ScriptAction.class);
+    protected static final Logger LOG = LoggerFactory.getLogger(ScriptAction.class);
 
     /** The entry-point to JSR223-scripting */
     private static final ScriptEngineManager SCRIPT_ENGINE_MANAGER = new ScriptEngineManager();
@@ -174,22 +174,15 @@ public class ScriptAction extends Action {
                         .toArray(ScriptEngineFactory[]::new);
 
                 if (sefs.length == 0) {
-                    if (LOG.isWarnEnabled()) {
-                        LOG.warn("No ScriptEngineFactory found - name: '" + name + "'");
-                    }
+                    LOG.warn("No ScriptEngineFactory found - name: '{}'", name);
                     continue;
                 } else if (sefs.length > 1) {
-                    if (LOG.isWarnEnabled()) {
-                        LOG.warn("More than one ScriptEngineFactory found, taking the first one - name: '" + name + "'");
-                    }
+                    LOG.warn("More than one ScriptEngineFactory found, taking the first one - name: '{}'", name);
                 }
 
                 final ScriptEngineFactory sef = sefs[0];
-                if (LOG.isInfoEnabled()) {
-                    LOG.info("Found ScriptingEngineFactory - name: " + name
-                            + " language: " + sef.getLanguageName()
-                            + " " + sef.getLanguageVersion());
-                }
+                LOG.info("Found ScriptingEngineFactory - name: {} language: {} {}",
+                    name, sef.getLanguageName(), sef.getLanguageVersion());
 
                 final String propValue = props.getProperty(propName).trim();
                 final String[] exts = propValue.split(",");
@@ -197,7 +190,7 @@ public class ScriptAction extends Action {
                     continue;
                 }
 
-                if (LOG.isInfoEnabled()) {
+                LOG.atInfo().log(() -> {
                     final StringBuilder sb = new StringBuilder();
                     sb.append("Registering extension");
                     if (exts.length > 1) {
@@ -220,8 +213,8 @@ public class ScriptAction extends Action {
                     } else {
                         sb.append(Arrays.toString(exts));
                     }
-                    LOG.info(sb.toString());
-                }
+                    return sb.toString();
+                });
 
                 for (String ext : exts) {
                     ext = ext.trim();
@@ -256,15 +249,11 @@ public class ScriptAction extends Action {
         final Map<String, String> params = new LinkedHashMap<>();
         final String scriptName = parseScriptName(mapping.getParameter(), params);
         if (scriptName == null) {
-            if (LOG.isErrorEnabled()) {
-                LOG.error("No script specified in the parameter attribute");
-            }
+            LOG.error("No script specified in the parameter attribute");
             throw new Exception("No script specified");
         }
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Executing script: " + scriptName);
-        }
+        LOG.debug("Executing script: {}", scriptName);
 
         HttpSession session = request.getSession();
         ServletContext application = getServlet().getServletContext();
@@ -315,9 +304,7 @@ public class ScriptAction extends Action {
      */
     protected String parseScriptName(String url, Map<String, String> params) {
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Parsing " + url);
-        }
+        LOG.debug("Parsing {}", url);
 
         if (url == null) {
             return null;
@@ -330,15 +317,11 @@ public class ScriptAction extends Action {
         }
 
         if (parsed.length == 1) {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("No query string:" + parsed[0]);
-            }
+            LOG.debug("No query string: {}", parsed[0]);
             return parsed[0];
         }
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Found a query string");
-        }
+        LOG.debug("Found a query string");
 
         final String[] args = parsed[1].split("&");
         for (String arg : args) {
@@ -346,8 +329,7 @@ public class ScriptAction extends Action {
             String key = urlDecode(i > 0 ? arg.substring(0, i) : arg);
 
             while (params.containsKey(key)) {
-                LOG.warn("Script variable " + key
-                         + " already exists");
+                LOG.warn("Script variable {} already exists", key);
                 key = "_" + key;
             }
 
@@ -356,10 +338,8 @@ public class ScriptAction extends Action {
                     : null;
 
             params.put(key, value);
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("Registering param " + key
-                         + " with value " + value);
-            }
+            LOG.debug("Registering param {} with value {}",
+                key, value);
         }
 
         return parsed[0];
@@ -384,9 +364,7 @@ public class ScriptAction extends Action {
             return URLDecoder.decode(s, StandardCharsets.UTF_8.toString());
         } catch (UnsupportedEncodingException e) {
             // Should never thrown
-            if (LOG.isErrorEnabled()) {
-                LOG.error("URL-Decode: ", e);
-            }
+            LOG.error("URL-Decode: ", e);
         }
 
         return null;
@@ -420,14 +398,10 @@ public class ScriptAction extends Action {
         try {
             script.checkExceptions();
         } catch (IOException e) {
-            if (LOG.isErrorEnabled()) {
-                LOG.error("Unable to load script: " + script.name, e);
-            }
+            LOG.error("Unable to load script: {}", script.name, e);
             throw e;
         } catch (ScriptException e) {
-            if (LOG.isErrorEnabled()) {
-                LOG.error("Unable to compile script: " + script.name, e);
-            }
+            LOG.error("Unable to compile script: {}", script.name, e);
             throw e;
         }
         return script;
@@ -454,11 +428,9 @@ public class ScriptAction extends Action {
                     ScriptContextFilter f = cls.getDeclaredConstructor().newInstance();
                     f.init(name, props);
                     list.add(f);
-                    if (LOG.isInfoEnabled()) {
-                        LOG.info("Loaded " + name + " filter: " + clazz);
-                    }
+                    LOG.info("Loaded {} filter: {}", name, clazz);
                 } catch (Exception ex) {
-                    LOG.error("Unable to load " + name + " filter: " + clazz);
+                    LOG.error("Unable to load {} filter: {}", name, clazz);
                 }
             }
         }

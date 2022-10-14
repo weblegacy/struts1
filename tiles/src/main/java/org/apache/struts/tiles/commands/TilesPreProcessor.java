@@ -28,8 +28,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.chain.Command;
 import org.apache.commons.chain.Context;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.tiles.ComponentContext;
@@ -38,6 +36,8 @@ import org.apache.struts.tiles.Controller;
 import org.apache.struts.tiles.FactoryNotFoundException;
 import org.apache.struts.tiles.NoSuchDefinitionException;
 import org.apache.struts.tiles.TilesUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -65,7 +65,7 @@ public class TilesPreProcessor implements Command
     // ------------------------------------------------------ Instance Variables
 
 
-    private static final Log log = LogFactory.getLog(TilesPreProcessor.class);
+    private static final Logger LOG = LoggerFactory.getLogger(TilesPreProcessor.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -97,7 +97,7 @@ public class TilesPreProcessor implements Command
         ForwardConfig forwardConfig = sacontext.getForwardConfig();
         if (forwardConfig == null || forwardConfig.getPath() == null)
         {
-            log.debug("No forwardConfig or no path, so pass to next command.");
+            LOG.debug("No forwardConfig or no path, so pass to next command.");
             return (false);
         }
 
@@ -112,13 +112,13 @@ public class TilesPreProcessor implements Command
         catch (FactoryNotFoundException ex)
         {
             // this is not a serious error, so log at low priority
-            log.debug("Tiles DefinitionFactory not found, so pass to next command.");
+            LOG.debug("Tiles DefinitionFactory not found, so pass to next command.");
             return false;
         }
         catch (NoSuchDefinitionException ex)
         {
             // ignore not found
-            log.debug("NoSuchDefinitionException " + ex.getMessage());
+            LOG.debug("NoSuchDefinitionException {}", ex.getMessage());
         }
 
         // Do we do a forward (original behavior) or an include ?
@@ -164,16 +164,14 @@ public class TilesPreProcessor implements Command
                 // We use it to complete missing attribute in context.
                 // We also overload uri and controller if set in definition.
                 if (definition.getPath() != null) {
-                    log.debug("Override forward uri "
-                              + uri
-                              + " with action uri "
-                              + definition.getPath());
-                        uri = definition.getPath();
+                    LOG.debug("Override forward uri {} with action uri {}",
+                        uri, definition.getPath());
+                    uri = definition.getPath();
                 }
 
                 if (definition.getOrCreateController() != null) {
-                    log.debug("Override forward controller with action controller");
-                        controller = definition.getOrCreateController();
+                    LOG.debug("Override forward controller with action controller");
+                    controller = definition.getOrCreateController();
                 }
 
                 if (tileContext == null) {
@@ -187,13 +185,13 @@ public class TilesPreProcessor implements Command
 
 
         if (uri == null) {
-            log.debug("no uri computed, so pass to next command");
+            LOG.debug("no uri computed, so pass to next command");
             return false;
         }
 
         // Execute controller associated to definition, if any.
         if (controller != null) {
-            log.trace("Execute controller: " + controller);
+            LOG.trace("Execute controller: {}", controller);
             controller.execute(
                     tileContext,
                     sacontext.getRequest(),
@@ -205,14 +203,14 @@ public class TilesPreProcessor implements Command
         // This allows to insert an action in a Tile.
 
         if (doInclude) {
-            log.info("Tiles process complete; doInclude with " + uri);
+            LOG.info("Tiles process complete; doInclude with {}", uri);
             doInclude(sacontext, uri);
         } else {
-            log.info("Tiles process complete; forward to " + uri);
+            LOG.info("Tiles process complete; forward to {}", uri);
             doForward(sacontext, uri);
         }
 
-        log.debug("Tiles processed, so clearing forward config from context.");
+        LOG.debug("Tiles processed, so clearing forward config from context.");
         sacontext.setForwardConfig( null );
         return (false);
     }
@@ -268,7 +266,7 @@ public class TilesPreProcessor implements Command
     private RequestDispatcher getRequiredDispatcher(ServletActionContext context, String uri) throws IOException {
         RequestDispatcher rd = context.getContext().getRequestDispatcher(uri);
         if (rd == null) {
-            log.debug("No request dispatcher found for " + uri);
+            LOG.debug("No request dispatcher found for {}", uri);
             HttpServletResponse response = context.getResponse();
             response.sendError(
                 HttpServletResponse.SC_INTERNAL_SERVER_ERROR,
@@ -276,5 +274,4 @@ public class TilesPreProcessor implements Command
         }
         return rd;
     }
-
 }

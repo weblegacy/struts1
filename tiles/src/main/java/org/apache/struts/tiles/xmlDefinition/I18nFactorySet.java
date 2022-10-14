@@ -36,11 +36,11 @@ import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.apache.struts.tiles.taglib.ComponentConstants;
 import org.apache.struts.tiles.DefinitionsFactoryException;
 import org.apache.struts.tiles.FactoryNotFoundException;
+import org.apache.struts.tiles.taglib.ComponentConstants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.SAXException;
 
 /**
@@ -59,9 +59,9 @@ public class I18nFactorySet extends FactorySet {
     private static final long serialVersionUID = -5165509575040839305L;
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    protected static Log log = LogFactory.getLog(I18nFactorySet.class);
+    protected static Logger log = LoggerFactory.getLogger(I18nFactorySet.class);
 
     /**
      * Config file parameter name.
@@ -175,10 +175,8 @@ public class I18nFactorySet extends FactorySet {
                 parserDetailLevel = Integer.valueOf(value).intValue();
 
             } catch (NumberFormatException ex) {
-                log.error(
-                    "Bad format for parameter '"
-                        + PARSER_DETAILS_PARAMETER_NAME
-                        + "'. Integer expected.");
+                log.error("Bad format for parameter '{}'. Integer expected.",
+                    PARSER_DETAILS_PARAMETER_NAME);
             }
         }
 
@@ -189,12 +187,10 @@ public class I18nFactorySet extends FactorySet {
         if (filename != null) { // Use provided filename
             try {
                 initFactory(servletContext, filename);
-                if (log.isDebugEnabled()) {
-                    log.debug("Factory initialized from file '" + filename + "'.");
-                }
+                log.debug("Factory initialized from file '{}'.", filename);
 
             } catch (FileNotFoundException ex) { // A filename is specified, throw appropriate error.
-                log.error(ex.getMessage() + " : Can't find file '" + filename + "'");
+                log.error("{} : Can't find file '{}'", ex.getMessage(), filename);
                 throw new FactoryNotFoundException(
                     ex.getMessage() + " : Can't find file '" + filename + "'", ex);
             }
@@ -204,10 +200,7 @@ public class I18nFactorySet extends FactorySet {
                 filename = DEFAULT_DEFINITION_FILENAMES[i];
                 try {
                     initFactory(servletContext, filename);
-                    if (log.isInfoEnabled()) {
-                        log.info(
-                            "Factory initialized from file '" + filename + "'.");
-                    }
+                    log.info("Factory initialized from file '{}'.", filename);
                 } catch (FileNotFoundException ex) {
                     // Do nothing
                 }
@@ -239,8 +232,7 @@ public class I18nFactorySet extends FactorySet {
 
         loaded = new HashMap<>();
         defaultFactory = createDefaultFactory(servletContext);
-        if (log.isDebugEnabled())
-            log.debug("default factory:" + defaultFactory);
+        log.debug("default factory: {}", defaultFactory);
     }
 
     /**
@@ -270,14 +262,10 @@ public class I18nFactorySet extends FactorySet {
 
         rootXmlConfig.resolveInheritances();
 
-        if (log.isDebugEnabled()) {
-            log.debug(rootXmlConfig);
-        }
+        log.debug(rootXmlConfig.toString());
 
         DefinitionsFactory factory = new DefinitionsFactory(rootXmlConfig);
-        if (log.isDebugEnabled()) {
-            log.debug("factory loaded : " + factory);
-        }
+        log.debug("factory loaded : {}", factory);
 
         return factory;
     }
@@ -375,9 +363,7 @@ public class I18nFactorySet extends FactorySet {
         factory = new DefinitionsFactory(rootXmlConfig);
         loaded.put(lastPostfix, factory);
 
-        if (log.isDebugEnabled()) {
-            log.debug("factory loaded : " + factory);
-        }
+        log.debug("factory loaded : {}", factory);
 
         // return last available found !
         return factory;
@@ -491,9 +477,7 @@ public class I18nFactorySet extends FactorySet {
 
             // If still nothing found, this mean no config file is associated
             if (input == null) {
-                if (log.isDebugEnabled()) {
-                    log.debug("Can't open file '" + filename + "'");
-                }
+                log.debug("Can't open file '{}'", filename);
                 return xmlDefinitions;
             }
 
@@ -514,7 +498,7 @@ public class I18nFactorySet extends FactorySet {
 
         } catch (SAXException ex) {
             if (log.isDebugEnabled()) {
-                log.debug("Error while parsing file '" + filename + "'.");
+                log.debug("Error while parsing file '{}'.", filename);
                 ex.printStackTrace();
             }
             throw new DefinitionsFactoryException(
@@ -570,5 +554,4 @@ public class I18nFactorySet extends FactorySet {
         }
         return buff.toString();
     }
-
 }

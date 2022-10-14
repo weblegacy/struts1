@@ -33,8 +33,6 @@ import java.util.Map;
 import javax.servlet.ServletException;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.action.PlugIn;
 import org.apache.struts.config.ModuleConfig;
@@ -47,6 +45,8 @@ import org.apache.struts.util.RequestUtils;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TestTilesPlugin extends TestMockBase {
 
@@ -58,7 +58,7 @@ public class TestTilesPlugin extends TestMockBase {
   /**
    * The logging object.
    */
-  private static final Log LOG = LogFactory.getLog(TestTilesPlugin.class);
+  private static final Logger LOG = LoggerFactory.getLogger(TestTilesPlugin.class);
 
     // ----------------------------------------------------- Setup and Teardown
 
@@ -394,8 +394,4 @@ public class TestTilesPlugin extends TestMockBase {
                 locale.getCountry() + "_" +
                 locale.getVariant();
   }
-
-
-
 }
-

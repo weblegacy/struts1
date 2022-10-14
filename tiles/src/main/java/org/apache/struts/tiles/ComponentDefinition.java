@@ -25,10 +25,10 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.tiles.xmlDefinition.XmlDefinition;
 import org.apache.struts.util.RequestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Definition of a template / component attributes.
@@ -39,9 +39,9 @@ public class ComponentDefinition implements Serializable {
     private static final long serialVersionUID = -2272946761382428217L;
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    protected static Log log = LogFactory.getLog(ComponentDefinition.class);
+    protected static Logger log = LoggerFactory.getLogger(ComponentDefinition.class);
 
     /**
      * Definition name
@@ -482,9 +482,7 @@ public class ComponentDefinition implements Serializable {
     public static Controller createController(String name, String controllerType)
         throws InstantiationException {
 
-        if (log.isDebugEnabled()) {
-            log.debug("Create controller name=" + name + ", type=" + controllerType);
-        }
+        log.debug("Create controller name={}, type={}", name, controllerType);
 
         Controller controller = null;
 
@@ -521,9 +519,7 @@ public class ComponentDefinition implements Serializable {
             Class<?> requestedClass = RequestUtils.applicationClass(classname);
             Object instance = requestedClass.newInstance();
 
-            if (log.isDebugEnabled()) {
-                log.debug("Controller created : " + instance);
-            }
+            log.debug("Controller created : {}", instance);
             return (Controller) instance;
 
         } catch (java.lang.ClassNotFoundException ex) {
@@ -550,5 +546,4 @@ public class ComponentDefinition implements Serializable {
             throw e2;
         }
     }
-
 }

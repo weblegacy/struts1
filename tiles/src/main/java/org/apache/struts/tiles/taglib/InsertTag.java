@@ -32,10 +32,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
-import org.apache.struts.tiles.taglib.util.TagUtils;
 import org.apache.struts.tiles.AttributeDefinition;
 import org.apache.struts.tiles.ComponentContext;
 import org.apache.struts.tiles.ComponentDefinition;
@@ -47,6 +44,9 @@ import org.apache.struts.tiles.DirectStringAttribute;
 import org.apache.struts.tiles.FactoryNotFoundException;
 import org.apache.struts.tiles.NoSuchDefinitionException;
 import org.apache.struts.tiles.TilesUtil;
+import org.apache.struts.tiles.taglib.util.TagUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This is the tag handler for &lt;tiles:insert&gt;, which includes
@@ -68,9 +68,9 @@ public class InsertTag
     public static final String ROLE_DELIMITER = ",";
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    protected static Log log = LogFactory.getLog(InsertTag.class);
+    protected static Logger log = LoggerFactory.getLogger(InsertTag.class);
 
     /* JSP Tag attributes */
 
@@ -575,6 +575,7 @@ public class InsertTag
 
         } catch (DefinitionsFactoryException ex) {
             if (log.isDebugEnabled()) {
+                log.debug("processDefinitionName {}", name, ex);
                 ex.printStackTrace();
             }
 
@@ -857,9 +858,7 @@ public class InsertTag
             }
 
             try {
-                if (log.isDebugEnabled()) {
-                    log.debug("insert page='" + page + "'.");
-                }
+                log.debug("insert page='{}'.", page);
 
                 // set new context for included component.
                 pageContext.setAttribute(
@@ -1031,9 +1030,7 @@ public class InsertTag
                 pageContext.getOut().print(value);
 
             } catch (IOException ex) {
-                if (log.isDebugEnabled()) {
-                    log.debug("Can't write string '" + value + "' : ", ex);
-                }
+                log.debug("Can't write string '{}' :", value, ex);
 
                 pageContext.setAttribute(
                     ComponentConstants.EXCEPTION_KEY,

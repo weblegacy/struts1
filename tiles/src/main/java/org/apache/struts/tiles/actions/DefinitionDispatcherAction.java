@@ -27,8 +27,6 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -38,6 +36,8 @@ import org.apache.struts.tiles.DefinitionsFactoryException;
 import org.apache.struts.tiles.FactoryNotFoundException;
 import org.apache.struts.tiles.NoSuchDefinitionException;
 import org.apache.struts.tiles.TilesUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>An <strong>Action</strong> that dispatches to a Tiles Definition
@@ -71,9 +71,9 @@ import org.apache.struts.tiles.TilesUtil;
 public class DefinitionDispatcherAction extends Action {
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    protected static Log log = LogFactory.getLog(DefinitionDispatcherAction.class);
+    protected static Logger log = LoggerFactory.getLogger(DefinitionDispatcherAction.class);
 
     /**
      * Process the specified HTTP request, and create the corresponding HTTP
@@ -107,7 +107,7 @@ public class DefinitionDispatcherAction extends Action {
         // Identify the method name to be dispatched to
         String name = request.getParameter(parameter);
         if (name == null) {
-            log.error("Can't get parameter '" + parameter + "'.");
+            log.error("Can't get parameter '{}'.", parameter);
 
             return mapping.findForward("error");
         }
@@ -121,9 +121,7 @@ public class DefinitionDispatcherAction extends Action {
                     request,
                     getServlet().getServletContext());
 
-            if (log.isDebugEnabled()) {
-                log.debug("Get Definition " + definition);
-            }
+            log.debug("Get Definition {}", definition);
 
             org.apache.struts.tiles.DefinitionsUtil.setActionDefinition(request, definition);
 
@@ -132,15 +130,15 @@ public class DefinitionDispatcherAction extends Action {
             return mapping.findForward("error");
 
         } catch (NoSuchDefinitionException e) {
-            log.error("Can't get definition '" + name + "'.", e);
+            log.error("Can't get definition '{}'.", name, e);
             return mapping.findForward("error");
 
         } catch (DefinitionsFactoryException e) {
-            log.error("General Factory error '" + e.getMessage() + "'.", e);
+            log.error("General Factory error '{}'.", e.getMessage(), e);
             return mapping.findForward("error");
 
         } catch (Exception e) {
-            log.error("General error '" + e.getMessage() + "'.", e);
+            log.error("General error '{}'.", e.getMessage(), e);
             return mapping.findForward("error");
         }
 

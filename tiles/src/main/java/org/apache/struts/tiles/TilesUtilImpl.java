@@ -33,9 +33,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.PageContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.util.RequestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Default implementation of TilesUtil.
@@ -45,8 +45,8 @@ import org.apache.struts.util.RequestUtils;
 public class TilesUtilImpl implements Serializable {
     private static final long serialVersionUID = 4942732841978123351L;
 
-    /** Commons Logging instance.*/
-    protected static final Log log = LogFactory.getLog(TilesUtil.class);
+    /** SLF4J Logging instance.*/
+    protected static final Logger LOG = LoggerFactory.getLogger(TilesUtil.class);
 
     /** Constant name used to store factory in servlet context */
     public static final String DEFINITIONS_FACTORY =
@@ -67,7 +67,7 @@ public class TilesUtilImpl implements Serializable {
             // get version of include method with flush argument
             include = PageContext.class.getMethod("include", String.class, boolean.class);
         } catch (NoSuchMethodException e) {
-            log.debug("Could not find JSP 2.0 include method.  Using old one that doesn't support " +
+            LOG.debug("Could not find JSP 2.0 include method.  Using old one that doesn't support " +
                       "configurable flushing.", e);
         }
     }
@@ -128,7 +128,7 @@ public class TilesUtilImpl implements Serializable {
                 return;
             }
         } catch (IllegalAccessException e) {
-            log.debug("Could not find JSP 2.0 include method.  Using old one.", e);
+            LOG.debug("Could not find JSP 2.0 include method.  Using old one.", e);
         } catch (InvocationTargetException e) {
             if (e.getCause() instanceof ServletException){
                throw ((ServletException)e.getCause());
@@ -244,5 +244,4 @@ public class TilesUtilImpl implements Serializable {
 
         servletContext.setAttribute(DEFINITIONS_FACTORY, factory);
     }
-
 }

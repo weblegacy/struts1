@@ -30,9 +30,9 @@ import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.tiles.taglib.ComponentConstants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Utilities class for definitions factory.
@@ -43,9 +43,9 @@ import org.apache.struts.tiles.taglib.ComponentConstants;
 public class DefinitionsUtil extends TilesUtil implements ComponentConstants {
 
     /**
-     * Commons Logging instance.
+     * SLF4J Logging instance.
      */
-    protected static Log log = LogFactory.getLog(DefinitionsUtil.class);
+    protected static Logger log = LoggerFactory.getLogger(DefinitionsUtil.class);
 
     /**
      * Global user defined debug level.
@@ -310,5 +310,4 @@ public class DefinitionsUtil extends TilesUtil implements ComponentConstants {
             }
         }
     } // end inner class
-
 }

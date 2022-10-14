@@ -21,10 +21,10 @@
 
 package org.apache.struts.tiles.xmlDefinition;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.tiles.ComponentDefinition;
 import org.apache.struts.tiles.NoSuchDefinitionException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
   *A definition read from an XML definitions file.
@@ -38,8 +38,8 @@ public class XmlDefinition extends ComponentDefinition
    */
   private String inherit;
 
-    /** Commons Logging instance. */
-   protected static Log log = LogFactory.getLog(XmlDefinition.class);
+    /** SLF4J Logging instance. */
+   protected static Logger log = LoggerFactory.getLogger(XmlDefinition.class);
 
   /**
    * Used for resolving inheritance.
@@ -119,9 +119,8 @@ public class XmlDefinition extends ComponentDefinition
     if( isVisited || !isExtending() )
       return;
 
-    if(log.isDebugEnabled())
-      log.debug( "Resolve definition for child name='" + getName()
-              + "' extends='" + getExtends() + "'.");
+    log.debug("Resolve definition for child name='{}' extends='{}'.",
+      getName(), getExtends());
 
       // Set as visited to avoid endless recurisvity.
     setIsVisited( true );

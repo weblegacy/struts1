@@ -30,8 +30,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.PageContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Class containing utility methods for Tiles.
@@ -46,8 +46,8 @@ import org.apache.commons.logging.LogFactory;
  */
 public class TilesUtil {
 
-    /** Commons Logging instance.*/
-    protected static Log log = LogFactory.getLog(TilesUtil.class);
+    /** SLF4J Logging instance.*/
+    protected static Logger log = LoggerFactory.getLogger(TilesUtil.class);
 
     /** The implementation of tilesUtilImpl */
     protected static TilesUtilImpl tilesUtilImpl = new TilesUtilImpl();
@@ -64,7 +64,7 @@ public class TilesUtil {
      * Set the real implementation.
      * This method should be called only once.
      * Successive calls have no effect.
-     * @param tilesUtil The implementaion.
+     * @param tilesUtil The implementation.
      */
     static public void setTilesUtil(TilesUtilImpl tilesUtil) {
         if (implAlreadySet) {
@@ -218,5 +218,4 @@ public class TilesUtil {
         implAlreadySet = false;
         tilesUtilImpl = new TilesUtilImpl();
     }
-
 }

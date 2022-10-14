@@ -27,8 +27,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.UnavailableException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;
 import org.apache.struts.action.RequestProcessor;
@@ -37,6 +35,10 @@ import org.apache.struts.config.ControllerConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.config.PlugInConfig;
 import org.apache.struts.util.RequestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 
 /**
  * Tiles Plugin used to initialize Tiles.
@@ -64,9 +66,14 @@ import org.apache.struts.util.RequestUtils;
 public class TilesPlugin implements PlugIn {
 
     /**
-     * Commons Logging instance.
+     * Marker for logging of fatal errors.
      */
-    protected static Log log = LogFactory.getLog(TilesPlugin.class);
+    private final static Marker FATAL = MarkerFactory.getMarker("FATAL");
+
+    /**
+     * SLF4J Logging instance.
+     */
+    protected static Logger log = LoggerFactory.getLogger(TilesPlugin.class);
 
     /**
      * Is the factory module aware?
@@ -229,18 +236,14 @@ public class TilesPlugin implements PlugIn {
                     factoryConfig);
 
         } catch (DefinitionsFactoryException ex) {
-            log.error(
-                "Can't create Tiles definition factory for module '"
-                    + moduleConfig.getPrefix()
-                    + "'.");
+            log.error("Can't create Tiles definition factory for module '{}'.",
+                moduleConfig.getPrefix());
 
             throw new ServletException(ex);
         }
 
-        log.info(
-            "Tiles definition factory loaded for module '"
-                + moduleConfig.getPrefix()
-                + "'.");
+        log.info("Tiles definition factory loaded for module '{}'.",
+            moduleConfig.getPrefix());
     }
 
     /**
@@ -276,12 +279,10 @@ public class TilesPlugin implements PlugIn {
                 servlet.getServletConfig());
 
         } catch (Exception ex) {
-            if (log.isDebugEnabled()){
-                log.debug("", ex);
-            }
+            String message = "Can't populate DefinitionsFactoryConfig class from 'web.xml'";
+            log.debug(message, ex);
             ex.printStackTrace();
-            UnavailableException e2 = new UnavailableException(
-                "Can't populate DefinitionsFactoryConfig class from 'web.xml'");
+            UnavailableException e2 = new UnavailableException(message);
             e2.initCause(ex);
             throw e2;
         }
@@ -292,14 +293,13 @@ public class TilesPlugin implements PlugIn {
             factoryConfig.populate(strutsProperties);
 
         } catch (Exception ex) {
-            if (log.isDebugEnabled()) {
-                log.debug("", ex);
-            }
-
-            UnavailableException e2 = new UnavailableException(
-                "Can't populate DefinitionsFactoryConfig class from '"
+            String message = "Can't populate DefinitionsFactoryConfig class from '"
                     + config.getPrefix()
-                    + "/struts-config.xml'");
+                    + "/struts-config.xml'";
+
+            log.debug(message, ex);
+
+            UnavailableException e2 = new UnavailableException(message);
             e2.initCause(ex);
             throw e2;
         }
@@ -351,10 +351,8 @@ public class TilesPlugin implements PlugIn {
                 RequestUtils.applicationClass(configProcessorClassname);
 
         } catch (ClassNotFoundException ex) {
-            log.fatal(
-                "Can't set TilesRequestProcessor: bad class name '"
-                    + configProcessorClassname
-                    + "'.");
+            log.error(FATAL, "Can't set TilesRequestProcessor: bad class name '{}'.",
+                configProcessorClassname);
             throw new ServletException(ex);
         }
 
@@ -379,9 +377,7 @@ public class TilesPlugin implements PlugIn {
             // Not compatible
             String msg =
                 "TilesPlugin : Specified RequestProcessor not compatible with TilesRequestProcessor";
-            if (log.isFatalEnabled()) {
-                log.fatal(msg);
-            }
+            log.error(FATAL, msg);
             throw new ServletException(msg);
         }
     }
@@ -411,5 +407,4 @@ public class TilesPlugin implements PlugIn {
     public void setCurrentPlugInConfigObject(PlugInConfig plugInConfigObject) {
         this.currentPlugInConfigObject = plugInConfigObject;
     }
-
 }

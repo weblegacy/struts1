@@ -16,6 +16,13 @@
  */
 package org.apache.struts.apps.mailreader.actions;
 
+import java.lang.reflect.InvocationTargetException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -27,12 +34,6 @@ import org.apache.struts.apps.mailreader.Constants;
 import org.apache.struts.apps.mailreader.dao.ExpiredPasswordException;
 import org.apache.struts.apps.mailreader.dao.User;
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.lang.reflect.InvocationTargetException;
 
 /**
  * <p>
@@ -120,9 +121,7 @@ public final class RegistrationAction extends BaseAction {
             HttpServletRequest request,
             ActionMessages errors) {
 
-        if (log.isTraceEnabled()) {
-            log.trace(" Perform additional validations on Create");
-        }
+        log.trace(" Perform additional validations on Create");
 
         UserDatabase database = doGetUserDatabase();
         String username = doGet(form, USERNAME);
@@ -157,13 +156,8 @@ public final class RegistrationAction extends BaseAction {
         // Log the user in
         HttpSession session = request.getSession();
         session.setAttribute(Constants.USER_KEY, user);
-        if (log.isTraceEnabled()) {
-            log.trace(
-                    " User: '"
-                            + user.getUsername()
-                            + "' logged on in session: "
-                            + session.getId());
-        }
+        log.trace(" User: '{}' logged on in session: {}",
+            user.getUsername(), session.getId());
 
         return user;
     }
@@ -182,9 +176,7 @@ public final class RegistrationAction extends BaseAction {
 
         final String title = Constants.EDIT;
 
-        if (log.isTraceEnabled()) {
-            log.trace(Constants.LOG_POPULATE_FORM + user);
-        }
+        log.trace("{}{}", Constants.LOG_POPULATE_FORM, user);
 
         try {
             PropertyUtils.copyProperties(form, user);
@@ -217,9 +209,7 @@ public final class RegistrationAction extends BaseAction {
     private void doPopulate(User user, ActionForm form)
             throws ServletException {
 
-        if (log.isTraceEnabled()) {
-            log.trace(Constants.LOG_POPULATE_USER + user);
-        }
+        log.trace("{}{}", Constants.LOG_POPULATE_USER, user);
 
         try {
             String oldPassword = user.getPassword();
@@ -258,9 +248,7 @@ public final class RegistrationAction extends BaseAction {
     private void doValidateToken(HttpServletRequest request,
                                  ActionMessages errors) {
 
-        if (log.isTraceEnabled()) {
-            log.trace(Constants.LOG_TOKEN_CHECK);
-        }
+        log.trace(Constants.LOG_TOKEN_CHECK);
 
         if (!isTokenValid(request)) {
             errors.add(
@@ -359,5 +347,4 @@ public final class RegistrationAction extends BaseAction {
 
         return doFindSuccess(mapping);
     }
-
 }

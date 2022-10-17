@@ -31,13 +31,13 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.apps.mailreader.dao.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -58,8 +58,8 @@ public final class EditRegistrationAction extends Action {
     /**
      * The <code>Log</code> instance for this application.
      */
-    private Log log =
-        LogFactory.getLog("org.apache.struts.webapp.Example");
+    private Logger log =
+        LoggerFactory.getLogger(EditRegistrationAction.class);
 
 
     // --------------------------------------------------------- Public Methods
@@ -89,77 +89,64 @@ public final class EditRegistrationAction extends Action {
     // Extract attributes we will need
     HttpSession session = request.getSession();
     String action = request.getParameter("action");
-    if (action == null)
+    if (action == null) {
         action = "Create";
-        if (log.isDebugEnabled()) {
-            log.debug("EditRegistrationAction:  Processing " + action +
-                        " action");
-        }
+    }
+    log.debug("EditRegistrationAction:  Processing {} action",
+        action);
 
     // Is there a currently logged on user?
     User user = null;
     if (!"Create".equals(action)) {
         user = (User) session.getAttribute(Constants.USER_KEY);
         if (user == null) {
-                if (log.isDebugEnabled()) {
-                    log.debug(" User is not logged on in session "
-                              + session.getId());
-                }
-        return (mapping.findForward("logon"));
+            log.debug(" User is not logged on in session {}",
+                session.getId());
+            return (mapping.findForward("logon"));
         }
     }
 
     // Populate the user registration form
     if (form == null) {
-            if (log.isTraceEnabled()) {
-                log.trace(" Creating new RegistrationForm bean under key "
-                          + mapping.getAttribute());
-            }
+        log.trace(" Creating new RegistrationForm bean under key {}",
+            mapping.getAttribute());
         form = new RegistrationForm();
-            if ("request".equals(mapping.getScope()))
-                request.setAttribute(mapping.getAttribute(), form);
-            else
-                session.setAttribute(mapping.getAttribute(), form);
+        if ("request".equals(mapping.getScope()))
+            request.setAttribute(mapping.getAttribute(), form);
+        else
+            session.setAttribute(mapping.getAttribute(), form);
     }
     RegistrationForm regform = (RegistrationForm) form;
     if (user != null) {
-            if (log.isTraceEnabled()) {
-                log.trace(" Populating form from " + user);
-            }
-            try {
-                PropertyUtils.copyProperties(regform, user);
-                regform.setAction(action);
-                regform.setPassword(null);
-                regform.setPassword2(null);
-            } catch (InvocationTargetException e) {
-                Throwable t = e.getTargetException();
-                if (t == null)
-                    t = e;
-                log.error("RegistrationForm.populate", t);
-                throw new ServletException("RegistrationForm.populate", t);
-            } catch (Throwable t) {
-                log.error("RegistrationForm.populate", t);
-                throw new ServletException("RegistrationForm.populate", t);
-            }
+        log.trace(" Populating form from {}", user);
+        try {
+            PropertyUtils.copyProperties(regform, user);
+            regform.setAction(action);
+            regform.setPassword(null);
+            regform.setPassword2(null);
+        } catch (InvocationTargetException e) {
+            Throwable t = e.getTargetException();
+            if (t == null)
+                t = e;
+            log.error("RegistrationForm.populate", t);
+            throw new ServletException("RegistrationForm.populate", t);
+        } catch (Throwable t) {
+            log.error("RegistrationForm.populate", t);
+            throw new ServletException("RegistrationForm.populate", t);
+        }
     }
 
-        // Set a transactional control token to prevent double posting
-        if (log.isTraceEnabled()) {
-            log.trace(" Setting transactional control token");
-        }
-        saveToken(request);
+    // Set a transactional control token to prevent double posting
+    log.trace(" Setting transactional control token");
+    saveToken(request);
 
     // Forward control to the edit user registration page
-        if (log.isTraceEnabled()) {
-            log.trace(" Forwarding to 'success' page");
-        }
-        if ("Create".equals(action)) {
-            return (mapping.findForward("register"));
-        } else {
-            return (mapping.findForward("success"));
-        }
-
+    log.trace(" Forwarding to 'success' page");
+    if ("Create".equals(action)) {
+        return (mapping.findForward("register"));
+    } else {
+        return (mapping.findForward("success"));
     }
 
-
+    }
 }

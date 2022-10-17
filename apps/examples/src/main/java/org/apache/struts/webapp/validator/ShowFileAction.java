@@ -21,18 +21,18 @@
 
 package org.apache.struts.webapp.validator;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import java.io.InputStream;
 import java.io.InputStreamReader;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.commons.logging.LogFactory;
-import org.apache.commons.logging.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Action which retrieves a file specified in the parameter
@@ -42,7 +42,7 @@ import org.apache.commons.logging.Log;
 public class ShowFileAction extends Action {
 
     /** Logging Instance. */
-    private static final Log log = LogFactory.getLog(ShowFileAction.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ShowFileAction.class);
 
     public ActionForward execute(ActionMapping mapping,
                                  ActionForm form,
@@ -58,7 +58,7 @@ public class ShowFileAction extends Action {
 
             InputStream input = servlet.getServletContext().getResourceAsStream(fileName);
             if (input == null) {
-                log.warn("File Not Found: "+fileName);
+                LOG.warn("File Not Found: {}", fileName);
             } else {
                 InputStreamReader inputReader = new InputStreamReader(input);
                 char[] buffer = new char[1000];
@@ -72,7 +72,7 @@ public class ShowFileAction extends Action {
                 }
             }
         } else {
-            log.error("No file name specified.");
+            LOG.error("No file name specified.");
         }
 
 

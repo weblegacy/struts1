@@ -31,14 +31,14 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.apps.mailreader.dao.Subscription;
 import org.apache.struts.apps.mailreader.dao.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -58,8 +58,8 @@ public final class EditSubscriptionAction extends Action {
     /**
      * The <code>Log</code> instance for this application.
      */
-    private Log log =
-        LogFactory.getLog("org.apache.struts.webapp.Example");
+    private Logger log =
+        LoggerFactory.getLogger(EditSubscriptionAction.class);
 
 
     // --------------------------------------------------------- Public Methods
@@ -91,20 +91,16 @@ public final class EditSubscriptionAction extends Action {
     String action = request.getParameter("action");
     if (action == null) {
         action = "Create";
-        }
+    }
     String host = request.getParameter("host");
-        if (log.isDebugEnabled()) {
-            log.debug("EditSubscriptionAction:  Processing " + action +
-                      " action");
-        }
+    log.debug("EditSubscriptionAction:  Processing {} action",
+        action);
 
     // Is there a currently logged on user?
     User user = (User) session.getAttribute(Constants.USER_KEY);
     if (user == null) {
-            if (log.isTraceEnabled()) {
-                log.trace(" User is not logged on in session "
-                          + session.getId());
-            }
+        log.trace(" User is not logged on in session {}",
+            session.getId());
         return (mapping.findForward("logon"));
     }
 
@@ -112,10 +108,8 @@ public final class EditSubscriptionAction extends Action {
     Subscription subscription =
             user.findSubscription(request.getParameter("host"));
     if ((subscription == null) && !action.equals("Create")) {
-            if (log.isTraceEnabled()) {
-                log.trace(" No subscription for user " +
-                          user.getUsername() + " and host " + host);
-            }
+        log.trace(" No subscription for user {} and host {}",
+            user.getUsername(), host);
         return (mapping.findForward("failure"));
     }
         if (subscription != null) {
@@ -124,10 +118,8 @@ public final class EditSubscriptionAction extends Action {
 
     // Populate the subscription form
     if (form == null) {
-            if (log.isTraceEnabled()) {
-                log.trace(" Creating new SubscriptionForm bean under key "
-                          + mapping.getAttribute());
-            }
+        log.trace(" Creating new SubscriptionForm bean under key {}",
+            mapping.getAttribute());
         form = new SubscriptionForm();
             if ("request".equals(mapping.getScope())) {
                 request.setAttribute(mapping.getAttribute(), form);
@@ -138,9 +130,7 @@ public final class EditSubscriptionAction extends Action {
     SubscriptionForm subform = (SubscriptionForm) form;
     subform.setAction(action);
         if (!action.equals("Create")) {
-            if (log.isTraceEnabled()) {
-                log.trace(" Populating form from " + subscription);
-            }
+            log.trace(" Populating form from {}", subscription);
             try {
                 PropertyUtils.copyProperties(subform, subscription);
                 subform.setAction(action);
@@ -157,12 +147,8 @@ public final class EditSubscriptionAction extends Action {
         }
 
     // Forward control to the edit subscription page
-        if (log.isTraceEnabled()) {
-            log.trace(" Forwarding to 'success' page");
-        }
+    log.trace(" Forwarding to 'success' page");
     return (mapping.findForward("success"));
 
     }
-
-
 }

@@ -24,8 +24,9 @@ package org.apache.struts.webapp.example;
 
 
 import javax.faces.context.FacesContext;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -38,7 +39,7 @@ public class MainMenuBacking extends AbstractBacking {
     // -------------------------------------------------------- Static Variables
 
 
-    private static final Log log = LogFactory.getLog(MainMenuBacking.class);
+    private static final Logger LOG = LoggerFactory.getLogger(MainMenuBacking.class);
 
 
     // ----------------------------------------------------------------- Actions
@@ -49,9 +50,7 @@ public class MainMenuBacking extends AbstractBacking {
      */
     public String edit() {
 
-        if (log.isDebugEnabled()) {
-            log.debug("edit()");
-        }
+        LOG.debug("edit()");
         FacesContext context = FacesContext.getCurrentInstance();
         StringBuilder sb = registration(context);
         sb.append("?action=Edit");
@@ -66,14 +65,10 @@ public class MainMenuBacking extends AbstractBacking {
      */
     public String logoff() {
 
-        if (log.isDebugEnabled()) {
-            log.debug("logoff()");
-        }
+        LOG.debug("logoff()");
         FacesContext context = FacesContext.getCurrentInstance();
         forward(context, logoff(context).toString());
         return (null);
 
     }
-
-
 }

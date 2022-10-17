@@ -26,8 +26,8 @@ package org.apache.struts.webapp.example;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -40,7 +40,7 @@ public class IndexBacking extends AbstractBacking {
     // -------------------------------------------------------- Static Variables
 
 
-    private static final Log log = LogFactory.getLog(IndexBacking.class);
+    private static final Logger LOG = LoggerFactory.getLogger(IndexBacking.class);
 
 
     // ----------------------------------------------------------------- Actions
@@ -51,9 +51,7 @@ public class IndexBacking extends AbstractBacking {
      */
     public String create() {
 
-        if (log.isDebugEnabled()) {
-            log.debug("create()");
-        }
+        LOG.debug("create()");
         FacesContext context = FacesContext.getCurrentInstance();
         StringBuilder sb = registration(context);
         sb.append("?action=Create");
@@ -74,12 +72,8 @@ public class IndexBacking extends AbstractBacking {
      */
     public String logon() {
 
-        if (log.isDebugEnabled()) {
-            log.debug("logon()");
-        }
+        LOG.debug("logon()");
         return "logon";
 
     }
-
-
 }

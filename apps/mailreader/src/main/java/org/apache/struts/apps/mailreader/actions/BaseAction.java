@@ -26,8 +26,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -40,6 +38,8 @@ import org.apache.struts.apps.mailreader.dao.Subscription;
 import org.apache.struts.apps.mailreader.dao.User;
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
 import org.apache.struts.extras.actions.MappingDispatchAction;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>
@@ -86,7 +86,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      * The <code>Log</code> instance for this application.
      * </p>
      */
-    protected Log log = LogFactory.getLog(Constants.PACKAGE);
+    protected Logger log = LoggerFactory.getLogger(BaseAction.class);
 
     // ---- Protected Methods ----
 
@@ -103,13 +103,8 @@ public abstract class BaseAction extends MappingDispatchAction {
 
         HttpSession session = request.getSession();
         session.setAttribute(Constants.USER_KEY, user);
-        if (log.isDebugEnabled()) {
-            log.debug(
-                    "LogonAction: User '"
-                            + user.getUsername()
-                            + "' logged on in session "
-                            + session.getId());
-        }
+        log.debug("LogonAction: User '{}' logged on in session {}",
+            user.getUsername(), session.getId());
     }
 
     /**
@@ -122,12 +117,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      * @param key     Attrkibute to remove from session, if any
      */
     protected void doCancel(HttpSession session, String method, String key) {
-        if (log.isTraceEnabled()) {
-            StringBuilder sb = new StringBuilder(128);
-            sb.append(Constants.LOG_CANCEL);
-            sb.append(method);
-            log.trace(sb.toString());
-        }
+        log.trace("{}{}", Constants.LOG_CANCEL, method);
         if (key != null) {
             session.removeAttribute(key);
         }
@@ -143,9 +133,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      * @return Return the mapping named "failure" or null if there is no such mapping.
      */
     protected ActionForward doFindFailure(ActionMapping mapping) {
-        if (log.isTraceEnabled()) {
-            log.trace(Constants.LOG_FAILURE);
-        }
+        log.trace(Constants.LOG_FAILURE);
         return mapping.findForward(Constants.FAILURE);
     }
 
@@ -159,9 +147,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      * @return Return the mapping named "logon" or null if there is no such mapping.
      */
     protected ActionForward doFindLogon(ActionMapping mapping) {
-        if (log.isTraceEnabled()) {
-            log.trace(Constants.LOG_LOGON);
-        }
+        log.trace(Constants.LOG_LOGON);
         return mapping.findForward(Constants.LOGON);
     }
 
@@ -176,9 +162,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      *         mapping.
      */
     protected ActionForward doFindSuccess(ActionMapping mapping) {
-        if (log.isTraceEnabled()) {
-            log.trace(Constants.LOG_SUCCESS);
-        }
+        log.trace(Constants.LOG_SUCCESS);
         return mapping.findForward(Constants.SUCCESS);
     }
 
@@ -369,15 +353,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      * @param method  Name of method being processed
      */
     protected void doLogProcess(ActionMapping mapping, String method) {
-        if (log.isDebugEnabled()) {
-            StringBuilder sb = new StringBuilder(128);
-            sb.append(" ");
-            sb.append(mapping.getPath());
-            sb.append(":");
-            sb.append(Constants.LOG_PROCESSING);
-            sb.append(method);
-            log.debug(sb.toString());
-        }
+        log.debug(" {}:{}{}", mapping.getPath(), Constants.LOG_PROCESSING, method);
     }
 
     /**
@@ -388,9 +364,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      * @param request Our HttpServletRequest
      */
     protected void doSaveToken(HttpServletRequest request) {
-        if (log.isTraceEnabled()) {
-            log.trace(Constants.LOG_TOKEN);
-        }
+        log.trace(Constants.LOG_TOKEN);
         saveToken(request);
     }
 
@@ -436,5 +410,4 @@ public abstract class BaseAction extends MappingDispatchAction {
         }
         return true;
     }
-
 }

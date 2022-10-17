@@ -31,13 +31,13 @@ import java.io.InputStream;
 
 import javax.servlet.ServletException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;
 import org.apache.struts.apps.mailreader.Constants;
 import org.apache.struts.apps.mailreader.dao.impl.memory.MemoryUserDatabase;
 import org.apache.struts.config.ModuleConfig;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p><strong>MemoryDatabasePlugIn</strong> initializes and finalizes the
@@ -72,7 +72,7 @@ public final class MemoryDatabasePlugIn implements PlugIn {
     /**
      * Logging output for this plug in instance.
      */
-    private Log log = LogFactory.getLog(this.getClass());
+    private Logger log = LoggerFactory.getLogger(this.getClass());
 
 
     /**
@@ -136,8 +136,8 @@ public final class MemoryDatabasePlugIn implements PlugIn {
     public void init(ActionServlet servlet, ModuleConfig config)
             throws ServletException {
 
-        log.info("Initializing memory database plug in from '" +
-                pathname + "'");
+        log.info("Initializing memory database plug in from '{}'",
+            pathname);
 
         // Remember our associated configuration and servlet
         this.servlet = servlet;
@@ -146,9 +146,7 @@ public final class MemoryDatabasePlugIn implements PlugIn {
         database = new MemoryUserDatabase();
         try {
             String path = calculatePath();
-            if (log.isDebugEnabled()) {
-                log.debug(" Loading database from '" + path + "'");
-            }
+            log.debug(" Loading database from '{}'", path);
             database.setPathname(path);
             database.open();
         } catch (Exception e) {
@@ -215,5 +213,4 @@ public final class MemoryDatabasePlugIn implements PlugIn {
         return (file.getAbsolutePath());
 
     }
-
 }

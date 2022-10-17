@@ -31,8 +31,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -41,6 +39,8 @@ import org.apache.struts.apps.mailreader.dao.Subscription;
 import org.apache.struts.apps.mailreader.dao.User;
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
 import org.apache.struts.util.MessageResources;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -60,8 +60,8 @@ public final class SaveSubscriptionAction extends Action {
     /**
      * The <code>Log</code> instance for this application.
      */
-    private Log log =
-        LogFactory.getLog("org.apache.struts.webapp.Example");
+    private Logger log =
+        LoggerFactory.getLogger(SaveSubscriptionAction.class);
 
 
     // --------------------------------------------------------- Public Methods
@@ -95,48 +95,38 @@ public final class SaveSubscriptionAction extends Action {
     String action = subform.getAction();
     if (action == null) {
         action = "?";
-        }
-        if (log.isDebugEnabled()) {
-            log.debug("SaveSubscriptionAction:  Processing " + action +
-                      " action");
-        }
+    }
+    log.debug("SaveSubscriptionAction:  Processing {} action",
+        action);
 
     // Is there a currently logged on user?
     User user = (User) session.getAttribute(Constants.USER_KEY);
     if (user == null) {
-            if (log.isTraceEnabled()) {
-                log.trace(" User is not logged on in session "
-                          + session.getId());
-            }
+        log.trace(" User is not logged on in session {}",
+            session.getId());
         return (mapping.findForward("logon"));
-        }
+    }
 
     // Was this transaction cancelled?
     if (isCancelled(request)) {
-            if (log.isTraceEnabled()) {
-                log.trace(" Transaction '" + action +
-                          "' was cancelled");
-            }
-            session.removeAttribute(Constants.SUBSCRIPTION_KEY);
+        log.trace(" Transaction '{}' was cancelled",
+            action);
+        session.removeAttribute(Constants.SUBSCRIPTION_KEY);
         return (mapping.findForward("success"));
     }
 
     // Is there a related Subscription object?
     Subscription subscription =
       (Subscription) session.getAttribute(Constants.SUBSCRIPTION_KEY);
-        if ("Create".equals(action)) {
-            if (log.isTraceEnabled()) {
-                log.trace(" Creating subscription for mail server '" +
-                          subform.getHost() + "'");
-            }
-            subscription =
-                user.createSubscription(subform.getHost());
-        }
+    if ("Create".equals(action)) {
+        log.trace(" Creating subscription for mail server '{}'",
+            subform.getHost());
+        subscription =
+            user.createSubscription(subform.getHost());
+    }
     if (subscription == null) {
-            if (log.isTraceEnabled()) {
-                log.trace(" Missing subscription for user '" +
-                          user.getUsername() + "'");
-            }
+        log.trace(" Missing subscription for user '{}'",
+            user.getUsername());
         response.sendError(HttpServletResponse.SC_BAD_REQUEST,
                            messages.getMessage("error.noSubscription"));
         return (null);
@@ -144,30 +134,25 @@ public final class SaveSubscriptionAction extends Action {
 
     // Was this transaction a Delete?
     if (action.equals("Delete")) {
-            if (log.isTraceEnabled()) {
-                log.trace(" Deleting mail server '" +
-                          subscription.getHost() + "' for user '" +
-                          user.getUsername() + "'");
-            }
-            user.removeSubscription(subscription);
+        log.trace(" Deleting mail server '{}' for user '{}'",
+            subscription.getHost(), user.getUsername());
+        user.removeSubscription(subscription);
         session.removeAttribute(Constants.SUBSCRIPTION_KEY);
-            try {
-                UserDatabase database = (UserDatabase)
-                    servlet.getServletContext().
-                    getAttribute(Constants.DATABASE_KEY);
-                database.save();
-            } catch (Exception e) {
-                log.error("Database save", e);
-            }
+        try {
+            UserDatabase database = (UserDatabase)
+                servlet.getServletContext().
+                getAttribute(Constants.DATABASE_KEY);
+            database.save();
+        } catch (Exception e) {
+            log.error("Database save", e);
+        }
         return (mapping.findForward("success"));
     }
 
     // All required validations were done by the form itself
 
     // Update the persistent subscription information
-        if (log.isTraceEnabled()) {
-            log.trace(" Populating database from form bean");
-        }
+        log.trace(" Populating database from form bean");
         try {
             PropertyUtils.copyProperties(subscription, subform);
         } catch (InvocationTargetException e) {
@@ -200,12 +185,8 @@ public final class SaveSubscriptionAction extends Action {
     session.removeAttribute(Constants.SUBSCRIPTION_KEY);
 
     // Forward control to the specified success URI
-        if (log.isTraceEnabled()) {
-            log.trace(" Forwarding to success page");
-        }
+    log.trace(" Forwarding to success page");
     return (mapping.findForward("success"));
 
     }
-
-
 }

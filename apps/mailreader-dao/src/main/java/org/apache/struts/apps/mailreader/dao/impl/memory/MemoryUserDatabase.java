@@ -32,11 +32,11 @@ import java.util.HashMap;
 
 import org.apache.commons.digester.Digester;
 import org.apache.commons.digester.ObjectCreationFactory;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.apps.mailreader.dao.Subscription;
 import org.apache.struts.apps.mailreader.dao.User;
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.xml.sax.Attributes;
 
 
@@ -61,7 +61,7 @@ public final class MemoryUserDatabase implements UserDatabase {
     /**
      * Logging output for this user database instance.
      */
-    private Log log = LogFactory.getLog(this.getClass());
+    private Logger log = LoggerFactory.getLogger(this.getClass());
 
 
     /**
@@ -116,9 +116,7 @@ public final class MemoryUserDatabase implements UserDatabase {
                 throw new IllegalArgumentException("Duplicate user '" +
                                                    username + "'");
             }
-            if (log.isTraceEnabled()) {
-                log.trace("Creating user '" + username + "'");
-            }
+            log.trace("Creating user '{}'", username);
             MemoryUser user = new MemoryUser(this, username);
             synchronized (users) {
                 users.put(username, user);
@@ -158,9 +156,7 @@ public final class MemoryUserDatabase implements UserDatabase {
         try {
 
             // Acquire an input stream to our database file
-            if (log.isDebugEnabled()) {
-                log.debug("Loading database from '" + pathname + "'");
-            }
+            log.debug("Loading database from '{}'", pathname);
             fis = new FileInputStream(pathname);
             bis = new BufferedInputStream(fis);
 
@@ -184,7 +180,7 @@ public final class MemoryUserDatabase implements UserDatabase {
 
         } catch (Exception e) {
 
-            log.error("Loading database from '" + pathname + "':", e);
+            log.error("Loading database from '{}':", pathname, e);
             throw e;
 
         } finally {
@@ -211,9 +207,7 @@ public final class MemoryUserDatabase implements UserDatabase {
             throw new IllegalArgumentException
                 ("User not associated with this database");
         }
-        if (log.isTraceEnabled()) {
-            log.trace("Removing user '" + user.getUsername() + "'");
-        }
+        log.trace("Removing user '{}'", user.getUsername());
         synchronized (users) {
             users.remove(user.getUsername());
         }
@@ -224,9 +218,7 @@ public final class MemoryUserDatabase implements UserDatabase {
     // See interface for Javadoc
     public void save() throws Exception {
 
-        if (log.isDebugEnabled()) {
-            log.debug("Saving database to '" + pathname + "'");
-        }
+        log.debug("Saving database to '{}'", pathname);
         File fileNew = new File(pathnameNew);
         PrintWriter writer = null;
 
@@ -380,5 +372,4 @@ class MemoryUserCreationFactory implements ObjectCreationFactory {
         user.setReplyToAddress(attributes.getValue("replyToAddress"));
         return (user);
     }
-
 }

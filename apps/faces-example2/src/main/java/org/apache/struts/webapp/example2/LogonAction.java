@@ -28,8 +28,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
@@ -40,6 +38,8 @@ import org.apache.struts.apps.mailreader.dao.ExpiredPasswordException;
 import org.apache.struts.apps.mailreader.dao.User;
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
 import org.apache.struts.util.ModuleException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -58,8 +58,8 @@ public final class LogonAction extends Action {
     /**
      * The <code>Log</code> instance for this application.
      */
-    private Log log =
-        LogFactory.getLog("org.apache.struts.webapp.Example");
+    private Logger log =
+        LoggerFactory.getLogger(LogonAction.class);
 
 
     // --------------------------------------------------------- Public Methods
@@ -117,10 +117,8 @@ public final class LogonAction extends Action {
     // Save our logged-in user in the session
     HttpSession session = request.getSession();
     session.setAttribute(Constants.USER_KEY, user);
-        if (log.isDebugEnabled()) {
-            log.debug("LogonAction: User '" + user.getUsername() +
-                      "' logged on in session " + session.getId());
-        }
+    log.debug("LogonAction: User '{}' logged on in session {}",
+        user.getUsername(), session.getId());
 
         // Remove the obsolete form bean
     if (mapping.getAttribute() != null) {
@@ -165,6 +163,4 @@ public final class LogonAction extends Action {
         return (database.findUser(username));
 
     }
-
-
 }

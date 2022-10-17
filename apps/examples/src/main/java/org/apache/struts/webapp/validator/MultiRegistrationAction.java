@@ -25,13 +25,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Implementation of <strong>Action</strong> that validates a multi-page
@@ -43,7 +43,7 @@ public final class MultiRegistrationAction extends Action {
     /**
      * Commons Logging instance.
      */
-    private Log log = LogFactory.getFactory().getInstance(this.getClass().getName());
+    private Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     /**
      * Process the specified HTTP request, and create the corresponding HTTP
@@ -72,12 +72,8 @@ public final class MultiRegistrationAction extends Action {
 
         // Was this transaction cancelled?
         if (isCancelled(request)) {
-            if (log.isInfoEnabled()) {
-                log.info(
-                    " "
-                        + mapping.getAttribute()
-                        + " - Registration transaction was cancelled");
-            }
+            log.info(" {} - Registration transaction was cancelled",
+                mapping.getAttribute());
 
             removeFormBean(mapping, request);
 

@@ -26,8 +26,8 @@ import javax.faces.application.ViewHandler;
 import javax.faces.application.ViewHandlerWrapper;
 import javax.faces.context.FacesContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -46,7 +46,7 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
     /**
      * The {@code LOG} instance for this class.
      */
-    private static final Log LOG = LogFactory.getLog(ViewHandlerImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ViewHandlerImpl.class);
 
 
     // ------------------------------------------------------ Instance Variables
@@ -68,10 +68,8 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
      * @param oldViewHandler {@code ViewHandler} to be decorated
      */
     public ViewHandlerImpl(ViewHandler oldViewHandler) {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Creating ViewHandler instance, wrapping handler " +
-                    oldViewHandler);
-        }
+        LOG.debug("Creating ViewHandler instance, wrapping handler {}",
+            oldViewHandler);
         this.oldViewHandler = oldViewHandler;
     }
 

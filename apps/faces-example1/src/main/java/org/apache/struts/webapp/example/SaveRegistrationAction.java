@@ -31,8 +31,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -41,6 +39,8 @@ import org.apache.struts.action.ActionMessage;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.apps.mailreader.dao.User;
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -61,8 +61,8 @@ public final class SaveRegistrationAction extends Action {
     /**
      * The <code>Log</code> instance for this application.
      */
-    private Log log =
-        LogFactory.getLog("org.apache.struts.webapp.Example");
+    private Logger log =
+        LoggerFactory.getLogger(SaveRegistrationAction.class);
 
 
     // --------------------------------------------------------- Public Methods
@@ -95,49 +95,38 @@ public final class SaveRegistrationAction extends Action {
     String action = regform.getAction();
     if (action == null) {
         action = "Create";
-        }
-        UserDatabase database = (UserDatabase)
-      servlet.getServletContext().getAttribute(Constants.DATABASE_KEY);
-        if (log.isDebugEnabled()) {
-            log.debug("SaveRegistrationAction:  Processing " + action +
-                      " action");
-        }
+    }
+    UserDatabase database = (UserDatabase)
+    servlet.getServletContext().getAttribute(Constants.DATABASE_KEY);
+    log.debug("SaveRegistrationAction:  Processing {} action",
+        action);
 
     // Is there a currently logged on user (unless creating)?
     User user = (User) session.getAttribute(Constants.USER_KEY);
     if (!"Create".equals(action) && (user == null)) {
-            if (log.isTraceEnabled()) {
-                log.trace(" User is not logged on in session "
-                          + session.getId());
-            }
+        log.trace(" User is not logged on in session {}",
+            session.getId());
         return (mapping.findForward("logon"));
-        }
+    }
 
     // Was this transaction cancelled?
     if (isCancelled(request)) {
-            if (log.isTraceEnabled()) {
-                log.trace(" Transaction '" + action +
-                          "' was cancelled");
-            }
+        log.trace(" Transaction '{}' was cancelled", action);
         session.removeAttribute(Constants.SUBSCRIPTION_KEY);
         return (mapping.findForward("failure"));
     }
 
         // Validate the transactional control token
     ActionMessages errors = new ActionMessages();
-        if (log.isTraceEnabled()) {
-            log.trace(" Checking transactional control token");
-        }
-        if (!isTokenValid(request)) {
-            errors.add(ActionMessages.GLOBAL_MESSAGE,
-                       new ActionMessage("error.transaction.token"));
-        }
-        resetToken(request);
+    log.trace(" Checking transactional control token");
+    if (!isTokenValid(request)) {
+        errors.add(ActionMessages.GLOBAL_MESSAGE,
+            new ActionMessage("error.transaction.token"));
+    }
+    resetToken(request);
 
     // Validate the request parameters specified by the user
-        if (log.isTraceEnabled()) {
-            log.trace(" Performing extra validations");
-        }
+    log.trace(" Performing extra validations");
     String value = null;
     value = regform.getUsername();
     if (("Create".equals(action)) &&
@@ -195,13 +184,11 @@ public final class SaveRegistrationAction extends Action {
             log.error("Database save", e);
         }
 
-        // Log the user in if appropriate
+    // Log the user in if appropriate
     if ("Create".equals(action)) {
         session.setAttribute(Constants.USER_KEY, user);
-            if (log.isTraceEnabled()) {
-                log.trace(" User '" + user.getUsername() +
-                          "' logged on in session " + session.getId());
-            }
+        log.trace(" User '{}' logged on in session {}",
+            user.getUsername(), session.getId());
     }
 
     // Remove the obsolete form bean
@@ -213,12 +200,8 @@ public final class SaveRegistrationAction extends Action {
         }
 
     // Forward control to the specified success URI
-        if (log.isTraceEnabled()) {
-            log.trace(" Forwarding to success page");
-        }
+    log.trace(" Forwarding to success page");
     return (mapping.findForward("success"));
 
     }
-
-
 }

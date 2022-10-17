@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Apps: Replace `commons-logging` with `slf4j`
 * Faces: Replace `commons-logging` with `slf4j`
 * Tiles2: Replace `commons-logging` with `slf4j`
 * Tiles: Replace `commons-logging` with `slf4j`

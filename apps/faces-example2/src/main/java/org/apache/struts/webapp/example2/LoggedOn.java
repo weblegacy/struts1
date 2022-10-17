@@ -24,10 +24,12 @@ package org.apache.struts.webapp.example2;
 
 
 import java.io.IOException;
+
 import javax.faces.FacesException;
 import javax.faces.context.FacesContext;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -40,7 +42,7 @@ public class LoggedOn {
     // ------------------------------------------------------ Instance Variables
 
 
-    private static final Log log = LogFactory.getLog(LoggedOn.class);
+    private static final Logger LOG = LoggerFactory.getLogger(LoggedOn.class);
 
 
     // ----------------------------------------------------------------- Actions
@@ -52,9 +54,7 @@ public class LoggedOn {
     public String logoff() {
 
         FacesContext context = FacesContext.getCurrentInstance();
-        if (log.isDebugEnabled()) {
-            log.debug("logoff(" + context + ")");
-        }
+        LOG.debug("logoff({})", context);
         forward(context, "/logoff.do");
         return (null);
 
@@ -84,6 +84,4 @@ public class LoggedOn {
         }
 
     }
-
-
 }

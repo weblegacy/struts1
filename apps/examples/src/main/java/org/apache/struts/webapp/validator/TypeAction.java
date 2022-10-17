@@ -25,12 +25,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Implementation of <strong>Action</strong> that validates a different 'types'.
@@ -41,7 +41,7 @@ public final class TypeAction extends Action {
     /**
      * Commons Logging instance.
      */
-    private Log log = LogFactory.getFactory().getInstance(this.getClass().getName());
+    private Logger log = LoggerFactory.getLogger(this.getClass().getName());
 
     /**
      * Process the specified HTTP request, and create the corresponding HTTP
@@ -67,12 +67,8 @@ public final class TypeAction extends Action {
 
         // Was this transaction cancelled?
         if (isCancelled(request)) {
-            if (log.isInfoEnabled()) {
-                log.info(
-                    " "
-                        + mapping.getAttribute()
-                        + " - Type transaction was cancelled");
-            }
+            log.info(" {} - Type transaction was cancelled",
+                mapping.getAttribute());
 
             removeFormBean(mapping, request);
 

@@ -26,11 +26,11 @@ package org.apache.struts.webapp.example;
 import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.apps.mailreader.dao.Subscription;
 import org.apache.struts.apps.mailreader.dao.User;
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -43,7 +43,7 @@ public class RegistrationBacking extends AbstractBacking {
     // -------------------------------------------------------- Static Variables
 
 
-    private static final Log log = LogFactory.getLog(RegistrationBacking.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RegistrationBacking.class);
 
 
     // -------------------------------------------------------------- Properties
@@ -83,9 +83,7 @@ public class RegistrationBacking extends AbstractBacking {
      */
     public String create() {
 
-        if (log.isDebugEnabled()) {
-            log.debug("create()");
-        }
+        LOG.debug("create()");
         FacesContext context = FacesContext.getCurrentInstance();
         StringBuilder url = subscription(context);
         url.append("?action=Create");
@@ -104,9 +102,7 @@ public class RegistrationBacking extends AbstractBacking {
      */
     public String delete() {
 
-        if (log.isDebugEnabled()) {
-            log.debug("delete()");
-        }
+        LOG.debug("delete()");
         FacesContext context = FacesContext.getCurrentInstance();
         StringBuilder url = subscription(context);
         url.append("?action=Delete");
@@ -129,9 +125,7 @@ public class RegistrationBacking extends AbstractBacking {
      */
     public String edit() {
 
-        if (log.isDebugEnabled()) {
-            log.debug("edit()");
-        }
+        LOG.debug("edit()");
         FacesContext context = FacesContext.getCurrentInstance();
         StringBuilder url = subscription(context);
         url.append("?action=Edit");
@@ -155,9 +149,7 @@ public class RegistrationBacking extends AbstractBacking {
      */
     public String update() {
 
-        if (log.isDebugEnabled()) {
-            log.debug("update()");
-        }
+        LOG.debug("update()");
 
         FacesContext context = FacesContext.getCurrentInstance();
 
@@ -169,7 +161,7 @@ public class RegistrationBacking extends AbstractBacking {
                 get(Constants.DATABASE_KEY);
             database.save();
         } catch (Exception e) {
-            log.error("Database save", e);
+            LOG.error("Database save", e);
         }
 
         // Forward back to the edit registration page
@@ -179,6 +171,4 @@ public class RegistrationBacking extends AbstractBacking {
         return (null);
 
     }
-
-
 }

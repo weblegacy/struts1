@@ -21,15 +21,15 @@
 
 package org.apache.struts.apps.mailreader.actions;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.apps.mailreader.Constants;
 import org.apache.struts.apps.mailreader.dao.User;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
  * <p>
@@ -52,19 +52,11 @@ public final class LogoffAction extends BaseAction {
         HttpSession session = request.getSession();
         User user = doGetUser(session);
         if (user != null) {
-            if (log.isDebugEnabled()) {
-                log.debug(
-                        "LogoffAction: User '"
-                                + user.getUsername()
-                                + "' logged off in session "
-                                + session.getId());
-            }
+            log.debug("LogoffAction: User '{}' logged off in session {}",
+                user.getUsername(), session.getId());
         } else {
-            if (log.isDebugEnabled()) {
-                log.debug(
-                        "LogoffActon: User logged off in session " +
-                                session.getId());
-            }
+            log.debug("LogoffActon: User logged off in session {}",
+                session.getId());
         }
 
         // Process user logoff by removing session attributes
@@ -76,5 +68,4 @@ public final class LogoffAction extends BaseAction {
         return doFindSuccess(mapping);
 
     }
-
 }

@@ -23,6 +23,7 @@ package org.apache.struts.faces.application;
 
 
 import java.io.IOException;
+
 import javax.faces.FactoryFinder;
 import javax.faces.application.ViewHandler;
 import javax.faces.component.UICommand;
@@ -35,8 +36,7 @@ import javax.faces.lifecycle.LifecycleFactory;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.apache.struts.Globals;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -48,6 +48,8 @@ import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.faces.Constants;
 import org.apache.struts.faces.component.FormComponent;
 import org.apache.struts.tiles.TilesRequestProcessor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -70,8 +72,8 @@ public class FacesTilesRequestProcessor extends TilesRequestProcessor {
     /**
      * <p>The log instance for this class.</p>
      */
-    protected static Log log =
-        LogFactory.getLog(FacesTilesRequestProcessor.class);
+    protected static Logger log =
+        LoggerFactory.getLogger(FacesTilesRequestProcessor.class);
 
     /**
      * <p>The lifecycle id.</p>
@@ -479,6 +481,4 @@ public class FacesTilesRequestProcessor extends TilesRequestProcessor {
         }
 
     }
-
-
 }

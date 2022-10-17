@@ -31,14 +31,14 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.servlet.http.HttpSession;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.faces.component.FormComponent;
 import org.apache.struts.faces.util.StrutsContext;
 import org.apache.struts.faces.util.Utils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -57,7 +57,7 @@ public class FormRenderer extends AbstractRenderer {
     /**
      * <p>The <code>Log</code> instance for this class.</p>
      */
-    private final static Log LOG = LogFactory.getLog(FormRenderer.class);
+    private final static Logger LOG = LoggerFactory.getLogger(FormRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods
@@ -80,10 +80,11 @@ public class FormRenderer extends AbstractRenderer {
         }
         String clientId = component.getClientId(context);
         Map<String, String> map = context.getExternalContext().getRequestParameterMap();
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("decode(" + clientId + ") --> " +
-                      map.containsKey(clientId));
-        }
+        LOG.atDebug()
+            .setMessage("decode({}) --> {}")
+            .addArgument(clientId)
+            .addArgument(() -> map.containsKey(clientId))
+            .log();
         component.getAttributes().put
             ("submitted",
              map.containsKey(clientId) ? Boolean.TRUE : Boolean.FALSE);
@@ -129,9 +130,7 @@ public class FormRenderer extends AbstractRenderer {
 
         // Look up attribute values we need
         String clientId = component.getClientId(context);
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("encodeBegin(" + clientId + ")");
-        }
+        LOG.debug("encodeBegin({})", clientId);
         String styleClass = Utils.getMapValue(String.class,
                 component.getAttributes(), "styleClass");
 
@@ -203,9 +202,7 @@ public class FormRenderer extends AbstractRenderer {
             throw new NullPointerException();
         }
         String clientId = component.getClientId(context);
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("encodeEnd(" + clientId + ")");
-        }
+        LOG.debug("encodeEnd({})", clientId);
         ResponseWriter writer = context.getResponseWriter();
 
         // Render the hidden variable our decode() method uses to detect submits
@@ -293,13 +290,8 @@ public class FormRenderer extends AbstractRenderer {
         String actionURL =
             context.getApplication().getViewHandler().
             getActionURL(context, context.getViewRoot().getViewId());
-        if (LOG.isTraceEnabled()) {
-            LOG.trace("getActionURL(" + context.getViewRoot().getViewId() +
-                      ") --> " + actionURL);
-        }
+        LOG.trace("getActionURL({}) --> {}", context.getViewRoot().getViewId(), actionURL);
         return (context.getExternalContext().encodeActionURL(actionURL));
 
     }
-
-
 }

@@ -23,14 +23,16 @@ package org.apache.struts.faces.renderer;
 
 
 import java.io.IOException;
+
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIViewRoot;
 import javax.faces.component.ValueHolder;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.apache.struts.util.ResponseUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -49,7 +51,7 @@ public class WriteRenderer extends AbstractRenderer {
     /**
      * <p>The <code>Log</code> instance for this class.</p>
      */
-    private static Log log = LogFactory.getLog(WriteRenderer.class);
+    private static Logger log = LoggerFactory.getLogger(WriteRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods
@@ -81,10 +83,8 @@ public class WriteRenderer extends AbstractRenderer {
             (String) component.getAttributes().get("style");
         String styleClass =
             (String) component.getAttributes().get("styleClass");
-        if (log.isTraceEnabled()) {
-            log.trace("id='" + id + "', style='" + style + "', styleClass='" +
-                      styleClass + "'");
-        }
+        log.trace("id='{}', style='{}', styleClass='{}'",
+            id, style, styleClass);
         if ((id != null) || (style != null) || (styleClass != null)) {
             writer.startElement("span", component);
             if (id != null) {
@@ -100,10 +100,11 @@ public class WriteRenderer extends AbstractRenderer {
             writer.writeText("", null);
         }
         String text = getText(context, component);
-        if (log.isTraceEnabled()) {
-            log.trace("encodeEnd(" + component.getClientId(context) +
-                      "," + text + ")");
-        }
+        log.atTrace()
+            .setMessage("encodeEnd({},{})")
+            .addArgument(() ->  component.getClientId(context))
+            .addArgument(text)
+            .log();
         writer.write(text);
         if ((id != null) || (style != null) || (styleClass != null)) {
             writer.endElement("span");
@@ -137,6 +138,4 @@ public class WriteRenderer extends AbstractRenderer {
         }
 
     }
-
-
 }

@@ -33,8 +33,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.event.ActionEvent;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -60,7 +60,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
     /**
      * <p>The <code>Log</code> instance for this class.</p>
      */
-    private final static Log LOG = LogFactory.getLog(CommandLinkRenderer.class);
+    private final static Logger LOG = LoggerFactory.getLogger(CommandLinkRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods
@@ -108,16 +108,12 @@ public class CommandLinkRenderer extends AbstractRenderer {
         String paramId = TOKEN;
         String value = context.getExternalContext().getRequestParameterMap().get(paramId);
         if ((value == null) || !value.equals(component.getClientId(context))) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("decode(" + component.getId() + ") --> not active");
-            }
+            LOG.trace("decode({}) --> not active", component.getId());
             return;
         }
 
         // Queue an ActionEvent from this component
-        if (LOG.isTraceEnabled()) {
-            LOG.trace("decode(" + component.getId() + ") --> queueEvent()");
-        }
+        LOG.trace("decode({}) --> queueEvent()", component.getId());
         component.queueEvent(new ActionEvent(component));
 
     }
@@ -305,6 +301,4 @@ public class CommandLinkRenderer extends AbstractRenderer {
         writer.endElement("a");
 
     }
-
-
 }

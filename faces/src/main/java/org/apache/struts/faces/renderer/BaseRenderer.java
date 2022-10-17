@@ -28,10 +28,10 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.faces.util.StrutsContext;
 import org.apache.struts.faces.util.Utils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -49,7 +49,7 @@ public class BaseRenderer extends AbstractRenderer {
     /**
      * The {@code Log} instance for this class.
      */
-    private final static Log LOG = LogFactory.getLog(BaseRenderer.class);
+    private final static Logger LOG = LoggerFactory.getLogger(BaseRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods
@@ -74,10 +74,8 @@ public class BaseRenderer extends AbstractRenderer {
 
         final String uri = StrutsContext.uri(context);
 
-        if (LOG.isTraceEnabled()) {
-            LOG.trace("viewId='" + context.getViewRoot().getViewId() +
-                      "' --> uri='" + uri + "'");
-        }
+        LOG.trace("viewId='{}' --> uri='{}'",
+            context.getViewRoot().getViewId(), uri);
 
         ResponseWriter writer = context.getResponseWriter();
         writer.startElement("base", component);

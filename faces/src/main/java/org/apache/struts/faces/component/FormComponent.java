@@ -29,8 +29,6 @@ import javax.faces.component.UIForm;
 import javax.faces.context.FacesContext;
 
 import org.apache.commons.beanutils.DynaBean;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionServlet;
@@ -41,6 +39,8 @@ import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.faces.util.StrutsContext;
 import org.apache.struts.faces.util.Utils;
 import org.apache.struts.util.RequestUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -59,7 +59,7 @@ public class FormComponent extends UIForm {
     /**
      * The {@code LOG} instance for this class.
      */
-    protected static Log log = LogFactory.getLog(FormComponent.class);
+    protected static Logger log = LoggerFactory.getLogger(FormComponent.class);
 
 
     // ------------------------------------------------------ Instance Variables
@@ -366,13 +366,12 @@ public class FormComponent extends UIForm {
             throw new NullPointerException();
         }
 
-        if (log.isDebugEnabled()) {
-            log.debug("processDecodes(" + getClientId(context) + ")");
-        }
+        String clientId = getClientId(context);
+        log.debug("processDecodes({})", clientId);
 
         // Create the form bean (if necessary)
         Map<String, String> params = context.getExternalContext().getRequestParameterMap();
-        if (params.containsKey(getClientId(context))) {
+        if (params.containsKey(clientId)) {
             createActionForm(context);
         }
 
@@ -489,11 +488,8 @@ public class FormComponent extends UIForm {
                 String className =
                     ((DynaBean) instance).getDynaClass().getName();
                 if (className.equals(fbConfig.getName())) {
-                    if (log.isDebugEnabled()) {
-                        log.debug
-                            (" Recycling existing DynaActionForm instance " +
-                             "of type '" + className + "'");
-                    }
+                    log.debug(" Recycling existing DynaActionForm instance "
+                        + "of type '{}'", className);
                     return;
                 }
             } else {
@@ -501,12 +497,8 @@ public class FormComponent extends UIForm {
                     Class<?> configClass =
                         RequestUtils.applicationClass(fbConfig.getType());
                     if (configClass.isAssignableFrom(instance.getClass())) {
-                        if (log.isDebugEnabled()) {
-                            log.debug
-                                (" Recycling existing ActionForm instance " +
-                                 "of class '" + instance.getClass().getName()
-                                 + "'");
-                        }
+                        log.debug(" Recycling existing ActionForm instance "
+                            + "of class '{}'", instance.getClass().getName());
                         return;
                     }
                 } catch (Throwable t) {
@@ -525,12 +517,9 @@ public class FormComponent extends UIForm {
                 DynaActionFormClass dynaClass =
                     DynaActionFormClass.createDynaActionFormClass(fbConfig);
                 instance = (ActionForm) dynaClass.newInstance();
-                if (log.isDebugEnabled()) {
-                    log.debug
-                        (" Creating new DynaActionForm instance " +
-                         "of type '" + fbConfig.getType() + "'");
-                    log.trace(" --> " + instance);
-                }
+                log.debug(" Creating new DynaActionForm instance "
+                    + "of type '{}'", fbConfig.getType());
+                log.trace(" --> {}", instance);
             } catch (Throwable t) {
                 IllegalArgumentException t2 = new IllegalArgumentException
                     ("Cannot create form bean of type '" +
@@ -542,12 +531,9 @@ public class FormComponent extends UIForm {
             try {
                 instance = (ActionForm)
                     RequestUtils.applicationInstance(fbConfig.getType());
-                if (log.isDebugEnabled()) {
-                    log.debug
-                        (" Creating new ActionForm instance " +
-                         "of type '" + fbConfig.getType() + "'");
-                    log.trace(" --> " + instance);
-                }
+                log.debug(" Creating new ActionForm instance "
+                    + "of type '{}'", fbConfig.getType());
+                log.trace(" --> {}", instance);
             } catch (Throwable t) {
                 IllegalArgumentException t2 = new IllegalArgumentException
                     ("Cannot create form bean of class '" +

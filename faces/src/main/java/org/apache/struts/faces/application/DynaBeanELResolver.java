@@ -36,8 +36,8 @@ import javax.el.PropertyNotWritableException;
 import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.DynaProperty;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -67,8 +67,8 @@ public class DynaBeanELResolver extends ELResolver {
     /**
      * The {@code Log} instance for this class.
      */
-    private static final Log LOG =
-        LogFactory.getLog(DynaBeanELResolver.class);
+    private static final Logger LOG =
+        LoggerFactory.getLogger(DynaBeanELResolver.class);
 
     /**
      * Flag if this {@code ELRsolver} is in read-only-mode {@code true}.
@@ -90,10 +90,8 @@ public class DynaBeanELResolver extends ELResolver {
      *     properties; {@code false} otherwise.
      */
     public DynaBeanELResolver(boolean readOnly) {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Creating new Dyna-Action-From-ELResolver "
-                    + "instance with read-only: '" + readOnly + "'");
-        }
+        LOG.debug("Creating new Dyna-Action-From-ELResolver "
+            + "instance with read-only: '{}'", readOnly);
 
         this.readOnly = readOnly;
     }
@@ -136,10 +134,8 @@ public class DynaBeanELResolver extends ELResolver {
         }
 
         if (base instanceof DynaBean) {
-            if (LOG.isTraceEnabled() ) {
-                LOG.trace("Returning property-type '" + property
-                        + "' for DynaBean '" + base + "'");
-            }
+            LOG.trace("Returning property-type '{}' for DynaBean '{}'",
+                property, base);
 
             final DynaBean dynaBean = (DynaBean) base;
             final String key = property.toString();
@@ -193,10 +189,8 @@ public class DynaBeanELResolver extends ELResolver {
         }
 
         if (base instanceof DynaBean) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Returning dynamic property '" + property +
-                          "' for DynaBean '" + base + "'");
-            }
+            LOG.trace("Returning dynamic property '{}' for DynaBean '{}'",
+                property, base);
 
             final DynaBean dynaBean = (DynaBean) base;
             final String key = property.toString();
@@ -254,10 +248,8 @@ public class DynaBeanELResolver extends ELResolver {
         }
 
         if (base instanceof DynaBean) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Setting dynamic property '" + property
-                        + "' for DynaBean '" + base + "'");
-            }
+            LOG.trace("Setting dynamic property '{}' for DynaBean '{}'",
+                property, base);
 
             final DynaBean dynaBean = (DynaBean) base;
             final String key = property.toString();
@@ -313,10 +305,8 @@ public class DynaBeanELResolver extends ELResolver {
         }
 
         if (base instanceof DynaBean) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Return ready-only status for dynamic property '"
-                        + property + "' for DynaBean " + base + "'");
-            }
+            LOG.trace("Return ready-only status for dynamic property '{}' for DynaBean '{}'",
+                property, base);
 
             final DynaBean dynaBean = (DynaBean) base;
             final String key = property.toString();
@@ -388,9 +378,7 @@ public class DynaBeanELResolver extends ELResolver {
             Object base) {
 
         if (base instanceof DynaBean) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Get Feature-Descriptors for DynaBean '" + base + "'");
-            }
+            LOG.trace("Get Feature-Descriptors for DynaBean '{}'", base);
 
             final DynaBean dynaBean = (DynaBean) base;
             final DynaProperty[] properties = dynaBean.getDynaClass().getDynaProperties();
@@ -438,9 +426,7 @@ public class DynaBeanELResolver extends ELResolver {
     @Override
     public Class<?> getCommonPropertyType(ELContext context, Object base) {
         if (base instanceof DynaBean) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Get Common-Property-Type for DynaBean '" + base + "'");
-            }
+            LOG.trace("Get Common-Property-Type for DynaBean '{}'", base);
 
             return Object.class;
         }
@@ -462,9 +448,7 @@ public class DynaBeanELResolver extends ELResolver {
         try {
             dynaProperty = bean.getDynaClass().getDynaProperty(property);
         } catch (IllegalArgumentException e) {
-            if (LOG.isTraceEnabled() ) {
-                LOG.trace("Get Dyna-Property '" + property + "'", e);
-            }
+            LOG.trace("Get Dyna-Property '{}'", property, e);
         }
 
         return (dynaProperty);

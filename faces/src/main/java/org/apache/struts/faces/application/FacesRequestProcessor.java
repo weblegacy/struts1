@@ -23,6 +23,7 @@ package org.apache.struts.faces.application;
 
 
 import java.io.IOException;
+
 import javax.faces.FactoryFinder;
 import javax.faces.application.ViewHandler;
 import javax.faces.component.UICommand;
@@ -35,19 +36,20 @@ import javax.faces.lifecycle.LifecycleFactory;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+
 import org.apache.struts.Globals;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.RequestProcessor;
 import org.apache.struts.action.InvalidCancelException;
+import org.apache.struts.action.RequestProcessor;
 import org.apache.struts.config.FormBeanConfig;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.faces.Constants;
 import org.apache.struts.faces.component.FormComponent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 
@@ -71,7 +73,7 @@ public class FacesRequestProcessor extends RequestProcessor {
     /**
      * <p>The log instance for this class.</p>
      */
-    protected static Log log = LogFactory.getLog(FacesRequestProcessor.class);
+    protected static Logger log = LoggerFactory.getLogger(FacesRequestProcessor.class);
 
 
     /**
@@ -101,9 +103,7 @@ public class FacesRequestProcessor extends RequestProcessor {
                              HttpServletResponse response)
         throws IOException, ServletException {
 
-        if (log.isDebugEnabled()) {
-            log.debug("doForward(" + uri + ")");
-        }
+        log.debug("doForward({})", uri);
 
         // Remove the current ActionEvent (if any)
         request.removeAttribute(Constants.ACTION_EVENT_KEY);
@@ -111,14 +111,10 @@ public class FacesRequestProcessor extends RequestProcessor {
         // Process a Struts controller request normally
         if (isStrutsRequest(uri)) {
             if (response.isCommitted()) {
-                if (log.isTraceEnabled()) {
-                    log.trace("  super.doInclude(" + uri + ")");
-                }
+                log.trace("  super.doInclude({})", uri);
                 super.doInclude(uri, request, response);
             } else {
-                if (log.isTraceEnabled()) {
-                    log.trace("  super.doForward(" + uri + ")");
-                }
+                log.trace("  super.doForward({})", uri);
                 super.doForward(uri, request, response);
             }
             return;
@@ -132,9 +128,7 @@ public class FacesRequestProcessor extends RequestProcessor {
         boolean created = false;
         FacesContext context = FacesContext.getCurrentInstance();
         if (context == null) {
-            if (log.isTraceEnabled()) {
-                log.trace("  Creating new FacesContext for '" + uri + "'");
-            }
+            log.trace("  Creating new FacesContext for '{}'", uri);
             created = true;
             FacesContextFactory fcf = (FacesContextFactory)
                 FactoryFinder.getFactory(FactoryFinder.FACES_CONTEXT_FACTORY);
@@ -144,27 +138,19 @@ public class FacesRequestProcessor extends RequestProcessor {
 
         // Create a new view root
         ViewHandler vh = context.getApplication().getViewHandler();
-        if (log.isTraceEnabled()) {
-            log.trace("  Creating new view for '" + uri + "'");
-        }
+        log.trace("  Creating new view for '{}'", uri);
         context.setViewRoot(vh.createView(context, uri));
 
         // Cause the view to be rendered
-        if (log.isTraceEnabled()) {
-            log.trace("  Rendering view for '" + uri + "'");
-        }
+        log.trace("  Rendering view for '{}'", uri);
         try {
             lifecycle.render(context);
         } finally {
             if (created) {
-                if (log.isTraceEnabled()) {
-                    log.trace("  Releasing context for '" + uri + "'");
-                }
+                log.trace("  Releasing context for '{}'", uri);
                 context.release();
             } else {
-                if (log.isTraceEnabled()) {
-                    log.trace("  Rendering completed");
-                }
+                log.trace("  Rendering completed");
             }
         }
 
@@ -177,14 +163,10 @@ public class FacesRequestProcessor extends RequestProcessor {
                                          ActionMapping mapping)
         throws IOException {
 
-        if (log.isTraceEnabled()) {
-            log.trace("Performing standard action create");
-        }
+        log.trace("Performing standard action create");
         Action result = super.processActionCreate(request, response, mapping);
-        if (log.isDebugEnabled()) {
-            log.debug("Standard action create returned " +
-                      result.getClass().getName() + " instance");
-        }
+        log.debug("Standard action create returned {} instance",
+            result.getClass().getName());
         return (result);
 
     }
@@ -202,14 +184,14 @@ public class FacesRequestProcessor extends RequestProcessor {
                 FormBeanConfig fbc = moduleConfig.findFormBeanConfig(name);
                 if (fbc != null) {
                     if ("request".equals(mapping.getScope())) {
-                        log.trace("  Bean in request scope = " +
-                                  request.getAttribute(attribute));
+                        log.trace("  Bean in request scope = {}",
+                            request.getAttribute(attribute));
                     } else {
-                        log.trace("  Bean in session scope = " +
-                                  request.getSession().getAttribute(attribute));
+                        log.trace("  Bean in session scope = {}",
+                            request.getSession().getAttribute(attribute));
                     }
                 } else {
-                    log.trace("  No FormBeanConfig for '" + name + "'");
+                    log.trace("  No FormBeanConfig for '{}'", name);
                 }
             } else {
                 log.trace("  No form bean for this action");
@@ -217,10 +199,8 @@ public class FacesRequestProcessor extends RequestProcessor {
         }
         ActionForm result =
             super.processActionForm(request, response, mapping);
-        if (log.isDebugEnabled()) {
-            log.debug("Standard action form returned " +
-                      result);
-        }
+        log.debug("Standard action form returned {}",
+            result);
         return (result);
 
 
@@ -235,17 +215,14 @@ public class FacesRequestProcessor extends RequestProcessor {
                                                  ActionMapping mapping)
         throws IOException, ServletException {
 
-        if (log.isTraceEnabled()) {
-            log.trace("Performing standard action perform");
-        }
+        log.trace("Performing standard action perform");
         ActionForward result =
             super.processActionPerform(request, response, action,
                                        form, mapping);
-        if (log.isDebugEnabled()) {
-            log.debug("Standard action perform returned " +
-                      (result == null ? "NULL" :
-                      result.getPath()) + " forward path");
-        }
+        log.atDebug()
+            .setMessage("Standard action perform returned {} forward path")
+            .addArgument(() -> result == null ? "NULL" : result.getPath())
+            .log();
         return (result);
 
     }
@@ -257,14 +234,10 @@ public class FacesRequestProcessor extends RequestProcessor {
                                      ActionMapping mapping)
         throws IOException, ServletException {
 
-        if (log.isTraceEnabled()) {
-            log.trace("Performing standard forward handling");
-        }
+        log.trace("Performing standard forward handling");
         boolean result = super.processForward
             (request, response, mapping);
-        if (log.isDebugEnabled()) {
-            log.debug("Standard forward handling returned " + result);
-        }
+        log.debug("Standard forward handling returned {}", result);
         return (result);
 
     }
@@ -276,13 +249,9 @@ public class FacesRequestProcessor extends RequestProcessor {
                                         ForwardConfig forward)
         throws IOException, ServletException {
 
-        if (log.isTraceEnabled()) {
-            log.trace("Performing standard forward config handling");
-        }
+        log.trace("Performing standard forward config handling");
         super.processForwardConfig(request, response, forward);
-        if (log.isDebugEnabled()) {
-            log.debug("Standard forward config handling completed");
-        }
+        log.debug("Standard forward config handling completed");
 
     }
 
@@ -293,14 +262,10 @@ public class FacesRequestProcessor extends RequestProcessor {
                                      ActionMapping mapping)
         throws IOException, ServletException {
 
-        if (log.isTraceEnabled()) {
-            log.trace("Performing standard include handling");
-        }
+        log.trace("Performing standard include handling");
         boolean result = super.processInclude
             (request, response, mapping);
-        if (log.isDebugEnabled()) {
-            log.debug("Standard include handling returned " + result);
-        }
+        log.debug("Standard include handling returned {}", result);
         return (result);
 
     }
@@ -328,18 +293,14 @@ public class FacesRequestProcessor extends RequestProcessor {
 
         // Handle non-Faces requests in the usual way
         if (event == null) {
-            if (log.isTraceEnabled()) {
-                log.trace("Performing standard processPath() processing");
-            }
+            log.trace("Performing standard processPath() processing");
             return (super.processPath(request, response));
         }
 
         // Calculate the path from the form name
         UIComponent component = event.getComponent();
-        if (log.isTraceEnabled()) {
-            log.trace("Locating form parent for command component " +
-                      event.getComponent());
-        }
+        log.trace("Locating form parent for command component {}",
+            event.getComponent());
         while (!(component instanceof FormComponent)) {
             component = component.getParent();
             if (component == null) {
@@ -347,11 +308,9 @@ public class FacesRequestProcessor extends RequestProcessor {
                 return (null);
             }
         }
-        if (log.isDebugEnabled()) {
-            log.debug("Returning selected path of '" +
-                      ((FormComponent) component).getAction() + "'");
-        }
-        return (((FormComponent) component).getAction());
+        String action = ((FormComponent) component).getAction();
+        log.debug("Returning selected path of '{}'", action);
+        return action;
 
     }
 
@@ -383,24 +342,18 @@ public class FacesRequestProcessor extends RequestProcessor {
 
         // Handle non-Faces requests in the usual way
         if (event == null) {
-            if (log.isTraceEnabled()) {
-                log.trace("Performing standard processPopulate() processing");
-            }
+            log.trace("Performing standard processPopulate() processing");
             super.processPopulate(request, response, form, mapping);
             return;
         }
 
         // Faces Requests require no processing for form bean population
         // so we need only check for the cancellation command name
-        if (log.isTraceEnabled()) {
-            log.trace("Faces request, so no processPopulate() processing");
-        }
+        log.trace("Faces request, so no processPopulate() processing");
         UIComponent source = event.getComponent();
         if (source instanceof UICommand) {
             if ("cancel".equals(((UICommand) source).getId())) {
-                if (log.isTraceEnabled()) {
-                    log.trace("Faces request with cancel button pressed");
-                }
+                log.trace("Faces request with cancel button pressed");
                 request.setAttribute(Globals.CANCEL_KEY, Boolean.TRUE);
             }
         }
@@ -415,14 +368,10 @@ public class FacesRequestProcessor extends RequestProcessor {
                                       ActionMapping mapping)
         throws IOException, ServletException, InvalidCancelException {
 
-        if (log.isTraceEnabled()) {
-            log.trace("Performing standard validation");
-        }
+        log.trace("Performing standard validation");
         boolean result = super.processValidate
             (request, response, form, mapping);
-        if (log.isDebugEnabled()) {
-            log.debug("Standard validation processing returned " + result);
-        }
+        log.debug("Standard validation processing returned {}", result);
         return (result);
 
     }
@@ -465,6 +414,4 @@ public class FacesRequestProcessor extends RequestProcessor {
         }
 
     }
-
-
 }

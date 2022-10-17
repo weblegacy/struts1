@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Faces: Replace `commons-logging` with `slf4j`
 * Tiles2: Replace `commons-logging` with `slf4j`
 * Tiles: Replace `commons-logging` with `slf4j`
 * Taglib: Replace `commons-logging` with `slf4j`

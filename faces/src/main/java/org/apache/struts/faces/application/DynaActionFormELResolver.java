@@ -32,9 +32,9 @@ import javax.el.ELException;
 import javax.el.ELResolver;
 import javax.el.PropertyNotWritableException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.DynaActionForm;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Defines property resolution behavior on instances of {@link DynaActionForm}.
@@ -60,16 +60,14 @@ public class DynaActionFormELResolver extends ELResolver {
     /**
      * The {@code Log} instance for this class.
      */
-    private static final Log LOG =
-        LogFactory.getLog(DynaActionFormELResolver.class);
+    private static final Logger LOG =
+        LoggerFactory.getLogger(DynaActionFormELResolver.class);
 
     /**
      * Creates a new read {@code DynaActionFormELResolver}.
      */
     public DynaActionFormELResolver() {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Creating new Dyna-Action-From-ELResolver instance");
-        }
+        LOG.debug("Creating new Dyna-Action-From-ELResolver instance");
     }
 
     /**
@@ -112,10 +110,8 @@ public class DynaActionFormELResolver extends ELResolver {
         }
 
         if (test(base, property)) {
-            if (LOG.isTraceEnabled() ) {
-                LOG.trace("Returning property-type '" + property
-                        + "' for DynaActionForm '" + base + "'");
-            }
+            LOG.trace("Returning property-type '{}' for DynaActionForm '{}'",
+                property, base);
 
             context.setPropertyResolved(true);
             return Map.class;
@@ -161,10 +157,8 @@ public class DynaActionFormELResolver extends ELResolver {
         }
 
         if (test(base, property)) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Returning property-value '" + property
-                        + "' for DynaActionForm '" + base + "'");
-            }
+            LOG.trace("Returning property-value '{}' for DynaActionForm '{}'",
+                property, base);
 
             context.setPropertyResolved(true);
             return (((DynaActionForm) base).getMap());
@@ -204,10 +198,8 @@ public class DynaActionFormELResolver extends ELResolver {
         }
 
         if (test(base, property)) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Set property-value '" + property
-                        + "' for DynaActionForm '" + base + "'");
-            }
+            LOG.trace("Set property-value '{}' for DynaActionForm '{}'",
+                property, base);
 
             throw new PropertyNotWritableException(property.toString());
         }
@@ -250,10 +242,8 @@ public class DynaActionFormELResolver extends ELResolver {
         }
 
         if (test(base, property)) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Return ready-only status for property '" + property
-                        + "' for DynaActionForm " + base + "'");
-            }
+            LOG.trace("Return ready-only status for property '{}' for DynaActionForm '{}'",
+                property, base);
 
             context.setPropertyResolved(true);
             return true;
@@ -309,9 +299,7 @@ public class DynaActionFormELResolver extends ELResolver {
             Object base) {
 
         if (base instanceof DynaActionForm) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Get Feature-Descriptors for DynaActionForm '" + base + "'");
-            }
+            LOG.trace("Get Feature-Descriptors for DynaActionForm '{}'", base);
 
             final FeatureDescriptor descriptor = new FeatureDescriptor();
             descriptor.setName("map");
@@ -351,9 +339,7 @@ public class DynaActionFormELResolver extends ELResolver {
     @Override
     public Class<?> getCommonPropertyType(ELContext context, Object base) {
         if (base instanceof DynaActionForm) {
-            if (LOG.isTraceEnabled()) {
-                LOG.trace("Get Common-Property-Type for DynaActionForm '" + base + "'");
-            }
+            LOG.trace("Get Common-Property-Type for DynaActionForm '{}'", base);
 
             return Object.class;
         }

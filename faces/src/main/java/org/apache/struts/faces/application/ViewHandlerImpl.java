@@ -32,9 +32,9 @@ import javax.faces.component.UIViewRoot;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.apache.struts.Globals;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -53,7 +53,7 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
     /**
      * The {@code LOG} instance for this class.
      */
-    private static final Log LOG = LogFactory.getLog(ViewHandlerImpl.class);
+    private static final Logger LOG = LoggerFactory.getLogger(ViewHandlerImpl.class);
 
 
     // ------------------------------------------------------ Instance Variables
@@ -75,10 +75,8 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
      * @param oldViewHandler {@code ViewHandler} to be decorated
      */
     public ViewHandlerImpl(ViewHandler oldViewHandler) {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Creating ViewHandler instance, wrapping handler " +
-                    oldViewHandler);
-        }
+        LOG.debug("Creating ViewHandler instance, wrapping handler {}",
+            oldViewHandler);
         this.oldViewHandler = oldViewHandler;
     }
 
@@ -111,22 +109,17 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
     public void renderView(FacesContext context, UIViewRoot viewToRender)
             throws IOException, FacesException {
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("renderView(" + viewToRender.getViewId() + ")");
-        }
+        LOG.debug("renderView({})", viewToRender.getViewId());
         ExternalContext econtext = context.getExternalContext();
         if (econtext.getSession(false) != null) {
             Locale locale = (Locale)
                 econtext.getSessionMap().get(Globals.LOCALE_KEY);
             if (locale != null) {
-                if (LOG.isTraceEnabled()) {
-                    LOG.trace("Setting view locale to " + locale);
-                }
+                LOG.trace("Setting view locale to {}", locale);
                 viewToRender.setLocale(locale);
             }
         }
         super.renderView(context, viewToRender);
 
     }
-
 }

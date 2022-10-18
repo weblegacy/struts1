@@ -40,6 +40,12 @@
          <groupId>com.github.spotbugs</groupId>
          <artifactId>spotbugs-annotations</artifactId>
       </dependency>
+      <!-- Needed for htmlunit -->
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>jcl-over-slf4j</artifactId>
+         <scope>test</scope>
+      </dependency>
    </dependencies>
 
           <build>

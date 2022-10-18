@@ -201,41 +201,49 @@
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-blank</artifactId>
          <type>war</type>
+         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-cookbook</artifactId>
          <type>war</type>
+         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-examples</artifactId>
          <type>war</type>
+         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-faces-example1</artifactId>
          <type>war</type>
+         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-faces-example2</artifactId>
          <type>war</type>
+         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-mailreader</artifactId>
          <type>war</type>
+         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-scripting-mailreader</artifactId>
          <type>war</type>
+         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>${project.groupId}</groupId>
          <artifactId>struts-el-example</artifactId>
          <type>war</type>
+         <scope>test</scope>
       </dependency>
       <dependency>
          <groupId>org.junit.jupiter</groupId>

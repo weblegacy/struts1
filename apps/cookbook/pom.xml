@@ -47,6 +47,15 @@
          <groupId>commons-validator</groupId>
          <artifactId>commons-validator</artifactId>
       </dependency>
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>slf4j-simple</artifactId>
+      </dependency>
+      <!-- Needed for commons-validator -->
+      <dependency>
+         <groupId>org.slf4j</groupId>
+         <artifactId>jcl-over-slf4j</artifactId>
+      </dependency>
    </dependencies>
 
 </project>

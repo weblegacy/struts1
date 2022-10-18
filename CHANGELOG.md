@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Add javadoc-links to `servlet-api`, `jsp-api` and `el-api`
 * Adjustment of dependencies dependencies
 * Bump `jsp-api` from 2.1 to 2.2.2 and add `el-api` 2.2.5
 * Upgrade `web.xml`s of `apps` from 2.5 to 3.0

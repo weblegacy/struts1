@@ -372,6 +372,9 @@
         <tilesVersion>3.0.8</tilesVersion>
         <tilesRequestVersion>1.0.7</tilesRequestVersion>
         <antlrVersion>4.11.1</antlrVersion>
+        <servletVersion>3.0.1</servletVersion>
+        <jspVersion>2.2.1</jspVersion>
+        <elVersion>2.2.5</elVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
         <struts.osgi.import>*</struts.osgi.import>
@@ -866,6 +869,21 @@
                       <artifactId>groovy-jsr223</artifactId>
                       <url>https://javadoc.io/doc/org.apache.groovy/groovy-all/${groovyVersion}/</url>
                     </dependencyLink>
+                    <dependencyLink>
+                      <groupId>javax.servlet</groupId>
+                      <artifactId>javax.servlet-api</artifactId>
+                      <url>https://javadoc.io/doc/javax.servlet/javax.servlet-api/${servletVersion}/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>javax.servlet.jsp</groupId>
+                      <artifactId>javax.servlet.jsp-api</artifactId>
+                      <url>https://javadoc.io/doc/javax.servlet.jsp/javax.servlet.jsp-api/${jspVersion}/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>javax.el</groupId>
+                      <artifactId>javax.el-api</artifactId>
+                      <url>https://javadoc.io/doc/javax.el/javax.el-api/${elVersion}/</url>
+                    </dependencyLink>
                   </dependencyLinks>
                   <links>
                     <link>https://docs.oracle.com/javaee/6/api</link>
@@ -1007,19 +1025,19 @@
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>javax.servlet-api</artifactId>
-                <version>3.0.1</version>
+                <version>${servletVersion}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>javax.servlet.jsp</groupId>
                 <artifactId>javax.servlet.jsp-api</artifactId>
-                <version>2.2.1</version>
+                <version>${jspVersion}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>javax.el</groupId>
                 <artifactId>javax.el-api</artifactId>
-                <version>2.2.5</version>
+                <version>${elVersion}</version>
                 <scope>provided</scope>
             </dependency>
             <dependency>

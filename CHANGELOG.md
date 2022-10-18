@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Bump `spotbugs-annotations` from 4.7.2 to 4.7.3
 * Bump `groovy` from 4.0.5 to 4.0.6
 * Add missing slf4j-simple to integration-tests
 * Standardize log variables

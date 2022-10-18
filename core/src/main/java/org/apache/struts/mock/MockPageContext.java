@@ -20,6 +20,13 @@
  */
 package org.apache.struts.mock;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.HashMap;
+
 import javax.el.ELContext;
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;
@@ -32,14 +39,6 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.BodyContent;
-
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-
-import java.util.Collections;
-import java.util.Enumeration;
-import java.util.HashMap;
 
 /**
  * <p>Mock <strong>ServletContext</strong> object for low-level unit tests of
@@ -80,7 +79,7 @@ public class MockPageContext extends PageContext {
     }
 
     /**
-     * <p> Construct a new PageContext impl. </p>
+     * Construct a new PageContext impl.
      *
      * @param throwIOException Determines if the returned JspWriter should
      *                         throw an IOException on any method call.
@@ -120,33 +119,39 @@ public class MockPageContext extends PageContext {
         }
     }
 
-    // ---------------------------------------------------- PageContext Methods
-    public Object findAttribute(String name) {
-        Object value = getAttribute(name, PageContext.PAGE_SCOPE);
-
-        if (value == null) {
-            value = getAttribute(name, PageContext.REQUEST_SCOPE);
-        }
-
-        if (value == null) {
-            value = getAttribute(name, PageContext.SESSION_SCOPE);
-        }
-
-        if (value == null) {
-            value = getAttribute(name, PageContext.APPLICATION_SCOPE);
-        }
-
-        return (value);
+    // ---------------------------------------------------- JspContext Methods
+    @Override
+    public void setAttribute(String name, Object value) {
+        setAttribute(name, value, PageContext.PAGE_SCOPE);
     }
 
-    public void forward(String path) {
-        throw new UnsupportedOperationException();
+    @Override
+    public void setAttribute(String name, Object value, int scope) {
+        if (scope == PageContext.PAGE_SCOPE) {
+            attributes.put(name, value);
+        } else if (scope == PageContext.REQUEST_SCOPE) {
+            if (request != null) {
+                request.setAttribute(name, value);
+            }
+        } else if (scope == PageContext.SESSION_SCOPE) {
+            if (session != null) {
+                session.setAttribute(name, value);
+            }
+        } else if (scope == PageContext.APPLICATION_SCOPE) {
+            if (application != null) {
+                application.setAttribute(name, value);
+            }
+        } else {
+            throw new IllegalArgumentException("Invalid scope " + scope);
+        }
     }
 
+    @Override
     public Object getAttribute(String name) {
-        return (getAttribute(name, PageContext.PAGE_SCOPE));
+        return getAttribute(name, PageContext.PAGE_SCOPE);
     }
 
+    @Override
     public Object getAttribute(String name, int scope) {
         if (scope == PageContext.PAGE_SCOPE) {
             return (attributes.get(name));
@@ -173,25 +178,89 @@ public class MockPageContext extends PageContext {
         }
     }
 
-    @SuppressWarnings("unchecked")
-    public Enumeration<String> getAttributeNamesInScope(int scope) {
+    @Override
+    public Object findAttribute(String name) {
+        Object value = getAttribute(name, PageContext.PAGE_SCOPE);
+
+        if (value == null) {
+            value = getAttribute(name, PageContext.REQUEST_SCOPE);
+        }
+
+        if (value == null) {
+            value = getAttribute(name, PageContext.SESSION_SCOPE);
+        }
+
+        if (value == null) {
+            value = getAttribute(name, PageContext.APPLICATION_SCOPE);
+        }
+
+        return (value);
+    }
+
+    @Override
+    public void removeAttribute(String name) {
+        int scope = getAttributesScope(name);
+
+        if (scope != 0) {
+            removeAttribute(name, scope);
+        }
+    }
+
+    @Override
+    public void removeAttribute(String name, int scope) {
         if (scope == PageContext.PAGE_SCOPE) {
-            return (new MockEnumeration<>(attributes.keySet().iterator()));
+            attributes.remove(name);
         } else if (scope == PageContext.REQUEST_SCOPE) {
             if (request != null) {
-                return (request.getAttributeNames());
+                request.removeAttribute(name);
             }
-
-            return (new MockEnumeration<>(Collections.emptyListIterator()));
         } else if (scope == PageContext.SESSION_SCOPE) {
             if (session != null) {
-                return (session.getAttributeNames());
+                session.removeAttribute(name);
             }
-
-            return (new MockEnumeration<>(Collections.emptyListIterator()));
         } else if (scope == PageContext.APPLICATION_SCOPE) {
             if (application != null) {
-                return (application.getAttributeNames());
+                application.removeAttribute(name);
+            }
+        } else {
+            throw new IllegalArgumentException("Invalid scope " + scope);
+        }
+    }
+
+    @Override
+    public int getAttributesScope(String name) {
+        if (attributes.get(name) != null) {
+            return PageContext.PAGE_SCOPE;
+        } else if (request != null && request.getAttribute(name) != null) {
+            return PageContext.REQUEST_SCOPE;
+        } else if (session != null && session.getAttribute(name) != null) {
+            return PageContext.SESSION_SCOPE;
+        } else if (application != null && application.getAttribute(name) != null) {
+            return PageContext.APPLICATION_SCOPE;
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public Enumeration<String> getAttributeNamesInScope(int scope) {
+        if (scope == PageContext.PAGE_SCOPE) {
+            return new MockEnumeration<>(attributes.keySet().iterator());
+        } else if (scope == PageContext.REQUEST_SCOPE) {
+            if (request != null) {
+                return request.getAttributeNames();
+            }
+
+            return new MockEnumeration<>(Collections.emptyListIterator());
+        } else if (scope == PageContext.SESSION_SCOPE) {
+            if (session != null) {
+                return session.getAttributeNames();
+            }
+
+            return new MockEnumeration<>(Collections.emptyListIterator());
+        } else if (scope == PageContext.APPLICATION_SCOPE) {
+            if (application != null) {
+                return application.getAttributeNames();
             }
 
             return new MockEnumeration<>(Collections.emptyListIterator());
@@ -200,29 +269,11 @@ public class MockPageContext extends PageContext {
         }
     }
 
-    public int getAttributesScope(String name) {
-        if (attributes.get(name) != null) {
-            return (PageContext.PAGE_SCOPE);
-        } else if ((request != null) && (request.getAttribute(name) != null)) {
-            return (PageContext.REQUEST_SCOPE);
-        } else if ((session != null) && (session.getAttribute(name) != null)) {
-            return (PageContext.SESSION_SCOPE);
-        } else if ((application != null)
-            && (application.getAttribute(name) != null)) {
-            return (PageContext.APPLICATION_SCOPE);
-        } else {
-            return (0);
-        }
-    }
-
-    public Exception getException() {
-        throw new UnsupportedOperationException();
-    }
-
     /**
-     * <p> Custom JspWriter that throws the specified exception (supplied on
-     * the constructor...if any), else it simply returns. </p>
+     * Custom JspWriter that throws the specified exception (supplied on
+     * the constructor...if any), else it simply returns.
      */
+    @Override
     public JspWriter getOut() {
         JspWriter jspWriter =
             new JspWriter(0, false) {
@@ -500,117 +551,6 @@ public class MockPageContext extends PageContext {
         return jspWriter;
     }
 
-    public Object getPage() {
-        throw new UnsupportedOperationException();
-    }
-
-    public ServletRequest getRequest() {
-        return (this.request);
-    }
-
-    public ServletResponse getResponse() {
-        return (this.response);
-    }
-
-    public ServletConfig getServletConfig() {
-        return (this.config);
-    }
-
-    public ServletContext getServletContext() {
-        return (this.application);
-    }
-
-    public HttpSession getSession() {
-        return (this.session);
-    }
-
-    public void handlePageException(Exception e) {
-        throw new UnsupportedOperationException();
-    }
-
-    public void handlePageException(Throwable t) {
-        throw new UnsupportedOperationException();
-    }
-
-    public void include(String path) {
-        throw new UnsupportedOperationException();
-    }
-
-    public void initialize(Servlet servlet, ServletRequest request,
-        ServletResponse response, String errorPageURL, boolean needsSession,
-        int bufferSize, boolean autoFlush) {
-        throw new UnsupportedOperationException();
-    }
-
-    public JspWriter popBody() {
-        throw new UnsupportedOperationException();
-    }
-
-    public BodyContent pushBody() {
-        throw new UnsupportedOperationException();
-    }
-
-    public void release() {
-        throw new UnsupportedOperationException();
-    }
-
-    public void removeAttribute(String name) {
-        int scope = getAttributesScope(name);
-
-        if (scope != 0) {
-            removeAttribute(name, scope);
-        }
-    }
-
-    public void removeAttribute(String name, int scope) {
-        if (scope == PageContext.PAGE_SCOPE) {
-            attributes.remove(name);
-        } else if (scope == PageContext.REQUEST_SCOPE) {
-            if (request != null) {
-                request.removeAttribute(name);
-            }
-        } else if (scope == PageContext.SESSION_SCOPE) {
-            if (session != null) {
-                session.removeAttribute(name);
-            }
-        } else if (scope == PageContext.APPLICATION_SCOPE) {
-            if (application != null) {
-                application.removeAttribute(name);
-            }
-        } else {
-            throw new IllegalArgumentException("Invalid scope " + scope);
-        }
-    }
-
-    public void setAttribute(String name, Object value) {
-        setAttribute(name, value, PageContext.PAGE_SCOPE);
-    }
-
-    public void setAttribute(String name, Object value, int scope) {
-        if (scope == PageContext.PAGE_SCOPE) {
-            attributes.put(name, value);
-        } else if (scope == PageContext.REQUEST_SCOPE) {
-            if (request != null) {
-                request.setAttribute(name, value);
-            }
-        } else if (scope == PageContext.SESSION_SCOPE) {
-            if (session != null) {
-                session.setAttribute(name, value);
-            }
-        } else if (scope == PageContext.APPLICATION_SCOPE) {
-            if (application != null) {
-                application.setAttribute(name, value);
-            }
-        } else {
-            throw new IllegalArgumentException("Invalid scope " + scope);
-        }
-    }
-
-    @Override
-    public void include(String relativeUrlPath, boolean flush) throws ServletException, IOException {
-        throw new UnsupportedOperationException();
-    }
-
     @Override
     @Deprecated
     public javax.servlet.jsp.el.ExpressionEvaluator getExpressionEvaluator() {
@@ -625,6 +565,89 @@ public class MockPageContext extends PageContext {
 
     @Override
     public ELContext getELContext() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public BodyContent pushBody() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public JspWriter popBody() {
+        throw new UnsupportedOperationException();
+    }
+
+    // ---------------------------------------------------- PageContext Methods
+    @Override
+    public void initialize(Servlet servlet, ServletRequest request,
+            ServletResponse response, String errorPageURL, boolean needsSession,
+            int bufferSize, boolean autoFlush) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void release() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public HttpSession getSession() {
+        return this.session;
+    }
+
+    @Override
+    public Object getPage() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public ServletRequest getRequest() {
+        return this.request;
+    }
+
+    @Override
+    public ServletResponse getResponse() {
+        return this.response;
+    }
+
+    @Override
+    public Exception getException() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public ServletConfig getServletConfig() {
+        return this.config;
+    }
+
+    @Override
+    public ServletContext getServletContext() {
+        return this.application;
+    }
+
+    @Override
+    public void forward(String relativeUrlPath) throws ServletException, IOException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void include(String relativeUrlPath) throws ServletException, IOException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void include(String relativeUrlPath, boolean flush) throws ServletException, IOException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void handlePageException(Exception e) throws ServletException, IOException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void handlePageException(Throwable t) throws ServletException, IOException {
         throw new UnsupportedOperationException();
     }
 }

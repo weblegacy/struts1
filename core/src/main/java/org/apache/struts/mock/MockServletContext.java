@@ -21,14 +21,24 @@
 package org.apache.struts.mock;
 
 import java.io.InputStream;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Enumeration;
+import java.util.EventListener;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
+import javax.servlet.Filter;
+import javax.servlet.FilterRegistration;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.Servlet;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRegistration;
+import javax.servlet.SessionCookieConfig;
+import javax.servlet.SessionTrackingMode;
+import javax.servlet.descriptor.JspConfigDescriptor;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,7 +63,7 @@ public class MockServletContext implements ServletContext {
     // ----------------------------------------------------- Instance Variables
 
     /**
-     * <p> The set of servlet context attributes. </p>
+     * The set of servlet context attributes.
      */
     protected HashMap<String, Object> attributes = new HashMap<>();
 
@@ -64,7 +74,7 @@ public class MockServletContext implements ServletContext {
         LoggerFactory.getLogger(MockServletContext.class);
 
     /**
-     * <p> The set of context initialization parameters. </p>
+     * The set of context initialization parameters.
      */
     protected HashMap<String, String> parameters = new HashMap<>();
 
@@ -78,106 +88,136 @@ public class MockServletContext implements ServletContext {
     }
 
     // ------------------------------------------------- ServletContext Methods
-    public Object getAttribute(String name) {
-        return (attributes.get(name));
+    @Override
+    public String getContextPath() {
+        throw new UnsupportedOperationException();
     }
 
-    public Enumeration<String> getAttributeNames() {
-        return (new MockEnumeration<>(attributes.keySet().iterator()));
-    }
-
+    @Override
     public ServletContext getContext(String uripath) {
         throw new UnsupportedOperationException();
     }
 
-    public String getInitParameter(String name) {
-        return (parameters.get(name));
-    }
-
-    public Enumeration<String> getInitParameterNames() {
-        return (new MockEnumeration<>(parameters.keySet().iterator()));
-    }
-
+    @Override
     public int getMajorVersion() {
-        return (2);
+        return 3;
     }
 
+    @Override
+    public int getMinorVersion() {
+        return 0;
+    }
+
+    @Override
+    public int getEffectiveMajorVersion() {
+        return getMajorVersion();
+    }
+
+    @Override
+    public int getEffectiveMinorVersion() {
+        return getMinorVersion();
+    }
+
+    @Override
     public String getMimeType(String file) {
         throw new UnsupportedOperationException();
     }
 
-    public int getMinorVersion() {
-        return (3);
-    }
-
-    public RequestDispatcher getNamedDispatcher(String name) {
-        throw new UnsupportedOperationException();
-    }
-
-    public String getRealPath(String path) {
-        throw new UnsupportedOperationException();
-    }
-
-    public RequestDispatcher getRequestDispatcher(String path) {
-        throw new UnsupportedOperationException();
-    }
-
-    public URL getResource(String path) {
-        return this.getClass().getResource(path);
-
-        //throw new UnsupportedOperationException();
-    }
-
-    public InputStream getResourceAsStream(String path) {
-        return this.getClass().getResourceAsStream(path);
-
-        //throw new UnsupportedOperationException();
-    }
-
+    @Override
     public Set<String> getResourcePaths(String path) {
         throw new UnsupportedOperationException();
     }
 
-    public String getServerInfo() {
-        return ("MockServletContext/$Version$");
+    @Override
+    public URL getResource(String path) throws MalformedURLException {
+        return this.getClass().getResource(path);
     }
 
-    @Deprecated
-    public Servlet getServlet(String name) {
+    @Override
+    public InputStream getResourceAsStream(String path) {
+        return this.getClass().getResourceAsStream(path);
+    }
+
+    @Override
+    public RequestDispatcher getRequestDispatcher(String path) {
         throw new UnsupportedOperationException();
     }
 
-    public String getServletContextName() {
-        return (getServerInfo());
-    }
-
-    @Deprecated
-    public Enumeration<String> getServletNames() {
+    @Override
+    public RequestDispatcher getNamedDispatcher(String name) {
         throw new UnsupportedOperationException();
     }
 
+    @Override
+    @Deprecated
+    public Servlet getServlet(String name) throws ServletException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     @Deprecated
     public Enumeration<Servlet> getServlets() {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     @Deprecated
-    public void log(Exception exception, String message) {
-        log(message, exception);
+    public Enumeration<String> getServletNames() {
+        throw new UnsupportedOperationException();
     }
 
-    public void log(String message) {
-        logger.info(message);
+    @Override
+    public void log(String msg) {
+        logger.info(msg);
     }
 
+    @Override
+    @Deprecated
+    public void log(Exception exception, String msg) {
+       log(msg, exception);
+    }
+
+    @Override
     public void log(String message, Throwable throwable) {
         logger.error(message, throwable);
     }
 
-    public void removeAttribute(String name) {
-        attributes.remove(name);
+    @Override
+    public String getRealPath(String path) {
+        throw new UnsupportedOperationException();
     }
 
+    @Override
+    public String getServerInfo() {
+        return "MockServletContext/$Version$";
+    }
+
+    @Override
+    public String getInitParameter(String name) {
+        return parameters.get(name);
+    }
+
+    @Override
+    public Enumeration<String> getInitParameterNames() {
+        return new MockEnumeration<>(parameters.keySet().iterator());
+    }
+
+    @Override
+    public boolean setInitParameter(String name, String value) {
+        return parameters.putIfAbsent(name, value) == null;
+    }
+
+    @Override
+    public Object getAttribute(String name) {
+        return (attributes.get(name));
+    }
+
+    @Override
+    public Enumeration<String> getAttributeNames() {
+        return new MockEnumeration<>(attributes.keySet().iterator());
+    }
+
+    @Override
     public void setAttribute(String name, Object value) {
         if (value == null) {
             attributes.remove(name);
@@ -187,7 +227,127 @@ public class MockServletContext implements ServletContext {
     }
 
     @Override
-    public String getContextPath() {
+    public void removeAttribute(String name) {
+        attributes.remove(name);
+    }
+
+    @Override
+    public String getServletContextName() {
+        return getServerInfo();
+    }
+
+    @Override
+    public ServletRegistration.Dynamic addServlet(String servletName, String className) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public ServletRegistration.Dynamic addServlet(String servletName, Servlet servlet) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public ServletRegistration.Dynamic addServlet(String servletName, Class<? extends Servlet> servletClass) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public <T extends Servlet> T createServlet(Class<T> clazz) throws ServletException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public ServletRegistration getServletRegistration(String servletName) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Map<String, ? extends ServletRegistration> getServletRegistrations() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public FilterRegistration.Dynamic addFilter(String filterName, String className) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public FilterRegistration.Dynamic addFilter(String filterName, Filter filter) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public FilterRegistration.Dynamic addFilter(String filterName, Class<? extends Filter> filterClass) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public <T extends Filter> T createFilter(Class<T> clazz) throws ServletException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public FilterRegistration getFilterRegistration(String filterName) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Map<String, ? extends FilterRegistration> getFilterRegistrations() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public SessionCookieConfig getSessionCookieConfig() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void setSessionTrackingModes(Set<SessionTrackingMode> sessionTrackingModes) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Set<SessionTrackingMode> getDefaultSessionTrackingModes() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Set<SessionTrackingMode> getEffectiveSessionTrackingModes() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void addListener(String className) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public <T extends EventListener> void addListener(T t) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void addListener(Class<? extends EventListener> listenerClass) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public <T extends EventListener> T createListener(Class<T> clazz) throws ServletException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public JspConfigDescriptor getJspConfigDescriptor() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public ClassLoader getClassLoader() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public void declareRoles(String... roleNames) {
         throw new UnsupportedOperationException();
     }
 }

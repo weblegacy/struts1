@@ -20,15 +20,15 @@
  */
 package org.apache.struts.upload;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 
 /**
  * <p> This class functions as a wrapper around HttpServletRequest to provide
@@ -125,7 +125,6 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
      * request. If paramater values in the underlying request take precedence
      * over those stored here. </p>
      */
-    @SuppressWarnings("unchecked")
     public Map<String, String[]> getParameterMap() {
         Map<String, String[]> map = new HashMap<>(parameters);
 

@@ -178,7 +178,19 @@ public class RequestUtils {
         ClassLoader classLoader)
         throws ClassNotFoundException, IllegalAccessException,
             InstantiationException {
-        return (applicationClass(className, classLoader).newInstance());
+
+        try {
+            return applicationClass(className, classLoader)
+                .getDeclaredConstructor()
+                .newInstance();
+        } catch (IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException
+                | ClassNotFoundException e) {
+            InstantiationException e2 =
+                new InstantiationException("Error creating " + className + " instance");
+            e2.initCause(e);
+            throw e2;
+        }
     }
 
     /**
@@ -369,7 +381,6 @@ public class RequestUtils {
      * @throws ServletException if an exception is thrown while setting
      *                          property values
      */
-    @SuppressWarnings("unchecked")
     public static void populate(Object bean, String prefix, String suffix,
         HttpServletRequest request)
         throws ServletException {
@@ -515,7 +526,6 @@ public class RequestUtils {
         assert (redirect != null) : "redirect is required";
         assert (request != null) : "request is required";
 
-        @SuppressWarnings("unchecked")
         Enumeration<String> e = request.getParameterNames();
         while (e.hasMoreElements()) {
             String name = e.nextElement();
@@ -656,7 +666,6 @@ public class RequestUtils {
      *                         request.
      * @return the map containing all parameters for this multipart request.
      */
-    @SuppressWarnings("unchecked")
     private static Map<String, Object> getAllParametersForMultipartRequest(
         HttpServletRequest request, MultipartRequestHandler multipartHandler) {
         Map<String, Object> parameters = new HashMap<>();

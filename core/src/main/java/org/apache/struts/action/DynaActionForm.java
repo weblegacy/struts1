@@ -20,22 +20,21 @@
  */
 package org.apache.struts.action;
 
+import java.lang.reflect.Array;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.StringTokenizer;
+
+import javax.servlet.ServletRequest;
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.DynaClass;
 import org.apache.commons.beanutils.DynaProperty;
 import org.apache.struts.config.FormBeanConfig;
 import org.apache.struts.config.FormPropertyConfig;
-
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
-
-import java.lang.reflect.Array;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
 
 /**
  * <p>Specialized subclass of <code>ActionForm</code> that allows the creation
@@ -474,7 +473,6 @@ public class DynaActionForm extends ActionForm implements DynaBean {
      * @throws IndexOutOfBoundsException if the specified index is outside the
      *                                   range of the underlying property
      */
-    @SuppressWarnings("unchecked")
     public void set(String name, int index, Object value) {
         Object prop = dynaValues.get(name);
 
@@ -485,7 +483,9 @@ public class DynaActionForm extends ActionForm implements DynaBean {
             Array.set(prop, index, value);
         } else if (prop instanceof List) {
             try {
-                ((List<Object>) prop).set(index, value);
+                @SuppressWarnings("unchecked")
+                List<Object> list = (List<Object>)prop;
+                list.set(index, value);
             } catch (ClassCastException e) {
                 throw new ConversionException(e.getMessage(), e);
             }
@@ -506,7 +506,6 @@ public class DynaActionForm extends ActionForm implements DynaBean {
      * @throws IllegalArgumentException if the specified property exists, but
      *                                  is not mapped
      */
-    @SuppressWarnings("unchecked")
     public void set(String name, String key, Object value) {
         Object prop = dynaValues.get(name);
 
@@ -514,7 +513,9 @@ public class DynaActionForm extends ActionForm implements DynaBean {
             throw new NullPointerException("No mapped value for '" + name + "("
                 + key + ")'");
         } else if (prop instanceof Map) {
-            ((Map<String, Object>) prop).put(key, value);
+            @SuppressWarnings("unchecked")
+            Map<String, Object> map = (Map<String, Object>)prop;
+            map.put(key, value);
         } else {
             throw new IllegalArgumentException("Non-mapped property for '"
                 + name + "(" + key + ")'");

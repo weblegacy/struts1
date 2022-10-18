@@ -91,14 +91,11 @@ public class MockFormBean extends ActionForm {
         throw new Exception();
     }
 
-    @SuppressWarnings("unused")
     public Object getThrowIllegalAccessException()
-        throws Exception {
-        if (true) {
-            throw new IllegalAccessException();
-        }
+            throws Exception {
 
-        return null;
+        throw new IllegalAccessException();
+//      return null;
     }
 
     public String getStringValue()

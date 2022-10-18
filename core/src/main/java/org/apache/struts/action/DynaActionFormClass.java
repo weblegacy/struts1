@@ -20,16 +20,16 @@
  */
 package org.apache.struts.action;
 
+import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.commons.beanutils.DynaClass;
 import org.apache.commons.beanutils.DynaProperty;
 import org.apache.struts.config.FormBeanConfig;
 import org.apache.struts.config.FormPropertyConfig;
 import org.apache.struts.util.RequestUtils;
-
-import java.io.Serializable;
-
-import java.util.HashMap;
 
 /**
  * <p>Implementation of <code>DynaClass</code> for <code>DynaActionForm</code>
@@ -51,7 +51,7 @@ public class DynaActionFormClass implements DynaClass, Serializable {
      * <p>The <code>DynaActionForm</code> implementation <code>Class</code>
      * which we will use to create new bean instances.</p>
      */
-    protected transient Class<DynaActionForm> beanClass = null;
+    protected transient Class<? extends DynaActionForm> beanClass = null;
 
     /**
      * <p>The form bean configuration information for this class.</p>
@@ -158,8 +158,19 @@ public class DynaActionFormClass implements DynaClass, Serializable {
      *                                some other reason
      */
     public DynaBean newInstance()
-        throws IllegalAccessException, InstantiationException {
-        DynaActionForm dynaBean = getBeanClass().newInstance();
+            throws IllegalAccessException, InstantiationException {
+
+        DynaActionForm dynaBean;
+        try {
+            dynaBean = getBeanClass().getDeclaredConstructor().newInstance();
+        } catch (IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
+            InstantiationException e2 = new InstantiationException(
+                "Error creating DynaActionForm instance of type "
+                + getBeanClass());
+            e2.initCause(e);
+            throw e2;
+        }
 
         dynaBean.setDynaActionFormClass(this);
 
@@ -226,7 +237,7 @@ public class DynaActionFormClass implements DynaClass, Serializable {
      *
      * @return The implementation class used to construct new instances.
      */
-    protected Class<DynaActionForm> getBeanClass() {
+    protected Class<? extends DynaActionForm> getBeanClass() {
         if (beanClass == null) {
             introspect(config);
         }
@@ -245,7 +256,6 @@ public class DynaActionFormClass implements DynaClass, Serializable {
      *                                  DynaActionForm (or a subclass of
      *                                  DynaActionForm)
      */
-    @SuppressWarnings("unchecked")
     protected void introspect(FormBeanConfig config) {
         this.config = config;
 
@@ -266,7 +276,7 @@ public class DynaActionFormClass implements DynaClass, Serializable {
                 + "' is not a subclass of "
                 + "'org.apache.struts.action.DynaActionForm'");
         }
-        beanClass = (Class<DynaActionForm>) clazz;
+        beanClass = clazz.asSubclass(DynaActionForm.class);
 
         // Set the name we will know ourselves by from the form bean name
         this.name = config.getName();

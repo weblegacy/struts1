@@ -561,7 +561,6 @@ public class ImgTag extends BaseHandlerTag {
      *            used)
      * @throws JspException if an error occurs preparing the URL
      */
-    @SuppressWarnings("unchecked")
     protected String url(String url)
         throws JspException {
         if (url == null) {
@@ -612,12 +611,13 @@ public class ImgTag extends BaseHandlerTag {
         }
 
         // Look up the map we will be using
-        Object mapObject =
-            TagUtils.getInstance().lookup(pageContext, name, property, scope);
         Map<String, Object> map = null;
 
         try {
-            map = (Map<String, Object>) mapObject;
+            @SuppressWarnings("unchecked")
+            Map<String, Object> mapObject = (Map<String, Object>)
+                    TagUtils.getInstance().lookup(pageContext, name, property, scope);
+            map = mapObject;
         } catch (ClassCastException e) {
             TagUtils.getInstance().saveException(pageContext, e);
             throw new JspException(messages.getMessage("imgTag.type"), e);

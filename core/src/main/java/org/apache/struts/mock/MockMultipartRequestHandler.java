@@ -91,7 +91,6 @@ public class MockMultipartRequestHandler implements MultipartRequestHandler {
       */
     public void handleRequest(HttpServletRequest request) throws ServletException {
         elements = new Hashtable<>();
-        @SuppressWarnings("unchecked")
         Enumeration<String> enumer = request.getParameterNames();
         while (enumer.hasMoreElements()) {
             String key = enumer.nextElement();

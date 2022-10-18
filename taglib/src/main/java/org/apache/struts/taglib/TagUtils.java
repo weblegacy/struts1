@@ -184,7 +184,6 @@ public class TagUtils {
      * @throws JspException if a class cast exception occurs on a looked-up
      *                      bean or property
      */
-    @SuppressWarnings("unchecked")
     public Map<String, Object> computeParameters(PageContext pageContext, String paramId,
         String paramName, String paramProperty, String paramScope, String name,
         String property, String scope, boolean transaction)
@@ -199,8 +198,11 @@ public class TagUtils {
 
         try {
             if (name != null) {
-                map = (Map<String, Object>) getInstance().lookup(pageContext, name, property,
+                @SuppressWarnings("unchecked")
+                Map<String, Object> mapObject =
+                    (Map<String, Object>) getInstance().lookup(pageContext, name, property,
                         scope);
+                map = mapObject;
             }
 
             // @TODO - remove this - it is never thrown

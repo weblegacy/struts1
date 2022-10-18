@@ -20,6 +20,8 @@
  */
 package org.apache.struts.config;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.apache.struts.util.RequestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -36,7 +38,7 @@ public abstract class ModuleConfigFactory {
      * The Java class to be used for <code>ModuleConfigFactory</code>
      * instances.
      */
-    protected static Class<ModuleConfigFactory> clazz = null;
+    protected static Class<? extends ModuleConfigFactory> clazz = null;
 
     /**
      * The {@code Log} instance for this class.
@@ -92,17 +94,18 @@ public abstract class ModuleConfigFactory {
      * <code>ModuleConfig</code> instances.  If no such factory can be
      * created, return <code>null</code> instead.
      */
-    @SuppressWarnings("unchecked")
     public static ModuleConfigFactory createFactory() {
         ModuleConfigFactory factory = null;
 
         try {
             if (clazz == null) {
-                clazz = (Class<ModuleConfigFactory>) RequestUtils.applicationClass(factoryClass);
+                clazz = RequestUtils.applicationClass(factoryClass).asSubclass(ModuleConfigFactory.class);
             }
 
-            factory = clazz.newInstance();
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException e) {
+            factory = clazz.getDeclaredConstructor().newInstance();
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException
+                | IllegalArgumentException | InvocationTargetException
+                | NoSuchMethodException | SecurityException e) {
             LOG.error("ModuleConfigFactory.createFactory()", e);
         }
 

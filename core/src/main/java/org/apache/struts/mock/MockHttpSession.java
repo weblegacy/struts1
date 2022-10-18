@@ -99,7 +99,7 @@ public class MockHttpSession implements HttpSession {
         return (this.servletContext);
     }
 
-    @SuppressWarnings("deprecation")
+    @Deprecated
     public javax.servlet.http.HttpSessionContext getSessionContext() {
         throw new UnsupportedOperationException();
     }

@@ -54,7 +54,7 @@ public abstract class MessageResourcesFactory implements Serializable {
      * The Java class to be used for <code>MessageResourcesFactory</code>
      * instances.
      */
-    protected static transient Class<MessageResourcesFactory> clazz = null;
+    protected static transient Class<? extends MessageResourcesFactory> clazz = null;
 
     /**
      * The {@code Log} instance for this class.
@@ -163,15 +163,15 @@ public abstract class MessageResourcesFactory implements Serializable {
      * <code>MessageResources</code> instances.  If no such factory can be
      * created, return <code>null</code> instead.
      */
-    @SuppressWarnings("unchecked")
     public static MessageResourcesFactory createFactory() {
         // Construct a new instance of the specified factory class
         try {
             if (clazz == null) {
-                clazz = (Class<MessageResourcesFactory>) RequestUtils.applicationClass(factoryClass);
+                clazz = RequestUtils.applicationClass(factoryClass)
+                    .asSubclass(MessageResourcesFactory.class);
             }
 
-            MessageResourcesFactory factory = clazz.newInstance();
+            MessageResourcesFactory factory = clazz.getDeclaredConstructor().newInstance();
 
             return (factory);
         } catch (Throwable t) {

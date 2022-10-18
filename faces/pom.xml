@@ -47,12 +47,16 @@
          <artifactId>struts-tiles</artifactId>
       </dependency>
       <dependency>
-         <groupId>javax.servlet.jsp</groupId>
-         <artifactId>jsp-api</artifactId>
-      </dependency>
-      <dependency>
          <groupId>javax.servlet</groupId>
          <artifactId>javax.servlet-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>javax.servlet.jsp</groupId>
+         <artifactId>javax.servlet.jsp-api</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>javax.el</groupId>
+         <artifactId>javax.el-api</artifactId>
       </dependency>
       <dependency>
          <groupId>org.apache.myfaces.core</groupId>
@@ -77,6 +81,7 @@
       <dependency>
           <groupId>org.slf4j</groupId>
           <artifactId>slf4j-simple</artifactId>
+          <scope>test</scope>
       </dependency>
       <!-- Needed for commons-beanutils, commons-validator and myfaces-api -->
       <dependency>

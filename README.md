@@ -22,6 +22,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 | Version                                                             | JEE-Version | Java-Version | Servlet | JSP | EL  | JSF | JSTL |
 |--------------------------------------------------------------------:|------------:|-------------:|--------:|----:|----:|----:|-----:|
+|                                                          1.4.2(WiP) |   Java EE 6 |            8 |     3.0 | 2.2 | 2.2 | 2.0 |  1.2 |
 |   [1.4.1](https://github.com/weblegacy/struts1/releases/tag/v1.4.1) |   Java EE 5 |            8 |     2.5 | 2.1 | 2.1 | 1.2 |  1.2 |
 |   [1.4.0](https://github.com/weblegacy/struts1/releases/tag/v1.4.0) |    J2EE 1.4 |          1.4 |     2.3 | 2.0 | 2.0 | 1.0 |  1.0 |
 | [1.3.11](https://github.com/weblegacy/struts1/releases/tag/v1.3.11) |    J2EE 1.4 |          1.4 |     2.3 | 2.0 | 2.0 | 1.0 |  1.0 |

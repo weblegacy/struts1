@@ -150,7 +150,7 @@ public class TagUtils {
 
     /**
      * Set the instance.
-     * This blatently violates the Singleton pattern, but then some say Singletons are an anti-pattern.
+     * This blatantly violates the Singleton pattern, but then some say Singletons are an anti-pattern.
      * @since 1.3.5 Changed to non-final and added setInstance() so TagUtils may be overridden, use at your own risk (you've been warned!!)
      * @param instance The instance to set.
      */

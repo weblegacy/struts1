@@ -47,7 +47,7 @@ public class ContextWrapper implements Context {
     /**
      * Provide the underlying Context for this composite.
      *
-     * @return The undelrying Context
+     * @return The underlying Context
      */
     protected Context getBaseContext() {
         return this.base;

@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Correct typos
 * Remove some `SuppressWarnings`
 * Bump `servlet-api` from 2.5 to 3.0.1
 * Add missing `slf4j-simple` to unit-tests (mailreader-dao, faces, taglib)

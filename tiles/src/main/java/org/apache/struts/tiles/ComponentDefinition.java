@@ -36,12 +36,13 @@ import org.slf4j.LoggerFactory;
  * An instance of this class can be used as a bean, and passed to 'insert' tag.
  */
 public class ComponentDefinition implements Serializable {
-    private static final long serialVersionUID = -2272946761382428217L;
+    private static final long serialVersionUID = -62457661179275424L;
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    protected static Logger log = LoggerFactory.getLogger(ComponentDefinition.class);
+    private final static Logger LOG =
+            LoggerFactory.getLogger(ComponentDefinition.class);
 
     /**
      * Definition name
@@ -482,7 +483,7 @@ public class ComponentDefinition implements Serializable {
     public static Controller createController(String name, String controllerType)
         throws InstantiationException {
 
-        log.debug("Create controller name={}, type={}", name, controllerType);
+        LOG.debug("Create controller name={}, type={}", name, controllerType);
 
         Controller controller = null;
 
@@ -519,7 +520,7 @@ public class ComponentDefinition implements Serializable {
             Class<?> requestedClass = RequestUtils.applicationClass(classname);
             Object instance = requestedClass.newInstance();
 
-            log.debug("Controller created : {}", instance);
+            LOG.debug("Controller created : {}", instance);
             return (Controller) instance;
 
         } catch (java.lang.ClassNotFoundException ex) {

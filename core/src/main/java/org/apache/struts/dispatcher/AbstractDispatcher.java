@@ -40,7 +40,7 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.4
  */
 public abstract class AbstractDispatcher implements Dispatcher, Serializable {
-    private static final long serialVersionUID = 2259767062109056338L;
+    private static final long serialVersionUID = 8527912438873600103L;
 
     // Package message bundle keys
     static final String LOCAL_STRINGS = "org.apache.struts.dispatcher.LocalStrings";
@@ -68,9 +68,10 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
     static MessageResources messages = MessageResources.getMessageResources(LOCAL_STRINGS);
 
     /**
-     * Shared commons Logging instance among subclasses.
+     * The {@code Log} instance for this class.
      */
-    protected transient final Logger log;
+    private final Logger log =
+        LoggerFactory.getLogger(AbstractDispatcher.class);
 
     /**
      * The dictionary of {@link Method} objects we have introspected for this
@@ -89,7 +90,6 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
      */
     public AbstractDispatcher(MethodResolver methodResolver) {
         this.methodResolver = methodResolver;
-        log = LoggerFactory.getLogger(getClass());
         methods = new HashMap<>();
     }
 
@@ -324,5 +324,4 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
         log.error(msg);
         throw new IllegalStateException(msg);
     }
-
 }

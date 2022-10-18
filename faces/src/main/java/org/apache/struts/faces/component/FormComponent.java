@@ -57,9 +57,10 @@ public class FormComponent extends UIForm {
 
 
     /**
-     * The {@code LOG} instance for this class.
+     * The {@code Log} instance for this class.
      */
-    protected static Logger log = LoggerFactory.getLogger(FormComponent.class);
+    private final Logger log =
+        LoggerFactory.getLogger(FormComponent.class);
 
 
     // ------------------------------------------------------ Instance Variables

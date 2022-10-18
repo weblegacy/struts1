@@ -75,9 +75,10 @@ public class TilesPlugin implements PlugIn {
     private final static Marker FATAL = MarkerFactory.getMarker("FATAL");
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    protected static Logger log = LoggerFactory.getLogger(TilesPlugin.class);
+    private final Logger log =
+        LoggerFactory.getLogger(TilesPlugin.class);
 
     /**
      * Is the factory module aware?

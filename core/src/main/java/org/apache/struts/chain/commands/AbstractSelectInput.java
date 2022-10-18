@@ -39,9 +39,10 @@ public abstract class AbstractSelectInput extends ActionCommandBase {
     // ------------------------------------------------------ Instance Variables
 
     /**
-     * <p> Provide Commons Logging instance for this class. </p>
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractSelectInput.class);
+    private final Logger log =
+        LoggerFactory.getLogger(AbstractSelectInput.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -71,17 +72,17 @@ public abstract class AbstractSelectInput extends ActionCommandBase {
         String input = actionConfig.getInput();
 
         if (moduleConfig.getControllerConfig().getInputForward()) {
-            LOG.trace("Finding ForwardConfig for '{}'", input);
+            log.trace("Finding ForwardConfig for '{}'", input);
             forwardConfig = inputForward(actionConfig, moduleConfig, input);
             if (forwardConfig == null) {
-                LOG.atError().log(() -> getErrorMessage(actionCtx, actionConfig));
+                log.atError().log(() -> getErrorMessage(actionCtx, actionConfig));
             }
         } else {
-            LOG.trace("Delegating to forward() for '{}'", input);
+            log.trace("Delegating to forward() for '{}'", input);
             forwardConfig = forward(actionCtx, moduleConfig, input);
         }
 
-        LOG.debug("Forwarding back to {}", forwardConfig);
+        log.debug("Forwarding back to {}", forwardConfig);
 
         actionCtx.setForwardConfig(forwardConfig);
 
@@ -144,5 +145,4 @@ public abstract class AbstractSelectInput extends ActionCommandBase {
 
         return forwardConfig;
     }
-
 }

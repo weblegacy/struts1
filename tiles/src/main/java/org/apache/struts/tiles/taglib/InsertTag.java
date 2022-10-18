@@ -55,10 +55,10 @@ import org.slf4j.LoggerFactory;
  *
  * @version $Rev$ $Date$
  */
-public class InsertTag
-    extends DefinitionTagSupport
-    implements PutTagParent, ComponentConstants, PutListTagParent {
-    private static final long serialVersionUID = -5253191090730913992L;
+public class InsertTag extends DefinitionTagSupport
+        implements PutTagParent, ComponentConstants, PutListTagParent {
+
+    private static final long serialVersionUID = 5205711104417088689L;
 
     /**
      * The role delimiter.
@@ -68,9 +68,10 @@ public class InsertTag
     public static final String ROLE_DELIMITER = ",";
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    protected static Logger log = LoggerFactory.getLogger(InsertTag.class);
+    private final Logger log =
+        LoggerFactory.getLogger(InsertTag.class);
 
     /* JSP Tag attributes */
 

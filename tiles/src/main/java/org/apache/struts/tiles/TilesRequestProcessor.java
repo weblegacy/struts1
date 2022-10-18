@@ -60,9 +60,10 @@ public class TilesRequestProcessor extends RequestProcessor {
     protected DefinitionsFactory definitionsFactory = null;
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    protected static Logger log = LoggerFactory.getLogger(TilesRequestProcessor.class);
+    private final Logger log =
+        LoggerFactory.getLogger(TilesRequestProcessor.class);
 
     /**
      * Initialize this request processor instance.

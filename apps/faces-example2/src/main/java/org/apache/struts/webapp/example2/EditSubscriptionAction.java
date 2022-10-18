@@ -56,9 +56,9 @@ public final class EditSubscriptionAction extends Action {
 
 
     /**
-     * The <code>Log</code> instance for this application.
+     * The {@code Log} instance for this class.
      */
-    private Logger log =
+    private final static Logger LOG =
         LoggerFactory.getLogger(EditSubscriptionAction.class);
 
 
@@ -93,13 +93,13 @@ public final class EditSubscriptionAction extends Action {
         action = "Create";
     }
     String host = request.getParameter("host");
-    log.debug("EditSubscriptionAction:  Processing {} action",
+    LOG.debug("EditSubscriptionAction:  Processing {} action",
         action);
 
     // Is there a currently logged on user?
     User user = (User) session.getAttribute(Constants.USER_KEY);
     if (user == null) {
-        log.trace(" User is not logged on in session {}",
+        LOG.trace(" User is not logged on in session {}",
             session.getId());
         return (mapping.findForward("logon"));
     }
@@ -108,7 +108,7 @@ public final class EditSubscriptionAction extends Action {
     Subscription subscription =
             user.findSubscription(request.getParameter("host"));
     if ((subscription == null) && !action.equals("Create")) {
-        log.trace(" No subscription for user {} and host {}",
+        LOG.trace(" No subscription for user {} and host {}",
             user.getUsername(), host);
         return (mapping.findForward("failure"));
     }
@@ -118,8 +118,8 @@ public final class EditSubscriptionAction extends Action {
 
     // Populate the subscription form
     if (form == null) {
-        log.trace(" Creating new SubscriptionForm bean under key {}",
-            mapping.getAttribute()); 
+        LOG.trace(" Creating new SubscriptionForm bean under key {}",
+            mapping.getAttribute());
         form = new SubscriptionForm();
         if ("request".equals(mapping.getScope())) {
             request.setAttribute(mapping.getAttribute(), form);
@@ -130,7 +130,7 @@ public final class EditSubscriptionAction extends Action {
     SubscriptionForm subform = (SubscriptionForm) form;
     subform.setAction(action);
     if (!action.equals("Create")) {
-        log.trace(" Populating form from {}", subscription);
+        LOG.trace(" Populating form from {}", subscription);
         try {
             PropertyUtils.copyProperties(subform, subscription);
             subform.setAction(action);
@@ -138,16 +138,16 @@ public final class EditSubscriptionAction extends Action {
             Throwable t = e.getTargetException();
             if (t == null)
                 t = e;
-            log.error("SubscriptionForm.populate", t);
+            LOG.error("SubscriptionForm.populate", t);
             throw new ServletException("SubscriptionForm.populate", t);
         } catch (Throwable t) {
-            log.error("SubscriptionForm.populate", t);
+            LOG.error("SubscriptionForm.populate", t);
             throw new ServletException("SubscriptionForm.populate", t);
         }
     }
 
     // Forward control to the edit subscription page
-    log.trace(" Forwarding to 'success' page");
+    LOG.trace(" Forwarding to 'success' page");
     return (mapping.findForward("success"));
 
     }

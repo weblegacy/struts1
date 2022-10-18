@@ -36,7 +36,11 @@ import org.slf4j.LoggerFactory;
 
 public class ExecuteDispatcher extends ActionCommandBase {
 
-    private static final Logger LOG = LoggerFactory.getLogger(ExecuteDispatcher.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(ExecuteDispatcher.class);
 
     private String defaultDispatcherType;
 
@@ -50,7 +54,7 @@ public class ExecuteDispatcher extends ActionCommandBase {
      * @see ClassUtils#getApplicationInstance(String)
      */
     protected Dispatcher createDispatcher(String type, ActionContext context) throws Exception {
-        LOG.info("Initializing dispatcher of type: {}", type);
+        log.info("Initializing dispatcher of type: {}", type);
         return (Dispatcher) ClassUtils.getApplicationInstance(type);
     }
 
@@ -192,5 +196,4 @@ public class ExecuteDispatcher extends ActionCommandBase {
     public final void setDefaultDispatcherType(String defaultDispatcherType) {
         this.defaultDispatcherType = defaultDispatcherType;
     }
-
 }

@@ -31,15 +31,18 @@ import org.slf4j.LoggerFactory;
   */
 public class XmlDefinition extends ComponentDefinition
 {
-  private static final long serialVersionUID = -3498824883016185787L;
+  private static final long serialVersionUID = -5843791058928194033L;
 
   /**
    * Extends attribute value.
    */
   private String inherit;
 
-    /** SLF4J Logging instance. */
-   protected static Logger log = LoggerFactory.getLogger(XmlDefinition.class);
+  /**
+   * The {@code Log} instance for this class.
+   */
+  private final Logger log =
+    LoggerFactory.getLogger(XmlDefinition.class);
 
   /**
    * Used for resolving inheritance.

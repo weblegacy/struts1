@@ -51,9 +51,9 @@ public final class LogoffAction extends Action {
 
 
     /**
-     * The <code>Log</code> instance for this application.
+     * The {@code Log} instance for this class.
      */
-    private Logger log =
+    private final static Logger LOG =
         LoggerFactory.getLogger(LogoffAction.class);
 
 
@@ -86,10 +86,10 @@ public final class LogoffAction extends Action {
 
     // Process this user logoff
     if (user != null) {
-        log.debug("LogoffAction: User '{}' logged off in session {}",
+        LOG.debug("LogoffAction: User '{}' logged off in session {}",
             user.getUsername(), session.getId());
     } else {
-        log.debug("LogoffActon: User logged off in session {}",
+        LOG.debug("LogoffActon: User logged off in session {}",
             session.getId());
     }
     session.removeAttribute(Constants.SUBSCRIPTION_KEY);

@@ -95,9 +95,10 @@ public class ExceptionHandler {
     public static final String SILENT_IF_COMMITTED = "SILENT_IF_COMMITTED";
 
     /**
-     * <p>Commons logging instance.</p>
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(ExceptionHandler.class);
+    private final Logger log =
+        LoggerFactory.getLogger(ExceptionHandler.class);
 
     /**
      * <p>The message resources for this package.</p>
@@ -125,7 +126,7 @@ public class ExceptionHandler {
         ActionMapping mapping, ActionForm formInstance,
         HttpServletRequest request, HttpServletResponse response)
         throws ServletException {
-        LOG.debug("ExceptionHandler executing for exception ", ex);
+        log.debug("ExceptionHandler executing for exception ", ex);
 
         ActionForward forward;
         ActionMessage error;
@@ -164,14 +165,14 @@ public class ExceptionHandler {
             return forward;
         }
 
-        LOG.debug("Response is already committed, so forwarding will not work."
+        log.debug("Response is already committed, so forwarding will not work."
             + " Attempt alternate handling.");
 
         if (!silent(ae)) {
             handleCommittedResponse(ex, ae, mapping, formInstance, request,
                 response, forward);
         } else {
-            LOG.warn("ExceptionHandler configured with {}"
+            log.warn("ExceptionHandler configured with {}"
                 + " and response is committed.", SILENT_IF_COMMITTED, ex);
         }
 
@@ -202,7 +203,7 @@ public class ExceptionHandler {
 
         if (includePath != null) {
             if (includePath.startsWith("/")) {
-                LOG.debug("response committed, "
+                log.debug("response committed, "
                     + "but attempt to include results "
                     + "of actionForward path");
 
@@ -214,20 +215,20 @@ public class ExceptionHandler {
 
                     return;
                 } catch (IOException e) {
-                    LOG.error("IOException when trying to include "
+                    log.error("IOException when trying to include "
                         + "the error page path {}", includePath, e);
                 } catch (ServletException e) {
-                    LOG.error("ServletException when trying to include "
+                    log.error("ServletException when trying to include "
                         + "the error page path {}", includePath, e);
                 }
             } else {
-                LOG.warn("Suspicious includePath doesn't seem likely to work, "
+                log.warn("Suspicious includePath doesn't seem likely to work, "
                     + "so skipping it: {}"
                     + "; expected path to start with '/'", includePath);
             }
         }
 
-        LOG.debug("Include not available or failed; "
+        log.debug("Include not available or failed; "
             + "try writing to the response directly.");
 
         try {
@@ -236,8 +237,8 @@ public class ExceptionHandler {
             ex.printStackTrace(response.getWriter());
             response.getWriter().println("-->");
         } catch (IOException e) {
-            LOG.error("Error giving minimal information about exception", e);
-            LOG.error("Original exception: ", ex);
+            log.error("Error giving minimal information about exception", e);
+            log.error("Original exception: ", ex);
         }
     }
 
@@ -268,11 +269,11 @@ public class ExceptionHandler {
     /**
      * <p>Logs the <code>Exception</code> using commons-logging.</p>
      *
-     * @param e The Exception to LOG.
+     * @param e The Exception to log.
      * @since Struts 1.2
      */
     protected void logException(Exception e) {
-        LOG.atDebug()
+        log.atDebug()
             .setMessage(() -> messages.getMessage("exception.LOG"))
             .setCause(e).log();
     }

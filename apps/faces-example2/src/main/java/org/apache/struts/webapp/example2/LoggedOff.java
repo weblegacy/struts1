@@ -42,7 +42,11 @@ public class LoggedOff {
     // ------------------------------------------------------ Instance Variables
 
 
-    private static final Logger LOG = LoggerFactory.getLogger(LoggedOff.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final static Logger LOG =
+        LoggerFactory.getLogger(LoggedOff.class);
 
 
     // ----------------------------------------------------------------- Actions

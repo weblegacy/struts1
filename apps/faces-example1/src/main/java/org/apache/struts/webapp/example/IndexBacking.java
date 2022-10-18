@@ -40,7 +40,11 @@ public class IndexBacking extends AbstractBacking {
     // -------------------------------------------------------- Static Variables
 
 
-    private static final Logger LOG = LoggerFactory.getLogger(IndexBacking.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final static Logger LOG =
+        LoggerFactory.getLogger(IndexBacking.class);
 
 
     // ----------------------------------------------------------------- Actions

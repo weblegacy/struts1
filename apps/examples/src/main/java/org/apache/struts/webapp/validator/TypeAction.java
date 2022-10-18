@@ -39,9 +39,10 @@ import org.slf4j.LoggerFactory;
 public final class TypeAction extends Action {
 
     /**
-     * Commons Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private final static Logger LOG =
+        LoggerFactory.getLogger(TypeAction.class);
 
     /**
      * Process the specified HTTP request, and create the corresponding HTTP
@@ -67,7 +68,7 @@ public final class TypeAction extends Action {
 
         // Was this transaction cancelled?
         if (isCancelled(request)) {
-            log.info(" {} - Type transaction was cancelled",
+            LOG.info(" {} - Type transaction was cancelled",
                 mapping.getAttribute());
 
             removeFormBean(mapping, request);

@@ -66,9 +66,10 @@ public class RequestUtils {
     // ------------------------------------------------------- Static Variables
 
     /**
-     * <p>Commons Logging instance.</p>
+     * The {@code Log} instance for this class.
      */
-    protected static Logger LOG = LoggerFactory.getLogger(RequestUtils.class);
+    private final static Logger LOG =
+        LoggerFactory.getLogger(RequestUtils.class);
 
     /**
      * <p>Pattern matching 'class' access.</p>

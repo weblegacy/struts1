@@ -49,7 +49,8 @@ public class BaseRenderer extends AbstractRenderer {
     /**
      * The {@code Log} instance for this class.
      */
-    private final static Logger LOG = LoggerFactory.getLogger(BaseRenderer.class);
+    private final Logger log =
+        LoggerFactory.getLogger(BaseRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods
@@ -74,7 +75,7 @@ public class BaseRenderer extends AbstractRenderer {
 
         final String uri = StrutsContext.uri(context);
 
-        LOG.trace("viewId='{}' --> uri='{}'",
+        log.trace("viewId='{}' --> uri='{}'",
             context.getViewRoot().getViewId(), uri);
 
         ResponseWriter writer = context.getResponseWriter();

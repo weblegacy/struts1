@@ -56,12 +56,13 @@ import org.xml.sax.SAXException;
  * (ex : <code>templateDefinitions_fr.xml</code>). If no file is found under this name, use default file.
  */
 public class I18nFactorySet extends FactorySet {
-    private static final long serialVersionUID = -5165509575040839305L;
+    private static final long serialVersionUID = 3883838354881166525L;
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    protected static Logger log = LoggerFactory.getLogger(I18nFactorySet.class);
+    private final Logger log =
+        LoggerFactory.getLogger(I18nFactorySet.class);
 
     /**
      * Config file parameter name.

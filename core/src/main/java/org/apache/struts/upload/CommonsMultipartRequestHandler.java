@@ -75,9 +75,9 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
     // ----------------------------------------------------- Instance Variables
 
     /**
-     * <p> Commons Logging instance. </p>
+     * The {@code Log} instance for this class.
      */
-    protected static Logger LOG =
+    private final Logger log =
         LoggerFactory.getLogger(CommonsMultipartRequestHandler.class);
 
     /**
@@ -202,7 +202,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
             clearInputStream(request);
             return;
         } catch (FileUploadException e) {
-            LOG.error("Failed to parse multipart request", e);
+            log.error("Failed to parse multipart request", e);
             clearInputStream(request);
             throw new ServletException(e);
         }
@@ -287,7 +287,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
                 } while (bytesRead > -1);
             }
         } catch (Exception e) {
-            LOG.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
         }
     }
 
@@ -350,7 +350,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         try {
             size = Long.parseLong(sizeString);
         } catch (NumberFormatException nfe) {
-            LOG.warn("Invalid format for file size ('{}'). Using default.",
+            log.warn("Invalid format for file size ('{}'). Using default.",
                 sizeString);
             size = defaultSize;
             multiplier = 1;
@@ -402,7 +402,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
             tempDirFile = new File(tempDir);
         }
 
-        LOG.trace("File upload temp dir: {}", tempDirFile);
+        log.trace("File upload temp dir: {}", tempDirFile);
 
         return tempDirFile;
     }
@@ -424,12 +424,12 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
 
         if (item instanceof DiskFileItem) {
             encoding = ((DiskFileItem)item).getCharSet();
-            LOG.debug("DiskFileItem.getCharSet=[{}]", encoding);
+            log.debug("DiskFileItem.getCharSet=[{}]", encoding);
         }
 
         if (encoding == null) {
             encoding = request.getCharacterEncoding();
-            LOG.debug("request.getCharacterEncoding=[{}]", encoding);
+            log.debug("request.getCharacterEncoding=[{}]", encoding);
         }
 
         if (encoding != null) {

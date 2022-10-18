@@ -82,11 +82,10 @@ public abstract class BaseAction extends MappingDispatchAction {
     // ---- Protected Variables ----
 
     /**
-     * <p>
-     * The <code>Log</code> instance for this application.
-     * </p>
+     * The {@code Log} instance for this class.
      */
-    protected Logger log = LoggerFactory.getLogger(BaseAction.class);
+    private final static Logger LOG =
+        LoggerFactory.getLogger(BaseAction.class);
 
     // ---- Protected Methods ----
 
@@ -103,13 +102,13 @@ public abstract class BaseAction extends MappingDispatchAction {
 
         HttpSession session = request.getSession();
         session.setAttribute(Constants.USER_KEY, user);
-        log.debug("LogonAction: User '{}' logged on in session {}",
+        LOG.debug("LogonAction: User '{}' logged on in session {}",
             user.getUsername(), session.getId());
     }
 
     /**
      * <p>
-     * Helper method to log event and cancel transaction.
+     * Helper method to LOG event and cancel transaction.
      * </p>
      *
      * @param session Our HttpSession
@@ -117,7 +116,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      * @param key     Attrkibute to remove from session, if any
      */
     protected void doCancel(HttpSession session, String method, String key) {
-        log.trace("{}{}", Constants.LOG_CANCEL, method);
+        LOG.trace("{}{}", Constants.LOG_CANCEL, method);
         if (key != null) {
             session.removeAttribute(key);
         }
@@ -133,7 +132,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      * @return Return the mapping named "failure" or null if there is no such mapping.
      */
     protected ActionForward doFindFailure(ActionMapping mapping) {
-        log.trace(Constants.LOG_FAILURE);
+        LOG.trace(Constants.LOG_FAILURE);
         return mapping.findForward(Constants.FAILURE);
     }
 
@@ -147,7 +146,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      * @return Return the mapping named "logon" or null if there is no such mapping.
      */
     protected ActionForward doFindLogon(ActionMapping mapping) {
-        log.trace(Constants.LOG_LOGON);
+        LOG.trace(Constants.LOG_LOGON);
         return mapping.findForward(Constants.LOGON);
     }
 
@@ -162,7 +161,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      *         mapping.
      */
     protected ActionForward doFindSuccess(ActionMapping mapping) {
-        log.trace(Constants.LOG_SUCCESS);
+        LOG.trace(Constants.LOG_SUCCESS);
         return mapping.findForward(Constants.SUCCESS);
     }
 
@@ -353,18 +352,18 @@ public abstract class BaseAction extends MappingDispatchAction {
      * @param method  Name of method being processed
      */
     protected void doLogProcess(ActionMapping mapping, String method) {
-        log.debug(" {}:{}{}", mapping.getPath(), Constants.LOG_PROCESSING, method);
+        LOG.debug(" {}:{}{}", mapping.getPath(), Constants.LOG_PROCESSING, method);
     }
 
     /**
      * <p>
-     * Helper method to log event and save token.
+     * Helper method to LOG event and save token.
      * </p>
      *
      * @param request Our HttpServletRequest
      */
     protected void doSaveToken(HttpServletRequest request) {
-        log.trace(Constants.LOG_TOKEN);
+        LOG.trace(Constants.LOG_TOKEN);
         saveToken(request);
     }
 
@@ -386,7 +385,7 @@ public abstract class BaseAction extends MappingDispatchAction {
             database.save();
         } catch (Exception e) {
             String message = LOG_DATABASE_SAVE_ERROR + user.getUsername();
-            log.error(message, e);
+            LOG.error(message, e);
             throw new ServletException(message, e);
         }
     }

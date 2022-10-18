@@ -41,8 +41,11 @@ import org.slf4j.LoggerFactory;
  */
 public class ShowFileAction extends Action {
 
-    /** Logging Instance. */
-    private static final Logger LOG = LoggerFactory.getLogger(ShowFileAction.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final static Logger LOG =
+        LoggerFactory.getLogger(ShowFileAction.class);
 
     public ActionForward execute(ActionMapping mapping,
                                  ActionForm form,

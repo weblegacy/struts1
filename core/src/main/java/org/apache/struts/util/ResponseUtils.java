@@ -45,9 +45,10 @@ public class ResponseUtils {
             "org.apache.struts.util.LocalStrings");
 
     /**
-     * Commons logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(ResponseUtils.class);
+    private final static Logger LOG =
+        LoggerFactory.getLogger(ResponseUtils.class);
 
     // --------------------------------------------------------- Public Methods
 

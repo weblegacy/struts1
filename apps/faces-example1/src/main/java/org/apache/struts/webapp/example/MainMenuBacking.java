@@ -39,7 +39,11 @@ public class MainMenuBacking extends AbstractBacking {
     // -------------------------------------------------------- Static Variables
 
 
-    private static final Logger LOG = LoggerFactory.getLogger(MainMenuBacking.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final static Logger LOG =
+        LoggerFactory.getLogger(MainMenuBacking.class);
 
 
     // ----------------------------------------------------------------- Actions

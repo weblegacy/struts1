@@ -71,9 +71,10 @@ public class FacesRequestProcessor extends RequestProcessor {
 
 
     /**
-     * <p>The log instance for this class.</p>
+     * The {@code Log} instance for this class.
      */
-    protected static Logger log = LoggerFactory.getLogger(FacesRequestProcessor.class);
+    private final Logger log =
+        LoggerFactory.getLogger(FacesRequestProcessor.class);
 
 
     /**

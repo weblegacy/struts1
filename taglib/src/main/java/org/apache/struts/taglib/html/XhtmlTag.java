@@ -35,12 +35,13 @@ import org.slf4j.LoggerFactory;
  * Example:<br/> &lt;html:xhtml/&gt;</p>
  */
 public class XhtmlTag extends TagSupport {
-    private static final long serialVersionUID = 2280460329323937654L;
+    private static final long serialVersionUID = -1346016551741493372L;
 
     /**
-     * SLF4J logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(XhtmlTag.class);
+    private final Logger log =
+        LoggerFactory.getLogger(XhtmlTag.class);
 
     /**
      * The scope within which to store the markup format.
@@ -64,7 +65,7 @@ public class XhtmlTag extends TagSupport {
                 inScope = TagUtils.getInstance().getScope(this.scope);
             }
         } catch (JspException e) {
-            LOG.warn("invalid scope name - defaulting to PAGE_SCOPE", e);
+            log.warn("invalid scope name - defaulting to PAGE_SCOPE", e);
         }
 
         this.pageContext.setAttribute(Globals.XHTML_KEY, "true", inScope);

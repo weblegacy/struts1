@@ -72,9 +72,10 @@ public final class MemoryDatabasePlugIn implements PlugIn {
 
 
     /**
-     * Logging output for this plug in instance.
+     * The {@code Log} instance for this class.
      */
-    private Logger log = LoggerFactory.getLogger(this.getClass());
+    private final static Logger LOG =
+        LoggerFactory.getLogger(MemoryDatabasePlugIn.class);
 
 
     /**
@@ -110,13 +111,13 @@ public final class MemoryDatabasePlugIn implements PlugIn {
      */
     public void destroy() {
 
-        log.info("Finalizing memory database plug in");
+        LOG.info("Finalizing memory database plug in");
 
         if (database != null) {
             try {
                 database.close();
             } catch (Exception e) {
-                log.error("Closing memory database", e);
+                LOG.error("Closing memory database", e);
             }
         }
 
@@ -138,7 +139,7 @@ public final class MemoryDatabasePlugIn implements PlugIn {
     public void init(ActionServlet servlet, ModuleConfig config)
             throws ServletException {
 
-        log.info("Initializing memory database plug in from '{}'",
+        LOG.info("Initializing memory database plug in from '{}'",
             pathname);
 
         // Remember our associated configuration and servlet
@@ -148,11 +149,11 @@ public final class MemoryDatabasePlugIn implements PlugIn {
         database = new MemoryUserDatabase();
         try {
             String path = calculatePath();
-            log.debug(" Loading database from '{}'", path);
+            LOG.debug(" Loading database from '{}'", path);
             database.setPathname(path);
             database.open();
         } catch (Exception e) {
-            log.error("Opening memory database", e);
+            LOG.error("Opening memory database", e);
             throw new ServletException("Cannot load database from '" +
                     pathname + "'", e);
         }

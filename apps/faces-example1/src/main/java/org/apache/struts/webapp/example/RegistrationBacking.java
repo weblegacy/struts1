@@ -43,7 +43,11 @@ public class RegistrationBacking extends AbstractBacking {
     // -------------------------------------------------------- Static Variables
 
 
-    private static final Logger LOG = LoggerFactory.getLogger(RegistrationBacking.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final static Logger LOG =
+        LoggerFactory.getLogger(RegistrationBacking.class);
 
 
     // -------------------------------------------------------------- Properties

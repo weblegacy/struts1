@@ -46,12 +46,13 @@ import org.slf4j.LoggerFactory;
  * @version $Rev$ $Date$
  */
 public abstract class BaseHandlerTag extends BodyTagSupport {
-    private static final long serialVersionUID = -2120829773020021751L;
+    private static final long serialVersionUID = -981395499563339165L;
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static Logger log = LoggerFactory.getLogger(BaseHandlerTag.class);
+    private final Logger log =
+        LoggerFactory.getLogger(BaseHandlerTag.class);
 
     // ----------------------------------------------------- Instance Variables
 

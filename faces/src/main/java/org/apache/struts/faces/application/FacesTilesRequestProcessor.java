@@ -70,9 +70,9 @@ public class FacesTilesRequestProcessor extends TilesRequestProcessor {
 
 
     /**
-     * <p>The log instance for this class.</p>
+     * The {@code Log} instance for this class.
      */
-    protected static Logger log =
+    private final Logger log =
         LoggerFactory.getLogger(FacesTilesRequestProcessor.class);
 
     /**

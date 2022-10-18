@@ -67,7 +67,7 @@ public class DynaBeanELResolver extends ELResolver {
     /**
      * The {@code Log} instance for this class.
      */
-    private static final Logger LOG =
+    private final Logger log =
         LoggerFactory.getLogger(DynaBeanELResolver.class);
 
     /**
@@ -90,7 +90,7 @@ public class DynaBeanELResolver extends ELResolver {
      *     properties; {@code false} otherwise.
      */
     public DynaBeanELResolver(boolean readOnly) {
-        LOG.debug("Creating new Dyna-Action-From-ELResolver "
+        log.debug("Creating new Dyna-Action-From-ELResolver "
             + "instance with read-only: '{}'", readOnly);
 
         this.readOnly = readOnly;
@@ -134,7 +134,7 @@ public class DynaBeanELResolver extends ELResolver {
         }
 
         if (base instanceof DynaBean) {
-            LOG.trace("Returning property-type '{}' for DynaBean '{}'",
+            log.trace("Returning property-type '{}' for DynaBean '{}'",
                 property, base);
 
             final DynaBean dynaBean = (DynaBean) base;
@@ -189,7 +189,7 @@ public class DynaBeanELResolver extends ELResolver {
         }
 
         if (base instanceof DynaBean) {
-            LOG.trace("Returning dynamic property '{}' for DynaBean '{}'",
+            log.trace("Returning dynamic property '{}' for DynaBean '{}'",
                 property, base);
 
             final DynaBean dynaBean = (DynaBean) base;
@@ -248,7 +248,7 @@ public class DynaBeanELResolver extends ELResolver {
         }
 
         if (base instanceof DynaBean) {
-            LOG.trace("Setting dynamic property '{}' for DynaBean '{}'",
+            log.trace("Setting dynamic property '{}' for DynaBean '{}'",
                 property, base);
 
             final DynaBean dynaBean = (DynaBean) base;
@@ -305,7 +305,7 @@ public class DynaBeanELResolver extends ELResolver {
         }
 
         if (base instanceof DynaBean) {
-            LOG.trace("Return ready-only status for dynamic property '{}' for DynaBean '{}'",
+            log.trace("Return ready-only status for dynamic property '{}' for DynaBean '{}'",
                 property, base);
 
             final DynaBean dynaBean = (DynaBean) base;
@@ -378,7 +378,7 @@ public class DynaBeanELResolver extends ELResolver {
             Object base) {
 
         if (base instanceof DynaBean) {
-            LOG.trace("Get Feature-Descriptors for DynaBean '{}'", base);
+            log.trace("Get Feature-Descriptors for DynaBean '{}'", base);
 
             final DynaBean dynaBean = (DynaBean) base;
             final DynaProperty[] properties = dynaBean.getDynaClass().getDynaProperties();
@@ -426,7 +426,7 @@ public class DynaBeanELResolver extends ELResolver {
     @Override
     public Class<?> getCommonPropertyType(ELContext context, Object base) {
         if (base instanceof DynaBean) {
-            LOG.trace("Get Common-Property-Type for DynaBean '{}'", base);
+            log.trace("Get Common-Property-Type for DynaBean '{}'", base);
 
             return Object.class;
         }
@@ -448,7 +448,7 @@ public class DynaBeanELResolver extends ELResolver {
         try {
             dynaProperty = bean.getDynaClass().getDynaProperty(property);
         } catch (IllegalArgumentException e) {
-            LOG.trace("Get Dyna-Property '{}'", property, e);
+            log.trace("Get Dyna-Property '{}'", property, e);
         }
 
         return (dynaProperty);

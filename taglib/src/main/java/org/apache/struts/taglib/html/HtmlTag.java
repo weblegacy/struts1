@@ -41,14 +41,15 @@ import org.slf4j.LoggerFactory;
  *          $
  */
 public class HtmlTag extends TagSupport {
-    private static final long serialVersionUID = 1110615775165419573L;
+    private static final long serialVersionUID = -4739352136106954707L;
 
     // ------------------------------------------------------------- Properties
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private final static Logger LOG = LoggerFactory.getLogger(HtmlTag.class);
+    private final Logger log =
+        LoggerFactory.getLogger(HtmlTag.class);
 
     /**
      * The message resources for this package.
@@ -172,7 +173,7 @@ public class HtmlTag extends TagSupport {
             // 1.0/Default
             else {
                 if (!xhtmlVersion.equals(TagUtils.XHTML_1_0)) {
-                    LOG.warn("Defaulting to XHTML 1.0. Unknown version: {}", xhtmlVersion);
+                    log.warn("Defaulting to XHTML 1.0. Unknown version: {}", xhtmlVersion);
                     xhtmlVersion = TagUtils.XHTML_1_0;
                 }
                 sb.append(" xmlns=\"http://www.w3.org/1999/xhtml\"");

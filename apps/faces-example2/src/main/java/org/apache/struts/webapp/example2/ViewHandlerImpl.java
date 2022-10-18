@@ -44,9 +44,10 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
 
 
     /**
-     * The {@code LOG} instance for this class.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(ViewHandlerImpl.class);
+    private final static Logger LOG =
+        LoggerFactory.getLogger(ViewHandlerImpl.class);
 
 
     // ------------------------------------------------------ Instance Variables

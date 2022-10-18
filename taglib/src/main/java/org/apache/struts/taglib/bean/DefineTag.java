@@ -37,12 +37,13 @@ import org.slf4j.LoggerFactory;
  *          $
  */
 public class DefineTag extends BodyTagSupport {
-    private static final long serialVersionUID = 1913737863789666444L;
+    private static final long serialVersionUID = -4615510039410385921L;
 
     /**
-     * SLF4J logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(DefineTag.class);
+    private final Logger log =
+        LoggerFactory.getLogger(DefineTag.class);
 
     // ---------------------------------------------------- Protected variables
 
@@ -242,7 +243,7 @@ public class DefineTag extends BodyTagSupport {
                 inScope = TagUtils.getInstance().getScope(toScope);
             }
         } catch (JspException e) {
-            LOG.warn("toScope was invalid name so we default to PAGE_SCOPE", e);
+            log.warn("toScope was invalid name so we default to PAGE_SCOPE", e);
         }
 
         pageContext.setAttribute(id, value, inScope);

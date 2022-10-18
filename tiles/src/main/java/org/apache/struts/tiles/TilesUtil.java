@@ -30,9 +30,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.jsp.PageContext;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 /**
  * Class containing utility methods for Tiles.
  * Methods of this class are static and thereby accessible from anywhere.
@@ -45,9 +42,6 @@ import org.slf4j.LoggerFactory;
  * if the underlying implementation doesn't support the operation.
  */
 public class TilesUtil {
-
-    /** SLF4J Logging instance.*/
-    protected static Logger log = LoggerFactory.getLogger(TilesUtil.class);
 
     /** The implementation of tilesUtilImpl */
     protected static TilesUtilImpl tilesUtilImpl = new TilesUtilImpl();

@@ -41,7 +41,12 @@ import org.slf4j.LoggerFactory;
  */
 public class ValidateActionForm extends AbstractValidateActionForm {
     // ------------------------------------------------------ Instance Variables
-    private static final Logger LOG = LoggerFactory.getLogger(ValidateActionForm.class);
+
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(ValidateActionForm.class);
 
     // ------------------------------------------------------- Protected Methods
 
@@ -62,7 +67,7 @@ public class ValidateActionForm extends AbstractValidateActionForm {
         // Special handling for multipart request
         if ((errors != null) && !errors.isEmpty()) {
             if (actionForm.getMultipartRequestHandler() != null) {
-                LOG.trace("  Rolling back multipart request");
+                log.trace("  Rolling back multipart request");
 
                 actionForm.getMultipartRequestHandler().rollback();
             }

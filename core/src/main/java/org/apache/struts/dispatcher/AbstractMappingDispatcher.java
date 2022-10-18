@@ -22,6 +22,8 @@ package org.apache.struts.dispatcher;
 
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.chain.contexts.ActionContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * This abstract class is a template for choosing the target method that is
@@ -33,7 +35,13 @@ import org.apache.struts.chain.contexts.ActionContext;
  * @since Struts 1.4
  */
 public abstract class AbstractMappingDispatcher extends AbstractDispatcher {
-    private static final long serialVersionUID = 1956815632606733563L;
+    private static final long serialVersionUID = 1882936058355907522L;
+
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+            LoggerFactory.getLogger(AbstractMappingDispatcher.class);
 
     private String defaultMappingParameter;
 
@@ -99,5 +107,4 @@ public abstract class AbstractMappingDispatcher extends AbstractDispatcher {
     protected final void setDefaultMappingParameter(String defaultMappingParameter) {
         this.defaultMappingParameter = defaultMappingParameter;
     }
-
 }

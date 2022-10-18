@@ -36,9 +36,10 @@ public class SelectInclude extends ActionCommandBase {
     // ------------------------------------------------------ Instance Variables
 
     /**
-     * <p> Provide Commons Logging instance for this class. </p>
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(SelectInclude.class);
+    private final Logger log =
+        LoggerFactory.getLogger(SelectInclude.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -59,7 +60,7 @@ public class SelectInclude extends ActionCommandBase {
         String include = actionConfig.getInclude();
 
         if (include != null) {
-            LOG.debug("Including {}", include);
+            log.debug("Including {}", include);
 
             actionCtx.setInclude(include);
         }

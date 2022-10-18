@@ -47,9 +47,13 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.1
  */
 public class FormBeanConfig extends BaseConfig {
-    private static final long serialVersionUID = 3515968502450681140L;
+    private static final long serialVersionUID = -2606605006051449892L;
 
-    private static final Logger LOG = LoggerFactory.getLogger(FormBeanConfig.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(FormBeanConfig.class);
 
     // ----------------------------------------------------- Instance Variables
 
@@ -373,7 +377,7 @@ public class FormBeanConfig extends BaseConfig {
                 String className = ((DynaBean) form).getDynaClass().getName();
 
                 if (className.equals(this.getName())) {
-                    LOG.debug("Can reuse existing instance (dynamic)");
+                    log.debug("Can reuse existing instance (dynamic)");
 
                     return (true);
                 }
@@ -390,7 +394,7 @@ public class FormBeanConfig extends BaseConfig {
                         if (beanValidatorForm.getInstance() instanceof DynaBean) {
                             String formName = beanValidatorForm.getStrutsConfigFormName();
                             if (getName().equals(formName)) {
-                                LOG.debug("Can reuse existing instance (BeanValidatorForm)");
+                                log.debug("Can reuse existing instance (BeanValidatorForm)");
                                 return true;
                             } else {
                                 return false;
@@ -403,12 +407,12 @@ public class FormBeanConfig extends BaseConfig {
                         ClassUtils.getApplicationClass(this.getType());
 
                     if (configClass.isAssignableFrom(formClass)) {
-                        LOG.debug("Can reuse existing instance (non-dynamic)");
+                        log.debug("Can reuse existing instance (non-dynamic)");
 
                         return (true);
                     }
                 } catch (Exception e) {
-                    LOG.debug("Error testing existing instance for reusability; just create a new instance",
+                    log.debug("Error testing existing instance for reusability; just create a new instance",
                         e);
                 }
             }

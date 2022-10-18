@@ -104,9 +104,10 @@ public class TagUtils {
     private static TagUtils instance = new TagUtils();
 
     /**
-     * SLF4J logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(TagUtils.class);
+    private final Logger log =
+        LoggerFactory.getLogger(TagUtils.class);
 
     /**
      * The message resources for this package. TODO We need to move the
@@ -748,7 +749,7 @@ public class TagUtils {
             } catch (JspException e) {
                 throw e;
             } catch (Exception e) {
-                LOG.warn("Unable to retieve ActionMessage for paramName : {}",
+                log.warn("Unable to retieve ActionMessage for paramName : {}",
                     paramName, e);
             }
         }
@@ -834,7 +835,7 @@ public class TagUtils {
             xhtml = (String) lookup(pageContext, Globals.XHTML_KEY, null);
             return "true".equalsIgnoreCase(xhtml);
         } catch (JspException e) {
-            LOG.error("Failed xhtml lookup", e);
+            log.error("Failed xhtml lookup", e);
             throw new RuntimeException(e);
         }
     }
@@ -1002,7 +1003,7 @@ public class TagUtils {
 
         if (message == null) {
             // log missing key to ease debugging
-            LOG.atDebug().log(() -> resources.getMessage("message.resources", key, bundle,
+            log.atDebug().log(() -> resources.getMessage("message.resources", key, bundle,
                     locale));
         }
 

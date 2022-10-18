@@ -56,9 +56,10 @@ public class TestTilesPlugin extends TestMockBase {
   protected MockActionServlet actionServlet;
 
   /**
-   * The logging object.
+   * The {@code Log} instance for this class.
    */
-  private static final Logger LOG = LoggerFactory.getLogger(TestTilesPlugin.class);
+  private final Logger log =
+    LoggerFactory.getLogger(TestTilesPlugin.class);
 
     // ----------------------------------------------------- Setup and Teardown
 
@@ -217,7 +218,7 @@ public class TestTilesPlugin extends TestMockBase {
       fail("An exception should have been thrown");
   } catch (ServletException e) {
       // It is ok
-      LOG.debug("Intercepted a ServletException, it is ok", e);
+      log.debug("Intercepted a ServletException, it is ok", e);
   }
 
     // mock request context

@@ -43,9 +43,10 @@ public class ModuleUtils {
     private static final ModuleUtils instance = new ModuleUtils();
 
     /**
-     * Commons logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(ModuleUtils.class);
+    private final Logger log =
+        LoggerFactory.getLogger(ModuleUtils.class);
 
     /**
      * Constructor for ModuleUtils.
@@ -167,7 +168,7 @@ public class ModuleUtils {
      * @return The module prefix or ""
      */
     public String getModuleName(String matchPath, ServletContext context) {
-        LOG.debug("Get module name for path {}", matchPath);
+        log.debug("Get module name for path {}", matchPath);
 
         String prefix = ""; // Initialize prefix before we try lookup
         String[] prefixes = getModulePrefixes(context);
@@ -190,8 +191,8 @@ public class ModuleUtils {
             }
         }
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Module name found: {}",
+        if (log.isDebugEnabled()) {
+            log.debug("Module name found: {}",
                 prefix.isEmpty() ? "default" : prefix);
         }
 

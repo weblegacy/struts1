@@ -40,10 +40,11 @@ import org.slf4j.LoggerFactory;
  * that are set  (language, country, &amp; page).
  */
 public final class LocaleAction extends BaseAction {
+
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private Logger log =
+    private final Logger log =
         LoggerFactory.getLogger(this.getClass().getName());
 
     /**

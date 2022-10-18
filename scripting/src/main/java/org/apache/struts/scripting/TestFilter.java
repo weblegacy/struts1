@@ -34,8 +34,11 @@ import org.slf4j.LoggerFactory;
  */
 public class TestFilter implements ScriptContextFilter {
 
-    /** Logging instance. */
-    private static final Logger LOG = LoggerFactory.getLogger(TestFilter.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(TestFilter.class);
 
     /**
      * Initializes the filter.
@@ -44,7 +47,7 @@ public class TestFilter implements ScriptContextFilter {
      * @param props The properties
      */
     public void init(String name, Properties props) {
-        LOG.info("Initializing TestFilter");
+        log.info("Initializing TestFilter");
     }
 
     /**
@@ -55,7 +58,7 @@ public class TestFilter implements ScriptContextFilter {
      * @return The scripting context
      */
     public ScriptContext apply(ScriptContext context) {
-        LOG.info("Filtering in TestFilter");
+        log.info("Filtering in TestFilter");
         return context;
     }
 }

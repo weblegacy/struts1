@@ -38,9 +38,13 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.1
  */
 public class ActionConfig extends BaseConfig {
-    private static final long serialVersionUID = -3999561115495765079L;
+    private static final long serialVersionUID = -7821814205678644815L;
 
-    private static final Logger LOG = LoggerFactory.getLogger(ActionConfig.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(ActionConfig.class);
 
     // ----------------------------------------------------- Instance Variables
 
@@ -1136,7 +1140,7 @@ public class ActionConfig extends BaseConfig {
             // Check for a locally defined handler
             String name = type.getName();
 
-            LOG.debug("findException: look locally for {}", name);
+            log.debug("findException: look locally for {}", name);
             config = findExceptionConfig(name);
 
             if (config != null) {
@@ -1144,7 +1148,7 @@ public class ActionConfig extends BaseConfig {
             }
 
             // Check for a globally defined handler
-            LOG.debug("findException: look globally for {}", name);
+            log.debug("findException: look globally for {}", name);
             config = getModuleConfig().findExceptionConfig(name);
 
             if (config != null) {
@@ -1519,5 +1523,4 @@ public class ActionConfig extends BaseConfig {
         sb.append("]");
         return (sb.toString());
     }
-
 }

@@ -54,12 +54,13 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.1
  */
 public class ValidatorForm extends ActionForm implements Serializable {
-    private static final long serialVersionUID = -1746256002332063637L;
+    private static final long serialVersionUID = 7373898264686375233L;
 
     /**
-     * Commons Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static Logger LOG = LoggerFactory.getLogger(ValidatorForm.class);
+    private final Logger log =
+        LoggerFactory.getLogger(ValidatorForm.class);
 
     /**
      * The results returned from the validation performed by the
@@ -131,7 +132,7 @@ public class ValidatorForm extends ActionForm implements Serializable {
         try {
             validatorResults = validator.validate();
         } catch (ValidatorException e) {
-            LOG.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
         }
 
         return errors;

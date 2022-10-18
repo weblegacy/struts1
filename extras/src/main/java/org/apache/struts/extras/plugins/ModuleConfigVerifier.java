@@ -47,9 +47,10 @@ import org.slf4j.LoggerFactory;
 public class ModuleConfigVerifier implements PlugIn {
 
     /**
-     * Commons Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static Logger LOG = LoggerFactory.getLogger(ModuleConfigVerifier.class);
+    private final Logger log =
+        LoggerFactory.getLogger(ModuleConfigVerifier.class);
 
     // ----------------------------------------------------- Instance Variables
 
@@ -103,7 +104,7 @@ public class ModuleConfigVerifier implements PlugIn {
 
         boolean ok = true;
 
-        LOG.atInfo().log(() -> servlet.getInternal().getMessage("configVerifying"));
+        log.atInfo().log(() -> servlet.getInternal().getMessage("configVerifying"));
 
         // Perform detailed validations of each portion of ModuleConfig
         // :TODO: Complete methods to verify Action, Controller, et al, configurations.
@@ -141,7 +142,7 @@ public class ModuleConfigVerifier implements PlugIn {
         }
 
         // Throw an exception on a fatal error
-        LOG.atInfo().log(() -> servlet.getInternal().getMessage("configCompleted"));
+        log.atInfo().log(() -> servlet.getInternal().getMessage("configCompleted"));
 
         if (!ok && isFatal()) {
             throw new ServletException(servlet.getInternal().getMessage("configFatal"));
@@ -159,7 +160,7 @@ public class ModuleConfigVerifier implements PlugIn {
         String amcName = config.getActionMappingClass();
 
         if (amcName == null) {
-            LOG.atError().log(() -> servlet.getInternal().getMessage("verifyActionMappingClass.missing"));
+            log.atError().log(() -> servlet.getInternal().getMessage("verifyActionMappingClass.missing"));
 
             return (false);
         }
@@ -167,7 +168,7 @@ public class ModuleConfigVerifier implements PlugIn {
         try {
             RequestUtils.applicationClass(amcName);
         } catch (ClassNotFoundException e) {
-            LOG.atError().log(() -> servlet.getInternal().getMessage("verifyActionMappingClass.invalid",
+            log.atError().log(() -> servlet.getInternal().getMessage("verifyActionMappingClass.invalid",
                     amcName));
 
             return (false);
@@ -189,11 +190,11 @@ public class ModuleConfigVerifier implements PlugIn {
             String path = fc.getPath();
 
             if (path == null) {
-                LOG.atError().log(() -> servlet.getInternal().getMessage("verifyForwardConfigs.missing",
+                log.atError().log(() -> servlet.getInternal().getMessage("verifyForwardConfigs.missing",
                         fc.getName()));
                 ok = false;
             } else if (!path.startsWith("/")) {
-                LOG.atError().log(() -> servlet.getInternal().getMessage("verifyForwardConfigs.invalid",
+                log.atError().log(() -> servlet.getInternal().getMessage("verifyForwardConfigs.invalid",
                         path, fc.getName()));
             }
         }
@@ -214,13 +215,13 @@ public class ModuleConfigVerifier implements PlugIn {
             String factory = mrcs[i].getFactory();
 
             if (factory == null) {
-                LOG.atError().log(() -> servlet.getInternal().getMessage("verifyMessageResourcesConfigs.missing"));
+                log.atError().log(() -> servlet.getInternal().getMessage("verifyMessageResourcesConfigs.missing"));
                 ok = false;
             } else {
                 try {
                     RequestUtils.applicationClass(factory);
                 } catch (ClassNotFoundException e) {
-                    LOG.atError().log(() -> servlet.getInternal().getMessage("verifyMessageResourcesConfigs.invalid",
+                    log.atError().log(() -> servlet.getInternal().getMessage("verifyMessageResourcesConfigs.invalid",
                             factory));
                     ok = false;
                 }
@@ -229,7 +230,7 @@ public class ModuleConfigVerifier implements PlugIn {
             String key = mrcs[i].getKey();
 
             if (key == null) {
-                LOG.atError().log(() -> servlet.getInternal().getMessage("verifyMessageResourcesConfigs.key"));
+                log.atError().log(() -> servlet.getInternal().getMessage("verifyMessageResourcesConfigs.key"));
             }
         }
 
@@ -249,13 +250,13 @@ public class ModuleConfigVerifier implements PlugIn {
             String className = pics[i].getClassName();
 
             if (className == null) {
-                LOG.atError().log(() -> servlet.getInternal().getMessage("verifyPlugInConfigs.missing"));
+                log.atError().log(() -> servlet.getInternal().getMessage("verifyPlugInConfigs.missing"));
                 ok = false;
             } else {
                 try {
                     RequestUtils.applicationClass(className);
                 } catch (ClassNotFoundException e) {
-                    LOG.atError().log(() -> servlet.getInternal().getMessage("verifyPlugInConfigs.invalid",
+                    log.atError().log(() -> servlet.getInternal().getMessage("verifyPlugInConfigs.invalid",
                             className));
                     ok = false;
                 }

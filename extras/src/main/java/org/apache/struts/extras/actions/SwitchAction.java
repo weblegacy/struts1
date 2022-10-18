@@ -60,9 +60,10 @@ public class SwitchAction extends BaseAction {
     // ----------------------------------------------------- Instance Variables
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    protected static Logger log = LoggerFactory.getLogger(SwitchAction.class);
+    private final Logger log =
+        LoggerFactory.getLogger(SwitchAction.class);
 
     /**
      * Process the specified HTTP request, and create the corresponding HTTP

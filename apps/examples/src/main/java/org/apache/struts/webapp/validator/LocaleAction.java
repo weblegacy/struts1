@@ -47,9 +47,10 @@ import org.slf4j.LoggerFactory;
 public final class LocaleAction extends Action {
 
     /**
-     * Commons Logging instance.
-    */
-    private Logger log = LoggerFactory.getLogger(this.getClass().getName());
+     * The {@code Log} instance for this class.
+     */
+    private final static Logger LOG =
+        LoggerFactory.getLogger(LocaleAction.class);
 
     /**
      * <p>
@@ -100,7 +101,7 @@ public final class LocaleAction extends Action {
             page = (String)
               PropertyUtils.getSimpleProperty(form, "page");
         } catch (Exception e) {
-           log.error(e.getMessage(), e);
+           LOG.error(e.getMessage(), e);
         }
 
         if ((language != null && language.length() > 0) &&

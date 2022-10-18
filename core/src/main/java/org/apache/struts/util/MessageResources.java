@@ -47,14 +47,15 @@ import org.slf4j.LoggerFactory;
  *          $
  */
 public abstract class MessageResources implements Serializable {
-    private static final long serialVersionUID = -3823833250965010653L;
+    private static final long serialVersionUID = -7091558627339276086L;
 
     // ------------------------------------------------------------- Properties
 
     /**
-     * Commons Logging instance.
+     * The {@code Log} instance for this class.
      */
-    protected static Logger LOG = LoggerFactory.getLogger(MessageResources.class);
+    private final Logger log =
+        LoggerFactory.getLogger(MessageResources.class);
 
     // --------------------------------------------------------- Static Methods
 
@@ -494,7 +495,7 @@ public abstract class MessageResources implements Serializable {
      * @param message The message to be logged
      */
     public void log(String message) {
-        LOG.debug(message);
+        log.debug(message);
     }
 
     /**
@@ -505,6 +506,6 @@ public abstract class MessageResources implements Serializable {
      * @param throwable The exception to be logged
      */
     public void log(String message, Throwable throwable) {
-        LOG.debug(message, throwable);
+        log.debug(message, throwable);
     }
 }

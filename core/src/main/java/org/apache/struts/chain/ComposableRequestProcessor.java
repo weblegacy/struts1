@@ -86,9 +86,9 @@ public class ComposableRequestProcessor extends RequestProcessor {
     public static final String ACTION_CONTEXT_CLASS = "ACTION_CONTEXT_CLASS";
 
     /**
-     * <p>The <code>Log</code> instance for this class.</p>
+     * The {@code Log} instance for this class.
      */
-    protected static final Logger LOG =
+    private final Logger log =
         LoggerFactory.getLogger(ComposableRequestProcessor.class);
 
     /**
@@ -143,7 +143,7 @@ public class ComposableRequestProcessor extends RequestProcessor {
      */
     public void init(ActionServlet servlet, ModuleConfig moduleConfig)
         throws ServletException {
-        LOG.info(
+        log.info(
             "Initializing composable request processor for module prefix '"
             + moduleConfig.getPrefix() + "'");
         super.init(servlet, moduleConfig);
@@ -208,8 +208,8 @@ public class ComposableRequestProcessor extends RequestProcessor {
     private void setActionContextClassName(String className)
         throws ServletException {
         if ((className != null) && (className.trim().length() > 0)) {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug(
+            if (log.isDebugEnabled()) {
+                log.debug(
                     "setActionContextClassName: requested context class: "
                     + className);
             }
@@ -230,8 +230,8 @@ public class ComposableRequestProcessor extends RequestProcessor {
                     + className + " not found.");
             }
         } else {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("setActionContextClassName: no className specified");
+            if (log.isDebugEnabled()) {
+                log.debug("setActionContextClassName: no className specified");
             }
 
             this.setActionContextClass(null);
@@ -276,8 +276,8 @@ public class ComposableRequestProcessor extends RequestProcessor {
 
         // Create and execute the command.
         try {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("Using processing chain for this request");
+            if (log.isDebugEnabled()) {
+                log.debug("Using processing chain for this request");
             }
 
             command.execute(context);

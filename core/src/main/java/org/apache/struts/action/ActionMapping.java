@@ -48,14 +48,15 @@ import org.slf4j.LoggerFactory;
  *          $
  */
 public class ActionMapping extends ActionConfig {
-    private static final long serialVersionUID = 5152639565031916976L;
+    private static final long serialVersionUID = 2801090844264312287L;
 
     /**
-     * <p>Commons Logging instance.</p>
+     * The {@code Log} instance for this class.
      *
      * @since Struts 1.2.8
      */
-    private static Logger LOG = LoggerFactory.getLogger(ActionMapping.class);
+    private final Logger log =
+        LoggerFactory.getLogger(ActionMapping.class);
 
     /**
      * <p>Find and return the <code>ForwardConfig</code> instance defining how
@@ -78,7 +79,7 @@ public class ActionMapping extends ActionConfig {
 
         // TODO: remove warning since findRequiredForward takes care of use case?
         if (config == null) {
-            LOG.warn("Unable to find '{}' forward.", forwardName);
+            log.warn("Unable to find '{}' forward.", forwardName);
         }
 
         return ((ActionForward) config);

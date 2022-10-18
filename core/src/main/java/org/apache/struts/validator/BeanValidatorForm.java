@@ -57,13 +57,15 @@ import org.slf4j.LoggerFactory;
  * session scope.</p>
  */
 public class BeanValidatorForm extends ValidatorForm implements DynaBean,
-    Serializable {
-    private static final long serialVersionUID = 8868458759415227879L;
+        Serializable {
+
+    private static final long serialVersionUID = 2823785802796187210L;
 
     /**
-     * Commons Logging
+     * The {@code Log} instance for this class.
      */
-    protected static Logger LOG = LoggerFactory.getLogger(BeanValidatorForm.class);
+    private final Logger log =
+        LoggerFactory.getLogger(BeanValidatorForm.class);
 
     /**
      * The <code>DynaBean</code> that this ActionForm is backed by.
@@ -215,7 +217,7 @@ public class BeanValidatorForm extends ValidatorForm implements DynaBean,
             validationKey = mapping.getAttribute();
         }
 
-        LOG.debug("Validating ActionForm '{}' using key '{}' for mapping '{}'",
+        log.debug("Validating ActionForm '{}' using key '{}' for mapping '{}'",
             mapping.getName(), validationKey, mapping.getPath());
 
         return validationKey;

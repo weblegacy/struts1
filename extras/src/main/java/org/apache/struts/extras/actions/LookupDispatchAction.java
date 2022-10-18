@@ -109,9 +109,10 @@ import org.slf4j.LoggerFactory;
 public abstract class LookupDispatchAction extends DispatchAction {
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(LookupDispatchAction.class);
+    private final Logger log =
+        LoggerFactory.getLogger(LookupDispatchAction.class);
 
     /**
      * Reverse lookup map from resource value to resource key.
@@ -224,7 +225,7 @@ public abstract class LookupDispatchAction extends DispatchAction {
         if (key == null) {
             String message =
                 messages.getMessage("dispatch.resource", mapping.getPath());
-            LOG.error("{} '{}'", message, keyName);
+            log.error("{} '{}'", message, keyName);
             throw new ServletException(message);
         }
 

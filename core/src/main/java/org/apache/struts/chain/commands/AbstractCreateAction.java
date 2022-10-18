@@ -37,9 +37,9 @@ public abstract class AbstractCreateAction extends ActionCommandBase {
     // ------------------------------------------------------ Instance Variables
 
     /**
-     * Provide a Commons logging instance for this class.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG =
+    private final Logger log =
         LoggerFactory.getLogger(AbstractCreateAction.class);
 
     // ---------------------------------------------------------- Public Methods
@@ -59,14 +59,14 @@ public abstract class AbstractCreateAction extends ActionCommandBase {
         Boolean valid = actionCtx.getFormValid();
 
         if ((valid == null) || !valid.booleanValue()) {
-            LOG.trace("Invalid form; not going to execute.");
+            log.trace("Invalid form; not going to execute.");
 
             return CONTINUE_PROCESSING;
         }
 
         // Check to see if an action has already been created
         if (actionCtx.getAction() != null) {
-            LOG.trace("already have an action [{}]", actionCtx.getAction());
+            log.trace("already have an action [{}]", actionCtx.getAction());
 
             return CONTINUE_PROCESSING;
         }
@@ -79,9 +79,9 @@ public abstract class AbstractCreateAction extends ActionCommandBase {
             String command = actionConfig.getCommand();
             if ((command == null) && (actionConfig.getForward() == null)
                 && (actionConfig.getInclude() == null)) {
-                LOG.error("no type or command for {}", actionConfig.getPath());
+                log.error("no type or command for {}", actionConfig.getPath());
             } else {
-                LOG.trace("no type for {}", actionConfig.getPath());
+                log.trace("no type for {}", actionConfig.getPath());
             }
 
             return CONTINUE_PROCESSING;
@@ -90,7 +90,7 @@ public abstract class AbstractCreateAction extends ActionCommandBase {
         // Create (if necessary) and cache an Action instance
         Action action = getAction(actionCtx, type, actionConfig);
 
-        LOG.trace("setting action to {}", action);
+        log.trace("setting action to {}", action);
 
         actionCtx.setAction(action);
 

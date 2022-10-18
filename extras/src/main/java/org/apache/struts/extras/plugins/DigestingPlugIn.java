@@ -50,10 +50,12 @@ import org.xml.sax.SAXException;
  * @since Struts 1.2
  */
 public class DigestingPlugIn implements PlugIn {
+
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static Logger log = LoggerFactory.getLogger(DigestingPlugIn.class);
+    private final Logger log =
+        LoggerFactory.getLogger(DigestingPlugIn.class);
 
     protected static final String SOURCE_CLASSPATH = "classpath";
     protected static final String SOURCE_FILE = "file";

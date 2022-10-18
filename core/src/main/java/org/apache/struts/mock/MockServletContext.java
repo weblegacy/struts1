@@ -58,9 +58,10 @@ public class MockServletContext implements ServletContext {
     protected HashMap<String, Object> attributes = new HashMap<>();
 
     /**
-     * <p> Default destination for <code>LOG()</code> output. </p>
+     * Store the Logger instance for this Context.
      */
-    protected Logger log = LoggerFactory.getLogger(MockServletContext.class);
+    private Logger logger =
+        LoggerFactory.getLogger(MockServletContext.class);
 
     /**
      * <p> The set of context initialization parameters. </p>
@@ -73,7 +74,7 @@ public class MockServletContext implements ServletContext {
     }
 
     public void setLog(Logger logger) {
-        this.log = logger;
+        this.logger = logger;
     }
 
     // ------------------------------------------------- ServletContext Methods
@@ -166,11 +167,11 @@ public class MockServletContext implements ServletContext {
     }
 
     public void log(String message) {
-        log.info(message);
+        logger.info(message);
     }
 
     public void log(String message, Throwable throwable) {
-        log.error(message, throwable);
+        logger.error(message, throwable);
     }
 
     public void removeAttribute(String name) {

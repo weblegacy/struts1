@@ -37,7 +37,11 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class AbstractPopulateActionForm extends ActionCommandBase {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AbstractPopulateActionForm.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(AbstractPopulateActionForm.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -64,13 +68,13 @@ public abstract class AbstractPopulateActionForm extends ActionCommandBase {
 
         // Reset the form bean only if configured so
         if (isReset(actionCtx, actionConfig)) {
-            LOG.debug("Reseting form bean '{}'",  actionConfig.getName());
+            log.debug("Reseting form bean '{}'",  actionConfig.getName());
             reset(actionCtx, actionConfig, actionForm);
         }
 
         // Populate the form bean only if configured so
         if (isPopulate(actionCtx, actionConfig)) {
-            LOG.debug("Populating form bean '{}'", actionConfig.getName());
+            log.debug("Populating form bean '{}'", actionConfig.getName());
             populate(actionCtx, actionConfig, actionForm);
         }
 

@@ -92,10 +92,12 @@ import org.slf4j.LoggerFactory;
  * @version $Rev$ $Date$
  */
 public abstract class DispatchAction extends BaseAction {
+
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    protected static Logger log = LoggerFactory.getLogger(DispatchAction.class);
+    private final Logger log =
+        LoggerFactory.getLogger(DispatchAction.class);
 
     // ----------------------------------------------------- Instance Variables
 

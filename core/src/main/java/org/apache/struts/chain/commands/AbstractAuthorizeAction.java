@@ -37,9 +37,9 @@ public abstract class AbstractAuthorizeAction extends ActionCommandBase {
     // ------------------------------------------------------ Instance Variables
 
     /**
-     * Provide a Commons logging instance for this class.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG =
+    private final Logger log =
         LoggerFactory.getLogger(AbstractAuthorizeAction.class);
 
     // ---------------------------------------------------------- Public Methods
@@ -75,7 +75,7 @@ public abstract class AbstractAuthorizeAction extends ActionCommandBase {
             throw ex;
         } catch (Exception ex) {
             throwEx = true;
-            LOG.error("Unable to complete authorization process", ex);
+            log.error("Unable to complete authorization process", ex);
         }
 
         if (throwEx) {

@@ -54,9 +54,10 @@ public class ErrorsRenderer extends AbstractRenderer {
 
 
     /**
-     * <p>The <code>Log</code> instance for this class.</p>
+     * The {@code Log} instance for this class.
      */
-    private final static Logger LOG = LoggerFactory.getLogger(ErrorsRenderer.class);
+    private final Logger log =
+        LoggerFactory.getLogger(ErrorsRenderer.class);
 
 
     /**
@@ -89,7 +90,7 @@ public class ErrorsRenderer extends AbstractRenderer {
             throw new NullPointerException();
         }
 
-        LOG.debug("encodeEnd() started");
+        log.debug("encodeEnd() started");
 
         // Look up availability of our predefined resource keys
         MessageResources resources = resources(context, component);
@@ -119,7 +120,7 @@ public class ErrorsRenderer extends AbstractRenderer {
         Iterator<?> messages = context.getMessages(property);
         while (messages.hasNext()) {
             FacesMessage message = (FacesMessage) messages.next();
-            LOG.trace("Processing FacesMessage: {}", message.getSummary());
+            log.trace("Processing FacesMessage: {}", message.getSummary());
             if (!headerDone) {
                 if (headerPresent) {
                     writer.write
@@ -141,7 +142,7 @@ public class ErrorsRenderer extends AbstractRenderer {
             context.getExternalContext().getRequestMap().get
             (Globals.ERROR_KEY);
         if (errors != null) {
-            LOG.trace("Processing Struts messages for property '{}'",
+            log.trace("Processing Struts messages for property '{}'",
                 property);
             Iterator<ActionMessage> reports = null;
             if (property == null) {
@@ -151,7 +152,7 @@ public class ErrorsRenderer extends AbstractRenderer {
             }
             while (reports.hasNext()) {
                 ActionMessage report = reports.next();
-                LOG.trace("Processing Struts message key='{}'",
+                log.trace("Processing Struts message key='{}'",
                     report.getKey());
                 if (!headerDone) {
                     writer = context.getResponseWriter();
@@ -182,7 +183,7 @@ public class ErrorsRenderer extends AbstractRenderer {
             writer.endElement("span");
         }
 
-        LOG.debug("encodeEnd() finished");
+        log.debug("encodeEnd() finished");
 
     }
 

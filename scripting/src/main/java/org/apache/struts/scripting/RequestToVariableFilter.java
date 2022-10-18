@@ -38,8 +38,11 @@ import org.slf4j.LoggerFactory;
  */
 public class RequestToVariableFilter implements ScriptContextFilter {
 
-    /** The logging instance. */
-    private static final Logger LOG = LoggerFactory.getLogger(TestFilter.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(TestFilter.class);
 
     /**
      * Initializes the filter.
@@ -74,13 +77,13 @@ public class RequestToVariableFilter implements ScriptContextFilter {
             final String[] values = request.getParameterValues(name);
             if (values.length > 1) {
                 bindings.put(newName, values);
-                LOG.debug("creating array var {}", newName);
+                log.debug("creating array var {}", newName);
             } else {
                 bindings.put(newName, values[0]);
-                LOG.debug("creating string var {}", newName);
+                log.debug("creating string var {}", newName);
             }
         }
-        LOG.debug("Done filtering");
+        log.debug("Done filtering");
         return context;
     }
 }

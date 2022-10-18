@@ -59,7 +59,12 @@ import org.slf4j.LoggerFactory;
  * Unit tests for the {@link TagUtils}.
  */
 public class TestTagUtils extends TagTestBase {
-    private static final Logger LOG = LoggerFactory.getLogger(TestTagUtils.class);
+
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(TestTagUtils.class);
 
     /**
      * Test Operators.
@@ -1503,7 +1508,7 @@ public class TestTagUtils extends TagTestBase {
             }
         }
 
-        LOG.debug("{} assertions run in this test", ct);
+        log.debug("{} assertions run in this test", ct);
     }
 
     @Test

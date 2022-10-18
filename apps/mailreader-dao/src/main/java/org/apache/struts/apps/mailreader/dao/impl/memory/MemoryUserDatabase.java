@@ -59,9 +59,10 @@ public final class MemoryUserDatabase implements UserDatabase {
 
 
     /**
-     * Logging output for this user database instance.
+     * The {@code Log} instance for this class.
      */
-    private Logger log = LoggerFactory.getLogger(this.getClass());
+    private final static Logger LOG =
+        LoggerFactory.getLogger(MemoryUserDatabase.class);
 
 
     /**
@@ -116,7 +117,7 @@ public final class MemoryUserDatabase implements UserDatabase {
                 throw new IllegalArgumentException("Duplicate user '" +
                                                    username + "'");
             }
-            log.trace("Creating user '{}'", username);
+            LOG.trace("Creating user '{}'", username);
             MemoryUser user = new MemoryUser(this, username);
             synchronized (users) {
                 users.put(username, user);
@@ -156,7 +157,7 @@ public final class MemoryUserDatabase implements UserDatabase {
         try {
 
             // Acquire an input stream to our database file
-            log.debug("Loading database from '{}'", pathname);
+            LOG.debug("Loading database from '{}'", pathname);
             fis = new FileInputStream(pathname);
             bis = new BufferedInputStream(fis);
 
@@ -180,7 +181,7 @@ public final class MemoryUserDatabase implements UserDatabase {
 
         } catch (Exception e) {
 
-            log.error("Loading database from '{}':", pathname, e);
+            LOG.error("Loading database from '{}':", pathname, e);
             throw e;
 
         } finally {
@@ -207,7 +208,7 @@ public final class MemoryUserDatabase implements UserDatabase {
             throw new IllegalArgumentException
                 ("User not associated with this database");
         }
-        log.trace("Removing user '{}'", user.getUsername());
+        LOG.trace("Removing user '{}'", user.getUsername());
         synchronized (users) {
             users.remove(user.getUsername());
         }
@@ -218,7 +219,7 @@ public final class MemoryUserDatabase implements UserDatabase {
     // See interface for Javadoc
     public void save() throws Exception {
 
-        log.debug("Saving database to '{}'", pathname);
+        LOG.debug("Saving database to '{}'", pathname);
         File fileNew = new File(pathnameNew);
         PrintWriter writer = null;
 

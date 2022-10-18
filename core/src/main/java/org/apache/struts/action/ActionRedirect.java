@@ -27,8 +27,6 @@ import java.util.Map;
 
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.util.ResponseUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * <p> A subclass of {@link ActionForward} which is designed for use in
@@ -54,7 +52,7 @@ import org.slf4j.LoggerFactory;
  * @version $Rev$ $Date$
  */
 public class ActionRedirect extends ActionForward {
-    private static final long serialVersionUID = 3751872574084528837L;
+    private static final long serialVersionUID = 8517719991325106538L;
 
     // ----------------------------------------------------- Manifest constants
 
@@ -65,10 +63,6 @@ public class ActionRedirect extends ActionForward {
 
     // ----------------------------------------------------- Static variables
 
-    /**
-     * <p>Commons logging instance.</p>
-     */
-    protected static final Logger LOG = LoggerFactory.getLogger(ActionRedirect.class);
 
     // ----------------------------------------------------- Instance variables
 

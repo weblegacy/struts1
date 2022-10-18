@@ -20,15 +20,18 @@
  */
 package org.apache.struts.apps.mailreader.actions;
 
-import org.apache.struts.Globals;
-import org.apache.struts.action.ActionForm;
-import org.apache.struts.action.ActionForward;
-import org.apache.struts.action.ActionMapping;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.Locale;
+
+import org.apache.struts.Globals;
+import org.apache.struts.action.ActionForm;
+import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionMapping;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -37,6 +40,12 @@ import java.util.Locale;
  * </p>
  */
 public final class LocaleAction extends BaseAction {
+
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final static Logger LOG =
+        LoggerFactory.getLogger(LocaleAction.class);
 
     /**
      * <p>
@@ -135,7 +144,7 @@ public final class LocaleAction extends BaseAction {
             target = mapping.getParameter();
         }
         if (isBlank(target)) {
-            log.warn(LOCALE_LOG);
+            LOG.warn(LOCALE_LOG);
             return null;
         }
         return mapping.findForward(target);

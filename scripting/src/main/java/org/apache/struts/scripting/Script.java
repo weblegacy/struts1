@@ -33,8 +33,11 @@ import org.slf4j.LoggerFactory;
  */
 class Script {
 
-    /**  The logging instance. */
-    private final static Logger LOG = LoggerFactory.getLogger(Script.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(Script.class);
 
     /**  The name of the script file. */
     public final String name;
@@ -116,7 +119,7 @@ class Script {
                     ? IOUtils.getLastModifiedTime(path)
                     : null;
 
-            LOG.debug("Loading new script: {}", name);
+            log.debug("Loading new script: {}", name);
 
             setContent(IOUtils.getStringFromReader(r));
         } catch (IOException e) {
@@ -149,7 +152,7 @@ class Script {
             }
 
             synchronized (this) {
-                LOG.debug("Loading updated script: {}", name);
+                log.debug("Loading updated script: {}", name);
 
                 this.lastModifiedTime = lastModifiedTime;
 

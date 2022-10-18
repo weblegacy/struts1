@@ -22,8 +22,6 @@ package org.apache.struts.tiles2.commands;
 
 import org.apache.commons.chain.Command;
 import org.apache.commons.chain.Context;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.tiles.TilesContainer;
@@ -32,6 +30,8 @@ import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.Request;
 import org.apache.tiles.request.servlet.ServletRequest;
 import org.apache.tiles.request.servlet.ServletUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /**
@@ -62,9 +62,10 @@ public class TilesPreProcessor implements Command {
 
 
     /**
-     * The logging object.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(TilesPreProcessor.class);
+    private final Logger log =
+        LoggerFactory.getLogger(TilesPreProcessor.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -96,7 +97,7 @@ public class TilesPreProcessor implements Command {
         ForwardConfig forwardConfig = sacontext.getForwardConfig();
         if (forwardConfig == null || forwardConfig.getPath() == null) {
             // this is not a serious error, so log at low priority
-            LOG.debug("No forwardConfig or no path, so pass to next command.");
+            log.debug("No forwardConfig or no path, so pass to next command.");
             return (false);
         }
 
@@ -107,7 +108,7 @@ public class TilesPreProcessor implements Command {
                 sacontext.getRequest(), sacontext.getResponse());
         TilesContainer container = TilesAccess.getContainer(applicationContext);
         if (container == null) {
-            LOG.debug("Tiles container not found, so pass to next command.");
+            log.debug("Tiles container not found, so pass to next command.");
             return false;
         }
 
@@ -116,7 +117,7 @@ public class TilesPreProcessor implements Command {
             sacontext.setForwardConfig(null);
         } else {
             // ignore not found
-            LOG.debug("Cannot find definition '{}'", forwardConfig.getPath());
+            log.debug("Cannot find definition '{}'", forwardConfig.getPath());
         }
 
         return false;

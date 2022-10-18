@@ -49,9 +49,10 @@ public class WriteRenderer extends AbstractRenderer {
 
 
     /**
-     * <p>The <code>Log</code> instance for this class.</p>
+     * The {@code Log} instance for this class.
      */
-    private static Logger log = LoggerFactory.getLogger(WriteRenderer.class);
+    private final Logger log =
+        LoggerFactory.getLogger(WriteRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods

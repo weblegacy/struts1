@@ -69,9 +69,10 @@ import org.slf4j.LoggerFactory;
 public class DefinitionDispatcherAction extends Action {
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    protected static Logger log = LoggerFactory.getLogger(DefinitionDispatcherAction.class);
+    private final Logger log =
+        LoggerFactory.getLogger(DefinitionDispatcherAction.class);
 
     /**
      * Process the specified HTTP request, and create the corresponding HTTP

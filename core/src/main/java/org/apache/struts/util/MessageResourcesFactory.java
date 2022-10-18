@@ -57,9 +57,10 @@ public abstract class MessageResourcesFactory implements Serializable {
     protected static transient Class<MessageResourcesFactory> clazz = null;
 
     /**
-     * Commons Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static Logger LOG = LoggerFactory.getLogger(MessageResourcesFactory.class);
+    private final static Logger LOG =
+        LoggerFactory.getLogger(MessageResourcesFactory.class);
 
     /**
      * The fully qualified class name to be used for <code>MessageResourcesFactory</code>

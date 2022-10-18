@@ -47,10 +47,12 @@ import org.xml.sax.SAXException;
  * @since Struts 1.1
  */
 public class ValidatorPlugIn implements PlugIn {
+
     /**
-     * Commons Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static Logger LOG = LoggerFactory.getLogger(ValidatorPlugIn.class);
+    private final Logger log =
+        LoggerFactory.getLogger(ValidatorPlugIn.class);
 
     /**
      * Delimitter for Validator resources.
@@ -175,7 +177,7 @@ public class ValidatorPlugIn implements PlugIn {
                 + config.getPrefix(),
                 (this.stopOnFirstError ? Boolean.TRUE : Boolean.FALSE));
         } catch (Exception e) {
-            LOG.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
             throw new UnavailableException(
                 "Cannot load a validator resource from '" + pathnames + "'");
         }
@@ -186,7 +188,7 @@ public class ValidatorPlugIn implements PlugIn {
      * initialization.
      */
     public void destroy() {
-        LOG.debug("Destroying ValidatorPlugin");
+        log.debug("Destroying ValidatorPlugin");
 
         servlet = null;
 //      config = null;
@@ -214,7 +216,7 @@ public class ValidatorPlugIn implements PlugIn {
             while (st.hasMoreTokens()) {
                 String validatorRules = st.nextToken().trim();
 
-                LOG.info("Loading validation rules file from '{}'",
+                log.info("Loading validation rules file from '{}'",
                     validatorRules);
 
                 URL input =
@@ -239,7 +241,7 @@ public class ValidatorPlugIn implements PlugIn {
 
             this.resources = new ValidatorResources(urlArray);
         } catch (SAXException sex) {
-            LOG.error("Skipping all validation", sex);
+            log.error("Skipping all validation", sex);
             throw new ServletException(sex);
         }
     }

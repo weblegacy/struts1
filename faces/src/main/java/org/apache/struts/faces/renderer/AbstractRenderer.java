@@ -54,7 +54,11 @@ public abstract class AbstractRenderer extends Renderer {
     // -------------------------------------------------------- Static Variables
 
 
-    private final static Logger LOG = LoggerFactory.getLogger(AbstractRenderer.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(AbstractRenderer.class);
 
 
     // -------------------------------------------------------- Renderer Methods
@@ -119,7 +123,7 @@ public abstract class AbstractRenderer extends Renderer {
             throw new NullPointerException();
         }
 
-        LOG.trace("encodeBegin(id={}, family={}, rendererType={})",
+        log.trace("encodeBegin(id={}, family={}, rendererType={})",
             component.getId(), component.getFamily(), component.getRendererType());
 
         // Render the element and attributes for this component
@@ -153,7 +157,7 @@ public abstract class AbstractRenderer extends Renderer {
             throw new NullPointerException();
         }
 
-        LOG.trace("encodeChildren(id={}, family={}, rendererType={})",
+        log.trace("encodeChildren(id={}, family={}, rendererType={})",
             component.getId(), component.getFamily(), component.getRendererType());
         List<UIComponent> kids = component.getChildren();
         for (UIComponent kid : kids) {
@@ -163,7 +167,7 @@ public abstract class AbstractRenderer extends Renderer {
             }
             kid.encodeEnd(context);
         }
-        LOG.trace("encodeChildren(id={}) end", component.getId());
+        log.trace("encodeChildren(id={}) end", component.getId());
 
     }
 
@@ -191,8 +195,8 @@ public abstract class AbstractRenderer extends Renderer {
             throw new NullPointerException();
         }
 
-        LOG.trace("encodeEnd(id={}, family={}, rendererType={})",
-            component.getId(), component.getFamily(), component.getRendererType()); 
+        log.trace("encodeEnd(id={}, family={}, rendererType={})",
+            component.getId(), component.getFamily(), component.getRendererType());
 
         // Render the element closing for this component
         ResponseWriter writer = context.getResponseWriter();
@@ -222,22 +226,22 @@ public abstract class AbstractRenderer extends Renderer {
         }
 
         // Render this component and its children recursively
-        LOG.trace("encodeRecursive(id={}, family={}, rendererType={}) encodeBegin",
+        log.trace("encodeRecursive(id={}, family={}, rendererType={}) encodeBegin",
             component.getId(), component.getFamily(), component.getRendererType());
         component.encodeBegin(context);
         if (component.getRendersChildren()) {
-            LOG.trace("encodeRecursive(id={}) delegating",
+            log.trace("encodeRecursive(id={}) delegating",
                 component.getId());
             component.encodeChildren(context);
         } else {
-            LOG.trace("encodeRecursive(id={}) recursing",
+            log.trace("encodeRecursive(id={}) recursing",
                 component.getId());
             List<UIComponent> kids = component.getChildren();
             for (UIComponent kid : kids) {
                 encodeRecursive(context, kid);
             }
         }
-        LOG.trace("encodeRecursive(id={}) encodeEnd", component.getId());
+        log.trace("encodeRecursive(id={}) encodeEnd", component.getId());
         component.encodeEnd(context);
 
     }
@@ -457,7 +461,7 @@ public abstract class AbstractRenderer extends Renderer {
         String clientId = component.getClientId(context);
         Map<String, String> parameters = context.getExternalContext().getRequestParameterMap();
         if (parameters.containsKey(clientId)) {
-            LOG.atTrace()
+            log.atTrace()
                 .setMessage("setSubmittedValue({},{})")
                 .addArgument(clientId)
                 .addArgument(() -> parameters.get(clientId))

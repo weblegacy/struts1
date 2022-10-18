@@ -99,9 +99,10 @@ import org.slf4j.LoggerFactory;
 public class EventActionDispatcher extends ActionDispatcher {
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(EventActionDispatcher.class);
+    private final Logger log =
+        LoggerFactory.getLogger(EventActionDispatcher.class);
 
     /**
      * The method key, if present, to use if other specified method keys
@@ -149,7 +150,7 @@ public class EventActionDispatcher extends ActionDispatcher {
             String message =
                 messages.getMessage("event.parameter", mapping.getPath());
 
-            LOG.error("{} {}", message, mapping.getParameter());
+            log.error("{} {}", message, mapping.getParameter());
 
             throw new ServletException(message, e);
         }

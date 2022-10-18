@@ -108,9 +108,10 @@ public class ActionDispatcher implements Dispatcher {
     public static final int DISPATCH_FLAVOR = 2;
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    protected static Logger log = LoggerFactory.getLogger(ActionDispatcher.class);
+    private final Logger log =
+        LoggerFactory.getLogger(ActionDispatcher.class);
 
     /**
      * The message resources for this package.

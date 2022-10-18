@@ -59,9 +59,9 @@ public final class SaveRegistrationAction extends Action {
 
 
     /**
-     * The <code>Log</code> instance for this application.
+     * The {@code Log} instance for this class.
      */
-    private Logger log =
+    private final static Logger LOG =
         LoggerFactory.getLogger(SaveRegistrationAction.class);
 
 
@@ -98,27 +98,27 @@ public final class SaveRegistrationAction extends Action {
     }
     UserDatabase database = (UserDatabase)
     servlet.getServletContext().getAttribute(Constants.DATABASE_KEY);
-    log.debug("SaveRegistrationAction:  Processing {} action",
+    LOG.debug("SaveRegistrationAction:  Processing {} action",
         action);
 
     // Is there a currently logged on user (unless creating)?
     User user = (User) session.getAttribute(Constants.USER_KEY);
     if (!"Create".equals(action) && (user == null)) {
-        log.trace(" User is not logged on in session {}",
+        LOG.trace(" User is not logged on in session {}",
             session.getId());
         return (mapping.findForward("logon"));
     }
 
     // Was this transaction cancelled?
     if (isCancelled(request)) {
-        log.trace(" Transaction '{}' was cancelled", action);
+        LOG.trace(" Transaction '{}' was cancelled", action);
         session.removeAttribute(Constants.SUBSCRIPTION_KEY);
         return (mapping.findForward("failure"));
     }
 
         // Validate the transactional control token
     ActionMessages errors = new ActionMessages();
-    log.trace(" Checking transactional control token");
+    LOG.trace(" Checking transactional control token");
     if (!isTokenValid(request)) {
         errors.add(ActionMessages.GLOBAL_MESSAGE,
             new ActionMessage("error.transaction.token"));
@@ -126,7 +126,7 @@ public final class SaveRegistrationAction extends Action {
     resetToken(request);
 
     // Validate the request parameters specified by the user
-    log.trace(" Performing extra validations");
+    LOG.trace(" Performing extra validations");
     String value = null;
     value = regform.getUsername();
     if (("Create".equals(action)) &&
@@ -171,23 +171,23 @@ public final class SaveRegistrationAction extends Action {
             if (t == null) {
                 t = e;
             }
-            log.error("Registration.populate", t);
+            LOG.error("Registration.populate", t);
             throw new ServletException("Registration.populate", t);
         } catch (Throwable t) {
-            log.error("Registration.populate", t);
+            LOG.error("Registration.populate", t);
             throw new ServletException("Subscription.populate", t);
         }
 
         try {
             database.save();
         } catch (Exception e) {
-            log.error("Database save", e);
+            LOG.error("Database save", e);
         }
 
     // Log the user in if appropriate
     if ("Create".equals(action)) {
         session.setAttribute(Constants.USER_KEY, user);
-        log.trace(" User '{}' logged on in session {}",
+        LOG.trace(" User '{}' logged on in session {}",
             user.getUsername(), session.getId());
     }
 
@@ -200,7 +200,7 @@ public final class SaveRegistrationAction extends Action {
         }
 
     // Forward control to the specified success URI
-    log.trace(" Forwarding to success page");
+    LOG.trace(" Forwarding to success page");
     return (mapping.findForward("success"));
 
     }

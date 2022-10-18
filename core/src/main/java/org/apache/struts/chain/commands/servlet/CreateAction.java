@@ -42,7 +42,12 @@ import org.slf4j.LoggerFactory;
 public class CreateAction
     extends org.apache.struts.chain.commands.AbstractCreateAction {
     // ------------------------------------------------------ Instance Variables
-    private static final Logger LOG = LoggerFactory.getLogger(CreateAction.class);
+
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(CreateAction.class);
 
     /* :TODO The Action class' dependency on having its "servlet" property set
      * requires this API-dependent subclass of AbstractCreateAction.
@@ -79,7 +84,7 @@ public class CreateAction
                 action = createAction(context, type);
             }
         } catch (Exception e) {
-            LOG.atError()
+            log.atError()
                 .setMessage(() -> actionServlet.getInternal().getMessage(
                     "actionCreate", actionConfig.getPath(),
                     actionConfig.toString()))
@@ -107,7 +112,7 @@ public class CreateAction
      * @since Struts 1.3.7
      */
     protected Action createAction(ActionContext context, String type) throws Exception {
-        LOG.info("Initialize action of type: {}", type);
+        log.info("Initialize action of type: {}", type);
         return (Action) ClassUtils.getApplicationInstance(type);
     }
 }

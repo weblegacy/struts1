@@ -112,8 +112,11 @@ import org.slf4j.LoggerFactory;
  */
 public class ScriptAction extends Action {
 
-    /**  The logging instance. */
-    protected static final Logger LOG = LoggerFactory.getLogger(ScriptAction.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final static Logger LOG =
+        LoggerFactory.getLogger(ScriptAction.class);
 
     /** The entry-point to JSR223-scripting */
     private static final ScriptEngineManager SCRIPT_ENGINE_MANAGER = new ScriptEngineManager();

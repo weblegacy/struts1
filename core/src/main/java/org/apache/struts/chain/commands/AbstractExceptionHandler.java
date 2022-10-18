@@ -39,9 +39,9 @@ public abstract class AbstractExceptionHandler extends ActionCommandBase {
     // ------------------------------------------------------ Instance Variables
 
     /**
-     * Provide a Commons logging instance for this class.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG =
+    private final Logger log =
         LoggerFactory.getLogger(AbstractExceptionHandler.class);
 
     // ---------------------------------------------------------- Public Methods
@@ -62,7 +62,7 @@ public abstract class AbstractExceptionHandler extends ActionCommandBase {
         Exception exception = actionCtx.getException();
 
         if (exception == null) {
-            LOG.warn("No Exception found in ActionContext");
+            log.warn("No Exception found in ActionContext");
 
             return PROCESSING_COMPLETE;
         }
@@ -73,12 +73,12 @@ public abstract class AbstractExceptionHandler extends ActionCommandBase {
         ModuleConfig moduleConfig = actionCtx.getModuleConfig();
 
         if (actionConfig != null) {
-            LOG.debug("See if actionConfig {} has an exceptionConfig for {}",
+            log.debug("See if actionConfig {} has an exceptionConfig for {}",
                 actionConfig, exception.getClass().getName());
 
             exceptionConfig = actionConfig.findException(exception.getClass());
         } else if (moduleConfig != null) {
-            LOG.debug("No action yet, see if moduleConfig {} has an exceptionConfig {}",
+            log.debug("No action yet, see if moduleConfig {} has an exceptionConfig {}",
                 moduleConfig, exception.getClass().getName());
 
             exceptionConfig = moduleConfig.findException(exception.getClass());
@@ -86,7 +86,7 @@ public abstract class AbstractExceptionHandler extends ActionCommandBase {
 
         // Handle the exception in the configured manner
         if (exceptionConfig == null) {
-            LOG.warn("Unhandled exception", exception);
+            log.warn("Unhandled exception", exception);
             throw exception;
         }
 

@@ -41,9 +41,10 @@ import org.slf4j.LoggerFactory;
 public final class EditTypeAction extends Action {
 
     /**
-     * Commons Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private final static Logger LOG =
+        LoggerFactory.getLogger(EditTypeAction.class);
 
     /**
      * Process the specified HTTP request, and create the corresponding HTTP
@@ -83,7 +84,7 @@ public final class EditTypeAction extends Action {
             ActionMapping mapping, ActionForm form,
             HttpServletRequest request) {
 
-        log.debug("initFromBeans");
+        LOG.debug("initFromBeans");
 
         // Initialize
         ArrayList<LabelValueBean> satisfactionList = new ArrayList<>();

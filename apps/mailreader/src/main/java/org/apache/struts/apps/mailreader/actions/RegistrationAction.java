@@ -34,6 +34,8 @@ import org.apache.struts.apps.mailreader.Constants;
 import org.apache.struts.apps.mailreader.dao.ExpiredPasswordException;
 import org.apache.struts.apps.mailreader.dao.User;
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>
@@ -48,6 +50,12 @@ import org.apache.struts.apps.mailreader.dao.UserDatabase;
  * </p>
  */
 public final class RegistrationAction extends BaseAction {
+
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final static Logger LOG =
+        LoggerFactory.getLogger(RegistrationAction.class);
 
     // --- Public Constants --
 
@@ -121,7 +129,7 @@ public final class RegistrationAction extends BaseAction {
             HttpServletRequest request,
             ActionMessages errors) {
 
-        log.trace(" Perform additional validations on Create");
+        LOG.trace(" Perform additional validations on Create");
 
         UserDatabase database = doGetUserDatabase();
         String username = doGet(form, USERNAME);
@@ -156,7 +164,7 @@ public final class RegistrationAction extends BaseAction {
         // Log the user in
         HttpSession session = request.getSession();
         session.setAttribute(Constants.USER_KEY, user);
-        log.trace(" User: '{}' logged on in session: {}",
+        LOG.trace(" User: '{}' logged on in session: {}",
             user.getUsername(), session.getId());
 
         return user;
@@ -176,7 +184,7 @@ public final class RegistrationAction extends BaseAction {
 
         final String title = Constants.EDIT;
 
-        log.trace("{}{}", Constants.LOG_POPULATE_FORM, user);
+        LOG.trace("{}{}", Constants.LOG_POPULATE_FORM, user);
 
         try {
             PropertyUtils.copyProperties(form, user);
@@ -189,10 +197,10 @@ public final class RegistrationAction extends BaseAction {
             if (t == null) {
                 t = e;
             }
-            log.error(LOG_REGISTRATION_POPULATE, t);
+            LOG.error(LOG_REGISTRATION_POPULATE, t);
             throw new ServletException(LOG_REGISTRATION_POPULATE, t);
         } catch (Throwable t) {
-            log.error(LOG_REGISTRATION_POPULATE, t);
+            LOG.error(LOG_REGISTRATION_POPULATE, t);
             throw new ServletException(LOG_REGISTRATION_POPULATE, t);
         }
     }
@@ -209,7 +217,7 @@ public final class RegistrationAction extends BaseAction {
     private void doPopulate(User user, ActionForm form)
             throws ServletException {
 
-        log.trace("{}{}", Constants.LOG_POPULATE_USER, user);
+        LOG.trace("{}{}", Constants.LOG_POPULATE_USER, user);
 
         try {
             String oldPassword = user.getPassword();
@@ -227,11 +235,11 @@ public final class RegistrationAction extends BaseAction {
                 t = e;
             }
 
-            log.error(LOG_REGISTRATION_POPULATE, t);
+            LOG.error(LOG_REGISTRATION_POPULATE, t);
             throw new ServletException(LOG_REGISTRATION_POPULATE, t);
 
         } catch (Throwable t) {
-            log.error(LOG_REGISTRATION_POPULATE, t);
+            LOG.error(LOG_REGISTRATION_POPULATE, t);
             throw new ServletException(LOG_REGISTRATION_POPULATE, t);
         }
     }
@@ -248,7 +256,7 @@ public final class RegistrationAction extends BaseAction {
     private void doValidateToken(HttpServletRequest request,
                                  ActionMessages errors) {
 
-        log.trace(Constants.LOG_TOKEN_CHECK);
+        LOG.trace(Constants.LOG_TOKEN_CHECK);
 
         if (!isTokenValid(request)) {
             errors.add(

@@ -65,7 +65,11 @@ public class TilesPreProcessor implements Command
     // ------------------------------------------------------ Instance Variables
 
 
-    private static final Logger LOG = LoggerFactory.getLogger(TilesPreProcessor.class);
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(TilesPreProcessor.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -97,7 +101,7 @@ public class TilesPreProcessor implements Command
         ForwardConfig forwardConfig = sacontext.getForwardConfig();
         if (forwardConfig == null || forwardConfig.getPath() == null)
         {
-            LOG.debug("No forwardConfig or no path, so pass to next command.");
+            log.debug("No forwardConfig or no path, so pass to next command.");
             return (false);
         }
 
@@ -112,13 +116,13 @@ public class TilesPreProcessor implements Command
         catch (FactoryNotFoundException ex)
         {
             // this is not a serious error, so log at low priority
-            LOG.debug("Tiles DefinitionFactory not found, so pass to next command.");
+            log.debug("Tiles DefinitionFactory not found, so pass to next command.");
             return false;
         }
         catch (NoSuchDefinitionException ex)
         {
             // ignore not found
-            LOG.debug("NoSuchDefinitionException {}", ex.getMessage());
+            log.debug("NoSuchDefinitionException {}", ex.getMessage());
         }
 
         // Do we do a forward (original behavior) or an include ?
@@ -164,13 +168,13 @@ public class TilesPreProcessor implements Command
                 // We use it to complete missing attribute in context.
                 // We also overload uri and controller if set in definition.
                 if (definition.getPath() != null) {
-                    LOG.debug("Override forward uri {} with action uri {}",
+                    log.debug("Override forward uri {} with action uri {}",
                         uri, definition.getPath());
                     uri = definition.getPath();
                 }
 
                 if (definition.getOrCreateController() != null) {
-                    LOG.debug("Override forward controller with action controller");
+                    log.debug("Override forward controller with action controller");
                     controller = definition.getOrCreateController();
                 }
 
@@ -185,13 +189,13 @@ public class TilesPreProcessor implements Command
 
 
         if (uri == null) {
-            LOG.debug("no uri computed, so pass to next command");
+            log.debug("no uri computed, so pass to next command");
             return false;
         }
 
         // Execute controller associated to definition, if any.
         if (controller != null) {
-            LOG.trace("Execute controller: {}", controller);
+            log.trace("Execute controller: {}", controller);
             controller.execute(
                     tileContext,
                     sacontext.getRequest(),
@@ -203,14 +207,14 @@ public class TilesPreProcessor implements Command
         // This allows to insert an action in a Tile.
 
         if (doInclude) {
-            LOG.info("Tiles process complete; doInclude with {}", uri);
+            log.info("Tiles process complete; doInclude with {}", uri);
             doInclude(sacontext, uri);
         } else {
-            LOG.info("Tiles process complete; forward to {}", uri);
+            log.info("Tiles process complete; forward to {}", uri);
             doForward(sacontext, uri);
         }
 
-        LOG.debug("Tiles processed, so clearing forward config from context.");
+        log.debug("Tiles processed, so clearing forward config from context.");
         sacontext.setForwardConfig( null );
         return (false);
     }
@@ -266,7 +270,7 @@ public class TilesPreProcessor implements Command
     private RequestDispatcher getRequiredDispatcher(ServletActionContext context, String uri) throws IOException {
         RequestDispatcher rd = context.getContext().getRequestDispatcher(uri);
         if (rd == null) {
-            LOG.debug("No request dispatcher found for {}", uri);
+            log.debug("No request dispatcher found for {}", uri);
             HttpServletResponse response = context.getResponse();
             response.sendError(
                 HttpServletResponse.SC_INTERNAL_SERVER_ERROR,

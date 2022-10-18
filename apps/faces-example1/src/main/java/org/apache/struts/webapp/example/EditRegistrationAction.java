@@ -56,9 +56,9 @@ public final class EditRegistrationAction extends Action {
 
 
     /**
-     * The <code>Log</code> instance for this application.
+     * The {@code Log} instance for this class.
      */
-    private Logger log =
+    private final static Logger LOG =
         LoggerFactory.getLogger(EditRegistrationAction.class);
 
 
@@ -91,7 +91,7 @@ public final class EditRegistrationAction extends Action {
     String action = request.getParameter("action");
     if (action == null)
         action = "Create";
-    log.debug("EditRegistrationAction:  Processing {} action",
+    LOG.debug("EditRegistrationAction:  Processing {} action",
         action);
 
     // Is there a currently logged on user?
@@ -99,7 +99,7 @@ public final class EditRegistrationAction extends Action {
     if (!"Create".equals(action)) {
         user = (User) session.getAttribute(Constants.USER_KEY);
         if (user == null) {
-            log.debug(" User is not logged on in session {}",
+            LOG.debug(" User is not logged on in session {}",
                 session.getId());
         return (mapping.findForward("logon"));
         }
@@ -107,7 +107,7 @@ public final class EditRegistrationAction extends Action {
 
     // Populate the user registration form
     if (form == null) {
-        log.trace(" Creating new RegistrationForm bean under key {}",
+        LOG.trace(" Creating new RegistrationForm bean under key {}",
             mapping.getAttribute());
         form = new RegistrationForm();
             if ("request".equals(mapping.getScope()))
@@ -117,7 +117,7 @@ public final class EditRegistrationAction extends Action {
     }
     RegistrationForm regform = (RegistrationForm) form;
     if (user != null) {
-            log.trace(" Populating form from {}", user);
+            LOG.trace(" Populating form from {}", user);
             try {
                 PropertyUtils.copyProperties(regform, user);
                 regform.setAction(action);
@@ -127,20 +127,20 @@ public final class EditRegistrationAction extends Action {
                 Throwable t = e.getTargetException();
                 if (t == null)
                     t = e;
-                log.error("RegistrationForm.populate", t);
+                LOG.error("RegistrationForm.populate", t);
                 throw new ServletException("RegistrationForm.populate", t);
             } catch (Throwable t) {
-                log.error("RegistrationForm.populate", t);
+                LOG.error("RegistrationForm.populate", t);
                 throw new ServletException("RegistrationForm.populate", t);
             }
     }
 
         // Set a transactional control token to prevent double posting
-        log.trace(" Setting transactional control token");
+        LOG.trace(" Setting transactional control token");
         saveToken(request);
 
     // Forward control to the edit user registration page
-        log.trace(" Forwarding to 'success' page");
+        LOG.trace(" Forwarding to 'success' page");
     return (mapping.findForward("success"));
 
     }

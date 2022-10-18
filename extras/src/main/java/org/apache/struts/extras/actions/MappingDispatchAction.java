@@ -133,9 +133,10 @@ public class MappingDispatchAction extends DispatchAction {
     // -------------------------------------------------------- Class Variables
 
     /**
-     * SLF4J Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static Logger log = LoggerFactory.getLogger(MappingDispatchAction.class);
+    private final Logger log =
+        LoggerFactory.getLogger(MappingDispatchAction.class);
 
     // --------------------------------------------------------- Public Methods
 

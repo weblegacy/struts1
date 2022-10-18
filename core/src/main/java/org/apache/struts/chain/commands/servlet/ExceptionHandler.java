@@ -42,7 +42,7 @@ import org.apache.struts.config.ModuleConfig;
  */
 public class ExceptionHandler extends AbstractExceptionHandler {
     // ------------------------------------------------------ Instance Variables
-//  private static final Logger LOG = LoggerFactory.getLogger(ExceptionHandler.class);
+
 
     // ------------------------------------------------------- Protected Methods
     protected ForwardConfig handle(ActionContext context, Exception exception,

@@ -58,9 +58,10 @@ public class CommandLinkRenderer extends AbstractRenderer {
 
 
     /**
-     * <p>The <code>Log</code> instance for this class.</p>
+     * The {@code Log} instance for this class.
      */
-    private final static Logger LOG = LoggerFactory.getLogger(CommandLinkRenderer.class);
+    private final Logger log =
+        LoggerFactory.getLogger(CommandLinkRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods
@@ -100,7 +101,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
             parent = parent.getParent();
         }
         if (form == null) {
-            LOG.warn("CommandLinkComponent not nested inside UIForm, ignored");
+            log.warn("CommandLinkComponent not nested inside UIForm, ignored");
             return;
         }
 
@@ -108,12 +109,12 @@ public class CommandLinkRenderer extends AbstractRenderer {
         String paramId = TOKEN;
         String value = context.getExternalContext().getRequestParameterMap().get(paramId);
         if ((value == null) || !value.equals(component.getClientId(context))) {
-            LOG.trace("decode({}) --> not active", component.getId());
+            log.trace("decode({}) --> not active", component.getId());
             return;
         }
 
         // Queue an ActionEvent from this component
-        LOG.trace("decode({}) --> queueEvent()", component.getId());
+        log.trace("decode({}) --> queueEvent()", component.getId());
         component.queueEvent(new ActionEvent(component));
 
     }
@@ -159,7 +160,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
             parent = parent.getParent();
         }
         if (form == null) {
-            LOG.warn("CommandLinkComponent not nested inside UIForm, ignored");
+            log.warn("CommandLinkComponent not nested inside UIForm, ignored");
             return;
         }
         String formClientId = form.getClientId(context);
@@ -218,7 +219,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
             parent = parent.getParent();
         }
         if (form == null) {
-            LOG.warn("CommandLinkComponent not nested inside UIForm, ignored");
+            log.warn("CommandLinkComponent not nested inside UIForm, ignored");
             return;
         }
         String formClientId = form.getClientId(context);

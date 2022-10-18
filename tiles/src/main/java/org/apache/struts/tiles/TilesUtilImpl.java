@@ -43,10 +43,15 @@ import org.slf4j.LoggerFactory;
  * is intended to be used without Struts.
  */
 public class TilesUtilImpl implements Serializable {
-    private static final long serialVersionUID = 4942732841978123351L;
+    private static final long serialVersionUID = -3811960942326759160L;
 
-    /** SLF4J Logging instance.*/
-    protected static final Logger LOG = LoggerFactory.getLogger(TilesUtil.class);
+    /**
+     * The {@code Log} instances for this class.
+     */
+    private final static Logger LOG =
+        LoggerFactory.getLogger(TilesUtilImpl.class);
+    private final Logger log =
+            LoggerFactory.getLogger(TilesUtilImpl.class);
 
     /** Constant name used to store factory in servlet context */
     public static final String DEFINITIONS_FACTORY =
@@ -128,7 +133,7 @@ public class TilesUtilImpl implements Serializable {
                 return;
             }
         } catch (IllegalAccessException e) {
-            LOG.debug("Could not find JSP 2.0 include method.  Using old one.", e);
+            log.debug("Could not find JSP 2.0 include method.  Using old one.", e);
         } catch (InvocationTargetException e) {
             if (e.getCause() instanceof ServletException){
                throw ((ServletException)e.getCause());

@@ -113,8 +113,7 @@ import org.slf4j.LoggerFactory;
  * @version $Rev$ $Date$
  */
 public class PropertyMessageResources extends MessageResources {
-    private static final long serialVersionUID = 6110925527101249875L;
-
+    private static final long serialVersionUID = -8425494681357052837L;
 
     /** Indicates compatibility with how PropertyMessageResources has always looked up messages */
     private static final int MODE_DEFAULT = 0;
@@ -126,9 +125,9 @@ public class PropertyMessageResources extends MessageResources {
     private static final int MODE_RESOURCE_BUNDLE = 2;
 
     /**
-     * The <code>Log</code> instance for this class.
+     * The {@code Log} instance for this class.
      */
-    protected static final Logger LOG =
+    private final Logger log =
         LoggerFactory.getLogger(PropertyMessageResources.class);
 
     // ------------------------------------------------------------- Properties
@@ -162,7 +161,7 @@ public class PropertyMessageResources extends MessageResources {
     public PropertyMessageResources(MessageResourcesFactory factory,
         String config) {
         super(factory, config);
-        LOG.trace("Initializing, config='{}'", config);
+        log.trace("Initializing, config='{}'", config);
     }
 
     /**
@@ -177,7 +176,7 @@ public class PropertyMessageResources extends MessageResources {
     public PropertyMessageResources(MessageResourcesFactory factory,
         String config, boolean returnNull) {
         super(factory, config, returnNull);
-        LOG.trace("Initializing, config='{}', returnNull={}",
+        log.trace("Initializing, config='{}', returnNull={}",
             config, returnNull);
     }
 
@@ -194,13 +193,13 @@ public class PropertyMessageResources extends MessageResources {
         String value = (mode == null ? null : mode.trim());
         if ("jstl".equalsIgnoreCase(value)) {
             this.mode = MODE_JSTL;
-            LOG.debug("Operating in JSTL compatible mode [{}]", mode);
+            log.debug("Operating in JSTL compatible mode [{}]", mode);
         } else if ("resource".equalsIgnoreCase(value)) {
             this.mode = MODE_RESOURCE_BUNDLE;
-            LOG.debug("Operating in PropertyResourceBundle compatible mode [{}]", mode);
+            log.debug("Operating in PropertyResourceBundle compatible mode [{}]", mode);
         } else {
             this.mode = MODE_DEFAULT;
-            LOG.debug("Operating in Default mode [{}]", mode);
+            log.debug("Operating in Default mode [{}]", mode);
         }
     }
 
@@ -218,7 +217,7 @@ public class PropertyMessageResources extends MessageResources {
      * @return text message for the specified key and locale
      */
     public String getMessage(Locale locale, String key) {
-        LOG.debug("getMessage({},{})", locale, key);
+        log.debug("getMessage({},{})", locale, key);
 
         // Initialize variables we will require
         String localeKey = localeKey(locale);
@@ -286,7 +285,7 @@ public class PropertyMessageResources extends MessageResources {
      * @param localeKey Locale key for the messages to be retrieved
      */
     protected synchronized void loadLocale(String localeKey) {
-        LOG.trace("loadLocale({})", localeKey);
+        log.trace("loadLocale({})", localeKey);
 
         // Have we already attempted to load messages for this locale?
         if (locales.get(localeKey) != null) {
@@ -308,7 +307,7 @@ public class PropertyMessageResources extends MessageResources {
         Properties props = new Properties();
 
         // Load the specified property resource
-        LOG.trace("  Loading resource '{}'", name);
+        log.trace("  Loading resource '{}'", name);
 
         ClassLoader classLoader =
             Thread.currentThread().getContextClassLoader();
@@ -323,17 +322,17 @@ public class PropertyMessageResources extends MessageResources {
             try {
                 props.load(is);
             } catch (IOException e) {
-                LOG.error("loadLocale()", e);
+                log.error("loadLocale()", e);
             } finally {
                 try {
                     is.close();
                 } catch (IOException e) {
-                    LOG.error("loadLocale()", e);
+                    log.error("loadLocale()", e);
                 }
             }
-            LOG.trace("  Loading resource completed");
+            log.trace("  Loading resource completed");
         } else {
-            LOG.warn("  Resource {} Not Found.", name);
+            log.warn("  Resource {} Not Found.", name);
         }
 
 
@@ -346,7 +345,7 @@ public class PropertyMessageResources extends MessageResources {
             for (Object oKey : props.keySet()) {
                 String key = oKey.toString();
 
-                LOG.atTrace()
+                log.atTrace()
                     .setMessage("  Saving message key '{}'")
                     .log(() -> messageKey(localeKey, key));
 

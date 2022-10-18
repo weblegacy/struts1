@@ -38,9 +38,9 @@ public abstract class AbstractSelectForward extends ActionCommandBase {
     // ------------------------------------------------------ Instance Variables
 
     /**
-     * <p> Provide Commons Logging instance for this class. </p>
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG =
+    private final Logger log =
         LoggerFactory.getLogger(AbstractSelectForward.class);
 
     // ---------------------------------------------------------- Public Methods
@@ -72,7 +72,7 @@ public abstract class AbstractSelectForward extends ActionCommandBase {
         if (forward != null) {
             forwardConfig = forward(actionCtx, moduleConfig, forward);
 
-            LOG.debug("Forwarding to {}", forwardConfig);
+            log.debug("Forwarding to {}", forwardConfig);
 
             actionCtx.setForwardConfig(forwardConfig);
         }

@@ -40,9 +40,9 @@ public abstract class AbstractValidateActionForm extends ActionCommandBase {
     // ------------------------------------------------------ Instance Variables
 
     /**
-     * <p> Provide Commons Logging instance for this class. </p>
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG =
+    private final Logger log =
         LoggerFactory.getLogger(AbstractSelectForward.class);
 
     // ------------------------------------------------------ Protected Methods
@@ -109,7 +109,7 @@ public abstract class AbstractValidateActionForm extends ActionCommandBase {
 
         // Was this request cancelled?
         if (isCancelled(actionCtx, actionConfig)) {
-            LOG.debug("Cancelled transaction, skipping validation");
+            log.debug("Cancelled transaction, skipping validation");
             return CONTINUE_PROCESSING;
         }
 

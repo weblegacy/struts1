@@ -39,9 +39,10 @@ public abstract class ModuleConfigFactory {
     protected static Class<ModuleConfigFactory> clazz = null;
 
     /**
-     * Commons Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(ModuleConfigFactory.class);
+    private final static Logger LOG =
+        LoggerFactory.getLogger(ModuleConfigFactory.class);
 
     /**
      * The fully qualified class name to be used for <code>ModuleConfigFactory</code>

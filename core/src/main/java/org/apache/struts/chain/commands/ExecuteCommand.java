@@ -46,9 +46,10 @@ public class ExecuteCommand extends ActionCommandBase {
     // ------------------------------------------------------ Instance Variables
 
     /**
-     * Provide Commons Logging instance for this class.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(ExecuteCommand.class);
+    private final Logger log =
+        LoggerFactory.getLogger(ExecuteCommand.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -129,7 +130,7 @@ public class ExecuteCommand extends ActionCommandBase {
             catalog = CatalogFactory.getInstance().getCatalog(catalogName);
 
             if (catalog == null) {
-                LOG.warn("When looking up {}, no catalog found under {}",
+                log.warn("When looking up {}, no catalog found under {}",
                     commandName, catalogName);
 
                 return null;
@@ -139,14 +140,14 @@ public class ExecuteCommand extends ActionCommandBase {
             catalog = CatalogFactory.getInstance().getCatalog();
 
             if (catalog == null) {
-                LOG.warn("When looking up {}, no default catalog found.",
+                log.warn("When looking up {}, no default catalog found.",
                     commandName);
 
                 return null;
             }
         }
 
-        LOG.debug("looking up command {} in {}",
+        log.debug("looking up command {} in {}",
             commandName, catalogName);
 
         return catalog.getCommand(commandName);

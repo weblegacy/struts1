@@ -203,7 +203,7 @@ import org.xml.sax.SAXException;
  *          $
  */
 public class ActionServlet extends HttpServlet {
-    private static final long serialVersionUID = -5339416153175280044L;
+    private static final long serialVersionUID = 7124895651996600297L;
 
     /**
      * A specialized instance which is configured to suppress the special {@code class},
@@ -221,11 +221,12 @@ public class ActionServlet extends HttpServlet {
                     Arrays.asList("class", "multipartRequestHandler", "resultValueMap"));
 
     /**
-     * <p>Commons Logging instance.</p>
+     * The {@code Log} instance for this class.
      *
      * @since Struts 1.1
      */
-    protected static Logger LOG = LoggerFactory.getLogger(ActionServlet.class);
+    private final Logger log =
+        LoggerFactory.getLogger(ActionServlet.class);
 
     // ----------------------------------------------------- Instance Variables
 
@@ -310,7 +311,7 @@ public class ActionServlet extends HttpServlet {
      * resources that were allocated at initialization.</p>
      */
     public void destroy() {
-        LOG.atDebug().log(() -> internal.getMessage("finalizing"));
+        log.atDebug().log(() -> internal.getMessage("finalizing"));
 
         destroyModules();
         destroyInternal();
@@ -413,7 +414,7 @@ public class ActionServlet extends HttpServlet {
             // The follow error message is not retrieved from internal message
             // resources as they may not have been able to have been
             // initialized
-            LOG.error("Unable to initialize Struts ActionServlet due to an "
+            log.error("Unable to initialize Struts ActionServlet due to an "
                 + "unexpected exception or error thrown, so marking the "
                 + "servlet as unavailable.  Most likely, this is due to an "
                 + "incorrect or missing library dependency.", t);
@@ -496,7 +497,7 @@ public class ActionServlet extends HttpServlet {
         }
 
         if (servletName.equals(this.servletName)) {
-            LOG.debug("Process servletName={}, urlPattern={}",
+            log.debug("Process servletName={}, urlPattern={}",
                 servletName, urlPattern);
 
             this.servletMapping = urlPattern;
@@ -636,7 +637,7 @@ public class ActionServlet extends HttpServlet {
             // being used without composition. Hopefully developers will
             // heed this message and make the upgrade.
             if (!(processor instanceof ComposableRequestProcessor)) {
-                LOG.warn("Use of the classic RequestProcessor is not recommended. " +
+                log.warn("Use of the classic RequestProcessor is not recommended. " +
                         "Please upgrade to the ComposableRequestProcessor to " +
                         "receive the advantage of modern enhancements and fixes.");
             }
@@ -692,7 +693,7 @@ public class ActionServlet extends HttpServlet {
      */
     protected ModuleConfig initModuleConfig(String prefix, String paths)
         throws ServletException {
-        LOG.debug("Initializing module path '{}' configuration from '{}'",
+        log.debug("Initializing module path '{}' configuration from '{}'",
             prefix, paths);
 
         // Parse the configuration for this module
@@ -778,7 +779,7 @@ public class ActionServlet extends HttpServlet {
         throws UnavailableException {
         String msg = internal.getMessage("configParse", path);
 
-        LOG.error(msg, e);
+        log.error(msg, e);
         UnavailableException e2 = new UnavailableException(msg);
         e2.initCause(e);
         throw e2;
@@ -797,7 +798,7 @@ public class ActionServlet extends HttpServlet {
         String errorMessage =
             internal.getMessage("configExtends.creation", className);
 
-        LOG.error(errorMessage, e);
+        log.error(errorMessage, e);
         UnavailableException e2 = new UnavailableException(errorMessage);
         e2.initCause(e);
         throw e2;
@@ -818,7 +819,7 @@ public class ActionServlet extends HttpServlet {
         String errorMessage =
             internal.getMessage("configExtends", configType, configName);
 
-        LOG.error(errorMessage, e);
+        log.error(errorMessage, e);
         UnavailableException e2 = new UnavailableException(errorMessage);
         e2.initCause(e);
         throw e2;
@@ -840,7 +841,7 @@ public class ActionServlet extends HttpServlet {
             internal.getMessage("configFieldRequired", field, configType,
                 configName);
 
-        LOG.error(errorMessage);
+        log.error(errorMessage);
         throw new UnavailableException(errorMessage);
     }
 
@@ -853,7 +854,7 @@ public class ActionServlet extends HttpServlet {
      */
     protected void initModulePlugIns(ModuleConfig config)
         throws ServletException {
-        LOG.debug("Initializing module path '{}' plug ins",
+        log.debug("Initializing module path '{}' plug ins",
             config.getPrefix());
 
         PlugInConfig[] plugInConfigs = config.findPlugInConfigs();
@@ -918,7 +919,7 @@ public class ActionServlet extends HttpServlet {
      */
     protected void initModuleFormBeans(ModuleConfig config)
         throws ServletException {
-        LOG.debug("Initializing module path '{}' form beans",
+        log.debug("Initializing module path '{}' form beans",
             config.getPrefix());
 
         // Process form bean extensions.
@@ -973,7 +974,7 @@ public class ActionServlet extends HttpServlet {
         throws ServletException {
         try {
             if (!beanConfig.isExtensionProcessed()) {
-                LOG.debug("Processing extensions for '{}'",
+                log.debug("Processing extensions for '{}'",
                     beanConfig.getName());
 
                 beanConfig =
@@ -1062,7 +1063,7 @@ public class ActionServlet extends HttpServlet {
      */
     protected void initModuleForwards(ModuleConfig config)
         throws ServletException {
-        LOG.debug("Initializing module path '{}' forwards",
+        log.debug("Initializing module path '{}' forwards",
             config.getPrefix());
 
         // Process forwards extensions.
@@ -1103,7 +1104,7 @@ public class ActionServlet extends HttpServlet {
         throws ServletException {
         try {
             if (!forwardConfig.isExtensionProcessed()) {
-                LOG.debug("Processing extensions for '{}'",
+                log.debug("Processing extensions for '{}'",
                     forwardConfig.getName());
 
                 forwardConfig =
@@ -1209,7 +1210,7 @@ public class ActionServlet extends HttpServlet {
      */
     protected void initModuleExceptionConfigs(ModuleConfig config)
         throws ServletException {
-        LOG.debug("Initializing module path '{}' forwards",
+        log.debug("Initializing module path '{}' forwards",
             config.getPrefix());
 
         // Process exception config extensions.
@@ -1251,7 +1252,7 @@ public class ActionServlet extends HttpServlet {
         throws ServletException {
         try {
             if (!exceptionConfig.isExtensionProcessed()) {
-                LOG.debug("Processing extensions for '{}'",
+                log.debug("Processing extensions for '{}'",
                     exceptionConfig.getType());
 
                 exceptionConfig =
@@ -1355,7 +1356,7 @@ public class ActionServlet extends HttpServlet {
      */
     protected void initModuleActions(ModuleConfig config)
         throws ServletException {
-        LOG.debug("Initializing module path '{}' action configs",
+        log.debug("Initializing module path '{}' action configs",
             config.getPrefix());
 
         // Process ActionConfig extensions.
@@ -1375,7 +1376,7 @@ public class ActionServlet extends HttpServlet {
             if (formName != null) {
                 FormBeanConfig formConfig = config.findFormBeanConfig(formName);
                 if (formConfig == null) {
-                    LOG.atWarn().log(() -> getInternal().getMessage("actionFormUnknown",
+                    log.atWarn().log(() -> getInternal().getMessage("actionFormUnknown",
                             actionConfig.getPath(), formName));
                 }
             }
@@ -1424,7 +1425,7 @@ public class ActionServlet extends HttpServlet {
         throws ServletException {
         try {
             if (!actionConfig.isExtensionProcessed()) {
-                LOG.debug("Processing extensions for '{}'",
+                log.debug("Processing extensions for '{}'",
                     actionConfig.getPath());
 
                 actionConfig =
@@ -1548,7 +1549,7 @@ public class ActionServlet extends HttpServlet {
             }
 
             postProcessConfig(mrcs[i], config, true);
-            LOG.debug("Initializing module path '{}' "
+            log.debug("Initializing module path '{}' "
                 + "message resources from '{}'",
                 config.getPrefix(), mrcs[i].getParameter());
 
@@ -1641,7 +1642,7 @@ public class ActionServlet extends HttpServlet {
                 rulesets = rulesets.substring(comma + 1).trim();
             }
 
-            LOG.debug("Configuring custom Digester Ruleset of type {}",
+            log.debug("Configuring custom Digester Ruleset of type {}",
                 ruleset);
 
             try {
@@ -1650,7 +1651,7 @@ public class ActionServlet extends HttpServlet {
 
                 this.configDigester.addRuleSet(instance);
             } catch (Exception e) {
-                LOG.error("Exception configuring custom Digester RuleSet", e);
+                log.error("Exception configuring custom Digester RuleSet", e);
                 throw new ServletException(e);
             }
         }
@@ -1685,7 +1686,7 @@ public class ActionServlet extends HttpServlet {
         try {
             internal = MessageResources.getMessageResources(internalName);
         } catch (MissingResourceException e) {
-            LOG.error("Cannot load internal resources from '{}'",
+            log.error("Cannot load internal resources from '{}'",
                 internalName, e);
             UnavailableException e2 = new UnavailableException(
                 "Cannot load internal resources from '" + internalName + "'");
@@ -1718,11 +1719,11 @@ public class ActionServlet extends HttpServlet {
             List<URL> urls = splitAndResolvePaths(chainConfig);
 
             for (URL resource : urls) {
-                LOG.info("Loading chain catalog from {}", resource);
+                log.info("Loading chain catalog from {}", resource);
                 parser.parse(resource);
             }
         } catch (Exception e) {
-            LOG.error("Exception loading resources", e);
+            log.error("Exception loading resources", e);
             throw new ServletException(e);
         }
     }
@@ -1807,25 +1808,25 @@ public class ActionServlet extends HttpServlet {
         digester.addCallParam("web-app/servlet-mapping/url-pattern", 1);
 
         // Process the web application deployment descriptor
-        LOG.debug("Scanning web.xml for controller servlet mapping");
+        log.debug("Scanning web.xml for controller servlet mapping");
 
         InputStream input =
             getServletContext().getResourceAsStream("/WEB-INF/web.xml");
 
         if (input == null) {
-            LOG.atError().log(() -> internal.getMessage("configWebXml"));
+            log.atError().log(() -> internal.getMessage("configWebXml"));
             throw new ServletException(internal.getMessage("configWebXml"));
         }
 
         try {
             digester.parse(input);
         } catch (IOException e) {
-            LOG.atError()
+            log.atError()
                 .setMessage(() -> internal.getMessage("configWebXml"))
                 .setCause(e).log();
             throw new ServletException(e);
         } catch (SAXException e) {
-            LOG.atError()
+            log.atError()
                 .setMessage(() -> internal.getMessage("configWebXml"))
                 .setCause(e).log();
             throw new ServletException(e);
@@ -1833,7 +1834,7 @@ public class ActionServlet extends HttpServlet {
             try {
                 input.close();
             } catch (IOException e) {
-                LOG.atError()
+                log.atError()
                     .setMessage(() -> internal.getMessage("configWebXml"))
                     .setCause(e).log();
                 throw new ServletException(e);
@@ -1841,7 +1842,7 @@ public class ActionServlet extends HttpServlet {
         }
 
         // Record a servlet context attribute (if appropriate)
-        LOG.debug("Mapping for servlet '{}' = '{}'",
+        log.debug("Mapping for servlet '{}' = '{}'",
             servletName, servletMapping);
 
         if (servletMapping != null) {
@@ -1897,7 +1898,7 @@ public class ActionServlet extends HttpServlet {
                 }
 
                 if (resource == null) {
-                    LOG.debug("Unable to locate {}"
+                    log.debug("Unable to locate {}"
                         + " in the servlet context, "
                         + "trying classloader.", path);
 
@@ -1906,7 +1907,7 @@ public class ActionServlet extends HttpServlet {
                     if (!e.hasMoreElements()) {
                         String msg = internal.getMessage("configMissing", path);
 
-                        LOG.error(msg);
+                        log.error(msg);
                         throw new UnavailableException(msg);
                     } else {
                         while (e.hasMoreElements()) {
@@ -2011,5 +2012,4 @@ public class ActionServlet extends HttpServlet {
             }
         }
     }
-
 }

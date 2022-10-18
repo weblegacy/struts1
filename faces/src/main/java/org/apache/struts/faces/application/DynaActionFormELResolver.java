@@ -60,14 +60,14 @@ public class DynaActionFormELResolver extends ELResolver {
     /**
      * The {@code Log} instance for this class.
      */
-    private static final Logger LOG =
+    private final Logger log =
         LoggerFactory.getLogger(DynaActionFormELResolver.class);
 
     /**
      * Creates a new read {@code DynaActionFormELResolver}.
      */
     public DynaActionFormELResolver() {
-        LOG.debug("Creating new Dyna-Action-From-ELResolver instance");
+        log.debug("Creating new Dyna-Action-From-ELResolver instance");
     }
 
     /**
@@ -110,7 +110,7 @@ public class DynaActionFormELResolver extends ELResolver {
         }
 
         if (test(base, property)) {
-            LOG.trace("Returning property-type '{}' for DynaActionForm '{}'",
+            log.trace("Returning property-type '{}' for DynaActionForm '{}'",
                 property, base);
 
             context.setPropertyResolved(true);
@@ -157,7 +157,7 @@ public class DynaActionFormELResolver extends ELResolver {
         }
 
         if (test(base, property)) {
-            LOG.trace("Returning property-value '{}' for DynaActionForm '{}'",
+            log.trace("Returning property-value '{}' for DynaActionForm '{}'",
                 property, base);
 
             context.setPropertyResolved(true);
@@ -198,7 +198,7 @@ public class DynaActionFormELResolver extends ELResolver {
         }
 
         if (test(base, property)) {
-            LOG.trace("Set property-value '{}' for DynaActionForm '{}'",
+            log.trace("Set property-value '{}' for DynaActionForm '{}'",
                 property, base);
 
             throw new PropertyNotWritableException(property.toString());
@@ -242,7 +242,7 @@ public class DynaActionFormELResolver extends ELResolver {
         }
 
         if (test(base, property)) {
-            LOG.trace("Return ready-only status for property '{}' for DynaActionForm '{}'",
+            log.trace("Return ready-only status for property '{}' for DynaActionForm '{}'",
                 property, base);
 
             context.setPropertyResolved(true);
@@ -299,7 +299,7 @@ public class DynaActionFormELResolver extends ELResolver {
             Object base) {
 
         if (base instanceof DynaActionForm) {
-            LOG.trace("Get Feature-Descriptors for DynaActionForm '{}'", base);
+            log.trace("Get Feature-Descriptors for DynaActionForm '{}'", base);
 
             final FeatureDescriptor descriptor = new FeatureDescriptor();
             descriptor.setName("map");
@@ -339,7 +339,7 @@ public class DynaActionFormELResolver extends ELResolver {
     @Override
     public Class<?> getCommonPropertyType(ELContext context, Object base) {
         if (base instanceof DynaActionForm) {
-            LOG.trace("Get Common-Property-Type for DynaActionForm '{}'", base);
+            log.trace("Get Common-Property-Type for DynaActionForm '{}'", base);
 
             return Object.class;
         }

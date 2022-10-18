@@ -58,9 +58,9 @@ public final class SaveSubscriptionAction extends Action {
 
 
     /**
-     * The <code>Log</code> instance for this application.
+     * The {@code Log} instance for this class.
      */
-    private Logger log =
+    private final static Logger LOG =
         LoggerFactory.getLogger(SaveSubscriptionAction.class);
 
 
@@ -96,20 +96,20 @@ public final class SaveSubscriptionAction extends Action {
     if (action == null) {
         action = "?";
     }
-    log.debug("SaveSubscriptionAction:  Processing {} action",
+    LOG.debug("SaveSubscriptionAction:  Processing {} action",
         action);
 
     // Is there a currently logged on user?
     User user = (User) session.getAttribute(Constants.USER_KEY);
     if (user == null) {
-        log.trace(" User is not logged on in session {}",
+        LOG.trace(" User is not logged on in session {}",
             session.getId());
         return (mapping.findForward("logon"));
     }
 
     // Was this transaction cancelled?
     if (isCancelled(request)) {
-        log.trace(" Transaction '{}' was cancelled",
+        LOG.trace(" Transaction '{}' was cancelled",
             action);
         session.removeAttribute(Constants.SUBSCRIPTION_KEY);
         return (mapping.findForward("success"));
@@ -119,13 +119,13 @@ public final class SaveSubscriptionAction extends Action {
     Subscription subscription =
       (Subscription) session.getAttribute(Constants.SUBSCRIPTION_KEY);
     if ("Create".equals(action)) {
-        log.trace(" Creating subscription for mail server '{}'",
+        LOG.trace(" Creating subscription for mail server '{}'",
             subform.getHost());
         subscription =
             user.createSubscription(subform.getHost());
     }
     if (subscription == null) {
-        log.trace(" Missing subscription for user '{}'",
+        LOG.trace(" Missing subscription for user '{}'",
             user.getUsername());
         response.sendError(HttpServletResponse.SC_BAD_REQUEST,
                            messages.getMessage("error.noSubscription"));
@@ -134,7 +134,7 @@ public final class SaveSubscriptionAction extends Action {
 
     // Was this transaction a Delete?
     if (action.equals("Delete")) {
-        log.trace(" Deleting mail server '{}' for user '{}'",
+        LOG.trace(" Deleting mail server '{}' for user '{}'",
             subscription.getHost(), user.getUsername());
         user.removeSubscription(subscription);
         session.removeAttribute(Constants.SUBSCRIPTION_KEY);
@@ -144,7 +144,7 @@ public final class SaveSubscriptionAction extends Action {
                 getAttribute(Constants.DATABASE_KEY);
             database.save();
         } catch (Exception e) {
-            log.error("Database save", e);
+            LOG.error("Database save", e);
         }
         return (mapping.findForward("success"));
     }
@@ -152,17 +152,17 @@ public final class SaveSubscriptionAction extends Action {
     // All required validations were done by the form itself
 
     // Update the persistent subscription information
-        log.trace(" Populating database from form bean");
+        LOG.trace(" Populating database from form bean");
         try {
             PropertyUtils.copyProperties(subscription, subform);
         } catch (InvocationTargetException e) {
             Throwable t = e.getTargetException();
             if (t == null)
                 t = e;
-            log.error("Subscription.populate", t);
+            LOG.error("Subscription.populate", t);
             throw new ServletException("Subscription.populate", t);
         } catch (Throwable t) {
-            log.error("Subscription.populate", t);
+            LOG.error("Subscription.populate", t);
             throw new ServletException("Subscription.populate", t);
         }
 
@@ -172,7 +172,7 @@ public final class SaveSubscriptionAction extends Action {
                 getAttribute(Constants.DATABASE_KEY);
             database.save();
         } catch (Exception e) {
-            log.error("Database save", e);
+            LOG.error("Database save", e);
         }
 
     // Remove the obsolete form bean and current subscription
@@ -185,7 +185,7 @@ public final class SaveSubscriptionAction extends Action {
     session.removeAttribute(Constants.SUBSCRIPTION_KEY);
 
     // Forward control to the specified success URI
-    log.trace(" Forwarding to success page");
+    LOG.trace(" Forwarding to success page");
     return (mapping.findForward("success"));
 
     }

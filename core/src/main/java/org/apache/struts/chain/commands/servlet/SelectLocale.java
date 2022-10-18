@@ -36,7 +36,6 @@ import org.apache.struts.chain.contexts.ServletActionContext;
  *          $
  */
 public class SelectLocale extends AbstractSelectLocale {
-//  private static final Logger LOG = LoggerFactory.getLogger(SelectLocale.class);
 
     // ------------------------------------------------------- Protected Methods
 

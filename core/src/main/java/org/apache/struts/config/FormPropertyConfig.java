@@ -36,12 +36,13 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.1
  */
 public class FormPropertyConfig extends BaseConfig {
-    private static final long serialVersionUID = 4120657988013574721L;
+    private static final long serialVersionUID = 8436264202472421426L;
 
     /**
-     * The logging instance
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(FormPropertyConfig.class);
+    private final Logger log =
+        LoggerFactory.getLogger(FormPropertyConfig.class);
 
     // ----------------------------------------------------- Instance Variables
     // ------------------------------------------------------------- Properties
@@ -260,7 +261,7 @@ public class FormPropertyConfig extends BaseConfig {
             try {
                 baseClass = classLoader.loadClass(baseType);
             } catch (ClassNotFoundException ex) {
-                LOG.error("Class '{}' not found for property '{}'",
+                log.error("Class '{}' not found for property '{}'",
                     baseType, name);
                 baseClass = null;
             }
@@ -336,7 +337,7 @@ public class FormPropertyConfig extends BaseConfig {
                                 Array.set(initialValue, i,
                                     clazz.getComponentType().newInstance());
                             } catch (Throwable t) {
-                                LOG.error("Unable to create instance of {} for property={}, "
+                                log.error("Unable to create instance of {} for property={}, "
                                     + "type={}, initial={}, size={}.",
                                     clazz.getName(), name, type, initial, size);
 

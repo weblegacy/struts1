@@ -37,10 +37,11 @@ import org.slf4j.LoggerFactory;
  * passes to the looked up command in an alternative class.</p>
  */
 public class WrappingLookupCommand implements Filter {
+
     /**
-     * Provide Commons Logging instance for this class.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG =
+    private final Logger log =
         LoggerFactory.getLogger(WrappingLookupCommand.class);
 
     // ------------------------------------------------------ Instance Variables
@@ -180,7 +181,7 @@ public class WrappingLookupCommand implements Filter {
      */
     public boolean execute(Context context)
         throws Exception {
-        LOG.trace("execute [{}]", this);
+        log.trace("execute [{}]", this);
 
         Command command = getCommand(context);
 
@@ -208,7 +209,7 @@ public class WrappingLookupCommand implements Filter {
             } catch (NoSuchMethodException | IllegalAccessException |
                     InvocationTargetException | InstantiationException |
                     ClassNotFoundException ex) {
-                LOG.error("Error wrapping context in postprocess", ex);
+                log.error("Error wrapping context in postprocess", ex);
             }
         }
 
@@ -246,12 +247,12 @@ public class WrappingLookupCommand implements Filter {
         }
 
         if (name != null) {
-            LOG.debug("Lookup command {} in catalog {}",
+            log.debug("Lookup command {} in catalog {}",
                 name, catalogName);
 
             command = catalog.getCommand(name);
 
-            LOG.debug("Found command {}; optional: {}",
+            log.debug("Found command {}; optional: {}",
                 command, isOptional());
 
             if ((command == null) && !isOptional()) {
@@ -287,17 +288,17 @@ public class WrappingLookupCommand implements Filter {
             InvocationTargetException, IllegalAccessException,
             NoSuchMethodException {
         if (wrapperClassName == null) {
-            LOG.debug("No defined wrapper class; "
+            log.debug("No defined wrapper class; "
                 + "returning original context.");
 
             return context;
         }
 
-        LOG.debug("Looking for wrapper class: {}", wrapperClassName);
+        log.debug("Looking for wrapper class: {}", wrapperClassName);
 
         Class<?> wrapperClass = ClassUtils.getApplicationClass(wrapperClassName);
 
-        LOG.debug("Instantiating wrapper class");
+        log.debug("Instantiating wrapper class");
 
         return (Context) ConstructorUtils.invokeConstructor(wrapperClass, context);
     }

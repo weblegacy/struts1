@@ -39,9 +39,10 @@ import org.slf4j.LoggerFactory;
 public final class RegistrationAction extends Action {
 
     /**
-     * Commons Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private Logger log = LoggerFactory.getLogger(this.getClass().getName());
+    private final static Logger LOG =
+        LoggerFactory.getLogger(RegistrationAction.class);
 
     /**
      * Process the specified HTTP request, and create the corresponding HTTP
@@ -67,7 +68,7 @@ public final class RegistrationAction extends Action {
 
         // Was this transaction cancelled?
         if (isCancelled(request)) {
-            log.info(" {} - Registration transaction was cancelled",
+            LOG.info(" {} - Registration transaction was cancelled",
                 mapping.getAttribute());
 
             removeFormBean(mapping, request);

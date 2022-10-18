@@ -43,10 +43,12 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.2
  */
 public class ValidWhen {
+
     /**
-     * Commons Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(ValidWhen.class);
+    private final static Logger LOG =
+        LoggerFactory.getLogger(ValidWhen.class);
 
     /**
      * The message resources for this package.

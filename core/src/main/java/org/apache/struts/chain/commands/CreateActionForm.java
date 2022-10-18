@@ -39,9 +39,10 @@ public class CreateActionForm extends ActionCommandBase {
     // ------------------------------------------------------ Instance Variables
 
     /**
-     * <p> Provide Commons Logging instance for this class. </p>
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(CreateActionForm.class);
+    private final Logger log =
+        LoggerFactory.getLogger(CreateActionForm.class);
 
     // ---------------------------------------------------------- Public Methods
 
@@ -63,14 +64,14 @@ public class CreateActionForm extends ActionCommandBase {
             return CONTINUE_PROCESSING;
         }
 
-        LOG.trace("Look up form-bean {}", name);
+        log.trace("Look up form-bean {}", name);
 
         // Look up the corresponding FormBeanConfig (if any)
         FormBeanConfig formBeanConfig =
             actionConfig.getModuleConfig().findFormBeanConfig(name);
 
         if (formBeanConfig == null) {
-            LOG.warn("No FormBeanConfig found in module {} under name {}",
+            log.warn("No FormBeanConfig found in module {} under name {}",
                 actionConfig.getModuleConfig().getPrefix(), name);
             actionCtx.setActionForm(null);
             return CONTINUE_PROCESSING;

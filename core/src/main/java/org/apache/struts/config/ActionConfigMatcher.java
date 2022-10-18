@@ -43,12 +43,13 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.2
  */
 public class ActionConfigMatcher implements Serializable {
-    private static final long serialVersionUID = 6113399731187154520L;
+    private static final long serialVersionUID = -7803926870173575845L;
 
     /**
-     * <p> The logging instance </p>
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(ActionConfigMatcher.class);
+    private final Logger log =
+        LoggerFactory.getLogger(ActionConfigMatcher.class);
 
     /**
      * <p> Handles all wildcard pattern matching. </p>
@@ -82,7 +83,7 @@ public class ActionConfigMatcher implements Serializable {
                     path = path.substring(1);
                 }
 
-                LOG.debug("Compiling action config path '{}'", path);
+                log.debug("Compiling action config path '{}'", path);
 
                 pattern = wildcard.compilePattern(path);
                 compiledPaths.add(new Mapping(pattern, configs[x]));
@@ -100,7 +101,7 @@ public class ActionConfigMatcher implements Serializable {
         ActionConfig config = null;
 
         if (compiledPaths.size() > 0) {
-            LOG.debug("Attempting to match '{}' to a wildcard pattern",
+            log.debug("Attempting to match '{}' to a wildcard pattern",
                 path);
 
             if ((path.length() > 0) && (path.charAt(0) == '/')) {
@@ -111,14 +112,14 @@ public class ActionConfigMatcher implements Serializable {
 
             for (Mapping m : compiledPaths) {
                 if (wildcard.match(vars, path, m.getPattern())) {
-                    LOG.debug("Path matches pattern '{}'",
+                    log.debug("Path matches pattern '{}'",
                         m.getActionConfig().getPath());
 
                     try {
                         config =
                             convertActionConfig(path, m.getActionConfig(), vars);
                     } catch (IllegalStateException e) {
-                        LOG.warn("Path matches pattern '{}' but is "
+                        log.warn("Path matches pattern '{}' but is "
                             + "incompatible with the matching config due "
                             + "to recursive substitution: {}",
                             m.getActionConfig().getPath(), path);
@@ -150,7 +151,7 @@ public class ActionConfigMatcher implements Serializable {
         try {
             config = (ActionConfig) BeanUtils.cloneBean(orig);
         } catch (Exception ex) {
-            LOG.warn("Unable to clone action config, recommend not using "
+            log.warn("Unable to clone action config, recommend not using "
                 + "wildcards", ex);
 
             return null;
@@ -183,7 +184,7 @@ public class ActionConfigMatcher implements Serializable {
             try {
                 cfg = (ActionForward) BeanUtils.cloneBean(fConfigs[x]);
             } catch (Exception ex) {
-                LOG.warn("Unable to clone action config, recommend not using "
+                log.warn("Unable to clone action config, recommend not using "
                         + "wildcards", ex);
                 return null;
             }
@@ -319,5 +320,4 @@ public class ActionConfigMatcher implements Serializable {
             return this.config;
         }
     }
-
 }

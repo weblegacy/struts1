@@ -31,8 +31,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
 
 import org.apache.struts.tiles.taglib.ComponentConstants;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * Utilities class for definitions factory.
@@ -41,11 +39,6 @@ import org.slf4j.LoggerFactory;
  */
 @Deprecated
 public class DefinitionsUtil extends TilesUtil implements ComponentConstants {
-
-    /**
-     * SLF4J Logging instance.
-     */
-    protected static Logger log = LoggerFactory.getLogger(DefinitionsUtil.class);
 
     /**
      * Global user defined debug level.

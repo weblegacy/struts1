@@ -55,9 +55,10 @@ public class FormRenderer extends AbstractRenderer {
 
 
     /**
-     * <p>The <code>Log</code> instance for this class.</p>
+     * The {@code Log} instance for this class.
      */
-    private final static Logger LOG = LoggerFactory.getLogger(FormRenderer.class);
+    private final Logger log =
+        LoggerFactory.getLogger(FormRenderer.class);
 
 
     // ---------------------------------------------------------- Public Methods
@@ -80,7 +81,7 @@ public class FormRenderer extends AbstractRenderer {
         }
         String clientId = component.getClientId(context);
         Map<String, String> map = context.getExternalContext().getRequestParameterMap();
-        LOG.atDebug()
+        log.atDebug()
             .setMessage("decode({}) --> {}")
             .addArgument(clientId)
             .addArgument(() -> map.containsKey(clientId))
@@ -130,7 +131,7 @@ public class FormRenderer extends AbstractRenderer {
 
         // Look up attribute values we need
         String clientId = component.getClientId(context);
-        LOG.debug("encodeBegin({})", clientId);
+        log.debug("encodeBegin({})", clientId);
         String styleClass = Utils.getMapValue(String.class,
                 component.getAttributes(), "styleClass");
 
@@ -202,7 +203,7 @@ public class FormRenderer extends AbstractRenderer {
             throw new NullPointerException();
         }
         String clientId = component.getClientId(context);
-        LOG.debug("encodeEnd({})", clientId);
+        log.debug("encodeEnd({})", clientId);
         ResponseWriter writer = context.getResponseWriter();
 
         // Render the hidden variable our decode() method uses to detect submits
@@ -290,7 +291,7 @@ public class FormRenderer extends AbstractRenderer {
         String actionURL =
             context.getApplication().getViewHandler().
             getActionURL(context, context.getViewRoot().getViewId());
-        LOG.trace("getActionURL({}) --> {}", context.getViewRoot().getViewId(), actionURL);
+        log.trace("getActionURL({}) --> {}", context.getViewRoot().getViewId(), actionURL);
         return (context.getExternalContext().encodeActionURL(actionURL));
 
     }

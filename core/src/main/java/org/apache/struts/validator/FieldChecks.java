@@ -54,9 +54,10 @@ public class FieldChecks implements Serializable {
     private static final long serialVersionUID = 6466045187316462715L;
 
     /**
-     * Commons Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(FieldChecks.class);
+    private final static Logger LOG =
+        LoggerFactory.getLogger(FieldChecks.class);
 
     /**
      * The message resources for this package.

@@ -56,9 +56,9 @@ public final class LogonAction extends Action {
 
 
     /**
-     * The <code>Log</code> instance for this application.
+     * The {@code Log} instance for this class.
      */
-    private Logger log =
+    private final static Logger LOG =
         LoggerFactory.getLogger(LogonAction.class);
 
 
@@ -117,7 +117,7 @@ public final class LogonAction extends Action {
     // Save our logged-in user in the session
     HttpSession session = request.getSession();
     session.setAttribute(Constants.USER_KEY, user);
-    log.debug("LogonAction: User '{}' logged on in session {}",
+    LOG.debug("LogonAction: User '{}' logged on in session {}",
         user.getUsername(), session.getId());
 
         // Remove the obsolete form bean

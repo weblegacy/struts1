@@ -16,6 +16,13 @@
  */
 package org.apache.struts.apps.mailreader.actions;
 
+import java.lang.reflect.InvocationTargetException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
@@ -23,12 +30,8 @@ import org.apache.struts.action.ActionMapping;
 import org.apache.struts.apps.mailreader.Constants;
 import org.apache.struts.apps.mailreader.dao.Subscription;
 import org.apache.struts.apps.mailreader.dao.User;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import java.lang.reflect.InvocationTargetException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>
@@ -37,6 +40,12 @@ import java.lang.reflect.InvocationTargetException;
  * </p>
  */
 public final class SubscriptionAction extends BaseAction {
+
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final static Logger LOG =
+        LoggerFactory.getLogger(SubscriptionAction.class);
 
     // --- Public Constants --
 
@@ -86,12 +95,9 @@ public final class SubscriptionAction extends BaseAction {
             subscription = null;
         }
 
-        if ((subscription == null) && (log.isTraceEnabled())) {
-            log.trace(
-                    " No subscription for user "
-                            + user.getUsername()
-                            + " and host "
-                            + host);
+        if (subscription == null) {
+            LOG.trace(" No subscription for user {} and host {}",
+                user.getUsername(), host);
         }
 
         return subscription;
@@ -109,9 +115,7 @@ public final class SubscriptionAction extends BaseAction {
     private void doPopulate(Subscription subscription, ActionForm form)
             throws ServletException {
 
-        if (log.isTraceEnabled()) {
-            log.trace(Constants.LOG_POPULATE_SUBSCRIPTION + subscription);
-        }
+        LOG.trace("{}{}", Constants.LOG_POPULATE_SUBSCRIPTION, subscription);
 
         try {
             PropertyUtils.copyProperties(subscription, form);
@@ -120,10 +124,10 @@ public final class SubscriptionAction extends BaseAction {
             if (t == null) {
                 t = e;
             }
-            log.error(LOG_SUBSCRIPTION_POPULATE, t);
+            LOG.error(LOG_SUBSCRIPTION_POPULATE, t);
             throw new ServletException(LOG_SUBSCRIPTION_POPULATE, t);
         } catch (Throwable t) {
-            log.error(LOG_SUBSCRIPTION_POPULATE, t);
+            LOG.error(LOG_SUBSCRIPTION_POPULATE, t);
             throw new ServletException(LOG_SUBSCRIPTION_POPULATE, t);
         }
     }
@@ -142,9 +146,7 @@ public final class SubscriptionAction extends BaseAction {
 
         final String title = Constants.EDIT;
 
-        if (log.isTraceEnabled()) {
-            log.trace(Constants.LOG_POPULATE_FORM + subscription.getHost());
-        }
+        LOG.trace("{}{}", Constants.LOG_POPULATE_FORM, subscription.getHost());
 
         try {
             PropertyUtils.copyProperties(form, subscription);
@@ -154,10 +156,10 @@ public final class SubscriptionAction extends BaseAction {
             if (t == null) {
                 t = e;
             }
-            log.error(LOG_SUBSCRIPTION_POPULATE, t);
+            LOG.error(LOG_SUBSCRIPTION_POPULATE, t);
             throw new ServletException(LOG_SUBSCRIPTION_POPULATE, t);
         } catch (Throwable t) {
-            log.error(LOG_SUBSCRIPTION_POPULATE, t);
+            LOG.error(LOG_SUBSCRIPTION_POPULATE, t);
             throw new ServletException(LOG_SUBSCRIPTION_POPULATE, t);
         }
     }
@@ -185,14 +187,8 @@ public final class SubscriptionAction extends BaseAction {
         final String method = Constants.DELETE;
         doLogProcess(mapping, method);
 
-        if (log.isTraceEnabled()) {
-            log.trace(
-                    " Deleting subscription to mail server '"
-                            + subscription.getHost()
-                            + "' for user '"
-                            + user.getUsername()
-                            + "'");
-        }
+        LOG.trace(" Deleting subscription to mail server '{}' for user '{}'",
+            subscription.getHost(), user.getUsername());
 
         boolean missingAttributes = ((user == null) || (subscription == null));
         if (missingAttributes) {
@@ -338,5 +334,4 @@ public final class SubscriptionAction extends BaseAction {
 
         return doFindSuccess(mapping);
     }
-
 }

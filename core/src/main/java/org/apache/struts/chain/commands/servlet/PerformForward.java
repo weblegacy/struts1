@@ -47,7 +47,12 @@ import org.slf4j.LoggerFactory;
  * @version $Rev$ $Date$
  */
 public class PerformForward extends AbstractPerformForward {
-    private static final Logger LOG = LoggerFactory.getLogger(PerformForward.class);
+
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final Logger log =
+        LoggerFactory.getLogger(PerformForward.class);
 
     // ------------------------------------------------------- Protected Methods
 
@@ -106,7 +111,7 @@ public class PerformForward extends AbstractPerformForward {
     private void handleAsForward(String uri, ServletContext servletContext, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = servletContext.getRequestDispatcher(uri);
 
-        LOG.debug("Forwarding to {}", uri);
+        log.debug("Forwarding to {}", uri);
 
         rd.forward(request, response);
     }
@@ -116,7 +121,7 @@ public class PerformForward extends AbstractPerformForward {
             uri = request.getContextPath() + uri;
         }
 
-        LOG.debug("Redirecting to {}", uri);
+        log.debug("Redirecting to {}", uri);
 
         response.sendRedirect(response.encodeRedirectURL(uri));
     }
@@ -130,7 +135,7 @@ public class PerformForward extends AbstractPerformForward {
             return;
         }
 
-        LOG.debug("Including {}", uri);
+        log.debug("Including {}", uri);
 
         rd.include(request, response);
     }

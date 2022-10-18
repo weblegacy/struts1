@@ -42,10 +42,13 @@ import org.slf4j.LoggerFactory;
  * Unit tests for the ValidWhen Parser/Lexer.
  */
 public class TestValidWhen {
+
     /**
-     * All logging goes through this logger
+     * The {@code Log} instance for this class.
      */
-    private static Logger LOG = LoggerFactory.getLogger(TestValidWhen.class);
+    private final Logger log =
+        LoggerFactory.getLogger(TestValidWhen.class);
+
     protected PojoBean testBean;
 
     @BeforeEach
@@ -302,7 +305,7 @@ public class TestValidWhen {
         } catch (Exception ex) {
 //            System.out.println("Exception: " + ex);
 //            ex.printStackTrace();
-            LOG.error("Parsing {} for property '{}'", test, property, ex);
+            log.error("Parsing {} for property '{}'", test, property, ex);
             fail("Parsing " + test + " threw " + ex);
         }
 

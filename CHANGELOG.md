@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Standardize log variables
 * Replace `commons-logging` with `slf4j` and `slf4j-simple`
 * Apps: Replace `commons-logging` with `slf4j`
 * Faces: Replace `commons-logging` with `slf4j`

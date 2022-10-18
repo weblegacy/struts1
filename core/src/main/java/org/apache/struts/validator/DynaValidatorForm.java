@@ -55,13 +55,15 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.1
  */
 public class DynaValidatorForm extends DynaActionForm implements DynaBean,
-    Serializable {
-    private static final long serialVersionUID = -8296689613326613142L;
+        Serializable {
+
+    private static final long serialVersionUID = -3390223591247112687L;
 
     /**
-     * Commons Logging instance.
+     * The {@code Log} instance for this class.
      */
-    private static Logger LOG = LoggerFactory.getLogger(DynaValidatorForm.class);
+    private final Logger log =
+        LoggerFactory.getLogger(DynaValidatorForm.class);
 
     /**
      * The results returned from the validation performed by the
@@ -124,7 +126,7 @@ public class DynaValidatorForm extends DynaActionForm implements DynaBean,
         try {
             validatorResults = validator.validate();
         } catch (ValidatorException e) {
-            LOG.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
         }
 
         return errors;
@@ -179,7 +181,7 @@ public class DynaValidatorForm extends DynaActionForm implements DynaBean,
             try {
                 p = (Integer) props.get("page");
             } catch (ClassCastException e) {
-                LOG.error("Dyna 'page' property must be of type java.lang.Integer.",
+                log.error("Dyna 'page' property must be of type java.lang.Integer.",
                     e);
                 throw e;
             }

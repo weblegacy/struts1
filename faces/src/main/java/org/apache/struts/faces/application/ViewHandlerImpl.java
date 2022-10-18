@@ -51,9 +51,10 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
 
 
     /**
-     * The {@code LOG} instance for this class.
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG = LoggerFactory.getLogger(ViewHandlerImpl.class);
+    private final Logger log =
+        LoggerFactory.getLogger(ViewHandlerImpl.class);
 
 
     // ------------------------------------------------------ Instance Variables
@@ -75,7 +76,7 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
      * @param oldViewHandler {@code ViewHandler} to be decorated
      */
     public ViewHandlerImpl(ViewHandler oldViewHandler) {
-        LOG.debug("Creating ViewHandler instance, wrapping handler {}",
+        log.debug("Creating ViewHandler instance, wrapping handler {}",
             oldViewHandler);
         this.oldViewHandler = oldViewHandler;
     }
@@ -109,13 +110,13 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
     public void renderView(FacesContext context, UIViewRoot viewToRender)
             throws IOException, FacesException {
 
-        LOG.debug("renderView({})", viewToRender.getViewId());
+        log.debug("renderView({})", viewToRender.getViewId());
         ExternalContext econtext = context.getExternalContext();
         if (econtext.getSession(false) != null) {
             Locale locale = (Locale)
                 econtext.getSessionMap().get(Globals.LOCALE_KEY);
             if (locale != null) {
-                LOG.trace("Setting view locale to {}", locale);
+                log.trace("Setting view locale to {}", locale);
                 viewToRender.setLocale(locale);
             }
         }

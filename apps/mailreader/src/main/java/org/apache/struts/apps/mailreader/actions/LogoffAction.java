@@ -30,6 +30,8 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.apps.mailreader.Constants;
 import org.apache.struts.apps.mailreader.dao.User;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p>
@@ -39,6 +41,12 @@ import org.apache.struts.apps.mailreader.dao.User;
  * @version $Rev$ $Date$
  */
 public final class LogoffAction extends BaseAction {
+
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private final static Logger LOG =
+        LoggerFactory.getLogger(LogoffAction.class);
 
     // See superclass for Javadoc
     public ActionForward execute(
@@ -52,10 +60,10 @@ public final class LogoffAction extends BaseAction {
         HttpSession session = request.getSession();
         User user = doGetUser(session);
         if (user != null) {
-            log.debug("LogoffAction: User '{}' logged off in session {}",
+            LOG.debug("LogoffAction: User '{}' logged off in session {}",
                 user.getUsername(), session.getId());
         } else {
-            log.debug("LogoffActon: User logged off in session {}",
+            LOG.debug("LogoffActon: User logged off in session {}",
                 session.getId());
         }
 

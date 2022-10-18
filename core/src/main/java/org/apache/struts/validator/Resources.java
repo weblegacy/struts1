@@ -51,6 +51,7 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.1
  */
 public class Resources {
+
     /**
      * The message resources for this package.
      */
@@ -59,9 +60,10 @@ public class Resources {
             "org.apache.struts.validator.LocalStrings");
 
     /**
-     * <p>Commons Logging instance.</p>
+     * The {@code Log} instance for this class.
      */
-    private static Logger LOG = LoggerFactory.getLogger(Resources.class);
+    private final static Logger LOG =
+        LoggerFactory.getLogger(Resources.class);
 
     /**
      * Resources key the <code>ServletContext</code> is stored under.

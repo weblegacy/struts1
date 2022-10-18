@@ -33,9 +33,9 @@ import org.slf4j.LoggerFactory;
 public abstract class ActionCommandBase implements ActionCommand {
 
     /**
-     * <p> Provide Commons Logging instance for this class. </p>
+     * The {@code Log} instance for this class.
      */
-    private static final Logger LOG =
+    private final Logger log =
         LoggerFactory.getLogger(ActionCommandBase.class);
 
     // See interface for Javadoc
@@ -45,7 +45,7 @@ public abstract class ActionCommandBase implements ActionCommand {
     // See interface for Javadoc
     public boolean execute(Context context)
         throws Exception {
-        LOG.debug("Executing {}", getClass().getName());
+        log.debug("Executing {}", getClass().getName());
         return execute((ActionContext) context);
     }
 }

@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Add missing slf4j-simple to integration-tests
 * Standardize log variables
 * Replace `commons-logging` with `slf4j` and `slf4j-simple`
 * Apps: Replace `commons-logging` with `slf4j`

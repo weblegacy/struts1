@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Upgrade `web.xml`s of `apps` from 2.5 to 3.0
 * Correct typos
 * Remove some `SuppressWarnings`
 * Bump `servlet-api` from 2.5 to 3.0.1

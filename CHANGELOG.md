@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Use `tomcat` 7.0.109 instead 6.0.53 for integration-tests
 * Update `README.md` for next release
 * Bump `spotbugs-annotations` from 4.7.2 to 4.7.3
 * Bump `groovy` from 4.0.5 to 4.0.6

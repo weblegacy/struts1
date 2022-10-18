@@ -109,11 +109,11 @@
                <artifactId>cargo-maven3-plugin</artifactId>
                <configuration>
                   <container>
-                     <containerId>tomcat6x</containerId>
+                     <containerId>tomcat7x</containerId>
                      <artifactInstaller>
                         <groupId>org.apache.tomcat</groupId>
-                        <artifactId>apache-tomcat</artifactId>
-                        <version>6.0.53</version>
+                        <artifactId>tomcat</artifactId>
+                        <version>7.0.109</version>
                      </artifactInstaller>
                   </container>
                   <configuration>

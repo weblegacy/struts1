@@ -365,7 +365,7 @@
         <javaVersion>8</javaVersion>
         <javaTestVersion>8</javaTestVersion>
         <myfacesVersion>1.2.12</myfacesVersion>
-        <groovyVersion>4.0.5</groovyVersion>
+        <groovyVersion>4.0.6</groovyVersion>
         <seleniumVersion>4.5.0</seleniumVersion>
         <slf4jVersion>2.0.3</slf4jVersion>
         <taglibsVersion>1.2.5</taglibsVersion>

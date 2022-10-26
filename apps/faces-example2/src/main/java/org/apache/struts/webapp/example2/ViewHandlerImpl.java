@@ -84,7 +84,7 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
      * @return the {@code ViewHandler} instance that we are decorating.
      */
     @Override
-    protected ViewHandler getWrapped() {
+    public ViewHandler getWrapped() {
         return oldViewHandler;
     }
 

@@ -25,9 +25,9 @@ package org.apache.struts.faces.renderer;
 import java.io.IOException;
 import java.util.Iterator;
 
-import javax.faces.component.NamingContainer;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIForm;
+import javax.faces.component.UINamingContainer;
 import javax.faces.component.UIParameter;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
@@ -167,7 +167,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
 
         // If this is the first nested command link inside this form,
         // render a hidden variable to identify which link did the submit
-        String key = formClientId + NamingContainer.SEPARATOR_CHAR + TOKEN;
+        String key = formClientId + UINamingContainer.getSeparatorChar(context) + TOKEN;
         if (context.getExternalContext().getRequestMap().get(key) == null) {
             writer.startElement("input", null);
             writer.writeAttribute("name", TOKEN, null);

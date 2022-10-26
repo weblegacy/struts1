@@ -83,7 +83,7 @@
           <artifactId>slf4j-simple</artifactId>
           <scope>test</scope>
       </dependency>
-      <!-- Needed for commons-beanutils, commons-validator and myfaces-api -->
+      <!-- Needed for commons-beanutils and commons-validator -->
       <dependency>
           <groupId>org.slf4j</groupId>
           <artifactId>jcl-over-slf4j</artifactId>

@@ -27,7 +27,7 @@ import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 import javax.faces.webapp.UIComponentELTag;
 
-import org.apache.myfaces.shared_impl.taglib.UIComponentELTagUtils;
+import org.apache.myfaces.shared.taglib.UIComponentELTagUtils;
 
 
 /**

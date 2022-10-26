@@ -108,7 +108,7 @@
          <groupId>org.slf4j</groupId>
          <artifactId>slf4j-simple</artifactId>
       </dependency>
-      <!-- Needed for commons-beanutils, commons-digester and myfaces-api -->
+      <!-- Needed for commons-beanutils and commons-digester -->
       <dependency>
          <groupId>org.slf4j</groupId>
          <artifactId>jcl-over-slf4j</artifactId>

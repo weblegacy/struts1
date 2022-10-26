@@ -25,8 +25,8 @@ package org.apache.struts.faces.renderer;
 import java.io.IOException;
 import java.util.Map;
 
-import javax.faces.component.NamingContainer;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UINamingContainer;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.servlet.http.HttpSession;
@@ -247,7 +247,7 @@ public class FormRenderer extends AbstractRenderer {
         sb.append(clientId);
         sb.append("\"].elements[\"");
         sb.append(component.getClientId(context));
-        sb.append(NamingContainer.SEPARATOR_CHAR);
+        sb.append(UINamingContainer.getSeparatorChar(context));
         sb.append(focus);
         sb.append("\"]");
         String focusControl = sb.toString();

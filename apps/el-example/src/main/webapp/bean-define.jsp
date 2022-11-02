@@ -18,6 +18,7 @@
 <%@ page language="java" %>
 <%@ taglib uri="http://struts.apache.org/tags-html-el" prefix="html-el" %>
 <%@ taglib uri="http://struts.apache.org/tags-bean-el" prefix="bean-el" %>
+<%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html-el:html>
 <head>

@@ -59,12 +59,12 @@
                     value="#{logonForm.password}"/>
 
     <h:commandButton   id="submit"
-                     type="SUBMIT"
+                     type="submit"
                styleClass="command-single"
                     value="Log On"/>
 
     <h:commandButton   id="reset"
-                     type="RESET"
+                     type="reset"
                styleClass="command-single"
                     value="Reset"/>
 

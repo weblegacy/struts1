@@ -154,16 +154,16 @@
                     value="#{registrationForm.replyToAddress}"/>
 
     <h:commandButton   id="submit"
-                     type="SUBMIT"
+                     type="submit"
                styleClass="command-single"
                     value="Save"/>                        <%-- FIXME - i18n --%>
 
     <h:panelGroup>
       <h:commandButton id="reset"
-                     type="RESET"
+                     type="reset"
                styleClass="command-multiple"
                     value="Reset"/>                     <%-- FIXME - i18n --%>
-      <h:commandButton id="cancel" type="SUBMIT"
+      <h:commandButton id="cancel" type="submit"
                   onclick="bCancel=true;"
                styleClass="command-multiple"
                     value="Cancel"/>                    <%-- FIXME - i18n --%>

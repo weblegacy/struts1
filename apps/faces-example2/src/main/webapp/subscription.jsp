@@ -161,14 +161,14 @@
       <c:when        test="${subscriptionForm.action == 'Delete'}">
         <h:commandButton
                        id="confirm"
-                     type="SUBMIT"
+                     type="submit"
                styleClass="command-single"
                     value="Confirm"/>  <%-- FIXME - i18n --%>
       </c:when>
       <c:otherwise>
         <h:commandButton
                        id="save"
-                     type="SUBMIT"
+                     type="submit"
                styleClass="command-single"
                     value="Save"/>     <%-- FIXME - i18n --%>
       </c:otherwise>
@@ -176,11 +176,11 @@
 
     <h:panelGroup      id="reset_and_cancel">
       <h:commandButton id="reset"
-                     type="RESET"
+                     type="reset"
                styleClass="command-multiple"
                     value="Reset"/>       <%-- FIXME - i18n --%>
       <h:commandButton id="cancel"
-                     type="SUBMIT"
+                     type="submit"
                   onclick="bCancel=true;"
                styleClass="command-multiple"
                     value="Cancel"/>     <%-- FIXME - i18n --%>

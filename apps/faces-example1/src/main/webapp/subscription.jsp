@@ -173,14 +173,14 @@
       <c:when        test="${subscriptionForm.action == 'Delete'}">
         <h:commandButton
                        id="confirm"
-                     type="SUBMIT"
+                     type="submit"
                styleClass="submit"
                     value="#{messages['button.confirm']}"/>
       </c:when>
       <c:otherwise>
         <h:commandButton
                        id="save"
-                     type="SUBMIT"
+                     type="submit"
                styleClass="submit"
                     value="#{messages['button.save']}"/>
       </c:otherwise>
@@ -188,11 +188,11 @@
 
     <h:panelGroup      id="reset_and_cancel">
       <h:commandButton id="reset"
-                     type="RESET"
+                     type="reset"
                styleClass="reset"
                     value="#{messages['button.reset']}"/>
       <h:commandButton id="cancel"
-                     type="SUBMIT"
+                     type="submit"
                styleClass="cancel"
                   onclick="bCancel=true;"
                     value="#{messages['button.cancel']}"/>

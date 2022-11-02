@@ -165,17 +165,17 @@
                     value="#{registrationForm.replyToAddress}"/>
 
     <h:commandButton   id="submit"
-                     type="SUBMIT"
+                     type="submit"
                styleClass="submit"
                     value="#{messages['button.save']}"/>
 
     <h:panelGroup>
       <h:commandButton id="reset"
-                     type="RESET"
+                     type="reset"
                styleClass="reset"
                     value="#{messages['button.reset']}"/>
       <h:commandButton id="cancel"
-                     type="SUBMIT"
+                     type="submit"
                styleClass="cancel"
                   onclick="bCancel=true;"
                     value="#{messages['button.cancel']}"/>

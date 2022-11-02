@@ -77,12 +77,12 @@
                     value="#{logonForm.password}"/>
 
     <h:commandButton   id="submit"
-                     type="SUBMIT"
+                     type="submit"
                styleClass="submit"
                     value="#{messages['button.logon']}"/>
 
     <h:commandButton   id="reset"
-                     type="RESET"
+                     type="reset"
                styleClass="reset"
                     value="#{messages['button.reset']}"/>
 

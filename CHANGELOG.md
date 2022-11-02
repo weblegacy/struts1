@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Apps: Add dependencies to resolve jsp-warnings
 * Resolve some jsp-warnings
 * Bump `myfaces` from 1.2.12 to 2.0.25
 * Add javadoc-links to `servlet-api`, `jsp-api` and `el-api`

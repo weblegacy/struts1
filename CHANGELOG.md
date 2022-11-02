@@ -2,13 +2,14 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Add release-notes for version 1.4.2
 * Add section `breaking changes` to release-notes since 1.3.11
 * Add `supportIncrementalBuild`-config to `maven-bundle-plugin` to resolve eclipse-warning
 * Apps: Add dependencies to resolve jsp-warnings
 * Resolve some jsp-warnings
 * Bump `myfaces` from 1.2.12 to 2.0.25
 * Add javadoc-links to `servlet-api`, `jsp-api` and `el-api`
-* Adjustment of dependencies dependencies
+* Adjustment of dependencies
 * Bump `jsp-api` from 2.1 to 2.2.2 and add `el-api` 2.2.5
 * Upgrade `web.xml`s of `apps` from 2.5 to 3.0
 * Correct typos

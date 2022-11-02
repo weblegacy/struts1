@@ -25,17 +25,17 @@
   xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
-        <title>Release Notes (since 1.4.0)</title>
+        <title>Release Notes (since 1.4.1)</title>
     </properties>
     <body>
-        <section name="6.1 Release Notes - Version 1.4.1">
+        <section name="6.1 Release Notes - Version 1.4.2">
 
             <subsection name="Introduction" id="release_notes">
                 <p>
                     This section contains release notes for changes that have
                     taken place to Struts,
                     since the
-                    <a href="release-notes-1_4_0.html">Version 1.4.0</a>
+                    <a href="release-notes-1_4_1.html">Version 1.4.1</a>
                     distribution.
                     To keep up-to-date on all changes to the framework,
                     subscribe to
@@ -63,81 +63,52 @@
 
             <subsection name="Breaking changes" id="break_changes">
                 <ul>
-                    <li>General: Upgrade from <strong>J2EE 1.4</strong> to <strong>JavaEE 5</strong>.
+                    <li>General: Upgrade from <strong>JavaEE 5</strong> to <strong>JavaEE 6</strong>.
                         <ul>
-                            <li>Upgrade <strong>java-version</strong> from 1.4 to 8.</li>
-                            <li>Upgrade <strong>servlet-api</strong> from 2.3 to 2.5.</li>
-                            <li>Upgrade <strong>jsp-api</strong> from 2.0 to 2.1.</li>
-                            <li>Upgrade <strong>jsf</strong> from 1.0 to 1.2.</li>
-                            <li>Upgrade <strong>jstl</strong> from 1.0 to 1.2.</li>
+                            <li>Upgrade <strong>servlet-api</strong> from 2.5 to 3.0.</li>
+                            <li>Upgrade <strong>jsp-api</strong> from 2.1 to 2.2.</li>
+                            <li>Upgrade <strong>jsf</strong> from 1.2 to 2.0.</li>
                         </ul>
                     </li>
-                    <li>Mailreader-DAO: Move it into <strong>struts-apps</strong> and adapt documentations.</li>
-                    <li>
-                        Extras: Prepare <strong>struts-extras</strong> for JPMS -->
-                        change package-names from <strong>org.apache.struts.*</strong>
-                        to <strong>org.apache.struts.extras.*</strong>.</li>
-                    <li>Scripting: Replace <strong>bsf</strong>-dependency with JSR-223 (<strong>javax.script</strong>).</li>
+                    <li>Use <strong>slf4j</strong> instead of <strong>commons-logging</strong> for all logging-tasks.</li>
                 </ul>
             </subsection>
 
             <subsection name="Issue Tracking" id="Highlight">
 <h4>Bug</h4>
 <ul>
-<li>Correct &quot;tld&quot;-files from &quot;faces-examples&quot; and add documentation for them</li>
-<li>Fix groovy-compile-error</li>
-<li>Apps-Blank: Add missing dependency</li>
-<li>Fix: CVE-2016-1181 and CVE-2016-1182</li>
-<li>Fix: CVE-2015-0899 with test-cases</li>
-<li>Fix: CVE-2014-0114 with test-cases</li>
-<li>Some corrections in examples-app</li>
-<li>JavaDoc: Correct links and others</li>
+<li>Add &quot;supportIncrementalBuild&quot;-config to &quot;maven-bundle-plugin&quot; to resolve eclipse-warning</li>
+<li>Resolve some jsp-warnings</li>
 </ul>
 
 <h4>Improvement</h4>
 <ul>
-<li>Move &quot;struts-mailreader-dao&quot; into &quot;struts-apps&quot; and adapt documentations</li>
-<li>Use &quot;struts-mailreader-dao&quot; in &quot;faces-examples&quot;</li>
-<li>Resolve compiler- and javadoc-warnings</li>
-<li>Set java-version to &quot;1.8&quot;</li>
-<li>Apps: JDK8 - Add generics, serialVersionID, for-each-loop, ...</li>
-<li>Change &quot;StringBuffer&quot; to &quot;StringBuilder&quot;</li>
-<li>Apps: HTML5-Updates</li>
-<li>Create &quot;package-info.java&quot; instead of old &quot;package.html&quot;</li>
-<li>Adapt &quot;EvalHelper&quot; to jsp 2.1 and remove &quot;tagObject&quot;-parameter</li>
-<li>Add version to checkin-comment to &quot;maven-scm-publish-plugin&quot;</li>
+<li>Add section &quot;breaking changes&quot; to release-notes since 1.3.11</li>
+<li>Add javadoc-links to &quot;servlet-api&quot;, &quot;jsp-api&quot; and &quot;el-api&quot;</li>
+<li>Adjustment of dependencies</li>
+<li>Remove some &quot;SuppressWarnings&quot;</li>
+<li>Correct typos</li>
+<li>Standardize log variables</li>
 </ul>
 
 <h4>New Feature</h4>
 <ul>
-<li>Prepare &quot;struts-extras&quot; for JPMS (add &quot;extras&quot; to package-name)</li>
-<li>Add &quot;Automatic-Module-Name&quot; to &quot;MANIFEST.MF&quot;-files</li>
-<li>Replace &quot;bsf&quot;-dependency with JSR-223 &quot;javax.script&quot;</li>
+<li>Set minimum JDK-Version to 11 for Maven-building</li>
+<li>Replace &quot;commons-logging&quot; with &quot;slf4j&quot; and &quot;slf4j-simple&quot;</li>
 </ul>
 
 <h4>Task</h4>
 <ul>
-<li>Remove unused dependencies</li>
-<li>Upgrade &quot;spotbugs-annotations&quot; to 4.7.2</li>
-<li>Upgrade &quot;junit-jupiter-api&quot; to 5.9.1</li>
-<li>Upgrade &quot;apache tiles&quot; to 3.0.8, remove JDK-1.4 support dependencies</li>
-<li>Upgrade &quot;antlr&quot; to 4.10.1 and always generate grammar</li>
-<li>Upgrade &quot;groovy&quot; to 4.0.5</li>
-<li>Upgrade &quot;jsf&quot; (&quot;myfaces&quot;) to 1.2.12</li>
-<li>Upgrade &quot;webdrivermanager&quot; to 5.3.0</li>
-<li>Upgrade &quot;taglibs&quot; to 1.2.5</li>
-<li>Upgrade &quot;jsp-api&quot; to 2.1</li>
-<li>Upgrade &quot;servlet-api&quot; to 2.5</li>
-<li>Upgrade &quot;jstl&quot; and &quot;taglibs.standard&quot; to 1.1.2</li>
-<li>Upgrade &quot;selenium-java&quot; to 4.5.0</li>
-<li>Upgrade &quot;commons-digester&quot; to 2.1</li>
-<li>Upgrade &quot;htmlunit&quot; to 2.65.1</li>
-<li>Upgrade &quot;commons-fileupload&quot; to 1.4</li>
-<li>Upgrade &quot;commons-io&quot; to 2.11.0</li>
-<li>Upgrade &quot;commons-validator&quot; to 1.7, add old commons-validator-js from 1.4</li>
-<li>Upgrade &quot;commons-logging&quot; to 1.2</li>
-<li>Upgrade &quot;beanutils&quot; to 1.9.4</li>
-<li>Upgrade &quot;Tomcat5x&quot; to &quot;Tomcat6x&quot;</li>
+<li>Upgrade &quot;web.xml&quot;s of &quot;apps&quot; from 2.5 to 3.0</li>
+<li>Bump &quot;myfaces&quot; from 1.2.12 to 2.0.25</li>
+<li>Bump &quot;jsp-api&quot; from 2.1 to 2.2.2 and add &quot;el-api&quot; 2.2.5</li>
+<li>Bump &quot;servlet-api&quot; from 2.5 to 3.0.1</li>
+<li>Bump &quot;spotbugs-annotations&quot; from 4.7.2 to 4.7.3</li>
+<li>Bump &quot;groovy&quot; from 4.0.5 to 4.0.6</li>
+<li>Use &quot;tomcat&quot; 7.0.109 instead 6.0.53 for integration-tests</li>
+<li>Bump &quot;checkstyle&quot; from 9.3 to 10.3.4</li>
+<li>Bump &quot;antlr&quot; from 4.9.3 to 4.11.1</li>
+<li>Update &quot;README.md&quot; for next release</li>
 </ul>
 </subsection>
 

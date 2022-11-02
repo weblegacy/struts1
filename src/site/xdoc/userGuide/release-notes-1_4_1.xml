@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+    <properties>
+        <title>Release Notes (since 1.4.0)</title>
+    </properties>
+    <body>
+        <section name="6.1 Release Notes - Version 1.4.1">
+
+            <subsection name="Introduction" id="release_notes">
+                <p>
+                    This section contains release notes for changes that have
+                    taken place to Struts,
+                    since the
+                    <a href="release-notes-1_4_0.html">Version 1.4.0</a>
+                    distribution.
+                    To keep up-to-date on all changes to the framework,
+                    subscribe to
+                    the (commits at struts.apache.org) list.
+                    To preview our plans for upcoming changes,
+                    please visit the
+                    <a href="../roadmap.html">Roadmap page.</a>
+                </p>
+                <ul><li>
+                    <b>Notes on upgrading</b>
+                    are maintained in the
+                    <a href="http://wiki.apache.org/struts/StrutsUpgrade">Wiki
+                        Upgrade pages.</a>
+                    The wiki is a community maintained resource - please feel
+                    free to add your
+                    input so that everyone can benefit from the collective
+                    experience.
+                </li></ul>
+                <p>
+                    For the version requirements of each library, see the
+                    <a href="installation.html">Installation chapter.</a>
+                </p>
+
+            </subsection>
+
+            <subsection name="Breaking changes" id="break_changes">
+                <ul>
+                    <li>General: Upgrade from <strong>J2EE 1.4</strong> to <strong>JavaEE 5</strong>.
+                        <ul>
+                            <li>Upgrade <strong>java-version</strong> from 1.4 to 8.</li>
+                            <li>Upgrade <strong>servlet-api</strong> from 2.3 to 2.5.</li>
+                            <li>Upgrade <strong>jsp-api</strong> from 2.0 to 2.1.</li>
+                            <li>Upgrade <strong>jsf</strong> from 1.0 to 1.2.</li>
+                            <li>Upgrade <strong>jstl</strong> from 1.0 to 1.2.</li>
+                        </ul>
+                    </li>
+                    <li>Mailreader-DAO: Move it into <strong>struts-apps</strong> and adapt documentations.</li>
+                    <li>
+                        Extras: Prepare <strong>struts-extras</strong> for JPMS -->
+                        change package-names from <strong>org.apache.struts.*</strong>
+                        to <strong>org.apache.struts.extras.*</strong>.</li>
+                    <li>Scripting: Replace <strong>bsf</strong>-dependency with JSR-223 (<strong>javax.script</strong>).</li>
+                </ul>
+            </subsection>
+
+            <subsection name="Issue Tracking" id="Highlight">
+<h4>Bug</h4>
+<ul>
+<li>Correct &quot;tld&quot;-files from &quot;faces-examples&quot; and add documentation for them</li>
+<li>Fix groovy-compile-error</li>
+<li>Apps-Blank: Add missing dependency</li>
+<li>Fix: CVE-2016-1181 and CVE-2016-1182</li>
+<li>Fix: CVE-2015-0899 with test-cases</li>
+<li>Fix: CVE-2014-0114 with test-cases</li>
+<li>Some corrections in examples-app</li>
+<li>JavaDoc: Correct links and others</li>
+</ul>
+
+<h4>Improvement</h4>
+<ul>
+<li>Move &quot;struts-mailreader-dao&quot; into &quot;struts-apps&quot; and adapt documentations</li>
+<li>Use &quot;struts-mailreader-dao&quot; in &quot;faces-examples&quot;</li>
+<li>Resolve compiler- and javadoc-warnings</li>
+<li>Set java-version to &quot;1.8&quot;</li>
+<li>Apps: JDK8 - Add generics, serialVersionID, for-each-loop, ...</li>
+<li>Change &quot;StringBuffer&quot; to &quot;StringBuilder&quot;</li>
+<li>Apps: HTML5-Updates</li>
+<li>Create &quot;package-info.java&quot; instead of old &quot;package.html&quot;</li>
+<li>Adapt &quot;EvalHelper&quot; to jsp 2.1 and remove &quot;tagObject&quot;-parameter</li>
+<li>Add version to checkin-comment to &quot;maven-scm-publish-plugin&quot;</li>
+</ul>
+
+<h4>New Feature</h4>
+<ul>
+<li>Prepare &quot;struts-extras&quot; for JPMS (add &quot;extras&quot; to package-name)</li>
+<li>Add &quot;Automatic-Module-Name&quot; to &quot;MANIFEST.MF&quot;-files</li>
+<li>Replace &quot;bsf&quot;-dependency with JSR-223 &quot;javax.script&quot;</li>
+</ul>
+
+<h4>Task</h4>
+<ul>
+<li>Remove unused dependencies</li>
+<li>Upgrade &quot;spotbugs-annotations&quot; to 4.7.2</li>
+<li>Upgrade &quot;junit-jupiter-api&quot; to 5.9.1</li>
+<li>Upgrade &quot;apache tiles&quot; to 3.0.8, remove JDK-1.4 support dependencies</li>
+<li>Upgrade &quot;antlr&quot; to 4.10.1 and always generate grammar</li>
+<li>Upgrade &quot;groovy&quot; to 4.0.5</li>
+<li>Upgrade &quot;jsf&quot; (&quot;myfaces&quot;) to 1.2.12</li>
+<li>Upgrade &quot;webdrivermanager&quot; to 5.3.0</li>
+<li>Upgrade &quot;taglibs&quot; to 1.2.5</li>
+<li>Upgrade &quot;jsp-api&quot; to 2.1</li>
+<li>Upgrade &quot;servlet-api&quot; to 2.5</li>
+<li>Upgrade &quot;jstl&quot; and &quot;taglibs.standard&quot; to 1.1.2</li>
+<li>Upgrade &quot;selenium-java&quot; to 4.5.0</li>
+<li>Upgrade &quot;commons-digester&quot; to 2.1</li>
+<li>Upgrade &quot;htmlunit&quot; to 2.65.1</li>
+<li>Upgrade &quot;commons-fileupload&quot; to 1.4</li>
+<li>Upgrade &quot;commons-io&quot; to 2.11.0</li>
+<li>Upgrade &quot;commons-validator&quot; to 1.7, add old commons-validator-js from 1.4</li>
+<li>Upgrade &quot;commons-logging&quot; to 1.2</li>
+<li>Upgrade &quot;beanutils&quot; to 1.9.4</li>
+<li>Upgrade &quot;Tomcat5x&quot; to &quot;Tomcat6x&quot;</li>
+</ul>
+</subsection>
+
+        </section>
+        <section name="">
+            <p class="right">Next:
+                <a href="installation.html">Installation</a>
+            </p>
+        </section>
+    </body>
+</document>

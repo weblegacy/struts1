@@ -783,6 +783,7 @@
                         <DynamicImport-Package>${struts.osgi.dynamicImport}</DynamicImport-Package>
                         <Bundle-DocURL>${project.url}</Bundle-DocURL>
                     </instructions>
+                    <supportIncrementalBuild>true</supportIncrementalBuild>
                 </configuration>
                 <executions>
                     <execution>

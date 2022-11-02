@@ -29,9 +29,9 @@ import org.apache.struts.tiles.ComponentDefinition;
 import org.apache.struts.tiles.UntypedAttribute;
 
 /**
- * This is the tag handler for &lt;tiles:definition&gt;, which defines
+ * This is the tag handler for <code>&lt;tiles:definition&gt;</code>, which defines
  * a tiles (or template / component). Definition is put in requested context and can be
- * used in &lt;tiles:insert&gt.
+ * used in <code>&lt;tiles:insert&gt;</code>.
  *
  * @version $Rev$ $Date$
  */

@@ -71,7 +71,7 @@ public abstract class AbstractMappingDispatcher extends AbstractDispatcher {
      * Resolves the method name by obtaining the <code>parameter</code>
      * attribute from the {@link ActionMapping}.
      *
-     * @param context {@inheritDoc}
+     * @param context the current action context
      * @throws IllegalStateException if the parameter cannot be resolved
      * @return the parameter attribute value
      */

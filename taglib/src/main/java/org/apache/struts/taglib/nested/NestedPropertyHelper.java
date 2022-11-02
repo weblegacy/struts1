@@ -72,7 +72,8 @@ public class NestedPropertyHelper {
      * are nesting against.</p>
      *
      * <p>The requirement of the tag itself could be removed in the future,
-     * but is required if support for the <html:form> tag is maintained.</p>
+     * but is required if support for the <code>&lt;html:form&gt;</code> tag
+     * is maintained.</p>
      *
      * @param request object to fetch the bean reference from
      * @param nested  tag from which to start the search from

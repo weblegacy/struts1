@@ -43,7 +43,7 @@ import org.slf4j.LoggerFactory;
  * <p>Passing a POJO JavaBean to the constructor will automatically create an
  * associated <code>WrapDynaBean</code>. One use for this would be to migrate
  * <i>view</i> objects from an existing system which, for the usual reasons,
- * can't be changed to extend <ActionForm</code>.</p>
+ * can't be changed to extend <code>ActionForm</code>.</p>
  *
  * <p>This form is based on the standard struts <code>ValidatorForm</code> for
  * use with the <i>Validator</i> framework and validates either using the

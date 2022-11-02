@@ -79,6 +79,7 @@
 <ul>
 <li>Add &quot;supportIncrementalBuild&quot;-config to &quot;maven-bundle-plugin&quot; to resolve eclipse-warning</li>
 <li>Resolve some jsp-warnings</li>
+<li>Correct some javadoc-warnings</li>
 </ul>
 
 <h4>Improvement</h4>

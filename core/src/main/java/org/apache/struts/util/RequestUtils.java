@@ -369,7 +369,7 @@ public class RequestUtils {
      * populating bean properties. If the request's content type is
      * "multipart/form-data" and the method is "POST", the
      * <code>HttpServletRequest</code> object will be wrapped in a
-     * <code>MultipartRequestWrapper</code object.</p>
+     * <code>MultipartRequestWrapper</code> object.</p>
      *
      * @param bean    The JavaBean whose properties are to be set
      * @param prefix  The prefix (if any) to be prepend to bean property names

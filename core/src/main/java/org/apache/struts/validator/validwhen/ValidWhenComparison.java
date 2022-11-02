@@ -32,14 +32,14 @@ import java.util.Map;
  * @since Struts 1.4.1
  */
 public enum ValidWhenComparison {
-    /** Compare V1 <= V2 */
+    /** Compare V1 &lt;= V2 */
     LESS_EQUAL(ValidWhenParser.LESSEQUALSIGN) {
         @Override
         protected boolean compareTo(int compareTo) {
             return compareTo <= 0;
         }
     },
-    /** Compare V1 < V2 */
+    /** Compare V1 &lt; V2 */
     LESS_THAN(ValidWhenParser.LESSTHANSIGN) {
         @Override
         protected boolean compareTo(int compareTo) {
@@ -58,14 +58,14 @@ public enum ValidWhenComparison {
             return compareTo == 0;
         }
     },
-    /** Compare V1 > V2 */
+    /** Compare V1 &gt; V2 */
     GREATER_THAN(ValidWhenParser.GREATERTHANSIGN) {
         @Override
         protected boolean compareTo(int compareTo) {
             return compareTo > 0;
         }
     },
-    /** Compare V1 >= V2 */
+    /** Compare V1 &gt;= V2 */
     GREATER_EQUAL(ValidWhenParser.GREATEREQUALSIGN) {
         @Override
         protected boolean compareTo(int compareTo) {

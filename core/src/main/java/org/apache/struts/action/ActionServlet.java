@@ -1776,7 +1776,7 @@ public class ActionServlet extends HttpServlet {
 
     /**
      * <p>Initialize the servlet mapping under which our controller servlet is
-     * being accessed.  This will be used in the <code>&html:form&gt;</code>
+     * being accessed.  This will be used in the <code>&lt;html:form&gt;</code>
      * tag to generate correct destination URLs for form submissions.</p>
      *
      * @throws ServletException if error happens while scanning web.xml

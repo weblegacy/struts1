@@ -139,7 +139,7 @@ public abstract class ActionForm implements Serializable {
     // --------------------------------------------------------- Public Methods
 
     /**
-     * <p>>Can be used to reset all bean properties to their default state.
+     * <p>Can be used to reset all bean properties to their default state.
      * This method is called before the properties are repopulated by the
      * controller.</p>
      *

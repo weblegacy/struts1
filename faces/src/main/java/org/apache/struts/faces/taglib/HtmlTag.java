@@ -78,7 +78,7 @@ public class HtmlTag extends AbstractFacesTag {
 
     /**
      * <p>Override <code>doStartTag()</code> method to also set a page
-     * context attribute if <code>xhtml</code> is <code>>true</code>.</p>
+     * context attribute if <code>xhtml</code> is <code>true</code>.</p>
      */
     public int doStartTag() throws JspException {
 

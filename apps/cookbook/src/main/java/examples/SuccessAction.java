@@ -43,7 +43,7 @@ import org.apache.struts.action.ActionMapping;
  *    &lt;action path="/prepareView"
  *            type="examples.SuccessAction"&gt;
  *        &lt;forward name="success" path="/jsp/View.jsp"/&gt;
- *    &lt/action&gt;
+ *    &lt;/action&gt;
  * </pre>
  *
  * <p>You could create a link to the view (via the Action) as follows:</p>

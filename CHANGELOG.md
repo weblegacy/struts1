@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Add section `breaking changes` to release-notes since 1.3.11
 * Add `supportIncrementalBuild`-config to `maven-bundle-plugin` to resolve eclipse-warning
 * Apps: Add dependencies to resolve jsp-warnings
 * Resolve some jsp-warnings

@@ -61,6 +61,26 @@
 
             </subsection>
 
+            <subsection name="Breaking changes" id="break_changes">
+                <ul>
+                    <li>General: Upgrade from <strong>J2EE 1.4</strong> to <strong>JavaEE 5</strong>.
+                        <ul>
+                            <li>Upgrade <strong>java-version</strong> from 1.4 to 8.</li>
+                            <li>Upgrade <strong>servlet-api</strong> from 2.3 to 2.5.</li>
+                            <li>Upgrade <strong>jsp-api</strong> from 2.0 to 2.1.</li>
+                            <li>Upgrade <strong>jsf</strong> from 1.0 to 1.2.</li>
+                            <li>Upgrade <strong>jstl</strong> from 1.0 to 1.2.</li>
+                        </ul>
+                    </li>
+                    <li>Mailreader-DAO: Move it into <strong>struts-apps</strong> and adapt documentations.</li>
+                    <li>
+                        Extras: Prepare <strong>struts-extras</strong> for JPMS -->
+                        change package-names from <strong>org.apache.struts.*</strong>
+                        to <strong>org.apache.struts.extras.*</strong>.</li>
+                    <li>Scripting: Replace <strong>bsf</strong>-dependency with JSR-223 (<strong>javax.script</strong>).</li>
+                </ul>
+            </subsection>
+
             <subsection name="Issue Tracking" id="Highlight">
 <h4>Bug</h4>
 <ul>

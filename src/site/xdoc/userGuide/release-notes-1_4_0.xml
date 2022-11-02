@@ -61,6 +61,10 @@
 
             </subsection>
 
+            <subsection name="Breaking changes" id="break_changes">
+                <p>No breaking changes.</p>
+            </subsection>
+
             <subsection name="Issue Tracking" id="Highlight">
 <h4>Bug</h4>
 <ul>

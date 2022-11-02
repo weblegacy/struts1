@@ -61,6 +61,18 @@
 
             </subsection>
 
+            <subsection name="Breaking changes" id="break_changes">
+                <p>
+                    At some very rare situations: When you use the class
+                    <strong>org.apache.struts.mock.TestMockBase</strong>:
+                    This class is moved to test-classes.</p>
+                <p>The only real breaking change is for Maven-users:</p>
+                <p><strong>Old</strong> Maven GroupId:</p>
+                <source>org.apache.struts</source>
+                <p><strong>New</strong> Maven GroupId:</p>
+                <source>io.github.weblegacy</source>
+            </subsection>
+
             <subsection name="Issue Tracking" id="Highlight">
 <h4>Bug</h4>
 <ul>

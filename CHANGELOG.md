@@ -2,6 +2,7 @@
 
 ## 1.4.2 / 2022-11-03
 
+* Correct typo in `release-notes`
 * Set Version to 1.4.2
 * Update `roadmap.xml`
 * Update version- and upgrade-status in `README.md`

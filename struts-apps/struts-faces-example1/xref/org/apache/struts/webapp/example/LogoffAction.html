@@ -35,13 +35,13 @@
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> javax.servlet.http.HttpServletResponse;
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> javax.servlet.http.HttpSession;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.logging.Log;
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.logging.LogFactory;
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.Action;
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.ActionForm;
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.ActionForward;
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.ActionMapping;
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.apps.mailreader.dao.User;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.Action;
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.ActionForm;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.ActionForward;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.ActionMapping;
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.apps.mailreader.dao.User;
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">import</strong> org.slf4j.Logger;
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">import</strong> org.slf4j.LoggerFactory;
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>  
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>  
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">/**</em>
@@ -59,10 +59,10 @@
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>  
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>  
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment">     * The &lt;code&gt;Log&lt;/code&gt; instance for this application.</em>
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment">     * The {@code Log} instance for this class.</em>
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">private</strong> Log log =
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>          LogFactory.getLog(<span class="jxr_string">"org.apache.struts.webapp.Example"</span>);
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">static</strong> Logger LOG =
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          LoggerFactory.getLogger(LogoffAction.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>  
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>  
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>      <em class="jxr_comment">// --------------------------------------------------------- Public Methods</em>
@@ -94,27 +94,21 @@
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>  
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>      <em class="jxr_comment">// Process this user logoff</em>
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>      <strong class="jxr_keyword">if</strong> (user != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L89" href="#L89">89</a>              <strong class="jxr_keyword">if</strong> (log.isDebugEnabled()) {
-<a class="jxr_linenumber" name="L90" href="#L90">90</a>                  log.debug(<span class="jxr_string">"LogoffAction: User '"</span> + user.getUsername() +
-<a class="jxr_linenumber" name="L91" href="#L91">91</a>                            <span class="jxr_string">"' logged off in session "</span> + session.getId());
-<a class="jxr_linenumber" name="L92" href="#L92">92</a>              }
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>      } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="L94" href="#L94">94</a>              <strong class="jxr_keyword">if</strong> (log.isDebugEnabled()) {
-<a class="jxr_linenumber" name="L95" href="#L95">95</a>                  log.debug(<span class="jxr_string">"LogoffActon: User logged off in session "</span> +
-<a class="jxr_linenumber" name="L96" href="#L96">96</a>                            session.getId());
-<a class="jxr_linenumber" name="L97" href="#L97">97</a>              }
-<a class="jxr_linenumber" name="L98" href="#L98">98</a>      }
-<a class="jxr_linenumber" name="L99" href="#L99">99</a>      session.removeAttribute(Constants.SUBSCRIPTION_KEY);
-<a class="jxr_linenumber" name="L100" href="#L100">100</a>     session.removeAttribute(Constants.USER_KEY);
-<a class="jxr_linenumber" name="L101" href="#L101">101</a>     session.invalidate();
-<a class="jxr_linenumber" name="L102" href="#L102">102</a> 
-<a class="jxr_linenumber" name="L103" href="#L103">103</a>     <em class="jxr_comment">// Forward control to the specified success URI</em>
-<a class="jxr_linenumber" name="L104" href="#L104">104</a>     <strong class="jxr_keyword">return</strong> (mapping.findForward(<span class="jxr_string">"success"</span>));
-<a class="jxr_linenumber" name="L105" href="#L105">105</a> 
-<a class="jxr_linenumber" name="L106" href="#L106">106</a>     }
-<a class="jxr_linenumber" name="L107" href="#L107">107</a> 
-<a class="jxr_linenumber" name="L108" href="#L108">108</a> 
-<a class="jxr_linenumber" name="L109" href="#L109">109</a> }
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>          LOG.debug(<span class="jxr_string">"LogoffAction: User '{}' logged off in session {}"</span>,
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>              user.getUsername(),  session.getId());
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>      } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>          LOG.debug(<span class="jxr_string">"LogoffActon: User logged off in session {}"</span>,
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>              session.getId());
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>      }
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>      session.removeAttribute(Constants.SUBSCRIPTION_KEY);
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>      session.removeAttribute(Constants.USER_KEY);
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>      session.invalidate();
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>  
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>      <em class="jxr_comment">// Forward control to the specified success URI</em>
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>     <strong class="jxr_keyword">return</strong> (mapping.findForward(<span class="jxr_string">"success"</span>));
+<a class="jxr_linenumber" name="L101" href="#L101">101</a> 
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>     }
+<a class="jxr_linenumber" name="L103" href="#L103">103</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2000&#x2013;2022 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>

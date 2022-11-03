@@ -1,59 +1,59 @@
 <html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>logic (&lt;p&gt;&lt;strong&gt;Note: Some of the features in this taglib are also available in the &lt;a href="http://java.sun.com/products/jsp/jstl/"&gt;JavaServer Pages Standard Tag Library (JSTL)&lt;/a&gt;. The Struts team encourages the use of the standard tags over the Struts specific tags when possible.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;This tag library contains tags that are useful in managing conditional generation of output text, looping over object collections for repetitive generation of output text, and application flow management.&lt;/p&gt; &lt;p&gt;For tags that do value comparisons (&lt;code&gt;equal&lt;/code&gt;, &lt;code&gt;greaterEqual&lt;/code&gt;, &lt;code&gt;greaterThan&lt;/code&gt;, &lt;code&gt;lessEqual&lt;/code&gt;, &lt;code&gt;lessThan&lt;/code&gt;, &lt;code&gt;notEqual&lt;/code&gt;), the following rules apply:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The specified value is examined. If it can be converted successfully to a &lt;code&gt;double&lt;/code&gt; or a &lt;code&gt;long&lt;/code&gt;, it is assumed that the ultimate comparison will be numeric (either floating point or integer). Otherwise, a String comparison will be performed.&lt;/li&gt; &lt;li&gt;The variable to be compared to is retrieved, based on the selector attribute(s) (&lt;code&gt;cookie&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;parameter&lt;/code&gt;, &lt;code&gt;property&lt;/code&gt;) present on this tag. It will be converted to the appropriate type for the comparison, as determined above.&lt;/li&gt; &lt;li&gt;If the specified variable or property returns null, it will be coerced to a zero-length string before the comparison occurs.&lt;/li&gt; &lt;li&gt;The specific comparison for this tag will be performed, and the nested body content of this tag will be evaluated if the comparison returns a &lt;code&gt;true&lt;/code&gt; result.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For tags that do substring matching (&lt;code&gt;match&lt;/code&gt;, &lt;code&gt;notMatch&lt;/code&gt;), the following rules apply:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The specified variable is retrieved, based on the selector attribute(s) (&lt;code&gt;cookie&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;parameter&lt;/code&gt;, &lt;code&gt;property&lt;/code&gt;) present on this tag. The variable is converted to a String, if necessary.&lt;/li&gt; &lt;li&gt;A request time exception will be thrown if the specified variable cannot be retrieved, or has a null value.&lt;/li&gt; &lt;li&gt;The specified value is checked for existence as a substring of the variable, in the position specified by the &lt;code&gt;location&lt;/code&gt; attribute, as follows: at the beginning (if location is set to &lt;code&gt;start&lt;/code&gt;), at the end (if location is set to &lt;code&gt;end&lt;/code&gt;), or anywhere (if location is not specified).&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Many of the tags in this tag library will throw a &lt;code&gt;JspException&lt;/code&gt; at runtime when they are utilized incorrectly (such as when you specify an invalid combination of tag attributes). JSP allows you to declare an "error page" in the &lt;code&gt;&amp;lt;%@ page %&amp;gt;&lt;/code&gt; directive. If you wish to process the actual exception that caused the problem, it is passed to the error page as a request attribute under key &lt;code&gt;org.apache.struts.action.EXCEPTION&lt;/code&gt;.&lt;/p&gt;)</title>
-<meta name="keywords" content="logic (<p><strong>Note: Some of the features in this taglib are also available in the <a href=&quot;http://java.sun.com/products/jsp/jstl/&quot;>JavaServer Pages Standard Tag Library (JSTL)</a>. The Struts team encourages the use of the standard tags over the Struts specific tags when possible.</strong></p> <p>This tag library contains tags that are useful in managing conditional generation of output text, looping over object collections for repetitive generation of output text, and application flow management.</p> <p>For tags that do value comparisons (<code>equal</code>, <code>greaterEqual</code>, <code>greaterThan</code>, <code>lessEqual</code>, <code>lessThan</code>, <code>notEqual</code>), the following rules apply:</p> <ul> <li>The specified value is examined. If it can be converted successfully to a <code>double</code> or a <code>long</code>, it is assumed that the ultimate comparison will be numeric (either floating point or integer). Otherwise, a String comparison will be performed.</li> <li>The variable to be compared to is retrieved, based on the selector attribute(s) (<code>cookie</code>, <code>header</code>, <code>name</code>, <code>parameter</code>, <code>property</code>) present on this tag. It will be converted to the appropriate type for the comparison, as determined above.</li> <li>If the specified variable or property returns null, it will be coerced to a zero-length string before the comparison occurs.</li> <li>The specific comparison for this tag will be performed, and the nested body content of this tag will be evaluated if the comparison returns a <code>true</code> result.</li> </ul> <p>For tags that do substring matching (<code>match</code>, <code>notMatch</code>), the following rules apply:</p> <ul> <li>The specified variable is retrieved, based on the selector attribute(s) (<code>cookie</code>, <code>header</code>, <code>name</code>, <code>parameter</code>, <code>property</code>) present on this tag. The variable is converted to a String, if necessary.</li> <li>A request time exception will be thrown if the specified variable cannot be retrieved, or has a null value.</li> <li>The specified value is checked for existence as a substring of the variable, in the position specified by the <code>location</code> attribute, as follows: at the beginning (if location is set to <code>start</code>), at the end (if location is set to <code>end</code>), or anywhere (if location is not specified).</li> </ul> <p>Many of the tags in this tag library will throw a <code>JspException</code> at runtime when they are utilized incorrectly (such as when you specify an invalid combination of tag attributes). JSP allows you to declare an &quot;error page&quot; in the <code>&amp;lt;%@ page %&amp;gt;</code> directive. If you wish to process the actual exception that caused the problem, it is passed to the error page as a request attribute under key <code>org.apache.struts.action.EXCEPTION</code>.</p>)">
-<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
-<script>
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>logic (&lt;p&gt;&lt;strong&gt;Note: Some of the features in this taglib are also available in the &lt;a href="http://java.sun.com/products/jsp/jstl/"&gt;JavaServer Pages Standard Tag Library (JSTL)&lt;/a&gt;. The Struts team encourages the use of the standard tags over the Struts specific tags when possible.&lt;/strong&gt;&lt;/p&gt; &lt;p&gt;This tag library contains tags that are useful in managing conditional generation of output text, looping over object collections for repetitive generation of output text, and application flow management.&lt;/p&gt; &lt;p&gt;For tags that do value comparisons (&lt;code&gt;equal&lt;/code&gt;, &lt;code&gt;greaterEqual&lt;/code&gt;, &lt;code&gt;greaterThan&lt;/code&gt;, &lt;code&gt;lessEqual&lt;/code&gt;, &lt;code&gt;lessThan&lt;/code&gt;, &lt;code&gt;notEqual&lt;/code&gt;), the following rules apply:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The specified value is examined. If it can be converted successfully to a &lt;code&gt;double&lt;/code&gt; or a &lt;code&gt;long&lt;/code&gt;, it is assumed that the ultimate comparison will be numeric (either floating point or integer). Otherwise, a String comparison will be performed.&lt;/li&gt; &lt;li&gt;The variable to be compared to is retrieved, based on the selector attribute(s) (&lt;code&gt;cookie&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;parameter&lt;/code&gt;, &lt;code&gt;property&lt;/code&gt;) present on this tag. It will be converted to the appropriate type for the comparison, as determined above.&lt;/li&gt; &lt;li&gt;If the specified variable or property returns null, it will be coerced to a zero-length string before the comparison occurs.&lt;/li&gt; &lt;li&gt;The specific comparison for this tag will be performed, and the nested body content of this tag will be evaluated if the comparison returns a &lt;code&gt;true&lt;/code&gt; result.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For tags that do substring matching (&lt;code&gt;match&lt;/code&gt;, &lt;code&gt;notMatch&lt;/code&gt;), the following rules apply:&lt;/p&gt; &lt;ul&gt; &lt;li&gt;The specified variable is retrieved, based on the selector attribute(s) (&lt;code&gt;cookie&lt;/code&gt;, &lt;code&gt;header&lt;/code&gt;, &lt;code&gt;name&lt;/code&gt;, &lt;code&gt;parameter&lt;/code&gt;, &lt;code&gt;property&lt;/code&gt;) present on this tag. The variable is converted to a String, if necessary.&lt;/li&gt; &lt;li&gt;A request time exception will be thrown if the specified variable cannot be retrieved, or has a null value.&lt;/li&gt; &lt;li&gt;The specified value is checked for existence as a substring of the variable, in the position specified by the &lt;code&gt;location&lt;/code&gt; attribute, as follows: at the beginning (if location is set to &lt;code&gt;start&lt;/code&gt;), at the end (if location is set to &lt;code&gt;end&lt;/code&gt;), or anywhere (if location is not specified).&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;Many of the tags in this tag library will throw a &lt;code&gt;JspException&lt;/code&gt; at runtime when they are utilized incorrectly (such as when you specify an invalid combination of tag attributes). JSP allows you to declare an "error page" in the &lt;code&gt;&amp;lt;%@ page %&amp;gt;&lt;/code&gt; directive. If you wish to process the actual exception that caused the problem, it is passed to the error page as a request attribute under key &lt;code&gt;org.apache.struts.action.EXCEPTION&lt;/code&gt;.&lt;/p&gt;)</title>
+        <meta name="keywords" content="logic (<p><strong>Note: Some of the features in this taglib are also available in the <a href=&quot;http://java.sun.com/products/jsp/jstl/&quot;>JavaServer Pages Standard Tag Library (JSTL)</a>. The Struts team encourages the use of the standard tags over the Struts specific tags when possible.</strong></p> <p>This tag library contains tags that are useful in managing conditional generation of output text, looping over object collections for repetitive generation of output text, and application flow management.</p> <p>For tags that do value comparisons (<code>equal</code>, <code>greaterEqual</code>, <code>greaterThan</code>, <code>lessEqual</code>, <code>lessThan</code>, <code>notEqual</code>), the following rules apply:</p> <ul> <li>The specified value is examined. If it can be converted successfully to a <code>double</code> or a <code>long</code>, it is assumed that the ultimate comparison will be numeric (either floating point or integer). Otherwise, a String comparison will be performed.</li> <li>The variable to be compared to is retrieved, based on the selector attribute(s) (<code>cookie</code>, <code>header</code>, <code>name</code>, <code>parameter</code>, <code>property</code>) present on this tag. It will be converted to the appropriate type for the comparison, as determined above.</li> <li>If the specified variable or property returns null, it will be coerced to a zero-length string before the comparison occurs.</li> <li>The specific comparison for this tag will be performed, and the nested body content of this tag will be evaluated if the comparison returns a <code>true</code> result.</li> </ul> <p>For tags that do substring matching (<code>match</code>, <code>notMatch</code>), the following rules apply:</p> <ul> <li>The specified variable is retrieved, based on the selector attribute(s) (<code>cookie</code>, <code>header</code>, <code>name</code>, <code>parameter</code>, <code>property</code>) present on this tag. The variable is converted to a String, if necessary.</li> <li>A request time exception will be thrown if the specified variable cannot be retrieved, or has a null value.</li> <li>The specified value is checked for existence as a substring of the variable, in the position specified by the <code>location</code> attribute, as follows: at the beginning (if location is set to <code>start</code>), at the end (if location is set to <code>end</code>), or anywhere (if location is not specified).</li> </ul> <p>Many of the tags in this tag library will throw a <code>JspException</code> at runtime when they are utilized incorrectly (such as when you specify an invalid combination of tag attributes). JSP allows you to declare an &quot;error page&quot; in the <code>&amp;lt;%@ page %&amp;gt;</code> directive. If you wish to process the actual exception that caused the problem, it is passed to the error page as a request attribute under key <code>org.apache.struts.action.EXCEPTION</code>.</p>)">
+        <link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+        <script>
               function asd()
               {
               parent.document.title="logic (<p><strong>Note: Some of the features in this taglib are also available in the <a href="http://java.sun.com/products/jsp/jstl/">JavaServer Pages Standard Tag Library (JSTL)</a>. The Struts team encourages the use of the standard tags over the Struts specific tags when possible.</strong></p> <p>This tag library contains tags that are useful in managing conditional generation of output text, looping over object collections for repetitive generation of output text, and application flow management.</p> <p>For tags that do value comparisons (<code>equal</code>, <code>greaterEqual</code>, <code>greaterThan</code>, <code>lessEqual</code>, <code>lessThan</code>, <code>notEqual</code>), the following rules apply:</p> <ul> <li>The specified value is examined. If it can be converted successfully to a <code>double</code> or a <code>long</code>, it is assumed that the ultimate comparison will be numeric (either floating point or integer). Otherwise, a String comparison will be performed.</li> <li>The variable to be compared to is retrieved, based on the selector attribute(s) (<code>cookie</code>, <code>header</code>, <code>name</code>, <code>parameter</code>, <code>property</code>) present on this tag. It will be converted to the appropriate type for the comparison, as determined above.</li> <li>If the specified variable or property returns null, it will be coerced to a zero-length string before the comparison occurs.</li> <li>The specific comparison for this tag will be performed, and the nested body content of this tag will be evaluated if the comparison returns a <code>true</code> result.</li> </ul> <p>For tags that do substring matching (<code>match</code>, <code>notMatch</code>), the following rules apply:</p> <ul> <li>The specified variable is retrieved, based on the selector attribute(s) (<code>cookie</code>, <code>header</code>, <code>name</code>, <code>parameter</code>, <code>property</code>) present on this tag. The variable is converted to a String, if necessary.</li> <li>A request time exception will be thrown if the specified variable cannot be retrieved, or has a null value.</li> <li>The specified value is checked for existence as a substring of the variable, in the position specified by the <code>location</code> attribute, as follows: at the beginning (if location is set to <code>start</code>), at the end (if location is set to <code>end</code>), or anywhere (if location is not specified).</li> </ul> <p>Many of the tags in this tag library will throw a <code>JspException</code> at runtime when they are utilized incorrectly (such as when you specify an invalid combination of tag attributes). JSP allows you to declare an "error page" in the <code>&lt;%@ page %&gt;</code> directive. If you wish to process the actual exception that caused the problem, it is passed to the error page as a request attribute under key <code>org.apache.struts.action.EXCEPTION</code>.</p>)";
               }
             </script>
-</head>
-<body bgcolor="white" onload="asd();">
-<font size="+1" class="FrameTitleFont"><a href="tld-summary.html" target="tagFrame">logic</a></font>
-<table border="0" width="100%">
-<tr>
-<td nowrap="true"><font size="+1" class="FrameHeadingFont">
+    </head>
+    <body bgcolor="white" onload="asd();">
+        <font size="+1" class="FrameTitleFont"><a href="tld-summary.html" target="tagFrame">logic</a></font>
+        <table border="0" width="100%">
+            <tr>
+                <td nowrap="true"><font size="+1" class="FrameHeadingFont">
                       Tags
                     </font>&nbsp;
                     <font class="FrameItemFont">
-<br>
-<a href="empty.html" target="tagFrame">logic:empty</a>
-<br>
-<a href="equal.html" target="tagFrame">logic:equal</a>
-<br>
-<a href="forward.html" target="tagFrame">logic:forward</a>
-<br>
-<a href="greaterEqual.html" target="tagFrame">logic:greaterEqual</a>
-<br>
-<a href="greaterThan.html" target="tagFrame">logic:greaterThan</a>
-<br>
-<a href="iterate.html" target="tagFrame">logic:iterate</a>
-<br>
-<a href="lessEqual.html" target="tagFrame">logic:lessEqual</a>
-<br>
-<a href="lessThan.html" target="tagFrame">logic:lessThan</a>
-<br>
-<a href="match.html" target="tagFrame">logic:match</a>
-<br>
-<a href="messagesNotPresent.html" target="tagFrame">logic:messagesNotPresent</a>
-<br>
-<a href="messagesPresent.html" target="tagFrame">logic:messagesPresent</a>
-<br>
-<a href="notEmpty.html" target="tagFrame">logic:notEmpty</a>
-<br>
-<a href="notEqual.html" target="tagFrame">logic:notEqual</a>
-<br>
-<a href="notMatch.html" target="tagFrame">logic:notMatch</a>
-<br>
-<a href="notPresent.html" target="tagFrame">logic:notPresent</a>
-<br>
-<a href="present.html" target="tagFrame">logic:present</a>
-<br>
-<a href="redirect.html" target="tagFrame">logic:redirect</a></font></td>
-</tr>
-</table>
-</body>
+                        <br>
+                        <a href="empty.html" target="tagFrame">logic:empty</a>
+                        <br>
+                        <a href="equal.html" target="tagFrame">logic:equal</a>
+                        <br>
+                        <a href="forward.html" target="tagFrame">logic:forward</a>
+                        <br>
+                        <a href="greaterEqual.html" target="tagFrame">logic:greaterEqual</a>
+                        <br>
+                        <a href="greaterThan.html" target="tagFrame">logic:greaterThan</a>
+                        <br>
+                        <a href="iterate.html" target="tagFrame">logic:iterate</a>
+                        <br>
+                        <a href="lessEqual.html" target="tagFrame">logic:lessEqual</a>
+                        <br>
+                        <a href="lessThan.html" target="tagFrame">logic:lessThan</a>
+                        <br>
+                        <a href="match.html" target="tagFrame">logic:match</a>
+                        <br>
+                        <a href="messagesNotPresent.html" target="tagFrame">logic:messagesNotPresent</a>
+                        <br>
+                        <a href="messagesPresent.html" target="tagFrame">logic:messagesPresent</a>
+                        <br>
+                        <a href="notEmpty.html" target="tagFrame">logic:notEmpty</a>
+                        <br>
+                        <a href="notEqual.html" target="tagFrame">logic:notEqual</a>
+                        <br>
+                        <a href="notMatch.html" target="tagFrame">logic:notMatch</a>
+                        <br>
+                        <a href="notPresent.html" target="tagFrame">logic:notPresent</a>
+                        <br>
+                        <a href="present.html" target="tagFrame">logic:present</a>
+                        <br>
+                        <a href="redirect.html" target="tagFrame">logic:redirect</a></font></td>
+            </tr>
+        </table>
+    </body>
 </html>

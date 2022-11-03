@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.apache.struts.webapp.dispatch"},{"l":"org.apache.struts.webapp.examples"},{"l":"org.apache.struts.webapp.exercise"},{"l":"org.apache.struts.webapp.upload"},{"l":"org.apache.struts.webapp.validator"}]

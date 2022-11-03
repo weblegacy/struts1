@@ -1,46 +1,47 @@
 <html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>redirect (Struts EL Tag library documentation)</title>
-<meta name="keywords" content="redirect (Struts EL Tag library documentation)">
-<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
-</head>
-<script>
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>redirect (Struts EL Tag library documentation)</title>
+        <meta name="keywords" content="redirect (Struts EL Tag library documentation)">
+        <link rel="stylesheet" type="text/css" href="../stylesheet.css" title="Style">
+    </head>
+    <script>
             function asd()
             {
             parent.document.title="redirect (Struts EL Tag library documentation)";
             }
           </script>
-<body bgcolor="white" onload="asd();">
-<a name="navbar_top"></a>
-<table border="0" width="100%" cellpadding="1" cellspacing="0">
-<tr>
-<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
-<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
-<tr ALIGN="center" VALIGN="top">
-<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
-</tr>
-</table>
-</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
-</tr>
-<tr>
-<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+    <body bgcolor="white" onload="asd();">
+        <a name="navbar_top"></a>
+        <table border="0" width="100%" cellpadding="1" cellspacing="0">
+            <tr>
+                <td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+                    <table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+                        <tr ALIGN="center" VALIGN="top">
+                            <td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+            </tr>
+            <tr>
+                <td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
                 &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
                 &nbsp;<a href="redirect.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
                 <script></script>
-<noscript>
-<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
-</noscript>
-</font></td>
-</tr>
-</table>
-<hr>
-<h2>
-<font size="-1">logic</font>
-<br>
-            Tag redirect</h2>
-<hr>
-            
+                        <noscript>
+                            <a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+                        </noscript>
+                    </font></td>
+            </tr>
+        </table>
+        <hr>
+        <h2>
+            <font size="-1">logic</font>
+            <br>
+                        Tag redirect
+        </h2>
+        <hr>
+                    
             <p><strong>Render an HTTP Redirect</strong></p>
           <p>Performs an <code>HttpServletResponse.sendRedirect()</code>
                 call to the hyperlink specified by the attributes to this
@@ -116,37 +117,38 @@
                 If a String array is specified, more than one value for the
                 same query parameter name will be created.</p>
       
+        
         <br>
-<p></p>
-<hr>
-<table border="1" cellpadding="3" cellspacing="0" width="100%">
-<tr bgcolor="#CCCCFF" class="TableHeadingColor">
-<td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
-</tr>
-<tr>
-<td>Tag Class</td><td>org.apache.strutsel.taglib.logic.ELRedirectTag</td>
-</tr>
-<tr>
-<td>TagExtraInfo Class</td><td><i>None</i></td>
-</tr>
-<tr>
-<td>Body Content</td><td>JSP</td>
-</tr>
-<tr>
-<td>Display Name</td><td><i>None</i></td>
-</tr>
-</table>
-<br>
-<p></p>
-<table border="1" cellpadding="3" cellspacing="0" width="100%">
-<tr bgcolor="#CCCCFF" class="TableHeadingColor">
-<td colspan="5"><font size="+2"><b>Attributes</b></font></td>
-</tr>
-<tr>
-<td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
-</tr>
-<tr valign="top">
-<td>action</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+        <p></p>
+        <hr>
+        <table border="1" cellpadding="3" cellspacing="0" width="100%">
+            <tr bgcolor="#CCCCFF" class="TableHeadingColor">
+                <td colspan="2"><font size="+2"><b>Tag Information</b></font></td>
+            </tr>
+            <tr>
+                <td>Tag Class</td><td>org.apache.strutsel.taglib.logic.ELRedirectTag</td>
+            </tr>
+            <tr>
+                <td>TagExtraInfo Class</td><td><i>None</i></td>
+            </tr>
+            <tr>
+                <td>Body Content</td><td>JSP</td>
+            </tr>
+            <tr>
+                <td>Display Name</td><td><i>None</i></td>
+            </tr>
+        </table>
+        <br>
+        <p></p>
+        <table border="1" cellpadding="3" cellspacing="0" width="100%">
+            <tr bgcolor="#CCCCFF" class="TableHeadingColor">
+                <td colspan="5"><font size="+2"><b>Attributes</b></font></td>
+            </tr>
+            <tr>
+                <td><b>Name</b></td><td><b>Required</b></td><td><b>Request-time</b></td><td><b>Type</b></td><td><b>Description</b></td>
+            </tr>
+            <tr valign="top">
+                <td>action</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
             <p>Logical name of a global <code>Action</code> that
                           contains the actual content-relative URI of the destination
@@ -159,18 +161,18 @@
                           or the <code>page</code> attribute.</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>anchor</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>anchor</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
             <p>Optional anchor tag ("#xxx") to be added to the generated
                   hyperlink.  Specify this value <strong>without</strong> any
                   "#" character.</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>forward</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>forward</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
             <p>Logical name of a global <code>ActionForward</code> that
                   contains the actual content-relative URI of the destination
@@ -182,9 +184,9 @@
                   attribute, or the <code>page</code> attribute.</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>href</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>href</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
             <p>The URL to which this redirect will transfer control.
                   This URL may be dynamically modified
@@ -195,9 +197,9 @@
                   attribute, or the <code>page</code> attribute.</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>name</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>name</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
             <p>The name of a JSP bean that contains a <code>Map</code>
                   representing the query parameters (if <code>property</code>
@@ -206,9 +208,9 @@
                   is specified).</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>page</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>page</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
             <p>The context-relative path (beginning with a "/"
                   character) to which this hyperlink will transfer control
@@ -220,9 +222,9 @@
                   attribute, or the <code>page</code> attribute.</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>paramId</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>paramId</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
             <p>The name of the request parameter that will be dynamically
                   added to the generated hyperlink.  The corresponding value is
@@ -231,9 +233,9 @@
                   the <code>paramScope</code> attribute</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>paramName</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>paramName</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
             <p>The name of a JSP bean that is a String containing the
                   value for the request parameter named by <code>paramId</code>
@@ -244,9 +246,9 @@
                   <code>paramScope</code> property, if it is specified.</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>paramProperty</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>paramProperty</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
             <p>The name of a property of the bean specified by the
                   <code>paramName</code> attribute, whose return value must
@@ -255,18 +257,18 @@
                   dynamically added to this hyperlink.</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>paramScope</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>paramScope</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
             <p>The scope within which to search for the bean specified
                   by the <code>paramName</code> attribute.  If not specified,
                   all scopes are searched.</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>property</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>property</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
             <p>The name of a property of the bean specified by the
                   <code>name</code> attribute, whose return value must be
@@ -276,27 +278,27 @@
                   this attribute.</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>scope</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>scope</td><td>false</td><td>true</td><td><code>java.lang.String</code></td><td>
                 
             <p>The scope within which to search for the bean specified
                   by the <code>name</code> attribute.  If not specified, all
                   scopes are searched.</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>transaction</td><td>false</td><td>true</td><td><code>boolean</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>transaction</td><td>false</td><td>true</td><td><code>boolean</code></td><td>
                 
             <p>Set to <code>true</code> if you want the current
                     transaction control token included in the generated
                     URL for this redirect.</p>
          
             </td>
-</tr>
-<tr valign="top">
-<td>useLocalEncoding</td><td>false</td><td>true</td><td><code>boolean</code></td><td>
+            </tr>
+            <tr valign="top">
+                <td>useLocalEncoding</td><td>false</td><td>true</td><td><code>boolean</code></td><td>
                 
             <p>If set to <code>true</code>, LocalCharacterEncoding will be
               used, that is, the characterEncoding set to the HttpServletResponse,
@@ -304,42 +306,42 @@
               URLEncoding is done on parameters of the URL.</p>
          
             </td>
-</tr>
-</table>
-<br>
-<p></p>
-<table border="1" cellpadding="3" cellspacing="0" width="100%">
-<tr bgcolor="#CCCCFF" class="TableHeadingColor">
-<td colspan="5"><font size="+2"><b>Variables</b></font></td>
-</tr>
-<td colspan="2"><i>No Variables Defined.</i></td>
-</table>
-<br>
-<p></p>
-<a name="navbar_bottom"></a>
-<table border="0" width="100%" cellpadding="1" cellspacing="0">
-<tr>
-<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
-<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
-<tr ALIGN="center" VALIGN="top">
-<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
-</tr>
-</table>
-</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
-</tr>
-<tr>
-<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+            </tr>
+        </table>
+        <br>
+        <p></p>
+        <table border="1" cellpadding="3" cellspacing="0" width="100%">
+            <tr bgcolor="#CCCCFF" class="TableHeadingColor">
+                <td colspan="5"><font size="+2"><b>Variables</b></font></td>
+            </tr>
+            <td colspan="2"><i>No Variables Defined.</i></td>
+        </table>
+        <br>
+        <p></p>
+        <a name="navbar_bottom"></a>
+        <table border="0" width="100%" cellpadding="1" cellspacing="0">
+            <tr>
+                <td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+                    <table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+                        <tr ALIGN="center" VALIGN="top">
+                            <td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="tld-summary.html"><font CLASS="NavBarFont1"><b>Library</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev"> &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Tag&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+            </tr>
+            <tr>
+                <td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
                 &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
                 &nbsp;<a href="redirect.html" target="_top"><b>NO FRAMES</b></a>&nbsp;
                 <script></script>
-<noscript>
-<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
-</noscript>
-</font></td>
-</tr>
-</table>
-<hr>
-<small><i>
+                        <noscript>
+                            <a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+                        </noscript>
+                    </font></td>
+            </tr>
+        </table>
+        <hr>
+        <small><i>
             Output Generated by
             <a href="https://weblegacy.github.io/tlddoc/" target="_blank">Tag Library Documentation Generator</a>.
             Java, JSP, and JavaServer Pages are trademarks or
@@ -349,5 +351,5 @@
             Santa Clara, CA 95054, U.S.A.
             All Rights Reserved.
             </i></small>
-</body>
+    </body>
 </html>

@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.apache.struts.tiles","l":"CustomI18nFactorySet"},{"p":"org.apache.struts.tiles","l":"TestTilesPlugin"}]

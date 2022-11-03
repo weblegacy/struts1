@@ -1,58 +1,60 @@
 <html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>tiles (Struts EL Tag library documentation)</title>
-<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="styie">
-</head>
-<script>
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>tiles (Struts EL Tag library documentation)</title>
+        <link rel="stylesheet" type="text/css" href="../stylesheet.css" title="styie">
+    </head>
+    <script>
             function asd()
             {
             parent.document.title="tiles (Struts EL Tag library documentation)";
             }
           </script>
-<body bgcolor="white" onload="asd();">
-<a name="navbar_top"></a>
-<table border="0" width="100%" cellpadding="1" cellspacing="0">
-<tr>
-<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
-<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
-<tr ALIGN="center" VALIGN="top">
-<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
-</tr>
-</table>
-</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
-</tr>
-<tr>
-<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+    <body bgcolor="white" onload="asd();">
+        <a name="navbar_top"></a>
+        <table border="0" width="100%" cellpadding="1" cellspacing="0">
+            <tr>
+                <td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+                    <table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+                        <tr ALIGN="center" VALIGN="top">
+                            <td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+            </tr>
+            <tr>
+                <td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
                 &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
                 &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
                 <script></script>
-<noscript>
-<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
-</noscript>
-</font></td>
-</tr>
-</table>
-<hr>
-<h2>tiles</h2>
-<hr>
-<b>Standard Syntax:</b>
-<br>
-<code>
+                        <noscript>
+                            <a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+                        </noscript>
+                    </font></td>
+            </tr>
+        </table>
+        <hr>
+        <h2>tiles</h2>
+        <hr>
+        <b>Standard Syntax:</b>
+        <br>
+        <code>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 
-                    &lt;%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles-el" %&gt;<br>
-</code>
-<br>
-<b>XML Syntax:</b>
-<br>
-<code>
+                    &lt;%@ taglib prefix="tiles" uri="http://struts.apache.org/tags-tiles-el" %&gt;
+            <br>
+        </code>
+        <br>
+        <b>XML Syntax:</b>
+        <br>
+        <code>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 
-                    &lt;anyxmlelement xmlns:tiles="http://struts.apache.org/tags-tiles-el" /&gt;<br>
-</code>
-<hr>
-        
+                    &lt;anyxmlelement xmlns:tiles="http://struts.apache.org/tags-tiles-el" /&gt;
+            <br>
+        </code>
+        <hr>
+                
       <p>This tag library provides tiles tags.
    Tiles were previously called Components. For historical reasons, names,
    pages, components and templates are used indifferently to design a tile.
@@ -60,32 +62,34 @@
    To know more about tags defined in this library, check the associated
    documentation: tiles-doc.</p>
    
-    <p></p>
-<table border="1" cellpadding="3" cellspacing="0" width="100%">
-<tr bgcolor="#CCCCFF" class="TableHeadingColor">
-<td colspan="2"><font size="+2"><b>Tag Library Information</b></font></td>
-</tr>
-<tr>
-<td>Display Name</td><td><i>None</i></td>
-</tr>
-<tr>
-<td>Version</td><td>1.4</td>
-</tr>
-<tr>
-<td>Short Name</td><td>tiles</td>
-</tr>
-<tr>
-<td>URI</td><td>http://struts.apache.org/tags-tiles-el</td>
-</tr>
-</table>
-            &nbsp;
-            <p></p>
-<table border="1" cellpadding="3" cellspacing="0" width="100%">
-<tr bgcolor="#CCCCFF" class="TableHeadingColor">
-<td colspan="2"><font size="+2"><b>Tag Summary</b></font></td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="add.html">add</a></b></td><td>
+    
+        <p></p>
+        <table border="1" cellpadding="3" cellspacing="0" width="100%">
+            <tr bgcolor="#CCCCFF" class="TableHeadingColor">
+                <td colspan="2"><font size="+2"><b>Tag Library Information</b></font></td>
+            </tr>
+            <tr>
+                <td>Display Name</td><td><i>None</i></td>
+            </tr>
+            <tr>
+                <td>Version</td><td>1.4</td>
+            </tr>
+            <tr>
+                <td>Short Name</td><td>tiles</td>
+            </tr>
+            <tr>
+                <td>URI</td><td>http://struts.apache.org/tags-tiles-el</td>
+            </tr>
+        </table>
+                    &nbsp;
+            
+        <p></p>
+        <table border="1" cellpadding="3" cellspacing="0" width="100%">
+            <tr bgcolor="#CCCCFF" class="TableHeadingColor">
+                <td colspan="2"><font size="+2"><b>Tag Summary</b></font></td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="add.html">add</a></b></td><td>
             
       <p><strong>
       Add an element to the surrounding list.
@@ -97,9 +101,9 @@
       One of 'value' or 'beanName' must be present.</p>
       
         </td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="definition.html">definition</a></b></td><td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="definition.html">definition</a></b></td><td>
             
       <p><strong>Create a tile /component / template definition bean.
       </strong></p>
@@ -108,9 +112,9 @@
       "scope". Definition tag has same syntax as <code>insert</code></p>
       
         </td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="get.html">get</a></b></td><td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="get.html">get</a></b></td><td>
             
          <p><strong>Gets the content from request scope that was put there by a
          put tag.</strong></p>
@@ -118,9 +122,9 @@
          <p>Take into account the 'type' attribute.</p>
       
         </td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="getAsString.html">getAsString</a></b></td><td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="getAsString.html">getAsString</a></b></td><td>
             
       <p><strong>Render the value of the specified tile/component/template
       attribute to the current JspWriter</strong></p>
@@ -131,9 +135,9 @@
       <p>Throw a JSPException if named value is not found.</p>
       
         </td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="importAttribute.html">importAttribute</a></b></td><td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="importAttribute.html">importAttribute</a></b></td><td>
             
       <p><strong>Import Tile's attribute in specified context.</strong></p>
       <p>Import attribute from tile to requested scope.
@@ -143,9 +147,9 @@
       contexts.</p>
       
         </td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="initComponentDefinitions.html">initComponentDefinitions</a></b></td><td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="initComponentDefinitions.html">initComponentDefinitions</a></b></td><td>
             
          <p><strong>Initialize Tile/Component definitions factory.</strong></p>
          <p>In order to use Tile/Component definitions factory, you need to
@@ -158,9 +162,9 @@
          are ignored (tag checks existence of the factory).</p>
       
         </td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="insert.html">insert</a></b></td><td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="insert.html">insert</a></b></td><td>
             
          <p><strong>Insert a tiles/component/template.</strong></p>
          <p>Insert a tiles/component/template with the possibility to pass
@@ -214,9 +218,9 @@
            </pre>
       
         </td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="put.html">put</a></b></td><td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="put.html">put</a></b></td><td>
             
       <p><strong>Put an attribute into tile/component/template context.
       </strong></p>
@@ -239,9 +243,9 @@
       <p>Note that using 'direct="true"' is equivalent to 'type="string"'.</p>
       
         </td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="putList.html">putList</a></b></td><td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="putList.html">putList</a></b></td><td>
             
       <p><strong>Declare a list that will be pass as attribute to tile.
       </strong></p>
@@ -250,9 +254,9 @@
       This tag can only be used inside 'insert' or 'definition' tag.</p>
       
         </td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="useAttribute.html">useAttribute</a></b></td><td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="useAttribute.html">useAttribute</a></b></td><td>
             
       <p><strong>Use attribute value inside page.</strong></p>
       <p>Declare a Java variable, and an attribute in the specified scope,
@@ -261,34 +265,35 @@
       or the original name if not specified.</p>
       
         </td>
-</tr>
-</table>
-              &nbsp;
-              <p></p>
-<a name="navbar_bottom"></a>
-<table border="0" width="100%" cellpadding="1" cellspacing="0">
-<tr>
-<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
-<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
-<tr ALIGN="center" VALIGN="top">
-<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
-</tr>
-</table>
-</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
-</tr>
-<tr>
-<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+            </tr>
+        </table>
+                      &nbsp;
+              
+        <p></p>
+        <a name="navbar_bottom"></a>
+        <table border="0" width="100%" cellpadding="1" cellspacing="0">
+            <tr>
+                <td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+                    <table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+                        <tr ALIGN="center" VALIGN="top">
+                            <td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+            </tr>
+            <tr>
+                <td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
                 &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
                 &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
                 <script></script>
-<noscript>
-<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
-</noscript>
-</font></td>
-</tr>
-</table>
-<hr>
-<small><i>
+                        <noscript>
+                            <a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+                        </noscript>
+                    </font></td>
+            </tr>
+        </table>
+        <hr>
+        <small><i>
             Java, JSP, and JavaServer Pages are trademarks or registered
             trademarks of Sun Microsystems, Inc. in the US and other countries.
             Copyright 2002-3 Sun Microsystems, Inc.
@@ -296,5 +301,5 @@
             Santa Clara, CA 95054, U.S.A.
             All Rights Reserved.
             </i></small>
-</body>
+    </body>
 </html>

@@ -2,19 +2,13 @@
 <html><head>
 <meta http-equiv='CONTENT-TYPE' content='text/html; charset=UTF-8' />
 <link rel='StyleSheet' href='DTDDocStyle.css' type='text/css' media='screen' />
-<title>tiles-config_1_1.dtd</title>
+<title>DTD for the Tile Definition File, Version 1.1</title>
 </head><body>
-<p class='DTDSource'><b><code>tiles-config_1_1.dtd</code></b>: <a href='tiles-config_1_1.dtd.html'>Elements</a> - <a href='tiles-config_1_1.dtd.entities.html'>Entities</a> - <a href='tiles-config_1_1.dtd.org.html'>Source</a> | <a href='intro.html'>Intro</a> - <a href='elementsIndex.html'>Index</a><br /><a href='index.html' target='_top'>FRAMES</a>&nbsp;/&nbsp;<a href='tiles-config_1_1.dtd.html' target='_top'>NO FRAMES</a></p><h1>tiles-config_1_1.dtd</h1>
-<p>$Id$</p><p>Licensed to the Apache Software Foundation (ASF) under one or more
-contributor license agreements. See the NOTICE file distributed with
-this work for additional information regarding copyright ownership.
-The ASF licenses this file to You under the Apache License, Version 2.0
-(the "License"); you may not use this file except in compliance with
-the License. You may obtain a copy of the License at</p><p>http://www.apache.org/licenses/LICENSE-2.0</p><p>Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.</p><br />
+<p class='DTDSource'><b><code>tiles-config_1_1.dtd</code></b>: <a href='tiles-config_1_1.dtd.html'>Elements</a> - <a href='tiles-config_1_1.dtd.entities.html'>Entities</a> - <a href='tiles-config_1_1.dtd.org.html'>Source</a> | <a href='intro.html'>Intro</a> - <a href='elementsIndex.html'>Index</a><br /><a href='index.html' target='_top'>FRAMES</a>&nbsp;/&nbsp;<a href='tiles-config_1_1.dtd.html' target='_top'>NO FRAMES</a></p><h1>DTD for the Tile Definition File, Version 1.1</h1>
+<p><span class='inTextTitle'>Usage</span>: <code>&lt;!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://struts.apache.org/dtds/tiles-config_1_1.dtd"&gt;</code></p>
+<br />
 <a name='component-definitions'></a>
 <br /><table class='elementTitle' summary="component-definitions"><tr><td class='leftElementTitle'>
 &lt;component-definitions&gt;</td><td class='rightElementTitle'>
@@ -50,24 +44,11 @@ configuration settings.</p><blockquote><table summary='element info'><tr>
 <span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#definition'>definition</a>+)</p><a name='definition'></a>
 <br /><table class='elementTitle' summary="definition"><tr><td class='leftElementTitle'>
 &lt;definition&gt;</td><td class='rightElementTitle'>
-Child of <a href='#tiles-definitions'>tiles-definitions</a>, <a href='#component-definitions'>component-definitions</a>
+Child of <a href='#component-definitions'>component-definitions</a>, <a href='#tiles-definitions'>tiles-definitions</a>
 </td></tr></table>
 <p>The "definition" element describes a definition that can be inserted in a jsp
 page. This definition is identified by its logical name. A definition allows
-to define all the attributes that can be set in &lt;insert> tag from a jsp page.</p><p>controllerClass The fully qualified Java class name of the controller
-subclass to call immediately before the tiles is inserted.
-Only one of controllerClass or controllerUrl should be
-specified.</p><p>controllerUrl The context-relative path to the resource used as controller
-called immediately before the tiles is inserted.
-Only one of controllerClass or controllerUrl should be
-specified.</p><p>extends Name of a definition that is used as ancestor of this definition.
-All attributes from the ancestor are available to the new
-definition. Any attribute inherited from the ancestor can
-be overloaded by providing a new value.</p><p>name The unique identifier for this definition.</p><p>page Same as path.</p><p>path The context-relative path to the resource used as tiles to
-insert. This tiles will be inserted and a tiles context
-containing appropriate attributes will be available.</p><p>role Security role name that is allowed access to this definition
-object. The definition is inserted only if the role name is
-allowed.</p><p>template Same as path. For compatibility with the template tag library.</p><blockquote><table summary='element info'><tr>
+to define all the attributes that can be set in &lt;insert> tag from a jsp page.</p><blockquote><table summary='element info'><tr>
 <td class='construct'><table summary="&lt;definition&gt;'s children">
 <thead>
 <tr><th class='title' colspan='2'>&lt;definition&gt;'s children</th></tr>
@@ -98,54 +79,62 @@ Attribute of <a href='#definition'>definition</a>
 @controllerClass</td><td class='rightAttributeTitle'>
 Attribute of <a href='#definition'>definition</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='definition_controllerUrl'></a>
+<p>The fully qualified Java class name of the controller
+subclass to call immediately before the tiles is inserted.
+Only one of controllerClass or controllerUrl should be
+specified.</p><a name='definition_controllerUrl'></a>
 <br /><table class='attributeTitle' summary="controllerUrl"><tr><td class='leftAttributeTitle'>
 @controllerUrl</td><td class='rightAttributeTitle'>
 Attribute of <a href='#definition'>definition</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='definition_extends'></a>
+<p>The context-relative path to the resource used as controller
+called immediately before the tiles is inserted.
+Only one of controllerClass or controllerUrl should be
+specified.</p><a name='definition_extends'></a>
 <br /><table class='attributeTitle' summary="extends"><tr><td class='leftAttributeTitle'>
 @extends</td><td class='rightAttributeTitle'>
 Attribute of <a href='#definition'>definition</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='definition_name'></a>
+<p>Name of a definition that is used as ancestor of this definition.
+All attributes from the ancestor are available to the new
+definition. Any attribute inherited from the ancestor can
+be overloaded by providing a new value.</p><a name='definition_name'></a>
 <br /><table class='attributeTitle' summary="name"><tr><td class='leftAttributeTitle'>
 @name</td><td class='rightAttributeTitle'>
 Attribute of <a href='#definition'>definition</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='definition_page'></a>
+<p>The unique identifier for this definition.</p><p><span class='inTextTitle'>Required</span></p><a name='definition_page'></a>
 <br /><table class='attributeTitle' summary="page"><tr><td class='leftAttributeTitle'>
 @page</td><td class='rightAttributeTitle'>
 Attribute of <a href='#definition'>definition</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='definition_path'></a>
+<p>Same as path.</p><a name='definition_path'></a>
 <br /><table class='attributeTitle' summary="path"><tr><td class='leftAttributeTitle'>
 @path</td><td class='rightAttributeTitle'>
 Attribute of <a href='#definition'>definition</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='definition_role'></a>
+<p>The context-relative path to the resource used as tiles to
+insert. This tiles will be inserted and a tiles context
+containing appropriate attributes will be available.</p><a name='definition_role'></a>
 <br /><table class='attributeTitle' summary="role"><tr><td class='leftAttributeTitle'>
 @role</td><td class='rightAttributeTitle'>
 Attribute of <a href='#definition'>definition</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='definition_template'></a>
+<p>Security role name that is allowed access to this definition
+object. The definition is inserted only if the role name is
+allowed.</p><a name='definition_template'></a>
 <br /><table class='attributeTitle' summary="template"><tr><td class='leftAttributeTitle'>
 @template</td><td class='rightAttributeTitle'>
 Attribute of <a href='#definition'>definition</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='put'></a>
+<p>Same as path. For compatibility with the template tag library.</p><a name='put'></a>
 <br /><table class='elementTitle' summary="put"><tr><td class='leftElementTitle'>
 &lt;put&gt;</td><td class='rightElementTitle'>
 Child of <a href='#definition'>definition</a>
 </td></tr></table>
 <p>The "put" element describes an attribute of a definition. It allows to
 specify the tiles attribute name and its value. The tiles value can be
-specified as an xml attribute, or in the body of the &lt;put> tag.</p><p>content Same as value. For compatibility with the template tag library.</p><p>direct Same as type="string". For compatibility with the template
-tag library.</p><p>name The unique identifier for this put.</p><p>type The type of the value. Can be: string, page, template or definition.
-By default, no type is associated to a value. If a type is
-associated, it will be used as a hint to process the value
-when the attribute will be used in the inserted tiles.</p><p>value The value associated to this tiles attribute. The value should
-be specified with this tag attribute, or in the body of the tag.</p><blockquote><table summary='element info'><tr>
+specified as an xml attribute, or in the body of the &lt;put> tag.</p><blockquote><table summary='element info'><tr>
 <td class='construct'><table  summary="&lt;put&gt;'s attributes"><tr>
 <th class='title' colspan='3'>&lt;put&gt;'s attributes</th>
 </tr>
@@ -164,27 +153,32 @@ Attribute of <a href='#put'>put</a>
 @content</td><td class='rightAttributeTitle'>
 Attribute of <a href='#put'>put</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='put_direct'></a>
+<p>Same as value. For compatibility with the template tag library.</p><a name='put_direct'></a>
 <br /><table class='attributeTitle' summary="direct"><tr><td class='leftAttributeTitle'>
 @direct</td><td class='rightAttributeTitle'>
 Attribute of <a href='#put'>put</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false</p><a name='put_name'></a>
+<p>Same as type="string". For compatibility with the template
+tag library.</p><p><span class='inTextTitle'>Possible values</span>: true, false</p><a name='put_name'></a>
 <br /><table class='attributeTitle' summary="name"><tr><td class='leftAttributeTitle'>
 @name</td><td class='rightAttributeTitle'>
 Attribute of <a href='#put'>put</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='put_type'></a>
+<p>The unique identifier for this put.</p><p><span class='inTextTitle'>Required</span></p><a name='put_type'></a>
 <br /><table class='attributeTitle' summary="type"><tr><td class='leftAttributeTitle'>
 @type</td><td class='rightAttributeTitle'>
 Attribute of <a href='#put'>put</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: string, page, template, definition</p><a name='put_value'></a>
+<p>The type of the value. Can be: string, page, template or definition.
+By default, no type is associated to a value. If a type is
+associated, it will be used as a hint to process the value
+when the attribute will be used in the inserted tiles.</p><p><span class='inTextTitle'>Possible values</span>: string, page, template, definition</p><a name='put_value'></a>
 <br /><table class='attributeTitle' summary="value"><tr><td class='leftAttributeTitle'>
 @value</td><td class='rightAttributeTitle'>
 Attribute of <a href='#put'>put</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='putList'></a>
+<p>The value associated to this tiles attribute. The value should
+be specified with this tag attribute, or in the body of the tag.</p><a name='putList'></a>
 <br /><table class='elementTitle' summary="putList"><tr><td class='leftElementTitle'>
 &lt;putList&gt;</td><td class='rightElementTitle'>
 Child of <a href='#definition'>definition</a>
@@ -192,7 +186,7 @@ Child of <a href='#definition'>definition</a>
 <p>The "putList" element describes a list attribute of a definition. It allows to
 specify an attribute that is a java List containing any kind of values. In
 the config file, the list elements are specified by nested &lt;add>, &lt;item> or
-&lt;putList>.</p><p>name The unique identifier for this put list.</p><blockquote><table summary='element info'><tr>
+&lt;putList>.</p><blockquote><table summary='element info'><tr>
 <td class='construct'><table summary="&lt;putList&gt;'s children">
 <thead>
 <tr><th class='title' colspan='2'>&lt;putList&gt;'s children</th></tr>
@@ -222,18 +216,13 @@ Attribute of <a href='#putList'>putList</a>
 @name</td><td class='rightAttributeTitle'>
 Attribute of <a href='#putList'>putList</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='add'></a>
+<p>The unique identifier for this put list.</p><p><span class='inTextTitle'>Required</span></p><a name='add'></a>
 <br /><table class='elementTitle' summary="add"><tr><td class='leftElementTitle'>
 &lt;add&gt;</td><td class='rightElementTitle'>
 Child of <a href='#putList'>putList</a>
 </td></tr></table>
 <p>The "add" element describes an element of a list. It is similar to the
-&lt;put> element.</p><p>content Same as value. For compatibility with the template tag library.</p><p>direct Same as type="string". For compatibility with the template
-tag library.</p><p>type The type of the value. Can be: string, page, template or definition.
-By default, no type is associated to a value. If a type is
-associated, it will be used as a hint to process the value
-when the attribute will be used in the inserted tiles.</p><p>value The value associated to this tiles attribute. The value should
-be specified with this tag attribute, or in the body of the tag.</p><blockquote><table summary='element info'><tr>
+&lt;put> element.</p><blockquote><table summary='element info'><tr>
 <td class='construct'><table  summary="&lt;add&gt;'s attributes"><tr>
 <th class='title' colspan='3'>&lt;add&gt;'s attributes</th>
 </tr>
@@ -252,29 +241,34 @@ Attribute of <a href='#add'>add</a>
 @content</td><td class='rightAttributeTitle'>
 Attribute of <a href='#add'>add</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='add_direct'></a>
+<p>Same as value. For compatibility with the template tag library.</p><a name='add_direct'></a>
 <br /><table class='attributeTitle' summary="direct"><tr><td class='leftAttributeTitle'>
 @direct</td><td class='rightAttributeTitle'>
 Attribute of <a href='#add'>add</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false</p><a name='add_type'></a>
+<p>Same as type="string". For compatibility with the template
+tag library.</p><p><span class='inTextTitle'>Possible values</span>: true, false</p><a name='add_type'></a>
 <br /><table class='attributeTitle' summary="type"><tr><td class='leftAttributeTitle'>
 @type</td><td class='rightAttributeTitle'>
 Attribute of <a href='#add'>add</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: string, page, template, definition</p><a name='add_value'></a>
+<p>The type of the value. Can be: string, page, template or definition.
+By default, no type is associated to a value. If a type is
+associated, it will be used as a hint to process the value
+when the attribute will be used in the inserted tiles.</p><p><span class='inTextTitle'>Possible values</span>: string, page, template, definition</p><a name='add_value'></a>
 <br /><table class='attributeTitle' summary="value"><tr><td class='leftAttributeTitle'>
 @value</td><td class='rightAttributeTitle'>
 Attribute of <a href='#add'>add</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='bean'></a>
+<p>The value associated to this tiles attribute. The value should
+be specified with this tag attribute, or in the body of the tag.</p><a name='bean'></a>
 <br /><table class='elementTitle' summary="bean"><tr><td class='leftElementTitle'>
 &lt;bean&gt;</td><td class='rightElementTitle'>
 Child of <a href='#putList'>putList</a>
 </td></tr></table>
 <p>The "bean" element describes an element of a list. It create a bean of the
 specified java classtype. This bean is initialized with appropriate nested
-&lt;set-property>.</p><p>classtype The fully qualified classname for this bean.</p><blockquote><table summary='element info'><tr>
+&lt;set-property>.</p><blockquote><table summary='element info'><tr>
 <td class='construct'><table summary="&lt;bean&gt;'s children">
 <thead>
 <tr><th class='title' colspan='2'>&lt;bean&gt;'s children</th></tr>
@@ -301,7 +295,7 @@ Attribute of <a href='#bean'>bean</a>
 @classtype</td><td class='rightAttributeTitle'>
 Attribute of <a href='#bean'>bean</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='set-property'></a>
+<p>The fully qualified classname for this bean.</p><p><span class='inTextTitle'>Required</span></p><a name='set-property'></a>
 <br /><table class='elementTitle' summary="set-property"><tr><td class='leftElementTitle'>
 &lt;set-property/&gt;</td><td class='rightElementTitle'>
 Child of <a href='#bean'>bean</a>
@@ -309,9 +303,7 @@ Child of <a href='#bean'>bean</a>
 <p>The "set-property" element specifies the method name and initial value of
 a bean property. When the object representing
 the surrounding element is instantiated, the accessor for the indicated
-property is called and passed the indicated value.</p><p>property Name of the JavaBeans property whose setter method
-will be called.</p><p>value String representation of the value to which this
-property will be set, after suitable type conversion</p><blockquote>
+property is called and passed the indicated value.</p><blockquote>
 <table  summary="&lt;set-property&gt;'s attributes"><tr>
 <th class='title' colspan='3'>&lt;set-property&gt;'s attributes</th>
 </tr>
@@ -330,12 +322,14 @@ Attribute of <a href='#set-property'>set-property</a>
 @property</td><td class='rightAttributeTitle'>
 Attribute of <a href='#set-property'>set-property</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='set-property_value'></a>
+<p>Name of the JavaBeans property whose setter method
+will be called.</p><p><span class='inTextTitle'>Required</span></p><a name='set-property_value'></a>
 <br /><table class='attributeTitle' summary="value"><tr><td class='leftAttributeTitle'>
 @value</td><td class='rightAttributeTitle'>
 Attribute of <a href='#set-property'>set-property</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='item'></a>
+<p>String representation of the value to which this
+property will be set, after suitable type conversion</p><p><span class='inTextTitle'>Required</span></p><a name='item'></a>
 <br /><table class='elementTitle' summary="item"><tr><td class='leftElementTitle'>
 &lt;item&gt;</td><td class='rightElementTitle'>
 Child of <a href='#putList'>putList</a>
@@ -346,9 +340,7 @@ icon, tooltip. These properties are to be interpreted by the jsp page using
 them.
 By default the bean is of type
 "org.apache.struts.tiles.beans.SimpleMenuItem". This bean is useful to
-create a list of beans used as menu items.</p><p>classtype The fully qualified classtype for this bean.
-If specified, the classtype must be a subclass of the interface
-"org.apache.struts.tiles.beans.MenuItem".</p><p>icon The bean 'icon' property.</p><p>link The bean 'link' property.</p><p>tooltip The bean 'tooltip' property.</p><p>value The bean 'value' property.</p><blockquote><table summary='element info'><tr>
+create a list of beans used as menu items.</p><blockquote><table summary='element info'><tr>
 <td class='construct'><table  summary="&lt;item&gt;'s attributes"><tr>
 <th class='title' colspan='3'>&lt;item&gt;'s attributes</th>
 </tr>
@@ -367,27 +359,29 @@ Attribute of <a href='#item'>item</a>
 @classtype</td><td class='rightAttributeTitle'>
 Attribute of <a href='#item'>item</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='item_icon'></a>
+<p>The fully qualified classtype for this bean.
+If specified, the classtype must be a subclass of the interface
+"org.apache.struts.tiles.beans.MenuItem".</p><a name='item_icon'></a>
 <br /><table class='attributeTitle' summary="icon"><tr><td class='leftAttributeTitle'>
 @icon</td><td class='rightAttributeTitle'>
 Attribute of <a href='#item'>item</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='item_link'></a>
+<p>The bean 'icon' property.</p><a name='item_link'></a>
 <br /><table class='attributeTitle' summary="link"><tr><td class='leftAttributeTitle'>
 @link</td><td class='rightAttributeTitle'>
 Attribute of <a href='#item'>item</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='item_tooltip'></a>
+<p>The bean 'link' property.</p><p><span class='inTextTitle'>Required</span></p><a name='item_tooltip'></a>
 <br /><table class='attributeTitle' summary="tooltip"><tr><td class='leftAttributeTitle'>
 @tooltip</td><td class='rightAttributeTitle'>
 Attribute of <a href='#item'>item</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><a name='item_value'></a>
+<p>The bean 'tooltip' property.</p><a name='item_value'></a>
 <br /><table class='attributeTitle' summary="value"><tr><td class='leftAttributeTitle'>
 @value</td><td class='rightAttributeTitle'>
 Attribute of <a href='#item'>item</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='description'></a>
+<p>The bean 'value' property.</p><p><span class='inTextTitle'>Required</span></p><a name='description'></a>
 <br /><table class='elementTitle' summary="description"><tr><td class='leftElementTitle'>
 &lt;description&gt;</td><td class='rightElementTitle'>
 Child of <a href='#definition'>definition</a>

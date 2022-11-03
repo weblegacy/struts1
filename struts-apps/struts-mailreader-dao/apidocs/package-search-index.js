@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.apache.struts.apps.mailreader.dao"},{"l":"org.apache.struts.apps.mailreader.dao.impl"},{"l":"org.apache.struts.apps.mailreader.dao.impl.memory"}]

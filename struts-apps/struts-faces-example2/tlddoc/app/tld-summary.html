@@ -1,88 +1,91 @@
 <html xmlns:javaee="http://java.sun.com/xml/ns/javaee" xmlns:fo="http://www.w3.org/1999/XSL/Format">
-<head>
-<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Application Tag Library (Struts Apps - Faces Example 2 Tag library documentation)</title>
-<link rel="stylesheet" type="text/css" href="../stylesheet.css" title="styie">
-</head>
-<script>
+    <head>
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Application Tag Library (Struts Apps - Faces Example 2 Tag library documentation)</title>
+        <link rel="stylesheet" type="text/css" href="../stylesheet.css" title="styie">
+    </head>
+    <script>
             function asd()
             {
             parent.document.title="Application Tag Library (Struts Apps - Faces Example 2 Tag library documentation)";
             }
           </script>
-<body bgcolor="white" onload="asd();">
-<a name="navbar_top"></a>
-<table border="0" width="100%" cellpadding="1" cellspacing="0">
-<tr>
-<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
-<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
-<tr ALIGN="center" VALIGN="top">
-<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
-</tr>
-</table>
-</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
-</tr>
-<tr>
-<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+    <body bgcolor="white" onload="asd();">
+        <a name="navbar_top"></a>
+        <table border="0" width="100%" cellpadding="1" cellspacing="0">
+            <tr>
+                <td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_top_firstrow"></a>
+                    <table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+                        <tr ALIGN="center" VALIGN="top">
+                            <td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+            </tr>
+            <tr>
+                <td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
                 &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
                 &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
                 <script></script>
-<noscript>
-<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
-</noscript>
-</font></td>
-</tr>
-</table>
-<hr>
-<h2>Application Tag Library</h2>
-<hr>
-<b>Standard Syntax:</b>
-<br>
-<code>
+                        <noscript>
+                            <a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+                        </noscript>
+                    </font></td>
+            </tr>
+        </table>
+        <hr>
+        <h2>Application Tag Library</h2>
+        <hr>
+        <b>Standard Syntax:</b>
+        <br>
+        <code>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 
-                    &lt;%@ taglib prefix="app" uri="http://jakarta.apache.org/taglibs/struts-example-1.0" %&gt;<br>
-</code>
-<br>
-<b>XML Syntax:</b>
-<br>
-<code>
+                    &lt;%@ taglib prefix="app" uri="http://jakarta.apache.org/taglibs/struts-example-1.0" %&gt;
+            <br>
+        </code>
+        <br>
+        <b>XML Syntax:</b>
+        <br>
+        <code>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 
-                    &lt;anyxmlelement xmlns:app="http://jakarta.apache.org/taglibs/struts-example-1.0" /&gt;<br>
-</code>
-<hr>
-
-    This tag library contains functionality specific to the Struts
+                    &lt;anyxmlelement xmlns:app="http://jakarta.apache.org/taglibs/struts-example-1.0" /&gt;
+            <br>
+        </code>
+        <hr>
+            This tag library contains functionality specific to the Struts
 
     Example Application.
 
-  <p></p>
-<table border="1" cellpadding="3" cellspacing="0" width="100%">
-<tr bgcolor="#CCCCFF" class="TableHeadingColor">
-<td colspan="2"><font size="+2"><b>Tag Library Information</b></font></td>
-</tr>
-<tr>
-<td>Display Name</td><td>Application Tag Library</td>
-</tr>
-<tr>
-<td>Version</td><td>1.0</td>
-</tr>
-<tr>
-<td>Short Name</td><td>app</td>
-</tr>
-<tr>
-<td>URI</td><td>http://jakarta.apache.org/taglibs/struts-example-1.0</td>
-</tr>
-</table>
-            &nbsp;
-            <p></p>
-<table border="1" cellpadding="3" cellspacing="0" width="100%">
-<tr bgcolor="#CCCCFF" class="TableHeadingColor">
-<td colspan="2"><font size="+2"><b>Tag Summary</b></font></td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="checkLogon.html">checkLogon</a></b></td><td>
+  
+        <p></p>
+        <table border="1" cellpadding="3" cellspacing="0" width="100%">
+            <tr bgcolor="#CCCCFF" class="TableHeadingColor">
+                <td colspan="2"><font size="+2"><b>Tag Library Information</b></font></td>
+            </tr>
+            <tr>
+                <td>Display Name</td><td>Application Tag Library</td>
+            </tr>
+            <tr>
+                <td>Version</td><td>1.0</td>
+            </tr>
+            <tr>
+                <td>Short Name</td><td>app</td>
+            </tr>
+            <tr>
+                <td>URI</td><td>http://jakarta.apache.org/taglibs/struts-example-1.0</td>
+            </tr>
+        </table>
+                    &nbsp;
+            
+        <p></p>
+        <table border="1" cellpadding="3" cellspacing="0" width="100%">
+            <tr bgcolor="#CCCCFF" class="TableHeadingColor">
+                <td colspan="2"><font size="+2"><b>Tag Summary</b></font></td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="checkLogon.html">checkLogon</a></b></td><td>
 
       Validate that there is a currently logged on user, by checking for
 
@@ -93,9 +96,9 @@
       which will typically be a logon form.
 
     </td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="linkSubscription.html">linkSubscription</a></b></td><td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="linkSubscription.html">linkSubscription</a></b></td><td>
 
       Generate a URL-encoded hyperlink to the a URL made up of the
 
@@ -104,9 +107,9 @@
       select the specified Subscription object.
 
     </td>
-</tr>
-<tr bgcolor="white" class="TableRowColor">
-<td width="15%"><b><a href="linkUser.html">linkUser</a></b></td><td>
+            </tr>
+            <tr bgcolor="white" class="TableRowColor">
+                <td width="15%"><b><a href="linkUser.html">linkUser</a></b></td><td>
 
       Generate a URL-encoded hyperlink to the a URL made up of the
 
@@ -115,34 +118,35 @@
       select the specified User object.
 
     </td>
-</tr>
-</table>
-              &nbsp;
-              <p></p>
-<a name="navbar_bottom"></a>
-<table border="0" width="100%" cellpadding="1" cellspacing="0">
-<tr>
-<td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
-<table BORDER="0" CELLPADDING="0" CELLSPACING="3">
-<tr ALIGN="center" VALIGN="top">
-<td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
-</tr>
-</table>
-</td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
-</tr>
-<tr>
-<td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
+            </tr>
+        </table>
+                      &nbsp;
+              
+        <p></p>
+        <a name="navbar_bottom"></a>
+        <table border="0" width="100%" cellpadding="1" cellspacing="0">
+            <tr>
+                <td COLSPAN="3" BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><a NAME="navbar_bottom_firstrow"></a>
+                    <table BORDER="0" CELLPADDING="0" CELLSPACING="3">
+                        <tr ALIGN="center" VALIGN="top">
+                            <td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a href="../overview-summary.html"><font CLASS="NavBarFont1"><b>Overview</b></font></a>&nbsp;</td><td BGCOLOR="#FFFFFF" CLASS="NavBarCell1Rev">    &nbsp;<font CLASS="NavBarFont1Rev">&nbsp;Library&nbsp;</font>&nbsp;</td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1"><font CLASS="NavBarFont1">&nbsp;Tag&nbsp;</font></td><td BGCOLOR="#EEEEFF" CLASS="NavBarCell1">    &nbsp;<a HREF="../help-doc.html"><font CLASS="NavBarFont1"><b>Help</b></font></a>&nbsp;</td>
+                        </tr>
+                    </table>
+                </td><td ALIGN="right" VALIGN="top" ROWSPAN="3"><em></em></td>
+            </tr>
+            <tr>
+                <td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2"></font></td><td BGCOLOR="white" CLASS="NavBarCell2"><font SIZE="-2">
                 &nbsp;<a HREF="../index.html" TARGET="_top"><b>FRAMES</b></a>&nbsp;
                 &nbsp;<a HREF="tld-summary.html" TARGET="_top"><b>NO FRAMES</b></a>&nbsp;
                 <script></script>
-<noscript>
-<a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
-</noscript>
-</font></td>
-</tr>
-</table>
-<hr>
-<small><i>
+                        <noscript>
+                            <a HREF="../alltags-noframe.html" TARGET=""><b>All Tags</b></a>
+                        </noscript>
+                    </font></td>
+            </tr>
+        </table>
+        <hr>
+        <small><i>
             Java, JSP, and JavaServer Pages are trademarks or registered
             trademarks of Sun Microsystems, Inc. in the US and other countries.
             Copyright 2002-3 Sun Microsystems, Inc.
@@ -150,5 +154,5 @@
             Santa Clara, CA 95054, U.S.A.
             All Rights Reserved.
             </i></small>
-</body>
+    </body>
 </html>

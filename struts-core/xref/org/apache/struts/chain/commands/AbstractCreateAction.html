@@ -28,11 +28,11 @@
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> */</em>
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">package</strong> org.apache.struts.chain.commands;
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>  
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.logging.Log;
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.logging.LogFactory;
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.Action;
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.chain.contexts.ActionContext;
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.config.ActionConfig;
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.Action;
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.chain.contexts.ActionContext;
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.config.ActionConfig;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> org.slf4j.Logger;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> org.slf4j.LoggerFactory;
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  <em class="jxr_javadoccomment"> * &lt;p&gt; Create (if necessary) and cache an &lt;code&gt;Action&lt;/code&gt; for this</em>
@@ -45,10 +45,10 @@
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>      <em class="jxr_comment">// ------------------------------------------------------ Instance Variables</em>
 <a class="jxr_linenumber" name="L38" href="#L38">38</a>  
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * Provide a Commons logging instance for this class.</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * The {@code Log} instance for this class.</em>
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> Log LOG =
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>          LogFactory.getLog(AbstractCreateAction.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Logger log =
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          LoggerFactory.getLogger(AbstractCreateAction.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>      <em class="jxr_comment">// ---------------------------------------------------------- Public Methods</em>
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>  
@@ -67,14 +67,14 @@
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>          Boolean valid = actionCtx.getFormValid();
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>  
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>          <strong class="jxr_keyword">if</strong> ((valid == <strong class="jxr_keyword">null</strong>) || !valid.booleanValue()) {
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>              LOG.trace(<span class="jxr_string">"Invalid form; not going to execute."</span>);
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>              log.trace(<span class="jxr_string">"Invalid form; not going to execute."</span>);
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>  
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>              <strong class="jxr_keyword">return</strong> CONTINUE_PROCESSING;
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>          }
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>  
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>          <em class="jxr_comment">// Check to see if an action has already been created</em>
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>          <strong class="jxr_keyword">if</strong> (actionCtx.getAction() != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>              LOG.trace(<span class="jxr_string">"already have an action ["</span> + actionCtx.getAction() + <span class="jxr_string">"]"</span>);
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>              log.trace(<span class="jxr_string">"already have an action [{}]"</span>, actionCtx.getAction());
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>  
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>              <strong class="jxr_keyword">return</strong> CONTINUE_PROCESSING;
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>          }
@@ -87,9 +87,9 @@
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>              String command = actionConfig.getCommand();
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>              <strong class="jxr_keyword">if</strong> ((command == <strong class="jxr_keyword">null</strong>) &amp;&amp; (actionConfig.getForward() == <strong class="jxr_keyword">null</strong>)
 <a class="jxr_linenumber" name="L81" href="#L81">81</a>                  &amp;&amp; (actionConfig.getInclude() == <strong class="jxr_keyword">null</strong>)) {
-<a class="jxr_linenumber" name="L82" href="#L82">82</a>                  LOG.error(<span class="jxr_string">"no type or command for "</span> + actionConfig.getPath());
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>                  log.error(<span class="jxr_string">"no type or command for {}"</span>, actionConfig.getPath());
 <a class="jxr_linenumber" name="L83" href="#L83">83</a>              } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="L84" href="#L84">84</a>                  LOG.trace(<span class="jxr_string">"no type for "</span> + actionConfig.getPath());
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>                  log.trace(<span class="jxr_string">"no type for {}"</span>, actionConfig.getPath());
 <a class="jxr_linenumber" name="L85" href="#L85">85</a>              }
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>  
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>              <strong class="jxr_keyword">return</strong> CONTINUE_PROCESSING;
@@ -98,35 +98,33 @@
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>          <em class="jxr_comment">// Create (if necessary) and cache an Action instance</em>
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>          <a name="Action" href="../../../../../org/apache/struts/action/Action.html#Action">Action</a> action = getAction(actionCtx, type, actionConfig);
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>  
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>          <strong class="jxr_keyword">if</strong> (LOG.isTraceEnabled()) {
-<a class="jxr_linenumber" name="L94" href="#L94">94</a>              LOG.trace(<span class="jxr_string">"setting action to "</span> + action);
-<a class="jxr_linenumber" name="L95" href="#L95">95</a>          }
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>          log.trace(<span class="jxr_string">"setting action to {}"</span>, action);
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>  
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>          actionCtx.setAction(action);
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>  
-<a class="jxr_linenumber" name="L97" href="#L97">97</a>          actionCtx.setAction(action);
-<a class="jxr_linenumber" name="L98" href="#L98">98</a>  
-<a class="jxr_linenumber" name="L99" href="#L99">99</a>          <strong class="jxr_keyword">return</strong> CONTINUE_PROCESSING;
-<a class="jxr_linenumber" name="L100" href="#L100">100</a>     }
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>          <strong class="jxr_keyword">return</strong> CONTINUE_PROCESSING;
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>      }
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>  
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>     <em class="jxr_comment">// ------------------------------------------------------- Protected Methods</em>
 <a class="jxr_linenumber" name="L101" href="#L101">101</a> 
-<a class="jxr_linenumber" name="L102" href="#L102">102</a>     <em class="jxr_comment">// ------------------------------------------------------- Protected Methods</em>
-<a class="jxr_linenumber" name="L103" href="#L103">103</a> 
-<a class="jxr_linenumber" name="L104" href="#L104">104</a>     <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L105" href="#L105">105</a> <em class="jxr_javadoccomment">     * &lt;p&gt; Create and return the appropriate &lt;code&gt;Action&lt;/code&gt; class for the</em>
-<a class="jxr_linenumber" name="L106" href="#L106">106</a> <em class="jxr_javadoccomment">     * given &lt;code&gt;type&lt;/code&gt; and &lt;code&gt;actionConfig&lt;/code&gt;. &lt;/p&gt; &lt;p&gt; NOTE:</em>
-<a class="jxr_linenumber" name="L107" href="#L107">107</a> <em class="jxr_javadoccomment">     * The dependence on ActionServlet suggests that this should be broken up</em>
-<a class="jxr_linenumber" name="L108" href="#L108">108</a> <em class="jxr_javadoccomment">     * along the lines of the other Abstract/concrete pairs in the</em>
-<a class="jxr_linenumber" name="L109" href="#L109">109</a> <em class="jxr_javadoccomment">     * org.apache.struts.chain.commands package. &lt;/p&gt;</em>
-<a class="jxr_linenumber" name="L110" href="#L110">110</a> <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L111" href="#L111">111</a> <em class="jxr_javadoccomment">     * @param context      The &lt;code&gt;Context&lt;/code&gt; for this request</em>
-<a class="jxr_linenumber" name="L112" href="#L112">112</a> <em class="jxr_javadoccomment">     * @param type         Name of class to instantiate</em>
-<a class="jxr_linenumber" name="L113" href="#L113">113</a> <em class="jxr_javadoccomment">     * @param actionConfig The {@link ActionConfig} for this request</em>
-<a class="jxr_linenumber" name="L114" href="#L114">114</a> <em class="jxr_javadoccomment">     * @return Instantiated Action class</em>
-<a class="jxr_linenumber" name="L115" href="#L115">115</a> <em class="jxr_javadoccomment">     * @throws Exception if there are any problems instantiating the Action</em>
-<a class="jxr_linenumber" name="L116" href="#L116">116</a> <em class="jxr_javadoccomment">     *                   class.</em>
-<a class="jxr_linenumber" name="L117" href="#L117">117</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L118" href="#L118">118</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> <a name="Action" href="../../../../../org/apache/struts/action/Action.html#Action">Action</a> getAction(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> context, String type,
-<a class="jxr_linenumber" name="L119" href="#L119">119</a>         <a name="ActionConfig" href="../../../../../org/apache/struts/config/ActionConfig.html#ActionConfig">ActionConfig</a> actionConfig)
-<a class="jxr_linenumber" name="L120" href="#L120">120</a>         <strong class="jxr_keyword">throws</strong> Exception;
-<a class="jxr_linenumber" name="L121" href="#L121">121</a> }
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L103" href="#L103">103</a> <em class="jxr_javadoccomment">     * &lt;p&gt; Create and return the appropriate &lt;code&gt;Action&lt;/code&gt; class for the</em>
+<a class="jxr_linenumber" name="L104" href="#L104">104</a> <em class="jxr_javadoccomment">     * given &lt;code&gt;type&lt;/code&gt; and &lt;code&gt;actionConfig&lt;/code&gt;. &lt;/p&gt; &lt;p&gt; NOTE:</em>
+<a class="jxr_linenumber" name="L105" href="#L105">105</a> <em class="jxr_javadoccomment">     * The dependence on ActionServlet suggests that this should be broken up</em>
+<a class="jxr_linenumber" name="L106" href="#L106">106</a> <em class="jxr_javadoccomment">     * along the lines of the other Abstract/concrete pairs in the</em>
+<a class="jxr_linenumber" name="L107" href="#L107">107</a> <em class="jxr_javadoccomment">     * org.apache.struts.chain.commands package. &lt;/p&gt;</em>
+<a class="jxr_linenumber" name="L108" href="#L108">108</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L109" href="#L109">109</a> <em class="jxr_javadoccomment">     * @param context      The &lt;code&gt;Context&lt;/code&gt; for this request</em>
+<a class="jxr_linenumber" name="L110" href="#L110">110</a> <em class="jxr_javadoccomment">     * @param type         Name of class to instantiate</em>
+<a class="jxr_linenumber" name="L111" href="#L111">111</a> <em class="jxr_javadoccomment">     * @param actionConfig The {@link ActionConfig} for this request</em>
+<a class="jxr_linenumber" name="L112" href="#L112">112</a> <em class="jxr_javadoccomment">     * @return Instantiated Action class</em>
+<a class="jxr_linenumber" name="L113" href="#L113">113</a> <em class="jxr_javadoccomment">     * @throws Exception if there are any problems instantiating the Action</em>
+<a class="jxr_linenumber" name="L114" href="#L114">114</a> <em class="jxr_javadoccomment">     *                   class.</em>
+<a class="jxr_linenumber" name="L115" href="#L115">115</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> <a name="Action" href="../../../../../org/apache/struts/action/Action.html#Action">Action</a> getAction(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> context, String type,
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>         <a name="ActionConfig" href="../../../../../org/apache/struts/config/ActionConfig.html#ActionConfig">ActionConfig</a> actionConfig)
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>         <strong class="jxr_keyword">throws</strong> Exception;
+<a class="jxr_linenumber" name="L119" href="#L119">119</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2000&#x2013;2022 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>

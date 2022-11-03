@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Bump `selenium-api` and `selenium-java` from 4.5.0 to 4.5.3
 * Adapt `tiles-config_1_*.dtd` so that DTDDoc works
 * Correct some javadoc-warnings
 * Add release-notes for version 1.4.2

@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Update `roadmap.xml`
 * Update version- and upgrade-status in `README.md`
 * Bump `htmlunit` from 2.65.1 to 2.66.0
 * Bump `checkstyle` from 10.3.4 to 10.4

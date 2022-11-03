@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Bump `htmlunit` from 2.65.1 to 2.66.0
 * Bump `checkstyle` from 10.3.4 to 10.4
 * Bump `selenium-api` and `selenium-java` from 4.5.0 to 4.5.3
 * Adapt `tiles-config_1_*.dtd` so that DTDDoc works

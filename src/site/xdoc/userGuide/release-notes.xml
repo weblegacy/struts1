@@ -90,6 +90,7 @@
 <li>Remove some &quot;SuppressWarnings&quot;</li>
 <li>Correct typos</li>
 <li>Standardize log variables</li>
+<li>Adapt &quot;tiles-config_1_*.dtd&quot; so that DTDDoc works</li>
 </ul>
 
 <h4>New Feature</h4>

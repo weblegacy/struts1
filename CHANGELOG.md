@@ -2,6 +2,7 @@
 
 ## 1.4.2 / YYYY-MM-DD
 
+* Adapt `tiles-config_1_*.dtd` so that DTDDoc works
 * Correct some javadoc-warnings
 * Add release-notes for version 1.4.2
 * Add section `breaking changes` to release-notes since 1.3.11

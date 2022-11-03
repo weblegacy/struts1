@@ -8,6 +8,10 @@ Is a clone of <https://github.com/apache/struts1.git> - Branche `trunk`, aiming 
   * Complete JUnit5- and integration-test (rewrite old ones)
   * JSTL 1.0.2 --> 1.2
   * Taglibs-Standard 1.0.6 --> 1.2
+  * Servlet-API 2.3 --> 3.0
+  * JSP 2.0 --> 2.3
+  * JSP-EL 2.0 --> 2.2
+  * JSF (MyFaces) 1.0.9 --> 2.0.25
 * **[Open]**
   * JDK 1.4 --> JDK 11
   * Servlet-API 2.3 --> 4.0
@@ -22,7 +26,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 | Version                                                             | JEE-Version | Java-Version | Servlet | JSP | EL  | JSF | JSTL |
 |--------------------------------------------------------------------:|------------:|-------------:|--------:|----:|----:|----:|-----:|
-|                                                          1.4.2(WiP) |   Java EE 6 |            8 |     3.0 | 2.2 | 2.2 | 2.0 |  1.2 |
+|   [1.4.2](https://github.com/weblegacy/struts1/releases/tag/v1.4.2) |   Java EE 6 |            8 |     3.0 | 2.2 | 2.2 | 2.0 |  1.2 |
 |   [1.4.1](https://github.com/weblegacy/struts1/releases/tag/v1.4.1) |   Java EE 5 |            8 |     2.5 | 2.1 | 2.1 | 1.2 |  1.2 |
 |   [1.4.0](https://github.com/weblegacy/struts1/releases/tag/v1.4.0) |    J2EE 1.4 |          1.4 |     2.3 | 2.0 | 2.0 | 1.0 |  1.0 |
 | [1.3.11](https://github.com/weblegacy/struts1/releases/tag/v1.3.11) |    J2EE 1.4 |          1.4 |     2.3 | 2.0 | 2.0 | 1.0 |  1.0 |

@@ -1,7 +1,8 @@
 # Changes
 
-## 1.4.2 / YYYY-MM-DD
+## 1.4.2 / 2022-11-03
 
+* Set Version to 1.4.2
 * Update `roadmap.xml`
 * Update version- and upgrade-status in `README.md`
 * Bump `htmlunit` from 2.65.1 to 2.66.0

@@ -10,7 +10,7 @@ Is a clone of <https://github.com/apache/struts1.git> - Branche `trunk`, aiming 
   * Taglibs-Standard 1.0.6 --> 1.2
   * Servlet-API 2.3 --> 3.1
   * JSP 2.0 --> 2.3
-  * JSP-EL 2.0 --> 2.2
+  * JSP-EL 2.0 --> 3.0
   * JSF (MyFaces) 1.0.9 --> 2.0.25
 * **[Open]**
   * JDK 1.4 --> JDK 11

@@ -2,6 +2,7 @@
 
 ## 1.4.3 / YYYY-MM-DD
 
+* Bump `jsp-api` from 2.2.1 to 2.3.3
 * Remove some `@SuppressWarnings`
 * Replace some generic-wildcards
 * Upgrade `servlet-api` from 3.0.1 to 3.1.0

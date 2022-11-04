@@ -373,7 +373,7 @@
         <tilesRequestVersion>1.0.7</tilesRequestVersion>
         <antlrVersion>4.11.1</antlrVersion>
         <servletVersion>3.1.0</servletVersion>
-        <jspVersion>2.2.1</jspVersion>
+        <jspVersion>2.3.3</jspVersion>
         <elVersion>2.2.5</elVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>

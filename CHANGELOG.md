@@ -2,6 +2,7 @@
 
 ## 1.4.3 / YYYY-MM-DD
 
+* Remove some `@SuppressWarnings`
 * Replace some generic-wildcards
 * Upgrade `servlet-api` from 3.0.1 to 3.1.0
 * Move all `org.apache.struts.mock`-classes in module `core` from main into test

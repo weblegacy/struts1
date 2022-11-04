@@ -365,9 +365,8 @@ public class OptionsCollectionTag extends TagSupport {
         } else if (collection instanceof Map) {
             return (((Map<?, ?>) collection).entrySet().iterator());
         } else if (collection instanceof Enumeration) {
-            @SuppressWarnings("unchecked")
-            Enumeration<Object> enumeration = (Enumeration<Object>) collection;
-            return new IteratorAdapter<Object>(enumeration);
+            Enumeration<?> enumeration = (Enumeration<?>) collection;
+            return new IteratorAdapter<>(enumeration);
         } else {
             throw new JspException(messages.getMessage(
                     "optionsCollectionTag.iterator", collection.toString()));

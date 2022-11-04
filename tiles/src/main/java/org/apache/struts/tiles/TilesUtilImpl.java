@@ -204,7 +204,7 @@ public class TilesUtilImpl implements Serializable {
 
         try {
             Class<?> factoryClass = RequestUtils.applicationClass(classname);
-            Object factory = factoryClass.newInstance();
+            Object factory = factoryClass.getDeclaredConstructor().newInstance();
 
             // Backward compatibility : if factory classes implements old interface,
             // provide appropriate wrapper
@@ -229,10 +229,9 @@ public class TilesUtilImpl implements Serializable {
                     + "'.",
                 ex);
 
-        } catch (InstantiationException ex) { // Bad constructor or error
-            throw new DefinitionsFactoryException(ex);
-
-        } catch (IllegalAccessException ex) {
+        } catch (InstantiationException | IllegalAccessException | IllegalArgumentException
+                | InvocationTargetException | NoSuchMethodException
+                | SecurityException ex) { // Bad constructor or error
             throw new DefinitionsFactoryException(ex);
         }
     }

@@ -8,7 +8,7 @@ Is a clone of <https://github.com/apache/struts1.git> - Branche `trunk`, aiming 
   * Complete JUnit5- and integration-test (rewrite old ones)
   * JSTL 1.0.2 --> 1.2
   * Taglibs-Standard 1.0.6 --> 1.2
-  * Servlet-API 2.3 --> 3.0
+  * Servlet-API 2.3 --> 3.1
   * JSP 2.0 --> 2.3
   * JSP-EL 2.0 --> 2.2
   * JSF (MyFaces) 1.0.9 --> 2.0.25

@@ -350,4 +350,9 @@ public class MockServletContext implements ServletContext {
     public void declareRoles(String... roleNames) {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public String getVirtualServerName() {
+        throw new UnsupportedOperationException();
+    }
 }

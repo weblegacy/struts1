@@ -42,6 +42,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpUpgradeHandler;
 import javax.servlet.http.Part;
 
 /**
@@ -330,6 +331,11 @@ public class MockHttpServletRequest implements HttpServletRequest {
     }
 
     @Override
+    public String changeSessionId() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public boolean isRequestedSessionIdValid() {
         throw new UnsupportedOperationException();
     }
@@ -371,6 +377,11 @@ public class MockHttpServletRequest implements HttpServletRequest {
     }
 
     @Override
+    public <T extends HttpUpgradeHandler> T upgrade(Class<T> handlerClass) throws IOException, ServletException {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public Part getPart(String name) throws IOException, ServletException {
         throw new UnsupportedOperationException();
     }
@@ -398,6 +409,11 @@ public class MockHttpServletRequest implements HttpServletRequest {
 
     @Override
     public int getContentLength() {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public long getContentLengthLong() {
         throw new UnsupportedOperationException();
     }
 

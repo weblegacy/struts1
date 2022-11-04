@@ -372,7 +372,7 @@
         <tilesVersion>3.0.8</tilesVersion>
         <tilesRequestVersion>1.0.7</tilesRequestVersion>
         <antlrVersion>4.11.1</antlrVersion>
-        <servletVersion>3.0.1</servletVersion>
+        <servletVersion>3.1.0</servletVersion>
         <jspVersion>2.2.1</jspVersion>
         <elVersion>2.2.5</elVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>

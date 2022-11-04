@@ -191,6 +191,11 @@ public class MockHttpServletResponse implements HttpServletResponse {
     }
 
     @Override
+    public void setContentLengthLong(long len) {
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
     public void setContentType(String type) {
         throw new UnsupportedOperationException();
     }

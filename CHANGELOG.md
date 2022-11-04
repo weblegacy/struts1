@@ -2,6 +2,7 @@
 
 ## 1.4.3 / YYYY-MM-DD
 
+* Upgrade `servlet-api` from 3.0.1 to 3.1.0
 * Move all `org.apache.struts.mock`-classes in module `core` from main into test
 * Update `README.md` for next release
 * Bump `webdrivermanager` from 5.3.0 to 5.3.1

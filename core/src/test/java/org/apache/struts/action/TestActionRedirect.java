@@ -127,7 +127,7 @@ public class TestActionRedirect {
      * @param paramName  the key of the value to be checked
      * @param paramValue the value to check for
      */
-    static void assertHasParameter(Map<?, ?> parameters, String paramName,
+    static void assertHasParameter(Map<String, ?> parameters, String paramName,
         String paramValue) {
         Object value = parameters.get(paramName);
 
@@ -162,7 +162,7 @@ public class TestActionRedirect {
      * @param paramName  the key of the value(s) to count
      * @return the number of values for the specified parameter
      */
-    static int countParameters(Map<?, ?> parameters, String paramName) {
+    static int countParameters(Map<String, ?> parameters, String paramName) {
         Object value = parameters.get(paramName);
 
         if (value == null) {

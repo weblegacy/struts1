@@ -23,7 +23,6 @@ package org.apache.struts.faces.renderer;
 
 
 import java.io.IOException;
-import java.util.Iterator;
 
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIForm;
@@ -245,9 +244,7 @@ public class CommandLinkRenderer extends AbstractRenderer {
         sb.append("'].value='");
         sb.append(component.getClientId(context));
         sb.append("';");
-        Iterator<?> kids = component.getChildren().iterator();
-        while (kids.hasNext()) {
-            UIComponent kid = (UIComponent) kids.next();
+        for (UIComponent kid : component.getChildren()) {
             if (!(kid instanceof UIParameter)) {
                 continue;
             }

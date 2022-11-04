@@ -65,10 +65,10 @@ public class RequestToVariableFilter implements ScriptContextFilter {
 
         final Bindings bindings = context.getBindings(ScriptContext.ENGINE_SCOPE);
 
-        for (Enumeration<?> e = request.getParameterNames();
+        for (Enumeration<String> e = request.getParameterNames();
                 e.hasMoreElements();) {
 
-            final String name = e.nextElement().toString();
+            final String name = e.nextElement();
             String newName = name;
             while (bindings.containsKey(newName)) {
                 newName = "_" + newName;

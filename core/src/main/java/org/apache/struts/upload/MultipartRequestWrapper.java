@@ -91,11 +91,11 @@ public class MultipartRequestWrapper extends HttpServletRequestWrapper {
      * parameters read from the multipart request </p>
      */
     public Enumeration<String> getParameterNames() {
-        Enumeration<?> baseParams = getRequest().getParameterNames();
+        Enumeration<String> baseParams = getRequest().getParameterNames();
         ArrayList<String> list = new ArrayList<>();
 
         while (baseParams.hasMoreElements()) {
-            list.add(baseParams.nextElement().toString());
+            list.add(baseParams.nextElement());
         }
 
         Collection<String> multipartParams = parameters.keySet();

@@ -20,6 +20,8 @@
  */
 package org.apache.struts.validator.validwhen;
 
+import java.math.BigDecimal;
+
 import org.antlr.v4.runtime.RuleContext;
 import org.apache.commons.validator.util.ValidatorUtils;
 
@@ -43,72 +45,72 @@ public class ValidWhenEvaluator extends ValidWhenBaseVisitor<ValidWhenResult<?>>
     }
 
     @Override
-    public ValidWhenResult<?> visitDecimal(ValidWhenParser.DecimalContext ctx) {
+    public ValidWhenResult<BigDecimal> visitDecimal(ValidWhenParser.DecimalContext ctx) {
         String s = ctx.getText();
 //        System.out.println("Decimal: " + s);
         return new ValidWhenResultBigDecimal(s);
     }
 
     @Override
-    public ValidWhenResult<?> visitInteger(ValidWhenParser.IntegerContext ctx) {
+    public ValidWhenResult<Integer> visitInteger(ValidWhenParser.IntegerContext ctx) {
         String s = ctx.getText();
 //        System.out.println("Integer: " + s);
         return new ValidWhenResultInteger(s);
     }
 
     @Override
-    public ValidWhenResult<?> visitString(ValidWhenParser.StringContext ctx) {
+    public ValidWhenResult<String> visitString(ValidWhenParser.StringContext ctx) {
         final String s = ctx.getText();
 //        System.out.println("String: " + s);
         return new ValidWhenResultString(s.substring(1, s.length() - 1));
     }
 
     @Override
-    public ValidWhenResult<?> visitField1(ValidWhenParser.Field1Context ctx) {
+    public ValidWhenResult<String> visitField1(ValidWhenParser.Field1Context ctx) {
         return visitField(ctx.id1.getText() + "[" + index + "]" + ctx.id2.getText());
     }
 
     @Override
-    public ValidWhenResult<?> visitField2(ValidWhenParser.Field2Context ctx) {
+    public ValidWhenResult<String> visitField2(ValidWhenParser.Field2Context ctx) {
         return visitField(ctx.id1.getText() + "[" + ctx.idx.getText() + "]" + ctx.id2.getText());
     }
 
     @Override
-    public ValidWhenResult<?> visitField3(ValidWhenParser.Field3Context ctx) {
+    public ValidWhenResult<String> visitField3(ValidWhenParser.Field3Context ctx) {
         return visitField(ctx.id1.getText() + "[" + ctx.idx.getText() + "]");
     }
 
     @Override
-    public ValidWhenResult<?> visitField4(ValidWhenParser.Field4Context ctx) {
+    public ValidWhenResult<String> visitField4(ValidWhenParser.Field4Context ctx) {
         return visitField(ctx.id1.getText() + "[" + index + "]");
     }
 
     @Override
-    public ValidWhenResult<?> visitField5(ValidWhenParser.Field5Context ctx) {
+    public ValidWhenResult<String> visitField5(ValidWhenParser.Field5Context ctx) {
         return visitField(ctx.id1.getText());
     }
 
-    private ValidWhenResult<?> visitField(String property) {
+    private ValidWhenResult<String> visitField(String property) {
 //        System.out.println("Field: " + property);
         return new ValidWhenResultString(ValidatorUtils.getValueAsString(form, property));
     }
 
     @Override
-    public ValidWhenResult<?> visitLiteralNull(ValidWhenParser.LiteralNullContext ctx) {
+    public ValidWhenResult<String> visitLiteralNull(ValidWhenParser.LiteralNullContext ctx) {
         super.visitLiteralNull(ctx);
 //        System.out.println("NULL");
         return new ValidWhenResultString(null);
     }
 
     @Override
-    public ValidWhenResult<?> visitLiteralThis(ValidWhenParser.LiteralThisContext ctx) {
+    public ValidWhenResult<String> visitLiteralThis(ValidWhenParser.LiteralThisContext ctx) {
         super.visitLiteralThis(ctx);
 //        System.out.println("*this*");
         return new ValidWhenResultString(value);
     }
 
     @Override
-    public ValidWhenResult<?> visitJoinedExpression(ValidWhenParser.JoinedExpressionContext ctx) {
+    public ValidWhenResult<Boolean> visitJoinedExpression(ValidWhenParser.JoinedExpressionContext ctx) {
         boolean b1 = extracted(ctx.e1);
         boolean b2 = extracted(ctx.e2);
 
@@ -133,7 +135,7 @@ public class ValidWhenEvaluator extends ValidWhenBaseVisitor<ValidWhenResult<?>>
     }
 
     @Override
-    public ValidWhenResult<?> visitComparisonExpression(ValidWhenParser.ComparisonExpressionContext ctx) {
+    public ValidWhenResult<Boolean> visitComparisonExpression(ValidWhenParser.ComparisonExpressionContext ctx) {
         ValidWhenResult<?> v1 = ctx.v1.accept(this);
         ValidWhenResult<?> v2 = ctx.v2.accept(this);
 

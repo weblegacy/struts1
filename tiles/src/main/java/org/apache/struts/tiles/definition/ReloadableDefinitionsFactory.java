@@ -276,9 +276,9 @@ public class ReloadableDefinitionsFactory implements org.apache.struts.tiles.Com
             // This implementation is very simple.
             // It is possible to avoid creation of a new structure, but this would
             // imply writing all of the Map interface.
-            Enumeration<?> e = config.getInitParameterNames();
+            Enumeration<String> e = config.getInitParameterNames();
             while (e.hasMoreElements()) {
-                String key = (String) e.nextElement();
+                String key = e.nextElement();
                 put(key, config.getInitParameter(key));
             }
         }

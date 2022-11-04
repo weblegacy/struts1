@@ -1342,8 +1342,8 @@ public class TestTagUtils extends TagTestBase {
             String val = null;
             int i = 0;
 
-            for (Iterator<?> iter = errors.get("prop"); iter.hasNext();) {
-                ActionMessage error = (ActionMessage) iter.next();
+            for (Iterator<ActionMessage> iter = errors.get("prop"); iter.hasNext();) {
+                ActionMessage error = iter.next();
 
                 val = error.getKey();
                 i++;
@@ -1371,9 +1371,9 @@ public class TestTagUtils extends TagTestBase {
             String key = null;
             int i = 0;
 
-            for (Iterator<?> iter = errors.get(ActionMessages.GLOBAL_MESSAGE);
+            for (Iterator<ActionMessage> iter = errors.get(ActionMessages.GLOBAL_MESSAGE);
                 iter.hasNext();) {
-                ActionMessage error = (ActionMessage) iter.next();
+                ActionMessage error = iter.next();
 
                 key = error.getKey();
 
@@ -1407,9 +1407,9 @@ public class TestTagUtils extends TagTestBase {
             String key = null;
             int i = 0;
 
-            for (Iterator<?> iter = errors.get(ActionMessages.GLOBAL_MESSAGE);
+            for (Iterator<ActionMessage> iter = errors.get(ActionMessages.GLOBAL_MESSAGE);
                 iter.hasNext();) {
-                ActionMessage error = (ActionMessage) iter.next();
+                ActionMessage error = iter.next();
 
                 key = error.getKey();
 
@@ -1457,7 +1457,7 @@ public class TestTagUtils extends TagTestBase {
             assertNotNull(errors, "errors should not be null");
             assertNotNull(errors.get("prop"), "errors prop should not be null");
 
-            for (Iterator<?> iter = errors.get("prop"); iter.hasNext();) {
+            for (Iterator<ActionMessage> iter = errors.get("prop"); iter.hasNext();) {
                 fail("Should not have any errors for does-not-exist");
             }
         } catch (JspException e) {
@@ -1657,8 +1657,8 @@ public class TestTagUtils extends TagTestBase {
             String val = null;
             int i = 0;
 
-            for (Iterator<?> iter = messages.get("prop"); iter.hasNext();) {
-                ActionMessage message = (ActionMessage) iter.next();
+            for (Iterator<ActionMessage> iter = messages.get("prop"); iter.hasNext();) {
+                ActionMessage message = iter.next();
 
                 val = message.getKey();
                 i++;
@@ -1690,8 +1690,8 @@ public class TestTagUtils extends TagTestBase {
             String val = null;
             int i = 0;
 
-            for (Iterator<?> iter = messages.get("prop"); iter.hasNext();) {
-                ActionMessage message = (ActionMessage) iter.next();
+            for (Iterator<ActionMessage> iter = messages.get("prop"); iter.hasNext();) {
+                ActionMessage message = iter.next();
 
                 val = message.getKey();
                 i++;
@@ -1720,9 +1720,9 @@ public class TestTagUtils extends TagTestBase {
             String key = null;
             int i = 0;
 
-            for (Iterator<?> iter = messages.get(ActionMessages.GLOBAL_MESSAGE);
+            for (Iterator<ActionMessage> iter = messages.get(ActionMessages.GLOBAL_MESSAGE);
                 iter.hasNext();) {
-                ActionMessage message = (ActionMessage) iter.next();
+                ActionMessage message = iter.next();
 
                 key = message.getKey();
 
@@ -1757,9 +1757,9 @@ public class TestTagUtils extends TagTestBase {
             String key = null;
             int i = 0;
 
-            for (Iterator<?> iter = messages.get(ActionMessages.GLOBAL_MESSAGE);
+            for (Iterator<ActionMessage> iter = messages.get(ActionMessages.GLOBAL_MESSAGE);
                 iter.hasNext();) {
-                ActionMessage message = (ActionMessage) iter.next();
+                ActionMessage message = iter.next();
 
                 key = message.getKey();
 
@@ -1808,7 +1808,7 @@ public class TestTagUtils extends TagTestBase {
             assertNotNull(messages.get("prop"),
                 "messages prop should not be null");
 
-            for (Iterator<?> iter = messages.get("prop"); iter.hasNext();) {
+            for (Iterator<ActionMessage> iter = messages.get("prop"); iter.hasNext();) {
                 fail("Should not have any messages for does-not-exist");
             }
         } catch (JspException e) {

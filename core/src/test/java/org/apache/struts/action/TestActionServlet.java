@@ -28,6 +28,7 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
+import java.net.URL;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -187,7 +188,7 @@ public class TestActionServlet {
     public void notestSplitAndResolvePaths()
         throws ServletException {
         ActionServlet servlet = new ActionServlet();
-        List<?> list =
+        List<URL> list =
             servlet.splitAndResolvePaths(
                 "org/apache/struts/config/struts-config.xml");
 

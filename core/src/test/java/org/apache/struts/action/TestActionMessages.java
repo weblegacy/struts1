@@ -103,7 +103,7 @@ public class TestActionMessages {
 
     @Test
     public void testGetWithNoProperty() {
-        Iterator<?> it = aMsgs.get("myProp");
+        Iterator<ActionMessage> it = aMsgs.get("myProp");
 
         assertFalse(it.hasNext(), "iterator is not empty!");
     }
@@ -112,7 +112,7 @@ public class TestActionMessages {
     public void testGetForAProperty() {
         testSizeWithOneProperty();
 
-        Iterator<?> it = aMsgs.get("myProp");
+        Iterator<ActionMessage> it = aMsgs.get("myProp");
 
         assertTrue(it.hasNext(), "iterator is empty!");
     }
@@ -137,11 +137,11 @@ public class TestActionMessages {
         assertEquals(2, msgs.size("prop1"));
 
         // test message order
-        Iterator<?> props = msgs.get();
+        Iterator<ActionMessage> props = msgs.get();
         int count = 1;
 
         while (props.hasNext()) {
-            ActionMessage msg = (ActionMessage) props.next();
+            ActionMessage msg = props.next();
 
             if (count == 1) {
                 assertEquals("key", msg.getKey());

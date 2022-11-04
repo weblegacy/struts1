@@ -117,9 +117,9 @@ public class ErrorsRenderer extends AbstractRenderer {
         }
 
         // Render any JavaServer Faces messages
-        Iterator<?> messages = context.getMessages(property);
+        Iterator<FacesMessage> messages = context.getMessages(property);
         while (messages.hasNext()) {
-            FacesMessage message = (FacesMessage) messages.next();
+            FacesMessage message = messages.next();
             log.trace("Processing FacesMessage: {}", message.getSummary());
             if (!headerDone) {
                 if (headerPresent) {

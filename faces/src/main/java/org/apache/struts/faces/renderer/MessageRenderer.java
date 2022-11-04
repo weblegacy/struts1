@@ -23,7 +23,6 @@ package org.apache.struts.faces.renderer;
 
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIParameter;
@@ -93,9 +92,7 @@ public class MessageRenderer extends WriteRenderer {
 
         // Build the substitution arguments list
         ArrayList<Object> list = new ArrayList<>();
-        Iterator<?> kids = component.getChildren().iterator();
-        while (kids.hasNext()) {
-            UIComponent kid = (UIComponent) kids.next();
+        for (UIComponent kid : component.getChildren()) {
             if (!(kid instanceof UIParameter)) {
                 continue;
             }

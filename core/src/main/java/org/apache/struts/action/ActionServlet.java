@@ -381,10 +381,10 @@ public class ActionServlet extends HttpServlet {
             postProcessConfig(moduleConfig);
             moduleConfig.freeze();
 
-            Enumeration<?> names = getServletConfig().getInitParameterNames();
+            Enumeration<String> names = getServletConfig().getInitParameterNames();
 
             while (names.hasMoreElements()) {
-                String name = (String) names.nextElement();
+                String name = names.nextElement();
 
                 if (!name.startsWith(configPrefix)) {
                     continue;
@@ -435,10 +435,10 @@ public class ActionServlet extends HttpServlet {
     protected void initModulePrefixes(ServletContext context) {
         ArrayList<String> prefixList = new ArrayList<>();
 
-        Enumeration<?> names = context.getAttributeNames();
+        Enumeration<String> names = context.getAttributeNames();
 
         while (names.hasMoreElements()) {
-            String name = (String) names.nextElement();
+            String name = names.nextElement();
 
             if (!name.startsWith(Globals.MODULE_KEY)) {
                 continue;
@@ -526,10 +526,10 @@ public class ActionServlet extends HttpServlet {
      */
     protected void destroyModules() {
         ArrayList<String> values = new ArrayList<>();
-        Enumeration<?> names = getServletContext().getAttributeNames();
+        Enumeration<String> names = getServletContext().getAttributeNames();
 
         while (names.hasMoreElements()) {
-            values.add((String)names.nextElement());
+            values.add(names.nextElement());
         }
 
         for (String name : values) {

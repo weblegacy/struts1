@@ -20,15 +20,15 @@
  */
 package org.apache.struts.taglib.bean;
 
-import org.apache.struts.taglib.TagUtils;
-import org.apache.struts.util.MessageResources;
+import java.util.ArrayList;
+import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import java.util.ArrayList;
-import java.util.Enumeration;
+import org.apache.struts.taglib.TagUtils;
+import org.apache.struts.util.MessageResources;
 
 /**
  * Define a scripting variable based on the value(s) of the specified header
@@ -129,11 +129,11 @@ public class HeaderTag extends TagSupport {
     protected void handleMultipleHeaders()
         throws JspException {
         ArrayList<String> values = new ArrayList<>();
-        Enumeration<?> items =
+        Enumeration<String> items =
             ((HttpServletRequest) pageContext.getRequest()).getHeaders(name);
 
         while (items.hasMoreElements()) {
-            values.add(items.nextElement().toString());
+            values.add(items.nextElement());
         }
 
         if (values.isEmpty() && (this.value != null)) {

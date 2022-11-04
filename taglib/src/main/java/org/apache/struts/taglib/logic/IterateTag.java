@@ -20,21 +20,20 @@
  */
 package org.apache.struts.taglib.logic;
 
-import org.apache.struts.taglib.TagUtils;
-import org.apache.struts.util.IteratorAdapter;
-import org.apache.struts.util.MessageResources;
-
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.BodyTagSupport;
-
 import java.lang.reflect.Array;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Map;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.tagext.BodyTagSupport;
+
+import org.apache.struts.taglib.TagUtils;
+import org.apache.struts.util.IteratorAdapter;
+import org.apache.struts.util.MessageResources;
 
 /**
  * Custom tag that iterates the elements of a collection, which can be either
@@ -273,9 +272,8 @@ public class IterateTag extends BodyTagSupport {
         } else if (collection instanceof Map) {
             iterator = ((Map<?, ?>) collection).entrySet().iterator();
         } else if (collection instanceof Enumeration) {
-            @SuppressWarnings("unchecked")
-            Enumeration<Object> enumeration = (Enumeration<Object>) collection;
-            iterator = new IteratorAdapter<Object>(enumeration);
+            Enumeration<?> enumeration = (Enumeration<?>) collection;
+            iterator = new IteratorAdapter<>(enumeration);
         } else {
             JspException e =
                 new JspException(messages.getMessage("iterate.iterator", name,

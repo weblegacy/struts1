@@ -2,6 +2,7 @@
 
 ## 1.4.3 / YYYY-MM-DD
 
+* Bump `webdrivermanager` from 5.3.0 to 5.3.1
 * Bump `selenium-api` and `selenium-java` from 4.5.3 to 4.6.0
 * Use `tomcat` 8.5.83 instead 7.0.109 for integration-tests
 * Set Version to 1.4.3-SNAPSHOT

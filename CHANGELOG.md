@@ -2,6 +2,7 @@
 
 ## 1.4.3 / YYYY-MM-DD
 
+* Bump `myfaces` from 2.0.25 to 2.2.15
 * Correct `ValidWhenEvaluator` - undo replace generic-wildcards
 * Bump `el-api` from 2.2.5 to 3.0.0
 * Bump `jsp-api` from 2.2.1 to 2.3.3

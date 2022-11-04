@@ -364,7 +364,7 @@
         <mavenVersion>[3.5.4,4)</mavenVersion>
         <javaVersion>8</javaVersion>
         <javaTestVersion>8</javaTestVersion>
-        <myfacesVersion>2.0.25</myfacesVersion>
+        <myfacesVersion>2.2.15</myfacesVersion>
         <groovyVersion>4.0.6</groovyVersion>
         <seleniumVersion>4.6.0</seleniumVersion>
         <slf4jVersion>2.0.3</slf4jVersion>

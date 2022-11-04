@@ -26,6 +26,8 @@ package org.apache.struts.webapp.example2;
 import java.io.IOException;
 
 import javax.faces.FacesException;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import org.apache.struts.apps.mailreader.dao.Subscription;
@@ -36,6 +38,8 @@ import org.apache.struts.apps.mailreader.dao.User;
  * <p>Backing bean for the <code>registration.jsp</code> page.</p>
  */
 
+@ManagedBean
+@RequestScoped
 public class RegistrationBacking {
 
 

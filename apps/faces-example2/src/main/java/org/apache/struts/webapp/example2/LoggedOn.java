@@ -26,6 +26,8 @@ package org.apache.struts.webapp.example2;
 import java.io.IOException;
 
 import javax.faces.FacesException;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import org.slf4j.Logger;
@@ -36,6 +38,8 @@ import org.slf4j.LoggerFactory;
  * <p>Backing bean for the <code>loggedon.jsp</code> page.</p>
  */
 
+@ManagedBean
+@RequestScoped
 public class LoggedOn {
 
 

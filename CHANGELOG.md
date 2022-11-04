@@ -2,6 +2,7 @@
 
 ## 1.4.3 / YYYY-MM-DD
 
+* Faces-Example2: For `faces-config` use CDI
 * Upgrade `faces-config` to 2.2-version
 * Bump `myfaces` from 2.0.25 to 2.2.15
 * Correct `ValidWhenEvaluator` - undo replace generic-wildcards

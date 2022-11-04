@@ -2,6 +2,7 @@
 
 ## 1.4.3 / YYYY-MM-DD
 
+* Upgrade `faces-config` to 2.2-version
 * Bump `myfaces` from 2.0.25 to 2.2.15
 * Correct `ValidWhenEvaluator` - undo replace generic-wildcards
 * Bump `el-api` from 2.2.5 to 3.0.0

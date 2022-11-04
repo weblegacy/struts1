@@ -1,5 +1,9 @@
 # Changes
 
+## 1.4.3 / YYYY-MM-DD
+
+* Set Version to 1.4.3-SNAPSHOT
+
 ## 1.4.2 / 2022-11-03
 
 * Correct typo in `release-notes`

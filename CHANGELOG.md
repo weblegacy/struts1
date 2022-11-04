@@ -2,6 +2,7 @@
 
 ## 1.4.3 / YYYY-MM-DD
 
+* Correct `ValidWhenEvaluator` - undo replace generic-wildcards
 * Bump `el-api` from 2.2.5 to 3.0.0
 * Bump `jsp-api` from 2.2.1 to 2.3.3
 * Remove some `@SuppressWarnings`

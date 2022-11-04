@@ -2,6 +2,7 @@
 
 ## 1.4.3 / YYYY-MM-DD
 
+* Move all `org.apache.struts.mock`-classes in module `core` from main into test
 * Update `README.md` for next release
 * Bump `webdrivermanager` from 5.3.0 to 5.3.1
 * Bump `selenium-api` and `selenium-java` from 4.5.3 to 4.6.0

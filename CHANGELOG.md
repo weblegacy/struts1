@@ -2,6 +2,7 @@
 
 ## 1.4.3 / YYYY-MM-DD
 
+* Use `tomcat` 8.5.83 instead 7.0.109 for integration-tests
 * Set Version to 1.4.3-SNAPSHOT
 
 ## 1.4.2 / 2022-11-03

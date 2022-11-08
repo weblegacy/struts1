@@ -23,15 +23,6 @@
   <display-name>Struts-Faces Integration Library Example 2</display-name>
 
 
-  <!-- MYFACES_BEGIN -->
-  <listener>
-    <listener-class>
-      org.apache.myfaces.webapp.StartupServletContextListener
-    </listener-class>
-  </listener>
-  <!-- MYFACES_END -->
-
-
   <!-- JavaServer Faces Servlet Configuration -->
   <servlet>
     <servlet-name>faces</servlet-name>

@@ -96,9 +96,16 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
      * Replace extension {@code .jsp} with {@code .faces}.
      */
     public String getActionURL(FacesContext context, String viewId) {
-        if (viewId.endsWith(".jsp")) {
-            viewId = viewId.substring(0, viewId.length() - 4) + ".faces";
+        String ret = super.getActionURL(context, viewId);
+        int i = 0;
+        if (ret.endsWith(".do")) {
+            i = 3;
+        } else if (ret.endsWith(".jsp")) {
+            i = 4;
         }
-        return super.getActionURL(context, viewId);
+        if (i > 0) {
+            ret = ret.substring(0, ret.length() - i) + ".faces";
+        }
+        return ret;
     }
 }

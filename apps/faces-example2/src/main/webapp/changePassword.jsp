@@ -29,7 +29,7 @@
 <body bgcolor="white">
 
 <bean:message key="change.message"/>
-<html:link page="/logon.faces">
+<html:link page="/logon.do">
   <bean:message key="change.try"/>
 </html:link>
 

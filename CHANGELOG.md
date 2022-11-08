@@ -2,6 +2,7 @@
 
 ## 1.4.3 / YYYY-MM-DD
 
+* Faces-Example1&2: Correct expired-password-processing
 * Faces-Example2: Adaption to run with JSF 2.2
 * Faces-Example1&2: Use CDI instead `faces-config` for managed-beans
 * Faces-Example2: Adaption in `web.xml`

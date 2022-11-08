@@ -133,7 +133,7 @@
               input="logon">
       <exception
                 key="expired.password"
-               type="org.apache.struts.webapp.example2.ExpiredPasswordException"
+               type="org.apache.struts.apps.mailreader.dao.ExpiredPasswordException"
                path="/changePassword.faces"/>
     </action>
 

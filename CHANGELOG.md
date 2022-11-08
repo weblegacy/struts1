@@ -2,6 +2,7 @@
 
 ## 1.4.3 / YYYY-MM-DD
 
+* Faces-Example1&2: Use CDI instead `faces-config` for managed-beans
 * Faces-Example2: Adaption in `web.xml`
 * Faces-Example2: For `faces-config` use CDI
 * Upgrade `faces-config` to 2.2-version

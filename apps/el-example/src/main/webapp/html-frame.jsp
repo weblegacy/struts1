@@ -21,7 +21,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-logic-el" prefix="logic-el" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
-    Integer border = new Integer(0);
+    Integer border = 0;
     pageContext.setAttribute("border", border);
     String thing = "thisFrame";
     pageContext.setAttribute("thing", thing);

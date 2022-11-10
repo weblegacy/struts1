@@ -25,7 +25,7 @@
       <h1>Test struts-bean:write Tag</h1>
     </div>
     <h3>Test 7 - Localized format patterns</h3><%
-      pageContext.setAttribute("test7.double", new Double(1234567.89));
+      pageContext.setAttribute("test7.double", Double.valueOf(1234567.89));
       pageContext.setAttribute("test7.date", new java.util.Date(123456789));
     %>
     <h4>Doubles</h4>

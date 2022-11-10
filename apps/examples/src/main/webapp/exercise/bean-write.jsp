@@ -25,12 +25,12 @@
       <h1>Test struts-bean:write Tag</h1>
     </div>
     <h3>Test 1 -- Scalar Variable Lookups</h3><%
-      pageContext.setAttribute("test1.boolean", new Boolean(true));
-      pageContext.setAttribute("test1.double", new Double(321.0));
-      pageContext.setAttribute("test1.float", new Float((float) 123.0));
-      pageContext.setAttribute("test1.int", new Integer(123));
-      pageContext.setAttribute("test1.long", new Long(321));
-      pageContext.setAttribute("test1.short", new Short((short) 987));
+      pageContext.setAttribute("test1.boolean", Boolean.valueOf(true));
+      pageContext.setAttribute("test1.double", Double.valueOf(321.0));
+      pageContext.setAttribute("test1.float", Float.valueOf((float) 123.0));
+      pageContext.setAttribute("test1.int", Integer.valueOf(123));
+      pageContext.setAttribute("test1.long", Long.valueOf(321));
+      pageContext.setAttribute("test1.short", Short.valueOf((short) 987));
       pageContext.setAttribute("test1.string", "This is a string");
     %>
     <table border="1">

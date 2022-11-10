@@ -27,8 +27,8 @@
         String newValue = "New string value";
         pageContext.setAttribute("newValue", newValue);
         java.util.HashMap<String, Object> newValues = new java.util.HashMap<String, Object>();
-        newValues.put("floatProperty", new Float(444.0));
-        newValues.put("intProperty", new Integer(555));
+        newValues.put("floatProperty", Float.valueOf((float) 444.0));
+        newValues.put("intProperty", Integer.valueOf(555));
         newValues.put("stringArray", new String[]
                 { "Value 1", "Value 2", "Value 3" });
         pageContext.setAttribute("newValues", newValues);

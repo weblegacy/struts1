@@ -1,7 +1,8 @@
 # Changes
 
-## 1.4.3 / YYYY-MM-DD
+## 1.4.3 / 2022-11-10
 
+* Set Version to 1.4.3
 * Update documentation for version 1.4.3
 * Resolve deprecated java-code in jsp's
 * Faces-Example1&2: Correct expired-password-processing

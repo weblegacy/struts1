@@ -6,16 +6,16 @@ Is a clone of <https://github.com/apache/struts1.git> - Branche `trunk`, aiming 
   * Upgrade MAVEN-Plugins
   * Correct example-apps
   * Complete JUnit5- and integration-test (rewrite old ones)
+  * JDK 1.4 --> JDK 8
   * JSTL 1.0.2 --> 1.2
   * Taglibs-Standard 1.0.6 --> 1.2
   * Servlet-API 2.3 --> 3.1
   * JSP 2.0 --> 2.3
   * JSP-EL 2.0 --> 3.0
-  * JSF (MyFaces) 1.0.9 --> 2.0.25
+  * JSF 1.0.9 --> 2.2
 * **[Open]**
   * JDK 1.4 --> JDK 11
   * Servlet-API 2.3 --> 4.0
-  * JSP 2.0 --> 2.3
   * MyFaces 1.0.9 --> 2.3
 
 Full [CHANGELOG](CHANGELOG.md)
@@ -26,7 +26,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 | Version                                                             | JEE-Version | Java-Version | Servlet | JSP | EL  | JSF | JSTL |
 |--------------------------------------------------------------------:|------------:|-------------:|--------:|----:|----:|----:|-----:|
-|                                                         1.4.3 (WiP) |   Java EE 7 |            8 |     3.1 | 2.3 | 3.0 | 2.2 |  1.2 |
+|   [1.4.3](https://github.com/weblegacy/struts1/releases/tag/v1.4.3) |   Java EE 7 |            8 |     3.1 | 2.3 | 3.0 | 2.2 |  1.2 |
 |   [1.4.2](https://github.com/weblegacy/struts1/releases/tag/v1.4.2) |   Java EE 6 |            8 |     3.0 | 2.2 | 2.2 | 2.0 |  1.2 |
 |   [1.4.1](https://github.com/weblegacy/struts1/releases/tag/v1.4.1) |   Java EE 5 |            8 |     2.5 | 2.1 | 2.1 | 1.2 |  1.2 |
 |   [1.4.0](https://github.com/weblegacy/struts1/releases/tag/v1.4.0) |    J2EE 1.4 |          1.4 |     2.3 | 2.0 | 2.0 | 1.0 |  1.0 |

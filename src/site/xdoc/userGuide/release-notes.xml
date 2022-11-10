@@ -105,8 +105,8 @@
 <li>Bump &quot;webdrivermanager&quot; from 5.3.0 to 5.3.1</li>
 <li>Bump &quot;selenium-api&quot; and &quot;selenium-java&quot; from 4.5.3 to 4.6.0</li>
 <li>Use &quot;tomcat&quot; 8.5.83 instead 7.0.109 for integration-tests</li>
-<li>Set Version to 1.4.3</li>
 <li>Update documentation for version 1.4.3</li>
+<li>Set Version to 1.4.3</li>
 </ul>
 </subsection>
 

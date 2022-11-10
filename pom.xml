@@ -887,7 +887,7 @@
                     </dependencyLink>
                   </dependencyLinks>
                   <links>
-                    <link>https://docs.oracle.com/javaee/6/api</link>
+                    <link>https://docs.oracle.com/javaee/7/api</link>
                   </links>
                   <failOnError>false</failOnError>
                   <quiet>true</quiet>

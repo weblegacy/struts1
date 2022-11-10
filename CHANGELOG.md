@@ -2,6 +2,7 @@
 
 ## 1.4.3 / 2022-11-10
 
+* Change JavaEE-doc-link from 6 to 7
 * Set Version to 1.4.3
 * Update documentation for version 1.4.3
 * Resolve deprecated java-code in jsp's

@@ -33,7 +33,7 @@
 <h3>Test 1 -- Scalar Variable Lookups</h3>
 
 <%
-    pageContext.setAttribute("test1.boolean", Boolean.valueOf(true));
+    pageContext.setAttribute("test1.boolean", Boolean.TRUE);
     pageContext.setAttribute("test1.double", Double.valueOf(321.0));
     pageContext.setAttribute("test1.float", Float.valueOf((float) 123.0));
     pageContext.setAttribute("test1.int", Integer.valueOf(123));

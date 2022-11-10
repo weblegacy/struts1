@@ -352,7 +352,7 @@ public class IterateTag extends BodyTagSupport {
             started = true;
 
             if (indexId != null) {
-                pageContext.setAttribute(indexId, new Integer(getIndex()));
+                pageContext.setAttribute(indexId, Integer.valueOf(getIndex()));
             }
 
             return (EVAL_BODY_BUFFERED);
@@ -392,7 +392,7 @@ public class IterateTag extends BodyTagSupport {
             lengthCount++;
 
             if (indexId != null) {
-                pageContext.setAttribute(indexId, new Integer(getIndex()));
+                pageContext.setAttribute(indexId, Integer.valueOf(getIndex()));
             }
 
             return (EVAL_BODY_BUFFERED);

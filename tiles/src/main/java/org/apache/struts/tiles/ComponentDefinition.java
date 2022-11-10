@@ -22,6 +22,7 @@
 package org.apache.struts.tiles;
 
 import java.io.Serializable;
+import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -506,39 +507,66 @@ public class ComponentDefinition implements Serializable {
     }
 
     /**
-     * Create a controller from specified classname
+     * Create a controller from specified classname.
+     *
      * @param classname Controller classname.
+     *
      * @return org.apache.struts.tiles.Controller
-     * @throws InstantiationException if an error occur while instanciating Controller :
-     * (classname can't be instanciated, Illegal access with instanciated class,
-     * Error while instanciating class, classname can't be instanciated.
+     *
+     * @throws InstantiationException if an error occur while instanciating Controller:
+     * (classname can't be instantiated, Illegal access with instantiated class,
+     * Error while instantiating class, classname can't be instantiated.
      */
     public static Controller createControllerFromClassname(String classname)
         throws InstantiationException {
 
         try {
             Class<?> requestedClass = RequestUtils.applicationClass(classname);
-            Object instance = requestedClass.newInstance();
+            Object instance = requestedClass.getDeclaredConstructor().newInstance();
 
             LOG.debug("Controller created : {}", instance);
             return (Controller) instance;
 
-        } catch (java.lang.ClassNotFoundException ex) {
+        } catch (ClassNotFoundException ex) {
             InstantiationException e2 = new InstantiationException(
                 "Error - Class not found :" + classname);
             e2.initCause(ex);
             throw e2;
 
-        } catch (java.lang.IllegalAccessException ex) {
+        } catch (IllegalAccessException ex) {
             InstantiationException e2 = new InstantiationException(
                 "Error - Illegal class access :" + classname);
             e2.initCause(ex);
             throw e2;
 
-        } catch (java.lang.InstantiationException ex) {
+        } catch (IllegalArgumentException ex) {
+            InstantiationException e2 = new InstantiationException(
+                    "Error - Illegal class argument :" + classname);
+                e2.initCause(ex);
+                throw e2;
+
+        } catch (InvocationTargetException ex) {
+            InstantiationException e2 = new InstantiationException(
+                    "Error - Invocation class target :" + classname);
+                e2.initCause(ex);
+                throw e2;
+
+        } catch (NoSuchMethodException ex) {
+            InstantiationException e2 = new InstantiationException(
+                    "Error - No such method in class:" + classname);
+                e2.initCause(ex);
+                throw e2;
+
+        } catch (SecurityException ex) {
+            InstantiationException e2 = new InstantiationException(
+                    "Error - Security exception in class :" + classname);
+                e2.initCause(ex);
+                throw e2;
+
+        } catch (InstantiationException ex) {
             throw ex;
 
-        } catch (java.lang.ClassCastException ex) {
+        } catch (ClassCastException ex) {
             InstantiationException e2 = new InstantiationException(
                 "Controller of class '"
                     + classname

@@ -124,7 +124,7 @@ public class MessagesPresentTag extends ConditionalTagBase {
 
         // Expose the count when specified
         if (count != null) {
-            pageContext.setAttribute(count, new Integer(size));
+            pageContext.setAttribute(count, Integer.valueOf(size));
         }
 
         return (iterator.hasNext() == desired);

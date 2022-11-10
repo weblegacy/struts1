@@ -113,22 +113,22 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
             "booleanProperty");
         assertEquals(Boolean.TRUE, dynaForm.get("booleanSecond"),
             "booleanSecond");
-        assertEquals(new Double(321.0), dynaForm.get("doubleProperty"),
+        assertEquals(Double.valueOf(321.0), dynaForm.get("doubleProperty"),
             "doubleProperty");
-        assertEquals(new Float((float) 123.0), dynaForm.get("floatProperty"),
+        assertEquals(Float.valueOf((float) 123.0), dynaForm.get("floatProperty"),
             "floatProperty");
-        assertEquals(new Integer(123), dynaForm.get("intProperty"),
+        assertEquals(Integer.valueOf(123), dynaForm.get("intProperty"),
             "intProperty");
 
         // FIXME - listIndexed
-        assertEquals(new Long((long) 321), dynaForm.get("longProperty"),
+        assertEquals(Long.valueOf(321), dynaForm.get("longProperty"),
             "longProperty");
 
         // FIXME - mappedProperty
         // FIXME - mappedIntProperty
         //        assertNull(dynaForm.get("nullProperty"),
         //                     "nullProperty");
-        assertEquals(new Short((short) 987), dynaForm.get("shortProperty"),
+        assertEquals(Short.valueOf((short) 987), dynaForm.get("shortProperty"),
             "shortProperty");
         assertEquals("This is a string", dynaForm.get("stringProperty"),
             "stringProperty");
@@ -139,11 +139,11 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
     @Test
     public void testIndexedInitialize() {
         // Update some values in the indexed properties
-        dynaForm.set("intArray", 1, new Integer(111));
-        assertEquals(new Integer(111), dynaForm.get("intArray", 1),
+        dynaForm.set("intArray", 1, Integer.valueOf(111));
+        assertEquals(Integer.valueOf(111), dynaForm.get("intArray", 1),
             "intArray[1]");
-        dynaForm.set("intIndexed", 2, new Integer(222));
-        assertEquals(new Integer(222), dynaForm.get("intIndexed", 2),
+        dynaForm.set("intIndexed", 2, Integer.valueOf(222));
+        assertEquals(Integer.valueOf(222), dynaForm.get("intIndexed", 2),
             "intIndexed[2]");
         dynaForm.set("stringArray", 3, "New String 3");
         assertEquals("New String 3", dynaForm.get("stringArray", 3),
@@ -167,11 +167,11 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
         assertEquals(Boolean.FALSE, dynaForm.get("booleanProperty"),
             "booleanProperty");
         dynaForm.set("booleanSecond", Boolean.FALSE);
-        dynaForm.set("doubleProperty", new Double(654.0));
-        dynaForm.set("floatProperty", new Float((float) 543.0));
-        dynaForm.set("intProperty", new Integer(555));
-        dynaForm.set("longProperty", new Long((long) 777));
-        dynaForm.set("shortProperty", new Short((short) 222));
+        dynaForm.set("doubleProperty", Double.valueOf(654.0));
+        dynaForm.set("floatProperty", Float.valueOf((float) 543.0));
+        dynaForm.set("intProperty", Integer.valueOf(555));
+        dynaForm.set("longProperty", Long.valueOf(777));
+        dynaForm.set("shortProperty", Short.valueOf((short) 222));
         dynaForm.set("stringProperty", "New String Value");
         assertEquals("New String Value", dynaForm.get("stringProperty"),
             "stringProperty");
@@ -519,9 +519,9 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
         // set a choice set of props with non-initial values
         dynaForm.set("booleanProperty", Boolean.FALSE);
         dynaForm.set("booleanSecond", Boolean.FALSE);
-        dynaForm.set("doubleProperty", new Double(456.0));
-        dynaForm.set("floatProperty", new Float((float) 456.0));
-        dynaForm.set("intProperty", new Integer(456));
+        dynaForm.set("doubleProperty", Double.valueOf(456.0));
+        dynaForm.set("floatProperty", Float.valueOf((float) 456.0));
+        dynaForm.set("intProperty", Integer.valueOf(456));
 
         MockHttpServletRequest request = new MockHttpServletRequest();
 
@@ -532,11 +532,11 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
             "booleanProperty should be reset");
         assertEquals(Boolean.TRUE, dynaForm.get("booleanSecond"),
             "booleanSecond should be reset");
-        assertEquals(new Double(321.0), dynaForm.get("doubleProperty"),
+        assertEquals(Double.valueOf(321.0), dynaForm.get("doubleProperty"),
             "doubleProperty should be reset");
-        assertEquals(new Float((float) 456.0), dynaForm.get("floatProperty"),
+        assertEquals(Float.valueOf((float) 456.0), dynaForm.get("floatProperty"),
             "floatProperty should NOT be reset");
-        assertEquals(new Integer(456), dynaForm.get("intProperty"),
+        assertEquals(Integer.valueOf(456), dynaForm.get("intProperty"),
             "intProperty should NOT be reset");
     }
 
@@ -548,9 +548,9 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
         // set a choice set of props with non-initial values
         dynaForm.set("booleanProperty", Boolean.FALSE);
         dynaForm.set("booleanSecond", Boolean.FALSE);
-        dynaForm.set("doubleProperty", new Double(456.0));
-        dynaForm.set("floatProperty", new Float((float) 456.0));
-        dynaForm.set("intProperty", new Integer(456));
+        dynaForm.set("doubleProperty", Double.valueOf(456.0));
+        dynaForm.set("floatProperty", Float.valueOf((float) 456.0));
+        dynaForm.set("intProperty", Integer.valueOf(456));
 
         MockHttpServletRequest request = new MockHttpServletRequest();
 
@@ -561,11 +561,11 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
             "booleanProperty should be reset");
         assertEquals(Boolean.TRUE, dynaForm.get("booleanSecond"),
             "booleanSecond should be reset");
-        assertEquals(new Double(456), dynaForm.get("doubleProperty"),
+        assertEquals(Double.valueOf(456), dynaForm.get("doubleProperty"),
             "doubleProperty should NOT be reset");
-        assertEquals(new Float((float) 123.0), dynaForm.get("floatProperty"),
+        assertEquals(Float.valueOf((float) 123.0), dynaForm.get("floatProperty"),
             "floatProperty should be reset");
-        assertEquals(new Integer(456), dynaForm.get("intProperty"),
+        assertEquals(Integer.valueOf(456), dynaForm.get("intProperty"),
             "intProperty should NOT be reset");
     }
 
@@ -575,7 +575,7 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
     @Test
     public void testSetIndexedArguments() {
         try {
-            dynaForm.set("intArray", -1, new Integer(0));
+            dynaForm.set("intArray", -1, Integer.valueOf(0));
             fail("Should throw IndexOutOfBoundsException");
         } catch (IndexOutOfBoundsException e) {
             ; // Expected response
@@ -589,14 +589,14 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
     public void testSetIndexedValues() {
         Object value = null;
 
-        dynaForm.set("intArray", 0, new Integer(1));
+        dynaForm.set("intArray", 0, Integer.valueOf(1));
         value = dynaForm.get("intArray", 0);
         assertNotNull(value, "Returned new value 0");
         assertInstanceOf(Integer.class, value, "Returned Integer new value 0");
         assertEquals(1, (Integer) value,
             "Returned correct new value 0");
 
-        dynaForm.set("intIndexed", 1, new Integer(11));
+        dynaForm.set("intIndexed", 1, Integer.valueOf(11));
         value = dynaForm.get("intIndexed", 1);
         assertNotNull(value, "Returned new value 1");
         assertInstanceOf(Integer.class, value, "Returned Integer new value 1");
@@ -749,8 +749,8 @@ public class TestDynaActionForm extends TestDynaActionFormClass {
 
         Map<String, Integer> mappedIntProperty = new HashMap<>();
 
-        mappedIntProperty.put("One", new Integer(1));
-        mappedIntProperty.put("Two", new Integer(2));
+        mappedIntProperty.put("One", Integer.valueOf(1));
+        mappedIntProperty.put("Two", Integer.valueOf(2));
         dynaForm.set("mappedIntProperty", mappedIntProperty);
     }
 

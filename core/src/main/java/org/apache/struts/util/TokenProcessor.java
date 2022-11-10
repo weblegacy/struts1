@@ -201,7 +201,7 @@ public class TokenProcessor {
 
             previous = current;
 
-            byte[] now = new Long(current).toString().getBytes();
+            byte[] now = Long.valueOf(current).toString().getBytes();
             MessageDigest md = MessageDigest.getInstance("MD5");
 
             md.update(id.getBytes());

@@ -167,18 +167,18 @@ public class TestDynaActionFormClass {
         assertEquals(Boolean.TRUE,
             beanConfig.findFormPropertyConfig("booleanSecond").initial(),
             "booleanSecond value");
-        assertEquals(new Double(321.0),
+        assertEquals(Double.valueOf(321.0),
             beanConfig.findFormPropertyConfig("doubleProperty").initial(),
             "doubleProperty value");
-        assertEquals(new Float((float) 123.0),
+        assertEquals(Float.valueOf((float) 123.0),
             beanConfig.findFormPropertyConfig("floatProperty").initial(),
             "floatProperty value");
-        assertEquals(new Integer(123),
+        assertEquals(Integer.valueOf(123),
             beanConfig.findFormPropertyConfig("intProperty").initial(),
             "intProperty value");
 
         // FIXME - listIndexed
-        assertEquals(new Long(321),
+        assertEquals(Long.valueOf(321),
             beanConfig.findFormPropertyConfig("longProperty").initial(),
             "longProperty value");
 
@@ -186,7 +186,7 @@ public class TestDynaActionFormClass {
         // FIXME - mappedIntProperty
         //        assertNull(beanConfig.findFormPropertyConfig("nullProperty").initial(),
         //                   "nullProperty value");
-        assertEquals(new Short((short) 987),
+        assertEquals(Short.valueOf((short) 987),
             beanConfig.findFormPropertyConfig("shortProperty").initial(),
             "shortProperty value");
 

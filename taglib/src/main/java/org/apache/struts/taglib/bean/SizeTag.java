@@ -170,7 +170,7 @@ public class SizeTag extends TagSupport {
         }
 
         // Expose this size as a scripting variable
-        pageContext.setAttribute(this.id, new Integer(size),
+        pageContext.setAttribute(this.id, Integer.valueOf(size),
             PageContext.PAGE_SCOPE);
 
         return (SKIP_BODY);

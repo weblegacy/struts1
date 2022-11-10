@@ -335,7 +335,7 @@ public class FormPropertyConfig extends BaseConfig {
                         for (int i = 0; i < size; i++) {
                             try {
                                 Array.set(initialValue, i,
-                                    clazz.getComponentType().newInstance());
+                                    clazz.getComponentType().getDeclaredConstructor().newInstance());
                             } catch (Throwable t) {
                                 log.error("Unable to create instance of {} for property={}, "
                                     + "type={}, initial={}, size={}.",
@@ -350,7 +350,7 @@ public class FormPropertyConfig extends BaseConfig {
                 if (initial != null) {
                     initialValue = ConvertUtils.convert(initial, clazz);
                 } else {
-                    initialValue = clazz.newInstance();
+                    initialValue = clazz.getDeclaredConstructor().newInstance();
                 }
             }
         } catch (Throwable t) {

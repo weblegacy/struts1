@@ -265,33 +265,45 @@ public class FormBeanConfig extends BaseConfig {
     // --------------------------------------------------------- Public Methods
 
     /**
-     * <p>Create and return an <code>ActionForm</code> instance appropriate to
-     * the information in this <code>FormBeanConfig</code>.</p>
+     * Create and return an {@code ActionForm} instance appropriate to
+     * the information in this {@code FormBeanConfig}.
      *
      * <p>Although this method is not formally deprecated yet, where possible,
-     * the form which accepts an <code>ActionContext</code> as an argument is
+     * the form which accepts an {@code ActionContext} as an argument is
      * preferred, to help sever direct dependencies on the Servlet API.  As
      * the ActionContext becomes more familiar in Struts, this method will
      * almost certainly be deprecated.</p>
      *
      * @param servlet The action servlet
+     *
      * @return ActionForm instance
-     * @throws IllegalAccessException if the Class or the appropriate
-     *                                constructor is not accessible
+     *
      * @throws InstantiationException if this Class represents an abstract
      *                                class, an array class, a primitive type,
      *                                or void; or if instantiation fails for
      *                                some other reason
+     * @throws IllegalAccessException if the Class or the appropriate
+     *                                constructor is not accessible
+     * @throws IllegalArgumentException if the number of actual and formal
+     *                                  parameters differ
+     * @throws InvocationTargetException if the underlying constructor
+     *                                   throws an exception
+     * @throws NoSuchMethodException if a matching method is not found
+     * @throws SecurityException if there is a security-exception
+     * @throws ClassNotFoundException if the specified class cannot be loaded
      */
     public ActionForm createActionForm(ActionServlet servlet)
-        throws IllegalAccessException, InstantiationException {
+        throws InstantiationException, IllegalAccessException,
+            IllegalArgumentException, InvocationTargetException,
+            NoSuchMethodException, SecurityException, ClassNotFoundException {
+
         Object obj = null;
 
         // Create a new form bean instance
         if (getDynamic()) {
             obj = getDynaActionFormClass().newInstance();
         } else {
-            obj = formBeanClass().newInstance();
+            obj = formBeanClass().getDeclaredConstructor().newInstance();
         }
 
         ActionForm form = null;
@@ -331,26 +343,41 @@ public class FormBeanConfig extends BaseConfig {
     }
 
     /**
-     * <p>Create and return an <code>ActionForm</code> instance appropriate to
-     * the information in this <code>FormBeanConfig</code>.</p>
-     * <p><b>NOTE:</b> If the given <code>ActionContext</code> is not of type
-     * <code>ServletActionContext</code> (or a subclass), then the form which
-     * is returned will have a null <code>servlet</code> property.  Some of
-     * the subclasses of <code>ActionForm</code> included in Struts will later
-     * throw a <code>NullPointerException</code> in this case. </p> <p>TODO:
-     * Find a way to control this direct dependency on the Servlet API.</p>
+     * Create and return an {@code ActionForm} instance appropriate to
+     * the information in this {@code FormBeanConfig}.
+     *
+     * <p><b>NOTE:</b> If the given {@code ActionContext} is not of type
+     * {@code ServletActionContext} (or a subclass), then the form which
+     * is returned will have a null {@code servlet} property.  Some of
+     * the subclasses of {@code ActionForm} included in Struts will later
+     * throw a {@code NullPointerException} in this case.</p>
+     *
+     * <p>TODO: Find a way to control this direct dependency on the
+     * Servlet API.</p>
      *
      * @param context The ActionContext.
+     *
      * @return ActionForm instance
-     * @throws IllegalAccessException if the Class or the appropriate
-     *                                constructor is not accessible
+     *
      * @throws InstantiationException if this Class represents an abstract
      *                                class, an array class, a primitive type,
      *                                or void; or if instantiation fails for
      *                                some other reason
+     * @throws IllegalAccessException if the Class or the appropriate
+     *                                constructor is not accessible
+     * @throws IllegalArgumentException if the number of actual and formal
+     *                                  parameters differ
+     * @throws InvocationTargetException if the underlying constructor
+     *                                   throws an exception
+     * @throws NoSuchMethodException if a matching method is not found
+     * @throws SecurityException if there is a security-exception
+     * @throws ClassNotFoundException if the specified class cannot be loaded
      */
     public ActionForm createActionForm(ActionContext context)
-        throws IllegalAccessException, InstantiationException {
+        throws InstantiationException, IllegalAccessException,
+            IllegalArgumentException, InvocationTargetException,
+            NoSuchMethodException, SecurityException, ClassNotFoundException {
+
         ActionServlet actionServlet = null;
 
         if (context instanceof ServletActionContext) {

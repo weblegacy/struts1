@@ -83,7 +83,7 @@ public class PrepareLogicAction extends Action {
         ArrayList<String> items = new ArrayList<>();
         request.setAttribute("items", items);
 
-        request.setAttribute("intValue", new Integer(7));
+        request.setAttribute("intValue", Integer.valueOf(7));
         request.setAttribute("stringValue", "Hello, world!");
 
         /* Collection of custom beans */

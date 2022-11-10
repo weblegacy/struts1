@@ -237,7 +237,7 @@ public class MessagesTag extends BodyTagSupport {
 
         // Expose the count when specified
         if (count != null) {
-            pageContext.setAttribute(count, new Integer(size));
+            pageContext.setAttribute(count, Integer.valueOf(size));
         }
 
         // Store the first value and evaluate, or skip the body if none

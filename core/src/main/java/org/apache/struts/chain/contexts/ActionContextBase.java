@@ -20,6 +20,7 @@
  */
 package org.apache.struts.chain.contexts;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 import java.util.Map;
 
@@ -485,42 +486,63 @@ public abstract class ActionContextBase extends ContextWrapper
     }
 
     /**
-     * <p> Using this <code>ActionContext</code>'s default
-     * <code>ModuleConfig</code>, return an existing <code>ActionForm</code>
-     * in the specified scope, or create a new one and add it to the specified
-     * scope. </p>
+     * Using this {@code ActionContext}'s default {@code ModuleConfig},
+     * return an existing {@code ActionForm} in the specified scope,
+     * or create a new one and add it to the specified scope.
      *
      * @param formName  The name attribute of our ActionForm
-     * @param scopeName The scope identier (request, session)
+     * @param scopeName The scope identifier (request, session)
+     *
      * @return The ActionForm for this request
-     * @throws IllegalAccessException If object cannot be created
+     *
      * @throws InstantiationException If object cannot be created
+     * @throws IllegalAccessException If object cannot be created
+     * @throws IllegalArgumentException If form config is missing from module
+     *                                  or scopeName is invalid
+     * @throws InvocationTargetException if the underlying constructor
+     *                                   throws an exception
+     * @throws NoSuchMethodException if a matching method is not found
+     * @throws SecurityException if there is a security-exception
+     * @throws ClassNotFoundException if the specified class cannot be loaded
+     *
      * @see #findOrCreateActionForm(String, String, ModuleConfig)
      */
     public ActionForm findOrCreateActionForm(String formName, String scopeName)
-        throws IllegalAccessException, InstantiationException {
+        throws InstantiationException, IllegalAccessException,
+            IllegalArgumentException, InvocationTargetException,
+            NoSuchMethodException, SecurityException, ClassNotFoundException {
+
         return this.findOrCreateActionForm(formName, scopeName,
             this.getModuleConfig());
     }
 
     /**
-     * <p> In the context of the given <code>ModuleConfig</code> and this
-     * <code>ActionContext</code>, look for an existing
-     * <code>ActionForm</code> in the specified scope. If one is found, return
-     * it; otherwise, create a new instance, add it to that scope, and then
-     * return it. </p>
+     * In the context of the given {@code ModuleConfig} and this
+     * {@code ActionContext}, look for an existing {@code ActionForm}
+     * in the specified scope. If one is found, return it; otherwise,
+     * create a new instance, add it to that scope, and then return it.
      *
      * @param formName  The name attribute of our ActionForm
      * @param scopeName The scope identier (request, session)
+     *
      * @return The ActionForm for this request
-     * @throws IllegalAccessException   If object cannot be created
-     * @throws InstantiationException   If object cannot be created
+     *
+     * @throws InstantiationException If object cannot be created
+     * @throws IllegalAccessException If object cannot be created
      * @throws IllegalArgumentException If form config is missing from module
      *                                  or scopeName is invalid
+     * @throws InvocationTargetException if the underlying constructor
+     *                                   throws an exception
+     * @throws NoSuchMethodException if a matching method is not found
+     * @throws SecurityException if there is a security-exception
+     * @throws ClassNotFoundException if the specified class cannot be loaded
      */
     public ActionForm findOrCreateActionForm(String formName, String scopeName,
         ModuleConfig moduleConfig)
-        throws IllegalAccessException, InstantiationException {
+            throws InstantiationException, IllegalAccessException,
+                IllegalArgumentException, InvocationTargetException,
+                NoSuchMethodException, SecurityException, ClassNotFoundException {
+
         Map<String, Object> scope = this.getScope(scopeName);
 
         ActionForm instance;

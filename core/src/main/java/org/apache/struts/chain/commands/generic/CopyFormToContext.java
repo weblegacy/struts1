@@ -20,6 +20,8 @@
  */
 package org.apache.struts.chain.commands.generic;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.chain.commands.ActionCommandBase;
 import org.apache.struts.chain.contexts.ActionContext;
@@ -179,20 +181,29 @@ public class CopyFormToContext extends ActionCommandBase {
     }
 
     /**
-     * <p>Based on the properties of this command and the given
-     * <code>ActionContext</code>, find or create an ActionForm instance for
-     * preparation.</p>
+     * Based on the properties of this command and the given
+     * {@code ActionContext}, find or create an ActionForm
+     * instance for preparation.
      *
      * @param context ActionContextBase class that we are processing
+     *
      * @return ActionForm instance
-     * @throws IllegalArgumentException On ActionConfig not found
-     * @throws IllegalStateException    On undefined scope and formbean
-     * @throws IllegalAccessException   On failed instantiation
-     * @throws InstantiationException   If ActionContext is not subsclass of
+     *
+     * @throws InstantiationException If ActionContext is not subclass of
      *                                  ActionContextBase
+     * @throws IllegalAccessException On failed instantiation
+     * @throws IllegalArgumentException On ActionConfig not found
+     * @throws InvocationTargetException if the underlying constructor
+     *                                   throws an exception
+     * @throws NoSuchMethodException if a matching method is not found
+     * @throws SecurityException if there is a security-exception
+     * @throws ClassNotFoundException if the specified class cannot be loaded
      */
     protected ActionForm findOrCreateForm(ActionContext context)
-        throws IllegalAccessException, InstantiationException {
+        throws InstantiationException, IllegalAccessException,
+        IllegalArgumentException, InvocationTargetException,
+        NoSuchMethodException, SecurityException, ClassNotFoundException {
+
         String effectiveFormName;
         String effectiveScope;
 
@@ -221,32 +232,39 @@ public class CopyFormToContext extends ActionCommandBase {
     }
 
     /**
-     * <p>Actually find or create an instance of ActionForm configured under
-     * the form-bean-name <code>effectiveFormName</code>, looking in in the
-     * <code>ActionContext's</code> scope as identified by
-     * <code>effectiveScope</code>. If a form is created, it will also be
-     * stored in that scope.</p>
+     * Actually find or create an instance of ActionForm configured under
+     * the form-bean-name {@code effectiveFormName}, looking in in the
+     * {@code ActionContext's} scope as identified by {@code effectiveScope}.
+     * If a form is created, it will also be stored in that scope.
      *
      * <p><b>NOTE:</b> This specific method depends on the instance of
-     * <code>ActionContext</code> which is passed being a subclass of
-     * <code>ActionContextBase</code>, which implements the utility method
-     * <code>findOrCreateActionForm</code>. </p>
+     * {@code ActionContext} which is passed being a subclass of
+     * {@code ActionContextBase}, which implements the utility method
+     * {@code findOrCreateActionForm}.</p>
      *
      * @param ctx               The ActionContext we are processing
      * @param effectiveFormName the target form name
      * @param effectiveScope    The target scope
-     * @return ActionForm instnace, storing in scope if created
-     * @throws InstantiationException   If ActionContext is not subsclass of
-     *                                  ActionContextBase
-     * @throws InstantiationException   If object cannot be created
-     * @throws IllegalArgumentException On form not found in/ scope
-     * @throws IllegalAccessException   On failed instantiation
-     * @throws IllegalStateException    If ActionContext is not a subclass of
-     *                                  ActionBase
+     *
+     * @return ActionForm instance, storing in scope if created
+     *
+     * @throws InstantiationException If ActionContext is not subclass of
+     *                                ActionContextBase or object cannot be
+     *                                created
+     * @throws IllegalAccessException On failed instantiation
+     * @throws IllegalArgumentException On form not found in scope
+     * @throws InvocationTargetException if the underlying constructor
+     *                                   throws an exception
+     * @throws NoSuchMethodException if a matching method is not found
+     * @throws SecurityException if there is a security-exception
+     * @throws ClassNotFoundException if the specified class cannot be loaded
      */
     protected ActionForm findOrCreateForm(ActionContext ctx,
         String effectiveFormName, String effectiveScope)
-        throws IllegalAccessException, InstantiationException {
+            throws InstantiationException, IllegalAccessException,
+                IllegalArgumentException, InvocationTargetException,
+                NoSuchMethodException, SecurityException, ClassNotFoundException {
+
         ActionContextBase context;
 
         try {

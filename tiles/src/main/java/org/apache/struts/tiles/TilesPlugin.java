@@ -181,7 +181,7 @@ public class TilesPlugin implements PlugIn {
                 TilesUtilStrutsImpl impl =
                     (TilesUtilStrutsImpl) RequestUtils
                         .applicationClass(getTilesUtilImplClassname())
-                        .newInstance();
+                        .getDeclaredConstructor().newInstance();
                 TilesUtil.setTilesUtil(impl);
 
             } catch (ClassCastException ex) {

@@ -20,6 +20,7 @@
  */
 package org.apache.struts.chain.commands.util;
 
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * <p>Utility methods to load application classes and create instances.</p>
@@ -55,19 +56,28 @@ public final class ClassUtils {
     }
 
     /**
-     * <p>Return a new instance of the specified fully qualified class name,
+     * Return a new instance of the specified fully qualified class name,
      * after loading the class (if necessary) from this web application's
-     * class loader.</p>
+     * class loader.
      *
      * @param className Fully qualified class name
-     * @throws ClassNotFoundException if the specified class cannot be loaded
-     * @throws IllegalAccessException if this class is not concrete
+     *
      * @throws InstantiationException if this class has no zero-arguments
      *                                constructor
+     * @throws IllegalAccessException if this class is not concrete
+     * @throws IllegalArgumentException if the number of actual and formal
+     *                                  parameters differ
+     * @throws InvocationTargetException if the underlying constructor
+     *                                   throws an exception
+     * @throws NoSuchMethodException if a matching method is not found
+     * @throws SecurityException if there is a security-exception
+     * @throws ClassNotFoundException if the specified class cannot be loaded
      */
     public static Object getApplicationInstance(String className)
-        throws ClassNotFoundException, IllegalAccessException,
-            InstantiationException {
-        return (getApplicationClass(className).newInstance());
+        throws InstantiationException, IllegalAccessException,
+            IllegalArgumentException, InvocationTargetException,
+            NoSuchMethodException, SecurityException, ClassNotFoundException {
+
+        return getApplicationClass(className).getDeclaredConstructor().newInstance();
     }
 }

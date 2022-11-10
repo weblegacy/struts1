@@ -71,71 +71,87 @@ public class MockHttpSession implements HttpSession {
     }
 
     // ---------------------------------------------------- HttpSession Methods
+    @Override
     public Object getAttribute(String name) {
         return (attributes.get(name));
     }
 
+    @Override
     public Enumeration<String> getAttributeNames() {
         return (new MockEnumeration<>(attributes.keySet().iterator()));
     }
 
+    @Override
     public long getCreationTime() {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public String getId() {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public long getLastAccessedTime() {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public int getMaxInactiveInterval() {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public ServletContext getServletContext() {
         return (this.servletContext);
     }
 
     @Deprecated
+    @Override
     public javax.servlet.http.HttpSessionContext getSessionContext() {
         throw new UnsupportedOperationException();
     }
 
     @Deprecated
+    @Override
     public Object getValue(String name) {
         throw new UnsupportedOperationException();
     }
 
     @Deprecated
+    @Override
     public String[] getValueNames() {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public void invalidate() {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public boolean isNew() {
         throw new UnsupportedOperationException();
     }
 
     @Deprecated
+    @Override
     public void putValue(String name, Object value) {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public void removeAttribute(String name) {
         attributes.remove(name);
     }
 
     @Deprecated
+    @Override
     public void removeValue(String name) {
         throw new UnsupportedOperationException();
     }
 
+    @Override
     public void setAttribute(String name, Object value) {
         if (value == null) {
             attributes.remove(name);
@@ -144,6 +160,7 @@ public class MockHttpSession implements HttpSession {
         }
     }
 
+    @Override
     public void setMaxInactiveInterval(int interval) {
         throw new UnsupportedOperationException();
     }

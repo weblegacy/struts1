@@ -67,18 +67,22 @@ public class MockServletConfig implements ServletConfig {
     }
 
     // ------------------------------------------------- ServletContext Methods
+    @Override
     public String getInitParameter(String name) {
         return (parameters.get(name));
     }
 
+    @Override
     public Enumeration<String> getInitParameterNames() {
         return (new MockEnumeration<>(parameters.keySet().iterator()));
     }
 
+    @Override
     public ServletContext getServletContext() {
         return (this.context);
     }
 
+    @Override
     public String getServletName() {
         return ("action");
     }

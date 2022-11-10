@@ -1,5 +1,9 @@
 # Changes
 
+## 1.4.4 / YYYY-MM-DD
+
+* Set Version to 1.4.4-SNAPSHOT
+
 ## 1.4.3 / 2022-11-10
 
 * Change JavaEE-doc-link from 6 to 7

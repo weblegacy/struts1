@@ -25,17 +25,17 @@
   xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
-        <title>Release Notes (since 1.4.2)</title>
+        <title>Release Notes (since 1.4.1)</title>
     </properties>
     <body>
-        <section name="6.1 Release Notes - Version 1.4.3">
+        <section name="6.1 Release Notes - Version 1.4.2">
 
             <subsection name="Introduction" id="release_notes">
                 <p>
                     This section contains release notes for changes that have
                     taken place to Struts,
                     since the
-                    <a href="release-notes-1_4_2.html">Version 1.4.2</a>
+                    <a href="release-notes-1_4_1.html">Version 1.4.1</a>
                     distribution.
                     To keep up-to-date on all changes to the framework,
                     subscribe to
@@ -63,50 +63,57 @@
 
             <subsection name="Breaking changes" id="break_changes">
                 <ul>
-                    <li>General: Upgrade from <strong>JavaEE 6</strong> to <strong>JavaEE 7</strong>.
+                    <li>General: Upgrade from <strong>JavaEE 5</strong> to <strong>JavaEE 6</strong>.
                         <ul>
-                            <li>Upgrade <strong>servlet-api</strong> from 3.0 to 3.1.</li>
-                            <li>Upgrade <strong>jsp-api</strong> from 2.2 to 2.3.</li>
-                            <li>Upgrade <strong>el-api</strong> from 2.2 to 3.0.</li>
-                            <li>Upgrade <strong>jsf</strong> from 2.0 to 2.2.</li>
+                            <li>Upgrade <strong>servlet-api</strong> from 2.5 to 3.0.</li>
+                            <li>Upgrade <strong>jsp-api</strong> from 2.1 to 2.2.</li>
+                            <li>Upgrade <strong>jsf</strong> from 1.2 to 2.0.</li>
                         </ul>
                     </li>
-                    <li>Move whole <strong>org.apache.struts.mock</strong>-package to test-classes.</li>
+                    <li>Use <strong>slf4j</strong> instead of <strong>commons-logging</strong> for all logging-tasks.</li>
                 </ul>
             </subsection>
 
             <subsection name="Issue Tracking" id="Highlight">
 <h4>Bug</h4>
 <ul>
-<li>Faces-Example1&amp;2: Correct expired-password-processing</li>
-<li>Correct &quot;ValidWhenEvaluator&quot; - undo replace generic-wildcards</li>
+<li>Add &quot;supportIncrementalBuild&quot;-config to &quot;maven-bundle-plugin&quot; to resolve eclipse-warning</li>
+<li>Resolve some jsp-warnings</li>
+<li>Correct some javadoc-warnings</li>
 </ul>
 
 <h4>Improvement</h4>
 <ul>
-<li>Resolve deprecated java-code in jsp&quot;s</li>
-<li>Faces-Example2: Adaption to run with JSF 2.2</li>
-<li>Faces-Example1&amp;2: Use CDI instead &quot;faces-config&quot; for managed-beans</li>
-<li>Faces-Example2: Adaption in &quot;web.xml&quot;</li>
-<li>Faces-Example2: For &quot;faces-config&quot; use CDI</li>
-<li>Upgrade &quot;faces-config&quot; to 2.2-version</li>
-<li>Remove some &quot;@SuppressWarnings&quot;</li>
-<li>Replace some generic-wildcards</li>
-<li>Move all &quot;org.apache.struts.mock&quot;-classes in module &quot;core&quot; from main into test</li>
+<li>Add section &quot;breaking changes&quot; to release-notes since 1.3.11</li>
+<li>Add javadoc-links to &quot;servlet-api&quot;, &quot;jsp-api&quot; and &quot;el-api&quot;</li>
+<li>Adjustment of dependencies</li>
+<li>Remove some &quot;SuppressWarnings&quot;</li>
+<li>Correct typos</li>
+<li>Standardize log variables</li>
+<li>Adapt &quot;tiles-config_1_*.dtd&quot; so that DTDDoc works</li>
+</ul>
+
+<h4>New Feature</h4>
+<ul>
+<li>Set minimum JDK-Version to 11 for Maven-building</li>
+<li>Replace &quot;commons-logging&quot; with &quot;slf4j&quot; and &quot;slf4j-simple&quot;</li>
 </ul>
 
 <h4>Task</h4>
 <ul>
-<li>Bump &quot;myfaces&quot; from 2.0.25 to 2.2.15</li>
-<li>Bump &quot;el-api&quot; from 2.2.5 to 3.0.0</li>
-<li>Bump &quot;jsp-api&quot; from 2.2.1 to 2.3.3</li>
-<li>Upgrade &quot;servlet-api&quot; from 3.0.1 to 3.1.0</li>
-<li>Update &quot;README.md&quot; for next release</li>
-<li>Bump &quot;webdrivermanager&quot; from 5.3.0 to 5.3.1</li>
-<li>Bump &quot;selenium-api&quot; and &quot;selenium-java&quot; from 4.5.3 to 4.6.0</li>
-<li>Use &quot;tomcat&quot; 8.5.83 instead 7.0.109 for integration-tests</li>
-<li>Set Version to 1.4.3</li>
-<li>Update documentation for version 1.4.3</li>
+<li>Upgrade &quot;web.xml&quot;s of &quot;apps&quot; from 2.5 to 3.0</li>
+<li>Bump &quot;myfaces&quot; from 1.2.12 to 2.0.25</li>
+<li>Bump &quot;jsp-api&quot; from 2.1 to 2.2.2 and add &quot;el-api&quot; 2.2.5</li>
+<li>Bump &quot;servlet-api&quot; from 2.5 to 3.0.1</li>
+<li>Bump &quot;spotbugs-annotations&quot; from 4.7.2 to 4.7.3</li>
+<li>Bump &quot;groovy&quot; from 4.0.5 to 4.0.6</li>
+<li>Use &quot;tomcat&quot; 7.0.109 instead 6.0.53 for integration-tests</li>
+<li>Bump &quot;checkstyle&quot; from 9.3 to 10.4</li>
+<li>Bump &quot;antlr&quot; from 4.9.3 to 4.11.1</li>
+<li>Bump &quot;selenium-api&quot; and &quot;selenium-java&quot; from 4.5.0 to 4.5.3</li>
+<li>Bump &quot;htmlunit&quot; from 2.65.1 to 2.66.0</li>
+<li>Update &quot;README.md&quot; for this release</li>
+<li>Update &quot;roadmap.xml&quot;</li>
 </ul>
 </subsection>
 

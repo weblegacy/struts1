@@ -135,7 +135,7 @@
 <a class="jxr_linenumber" name="L127" href="#L127">127</a> <em class="jxr_javadoccomment">     * @param paramName  the key of the value to be checked</em>
 <a class="jxr_linenumber" name="L128" href="#L128">128</a> <em class="jxr_javadoccomment">     * @param paramValue the value to check for</em>
 <a class="jxr_linenumber" name="L129" href="#L129">129</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L130" href="#L130">130</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> assertHasParameter(Map&lt;?, ?&gt; parameters, String paramName,
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> assertHasParameter(Map&lt;String, ?&gt; parameters, String paramName,
 <a class="jxr_linenumber" name="L131" href="#L131">131</a>         String paramValue) {
 <a class="jxr_linenumber" name="L132" href="#L132">132</a>         Object value = parameters.get(paramName);
 <a class="jxr_linenumber" name="L133" href="#L133">133</a> 
@@ -170,7 +170,7 @@
 <a class="jxr_linenumber" name="L162" href="#L162">162</a> <em class="jxr_javadoccomment">     * @param paramName  the key of the value(s) to count</em>
 <a class="jxr_linenumber" name="L163" href="#L163">163</a> <em class="jxr_javadoccomment">     * @return the number of values for the specified parameter</em>
 <a class="jxr_linenumber" name="L164" href="#L164">164</a> <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L165" href="#L165">165</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> countParameters(Map&lt;?, ?&gt; parameters, String paramName) {
+<a class="jxr_linenumber" name="L165" href="#L165">165</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> countParameters(Map&lt;String, ?&gt; parameters, String paramName) {
 <a class="jxr_linenumber" name="L166" href="#L166">166</a>         Object value = parameters.get(paramName);
 <a class="jxr_linenumber" name="L167" href="#L167">167</a> 
 <a class="jxr_linenumber" name="L168" href="#L168">168</a>         <strong class="jxr_keyword">if</strong> (value == <strong class="jxr_keyword">null</strong>) {

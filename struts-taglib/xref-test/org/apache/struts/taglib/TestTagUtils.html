@@ -1350,8 +1350,8 @@
 <a class="jxr_linenumber" name="L1342" href="#L1342">1342</a>             String val = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L1343" href="#L1343">1343</a>             <strong class="jxr_keyword">int</strong> i = 0;
 <a class="jxr_linenumber" name="L1344" href="#L1344">1344</a> 
-<a class="jxr_linenumber" name="L1345" href="#L1345">1345</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;?&gt; iter = errors.get(<span class="jxr_string">"prop"</span>); iter.hasNext();) {
-<a class="jxr_linenumber" name="L1346" href="#L1346">1346</a>                 ActionMessage error = (ActionMessage) iter.next();
+<a class="jxr_linenumber" name="L1345" href="#L1345">1345</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;ActionMessage&gt; iter = errors.get(<span class="jxr_string">"prop"</span>); iter.hasNext();) {
+<a class="jxr_linenumber" name="L1346" href="#L1346">1346</a>                 ActionMessage error = iter.next();
 <a class="jxr_linenumber" name="L1347" href="#L1347">1347</a> 
 <a class="jxr_linenumber" name="L1348" href="#L1348">1348</a>                 val = error.getKey();
 <a class="jxr_linenumber" name="L1349" href="#L1349">1349</a>                 i++;
@@ -1379,9 +1379,9 @@
 <a class="jxr_linenumber" name="L1371" href="#L1371">1371</a>             String key = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L1372" href="#L1372">1372</a>             <strong class="jxr_keyword">int</strong> i = 0;
 <a class="jxr_linenumber" name="L1373" href="#L1373">1373</a> 
-<a class="jxr_linenumber" name="L1374" href="#L1374">1374</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;?&gt; iter = errors.get(ActionMessages.GLOBAL_MESSAGE);
+<a class="jxr_linenumber" name="L1374" href="#L1374">1374</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;ActionMessage&gt; iter = errors.get(ActionMessages.GLOBAL_MESSAGE);
 <a class="jxr_linenumber" name="L1375" href="#L1375">1375</a>                 iter.hasNext();) {
-<a class="jxr_linenumber" name="L1376" href="#L1376">1376</a>                 ActionMessage error = (ActionMessage) iter.next();
+<a class="jxr_linenumber" name="L1376" href="#L1376">1376</a>                 ActionMessage error = iter.next();
 <a class="jxr_linenumber" name="L1377" href="#L1377">1377</a> 
 <a class="jxr_linenumber" name="L1378" href="#L1378">1378</a>                 key = error.getKey();
 <a class="jxr_linenumber" name="L1379" href="#L1379">1379</a> 
@@ -1415,9 +1415,9 @@
 <a class="jxr_linenumber" name="L1407" href="#L1407">1407</a>             String key = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L1408" href="#L1408">1408</a>             <strong class="jxr_keyword">int</strong> i = 0;
 <a class="jxr_linenumber" name="L1409" href="#L1409">1409</a> 
-<a class="jxr_linenumber" name="L1410" href="#L1410">1410</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;?&gt; iter = errors.get(ActionMessages.GLOBAL_MESSAGE);
+<a class="jxr_linenumber" name="L1410" href="#L1410">1410</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;ActionMessage&gt; iter = errors.get(ActionMessages.GLOBAL_MESSAGE);
 <a class="jxr_linenumber" name="L1411" href="#L1411">1411</a>                 iter.hasNext();) {
-<a class="jxr_linenumber" name="L1412" href="#L1412">1412</a>                 ActionMessage error = (ActionMessage) iter.next();
+<a class="jxr_linenumber" name="L1412" href="#L1412">1412</a>                 ActionMessage error = iter.next();
 <a class="jxr_linenumber" name="L1413" href="#L1413">1413</a> 
 <a class="jxr_linenumber" name="L1414" href="#L1414">1414</a>                 key = error.getKey();
 <a class="jxr_linenumber" name="L1415" href="#L1415">1415</a> 
@@ -1465,7 +1465,7 @@
 <a class="jxr_linenumber" name="L1457" href="#L1457">1457</a>             assertNotNull(errors, <span class="jxr_string">"errors should not be null"</span>);
 <a class="jxr_linenumber" name="L1458" href="#L1458">1458</a>             assertNotNull(errors.get(<span class="jxr_string">"prop"</span>), <span class="jxr_string">"errors prop should not be null"</span>);
 <a class="jxr_linenumber" name="L1459" href="#L1459">1459</a> 
-<a class="jxr_linenumber" name="L1460" href="#L1460">1460</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;?&gt; iter = errors.get(<span class="jxr_string">"prop"</span>); iter.hasNext();) {
+<a class="jxr_linenumber" name="L1460" href="#L1460">1460</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;ActionMessage&gt; iter = errors.get(<span class="jxr_string">"prop"</span>); iter.hasNext();) {
 <a class="jxr_linenumber" name="L1461" href="#L1461">1461</a>                 fail(<span class="jxr_string">"Should not have any errors for does-not-exist"</span>);
 <a class="jxr_linenumber" name="L1462" href="#L1462">1462</a>             }
 <a class="jxr_linenumber" name="L1463" href="#L1463">1463</a>         } <strong class="jxr_keyword">catch</strong> (JspException e) {
@@ -1665,8 +1665,8 @@
 <a class="jxr_linenumber" name="L1657" href="#L1657">1657</a>             String val = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L1658" href="#L1658">1658</a>             <strong class="jxr_keyword">int</strong> i = 0;
 <a class="jxr_linenumber" name="L1659" href="#L1659">1659</a> 
-<a class="jxr_linenumber" name="L1660" href="#L1660">1660</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;?&gt; iter = messages.get(<span class="jxr_string">"prop"</span>); iter.hasNext();) {
-<a class="jxr_linenumber" name="L1661" href="#L1661">1661</a>                 ActionMessage message = (ActionMessage) iter.next();
+<a class="jxr_linenumber" name="L1660" href="#L1660">1660</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;ActionMessage&gt; iter = messages.get(<span class="jxr_string">"prop"</span>); iter.hasNext();) {
+<a class="jxr_linenumber" name="L1661" href="#L1661">1661</a>                 ActionMessage message = iter.next();
 <a class="jxr_linenumber" name="L1662" href="#L1662">1662</a> 
 <a class="jxr_linenumber" name="L1663" href="#L1663">1663</a>                 val = message.getKey();
 <a class="jxr_linenumber" name="L1664" href="#L1664">1664</a>                 i++;
@@ -1698,8 +1698,8 @@
 <a class="jxr_linenumber" name="L1690" href="#L1690">1690</a>             String val = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L1691" href="#L1691">1691</a>             <strong class="jxr_keyword">int</strong> i = 0;
 <a class="jxr_linenumber" name="L1692" href="#L1692">1692</a> 
-<a class="jxr_linenumber" name="L1693" href="#L1693">1693</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;?&gt; iter = messages.get(<span class="jxr_string">"prop"</span>); iter.hasNext();) {
-<a class="jxr_linenumber" name="L1694" href="#L1694">1694</a>                 ActionMessage message = (ActionMessage) iter.next();
+<a class="jxr_linenumber" name="L1693" href="#L1693">1693</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;ActionMessage&gt; iter = messages.get(<span class="jxr_string">"prop"</span>); iter.hasNext();) {
+<a class="jxr_linenumber" name="L1694" href="#L1694">1694</a>                 ActionMessage message = iter.next();
 <a class="jxr_linenumber" name="L1695" href="#L1695">1695</a> 
 <a class="jxr_linenumber" name="L1696" href="#L1696">1696</a>                 val = message.getKey();
 <a class="jxr_linenumber" name="L1697" href="#L1697">1697</a>                 i++;
@@ -1728,9 +1728,9 @@
 <a class="jxr_linenumber" name="L1720" href="#L1720">1720</a>             String key = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L1721" href="#L1721">1721</a>             <strong class="jxr_keyword">int</strong> i = 0;
 <a class="jxr_linenumber" name="L1722" href="#L1722">1722</a> 
-<a class="jxr_linenumber" name="L1723" href="#L1723">1723</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;?&gt; iter = messages.get(ActionMessages.GLOBAL_MESSAGE);
+<a class="jxr_linenumber" name="L1723" href="#L1723">1723</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;ActionMessage&gt; iter = messages.get(ActionMessages.GLOBAL_MESSAGE);
 <a class="jxr_linenumber" name="L1724" href="#L1724">1724</a>                 iter.hasNext();) {
-<a class="jxr_linenumber" name="L1725" href="#L1725">1725</a>                 ActionMessage message = (ActionMessage) iter.next();
+<a class="jxr_linenumber" name="L1725" href="#L1725">1725</a>                 ActionMessage message = iter.next();
 <a class="jxr_linenumber" name="L1726" href="#L1726">1726</a> 
 <a class="jxr_linenumber" name="L1727" href="#L1727">1727</a>                 key = message.getKey();
 <a class="jxr_linenumber" name="L1728" href="#L1728">1728</a> 
@@ -1765,9 +1765,9 @@
 <a class="jxr_linenumber" name="L1757" href="#L1757">1757</a>             String key = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L1758" href="#L1758">1758</a>             <strong class="jxr_keyword">int</strong> i = 0;
 <a class="jxr_linenumber" name="L1759" href="#L1759">1759</a> 
-<a class="jxr_linenumber" name="L1760" href="#L1760">1760</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;?&gt; iter = messages.get(ActionMessages.GLOBAL_MESSAGE);
+<a class="jxr_linenumber" name="L1760" href="#L1760">1760</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;ActionMessage&gt; iter = messages.get(ActionMessages.GLOBAL_MESSAGE);
 <a class="jxr_linenumber" name="L1761" href="#L1761">1761</a>                 iter.hasNext();) {
-<a class="jxr_linenumber" name="L1762" href="#L1762">1762</a>                 ActionMessage message = (ActionMessage) iter.next();
+<a class="jxr_linenumber" name="L1762" href="#L1762">1762</a>                 ActionMessage message = iter.next();
 <a class="jxr_linenumber" name="L1763" href="#L1763">1763</a> 
 <a class="jxr_linenumber" name="L1764" href="#L1764">1764</a>                 key = message.getKey();
 <a class="jxr_linenumber" name="L1765" href="#L1765">1765</a> 
@@ -1816,7 +1816,7 @@
 <a class="jxr_linenumber" name="L1808" href="#L1808">1808</a>             assertNotNull(messages.get(<span class="jxr_string">"prop"</span>),
 <a class="jxr_linenumber" name="L1809" href="#L1809">1809</a>                 <span class="jxr_string">"messages prop should not be null"</span>);
 <a class="jxr_linenumber" name="L1810" href="#L1810">1810</a> 
-<a class="jxr_linenumber" name="L1811" href="#L1811">1811</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;?&gt; iter = messages.get(<span class="jxr_string">"prop"</span>); iter.hasNext();) {
+<a class="jxr_linenumber" name="L1811" href="#L1811">1811</a>             <strong class="jxr_keyword">for</strong> (Iterator&lt;ActionMessage&gt; iter = messages.get(<span class="jxr_string">"prop"</span>); iter.hasNext();) {
 <a class="jxr_linenumber" name="L1812" href="#L1812">1812</a>                 fail(<span class="jxr_string">"Should not have any messages for does-not-exist"</span>);
 <a class="jxr_linenumber" name="L1813" href="#L1813">1813</a>             }
 <a class="jxr_linenumber" name="L1814" href="#L1814">1814</a>         } <strong class="jxr_keyword">catch</strong> (JspException e) {

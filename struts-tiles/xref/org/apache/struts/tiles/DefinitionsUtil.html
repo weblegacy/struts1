@@ -304,9 +304,9 @@
 <a class="jxr_linenumber" name="L296" href="#L296">296</a>             <em class="jxr_comment">// This implementation is very simple.</em>
 <a class="jxr_linenumber" name="L297" href="#L297">297</a>             <em class="jxr_comment">// It is possible to avoid creation of a new structure, but this need</em>
 <a class="jxr_linenumber" name="L298" href="#L298">298</a>             <em class="jxr_comment">// imply writing all Map interface.</em>
-<a class="jxr_linenumber" name="L299" href="#L299">299</a>             Enumeration&lt;?&gt; e = config.getInitParameterNames();
+<a class="jxr_linenumber" name="L299" href="#L299">299</a>             Enumeration&lt;String&gt; e = config.getInitParameterNames();
 <a class="jxr_linenumber" name="L300" href="#L300">300</a>             <strong class="jxr_keyword">while</strong> (e.hasMoreElements()) {
-<a class="jxr_linenumber" name="L301" href="#L301">301</a>                 String key = (String) e.nextElement();
+<a class="jxr_linenumber" name="L301" href="#L301">301</a>                 String key = e.nextElement();
 <a class="jxr_linenumber" name="L302" href="#L302">302</a>                 put(key, config.getInitParameter(key));
 <a class="jxr_linenumber" name="L303" href="#L303">303</a>             }
 <a class="jxr_linenumber" name="L304" href="#L304">304</a>         }

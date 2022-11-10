@@ -373,15 +373,14 @@
 <a class="jxr_linenumber" name="L365" href="#L365">365</a>         } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (collection instanceof Map) {
 <a class="jxr_linenumber" name="L366" href="#L366">366</a>             <strong class="jxr_keyword">return</strong> (((Map&lt;?, ?&gt;) collection).entrySet().iterator());
 <a class="jxr_linenumber" name="L367" href="#L367">367</a>         } <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong> (collection instanceof Enumeration) {
-<a class="jxr_linenumber" name="L368" href="#L368">368</a>             @SuppressWarnings(<span class="jxr_string">"unchecked"</span>)
-<a class="jxr_linenumber" name="L369" href="#L369">369</a>             Enumeration&lt;Object&gt; enumeration = (Enumeration&lt;Object&gt;) collection;
-<a class="jxr_linenumber" name="L370" href="#L370">370</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> IteratorAdapter&lt;Object&gt;(enumeration);
-<a class="jxr_linenumber" name="L371" href="#L371">371</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="L372" href="#L372">372</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> JspException(messages.getMessage(
-<a class="jxr_linenumber" name="L373" href="#L373">373</a>                     <span class="jxr_string">"optionsCollectionTag.iterator"</span>, collection.toString()));
-<a class="jxr_linenumber" name="L374" href="#L374">374</a>         }
-<a class="jxr_linenumber" name="L375" href="#L375">375</a>     }
-<a class="jxr_linenumber" name="L376" href="#L376">376</a> }
+<a class="jxr_linenumber" name="L368" href="#L368">368</a>             Enumeration&lt;?&gt; enumeration = (Enumeration&lt;?&gt;) collection;
+<a class="jxr_linenumber" name="L369" href="#L369">369</a>             <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> IteratorAdapter&lt;&gt;(enumeration);
+<a class="jxr_linenumber" name="L370" href="#L370">370</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L371" href="#L371">371</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> JspException(messages.getMessage(
+<a class="jxr_linenumber" name="L372" href="#L372">372</a>                     <span class="jxr_string">"optionsCollectionTag.iterator"</span>, collection.toString()));
+<a class="jxr_linenumber" name="L373" href="#L373">373</a>         }
+<a class="jxr_linenumber" name="L374" href="#L374">374</a>     }
+<a class="jxr_linenumber" name="L375" href="#L375">375</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2000&#x2013;2022 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>

@@ -62,18 +62,18 @@
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>      @Test
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSetOriginalURI()
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>          <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>          MockHttpServletRequest request =
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>              <strong class="jxr_keyword">new</strong> MockHttpServletRequest(<span class="jxr_string">"foo/"</span>, <span class="jxr_string">"bar.do"</span>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>          MockServletConfig servletConfig = <strong class="jxr_keyword">new</strong> MockServletConfig();
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>          MockServletContext servletContext = <strong class="jxr_keyword">new</strong> MockServletContext();
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>          MockActionServlet servlet =
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>              <strong class="jxr_keyword">new</strong> MockActionServlet(servletContext, servletConfig);
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          <a name="MockHttpServletRequest" href="../../../../../../org/apache/struts/mock/MockHttpServletRequest.html#MockHttpServletRequest">MockHttpServletRequest</a> request =
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>              <strong class="jxr_keyword">new</strong> <a name="MockHttpServletRequest" href="../../../../../../org/apache/struts/mock/MockHttpServletRequest.html#MockHttpServletRequest">MockHttpServletRequest</a>(<span class="jxr_string">"foo/"</span>, <span class="jxr_string">"bar.do"</span>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          <a name="MockServletConfig" href="../../../../../../org/apache/struts/mock/MockServletConfig.html#MockServletConfig">MockServletConfig</a> servletConfig = <strong class="jxr_keyword">new</strong> <a name="MockServletConfig" href="../../../../../../org/apache/struts/mock/MockServletConfig.html#MockServletConfig">MockServletConfig</a>();
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          <a name="MockServletContext" href="../../../../../../org/apache/struts/mock/MockServletContext.html#MockServletContext">MockServletContext</a> servletContext = <strong class="jxr_keyword">new</strong> <a name="MockServletContext" href="../../../../../../org/apache/struts/mock/MockServletContext.html#MockServletContext">MockServletContext</a>();
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          <a name="MockActionServlet" href="../../../../../../org/apache/struts/mock/MockActionServlet.html#MockActionServlet">MockActionServlet</a> servlet =
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>              <strong class="jxr_keyword">new</strong> <a name="MockActionServlet" href="../../../../../../org/apache/struts/mock/MockActionServlet.html#MockActionServlet">MockActionServlet</a>(servletContext, servletConfig);
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>  
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>          servlet.initInternal();
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>  
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>          ServletActionContext saContext =
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>              <strong class="jxr_keyword">new</strong> ServletActionContext(servletContext, request,
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>                  <strong class="jxr_keyword">new</strong> MockHttpServletResponse());
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>                  <strong class="jxr_keyword">new</strong> <a name="MockHttpServletResponse" href="../../../../../../org/apache/struts/mock/MockHttpServletResponse.html#MockHttpServletResponse">MockHttpServletResponse</a>());
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>  
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>          saContext.setActionServlet(servlet);
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>  

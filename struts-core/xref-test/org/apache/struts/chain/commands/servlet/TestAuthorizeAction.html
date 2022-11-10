@@ -51,8 +51,8 @@
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment"> * JUnitTest case for class: {@link AuthorizeAction}</em>
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  <em class="jxr_javadoccomment"> */</em>
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="TestAuthorizeAction" href="../../../../../../org/apache/struts/chain/commands/servlet/TestAuthorizeAction.html#TestAuthorizeAction">TestAuthorizeAction</a> {
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>      MockHttpServletRequest request = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>      MockPrincipal principal = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>      <a name="MockHttpServletRequest" href="../../../../../../org/apache/struts/mock/MockHttpServletRequest.html#MockHttpServletRequest">MockHttpServletRequest</a> request = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>      <a name="MockPrincipal" href="../../../../../../org/apache/struts/mock/MockPrincipal.html#MockPrincipal">MockPrincipal</a> principal = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>      ServletWebContext swContext = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>      ServletActionContext saContext = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>      AuthorizeAction command = <strong class="jxr_keyword">null</strong>;
@@ -60,21 +60,21 @@
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>      <em class="jxr_comment">/* setUp method for test case */</em>
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>      @BeforeEach
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> setUp() <strong class="jxr_keyword">throws</strong> ServletException {
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>          <strong class="jxr_keyword">this</strong>.request = <strong class="jxr_keyword">new</strong> MockHttpServletRequest();
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>          <strong class="jxr_keyword">this</strong>.request = <strong class="jxr_keyword">new</strong> <a name="MockHttpServletRequest" href="../../../../../../org/apache/struts/mock/MockHttpServletRequest.html#MockHttpServletRequest">MockHttpServletRequest</a>();
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>          <strong class="jxr_keyword">this</strong>.principal =
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>              <strong class="jxr_keyword">new</strong> MockPrincipal(<span class="jxr_string">"Mr. Macri"</span>, <strong class="jxr_keyword">new</strong> String[] { <span class="jxr_string">"administrator"</span> });
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>              <strong class="jxr_keyword">new</strong> <a name="MockPrincipal" href="../../../../../../org/apache/struts/mock/MockPrincipal.html#MockPrincipal">MockPrincipal</a>(<span class="jxr_string">"Mr. Macri"</span>, <strong class="jxr_keyword">new</strong> String[] { <span class="jxr_string">"administrator"</span> });
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>          <strong class="jxr_keyword">this</strong>.request.setUserPrincipal(principal);
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>  
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>          MockServletConfig servletConfig = <strong class="jxr_keyword">new</strong> MockServletConfig();
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>          MockServletContext servletContext = <strong class="jxr_keyword">new</strong> MockServletContext();
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>          MockActionServlet servlet =
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>              <strong class="jxr_keyword">new</strong> MockActionServlet(servletContext, servletConfig);
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          <a name="MockServletConfig" href="../../../../../../org/apache/struts/mock/MockServletConfig.html#MockServletConfig">MockServletConfig</a> servletConfig = <strong class="jxr_keyword">new</strong> <a name="MockServletConfig" href="../../../../../../org/apache/struts/mock/MockServletConfig.html#MockServletConfig">MockServletConfig</a>();
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          <a name="MockServletContext" href="../../../../../../org/apache/struts/mock/MockServletContext.html#MockServletContext">MockServletContext</a> servletContext = <strong class="jxr_keyword">new</strong> <a name="MockServletContext" href="../../../../../../org/apache/struts/mock/MockServletContext.html#MockServletContext">MockServletContext</a>();
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          <a name="MockActionServlet" href="../../../../../../org/apache/struts/mock/MockActionServlet.html#MockActionServlet">MockActionServlet</a> servlet =
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>              <strong class="jxr_keyword">new</strong> <a name="MockActionServlet" href="../../../../../../org/apache/struts/mock/MockActionServlet.html#MockActionServlet">MockActionServlet</a>(servletContext, servletConfig);
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>  
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>          servlet.initInternal();
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>  
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>          <strong class="jxr_keyword">this</strong>.saContext =
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>              <strong class="jxr_keyword">new</strong> ServletActionContext(servletContext, request,
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>                  <strong class="jxr_keyword">new</strong> MockHttpServletResponse());
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>                  <strong class="jxr_keyword">new</strong> <a name="MockHttpServletResponse" href="../../../../../../org/apache/struts/mock/MockHttpServletResponse.html#MockHttpServletResponse">MockHttpServletResponse</a>());
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>  
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>          <strong class="jxr_keyword">this</strong>.saContext.setActionServlet(servlet);
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>          <strong class="jxr_keyword">this</strong>.command = <strong class="jxr_keyword">new</strong> AuthorizeAction();

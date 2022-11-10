@@ -99,11 +99,11 @@
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>  <em class="jxr_javadoccomment">     * parameters read from the multipart request &lt;/p&gt;</em>
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L93" href="#L93">93</a>      <strong class="jxr_keyword">public</strong> Enumeration&lt;String&gt; getParameterNames() {
-<a class="jxr_linenumber" name="L94" href="#L94">94</a>          Enumeration&lt;?&gt; baseParams = getRequest().getParameterNames();
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>          Enumeration&lt;String&gt; baseParams = getRequest().getParameterNames();
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>          ArrayList&lt;String&gt; list = <strong class="jxr_keyword">new</strong> ArrayList&lt;&gt;();
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>  
 <a class="jxr_linenumber" name="L97" href="#L97">97</a>          <strong class="jxr_keyword">while</strong> (baseParams.hasMoreElements()) {
-<a class="jxr_linenumber" name="L98" href="#L98">98</a>              list.add(baseParams.nextElement().toString());
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>              list.add(baseParams.nextElement());
 <a class="jxr_linenumber" name="L99" href="#L99">99</a>          }
 <a class="jxr_linenumber" name="L100" href="#L100">100</a> 
 <a class="jxr_linenumber" name="L101" href="#L101">101</a>         Collection&lt;String&gt; multipartParams = parameters.keySet();

@@ -88,7 +88,7 @@
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>          String mockMappingName = <span class="jxr_string">"mockMapping"</span>;
 <a class="jxr_linenumber" name="L81" href="#L81">81</a>          String stringValue     = <span class="jxr_string">"Test"</span>;
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>  
-<a class="jxr_linenumber" name="L83" href="#L83">83</a>          MockFormBean  mockForm = <strong class="jxr_keyword">new</strong> MockFormBean();
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>          <a name="MockFormBean" href="../../../../org/apache/struts/mock/MockFormBean.html#MockFormBean">MockFormBean</a>  mockForm = <strong class="jxr_keyword">new</strong> <a name="MockFormBean" href="../../../../org/apache/struts/mock/MockFormBean.html#MockFormBean">MockFormBean</a>();
 <a class="jxr_linenumber" name="L84" href="#L84">84</a>          ActionMapping mapping  = <strong class="jxr_keyword">new</strong> ActionMapping();
 <a class="jxr_linenumber" name="L85" href="#L85">85</a>          mapping.setName(mockMappingName);
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>  
@@ -131,7 +131,7 @@
 <a class="jxr_linenumber" name="L123" href="#L123">123</a>     @Test
 <a class="jxr_linenumber" name="L124" href="#L124">124</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRequestParameterIgnore1() <strong class="jxr_keyword">throws</strong> Exception {
 <a class="jxr_linenumber" name="L125" href="#L125">125</a> 
-<a class="jxr_linenumber" name="L126" href="#L126">126</a>         MockFormBean  mockForm = <strong class="jxr_keyword">new</strong> MockFormBean();
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>         <a name="MockFormBean" href="../../../../org/apache/struts/mock/MockFormBean.html#MockFormBean">MockFormBean</a>  mockForm = <strong class="jxr_keyword">new</strong> <a name="MockFormBean" href="../../../../org/apache/struts/mock/MockFormBean.html#MockFormBean">MockFormBean</a>();
 <a class="jxr_linenumber" name="L127" href="#L127">127</a> 
 <a class="jxr_linenumber" name="L128" href="#L128">128</a>         HashSet&lt;String&gt; ignoreSet = runRequestParameter(mockForm, <span class="jxr_string">"class.xxx.case1"</span>);
 <a class="jxr_linenumber" name="L129" href="#L129">129</a> 
@@ -153,7 +153,7 @@
 <a class="jxr_linenumber" name="L145" href="#L145">145</a>     @Test
 <a class="jxr_linenumber" name="L146" href="#L146">146</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRequestParameterIgnore2() <strong class="jxr_keyword">throws</strong> Exception {
 <a class="jxr_linenumber" name="L147" href="#L147">147</a> 
-<a class="jxr_linenumber" name="L148" href="#L148">148</a>         MockFormBean  mockForm = <strong class="jxr_keyword">new</strong> MockFormBean();
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>         <a name="MockFormBean" href="../../../../org/apache/struts/mock/MockFormBean.html#MockFormBean">MockFormBean</a>  mockForm = <strong class="jxr_keyword">new</strong> <a name="MockFormBean" href="../../../../org/apache/struts/mock/MockFormBean.html#MockFormBean">MockFormBean</a>();
 <a class="jxr_linenumber" name="L149" href="#L149">149</a> 
 <a class="jxr_linenumber" name="L150" href="#L150">150</a>         HashSet&lt;String&gt; ignoreSet = runRequestParameter(mockForm, <span class="jxr_string">"xxx.class.case2"</span>);
 <a class="jxr_linenumber" name="L151" href="#L151">151</a> 
@@ -175,7 +175,7 @@
 <a class="jxr_linenumber" name="L167" href="#L167">167</a>     @Test
 <a class="jxr_linenumber" name="L168" href="#L168">168</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRequestParameterIgnore3() <strong class="jxr_keyword">throws</strong> Exception {
 <a class="jxr_linenumber" name="L169" href="#L169">169</a> 
-<a class="jxr_linenumber" name="L170" href="#L170">170</a>         MockFormBean  mockForm = <strong class="jxr_keyword">new</strong> MockFormBean();
+<a class="jxr_linenumber" name="L170" href="#L170">170</a>         <a name="MockFormBean" href="../../../../org/apache/struts/mock/MockFormBean.html#MockFormBean">MockFormBean</a>  mockForm = <strong class="jxr_keyword">new</strong> <a name="MockFormBean" href="../../../../org/apache/struts/mock/MockFormBean.html#MockFormBean">MockFormBean</a>();
 <a class="jxr_linenumber" name="L171" href="#L171">171</a> 
 <a class="jxr_linenumber" name="L172" href="#L172">172</a>         HashSet&lt;String&gt; ignoreSet = runRequestParameter(mockForm, <span class="jxr_string">"stringProperty"</span>);
 <a class="jxr_linenumber" name="L173" href="#L173">173</a> 
@@ -197,7 +197,7 @@
 <a class="jxr_linenumber" name="L189" href="#L189">189</a>     @Test
 <a class="jxr_linenumber" name="L190" href="#L190">190</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRequestParameterIgnore4() <strong class="jxr_keyword">throws</strong> Exception {
 <a class="jxr_linenumber" name="L191" href="#L191">191</a> 
-<a class="jxr_linenumber" name="L192" href="#L192">192</a>         MockFormBean  mockForm = <strong class="jxr_keyword">new</strong> MockFormBean();
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>         <a name="MockFormBean" href="../../../../org/apache/struts/mock/MockFormBean.html#MockFormBean">MockFormBean</a>  mockForm = <strong class="jxr_keyword">new</strong> <a name="MockFormBean" href="../../../../org/apache/struts/mock/MockFormBean.html#MockFormBean">MockFormBean</a>();
 <a class="jxr_linenumber" name="L193" href="#L193">193</a> 
 <a class="jxr_linenumber" name="L194" href="#L194">194</a>         HashSet&lt;String&gt; ignoreSet = runRequestParameter(mockForm, <span class="jxr_string">"class.xxx.case4"</span>, <span class="jxr_string">"xxx.class.case4"</span>, <span class="jxr_string">"stringProperty"</span>);
 <a class="jxr_linenumber" name="L195" href="#L195">195</a> 
@@ -209,7 +209,7 @@
 <a class="jxr_linenumber" name="L201" href="#L201">201</a> 
 <a class="jxr_linenumber" name="L202" href="#L202">202</a>     }
 <a class="jxr_linenumber" name="L203" href="#L203">203</a> 
-<a class="jxr_linenumber" name="L204" href="#L204">204</a>     <strong class="jxr_keyword">private</strong> HashSet&lt;String&gt; runRequestParameter(MockFormBean mockForm, String... parameters) <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="L204" href="#L204">204</a>     <strong class="jxr_keyword">private</strong> HashSet&lt;String&gt; runRequestParameter(<a name="MockFormBean" href="../../../../org/apache/struts/mock/MockFormBean.html#MockFormBean">MockFormBean</a> mockForm, String... parameters) <strong class="jxr_keyword">throws</strong> Exception {
 <a class="jxr_linenumber" name="L205" href="#L205">205</a> 
 <a class="jxr_linenumber" name="L206" href="#L206">206</a>        <em class="jxr_comment">// Set up the mock HttpServletRequest</em>
 <a class="jxr_linenumber" name="L207" href="#L207">207</a>         request.setMethod(<span class="jxr_string">"GET"</span>);

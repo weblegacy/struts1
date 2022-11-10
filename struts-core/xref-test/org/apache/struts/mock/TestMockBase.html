@@ -59,27 +59,27 @@
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>      <strong class="jxr_keyword">protected</strong> ModuleConfig moduleConfig = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>      <strong class="jxr_keyword">protected</strong> ModuleConfig moduleConfig2 = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>      <strong class="jxr_keyword">protected</strong> ModuleConfig moduleConfig3 = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">protected</strong> MockServletConfig config = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>      <strong class="jxr_keyword">protected</strong> MockServletContext context = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">protected</strong> MockPageContext page = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">protected</strong> MockPrincipal principal = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>      <strong class="jxr_keyword">protected</strong> MockHttpServletRequest request = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">protected</strong> MockHttpServletResponse response = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>      <strong class="jxr_keyword">protected</strong> MockHttpSession session = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">protected</strong> <a name="MockServletConfig" href="../../../../org/apache/struts/mock/MockServletConfig.html#MockServletConfig">MockServletConfig</a> config = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>      <strong class="jxr_keyword">protected</strong> <a name="MockServletContext" href="../../../../org/apache/struts/mock/MockServletContext.html#MockServletContext">MockServletContext</a> context = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">protected</strong> <a name="MockPageContext" href="../../../../org/apache/struts/mock/MockPageContext.html#MockPageContext">MockPageContext</a> page = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">protected</strong> <a name="MockPrincipal" href="../../../../org/apache/struts/mock/MockPrincipal.html#MockPrincipal">MockPrincipal</a> principal = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>      <strong class="jxr_keyword">protected</strong> <a name="MockHttpServletRequest" href="../../../../org/apache/struts/mock/MockHttpServletRequest.html#MockHttpServletRequest">MockHttpServletRequest</a> request = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">protected</strong> <a name="MockHttpServletResponse" href="../../../../org/apache/struts/mock/MockHttpServletResponse.html#MockHttpServletResponse">MockHttpServletResponse</a> response = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>      <strong class="jxr_keyword">protected</strong> <a name="MockHttpSession" href="../../../../org/apache/struts/mock/MockHttpSession.html#MockHttpSession">MockHttpSession</a> session = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>  
 <a class="jxr_linenumber" name="L62" href="#L62">62</a>      <em class="jxr_comment">// ----------------------------------------------------- Setup and Teardown</em>
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>      @BeforeEach
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setUp() {
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>          <em class="jxr_comment">// Set up the servlet API objects for a test scenario</em>
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>          context = <strong class="jxr_keyword">new</strong> MockServletContext();
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>          config = <strong class="jxr_keyword">new</strong> MockServletConfig(context);
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>          session = <strong class="jxr_keyword">new</strong> MockHttpSession(context);
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>          request = <strong class="jxr_keyword">new</strong> MockHttpServletRequest(session);
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          context = <strong class="jxr_keyword">new</strong> <a name="MockServletContext" href="../../../../org/apache/struts/mock/MockServletContext.html#MockServletContext">MockServletContext</a>();
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          config = <strong class="jxr_keyword">new</strong> <a name="MockServletConfig" href="../../../../org/apache/struts/mock/MockServletConfig.html#MockServletConfig">MockServletConfig</a>(context);
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          session = <strong class="jxr_keyword">new</strong> <a name="MockHttpSession" href="../../../../org/apache/struts/mock/MockHttpSession.html#MockHttpSession">MockHttpSession</a>(context);
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>          request = <strong class="jxr_keyword">new</strong> <a name="MockHttpServletRequest" href="../../../../org/apache/struts/mock/MockHttpServletRequest.html#MockHttpServletRequest">MockHttpServletRequest</a>(session);
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>          principal =
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>              <strong class="jxr_keyword">new</strong> MockPrincipal(<span class="jxr_string">"username"</span>, <strong class="jxr_keyword">new</strong> String[] { <span class="jxr_string">"admin"</span>, <span class="jxr_string">"manager"</span> });
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>              <strong class="jxr_keyword">new</strong> <a name="MockPrincipal" href="../../../../org/apache/struts/mock/MockPrincipal.html#MockPrincipal">MockPrincipal</a>(<span class="jxr_string">"username"</span>, <strong class="jxr_keyword">new</strong> String[] { <span class="jxr_string">"admin"</span>, <span class="jxr_string">"manager"</span> });
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>          request.setUserPrincipal(principal);
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>          response = <strong class="jxr_keyword">new</strong> MockHttpServletResponse();
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>          page = <strong class="jxr_keyword">new</strong> MockPageContext(config, request, response);
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>          response = <strong class="jxr_keyword">new</strong> <a name="MockHttpServletResponse" href="../../../../org/apache/struts/mock/MockHttpServletResponse.html#MockHttpServletResponse">MockHttpServletResponse</a>();
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>          page = <strong class="jxr_keyword">new</strong> <a name="MockPageContext" href="../../../../org/apache/struts/mock/MockPageContext.html#MockPageContext">MockPageContext</a>(config, request, response);
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>  
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>          <em class="jxr_comment">// Set up application configurations for our supported modules</em>
 <a class="jxr_linenumber" name="L77" href="#L77">77</a>          setUpDefaultApp();

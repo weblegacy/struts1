@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2000 - 2022 Web-Legacy</copyright>
     <item>
-      <title>File: 180,
-             Errors: 1205,
+      <title>File: 167,
+             Errors: 1081,
              Warnings: 0,
              Infos: 0
       </title>
@@ -70,20 +70,6 @@ under the License.
                 </td>
                 <td>
                   3
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.MockServletContext.java">org/apache/struts/mock/MockServletContext.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  5
                 </td>
               </tr>
                           <tr>
@@ -172,20 +158,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.MockActionServlet.java">org/apache/struts/mock/MockActionServlet.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  9
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.chain.commands.servlet.SelectLocale.java">org/apache/struts/chain/commands/servlet/SelectLocale.java</a>
                 </td>
                 <td>
@@ -196,20 +168,6 @@ under the License.
                 </td>
                 <td>
                   3
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.MockFormBean.java">org/apache/struts/mock/MockFormBean.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  26
                 </td>
               </tr>
                           <tr>
@@ -294,20 +252,6 @@ under the License.
                 </td>
                 <td>
                   2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.MockHttpSession.java">org/apache/struts/mock/MockHttpSession.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  21
                 </td>
               </tr>
                           <tr>
@@ -644,20 +588,6 @@ under the License.
                 </td>
                 <td>
                   1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.MockPrincipal.java">org/apache/struts/mock/MockPrincipal.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  10
                 </td>
               </tr>
                           <tr>
@@ -1460,20 +1390,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.MockMultipartRequestHandler.java">org/apache/struts/mock/MockMultipartRequestHandler.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.dispatcher.LocalStrings.properties">org/apache/struts/dispatcher/LocalStrings.properties</a>
                 </td>
                 <td>
@@ -1525,7 +1441,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  16
+                  15
                 </td>
               </tr>
                           <tr>
@@ -1740,20 +1656,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.MockAction.java">org/apache/struts/mock/MockAction.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.chain.commands.servlet.SelectModule.java">org/apache/struts/chain/commands/servlet/SelectModule.java</a>
                 </td>
                 <td>
@@ -1764,20 +1666,6 @@ under the License.
                 </td>
                 <td>
                   1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.MockHttpServletResponse.java">org/apache/struts/mock/MockHttpServletResponse.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  3
                 </td>
               </tr>
                           <tr>
@@ -1834,20 +1722,6 @@ under the License.
                 </td>
                 <td>
                   2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.MockServletConfig.java">org/apache/struts/mock/MockServletConfig.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  11
                 </td>
               </tr>
                           <tr>
@@ -1950,20 +1824,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.MockPageContext.java">org/apache/struts/mock/MockPageContext.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  14
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.config.package-info.java">org/apache/struts/config/package-info.java</a>
                 </td>
                 <td>
@@ -2020,20 +1880,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.package-info.java">org/apache/struts/mock/package-info.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.action.DynaActionForm.java">org/apache/struts/action/DynaActionForm.java</a>
                 </td>
                 <td>
@@ -2072,20 +1918,6 @@ under the License.
                 </td>
                 <td>
                   1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.MockEnumeration.java">org/apache/struts/mock/MockEnumeration.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  6
                 </td>
               </tr>
                           <tr>
@@ -2450,20 +2282,6 @@ under the License.
                 </td>
                 <td>
                   1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="https://weblegacy.github.io/struts1/struts-core/checkstyle.html#org.apache.struts.mock.MockHttpServletRequest.java">org/apache/struts/mock/MockHttpServletRequest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  14
                 </td>
               </tr>
                           <tr>

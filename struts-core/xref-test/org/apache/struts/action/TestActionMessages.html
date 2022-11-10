@@ -111,7 +111,7 @@
 <a class="jxr_linenumber" name="L103" href="#L103">103</a> 
 <a class="jxr_linenumber" name="L104" href="#L104">104</a>     @Test
 <a class="jxr_linenumber" name="L105" href="#L105">105</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetWithNoProperty() {
-<a class="jxr_linenumber" name="L106" href="#L106">106</a>         Iterator&lt;?&gt; it = aMsgs.get(<span class="jxr_string">"myProp"</span>);
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>         Iterator&lt;ActionMessage&gt; it = aMsgs.get(<span class="jxr_string">"myProp"</span>);
 <a class="jxr_linenumber" name="L107" href="#L107">107</a> 
 <a class="jxr_linenumber" name="L108" href="#L108">108</a>         assertFalse(it.hasNext(), <span class="jxr_string">"iterator is not empty!"</span>);
 <a class="jxr_linenumber" name="L109" href="#L109">109</a>     }
@@ -120,7 +120,7 @@
 <a class="jxr_linenumber" name="L112" href="#L112">112</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGetForAProperty() {
 <a class="jxr_linenumber" name="L113" href="#L113">113</a>         testSizeWithOneProperty();
 <a class="jxr_linenumber" name="L114" href="#L114">114</a> 
-<a class="jxr_linenumber" name="L115" href="#L115">115</a>         Iterator&lt;?&gt; it = aMsgs.get(<span class="jxr_string">"myProp"</span>);
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>         Iterator&lt;ActionMessage&gt; it = aMsgs.get(<span class="jxr_string">"myProp"</span>);
 <a class="jxr_linenumber" name="L116" href="#L116">116</a> 
 <a class="jxr_linenumber" name="L117" href="#L117">117</a>         assertTrue(it.hasNext(), <span class="jxr_string">"iterator is empty!"</span>);
 <a class="jxr_linenumber" name="L118" href="#L118">118</a>     }
@@ -145,11 +145,11 @@
 <a class="jxr_linenumber" name="L137" href="#L137">137</a>         assertEquals(2, msgs.size(<span class="jxr_string">"prop1"</span>));
 <a class="jxr_linenumber" name="L138" href="#L138">138</a> 
 <a class="jxr_linenumber" name="L139" href="#L139">139</a>         <em class="jxr_comment">// test message order</em>
-<a class="jxr_linenumber" name="L140" href="#L140">140</a>         Iterator&lt;?&gt; props = msgs.get();
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>         Iterator&lt;ActionMessage&gt; props = msgs.get();
 <a class="jxr_linenumber" name="L141" href="#L141">141</a>         <strong class="jxr_keyword">int</strong> count = 1;
 <a class="jxr_linenumber" name="L142" href="#L142">142</a> 
 <a class="jxr_linenumber" name="L143" href="#L143">143</a>         <strong class="jxr_keyword">while</strong> (props.hasNext()) {
-<a class="jxr_linenumber" name="L144" href="#L144">144</a>             ActionMessage msg = (ActionMessage) props.next();
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>             ActionMessage msg = props.next();
 <a class="jxr_linenumber" name="L145" href="#L145">145</a> 
 <a class="jxr_linenumber" name="L146" href="#L146">146</a>             <strong class="jxr_keyword">if</strong> (count == 1) {
 <a class="jxr_linenumber" name="L147" href="#L147">147</a>                 assertEquals(<span class="jxr_string">"key"</span>, msg.getKey());

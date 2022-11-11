@@ -30,4 +30,32 @@
   </application>
 
 
+  <!-- Backing Bean for loggedoff.jsp -->
+  <managed-bean>
+    <managed-bean-name>loggedOff</managed-bean-name>
+    <managed-bean-class>
+      org.apache.struts.webapp.example2.LoggedOff
+    </managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+
+  <!-- Backing Bean for loggedon.jsp -->
+  <managed-bean>
+    <managed-bean-name>loggedOn</managed-bean-name>
+    <managed-bean-class>
+      org.apache.struts.webapp.example2.LoggedOn
+    </managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+
+  <!-- Backing Bean for registration.jsp -->
+  <managed-bean>
+    <managed-bean-name>registrationBacking</managed-bean-name>
+    <managed-bean-class>
+      org.apache.struts.webapp.example2.RegistrationBacking
+    </managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+  </managed-bean>
+
+
 </faces-config>

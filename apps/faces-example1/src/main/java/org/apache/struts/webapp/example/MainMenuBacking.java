@@ -23,8 +23,6 @@
 package org.apache.struts.webapp.example;
 
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
 import org.slf4j.Logger;
@@ -35,8 +33,6 @@ import org.slf4j.LoggerFactory;
  * <p>Backing bean for the <code>mainMenu.jsp</code> page.</p>
  */
 
-@ManagedBean
-@RequestScoped
 public class MainMenuBacking extends AbstractBacking {
 
 

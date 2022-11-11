@@ -2,6 +2,7 @@
 
 ## 1.4.4 / YYYY-MM-DD
 
+* Faces-Example1 & 2: Undo use CDI because native JSF-CDI is deprecated
 * Bump `myfaces` from 2.2.15 to 2.3.10
 * Resolve many JDK 19 compiler-warnings
 * Remove compiler-warnings till JDK 17

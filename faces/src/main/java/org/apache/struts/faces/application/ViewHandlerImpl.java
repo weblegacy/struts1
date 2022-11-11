@@ -57,15 +57,6 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
         LoggerFactory.getLogger(ViewHandlerImpl.class);
 
 
-    // ------------------------------------------------------ Instance Variables
-
-
-    /**
-     * The {@code ViewHandler} instance that we are decorating.
-     */
-    private final ViewHandler oldViewHandler;
-
-
     // ------------------------------------------------------------ Constructors
 
 
@@ -76,23 +67,9 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
      * @param oldViewHandler {@code ViewHandler} to be decorated
      */
     public ViewHandlerImpl(ViewHandler oldViewHandler) {
+        super(oldViewHandler);
         log.debug("Creating ViewHandler instance, wrapping handler {}",
             oldViewHandler);
-        this.oldViewHandler = oldViewHandler;
-    }
-
-
-    // -------------------------------------------------------------- Properties
-
-
-    /**
-     * Returns the {@code ViewHandler} instance that we are decorating.
-     *
-     * @return the {@code ViewHandler} instance that we are decorating.
-     */
-    @Override
-    public ViewHandler getWrapped() {
-        return oldViewHandler;
     }
 
 
@@ -121,6 +98,5 @@ public class ViewHandlerImpl extends ViewHandlerWrapper {
             }
         }
         super.renderView(context, viewToRender);
-
     }
 }

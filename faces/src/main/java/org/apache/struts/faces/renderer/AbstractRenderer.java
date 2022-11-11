@@ -622,16 +622,20 @@ public abstract class AbstractRenderer extends Renderer {
 
         // Identify any Converter associated with this component value
         ValueExpression vb = component.getValueExpression("value");
-        Converter converter = null;
+        Converter<Object> converter = null;
         if (component instanceof ValueHolder) {
             // Acquire explicitly assigned Converter (if any)
-            converter = ((ValueHolder) component).getConverter();
+            @SuppressWarnings("unchecked")
+            Converter<Object> conv = ((ValueHolder) component).getConverter();
+            converter = conv;
         }
         if (converter == null && vb != null) {
             // Acquire implicit by-type Converter (if any)
             Class<?> type = vb.getType(context.getELContext());
             if (type != null) {
-                converter = context.getApplication().createConverter(type);
+                @SuppressWarnings("unchecked")
+                Converter<Object> conv = context.getApplication().createConverter(type);
+                converter = conv;
             }
         }
 

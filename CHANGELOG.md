@@ -2,6 +2,7 @@
 
 ## 1.4.4 / YYYY-MM-DD
 
+* Update `javax.servlet-api` 4.0.1 to `jakarta.servlet-api` 4.0.4
 * Update `web.xml` to version 4.0
 * Add `jaxb-api` and `jaxb-runtime` because JDK 11
 * Faces-Example1 & 2: Undo use CDI because native JSF-CDI is deprecated

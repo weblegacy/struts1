@@ -372,7 +372,7 @@
         <tilesVersion>3.0.8</tilesVersion>
         <tilesRequestVersion>1.0.7</tilesRequestVersion>
         <antlrVersion>4.11.1</antlrVersion>
-        <servletVersion>4.0.1</servletVersion>
+        <servletVersion>4.0.4</servletVersion>
         <jspVersion>2.3.3</jspVersion>
         <elVersion>3.0.0</elVersion>
         <jaxbVersion>2.3.1</jaxbVersion>
@@ -872,9 +872,9 @@
                       <url>https://javadoc.io/doc/org.apache.groovy/groovy-all/${groovyVersion}/</url>
                     </dependencyLink>
                     <dependencyLink>
-                      <groupId>javax.servlet</groupId>
-                      <artifactId>javax.servlet-api</artifactId>
-                      <url>https://javadoc.io/doc/javax.servlet/javax.servlet-api/${servletVersion}/</url>
+                      <groupId>jakarta.servlet</groupId>
+                      <artifactId>jakarta.servlet-api</artifactId>
+                      <url>https://javadoc.io/doc/jakarta.servlet/jakarta.servlet-api/${servletVersion}/</url>
                     </dependencyLink>
                     <dependencyLink>
                       <groupId>javax.servlet.jsp</groupId>
@@ -1035,8 +1035,8 @@
                 <version>${jaxbVersion}</version>
             </dependency>
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
                 <version>${servletVersion}</version>
                 <scope>provided</scope>
             </dependency>

@@ -93,6 +93,10 @@
          <artifactId>jakarta.faces</artifactId>
       </dependency>
       <dependency>
+         <groupId>org.jboss.weld.servlet</groupId>
+         <artifactId>weld-servlet-shaded</artifactId>
+      </dependency>
+      <dependency>
          <groupId>commons-digester</groupId>
          <artifactId>commons-digester</artifactId>
       </dependency>

@@ -2,6 +2,7 @@
 
 ## 1.4.4 / YYYY-MM-DD
 
+* Add `weld-servlet-shaded` for CDI-function for JSF 2.3
 * Replace JSF-implementation `myfaces` 2.3.10 with `mojarra` 2.3.18
 * Removing the use of `myfaces`-implementation-specifics
 * Update `taglibs-standard-spec` 1.2.5 to `jakarta.servlet.jsp.jstl` 1.2.7

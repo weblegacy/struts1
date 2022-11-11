@@ -23,17 +23,21 @@
 package org.apache.struts.webapp.example;
 
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.inject.Named;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
 /**
- * <p>Backing bean for the <code>index.jsp</code> page.</p>
+ * Backing bean for the <code>index.jsp</code> page.
  */
 
+@Named
+@RequestScoped
 public class IndexBacking extends AbstractBacking {
 
 

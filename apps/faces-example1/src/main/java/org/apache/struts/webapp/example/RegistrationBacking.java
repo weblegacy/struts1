@@ -23,8 +23,10 @@
 package org.apache.struts.webapp.example;
 
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 
 import org.apache.struts.apps.mailreader.dao.Subscription;
 import org.apache.struts.apps.mailreader.dao.User;
@@ -37,6 +39,8 @@ import org.slf4j.LoggerFactory;
  * <p>Backing bean for the <code>registration.jsp</code> page.</p>
  */
 
+@Named
+@RequestScoped
 public class RegistrationBacking extends AbstractBacking {
 
 

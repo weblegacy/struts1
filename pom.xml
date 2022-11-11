@@ -368,12 +368,13 @@
         <groovyVersion>4.0.6</groovyVersion>
         <seleniumVersion>4.6.0</seleniumVersion>
         <slf4jVersion>2.0.3</slf4jVersion>
-        <taglibsVersion>1.2.5</taglibsVersion>
         <tilesVersion>3.0.8</tilesVersion>
         <tilesRequestVersion>1.0.7</tilesRequestVersion>
         <antlrVersion>4.11.1</antlrVersion>
         <servletVersion>4.0.4</servletVersion>
         <jspVersion>2.3.6</jspVersion>
+        <jstlVersion>1.2.7</jstlVersion>
+        <jstlImplVersion>1.2.6</jstlImplVersion>
         <elVersion>3.0.3</elVersion>
         <jaxbVersion>2.3.1</jaxbVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
@@ -857,16 +858,6 @@
                       <url>https://javadoc.io/doc/org.apache.myfaces.core/myfaces-impl/${myfacesVersion}/</url>
                     </dependencyLink>
                     <dependencyLink>
-                      <groupId>org.apache.taglibs</groupId>
-                      <artifactId>taglibs-standard-spec</artifactId>
-                      <url>https://javadoc.io/doc/org.apache.taglibs/taglibs-standard-spec/${taglibsVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.apache.taglibs</groupId>
-                      <artifactId>taglibs-standard-impl</artifactId>
-                      <url>https://javadoc.io/doc/org.apache.taglibs/taglibs-standard-impl/${taglibsVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
                       <groupId>org.apache.groovy</groupId>
                       <artifactId>groovy-jsr223</artifactId>
                       <url>https://javadoc.io/doc/org.apache.groovy/groovy-all/${groovyVersion}/</url>
@@ -886,9 +877,14 @@
                       <artifactId>jakarta.el-api</artifactId>
                       <url>https://javadoc.io/doc/jakarta.el/jakarta.el-api/${elVersion}/</url>
                     </dependencyLink>
+                    <dependencyLink>
+                      <groupId>jakarta.servlet.jsp.jstl</groupId>
+                      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+                      <url>https://javadoc.io/doc/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api/${jstlVersion}/</url>
+                    </dependencyLink>
                   </dependencyLinks>
                   <links>
-                    <link>https://docs.oracle.com/javaee/7/api</link>
+                    <link>https://jakarta.ee/specifications/platform/8/apidocs</link>
                   </links>
                   <failOnError>false</failOnError>
                   <quiet>true</quiet>
@@ -1053,14 +1049,14 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>org.apache.taglibs</groupId>
-                <artifactId>taglibs-standard-spec</artifactId>
-                <version>${taglibsVersion}</version>
+                <groupId>jakarta.servlet.jsp.jstl</groupId>
+                <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+                <version>${jstlVersion}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.taglibs</groupId>
-                <artifactId>taglibs-standard-impl</artifactId>
-                <version>${taglibsVersion}</version>
+                <groupId>org.glassfish.web</groupId>
+                <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+                <version>${jstlImplVersion}</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>

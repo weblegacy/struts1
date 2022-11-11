@@ -2,6 +2,8 @@
 
 ## 1.4.4 / YYYY-MM-DD
 
+* Update `taglibs-standard-spec` 1.2.5 to `jakarta.servlet.jsp.jstl` 1.2.7
+  and change implementation from `org.apache.taglibs` to `org.glassfish.web`
 * Update `javax.el-api` 3.0.0 to `jakarta.el-api` 3.0.3
 * Update `javax.servlet.jsp-api` 2.3.3 to `jakarta.servlet.jsp-api` 2.3.6
 * Update `javax.servlet-api` 4.0.1 to `jakarta.servlet-api` 4.0.4

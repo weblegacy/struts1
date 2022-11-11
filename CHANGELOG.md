@@ -2,6 +2,7 @@
 
 ## 1.4.4 / YYYY-MM-DD
 
+* Update `javax.el-api` 3.0.0 to `jakarta.el-api` 3.0.3
 * Update `javax.servlet.jsp-api` 2.3.3 to `jakarta.servlet.jsp-api` 2.3.6
 * Update `javax.servlet-api` 4.0.1 to `jakarta.servlet-api` 4.0.4
 * Update `web.xml` to version 4.0

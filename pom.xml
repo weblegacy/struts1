@@ -374,7 +374,7 @@
         <antlrVersion>4.11.1</antlrVersion>
         <servletVersion>4.0.4</servletVersion>
         <jspVersion>2.3.6</jspVersion>
-        <elVersion>3.0.0</elVersion>
+        <elVersion>3.0.3</elVersion>
         <jaxbVersion>2.3.1</jaxbVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
@@ -882,9 +882,9 @@
                       <url>https://javadoc.io/doc/jakarta.servlet.jsp/jakarta.servlet.jsp-api/${jspVersion}/</url>
                     </dependencyLink>
                     <dependencyLink>
-                      <groupId>javax.el</groupId>
-                      <artifactId>javax.el-api</artifactId>
-                      <url>https://javadoc.io/doc/javax.el/javax.el-api/${elVersion}/</url>
+                      <groupId>jakarta.el</groupId>
+                      <artifactId>jakarta.el-api</artifactId>
+                      <url>https://javadoc.io/doc/jakarta.el/jakarta.el-api/${elVersion}/</url>
                     </dependencyLink>
                   </dependencyLinks>
                   <links>
@@ -1047,8 +1047,8 @@
                 <scope>provided</scope>
             </dependency>
             <dependency>
-                <groupId>javax.el</groupId>
-                <artifactId>javax.el-api</artifactId>
+                <groupId>jakarta.el</groupId>
+                <artifactId>jakarta.el-api</artifactId>
                 <version>${elVersion}</version>
                 <scope>provided</scope>
             </dependency>

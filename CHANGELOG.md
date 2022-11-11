@@ -2,6 +2,7 @@
 
 ## 1.4.4 / YYYY-MM-DD
 
+* Bump `jaxb-runtime` from 2.3.1 to 2.3.7 to use `jakarta`-version
 * Faces-Example1 & 2: Use new CDI
 * Add `weld-servlet-shaded` for CDI-function for JSF 2.3
 * Replace JSF-implementation `myfaces` 2.3.10 with `mojarra` 2.3.18

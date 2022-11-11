@@ -25,6 +25,8 @@ package org.apache.struts.faces.taglib;
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
+import org.apache.struts.faces.util.Utils;
+
 
 /**
  * <p>Write the content of the specified component, converting to text
@@ -98,9 +100,7 @@ public class WriteTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setBooleanProperty(component, "filter", _filter);
+        Utils.setBooleanProperty(component, "filter", _filter);
 
     }
-
-
 }

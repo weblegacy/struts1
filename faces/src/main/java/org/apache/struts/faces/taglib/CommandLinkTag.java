@@ -26,6 +26,8 @@ import javax.el.MethodExpression;
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
+import org.apache.struts.faces.util.Utils;
+
 
 /**
  * <p>Render a <code>CommandLinkComponent</code> inside a
@@ -290,37 +292,35 @@ public class CommandLinkTag extends AbstractFacesTag {
 
         super.setProperties(component);
 
-        setActionProperty(component, _action);
-        setActionListenerProperty(component, _actionListener);
+        Utils.setActionProperty(component, _action);
+        Utils.setActionListenerProperty(component, _actionListener);
 
-        setStringProperty(component, "accesskey", _accesskey);
-        setStringProperty(component, "charset", _charset);
-        setStringProperty(component, "dir", _dir);
-        setStringProperty(component, "hreflang", _hreflang);
-        setBooleanProperty(component, "immediate", _immediate);
-        setStringProperty(component, "lang", _lang);
-        setStringProperty(component, "onblur", _onblur);
-        setStringProperty(component, "onclick", _onclick);
-        setStringProperty(component, "ondblclick", _ondblclick);
-        setStringProperty(component, "onfocus", _onfocus);
-        setStringProperty(component, "onkeydown", _onkeydown);
-        setStringProperty(component, "onkeypress", _onkeypress);
-        setStringProperty(component, "onkeyup", _onkeyup);
-        setStringProperty(component, "onmousedown", _onmousedown);
-        setStringProperty(component, "onmousemove", _onmousemove);
-        setStringProperty(component, "onmouseout", _onmouseout);
-        setStringProperty(component, "onmouseover", _onmouseover);
-        setStringProperty(component, "onmouseup", _onmouseup);
-        setStringProperty(component, "rel", _rel);
-        setStringProperty(component, "rev", _rev);
-        setStringProperty(component, "style", _style);
-        setStringProperty(component, "styleClass", _styleClass);
-        setStringProperty(component, "tabindex", _tabindex);
-        setStringProperty(component, "target", _target);
-        setStringProperty(component, "title", _title);
-        setStringProperty(component, "type", _type);
+        Utils.setStringProperty(component, "accesskey", _accesskey);
+        Utils.setStringProperty(component, "charset", _charset);
+        Utils.setStringProperty(component, "dir", _dir);
+        Utils.setStringProperty(component, "hreflang", _hreflang);
+        Utils.setBooleanProperty(component, "immediate", _immediate);
+        Utils.setStringProperty(component, "lang", _lang);
+        Utils.setStringProperty(component, "onblur", _onblur);
+        Utils.setStringProperty(component, "onclick", _onclick);
+        Utils.setStringProperty(component, "ondblclick", _ondblclick);
+        Utils.setStringProperty(component, "onfocus", _onfocus);
+        Utils.setStringProperty(component, "onkeydown", _onkeydown);
+        Utils.setStringProperty(component, "onkeypress", _onkeypress);
+        Utils.setStringProperty(component, "onkeyup", _onkeyup);
+        Utils.setStringProperty(component, "onmousedown", _onmousedown);
+        Utils.setStringProperty(component, "onmousemove", _onmousemove);
+        Utils.setStringProperty(component, "onmouseout", _onmouseout);
+        Utils.setStringProperty(component, "onmouseover", _onmouseover);
+        Utils.setStringProperty(component, "onmouseup", _onmouseup);
+        Utils.setStringProperty(component, "rel", _rel);
+        Utils.setStringProperty(component, "rev", _rev);
+        Utils.setStringProperty(component, "style", _style);
+        Utils.setStringProperty(component, "styleClass", _styleClass);
+        Utils.setStringProperty(component, "tabindex", _tabindex);
+        Utils.setStringProperty(component, "target", _target);
+        Utils.setStringProperty(component, "title", _title);
+        Utils.setStringProperty(component, "type", _type);
 
     }
-
-
 }

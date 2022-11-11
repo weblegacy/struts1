@@ -25,6 +25,8 @@ package org.apache.struts.faces.taglib;
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
+import org.apache.struts.faces.util.Utils;
+
 
 /**
  * <p>Render an HTML <code>&lt;base&gt;</code> element for
@@ -96,9 +98,7 @@ public class BaseTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setStringProperty(component, "target", _target);
+        Utils.setStringProperty(component, "target", _target);
 
     }
-
-
 }

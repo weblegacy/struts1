@@ -27,7 +27,7 @@ import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 import javax.faces.webapp.UIComponentELTag;
 
-import org.apache.myfaces.shared.taglib.UIComponentELTagUtils;
+import org.apache.struts.faces.util.Utils;
 
 
 /**
@@ -110,10 +110,8 @@ public class LinkSubscriptionTag extends UIComponentELTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        UIComponentELTagUtils.setStringProperty(component, "name", _name, "subscription");
-        UIComponentELTagUtils.setStringProperty(component, "page", _page);
+        Utils.setStringProperty(component, "name", _name, "subscription");
+        Utils.setStringProperty(component, "page", _page);
 
     }
-
-
 }

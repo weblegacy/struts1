@@ -28,6 +28,7 @@ import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 
 import org.apache.struts.Globals;
+import org.apache.struts.faces.util.Utils;
 
 
 /**
@@ -126,10 +127,8 @@ public class HtmlTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setBooleanProperty(component, "locale", _locale);
-        setBooleanProperty(component, "xhtml", _xhtml);
+        Utils.setBooleanProperty(component, "locale", _locale);
+        Utils.setBooleanProperty(component, "xhtml", _xhtml);
 
     }
-
-
 }

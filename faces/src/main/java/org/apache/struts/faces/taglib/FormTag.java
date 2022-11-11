@@ -25,6 +25,8 @@ package org.apache.struts.faces.taglib;
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
+import org.apache.struts.faces.util.Utils;
+
 
 /**
  * <p>Render an input form that is submitted to a Struts <code>Action</code>,
@@ -168,15 +170,13 @@ public class FormTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setStringProperty(component, "action", _action);
-        setStringProperty(component, "enctype", _enctype);
-        setStringProperty(component, "focus", _focus);
-        setStringProperty(component, "focusIndex", _focusIndex);
-        setStringProperty(component, "onreset", _onreset);
-        setStringProperty(component, "onsubmit", _onsubmit);
-        setStringProperty(component, "target", _target);
+        Utils.setStringProperty(component, "action", _action);
+        Utils.setStringProperty(component, "enctype", _enctype);
+        Utils.setStringProperty(component, "focus", _focus);
+        Utils.setStringProperty(component, "focusIndex", _focusIndex);
+        Utils.setStringProperty(component, "onreset", _onreset);
+        Utils.setStringProperty(component, "onsubmit", _onsubmit);
+        Utils.setStringProperty(component, "target", _target);
 
     }
-
-
 }

@@ -22,13 +22,11 @@
 package org.apache.struts.faces.taglib;
 
 
-import javax.el.ELException;
-import javax.el.MethodExpression;
 import javax.el.ValueExpression;
-import javax.faces.component.ActionSource2;
 import javax.faces.component.UIComponent;
-import javax.faces.event.MethodExpressionActionListener;
 import javax.faces.webapp.UIComponentELTag;
+
+import org.apache.struts.faces.util.Utils;
 
 
 /**
@@ -128,10 +126,10 @@ public abstract class AbstractFacesTag extends UIComponentELTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setStringProperty(component, "bundle", _bundle);
-        setStringProperty(component, "style", _style);
-        setStringProperty(component, "styleClass", _styleClass);
-        setStringProperty(component, "value", _value);
+        Utils.setStringProperty(component, "bundle", _bundle);
+        Utils.setStringProperty(component, "style", _style);
+        Utils.setStringProperty(component, "styleClass", _styleClass);
+        Utils.setStringProperty(component, "value", _value);
 
     }
 
@@ -157,64 +155,6 @@ public abstract class AbstractFacesTag extends UIComponentELTag {
     }
 
     /**
-     * If the specified attribute value is not {@code null} use it
-     * to either store a value binding expression for the specified
-     * attribute name, or store it as the literal value of the
-     * attribute.
-     *
-     * @param component {@code UIComponent} whose attribute is to
-     *                  be set
-     * @param propName  Property name
-     * @param value     Property value (or {@code null})
-     *
-     * @exception ELException if the expression has invalid syntax
-     *
-     * @since 1.4.1
-     */
-    protected static void setBooleanProperty(UIComponent component,
-            String propName, ValueExpression value) {
-
-        if (value == null) {
-            return;
-        }
-
-        if (value.isLiteralText()) {
-            component.getAttributes().put(propName, Boolean.valueOf(value.getExpressionString()));
-        } else {
-            component.setValueExpression(propName, value);
-        }
-    }
-
-    /**
-     * If the specified attribute value is not {@code null} use it
-     * to either store a value binding expression for the specified
-     * attribute name, or store it as the literal value of the
-     * attribute.
-     *
-     * @param component {@code UIComponent} whose attribute is to
-     *                  be set
-     * @param propName  Property name
-     * @param value     Property value (or {@code null})
-     *
-     * @exception ELException if the expression has invalid syntax
-     *
-     * @since 1.4.1
-     */
-    protected static void setStringProperty(UIComponent component,
-            String propName, ValueExpression value) {
-
-        if (value == null) {
-            return;
-        }
-
-        if (value.isLiteralText()) {
-            component.getAttributes().put(propName, value.getExpressionString());
-        } else {
-            component.setValueExpression(propName, value);
-        }
-    }
-
-    /**
      * Gets the value of the specified value expression.
      *
      * @param valueExpression Value expression
@@ -229,94 +169,5 @@ public abstract class AbstractFacesTag extends UIComponentELTag {
         }
 
         return (Integer) valueExpression.getValue(getELContext());
-    }
-
-    /**
-     * If the specified attribute value is not {@code null} use it
-     * to either store a value binding expression for the specified
-     * attribute name, or store it as the literal value of the
-     * attribute.
-     *
-     * @param component {@code UIComponent} whose attribute is to
-     *                  be set
-     * @param propName  Property name
-     * @param value     Property value (or {@code null})
-     *
-     * @exception ELException if the expression has invalid syntax
-     *
-     * @since 1.4.1
-     */
-    protected static void setIntegerProperty(UIComponent component,
-            String propName, ValueExpression value) {
-
-        if (value == null) {
-            return;
-        }
-
-        if (value.isLiteralText()) {
-            component.getAttributes().put(propName, Integer.valueOf(value.getExpressionString()));
-        } else {
-            component.setValueExpression(propName, value);
-        }
-    }
-
-    /**
-     * If the specified action is not {@code null} use it to
-     * set the action of the component.
-     *
-     * @param component {@code UIComponent} whose action is to
-     *                  be set
-     * @param action    the Action
-     *
-     * @throws IllegalArgumentException if the component is not an
-     *         instance of {@code ActionSource2}
-     *
-     * @since 1.4.1
-     */
-    public void setActionProperty(UIComponent component, MethodExpression action) {
-        if (action != null) {
-            castActionSource2(component).setActionExpression(action);
-        }
-    }
-
-    /**
-     * If the specified action-listener is not {@code null} use
-     * it to add the action-listener to the component.
-     *
-     * @param component      {@code UIComponent} whose action-listener
-     *                       is to be added
-     * @param actionListener the Action-Listener
-     *
-     * @throws IllegalArgumentException if the component is not an
-     *         instance of {@code ActionSource2}
-     *
-     * @since 1.4.1
-     */
-    public void setActionListenerProperty(UIComponent component, MethodExpression actionListener) {
-        if (actionListener != null) {
-            castActionSource2(component).addActionListener(new MethodExpressionActionListener(actionListener));
-        }
-    }
-
-    /**
-     * Test the component if it's an instance of {@code ActionSource2}
-     * and returns it.
-     *
-     * @param component {@code UIComponent} to test
-     *
-     * @return the component as {@code ActionSource2}
-     *
-     * @throws IllegalArgumentException if the component is not an
-     *         instance of {@code ActionSource2}
-     *
-     * @since 1.4.1
-    */
-    private ActionSource2 castActionSource2(UIComponent component) {
-        if (component instanceof ActionSource2) {
-            return (ActionSource2) component;
-        }
-        throw new IllegalArgumentException("Component "
-                + component.getClientId(getFacesContext())
-                + " is no ActionSource2");
     }
 }

@@ -24,6 +24,8 @@ package org.apache.struts.faces.taglib;
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
+import org.apache.struts.faces.util.Utils;
+
 /**
  * Custom tag that generates JavaScript for client side validation based
  * on the validation rules loaded by the <code>ValidatorPlugIn</code>
@@ -228,16 +230,14 @@ public class JavascriptValidatorTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setStringProperty(component, "formName", _formName);
-        setIntegerProperty(component, "page", _page);
-        setStringProperty(component, "method", _method);
-        setBooleanProperty(component, "staticJavascript", _staticJavascript);
-        setBooleanProperty(component, "dynamicJavascript", _dynamicJavascript);
-        setStringProperty(component, "src", _src);
-        setBooleanProperty(component, "htmlComment", _htmlComment);
-        setBooleanProperty(component, "cdata", _cdata);
+        Utils.setStringProperty(component, "formName", _formName);
+        Utils.setIntegerProperty(component, "page", _page);
+        Utils.setStringProperty(component, "method", _method);
+        Utils.setBooleanProperty(component, "staticJavascript", _staticJavascript);
+        Utils.setBooleanProperty(component, "dynamicJavascript", _dynamicJavascript);
+        Utils.setStringProperty(component, "src", _src);
+        Utils.setBooleanProperty(component, "htmlComment", _htmlComment);
+        Utils.setBooleanProperty(component, "cdata", _cdata);
 
     }
-
-
 }

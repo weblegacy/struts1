@@ -25,6 +25,8 @@ package org.apache.struts.faces.taglib;
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
+import org.apache.struts.faces.util.Utils;
+
 
 /**
  * <p>Render a localized message, with optional substitution parameters, for
@@ -111,10 +113,8 @@ public class MessageTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setBooleanProperty(component, "filter", _filter);
-        setStringProperty(component, "key", _key);
+        Utils.setBooleanProperty(component, "filter", _filter);
+        Utils.setStringProperty(component, "key", _key);
 
     }
-
-
 }

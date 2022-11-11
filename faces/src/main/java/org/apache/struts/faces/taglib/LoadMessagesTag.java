@@ -24,6 +24,8 @@ package org.apache.struts.faces.taglib;
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
+import org.apache.struts.faces.util.Utils;
+
 /**
  * Tag that exposes a specified {@code MessageResources} instance
  * as {@code MessagesMap}, so that the embedded messages may be
@@ -101,7 +103,7 @@ public class LoadMessagesTag extends AbstractFacesTag {
      */
     protected void setProperties(UIComponent component) {
         super.setProperties(component);
-        setStringProperty(component, "messages", _messages);
-        setStringProperty(component, "var", _var);
+        Utils.setStringProperty(component, "messages", _messages);
+        Utils.setStringProperty(component, "var", _var);
     }
 }

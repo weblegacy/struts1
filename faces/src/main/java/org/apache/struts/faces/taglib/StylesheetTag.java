@@ -25,6 +25,8 @@ package org.apache.struts.faces.taglib;
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
+import org.apache.struts.faces.util.Utils;
+
 
 /**
  * <p>Render a stylesheet HTML <code>&lt;link&gt;</code> element for
@@ -97,9 +99,7 @@ public class StylesheetTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setStringProperty(component, "path", _path);
+        Utils.setStringProperty(component, "path", _path);
 
     }
-
-
 }

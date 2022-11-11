@@ -25,6 +25,8 @@ package org.apache.struts.faces.taglib;
 import javax.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
+import org.apache.struts.faces.util.Utils;
+
 
 /**
  * <p>Render a set of validation or business logic error messages, for
@@ -96,12 +98,7 @@ public class ErrorsTag extends AbstractFacesTag {
     protected void setProperties(UIComponent component) {
 
         super.setProperties(component);
-        setStringProperty(component, "property", _property);
+        Utils.setStringProperty(component, "property", _property);
 
     }
-
-
-    // ------------------------------------------------------- Protected Methods
-
-
 }

@@ -27,14 +27,6 @@
     <param-value>client</param-value>
   </context-param>
 
-  <!-- MYFACES_BEGIN -->
-  <listener>
-    <listener-class>
-      org.apache.myfaces.webapp.StartupServletContextListener
-    </listener-class>
-  </listener>
-  <!-- MYFACES_END -->
-
   <!-- JavaServer Faces Servlet Configuration -->
   <servlet>
     <servlet-name>faces</servlet-name>

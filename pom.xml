@@ -364,7 +364,6 @@
         <mavenVersion>[3.5.4,4)</mavenVersion>
         <javaVersion>8</javaVersion>
         <javaTestVersion>8</javaTestVersion>
-        <myfacesVersion>2.3.10</myfacesVersion>
         <groovyVersion>4.0.6</groovyVersion>
         <seleniumVersion>4.6.0</seleniumVersion>
         <slf4jVersion>2.0.3</slf4jVersion>
@@ -376,6 +375,8 @@
         <jstlVersion>1.2.7</jstlVersion>
         <jstlImplVersion>1.2.6</jstlImplVersion>
         <elVersion>3.0.3</elVersion>
+        <jsfVersion>2.3.2</jsfVersion>
+        <jsfImplVersion>2.3.18</jsfImplVersion>
         <jaxbVersion>2.3.1</jaxbVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
@@ -848,16 +849,6 @@
                       <url>https://www.antlr.org/api/Java/</url>
                     </dependencyLink>
                     <dependencyLink>
-                      <groupId>org.apache.myfaces.core</groupId>
-                      <artifactId>myfaces-api</artifactId>
-                      <url>https://javadoc.io/doc/org.apache.myfaces.core/myfaces-api/${myfacesVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.apache.myfaces.core</groupId>
-                      <artifactId>myfaces-impl</artifactId>
-                      <url>https://javadoc.io/doc/org.apache.myfaces.core/myfaces-impl/${myfacesVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
                       <groupId>org.apache.groovy</groupId>
                       <artifactId>groovy-jsr223</artifactId>
                       <url>https://javadoc.io/doc/org.apache.groovy/groovy-all/${groovyVersion}/</url>
@@ -881,6 +872,11 @@
                       <groupId>jakarta.servlet.jsp.jstl</groupId>
                       <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
                       <url>https://javadoc.io/doc/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api/${jstlVersion}/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>jakarta.faces</groupId>
+                      <artifactId>jakarta.faces-api</artifactId>
+                      <url>https://javadoc.io/doc/jakarta.faces/jakarta.faces-api/${jsfVersion}/</url>
                     </dependencyLink>
                   </dependencyLinks>
                   <links>
@@ -1059,6 +1055,16 @@
                 <version>${jstlImplVersion}</version>
             </dependency>
             <dependency>
+                <groupId>jakarta.faces</groupId>
+                <artifactId>jakarta.faces-api</artifactId>
+                <version>${jsfVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish</groupId>
+                <artifactId>jakarta.faces</artifactId>
+                <version>${jsfImplVersion}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
                 <version>${slf4jVersion}</version>
@@ -1114,16 +1120,6 @@
                 <artifactId>webdrivermanager</artifactId>
                 <version>5.3.1</version>
                 <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.myfaces.core</groupId>
-                <artifactId>myfaces-api</artifactId>
-                <version>${myfacesVersion}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.apache.myfaces.core</groupId>
-                <artifactId>myfaces-impl</artifactId>
-                <version>${myfacesVersion}</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.groovy</groupId>

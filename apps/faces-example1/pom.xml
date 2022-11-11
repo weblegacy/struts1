@@ -85,12 +85,8 @@
           <artifactId>jakarta.servlet.jsp.jstl</artifactId>
       </dependency>
       <dependency>
-         <groupId>org.apache.myfaces.core</groupId>
-         <artifactId>myfaces-api</artifactId>
-      </dependency>
-      <dependency>
-         <groupId>org.apache.myfaces.core</groupId>
-         <artifactId>myfaces-impl</artifactId>
+         <groupId>org.glassfish</groupId>
+         <artifactId>jakarta.faces</artifactId>
       </dependency>
       <dependency>
          <groupId>commons-digester</groupId>

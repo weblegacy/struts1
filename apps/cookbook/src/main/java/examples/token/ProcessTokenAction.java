@@ -38,6 +38,7 @@ import org.apache.struts.action.ActionMessages;
  * @version $Rev$ $Date$
  */
 public class ProcessTokenAction extends Action {
+    private static final long serialVersionUID = -5017052903191285282L;
 
     // ------------------------------------------------------------ Constructors
 
@@ -98,5 +99,4 @@ public class ProcessTokenAction extends Action {
         // Forward to result page
         return mapping.findForward("success");
     }
-
 }

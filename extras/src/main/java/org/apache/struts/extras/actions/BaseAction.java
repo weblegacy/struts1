@@ -32,6 +32,8 @@ import org.apache.struts.util.MessageResources;
  * @since Struts 1.3
  */
 public abstract class BaseAction extends Action {
+    private static final long serialVersionUID = 7514980838116602408L;
+
     /**
      * The message resources for this package.
      */

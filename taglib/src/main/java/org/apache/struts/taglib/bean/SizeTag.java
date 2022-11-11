@@ -20,17 +20,16 @@
  */
 package org.apache.struts.taglib.bean;
 
-import org.apache.struts.taglib.TagUtils;
-import org.apache.struts.util.MessageResources;
+import java.lang.reflect.Array;
+import java.util.Collection;
+import java.util.Map;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import java.lang.reflect.Array;
-
-import java.util.Collection;
-import java.util.Map;
+import org.apache.struts.taglib.TagUtils;
+import org.apache.struts.util.MessageResources;
 
 /**
  * Define a scripting variable that will contain the number of elements found

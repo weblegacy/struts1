@@ -40,6 +40,7 @@ import org.apache.struts.util.LabelValueBean;
  * @version $Rev$ $Date$
  */
 public class PrepareOptionsAction extends Action {
+    private static final long serialVersionUID = -138527557363506974L;
 
     // ------------------------------------------------------------ Constructors
 
@@ -159,7 +160,5 @@ public class PrepareOptionsAction extends Action {
 
         // Forward to form page
         return mapping.findForward("success");
-
     }
-
 }

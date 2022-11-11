@@ -50,6 +50,7 @@ import org.slf4j.LoggerFactory;
  * </p>
  */
 public final class RegistrationAction extends BaseAction {
+    private static final long serialVersionUID = -7647634599126416947L;
 
     /**
      * The {@code Log} instance for this class.

@@ -22,13 +22,13 @@
 package org.apache.struts.webapp.el.exercise;
 
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 
 /**
@@ -42,6 +42,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 public class HtmlSettersAction extends Action {
+    private static final long serialVersionUID = 6082971168474674149L;
 
 
     /**
@@ -67,6 +68,4 @@ public class HtmlSettersAction extends Action {
         }
 
     }
-
-
 }

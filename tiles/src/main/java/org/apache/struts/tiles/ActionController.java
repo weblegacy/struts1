@@ -35,6 +35,7 @@ import org.apache.struts.action.Action;
  * <code>Action</code> in a <code>Controller</code>.
  */
 public class ActionController implements Controller {
+    private static final long serialVersionUID = -618534639125910093L;
 
     /**
      * Struts action wrapped.

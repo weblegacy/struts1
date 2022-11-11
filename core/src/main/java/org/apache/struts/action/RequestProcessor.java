@@ -21,6 +21,7 @@
 package org.apache.struts.action;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -52,7 +53,9 @@ import org.slf4j.LoggerFactory;
  * @version $Rev$ $Date$
  * @since Struts 1.1
  */
-public class RequestProcessor {
+public class RequestProcessor implements Serializable {
+    private static final long serialVersionUID = -6430999735913386425L;
+
     // ----------------------------------------------------- Manifest Constants
 
     /**
@@ -73,7 +76,7 @@ public class RequestProcessor {
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(RequestProcessor.class);
 
     // ----------------------------------------------------- Instance Variables

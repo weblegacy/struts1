@@ -39,8 +39,9 @@ import org.apache.struts.extras.actions.LookupDispatchAction;
  * @version $Rev$ $Date$
  */
 public class LookupDispatchExampleAction extends LookupDispatchAction {
+    private static final long serialVersionUID = 6423904873036854367L;
 
-    private Map<String, String> keyMethodMap = new HashMap<>();
+    private HashMap<String, String> keyMethodMap = new HashMap<>();
     private int fooCount;
     private int barCount;
 
@@ -111,5 +112,4 @@ public class LookupDispatchExampleAction extends LookupDispatchAction {
     protected Map<String, String> getKeyMethodMap() {
         return keyMethodMap;
     }
-
 }

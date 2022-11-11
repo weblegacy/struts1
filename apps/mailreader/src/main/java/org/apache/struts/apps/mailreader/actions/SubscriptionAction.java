@@ -40,6 +40,7 @@ import org.slf4j.LoggerFactory;
  * </p>
  */
 public final class SubscriptionAction extends BaseAction {
+    private static final long serialVersionUID = 481958664313412332L;
 
     /**
      * The {@code Log} instance for this class.

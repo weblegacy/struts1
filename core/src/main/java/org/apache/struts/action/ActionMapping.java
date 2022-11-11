@@ -55,7 +55,7 @@ public class ActionMapping extends ActionConfig {
      *
      * @since Struts 1.2.8
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(ActionMapping.class);
 
     /**

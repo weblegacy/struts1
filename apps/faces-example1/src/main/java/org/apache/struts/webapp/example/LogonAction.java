@@ -50,6 +50,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public final class LogonAction extends Action {
+    private static final long serialVersionUID = 8794487498966644785L;
 
 
     // ----------------------------------------------------- Instance Variables
@@ -161,6 +162,5 @@ public final class LogonAction extends Action {
 
         // Look up and return the specified user
         return (database.findUser(username));
-
     }
 }

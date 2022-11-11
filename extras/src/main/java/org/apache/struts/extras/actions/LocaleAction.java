@@ -40,11 +40,12 @@ import org.slf4j.LoggerFactory;
  * that are set  (language, country, &amp; page).
  */
 public final class LocaleAction extends BaseAction {
+    private static final long serialVersionUID = 9133617067776601112L;
 
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(this.getClass().getName());
 
     /**
@@ -89,9 +90,9 @@ public final class LocaleAction extends BaseAction {
         boolean isCountry = ((country != null) && (country.length() > 0));
 
         if ((isLanguage) && (isCountry)) {
-            locale = new java.util.Locale(language, country);
+            locale = new Locale(language, country);
         } else if (isLanguage) {
-            locale = new java.util.Locale(language, "");
+            locale = new Locale(language);
         }
 
         session.setAttribute(Globals.LOCALE_KEY, locale);

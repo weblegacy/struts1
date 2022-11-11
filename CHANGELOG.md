@@ -2,6 +2,7 @@
 
 ## 1.4.4 / YYYY-MM-DD
 
+* Resolve many JDK 19 compiler-warnings
 * Remove compiler-warnings till JDK 17
 * Upgrade `servlet-api` from 3.1.0 to 4.0.1
 * Update `README.md` for next release

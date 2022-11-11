@@ -92,11 +92,12 @@ import org.slf4j.LoggerFactory;
  * @version $Rev$ $Date$
  */
 public abstract class DispatchAction extends BaseAction {
+    private static final long serialVersionUID = 4211198620691041849L;
 
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(DispatchAction.class);
 
     // ----------------------------------------------------- Instance Variables

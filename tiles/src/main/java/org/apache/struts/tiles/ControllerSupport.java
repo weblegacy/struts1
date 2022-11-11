@@ -34,6 +34,7 @@ import javax.servlet.http.HttpServletResponse;
  * interface.
  */
 public class ControllerSupport implements Controller {
+    private static final long serialVersionUID = -4462385995896189607L;
 
     /**
      * Method associated to a tile and called immediately before tile is

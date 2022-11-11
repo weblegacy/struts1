@@ -38,6 +38,7 @@ import org.apache.struts.extras.actions.EventActionDispatcher;
  * @version $Rev$ $Date$
  */
 public class EventActionDispatcherExample extends Action {
+    private static final long serialVersionUID = 2358187973741752216L;
 
     private ActionDispatcher dispatcher
                                  = new EventActionDispatcher(this);
@@ -113,7 +114,5 @@ public class EventActionDispatcherExample extends Action {
         saveMessages(request, messages);
 
         return (mapping.findForward("success"));
-
     }
-
 }

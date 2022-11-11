@@ -20,6 +20,8 @@
  */
 package org.apache.struts.dispatcher;
 
+import java.io.Serializable;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.chain.contexts.ActionContext;
 
@@ -32,7 +34,7 @@ import org.apache.struts.chain.contexts.ActionContext;
  * @version $Rev$
  * @since Struts 1.4
  */
-public interface Dispatcher {
+public interface Dispatcher extends Serializable {
 
     /**
      * Dispatches to the action referenced by the specified context.

@@ -52,6 +52,8 @@ import org.apache.struts.action.ActionMapping;
  *          $
  */
 public class IncludeAction extends BaseAction {
+    private static final long serialVersionUID = -6455723242287515520L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**

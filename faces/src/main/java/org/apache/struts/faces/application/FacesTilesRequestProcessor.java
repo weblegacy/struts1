@@ -64,6 +64,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public class FacesTilesRequestProcessor extends TilesRequestProcessor {
+    private static final long serialVersionUID = 1798452367926542112L;
 
 
     // ------------------------------------------------------ Instance Variables
@@ -72,7 +73,7 @@ public class FacesTilesRequestProcessor extends TilesRequestProcessor {
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(FacesTilesRequestProcessor.class);
 
     /**

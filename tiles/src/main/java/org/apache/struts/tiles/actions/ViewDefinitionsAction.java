@@ -45,6 +45,7 @@ import org.apache.struts.tiles.TilesUtil;
  */
 
 public class ViewDefinitionsAction extends Action {
+    private static final long serialVersionUID = -5469130834431018931L;
 
     /**
      * Process the specified HTTP request, and create the corresponding HTTP
@@ -83,7 +84,5 @@ public class ViewDefinitionsAction extends Action {
         writer.close();
 
         return (null);
-
     }
-
 }

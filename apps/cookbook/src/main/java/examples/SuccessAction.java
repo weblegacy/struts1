@@ -59,6 +59,7 @@ import org.apache.struts.action.ActionMapping;
  * @version $Rev$ $Date$
  */
 public class SuccessAction extends Action {
+    private static final long serialVersionUID = 8464922680951404772L;
 
     // ------------------------------------------------------------ Constructors
 
@@ -94,7 +95,5 @@ public class SuccessAction extends Action {
         throws Exception {
 
         return mapping.findForward("success");
-
     }
-
 }

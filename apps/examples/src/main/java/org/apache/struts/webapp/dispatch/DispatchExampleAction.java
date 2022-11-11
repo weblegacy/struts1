@@ -36,6 +36,7 @@ import org.apache.struts.extras.actions.DispatchAction;
  * @version $Rev$ $Date$
  */
 public class DispatchExampleAction extends DispatchAction {
+    private static final long serialVersionUID = -2683477831602712612L;
 
     private int fooCount;
     private int barCount;
@@ -88,7 +89,5 @@ public class DispatchExampleAction extends DispatchAction {
         saveMessages(request, messages);
 
         return (mapping.findForward("success"));
-
     }
-
 }

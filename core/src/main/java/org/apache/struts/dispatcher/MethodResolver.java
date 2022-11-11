@@ -20,9 +20,10 @@
  */
 package org.apache.struts.dispatcher;
 
-import org.apache.struts.chain.contexts.ActionContext;
-
+import java.io.Serializable;
 import java.lang.reflect.Method;
+
+import org.apache.struts.chain.contexts.ActionContext;
 
 /**
  * This interface defines a pluggable strategy for resolving a method and
@@ -33,7 +34,7 @@ import java.lang.reflect.Method;
  * @version $Rev$
  * @since Struts 1.4
  */
-public interface MethodResolver {
+public interface MethodResolver extends Serializable{
 
     /**
      * Constructs the arguments that will be passed to the dispatched method.
@@ -57,5 +58,4 @@ public interface MethodResolver {
      * @throws NoSuchMethodException if an appropriate method cannot be found
      */
     Method resolveMethod(ActionContext context, String methodName) throws NoSuchMethodException;
-
 }

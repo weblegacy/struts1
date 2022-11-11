@@ -33,6 +33,7 @@ import javax.servlet.http.HttpServletResponse;
  * Tiles controller including a local URL.
  */
 public class UrlController implements Controller {
+    private static final long serialVersionUID = -3427605980038213048L;
 
     /**
      * URL associated with this controller.
@@ -93,7 +94,5 @@ public class UrlController implements Controller {
         }
 
         rd.include(request, response);
-
     }
-
 }

@@ -57,12 +57,14 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.1
  */
 public class SwitchAction extends BaseAction {
+    private static final long serialVersionUID = -8632296010034881915L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(SwitchAction.class);
 
     /**

@@ -37,6 +37,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public final class RegistrationAction extends Action {
+    private static final long serialVersionUID = -4885363822107512126L;
 
     /**
      * The {@code Log} instance for this class.

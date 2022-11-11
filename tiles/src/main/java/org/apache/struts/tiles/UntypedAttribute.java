@@ -32,7 +32,7 @@ public class UntypedAttribute implements AttributeDefinition {
      */
     protected String role = null;
 
-    protected Object value=null;
+    protected Object value = null;
 
     /**
      * Constructor.
@@ -88,5 +88,4 @@ public class UntypedAttribute implements AttributeDefinition {
     public String toString() {
         return value.toString();
     }
-
 }

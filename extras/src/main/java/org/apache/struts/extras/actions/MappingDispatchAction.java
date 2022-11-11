@@ -130,12 +130,14 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.2
  */
 public class MappingDispatchAction extends DispatchAction {
+    private static final long serialVersionUID = 8605425680931524975L;
+
     // -------------------------------------------------------- Class Variables
 
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(MappingDispatchAction.class);
 
     // --------------------------------------------------------- Public Methods

@@ -40,6 +40,7 @@ import examples.TestBean;
  * @version $Rev$ $Date$
  */
 public class PrepareLinksAction extends Action {
+    private static final long serialVersionUID = 5540649738913671167L;
 
     // ------------------------------------------------------------ Constructors
 
@@ -84,7 +85,5 @@ public class PrepareLinksAction extends Action {
 
         // Just forward to the form - no preparation required
         return mapping.findForward("success");
-
     }
-
 }

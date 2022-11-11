@@ -44,6 +44,7 @@ import examples.options.BookBean;
  * @version $Rev$ $Date$
  */
 public class PrepareLogicAction extends Action {
+    private static final long serialVersionUID = 131485024310473177L;
 
     // ------------------------------------------------------------ Constructors
 
@@ -120,7 +121,5 @@ public class PrepareLogicAction extends Action {
 
         // Forward to the form
         return mapping.findForward("success");
-
     }
-
 }

@@ -48,6 +48,7 @@ import org.apache.tiles.request.servlet.ServletUtil;
  * @version $Rev$ $Date$
  */
 public abstract class TilesAction extends Action {
+    private static final long serialVersionUID = -565671066052461589L;
 
     /**
      * Original Struts Action's method.
@@ -116,5 +117,4 @@ public abstract class TilesAction extends Action {
 
         return null;
     }
-
 }

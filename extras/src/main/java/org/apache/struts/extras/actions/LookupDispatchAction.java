@@ -107,17 +107,18 @@ import org.slf4j.LoggerFactory;
  * pressed), the custom handler <code>cancelled</code> will be used instead.
  */
 public abstract class LookupDispatchAction extends DispatchAction {
+    private static final long serialVersionUID = 8608624951935780151L;
 
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(LookupDispatchAction.class);
 
     /**
      * Reverse lookup map from resource value to resource key.
      */
-    protected Map<Locale, Map<String, String>> localeMap = new HashMap<>();
+    protected HashMap<Locale, Map<String, String>> localeMap = new HashMap<>();
 
     /**
      * Resource key to method name lookup.

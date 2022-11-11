@@ -22,6 +22,7 @@
 package org.apache.struts.tiles;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -33,7 +34,7 @@ import javax.servlet.http.HttpServletResponse;
  * A controller can be associated to a tile. See &lt;insert&gt; or
  * &lt;definition&gt; for association syntax.
  */
-public interface Controller {
+public interface Controller extends Serializable {
 
     /**
      * Method associated to a tile and called immediately before the tile

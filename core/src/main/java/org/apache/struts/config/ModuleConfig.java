@@ -20,6 +20,7 @@
  */
 package org.apache.struts.config;
 
+import java.io.Serializable;
 
 /**
  * <p>The collection of static configuration information that describes a
@@ -34,7 +35,7 @@ package org.apache.struts.config;
  *          $
  * @since Struts 1.1
  */
-public interface ModuleConfig {
+public interface ModuleConfig extends Serializable {
     /**
      * <p> Has this module been completely configured yet.  Once this flag has
      * been set, any attempt to modify the configuration will return an

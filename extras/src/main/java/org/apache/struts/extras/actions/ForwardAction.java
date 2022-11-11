@@ -51,6 +51,8 @@ import org.apache.struts.action.ActionMapping;
  *          $
  */
 public class ForwardAction extends BaseAction {
+    private static final long serialVersionUID = -3526864110155621740L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**

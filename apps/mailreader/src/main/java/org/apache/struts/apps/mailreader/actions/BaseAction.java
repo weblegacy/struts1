@@ -55,6 +55,7 @@ import org.slf4j.LoggerFactory;
  * @version $Rev$ $Date$
  */
 public abstract class BaseAction extends MappingDispatchAction {
+    private static final long serialVersionUID = 678857024187471817L;
 
     // ---- Fields ----
 

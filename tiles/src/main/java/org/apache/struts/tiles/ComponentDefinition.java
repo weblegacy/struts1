@@ -128,9 +128,9 @@ public class ComponentDefinition implements Serializable {
      * containing attributes.
      * OO Design issues : Actually RawDefinition (XmlDefinition) extends ComponentDefinition.
      * This must not be the case. I have do it because I am lazy.
-     * @throws InstantiationException if an error occur while instanciating Controller :
-     * (classname can't be instanciated, Illegal access with instanciated class,
-     * Error while instanciating class, classname can't be instanciated.
+     * @throws InstantiationException if an error occur while instantiating Controller :
+     * (classname can't be instantiated, Illegal access with instantiated class,
+     * Error while instantiating class, classname can't be instantiated.
      */
     public ComponentDefinition(XmlDefinition definition) {
 

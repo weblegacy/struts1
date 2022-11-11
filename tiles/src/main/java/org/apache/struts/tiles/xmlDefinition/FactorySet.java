@@ -44,7 +44,7 @@ public abstract class FactorySet implements org.apache.struts.tiles.ComponentDef
     private static final long serialVersionUID = -3005016733922480701L;
 
     /** Loaded factories */
-  protected Map<Object, Object> factories=null;
+  protected HashMap<Object, Object> factories = null;
 
   /**
    * Extract key that will be used to get the sub factory.
@@ -158,5 +158,4 @@ public abstract class FactorySet implements org.apache.struts.tiles.ComponentDef
       }
     return buff.toString();
     }
-
 }

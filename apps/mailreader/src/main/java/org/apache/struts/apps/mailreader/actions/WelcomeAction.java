@@ -20,16 +20,17 @@
  */
 package org.apache.struts.apps.mailreader.actions;
 
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.apps.mailreader.Constants;
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
 import org.apache.struts.util.MessageResources;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 
 
 /**
@@ -49,6 +50,7 @@ import java.util.ArrayList;
  * @version $Rev$ $Date$
  */
 public final class WelcomeAction extends BaseAction {
+    private static final long serialVersionUID = -472331143659176877L;
 
     // See superclass for Javadoc
     public ActionForward execute(
@@ -81,7 +83,5 @@ public final class WelcomeAction extends BaseAction {
 
         // Forward to our success page
         return doFindSuccess(mapping);
-
     }
-
 }

@@ -20,14 +20,14 @@
  */
 package org.apache.struts.apps.mailreader.actions;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.apps.mailreader.dao.User;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * <p>
@@ -37,6 +37,7 @@ import javax.servlet.http.HttpServletResponse;
  * @version $Rev$ $Date$
  */
 public final class LogonAction extends BaseAction {
+    private static final long serialVersionUID = 9026910533050605143L;
 
     /**
      * <p>
@@ -76,7 +77,5 @@ public final class LogonAction extends BaseAction {
 
         // Done
         return doFindSuccess(mapping);
-
     }
-
 }

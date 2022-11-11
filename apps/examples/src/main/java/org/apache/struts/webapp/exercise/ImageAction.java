@@ -23,15 +23,16 @@
 package org.apache.struts.webapp.exercise;
 
 
+import java.io.InputStream;
+import java.io.OutputStream;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 
 /**
@@ -42,6 +43,7 @@ import java.io.OutputStream;
  */
 
 public class ImageAction extends Action {
+    private static final long serialVersionUID = -917797528635967028L;
 
 
     /**
@@ -75,5 +77,4 @@ public class ImageAction extends Action {
 
         return null;
     }
-
 }

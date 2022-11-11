@@ -70,7 +70,7 @@ public class ActionRedirect extends ActionForward {
      * <p>Holds the redirect parameters. Each entry is either a String or a
      * String[] depending on whether it has one or more entries.</p>
      */
-    protected Map<String, Object> parameterValues = null;
+    protected HashMap<String, Object> parameterValues = null;
 
     /**
      * <p>Holds the anchor value.</p>

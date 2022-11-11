@@ -39,6 +39,7 @@ import org.apache.struts.action.ActionMapping;
  * @version $Rev$ $Date$
  */
 public class ProcessLocalizationAction extends Action {
+    private static final long serialVersionUID = 1840482879886795996L;
 
     // ------------------------------------------------------------ Constructors
 
@@ -85,9 +86,9 @@ public class ProcessLocalizationAction extends Action {
 
         if ((language != null && language.length() > 0)
             && (country != null && country.length() > 0)) {
-            locale = new java.util.Locale(language, country);
+            locale = new Locale(language, country);
         } else if (language != null && language.length() > 0) {
-            locale = new java.util.Locale(language, "");
+            locale = new Locale(language);
         }
 
         //Save locale
@@ -96,5 +97,4 @@ public class ProcessLocalizationAction extends Action {
         // Forward to result page
         return mapping.findForward("success");
     }
-
 }

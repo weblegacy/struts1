@@ -47,6 +47,8 @@ import org.apache.struts.action.ActionMapping;
  * @since Struts 1.2.6
  */
 public abstract class DownloadAction extends BaseAction {
+    private static final long serialVersionUID = -4571392707311277980L;
+
     /**
      * If the <code>getBufferSize()</code> method is not overridden, this is
      * the buffer size that will be used to transfer the data to the servlet

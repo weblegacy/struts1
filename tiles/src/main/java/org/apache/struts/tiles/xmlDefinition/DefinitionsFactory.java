@@ -23,7 +23,6 @@ package org.apache.struts.tiles.xmlDefinition;
 
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
@@ -41,7 +40,7 @@ public class DefinitionsFactory implements Serializable
    private static final long serialVersionUID = -1606414944612676291L;
 
      /** Underlying map containing all definitions.*/
-   protected Map<String, ComponentDefinition> definitions;
+   protected HashMap<String, ComponentDefinition> definitions;
 
    /**
      * Get a definition by its name.
@@ -97,5 +96,4 @@ public class DefinitionsFactory implements Serializable
     {
     return definitions.toString();
     }
-
 }

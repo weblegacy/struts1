@@ -35,6 +35,7 @@ import org.apache.struts.action.ActionMapping;
  * @version $Rev$ $Date$
  */
 public class ProcessValidatorAction extends Action {
+    private static final long serialVersionUID = 4006490239835245976L;
 
     // ------------------------------------------------------------ Constructors
 
@@ -77,5 +78,4 @@ public class ProcessValidatorAction extends Action {
         // Forward to result page
         return mapping.findForward("success");
     }
-
 }

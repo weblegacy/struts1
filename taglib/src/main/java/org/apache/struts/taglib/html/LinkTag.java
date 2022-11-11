@@ -20,15 +20,14 @@
  */
 package org.apache.struts.taglib.html;
 
-import org.apache.struts.taglib.TagUtils;
-import org.apache.struts.util.MessageResources;
+import java.net.MalformedURLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.jsp.JspException;
 
-import java.net.MalformedURLException;
-
-import java.util.HashMap;
-import java.util.Map;
+import org.apache.struts.taglib.TagUtils;
+import org.apache.struts.util.MessageResources;
 
 /**
  * Generate a URL-encoded hyperlink to the specified URI.
@@ -145,7 +144,7 @@ public class LinkTag extends BaseHandlerTag {
     /**
      * Additional parameters included programmatically.
      */
-    protected Map<String, Object> parameters = new HashMap<>();
+    protected HashMap<String, Object> parameters = new HashMap<>();
 
     /**
      * Name of parameter to generate to hold index number

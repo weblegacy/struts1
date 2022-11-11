@@ -40,6 +40,7 @@ import org.slf4j.LoggerFactory;
  * </p>
  */
 public final class LocaleAction extends BaseAction {
+    private static final long serialVersionUID = 7038993006910281561L;
 
     /**
      * The {@code Log} instance for this class.
@@ -128,7 +129,7 @@ public final class LocaleAction extends BaseAction {
         if ((!isBlank(language)) && (!isBlank(country))) {
             locale = new Locale(language, country);
         } else if (!isBlank(language)) {
-            locale = new Locale(language, "");
+            locale = new Locale(language);
         }
 
         HttpSession session = request.getSession();

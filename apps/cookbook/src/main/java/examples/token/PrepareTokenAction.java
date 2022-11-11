@@ -36,6 +36,7 @@ import org.apache.struts.action.ActionMapping;
  * @version $Rev$ $Date$
  */
 public class PrepareTokenAction extends Action {
+    private static final long serialVersionUID = -7249133725041723313L;
 
     // ------------------------------------------------------------ Constructors
 
@@ -76,7 +77,5 @@ public class PrepareTokenAction extends Action {
 
         // Forward to the form
         return mapping.findForward("success");
-
     }
-
 }

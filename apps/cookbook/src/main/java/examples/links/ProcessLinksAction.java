@@ -35,6 +35,7 @@ import org.apache.struts.action.ActionMapping;
  * @version $Rev$ $Date$
  */
 public class ProcessLinksAction extends Action {
+    private static final long serialVersionUID = -1436596842804602990L;
 
     // ------------------------------------------------------------ Constructors
 
@@ -71,5 +72,4 @@ public class ProcessLinksAction extends Action {
         // Forward to result page
         return mapping.findForward("success");
     }
-
 }

@@ -50,7 +50,7 @@ public class TilesUtilImpl implements Serializable {
      */
     private final static Logger LOG =
         LoggerFactory.getLogger(TilesUtilImpl.class);
-    private final Logger log =
+    private transient final Logger log =
             LoggerFactory.getLogger(TilesUtilImpl.class);
 
     /** Constant name used to store factory in servlet context */

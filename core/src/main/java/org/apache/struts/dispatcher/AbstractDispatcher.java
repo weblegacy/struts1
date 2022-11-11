@@ -70,7 +70,7 @@ public abstract class AbstractDispatcher implements Dispatcher, Serializable {
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(AbstractDispatcher.class);
 
     /**

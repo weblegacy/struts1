@@ -111,6 +111,7 @@ import org.slf4j.LoggerFactory;
  * almost completely rewritten.</p>
  */
 public class ScriptAction extends Action {
+    private static final long serialVersionUID = -383996253054413439L;
 
     /**
      * The {@code Log} instance for this class.
@@ -134,7 +135,7 @@ public class ScriptAction extends Action {
     private static ScriptContextFilter[] filters = null;
 
     /**  Holds the "compiled" scripts and their information. */
-    private Map<String, Script>  scripts = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, Script> scripts = new ConcurrentHashMap<>();
 
     static {
         final Properties props = new Properties();

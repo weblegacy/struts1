@@ -29,4 +29,5 @@ import org.apache.struts.action.Action;
  *          $
  */
 public class MockAction extends Action {
+    private static final long serialVersionUID = 7504456886638776011L;
 }

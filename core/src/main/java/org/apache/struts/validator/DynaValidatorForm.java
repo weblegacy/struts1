@@ -62,7 +62,7 @@ public class DynaValidatorForm extends DynaActionForm implements DynaBean,
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(DynaValidatorForm.class);
 
     /**

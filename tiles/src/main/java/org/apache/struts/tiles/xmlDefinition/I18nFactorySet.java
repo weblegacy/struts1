@@ -61,7 +61,7 @@ public class I18nFactorySet extends FactorySet {
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(I18nFactorySet.class);
 
     /**
@@ -123,12 +123,12 @@ public class I18nFactorySet extends FactorySet {
     /**
      * Names of files containing instances descriptions.
      */
-    private List<String> filenames = null;
+    private ArrayList<String> filenames = null;
 
     /**
      * Collection of already loaded definitions set, referenced by their suffix.
      */
-    private Map<String, DefinitionsFactory> loaded = null;
+    private HashMap<String, DefinitionsFactory> loaded = null;
 
     /**
      * Parameterless Constructor.

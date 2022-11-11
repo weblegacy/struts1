@@ -20,12 +20,8 @@
  */
 package org.apache.struts.action;
 
-import org.apache.struts.Globals;
-import org.apache.struts.config.ModuleConfig;
-import org.apache.struts.util.MessageResources;
-import org.apache.struts.util.ModuleUtils;
-import org.apache.struts.util.RequestUtils;
-import org.apache.struts.util.TokenProcessor;
+import java.io.Serializable;
+import java.util.Locale;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletRequest;
@@ -34,7 +30,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import java.util.Locale;
+import org.apache.struts.Globals;
+import org.apache.struts.config.ModuleConfig;
+import org.apache.struts.util.MessageResources;
+import org.apache.struts.util.ModuleUtils;
+import org.apache.struts.util.RequestUtils;
+import org.apache.struts.util.TokenProcessor;
 
 /**
  * <p>An <strong>Action</strong> is an adapter between the contents of an
@@ -70,10 +71,12 @@ import java.util.Locale;
  * @version $Rev$ $Date: 2005-08-26 21:58:39 -0400 (Fri, 26 Aug 2005)
  *          $
  */
-public class Action {
+public class Action implements Serializable {
+    private static final long serialVersionUID = 7282855522164012543L;
+
     /**
-     * <p>An instance of <code>TokenProcessor</code> to use for token
-     * functionality.</p>
+     * An instance of {@code TokenProcessor} to use for token
+     * functionality.
      */
     private static TokenProcessor token = TokenProcessor.getInstance();
 

@@ -90,6 +90,8 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.2.7
  */
 public class ActionDispatcher implements Dispatcher {
+    private static final long serialVersionUID = 3784151345188637566L;
+
     // ----------------------------------------------------- Instance Variables
 
     /**
@@ -110,7 +112,7 @@ public class ActionDispatcher implements Dispatcher {
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(ActionDispatcher.class);
 
     /**

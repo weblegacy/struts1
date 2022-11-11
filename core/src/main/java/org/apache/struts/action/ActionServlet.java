@@ -225,7 +225,7 @@ public class ActionServlet extends HttpServlet {
      *
      * @since Struts 1.1
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(ActionServlet.class);
 
     // ----------------------------------------------------- Instance Variables

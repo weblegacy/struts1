@@ -108,7 +108,7 @@ public class DefinitionsFactoryConfig implements Serializable {
     /**
      * Map of extra attribute available.
      */
-    private Map<String, Object> extraAttributes = new HashMap<>();
+    private HashMap<String, Object> extraAttributes = new HashMap<>();
 
     /**
      * Default constructor.

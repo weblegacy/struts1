@@ -20,6 +20,11 @@
  */
 package org.apache.struts.dispatcher.servlet;
 
+import java.lang.reflect.Method;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
@@ -27,11 +32,6 @@ import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.dispatcher.AbstractMethodResolver;
-
-import java.lang.reflect.Method;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 /**
  * This class helps resolve methods with servlet-based signatures. The following
@@ -48,6 +48,7 @@ import javax.servlet.http.HttpServletResponse;
  * @since Struts 1.4
  */
 public class ServletMethodResolver extends AbstractMethodResolver {
+    private static final long serialVersionUID = -4372320855532463910L;
 
     /**
      * The set of argument type classes for the classic reflected method call.
@@ -129,5 +130,4 @@ public class ServletMethodResolver extends AbstractMethodResolver {
         // Lastly, try the classical argument listing
         return resolveClassicMethod(context, methodName);
     }
-
 }

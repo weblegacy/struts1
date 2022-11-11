@@ -41,7 +41,7 @@ public class ComponentContext implements Serializable {
     /**
      * Component attributes.
      */
-    private Map<String, Object> attributes=null;
+    private HashMap<String, Object> attributes = null;
 
     /**
      * Constructor.

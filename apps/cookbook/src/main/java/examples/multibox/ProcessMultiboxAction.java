@@ -35,6 +35,7 @@ import org.apache.struts.action.ActionMapping;
  * @version $Rev$ $Date$
  */
 public class ProcessMultiboxAction extends Action {
+    private static final long serialVersionUID = 7012606671802355040L;
 
     // ------------------------------------------------------------ Constructors
 
@@ -77,5 +78,4 @@ public class ProcessMultiboxAction extends Action {
         // Forward to result page
         return mapping.findForward("success");
     }
-
 }

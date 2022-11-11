@@ -37,6 +37,7 @@ import org.apache.struts.extras.actions.ActionDispatcher;
  * @version $Rev$ $Date$
  */
 public class ActionDispatcherExample extends Action {
+    private static final long serialVersionUID = -5974809892927967588L;
 
     private ActionDispatcher dispatcher
                     = new ActionDispatcher(this,

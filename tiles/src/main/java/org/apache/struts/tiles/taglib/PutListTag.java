@@ -46,7 +46,7 @@ public class PutListTag
     /**
      * The list itself.
      */
-    private List<Object> list = null;
+    private ArrayList<Object> list = null;
 
     /**
      * Role attribute.
@@ -212,5 +212,4 @@ public class PutListTag
             throw new JspException("Error - tag putList : enclosing tag doesn't accept 'putList' tag.", ex);
         }
     }
-
 }

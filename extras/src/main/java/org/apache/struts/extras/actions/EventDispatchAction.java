@@ -75,11 +75,12 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.2.9
  */
 public class EventDispatchAction extends DispatchAction {
+    private static final long serialVersionUID = -5067513904785952541L;
 
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(EventDispatchAction.class);
 
     /**

@@ -53,6 +53,7 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.1
  */
 public class TilesRequestProcessor extends RequestProcessor {
+    private static final long serialVersionUID = -6522610348048179731L;
 
     /**
      * Definitions factory.
@@ -62,7 +63,7 @@ public class TilesRequestProcessor extends RequestProcessor {
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(TilesRequestProcessor.class);
 
     /**

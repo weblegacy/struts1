@@ -39,6 +39,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public final class MultiRegistrationAction extends Action {
+    private static final long serialVersionUID = -4985230580396174675L;
 
     /**
      * The {@code Log} instance for this class.

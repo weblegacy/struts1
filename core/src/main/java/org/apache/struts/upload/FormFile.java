@@ -23,13 +23,14 @@ package org.apache.struts.upload;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 
 /**
  * <p> This interface represents a file that has been uploaded by a client. It
  * is the only interface or class in upload package which is typically
  * referenced directly by a Struts application. </p>
  */
-public interface FormFile {
+public interface FormFile extends Serializable {
     /**
      * <p> Returns the content type for this file. </p>
      *

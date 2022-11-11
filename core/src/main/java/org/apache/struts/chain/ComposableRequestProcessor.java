@@ -67,6 +67,8 @@ import org.slf4j.LoggerFactory;
  * @since Struts 1.1
  */
 public class ComposableRequestProcessor extends RequestProcessor {
+    private static final long serialVersionUID = -1205090974097129899L;
+
     // ------------------------------------------------------ Instance Variables
 
     /**
@@ -88,7 +90,7 @@ public class ComposableRequestProcessor extends RequestProcessor {
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(ComposableRequestProcessor.class);
 
     /**

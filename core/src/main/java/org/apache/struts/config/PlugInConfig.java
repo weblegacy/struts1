@@ -21,7 +21,6 @@
 package org.apache.struts.config;
 
 import java.io.Serializable;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,7 +52,7 @@ public class PlugInConfig implements Serializable {
      * A <code>Map</code> of the name-value pairs that will be used to
      * configure the property values of a <code>PlugIn</code> instance.
      */
-    protected Map<String, Object> properties = new HashMap<>();
+    protected HashMap<String, Object> properties = new HashMap<>();
 
     // ------------------------------------------------------------- Properties
 
@@ -100,6 +99,6 @@ public class PlugInConfig implements Serializable {
      * <code>PlugIn</code> instance.
      */
     public Map<String, Object> getProperties() {
-        return (properties);
+        return properties;
     }
 }

@@ -23,6 +23,7 @@ package org.apache.struts.tiles.taglib;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.Map;
 import java.util.StringTokenizer;
 
@@ -70,7 +71,7 @@ public class InsertTag extends DefinitionTagSupport
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(InsertTag.class);
 
     /* JSP Tag attributes */
@@ -766,7 +767,7 @@ public class InsertTag extends DefinitionTagSupport
      * Inner Interface.
      * Sub handler for tag.
      */
-    protected interface TagHandler {
+    protected interface TagHandler extends Serializable {
         /**
          * Create ComponentContext for type depicted by implementation class.
          */
@@ -788,6 +789,8 @@ public class InsertTag extends DefinitionTagSupport
      * Handle include sub-component.
      */
     protected class InsertHandler implements TagHandler {
+        private static final long serialVersionUID = 6193727491123020174L;
+
         protected String page;
         protected ComponentContext currentContext;
         protected ComponentContext subCompContext;
@@ -995,6 +998,8 @@ public class InsertTag extends DefinitionTagSupport
      * Handle insert direct string.
      */
     protected class DirectStringHandler implements TagHandler {
+        private static final long serialVersionUID = 8881370877489828274L;
+
         /** Object to print as a direct string */
         private Object value;
 

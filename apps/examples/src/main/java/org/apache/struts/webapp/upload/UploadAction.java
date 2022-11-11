@@ -52,6 +52,8 @@ import org.apache.struts.upload.FormFile;
 
 public class UploadAction extends Action
 {
+    private static final long serialVersionUID = 6492050366211798185L;
+
     public ActionForward execute(ActionMapping mapping,
                                  ActionForm form,
                                  HttpServletRequest request,

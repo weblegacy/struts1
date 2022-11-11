@@ -48,6 +48,7 @@ import org.apache.struts.tiles.TilesUtil;
  */
 
 public class ReloadDefinitionsAction extends Action {
+    private static final long serialVersionUID = -7047330717130537765L;
 
     /**
      * Process the specified HTTP request, and create the corresponding HTTP
@@ -89,7 +90,5 @@ public class ReloadDefinitionsAction extends Action {
         writer.close();
 
         return (null);
-
     }
-
 }

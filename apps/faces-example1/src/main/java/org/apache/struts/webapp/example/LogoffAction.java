@@ -45,6 +45,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public final class LogoffAction extends Action {
+    private static final long serialVersionUID = 7989466402657480736L;
 
 
     // ----------------------------------------------------- Instance Variables

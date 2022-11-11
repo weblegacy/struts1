@@ -41,6 +41,7 @@ import org.slf4j.LoggerFactory;
  * @version $Rev$ $Date$
  */
 public final class LogoffAction extends BaseAction {
+    private static final long serialVersionUID = -5919029695025512650L;
 
     /**
      * The {@code Log} instance for this class.

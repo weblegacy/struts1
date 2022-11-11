@@ -50,6 +50,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public final class EditRegistrationAction extends Action {
+    private static final long serialVersionUID = 999725197962195314L;
 
 
     // ----------------------------------------------------- Instance Variables

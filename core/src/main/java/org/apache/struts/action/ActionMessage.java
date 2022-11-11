@@ -44,7 +44,7 @@ public class ActionMessage implements Serializable {
     protected String key = null;
 
     /**
-     * <p>The replacement values for this mesasge.</p>
+     * The replacement values for this message.
      */
     protected Object[] values = null;
 

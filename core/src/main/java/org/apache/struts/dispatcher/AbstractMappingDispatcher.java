@@ -40,7 +40,7 @@ public abstract class AbstractMappingDispatcher extends AbstractDispatcher {
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
             LoggerFactory.getLogger(AbstractMappingDispatcher.class);
 
     private String defaultMappingParameter;

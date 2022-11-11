@@ -20,10 +20,10 @@
  */
 package org.apache.struts.dispatcher;
 
+import java.lang.reflect.Method;
+
 import org.apache.struts.action.Action;
 import org.apache.struts.chain.contexts.ActionContext;
-
-import java.lang.reflect.Method;
 
 /**
  * This abstract class is the stock template for resolving methods for a
@@ -38,6 +38,7 @@ import java.lang.reflect.Method;
  * @since Struts 1.4
  */
 public abstract class AbstractMethodResolver implements MethodResolver {
+    private static final long serialVersionUID = -9045373032747695495L;
 
     /**
      * The argument listing for a method without arguments.

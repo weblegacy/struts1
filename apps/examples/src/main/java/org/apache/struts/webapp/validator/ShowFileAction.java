@@ -40,6 +40,7 @@ import org.slf4j.LoggerFactory;
  * can be displayed.
  */
 public class ShowFileAction extends Action {
+    private static final long serialVersionUID = -3817516672582496435L;
 
     /**
      * The {@code Log} instance for this class.

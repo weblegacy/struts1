@@ -53,6 +53,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public final class SaveRegistrationAction extends Action {
+    private static final long serialVersionUID = -7931388143259911830L;
 
 
     // ----------------------------------------------------- Instance Variables
@@ -203,6 +204,5 @@ public final class SaveRegistrationAction extends Action {
         // Forward control to the specified success URI
         LOG.trace(" Forwarding to success page");
         return (mapping.findForward("success"));
-
     }
 }

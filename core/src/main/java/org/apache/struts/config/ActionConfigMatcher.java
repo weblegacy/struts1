@@ -23,7 +23,6 @@ package org.apache.struts.config;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -48,7 +47,7 @@ public class ActionConfigMatcher implements Serializable {
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(ActionConfigMatcher.class);
 
     /**
@@ -59,7 +58,7 @@ public class ActionConfigMatcher implements Serializable {
     /**
      * <p> The compiled paths and their associated ActionConfig's </p>
      */
-    private List<Mapping> compiledPaths;
+    private ArrayList<Mapping> compiledPaths;
 
     /**
      * <p> Finds and precompiles the wildcard patterns from the ActionConfig

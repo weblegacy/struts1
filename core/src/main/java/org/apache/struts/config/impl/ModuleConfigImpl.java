@@ -23,7 +23,6 @@ package org.apache.struts.config.impl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -62,7 +61,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
     /**
      * The {@code Log} instance for this class.
      */
-    private final Logger log =
+    private transient final Logger log =
         LoggerFactory.getLogger(ModuleConfigImpl.class);
 
     // ----------------------------------------------------- Instance Variables
@@ -84,7 +83,7 @@ public class ModuleConfigImpl extends BaseConfig implements Serializable,
      * <p>The set of action configurations for this module, if any, listed in
      * the order in which they are added.</p>
      */
-    protected List<ActionConfig> actionConfigList = null;
+    protected ArrayList<ActionConfig> actionConfigList = null;
 
     /**
      * <p>The set of exception handling configurations for this module, if

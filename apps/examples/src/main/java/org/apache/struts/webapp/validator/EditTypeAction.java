@@ -39,6 +39,7 @@ import org.slf4j.LoggerFactory;
  *
  */
 public final class EditTypeAction extends Action {
+    private static final long serialVersionUID = 427874158279308873L;
 
     /**
      * The {@code Log} instance for this class.

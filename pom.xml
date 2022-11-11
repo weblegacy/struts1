@@ -375,6 +375,7 @@
         <servletVersion>4.0.1</servletVersion>
         <jspVersion>2.3.3</jspVersion>
         <elVersion>3.0.0</elVersion>
+        <jaxbVersion>2.3.1</jaxbVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
         <struts.osgi.import>*</struts.osgi.import>
@@ -1022,6 +1023,16 @@
                         <artifactId>commons-logging</artifactId>
                     </exclusion>
                 </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>${jaxbVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>${jaxbVersion}</version>
             </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>

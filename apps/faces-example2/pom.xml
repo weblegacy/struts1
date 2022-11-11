@@ -65,6 +65,10 @@
          <artifactId>struts-tiles</artifactId>
       </dependency>
       <dependency>
+         <groupId>org.glassfish.jaxb</groupId>
+         <artifactId>jaxb-runtime</artifactId>
+      </dependency>
+      <dependency>
          <groupId>javax.servlet</groupId>
          <artifactId>javax.servlet-api</artifactId>
       </dependency>

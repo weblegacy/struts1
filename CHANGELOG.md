@@ -2,6 +2,7 @@
 
 ## 1.4.4 / YYYY-MM-DD
 
+* Update documentation for version 1.4.4
 * Set all XML-encodings to UTF-8
 * Adapt JavaDoc-configuration
 * Adapt dependency-scopes like JakartaEE 8

@@ -25,17 +25,17 @@
   xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
-        <title>Release Notes (since 1.4.3)</title>
+        <title>Release Notes (since 1.4.2)</title>
     </properties>
     <body>
-        <section name="6.1 Release Notes - Version 1.4.4">
+        <section name="6.1 Release Notes - Version 1.4.3">
 
             <subsection name="Introduction" id="release_notes">
                 <p>
                     This section contains release notes for changes that have
                     taken place to Struts,
                     since the
-                    <a href="release-notes-1_4_3.html">Version 1.4.3</a>
+                    <a href="release-notes-1_4_2.html">Version 1.4.2</a>
                     distribution.
                     To keep up-to-date on all changes to the framework,
                     subscribe to
@@ -63,47 +63,50 @@
 
             <subsection name="Breaking changes" id="break_changes">
                 <ul>
-                    <li>General: Upgrade from <strong>JavaEE 7</strong> to <strong>JakartaEE 8</strong>.
+                    <li>General: Upgrade from <strong>JavaEE 6</strong> to <strong>JavaEE 7</strong>.
                         <ul>
-                            <li>Upgrade <strong>servlet-api</strong> from 3.1 to 4.0.</li>
-                            <li>Upgrade <strong>jsf</strong> from 2.2 to 2.3.</li>
+                            <li>Upgrade <strong>servlet-api</strong> from 3.0 to 3.1.</li>
+                            <li>Upgrade <strong>jsp-api</strong> from 2.2 to 2.3.</li>
+                            <li>Upgrade <strong>el-api</strong> from 2.2 to 3.0.</li>
+                            <li>Upgrade <strong>jsf</strong> from 2.0 to 2.2.</li>
                         </ul>
                     </li>
+                    <li>Move whole <strong>org.apache.struts.mock</strong>-package to test-classes.</li>
                 </ul>
             </subsection>
 
             <subsection name="Issue Tracking" id="Highlight">
 <h4>Bug</h4>
 <ul>
-<li>Adapt JavaDoc-configuration</li>
-<li>Adapt dependency-scopes like JakartaEE 8</li>
-<li>Add &quot;jaxb-api&quot; and &quot;jaxb-runtime&quot; because JDK 11</li>
+<li>Faces-Example1&amp;2: Correct expired-password-processing</li>
+<li>Correct &quot;ValidWhenEvaluator&quot; - undo replace generic-wildcards</li>
 </ul>
 
 <h4>Improvement</h4>
 <ul>
-<li>Set all XML-encodings to UTF-8</li>
-<li>Faces-Example1 &amp; 2: Use new CDI</li>
-<li>Add &quot;weld-servlet-shaded&quot; for CDI-function for JSF 2.3</li>
-<li>Removing the use of &quot;myfaces&quot;-implementation-specifics</li>
-<li>Resolve many JDK 19 compiler-warnings</li>
-<li>Remove compiler-warnings till JDK 17</li>
+<li>Resolve deprecated java-code in jsp&quot;s</li>
+<li>Faces-Example2: Adaption to run with JSF 2.2</li>
+<li>Faces-Example1&amp;2: Use CDI instead &quot;faces-config&quot; for managed-beans</li>
+<li>Faces-Example2: Adaption in &quot;web.xml&quot;</li>
+<li>Faces-Example2: For &quot;faces-config&quot; use CDI</li>
+<li>Upgrade &quot;faces-config&quot; to 2.2-version</li>
+<li>Remove some &quot;@SuppressWarnings&quot;</li>
+<li>Replace some generic-wildcards</li>
+<li>Move all &quot;org.apache.struts.mock&quot;-classes in module &quot;core&quot; from main into test</li>
 </ul>
 
 <h4>Task</h4>
 <ul>
-<li>Bump &quot;jaxb-runtime&quot; from 2.3.1 to 2.3.7 to use &quot;jakarta&quot;-version</li>
-<li>Update &quot;taglibs-standard-spec&quot; 1.2.5 to &quot;jakarta.servlet.jsp.jstl&quot; 1.2.7
-    and change implementation from &quot;org.apache.taglibs&quot; to &quot;org.glassfish.web&quot;</li>
-<li>Replace JSF-implementation &quot;myfaces&quot; 2.2.15 with &quot;mojarra&quot; 2.3.18</li>
-<li>Update &quot;javax.el-api&quot; 3.0.0 to &quot;jakarta.el-api&quot; 3.0.3</li>
-<li>Update &quot;javax.servlet.jsp-api&quot; 2.3.3 to &quot;jakarta.servlet.jsp-api&quot; 2.3.6</li>
-<li>Update &quot;javax.servlet-api&quot; 3.1.0 to &quot;jakarta.servlet-api&quot; 4.0.4</li>
-<li>Update &quot;web.xml&quot; to version 4.0</li>
+<li>Bump &quot;myfaces&quot; from 2.0.25 to 2.2.15</li>
+<li>Bump &quot;el-api&quot; from 2.2.5 to 3.0.0</li>
+<li>Bump &quot;jsp-api&quot; from 2.2.1 to 2.3.3</li>
+<li>Upgrade &quot;servlet-api&quot; from 3.0.1 to 3.1.0</li>
 <li>Update &quot;README.md&quot; for next release</li>
-<li>Use &quot;tomcat&quot; 9.0.68 instead 8.5.83 for integration-tests</li>
-<li>Update documentation for version 1.4.4</li>
-<li>Set Version to 1.4.4</li>
+<li>Bump &quot;webdrivermanager&quot; from 5.3.0 to 5.3.1</li>
+<li>Bump &quot;selenium-api&quot; and &quot;selenium-java&quot; from 4.5.3 to 4.6.0</li>
+<li>Use &quot;tomcat&quot; 8.5.83 instead 7.0.109 for integration-tests</li>
+<li>Update documentation for version 1.4.3</li>
+<li>Set Version to 1.4.3</li>
 </ul>
 </subsection>
 

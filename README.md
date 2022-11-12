@@ -18,12 +18,14 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 | [1.3.11](https://github.com/weblegacy/struts1/releases/tag/v1.3.11) |     J2EE 1.4 |          1.4 |     2.3 | 2.0 | 2.0 | 1.0 |  1.0 |
 
 ## Changes since version 1.3.10
+
 * Include all open patches from apache-struts1-repo
 * Fixed vulnerabilities
 * Upgrade MAVEN-Plugins
 * Correct example-apps
 * Complete JUnit5- and integration-test (rewrite old ones)
 * JDK 1.4 --> JDK 8
+  * Tests with JDK 8, 11, 17 and 19
 * Servlet-API 2.3 --> 4.0
 * JSP 2.0 --> 2.3
 * JSP-EL 2.0 --> 3.0
@@ -69,6 +71,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 * **release** - Signs all of the project's attached artifacts with GnuPG
 * **cargorun** - Starts a web-server to manually test the example-apps
   * `mvn -Pdormant,apps,itest,cargorun`
+  * `mvn -Pdormant,apps,itest,cargorun -Dcargo.java.home=[JDK_x]` to specify Java-Runtime
 
 ### Building-Steps
 
@@ -112,7 +115,9 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 ### Support runs
 
 * Run Web-Server to manually test example-apps and create test scripts:  
-  `mvn -Pdormant,apps,itest,cargorun -DskipTests`
+  `mvn -Pdormant,apps,itest,cargorun -DskipTests`  
+  or  
+  `mvn -Pdormant,apps,itest,cargorun -DskipTests -Dcargo.java.home=[JDK_x]` to specify Java-Runtime
 * Set version number  
   `mvn -Pdormant,apps,itest,assembly versions:set -DnewVersion=...`
 * Dependency Report  

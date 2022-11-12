@@ -2,6 +2,7 @@
 
 ## 1.4.4 / YYYY-MM-DD
 
+* Set all XML-encodings to UTF-8
 * Adapt JavaDoc-configuration
 * Adapt dependency-scopes like JakartaEE 8
 * Bump `jaxb-runtime` from 2.3.1 to 2.3.7 to use `jakarta`-version

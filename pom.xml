@@ -878,6 +878,16 @@
                       <artifactId>jakarta.faces-api</artifactId>
                       <url>https://javadoc.io/doc/jakarta.faces/jakarta.faces-api/${jsfVersion}/</url>
                     </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.jboss.weld.servlet</groupId>
+                      <artifactId>weld-servlet-shaded</artifactId>
+                      <url>https://javadoc.io/doc/org.jboss.weld/weld-api/3.1.SP4/</url>
+                    </dependencyLink>
+                    <dependencyLink>
+                      <groupId>org.glassfish.jaxb</groupId>
+                      <artifactId>jaxb-runtime</artifactId>
+                      <url>https://javadoc.io/doc/org.glassfish.jaxb/jaxb-runtime/${jaxbVersion}/</url>
+                    </dependencyLink>
                   </dependencyLinks>
                   <links>
                     <link>https://jakarta.ee/specifications/platform/8/apidocs</link>
@@ -886,6 +896,7 @@
                   <quiet>true</quiet>
                   <doclint>none</doclint>
                   <notimestamp>true</notimestamp>
+                  <source>${javaVersion}</source>
                 </configuration>
                 <reportSets>
                   <reportSet>
@@ -895,7 +906,7 @@
                       <report>aggregate</report>
                     </reports>
                     <configuration>
-                      <excludePackageNames>examples:examples.*:org.apache.struts.webapp:org.apache.struts.webapp.*:org.apache.struts.apps.mailreader:org.apache.struts.apps.mailreader.actions:org.apache.struts.apps.mailreader.plugin:org.apache.struts.apps.scriptingmailreader:org.apache.struts.apps.scriptingmailreader.*</excludePackageNames>
+                      <excludePackageNames>examples:examples.*:org.apache.struts.webapp:org.apache.struts.webapp.*:org.apache.struts.apps.mailreader:org.apache.struts.apps.mailreader.*:org.apache.struts.apps.scriptingmailreader:org.apache.struts.apps.scriptingmailreader.*</excludePackageNames>
                     </configuration>
                   </reportSet>
                   <reportSet>

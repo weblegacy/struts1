@@ -1043,6 +1043,7 @@
                 <groupId>jakarta.servlet.jsp.jstl</groupId>
                 <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
                 <version>${jstlVersion}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.glassfish.web</groupId>
@@ -1053,11 +1054,13 @@
                 <groupId>jakarta.faces</groupId>
                 <artifactId>jakarta.faces-api</artifactId>
                 <version>${jsfVersion}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.glassfish</groupId>
                 <artifactId>jakarta.faces</artifactId>
                 <version>${jsfImplVersion}</version>
+                <scope>provided</scope>
             </dependency>
             <dependency>
                 <groupId>org.jboss.weld.servlet</groupId>

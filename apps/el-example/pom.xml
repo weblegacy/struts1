@@ -54,6 +54,7 @@
       <dependency>
           <groupId>jakarta.servlet.jsp.jstl</groupId>
           <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+          <scope>compile</scope>
       </dependency>
       <dependency>
           <groupId>org.glassfish.web</groupId>

@@ -26,24 +26,24 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import jakarta.el.ValueExpression;
-import javax.faces.component.EditableValueHolder;
-import javax.faces.component.UIComponent;
-import javax.faces.component.ValueHolder;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import javax.faces.convert.Converter;
-import javax.faces.convert.ConverterException;
-import javax.faces.render.Renderer;
-
 import org.apache.struts.faces.component.HtmlComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jakarta.el.ValueExpression;
+import jakarta.faces.component.EditableValueHolder;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.ValueHolder;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
+import jakarta.faces.convert.Converter;
+import jakarta.faces.convert.ConverterException;
+import jakarta.faces.render.Renderer;
+
 
 /**
  * Abstract base class for concrete implementations of
- * {@code javax.faces.render.Renderer} for the
+ * {@code jakarta.faces.render.Renderer} for the
  * <em>Struts-Faces Integration Library</em>.
  *
  * @version $Rev$ $Date$

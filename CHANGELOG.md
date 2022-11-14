@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Upgrade `jsf` from 2.3.18 to 3.0.2
 * Bump `jstl` from 1.2.7 to 2.0.0
 * Bump `el-api` from 3.0.3 to 4.0.0
 * Upgrade `jsp-api` from 2.3.6 to 3.0.0

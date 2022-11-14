@@ -374,8 +374,8 @@
         <jspVersion>3.0.0</jspVersion>
         <jstlVersion>2.0.0</jstlVersion>
         <elVersion>4.0.0</elVersion>
-        <jsfVersion>2.3.2</jsfVersion>
-        <jsfImplVersion>2.3.18</jsfImplVersion>
+        <jsfVersion>3.0.0</jsfVersion>
+        <jsfImplVersion>3.0.2</jsfImplVersion>
         <jaxbVersion>2.3.7</jaxbVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>

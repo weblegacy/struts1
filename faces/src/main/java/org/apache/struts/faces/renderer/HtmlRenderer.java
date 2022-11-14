@@ -25,13 +25,13 @@ package org.apache.struts.faces.renderer;
 import java.io.IOException;
 import java.util.Locale;
 
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import jakarta.servlet.http.HttpSession;
-
 import org.apache.struts.Globals;
 import org.apache.struts.faces.component.HtmlComponent;
+
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
+import jakarta.servlet.http.HttpSession;
 
 
 /**

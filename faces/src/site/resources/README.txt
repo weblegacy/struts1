@@ -119,7 +119,7 @@ applications is straightforward, and requires the following steps:
 
     <servlet>
       <servlet-name>faces</servlet-name>
-      <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+      <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
       <load-on-startup>1</load-on-startup>
     </servlet>
 

@@ -24,19 +24,6 @@ package org.apache.struts.faces.application;
 
 import java.io.IOException;
 
-import javax.faces.FactoryFinder;
-import javax.faces.application.ViewHandler;
-import javax.faces.component.UICommand;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.context.FacesContextFactory;
-import javax.faces.event.ActionEvent;
-import javax.faces.lifecycle.Lifecycle;
-import javax.faces.lifecycle.LifecycleFactory;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 import org.apache.struts.Globals;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -50,6 +37,19 @@ import org.apache.struts.faces.Constants;
 import org.apache.struts.faces.component.FormComponent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.faces.FactoryFinder;
+import jakarta.faces.application.ViewHandler;
+import jakarta.faces.component.UICommand;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.FacesContextFactory;
+import jakarta.faces.event.ActionEvent;
+import jakarta.faces.lifecycle.Lifecycle;
+import jakarta.faces.lifecycle.LifecycleFactory;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 
 
@@ -65,7 +65,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public class FacesRequestProcessor extends RequestProcessor {
-    private static final long serialVersionUID = 570223178198980214L;
+    private static final long serialVersionUID = 4303368318034722173L;
 
 
     // ------------------------------------------------------ Instance Variables
@@ -81,7 +81,7 @@ public class FacesRequestProcessor extends RequestProcessor {
     /**
      * <p>The lifecycle id.</p>
      */
-    public static final String LIFECYCLE_ID_ATTR = "javax.faces.LIFECYCLE_ID";
+    public static final String LIFECYCLE_ID_ATTR = "jakarta.faces.LIFECYCLE_ID";
 
     // ------------------------------------------------------- Protected Methods
 

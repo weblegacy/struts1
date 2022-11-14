@@ -24,8 +24,6 @@ package org.apache.struts.webapp.example;
 
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.component.UIData;
-import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 import org.apache.struts.apps.mailreader.dao.Subscription;
@@ -33,6 +31,9 @@ import org.apache.struts.apps.mailreader.dao.User;
 import org.apache.struts.apps.mailreader.dao.UserDatabase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.faces.component.UIData;
+import jakarta.faces.context.FacesContext;
 
 
 /**

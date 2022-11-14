@@ -24,19 +24,6 @@ package org.apache.struts.faces.application;
 
 import java.io.IOException;
 
-import javax.faces.FactoryFinder;
-import javax.faces.application.ViewHandler;
-import javax.faces.component.UICommand;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.context.FacesContextFactory;
-import javax.faces.event.ActionEvent;
-import javax.faces.lifecycle.Lifecycle;
-import javax.faces.lifecycle.LifecycleFactory;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 import org.apache.struts.Globals;
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
@@ -51,6 +38,19 @@ import org.apache.struts.tiles.TilesRequestProcessor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jakarta.faces.FactoryFinder;
+import jakarta.faces.application.ViewHandler;
+import jakarta.faces.component.UICommand;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.FacesContextFactory;
+import jakarta.faces.event.ActionEvent;
+import jakarta.faces.lifecycle.Lifecycle;
+import jakarta.faces.lifecycle.LifecycleFactory;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+
 
 /**
  * <p>Concrete implementation of <code>RequestProcessor</code> that
@@ -64,7 +64,7 @@ import org.slf4j.LoggerFactory;
  */
 
 public class FacesTilesRequestProcessor extends TilesRequestProcessor {
-    private static final long serialVersionUID = 1798452367926542112L;
+    private static final long serialVersionUID = -762245366421871701L;
 
 
     // ------------------------------------------------------ Instance Variables
@@ -79,7 +79,7 @@ public class FacesTilesRequestProcessor extends TilesRequestProcessor {
     /**
      * <p>The lifecycle id.</p>
      */
-    public static final String LIFECYCLE_ID_ATTR = "javax.faces.LIFECYCLE_ID";
+    public static final String LIFECYCLE_ID_ATTR = "jakarta.faces.LIFECYCLE_ID";
 
 
     // ------------------------------------------------------- Protected Methods

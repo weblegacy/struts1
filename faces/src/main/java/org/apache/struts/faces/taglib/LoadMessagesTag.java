@@ -21,10 +21,10 @@
 
 package org.apache.struts.faces.taglib;
 
-import jakarta.el.ValueExpression;
-import javax.faces.component.UIComponent;
-
 import org.apache.struts.faces.util.Utils;
+
+import jakarta.el.ValueExpression;
+import jakarta.faces.component.UIComponent;
 
 /**
  * Tag that exposes a specified {@code MessageResources} instance

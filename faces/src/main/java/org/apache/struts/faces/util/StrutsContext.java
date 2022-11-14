@@ -25,12 +25,6 @@ package org.apache.struts.faces.util;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Locale;
 
-import javax.faces.FacesException;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
-import jakarta.servlet.http.HttpServletRequest;
-
 import org.apache.commons.beanutils.MethodUtils;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionMapping;
@@ -39,6 +33,12 @@ import org.apache.struts.action.ActionServlet;
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.faces.Constants;
 import org.apache.struts.util.MessageResources;
+
+import jakarta.faces.FacesException;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.ActionEvent;
+import jakarta.servlet.http.HttpServletRequest;
 
 
 /**
@@ -320,7 +320,8 @@ public class StrutsContext {
 
             // Does this class implement PortletRequest?
             for (Class<?> inter : interfaces) {
-                if ("javax.portlet.PortletRequest".equals(inter.getName())) {
+                if ("javax.portlet.PortletRequest".equals(inter.getName()) ||
+                    "jakarta.portlet.PortletRequest".equals(inter.getName())) {
                     return true;
                 }
             }

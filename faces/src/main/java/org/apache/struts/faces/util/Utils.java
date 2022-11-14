@@ -5,9 +5,9 @@ import java.util.Map;
 import jakarta.el.ELException;
 import jakarta.el.MethodExpression;
 import jakarta.el.ValueExpression;
-import javax.faces.component.ActionSource2;
-import javax.faces.component.UIComponent;
-import javax.faces.event.MethodExpressionActionListener;
+import jakarta.faces.component.ActionSource2;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.event.MethodExpressionActionListener;
 
 /**
  * This class has some static utils-methods.

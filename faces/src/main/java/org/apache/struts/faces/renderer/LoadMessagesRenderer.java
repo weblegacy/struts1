@@ -23,15 +23,15 @@ package org.apache.struts.faces.renderer;
 
 import java.util.Locale;
 
-import javax.faces.component.UIComponent;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-
 import org.apache.struts.Globals;
 import org.apache.struts.faces.component.LoadMessagesComponent;
 import org.apache.struts.faces.util.MessagesMap;
 import org.apache.struts.faces.util.Utils;
 import org.apache.struts.util.MessageResources;
+
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
 
 /**
  * {@code Renderer} implementation for the {@code LoadMessages} tag

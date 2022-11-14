@@ -24,12 +24,13 @@ package org.apache.struts.webapp.example;
 
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.ActionEvent;
 
 
 /**

@@ -55,7 +55,7 @@
       <rtexprvalue>false</rtexprvalue>
       <type>jakarta.el.ValueExpression</type>
       <deferred-value>
-        <type>javax.faces.component.UIComponent</type>
+        <type>jakarta.faces.component.UIComponent</type>
       </deferred-value>
     </attribute>
     <attribute>
@@ -121,7 +121,7 @@
       <rtexprvalue>false</rtexprvalue>
       <type>jakarta.el.MethodExpression</type>
       <deferred-method>
-        <method-signature>void actionListener(javax.faces.event.ActionEvent)</method-signature>
+        <method-signature>void actionListener(jakarta.faces.event.ActionEvent)</method-signature>
       </deferred-method>
     </attribute>
     <attribute>
@@ -407,7 +407,7 @@
       <rtexprvalue>false</rtexprvalue>
       <type>jakarta.el.ValueExpression</type>
       <deferred-value>
-        <type>javax.faces.component.UIComponent</type>
+        <type>jakarta.faces.component.UIComponent</type>
       </deferred-value>
     </attribute>
     <attribute>
@@ -501,7 +501,7 @@
       <rtexprvalue>false</rtexprvalue>
       <type>jakarta.el.ValueExpression</type>
       <deferred-value>
-        <type>javax.faces.component.UIComponent</type>
+        <type>jakarta.faces.component.UIComponent</type>
       </deferred-value>
     </attribute>
     <attribute>
@@ -658,7 +658,7 @@
       <rtexprvalue>false</rtexprvalue>
       <type>jakarta.el.ValueExpression</type>
       <deferred-value>
-        <type>javax.faces.component.UIComponent</type>
+        <type>jakarta.faces.component.UIComponent</type>
       </deferred-value>
     </attribute>
     <attribute>
@@ -928,7 +928,7 @@
       <rtexprvalue>false</rtexprvalue>
       <type>jakarta.el.ValueExpression</type>
       <deferred-value>
-        <type>javax.faces.component.UIComponent</type>
+        <type>jakarta.faces.component.UIComponent</type>
       </deferred-value>
     </attribute>
     <attribute>
@@ -1061,7 +1061,7 @@
       <rtexprvalue>false</rtexprvalue>
       <type>jakarta.el.ValueExpression</type>
       <deferred-value>
-        <type>javax.faces.component.UIComponent</type>
+        <type>jakarta.faces.component.UIComponent</type>
       </deferred-value>
     </attribute>
     <attribute>
@@ -1123,7 +1123,7 @@
       <rtexprvalue>false</rtexprvalue>
       <type>jakarta.el.ValueExpression</type>
       <deferred-value>
-        <type>javax.faces.component.UIComponent</type>
+        <type>jakarta.faces.component.UIComponent</type>
       </deferred-value>
     </attribute>
     <attribute>

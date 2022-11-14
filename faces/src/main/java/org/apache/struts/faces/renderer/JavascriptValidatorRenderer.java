@@ -31,10 +31,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.function.Function;
 
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-
 import org.apache.commons.validator.Field;
 import org.apache.commons.validator.Form;
 import org.apache.commons.validator.ValidatorAction;
@@ -50,6 +46,10 @@ import org.apache.struts.faces.util.Utils;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.validator.Resources;
 import org.apache.struts.validator.ValidatorPlugIn;
+
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
 
 /**
  * {@code Renderer} implementation for the

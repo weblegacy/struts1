@@ -24,14 +24,14 @@ package org.apache.struts.faces.renderer;
 
 import java.util.ArrayList;
 
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIParameter;
-import javax.faces.component.ValueHolder;
-import javax.faces.context.FacesContext;
-
 import org.apache.struts.Globals;
 import org.apache.struts.util.MessageResources;
 import org.apache.struts.util.ResponseUtils;
+
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIParameter;
+import jakarta.faces.component.ValueHolder;
+import jakarta.faces.context.FacesContext;
 
 
 /**

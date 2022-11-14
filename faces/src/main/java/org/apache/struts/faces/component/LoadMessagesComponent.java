@@ -22,8 +22,8 @@
 package org.apache.struts.faces.component;
 
 import jakarta.el.ValueExpression;
-import javax.faces.component.UIOutput;
-import javax.faces.context.FacesContext;
+import jakarta.faces.component.UIOutput;
+import jakarta.faces.context.FacesContext;
 
 /**
  * Custom component to load a {@code MessagesMap}.

@@ -23,11 +23,11 @@
 package org.apache.struts.webapp.example;
 
 
-import jakarta.el.ValueExpression;
-import javax.faces.component.UIComponent;
-import javax.faces.webapp.UIComponentELTag;
-
 import org.apache.struts.faces.util.Utils;
+
+import jakarta.el.ValueExpression;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.webapp.UIComponentELTag;
 
 
 /**
@@ -72,7 +72,7 @@ public class LinkSubscriptionTag extends UIComponentELTag {
      */
     public String getComponentType() {
 
-        return ("javax.faces.Output");
+        return ("jakarta.faces.Output");
 
     }
 

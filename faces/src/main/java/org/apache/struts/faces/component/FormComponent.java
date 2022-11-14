@@ -24,10 +24,6 @@ package org.apache.struts.faces.component;
 
 import java.util.Map;
 
-import jakarta.el.ValueExpression;
-import javax.faces.component.UIForm;
-import javax.faces.context.FacesContext;
-
 import org.apache.commons.beanutils.DynaBean;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForm;
@@ -42,11 +38,15 @@ import org.apache.struts.util.RequestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jakarta.el.ValueExpression;
+import jakarta.faces.component.UIForm;
+import jakarta.faces.context.FacesContext;
+
 
 /**
- * <p><strong>FormComponent</strong> is a specialized subclass of
- * <code>javax.faces.component.UIForm</code> that supports automatic
- * creation of form beans in request or session scope.</p>
+ * <strong>FormComponent</strong> is a specialized subclass of
+ * {@code jakarta.faces.component.UIForm} that supports automatic
+ * creation of form beans in request or session scope.
  *
  * @version $Rev$ $Date$
  */

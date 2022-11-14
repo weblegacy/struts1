@@ -22,16 +22,16 @@
 package org.apache.struts.faces.component;
 
 
-import javax.faces.component.UICommand;
-import javax.faces.context.FacesContext;
 import jakarta.el.ValueExpression;
+import jakarta.faces.component.UICommand;
+import jakarta.faces.context.FacesContext;
 
 
 /**
- * <p>Custom component that emulates the JSF standard component class
- * <code>javax.faces.component.html.HtmlCommandLink</code> (and its
+ * Custom component that emulates the JSF standard component class
+ * {@code jakarta.faces.component.html.HtmlCommandLink} (and its
  * corresponding renderer) but is not tied to a particular implementation of
- * renderer for <code>javax.faces.component.UIForm</code>.</p>
+ * renderer for {@code jakarta.faces.component.UIForm}.
  */
 
 public class CommandLinkComponent extends UICommand {

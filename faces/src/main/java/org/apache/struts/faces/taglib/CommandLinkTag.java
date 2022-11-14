@@ -22,11 +22,11 @@
 package org.apache.struts.faces.taglib;
 
 
+import org.apache.struts.faces.util.Utils;
+
 import jakarta.el.MethodExpression;
 import jakarta.el.ValueExpression;
-import javax.faces.component.UIComponent;
-
-import org.apache.struts.faces.util.Utils;
+import jakarta.faces.component.UIComponent;
 
 
 /**

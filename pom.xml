@@ -374,7 +374,7 @@
         <jspVersion>3.0.0</jspVersion>
         <jstlVersion>1.2.7</jstlVersion>
         <jstlImplVersion>1.2.6</jstlImplVersion>
-        <elVersion>3.0.3</elVersion>
+        <elVersion>4.0.0</elVersion>
         <jsfVersion>2.3.2</jsfVersion>
         <jsfImplVersion>2.3.18</jsfImplVersion>
         <jaxbVersion>2.3.7</jaxbVersion>

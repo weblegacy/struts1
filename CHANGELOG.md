@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Use `tomcat` 10.0.27 instead 9.0.68 for integration-tests
 * Update `README.md` for next release
 * Set Version to 1.4.5-SNAPSHOT
 

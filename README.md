@@ -24,8 +24,9 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 * Upgrade MAVEN-Plugins
 * Correct example-apps
 * Complete JUnit5- and integration-test (rewrite old ones)
+* Logging: Use [SLF4J](https://www.slf4j.org/) instead [Commons-Logging](https://commons.apache.org/proper/commons-logging/index.html)
 * JDK 1.4 --> JDK 8
-  * Tests with JDK 8, 11, 17 and 19
+  * Tested with JDK 8, 11, 17 and 19
 * Servlet-API 2.3 --> 4.0
 * JSP 2.0 --> 2.3
 * JSP-EL 2.0 --> 3.0

@@ -88,6 +88,7 @@
 <li>Removing the use of &quot;myfaces&quot;-implementation-specifics</li>
 <li>Resolve many JDK 19 compiler-warnings</li>
 <li>Remove compiler-warnings till JDK 17</li>
+<li>Some updates in &quot;README.md&quot;</li>
 </ul>
 
 <h4>Task</h4>

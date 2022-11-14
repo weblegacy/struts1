@@ -372,8 +372,7 @@
         <antlrVersion>4.11.1</antlrVersion>
         <servletVersion>5.0.0</servletVersion>
         <jspVersion>3.0.0</jspVersion>
-        <jstlVersion>1.2.7</jstlVersion>
-        <jstlImplVersion>1.2.6</jstlImplVersion>
+        <jstlVersion>2.0.0</jstlVersion>
         <elVersion>4.0.0</elVersion>
         <jsfVersion>2.3.2</jsfVersion>
         <jsfImplVersion>2.3.18</jsfImplVersion>
@@ -1059,7 +1058,7 @@
             <dependency>
                 <groupId>org.glassfish.web</groupId>
                 <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-                <version>${jstlImplVersion}</version>
+                <version>${jstlVersion}</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.faces</groupId>

@@ -28,9 +28,9 @@ import org.apache.struts.chain.Constants;
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.util.MessageResources;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * <p> Implement ActionContext interface while making Servlet API-specific

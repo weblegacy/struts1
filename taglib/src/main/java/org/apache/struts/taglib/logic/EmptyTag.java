@@ -22,7 +22,7 @@ package org.apache.struts.taglib.logic;
 
 import org.apache.struts.taglib.TagUtils;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 import java.lang.reflect.Array;
 

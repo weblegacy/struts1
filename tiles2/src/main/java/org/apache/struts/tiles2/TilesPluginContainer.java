@@ -24,7 +24,7 @@ package org.apache.struts.tiles2;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.struts.config.ModuleConfig;
 import org.apache.struts.util.ModuleUtils;

@@ -30,7 +30,7 @@ import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.PopulateEvent;
 import org.apache.struts.util.RequestUtils;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * <p>Populate the form bean (if any) for this request.  Sets the multipart

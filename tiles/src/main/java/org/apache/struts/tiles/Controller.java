@@ -24,10 +24,10 @@ package org.apache.struts.tiles;
 import java.io.IOException;
 import java.io.Serializable;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * A controller is a piece of code called before rendering a jsp page.

@@ -21,7 +21,7 @@
 
 package org.apache.struts.tiles.taglib;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 /**
  * Tag classes implementing this interface can contains nested PutTag.

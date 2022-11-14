@@ -22,8 +22,8 @@ package org.apache.struts.validator;
 
 import java.util.Locale;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.commons.validator.Arg;
 import org.apache.commons.validator.Field;
@@ -69,13 +69,13 @@ public class Resources {
      * Resources key the <code>ServletContext</code> is stored under.
      */
     private static String SERVLET_CONTEXT_PARAM =
-        "javax.servlet.ServletContext";
+        "jakarta.servlet.ServletContext";
 
     /**
      * Resources key the <code>HttpServletRequest</code> is stored under.
      */
     private static String HTTP_SERVLET_REQUEST_PARAM =
-        "javax.servlet.http.HttpServletRequest";
+        "jakarta.servlet.http.HttpServletRequest";
 
     /**
      * Resources key the <code>ActionMessages</code> is stored under.

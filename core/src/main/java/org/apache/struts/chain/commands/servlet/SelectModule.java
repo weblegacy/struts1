@@ -26,7 +26,7 @@ import org.apache.struts.chain.commands.AbstractSelectModule;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * <p>Cache the <code>ModuleConfig</code> and <code>MessageResources</code>

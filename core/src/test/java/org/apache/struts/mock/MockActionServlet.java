@@ -22,9 +22,9 @@ package org.apache.struts.mock;
 
 import org.apache.struts.action.ActionServlet;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
 
 /**
  * <p>Mock <strong>ActionServlet</strong> object for low-level unit tests of

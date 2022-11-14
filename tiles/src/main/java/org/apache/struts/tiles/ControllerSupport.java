@@ -23,10 +23,10 @@ package org.apache.struts.tiles;
 
 import java.io.IOException;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Basic implementation of Controller.  Implementations can extend this class
@@ -57,7 +57,7 @@ public class ControllerSupport implements Controller {
     }
 
     /**
-     * @see org.apache.struts.tiles.Controller#execute(org.apache.struts.tiles.ComponentContext, javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse, javax.servlet.ServletContext)
+     * @see org.apache.struts.tiles.Controller#execute(org.apache.struts.tiles.ComponentContext, jakarta.servlet.http.HttpServletRequest, jakarta.servlet.http.HttpServletResponse, jakarta.servlet.ServletContext)
      */
     public void execute(
             ComponentContext tileContext,

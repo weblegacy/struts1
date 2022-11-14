@@ -404,16 +404,15 @@
  *     for more information. Any bean created by these tags exists only in page
  *     scope, for the remainder of the current page.</p>
  *
- * <p><em>Copy A Cookie</em> - You can create a new bean containing a <code>
- *     javax.servlet.http.Cookie</code> that was included in the current request.
+ * <p><em>Copy A Cookie</em> - You can create a new bean containing a
+ *     {@code jakarta.servlet.http.Cookie} that was included in the current request.
  *     If no cookie of the specified name was included, a request time expression
  *     will be thrown - therefore, it is common to nest the use of this tag
  *     inside
- *     a <code>&lt;logic:present cookie="xxx"&gt;</code> tag to ensure that the
+ *     a {@code &lt;logic:present cookie="xxx"&gt;} tag to ensure that the
  *     cookie was really included. If there is the possibility that more than one
  *     cookie of the same name was included, specify the "multiple" attribute
- *     (and
- *     the resulting bean will be an array of Cookies, instead of a single
+ *     (and the resulting bean will be an array of Cookies, instead of a single
  *     Cookie).</p>
  *
  * <pre>    &lt;bean:cookie id="foo" name="cookiename"/&gt;<br> &lt;bean:cookie

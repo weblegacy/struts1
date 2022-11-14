@@ -22,7 +22,7 @@ package org.apache.struts.taglib.html;
 
 import org.apache.struts.taglib.TagUtils;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 /**
  * Generate an HTML <code>&lt;frame&gt;</code> tag with similar capabilities

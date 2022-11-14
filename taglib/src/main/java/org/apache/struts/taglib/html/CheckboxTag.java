@@ -23,7 +23,7 @@ package org.apache.struts.taglib.html;
 import org.apache.struts.taglib.TagUtils;
 import org.apache.struts.util.MessageResources;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 /**
  * Tag for input fields of type "checkbox".

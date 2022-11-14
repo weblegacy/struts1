@@ -24,8 +24,8 @@ import org.apache.struts.taglib.html.SelectTag;
 import org.apache.struts.taglib.nested.NestedNameSupport;
 import org.apache.struts.taglib.nested.NestedPropertyHelper;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.jsp.JspException;
 
 /**
  * NestedSelectTag.

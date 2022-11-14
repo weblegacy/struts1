@@ -20,7 +20,7 @@
  */
 package org.apache.struts.taglib.html;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 /**
  * Tag for input fields of type "cancel".

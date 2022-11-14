@@ -26,11 +26,11 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.Map;
 
-import javax.el.CompositeELResolver;
-import javax.el.ELContext;
-import javax.el.ELException;
-import javax.el.ELResolver;
-import javax.el.PropertyNotWritableException;
+import jakarta.el.CompositeELResolver;
+import jakarta.el.ELContext;
+import jakarta.el.ELException;
+import jakarta.el.ELResolver;
+import jakarta.el.PropertyNotWritableException;
 
 import org.apache.struts.action.DynaActionForm;
 import org.slf4j.Logger;

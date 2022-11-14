@@ -955,7 +955,7 @@
                  org.apache.commons.validator.Field,
                  org.apache.struts.action.ActionMessages,
                  org.apache.commons.validator.Validator,
-                 javax.servlet.http.HttpServletRequest"
+                 jakarta.servlet.http.HttpServletRequest"
             msg="errors.required"/>
 
 <validator name="mask"
@@ -966,7 +966,7 @@
                  org.apache.commons.validator.Field,
                  org.apache.struts.action.ActionMessages,
                  org.apache.commons.validator.Validator,
-                 javax.servlet.http.HttpServletRequest"
+                 jakarta.servlet.http.HttpServletRequest"
         depends=""
             msg="errors.invalid"/>
 ]]></source>
@@ -1012,12 +1012,12 @@
                     </li>
 
                     <li>
-                        <code>javax.servlet.http.HttpServletRequest</code>
+                        <code>jakarta.servlet.http.HttpServletRequest</code>
                         - Current request object.
                     </li>
 
                     <li>
-                        <code>javax.servlet.ServletContext</code>
+                        <code>jakarta.servlet.ServletContext</code>
                         - The application's ServletContext.
                     </li>
 

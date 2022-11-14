@@ -22,8 +22,8 @@ package org.apache.struts.taglib.nested.bean;
 
 import org.apache.struts.taglib.logic.IterateTei;
 
-import javax.servlet.jsp.tagext.TagData;
-import javax.servlet.jsp.tagext.VariableInfo;
+import jakarta.servlet.jsp.tagext.TagData;
+import jakarta.servlet.jsp.tagext.VariableInfo;
 
 /**
  * NestedDefineTei to make sure that the implied setting of the name property

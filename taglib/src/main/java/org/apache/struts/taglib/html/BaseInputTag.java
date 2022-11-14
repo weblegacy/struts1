@@ -22,7 +22,7 @@ package org.apache.struts.taglib.html;
 
 import org.apache.struts.util.MessageResources;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 /**
  * Abstract base class for the various input tags.

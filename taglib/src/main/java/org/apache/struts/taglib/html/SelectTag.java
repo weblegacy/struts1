@@ -24,7 +24,7 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.taglib.TagUtils;
 import org.apache.struts.util.MessageResources;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 import java.lang.reflect.InvocationTargetException;
 

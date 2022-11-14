@@ -23,9 +23,9 @@ package org.apache.struts.taglib.logic;
 import org.apache.struts.taglib.TagUtils;
 import org.apache.struts.util.MessageResources;
 
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.TagSupport;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.tagext.TagSupport;
 
 import java.io.IOException;
 

@@ -30,7 +30,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;
@@ -215,7 +215,7 @@ public final class MemoryDatabasePlugIn implements PlugIn {
         // Does a copy of this file already exist in our temporary directory
         File dir = (File)
             servlet.getServletContext().getAttribute
-            ("javax.servlet.context.tempdir");
+            ("jakarta.servlet.context.tempdir");
         File file = new File(dir, "struts-example-database.xml");
         if (file.exists()) {
             return (file.getAbsolutePath());

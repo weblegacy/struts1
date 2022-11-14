@@ -59,7 +59,7 @@
                        type="java.lang.NoSuchMethodException"
                        path="/dispatch.jsp"/>
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/dispatch.jsp"/>
             <forward name="success" path="/dispatch.jsp"/>
         </action>
@@ -68,7 +68,7 @@
                 name="testForm"
                 scope="request">
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/dispatch.jsp"/>
             <forward name="success" path="/dispatch.jsp"/>
         </action>
@@ -104,7 +104,7 @@
                        type="java.lang.NoSuchMethodException"
                        path="/mapping.jsp"/>
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/mapping.jsp"/>
             <forward name="success" path="/mapping.jsp"/>
         </action>
@@ -117,7 +117,7 @@
                        type="java.lang.NoSuchMethodException"
                        path="/mapping.jsp"/>
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/mapping.jsp"/>
             <forward name="success" path="/mapping.jsp"/>
         </action>
@@ -126,7 +126,7 @@
                 name="testForm"
                 scope="request">
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/mapping.jsp"/>
             <forward name="success" path="/mapping.jsp"/>
         </action>
@@ -145,7 +145,7 @@
                 name="testForm"
                 scope="request">
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/lookup.jsp"/>
             <forward name="success" path="/lookup.jsp"/>
         </action>
@@ -154,7 +154,7 @@
                 name="testForm"
                 scope="request">
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/lookup.jsp"/>
             <forward name="success" path="/lookup.jsp"/>
         </action>
@@ -177,7 +177,7 @@
                        type="java.lang.NoSuchMethodException"
                        path="/actionDispatcher.jsp"/>
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/actionDispatcher.jsp"/>
             <forward name="success" path="/actionDispatcher.jsp"/>
         </action>
@@ -186,7 +186,7 @@
                 name="testForm"
                 scope="request">
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/actionDispatcher.jsp"/>
             <forward name="success" path="/actionDispatcher.jsp"/>
         </action>
@@ -213,7 +213,7 @@
                 name="testForm"
                 scope="request">
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/eventDispatcher.jsp"/>
             <forward name="success" path="/eventDispatcher.jsp"/>
         </action>
@@ -223,7 +223,7 @@
                 name="testForm"
                 scope="request">
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/eventDispatcher.jsp"/>
             <exception key="dispatch.NoSuchMethodException"
                        type="java.lang.NoSuchMethodException"
@@ -235,7 +235,7 @@
                 name="testForm"
                 scope="request">
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/eventDispatcher.jsp"/>
             <forward name="success" path="/eventDispatcher.jsp"/>
         </action>
@@ -261,7 +261,7 @@
                 name="testForm"
                 scope="request">
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/eventAction.jsp"/>
             <forward name="success" path="/eventAction.jsp"/>
         </action>
@@ -271,7 +271,7 @@
                 name="testForm"
                 scope="request">
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/eventAction.jsp"/>
             <exception key="dispatch.NoSuchMethodException"
                        type="java.lang.NoSuchMethodException"
@@ -283,7 +283,7 @@
                 name="testForm"
                 scope="request">
             <exception key="dispatch.ServletException"
-                       type="javax.servlet.ServletException"
+                       type="jakarta.servlet.ServletException"
                        path="/eventAction.jsp"/>
             <forward name="success" path="/eventAction.jsp"/>
         </action>

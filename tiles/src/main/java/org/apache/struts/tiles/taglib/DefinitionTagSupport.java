@@ -21,7 +21,7 @@
 package org.apache.struts.tiles.taglib;
 
 import java.io.Serializable;
-import javax.servlet.jsp.tagext.TagSupport;
+import jakarta.servlet.jsp.tagext.TagSupport;
 
 /**
  * Common base class for tags dealing with Tiles definitions.

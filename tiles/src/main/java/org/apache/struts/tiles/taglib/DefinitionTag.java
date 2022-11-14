@@ -21,7 +21,7 @@
 
 package org.apache.struts.tiles.taglib;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 import org.apache.struts.tiles.taglib.util.TagUtils;
 import org.apache.struts.tiles.AttributeDefinition;

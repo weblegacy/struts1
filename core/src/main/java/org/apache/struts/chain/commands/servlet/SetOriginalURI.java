@@ -25,7 +25,7 @@ import org.apache.struts.chain.commands.AbstractSetOriginalURI;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * <p>Set the servlet path.</p>

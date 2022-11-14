@@ -20,9 +20,9 @@
  */
 package org.apache.struts.taglib.bean;
 
-import javax.servlet.jsp.tagext.TagData;
-import javax.servlet.jsp.tagext.TagExtraInfo;
-import javax.servlet.jsp.tagext.VariableInfo;
+import jakarta.servlet.jsp.tagext.TagData;
+import jakarta.servlet.jsp.tagext.TagExtraInfo;
+import jakarta.servlet.jsp.tagext.VariableInfo;
 
 /**
  * Implementation of <code>TagExtraInfo</code> for the <b>cookie</b> tag,
@@ -39,9 +39,9 @@ public class CookieTei extends TagExtraInfo {
         String className = null;
 
         if (data.getAttribute("multiple") == null) {
-            className = "javax.servlet.http.Cookie";
+            className = "jakarta.servlet.http.Cookie";
         } else {
-            className = "javax.servlet.http.Cookie[]";
+            className = "jakarta.servlet.http.Cookie[]";
         }
 
         return new VariableInfo[] {

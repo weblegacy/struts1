@@ -24,8 +24,8 @@ package org.apache.struts.tiles;
 
 import java.io.Serializable;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletRequest;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletRequest;
 
 /**
  * Tiles Definition factory.

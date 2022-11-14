@@ -22,8 +22,8 @@ package org.apache.struts.taglib.logic;
 
 import org.apache.struts.util.MessageResources;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.TagSupport;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.tagext.TagSupport;
 
 /**
  * Abstract base class for the various conditional evaluation tags.

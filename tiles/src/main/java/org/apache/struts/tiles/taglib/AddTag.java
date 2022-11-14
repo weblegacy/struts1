@@ -22,7 +22,7 @@
 
 package org.apache.struts.tiles.taglib;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
   /**
    * Add an element to the surrounding list tag.

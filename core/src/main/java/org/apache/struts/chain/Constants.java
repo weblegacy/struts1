@@ -134,12 +134,12 @@ public final class Constants {
      * processing during a RequestDispatcher.include() call.</p>
      */
     public static final String INCLUDE_PATH_INFO =
-        "javax.servlet.include.path_info";
+        "jakarta.servlet.include.path_info";
 
     /**
      * <p>The request attribute under which the servlet path is stored for
      * processing during a RequestDispatcher.include() call.</p>
      */
     public static final String INCLUDE_SERVLET_PATH =
-        "javax.servlet.include.servlet_path";
+        "jakarta.servlet.include.servlet_path";
 }

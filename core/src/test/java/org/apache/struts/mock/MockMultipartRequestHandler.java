@@ -23,8 +23,8 @@ package org.apache.struts.mock;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.MultipartRequestHandler;

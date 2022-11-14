@@ -23,7 +23,7 @@
 package org.apache.struts.webapp.validator;
 
 import java.io.Serializable;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.validator.ValidatorForm;
 

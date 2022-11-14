@@ -21,7 +21,7 @@
 
 package org.apache.struts.faces.taglib;
 
-import javax.el.ValueExpression;
+import jakarta.el.ValueExpression;
 import javax.faces.component.UIComponent;
 
 import org.apache.struts.faces.util.Utils;

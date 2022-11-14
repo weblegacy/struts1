@@ -20,7 +20,7 @@
  */
 package org.apache.strutsel.taglib.logic;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 import org.apache.struts.taglib.logic.NotMatchTag;
 

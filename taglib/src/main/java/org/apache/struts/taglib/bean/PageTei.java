@@ -20,9 +20,9 @@
  */
 package org.apache.struts.taglib.bean;
 
-import javax.servlet.jsp.tagext.TagData;
-import javax.servlet.jsp.tagext.TagExtraInfo;
-import javax.servlet.jsp.tagext.VariableInfo;
+import jakarta.servlet.jsp.tagext.TagData;
+import jakarta.servlet.jsp.tagext.TagExtraInfo;
+import jakarta.servlet.jsp.tagext.VariableInfo;
 
 /**
  * Implementation of <code>TagExtraInfo</code> for the <b>page</b> tag,
@@ -40,15 +40,15 @@ public class PageTei extends TagExtraInfo {
         String property = data.getAttributeString("property");
 
         if ("application".equalsIgnoreCase(property)) {
-            type = "javax.servlet.ServletContext";
+            type = "jakarta.servlet.ServletContext";
         } else if ("config".equalsIgnoreCase(property)) {
-            type = "javax.servlet.ServletConfig";
+            type = "jakarta.servlet.ServletConfig";
         } else if ("request".equalsIgnoreCase(property)) {
-            type = "javax.servlet.ServletRequest";
+            type = "jakarta.servlet.ServletRequest";
         } else if ("response".equalsIgnoreCase(property)) {
-            type = "javax.servlet.ServletResponse";
+            type = "jakarta.servlet.ServletResponse";
         } else if ("session".equalsIgnoreCase(property)) {
-            type = "javax.servlet.http.HttpSession";
+            type = "jakarta.servlet.http.HttpSession";
         } else {
             type = "java.lang.Object";
         }

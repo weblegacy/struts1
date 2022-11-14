@@ -21,7 +21,7 @@
 
 package org.apache.struts.webapp.upload;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;

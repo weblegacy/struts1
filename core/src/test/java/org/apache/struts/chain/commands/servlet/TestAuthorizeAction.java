@@ -23,7 +23,7 @@ package org.apache.struts.chain.commands.servlet;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import org.apache.commons.chain.web.servlet.ServletWebContext;
 import org.apache.struts.chain.commands.UnauthorizedActionException;

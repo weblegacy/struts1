@@ -22,8 +22,8 @@ package org.apache.struts.action;
 
 import org.apache.struts.upload.MultipartRequestHandler;
 
-import javax.servlet.ServletRequest;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 import java.io.Serializable;
 

@@ -25,12 +25,12 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Locale;
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.struts.Globals;
 import org.apache.struts.config.ActionConfig;
@@ -63,7 +63,7 @@ public class RequestProcessor implements Serializable {
      * processing during a <code>RequestDispatcher.include</code> call.</p>
      */
     public static final String INCLUDE_PATH_INFO =
-        "javax.servlet.include.path_info";
+        "jakarta.servlet.include.path_info";
 
     /**
      * <p>The request attribute under which the servlet path information is
@@ -71,7 +71,7 @@ public class RequestProcessor implements Serializable {
      * call.</p>
      */
     public static final String INCLUDE_SERVLET_PATH =
-        "javax.servlet.include.servlet_path";
+        "jakarta.servlet.include.servlet_path";
 
     /**
      * The {@code Log} instance for this class.

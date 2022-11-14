@@ -24,7 +24,7 @@ import org.apache.struts.chain.commands.AbstractRequestNoCache;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * <p>Check to see if the controller is configured to prevent caching, and if

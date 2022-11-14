@@ -31,7 +31,7 @@
                        org.apache.commons.validator.Field,
                        org.apache.struts.action.ActionMessages,
                        org.apache.commons.validator.Validator,
-                       javax.servlet.http.HttpServletRequest"
+                       jakarta.servlet.http.HttpServletRequest"
                    msg="errors.twofields" />
     </global>
 

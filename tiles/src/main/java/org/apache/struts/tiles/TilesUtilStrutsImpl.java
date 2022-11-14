@@ -21,7 +21,7 @@
 
 package org.apache.struts.tiles;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import org.apache.struts.config.ModuleConfig;
 

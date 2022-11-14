@@ -24,7 +24,7 @@ import org.apache.struts.chain.commands.AbstractSetContentType;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * <p>Check to see if the content type is set, and if so, set it for this

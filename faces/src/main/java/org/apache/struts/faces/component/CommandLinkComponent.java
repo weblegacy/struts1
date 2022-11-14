@@ -24,7 +24,7 @@ package org.apache.struts.faces.component;
 
 import javax.faces.component.UICommand;
 import javax.faces.context.FacesContext;
-import javax.el.ValueExpression;
+import jakarta.el.ValueExpression;
 
 
 /**

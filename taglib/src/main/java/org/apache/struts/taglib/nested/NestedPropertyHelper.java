@@ -23,8 +23,8 @@ package org.apache.struts.taglib.nested;
 import org.apache.struts.taglib.html.Constants;
 import org.apache.struts.taglib.html.FormTag;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.tagext.Tag;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.jsp.tagext.Tag;
 
 import java.util.StringTokenizer;
 

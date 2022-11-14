@@ -24,7 +24,7 @@ package org.apache.struts.faces.component;
 
 import java.util.Map;
 
-import javax.el.ValueExpression;
+import jakarta.el.ValueExpression;
 import javax.faces.component.UIForm;
 import javax.faces.context.FacesContext;
 

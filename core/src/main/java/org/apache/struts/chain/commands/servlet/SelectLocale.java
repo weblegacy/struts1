@@ -22,7 +22,7 @@ package org.apache.struts.chain.commands.servlet;
 
 import java.util.Locale;
 
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.struts.Globals;
 import org.apache.struts.chain.commands.AbstractSelectLocale;

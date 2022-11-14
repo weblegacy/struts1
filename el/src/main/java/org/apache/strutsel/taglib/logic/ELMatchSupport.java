@@ -23,8 +23,8 @@ package org.apache.strutsel.taglib.logic;
 import org.apache.struts.taglib.TagUtils;
 import org.apache.struts.util.MessageResources;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.PageContext;
 
 /**
  * This class is used as a helper class for both the <code>org.apache.strutsel.taglib.logic.ELMatchTag</code>

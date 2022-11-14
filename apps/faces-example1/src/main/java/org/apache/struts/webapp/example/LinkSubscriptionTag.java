@@ -23,7 +23,7 @@
 package org.apache.struts.webapp.example;
 
 
-import javax.el.ValueExpression;
+import jakarta.el.ValueExpression;
 import javax.faces.component.UIComponent;
 import javax.faces.webapp.UIComponentELTag;
 

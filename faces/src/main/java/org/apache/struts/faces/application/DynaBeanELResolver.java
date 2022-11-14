@@ -26,12 +26,12 @@ import java.beans.FeatureDescriptor;
 import java.util.Arrays;
 import java.util.Iterator;
 
-import javax.el.CompositeELResolver;
-import javax.el.ELContext;
-import javax.el.ELException;
-import javax.el.ELResolver;
-import javax.el.PropertyNotFoundException;
-import javax.el.PropertyNotWritableException;
+import jakarta.el.CompositeELResolver;
+import jakarta.el.ELContext;
+import jakarta.el.ELException;
+import jakarta.el.ELResolver;
+import jakarta.el.PropertyNotFoundException;
+import jakarta.el.PropertyNotWritableException;
 
 import org.apache.commons.beanutils.ConversionException;
 import org.apache.commons.beanutils.DynaBean;

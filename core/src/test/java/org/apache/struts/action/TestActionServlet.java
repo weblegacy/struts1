@@ -31,8 +31,8 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.net.URL;
 import java.util.List;
 
-import javax.servlet.ServletException;
-import javax.servlet.UnavailableException;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.UnavailableException;
 
 import org.apache.struts.config.ActionConfig;
 import org.apache.struts.config.ExceptionConfig;

@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Change all `javax.*`- to `jakarta.*`-namespaces with `Tomcat Migration Tool 1.0.5`
 * Use `tomcat` 10.0.27 instead 9.0.68 for integration-tests
 * Update `README.md` for next release
 * Set Version to 1.4.5-SNAPSHOT

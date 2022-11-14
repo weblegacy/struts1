@@ -23,9 +23,9 @@ package org.apache.struts.tiles;
 
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.UnavailableException;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.UnavailableException;
 
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;

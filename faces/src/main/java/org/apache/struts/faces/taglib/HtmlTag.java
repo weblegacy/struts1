@@ -22,10 +22,10 @@
 package org.apache.struts.faces.taglib;
 
 
-import javax.el.ValueExpression;
+import jakarta.el.ValueExpression;
 import javax.faces.component.UIComponent;
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.PageContext;
 
 import org.apache.struts.Globals;
 import org.apache.struts.faces.util.Utils;

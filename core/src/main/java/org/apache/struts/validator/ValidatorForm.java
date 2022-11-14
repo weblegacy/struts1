@@ -23,8 +23,8 @@ package org.apache.struts.validator;
 import java.io.Serializable;
 import java.util.Map;
 
-import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.commons.validator.Validator;
 import org.apache.commons.validator.ValidatorException;

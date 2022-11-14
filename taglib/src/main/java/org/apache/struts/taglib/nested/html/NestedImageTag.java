@@ -24,8 +24,8 @@ import org.apache.struts.taglib.html.ImageTag;
 import org.apache.struts.taglib.nested.NestedPropertyHelper;
 import org.apache.struts.taglib.nested.NestedPropertySupport;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.jsp.JspException;
 
 /**
  * NestedMultiboxTag.

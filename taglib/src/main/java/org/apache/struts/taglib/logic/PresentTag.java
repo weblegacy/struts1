@@ -22,9 +22,9 @@ package org.apache.struts.taglib.logic;
 
 import org.apache.struts.taglib.TagUtils;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.jsp.JspException;
 
 import java.security.Principal;
 

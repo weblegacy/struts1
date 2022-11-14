@@ -20,7 +20,7 @@
  */
 package org.apache.struts.tiles;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionServlet;

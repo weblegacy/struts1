@@ -138,7 +138,7 @@
 
       <rtexprvalue>true</rtexprvalue>
 
-      <type>javax.el.ValueExpression</type>
+      <type>jakarta.el.ValueExpression</type>
 
       <deferred-value>
 
@@ -162,7 +162,7 @@
 
       <rtexprvalue>true</rtexprvalue>
 
-      <type>javax.el.ValueExpression</type>
+      <type>jakarta.el.ValueExpression</type>
 
       <deferred-value>
 

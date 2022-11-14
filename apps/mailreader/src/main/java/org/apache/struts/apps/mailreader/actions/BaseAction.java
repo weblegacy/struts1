@@ -21,9 +21,9 @@
 
 package org.apache.struts.apps.mailreader.actions;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.struts.action.ActionForm;
@@ -374,7 +374,7 @@ public abstract class BaseAction extends MappingDispatchAction {
      * </p>
      *
      * @param user Our User object
-     * @throws javax.servlet.ServletException On any error
+     * @throws jakarta.servlet.ServletException On any error
      */
     protected void doSaveUser(User user) throws ServletException {
 

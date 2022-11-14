@@ -578,7 +578,7 @@ limitations under the License.
 
                 <p>
                     A servlet is generally a subclass of
-                    <code>javax.servlet.http.HttpServlet.</code>
+                    <code>jakarta.servlet.http.HttpServlet.</code>
                     A servlet must implement four methods, which are invoked
                     by the container as needed:
                 </p>
@@ -702,7 +702,7 @@ limitations under the License.
                 <p>The
                     <em>ServletContext</em>
                     interface
-                    <code>[javax.servlet.ServletContext]</code>
+                    <code>[jakarta.servlet.ServletContext]</code>
                     defines a servlet's view of
                     the web application within which the servlet is running.
                     It is
@@ -765,7 +765,7 @@ limitations under the License.
                     Java
                     interface, normally a
                     <code>HttpServletRequest</code>
-                    <code>[javax.servlet.http.HttpServletRequest].</code>
+                    <code>[jakarta.servlet.http.HttpServletRequest].</code>
                     The request interface provides an object-oriented
                     mechanism to access
                     all of the information that was included in the underlying
@@ -867,12 +867,12 @@ limitations under the License.
 
                 <p>The primary purpose of a servlet is to process an incoming
                     <a href="#request">Servlet Request</a>
-                    <code>[javax.servlet.http.HttpServletRequest]</code>
+                    <code>[jakarta.servlet.http.HttpServletRequest]</code>
                     and convert it into a
                     corresponding response. This is performed by calling
                     appropriate
                     methods on the servlet response
-                    <code>[javax.servlet.http.HttpServletResponse]</code>
+                    <code>[jakarta.servlet.http.HttpServletResponse]</code>
                     interface. Available methods let you:
                 </p>
                 <ul>
@@ -971,7 +971,7 @@ limitations under the License.
                     <strong>2.3</strong>
                     or later of the Servlet Specification (such as
                     Tomcat 4.x), you can take advantage of the new Filter APIs
-                    <code>[javax.servlet.Filter]</code>
+                    <code>[jakarta.servlet.Filter]</code>
                     that
                     let you compose a set of components that will process a
                     request or
@@ -1028,7 +1028,7 @@ limitations under the License.
                     <em>session,</em>
                     represented as an object that
                     implements the
-                    <code>javax.servlet.http.HttpSession</code>
+                    <code>jakarta.servlet.http.HttpSession</code>
                     interface.
                     The servlet container will use one of two techniques
                     (cookies or
@@ -1103,8 +1103,8 @@ limitations under the License.
                         in The J2EE Tutorial
                     </li>
                     <li>
-                        <a href="http://java.sun.com/products/servlet/2.1/api/javax.servlet.http.HttpSession.html">
-                            <code>javax.servlet.http.HttpSession</code>
+                        <a href="http://java.sun.com/products/servlet/2.1/api/jakarta.servlet.http.HttpSession.html">
+                            <code>jakarta.servlet.http.HttpSession</code>
                         </a>
                     </li>
                 </ul>

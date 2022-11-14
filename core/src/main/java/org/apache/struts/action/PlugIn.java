@@ -22,7 +22,7 @@ package org.apache.struts.action;
 
 import org.apache.struts.config.ModuleConfig;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 /**
  * <p>A <strong>PlugIn</strong> is a configuration wrapper for a

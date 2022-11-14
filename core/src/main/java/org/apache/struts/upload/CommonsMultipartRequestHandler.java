@@ -30,10 +30,10 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.http.HttpServletRequest;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
@@ -366,7 +366,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * explicitly defined either using the {@code tempDir} servlet init
      * param, or the {@code tempDir} attribute of the &lt;controller&gt;
      * element in the Struts config file.</li> <li>The container-specified
-     * temp dir, obtained from the {@code javax.servlet.context.tempdir}
+     * temp dir, obtained from the {@code jakarta.servlet.context.tempdir}
      * servlet context attribute.</li> <li>The temp dir specified by the
      * {@code java.io.tmpdir} system property.</li> </ol> </p>
      *
@@ -385,7 +385,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
             if (servlet != null) {
                 ServletContext context = servlet.getServletContext();
                 tempDirFile =
-                    (File) context.getAttribute("javax.servlet.context.tempdir");
+                    (File) context.getAttribute("jakarta.servlet.context.tempdir");
 
                 if (tempDirFile != null) {
                     tempDirFile = tempDirFile.getAbsoluteFile();

@@ -368,7 +368,7 @@
                     know they are being executed in a
                     web application environment.
                     If you find yourself having to import a
-                    <code>javax.servlet.*</code>
+                    <code>jakarta.servlet.*</code>
                     class
                     in your bean, you are tying this business logic to the web
                     application

@@ -33,10 +33,10 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
@@ -1164,7 +1164,7 @@ public class RequestUtils {
      * @since Struts 1.4
      */
     public static boolean isRequestForwarded(HttpServletRequest request) {
-        return (request.getAttribute("javax.servlet.forward.request_uri") != null);
+        return (request.getAttribute("jakarta.servlet.forward.request_uri") != null);
     }
 
     /**
@@ -1175,7 +1175,7 @@ public class RequestUtils {
      * @since Struts 1.4
      */
     public static boolean isRequestIncluded(HttpServletRequest request) {
-        return (request.getAttribute("javax.servlet.include.request_uri") != null);
+        return (request.getAttribute("jakarta.servlet.include.request_uri") != null);
     }
 
     /**

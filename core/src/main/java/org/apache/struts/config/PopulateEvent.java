@@ -20,7 +20,7 @@
  */
 package org.apache.struts.config;
 
-import javax.servlet.RequestDispatcher;
+import jakarta.servlet.RequestDispatcher;
 
 /**
  * Constants relating to the reset and population events of action forms.
@@ -54,8 +54,8 @@ public abstract class PopulateEvent {
      * forwarded request. Unlike {@link #CHAIN} which is limited to
      * action-to-action behavior, the forward can be from any servlet resource.
      *
-     * @see RequestDispatcher#forward(javax.servlet.ServletRequest,
-     *      javax.servlet.ServletResponse)
+     * @see RequestDispatcher#forward(jakarta.servlet.ServletRequest,
+     *      jakarta.servlet.ServletResponse)
      */
     public static final String FORWARD = "forward";
 
@@ -63,8 +63,8 @@ public abstract class PopulateEvent {
      * Specifies that population occurs when the current requested is part of
      * any included request.
      *
-     * @see RequestDispatcher#include(javax.servlet.ServletRequest,
-     *      javax.servlet.ServletResponse)
+     * @see RequestDispatcher#include(jakarta.servlet.ServletRequest,
+     *      jakarta.servlet.ServletResponse)
      */
     public static final String INCLUDE = "include";
 

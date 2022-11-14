@@ -22,8 +22,8 @@ package org.apache.struts.taglib.nested.logic;
 
 import org.apache.struts.taglib.logic.IterateTei;
 
-import javax.servlet.jsp.tagext.TagData;
-import javax.servlet.jsp.tagext.VariableInfo;
+import jakarta.servlet.jsp.tagext.TagData;
+import jakarta.servlet.jsp.tagext.VariableInfo;
 
 /**
  * NestedIterateTei Extending the original tag's tei class, so that we can

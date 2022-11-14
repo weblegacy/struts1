@@ -22,7 +22,7 @@ import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.chain.commands.ActionCommandBase;
 import org.apache.struts.Globals;
 
-import javax.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * <p>Performs post-processing functions in command chain</p>

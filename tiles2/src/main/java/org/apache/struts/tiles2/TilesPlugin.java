@@ -21,7 +21,7 @@
 
 package org.apache.struts.tiles2;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;

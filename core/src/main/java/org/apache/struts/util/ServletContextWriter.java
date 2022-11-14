@@ -20,14 +20,14 @@
  */
 package org.apache.struts.util;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
 /**
  * A PrintWriter implementation that uses the logging facilities of a
- * <code>javax.servlet.ServletContext</code> to output its results.  Output
+ * <code>jakarta.servlet.ServletContext</code> to output its results.  Output
  * will be buffered until a newline character is output, <code>flush()</code>
  * is called, or until one of the <code>println()</code> methods is called.
  * Along the way, carriage return characters are skipped.

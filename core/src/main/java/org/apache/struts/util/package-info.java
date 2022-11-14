@@ -79,12 +79,12 @@
  *
  * <h3>Servlet Utilities</h3>
  *
- * <p> The <code>RequestUtils</code> is a general purpose utility methods
- *     related to processing a servlet request. The <code>ResponseUtils</code>
+ * <p> The {@code RequestUtils} is a general purpose utility methods
+ *     related to processing a servlet request. The {@code ResponseUtils}
  *     is a general purpose utility methods related to generating a servlet
- *     response. The <code>ServletContextWriter</code> is a PrintWriter
+ *     response. The {@code ServletContextWriter} is a PrintWriter
  *     implementation that uses the logging facilities of a
- *     <code>javax.servlet.ServletContext</code> to output its results.
+ *     {@code jakarta.servlet.ServletContext} to output its results.
  * </p>
  *
  * <hr>

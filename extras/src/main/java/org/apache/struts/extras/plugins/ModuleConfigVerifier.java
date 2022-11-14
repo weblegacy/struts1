@@ -20,7 +20,7 @@
  */
 package org.apache.struts.extras.plugins;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.PlugIn;

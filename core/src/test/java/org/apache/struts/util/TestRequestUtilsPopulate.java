@@ -31,7 +31,7 @@ import java.io.BufferedReader;
 import java.io.StringReader;
 import java.util.HashSet;
 
-import javax.servlet.ServletException;
+import jakarta.servlet.ServletException;
 
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionMapping;

@@ -1,5 +1,9 @@
 # Changes
 
+## 1.4.5 / YYYY-MM-DD
+
+* Set Version to 1.4.5-SNAPSHOT
+
 ## 1.4.4 / 2022-11-14
 
 * Set Version to 1.4.4

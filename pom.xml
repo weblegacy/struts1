@@ -370,7 +370,7 @@
         <tilesVersion>3.0.8</tilesVersion>
         <tilesRequestVersion>1.0.7</tilesRequestVersion>
         <antlrVersion>4.11.1</antlrVersion>
-        <servletVersion>4.0.4</servletVersion>
+        <servletVersion>5.0.0</servletVersion>
         <jspVersion>2.3.6</jspVersion>
         <jstlVersion>1.2.7</jstlVersion>
         <jstlImplVersion>1.2.6</jstlImplVersion>

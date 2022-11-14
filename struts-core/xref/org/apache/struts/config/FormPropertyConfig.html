@@ -49,7 +49,7 @@
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>      <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     * The {@code Log} instance for this class.</em>
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Logger log =
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">transient</strong> <strong class="jxr_keyword">final</strong> Logger log =
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>          LoggerFactory.getLogger(FormPropertyConfig.<strong class="jxr_keyword">class</strong>);
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>  
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>      <em class="jxr_comment">// ----------------------------------------------------- Instance Variables</em>
@@ -343,7 +343,7 @@
 <a class="jxr_linenumber" name="L335" href="#L335">335</a>                         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; size; i++) {
 <a class="jxr_linenumber" name="L336" href="#L336">336</a>                             <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L337" href="#L337">337</a>                                 Array.set(initialValue, i,
-<a class="jxr_linenumber" name="L338" href="#L338">338</a>                                     clazz.getComponentType().newInstance());
+<a class="jxr_linenumber" name="L338" href="#L338">338</a>                                     clazz.getComponentType().getDeclaredConstructor().newInstance());
 <a class="jxr_linenumber" name="L339" href="#L339">339</a>                             } <strong class="jxr_keyword">catch</strong> (Throwable t) {
 <a class="jxr_linenumber" name="L340" href="#L340">340</a>                                 log.error(<span class="jxr_string">"Unable to create instance of {} for property={}, "</span>
 <a class="jxr_linenumber" name="L341" href="#L341">341</a>                                     + <span class="jxr_string">"type={}, initial={}, size={}."</span>,
@@ -358,7 +358,7 @@
 <a class="jxr_linenumber" name="L350" href="#L350">350</a>                 <strong class="jxr_keyword">if</strong> (initial != <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L351" href="#L351">351</a>                     initialValue = ConvertUtils.convert(initial, clazz);
 <a class="jxr_linenumber" name="L352" href="#L352">352</a>                 } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="L353" href="#L353">353</a>                     initialValue = clazz.newInstance();
+<a class="jxr_linenumber" name="L353" href="#L353">353</a>                     initialValue = clazz.getDeclaredConstructor().newInstance();
 <a class="jxr_linenumber" name="L354" href="#L354">354</a>                 }
 <a class="jxr_linenumber" name="L355" href="#L355">355</a>             }
 <a class="jxr_linenumber" name="L356" href="#L356">356</a>         } <strong class="jxr_keyword">catch</strong> (Throwable t) {

@@ -1,8 +1,5 @@
 org.apache.struts
 org.apache.struts.action
-org.apache.struts.apps.mailreader.dao
-org.apache.struts.apps.mailreader.dao.impl
-org.apache.struts.apps.mailreader.dao.impl.memory
 org.apache.struts.chain
 org.apache.struts.chain.commands
 org.apache.struts.chain.commands.generic

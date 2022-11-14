@@ -222,7 +222,7 @@
 <a class="jxr_linenumber" name="L214" href="#L214">214</a>     @Test
 <a class="jxr_linenumber" name="L215" href="#L215">215</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testComputeParametersParamValueToString() {
 <a class="jxr_linenumber" name="L216" href="#L216">216</a>         request.getSession().setAttribute(<span class="jxr_string">"SomeBean"</span>,
-<a class="jxr_linenumber" name="L217" href="#L217">217</a>             <strong class="jxr_keyword">new</strong> MockFormBean(false, false, <strong class="jxr_keyword">new</strong> Double(1)));
+<a class="jxr_linenumber" name="L217" href="#L217">217</a>             <strong class="jxr_keyword">new</strong> MockFormBean(false, false, 1.0));
 <a class="jxr_linenumber" name="L218" href="#L218">218</a> 
 <a class="jxr_linenumber" name="L219" href="#L219">219</a>         Map&lt;String, Object&gt; map = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L220" href="#L220">220</a> 
@@ -1138,7 +1138,7 @@
 <a class="jxr_linenumber" name="L1130" href="#L1130">1130</a> 
 <a class="jxr_linenumber" name="L1131" href="#L1131">1131</a>         Map&lt;String, Double&gt; map = <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
 <a class="jxr_linenumber" name="L1132" href="#L1132">1132</a> 
-<a class="jxr_linenumber" name="L1133" href="#L1133">1133</a>         map.put(<span class="jxr_string">"foo1"</span>, <strong class="jxr_keyword">new</strong> Double(0));
+<a class="jxr_linenumber" name="L1133" href="#L1133">1133</a>         map.put(<span class="jxr_string">"foo1"</span>, 0.0);
 <a class="jxr_linenumber" name="L1134" href="#L1134">1134</a> 
 <a class="jxr_linenumber" name="L1135" href="#L1135">1135</a>         String url = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L1136" href="#L1136">1136</a> 
@@ -1162,7 +1162,7 @@
 <a class="jxr_linenumber" name="L1154" href="#L1154">1154</a> 
 <a class="jxr_linenumber" name="L1155" href="#L1155">1155</a>         Map&lt;String, Double&gt; map = <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
 <a class="jxr_linenumber" name="L1156" href="#L1156">1156</a> 
-<a class="jxr_linenumber" name="L1157" href="#L1157">1157</a>         map.put(<span class="jxr_string">"foo1"</span>, <strong class="jxr_keyword">new</strong> Double(0));
+<a class="jxr_linenumber" name="L1157" href="#L1157">1157</a>         map.put(<span class="jxr_string">"foo1"</span>, 0.0);
 <a class="jxr_linenumber" name="L1158" href="#L1158">1158</a> 
 <a class="jxr_linenumber" name="L1159" href="#L1159">1159</a>         String url = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L1160" href="#L1160">1160</a> 

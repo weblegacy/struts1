@@ -35,7 +35,7 @@
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> javax.faces.component.UIComponent;
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> javax.faces.webapp.UIComponentELTag;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.myfaces.shared.taglib.UIComponentELTagUtils;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.faces.util.Utils;
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_javadoccomment">/**</em>
@@ -118,13 +118,11 @@
 <a class="jxr_linenumber" name="L110" href="#L110">110</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">void</strong> setProperties(UIComponent component) {
 <a class="jxr_linenumber" name="L111" href="#L111">111</a> 
 <a class="jxr_linenumber" name="L112" href="#L112">112</a>         <strong class="jxr_keyword">super</strong>.setProperties(component);
-<a class="jxr_linenumber" name="L113" href="#L113">113</a>         UIComponentELTagUtils.setStringProperty(component, <span class="jxr_string">"name"</span>, _name, <span class="jxr_string">"subscription"</span>);
-<a class="jxr_linenumber" name="L114" href="#L114">114</a>         UIComponentELTagUtils.setStringProperty(component, <span class="jxr_string">"page"</span>, _page);
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>         Utils.setStringProperty(component, <span class="jxr_string">"name"</span>, _name, <span class="jxr_string">"subscription"</span>);
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>         Utils.setStringProperty(component, <span class="jxr_string">"page"</span>, _page);
 <a class="jxr_linenumber" name="L115" href="#L115">115</a> 
 <a class="jxr_linenumber" name="L116" href="#L116">116</a>     }
-<a class="jxr_linenumber" name="L117" href="#L117">117</a> 
-<a class="jxr_linenumber" name="L118" href="#L118">118</a> 
-<a class="jxr_linenumber" name="L119" href="#L119">119</a> }
+<a class="jxr_linenumber" name="L117" href="#L117">117</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2000&#x2013;2022 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>

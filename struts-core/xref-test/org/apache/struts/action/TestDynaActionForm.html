@@ -121,22 +121,22 @@
 <a class="jxr_linenumber" name="L113" href="#L113">113</a>             <span class="jxr_string">"booleanProperty"</span>);
 <a class="jxr_linenumber" name="L114" href="#L114">114</a>         assertEquals(Boolean.TRUE, dynaForm.get(<span class="jxr_string">"booleanSecond"</span>),
 <a class="jxr_linenumber" name="L115" href="#L115">115</a>             <span class="jxr_string">"booleanSecond"</span>);
-<a class="jxr_linenumber" name="L116" href="#L116">116</a>         assertEquals(<strong class="jxr_keyword">new</strong> Double(321.0), dynaForm.get(<span class="jxr_string">"doubleProperty"</span>),
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>         assertEquals(Double.valueOf(321.0), dynaForm.get(<span class="jxr_string">"doubleProperty"</span>),
 <a class="jxr_linenumber" name="L117" href="#L117">117</a>             <span class="jxr_string">"doubleProperty"</span>);
-<a class="jxr_linenumber" name="L118" href="#L118">118</a>         assertEquals(<strong class="jxr_keyword">new</strong> Float((<strong class="jxr_keyword">float</strong>) 123.0), dynaForm.get(<span class="jxr_string">"floatProperty"</span>),
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>         assertEquals(Float.valueOf((<strong class="jxr_keyword">float</strong>) 123.0), dynaForm.get(<span class="jxr_string">"floatProperty"</span>),
 <a class="jxr_linenumber" name="L119" href="#L119">119</a>             <span class="jxr_string">"floatProperty"</span>);
-<a class="jxr_linenumber" name="L120" href="#L120">120</a>         assertEquals(<strong class="jxr_keyword">new</strong> Integer(123), dynaForm.get(<span class="jxr_string">"intProperty"</span>),
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>         assertEquals(Integer.valueOf(123), dynaForm.get(<span class="jxr_string">"intProperty"</span>),
 <a class="jxr_linenumber" name="L121" href="#L121">121</a>             <span class="jxr_string">"intProperty"</span>);
 <a class="jxr_linenumber" name="L122" href="#L122">122</a> 
 <a class="jxr_linenumber" name="L123" href="#L123">123</a>         <em class="jxr_comment">// FIXME - listIndexed</em>
-<a class="jxr_linenumber" name="L124" href="#L124">124</a>         assertEquals(<strong class="jxr_keyword">new</strong> Long((<strong class="jxr_keyword">long</strong>) 321), dynaForm.get(<span class="jxr_string">"longProperty"</span>),
+<a class="jxr_linenumber" name="L124" href="#L124">124</a>         assertEquals(Long.valueOf(321), dynaForm.get(<span class="jxr_string">"longProperty"</span>),
 <a class="jxr_linenumber" name="L125" href="#L125">125</a>             <span class="jxr_string">"longProperty"</span>);
 <a class="jxr_linenumber" name="L126" href="#L126">126</a> 
 <a class="jxr_linenumber" name="L127" href="#L127">127</a>         <em class="jxr_comment">// FIXME - mappedProperty</em>
 <a class="jxr_linenumber" name="L128" href="#L128">128</a>         <em class="jxr_comment">// FIXME - mappedIntProperty</em>
 <a class="jxr_linenumber" name="L129" href="#L129">129</a>         <em class="jxr_comment">//        assertNull(dynaForm.get("nullProperty"),</em>
 <a class="jxr_linenumber" name="L130" href="#L130">130</a>         <em class="jxr_comment">//                     "nullProperty");</em>
-<a class="jxr_linenumber" name="L131" href="#L131">131</a>         assertEquals(<strong class="jxr_keyword">new</strong> Short((<strong class="jxr_keyword">short</strong>) 987), dynaForm.get(<span class="jxr_string">"shortProperty"</span>),
+<a class="jxr_linenumber" name="L131" href="#L131">131</a>         assertEquals(Short.valueOf((<strong class="jxr_keyword">short</strong>) 987), dynaForm.get(<span class="jxr_string">"shortProperty"</span>),
 <a class="jxr_linenumber" name="L132" href="#L132">132</a>             <span class="jxr_string">"shortProperty"</span>);
 <a class="jxr_linenumber" name="L133" href="#L133">133</a>         assertEquals(<span class="jxr_string">"This is a string"</span>, dynaForm.get(<span class="jxr_string">"stringProperty"</span>),
 <a class="jxr_linenumber" name="L134" href="#L134">134</a>             <span class="jxr_string">"stringProperty"</span>);
@@ -147,11 +147,11 @@
 <a class="jxr_linenumber" name="L139" href="#L139">139</a>     @Test
 <a class="jxr_linenumber" name="L140" href="#L140">140</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIndexedInitialize() {
 <a class="jxr_linenumber" name="L141" href="#L141">141</a>         <em class="jxr_comment">// Update some values in the indexed properties</em>
-<a class="jxr_linenumber" name="L142" href="#L142">142</a>         dynaForm.set(<span class="jxr_string">"intArray"</span>, 1, <strong class="jxr_keyword">new</strong> Integer(111));
-<a class="jxr_linenumber" name="L143" href="#L143">143</a>         assertEquals(<strong class="jxr_keyword">new</strong> Integer(111), dynaForm.get(<span class="jxr_string">"intArray"</span>, 1),
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>         dynaForm.set(<span class="jxr_string">"intArray"</span>, 1, Integer.valueOf(111));
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>         assertEquals(Integer.valueOf(111), dynaForm.get(<span class="jxr_string">"intArray"</span>, 1),
 <a class="jxr_linenumber" name="L144" href="#L144">144</a>             <span class="jxr_string">"intArray[1]"</span>);
-<a class="jxr_linenumber" name="L145" href="#L145">145</a>         dynaForm.set(<span class="jxr_string">"intIndexed"</span>, 2, <strong class="jxr_keyword">new</strong> Integer(222));
-<a class="jxr_linenumber" name="L146" href="#L146">146</a>         assertEquals(<strong class="jxr_keyword">new</strong> Integer(222), dynaForm.get(<span class="jxr_string">"intIndexed"</span>, 2),
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>         dynaForm.set(<span class="jxr_string">"intIndexed"</span>, 2, Integer.valueOf(222));
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>         assertEquals(Integer.valueOf(222), dynaForm.get(<span class="jxr_string">"intIndexed"</span>, 2),
 <a class="jxr_linenumber" name="L147" href="#L147">147</a>             <span class="jxr_string">"intIndexed[2]"</span>);
 <a class="jxr_linenumber" name="L148" href="#L148">148</a>         dynaForm.set(<span class="jxr_string">"stringArray"</span>, 3, <span class="jxr_string">"New String 3"</span>);
 <a class="jxr_linenumber" name="L149" href="#L149">149</a>         assertEquals(<span class="jxr_string">"New String 3"</span>, dynaForm.get(<span class="jxr_string">"stringArray"</span>, 3),
@@ -175,11 +175,11 @@
 <a class="jxr_linenumber" name="L167" href="#L167">167</a>         assertEquals(Boolean.FALSE, dynaForm.get(<span class="jxr_string">"booleanProperty"</span>),
 <a class="jxr_linenumber" name="L168" href="#L168">168</a>             <span class="jxr_string">"booleanProperty"</span>);
 <a class="jxr_linenumber" name="L169" href="#L169">169</a>         dynaForm.set(<span class="jxr_string">"booleanSecond"</span>, Boolean.FALSE);
-<a class="jxr_linenumber" name="L170" href="#L170">170</a>         dynaForm.set(<span class="jxr_string">"doubleProperty"</span>, <strong class="jxr_keyword">new</strong> Double(654.0));
-<a class="jxr_linenumber" name="L171" href="#L171">171</a>         dynaForm.set(<span class="jxr_string">"floatProperty"</span>, <strong class="jxr_keyword">new</strong> Float((<strong class="jxr_keyword">float</strong>) 543.0));
-<a class="jxr_linenumber" name="L172" href="#L172">172</a>         dynaForm.set(<span class="jxr_string">"intProperty"</span>, <strong class="jxr_keyword">new</strong> Integer(555));
-<a class="jxr_linenumber" name="L173" href="#L173">173</a>         dynaForm.set(<span class="jxr_string">"longProperty"</span>, <strong class="jxr_keyword">new</strong> Long((<strong class="jxr_keyword">long</strong>) 777));
-<a class="jxr_linenumber" name="L174" href="#L174">174</a>         dynaForm.set(<span class="jxr_string">"shortProperty"</span>, <strong class="jxr_keyword">new</strong> Short((<strong class="jxr_keyword">short</strong>) 222));
+<a class="jxr_linenumber" name="L170" href="#L170">170</a>         dynaForm.set(<span class="jxr_string">"doubleProperty"</span>, Double.valueOf(654.0));
+<a class="jxr_linenumber" name="L171" href="#L171">171</a>         dynaForm.set(<span class="jxr_string">"floatProperty"</span>, Float.valueOf((<strong class="jxr_keyword">float</strong>) 543.0));
+<a class="jxr_linenumber" name="L172" href="#L172">172</a>         dynaForm.set(<span class="jxr_string">"intProperty"</span>, Integer.valueOf(555));
+<a class="jxr_linenumber" name="L173" href="#L173">173</a>         dynaForm.set(<span class="jxr_string">"longProperty"</span>, Long.valueOf(777));
+<a class="jxr_linenumber" name="L174" href="#L174">174</a>         dynaForm.set(<span class="jxr_string">"shortProperty"</span>, Short.valueOf((<strong class="jxr_keyword">short</strong>) 222));
 <a class="jxr_linenumber" name="L175" href="#L175">175</a>         dynaForm.set(<span class="jxr_string">"stringProperty"</span>, <span class="jxr_string">"New String Value"</span>);
 <a class="jxr_linenumber" name="L176" href="#L176">176</a>         assertEquals(<span class="jxr_string">"New String Value"</span>, dynaForm.get(<span class="jxr_string">"stringProperty"</span>),
 <a class="jxr_linenumber" name="L177" href="#L177">177</a>             <span class="jxr_string">"stringProperty"</span>);
@@ -527,9 +527,9 @@
 <a class="jxr_linenumber" name="L519" href="#L519">519</a>         <em class="jxr_comment">// set a choice set of props with non-initial values</em>
 <a class="jxr_linenumber" name="L520" href="#L520">520</a>         dynaForm.set(<span class="jxr_string">"booleanProperty"</span>, Boolean.FALSE);
 <a class="jxr_linenumber" name="L521" href="#L521">521</a>         dynaForm.set(<span class="jxr_string">"booleanSecond"</span>, Boolean.FALSE);
-<a class="jxr_linenumber" name="L522" href="#L522">522</a>         dynaForm.set(<span class="jxr_string">"doubleProperty"</span>, <strong class="jxr_keyword">new</strong> Double(456.0));
-<a class="jxr_linenumber" name="L523" href="#L523">523</a>         dynaForm.set(<span class="jxr_string">"floatProperty"</span>, <strong class="jxr_keyword">new</strong> Float((<strong class="jxr_keyword">float</strong>) 456.0));
-<a class="jxr_linenumber" name="L524" href="#L524">524</a>         dynaForm.set(<span class="jxr_string">"intProperty"</span>, <strong class="jxr_keyword">new</strong> Integer(456));
+<a class="jxr_linenumber" name="L522" href="#L522">522</a>         dynaForm.set(<span class="jxr_string">"doubleProperty"</span>, Double.valueOf(456.0));
+<a class="jxr_linenumber" name="L523" href="#L523">523</a>         dynaForm.set(<span class="jxr_string">"floatProperty"</span>, Float.valueOf((<strong class="jxr_keyword">float</strong>) 456.0));
+<a class="jxr_linenumber" name="L524" href="#L524">524</a>         dynaForm.set(<span class="jxr_string">"intProperty"</span>, Integer.valueOf(456));
 <a class="jxr_linenumber" name="L525" href="#L525">525</a> 
 <a class="jxr_linenumber" name="L526" href="#L526">526</a>         <a name="MockHttpServletRequest" href="../../../../org/apache/struts/mock/MockHttpServletRequest.html#MockHttpServletRequest">MockHttpServletRequest</a> request = <strong class="jxr_keyword">new</strong> <a name="MockHttpServletRequest" href="../../../../org/apache/struts/mock/MockHttpServletRequest.html#MockHttpServletRequest">MockHttpServletRequest</a>();
 <a class="jxr_linenumber" name="L527" href="#L527">527</a> 
@@ -540,11 +540,11 @@
 <a class="jxr_linenumber" name="L532" href="#L532">532</a>             <span class="jxr_string">"booleanProperty should be reset"</span>);
 <a class="jxr_linenumber" name="L533" href="#L533">533</a>         assertEquals(Boolean.TRUE, dynaForm.get(<span class="jxr_string">"booleanSecond"</span>),
 <a class="jxr_linenumber" name="L534" href="#L534">534</a>             <span class="jxr_string">"booleanSecond should be reset"</span>);
-<a class="jxr_linenumber" name="L535" href="#L535">535</a>         assertEquals(<strong class="jxr_keyword">new</strong> Double(321.0), dynaForm.get(<span class="jxr_string">"doubleProperty"</span>),
+<a class="jxr_linenumber" name="L535" href="#L535">535</a>         assertEquals(Double.valueOf(321.0), dynaForm.get(<span class="jxr_string">"doubleProperty"</span>),
 <a class="jxr_linenumber" name="L536" href="#L536">536</a>             <span class="jxr_string">"doubleProperty should be reset"</span>);
-<a class="jxr_linenumber" name="L537" href="#L537">537</a>         assertEquals(<strong class="jxr_keyword">new</strong> Float((<strong class="jxr_keyword">float</strong>) 456.0), dynaForm.get(<span class="jxr_string">"floatProperty"</span>),
+<a class="jxr_linenumber" name="L537" href="#L537">537</a>         assertEquals(Float.valueOf((<strong class="jxr_keyword">float</strong>) 456.0), dynaForm.get(<span class="jxr_string">"floatProperty"</span>),
 <a class="jxr_linenumber" name="L538" href="#L538">538</a>             <span class="jxr_string">"floatProperty should NOT be reset"</span>);
-<a class="jxr_linenumber" name="L539" href="#L539">539</a>         assertEquals(<strong class="jxr_keyword">new</strong> Integer(456), dynaForm.get(<span class="jxr_string">"intProperty"</span>),
+<a class="jxr_linenumber" name="L539" href="#L539">539</a>         assertEquals(Integer.valueOf(456), dynaForm.get(<span class="jxr_string">"intProperty"</span>),
 <a class="jxr_linenumber" name="L540" href="#L540">540</a>             <span class="jxr_string">"intProperty should NOT be reset"</span>);
 <a class="jxr_linenumber" name="L541" href="#L541">541</a>     }
 <a class="jxr_linenumber" name="L542" href="#L542">542</a> 
@@ -556,9 +556,9 @@
 <a class="jxr_linenumber" name="L548" href="#L548">548</a>         <em class="jxr_comment">// set a choice set of props with non-initial values</em>
 <a class="jxr_linenumber" name="L549" href="#L549">549</a>         dynaForm.set(<span class="jxr_string">"booleanProperty"</span>, Boolean.FALSE);
 <a class="jxr_linenumber" name="L550" href="#L550">550</a>         dynaForm.set(<span class="jxr_string">"booleanSecond"</span>, Boolean.FALSE);
-<a class="jxr_linenumber" name="L551" href="#L551">551</a>         dynaForm.set(<span class="jxr_string">"doubleProperty"</span>, <strong class="jxr_keyword">new</strong> Double(456.0));
-<a class="jxr_linenumber" name="L552" href="#L552">552</a>         dynaForm.set(<span class="jxr_string">"floatProperty"</span>, <strong class="jxr_keyword">new</strong> Float((<strong class="jxr_keyword">float</strong>) 456.0));
-<a class="jxr_linenumber" name="L553" href="#L553">553</a>         dynaForm.set(<span class="jxr_string">"intProperty"</span>, <strong class="jxr_keyword">new</strong> Integer(456));
+<a class="jxr_linenumber" name="L551" href="#L551">551</a>         dynaForm.set(<span class="jxr_string">"doubleProperty"</span>, Double.valueOf(456.0));
+<a class="jxr_linenumber" name="L552" href="#L552">552</a>         dynaForm.set(<span class="jxr_string">"floatProperty"</span>, Float.valueOf((<strong class="jxr_keyword">float</strong>) 456.0));
+<a class="jxr_linenumber" name="L553" href="#L553">553</a>         dynaForm.set(<span class="jxr_string">"intProperty"</span>, Integer.valueOf(456));
 <a class="jxr_linenumber" name="L554" href="#L554">554</a> 
 <a class="jxr_linenumber" name="L555" href="#L555">555</a>         <a name="MockHttpServletRequest" href="../../../../org/apache/struts/mock/MockHttpServletRequest.html#MockHttpServletRequest">MockHttpServletRequest</a> request = <strong class="jxr_keyword">new</strong> <a name="MockHttpServletRequest" href="../../../../org/apache/struts/mock/MockHttpServletRequest.html#MockHttpServletRequest">MockHttpServletRequest</a>();
 <a class="jxr_linenumber" name="L556" href="#L556">556</a> 
@@ -569,11 +569,11 @@
 <a class="jxr_linenumber" name="L561" href="#L561">561</a>             <span class="jxr_string">"booleanProperty should be reset"</span>);
 <a class="jxr_linenumber" name="L562" href="#L562">562</a>         assertEquals(Boolean.TRUE, dynaForm.get(<span class="jxr_string">"booleanSecond"</span>),
 <a class="jxr_linenumber" name="L563" href="#L563">563</a>             <span class="jxr_string">"booleanSecond should be reset"</span>);
-<a class="jxr_linenumber" name="L564" href="#L564">564</a>         assertEquals(<strong class="jxr_keyword">new</strong> Double(456), dynaForm.get(<span class="jxr_string">"doubleProperty"</span>),
+<a class="jxr_linenumber" name="L564" href="#L564">564</a>         assertEquals(Double.valueOf(456), dynaForm.get(<span class="jxr_string">"doubleProperty"</span>),
 <a class="jxr_linenumber" name="L565" href="#L565">565</a>             <span class="jxr_string">"doubleProperty should NOT be reset"</span>);
-<a class="jxr_linenumber" name="L566" href="#L566">566</a>         assertEquals(<strong class="jxr_keyword">new</strong> Float((<strong class="jxr_keyword">float</strong>) 123.0), dynaForm.get(<span class="jxr_string">"floatProperty"</span>),
+<a class="jxr_linenumber" name="L566" href="#L566">566</a>         assertEquals(Float.valueOf((<strong class="jxr_keyword">float</strong>) 123.0), dynaForm.get(<span class="jxr_string">"floatProperty"</span>),
 <a class="jxr_linenumber" name="L567" href="#L567">567</a>             <span class="jxr_string">"floatProperty should be reset"</span>);
-<a class="jxr_linenumber" name="L568" href="#L568">568</a>         assertEquals(<strong class="jxr_keyword">new</strong> Integer(456), dynaForm.get(<span class="jxr_string">"intProperty"</span>),
+<a class="jxr_linenumber" name="L568" href="#L568">568</a>         assertEquals(Integer.valueOf(456), dynaForm.get(<span class="jxr_string">"intProperty"</span>),
 <a class="jxr_linenumber" name="L569" href="#L569">569</a>             <span class="jxr_string">"intProperty should NOT be reset"</span>);
 <a class="jxr_linenumber" name="L570" href="#L570">570</a>     }
 <a class="jxr_linenumber" name="L571" href="#L571">571</a> 
@@ -583,7 +583,7 @@
 <a class="jxr_linenumber" name="L575" href="#L575">575</a>     @Test
 <a class="jxr_linenumber" name="L576" href="#L576">576</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSetIndexedArguments() {
 <a class="jxr_linenumber" name="L577" href="#L577">577</a>         <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L578" href="#L578">578</a>             dynaForm.set(<span class="jxr_string">"intArray"</span>, -1, <strong class="jxr_keyword">new</strong> Integer(0));
+<a class="jxr_linenumber" name="L578" href="#L578">578</a>             dynaForm.set(<span class="jxr_string">"intArray"</span>, -1, Integer.valueOf(0));
 <a class="jxr_linenumber" name="L579" href="#L579">579</a>             fail(<span class="jxr_string">"Should throw IndexOutOfBoundsException"</span>);
 <a class="jxr_linenumber" name="L580" href="#L580">580</a>         } <strong class="jxr_keyword">catch</strong> (IndexOutOfBoundsException e) {
 <a class="jxr_linenumber" name="L581" href="#L581">581</a>             ; <em class="jxr_comment">// Expected response</em>
@@ -597,14 +597,14 @@
 <a class="jxr_linenumber" name="L589" href="#L589">589</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSetIndexedValues() {
 <a class="jxr_linenumber" name="L590" href="#L590">590</a>         Object value = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L591" href="#L591">591</a> 
-<a class="jxr_linenumber" name="L592" href="#L592">592</a>         dynaForm.set(<span class="jxr_string">"intArray"</span>, 0, <strong class="jxr_keyword">new</strong> Integer(1));
+<a class="jxr_linenumber" name="L592" href="#L592">592</a>         dynaForm.set(<span class="jxr_string">"intArray"</span>, 0, Integer.valueOf(1));
 <a class="jxr_linenumber" name="L593" href="#L593">593</a>         value = dynaForm.get(<span class="jxr_string">"intArray"</span>, 0);
 <a class="jxr_linenumber" name="L594" href="#L594">594</a>         assertNotNull(value, <span class="jxr_string">"Returned new value 0"</span>);
 <a class="jxr_linenumber" name="L595" href="#L595">595</a>         assertInstanceOf(Integer.<strong class="jxr_keyword">class</strong>, value, <span class="jxr_string">"Returned Integer new value 0"</span>);
 <a class="jxr_linenumber" name="L596" href="#L596">596</a>         assertEquals(1, (Integer) value,
 <a class="jxr_linenumber" name="L597" href="#L597">597</a>             <span class="jxr_string">"Returned correct new value 0"</span>);
 <a class="jxr_linenumber" name="L598" href="#L598">598</a> 
-<a class="jxr_linenumber" name="L599" href="#L599">599</a>         dynaForm.set(<span class="jxr_string">"intIndexed"</span>, 1, <strong class="jxr_keyword">new</strong> Integer(11));
+<a class="jxr_linenumber" name="L599" href="#L599">599</a>         dynaForm.set(<span class="jxr_string">"intIndexed"</span>, 1, Integer.valueOf(11));
 <a class="jxr_linenumber" name="L600" href="#L600">600</a>         value = dynaForm.get(<span class="jxr_string">"intIndexed"</span>, 1);
 <a class="jxr_linenumber" name="L601" href="#L601">601</a>         assertNotNull(value, <span class="jxr_string">"Returned new value 1"</span>);
 <a class="jxr_linenumber" name="L602" href="#L602">602</a>         assertInstanceOf(Integer.<strong class="jxr_keyword">class</strong>, value, <span class="jxr_string">"Returned Integer new value 1"</span>);
@@ -757,8 +757,8 @@
 <a class="jxr_linenumber" name="L749" href="#L749">749</a> 
 <a class="jxr_linenumber" name="L750" href="#L750">750</a>         Map&lt;String, Integer&gt; mappedIntProperty = <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
 <a class="jxr_linenumber" name="L751" href="#L751">751</a> 
-<a class="jxr_linenumber" name="L752" href="#L752">752</a>         mappedIntProperty.put(<span class="jxr_string">"One"</span>, <strong class="jxr_keyword">new</strong> Integer(1));
-<a class="jxr_linenumber" name="L753" href="#L753">753</a>         mappedIntProperty.put(<span class="jxr_string">"Two"</span>, <strong class="jxr_keyword">new</strong> Integer(2));
+<a class="jxr_linenumber" name="L752" href="#L752">752</a>         mappedIntProperty.put(<span class="jxr_string">"One"</span>, Integer.valueOf(1));
+<a class="jxr_linenumber" name="L753" href="#L753">753</a>         mappedIntProperty.put(<span class="jxr_string">"Two"</span>, Integer.valueOf(2));
 <a class="jxr_linenumber" name="L754" href="#L754">754</a>         dynaForm.set(<span class="jxr_string">"mappedIntProperty"</span>, mappedIntProperty);
 <a class="jxr_linenumber" name="L755" href="#L755">755</a>     }
 <a class="jxr_linenumber" name="L756" href="#L756">756</a> 

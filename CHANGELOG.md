@@ -1,7 +1,8 @@
 # Changes
 
-## 1.4.4 / YYYY-MM-DD
+## 1.4.4 / 2022-11-14
 
+* Set Version to 1.4.4
 * Some updates in `README.md`
 * Update documentation for version 1.4.4
 * Set all XML-encodings to UTF-8

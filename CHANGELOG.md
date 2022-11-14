@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Upgrade `jsp-api` from 2.3.6 to 3.0.0
 * Upgrade `servlet-api` from to 4.0.4 to 5.0.0
 * Change all `javax.*`- to `jakarta.*`-namespaces with `Tomcat Migration Tool 1.0.5`
 * Use `tomcat` 10.0.27 instead 9.0.68 for integration-tests

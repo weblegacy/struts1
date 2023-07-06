@@ -23,6 +23,8 @@ package org.apache.struts.util;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -35,6 +37,9 @@ import org.slf4j.LoggerFactory;
  *          $
  */
 public class ResponseUtils {
+	
+	protected static Pattern XML_ENTITY_PATTERN = Pattern.compile("&(?:[a-z\\d]+|#\\d+|#x[a-f\\d]+);");
+	
     // ------------------------------------------------------- Static Variables
 
     /**
@@ -82,8 +87,11 @@ public class ResponseUtils {
                 break;
 
             case '&':
-                filtered = "&amp;";
-
+            	if ( isStartOfXmlEntity(value,i) ) {
+            		filtered = "&"; // leave unchanged
+            	} else {
+            		filtered = "&amp;";
+            	}
                 break;
 
             case '"':
@@ -120,6 +128,21 @@ public class ResponseUtils {
     }
 
     /**
+     * Checks, if a given string contains a XML entity starting at a specified position
+     * @param str the string value to check
+     * @param startpos the index where the entity is expected to start
+     * @return <code>true</code> if a XML entity was found, <code>false</code> otherwise
+     */
+    private static boolean isStartOfXmlEntity(String str, int startpos) {
+    	Matcher matcher = XML_ENTITY_PATTERN.matcher(str.substring(startpos));
+    	if ( matcher.find() && matcher.start() == 0 ) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+	}
+
+	/**
      * URLencodes a string assuming the character encoding is UTF-8.
      *
      * @param url
@@ -162,4 +185,5 @@ public class ResponseUtils {
         return str;
 
     }
+
 }

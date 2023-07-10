@@ -59,5 +59,6 @@ public class TestResponseUtils extends TestMockBase {
         assertEquals("123&lt;&gt;&quot;&#39;456", ResponseUtils.filter("123<>\"'456"));
         assertEquals("123&Uuml;456;", ResponseUtils.filter("123&Uuml;456;"));
         assertEquals("123&x;456", ResponseUtils.filter("123&x;456"));        
+        assertEquals("123&amp;1;456", ResponseUtils.filter("123&1;456"));        
    }
 }

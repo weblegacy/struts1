@@ -38,7 +38,7 @@ import org.slf4j.LoggerFactory;
  */
 public class ResponseUtils {
 	
-	protected static Pattern XML_ENTITY_PATTERN = Pattern.compile("&(?:[a-z\\d]+|#\\d+|#x[a-f\\d]+);");
+	protected static Pattern XML_ENTITY_PATTERN = Pattern.compile("&(?:[a-zA-Z][a-zA-Z\\d]*|#\\d+|#x[a-fA-F\\d]+);");
 	
     // ------------------------------------------------------- Static Variables
 
@@ -87,12 +87,11 @@ public class ResponseUtils {
                 break;
 
             case '&':
-            	if ( isStartOfXmlEntity(value,i) ) {
-            		filtered = "&"; // leave unchanged
-            	} else {
+            	if (!isStartOfXmlEntity(value,i)) {
             		filtered = "&amp;";
             	}
-                break;
+
+            	break;
 
             case '"':
                 filtered = "&quot;";
@@ -135,11 +134,7 @@ public class ResponseUtils {
      */
     private static boolean isStartOfXmlEntity(String str, int startpos) {
     	Matcher matcher = XML_ENTITY_PATTERN.matcher(str.substring(startpos));
-    	if ( matcher.find() && matcher.start() == 0 ) {
-    		return true;
-    	} else {
-    		return false;
-    	}
+    	return matcher.find() && matcher.start() == 0;
 	}
 
 	/**

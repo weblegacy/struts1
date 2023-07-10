@@ -50,11 +50,14 @@ public class TestResponseUtils extends TestMockBase {
     @Test
     public void testFilter() {
         assertEquals("123&amp;456", ResponseUtils.filter("123&456"));
+        assertEquals("123&amp;456;", ResponseUtils.filter("123&456;"));
         assertEquals("123&amp;456", ResponseUtils.filter("123&amp;456"));
         assertEquals("123&#123;456", ResponseUtils.filter("123&#123;456"));
         assertEquals("123&amp;#12a;456", ResponseUtils.filter("123&#12a;456"));
         assertEquals("123&#x12a;456", ResponseUtils.filter("123&#x12a;456"));
         assertEquals("123&amp;#x12ah;456", ResponseUtils.filter("123&#x12ah;456"));
         assertEquals("123&lt;&gt;&quot;&#39;456", ResponseUtils.filter("123<>\"'456"));
+        assertEquals("123&Uuml;456;", ResponseUtils.filter("123&Uuml;456;"));
+        assertEquals("123&x;456", ResponseUtils.filter("123&x;456"));        
    }
 }

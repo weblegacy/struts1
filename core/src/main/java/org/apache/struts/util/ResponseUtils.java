@@ -71,8 +71,10 @@ public class ResponseUtils {
 
         StringBuilder result = null;
         String filtered = null;
+        Matcher entityMatcher = null;
+        final int length = value.length();
 
-        for (int i = 0; i < value.length(); i++) {
+        for (int i = 0; i < length; i++) {
             filtered = null;
 
             switch (value.charAt(i)) {
@@ -87,7 +89,22 @@ public class ResponseUtils {
                 break;
 
             case '&':
-            	if (!isStartOfXmlEntity(value,i)) {
+            	if (entityMatcher == null) {
+            		entityMatcher = XML_ENTITY_PATTERN.matcher(value);
+            	}
+            	entityMatcher.region(i, length);
+            	if (entityMatcher.lookingAt()) {
+            		filtered = value.substring(entityMatcher.start(), entityMatcher.end());
+            		if (result == null) {
+                        result = new StringBuilder(length + 50);
+                        if (i > 0) {
+                            result.append(value.substring(0, i));
+                        }
+            		}
+            		result.append(filtered);
+            		i += filtered.length()-1;
+            		continue;
+            	} else {
             		filtered = "&amp;";
             	}
 
@@ -106,7 +123,7 @@ public class ResponseUtils {
 
             if (result == null) {
                 if (filtered != null) {
-                    result = new StringBuilder(value.length() + 50);
+                    result = new StringBuilder(length + 50);
 
                     if (i > 0) {
                         result.append(value.substring(0, i));
@@ -125,17 +142,6 @@ public class ResponseUtils {
 
         return (result == null) ? value : result.toString();
     }
-
-    /**
-     * Checks, if a given string contains a XML entity starting at a specified position
-     * @param str the string value to check
-     * @param startpos the index where the entity is expected to start
-     * @return <code>true</code> if a XML entity was found, <code>false</code> otherwise
-     */
-    private static boolean isStartOfXmlEntity(String str, int startpos) {
-    	Matcher matcher = XML_ENTITY_PATTERN.matcher(str.substring(startpos));
-    	return matcher.find() && matcher.start() == 0;
-	}
 
 	/**
      * URLencodes a string assuming the character encoding is UTF-8.

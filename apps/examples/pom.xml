@@ -44,8 +44,12 @@
          <artifactId>struts-extras</artifactId>
       </dependency>
       <dependency>
-         <groupId>commons-fileupload</groupId>
-         <artifactId>commons-fileupload</artifactId>
+         <groupId>org.apache.commons</groupId>
+         <artifactId>commons-fileupload2-core</artifactId>
+      </dependency>
+      <dependency>
+         <groupId>org.apache.commons</groupId>
+         <artifactId>commons-fileupload2-core</artifactId>
       </dependency>
       <dependency>
          <groupId>commons-io</groupId>

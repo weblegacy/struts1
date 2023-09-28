@@ -715,7 +715,7 @@
                         <strong>FileUpload Package</strong>
                         [
                         <a href="http://jakarta.apache.org/commons/fileupload/">
-                            <code>org.apache.commons.fileupload</code>
+                            <code>org.apache.commons.fileupload2.core</code>
                         </a>
                         ]
                     </li>

@@ -280,7 +280,7 @@
                     <strong>FileUpload Package</strong>
                     [
                     <a href="http://cvs.apache.org/viewcvs/jakarta-commons-sandbox/fileupload/">
-                        <code>org.apache.commons.fileupload</code>
+                        <code>org.apache.commons.fileupload2.core</code>
                     </a>
                     ]
                 </li>

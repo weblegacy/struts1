@@ -25,6 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -35,12 +36,14 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletInputStream;
 import jakarta.servlet.http.HttpServletRequest;
 
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.FileUploadBase.SizeLimitExceededException;
-import org.apache.commons.fileupload.FileUploadException;
-import org.apache.commons.fileupload.disk.DiskFileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.core.FileUploadSizeException;
+import org.apache.commons.fileupload2.core.FileUploadException;
+import org.apache.commons.fileupload2.core.DiskFileItem;
+import org.apache.commons.fileupload2.core.DiskFileItemFactory;
+import org.apache.commons.fileupload2.jakarta.JakartaServletFileUpload;
+import org.apache.commons.io.build.AbstractOriginSupplier;
+import org.apache.commons.io.build.AbstractStreamBuilder;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionServlet;
@@ -167,20 +170,20 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
             (ModuleConfig) request.getAttribute(Globals.MODULE_KEY);
 
         // Create a factory for disk-based file items
-        DiskFileItemFactory factory = new DiskFileItemFactory();
+        DiskFileItemFactory.Builder factory = DiskFileItemFactory.builder();
 
         // Set the maximum size that will be stored in memory.
-        factory.setSizeThreshold((int) getSizeThreshold(ac));
+        factory.setBufferSize((int) getSizeThreshold(ac));
 
         // Set the the location for saving data on disk.
-        factory.setRepository(getRepositoryFile(ac));
+        factory.setFile(getRepositoryFile(ac));
 
         // Create a new file upload handler
-        ServletFileUpload upload = new ServletFileUpload(factory);
+        JakartaServletFileUpload upload = new JakartaServletFileUpload(factory.get());
 
         // The following line is to support an "EncodingFilter"
         // see http://issues.apache.org/bugzilla/show_bug.cgi?id=23255
-        upload.setHeaderEncoding(request.getCharacterEncoding());
+        upload.setHeaderCharset(Charset.forName(request.getCharacterEncoding()));
 
         // Set the maximum size before a FileUploadException will be thrown.
         upload.setSizeMax(getSizeMax(ac));
@@ -195,7 +198,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
 
         try {
             items = upload.parseRequest(request);
-        } catch (SizeLimitExceededException e) {
+        } catch (FileUploadSizeException e) {
             // Special handling for uploads that are too big.
             request.setAttribute(MultipartRequestHandler.ATTRIBUTE_MAX_LENGTH_EXCEEDED,
                 Boolean.TRUE);
@@ -420,15 +423,15 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         String name = item.getFieldName();
         String value = null;
         boolean haveValue = false;
-        String encoding = null;
+        Charset encoding = null;
 
         if (item instanceof DiskFileItem) {
-            encoding = ((DiskFileItem)item).getCharSet();
-            log.debug("DiskFileItem.getCharSet=[{}]", encoding);
+            encoding = ((DiskFileItem)item).getCharset();
+            log.debug("DiskFileItem.getCharset=[{}]", encoding);
         }
 
         if (encoding == null) {
-            encoding = request.getCharacterEncoding();
+            encoding = Charset.forName(request.getCharacterEncoding());
             log.debug("request.getCharacterEncoding=[{}]", encoding);
         }
 
@@ -443,7 +446,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
 
         if (!haveValue) {
             try {
-                value = item.getString("ISO-8859-1");
+                value = item.getString(Charset.forName("ISO-8859-1"));
             } catch (java.io.UnsupportedEncodingException uee) {
                 value = item.getString();
             }

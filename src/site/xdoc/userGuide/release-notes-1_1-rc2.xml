@@ -695,8 +695,8 @@
                     <li>
                         <strong>FileUpload Package</strong>
                         [
-                        <a href="http://jakarta.apache.org/commons/fileupload/">
-                            <code>org.apache.commons.fileupload2.core</code>
+                        <a href="https://github.com/apache/commons-fileupload/tree/1.x">
+                            <code>org.apache.commons.fileupload</code>
                         </a>
                         ]
                     </li>

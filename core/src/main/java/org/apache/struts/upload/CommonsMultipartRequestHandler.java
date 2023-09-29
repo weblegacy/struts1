@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -446,7 +447,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
 
         if (!haveValue) {
             try {
-                value = item.getString(Charset.forName("ISO-8859-1"));
+                value = item.getString(StandardCharsets.ISO_8859_1);
             } catch (java.io.UnsupportedEncodingException uee) {
                 value = item.getString();
             }

@@ -21,12 +21,14 @@
 
 package org.apache.struts.tiles2.preparer;
 
+import io.github.weblegacy.tiles.request.servlet.ServletRequest;
+
 import org.apache.struts.action.Action;
 import org.apache.tiles.AttributeContext;
 import org.apache.tiles.preparer.PreparerException;
 import org.apache.tiles.preparer.ViewPreparer;
 import org.apache.tiles.request.Request;
-import org.apache.tiles.request.servlet.ServletRequest;
+
 
 /**
  * Struts wrapper implementation of Controller.  This implementation wraps an

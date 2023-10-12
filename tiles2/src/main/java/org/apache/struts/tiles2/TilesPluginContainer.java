@@ -21,6 +21,8 @@
 
 package org.apache.struts.tiles2;
 
+import io.github.weblegacy.tiles.request.servlet.ServletRequest;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +35,6 @@ import org.apache.tiles.definition.DefinitionsFactory;
 import org.apache.tiles.impl.BasicTilesContainer;
 import org.apache.tiles.locale.LocaleResolver;
 import org.apache.tiles.request.Request;
-import org.apache.tiles.request.servlet.ServletRequest;
 
 public class TilesPluginContainer extends BasicTilesContainer {
 

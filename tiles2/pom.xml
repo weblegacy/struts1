@@ -70,7 +70,7 @@
          <artifactId>tiles-request-api</artifactId>
       </dependency>
       <dependency>
-         <groupId>org.apache.tiles</groupId>
+         <groupId>io.github.weblegacy</groupId>
          <artifactId>tiles-request-servlet</artifactId>
       </dependency>
       <dependency>

@@ -21,6 +21,9 @@
 
 package org.apache.struts.tiles2.actions;
 
+import io.github.weblegacy.tiles.request.servlet.ServletRequest;
+import io.github.weblegacy.tiles.request.servlet.ServletUtil;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -34,8 +37,6 @@ import org.apache.tiles.TilesContainer;
 import org.apache.tiles.access.TilesAccess;
 import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.Request;
-import org.apache.tiles.request.servlet.ServletRequest;
-import org.apache.tiles.request.servlet.ServletUtil;
 
 /**
  * Base class for Tiles Actions.

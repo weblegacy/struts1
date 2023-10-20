@@ -18,8 +18,8 @@
  * specific language governing permissions and limitations
  * under the License.
  */
+import jakarta.servlet.ServletException;
 import java.lang.reflect.InvocationTargetException;
-import javax.servlet.ServletException;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.struts.apps.scriptingmailreader.*;
 import org.apache.struts.apps.mailreader.dao.*;

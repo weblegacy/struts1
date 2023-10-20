@@ -1,5 +1,9 @@
 # Changes
 
+## 1.4.5 / YYYY-MM-DD
+
+* Replace apache commons-chain 1.2 with weblegacy commons-chain 1.3
+
 ## 1.4.4 / 2022-11-14
 
 * Set Version to 1.4.4

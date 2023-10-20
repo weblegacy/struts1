@@ -378,6 +378,7 @@
         <jsfVersion>2.3.2</jsfVersion>
         <jsfImplVersion>2.3.18</jsfImplVersion>
         <jaxbVersion>2.3.7</jaxbVersion>
+        <commonsChainVersion>1.3-SNAPSHOT</commonsChainVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
         <struts.osgi.import>*</struts.osgi.import>
@@ -979,19 +980,19 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>commons-chain</groupId>
+                <groupId>io.github.weblegacy</groupId>
                 <artifactId>commons-chain</artifactId>
-                <version>1.2</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>myfaces</groupId>
-                        <artifactId>myfaces-api</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>javax.portlet</groupId>
-                        <artifactId>portlet-api</artifactId>
-                    </exclusion>
-                </exclusions>
+                <version>${commonsChainVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.weblegacy</groupId>
+                <artifactId>commons-chain-web-javax</artifactId>
+                <version>${commonsChainVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.weblegacy</groupId>
+                <artifactId>commons-chain-web-javax-servlet</artifactId>
+                <version>${commonsChainVersion}</version>
             </dependency>
             <dependency>
                 <groupId>commons-digester</groupId>

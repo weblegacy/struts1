@@ -20,15 +20,13 @@
  */
 package org.apache.struts.chain.commands;
 
-import org.apache.commons.chain.Context;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <p>Simple abstract class which avoids frequent casting to
- * <code>ActionContext</code> in commands explicitly intended for use with
- * that class.</p>
+ * Simple abstract class which avoids frequent casting to {@code ActionContext}
+ * in commands explicitly intended for use with that class.
  */
 public abstract class ActionCommandBase implements ActionCommand {
 
@@ -41,11 +39,4 @@ public abstract class ActionCommandBase implements ActionCommand {
     // See interface for Javadoc
     public abstract boolean execute(ActionContext actionContext)
         throws Exception;
-
-    // See interface for Javadoc
-    public boolean execute(Context context)
-        throws Exception {
-        log.debug("Executing {}", getClass().getName());
-        return execute((ActionContext) context);
-    }
 }

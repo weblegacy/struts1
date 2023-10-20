@@ -29,9 +29,9 @@ import org.apache.struts.chain.contexts.ActionContextBase;
 import org.apache.struts.config.ActionConfig;
 
 /**
- * <p>Subclass this command and configure it as part of a per-forward chain to
+ * Subclass this command and configure it as part of a per-forward chain to
  * perform any necessary pre-population or other preparation for a form before
- * control is dispatched to the view layer.</p>
+ * control is dispatched to the view layer.
  *
  * @version $Id$
  */
@@ -39,48 +39,47 @@ public class CopyFormToContext extends ActionCommandBase {
     // ------------------------------------------------------ Instance Variables
 
     /**
-     * <p>The name of a form bean as configured in a struts-config.xml file
-     * for this module.  </p>
+     * The name of a form bean as configured in a {@code struts-config.xml}
+     * file for this module.
      *
-     * <p> Either actionPath or both this and scope are required configuration
-     * properties.</p>
+     * <p>Either {@code actionPath} or both this and scope are required
+     * configuration properties.</p>
      */
     private String formName = null;
 
     /**
-     * <p>The name of a scope, such as "request" or "session" in which the
-     * form to be prepared will be placed for reference by the view and other
-     * parts of Struts.</p>
+     * The name of a scope, such as "request" or "session" in which the form to
+     * be prepared will be placed for reference by the view and other parts of
+     * Struts.
      *
-     * <p>Either <code>actionPath</code> or both this and
-     * <code>formName</code> are required configuration properties.</p>
+     * <p>Either {@code actionPath} or both this and {@code formName} are
+     * required configuration properties.</p>
      */
     private String scope = null;
 
     /**
-     * <p>The path of an <code>&lt;action&gt;</code> mapping as configured in
-     * a <code>struts-config.xml</code> file for this module.  This action
-     * will be looked up, and its <code>name</code> and <code>scope</code>
-     * values will be used as if those values were configured directly in this
-     * instance's <code>formName</code> and <code>scope</code>
-     * properties.</p>
+     * The path of an {@code &lt;action&gt;} mapping as configured in a
+     * {@code struts-config.xml} file for this module. This action will be
+     * looked up, and its {@code name} and {@code scope} values will be used as
+     * if those values were configured directly in this instance's
+     * {@code formName} and {@code scope} properties.
      *
-     * <p>Either <code>this</code> or both <code>scope</code> and
-     * <code>formName</code> are required configuration properties.</p>
+     * <p>Either {@code this} or both {@code scope} and {@code formName} are
+     * required configuration properties.</p>
      */
     private String actionPath = null;
 
     /**
-     * The context key under which the form which was looked up will be
-     * stored. Defaults to "actionForm" but may be overridden in cases where
-     * the "request" ActionForm must be preserved.
+     * The context key under which the form which was looked up will be stored.
+     * Defaults to "actionForm" but may be overridden in cases where the
+     * "request" ActionForm must be preserved.
      */
     private String toKey = ActionContextBase.ACTION_FORM_KEY;
 
     // ------------------------------------------------------ Properties
 
     /**
-     * <p>Return ActionPath property.</p>
+     * Return {@code ActionPath} property.
      *
      * @return ActionPath property
      */
@@ -89,16 +88,16 @@ public class CopyFormToContext extends ActionCommandBase {
     }
 
     /**
-     * <p>Set ActionPath property.</p>
+     * Set {@code ActionPath} property.
      *
-     * @param actionPath New valuefor ActionPath
+     * @param actionPath New value for ActionPath
      */
     public void setActionPath(String actionPath) {
         this.actionPath = actionPath;
     }
 
     /**
-     * <p>Return FormName property.</p>
+     * Return {@code FormName} property.
      *
      * @return FormName property
      */
@@ -107,16 +106,16 @@ public class CopyFormToContext extends ActionCommandBase {
     }
 
     /**
-     * <p>Set FormName property.</p>
+     * Set {@code FormName} property
      *
-     * @param formName New valuefor FormName
+     * @param formName New value for FormName
      */
     public void setFormName(String formName) {
         this.formName = formName;
     }
 
     /**
-     * <p>Return Scope property.</p>
+     * Return {@code Scope} property.
      *
      * @return Scope property
      */
@@ -125,16 +124,16 @@ public class CopyFormToContext extends ActionCommandBase {
     }
 
     /**
-     * <p>Set Scope property.</p>
+     * Set {@code Scope} property.
      *
-     * @param scope New valuefor Scope
+     * @param scope New value for Scope
      */
     public void setScope(String scope) {
         this.scope = scope;
     }
 
     /**
-     * <p>Return ToKey property.</p>
+     * Return {@code ToKey} property.
      *
      * @return ToKey property
      */
@@ -143,9 +142,9 @@ public class CopyFormToContext extends ActionCommandBase {
     }
 
     /**
-     * <p>Set ToKey property.</p>
+     * Set {@code ToKey} property.
      *
-     * @param toKey New valuefor FormName
+     * @param toKey New value for FormName
      */
     public void setToKey(String toKey) {
         this.toKey = toKey;
@@ -154,19 +153,20 @@ public class CopyFormToContext extends ActionCommandBase {
     // ------------------------------------------------------
 
     /**
-     * <p>Look up an ActionForm instance based on the configured properties of
-     * this command and copy it into the <code>Context</code>.  After this
-     * command successfully executes, an ActionForm instance will exist in the
-     * specified scope and will be available, for example for backing fields
-     * in an HTML form.  It will also be in the <code>ActionContext</code>
-     * available for another command to do prepopulation of values or other
-     * preparation.</p>
+     * Look up an {@code ActionForm} instance based on the configured
+     * properties of this command and copy it into the {@code Context}. After
+     * this command successfully executes, an {@code ActionForm} instance will
+     * exist in the specified scope and will be available, for example for
+     * backing fields in an HTML form. It will also be in the
+     * {@code ActionContext} available for another command to do pre-population
+     * of values or other preparation.
      *
      * @param actionContext Our ActionContext
+     *
      * @return TRUE if processing should halt
+     *
      * @throws Exception on any error
      */
-    @SuppressWarnings("unchecked")
     public boolean execute(ActionContext actionContext)
         throws Exception {
         ActionForm form = findOrCreateForm(actionContext);
@@ -182,8 +182,8 @@ public class CopyFormToContext extends ActionCommandBase {
 
     /**
      * Based on the properties of this command and the given
-     * {@code ActionContext}, find or create an ActionForm
-     * instance for preparation.
+     * {@code ActionContext}, find or create an {@code ActionForm} instance for
+     * preparation.
      *
      * @param context ActionContextBase class that we are processing
      *
@@ -232,8 +232,8 @@ public class CopyFormToContext extends ActionCommandBase {
     }
 
     /**
-     * Actually find or create an instance of ActionForm configured under
-     * the form-bean-name {@code effectiveFormName}, looking in in the
+     * Actually find or create an instance of {@code ActionForm} configured
+     * under the form-bean-name {@code effectiveFormName}, looking in in the
      * {@code ActionContext's} scope as identified by {@code effectiveScope}.
      * If a form is created, it will also be stored in that scope.
      *
@@ -288,9 +288,10 @@ public class CopyFormToContext extends ActionCommandBase {
     }
 
     /**
-     * <p>Convenience method to test for an empty string.</p>
+     * Convenience method to test for an empty string.
      *
      * @param test String to test
+     *
      * @return TRUE if test is null or zero-length
      */
     private boolean isEmpty(String test) {

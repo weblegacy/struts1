@@ -25,21 +25,21 @@ import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.config.ForwardConfig;
 
 /**
- * <p>Look up and execute a commons-chain <code>Command</code> based on
- * properties of the ActionContext's <code>forwardConfig</code> property.
- * </p>
+ * Look up and execute a commons-chain {@code Command} based on properties of
+ * the ActionContext's {@code forwardConfig} property.
  */
 public class ExecuteForwardCommand extends ExecuteCommand {
+
     /**
-     * <p>Return the command specified by the <code>command</code> and
-     * <code>catalog</code> properties of the <code>forwardConfig</code>
-     * property of the given <code>ActionContext</code>.  If
-     * <code>forwardConfig</code> is null, return null.</p>
+     * Return the command specified by the {@code command} and {@code catalog}
+     * properties of the {@code forwardConfig} property of the given
+     * {@code ActionContext}. If {@code forwardConfig} is null, return null.
      *
      * @param context Our ActionContext
+     *
      * @return Command to execute or null
      */
-    protected Command getCommand(ActionContext context) {
+    protected Command<ActionContext> getCommand(ActionContext context) {
         ForwardConfig forwardConfig = context.getForwardConfig();
 
         if (forwardConfig == null) {
@@ -50,11 +50,12 @@ public class ExecuteForwardCommand extends ExecuteCommand {
     }
 
     /**
-     * <p> Determine whether the forwardConfig should be processed. </p>
+     * Determine whether the forwardConfig should be processed.
      *
      * @param context The ActionContext we are processing
-     * @return <p><code>true</code> if the given <code>ActionContext</code>
-     *         has a non-null <code>forwardConfig</code> property.</p>
+     *
+     * @return {@code true} if the given {@code ActionContext} has a non-null
+     *         {@code forwardConfig} property.
      */
     protected boolean shouldProcess(ActionContext context) {
         return (context.getForwardConfig() != null);

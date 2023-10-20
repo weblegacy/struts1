@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import javax.servlet.ServletException;
 
-import org.apache.commons.chain.web.servlet.ServletWebContext;
+import org.apache.commons.chain.web.javax.servlet.ServletWebContext;
 import org.apache.struts.chain.commands.UnauthorizedActionException;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ActionConfig;

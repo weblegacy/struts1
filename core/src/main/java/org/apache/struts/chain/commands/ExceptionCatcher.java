@@ -23,22 +23,17 @@ package org.apache.struts.chain.commands;
 import org.apache.commons.chain.Catalog;
 import org.apache.commons.chain.CatalogFactory;
 import org.apache.commons.chain.Command;
-import org.apache.commons.chain.Context;
 import org.apache.commons.chain.Filter;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <p>Intercept any exception thrown by a subsequent <code>Command</code> in
- * this processing chain, and fire the configured exception handler chain
- * after storing the exception that has occurred into the
- * <code>Context</code>. </p>
- *
- * @version $Rev$ $Date: 2005-11-12 13:01:44 -0500 (Sat, 12 Nov 2005)
- *          $
+ * Intercept any exception thrown by a subsequent {@code Command} in this
+ * processing chain, and fire the configured exception handler chain after
+ * storing the exception that has occurred into the {@code Context}.
  */
-public class ExceptionCatcher extends ActionCommandBase implements Filter {
+public class ExceptionCatcher extends ActionCommandBase implements Filter<ActionContext> {
 
     /**
      * The {@code Log} instance for this class.
@@ -49,21 +44,20 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
     // ------------------------------------------------------ Instance Variables
 
     /**
-     * <p> Field for CatalogName property. </p>
+     * Field for CatalogName property.
      */
     private String catalogName = null;
 
     /**
-     * <p> Field for ExceptionCommand property. </p>
+     * Field for ExceptionCommand property.
      */
     private String exceptionCommand = null;
 
     // -------------------------------------------------------------- Properties
 
     /**
-     * <p> Return the name of the <code>Catalog</code> in which to perform
-     * lookups, or <code>null</code> for the default <code>Catalog</code>.
-     * </p>
+     * Return the name of the {@code Catalog} in which to perform lookups, or
+     * {@code null} for the default {@code Catalog}.
      *
      * @return Name of catalog to use, or null
      */
@@ -72,18 +66,17 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
     }
 
     /**
-     * <p>Set the name of the <code>Catalog</code> in which to perform
-     * lookups, or <code>null</code> for the default <code>Catalog</code>.</p>
+     * Set the name of the {@code Catalog} in which to perform lookups, or
+     * {@code null} for the default {@code Catalog}.
      *
-     * @param catalogName The new catalog name or <code>null</code>
+     * @param catalogName The new catalog name or {@code null}
      */
     public void setCatalogName(String catalogName) {
         this.catalogName = catalogName;
     }
 
     /**
-     * <p> Return the name of the command to be executed if an exception
-     * occurs. </p>
+     * Return the name of the command to be executed if an exception occurs.
      *
      * @return The name of the command to be executed on an exception
      */
@@ -92,8 +85,7 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
     }
 
     /**
-     * <p>Set the name of the command to be executed if an exception
-     * occurs.</p>
+     * Set the name of the command to be executed if an exception occurs.
      *
      * @param exceptionCommand The name of the chain to be executed
      */
@@ -104,11 +96,13 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
     // ---------------------------------------------------------- Public Methods
 
     /**
-     * <p>Clear any existing stored exception and pass the
-     * <code>context</code> on to the remainder of the current chain.</p>
+     * Clear any existing stored exception and pass the {@code context} on to
+     * the remainder of the current chain.
      *
-     * @param actionCtx The <code>Context</code> for the current request
-     * @return <code>false</code> so that processing continues
+     * @param actionCtx The {@code Context} for the current request
+     *
+     * @return {@code false} so that processing continues
+     *
      * @throws Exception On any error
      */
     public boolean execute(ActionContext actionCtx)
@@ -119,20 +113,21 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
     }
 
     /**
-     * <p>If an exception was thrown by a subsequent <code>Command</code>,
-     * pass it on to the specified exception handling chain.  Otherwise, do
-     * nothing.</p>
+     * If an exception was thrown by a subsequent {@code Command}, pass it on
+     * to the specified exception handling chain. Otherwise, do nothing.
      *
-     * @param context   The {@link Context} to be processed by this {@link
-     *                  Filter}
-     * @param exception The <code>Exception</code> (if any) that was thrown by
-     *                  the last {@link Command} that was executed; otherwise
-     *                  <code>null</code>
+     * @param actionCtx The {@link ActionContext} to be processed by this
+     *                  {@link Filter}
+     * @param exception The {@code Exception} (if any) that was thrown by the
+     *                  last {@link Command} that was executed; otherwise
+     *                  {@code null}
+     *
      * @return TRUE if post processing an exception occurred and the exception
      *         processing chain invoked
+     *
      * @throws IllegalStateException If exception throws exception
      */
-    public boolean postprocess(Context context, Exception exception) {
+    public boolean postprocess(ActionContext actionCtx, Exception exception) {
         // Do nothing if there was no exception thrown
         if (exception == null) {
             return (false);
@@ -141,13 +136,11 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
         // Stash the exception in the specified context attribute
         log.debug("Attempting to handle a thrown exception");
 
-        ActionContext actionCtx = (ActionContext) context;
-
         actionCtx.setException(exception);
 
         // Execute the specified command
         try {
-            Command command = lookupExceptionCommand();
+            Command<ActionContext> command = lookupExceptionCommand();
 
             if (command == null) {
                 log.error("Cannot find exceptionCommand '{}'",
@@ -158,7 +151,7 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
 
             log.trace("Calling exceptionCommand '{}'", exceptionCommand);
 
-            command.execute(context);
+            command.execute(actionCtx);
         } catch (Exception e) {
             log.warn("Exception from exceptionCommand '{}'",
                 exceptionCommand, e);
@@ -167,22 +160,27 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
             throw e2;
         }
 
-        return (true);
+        return true;
     }
 
     /**
-     * <p> Return the command to be executed if an exception occurs. </p>
+     * Return the command to be executed if an exception occurs.
      *
      * @return The command to be executed if an exception occurs
+     *
      * @throws IllegalArgumentException If catalog cannot be found
      * @throws IllegalStateException    If command property is not specified
      */
-    protected Command lookupExceptionCommand() {
-        String catalogName = getCatalogName();
-        Catalog catalog;
+    protected Command<ActionContext> lookupExceptionCommand() {
+        final String catalogName = getCatalogName();
+
+        final CatalogFactory<ActionContext> catalogFactory =
+                CatalogFactory.getInstance();
+
+        final Catalog<ActionContext> catalog;
 
         if (catalogName == null) {
-            catalog = CatalogFactory.getInstance().getCatalog();
+            catalog = catalogFactory.getCatalog();
 
             if (catalog == null) {
                 log.error("Cannot find default catalog");
@@ -190,7 +188,7 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter {
                     "Cannot find default catalog");
             }
         } else {
-            catalog = CatalogFactory.getInstance().getCatalog(catalogName);
+            catalog = catalogFactory.getCatalog(catalogName);
 
             if (catalog == null) {
                 log.error("Cannot find catalog '{}'", catalogName);

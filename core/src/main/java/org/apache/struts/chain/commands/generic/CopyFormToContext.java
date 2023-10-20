@@ -167,7 +167,8 @@ public class CopyFormToContext extends ActionCommandBase {
      *
      * @throws Exception on any error
      */
-    public boolean execute(ActionContext actionContext)
+    @Override
+    protected boolean execute_(ActionContext actionContext)
         throws Exception {
         ActionForm form = findOrCreateForm(actionContext);
 

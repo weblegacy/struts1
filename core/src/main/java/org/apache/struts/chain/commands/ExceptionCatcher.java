@@ -105,7 +105,8 @@ public class ExceptionCatcher extends ActionCommandBase implements Filter<Action
      *
      * @throws Exception On any error
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
         actionCtx.setException(null);
 

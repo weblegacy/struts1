@@ -41,7 +41,8 @@ public abstract class AbstractPerformForward extends ActionCommandBase {
      * @return <code>true</code> so that processing completes
      * @throws Exception if thrown by the <code>Action</code>
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
         // Is there a ForwardConfig to be performed?
         ForwardConfig forwardConfig = actionCtx.getForwardConfig();

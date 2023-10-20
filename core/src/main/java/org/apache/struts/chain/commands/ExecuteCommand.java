@@ -60,7 +60,8 @@ public class ExecuteCommand extends ActionCommandBase {
      *         if executed, or {@code false} if it was not executed.
      * @throws Exception on any error
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
         if (shouldProcess(actionCtx)) {
             Command<ActionContext> command = getCommand(actionCtx);

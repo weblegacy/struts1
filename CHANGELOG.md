@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Recover logging when executing an ActionCommandBase-class
 * Adapt to weblegacy commons-chain
 * Replace apache commons-chain 1.2 with weblegacy commons-chain 1.3
 

@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Update `htmlunit` from 2.66.0 to 3.6.0
 * Corr: Adapt to weblegacy commons-chain - missing `struts-tiles` and `stuts-tiles2`
 * Recover logging when executing an ActionCommandBase-class
 * Adapt to weblegacy commons-chain

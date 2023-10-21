@@ -1101,9 +1101,9 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>net.sourceforge.htmlunit</groupId>
+                <groupId>org.htmlunit</groupId>
                 <artifactId>htmlunit</artifactId>
-                <version>2.66.0</version>
+                <version>3.6.0</version>
                 <scope>test</scope>
                 <exclusions>
                     <exclusion>
@@ -1133,7 +1133,7 @@
             <dependency>
                 <groupId>io.github.bonigarcia</groupId>
                 <artifactId>webdrivermanager</artifactId>
-                <version>5.3.1</version>
+                <version>5.5.3</version>
                 <scope>test</scope>
             </dependency>
             <dependency>

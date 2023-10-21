@@ -78,7 +78,7 @@
          <artifactId>commons-beanutils</artifactId>
       </dependency>
       <dependency>
-         <groupId>commons-chain</groupId>
+         <groupId>io.github.weblegacy</groupId>
          <artifactId>commons-chain</artifactId>
       </dependency>
       <dependency>

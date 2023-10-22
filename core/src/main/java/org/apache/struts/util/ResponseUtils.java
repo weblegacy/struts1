@@ -23,6 +23,8 @@ package org.apache.struts.util;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.Charset;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,12 +32,33 @@ import org.slf4j.LoggerFactory;
 /**
  * General purpose utility methods related to generating a servlet response in
  * the Struts controller framework.
- *
- * @version $Rev$ $Date: 2005-08-21 14:46:28 -0400 (Sun, 21 Aug 2005)
- *          $
  */
 public class ResponseUtils {
+
     // ------------------------------------------------------- Static Variables
+
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private static final Logger LOG =
+        LoggerFactory.getLogger(ResponseUtils.class);
+
+    /**
+     * Pattern to find XML-Entity-Patterns.
+     *
+     * <p>Valid patterns are:</p>
+     *
+     * <ul>
+     * <li>&amp;[a-zA-Z][a-z-A-Z0-9]*; - &amp;amp;, &amp;quot;</li>
+     * <li>&amp;#[0-9]+; - &amp;#32;, &amp;#64;</li>
+     * <li>&amp;#x[a-fA-F0-9]+; - &amp;#x20, &amp;3f</li>
+     * </ul>
+     *
+     * <p>See also <a href="https://www.w3.org/TR/xml11/#sec-references">
+     * XML-Reference 1.1</a>.</p>
+     */
+    private static final Pattern XML_ENTITY_PATTERN =
+            Pattern.compile("&(?:[a-zA-Z][a-zA-Z\\d]*|#\\d+|#x[a-fA-F\\d]+);");
 
     /**
      * The message resources for this package.
@@ -44,30 +67,37 @@ public class ResponseUtils {
         MessageResources.getMessageResources(
             "org.apache.struts.util.LocalStrings");
 
+    // ----------------------------------------------------------- Constructors
+
     /**
-     * The {@code Log} instance for this class.
+     * Class is not instanceable.
      */
-    private final static Logger LOG =
-        LoggerFactory.getLogger(ResponseUtils.class);
+    protected ResponseUtils() {
+    }
 
     // --------------------------------------------------------- Public Methods
 
     /**
-     * Filter the specified string for characters that are senstive to HTML
+     * Filter the specified string for characters that are sensitive to HTML
      * interpreters, returning the string with these characters replaced by
      * the corresponding character entities.
      *
      * @param value The string to be filtered and returned
+     *
+     * @return String The filtered string
      */
     public static String filter(String value) {
-        if ((value == null) || (value.length() == 0)) {
+        if (value == null || value.isEmpty()) {
             return value;
         }
 
-        StringBuilder result = null;
-        String filtered = null;
+        final int length = value.length();
 
-        for (int i = 0; i < value.length(); i++) {
+        StringBuilder result = null;
+        String filtered;
+        Matcher entityMatcher = null;
+
+        for (int i = 0; i < length; i++) {
             filtered = null;
 
             switch (value.charAt(i)) {
@@ -82,7 +112,19 @@ public class ResponseUtils {
                 break;
 
             case '&':
-                filtered = "&amp;";
+                if (entityMatcher == null) {
+                    entityMatcher = XML_ENTITY_PATTERN.matcher(value);
+                }
+                entityMatcher.region(i, length);
+                if (entityMatcher.lookingAt()) {
+                    filtered = value.substring(entityMatcher.start(), entityMatcher.end());
+                    i += filtered.length() - 1;
+                    if (result == null) {
+                        continue;
+                    }
+                } else {
+                    filtered = "&amp;";
+                }
 
                 break;
 
@@ -95,11 +137,14 @@ public class ResponseUtils {
                 filtered = "&#39;";
 
                 break;
+
+             default:
+                    break;
             }
 
             if (result == null) {
                 if (filtered != null) {
-                    result = new StringBuilder(value.length() + 50);
+                    result = new StringBuilder(length + 50);
 
                     if (i > 0) {
                         result.append(value.substring(0, i));
@@ -116,13 +161,14 @@ public class ResponseUtils {
             }
         }
 
-        return (result == null) ? value : result.toString();
+        return result == null ? value : result.toString();
     }
 
     /**
      * URLencodes a string assuming the character encoding is UTF-8.
      *
-     * @param url
+     * @param url The url to encode
+     *
      * @return String The encoded url in UTF-8
      */
     public static String encodeURL(String url) {
@@ -134,14 +180,16 @@ public class ResponseUtils {
      * encoding charset didn't found, then it will be tried with the
      * default-charset.
      *
+     * @param url The url to encode
      * @param enc The character encoding the urlencode is performed on.
+     *
      * @return String The encoded url.
      */
     public static String encodeURL(String url, String enc) {
         String str = null;
 
         try {
-            if ((enc == null) || (enc.length() == 0)) {
+            if (enc == null || enc.isEmpty()) {
                 enc = "UTF-8";
             }
 
@@ -160,6 +208,5 @@ public class ResponseUtils {
         }
 
         return str;
-
     }
 }

@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `antlr` and `antlr4-maven-plugin` from 4.11.1 to 4.13.1
 * Bump `slf4j-api`, `slf4j-simple` and `jcl-over-slf4j` from 2.0.3 to 2.0.9
 * Bump `selenium-api` and `selenium-java` from 4.6.0 to 4.14.1
 * Bump `groovy` from 4.0.6 to 4.0.15

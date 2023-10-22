@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `groovy` from 4.0.6 to 4.0.15
 * Bump `maven-failsafe/surefire-[report]-plugin` from 3.0.0-M7 to 3.1.2
 * #11: add html-code to test it
 * #11: further improvements in the "filter" method, reformatting, one more test case

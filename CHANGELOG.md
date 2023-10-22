@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `selenium-api` and `selenium-java` from 4.6.0 to 4.14.1
 * Bump `groovy` from 4.0.6 to 4.0.15
 * Bump `maven-failsafe/surefire-[report]-plugin` from 3.0.0-M7 to 3.1.2
 * #11: add html-code to test it

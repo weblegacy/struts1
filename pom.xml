@@ -366,7 +366,7 @@
         <javaTestVersion>8</javaTestVersion>
         <surefireVersion>3.1.2</surefireVersion>
         <groovyVersion>4.0.15</groovyVersion>
-        <seleniumVersion>4.6.0</seleniumVersion>
+        <seleniumVersion>4.14.1</seleniumVersion>
         <slf4jVersion>2.0.3</slf4jVersion>
         <tilesVersion>3.0.8</tilesVersion>
         <tilesRequestVersion>1.0.7</tilesRequestVersion>

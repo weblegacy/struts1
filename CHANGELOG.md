@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `maven-failsafe/surefire-[report]-plugin` from 3.0.0-M7 to 3.1.2
 * #11: add html-code to test it
 * #11: further improvements in the "filter" method, reformatting, one more test case
 * #11: improved entity handling in "filter" method

@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `jaxb-runtime` from 2.3.7 to 2.3.9
 * Bump `jakarta.faces` (`mojarra`) from 2.3.18 to 2.3.21
 * Bump `antlr` and `antlr4-maven-plugin` from 4.11.1 to 4.13.1
 * Bump `slf4j-api`, `slf4j-simple` and `jcl-over-slf4j` from 2.0.3 to 2.0.9

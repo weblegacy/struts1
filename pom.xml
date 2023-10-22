@@ -378,7 +378,7 @@
         <elVersion>3.0.3</elVersion>
         <jsfVersion>2.3.2</jsfVersion>
         <jsfImplVersion>2.3.21</jsfImplVersion>
-        <jaxbVersion>2.3.7</jaxbVersion>
+        <jaxbVersion>2.3.9</jaxbVersion>
         <commonsChainVersion>1.3-SNAPSHOT</commonsChainVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>

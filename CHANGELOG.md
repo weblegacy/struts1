@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `maven-checkstyle-plugin` from 3.1.2 to 3.3.0
 * Bump `maven-assembly-plugin` from 3.4.1 to 3.6.0
 * Bump `jaxb-runtime` from 2.3.7 to 2.3.9
 * Bump `jakarta.faces` (`mojarra`) from 2.3.18 to 2.3.21

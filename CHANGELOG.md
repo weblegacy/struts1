@@ -2,6 +2,11 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* #11: further improvements in the "filter" method, reformatting, one more test case
+* #11: improved entity handling in "filter" method
+* #11: added another test case
+* #11: fixed regex, added more test cases
+* #11: bugfix for issue #11 (skip xml entities in filter method)
 * Update `tomcat` from 9.0.68 to 9.0.82
 * Update `htmlunit` from 2.66.0 to 3.6.0
 * Corr: Adapt to weblegacy commons-chain - missing `struts-tiles` and `stuts-tiles2`

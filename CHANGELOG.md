@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `maven-clean-plugin` from 3.2.0 to 3.3.1
 * Bump `checkstyle` from 10.4 to 10.12.4 and adapt `struts_checks.xml`
 * Bump `maven-checkstyle-plugin` from 3.1.2 to 3.3.0
 * Bump `maven-assembly-plugin` from 3.4.1 to 3.6.0

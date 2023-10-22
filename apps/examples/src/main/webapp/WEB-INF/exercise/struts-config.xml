@@ -100,6 +100,7 @@
                 name="testbean" scope="session" validate="false"/>
         <action path="/html-form-postback" forward="/html-form.jsp"
                 name="testbean" scope="session" validate="false"/>
+        <action path="/html-button" forward="/html-button.jsp"/>
         <action path="/logic-forward" forward="/logic-forward.jsp"/>
         <action path="/logic-forward-test-forward"
                 forward="/logic-forward-test-forward.jsp"/>

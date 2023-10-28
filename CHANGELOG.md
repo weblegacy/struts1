@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `junit-jupiter-api` from 5.9.1 to 5.10.0
 * Bump `commons-io` from 2.11.0 to 2.14.0
 * Bump `commons-fileupload` from 1.4 to 1.5
 * Bump `cargo-maven3-plugin` from 1.9.13 to 1.10.10

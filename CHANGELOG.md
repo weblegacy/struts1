@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `webdrivermanager` from 5.5.3 to 5.6.0
 * Bump `commons-io` from 2.14.0 to 2.15.0
 * Update documentation for version 1.4.5
 * Bump `spotbugs-annotations` from 4.7.3 to 4.8.0

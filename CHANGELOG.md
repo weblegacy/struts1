@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `commons-io` from 2.14.0 to 2.15.0
 * Update documentation for version 1.4.5
 * Bump `spotbugs-annotations` from 4.7.3 to 4.8.0
 * Bump `junit-jupiter-api` from 5.9.1 to 5.10.0

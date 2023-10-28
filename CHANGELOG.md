@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `maven-clean-plugin` from 3.3.1 to 3.3.2
 * Bump `maven-checkstyle-plugin` from 3.3.0 to 3.3.1
 * Bump `webdrivermanager` from 5.5.3 to 5.6.0
 * Bump `commons-io` from 2.14.0 to 2.15.0

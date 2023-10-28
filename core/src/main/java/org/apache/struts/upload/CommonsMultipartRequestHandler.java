@@ -182,6 +182,9 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         // Set the maximum size before a FileUploadException will be thrown.
         upload.setSizeMax(getSizeMax(ac));
 
+        // Sets the maximum number of files allowed per request.
+        upload.setFileCountMax(getFileCountMax(ac));
+
         // Create the hash tables to be populated.
         elementsText = new Hashtable<>();
         elementsFile = new Hashtable<>();
@@ -355,6 +358,19 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         }
 
         return (size * multiplier);
+    }
+
+    /**
+     * Returns the maximum permitted number of files that may be uploaded in a
+     * single request. A value of -1 indicates no maximum. The value is
+     * obtained from the current module's controller configuration.
+     *
+     * @param mc The current module's configuration.
+     *
+     * @return The maximum allowable file size, in bytes.
+     */
+    protected long getFileCountMax(ModuleConfig mc) {
+        return mc.getControllerConfig().getFileCountMax();
     }
 
     /**

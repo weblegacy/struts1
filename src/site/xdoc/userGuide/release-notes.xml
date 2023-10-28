@@ -83,6 +83,7 @@
 <ul>
 <li>[<a href="https://github.com/weblegacy/struts1/issues/11">#11</a>] - XML Entities not handled correctly</li>
 <li>Reformat some JavaDocs</li>
+<li>Add new property &quot;controller.fileCountMax&quot; due &quot;commons-fileupload&quot; 1.5</li>
 </ul>
 
 <h4>Task</h4>

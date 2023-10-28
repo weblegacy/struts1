@@ -104,6 +104,12 @@ public class ControllerConfig extends BaseConfig {
     protected String maxFileSize = "250M";
 
     /**
+     * The maximum permitted number of files that may be uploaded in a single
+     * request. A value of -1 indicates no maximum.
+     */
+    protected long fileCountMax = -1;
+
+    /**
      * The maximum file size to retain in memory.
      */
     protected String memFileSize = "256K";
@@ -251,6 +257,18 @@ public class ControllerConfig extends BaseConfig {
         this.maxFileSize = maxFileSize;
     }
 
+    public long getFileCountMax() {
+        return (this.fileCountMax);
+    }
+
+    public void setFileCountMax(long fileCountMax) {
+        if (configured) {
+            throw new IllegalStateException("Configuration is frozen");
+        }
+
+        this.fileCountMax = fileCountMax;
+    }
+
     public String getMemFileSize() {
         return (this.memFileSize);
     }
@@ -349,6 +367,9 @@ public class ControllerConfig extends BaseConfig {
             sb.append(",maxFileSize=");
             sb.append(this.maxFileSize);
         }
+
+        sb.append("fileCountMax=");
+        sb.append(this.fileCountMax);
 
         if (this.memFileSize != null) {
             sb.append(",memFileSize=");

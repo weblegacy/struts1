@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `maven-war-plugin` from 3.3.2 to 3.4.0
 * Bump `maven-project-info-reports-plugin` from 3.3.0 to 3.4.5
 * Bump `maven-pmd-plugin` from 3.17.0 to 3.21.0
 * Bump `maven-jxr-plugin` from 3.2.0 to 3.3.0

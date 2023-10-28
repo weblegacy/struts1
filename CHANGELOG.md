@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Rename POM-property `encoding` to `sourceEncoding`
 * Add new property `controller.fileCountMax` due `commons-fileupload` 1.5
 * Reformat some JavaDocs
 * Bump `maven-failsafe/surefire-[report]-plugin` from 3.1.2 to 3.2.1

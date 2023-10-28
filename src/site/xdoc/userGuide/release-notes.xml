@@ -82,6 +82,7 @@
 <h4>Improvement</h4>
 <ul>
 <li>[<a href="https://github.com/weblegacy/struts1/issues/11">#11</a>] - XML Entities not handled correctly</li>
+<li>Reformat some JavaDocs</li>
 </ul>
 
 <h4>Task</h4>

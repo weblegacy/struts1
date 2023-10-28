@@ -22,12 +22,9 @@ package org.apache.struts.config;
 
 
 /**
- * <p>A JavaBean representing the configuration information of a
- * <code>&lt;controller&gt;</code> element in a Struts configuration
- * file.</p>
+ * A JavaBean representing the configuration information of a
+ * {@code <controller>} element in a Struts configuration file.
  *
- * @version $Rev$ $Date: 2005-05-12 18:41:19 -0400 (Thu, 12 May 2005)
- *          $
  * @since Struts 1.1
  */
 public class ControllerConfig extends BaseConfig {
@@ -36,135 +33,133 @@ public class ControllerConfig extends BaseConfig {
     // ------------------------------------------------------------- Properties
 
     /**
-     * <p> The input buffer size for file uploads. </p>
+     * The input buffer size for file uploads.
      */
     protected int bufferSize = 4096;
 
     /**
-     * <p> The content type and character encoding to be set on each response.
-     * </p>
+     * The content type and character encoding to be set on each response.
      */
     protected String contentType = "text/html";
 
     /**
-     * <p> The chain catalog name for this module. </p>
+     * The chain catalog name for this module.
      */
     protected String catalog = "struts";
 
     /**
-     * <p> The chain command to execute for each request. </p>
+     * The chain command to execute for each request.
      */
     protected String command = "servlet-standard";
 
     /**
-     * <p>The replacement pattern used to determine a context-relative URL
-     * from a {@link ForwardConfig} element.  The pattern may consist of any
-     * combination of the following markers and characters:</p>
+     * The replacement pattern used to determine a context-relative URL from a
+     * {@link ForwardConfig} element. The pattern may consist of any
+     * combination of the following markers and characters:
      *
      * <ul>
      *
-     * <li><code><strong>$M</strong></code> - Replaced by the module prefix
-     * for the current module.</li>
+     * <li><strong>{@code $M}</strong> - Replaced by the module prefix for the
+     * current module.</li>
      *
-     * <li><code><strong>$P</strong></code> - Replaced by the
-     * <code>path</code> property of a {@link ForwardConfig} instance.</li>
+     * <li><strong>{@code $P}</strong> - Replaced by the {@code path} property
+     * of a {@link ForwardConfig} instance.</li>
      *
-     * <li><code><strong>$$</strong></code> - Renders a literal dollar sign
-     * ("$") character in the resulting URL.</li>
+     * <li><strong>{@code $$}</strong> - Renders a literal dollar sign ("$")
+     * character in the resulting URL.</li>
      *
-     * <li>A dollar sign followed by any other character is reserved for
-     * future use, and both characters are silently swallowed.</li>
+     * <li>A dollar sign followed by any other character is reserved for future
+     * use, and both characters are silently swallowed.</li>
      *
-     * <li>All other characters in the pattern are passed through unchanged.
-     * </li>
+     * <li>All other characters in the pattern are passed through
+     * unchanged.</li>
      *
      * </ul>
      *
-     * <p>If this property is set to <code>null</code>, a default pattern of
-     * <code>$M$P</code> is utilized, which is backwards compatible with the
-     * hard coded functionality in prior versions.</p>
+     * <p>If this property is set to {@code null}, a default pattern of
+     * {@code $M$P} is utilized, which is backwards compatible with the hard
+     * coded functionality in prior versions.</p>
      */
     protected String forwardPattern = null;
 
     /**
-     * <p>Should the <code>input</code> property of {@link ActionConfig}
-     * instances associated with this module be treated as the name of a
-     * corresponding {@link ForwardConfig}.  A <code>false</code> value treats
-     * them as a module-relative path (consistent with the hard coded behavior
-     * of earlier versions of Struts.</p>
+     * Should the {@code input} property of {@link ActionConfig} instances
+     * associated with this module be treated as the name of a corresponding
+     * {@link ForwardConfig}. A {@code false} value treats them as a
+     * module-relative path (consistent with the hard coded behavior of
+     * earlier versions of Struts.
      *
      * @since Struts 1.1
      */
     protected boolean inputForward = false;
 
     /**
-     * <p> Should we store a Locale object in the user's session if needed?
-     * </p>
+     * Should we store a Locale object in the user's session if needed?
      */
     protected boolean locale = true;
 
     /**
-     * <p> The maximum file size to process for file uploads. </p>
+     * The maximum file size to process for file uploads.
      */
     protected String maxFileSize = "250M";
 
     /**
-     * <p> The maximum file size to retain in memory. </p>
+     * The maximum file size to retain in memory.
      */
     protected String memFileSize = "256K";
 
     /**
-     * <p> The fully qualified Java class name of the MultipartRequestHandler
-     * class to be used. </p>
+     * The fully qualified Java class name of the MultipartRequestHandler class
+     * to be used.
      */
     protected String multipartClass =
         "org.apache.struts.upload.CommonsMultipartRequestHandler";
 
     /**
-     * <p> Should we set no-cache HTTP headers on each response? </p>
+     * Should we set no-cache HTTP headers on each response?
      */
     protected boolean nocache = false;
 
     /**
-     * <p>The replacement pattern used to determine a context-relative URL
-     * from the <code>page</code> attribute of Struts tags and configuration
-     * properties.  The pattern may consist of any combination of the
-     * following markers and characters:</p>
+     * The replacement pattern used to determine a context-relative URL from
+     * the {@code page} attribute of Struts tags and configuration properties.
+     * The pattern may consist of any combination of the following markers and
+     * characters:
      *
      * <ul>
      *
-     * <li><code><strong>$M</strong></code> - Replaced by the module prefix
-     * for the current module.</li>
+     * <li><strong>{@code $M}</strong> - Replaced by the module prefix for the
+     * current module.</li>
      *
-     * <li><code><strong>$P</strong></code> - Replaced by the
-     * <code>page</code> attribute value being evaluated.</li>
+     * <li><strong>{@code $P}</strong> - Replaced by the {@code page} attribute
+     * value being evaluated.</li>
      *
-     * <li><code><strong>$$</strong></code> - Renders a literal dollar sign
-     * ("$") character in the resulting URL.</li>
+     * <li><strong>{@code $$}</strong> - Renders a literal dollar sign ("$")
+     * character in the resulting URL.</li>
      *
-     * <li>A dollar sign followed by any other character is reserved for
-     * future use, and both characters are silently swallowed.</li>
+     * <li>A dollar sign followed by any other character is reserved for future
+     * use, and both characters are silently swallowed.</li>
      *
-     * <li>All other characters in the pattern are passed through unchanged.
-     * </li>
+     * <li>All other characters in the pattern are passed through
+     * unchanged.</li>
      *
      * </ul>
      *
-     * <p>If this property is set to <code>null</code>, a default pattern of
-     * <code>$M$P</code> is utilized, which is backwards compatible with the
-     * hard coded functionality in prior versions.</p>
+     * <p>If this property is set to {@code null}, a default pattern of
+     * {@code $M$P} is utilized, which is backwards compatible with the hard
+     * coded functionality in prior versions.</p>
      */
     protected String pagePattern = null;
 
     /**
-     * <p> The fully qualified class name of the RequestProcessor
-     * implementation class to be used for this module. </p>
+     * The fully qualified class name of the RequestProcessor implementation
+     * class to be used for this module.
      */
     protected String processorClass =
         "org.apache.struts.chain.ComposableRequestProcessor";
 
     /**
-     * <p> The temporary working directory to use for file uploads. </p>
+     * The temporary working directory to use for file uploads.
      */
     protected String tempDir = null;
 
@@ -327,7 +322,7 @@ public class ControllerConfig extends BaseConfig {
     // --------------------------------------------------------- Public Methods
 
     /**
-     * <p> Return a String representation of this object. </p>
+     * Return a String representation of this object.
      */
     public String toString() {
         StringBuilder sb = new StringBuilder("ControllerConfig[");

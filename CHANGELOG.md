@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Reformat some JavaDocs
 * Bump `maven-failsafe/surefire-[report]-plugin` from 3.1.2 to 3.2.1
 * Bump `maven-jxr-plugin` from 3.3.0 to 3.3.1
 * Bump `maven-dependency-plugin` from 3.6.0 to 3.6.1

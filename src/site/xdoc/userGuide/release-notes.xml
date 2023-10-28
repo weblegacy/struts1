@@ -86,6 +86,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;commons-io&quot; from 2.11.0 to 2.14.0</li>
 <li>Bump &quot;commons-fileupload&quot; from 1.4 to 1.5</li>
 <li>Bump &quot;cargo-maven3-plugin&quot; from 1.9.13 to 1.10.10</li>
 <li>Bump &quot;maven-bundle-plugin&quot; from 5.1.7 to 5.1.9</li>

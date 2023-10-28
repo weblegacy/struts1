@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `commons-fileupload` from 1.4 to 1.5
 * Bump `cargo-maven3-plugin` from 1.9.13 to 1.10.10
 * Bump `maven-bundle-plugin` from 5.1.7 to 5.1.9
 * Bump `maven-war-plugin` from 3.3.2 to 3.4.0

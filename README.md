@@ -10,6 +10,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 | Version                                                             | JEE-Version  | Java-Version | Servlet | JSP | EL  | JSF | JSTL |
 |--------------------------------------------------------------------:|-------------:|-------------:|--------:|----:|----:|----:|-----:|
+|   [1.4.5](https://github.com/weblegacy/struts1/releases/tag/v1.4.5) | Jakarta EE 8 |            8 |     4.0 | 2.3 | 3.0 | 2.3 |  1.2 |
 |   [1.4.4](https://github.com/weblegacy/struts1/releases/tag/v1.4.4) | Jakarta EE 8 |            8 |     4.0 | 2.3 | 3.0 | 2.3 |  1.2 |
 |   [1.4.3](https://github.com/weblegacy/struts1/releases/tag/v1.4.3) |    Java EE 7 |            8 |     3.1 | 2.3 | 3.0 | 2.2 |  1.2 |
 |   [1.4.2](https://github.com/weblegacy/struts1/releases/tag/v1.4.2) |    Java EE 6 |            8 |     3.0 | 2.2 | 2.2 | 2.0 |  1.2 |
@@ -19,6 +20,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 ## Changes since version 1.3.10
 
+* [#11 - XML Entities not handled correctly](https://github.com/weblegacy/struts1/issues/11)
 * Include all open patches from apache-struts1-repo
 * Fixed vulnerabilities
 * Upgrade MAVEN-Plugins
@@ -26,7 +28,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 * Complete JUnit5- and integration-test (rewrite old ones)
 * Logging: Use [SLF4J](https://www.slf4j.org/) instead [Commons-Logging](https://commons.apache.org/proper/commons-logging/index.html)
 * JDK 1.4 --> JDK 8
-  * Tested with JDK 8, 11, 17 and 19
+  * Tested with JDK 8, 11, 17 and 21
 * Servlet-API 2.3 --> 4.0
 * JSP 2.0 --> 2.3
 * JSP-EL 2.0 --> 3.0

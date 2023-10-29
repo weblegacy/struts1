@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Update `README.md`
 * Rename POM-property `encoding` to `sourceEncoding`
 * Add new property `controller.fileCountMax` due `commons-fileupload` 1.5
 * Reformat some JavaDocs

@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Set documentation-skin to `maven-fluido-skin`
 * Bump `webdrivermanager` from 5.6.0 to 5.6.1
 * Update `htmlunit` from 3.6.0 to 3.7.0
 * Bump `maven-pmd-plugin` from 3.21.0 to 3.21.2

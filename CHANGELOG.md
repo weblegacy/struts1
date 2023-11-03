@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Bump `maven-pmd-plugin` from 3.21.0 to 3.21.2
 * Bump `commons-chain` from 1.3-SNAPSHOT to 1.3.0
 * Bump `selenium-api` and `selenium-java` from 4.14.1 to 4.15.0
 * Add contributor and add more informations to me

@@ -121,7 +121,7 @@
 <li>Bump &quot;jakarta.faces&quot; (&quot;mojarra&quot;) from 2.3.18 to 2.3.21</li>
 <li>Bump &quot;antlr&quot; and &quot;antlr4-maven-plugin&quot; from 4.11.1 to 4.13.1</li>
 <li>Bump &quot;slf4j-api&quot;, &quot;slf4j-simple&quot; and &quot;jcl-over-slf4j&quot; from 2.0.3 to 2.0.9</li>
-<li>Bump &quot;selenium-api&quot; and &quot;selenium-java&quot; from 4.6.0 to 4.14.1</li>
+<li>Bump &quot;selenium-api&quot; and &quot;selenium-java&quot; from 4.6.0 to 4.15.0</li>
 <li>Bump &quot;groovy&quot; from 4.0.6 to 4.0.15</li>
 <li>Bump &quot;maven-failsafe/surefire-[report]-plugin&quot; from 3.0.0-M7 to 3.2.1</li>
 <li>Update &quot;README.md&quot; for next release</li>

@@ -23,7 +23,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.weblegacy</groupId>
     <artifactId>struts-parent</artifactId>
-    <version>1.4.4</version>
+    <version>1.4.5</version>
     <packaging>pom</packaging>
     <name>Struts</name>
     <url>https://weblegacy.github.io/struts1</url>

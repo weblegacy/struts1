@@ -1,7 +1,8 @@
 # Changes
 
-## 1.4.5 / YYYY-MM-DD
+## 1.4.5 / 2023-11-03
 
+* Set Version to 1.4.5
 * Update issues-links in documentation
 * Set documentation-skin to `maven-fluido-skin`
 * Bump `webdrivermanager` from 5.6.0 to 5.6.1

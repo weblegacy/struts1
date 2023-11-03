@@ -65,10 +65,17 @@
 
 
 <span class="dtd_comment">&lt;!-- An &quot;Integer&quot; is a character string consisting solely of numeric digits,</span>
-<span class="dtd_comment">     optionally preceeded by a minus sign, that can be converted to a</span>
+<span class="dtd_comment">     optionally preceded by a minus sign, that can be converted to a</span>
 <span class="dtd_comment">     32-bit integer.</span>
 <span class="dtd_comment">--&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">Integer</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
+
+
+<span class="dtd_comment">&lt;!-- A &quot;Long&quot; is a character string consisting solely of numeric digits,</span>
+<span class="dtd_comment">     optionally preceded by a minus sign, that can be converted to a</span>
+<span class="dtd_comment">     64-bit integer.</span>
+<span class="dtd_comment">--&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ENTITY</span><span class="dtd_plain"> % </span><span class="dtd_attribute_name">Long</span><span class="dtd_plain"> </span><span class="dtd_attribute_value">&quot;CDATA&quot;</span><span class="dtd_tag_symbols">&gt;</span>
 
 
 <span class="dtd_comment">&lt;!-- A &quot;Location&quot; is a relative path, delimited by &quot;/&quot; characters, that</span>
@@ -575,6 +582,10 @@
 <span class="dtd_comment">                     megabytes, or gigabytes, respectively.</span>
 <span class="dtd_comment">                     [&quot;250M&quot;]</span>
 
+<span class="dtd_comment">     fileCountMax    The maximum permitted number of files that may be uploaded</span>
+<span class="dtd_comment">                     in a single request. A value of -1 indicates no maximum.</span>
+<span class="dtd_comment">                     [-1]</span>
+
 <span class="dtd_comment">     memFileSize     The maximum size (in bytes) of a file whose contents will</span>
 <span class="dtd_comment">                     be retained in memory after uploading. Files larger than</span>
 <span class="dtd_comment">                     this threshold will be written to some alternative storage</span>
@@ -625,6 +636,7 @@
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">inputForward</span><span class="dtd_plain">   %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">locale</span><span class="dtd_plain">         %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">maxFileSize</span><span class="dtd_plain">    </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">fileCountMax</span><span class="dtd_plain">   %</span><span class="dtd_attribute_name">Long</span><span class="dtd_plain">;          </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">memFileSize</span><span class="dtd_plain">    </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">multipartClass</span><span class="dtd_plain"> %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">nocache</span><span class="dtd_plain">        %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>

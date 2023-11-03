@@ -29,62 +29,64 @@
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">package</strong> org.apache.struts.chain.commands;
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>  
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.Globals;
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.chain.contexts.ActionContext;
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.Globals;
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.ActionMessages;
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_javadoccomment"> * &lt;p&gt;Remove cached messages stored in the session.&lt;/p&gt;</em>
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <em class="jxr_javadoccomment"> *</em>
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment"> * @version $Id$</em>
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment"> * @see CacheMessages</em>
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_javadoccomment"> * @since Struts 1.3.5</em>
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="RemoveCachedMessages" href="../../../../../org/apache/struts/chain/commands/RemoveCachedMessages.html#RemoveCachedMessages">RemoveCachedMessages</a> <strong class="jxr_keyword">extends</strong> <a name="ActionCommandBase" href="../../../../../org/apache/struts/chain/commands/ActionCommandBase.html#ActionCommandBase">ActionCommandBase</a> {
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">     * &lt;p&gt;Removes any &lt;code&gt;ActionMessages&lt;/code&gt; object stored in the session</em>
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     * under &lt;code&gt;Globals.MESSAGE_KEY&lt;/code&gt; and &lt;code&gt;Globals.ERROR_KEY&lt;/code&gt;</em>
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * if the messages' &lt;code&gt;isAccessed&lt;/code&gt; method returns true.  This</em>
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment">     * allows messages to be stored in the session, displayed one time, and be</em>
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     * released here.&lt;/p&gt;</em>
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>  <em class="jxr_javadoccomment">     * @param actionCtx The &lt;code&gt;Context&lt;/code&gt; for the current request</em>
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment">     * @return &lt;code&gt;false&lt;/code&gt; so that processing continues</em>
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment">     * @throws Exception on any error</em>
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> execute(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> actionCtx)
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>          <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>  
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>          <em class="jxr_comment">// Get session scope</em>
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>          Map&lt;String, Object&gt; session = actionCtx.getSessionScope();
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>  
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>          <em class="jxr_comment">// Remove messages as needed</em>
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>          removeAccessedMessages(session, Globals.MESSAGE_KEY);
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>  
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>          <em class="jxr_comment">// Remove error messages as needed</em>
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>          removeAccessedMessages(session, Globals.ERROR_KEY);
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>  
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>          <strong class="jxr_keyword">return</strong> CONTINUE_PROCESSING;
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>      }
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>  
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>  <em class="jxr_javadoccomment">     * &lt;p&gt;Removes any &lt;code&gt;ActionMessages&lt;/code&gt; object from the specified</em>
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>  <em class="jxr_javadoccomment">     * scope stored under the specified key if the messages'</em>
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>  <em class="jxr_javadoccomment">     * &lt;code&gt;isAccessed&lt;/code&gt; method returns true.</em>
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>  <em class="jxr_javadoccomment">     * @param scope The scope to check for messages in.</em>
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>  <em class="jxr_javadoccomment">     * @param key The key the messages are stored under.</em>
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> removeAccessedMessages(Map&lt;String, Object&gt; scope, String key) {
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>          <a name="ActionMessages" href="../../../../../org/apache/struts/action/ActionMessages.html#ActionMessages">ActionMessages</a> messages = (<a name="ActionMessages" href="../../../../../org/apache/struts/action/ActionMessages.html#ActionMessages">ActionMessages</a>)scope.get(key);
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>          <strong class="jxr_keyword">if</strong> (messages != <strong class="jxr_keyword">null</strong> &amp;&amp; messages.isAccessed()) {
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>              scope.remove(key);
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>          }
-<a class="jxr_linenumber" name="L76" href="#L76">76</a>      }
-<a class="jxr_linenumber" name="L77" href="#L77">77</a>  }
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.chain.contexts.ActionContext;
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <em class="jxr_javadoccomment"> * &lt;p&gt;Remove cached messages stored in the session.&lt;/p&gt;</em>
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment"> * @version $Id$</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_javadoccomment"> * @see CacheMessages</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment"> * @since Struts 1.3.5</em>
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="RemoveCachedMessages" href="../../../../../org/apache/struts/chain/commands/RemoveCachedMessages.html#RemoveCachedMessages">RemoveCachedMessages</a> <strong class="jxr_keyword">extends</strong> <a name="ActionCommandBase" href="../../../../../org/apache/struts/chain/commands/ActionCommandBase.html#ActionCommandBase">ActionCommandBase</a> {
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     * &lt;p&gt;Removes any &lt;code&gt;ActionMessages&lt;/code&gt; object stored in the session</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * under &lt;code&gt;Globals.MESSAGE_KEY&lt;/code&gt; and &lt;code&gt;Globals.ERROR_KEY&lt;/code&gt;</em>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment">     * if the messages' &lt;code&gt;isAccessed&lt;/code&gt; method returns true.  This</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     * allows messages to be stored in the session, displayed one time, and be</em>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">     * released here.&lt;/p&gt;</em>
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment">     * @param actionCtx The &lt;code&gt;Context&lt;/code&gt; for the current request</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment">     * @return &lt;code&gt;false&lt;/code&gt; so that processing continues</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment">     * @throws Exception on any error</em>
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>      @Override
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">boolean</strong> execute_(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> actionCtx)
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>          <em class="jxr_comment">// Get session scope</em>
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>          Map&lt;String, Object&gt; session = actionCtx.getSessionScope();
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>          <em class="jxr_comment">// Remove messages as needed</em>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          removeAccessedMessages(session, Globals.MESSAGE_KEY);
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          <em class="jxr_comment">// Remove error messages as needed</em>
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          removeAccessedMessages(session, Globals.ERROR_KEY);
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>  
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          <strong class="jxr_keyword">return</strong> CONTINUE_PROCESSING;
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>      }
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>  <em class="jxr_javadoccomment">     * &lt;p&gt;Removes any &lt;code&gt;ActionMessages&lt;/code&gt; object from the specified</em>
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>  <em class="jxr_javadoccomment">     * scope stored under the specified key if the messages'</em>
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>  <em class="jxr_javadoccomment">     * &lt;code&gt;isAccessed&lt;/code&gt; method returns true.</em>
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>  <em class="jxr_javadoccomment">     * @param scope The scope to check for messages in.</em>
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>  <em class="jxr_javadoccomment">     * @param key The key the messages are stored under.</em>
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> removeAccessedMessages(Map&lt;String, Object&gt; scope, String key) {
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>          <a name="ActionMessages" href="../../../../../org/apache/struts/action/ActionMessages.html#ActionMessages">ActionMessages</a> messages = (<a name="ActionMessages" href="../../../../../org/apache/struts/action/ActionMessages.html#ActionMessages">ActionMessages</a>)scope.get(key);
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>          <strong class="jxr_keyword">if</strong> (messages != <strong class="jxr_keyword">null</strong> &amp;&amp; messages.isAccessed()) {
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>              scope.remove(key);
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>          }
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>      }
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2000&#x2013;2022 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2000&#x2013;2023 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>
 </body>
 </html>

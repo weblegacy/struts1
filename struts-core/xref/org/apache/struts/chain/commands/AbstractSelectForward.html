@@ -61,49 +61,50 @@
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>  <em class="jxr_javadoccomment">     * @return &lt;code&gt;false&lt;/code&gt; so that processing continues</em>
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment">     * @throws Exception if thrown by the Action class</em>
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> execute(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> actionCtx)
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>          <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>          <em class="jxr_comment">// Skip processing if the current request is not valid</em>
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>          Boolean valid = actionCtx.getFormValid();
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>  
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>          <strong class="jxr_keyword">if</strong> ((valid == <strong class="jxr_keyword">null</strong>) || !valid.booleanValue()) {
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>              <strong class="jxr_keyword">return</strong> CONTINUE_PROCESSING;
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>          }
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>  
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>          <em class="jxr_comment">// Acquire configuration objects that we need</em>
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>          <a name="ActionConfig" href="../../../../../org/apache/struts/config/ActionConfig.html#ActionConfig">ActionConfig</a> actionConfig = actionCtx.getActionConfig();
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>          <a name="ModuleConfig" href="../../../../../org/apache/struts/config/ModuleConfig.html#ModuleConfig">ModuleConfig</a> moduleConfig = actionConfig.getModuleConfig();
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>  
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>          <a name="ForwardConfig" href="../../../../../org/apache/struts/config/ForwardConfig.html#ForwardConfig">ForwardConfig</a> forwardConfig = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>          String forward = actionConfig.getForward();
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>  
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>          <strong class="jxr_keyword">if</strong> (forward != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>              forwardConfig = forward(actionCtx, moduleConfig, forward);
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>  
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>              log.debug(<span class="jxr_string">"Forwarding to {}"</span>, forwardConfig);
-<a class="jxr_linenumber" name="L76" href="#L76">76</a>  
-<a class="jxr_linenumber" name="L77" href="#L77">77</a>              actionCtx.setForwardConfig(forwardConfig);
-<a class="jxr_linenumber" name="L78" href="#L78">78</a>          }
-<a class="jxr_linenumber" name="L79" href="#L79">79</a>  
-<a class="jxr_linenumber" name="L80" href="#L80">80</a>          <strong class="jxr_keyword">return</strong> CONTINUE_PROCESSING;
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>      }
-<a class="jxr_linenumber" name="L82" href="#L82">82</a>  
-<a class="jxr_linenumber" name="L83" href="#L83">83</a>      <em class="jxr_comment">// ------------------------------------------------------- Protected Methods</em>
-<a class="jxr_linenumber" name="L84" href="#L84">84</a>  
-<a class="jxr_linenumber" name="L85" href="#L85">85</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L86" href="#L86">86</a>  <em class="jxr_javadoccomment">     * &lt;p&gt;Create and return a &lt;code&gt;ForwardConfig&lt;/code&gt; representing the</em>
-<a class="jxr_linenumber" name="L87" href="#L87">87</a>  <em class="jxr_javadoccomment">     * specified module-relative destination.&lt;/p&gt;</em>
-<a class="jxr_linenumber" name="L88" href="#L88">88</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L89" href="#L89">89</a>  <em class="jxr_javadoccomment">     * @param context      The context for this request</em>
-<a class="jxr_linenumber" name="L90" href="#L90">90</a>  <em class="jxr_javadoccomment">     * @param moduleConfig The &lt;code&gt;ModuleConfig&lt;/code&gt; for this request</em>
-<a class="jxr_linenumber" name="L91" href="#L91">91</a>  <em class="jxr_javadoccomment">     * @param uri          The module-relative URI to be the destination</em>
-<a class="jxr_linenumber" name="L92" href="#L92">92</a>  <em class="jxr_javadoccomment">     * @return ForwwardConfig representing the destination</em>
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L94" href="#L94">94</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> <a name="ForwardConfig" href="../../../../../org/apache/struts/config/ForwardConfig.html#ForwardConfig">ForwardConfig</a> forward(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> context,
-<a class="jxr_linenumber" name="L95" href="#L95">95</a>          <a name="ModuleConfig" href="../../../../../org/apache/struts/config/ModuleConfig.html#ModuleConfig">ModuleConfig</a> moduleConfig, String uri);
-<a class="jxr_linenumber" name="L96" href="#L96">96</a>  }
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>      @Override
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">boolean</strong> execute_(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> actionCtx)
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          <em class="jxr_comment">// Skip processing if the current request is not valid</em>
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          Boolean valid = actionCtx.getFormValid();
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>  
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          <strong class="jxr_keyword">if</strong> ((valid == <strong class="jxr_keyword">null</strong>) || !valid.booleanValue()) {
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>              <strong class="jxr_keyword">return</strong> CONTINUE_PROCESSING;
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>          }
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          <em class="jxr_comment">// Acquire configuration objects that we need</em>
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          <a name="ActionConfig" href="../../../../../org/apache/struts/config/ActionConfig.html#ActionConfig">ActionConfig</a> actionConfig = actionCtx.getActionConfig();
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          <a name="ModuleConfig" href="../../../../../org/apache/struts/config/ModuleConfig.html#ModuleConfig">ModuleConfig</a> moduleConfig = actionConfig.getModuleConfig();
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>          <a name="ForwardConfig" href="../../../../../org/apache/struts/config/ForwardConfig.html#ForwardConfig">ForwardConfig</a> forwardConfig = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>          String forward = actionConfig.getForward();
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>  
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>          <strong class="jxr_keyword">if</strong> (forward != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>              forwardConfig = forward(actionCtx, moduleConfig, forward);
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>  
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>              log.debug(<span class="jxr_string">"Forwarding to {}"</span>, forwardConfig);
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>  
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>              actionCtx.setForwardConfig(forwardConfig);
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>          }
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>  
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>          <strong class="jxr_keyword">return</strong> CONTINUE_PROCESSING;
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>      }
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>  
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>      <em class="jxr_comment">// ------------------------------------------------------- Protected Methods</em>
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>  
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>  <em class="jxr_javadoccomment">     * &lt;p&gt;Create and return a &lt;code&gt;ForwardConfig&lt;/code&gt; representing the</em>
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>  <em class="jxr_javadoccomment">     * specified module-relative destination.&lt;/p&gt;</em>
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>  <em class="jxr_javadoccomment">     * @param context      The context for this request</em>
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>  <em class="jxr_javadoccomment">     * @param moduleConfig The &lt;code&gt;ModuleConfig&lt;/code&gt; for this request</em>
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>  <em class="jxr_javadoccomment">     * @param uri          The module-relative URI to be the destination</em>
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>  <em class="jxr_javadoccomment">     * @return ForwwardConfig representing the destination</em>
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">abstract</strong> <a name="ForwardConfig" href="../../../../../org/apache/struts/config/ForwardConfig.html#ForwardConfig">ForwardConfig</a> forward(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> context,
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>          <a name="ModuleConfig" href="../../../../../org/apache/struts/config/ModuleConfig.html#ModuleConfig">ModuleConfig</a> moduleConfig, String uri);
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2000&#x2013;2022 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2000&#x2013;2023 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>
 </body>
 </html>

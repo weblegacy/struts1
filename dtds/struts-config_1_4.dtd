@@ -59,10 +59,17 @@
 
 
 <!-- An "Integer" is a character string consisting solely of numeric digits,
-     optionally preceeded by a minus sign, that can be converted to a
+     optionally preceded by a minus sign, that can be converted to a
      32-bit integer.
 -->
 <!ENTITY % Integer "CDATA">
+
+
+<!-- A "Long" is a character string consisting solely of numeric digits,
+     optionally preceded by a minus sign, that can be converted to a
+     64-bit integer.
+-->
+<!ENTITY % Long "CDATA">
 
 
 <!-- A "Location" is a relative path, delimited by "/" characters, that
@@ -569,6 +576,10 @@ The "form-bean" element describes a particular form bean, which is a
                      megabytes, or gigabytes, respectively.
                      ["250M"]
 
+     fileCountMax    The maximum permitted number of files that may be uploaded
+                     in a single request. A value of -1 indicates no maximum.
+                     [-1]
+
      memFileSize     The maximum size (in bytes) of a file whose contents will
                      be retained in memory after uploading. Files larger than
                      this threshold will be written to some alternative storage
@@ -619,6 +630,7 @@ The "form-bean" element describes a particular form bean, which is a
 <!ATTLIST controller     inputForward   %Boolean;       #IMPLIED>
 <!ATTLIST controller     locale         %Boolean;       #IMPLIED>
 <!ATTLIST controller     maxFileSize    CDATA           #IMPLIED>
+<!ATTLIST controller     fileCountMax   %Long;          #IMPLIED>
 <!ATTLIST controller     memFileSize    CDATA           #IMPLIED>
 <!ATTLIST controller     multipartClass %ClassName;     #IMPLIED>
 <!ATTLIST controller     nocache        %Boolean;       #IMPLIED>

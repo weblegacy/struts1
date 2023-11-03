@@ -33,21 +33,21 @@
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.config.ForwardConfig;
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>  
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <em class="jxr_javadoccomment"> * &lt;p&gt;Look up and execute a commons-chain &lt;code&gt;Command&lt;/code&gt; based on</em>
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_javadoccomment"> * properties of the ActionContext's &lt;code&gt;forwardConfig&lt;/code&gt; property.</em>
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <em class="jxr_javadoccomment"> * &lt;/p&gt;</em>
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="ExecuteForwardCommand" href="../../../../../org/apache/struts/chain/commands/ExecuteForwardCommand.html#ExecuteForwardCommand">ExecuteForwardCommand</a> <strong class="jxr_keyword">extends</strong> <a name="ExecuteCommand" href="../../../../../org/apache/struts/chain/commands/ExecuteCommand.html#ExecuteCommand">ExecuteCommand</a> {
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <em class="jxr_javadoccomment"> * Look up and execute a commons-chain {@code Command} based on properties of</em>
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_javadoccomment"> * the ActionContext's {@code forwardConfig} property.</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="ExecuteForwardCommand" href="../../../../../org/apache/struts/chain/commands/ExecuteForwardCommand.html#ExecuteForwardCommand">ExecuteForwardCommand</a> <strong class="jxr_keyword">extends</strong> <a name="ExecuteCommand" href="../../../../../org/apache/struts/chain/commands/ExecuteCommand.html#ExecuteCommand">ExecuteCommand</a> {
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment">     * &lt;p&gt;Return the command specified by the &lt;code&gt;command&lt;/code&gt; and</em>
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <em class="jxr_javadoccomment">     * &lt;code&gt;catalog&lt;/code&gt; properties of the &lt;code&gt;forwardConfig&lt;/code&gt;</em>
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment">     * property of the given &lt;code&gt;ActionContext&lt;/code&gt;.  If</em>
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <em class="jxr_javadoccomment">     * &lt;code&gt;forwardConfig&lt;/code&gt; is null, return null.&lt;/p&gt;</em>
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">     *</em>
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     * @param context Our ActionContext</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment">     * Return the command specified by the {@code command} and {@code catalog}</em>
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <em class="jxr_javadoccomment">     * properties of the {@code forwardConfig} property of the given</em>
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment">     * {@code ActionContext}. If {@code forwardConfig} is null, return null.</em>
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">     * @param context Our ActionContext</em>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * @return Command to execute or null</em>
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">protected</strong> Command getCommand(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> context) {
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">protected</strong> Command&lt;ActionContext&gt; getCommand(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> context) {
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>          <a name="ForwardConfig" href="../../../../../org/apache/struts/config/ForwardConfig.html#ForwardConfig">ForwardConfig</a> forwardConfig = context.getForwardConfig();
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>          <strong class="jxr_keyword">if</strong> (forwardConfig == <strong class="jxr_keyword">null</strong>) {
@@ -58,18 +58,19 @@
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>      }
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>  
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>      <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <em class="jxr_javadoccomment">     * &lt;p&gt; Determine whether the forwardConfig should be processed. &lt;/p&gt;</em>
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <em class="jxr_javadoccomment">     * Determine whether the forwardConfig should be processed.</em>
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     * @param context The ActionContext we are processing</em>
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment">     * @return &lt;p&gt;&lt;code&gt;true&lt;/code&gt; if the given &lt;code&gt;ActionContext&lt;/code&gt;</em>
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <em class="jxr_javadoccomment">     *         has a non-null &lt;code&gt;forwardConfig&lt;/code&gt; property.&lt;/p&gt;</em>
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>  <em class="jxr_javadoccomment">     */</em>
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">boolean</strong> shouldProcess(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> context) {
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>          <strong class="jxr_keyword">return</strong> (context.getForwardConfig() != <strong class="jxr_keyword">null</strong>);
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>      }
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>  }
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <em class="jxr_javadoccomment">     * @return {@code true} if the given {@code ActionContext} has a non-null</em>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  <em class="jxr_javadoccomment">     *         {@code forwardConfig} property.</em>
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>      <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">boolean</strong> shouldProcess(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> context) {
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          <strong class="jxr_keyword">return</strong> (context.getForwardConfig() != <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>      }
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2000&#x2013;2022 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2000&#x2013;2023 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>
 </body>
 </html>

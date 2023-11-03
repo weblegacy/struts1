@@ -23,9 +23,7 @@ package org.apache.struts.chain.commands.servlet;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import jakarta.servlet.ServletException;
-
-import org.apache.commons.chain.web.servlet.ServletWebContext;
+import org.apache.commons.chain.web.jakarta.servlet.ServletWebContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.mock.MockActionServlet;
@@ -37,6 +35,8 @@ import org.apache.struts.mock.MockServletContext;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import jakarta.servlet.ServletException;
 
 /**
  * JUnitTest case for class: {@link PerformForward}

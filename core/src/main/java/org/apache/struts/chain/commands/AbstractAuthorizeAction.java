@@ -55,7 +55,8 @@ public abstract class AbstractAuthorizeAction extends ActionCommandBase {
      * @throws UnauthorizedActionException if authorization fails
      * or if an error is encountered in the course of performing the authorization.
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
         // Retrieve ActionConfig
         ActionConfig actionConfig = actionCtx.getActionConfig();

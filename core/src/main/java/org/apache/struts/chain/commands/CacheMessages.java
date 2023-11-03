@@ -20,12 +20,12 @@
  */
 package org.apache.struts.chain.commands;
 
+import java.util.Map;
+
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.config.ForwardConfig;
-
-import java.util.Map;
 
 /**
  * Copies any <code>ActionMessages</code> from the request to the session if a
@@ -41,7 +41,8 @@ import java.util.Map;
  */
 public class CacheMessages extends ActionCommandBase {
 
-    public boolean execute(ActionContext actionCtx) throws Exception {
+    @Override
+    protected boolean execute_(ActionContext actionCtx) throws Exception {
         ForwardConfig forwardConfig = actionCtx.getForwardConfig();
         if ((forwardConfig != null) && forwardConfig.getRedirect()) {
             Map<String, Object> request = actionCtx.getRequestScope();

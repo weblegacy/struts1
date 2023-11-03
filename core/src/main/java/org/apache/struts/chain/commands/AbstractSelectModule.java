@@ -49,7 +49,8 @@ public abstract class AbstractSelectModule extends ActionCommandBase {
      *                                  this request
      * @throws Exception                if thrown by the Action class
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
         String prefix = getPrefix(actionCtx);
 

@@ -40,7 +40,8 @@ public abstract class AbstractSetOriginalURI extends ActionCommandBase {
      * @return <code>false</code> so that processing continues
      * @throws Exception if thrown by the Action class
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
         // Set the original uri if not already set
         if (!actionCtx.getRequestScope().containsKey(Globals.ORIGINAL_URI_KEY)) {

@@ -28,14 +28,14 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.chain.Context;
 import org.apache.commons.chain.impl.ContextBase;
-import org.apache.commons.chain.web.servlet.ServletWebContext;
+import org.apache.commons.chain.web.jakarta.servlet.ServletWebContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- *  JUnitTest case for class: {@link WrappingLookupCommand}
+ * JUnitTest case for class: {@link WrappingLookupCommand}
  */
 public class TestWrappingLookupCommand {
 

@@ -27,7 +27,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.commons.chain.Command;
-import org.apache.commons.chain.Context;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.struts.tiles.ComponentContext;
@@ -39,26 +38,25 @@ import org.apache.struts.tiles.TilesUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 /**
- * <p>Command class intended to perform responsibilities of the
- * TilesRequestProcessor in Struts 1.1.  Does not actually dispatch requests,
- * but simply prepares the chain context for a later forward as
- * appropriate.  Should be added to a chain before something which
- * would handle a conventional ForwardConfig.</p>
+ * Command class intended to perform responsibilities of the
+ * TilesRequestProcessor in Struts 1.1. Does not actually dispatch requests,
+ * but simply prepares the chain context for a later forward as appropriate.
+ * Should be added to a chain before something which would handle a
+ * conventional ForwardConfig.
  *
  * <p>This class will never have any effect on the chain unless a
- * <code>TilesDefinitionFactory</code> can be found; however it does not
- * consider the absence of a definition factory to be a fatal error; the
- * command simply returns false and lets the chain continue.</p>
+ * {@code TilesDefinitionFactory} can be found; however it does not consider
+ * the absence of a definition factory to be a fatal error; the command simply
+ * returns false and lets the chain continue.</p>
  *
- * <p>To initialize the <code>TilesDefinitionFactory</code>, use
- * <code>org.apache.struts.chain.commands.legacy.TilesPlugin</code>. This class
- * is a simple extension to <code>org.apache.struts.tiles.TilesPlugin</code>
- * which simply does not interfere with your choice of <code>RequestProcessor</code>
+ * <p>To initialize the {@code TilesDefinitionFactory}, use
+ * {@code org.apache.struts.chain.commands.legacy.TilesPlugin}. This class is a
+ * simple extension to {@code org.apache.struts.tiles.TilesPlugin} which simply
+ * does not interfere with your choice of {@code RequestProcessor}
  * implementation.</p>
  */
-public class TilesPreProcessor implements Command
+public class TilesPreProcessor implements Command<ServletActionContext>
 {
 
 
@@ -75,29 +73,27 @@ public class TilesPreProcessor implements Command
 
 
     /**
-     * <p>If the current <code>ForwardConfig</code> is using "tiles",
-     * perform necessary pre-processing to set up the <code>TilesContext</code>
-     * and substitute a new <code>ForwardConfig</code> which is understandable
-     * to a <code>RequestDispatcher</code>.</p>
+     * If the current {@code ForwardConfig} is using "tiles", perform necessary
+     * pre-processing to set up the {@code TilesContext} and substitute a new
+     * {@code ForwardConfig} which is understandable to a
+     * {@code RequestDispatcher}.
      *
      * <p>Note that if the command finds a previously existing
-     * <code>ComponentContext</code> in the request, then it
-     * infers that it has been called from within another tile,
-     * so instead of changing the <code>ForwardConfig</code> in the chain
-     * <code>Context</code>, the command uses <code>RequestDispatcher</code>
-     * to <em>include</em> the tile, and returns true, indicating that the processing
-     * chain is complete.</p>
+     * {@code ComponentContext} in the request, then it infers that it has been
+     * called from within another tile, so instead of changing the
+     * {@code ForwardConfig} in the chain {@code Context}, the command uses
+     * {@code RequestDispatcher} to <em>include</em> the tile, and returns
+     * true, indicating that the processing chain is complete.</p>
      *
-     * @param context The <code>Context</code> for the current request
+     * @param sacontext The {@code Context} for the current request
      *
-     * @return <code>false</code> in most cases, but true if we determine
-     * that we're processing in "include" mode.
+     * @return {@code false} in most cases, but true if we determine that we're
+     *         processing in "include" mode.
      */
     @SuppressWarnings("deprecation")
-    public boolean execute(Context context) throws Exception {
+    public boolean execute(ServletActionContext sacontext) throws Exception {
 
         // Is there a Tiles Definition to be processed?
-        ServletActionContext sacontext = (ServletActionContext) context;
         ForwardConfig forwardConfig = sacontext.getForwardConfig();
         if (forwardConfig == null || forwardConfig.getPath() == null)
         {
@@ -223,10 +219,10 @@ public class TilesPreProcessor implements Command
     // ------------------------------------------------------- Protected Methods
 
     /**
-     * <p>Do an include of specified URI using a <code>RequestDispatcher</code>.</p>
+     * Do an include of specified URI using a {@code RequestDispatcher}.
      *
      * @param context a chain servlet/web context
-     * @param uri Context-relative URI to include
+     * @param uri     Context-relative URI to include
      */
     protected void doInclude(
         ServletActionContext context,
@@ -241,10 +237,10 @@ public class TilesPreProcessor implements Command
     }
 
     /**
-     * <p>Do an include of specified URI using a <code>RequestDispatcher</code>.</p>
+     * Do an include of specified URI using a {@code RequestDispatcher}.
      *
      * @param context a chain servlet/web context
-     * @param uri Context-relative URI to include
+     * @param uri     Context-relative URI to include
      */
     protected void doForward(
         ServletActionContext context,
@@ -259,13 +255,15 @@ public class TilesPreProcessor implements Command
     }
 
     /**
-     * <p>Get the <code>RequestDispatcher</code> for the specified <code>uri</code>.  If it is not found,
-     * send a 500 error as a response and return null;
+     * Get the {@code RequestDispatcher} for the specified {@code uri}. If it
+     * is not found, send a 500 error as a response and return null;
      *
-     * @param context the current <code>ServletActionContext</code>
-     * @param uri the ServletContext-relative URI of the request dispatcher to find.
-     * @return the <code>RequestDispatcher</code>, or null if none is returned from the <code>ServletContext</code>.
-     * @throws IOException if <code>getRequestDispatcher(uri)</code> has an error.
+     * @param context the current {@code ServletActionContext}
+     * @param uri     the ServletContext-relative URI of the request dispatcher to find.
+     *
+     * @return the {@code RequestDispatcher}, or null if none is returned from the {@code ServletContext}.
+     *
+     * @throws IOException if {@code getRequestDispatcher(uri)} has an error.
      */
     private RequestDispatcher getRequiredDispatcher(ServletActionContext context, String uri) throws IOException {
         RequestDispatcher rd = context.getContext().getRequestDispatcher(uri);

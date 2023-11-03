@@ -29,18 +29,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <p>Invoke the appropriate <code>Command</code> for this request.  If the
- * context's <code>ActionConfig</code> has no <code>command</code> property
- * defined, no action will be taken.  If the specified command cannot be
- * found, a warning will be logged, but processing will continue.  Depending
- * on how the chain is configured, this can be used in place of an
- * <code>Action</code> or as a method of performing pre-processing. </p>
+ * Invoke the appropriate {@code Command} for this request. If the context's
+ * {@code ActionConfig} has no {@code command} property defined, no action will
+ * be taken. If the specified command cannot be found, a warning will be
+ * logged, but processing will continue. Depending on how the chain is
+ * configured, this can be used in place of an {@code Action} or as a method of
+ * performing pre-processing.
  *
  * <p>If used instead of an action, the command which is looked up should put
  * an ActionForward into the context, unless it has already dealt with the
  * response.</p>
- *
- * @version $Id$
  */
 public class ExecuteCommand extends ActionCommandBase {
     // ------------------------------------------------------ Instance Variables
@@ -54,21 +52,22 @@ public class ExecuteCommand extends ActionCommandBase {
     // ---------------------------------------------------------- Public Methods
 
     /**
-     * <p>If the <code>context</code> is "valid", lookup a command and execute
-     * it.</p>
+     * If the {@code context} is "valid", lookup a command and execute it.
      *
-     * @param actionCtx The <code>Context</code> for the current request
-     * @return the result of the lookup command's <code>execute</code> method,
-     *         if executed, or <code>false</code> if it was not executed.
+     * @param actionCtx The {@code ActionContext} for the current request
+     *
+     * @return the result of the lookup command's {@code execute} method,
+     *         if executed, or {@code false} if it was not executed.
      * @throws Exception on any error
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
         if (shouldProcess(actionCtx)) {
-            Command command = getCommand(actionCtx);
+            Command<ActionContext> command = getCommand(actionCtx);
 
             if (command != null) {
-                return (command.execute(actionCtx));
+                return command.execute(actionCtx);
             }
         }
 
@@ -76,29 +75,31 @@ public class ExecuteCommand extends ActionCommandBase {
     }
 
     /**
-     * <p>Evaluate the current context to see if a command should even be
-     * executed.</p>
+     * Evaluate the current context to see if a command should even be
+     * executed.
      *
      * @param context A valid ActionContext
+     *
      * @return TRUE if the pending Command should be executed
      */
     protected boolean shouldProcess(ActionContext context) {
         // Skip processing if the current request is not valid
         Boolean valid = context.getFormValid();
 
-        return ((valid != null) && valid.booleanValue());
+        return valid != null && valid.booleanValue();
     }
 
     /**
-     * <p>Find the <code>ActionConfig</code> in the current context and, if it
-     * is properly configured, lookup the appropriate <code>commons-chain</code>
-     * command.</p>
+     * Find the {@code ActionConfig} in the current context and, if it is
+     * properly configured, lookup the appropriate {@code commons-chain}
+     * command.
      *
      * @param context A valid ActionContext
-     * @return a <code>Command</code> to execute, or null if none is specified
+     *
+     * @return a {@code Command} to execute, or null if none is specified
      *         or if the specified command cannot be found.
      */
-    protected Command getCommand(ActionContext context) {
+    protected Command<ActionContext> getCommand(ActionContext context) {
         ActionConfig actionConfig = context.getActionConfig();
 
         String commandName = actionConfig.getCommand();
@@ -113,21 +114,27 @@ public class ExecuteCommand extends ActionCommandBase {
     }
 
     /**
-     * <p> Retrieve the specified Command from the specified Catalog. </p>
+     * Retrieve the specified Command from the specified Catalog.
      *
      * @param commandName The Command to retrieve.
      * @param catalogName The Catalog to search.
+     *
      * @return Instantiated Command, or null
      */
-    protected Command getCommand(String commandName, String catalogName) {
+    protected Command<ActionContext> getCommand(String commandName,
+            String catalogName) {
+
         if (commandName == null) {
             return null;
         }
 
-        Catalog catalog;
+        final CatalogFactory<ActionContext> catalogFactory =
+                CatalogFactory.getInstance();
+
+        final Catalog<ActionContext> catalog;
 
         if (catalogName != null) {
-            catalog = CatalogFactory.getInstance().getCatalog(catalogName);
+            catalog = catalogFactory.getCatalog(catalogName);
 
             if (catalog == null) {
                 log.warn("When looking up {}, no catalog found under {}",
@@ -137,7 +144,7 @@ public class ExecuteCommand extends ActionCommandBase {
             }
         } else {
             catalogName = "the default catalog";
-            catalog = CatalogFactory.getInstance().getCatalog();
+            catalog = catalogFactory.getCatalog();
 
             if (catalog == null) {
                 log.warn("When looking up {}, no default catalog found.",

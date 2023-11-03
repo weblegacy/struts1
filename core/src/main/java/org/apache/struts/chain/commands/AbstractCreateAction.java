@@ -53,7 +53,8 @@ public abstract class AbstractCreateAction extends ActionCommandBase {
      * @throws Exception if there are any problems instantiating the Action
      *                   class.
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
         // Skip processing if the current request is not valid
         Boolean valid = actionCtx.getFormValid();

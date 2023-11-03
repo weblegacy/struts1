@@ -20,18 +20,18 @@
  */
 package org.apache.struts.chain.contexts;
 
-import org.apache.commons.chain.web.WebContext;
+import java.util.Map;
+
+import org.apache.commons.chain.web.jakarta.WebContext;
 import org.apache.struts.Globals;
 import org.apache.struts.config.ModuleConfig;
 
-import java.util.Map;
-
 /**
- * <p> Provide a Subclass of ActionContextBase which is understood to be
- * wrapping an instance of <code>org.apache.commons.chain.web.WebContext</code>.
- * </p>
+ * Provide a Subclass of ActionContextBase which is understood to be wrapping
+ * an instance of {@link WebContext}.
  */
 public class WebActionContext extends ActionContextBase {
+
     /**
      * Instantiate this composite by wrapping an instance of WebContext.
      *
@@ -59,71 +59,64 @@ public class WebActionContext extends ActionContextBase {
     // -------------------------------
 
     /**
-     * <p> Return an immutable Map that maps header names to the first (or
-     * only) header value (as a String). </p>
+     * Return an immutable Map that maps header names to the first (or only)
+     * header value (as a String).
      *
      * @return A immutable Map of web request header names
      */
-    @SuppressWarnings("unchecked")
     public Map<String, String> getHeader() {
         return webContext().getHeader();
     }
 
     /**
-     * <p> Return an immutable Map that maps header names to the set of all
-     * values specified in the request (as a String array). Header names must
-     * be matched in a case-insensitive manner. </p>
+     * Return an immutable Map that maps header names to the set of all values
+     * specified in the request (as a String array). Header names must be
+     * matched in a case-insensitive manner.
      *
      * @return An immutable Map of web request header values
      */
-    @SuppressWarnings("unchecked")
     public Map<String, String[]> getHeaderValues() {
         return webContext().getHeaderValues();
     }
 
     /**
-     * <p> Return an immutable Map that maps context application
-     * initialization parameters to their values. </p>
+     * Return an immutable Map that maps context application initialization
+     * parameters to their values.
      *
      * @return An immutable Map of web context initialization parameters
      */
-    @SuppressWarnings("unchecked")
     public Map<String, String> getInitParam() {
         return webContext().getInitParam();
     }
 
     /**
-     * <p> Return a map whose keys are <code>String</code> request parameter
-     * names and whose values are <code>String</code> values. </p> <p> For
-     * parameters which were submitted with more than one value, only one
-     * value will be returned, as if one called
-     * <code>ServletRequest.getParameter(String)</code>
-     * </p>
+     * Return a map whose keys are {@code String} request parameter names and
+     * whose values are {@code String} values.
+     *
+     * <p>For parameters which were submitted with more than one value, only
+     * one value will be returned, as if one called
+     * {@code ServletRequest.getParameter(String)}.</p>
      *
      * @return A map of web request parameters
      */
-    @SuppressWarnings("unchecked")
     public Map<String, String> getParam() {
         return webContext().getParam();
     }
 
     /**
-     * <p> Return a map whose keys are <code>String</code> request parameter
-     * names and whose values are <code>String[]</code> values. </p>
+     * Return a map whose keys are {@code String} request parameter names and
+     * whose values are {@code String[]} values.
      *
      * @return A map of web request parameter values (as an array)
      */
-    @SuppressWarnings("unchecked")
     public Map<String, String[]> getParamValues() {
         return webContext().getParamValues();
     }
 
-    @SuppressWarnings("unchecked")
     public Map<String, Object> getApplicationScope() {
         return webContext().getApplicationScope();
     }
 
-    @SuppressWarnings("unchecked")
     public Map<String, Object> getRequestScope() {
         return webContext().getRequestScope();
     }
@@ -132,7 +125,6 @@ public class WebActionContext extends ActionContextBase {
         return getParamValues();
     }
 
-    @SuppressWarnings("unchecked")
     public Map<String, Object> getSessionScope() {
         return webContext().getSessionScope();
     }

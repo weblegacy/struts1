@@ -23,7 +23,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>io.github.weblegacy</groupId>
     <artifactId>struts-parent</artifactId>
-    <version>1.4.5-SNAPSHOT</version>
+    <version>1.5.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>Struts</name>
     <url>https://weblegacy.github.io/struts1</url>
@@ -95,6 +95,8 @@
             <name>Stefan Graff</name>
             <email>stefan.graff@gmx.at</email>
             <url>https://github.com/ste-gr</url>
+            <organization>Web-Legacy</organization>
+            <organizationUrl>https://github.com/weblegacy</organizationUrl>
             <roles>
                 <role>architect (since 2022)</role>
                 <role>developer (since 2022)</role>
@@ -351,32 +353,47 @@
         </developer>
     </developers>
 
+    <contributors>
+        <contributor>
+            <name>jo-kl</name>
+            <url>https://github.com/jo-kl</url>
+            <organization>Web-Legacy</organization>
+            <organizationUrl>https://github.com/weblegacy</organizationUrl>
+            <roles>
+                <role>Committer</role>
+            </roles>
+        </contributor>
+    </contributors>
+
     <issueManagement>
         <system>GitHub</system>
         <url>https://github.com/weblegacy/struts1/issues/</url>
     </issueManagement>
 
     <properties>
-        <encoding>UTF-8</encoding>
+        <sourceEncoding>UTF-8</sourceEncoding>
         <propertiesEncoding>ISO-8859-1</propertiesEncoding>
-        <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
+        <project.build.sourceEncoding>${sourceEncoding}</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>${sourceEncoding}</project.reporting.outputEncoding>
         <mavenVersion>[3.5.4,4)</mavenVersion>
         <javaVersion>8</javaVersion>
         <javaTestVersion>8</javaTestVersion>
-        <groovyVersion>4.0.6</groovyVersion>
-        <seleniumVersion>4.6.0</seleniumVersion>
-        <slf4jVersion>2.0.3</slf4jVersion>
+        <surefireVersion>3.2.1</surefireVersion>
+        <groovyVersion>4.0.15</groovyVersion>
+        <seleniumVersion>4.15.0</seleniumVersion>
+        <slf4jVersion>2.0.9</slf4jVersion>
         <tilesVersion>3.0.8</tilesVersion>
         <tilesRequestVersion>1.0.7</tilesRequestVersion>
-        <antlrVersion>4.11.1</antlrVersion>
+        <antlrVersion>4.13.1</antlrVersion>
         <servletVersion>5.0.0</servletVersion>
         <jspVersion>3.0.0</jspVersion>
         <jstlVersion>2.0.0</jstlVersion>
+        <jstlImplVersion>2.0.0</jstlImplVersion>
         <elVersion>4.0.0</elVersion>
         <jsfVersion>3.0.0</jsfVersion>
         <jsfImplVersion>3.0.2</jsfImplVersion>
-        <jaxbVersion>2.3.7</jaxbVersion>
+        <jaxbVersion>2.3.9</jaxbVersion>
+        <commonsChainVersion>1.3.0</commonsChainVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
         <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
         <struts.osgi.import>*</struts.osgi.import>
@@ -518,7 +535,7 @@
             <plugins>
                 <plugin>
                     <artifactId>maven-assembly-plugin</artifactId>
-                    <version>3.4.1</version>
+                    <version>3.6.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-changes-plugin</artifactId>
@@ -526,22 +543,22 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-checkstyle-plugin</artifactId>
-                    <version>3.1.2</version>
+                    <version>3.3.1</version>
                     <dependencies>
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>10.4</version>
+                            <version>10.12.4</version>
                         </dependency>
                     </dependencies>
                 </plugin>
                 <plugin>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.3.2</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.10.1</version>
+                    <version>3.11.0</version>
                     <configuration>
                         <release>${javaVersion}</release>
                         <showDeprecation>true</showDeprecation>
@@ -554,58 +571,58 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-dependency-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.6.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>3.0.0-M2</version>
+                    <version>3.1.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-enforcer-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>3.4.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>3.0.0-M7</version>
+                    <version>${surefireVersion}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-gpg-plugin</artifactId>
-                    <version>3.0.1</version>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>3.0.0-M1</version>
+                    <version>3.1.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.4.0</version>
+                    <version>3.6.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.3.1</version>
                     <configuration>
-                        <encoding>${encoding}</encoding>
+                        <encoding>${sourceEncoding}</encoding>
                         <propertiesEncoding>${propertiesEncoding}</propertiesEncoding>
                     </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-scm-publish-plugin</artifactId>
-                    <version>3.1.0</version>
+                    <version>3.2.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>3.12.0</version>
+                    <version>3.12.1</version>
                     <configuration>
                         <skipDeploy>true</skipDeploy>
                     </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>3.2.1</version>
+                    <version>3.3.0</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.2.2</version>
+                    <version>3.3.0</version>
                     <configuration>
                         <archive>
                             <manifestFile>${struts.manifestfile}</manifestFile>
@@ -621,27 +638,27 @@
                 </plugin>
                 <plugin>
                     <artifactId>maven-jxr-plugin</artifactId>
-                    <version>3.2.0</version>
+                    <version>3.3.1</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-pmd-plugin</artifactId>
-                    <version>3.17.0</version>
+                    <version>3.21.2</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
-                    <version>3.3.0</version>
+                    <version>3.4.5</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>3.0.0-M7</version>
+                    <version>${surefireVersion}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-surefire-report-plugin</artifactId>
-                    <version>3.0.0-M7</version>
+                    <version>${surefireVersion}</version>
                 </plugin>
                 <plugin>
                     <artifactId>maven-war-plugin</artifactId>
-                    <version>3.3.2</version>
+                    <version>3.4.0</version>
                 </plugin>
                 <plugin>
                     <groupId>net.sf.dtddoc</groupId>
@@ -664,13 +681,13 @@
                 <plugin>
                     <groupId>org.apache.felix</groupId>
                     <artifactId>maven-bundle-plugin</artifactId>
-                    <version>5.1.7</version>
+                    <version>5.1.9</version>
                     <inherited>true</inherited>
                 </plugin>
                 <plugin>
                     <groupId>org.codehaus.cargo</groupId>
                     <artifactId>cargo-maven3-plugin</artifactId>
-                    <version>1.9.13</version>
+                    <version>1.10.10</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -978,19 +995,19 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>commons-chain</groupId>
+                <groupId>io.github.weblegacy</groupId>
                 <artifactId>commons-chain</artifactId>
-                <version>1.2</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>myfaces</groupId>
-                        <artifactId>myfaces-api</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>javax.portlet</groupId>
-                        <artifactId>portlet-api</artifactId>
-                    </exclusion>
-                </exclusions>
+                <version>${commonsChainVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.weblegacy</groupId>
+                <artifactId>commons-chain-web-jakarta</artifactId>
+                <version>${commonsChainVersion}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.github.weblegacy</groupId>
+                <artifactId>commons-chain-web-jakarta-servlet</artifactId>
+                <version>${commonsChainVersion}</version>
             </dependency>
             <dependency>
                 <groupId>commons-digester</groupId>
@@ -1018,7 +1035,7 @@
             <dependency>
                 <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
-                <version>2.13.0</version>
+                <version>2.15.0</version>
                 <optional>true</optional>
             </dependency>
             <dependency>
@@ -1064,7 +1081,7 @@
             <dependency>
                 <groupId>org.glassfish.web</groupId>
                 <artifactId>jakarta.servlet.jsp.jstl</artifactId>
-                <version>${jstlVersion}</version>
+                <version>${jstlImplVersion}</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.faces</groupId>
@@ -1101,13 +1118,13 @@
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
-                <version>5.9.1</version>
+                <version>5.10.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
-                <groupId>net.sourceforge.htmlunit</groupId>
+                <groupId>org.htmlunit</groupId>
                 <artifactId>htmlunit</artifactId>
-                <version>2.66.0</version>
+                <version>3.7.0</version>
                 <scope>test</scope>
                 <exclusions>
                     <exclusion>
@@ -1119,7 +1136,7 @@
             <dependency>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-annotations</artifactId>
-                <version>4.7.3</version>
+                <version>4.8.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
@@ -1137,7 +1154,7 @@
             <dependency>
                 <groupId>io.github.bonigarcia</groupId>
                 <artifactId>webdrivermanager</artifactId>
-                <version>5.3.1</version>
+                <version>5.6.1</version>
                 <scope>test</scope>
             </dependency>
             <dependency>

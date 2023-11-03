@@ -58,7 +58,8 @@ public class ExecuteDispatcher extends ActionCommandBase {
         return (Dispatcher) ClassUtils.getApplicationInstance(type);
     }
 
-    public boolean execute(ActionContext context) throws Exception {
+    @Override
+    protected boolean execute_(ActionContext context) throws Exception {
         // Skip processing if the current request is not valid
         Boolean valid = context.getFormValid();
         if ((valid == null) || !valid.booleanValue()) {

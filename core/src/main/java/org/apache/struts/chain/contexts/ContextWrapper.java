@@ -27,10 +27,12 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * <p> Provide a base class for any Context Implementation which is primarily
- * intended for use in a subchain. </p> <p> Classes which extend
- * <code>ContextWrapper</code> may implement typesafe property methods which
- * also leave their values in the underlying context. </p>
+ * Provide a base class for any Context Implementation which is primarily
+ * intended for use in a subchain.
+ *
+ * <p>Classes which extend {@code ContextWrapper} may implement typesafe
+ * property methods which also leave their values in the underlying
+ * context.</p>
  */
 public class ContextWrapper implements Context {
     private Context base;
@@ -56,17 +58,14 @@ public class ContextWrapper implements Context {
     // -------------------------------
     // Map interface methods
     // -------------------------------
-    @SuppressWarnings("unchecked")
-    public Set<Object> entrySet() {
+    public Set<Map.Entry<String, Object>> entrySet() {
         return this.base.entrySet();
     }
 
-    @SuppressWarnings("unchecked")
     public Set<String> keySet() {
         return this.base.keySet();
     }
 
-    @SuppressWarnings("unchecked")
     public Collection<Object> values() {
         return this.base.values();
     }
@@ -75,8 +74,7 @@ public class ContextWrapper implements Context {
         this.base.clear();
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    public void putAll(Map map) {
+    public void putAll(Map<? extends String, ? extends Object> map) {
         // ISSUE: Should we check this call to putAll?
         this.base.putAll(map);
     }
@@ -85,8 +83,7 @@ public class ContextWrapper implements Context {
         return this.base.remove(key);
     }
 
-    @SuppressWarnings("unchecked")
-    public Object put(Object key, Object value) {
+    public Object put(String key, Object value) {
         // ISSUE: Should we check this call to put?
         return this.base.put(key, value);
     }

@@ -26,12 +26,11 @@ import static org.junit.jupiter.api.Assertions.fail;
 import java.io.IOException;
 import java.net.URL;
 
+import org.htmlunit.FailingHttpStatusCodeException;
+import org.htmlunit.WebClient;
+import org.htmlunit.html.HtmlPage;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 /**
  * Verify that each of the example apps starts and (at least)

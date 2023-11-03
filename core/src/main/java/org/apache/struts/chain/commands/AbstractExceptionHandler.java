@@ -56,7 +56,8 @@ public abstract class AbstractExceptionHandler extends ActionCommandBase {
      * @throws Exception if thrown by the Action class and not declared by an
      *                   Exception Handler
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
         // Look up the exception that was thrown
         Exception exception = actionCtx.getException();

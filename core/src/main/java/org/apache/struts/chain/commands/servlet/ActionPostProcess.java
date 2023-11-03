@@ -17,12 +17,12 @@
  */
 package org.apache.struts.chain.commands.servlet;
 
+import jakarta.servlet.http.HttpServletRequest;
+
+import org.apache.struts.Globals;
+import org.apache.struts.chain.commands.ActionCommandBase;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.chain.contexts.ServletActionContext;
-import org.apache.struts.chain.commands.ActionCommandBase;
-import org.apache.struts.Globals;
-
-import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * <p>Performs post-processing functions in command chain</p>
@@ -40,7 +40,8 @@ public class ActionPostProcess extends ActionCommandBase {
      * @return <code>false</code> so that processing continues
      * @throws Exception on any error
      */
-    public boolean execute(ActionContext context) throws Exception {
+    @Override
+    protected boolean execute_(ActionContext context) throws Exception {
 
         ServletActionContext saContext = (ServletActionContext) context;
         HttpServletRequest request = saContext.getRequest();

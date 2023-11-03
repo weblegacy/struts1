@@ -21,9 +21,10 @@
 package org.apache.struts.chain.commands;
 
 import java.util.Map;
+
 import org.apache.struts.Globals;
-import org.apache.struts.chain.contexts.ActionContext;
 import org.apache.struts.action.ActionMessages;
+import org.apache.struts.chain.contexts.ActionContext;
 
 /**
  * <p>Remove cached messages stored in the session.</p>
@@ -45,7 +46,8 @@ public class RemoveCachedMessages extends ActionCommandBase {
      * @return <code>false</code> so that processing continues
      * @throws Exception on any error
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
 
         // Get session scope

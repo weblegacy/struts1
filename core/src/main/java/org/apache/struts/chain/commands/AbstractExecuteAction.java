@@ -46,7 +46,8 @@ public abstract class AbstractExecuteAction extends ActionCommandBase {
      * @return <code>false</code> so that processing continues
      * @throws Exception if thrown by the Action class
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
 
         // Skip processing if the current request is not valid

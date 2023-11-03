@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+    <properties>
+        <title>Release Notes (since 1.4.3)</title>
+    </properties>
+    <body>
+        <section name="6.1 Release Notes - Version 1.4.4">
+
+            <subsection name="Introduction" id="release_notes">
+                <p>
+                    This section contains release notes for changes that have
+                    taken place to Struts,
+                    since the
+                    <a href="release-notes-1_4_3.html">Version 1.4.3</a>
+                    distribution.
+                    To keep up-to-date on all changes to the framework,
+                    subscribe to
+                    the (commits at struts.apache.org) list.
+                    To preview our plans for upcoming changes,
+                    please visit the
+                    <a href="../roadmap.html">Roadmap page.</a>
+                </p>
+                <ul><li>
+                    <b>Notes on upgrading</b>
+                    are maintained in the
+                    <a href="http://wiki.apache.org/struts/StrutsUpgrade">Wiki
+                        Upgrade pages.</a>
+                    The wiki is a community maintained resource - please feel
+                    free to add your
+                    input so that everyone can benefit from the collective
+                    experience.
+                </li></ul>
+                <p>
+                    For the version requirements of each library, see the
+                    <a href="installation.html">Installation chapter.</a>
+                </p>
+
+            </subsection>
+
+            <subsection name="Breaking changes" id="break_changes">
+                <ul>
+                    <li>General: Upgrade from <strong>JavaEE 7</strong> to <strong>JakartaEE 8</strong>.
+                        <ul>
+                            <li>Upgrade <strong>servlet-api</strong> from 3.1 to 4.0.</li>
+                            <li>Upgrade <strong>jsf</strong> from 2.2 to 2.3.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </subsection>
+
+            <subsection name="Issue Tracking" id="Highlight">
+<h4>Bug</h4>
+<ul>
+<li>Adapt JavaDoc-configuration</li>
+<li>Adapt dependency-scopes like JakartaEE 8</li>
+<li>Add &quot;jaxb-api&quot; and &quot;jaxb-runtime&quot; because JDK 11</li>
+</ul>
+
+<h4>Improvement</h4>
+<ul>
+<li>Set all XML-encodings to UTF-8</li>
+<li>Faces-Example1 &amp; 2: Use new CDI</li>
+<li>Add &quot;weld-servlet-shaded&quot; for CDI-function for JSF 2.3</li>
+<li>Removing the use of &quot;myfaces&quot;-implementation-specifics</li>
+<li>Resolve many JDK 19 compiler-warnings</li>
+<li>Remove compiler-warnings till JDK 17</li>
+<li>Some updates in &quot;README.md&quot;</li>
+</ul>
+
+<h4>Task</h4>
+<ul>
+<li>Bump &quot;jaxb-runtime&quot; from 2.3.1 to 2.3.7 to use &quot;jakarta&quot;-version</li>
+<li>Update &quot;taglibs-standard-spec&quot; 1.2.5 to &quot;jakarta.servlet.jsp.jstl&quot; 1.2.7
+    and change implementation from &quot;org.apache.taglibs&quot; to &quot;org.glassfish.web&quot;</li>
+<li>Replace JSF-implementation &quot;myfaces&quot; 2.2.15 with &quot;mojarra&quot; 2.3.18</li>
+<li>Update &quot;javax.el-api&quot; 3.0.0 to &quot;jakarta.el-api&quot; 3.0.3</li>
+<li>Update &quot;javax.servlet.jsp-api&quot; 2.3.3 to &quot;jakarta.servlet.jsp-api&quot; 2.3.6</li>
+<li>Update &quot;javax.servlet-api&quot; 3.1.0 to &quot;jakarta.servlet-api&quot; 4.0.4</li>
+<li>Update &quot;web.xml&quot; to version 4.0</li>
+<li>Update &quot;README.md&quot; for next release</li>
+<li>Use &quot;tomcat&quot; 9.0.68 instead 8.5.83 for integration-tests</li>
+<li>Update documentation for version 1.4.4</li>
+<li>Set Version to 1.4.4</li>
+</ul>
+</subsection>
+
+        </section>
+        <section name="">
+            <p class="right">Next:
+                <a href="installation.html">Installation</a>
+            </p>
+        </section>
+    </body>
+</document>

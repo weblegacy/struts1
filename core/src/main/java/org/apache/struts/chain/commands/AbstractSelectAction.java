@@ -44,7 +44,8 @@ public abstract class AbstractSelectAction extends ActionCommandBase {
      *                              this request
      * @throws Exception            if thrown by the Action class
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
         // Identify the matching path for this request
         String path = getPath(actionCtx);

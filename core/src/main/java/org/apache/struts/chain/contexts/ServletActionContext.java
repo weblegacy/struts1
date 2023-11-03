@@ -20,7 +20,7 @@
  */
 package org.apache.struts.chain.contexts;
 
-import org.apache.commons.chain.web.servlet.ServletWebContext;
+import org.apache.commons.chain.web.javax.servlet.ServletWebContext;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionMessages;
 import org.apache.struts.action.ActionServlet;
@@ -33,12 +33,13 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 /**
- * <p> Implement ActionContext interface while making Servlet API-specific
- * values available. </p>
+ * Implement ActionContext interface while making Servlet API-specific values
+ * available.
  */
 public class ServletActionContext extends WebActionContext {
+
     /**
-     * <p> Instantiate this composite by wrapping a ServletWebContext. </p>
+     * Instantiate this composite by wrapping a ServletWebContext.
      *
      * @param context The ServletWebContext to wrap
      */
@@ -47,8 +48,8 @@ public class ServletActionContext extends WebActionContext {
     }
 
     /**
-     * <p> Instantiate this Context for a given ServletContext,
-     * HttpServletRequest, and HttpServletResponse. </p>
+     * Instantiate this Context for a given {@code ServletContext},
+     * {@code HttpServletRequest}, and {@code HttpServletResponse}.
      *
      * @param context  The instant ServletContext
      * @param request  The instant HttpServletRequest
@@ -60,7 +61,7 @@ public class ServletActionContext extends WebActionContext {
     }
 
     /**
-     * <p> Provide the ServletWebContext for this composite. </p>
+     * Provide the {@code ServletWebContext} for this composite.
      *
      * @return Our ServletWebContext
      */
@@ -78,7 +79,7 @@ public class ServletActionContext extends WebActionContext {
     // -------------------------------
 
     /**
-     * <p> Return the ServletContext for this context. </p>
+     * Return the {@code ServletContext} for this context.
      *
      * @return Our ServletContext
      */
@@ -87,7 +88,7 @@ public class ServletActionContext extends WebActionContext {
     }
 
     /**
-     * <p> Return the HttpServletRequest for this context. </p>
+     * Return the {@code HttpServletRequest} for this context.
      *
      * @return Our HttpServletRequest
      */
@@ -96,7 +97,7 @@ public class ServletActionContext extends WebActionContext {
     }
 
     /**
-     * <p> Return the HttpServletResponse for this context. </p>
+     * Return the {@code HttpServletResponse} for this context.
      *
      * @return Our HttpServletResponse
      */
@@ -105,7 +106,7 @@ public class ServletActionContext extends WebActionContext {
     }
 
     /**
-     * <p> Return the ActionServlet for this context. </p>
+     * Return the {@code ActionServlet} for this context.
      *
      * @return Our ActionServlet
      */
@@ -114,7 +115,7 @@ public class ServletActionContext extends WebActionContext {
     }
 
     /**
-     * <p> Set the ActionServlet instance for this context. </p>
+     * Set the {@code ActionServlet} instance for this context.
      *
      * @param servlet Our ActionServlet instance
      */
@@ -153,11 +154,11 @@ public class ServletActionContext extends WebActionContext {
     }
 
     /**
-     * <p> Store the mesasage resources for the current module under the given
-     * request attribute key. </p>
+     * Store the message resources for the current module under the given
+     * request attribute key.
      *
      * @param key       Request attribute key
-     * @param resources Message resouces to store
+     * @param resources Message resources to store
      */
     public void setMessageResources(String key, MessageResources resources) {
         this.getRequest().setAttribute(key + getModuleConfig().getPrefix(),

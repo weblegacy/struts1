@@ -33,10 +33,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <p>Variant on chain LookupCommand which can optionally wrap the context it
- * passes to the looked up command in an alternative class.</p>
+ * Variant on chain LookupCommand which can optionally wrap the context it
+ * passes to the looked up command in an alternative class.
  */
-public class WrappingLookupCommand implements Filter {
+public class WrappingLookupCommand implements Filter<Context> {
 
     /**
      * The {@code Log} instance for this class.
@@ -47,32 +47,32 @@ public class WrappingLookupCommand implements Filter {
     // ------------------------------------------------------ Instance Variables
 
     /**
-     * <p>Field for property.</p>
+     * Field for property.
      */
     private String catalogName = null;
 
     /**
-     * <p>Field for property.</p>
+     * Field for property.
      */
     private String name = null;
 
     /**
-     * <p>Field for property.</p>
+     * Field for property.
      */
     private String nameKey = null;
 
     /**
-     * <p>Field for property.</p>
+     * Field for property.
      */
     private String wrapperClassName = null;
 
     /**
-     * <p>Field for property.</p>
+     * Field for property.
      */
     private boolean optional = false;
 
     /**
-     * <p>Zero-argument constructor.</p>
+     * Zero-argument constructor.
      */
     public WrappingLookupCommand() {
         catalogName = null;
@@ -82,7 +82,7 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Return CatalogName property.  </p>
+     * Return CatalogName property.
      *
      * @return Value of CatalogName property.
      */
@@ -91,7 +91,7 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Set CatalogName property.</p>
+     * Set CatalogName property.
      *
      * @param catalogName New value for CatalogName
      */
@@ -100,7 +100,7 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Retrieve Name property.</p>
+     * Retrieve Name property.
      *
      * @return Value of Name property
      */
@@ -109,7 +109,7 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Set Name property.</p>
+     * Set Name property.
      *
      * @param name New value for Name
      */
@@ -118,7 +118,7 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Return NameKey property.</p>
+     * Return NameKey property.
      *
      * @return Value of NameKey property.
      */
@@ -127,7 +127,7 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Set NameKey property.</p>
+     * Set NameKey property.
      *
      * @param nameKey New value for NameKey
      */
@@ -136,7 +136,7 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Test Optional property.</p>
+     * Test Optional property.
      *
      * @return TRUE if Optional is TRUE.
      */
@@ -145,7 +145,7 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Set Optional property.</p>
+     * Set Optional property.
      *
      * @param optional New value for Optional
      */
@@ -154,7 +154,7 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Return the WrapperClass property.</p>
+     * Return the WrapperClass property.
      *
      * @return The WrapperClass property
      */
@@ -163,7 +163,7 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Set WrappClassName property. </p>
+     * Set WrappClassName property.
      *
      * @param wrapperClassName The name of a WrapperClass
      */
@@ -172,18 +172,20 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Invoke the Command for a Context, returning TRUE if processing
-     * should halt.</p>
+     * Invoke the Command for a Context, returning TRUE if processing should
+     * halt.
      *
      * @param context Our ActionContext
+     *
      * @return TRUE if processing should halt
+     *
      * @throws Exception On any error
      */
     public boolean execute(Context context)
         throws Exception {
         log.trace("execute [{}]", this);
 
-        Command command = getCommand(context);
+        Command<Context> command = getCommand(context);
 
         if (command != null) {
             return command.execute(getContext(context));
@@ -193,19 +195,20 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Process the Exception for any Command that is a filter.</p>
+     * Process the Exception for any Command that is a filter.
      *
      * @param context   Our ActionContext
-     * @param exception The Exception thrown by another Comamnd in a Chain
+     * @param exception The Exception thrown by another Command in a Chain
+     *
      * @return TRUE if there is a Filter to process
      */
     public boolean postprocess(Context context, Exception exception) {
-        Command command = getCommand(context);
+        Command<Context> command = getCommand(context);
 
-        if ((command != null) && (command instanceof Filter)) {
+        if (command != null && command instanceof Filter) {
             try {
-                return ((Filter) command).postprocess(getContext(context),
-                    exception);
+                final Filter<Context> filter = (Filter<Context>) command;
+                return filter.postprocess(getContext(context), exception);
             } catch (NoSuchMethodException | IllegalAccessException |
                     InvocationTargetException | InstantiationException |
                     ClassNotFoundException ex) {
@@ -217,15 +220,16 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>Return the Command to process for this Context.</p>
+     * Return the Command to process for this Context.
      *
      * @param context The Context we are processing
+     *
      * @return The Command to process for this Context
      */
-    protected Command getCommand(Context context) {
-        CatalogFactory catalogFactory = CatalogFactory.getInstance();
+    protected Command<Context> getCommand(Context context) {
+        CatalogFactory<Context> catalogFactory = CatalogFactory.getInstance();
         String catalogName = getCatalogName();
-        Catalog catalog;
+        Catalog<Context> catalog;
 
         if (catalogName == null) {
             catalog = catalogFactory.getCatalog();
@@ -239,7 +243,7 @@ public class WrappingLookupCommand implements Filter {
                 + catalogName + "'");
         }
 
-        Command command;
+        Command<Context> command;
         String name = getName();
 
         if (name == null) {
@@ -267,8 +271,8 @@ public class WrappingLookupCommand implements Filter {
     }
 
     /**
-     * <p>If the wrapperClassName property is not null, return a Context of
-     * the type specified by wrapperClassName, instantiated using a single-arg
+     * If the wrapperClassName property is not null, return a Context of the
+     * type specified by wrapperClassName, instantiated using a single-arg
      * constructor which takes the context passed as an argument to this
      * method.</p>
      *
@@ -276,7 +280,9 @@ public class WrappingLookupCommand implements Filter {
      * or if there are any errors instantiating the wrapping context.</p>
      *
      * @param context Context we are processing
+     *
      * @return Context wrapper
+     *
      * @throws ClassNotFoundException    On failed instantiation
      * @throws InstantiationException    On failed instantiation
      * @throws InvocationTargetException On failed instantiation

@@ -127,6 +127,7 @@
 <li>Bump &quot;maven-failsafe/surefire-[report]-plugin&quot; from 3.0.0-M7 to 3.2.1</li>
 <li>Update &quot;README.md&quot; for next release</li>
 <li>Bump &quot;tomcat&quot; from 9.0.68 to 9.0.82 for integration-tests</li>
+<li>Update &quot;htmlunit&quot; from 2.66.0 to 3.7.0</li>
 <li>Update documentation for version 1.4.5</li>
 <li>Set Version to 1.4.5</li>
 </ul>

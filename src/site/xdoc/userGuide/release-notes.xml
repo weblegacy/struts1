@@ -77,6 +77,7 @@
 <li>Adapt JavaDoc-configuration</li>
 <li>Adapt dependency-scopes like JakartaEE 8</li>
 <li>Add &quot;jaxb-api&quot; and &quot;jaxb-runtime&quot; because JDK 11</li>
+<li>Update issues-links in documentation</li>
 </ul>
 
 <h4>Improvement</h4>

@@ -2,6 +2,7 @@
 
 ## 1.4.5 / YYYY-MM-DD
 
+* Update issues-links in documentation
 * Set documentation-skin to `maven-fluido-skin`
 * Bump `webdrivermanager` from 5.6.0 to 5.6.1
 * Update `htmlunit` from 3.6.0 to 3.7.0

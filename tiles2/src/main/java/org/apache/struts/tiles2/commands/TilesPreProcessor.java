@@ -24,7 +24,6 @@ import io.github.weblegacy.tiles.request.servlet.ServletRequest;
 import io.github.weblegacy.tiles.request.servlet.ServletUtil;
 
 import org.apache.commons.chain.Command;
-import org.apache.commons.chain.Context;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ForwardConfig;
 import org.apache.tiles.TilesContainer;
@@ -34,29 +33,25 @@ import org.apache.tiles.request.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 /**
- * <p>Command class intended to perform responsibilities of the
- * TilesRequestProcessor in Struts 1.1.  Does not actually dispatch requests,
- * but simply prepares the chain context for a later forward as
- * appropriate.  Should be added to a chain before something which
- * would handle a conventional ForwardConfig.</p>
+ * Command class intended to perform responsibilities of the
+ * TilesRequestProcessor in Struts 1.1. Does not actually dispatch requests,
+ * but simply prepares the chain context for a later forward as appropriate.
+ * Should be added to a chain before something which would handle a
+ * conventional ForwardConfig.
  *
  * <p>This class will never have any effect on the chain unless a
- * <code>TilesDefinitionFactory</code> can be found; however it does not
- * consider the absence of a definition factory to be a fatal error; the
- * command simply returns false and lets the chain continue.</p>
+ * {@code TilesDefinitionFactory} can be found; however it does not consider
+ * the absence of a definition factory to be a fatal error; the command simply
+ * returns false and lets the chain continue.</p>
  *
- * <p>To initialize the <code>TilesDefinitionFactory</code>, use
- * <code>org.apache.struts.chain.commands.legacy.TilesPlugin</code>.  This class
- * is a simple extension to <code>org.apache.struts.tiles2.TilesPlugin</code>
- * which simply does not interfere with your choice of <code>RequestProcessor</code>
- * implementation.
- *  </p>
- *
- *
+ * <p>To initialize the {@code TilesDefinitionFactory}, use
+ * {@code org.apache.struts.chain.commands.legacy.TilesPlugin}. This class is a
+ * simple extension to {@code org.apache.struts.tiles2.TilesPlugin} which
+ * simply does not interfere with your choice of {@code RequestProcessor}
+ * implementation.</p>
  */
-public class TilesPreProcessor implements Command {
+public class TilesPreProcessor implements Command<ServletActionContext> {
 
 
     // ------------------------------------------------------ Instance Variables
@@ -72,29 +67,28 @@ public class TilesPreProcessor implements Command {
 
 
     /**
-     * <p>If the current <code>ForwardConfig</code> is using "tiles",
-     * perform necessary pre-processing to set up the <code>TilesContext</code>
-     * and substitute a new <code>ForwardConfig</code> which is understandable
-     * to a <code>RequestDispatcher</code>.</p>
+     * If the current {@code ForwardConfig} is using "tiles", perform necessary
+     * pre-processing to set up the {@code TilesContext} and substitute a new
+     * {@code ForwardConfig} which is understandable to a
+     * {@code RequestDispatcher}.
      *
      * <p>Note that if the command finds a previously existing
-     * <code>AttributeContext</code> in the request, then it
-     * infers that it has been called from within another tile,
-     * so instead of changing the <code>ForwardConfig</code> in the chain
-     * <code>Context</code>, the command uses <code>RequestDispatcher</code>
-     * to <em>include</em> the tile, and returns true, indicating that the processing
-     * chain is complete.</p>
+     * {@code AttributeContext} in the request, then it infers that it has been
+     * called from within another tile, so instead of changing the
+     * {@code ForwardConfig} in the chain {@code Context}, the command uses
+     * {@code RequestDispatcher} to <em>include</em> the tile, and returns
+     * true, indicating that the processing chain is complete.</p>
      *
-     * @param context The <code>Context</code> for the current request
+     * @param sacontext The {@code Context} for the current request
      *
      * @throws Exception If something goes wrong.
-     * @return <code>false</code> in most cases, but true if we determine
-     * that we're processing in "include" mode.
+     *
+     * @return {@code false} in most cases, but true if we determine
+     *         that we're processing in "include" mode.
      */
-    public boolean execute(Context context) throws Exception {
+    public boolean execute(ServletActionContext sacontext) throws Exception {
 
         // Is there a Tiles Definition to be processed?
-        ServletActionContext sacontext = (ServletActionContext) context;
         ForwardConfig forwardConfig = sacontext.getForwardConfig();
         if (forwardConfig == null || forwardConfig.getPath() == null) {
             // this is not a serious error, so log at low priority

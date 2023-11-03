@@ -88,7 +88,8 @@ public abstract class AbstractValidateActionForm extends ActionCommandBase {
      *         no validation errors; otherwise <code>true</code>
      * @throws Exception if thrown by the Action class
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
         // Set form valid until found otherwise
         actionCtx.setFormValid(Boolean.TRUE);

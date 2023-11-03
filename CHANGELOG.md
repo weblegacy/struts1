@@ -1,7 +1,8 @@
 # Changes
 
-## 1.4.5 / YYYY-MM-DD
+## 1.5.0 / YYYY-MM-DD
 
+* Change all `javax.*`- to `jakarta.*`-namespaces from groovy-examples
 * Upgrade `jsf` from 2.3.18 to 3.0.2
 * Bump `jstl` from 1.2.7 to 2.0.0
 * Bump `el-api` from 3.0.3 to 4.0.0
@@ -10,7 +11,76 @@
 * Change all `javax.*`- to `jakarta.*`-namespaces with `Tomcat Migration Tool 1.0.5`
 * Use `tomcat` 10.0.27 instead 9.0.68 for integration-tests
 * Update `README.md` for next release
-* Set Version to 1.4.5-SNAPSHOT
+* Set Version to 1.5.0-SNAPSHOT
+
+## 1.4.5 / 2023-11-03
+
+* Set Version to 1.4.5
+* Update issues-links in documentation
+* Set documentation-skin to `maven-fluido-skin`
+* Bump `webdrivermanager` from 5.6.0 to 5.6.1
+* Update `htmlunit` from 3.6.0 to 3.7.0
+* Bump `maven-pmd-plugin` from 3.21.0 to 3.21.2
+* Bump `commons-chain` from 1.3-SNAPSHOT to 1.3.0
+* Bump `selenium-api` and `selenium-java` from 4.14.1 to 4.15.0
+* Add contributor and add more informations to me
+* Update `README.md`
+* Rename POM-property `encoding` to `sourceEncoding`
+* Add new property `controller.fileCountMax` due `commons-fileupload` 1.5
+* Reformat some JavaDocs
+* Bump `maven-failsafe/surefire-[report]-plugin` from 3.1.2 to 3.2.1
+* Bump `maven-jxr-plugin` from 3.3.0 to 3.3.1
+* Bump `maven-dependency-plugin` from 3.6.0 to 3.6.1
+* Bump `maven-clean-plugin` from 3.3.1 to 3.3.2
+* Bump `maven-checkstyle-plugin` from 3.3.0 to 3.3.1
+* Bump `webdrivermanager` from 5.5.3 to 5.6.0
+* Bump `commons-io` from 2.14.0 to 2.15.0
+* Update documentation for version 1.4.5
+* Bump `spotbugs-annotations` from 4.7.3 to 4.8.0
+* Bump `junit-jupiter-api` from 5.9.1 to 5.10.0
+* Bump `commons-io` from 2.11.0 to 2.14.0
+* Bump `commons-fileupload` from 1.4 to 1.5
+* Bump `cargo-maven3-plugin` from 1.9.13 to 1.10.10
+* Bump `maven-bundle-plugin` from 5.1.7 to 5.1.9
+* Bump `maven-war-plugin` from 3.3.2 to 3.4.0
+* Bump `maven-project-info-reports-plugin` from 3.3.0 to 3.4.5
+* Bump `maven-pmd-plugin` from 3.17.0 to 3.21.0
+* Bump `maven-jxr-plugin` from 3.2.0 to 3.3.0
+* Bump `maven-jar-plugin` from 3.2.2 to 3.3.0
+* Bump `maven-source-plugin` from 3.2.1 to 3.3.0
+* Bump `maven-site-plugin` from 3.12.0 to 3.12.1
+* Bump `maven-scm-publish-plugin` from 3.2.1 to 3.1.0
+* Bump `maven-resources-plugin` from 3.2.0 to 3.3.1
+* Bump `maven-javadoc-plugin` from 3.4.0 to 3.6.0
+* Bump `maven-install-plugin` from 3.0.0-M1 to 3.1.1
+* Bump `maven-gpg-plugin` from 3.0.1 to 3.1.0
+* Bump `maven-enforcer-plugin` from 3.1.0 to 3.4.1
+* Bump `maven-deploy-plugin` from 3.0.0-M2 to 3.1.1
+* Bump `maven-dependency-plugin` from 3.3.0 to 3.6.0
+* Bump `maven-compiler-plugin` from 3.10.1 to 3.11.0
+* Bump `maven-clean-plugin` from 3.2.0 to 3.3.1
+* Bump `checkstyle` from 10.4 to 10.12.4 and adapt `struts_checks.xml`
+* Bump `maven-checkstyle-plugin` from 3.1.2 to 3.3.0
+* Bump `maven-assembly-plugin` from 3.4.1 to 3.6.0
+* Bump `jaxb-runtime` from 2.3.7 to 2.3.9
+* Bump `jakarta.faces` (`mojarra`) from 2.3.18 to 2.3.21
+* Bump `antlr` and `antlr4-maven-plugin` from 4.11.1 to 4.13.1
+* Bump `slf4j-api`, `slf4j-simple` and `jcl-over-slf4j` from 2.0.3 to 2.0.9
+* Bump `selenium-api` and `selenium-java` from 4.6.0 to 4.14.1
+* Bump `groovy` from 4.0.6 to 4.0.15
+* Bump `maven-failsafe/surefire-[report]-plugin` from 3.0.0-M7 to 3.1.2
+* #11: add html-code to test it
+* #11: further improvements in the "filter" method, reformatting, one more test case
+* #11: improved entity handling in "filter" method
+* #11: added another test case
+* #11: fixed regex, added more test cases
+* #11: bugfix for issue #11 (skip xml entities in filter method)
+* Update `tomcat` from 9.0.68 to 9.0.82
+* Update `htmlunit` from 2.66.0 to 3.6.0
+* Corr: Adapt to weblegacy commons-chain - missing `struts-tiles` and `stuts-tiles2`
+* Recover logging when executing an ActionCommandBase-class
+* Adapt to weblegacy commons-chain
+* Replace apache commons-chain 1.2 with weblegacy commons-chain 1.3
 
 ## 1.4.4 / 2022-11-14
 

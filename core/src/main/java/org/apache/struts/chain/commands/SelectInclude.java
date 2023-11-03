@@ -51,7 +51,8 @@ public class SelectInclude extends ActionCommandBase {
      * @return <code>false</code> so that processing continues
      * @throws Exception on any error
      */
-    public boolean execute(ActionContext actionCtx)
+    @Override
+    protected boolean execute_(ActionContext actionCtx)
         throws Exception {
         // Acquire configuration objects that we need
         ActionConfig actionConfig = actionCtx.getActionConfig();

@@ -24,13 +24,16 @@ import org.apache.commons.chain.Command;
 import org.apache.struts.chain.contexts.ActionContext;
 
 /**
- * <p>Marks a commons-chain <code>Command</code> which expects to operate upon
- * a Struts <code>ActionContext</code>.</p>
+ * Marks a commons-chain {@code Command} which expects to operate upon a Struts
+ * {@code ActionContext}.
  */
-public interface ActionCommand extends Command {
+public interface ActionCommand extends Command<ActionContext> {
+
     /**
-     * @param actionContext The <code>Context</code> for the current request
+     * @param actionContext The {@code Context} for the current request
+     *
      * @return TRUE if processing should halt
+     *
      * @throws Exception On any error
      */
     boolean execute(ActionContext actionContext)

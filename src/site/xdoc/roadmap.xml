@@ -60,13 +60,13 @@
 
                 <ul>
                     <li>
-                        <a href="http://issues.apache.org/struts/browse/STR?report=com.atlassian.jira.plugin.system.project:openissues-panel">Open Issues (Struts 1)</a>
+                        <a href="https://issues.apache.org/jira/projects/STR/issues?filter=allopenissues">Open Issues (Struts 1)</a>
                     </li>
                     <li>
-                        <a href="http://issues.apache.org/struts/browse/WW?report=com.atlassian.jira.plugin.system.project:openissues-panel">Open Issues (Struts 2)</a>
+                        <a href="https://issues.apache.org/jira/projects/WW/issues?filter=allopenissues">Open Issues (Struts 2)</a>
                     </li>
                     <li>
-                        <a href="http://issues.apache.org/struts/browse/SB?report=com.atlassian.jira.plugin.system.project:openissues-panel">Open Issues (Sandbox)</a>
+                        <a href="https://issues.apache.org/jira/projects/SB/issues?filter=allopenissues">Open Issues (Sandbox)</a>
                     </li>
                 </ul>
 

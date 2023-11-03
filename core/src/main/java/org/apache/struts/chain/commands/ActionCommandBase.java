@@ -20,15 +20,13 @@
  */
 package org.apache.struts.chain.commands;
 
-import org.apache.commons.chain.Context;
 import org.apache.struts.chain.contexts.ActionContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * <p>Simple abstract class which avoids frequent casting to
- * <code>ActionContext</code> in commands explicitly intended for use with
- * that class.</p>
+ * Simple abstract class which logs the {@code ActionCommand}-class when
+ * executed.
  */
 public abstract class ActionCommandBase implements ActionCommand {
 
@@ -38,14 +36,30 @@ public abstract class ActionCommandBase implements ActionCommand {
     private final Logger log =
         LoggerFactory.getLogger(ActionCommandBase.class);
 
-    // See interface for Javadoc
-    public abstract boolean execute(ActionContext actionContext)
-        throws Exception;
-
-    // See interface for Javadoc
-    public boolean execute(Context context)
-        throws Exception {
+    /**
+     * Logs and executes the command.
+     * 
+     * @param actionContext The {@code Context} for the current request
+     *
+     * @return TRUE if processing should halt
+     *
+     * @throws Exception On any error
+     */
+    @Override
+    public final boolean execute(ActionContext actionContext) throws Exception {
         log.debug("Executing {}", getClass().getName());
-        return execute((ActionContext) context);
+        return execute_(actionContext);
     }
+
+    /**
+     * Executes the command.
+     *
+     * @param actionContext The {@code Context} for the current request
+     *
+     * @return TRUE if processing should halt
+     *
+     * @throws Exception On any error
+     */
+    protected abstract boolean execute_(ActionContext actionContext)
+        throws Exception;
 }

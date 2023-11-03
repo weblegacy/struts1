@@ -95,6 +95,8 @@
             <name>Stefan Graff</name>
             <email>stefan.graff@gmx.at</email>
             <url>https://github.com/ste-gr</url>
+            <organization>Web-Legacy</organization>
+            <organizationUrl>https://github.com/weblegacy</organizationUrl>
             <roles>
                 <role>architect (since 2022)</role>
                 <role>developer (since 2022)</role>
@@ -350,6 +352,18 @@
             </roles>
         </developer>
     </developers>
+
+    <contributors>
+        <contributor>
+            <name>jo-kl</name>
+            <url>https://github.com/jo-kl</url>
+            <organization>Web-Legacy</organization>
+            <organizationUrl>https://github.com/weblegacy</organizationUrl>
+            <roles>
+                <role>Committer</role>
+            </roles>
+        </contributor>
+    </contributors>
 
     <issueManagement>
         <system>GitHub</system>

@@ -89,11 +89,11 @@ limitations under the License.
                 <p id="JavaWebServicesTutorial">If you are familiar with Java,
                     but not these technologies,
                     the best overall starting point is
-                    <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/index.html">
-                        The J2EE Tutorial.
+                    <a href="https://jakartaee.github.io/jakartaee-documentation/jakartaee-tutorial/9.1/index.html">
+                        The Jakarta® EE Tutorial.
                     </a>
                     The tutorial is also available for download in
-                    <a href="http://java.sun.com/webservices/docs/1.0/tutorial/doc/JavaWSTutorial.pdf">
+                    <a href="https://jakartaee.github.io/jakartaee-documentation/jakartaee-tutorial/9.1/jakarta-ee-tutorial.pdf">
                         PDF</a>
                     format.
                 </p>
@@ -110,17 +110,17 @@ limitations under the License.
                 <p id="jt">If you are not familiar with the Java language
                     generally,
                     then the best starting point is
-                    <a href="http://java.sun.com/docs/books/tutorial/index.html">
+                    <a href="https://docs.oracle.com/javase/tutorial/index.html">
                         The Java Tutorial.
                     </a>
-                    This overlaps with The J2EE Tutorial in some
+                    This overlaps with The Jakarta® EE Tutorial in some
                     places, but the two work well together.
                 </p>
 
                 <p>
                     For more about building Java application in general, see
                     the
-                    <a href="http://java.sun.com/developer/onlineTraining/new2java/">
+                    <a href="https://dev.java/">
                         New to
                         Java Center.</a>
                 </p>
@@ -131,10 +131,10 @@ limitations under the License.
 
                 <p>The World Wide Web was built over the Hypertext Transfer
                     Protocol
-                    <a href="http://www.ietf.org/rfc/rfc2616.txt?number=2616">
+                    <a href="https://datatracker.ietf.org/doc/html/rfc2617">
                         (HTTP)</a>
                     and the Hypertext Markup Language
-                    <a href="http://www.w3.org/MarkUp/">(HTML).</a>
+                    <a href="https://html.spec.whatwg.org">(HTML).</a>
                     A User Agent, like a web browser, uses HTTP to request
                     a HTML document. The browser then formats and displays the
                     document to its user. HTTP is used to
@@ -157,27 +157,27 @@ limitations under the License.
                         by Dave Raggett
                     </li>
                     <li>
-                        <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/HTTP.html">
+                        <a href="https://docs.oracle.com/cd/E17802_01/j2ee/j2ee/1.4/docs/tutorial-update6/doc/HTTP.html">
                             HTTP Overview
                         </a>
-                        in The J2EE Tutorial.
+                        in The J2EE 1.4 Tutorial.
                     </li>
                     <li>
-                        <a href="http://www.rfc-editor.org/rfc/rfc2616.txt">
+                        <a href="https://datatracker.ietf.org/doc/html/rfc2616">
                             HTTP/1.1
 
                         </a>
                         Specification
                     </li>
                     <li>
-                        <a href="http://www.rfc-editor.org/rfc/rfc2617.txt">
+                        <a href="https://datatracker.ietf.org/doc/html/rfc2617">
                             HTTP
                                 Basic and Digest Authentication
                         </a>
                         Specification
                     </li>
                     <li>
-                        <a href="http://www.rfc-editor.org/rfc/rfc2109.txt">
+                        <a href="https://datatracker.ietf.org/doc/html/rfc2109">
                             State
                                 Management Mechanism
                         </a>
@@ -202,9 +202,9 @@ limitations under the License.
                     cycle, we
                     <strong>strongly</strong>
                     recommend the
-                    <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/HTTP.html">
+                    <a href="https://docs.oracle.com/cd/E17802_01/j2ee/j2ee/1.4/docs/tutorial-update6/doc/HTTP.html">
                         HTTP Overview</a>
-                    in The J2EE Tutorial.
+                    in The J2EE 1.4 Tutorial.
                 </p>
 
             </subsection>
@@ -213,7 +213,7 @@ limitations under the License.
                     name="0.4 The Java Language and Application Frameworks" id="java">
 
                 <p>The framework is written in the popular and versatile
-                    <a href="http://java.sun.com/docs/books/jls/first_edition/html/index.html">
+                    <a href="https://docs.oracle.com/javase/specs/">
                         Java programming language.</a>
                     Java is an object-orientated language, and the framework
                     makes good use of many
@@ -233,13 +233,13 @@ limitations under the License.
 
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/docs/books/tutorial/java/index.html">
+                        <a href="https://docs.oracle.com/javase/tutorial/java/index.html">
                             Learning the Java Language
                         </a>
                         in the Java Tutorial
                     </li>
                     <li>
-                        <a href="http://java.sun.com/docs/books/tutorial/essential/threads/index.html">
+                        <a href="https://web.archive.org/web/20060719234545/http://java.sun.com/docs/books/tutorial/essential/threads/index.html">
                             Threads: Doing Two or More Tasks At Once
                         </a>
                         in the Java Language
@@ -261,7 +261,7 @@ limitations under the License.
                         by Ralph E. Johnson &amp; Brian Foote
                     </li>
                     <li>
-                        <a href="http://www.cs.wustl.edu/~schmidt/CACM-frameworks.html">
+                        <a href="https://www.dre.vanderbilt.edu/~schmidt/CACM-frameworks.html">
                             Object-Oriented Application
                                 Frameworks
                         </a>
@@ -271,7 +271,7 @@ limitations under the License.
 
                 <p>These papers can be especially helpful if you are
                     fact-finding or reviewing server-side
-                    <a href="http://directory.google.com/Top/Computers/Programming/Languages/Java/Server-Side/Libraries_and_Frameworks/">
+                    <a href="https://en.wikipedia.org/wiki/Comparison_of_server-side_web_frameworks#Java_2">
                         frameworks</a>
                     .
                 </p>
@@ -285,7 +285,7 @@ limitations under the License.
                     complex
                     processing flows is the "Chain of Responsibility" pattern,
                     as described (among many other places) in the classic
-                    <a href="http://www.amazon.com/exec/obidos/tg/detail/-/0201633612/apachesoftwar-20/">
+                    <a href="https://www.amazon.com/exec/obidos/tg/detail/-/0201633612/apachesoftwar-20/">
                         "Gang of Four" design patterns book.</a>
                     The GoF summarizes the Chain of Responsibility pattern as
                     "Avoid coupling the sender of a request to its receiver
@@ -299,7 +299,7 @@ limitations under the License.
                 <p>
                     The CoR pattern helps us keep software components loosely
                     coupled.
-                    A component can call a Chain of Responsbility,
+                    A component can call a Chain of Responsibility,
                     without knowing what objects are on the chain or how they
                     are
                     implemented.
@@ -308,12 +308,12 @@ limitations under the License.
                     As of version 1.3,
                     the default Request Processor,
                     which acts as the framework's "kernal",
-                    is a Chain of Responsiblity.
+                    is a Chain of Responsibility.
                 </p>
 
                 <p>
                     To implement its Chain, the Request Processor uses the
-                    <a href="http://jakarta.apache.org/commons/chain/">
+                    <a href="https://weblegacy.github.io/commons-chain/">
                         Chain of Responsibility</a>
                     component in the Jakarta Commons
                     which provides a standard implementation of the CoR
@@ -323,20 +323,20 @@ limitations under the License.
                 </p>
 
                 <p>
-                    For more about Chain of Responsiblity, see
+                    For more about Chain of Responsibility, see
                 </p>
 
                 <ul>
                     <li>
-                        <a href="http://jakarta.apache.org/commons/chain/">
+                        <a href="https://weblegacy.github.io/commons-chain/">
                             Jakarta Commons Chain of Responsibility</a>
                     </li>
                     <li>
-                        <a href="http://www.onjava.com/lpt/a/5671">
-                            A look at Commons Chain</a>
+                        <a href="https://web.archive.org/web/20050309030415/http://www.onjava.com/pub/a/onjava/2005/03/02/commonchains.html">
+                            A Look at Commons Chain: The New Java Framework</a>
                     </li>
                     <li>
-                        <a href="http://www.infonoia.com/en/content.jsp?d=inf.05.06&amp;pr=1">
+                        <a href="https://web.archive.org/web/20061209035151/http://www.infonoia.com:80/en/content.jsp?d=inf.05.06&amp;pr=1">
                             Better Code with Struts 1.3
                         </a>
                     </li>
@@ -348,7 +348,7 @@ limitations under the License.
 
                 <p>Like many Java applications, most of the framework objects
                     are designed as
-                    <a href="http://java.sun.com/products/javabeans/">
+                    <a href="https://www.oracle.com/java/technologies/javase/desktop.html">
                         JavaBeans.</a>
                     Following the JavaBean design patterns makes
                     the framework's classes easier to use -- both by Java
@@ -364,28 +364,28 @@ limitations under the License.
 
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/products/javabeans/docs/">
+                        <a href="https://www.oracle.com/java/technologies/javase/javabeans-doc.html">
                             The
                                 JavaBeans Component Architecture
                                 Documentation
                         </a>
                         page at
-                        <code>java.sun.com,</code>
+                        <code>www.oracle.com,</code>
                         including a link to download the
-                        <a href="http://java.sun.com/products/javabeans/docs/spec.html">
+                        <a href="https://www.oracle.com/java/technologies/javase/javabeans-spec.html">
                             JavaBeans 1.01 Specification</a>
                     </li>
                     <li>
-                        <a href="http://java.sun.com/docs/books/tutorial/javabeans/index.html">
+                        <a href="https://docs.oracle.com/javase/tutorial/javabeans/index.html">
                             The JavaBeans Trail
                         </a>
                         in the Java Tutorial
                     </li>
                     <li>
-                        <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/JSPBeans.html">
+                        <a href="https://jakartaee.github.io/jakartaee-documentation/jakartaee-tutorial/9.1/intro/overview/overview.html#_jakarta_enterprise_beans_technology">
                             JavaBeans Components in JSP Pages
                         </a>
-                        in The J2EE Tutorial
+                        in The Jakarta® EE Tutorial
                     </li>
                 </ul>
 
@@ -417,11 +417,11 @@ limitations under the License.
 
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/docs/books/tutorial/reflect/">
+                        <a href="https://docs.oracle.com/javase/tutorial/reflect/">
                             The Reflection Trail</a>
                     </li>
                     <li>
-                        <a href="http://java.sun.com/products/javabeans/docs/spec.html">
+                        <a href="https://www.oracle.com/java/technologies/javase/javabeans-spec.html">
                             Chapter 8 of the JavaBeans API Specification</a>
                     </li>
                 </ul>
@@ -474,14 +474,14 @@ limitations under the License.
                 <ul>
                     <li>
                         The Commons BeanUtils
-                        <a href="http://jakarta.apache.org/commons/beanutils/api/org/apache/commons/beanutils/package-summary.html#package_description">
+                        <a href="https://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/org/apache/commons/beanutils/package-summary.html#package_description">
                             Package Description</a>
                         and
-                        <a href="http://jakarta.apache.org/commons/beanutils/api/index.html">
+                        <a href="https://commons.apache.org/proper/commons-beanutils/javadocs/v1.9.4/apidocs/">
                             Javadocs.</a>
                     </li>
                     <li>
-                        <a href="https://formdef.dev.java.net/">Struts
+                        <a href="https://web.archive.org/web/20070611031752/https://formdef.dev.java.net/">Struts
                             FormDef</a>
                     </li>
                 </ul>
@@ -492,10 +492,10 @@ limitations under the License.
 
                 <p>Java applications, including web applications, are often
                     configured using
-                    <a href="http://java.sun.com/j2se/1.4.1/docs/api/java/util/Properties.html">
+                    <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Properties.html">
                         Properties</a>
                     files. Properties files are the basis for the
-                    <a href="http://java.sun.com/j2se/1.4.1/docs/api/java/util/ResourceBundle.html">
+                    <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/ResourceBundle.html">
                         ResourceBundles</a>
                     that the framework uses to provide message resources
                     to an application.
@@ -505,7 +505,7 @@ limitations under the License.
 
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/docs/books/tutorial/essential/attributes/properties.html">
+                        <a href="https://web.archive.org/web/20060206031326/http://java.sun.com/docs/books/tutorial/essential/attributes/properties.html">
                             Using Properties to Manage Program
                                 Attributes
                         </a>
@@ -516,7 +516,7 @@ limitations under the License.
                 <p>Java ResourceBundles use one or more Properties files to
                     provide internationalized messages
                     to users based their
-                    <a href="http://java.sun.com/j2se/1.4.1/docs/api/java/util/Locale.html">
+                    <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/util/Locale.html">
                         Locale.</a>
                     Support for localizing an application was built into the
                     framework from the ground-up.
@@ -526,7 +526,7 @@ limitations under the License.
 
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/docs/books/tutorial/i18n/resbundle/concept.html">
+                        <a href="https://docs.oracle.com/javase/tutorial/i18n/resbundle/concept.html">
                             About the ResourceBundle Class
                         </a>
                         in the Java Tutorial
@@ -538,7 +538,7 @@ limitations under the License.
             <subsection name="0.7 Java Servlets" id="servlets">
                 <p>
                     Since Java is an object-orientated language, the
-                    <a href="http://www.novocode.com/doc/servlet-essentials/">
+                    <a href="https://web.archive.org/web/20180421173034/http://www.novocode.com:80/doc/servlet-essentials/">
                         Java Servlet</a>
                     platform strives to cast HTTP into an object-orientated
                     form.
@@ -638,26 +638,26 @@ limitations under the License.
 
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/products/servlet/">
+                        <a href="https://www.oracle.com/java/technologies/servlet-technology.html">
                             The
                                 Java Servlet Technology
                         </a>
                         page at
-                        <code>java.sun.com</code>
+                        <code>www.oracle.com</code>
                     </li>
                     <li>
-                        <a href="http://java.sun.com/products/servlet/download.html">
+                        <a href="https://jakarta.ee/specifications/servlet/">
                             The
-                                Servlet 2.3 and 2.4 Specifications
+                                Jakarta Servlet 4.0, 5.0, 6.0 and 6.1 Specifications
                         </a>
                         download page at
-                        <code>java.sun.com</code>
+                        <code>jakarta.ee</code>
                     </li>
                     <li>
-                        <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/Servlets.html">
-                            Java Servlet Technology
+                        <a href="https://jakartaee.github.io/jakartaee-documentation/jakartaee-tutorial/9.1/web/servlets/servlets.html">
+                            Jakarta Servlet Technology
                         </a>
-                        in The J2EE Tutorial.
+                        in The Jakarta® EE Tutorial.
                     </li>
                 </ul>
 
@@ -688,10 +688,10 @@ limitations under the License.
 
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/Servlets5.html#102985">
+                        <a href="https://jakartaee.github.io/jakartaee-documentation/jakartaee-tutorial/9.1/web/servlets/servlets.html#_controlling_concurrent_access_to_shared_resources">
                             Controlling Concurrent Access to Shared
                             Resources</a>
-                        in The J2EE Tutorial.
+                        in The Jakarta® EE Tutorial.
                     </li>
                 </ul>
 
@@ -751,9 +751,9 @@ limitations under the License.
 
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/Servlets10.html#75507">
+                        <a href="https://jakartaee.github.io/jakartaee-documentation/jakartaee-tutorial/9.1/web/servlets/servlets.html#_accessing_the_web_context">
                             Accessing the Web Context</a>
-                        in The J2EE Tutorial.
+                        in The Jakarta® EE Tutorial.
                     </li>
                 </ul>
 
@@ -855,9 +855,9 @@ limitations under the License.
 
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/Servlets7.html#63090">
+                        <a href="https://jakartaee.github.io/jakartaee-documentation/jakartaee-tutorial/9.1/web/servlets/servlets.html#_getting_information_from_requests">
                             Getting Information from Requests</a>
-                        in The J2EE Tutorial.
+                        in The Jakarta® EE Tutorial.
                     </li>
                 </ul>
 
@@ -957,9 +957,9 @@ limitations under the License.
 
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/Servlets7.html#79563">
+                        <a href="https://jakartaee.github.io/jakartaee-documentation/jakartaee-tutorial/9.1/web/servlets/servlets.html#_constructing_responses">
                             Constructing Responses</a>
-                        in The J2EE Tutorial.
+                        in The Jakarta® EE Tutorial.
                     </li>
                 </ul>
 
@@ -968,9 +968,9 @@ limitations under the License.
             <subsection name="0.7.5 Filtering" id="filter">
 
                 <p>If you are using a servlet container based on version
-                    <strong>2.3</strong>
+                    <strong>5.0</strong>
                     or later of the Servlet Specification (such as
-                    Tomcat 4.x), you can take advantage of the new Filter APIs
+                    Tomcat 10.x), you can take advantage of the new Filter APIs
                     <code>[jakarta.servlet.Filter]</code>
                     that
                     let you compose a set of components that will process a
@@ -1001,7 +1001,7 @@ limitations under the License.
 
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/Servlets8.html#103101">
+                        <a href="https://jakartaee.github.io/jakartaee-documentation/jakartaee-tutorial/9.1/web/servlets/servlets.html#_filtering_requests_and_responses">
                             Filtering Requests and Responses</a>
                     </li>
                 </ul>
@@ -1098,12 +1098,12 @@ limitations under the License.
                 </p>
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/Servlets11.html#63281">
+                        <a href="https://jakartaee.github.io/jakartaee-documentation/jakartaee-tutorial/9.1/web/servlets/servlets.html#_maintaining_client_state">
                             Maintaining Client State</a>
-                        in The J2EE Tutorial
+                        in The Jakarta® EE Tutorial
                     </li>
                     <li>
-                        <a href="http://java.sun.com/products/servlet/2.1/api/jakarta.servlet.http.HttpSession.html">
+                        <a href="https://jakarta.ee/specifications/servlet/5.0/apidocs/jakarta/servlet/http/httpsession">
                             <code>jakarta.servlet.http.HttpSession</code>
                         </a>
                     </li>
@@ -1181,21 +1181,21 @@ limitations under the License.
                 </p>
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/blueprints/guidelines/designing_enterprise_applications/security/index.html">
-                          J2EE Blueprints: Security</a>
+                        <a href="https://jakartaee.github.io/jakartaee-documentation/jakartaee-tutorial/9.1/security/security-intro/security-intro.html">
+                          Introduction to Security in the Jakarta EE Platform</a>
                     </li>
                     <li>
-                        <a href="http://securityfilter.sourceforge.net/">
+                        <a href="https://securityfilter.sourceforge.net/">
                             SecurityFilter
                         </a>
                     </li>
                     <li>
-                        <a href="http://acegisecurity.org/">
+                        <a href="https://web.archive.org/web/20110625075622/http://www.acegisecurity.org/">
                             Acegi Security</a>
                     </li>
                     <li>
-                        <a href="http://sslext.sourceforge.net/">
-                            The Struts SSL Extension for HTTP/HTTPS switching </a>
+                        <a href="https://sslext.sourceforge.net/">
+                            The Struts SSL Extension for HTTP/HTTPS switching</a>
                     </li>
                 </ul>
 
@@ -1205,7 +1205,7 @@ limitations under the License.
                     name="0.8 JavaServer Pages, JSP Tag Libraries, and JavaServer Faces"
                     id="jsp">
                 <p>
-                    <a href="http://java.sun.com/products/jsp/product.html">
+                    <a href="https://www.oracle.com/java/technologies/jspt.html">
                         JavaServer Pages</a>
                     (JSPs) are
                     "inside-out servlets" that make it easier to create and
@@ -1226,7 +1226,7 @@ limitations under the License.
                     then add the
                     dynamic features using statements in the Java language or
                     by using
-                    <a href="http://java.sun.com/products/jsp/taglibraries.html">
+                    <a href="https://jakarta.ee/specifications/tags/">
                         JSP tags.</a>
                     The framework distribution includes several JSP tags
                     that make it easy to access the framework's
@@ -1238,32 +1238,32 @@ limitations under the License.
 
                 <ul>
                     <li>
-                        <a href="http://java.sun.com/products/jsp/">
+                        <a href="https://www.oracle.com/java/technologies/jspt.html">
                             The
                                 JavaServer Pages Technology
                         </a>
                         page at
-                        <code>java.sun.com</code>
+                        <code>www.oracle.com</code>
                     </li>
                     <li>
-                        <a href="http://java.sun.com/products/jsp/reference/api/index.html">
+                        <a href="https://jakarta.ee/specifications/pages/">
                             The
-                                JSP 1.2 and 2.0 Specifications
+                                Jakarta Server Pages 2.3, 3.0, 3.1 and 4.0 Specifications
                         </a>
                         download page at
-                        <code>java.sun.com</code>
+                        <code>jakarta.ee</code>
                     </li>
                     <li>
-                        <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/JSPIntro.html">
+                        <a href="https://docs.oracle.com/javaee/5/tutorial/doc/bnagx.html">
                             JavaServer Pages Technology
                         </a>
-                        in The J2EE Tutorial
+                        in The Java EE 5 Tutorial
                     </li>
                     <li>
-                        <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/JSPTags.html">
+                        <a href="https://docs.oracle.com/javaee/5/tutorial/doc/bnalj.html">
                             Custom Tags in JSP Pages
                         </a>
-                        in The J2EE Tutorial
+                        in The Java EE 5 Tutorial
                     </li>
                 </ul>
 
@@ -1271,23 +1271,23 @@ limitations under the License.
                     application sends a JavaBean to
                     the JSP, and the JSP tag uses the bean to customize the
                     page for the instant user. For more, see
-                    <a href="http://java.sun.com/j2ee/tutorial/1_3-fcs/doc/JSPBeans.html">
+                    <a href="https://docs.oracle.com/javaee/5/tutorial/doc/bnair.html">
                         JavaBeans Components in JSP Pages</a>
-                    in The J2EE Tutorial.
+                    in The Java EE 5 Tutorial.
                 </p>
 
                 <p>The framework also works well with the
-                    <a href="http://java.sun.com/products/jsp/jstl">
+                    <a href="https://jakarta.ee/specifications/tags/">
                         JavaServer Pages Standard Tag Library
                     </a>
                     (JSTL) and taglibs from other sources, like
-                    <a href="http://jsptags.com/">JSP Tags,</a>
-                    <a href="http://jakarta.apache.org/taglibs/index.html">
-                        Jakarta Taglibs,</a>
-                    <a href="http://struts.application-servers.com">Struts
+                    <a href="https://web.archive.org/web/20100127101636/http://jsptags.com:80/index.jsp">JSP Tags,</a>
+                    <a href="https://tomcat.apache.org/taglibs/index.html">
+                        Apache Taglibs,</a>
+                    <a href="https://web.archive.org/web/20120224110310/http://struts.improve-technologies.com:80/index.html">Struts
                         Layout,</a>
                     and
-                    <a href="http://displaytag.sourceforge.net/">
+                    <a href="https://github.com/hazendaz/displaytag">
                         Display Tags.</a>
                 </p>
 
@@ -1307,51 +1307,51 @@ limitations under the License.
 
                 <p>There are also toolkits available that make the framework
                     easy to use with
-                    <a href="http://stxx.sourceforge.net/">XSLT</a>
+                    <a href="https://stxx.sourceforge.net/">XSLT</a>
                     and
-                    <a href="http://jakarta.apache.org/velocity/tools/index.html">
+                    <a href="https://velocity.apache.org/tools/">
                         Velocity Templates.</a>
                 </p>
 
                 <p>
                     The newest star on the Java horizon is
-                    <a href="http://java.sun.com/j2ee/javaserverfaces/">
+                    <a href="https://jakartaee.github.io/jakartaee-documentation/jakartaee-tutorial/9.1/web/faces-intro/faces-intro.html">
                         JavaServer Faces technology.</a>
                     JSF simplifies building user interfaces for JavaServer
                     applications, both for the web and for the desktop.
                     For teams looking for a step-wise transition to JSF and Struts 1, we
                     offer Struts-Faces taglib,
                     which lets you use JSF components with your existing
-                    Actions, so that you can migate to JSF one page a time.
+                    Actions, so that you can migrate to JSF one page a time.
                 </p>
                 <p>
                     For an open source implementation of JSF, visit our
-                    sibling project, <a href="httpL//myfaces.apache.org">
-                    Apache MyFaces.</a>
+                    sibling project, <a href="https://github.com/eclipse-ee4j/mojarra">
+                    Eclipse Mojarra.</a>
                 </p>
 
                 <p>For more about JSTL and JavaServer Faces see</p>
 
                 <ul>
                     <li>
-                        <a href="http://today.java.net/pub/a/today/2003/10/07/jstl1.html">
+                        <a href="https://web.archive.org/web/20070224173321/http://today.java.net/pub/a/today/2003/10/07/jstl1.html">
                             Practical JSTL, Part 1</a>
                         by Sue Spielman
                     </li>
                     <li>
-                        <a href="http://www.jsfcentral.com">
+                        <a href="https://web.archive.org/web/20060227055205/http://jsfcentral.com:80/">
                             JSF Central
                         </a>
                         - JavaServer Faces resources.
                     </li>
                     <li>
-                        <a href="http://www.jamesholmes.com/JavaServerFaces/">
+                        <a href="https://web.archive.org/web/20070227080209/http://www.jamesholmes.com/JavaServerFaces/">
                             JavaServer Faces Resources
                         </a>
                         - James Holmes dot Com.
                     </li>
                     <li>
-                        <a href="http://myfaces.apache.org">Apache MyFaces</a>
+                        <a href="https://myfaces.apache.org">Apache MyFaces</a>
                         - An open source implementation of
                         the JSF specification.
                     </li>
@@ -1364,7 +1364,7 @@ limitations under the License.
                 <p>The features provided by the framework rely on a number of
                     objects that are
                     usually deployed using a configuration file written in
-                    <a href="http://www.w3.org/XML/">Extensible Markup
+                    <a href="https://www.w3.org/XML/">Extensible Markup
                         Language.</a>
                     XML is also used to
                     configure Java web applications; so, this is yet another
@@ -1374,8 +1374,8 @@ limitations under the License.
                 <p>
                     For more about how XML is used with Java applications
                     generally, see the
-                    <a href="http://java.sun.com/webservices/jaxp/dist/1.1/docs/tutorial/index.html">
-                        Java API for XML Processing</a> Tutorial.
+                    <a href="https://www.oracle.com/java/technologies/jaxp-introduction.html">
+                        Java API for XML Processing (JAXP)</a> Tutorial.
                     While the framework makes good use of this API internally,
                     it is not something most developers would use
                     when writing their own applications with the framework.
@@ -1414,8 +1414,8 @@ limitations under the License.
                     basis.
                 </p>
 
-                <p>For more about JAAS, see the Sun Developer Network
-                    <a href="http://java.sun.com/products/jaas">product
+                <p>For more about JAAS, see the Oracle Help Center
+                    <a href="https://docs.oracle.com/en/java/javase/11/security/java-authentication-and-authorization-service-jaas1.html">product
                         page</a>.
                 </p>
 
@@ -1423,7 +1423,7 @@ limitations under the License.
                     A popular extension for handling security in a Java web
                     application, including a framework application,
                     is
-                    <a href="http://securityfilter.sourceforge.net/">
+                    <a href="https://securityfilter.sourceforge.net/">
                         SecurityFilter</a>
                     .
                 </p>

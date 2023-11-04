@@ -27,30 +27,32 @@ import java.io.InputStream;
 import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
+import java.nio.charset.UnsupportedCharsetException;
 import java.util.ArrayList;
-import java.util.Hashtable;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletInputStream;
-import jakarta.servlet.http.HttpServletRequest;
-
-import org.apache.commons.fileupload2.core.FileItem;
-import org.apache.commons.fileupload2.core.FileUploadSizeException;
-import org.apache.commons.fileupload2.core.FileUploadException;
 import org.apache.commons.fileupload2.core.DiskFileItem;
 import org.apache.commons.fileupload2.core.DiskFileItemFactory;
+import org.apache.commons.fileupload2.core.FileItem;
+import org.apache.commons.fileupload2.core.FileUploadByteCountLimitException;
+import org.apache.commons.fileupload2.core.FileUploadException;
+import org.apache.commons.fileupload2.core.FileUploadFileCountLimitException;
+import org.apache.commons.fileupload2.core.FileUploadSizeException;
 import org.apache.commons.fileupload2.jakarta.JakartaServletFileUpload;
-import org.apache.commons.io.build.AbstractOriginSupplier;
-import org.apache.commons.io.build.AbstractStreamBuilder;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.config.ModuleConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * This class implements the {@code MultipartRequestHandler} interface by
@@ -85,17 +87,17 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
     /**
      * The combined text and file request parameters.
      */
-    private Hashtable<String, Object> elementsAll;
+    private HashMap<String, Object> elementsAll;
 
     /**
      * The file request parameters.
      */
-    private Hashtable<String, Object> elementsFile;
+    private HashMap<String, List<FormFile>> elementsFile;
 
     /**
      * The text request parameters.
      */
-    private Hashtable<String, Object> elementsText;
+    private HashMap<String, String[]> elementsText;
 
     /**
      * The action mapping with which this handler is associated.
@@ -189,10 +191,10 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         // Sets the maximum number of files allowed per request.
         upload.setFileCountMax(getFileCountMax(ac));
 
-        // Create the hash tables to be populated.
-        elementsText = new Hashtable<>();
-        elementsFile = new Hashtable<>();
-        elementsAll = new Hashtable<>();
+        // Create the hash maps to be populated.
+        elementsText = new HashMap<>();
+        elementsFile = new HashMap<>();
+        elementsAll = new HashMap<>();
 
         // Parse the request into file items.
         List<FileItem> items = null;
@@ -223,31 +225,31 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
     }
 
     /**
-     * Returns a hash table containing the text (that is, non-file) request
+     * Returns a hash map containing the text (that is, non-file) request
      * parameters.
      *
      * @return The text request parameters.
      */
-    public Hashtable<String, Object> getTextElements() {
+    public HashMap<String, String[]> getTextElements() {
         return this.elementsText;
     }
 
     /**
-     * Returns a hash table containing the file (that is, non-text) request
+     * Returns a hash map containing the file (that is, non-text) request
      * parameters.
      *
      * @return The file request parameters.
      */
-    public Hashtable<String, Object> getFileElements() {
+    public HashMap<String, List<FormFile>> getFileElements() {
         return this.elementsFile;
     }
 
     /**
-     * Returns a hash table containing both text and file request parameters.
+     * Returns a hash map containing both text and file request parameters.
      *
      * @return The text and file request parameters.
      */
-    public Hashtable<String, Object> getAllElements() {
+    public HashMap<String, Object> getAllElements() {
         return this.elementsAll;
     }
 
@@ -255,13 +257,17 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * Cleans up when a problem occurs during request processing.
      */
     public void rollback() {
-        for (Object o : elementsFile.values()) {
-            if (o instanceof List) {
-                for (Object i : ((List<?>)o)) {
-                    ((FormFile)i).destroy();
+        for (List<FormFile> files : elementsFile.values()) {
+            for (FormFile formFile : files) {
+                try {
+                    formFile.destroy();
+                } catch (IOException e) {
+                    log.atWarn()
+                        .setMessage("Failed to destroy FormFile {}")
+                        .addArgument(formFile.getFileName())
+                        .setCause(e)
+                        .log();
                 }
-            } else {
-                ((FormFile)o).destroy();
             }
         }
     }
@@ -361,7 +367,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
             multiplier = 1;
         }
 
-        return (size * multiplier);
+        return size * multiplier;
     }
 
     /**
@@ -480,12 +486,11 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
             wrapper.setParameter(name, value);
         }
 
-        String[] oldArray = (String[]) elementsText.get(name);
+        String[] oldArray = elementsText.get(name);
         String[] newArray;
 
         if (oldArray != null) {
-            newArray = new String[oldArray.length + 1];
-            System.arraycopy(oldArray, 0, newArray, 0, oldArray.length);
+            newArray = Arrays.copyOf(oldArray, oldArray.length + 1);
             newArray[oldArray.length] = value;
         } else {
             newArray = new String[] { value };
@@ -502,25 +507,16 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * @param item The file item for the parameter to add.
      */
     protected void addFileParameter(FileItem item) {
-        FormFile formFile = new CommonsFormFile(item);
-
-        String name = item.getFieldName();
+        final String name = item.getFieldName();
         if (elementsFile.containsKey(name)) {
-            Object o = elementsFile.get(name);
-            if (o instanceof List) {
-                @SuppressWarnings("unchecked")
-                List<FormFile> list = (List<FormFile>)o;
-                list.add(formFile);
-            } else {
-                List<FormFile> list = new ArrayList<>();
-                list.add((FormFile)o);
-                list.add(formFile);
-                elementsFile.put(name, list);
-                elementsAll.put(name, list);
+            List<FormFile> files = elementsFile.get(name);
+            if (files == null) {
+                files = new ArrayList<>();
+                elementsFile.put(name, files);
+                elementsAll.put(name, files);
             }
-        } else {
-            elementsFile.put(name, formFile);
-            elementsAll.put(name, formFile);
+
+            files.add(new CommonsFormFile(item));
         }
     }
 

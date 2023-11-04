@@ -18,21 +18,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 package org.apache.struts.mock;
 
-import java.util.Enumeration;
-import java.util.Hashtable;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import org.apache.struts.action.ActionServlet;
+import java.util.HashMap;
+import java.util.List;
+
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionServlet;
+import org.apache.struts.upload.FormFile;
 import org.apache.struts.upload.MultipartRequestHandler;
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+
 /**
- * <p>Mock <strong>MultipartRequestHandler</strong> object for unit tests.</p>
- *
- * @version $Rev$
+ * Mock <strong>MultipartRequestHandler</strong> object for unit tests.
  */
 public class MockMultipartRequestHandler implements MultipartRequestHandler {
 
@@ -43,11 +43,11 @@ public class MockMultipartRequestHandler implements MultipartRequestHandler {
     private ActionMapping mapping = new ActionMapping();
 
     /** request elements. */
-    private Hashtable<String, Object> elements;
+    private HashMap<String, String[]> elements;
 
     /**
-     * Convienience method to set a reference to a mock
-     * ActionServlet instance.
+     * Convenience method to set a reference to a mock ActionServlet instance.
+     *
      * @param servlet Mock servlet instance.
      */
     public void setServlet(ActionServlet servlet) {
@@ -55,8 +55,8 @@ public class MockMultipartRequestHandler implements MultipartRequestHandler {
     }
 
     /**
-     * Convienience method to set a reference to a mock
-     * ActionMapping instance.
+     * Convenience method to set a reference to a mock ActionMapping instance.
+     *
      * @param mapping Mock action mapping instance.
      */
     public void setMapping(ActionMapping mapping) {
@@ -65,6 +65,7 @@ public class MockMultipartRequestHandler implements MultipartRequestHandler {
 
     /**
      * Get the mock ActionServlet instance.
+     *
      * @return The mock servlet instance.
      */
     public ActionServlet getServlet() {
@@ -73,6 +74,7 @@ public class MockMultipartRequestHandler implements MultipartRequestHandler {
 
     /**
      * Get the ActionMapping instance for this mock request.
+     *
      * @return The mock action mapping instance.
      */
     public ActionMapping getMapping() {
@@ -80,68 +82,63 @@ public class MockMultipartRequestHandler implements MultipartRequestHandler {
     }
 
     /**
-      * <p>Mock parsing of the ServletInputStream.</p>
+      * Mock parsing of the ServletInputStream.
       *
-      * <p>Constructs a <code>Hashtable</code> of elements
-      *    from the HttpServletRequest's parameters - no
-      *    <code>FormFile</code> elements are created.</p>
+      * <p>Constructs a {@code HashMap} of elements from the
+      * HttpServletRequest's parameters - no {@code FormFile} elements are
+      * created.</p>
+      *
       * @param request Mock request instance.
-      * @throws ServletException If there is a problem with
-      * processing the request.
+      *
+      * @throws ServletException If there is a problem with processing the
+      *                          request.
       */
     public void handleRequest(HttpServletRequest request) throws ServletException {
-        elements = new Hashtable<>();
-        Enumeration<String> enumer = request.getParameterNames();
-        while (enumer.hasMoreElements()) {
-            String key = enumer.nextElement();
-            elements.put(key, request.getParameter(key));
-        }
+        elements = new HashMap<>(request.getParameterMap());
     }
 
     /**
-     * This method is called on to retrieve all the text
-     * input elements of the request.
+     * This method is called on to retrieve all the text input elements of the
+     * request.
      *
-     * @return A Hashtable where the keys and values are the names and
-     *  values of the request input parameters
+     * @return A HashMap where the keys and values are the names and values of
+     *         the request input parameters
      */
-    public Hashtable<String, Object> getTextElements() {
+    public HashMap<String, String[]> getTextElements() {
         return this.elements;
     }
 
     /**
-     * <p>This method is called on to retrieve all the FormFile
-     * input elements of the request.</p>
+     * This method is called on to retrieve all the FormFile input elements of
+     * the request.
      *
-     * @return This mock implementation returns an empty
-     *    <code>Hashtable</code>
+     * @return This mock implementation returns an empty {@code HashMap}
      */
-    public Hashtable<String, Object> getFileElements() {
-        return new Hashtable<>();
+    public HashMap<String, List<FormFile>> getFileElements() {
+        return new HashMap<>();
     }
 
     /**
      * This method returns all elements of a multipart request.
-     * @return This mock implementation returns a Hashtable where
-     *   the keys are input names and values are either Strings
-     *   (no FormFile elements)
+     *
+     * @return This mock implementation returns a HashMap where the keys are
+     *         input names and values are either Strings (no FormFile elements)
      */
-    public Hashtable<String, Object> getAllElements() {
-        return new Hashtable<>(this.elements);
+    public HashMap<String, Object> getAllElements() {
+        return new HashMap<>(this.elements);
     }
 
     /**
-     * Mock <code>rollback()</code> method does nothing.
+     * Mock {@code rollback()} method does nothing.
      */
     public void rollback() {
         // ignore
     }
 
     /**
-     * Mock <code>finish()</code> method does nothing.
+     * Mock {@code finish()} method does nothing.
      */
     public void finish() {
         // ignore
     }
-
 }

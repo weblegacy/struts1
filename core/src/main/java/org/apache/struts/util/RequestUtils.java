@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -668,13 +667,9 @@ public class RequestUtils {
      */
     private static Map<String, Object> getAllParametersForMultipartRequest(
         HttpServletRequest request, MultipartRequestHandler multipartHandler) {
-        Map<String, Object> parameters = new HashMap<>();
-        Hashtable<String, Object> elements = multipartHandler.getAllElements();
-        Enumeration<String> e = elements.keys();
 
-        for (Map.Entry<String, Object> entry : elements.entrySet()) {
-            parameters.put(entry.getKey(), entry.getValue());
-        }
+        final Map<String, Object> parameters =
+                new HashMap<>(multipartHandler.getAllElements());
 
         if (request instanceof MultipartRequestWrapper) {
             request =

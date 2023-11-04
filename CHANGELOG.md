@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Change API `MultipartRequestHandler`: return HashMap instead Hashtable
 * Some reformatings
 * Upgrade to org.apache.commons.fileupload2
 * Change all `javax.*`- to `jakarta.*`-namespaces from groovy-examples

@@ -212,6 +212,15 @@
                 <ul>
                     <li>Upgrade to <strong>Jakarta EE 8</strong>.</li>
                 </ul>
+
+                <h4 id="struts_1_5_x">Release 1.5.x (pending)</h4>
+                <p>
+                    Evolutionary enhancements to product base,
+                    based on existing features or codebases.
+                </p>
+                <ul>
+                    <li>Upgrade to <strong>Jakarta EE 9</strong>.</li>
+                </ul>
             </subsection>
         </section>
 

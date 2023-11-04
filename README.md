@@ -30,11 +30,11 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 * Logging: Use [SLF4J](https://www.slf4j.org/) instead [Commons-Logging](https://commons.apache.org/proper/commons-logging/index.html)
 * JDK 1.4 --> JDK 8
   * Tested with JDK 8, 11, 17 and 21
-* Servlet-API 2.3 --> 4.0
-* JSP 2.0 --> 2.3
-* JSP-EL 2.0 --> 3.0
-* JSF 1.0.9 --> 2.3
-* JSTL 1.0.2 --> 1.2
+* Servlet-API 2.3 --> 5.0
+* JSP 2.0 --> 3.0
+* JSP-EL 2.0 --> 4.0
+* JSF 1.0.9 --> 3.0
+* JSTL 1.0.2 --> 2.0
 
 ## Fixed vulnerabilities
 
@@ -45,7 +45,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 ## Building Strus1 - Reloaded
 
-### Prerequesits
+### Prerequisites
 
 * Apache Maven 3.5.4\+
 * JDK 11\+

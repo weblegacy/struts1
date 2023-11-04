@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Further updates to the documentation
 * Corr: `RequestUtils`
 * Corr: Fix links in `preface`-doc
 * Corr: Remove double-defined dependency

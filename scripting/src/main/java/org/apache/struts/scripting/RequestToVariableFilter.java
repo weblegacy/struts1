@@ -25,11 +25,11 @@ import java.util.Properties;
 
 import javax.script.Bindings;
 import javax.script.ScriptContext;
-import jakarta.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * Takes request parameters and declares variables with them. If a variable is

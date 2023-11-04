@@ -24,7 +24,6 @@ import java.util.Properties;
 
 import javax.script.ScriptContext;
 
-
 /**
  * Defines a class that wants to manipulate the contents of the scripting
  * context before the script is executed. An example would be a class that puts

@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Some reformatings
 * Upgrade to org.apache.commons.fileupload2
 * Change all `javax.*`- to `jakarta.*`-namespaces from groovy-examples
 * Upgrade `jsf` from 2.3.18 to 3.0.2

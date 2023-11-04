@@ -28,7 +28,6 @@ import javax.script.ScriptContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 /**
  * Tests to make sure the filtering system is working.
  */

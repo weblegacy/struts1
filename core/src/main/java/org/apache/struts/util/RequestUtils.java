@@ -675,13 +675,8 @@ public class RequestUtils {
             request =
                 (HttpServletRequest) ((MultipartRequestWrapper) request)
                 .getRequest();
-            e = request.getParameterNames();
 
-            while (e.hasMoreElements()) {
-                String key = e.nextElement();
-
-                parameters.put(key, request.getParameterValues(key));
-            }
+            parameters.putAll(request.getParameterMap());
         } else {
             LOG.debug("Gathering multipart parameters for unwrapped request");
         }

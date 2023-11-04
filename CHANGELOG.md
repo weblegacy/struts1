@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Corr: `RequestUtils`
 * Corr: Fix links in `preface`-doc
 * Corr: Remove double-defined dependency
 * Further adaptations to `fileupload2`

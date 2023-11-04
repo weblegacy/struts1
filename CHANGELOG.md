@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Corr: Remove double-defined dependency
 * Further adaptations to `fileupload2`
 * Change API `MultipartRequestHandler`: return HashMap instead Hashtable
 * Some reformatings

@@ -179,7 +179,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         factory.setFile(getRepositoryFile(ac));
 
         // Create a new file upload handler
-        JakartaServletFileUpload upload = new JakartaServletFileUpload(factory.get());
+        JakartaServletFileUpload<DiskFileItem, DiskFileItemFactory> upload = new JakartaServletFileUpload<>(factory.get());
 
         // The following line is to support an "EncodingFilter"
         // see http://issues.apache.org/bugzilla/show_bug.cgi?id=23255
@@ -197,14 +197,23 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         elementsAll = new HashMap<>();
 
         // Parse the request into file items.
-        List<FileItem> items = null;
+        List<DiskFileItem> items = null;
 
         try {
             items = upload.parseRequest(request);
         } catch (FileUploadSizeException e) {
-            // Special handling for uploads that are too big.
+            // Special handling for uploads that are too big or too much file-uploads.
             request.setAttribute(MultipartRequestHandler.ATTRIBUTE_MAX_LENGTH_EXCEEDED,
                 Boolean.TRUE);
+
+            if (e instanceof FileUploadByteCountLimitException) {
+                request.setAttribute(MultipartRequestHandler.ATTRIBUTE_MAX_BYTE_LENGTH_EXCEEDED,
+                        Boolean.TRUE);
+            } else if (e instanceof FileUploadFileCountLimitException) {
+                request.setAttribute(MultipartRequestHandler.ATTRIBUTE_MAX_FILE_COUNT_EXCEEDED,
+                        Boolean.TRUE);
+            }
+
             clearInputStream(request);
             return;
         } catch (FileUploadException e) {
@@ -214,7 +223,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         }
 
         // Partition the items into form fields and files.
-        for (FileItem item : items) {
+        for (DiskFileItem item : items) {
 
             if (item.isFormField()) {
                 addTextParameter(request, item);
@@ -445,7 +454,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * @param request The request in which the parameter was specified.
      * @param item    The file item for the parameter to add.
      */
-    protected void addTextParameter(HttpServletRequest request, FileItem item) {
+    protected void addTextParameter(HttpServletRequest request, FileItem<?> item) {
         String name = item.getFieldName();
         String value = null;
         boolean haveValue = false;
@@ -457,8 +466,12 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         }
 
         if (encoding == null) {
-            encoding = Charset.forName(request.getCharacterEncoding());
-            log.debug("request.getCharacterEncoding=[{}]", encoding);
+            try {
+                encoding = Charset.forName(request.getCharacterEncoding());
+                log.debug("request.getCharacterEncoding=[{}]", encoding);
+            } catch (UnsupportedCharsetException e) {
+                log.warn("Unknown request.getCharacterEncoding", e);
+            }
         }
 
         if (encoding != null) {
@@ -473,7 +486,8 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         if (!haveValue) {
             try {
                 value = item.getString(StandardCharsets.ISO_8859_1);
-            } catch (java.io.UnsupportedEncodingException uee) {
+            } catch (IOException e) {
+                log.info("FileItem-getString", e);
                 value = item.getString();
             }
 
@@ -506,7 +520,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      *
      * @param item The file item for the parameter to add.
      */
-    protected void addFileParameter(FileItem item) {
+    protected void addFileParameter(FileItem<?> item) {
         final String name = item.getFieldName();
         if (elementsFile.containsKey(name)) {
             List<FormFile> files = elementsFile.get(name);
@@ -534,7 +548,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         /**
          * The {@code FileItem} instance wrapped by this object.
          */
-        FileItem fileItem;
+        FileItem<?> fileItem;
 
         /**
          * Constructs an instance of this class which wraps the supplied file
@@ -542,7 +556,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
          *
          * @param fileItem The Commons file item to be wrapped.
          */
-        public CommonsFormFile(FileItem fileItem) {
+        public CommonsFormFile(FileItem<?> fileItem) {
             this.fileItem = fileItem;
         }
 
@@ -677,8 +691,10 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
          * Destroy all content for this form file. Implementations should
          * remove any temporary files or any temporary file data stored
          * somewhere.
+         *
+         * @throws IOException if an error occurs.
          */
-        public void destroy() {
+        public void destroy() throws IOException {
             fileItem.delete();
         }
 

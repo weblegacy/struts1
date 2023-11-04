@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Further adaptations to `fileupload2`
 * Change API `MultipartRequestHandler`: return HashMap instead Hashtable
 * Some reformatings
 * Upgrade to org.apache.commons.fileupload2

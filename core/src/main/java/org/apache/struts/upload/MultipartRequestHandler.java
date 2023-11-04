@@ -37,16 +37,38 @@ import jakarta.servlet.http.HttpServletRequest;
 public interface MultipartRequestHandler {
 
     /**
-     * <p> This is the ServletRequest attribute that should be set when a
-     * multipart request is being read and the maximum length is exceeded. The
-     * value is a Boolean. If the maximum length isn't exceeded, this
-     * attribute shouldn't be put in the ServletRequest. It's the job of the
-     * implementation to put this attribute in the request if the maximum
-     * length is exceeded; in the handleRequest(HttpServletRequest) method.
-     * </p>
+     * This is the ServletRequest attribute that should be set when a multipart
+     * request is being read and the maximum byte-length or file-count is
+     * exceeded. The value is a Boolean. If the maximum byte-length or file-
+     * count isn't exceeded, this attribute shouldn't be put in the
+     * ServletRequest. It's the job of the implementation to put this attribute
+     * in the request if the maximum byte-length or file-count is exceeded; in
+     * the handleRequest(HttpServletRequest) method.
      */
     public static final String ATTRIBUTE_MAX_LENGTH_EXCEEDED =
         "org.apache.struts.upload.MaxLengthExceeded";
+
+    /**
+     * This is the ServletRequest attribute that should be set when a multipart
+     * request is being read and the maximum byte-length is exceeded. The value
+     * is a Boolean. If the maximum length isn't exceeded, this attribute
+     * shouldn't be put in the ServletRequest. It's the job of the
+     * implementation to put this attribute in the request if the maximum byte-
+     * length is exceeded; in the handleRequest(HttpServletRequest) method.
+     */
+    public static final String ATTRIBUTE_MAX_BYTE_LENGTH_EXCEEDED =
+        "org.apache.struts.upload.MaxByteLengthExceeded";
+
+    /**
+     * This is the ServletRequest attribute that should be set when a multipart
+     * request is being read and the maximum file-count is exceeded. The value
+     * is a Boolean. If the maximum file-count isn't exceeded, this attribute
+     * shouldn't be put in the ServletRequest. It's the job of the
+     * implementation to put this attribute in the request if the maximum file-
+     * count is exceeded; in the handleRequest(HttpServletRequest) method.
+     */
+    public static final String ATTRIBUTE_MAX_FILE_COUNT_EXCEEDED =
+        "org.apache.struts.upload.MaxFileCountExceeded";
 
     /**
      * Convenience method to set a reference to a working ActionServlet

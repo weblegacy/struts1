@@ -100,6 +100,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Change &quot;tiles-request-servlet&quot; to &quot;tiles-request-jakarta-servlet&quot; 1.0.0-SNAPSHOT</li>
 <li>Change &quot;.gitignore&quot;</li>
 <li>Upgrade &quot;fileupload&quot; 1.5 to &quot;fileupload2&quot; 2.0.0-M1</li>
 <li>Change all &quot;javax.*&quot;- to &quot;jakarta.*&quot;-namespaces and properties</li>

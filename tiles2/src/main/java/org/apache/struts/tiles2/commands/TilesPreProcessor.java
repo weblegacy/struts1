@@ -20,9 +20,6 @@
  */
 package org.apache.struts.tiles2.commands;
 
-import io.github.weblegacy.tiles.request.servlet.ServletRequest;
-import io.github.weblegacy.tiles.request.servlet.ServletUtil;
-
 import org.apache.commons.chain.Command;
 import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ForwardConfig;
@@ -30,6 +27,8 @@ import org.apache.tiles.TilesContainer;
 import org.apache.tiles.access.TilesAccess;
 import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.Request;
+import org.apache.tiles.request.jakarta.servlet.ServletRequest;
+import org.apache.tiles.request.jakarta.servlet.ServletUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

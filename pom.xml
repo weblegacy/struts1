@@ -1185,8 +1185,8 @@
             </dependency>
             <dependency>
                <groupId>io.github.weblegacy</groupId>
-               <artifactId>tiles-request-servlet</artifactId>
-               <version>1.1.0-SNAPSHOT</version>
+               <artifactId>tiles-request-jakarta-servlet</artifactId>
+               <version>1.0.0-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>

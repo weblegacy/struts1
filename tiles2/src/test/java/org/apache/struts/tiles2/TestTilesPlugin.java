@@ -27,12 +27,7 @@ import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.fail;
 
-import io.github.weblegacy.tiles.request.servlet.ServletApplicationContext;
-import io.github.weblegacy.tiles.request.servlet.ServletUtil;
-
 import java.lang.reflect.InvocationTargetException;
-
-import jakarta.servlet.ServletException;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.struts.Globals;
@@ -48,11 +43,15 @@ import org.apache.tiles.access.TilesAccess;
 import org.apache.tiles.definition.DefinitionsFactory;
 import org.apache.tiles.request.ApplicationAccess;
 import org.apache.tiles.request.ApplicationContext;
+import org.apache.tiles.request.jakarta.servlet.ServletApplicationContext;
+import org.apache.tiles.request.jakarta.servlet.ServletUtil;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.servlet.ServletException;
 
 /**
  * Tests the Tiles plugin.

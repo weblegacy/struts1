@@ -21,15 +21,7 @@
 
 package org.apache.struts.tiles2;
 
-import io.github.weblegacy.tiles.request.servlet.ServletRequest;
-import io.github.weblegacy.tiles.request.servlet.ServletUtil;
-
 import java.io.IOException;
-
-import jakarta.servlet.ServletContext;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 
 import org.apache.struts.action.ActionServlet;
 import org.apache.struts.action.RequestProcessor;
@@ -40,8 +32,15 @@ import org.apache.tiles.TilesException;
 import org.apache.tiles.access.TilesAccess;
 import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.Request;
+import org.apache.tiles.request.jakarta.servlet.ServletRequest;
+import org.apache.tiles.request.jakarta.servlet.ServletUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * <p><strong>RequestProcessor</strong> contains the processing logic that

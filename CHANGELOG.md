@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Change `tiles-request-servlet` to `tiles-request-jakarta-servlet` 1.0.0-SNAPSHOT
 * Change `.gitignore`
 * Further updates to the documentation
 * Corr: `RequestUtils`

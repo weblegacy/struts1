@@ -21,15 +21,14 @@
 
 package org.apache.struts.tiles2.util;
 
-import io.github.weblegacy.tiles.request.servlet.ServletApplicationContext;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import jakarta.servlet.ServletContext;
-
 import org.apache.struts.config.PlugInConfig;
+import org.apache.tiles.request.jakarta.servlet.ServletApplicationContext;
+
+import jakarta.servlet.ServletContext;
 
 
 /**

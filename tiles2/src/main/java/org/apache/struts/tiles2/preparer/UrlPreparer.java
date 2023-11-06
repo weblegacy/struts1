@@ -23,17 +23,16 @@ package org.apache.struts.tiles2.preparer;
 
 import java.io.IOException;
 
-import io.github.weblegacy.tiles.request.servlet.ServletRequest;
+import org.apache.tiles.AttributeContext;
+import org.apache.tiles.preparer.PreparerException;
+import org.apache.tiles.preparer.ViewPreparer;
+import org.apache.tiles.request.Request;
+import org.apache.tiles.request.jakarta.servlet.ServletRequest;
 
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-import org.apache.tiles.AttributeContext;
-import org.apache.tiles.preparer.PreparerException;
-import org.apache.tiles.preparer.ViewPreparer;
-import org.apache.tiles.request.Request;
 
 /**
  * @version $Rev$ $Date$

@@ -6,6 +6,21 @@ Full [CHANGELOG](CHANGELOG.md)
 
 For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.github.io/struts1)
 
+## !!Breaking news!!
+
+The `Struts1`-version 1.5.0-SNAPSHOT is now **ready for Jakarta-Namespace**!
+
+What is needed for the local-version:
+
+1. [tiles-request-jakarta-servlet](/weblegacy/tiles-request-jakarta-servlet)  
+    `mvn clean install`
+2. [struts1](/weblegacy/struts1)  
+    `mvn -Pdormant clean install`
+
+Now I will work on to release `struts1` and `tiles-request-jakarta-servlet`. But in the meantime you could test this version with your applications.
+
+Good luck with testing!
+
 ## Versions-Overview
 
 | Version                                                             | JEE-Version  | Java-Version | Servlet | JSP | EL  | JSF | JSTL |

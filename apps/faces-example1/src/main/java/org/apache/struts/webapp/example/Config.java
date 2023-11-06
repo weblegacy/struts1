@@ -23,8 +23,7 @@
 package org.apache.struts.webapp.example;
 
 
-import javax.enterprise.context.ApplicationScoped;
-
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.faces.annotation.FacesConfig;
 
 

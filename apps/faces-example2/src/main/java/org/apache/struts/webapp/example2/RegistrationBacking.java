@@ -25,14 +25,13 @@ package org.apache.struts.webapp.example2;
 
 import java.io.IOException;
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
-
 import org.apache.struts.apps.mailreader.dao.Subscription;
 import org.apache.struts.apps.mailreader.dao.User;
 
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.FacesException;
 import jakarta.faces.context.FacesContext;
+import jakarta.inject.Named;
 
 
 /**

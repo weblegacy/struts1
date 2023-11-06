@@ -1098,7 +1098,7 @@
             <dependency>
                 <groupId>org.jboss.weld.servlet</groupId>
                 <artifactId>weld-servlet-shaded</artifactId>
-                <version>3.1.9.Final</version>
+                <version>4.0.3.Final</version>
             </dependency>
             <dependency>
                 <groupId>org.slf4j</groupId>

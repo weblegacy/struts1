@@ -23,14 +23,13 @@
 package org.apache.struts.webapp.example;
 
 
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Named;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.event.ActionEvent;
+import jakarta.inject.Named;
 
 
 /**

@@ -100,6 +100,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Change &quot;.gitignore&quot;</li>
 <li>Upgrade &quot;fileupload&quot; 1.5 to &quot;fileupload2&quot; 2.0.0-M1</li>
 <li>Change all &quot;javax.*&quot;- to &quot;jakarta.*&quot;-namespaces and properties</li>
 <li>Upgrade &quot;jsf&quot; from 2.3.18 to 3.0.2</li>

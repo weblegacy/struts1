@@ -1,5 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/windows,macos,linux,maven,java,eclipse,netbeans,intellij+all,visualstudiocode
-# Edit at https://www.toptal.com/developers/gitignore?templates=windows,macos,linux,maven,java,eclipse,netbeans,intellij+all,visualstudiocode
+# Created by https://www.toptal.com/developers/gitignore/api/java,linux,macos,maven,eclipse,windows,netbeans,intellij+all,visualstudiocode
+# Edit at https://www.toptal.com/developers/gitignore?templates=java,linux,macos,maven,eclipse,windows,netbeans,intellij+all,visualstudiocode
 
 ### Eclipse ###
 .metadata
@@ -131,6 +131,9 @@ atlassian-ide-plugin.xml
 # Cursive Clojure plugin
 .idea/replstate.xml
 
+# SonarLint plugin
+.idea/sonarlint/
+
 # Crashlytics plugin (for Android Studio and IntelliJ)
 com_crashlytics_export_strings.xml
 crashlytics.properties
@@ -144,20 +147,13 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 
 ### Intellij+all Patch ###
-# Ignores the whole .idea folder and all .iml files
-# See https://github.com/joeblau/gitignore.io/issues/186 and https://github.com/joeblau/gitignore.io/issues/360
+# Ignore everything but code style settings and run configurations
+# that are supposed to be shared within teams.
 
-.idea/
+.idea/*
 
-# Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-249601023
-
-*.iml
-modules.xml
-.idea/misc.xml
-*.ipr
-
-# Sonarlint plugin
-.idea/sonarlint
+!.idea/codeStyles
+!.idea/runConfigurations
 
 ### Java ###
 # Compiled class file
@@ -172,16 +168,18 @@ modules.xml
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Package Files without ZIP #
+# Package Files #
 *.jar
 *.war
 *.nar
 *.ear
+*.zip
 *.tar.gz
 *.rar
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+replay_pid*
 
 ### Linux ###
 *~
@@ -227,6 +225,10 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
+### macOS Patch ###
+# iCloud generated files
+*.icloud
+
 ### Maven ###
 target/
 pom.xml.tag
@@ -240,7 +242,6 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
-### Maven Patch ###
 # Eclipse m2e generated files
 # Eclipse Core
 .project
@@ -263,18 +264,18 @@ nbdist/
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-*.code-workspace
+!.vscode/*.code-snippets
 
 # Local History for Visual Studio Code
 .history/
+
+# Built Visual Studio Code Extensions
+*.vsix
 
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
 .history
 .ionide
-
-# Support for Project snippet scope
-!.vscode/*.code-snippets
 
 ### Windows ###
 # Windows thumbnail cache files
@@ -302,4 +303,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/windows,macos,linux,maven,java,eclipse,netbeans,intellij+all,visualstudiocode
+# End of https://www.toptal.com/developers/gitignore/api/java,linux,macos,maven,eclipse,windows,netbeans,intellij+all,visualstudiocode

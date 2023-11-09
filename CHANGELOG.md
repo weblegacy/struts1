@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Corr: `index.xml` - add missing `release-notes-1_4_5.xml` to index
 * Corr: `CommonsMultipartRequestHandler.addFileParameter` thanks to jo-kl
 * Bump `tiles-request-jakarta-servlet` from 1.0.0-SNAPSHOT to 1.0.0
 * Bump `weld-servlet-shaded` from 3.1.9.Final to 4.0.3.Final

@@ -522,16 +522,15 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      */
     protected void addFileParameter(FileItem<?> item) {
         final String name = item.getFieldName();
-        if (elementsFile.containsKey(name)) {
-            List<FormFile> files = elementsFile.get(name);
-            if (files == null) {
-                files = new ArrayList<>();
-                elementsFile.put(name, files);
-                elementsAll.put(name, files);
-            }
 
-            files.add(new CommonsFormFile(item));
+        List<FormFile> files = elementsFile.get(name);
+        if (files == null) {
+            files = new ArrayList<>();
+            elementsFile.put(name, files);
+            elementsAll.put(name, files);
         }
+
+        files.add(new CommonsFormFile(item));
     }
 
     // ---------------------------------------------------------- Inner Classes

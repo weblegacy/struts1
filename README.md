@@ -12,12 +12,14 @@ The `Struts1`-version 1.5.0-SNAPSHOT is now **ready for Jakarta-Namespace**!
 
 What is needed for the local-version:
 
-1. [tiles-request-jakarta-servlet](/weblegacy/tiles-request-jakarta-servlet)  
-    `mvn clean install`
-2. [struts1](/weblegacy/struts1)  
+1. [struts1](https://github.com/weblegacy/struts1)  
     `mvn -Pdormant clean install`
 
-Now I will work on to release `struts1` and `tiles-request-jakarta-servlet`. But in the meantime you could test this version with your applications.
+`struts1` is nearly release-ready and you could test this version with your applications.
+
+I would like to wait a few days to get your feedback on the tests.
+
+Note: `tiles-request-jakarta-servlet` is published as version 1.0.0 in MAVEN-repo.
 
 Good luck with testing!
 

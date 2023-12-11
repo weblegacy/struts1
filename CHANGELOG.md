@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `cargo-maven3-plugin` from 1.10.10 to 1.10.11
 * Bump `maven-project-info-reports-plugin` from 3.4.5 to 3.5.0
 * Bump `checkstyle` from 10.12.4 to 10.12.6
 * Bump `maven-javadoc-plugin` from 3.6.0 to 3.6.3

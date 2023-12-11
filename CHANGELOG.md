@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `maven-javadoc-plugin` from 3.6.0 to 3.6.3
 * Bump `junit-jupiter-api` from 5.10.0 to 5.10.1
 * Bump `jsf` from 3.0.2 to 3.0.5
 * Bump `selenium-api` and `selenium-java` from 4.15.0 to 4.16.1

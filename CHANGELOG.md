@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Remove duplicate slf4j-providers in `taglib`
 * Correct Javadoc-warnings
 * Centralize Javadoc-configurations
 * Better Javadoc-Dependency-Links

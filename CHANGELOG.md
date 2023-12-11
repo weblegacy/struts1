@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Correct Javadoc-warnings
 * Centralize Javadoc-configurations
 * Better Javadoc-Dependency-Links
 * Corr: `index.xml` - add missing `release-notes-1_4_5.xml` to index

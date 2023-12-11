@@ -145,7 +145,7 @@ public final class LogonAction extends Action {
      * @param database Database in which to look up the user
      * @param username Username specified on the logon form
      *
-     * @exception AppException if a business logic rule is violated
+     * throws ModuleException if a business logic rule is violated
      */
     public User getUser(UserDatabase database, String username)
         throws ModuleException {

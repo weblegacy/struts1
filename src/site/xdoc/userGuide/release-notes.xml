@@ -104,6 +104,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;selenium-api&quot; and &quot;selenium-java&quot; from 4.15.0 to 4.16.1</li>
 <li>Bump &quot;groovy&quot; from 4.0.15 to 4.0.16</li>
 <li>Bump &quot;maven-failsafe/surefire-[report]-plugin&quot; from 3.2.1 to 3.2.2</li>
 <li>Bump &quot;weld-servlet-shaded&quot; from 3.1.9.Final to 4.0.3.Final</li>

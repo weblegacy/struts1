@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `selenium-api` and `selenium-java` from 4.15.0 to 4.16.1
 * Bump `groovy` from 4.0.15 to 4.0.16
 * Bump `maven-failsafe/surefire-[report]-plugin` from 3.2.1 to 3.2.2
 * Remove duplicate slf4j-providers in `taglib`

@@ -104,6 +104,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;webdrivermanager&quot; from 5.6.1 to 5.6.2</li>
 <li>Bump &quot;spotbugs-annotations&quot; from 4.8.0 to 4.8.2</li>
 <li>Bump &quot;htmlunit&quot; from 3.7.0 to 3.9.0</li>
 <li>Bump &quot;commons-validator&quot; from 1.7 to 1.8.0</li>

@@ -95,6 +95,7 @@
 
 <h4>Improvement</h4>
 <ul>
+<li>Centralize Javadoc-configurations</li>
 <li>Better Javadoc-Dependency-Links</li>
 <li>New Servelt-Attributes for <strong>MultipartRequestHandler.ATTRIBUTE_MAX_BYTE_LENGTH_EXCEEDED</strong> and <strong>MultipartRequestHandler.ATTRIBUTE_MAX_FILE_COUNT_EXCEEDED</strong></li>
 </ul>

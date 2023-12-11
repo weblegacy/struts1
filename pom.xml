@@ -453,9 +453,6 @@
                                     <goals>
                                         <goal>jar</goal>
                                     </goals>
-                                    <configuration>
-                                        <failOnError>false</failOnError>
-                                    </configuration>
                                 </execution>
                             </executions>
                         </plugin>
@@ -597,6 +594,100 @@
                 <plugin>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>3.6.0</version>
+                    <configuration>
+                        <detectLinks>true</detectLinks>
+                        <dependencyLinks>
+                            <dependencyLink>
+                                <groupId>org.junit.jupiter</groupId>
+                                <artifactId>junit-jupiter-api</artifactId>
+                                <url>https://javadoc.io/doc/org.junit.jupiter/junit-jupiter-api/${junitVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>org.apache.tiles</groupId>
+                                <artifactId>tiles-api</artifactId>
+                                <url>https://javadoc.io/doc/org.apache.tiles/tiles-api/${tilesVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>org.apache.tiles</groupId>
+                                <artifactId>tiles-core</artifactId>
+                                <url>https://javadoc.io/doc/org.apache.tiles/tiles-core/${tilesVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>org.apache.tiles</groupId>
+                                <artifactId>tiles-request-api</artifactId>
+                                <url>https://javadoc.io/doc/org.apache.tiles/tiles-request-api/${tilesRequestVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>io.github.weblegacy</groupId>
+                                <artifactId>tiles-request-jakarta-servlet</artifactId>
+                                <url>https://javadoc.io/doc/io.github.weblegacy/tiles-request-jakarta-servlet/1.0.0/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>org.antlr</groupId>
+                                <artifactId>antlr4-runtime</artifactId>
+                                <url>https://javadoc.io/doc/org.antlr/antlr4-runtime/${antlrVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>org.apache.groovy</groupId>
+                                <artifactId>groovy-jsr223</artifactId>
+                                <url>https://javadoc.io/doc/org.apache.groovy/groovy-all/${groovyVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>jakarta.servlet</groupId>
+                                <artifactId>jakarta.servlet-api</artifactId>
+                                <url>https://javadoc.io/doc/jakarta.servlet/jakarta.servlet-api/${servletVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>jakarta.servlet.jsp</groupId>
+                                <artifactId>jakarta.servlet.jsp-api</artifactId>
+                                <url>https://javadoc.io/doc/jakarta.servlet.jsp/jakarta.servlet.jsp-api/${jspVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>jakarta.el</groupId>
+                                <artifactId>jakarta.el-api</artifactId>
+                                <url>https://javadoc.io/doc/jakarta.el/jakarta.el-api/${elVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>jakarta.servlet.jsp.jstl</groupId>
+                                <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+                                <url>https://javadoc.io/doc/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api/${jstlVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>jakarta.faces</groupId>
+                                <artifactId>jakarta.faces-api</artifactId>
+                                <url>https://javadoc.io/doc/jakarta.faces/jakarta.faces-api/${jsfVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>org.jboss.weld.servlet</groupId>
+                                <artifactId>weld-servlet-shaded</artifactId>
+                                <url>https://javadoc.io/doc/org.jboss.weld/weld-api/4.0.Final/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>org.glassfish.jaxb</groupId>
+                                <artifactId>jaxb-runtime</artifactId>
+                                <url>https://javadoc.io/doc/org.glassfish.jaxb/jaxb-runtime/${jaxbVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>org.apache.commons</groupId>
+                                <artifactId>commons-fileupload2-core</artifactId>
+                                <url>https://javadoc.io/doc/org.apache.commons/commons-fileupload2-core/${fileuploadVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>org.apache.commons</groupId>
+                                <artifactId>commons-fileupload2-jakarta</artifactId>
+                                <url>https://javadoc.io/doc/org.apache.commons/commons-fileupload2-jakarta/${fileuploadVersion}/</url>
+                            </dependencyLink>
+                        </dependencyLinks>
+                        <links>
+                            <link>https://jakarta.ee/specifications/platform/9/apidocs</link>
+                        </links>
+                        <failOnError>false</failOnError>
+                        <quiet>true</quiet>
+                        <doclint>none</doclint>
+                        <notimestamp>true</notimestamp>
+                        <source>${javaVersion}</source>
+                        <excludePackageNames>examples:examples.*:org.apache.struts.webapp:org.apache.struts.webapp.*:org.apache.struts.apps.mailreader:org.apache.struts.apps.mailreader.*:org.apache.struts.apps.scriptingmailreader:org.apache.struts.apps.scriptingmailreader.*</excludePackageNames>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <artifactId>maven-resources-plugin</artifactId>
@@ -832,99 +923,6 @@
             </plugin>
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <configuration>
-                  <detectLinks>true</detectLinks>
-                  <dependencyLinks>
-                    <dependencyLink>
-                      <groupId>org.junit.jupiter</groupId>
-                      <artifactId>junit-jupiter-api</artifactId>
-                      <url>https://javadoc.io/doc/org.junit.jupiter/junit-jupiter-api/5.10.0/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.apache.tiles</groupId>
-                      <artifactId>tiles-api</artifactId>
-                      <url>https://javadoc.io/doc/org.apache.tiles/tiles-api/${tilesVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.apache.tiles</groupId>
-                      <artifactId>tiles-core</artifactId>
-                      <url>https://javadoc.io/doc/org.apache.tiles/tiles-core/${tilesVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.apache.tiles</groupId>
-                      <artifactId>tiles-request-api</artifactId>
-                      <url>https://javadoc.io/doc/org.apache.tiles/tiles-request-api/${tilesRequestVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>io.github.weblegacy</groupId>
-                      <artifactId>tiles-request-jakarta-servlet</artifactId>
-                      <url>https://javadoc.io/doc/io.github.weblegacy/tiles-request-jakarta-servlet/1.0.0/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.antlr</groupId>
-                      <artifactId>antlr4-runtime</artifactId>
-                      <url>https://javadoc.io/doc/org.antlr/antlr4-runtime/${antlrVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.apache.groovy</groupId>
-                      <artifactId>groovy-jsr223</artifactId>
-                      <url>https://javadoc.io/doc/org.apache.groovy/groovy-all/${groovyVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>jakarta.servlet</groupId>
-                      <artifactId>jakarta.servlet-api</artifactId>
-                      <url>https://javadoc.io/doc/jakarta.servlet/jakarta.servlet-api/${servletVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>jakarta.servlet.jsp</groupId>
-                      <artifactId>jakarta.servlet.jsp-api</artifactId>
-                      <url>https://javadoc.io/doc/jakarta.servlet.jsp/jakarta.servlet.jsp-api/${jspVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>jakarta.el</groupId>
-                      <artifactId>jakarta.el-api</artifactId>
-                      <url>https://javadoc.io/doc/jakarta.el/jakarta.el-api/${elVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>jakarta.servlet.jsp.jstl</groupId>
-                      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
-                      <url>https://javadoc.io/doc/jakarta.servlet.jsp.jstl/jakarta.servlet.jsp.jstl-api/${jstlVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>jakarta.faces</groupId>
-                      <artifactId>jakarta.faces-api</artifactId>
-                      <url>https://javadoc.io/doc/jakarta.faces/jakarta.faces-api/${jsfVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.jboss.weld.servlet</groupId>
-                      <artifactId>weld-servlet-shaded</artifactId>
-                      <url>https://javadoc.io/doc/org.jboss.weld/weld-api/4.0.Final/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.glassfish.jaxb</groupId>
-                      <artifactId>jaxb-runtime</artifactId>
-                      <url>https://javadoc.io/doc/org.glassfish.jaxb/jaxb-runtime/${jaxbVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.apache.commons</groupId>
-                      <artifactId>commons-fileupload2-core</artifactId>
-                      <url>https://javadoc.io/doc/org.apache.commons/commons-fileupload2-core/${fileuploadVersion}/</url>
-                    </dependencyLink>
-                    <dependencyLink>
-                      <groupId>org.apache.commons</groupId>
-                      <artifactId>commons-fileupload2-jakarta</artifactId>
-                      <url>https://javadoc.io/doc/org.apache.commons/commons-fileupload2-jakarta/${fileuploadVersion}/</url>
-                    </dependencyLink>
-                  </dependencyLinks>
-                  <links>
-                    <link>https://jakarta.ee/specifications/platform/9/apidocs</link>
-                  </links>
-                  <failOnError>false</failOnError>
-                  <quiet>true</quiet>
-                  <doclint>none</doclint>
-                  <notimestamp>true</notimestamp>
-                  <source>${javaVersion}</source>
-                </configuration>
                 <reportSets>
                   <reportSet>
                     <id>aggregate</id>
@@ -932,9 +930,6 @@
                     <reports>
                       <report>aggregate</report>
                     </reports>
-                    <configuration>
-                      <excludePackageNames>examples:examples.*:org.apache.struts.webapp:org.apache.struts.webapp.*:org.apache.struts.apps.mailreader:org.apache.struts.apps.mailreader.*:org.apache.struts.apps.scriptingmailreader:org.apache.struts.apps.scriptingmailreader.*</excludePackageNames>
-                    </configuration>
                   </reportSet>
                   <reportSet>
                     <id>default</id>

@@ -112,7 +112,7 @@
 <li>Change &quot;.gitignore&quot;</li>
 <li>Upgrade &quot;fileupload&quot; 1.5 to &quot;fileupload2&quot; 2.0.0-M1</li>
 <li>Change all &quot;javax.*&quot;- to &quot;jakarta.*&quot;-namespaces and properties</li>
-<li>Upgrade &quot;jsf&quot; from 2.3.18 to 3.0.2</li>
+<li>Upgrade &quot;jsf&quot; from 2.3.18 to 3.0.5</li>
 <li>Bump &quot;jstl&quot; from 1.2.7 to 2.0.0</li>
 <li>Bump &quot;el-api&quot; from 3.0.3 to 4.0.0</li>
 <li>Upgrade &quot;jsp-api&quot; from 2.3.6 to 3.0.0</li>

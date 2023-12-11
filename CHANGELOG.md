@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `checkstyle` from 10.12.4 to 10.12.6
 * Bump `maven-javadoc-plugin` from 3.6.0 to 3.6.3
 * Bump `junit-jupiter-api` from 5.10.0 to 5.10.1
 * Bump `jsf` from 3.0.2 to 3.0.5

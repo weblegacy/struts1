@@ -104,6 +104,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;commons-io&quot; from 2.15.0 to 2.15.1</li>
 <li>Bump &quot;cargo-maven3-plugin&quot; from 1.10.10 to 1.10.11</li>
 <li>Bump &quot;maven-project-info-reports-plugin&quot; from 3.4.5 to 3.5.0</li>
 <li>Bump &quot;checkstyle&quot; from 10.12.4 to 10.12.6</li>

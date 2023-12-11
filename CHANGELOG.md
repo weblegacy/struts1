@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `commons-io` from 2.15.0 to 2.15.1
 * Bump `cargo-maven3-plugin` from 1.10.10 to 1.10.11
 * Bump `maven-project-info-reports-plugin` from 3.4.5 to 3.5.0
 * Bump `checkstyle` from 10.12.4 to 10.12.6

@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `junit-jupiter-api` from 5.10.0 to 5.10.1
 * Bump `jsf` from 3.0.2 to 3.0.5
 * Bump `selenium-api` and `selenium-java` from 4.15.0 to 4.16.1
 * Bump `groovy` from 4.0.15 to 4.0.16

@@ -393,6 +393,7 @@
         <jsfVersion>3.0.0</jsfVersion>
         <jsfImplVersion>3.0.5</jsfImplVersion>
         <jaxbVersion>2.3.9</jaxbVersion>
+        <junitVersion>5.10.1</junitVersion>
         <fileuploadVersion>2.0.0-M1</fileuploadVersion>
         <commonsChainVersion>1.3.0</commonsChainVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
@@ -1124,7 +1125,7 @@
             <dependency>
                 <groupId>org.junit.jupiter</groupId>
                 <artifactId>junit-jupiter-api</artifactId>
-                <version>5.10.0</version>
+                <version>${junitVersion}</version>
                 <scope>test</scope>
             </dependency>
             <dependency>

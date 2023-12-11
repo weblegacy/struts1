@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `groovy` from 4.0.15 to 4.0.16
 * Bump `maven-failsafe/surefire-[report]-plugin` from 3.2.1 to 3.2.2
 * Remove duplicate slf4j-providers in `taglib`
 * Correct Javadoc-warnings

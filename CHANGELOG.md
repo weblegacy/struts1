@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Better Javadoc-Dependency-Links
 * Corr: `index.xml` - add missing `release-notes-1_4_5.xml` to index
 * Corr: `CommonsMultipartRequestHandler.addFileParameter` thanks to jo-kl
 * Bump `tiles-request-jakarta-servlet` from 1.0.0-SNAPSHOT to 1.0.0

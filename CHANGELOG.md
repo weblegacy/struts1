@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `htmlunit` from 3.7.0 to 3.9.0
 * Bump `commons-validator` from 1.7 to 1.8.0
 * Bump `commons-io` from 2.15.0 to 2.15.1
 * Bump `cargo-maven3-plugin` from 1.10.10 to 1.10.11

@@ -29,7 +29,7 @@
    <artifactId>struts-faces-example2</artifactId>
    <packaging>war</packaging>
    <name>Struts Apps - Faces Example 2</name>
-
+<!--
    <reporting>
       <plugins>
          <plugin>
@@ -42,7 +42,7 @@
          </plugin>
       </plugins>
    </reporting>
-
+-->
    <dependencies>
       <dependency>
          <groupId>${project.groupId}</groupId>

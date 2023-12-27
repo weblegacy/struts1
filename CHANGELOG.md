@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Comment out `taglib-maven-plugin` because it is not adapted to `Jakarta Server Pages 3.0`
 * Bump `spotbugs-annotations` from 4.8.2 to 4.8.3
 * Bump `maven-compiler-plugin` from 3.11.0 to 3.12.1
 * Bump `groovy` from 4.0.16 to 4.0.17

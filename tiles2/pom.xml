@@ -95,7 +95,7 @@
          <artifactId>jcl-over-slf4j</artifactId>
       </dependency>
    </dependencies>
-
+<!--
    <reporting>
       <plugins>
          <plugin>
@@ -108,7 +108,7 @@
          </plugin>
       </plugins>
    </reporting>
-
+-->
    <profiles>
        <profile>
         <id>pre-assembly</id>

@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `groovy` from 4.0.16 to 4.0.17
 * Bump `maven-failsafe/surefire-[report]-plugin` from 3.2.2 to 3.2.3
 * Bump `webdrivermanager` from 5.6.1 to 5.6.2
 * Bump `spotbugs-annotations` from 4.8.0 to 4.8.2

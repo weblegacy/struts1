@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.apache.struts.faces.util","l":"MessagesMapTestCase"}]
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.apache.struts.faces.util","l":"MessagesMapTestCase"}];updateSearchResults();

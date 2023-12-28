@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.apache.struts.extras.actions"},{"l":"org.apache.struts.extras.plugins"},{"l":"org.apache.struts.extras.validator"}]
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"org.apache.struts.extras.actions"},{"l":"org.apache.struts.extras.plugins"},{"l":"org.apache.struts.extras.validator"}];updateSearchResults();

@@ -1,1 +1,0 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.apache.struts.apps.scriptingmailreader"},{"l":"org.apache.struts.apps.scriptingmailreader.plugin"}]

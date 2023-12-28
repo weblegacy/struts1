@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.apache.struts.tiles2","l":"TestTilesPlugin"}]
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"org.apache.struts.tiles2","l":"TestTilesPlugin"}];updateSearchResults();

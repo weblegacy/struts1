@@ -31,9 +31,9 @@
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> java.lang.reflect.InvocationTargetException;
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">import</strong> java.lang.reflect.Method;
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>  
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> javax.servlet.jsp.JspException;
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> javax.servlet.jsp.PageContext;
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> javax.servlet.jsp.tagext.BodyTagSupport;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> jakarta.servlet.jsp.JspException;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> jakarta.servlet.jsp.PageContext;
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> jakarta.servlet.jsp.tagext.BodyTagSupport;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> org.apache.commons.beanutils.BeanUtils;
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.Globals;
@@ -867,14 +867,14 @@
 <a class="jxr_linenumber" name="L859" href="#L859">859</a>             <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L860" href="#L860">860</a>                 loopTagClass =
 <a class="jxr_linenumber" name="L861" href="#L861">861</a>                     RequestUtils.applicationClass(
-<a class="jxr_linenumber" name="L862" href="#L862">862</a>                         <span class="jxr_string">"javax.servlet.jsp.jstl.core.LoopTag"</span>);
+<a class="jxr_linenumber" name="L862" href="#L862">862</a>                         <span class="jxr_string">"jakarta.servlet.jsp.jstl.core.LoopTag"</span>);
 <a class="jxr_linenumber" name="L863" href="#L863">863</a> 
 <a class="jxr_linenumber" name="L864" href="#L864">864</a>                 loopTagGetStatus =
 <a class="jxr_linenumber" name="L865" href="#L865">865</a>                     loopTagClass.getDeclaredMethod(<span class="jxr_string">"getLoopStatus"</span>);
 <a class="jxr_linenumber" name="L866" href="#L866">866</a> 
 <a class="jxr_linenumber" name="L867" href="#L867">867</a>                 loopTagStatusClass =
 <a class="jxr_linenumber" name="L868" href="#L868">868</a>                     RequestUtils.applicationClass(
-<a class="jxr_linenumber" name="L869" href="#L869">869</a>                         <span class="jxr_string">"javax.servlet.jsp.jstl.core.LoopTagStatus"</span>);
+<a class="jxr_linenumber" name="L869" href="#L869">869</a>                         <span class="jxr_string">"jakarta.servlet.jsp.jstl.core.LoopTagStatus"</span>);
 <a class="jxr_linenumber" name="L870" href="#L870">870</a> 
 <a class="jxr_linenumber" name="L871" href="#L871">871</a>                 loopTagStatusGetIndex =
 <a class="jxr_linenumber" name="L872" href="#L872">872</a>                     loopTagStatusClass.getDeclaredMethod(<span class="jxr_string">"getIndex"</span>);

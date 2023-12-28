@@ -35,8 +35,8 @@
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> java.util.Iterator;
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> javax.servlet.ServletRequest;
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> javax.servlet.jsp.PageContext;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">import</strong> jakarta.servlet.ServletRequest;
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> jakarta.servlet.jsp.PageContext;
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.tiles.taglib.ComponentConstants;
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>  
@@ -190,7 +190,7 @@
 <a class="jxr_linenumber" name="L182" href="#L182">182</a> <em class="jxr_javadoccomment">     * jspException is present in the request.</em>
 <a class="jxr_linenumber" name="L183" href="#L183">183</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L184" href="#L184">184</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">public</strong> <a name="ComponentContext" href="../../../../org/apache/struts/tiles/ComponentContext.html#ComponentContext">ComponentContext</a> getContext(ServletRequest request) {
-<a class="jxr_linenumber" name="L185" href="#L185">185</a>        <strong class="jxr_keyword">if</strong> (request.getAttribute(<span class="jxr_string">"javax.servlet.jsp.jspException"</span>) != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L185" href="#L185">185</a>        <strong class="jxr_keyword">if</strong> (request.getAttribute(<span class="jxr_string">"jakarta.servlet.jsp.jspException"</span>) != <strong class="jxr_keyword">null</strong>) {
 <a class="jxr_linenumber" name="L186" href="#L186">186</a>            <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L187" href="#L187">187</a>         }        <strong class="jxr_keyword">return</strong> (<a name="ComponentContext" href="../../../../org/apache/struts/tiles/ComponentContext.html#ComponentContext">ComponentContext</a>) request.getAttribute(
 <a class="jxr_linenumber" name="L188" href="#L188">188</a>             ComponentConstants.COMPONENT_CONTEXT);

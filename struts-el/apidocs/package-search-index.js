@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.apache.strutsel.taglib"},{"l":"org.apache.strutsel.taglib.bean"},{"l":"org.apache.strutsel.taglib.html"},{"l":"org.apache.strutsel.taglib.logic"},{"l":"org.apache.strutsel.taglib.tiles"}]
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"org.apache.strutsel.taglib"},{"l":"org.apache.strutsel.taglib.bean"},{"l":"org.apache.strutsel.taglib.html"},{"l":"org.apache.strutsel.taglib.logic"},{"l":"org.apache.strutsel.taglib.tiles"}];updateSearchResults();

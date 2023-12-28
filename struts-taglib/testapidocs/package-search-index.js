@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"org.apache.struts.taglib"},{"l":"org.apache.struts.taglib.html"}]
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"org.apache.struts.taglib"},{"l":"org.apache.struts.taglib.html"}];updateSearchResults();

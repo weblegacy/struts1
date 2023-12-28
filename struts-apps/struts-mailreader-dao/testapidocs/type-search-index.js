@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"org.apache.struts.apps.mailreader.dao","l":"BaseTestUserDatabase"},{"p":"org.apache.struts.apps.mailreader.dao.impl.memory","l":"MemoryUserDatabaseTest"}]

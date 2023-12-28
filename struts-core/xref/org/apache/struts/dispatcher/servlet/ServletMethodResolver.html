@@ -30,8 +30,8 @@
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>  
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">import</strong> java.lang.reflect.Method;
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>  
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> javax.servlet.http.HttpServletRequest;
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> javax.servlet.http.HttpServletResponse;
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">import</strong> jakarta.servlet.http.HttpServletRequest;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">import</strong> jakarta.servlet.http.HttpServletResponse;
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.Action;
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> org.apache.struts.action.ActionForm;
@@ -63,7 +63,7 @@
 <a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     * These are the same for all calls, so calculate them only once.</em>
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment">     *</em>
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>  <em class="jxr_javadoccomment">     * @see org.apache.struts.action.Action#execute(ActionMapping, ActionForm,</em>
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>  <em class="jxr_javadoccomment">     *      javax.servlet.ServletRequest, javax.servlet.ServletResponse)</em>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  <em class="jxr_javadoccomment">     *      jakarta.servlet.ServletRequest, jakarta.servlet.ServletResponse)</em>
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>  <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> Class&lt;?&gt;[] CLASSIC_EXECUTE_SIGNATURE = { ActionMapping.<strong class="jxr_keyword">class</strong>, ActionForm.<strong class="jxr_keyword">class</strong>,
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>              HttpServletRequest.<strong class="jxr_keyword">class</strong>, HttpServletResponse.<strong class="jxr_keyword">class</strong> };
@@ -110,7 +110,7 @@
 <a class="jxr_linenumber" name="L102" href="#L102">102</a> <em class="jxr_javadoccomment">     * @throws NoSuchMethodException if the method does not exist</em>
 <a class="jxr_linenumber" name="L103" href="#L103">103</a> <em class="jxr_javadoccomment">     * @see #buildClassicArguments(ServletActionContext)</em>
 <a class="jxr_linenumber" name="L104" href="#L104">104</a> <em class="jxr_javadoccomment">     * @see org.apache.struts.action.Action#execute(ActionMapping, ActionForm,</em>
-<a class="jxr_linenumber" name="L105" href="#L105">105</a> <em class="jxr_javadoccomment">     *      javax.servlet.ServletRequest, javax.servlet.ServletResponse)</em>
+<a class="jxr_linenumber" name="L105" href="#L105">105</a> <em class="jxr_javadoccomment">     *      jakarta.servlet.ServletRequest, jakarta.servlet.ServletResponse)</em>
 <a class="jxr_linenumber" name="L106" href="#L106">106</a> <em class="jxr_javadoccomment">     */</em>
 <a class="jxr_linenumber" name="L107" href="#L107">107</a>     <strong class="jxr_keyword">protected</strong> <strong class="jxr_keyword">final</strong> Method resolveClassicMethod(<a name="ActionContext" href="../../../../../org/apache/struts/chain/contexts/ActionContext.html#ActionContext">ActionContext</a> context, String methodName) <strong class="jxr_keyword">throws</strong> NoSuchMethodException {
 <a class="jxr_linenumber" name="L108" href="#L108">108</a>         Class&lt;? <strong class="jxr_keyword">extends</strong> Action&gt; actionClass = context.getAction().getClass();

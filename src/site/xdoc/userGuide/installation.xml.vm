@@ -79,9 +79,9 @@
                         download and install a
                         servlet container that is compatible with the Servlet
                         API Specification,
-                        version 2.5 or later, and the JavaServer Pages (JSP)
+                        version 5.0 or later, and the JavaServer Pages (JSP)
                         Specification,
-                        version 2.1 or later. One popular choice is to
+                        version 3.0 or later. One popular choice is to
                         download Apache's
                         <a href="https://tomcat.apache.org/">Tomcat</a>,
                         but any compliant
@@ -94,7 +94,7 @@
                         source distribution, you must download and install the
                         <a href="https://maven.apache.org/">Apache
                             Maven 3</a>
-                        build system (3.5.4 or later).
+                        build system (${mavenVersion} or later).
                     </li>
 
                 </ul>

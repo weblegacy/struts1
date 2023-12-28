@@ -1,7 +1,8 @@
 # Changes
 
-## 1.5.0-RC1 / YYYY-MM-DD
+## 1.5.0-RC1 / 2023-12-28
 
+* Set Version to 1.5.0-RC1
 * Corr: Skip `bnd-maven-pluin` in integration-tests
 * Update documentation and `README.md` to version 1.5.0-RC1
 * Update minimum MAVEN-Version from 3.5.4 to 3.8.1

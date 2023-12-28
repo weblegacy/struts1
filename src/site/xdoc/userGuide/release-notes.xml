@@ -28,7 +28,7 @@
         <title>Release Notes (since 1.4.5)</title>
     </properties>
     <body>
-        <section name="6.1 Release Notes - Version 1.5.0-RC1">
+        <section name="6.1 Release Notes - Version 1.5.0 Release Candidate 1">
 
             <subsection name="Introduction" id="release_notes">
                 <p>
@@ -134,7 +134,7 @@
 <li>Use &quot;tomcat&quot; 10.0.27 instead 9.0.68 for integration-tests</li>
 <li>Update &quot;README.md&quot; to version 1.5.0-RC1</li>
 <li>Update documentation to version 1.5.0-RC1</li>
-<li>Set Version to 1.5.0-SNAPSHOT</li>
+<li>Set Version to 1.5.0-RC1</li>
 </ul>
 </subsection>
 

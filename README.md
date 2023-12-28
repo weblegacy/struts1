@@ -6,35 +6,31 @@ Full [CHANGELOG](CHANGELOG.md)
 
 For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.github.io/struts1)
 
-## !!Breaking news!!
-
-The `Struts1`-version 1.5.0-SNAPSHOT is now **ready for Jakarta-Namespace**!
-
-What is needed for the local-version:
-
-1. [struts1](https://github.com/weblegacy/struts1)  
-    `mvn -Pdormant clean install`
-
-`struts1` is nearly release-ready and you could test this version with your applications.
-
-I would like to wait a few days to get your feedback on the tests.
-
-Note: `tiles-request-jakarta-servlet` is published as version 1.0.0 in MAVEN-repo.
-
-Good luck with testing!
-
 ## Versions-Overview
 
-| Version                                                             | JEE-Version  | Java-Version | Servlet | JSP | EL  | JSF | JSTL |
-|--------------------------------------------------------------------:|-------------:|-------------:|--------:|----:|----:|----:|-----:|
-|                                                         1.5.0 (WiP) | Jakarta EE 9 |            8 |     5.0 | 3.0 | 4.0 | 3.0 |  2.0 |
-|   [1.4.5](https://github.com/weblegacy/struts1/releases/tag/v1.4.5) | Jakarta EE 8 |            8 |     4.0 | 2.3 | 3.0 | 2.3 |  1.2 |
-|   [1.4.4](https://github.com/weblegacy/struts1/releases/tag/v1.4.4) | Jakarta EE 8 |            8 |     4.0 | 2.3 | 3.0 | 2.3 |  1.2 |
-|   [1.4.3](https://github.com/weblegacy/struts1/releases/tag/v1.4.3) |    Java EE 7 |            8 |     3.1 | 2.3 | 3.0 | 2.2 |  1.2 |
-|   [1.4.2](https://github.com/weblegacy/struts1/releases/tag/v1.4.2) |    Java EE 6 |            8 |     3.0 | 2.2 | 2.2 | 2.0 |  1.2 |
-|   [1.4.1](https://github.com/weblegacy/struts1/releases/tag/v1.4.1) |    Java EE 5 |            8 |     2.5 | 2.1 | 2.1 | 1.2 |  1.2 |
-|   [1.4.0](https://github.com/weblegacy/struts1/releases/tag/v1.4.0) |     J2EE 1.4 |          1.4 |     2.3 | 2.0 | 2.0 | 1.0 |  1.0 |
-| [1.3.11](https://github.com/weblegacy/struts1/releases/tag/v1.3.11) |     J2EE 1.4 |          1.4 |     2.3 | 2.0 | 2.0 | 1.0 |  1.0 |
+| Version                                                                   | JEE-Version  | Java-Version | Servlet | JSP | EL  | JSF | JSTL |
+|--------------------------------------------------------------------------:|-------------:|-------------:|--------:|----:|----:|----:|-----:|
+| [1.5.0-RC1](https://github.com/weblegacy/struts1/releases/tag/v1.5.0_rc1) | Jakarta EE 9 |            8 |     5.0 | 3.0 | 4.0 | 3.0 |  2.0 |
+|         [1.4.5](https://github.com/weblegacy/struts1/releases/tag/v1.4.5) | Jakarta EE 8 |            8 |     4.0 | 2.3 | 3.0 | 2.3 |  1.2 |
+|         [1.4.4](https://github.com/weblegacy/struts1/releases/tag/v1.4.4) | Jakarta EE 8 |            8 |     4.0 | 2.3 | 3.0 | 2.3 |  1.2 |
+|         [1.4.3](https://github.com/weblegacy/struts1/releases/tag/v1.4.3) |    Java EE 7 |            8 |     3.1 | 2.3 | 3.0 | 2.2 |  1.2 |
+|         [1.4.2](https://github.com/weblegacy/struts1/releases/tag/v1.4.2) |    Java EE 6 |            8 |     3.0 | 2.2 | 2.2 | 2.0 |  1.2 |
+|         [1.4.1](https://github.com/weblegacy/struts1/releases/tag/v1.4.1) |    Java EE 5 |            8 |     2.5 | 2.1 | 2.1 | 1.2 |  1.2 |
+|         [1.4.0](https://github.com/weblegacy/struts1/releases/tag/v1.4.0) |     J2EE 1.4 |          1.4 |     2.3 | 2.0 | 2.0 | 1.0 |  1.0 |
+|       [1.3.11](https://github.com/weblegacy/struts1/releases/tag/v1.3.11) |     J2EE 1.4 |          1.4 |     2.3 | 2.0 | 2.0 | 1.0 |  1.0 |
+
+### Current Roadmap
+
+* 1.5.0
+  * Include missing taglib docs, because the current version of [tlddoc](https://github.com/weblegacy/tlddoc) is not able to generate it (upgrade to `Jakarta Server Pages 3.0` is currently missing).
+* 1.5.1
+  * [#23 - Apache Tiles: Unvalidated input may lead to path traversal and XXE](https://github.com/weblegacy/struts1/security/dependabot/23)
+  * Bump `commons-fileupload2` from 2.0.0-M1 to 2.0.0-M2
+* 1.4.6
+  * Cherry-Pick relevant changes from version `1.5.0` and `1.5.1`
+* 1.6.0
+  * Bump JDK 8 to 11
+  * Upgrade to Jakarta EE 10
 
 ## Changes since version 1.3.10
 
@@ -64,7 +60,7 @@ Good luck with testing!
 
 ### Prerequisites
 
-* Apache Maven 3.5.4\+
+* Apache Maven 3.8.1\+
 * JDK 11\+
 * for integration-tests
   * Web-Browser:

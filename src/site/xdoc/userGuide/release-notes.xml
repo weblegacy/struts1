@@ -97,6 +97,7 @@
 
 <h4>Improvement</h4>
 <ul>
+<li>Replace &quot;maven-bundle-plugin&quot; 5.1.9 with &quot;bnd-maven-plugin&quot; 7.0.0</li>
 <li>Centralize Javadoc-configurations</li>
 <li>Better Javadoc-Dependency-Links</li>
 <li>New Servelt-Attributes for <strong>MultipartRequestHandler.ATTRIBUTE_MAX_BYTE_LENGTH_EXCEEDED</strong> and <strong>MultipartRequestHandler.ATTRIBUTE_MAX_FILE_COUNT_EXCEEDED</strong></li>

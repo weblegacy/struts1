@@ -90,6 +90,7 @@
             <subsection name="Issue Tracking" id="Highlight">
 <h4>Bug</h4>
 <ul>
+<li>Skip &quot;bnd-maven-pluin&quot; in integration-tests</li>
 <li>Remove duplicate slf4j-providers in &quot;taglib&quot;</li>
 <li>Correct Javadoc-warnings</li>
 <li>Fix links in &quot;preface&quot;-doc</li>

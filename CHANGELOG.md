@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC1 / YYYY-MM-DD
 
+* Corr: Skip `bnd-maven-pluin` in integration-tests
 * Update documentation and `README.md` to version 1.5.0-RC1
 * Update minimum MAVEN-Version from 3.5.4 to 3.8.1
 * Replace `maven-bundle-plugin` 5.1.9 with `bnd-maven-plugin` 7.0.0

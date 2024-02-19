@@ -28,7 +28,6 @@ import java.io.Serializable;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.charset.UnsupportedCharsetException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
@@ -92,7 +91,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
     /**
      * The file request parameters.
      */
-    private HashMap<String, List<FormFile>> elementsFile;
+    private HashMap<String, FormFile[]> elementsFile;
 
     /**
      * The text request parameters.
@@ -224,7 +223,6 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
 
         // Partition the items into form fields and files.
         for (DiskFileItem item : items) {
-
             if (item.isFormField()) {
                 addTextParameter(request, item);
             } else {
@@ -249,7 +247,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      *
      * @return The file request parameters.
      */
-    public HashMap<String, List<FormFile>> getFileElements() {
+    public HashMap<String, FormFile[]> getFileElements() {
         return this.elementsFile;
     }
 
@@ -266,7 +264,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * Cleans up when a problem occurs during request processing.
      */
     public void rollback() {
-        for (List<FormFile> files : elementsFile.values()) {
+        for (FormFile[] files : elementsFile.values()) {
             for (FormFile formFile : files) {
                 try {
                     formFile.destroy();
@@ -396,7 +394,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * Returns the path to the temporary directory to be used for uploaded
      * files which are written to disk. The directory used is determined from
      * the first of the following to be non-empty.
-     * 
+     *
      * <ol>
      * <li>A temp dir explicitly defined either using the {@code tempDir}
      * servlet init param, or the {@code tempDir} attribute of the
@@ -522,15 +520,20 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      */
     protected void addFileParameter(FileItem<?> item) {
         final String name = item.getFieldName();
+        final FormFile value = new CommonsFormFile(item);
 
-        List<FormFile> files = elementsFile.get(name);
-        if (files == null) {
-            files = new ArrayList<>();
-            elementsFile.put(name, files);
-            elementsAll.put(name, files);
+        final FormFile[] oldArray = elementsFile.get(name);
+
+        final FormFile[] newArray;
+        if (oldArray != null) {
+            newArray = Arrays.copyOf(oldArray, oldArray.length + 1);
+            newArray[oldArray.length] = value;
+        } else {
+            newArray = new FormFile[] { value };
         }
 
-        files.add(new CommonsFormFile(item));
+        elementsFile.put(name, newArray);
+        elementsAll.put(name, newArray);
     }
 
     // ---------------------------------------------------------- Inner Classes

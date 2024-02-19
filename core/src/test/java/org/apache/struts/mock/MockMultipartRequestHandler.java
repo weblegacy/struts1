@@ -21,7 +21,6 @@
 package org.apache.struts.mock;
 
 import java.util.HashMap;
-import java.util.List;
 
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionServlet;
@@ -114,7 +113,7 @@ public class MockMultipartRequestHandler implements MultipartRequestHandler {
      *
      * @return This mock implementation returns an empty {@code HashMap}
      */
-    public HashMap<String, List<FormFile>> getFileElements() {
+    public HashMap<String, FormFile[]> getFileElements() {
         return new HashMap<>();
     }
 

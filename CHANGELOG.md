@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Improvements in FileUpload handling
 * Add property `multiple` to `html:file`, `html-el:file` and `nested:file`
 * Set Version to 1.5.0-RC2-SNAPSHOT
 

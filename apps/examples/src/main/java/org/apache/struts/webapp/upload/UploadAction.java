@@ -83,7 +83,8 @@ public class UploadAction extends Action
 
             // Following is to test fix for STR-3173
             if (file == null) {
-                file = (FormFile)form.getMultipartRequestHandler().getFileElements().get("otherFile");
+                final FormFile[] files = form.getMultipartRequestHandler().getFileElements().get("otherFile");
+                file = files.length == 0 ? null : files[0];
             }
 
             //retrieve the file name

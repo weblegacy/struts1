@@ -23,7 +23,7 @@ package org.apache.struts.util;
 import java.lang.reflect.InvocationTargetException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
 import java.util.HashMap;
@@ -534,45 +534,63 @@ public class RequestUtils {
     }
 
     /**
-     * <p>If the given form bean can accept multiple FormFile objects but the user only uploaded a single, then
-     * the property will not match the form bean type.  This method performs some simple checks to try to accommodate
-     * that situation.</p>
-     * @param bean
-     * @param name
-     * @param parameterValue
-     * @return
+     * If the specified property has multiple FormFile objects, but the form
+     * bean type can only process a single FormFile object, then this method
+     * attempts to take this situation into account.
+     *
+     * @param bean           the FormBean-object
+     * @param name           the name of the property
+     * @param parameterValue the value of the property
+     *
+     * @return parameterValue with expected type
+     *
      * @throws ServletException if the introspection has any errors.
      */
-    private static Object rationalizeMultipleFileProperty(Object bean, String name, Object parameterValue) throws ServletException {
-        if (!(parameterValue instanceof FormFile)) {
+    private static Object rationalizeMultipleFileProperty(Object bean,
+            String name, Object parameterValue) throws ServletException {
+
+        if (!(parameterValue instanceof FormFile[])) {
             return parameterValue;
         }
 
-        FormFile formFileValue = (FormFile) parameterValue;
+        final FormFile[] formFileValue = (FormFile[]) parameterValue;
         try {
-            Class<?> propertyType = PropertyUtils.getPropertyType(bean, name);
+            final Class<?> propertyType =
+                    PropertyUtils.getPropertyType(bean, name);
 
             if (propertyType == null) {
                 return parameterValue;
             }
 
             if (List.class.isAssignableFrom(propertyType)) {
-                ArrayList<FormFile> list = new ArrayList<>(1);
-                list.add(formFileValue);
-                return list;
+                return Arrays.asList(formFileValue);
             }
 
-            if (propertyType.isArray() && propertyType.getComponentType().equals(FormFile.class)) {
-                return new FormFile[] { formFileValue };
-            }
+            if (FormFile.class.isAssignableFrom(propertyType)) {
+                switch (formFileValue.length) {
+                    case 0:
+                        LOG.error("FormFile-parameter \"{}\" for FormBean "
+                                + "\"{}\" has unexpected length of null!",
+                                name, bean.getClass().getName());
+                        return null;
 
+                    case 1:
+                        return formFileValue[0];
+
+                    default:
+                        LOG.error("FormFile-parameter \"{}\" for FormBean "
+                                + "\"{}\" should have an Array or a List as "
+                                + "method parameter!", name,
+                                bean.getClass().getName());
+                        return formFileValue[0];
+                }
+            }
         } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
             throw new ServletException(e);
         }
 
         // no changes
         return parameterValue;
-
     }
 
     /**

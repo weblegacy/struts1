@@ -21,7 +21,6 @@
 package org.apache.struts.upload;
 
 import java.util.HashMap;
-import java.util.List;
 
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionServlet;
@@ -120,7 +119,7 @@ public interface MultipartRequestHandler {
      *
      * @see FormFile
      */
-    public HashMap<String, List<FormFile>> getFileElements();
+    public HashMap<String, FormFile[]> getFileElements();
 
     /**
      * This method returns all elements of a multipart request.

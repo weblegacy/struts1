@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    $Id$
+
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!--
+// ======================================================================== 78
+-->
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 https://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+    <properties>
+        <title>Release Notes (since 1.4.5)</title>
+    </properties>
+    <body>
+        <section name="6.1 Release Notes - Version 1.5.0 Release Candidate 1">
+
+            <subsection name="Introduction" id="release_notes">
+                <p>
+                    This section contains release notes for changes that have
+                    taken place to Struts,
+                    since the
+                    <a href="release-notes-1_4_5.html">Version 1.4.5</a>
+                    distribution.
+                    To keep up-to-date on all changes to the framework,
+                    subscribe to
+                    the (commits at struts.apache.org) list.
+                    To preview our plans for upcoming changes,
+                    please visit the
+                    <a href="../roadmap.html">Roadmap page.</a>
+                </p>
+                <ul><li>
+                    <b>Notes on upgrading</b>
+                    are maintained in the
+                    <a href="http://wiki.apache.org/struts/StrutsUpgrade">Wiki
+                        Upgrade pages.</a>
+                    The wiki is a community maintained resource - please feel
+                    free to add your
+                    input so that everyone can benefit from the collective
+                    experience.
+                </li></ul>
+                <p>
+                    For the version requirements of each library, see the
+                    <a href="installation.html">Installation chapter.</a>
+                </p>
+
+            </subsection>
+
+            <subsection name="Breaking changes" id="break_changes">
+                <ul>
+                    <li>General: Upgrade from <strong>JakartaEE 8</strong> to <strong>JakartaEE 9</strong>.
+                        <ul>
+                            <li>Upgrade <strong>servlet-api</strong> from 4.0 to 5.0.</li>
+                            <li>Upgrade <strong>jsp-api</strong> from 2.3 to 3.0.</li>
+                            <li>Upgrade <strong>el-api</strong> from 3.0 to 4.0.</li>
+                            <li>Upgrade <strong>jsf</strong> from 2.3 to 3.0.</li>
+                            <li>Upgrade <strong>jstl</strong> from 1.2 to 2.0.</li>
+                            <li>All <strong>javax.*</strong>-properties are renamed to <strong>jakarte.*</strong>-properties</li>
+                        </ul>
+                    </li>
+                    <li>Upgrade <strong>commons-fileupload</strong> 1.5 to <strong>commons-fileupload2</strong> 2.0.0-M1:
+                        <ul>
+                            <li>Method <strong>FormFile.destroy</strong>: throws an IOException.</li>
+                            <li>Method <strong>MultipartRequestHandler.elementsAll</strong>: returns <strong>HashMap&lt;String, Object&gt;</strong> instead <strong>Hashtable&lt;String, Object&gt;</strong></li>
+                            <li>Method <strong>MultipartRequestHandler.elementsFile</strong>: returns <strong>HashMap&lt;String, List&lt;FormFile&gt;&gt;</strong> instead <strong>Hashtable&lt;String, Object&gt;</strong></li>
+                            <li>Method <strong>MultipartRequestHandler.elementsText</strong>: returns <strong>HashMap&lt;String, String[]&gt;</strong> instead <strong>Hashtable&lt;String, Object&gt;</strong></li>
+                            <li>Method <strong>MockMultipartRequestHandler.elementsAll</strong>: returns <strong>HashMap&lt;String, Object&gt;</strong> instead <strong>Hashtable&lt;String, Object&gt;</strong></li>
+                            <li>Method <strong>MockMultipartRequestHandler.elementsFile</strong>: returns <strong>HashMap&lt;String, List&lt;FormFile&gt;&gt;</strong> instead <strong>Hashtable&lt;String, Object&gt;</strong></li>
+                            <li>Method <strong>MockMultipartRequestHandler.elementsText</strong>: returns <strong>HashMap&lt;String, String[]&gt;</strong> instead <strong>Hashtable&lt;String, Object&gt;</strong></li>
+                        </ul>
+                    </li>
+                </ul>
+            </subsection>
+
+            <subsection name="Issue Tracking" id="Highlight">
+<h4>Bug</h4>
+<ul>
+<li>Skip &quot;bnd-maven-pluin&quot; in integration-tests</li>
+<li>Remove duplicate slf4j-providers in &quot;taglib&quot;</li>
+<li>Correct Javadoc-warnings</li>
+<li>Fix links in &quot;preface&quot;-doc</li>
+</ul>
+
+<h4>Improvement</h4>
+<ul>
+<li>Replace &quot;maven-bundle-plugin&quot; 5.1.9 with &quot;bnd-maven-plugin&quot; 7.0.0</li>
+<li>Centralize Javadoc-configurations</li>
+<li>Better Javadoc-Dependency-Links</li>
+<li>New Servelt-Attributes for <strong>MultipartRequestHandler.ATTRIBUTE_MAX_BYTE_LENGTH_EXCEEDED</strong> and <strong>MultipartRequestHandler.ATTRIBUTE_MAX_FILE_COUNT_EXCEEDED</strong></li>
+</ul>
+
+<h4>Task</h4>
+<ul>
+<li>Update minimum MAVEN-Version from 3.5.4 to 3.8.1</li>
+<li>Bump &quot;maven-compiler-plugin&quot; from 3.11.0 to 3.12.1</li>
+<li>Bump &quot;webdrivermanager&quot; from 5.6.1 to 5.6.2</li>
+<li>Bump &quot;spotbugs-annotations&quot; from 4.8.0 to 4.8.3</li>
+<li>Bump &quot;htmlunit&quot; from 3.7.0 to 3.9.0</li>
+<li>Bump &quot;commons-validator&quot; from 1.7 to 1.8.0</li>
+<li>Bump &quot;commons-io&quot; from 2.15.0 to 2.15.1</li>
+<li>Bump &quot;cargo-maven3-plugin&quot; from 1.10.10 to 1.10.11</li>
+<li>Bump &quot;maven-project-info-reports-plugin&quot; from 3.4.5 to 3.5.0</li>
+<li>Bump &quot;checkstyle&quot; from 10.12.4 to 10.12.6</li>
+<li>Bump &quot;maven-javadoc-plugin&quot; from 3.6.0 to 3.6.3</li>
+<li>Bump &quot;junit-jupiter-api&quot; from 5.10.0 to 5.10.1</li>
+<li>Bump &quot;selenium-api&quot; and &quot;selenium-java&quot; from 4.15.0 to 4.16.1</li>
+<li>Bump &quot;groovy&quot; from 4.0.15 to 4.0.17</li>
+<li>Bump &quot;maven-failsafe/surefire-[report]-plugin&quot; from 3.2.1 to 3.2.3</li>
+<li>Bump &quot;weld-servlet-shaded&quot; from 3.1.9.Final to 4.0.3.Final</li>
+<li>Change &quot;tiles-request-servlet&quot; to &quot;tiles-request-jakarta-servlet&quot; 1.0.0</li>
+<li>Change &quot;.gitignore&quot;</li>
+<li>Upgrade &quot;fileupload&quot; 1.5 to &quot;fileupload2&quot; 2.0.0-M1</li>
+<li>Change all &quot;javax.*&quot;- to &quot;jakarta.*&quot;-namespaces and properties</li>
+<li>Upgrade &quot;jsf&quot; from 2.3.18 to 3.0.5</li>
+<li>Bump &quot;jstl&quot; from 1.2.7 to 2.0.0</li>
+<li>Bump &quot;el-api&quot; from 3.0.3 to 4.0.0</li>
+<li>Upgrade &quot;jsp-api&quot; from 2.3.6 to 3.0.0</li>
+<li>Upgrade &quot;servlet-api&quot; from to 4.0.4 to 5.0.0</li>
+<li>Use &quot;tomcat&quot; 10.0.27 instead 9.0.68 for integration-tests</li>
+<li>Update &quot;README.md&quot; to version 1.5.0-RC1</li>
+<li>Update documentation to version 1.5.0-RC1</li>
+<li>Set Version to 1.5.0-RC1</li>
+</ul>
+</subsection>
+
+        </section>
+        <section name="">
+            <p class="right">Next:
+                <a href="installation.html">Installation</a>
+            </p>
+        </section>
+    </body>
+</document>

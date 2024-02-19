@@ -74,7 +74,7 @@
         var knownDomsPat=/^(com|net|org|edu|int|mil|gov|arpa|biz|aero|name|coop|info|pro|museum)$/;
         var emailPat=/^(.+)@(.+)$/;
         var specialChars="\\(\\)><@,;:\\\\\\\"\\.\\[\\]";
-        var validChars="\[^\\s" + specialChars + "\]";
+        var validChars="[^\\s" + specialChars + "]";
         var quotedUser="(\"[^\"]*\")";
         var ipDomainPat=/^\[(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})\]$/;
         var atom=validChars + '+';

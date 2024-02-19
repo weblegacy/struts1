@@ -74,6 +74,10 @@
             </subsection>
 
             <subsection name="Issue Tracking" id="Highlight">
+<h4>Bug</h4>
+<ul>
+<li>JS validate email remove useless regular-expression character escape</li>
+</ul>
 
 <h4>Improvement</h4>
 <ul>

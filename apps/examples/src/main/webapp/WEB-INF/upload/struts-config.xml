@@ -52,6 +52,20 @@
             <forward name="display" path="/display.jsp"/>
         </action>
 
+
+        <!-- Upload-Multiple Action -->
+        <action path="/upload-multi" forward="/upload-multi.jsp"/>
+
+        <action path="/upload-submit-multi"
+                type="org.apache.struts.webapp.upload.UploadAction"
+                name="uploadForm"
+                scope="request"
+                validate="true"
+                input="input">
+            <forward name="input" path="/upload-multi.jsp"/>
+            <forward name="display" path="/display.jsp"/>
+        </action>
+
     </action-mappings>
 
     <!-- This is where you set the maximum file size for your file uploads.

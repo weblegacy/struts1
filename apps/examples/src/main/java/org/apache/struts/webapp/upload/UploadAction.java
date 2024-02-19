@@ -81,10 +81,16 @@ public class UploadAction extends Action
             //retrieve the file representation
             FormFile file = theForm.getTheFile();
 
+            final int fileCount;
+
             // Following is to test fix for STR-3173
             if (file == null) {
                 final FormFile[] files = form.getMultipartRequestHandler().getFileElements().get("otherFile");
-                file = files.length == 0 ? null : files[0];
+                fileCount = files.length;
+                file = fileCount == 0 ? null : files[0];
+            } else {
+                final FormFile[] files = form.getMultipartRequestHandler().getFileElements().get("theFile");
+                fileCount = files.length;
             }
 
             //retrieve the file name
@@ -147,6 +153,7 @@ public class UploadAction extends Action
             //place the data into the request for retrieval from display.jsp
             request.setAttribute("text", text);
             request.setAttribute("queryValue", queryValue);
+            request.setAttribute("fileCount", fileCount);
             request.setAttribute("fileName", fileName);
             request.setAttribute("contentType", contentType);
             request.setAttribute("size", size);

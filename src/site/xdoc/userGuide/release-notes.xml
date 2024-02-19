@@ -83,6 +83,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Add example for multiple-file-upload</li>
 <li>Set Version to 1.5.0-RC2-SNAPSHOT</li>
 </ul>
 </subsection>

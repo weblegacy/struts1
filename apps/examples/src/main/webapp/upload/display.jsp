@@ -23,6 +23,12 @@
 <b>The Query Parameter:</b>&nbsp;<%= request.getAttribute("queryValue") %>
 </p>
 <p>
+<b>Number of selected files:</b>&nbsp;<%= request.getAttribute("fileCount") %>
+</p>
+<p>
+<b>Informations of the first selected file:</b>
+</p>
+<p>
 <b>The File name:</b>&nbsp;<%= request.getAttribute("fileName") %>
 </p>
 <p>

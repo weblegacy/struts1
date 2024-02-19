@@ -1,5 +1,9 @@
 # Changes
 
+## 1.5.0-RC2 / YYYY-MM-DD
+
+* Set Version to 1.5.0-RC2-SNAPSHOT
+
 ## 1.5.0-RC1 / 2023-12-28
 
 * Set Version to 1.5.0-RC1

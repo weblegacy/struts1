@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Add property `multiple` to `html:file`, `html-el:file` and `nested:file`
 * Set Version to 1.5.0-RC2-SNAPSHOT
 
 ## 1.5.0-RC1 / 2023-12-28

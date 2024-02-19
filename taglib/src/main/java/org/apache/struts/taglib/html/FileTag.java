@@ -20,15 +20,21 @@
  */
 package org.apache.struts.taglib.html;
 
-
 /**
  * Custom tag for input fields of type "file".
- *
- * @version $Rev$ $Date: 2004-10-16 12:38:42 -0400 (Sat, 16 Oct 2004)
- *          $
  */
 public class FileTag extends BaseFieldTag {
     private static final long serialVersionUID = 1740523851758372845L;
+
+    // ----------------------------------------------------- Instance Variables
+
+    /**
+     * This property is used to set or return one or multiple files selected
+     * with the file upload button.
+     *
+     * @since 1.5.0
+     */
+    private boolean multiple = false;
 
     /**
      * Construct a new instance of this tag.
@@ -36,5 +42,50 @@ public class FileTag extends BaseFieldTag {
     public FileTag() {
         super();
         this.type = "file";
+    }
+
+    // ------------------------------------------------------------- Properties
+
+    /**
+     * Sets the multiple property.
+     *
+     * @since 1.5.0
+     */
+    public void setMultiple(boolean multiple) {
+        this.multiple = multiple;
+    }
+
+    /**
+     * Returns the multiple property.
+     *
+     * @since 1.5.0
+     */
+    public boolean getMultiple() {
+        return multiple;
+    }
+
+    // --------------------------------------------------------- Public Methods
+
+    /**
+     * 'Hook' to enable tags to be extended and additional attributes added.
+     *
+     * @param handlers The StringBuilder that output will be appended to.
+     */
+    @Override
+    protected void prepareOtherAttributes(StringBuilder handlers) {
+        super.prepareOtherAttributes(handlers);
+
+        if (getMultiple()) {
+            handlers.append(" multiple=\"multiple\"");
+        }
+    }
+
+    /**
+     * Release any acquired resources.
+     */
+    @Override
+    public void release() {
+        super.release();
+        multiple = false;
     }
 }

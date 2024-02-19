@@ -1069,6 +1069,21 @@
             <type>java.lang.String</type>
         </attribute>
         <attribute>
+            <description>
+                <![CDATA[
+                This property is used to set or return one or multiple files selected
+                with the file upload button. It contains a Boolean value which is
+                <code>true</code> when the user is allowed to select more than one file.
+                <dl><dt><b>Since:</b></dt>
+                <dd>Struts 1.5.0</dd></dl>
+          ]]>
+            </description>
+            <name>multiple</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+            <type>boolean</type>
+        </attribute>
+        <attribute>
             <description/>
             <name>name</name>
             <required>false</required>

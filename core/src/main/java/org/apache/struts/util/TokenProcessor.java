@@ -202,7 +202,7 @@ public class TokenProcessor {
             previous = current;
 
             byte[] now = Long.valueOf(current).toString().getBytes();
-            MessageDigest md = MessageDigest.getInstance("MD5");
+            MessageDigest md = MessageDigest.getInstance("AES");
 
             md.update(id.getBytes());
             md.update(now);

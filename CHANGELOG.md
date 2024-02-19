@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Change cryptographic algorithm from `MD5` to `AES` for token generation
 * Add example for multiple-file-upload
 * Improvements in FileUpload handling
 * Add property `multiple` to `html:file`, `html-el:file` and `nested:file`

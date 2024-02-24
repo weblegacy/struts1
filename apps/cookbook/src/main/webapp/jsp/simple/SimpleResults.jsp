@@ -51,6 +51,6 @@
 <p><strong>This was lurking in a hidden field:</strong><br />
     <bean:write name="simpleForm" property="hidden" /></p>
 <p><strong>You wrote this message:</strong></p>
-<p><bean:write name="simpleForm" property="message" filter="false"/></p>
+<p><bean:write name="simpleForm" property="message" filter="true"/></p>
 </body>
 </html:html>

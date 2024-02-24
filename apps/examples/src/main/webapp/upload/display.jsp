@@ -14,35 +14,36 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 --%>
+<%@page import="org.apache.struts.util.ResponseUtils" %>
 <html>
 <body>
 <p>
-<b>The Text:</b>&nbsp;<%= request.getAttribute("text") %>
+<b>The Text:</b>&nbsp;<%= ResponseUtils.filter((String) request.getAttribute("text")) %>
 </p>
 <p>
-<b>The Query Parameter:</b>&nbsp;<%= request.getAttribute("queryValue") %>
+<b>The Query Parameter:</b>&nbsp;<%= ResponseUtils.filter((String)request.getAttribute("queryValue")) %>
 </p>
 <p>
-<b>Number of selected files:</b>&nbsp;<%= request.getAttribute("fileCount") %>
+<b>Number of selected files:</b>&nbsp;<%= ResponseUtils.filter((String)request.getAttribute("fileCount")) %>
 </p>
 <p>
 <b>Informations of the first selected file:</b>
 </p>
 <p>
-<b>The File name:</b>&nbsp;<%= request.getAttribute("fileName") %>
+<b>The File name:</b>&nbsp;<%= ResponseUtils.filter((String) request.getAttribute("fileName")) %>
 </p>
 <p>
-<b>The File content type:</b>&nbsp;<%= request.getAttribute("contentType") %>
+<b>The File content type:</b>&nbsp;<%= ResponseUtils.filter((String) request.getAttribute("contentType")) %>
 </p>
 <p>
-<b>The File size:</b>&nbsp;<%= request.getAttribute("size") %>
+<b>The File size:</b>&nbsp;<%= ResponseUtils.filter((String) request.getAttribute("size")) %>
 </p>
 <p>
 <b>The File data:</b>
 </p>
 <hr />
 <pre>
-<%= request.getAttribute("data") %>
+<%= ResponseUtils.filter((String) request.getAttribute("data")) %>
 </pre>
 <hr />
 
@@ -52,9 +53,9 @@
     <p>Display the request parameter values to show that the multipart request
        retains them after a forward.</p>
 
-    <b>The Text:</b>&nbsp;<%= request.getParameter("theText") %><br>
-    <b>Write File:</b>&nbsp;<%= request.getParameter("writeFile") %><br>
-    <b>File Path:</b>&nbsp;<%= request.getParameter("filePath") %><br>
+    <b>The Text:</b>&nbsp;<%= ResponseUtils.filter((String)request.getParameter("theText")) %><br>
+    <b>Write File:</b>&nbsp;<%= ResponseUtils.filter((String)request.getParameter("writeFile")) %><br>
+    <b>File Path:</b>&nbsp;<%= ResponseUtils.filter((String)request.getParameter("filePath")) %><br>
 
     <hr />
 </body>

@@ -82,6 +82,7 @@
 
 <h4>Improvement</h4>
 <ul>
+<li>Fix for Apache Struts &quot;CVE-2012-1007&quot; Multiple Cross Site Scripting Vulnerabilities (Sample apps)</li>
 <li>Change cryptographic algorithm from &quot;MD5&quot; to &quot;AES&quot; for token generation</li>
 <li>Improvements in FileUpload handling</li>
 <li>Add property &quot;multiple&quot; to &quot;html:file&quot;, &quot;html-el:file&quot; and &quot;nested:file&quot;</li>

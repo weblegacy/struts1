@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Fix for Apache Struts `CVE-2012-1007` Multiple Cross Site Scripting Vulnerabilities (Sample apps)
 * Add `CVE-2008-2025` info to `README`
 * JS validate email remove useless regular-expression character escape
 * Change cryptographic algorithm from `MD5` to `AES` for token generation

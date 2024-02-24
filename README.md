@@ -51,10 +51,11 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 ## Fixed vulnerabilities
 
-* CVE-2014-0114
-* CVE-2015-0899
-* CVE-2016-1181
-* CVE-2016-1182
+* [CVE-2008-2025 - Apache Struts Cross-site Scripting vulnerability](https://github.com/advisories/GHSA-wcgx-2hvx-5cwr)
+* [CVE-2014-0114 - Arbitrary code execution in Apache Commons BeanUtils](https://github.com/advisories/GHSA-p66x-2cv9-qq3v)
+* [CVE-2015-0899 - Improper Input Validation in Apache Struts](https://github.com/advisories/GHSA-cvvx-r33m-v7pq)
+* [CVE-2016-1181 - Improper Input Validation in Apache Struts](https://github.com/advisories/GHSA-7jw3-5q4w-89qg)
+* [CVE-2016-1182 - Improper Input Validation in Apache Struts](https://github.com/advisories/GHSA-5ggr-mpgw-3mgx)
 
 ## Building Strus1 - Reloaded
 

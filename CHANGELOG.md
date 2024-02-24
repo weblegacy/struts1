@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Add `CVE-2008-2025` info to `README`
 * JS validate email remove useless regular-expression character escape
 * Change cryptographic algorithm from `MD5` to `AES` for token generation
 * Add example for multiple-file-upload

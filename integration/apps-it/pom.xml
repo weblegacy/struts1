@@ -31,6 +31,10 @@
    <artifactId>struts-it-apps</artifactId>
    <name>Struts Integration - Apps Tests</name>
 
+   <properties>
+      <struts.osgi.symbolicName>org.apache.struts.it.apps</struts.osgi.symbolicName>
+   </properties>
+
    <dependencies>
       <dependency>
          <groupId>org.htmlunit</groupId>

@@ -78,6 +78,7 @@
 <ul>
 <li>Add &quot;CVE-2008-2025&quot; info to &quot;README&quot;</li>
 <li>JS validate email remove useless regular-expression character escape</li>
+<li>Correct OSGi/JPMS name from integration-test-apps</li>
 </ul>
 
 <h4>Improvement</h4>

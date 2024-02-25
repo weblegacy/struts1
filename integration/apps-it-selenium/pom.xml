@@ -29,8 +29,11 @@
 
    <modelVersion>4.0.0</modelVersion>
    <artifactId>struts-it-apps-selenium</artifactId>
-   <packaging>jar</packaging>
    <name>Struts Integration - Apps Tests with Selenium</name>
+
+   <properties>
+      <struts.osgi.symbolicName>org.apache.struts.it.apps.selenium</struts.osgi.symbolicName>
+   </properties>
 
    <dependencies>
       <dependency>

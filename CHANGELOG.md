@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Correct OSGi/JPMS name from integration-test-apps
 * Ensure Input-/OutputStream is closed and use try-with-resources
 * Fix for Apache Struts `CVE-2012-1007` Multiple Cross Site Scripting Vulnerabilities (Sample apps)
 * Add `CVE-2008-2025` info to `README`

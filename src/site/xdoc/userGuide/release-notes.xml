@@ -83,6 +83,7 @@
 
 <h4>Improvement</h4>
 <ul>
+<li>Add filtering for Option &quot;text&quot; when &quot;filter&quot; is set to &quot;true&quot;</li>
 <li>Ensure Input-/OutputStream is closed and use try-with-resources</li>
 <li>Fix for Apache Struts &quot;CVE-2012-1007&quot; Multiple Cross Site Scripting Vulnerabilities (Sample apps)</li>
 <li>Change cryptographic algorithm from &quot;MD5&quot; to &quot;SHA-256&quot; for token generation</li>

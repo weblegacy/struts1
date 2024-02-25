@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Add filtering for Option `text` when `filter` is set to `true`
 * Change cryptographic algorithm from `AES` to `SHA-256` for token generation
 * Correct OSGi/JPMS name from integration-test-apps
 * Ensure Input-/OutputStream is closed and use try-with-resources

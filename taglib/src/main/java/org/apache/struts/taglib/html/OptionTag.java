@@ -388,7 +388,11 @@ public class OptionTag extends BodyTagSupport {
 
         results.append(">");
 
-        results.append(text());
+        if (filter) {
+            results.append(TagUtils.getInstance().filter(text()));
+        } else {
+            results.append(text());
+        }
 
         results.append("</option>");
 

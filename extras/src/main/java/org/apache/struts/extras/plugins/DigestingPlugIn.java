@@ -23,6 +23,7 @@ package org.apache.struts.extras.plugins;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -128,7 +129,9 @@ public class DigestingPlugIn implements PlugIn {
 
             conn.setUseCaches(false);
             conn.connect();
-            obj = digester.parse(conn.getInputStream());
+            try (InputStream is = conn.getInputStream()) {
+                obj = digester.parse(is);
+            }
         } catch (IOException e) {
             // TODO Internationalize msg
             log.error("Exception processing config", e);

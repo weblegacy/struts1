@@ -139,14 +139,14 @@ public class ScriptAction extends Action {
 
     static {
         final Properties props = new Properties();
+
+        InputStream in = null;
+        String propsPath = PROPS_PATH;
         try {
-            InputStream in =
-                    ScriptAction.class.getClassLoader()
-                    .getResourceAsStream(PROPS_PATH);
+            in = ScriptAction.class.getClassLoader().getResourceAsStream(propsPath);
             if (in == null) {
-                in =
-                        ScriptAction.class.getClassLoader().getResourceAsStream(
-                        "/struts-bsf.properties");
+                propsPath = "/struts-bsf.properties";
+                in = ScriptAction.class.getClassLoader().getResourceAsStream(propsPath);
                 if (in != null) {
                     LOG.warn("The struts-bsf.properties file has been "
                             + "deprecated.  Please use "
@@ -163,6 +163,14 @@ public class ScriptAction extends Action {
         } catch (Exception ex) {
             LOG.warn("Unable to load struts-scripting.properties, using "
                      + " default engine mappings.");
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException ioe) {
+                    LOG.warn("Error closing '{}'", propsPath, ioe);
+                }
+            }
         }
 
         final List<ScriptEngineFactory> allSefs = SCRIPT_ENGINE_MANAGER.getEngineFactories();

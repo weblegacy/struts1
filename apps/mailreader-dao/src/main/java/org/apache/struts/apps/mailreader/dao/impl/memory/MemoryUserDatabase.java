@@ -151,15 +151,9 @@ public final class MemoryUserDatabase implements UserDatabase {
     // See interface for Javadoc
     public void open() throws Exception {
 
-        FileInputStream fis = null;
-        BufferedInputStream bis = null;
-
-        try {
-
-            // Acquire an input stream to our database file
-            LOG.debug("Loading database from '{}'", pathname);
-            fis = new FileInputStream(pathname);
-            bis = new BufferedInputStream(fis);
+        LOG.debug("Loading database from '{}'", pathname);
+        // Acquire an input stream to our database file
+        try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(pathname))) {
 
             // Construct a digester to use for parsing
             Digester digester = new Digester();
@@ -174,27 +168,12 @@ public final class MemoryUserDatabase implements UserDatabase {
 
             // Parse the input stream to initialize our database
             digester.parse(bis);
-            bis.close();
-            bis = null;
-            fis = null;
             this.open = true;
 
         } catch (Exception e) {
 
             LOG.error("Loading database from '{}':", pathname, e);
             throw e;
-
-        } finally {
-
-            if (bis != null) {
-                try {
-                    bis.close();
-                } catch (Throwable t) {
-                    // do nothing
-                }
-                bis = null;
-                fis = null;
-            }
 
         }
 
@@ -221,14 +200,11 @@ public final class MemoryUserDatabase implements UserDatabase {
 
         LOG.debug("Saving database to '{}'", pathname);
         File fileNew = new File(pathnameNew);
-        PrintWriter writer = null;
+        boolean delFileNew = false;
 
-        try {
-
-            // Configure our PrintWriter
-            FileOutputStream fos = new FileOutputStream(fileNew);
-            OutputStreamWriter osw = new OutputStreamWriter(fos);
-            writer = new PrintWriter(osw);
+        // Configure our PrintWriter
+        try (PrintWriter writer = new PrintWriter(new OutputStreamWriter(
+                new FileOutputStream(fileNew)))) {
 
             // Print the file prolog
             writer.println("<?xml version='1.0'?>");
@@ -256,21 +232,20 @@ public final class MemoryUserDatabase implements UserDatabase {
 
             // Check for errors that occurred while printing
             if (writer.checkError()) {
-                writer.close();
-                fileNew.delete();
                 throw new IOException
                     ("Saving database to '" + pathname + "'");
             }
-            writer.close();
-            writer = null;
 
         } catch (IOException e) {
 
-            if (writer != null) {
-                writer.close();
-            }
-            fileNew.delete();
+            delFileNew = true;
             throw e;
+
+        } finally {
+
+            if (delFileNew) {
+                fileNew.delete();
+            }
 
         }
 

@@ -219,10 +219,10 @@ public class IncludeTag extends TagSupport {
         // Copy the contents of this URL
         StringBuilder sb = new StringBuilder();
 
-        try {
-            BufferedInputStream is =
-                new BufferedInputStream(conn.getInputStream());
-            InputStreamReader in = new InputStreamReader(is); // FIXME- encoding
+        // FIXME- encoding
+        try (InputStreamReader in = new InputStreamReader(
+                new BufferedInputStream(conn.getInputStream()))) {
+
             char[] buffer = new char[BUFFER_SIZE];
             int n = 0;
 
@@ -235,8 +235,6 @@ public class IncludeTag extends TagSupport {
 
                 sb.append(buffer, 0, n);
             }
-
-            in.close();
         } catch (Exception e) {
             TagUtils.getInstance().saveException(pageContext, e);
             throw new JspException(messages.getMessage("include.read",

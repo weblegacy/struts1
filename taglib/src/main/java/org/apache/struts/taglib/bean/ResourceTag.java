@@ -104,42 +104,38 @@ public class ResourceTag extends TagSupport {
      */
     public int doStartTag() throws JspException {
         // Acquire an input stream to the specified resource
-        InputStream stream =
-            pageContext.getServletContext().getResourceAsStream(name);
+        try (InputStream stream = pageContext.getServletContext().getResourceAsStream(name)) {
+            if (stream == null) {
+                JspException e = new JspException(messages.getMessage("resource.get", name));
 
-        if (stream == null) {
-            JspException e =
-                new JspException(messages.getMessage("resource.get", name));
-
-            TagUtils.getInstance().saveException(pageContext, e);
-            throw e;
-        }
-
-        // If we are returning an InputStream, do so and return
-        if (input != null) {
-            pageContext.setAttribute(id, stream);
-
-            return (SKIP_BODY);
-        }
-
-        // Accumulate the contents of this resource into a StringBuilder
-        try {
-            StringBuilder sb = new StringBuilder();
-            InputStreamReader reader = new InputStreamReader(stream);
-            char[] buffer = new char[BUFFER_SIZE];
-            int n = 0;
-
-            while (true) {
-                n = reader.read(buffer);
-
-                if (n < 1) {
-                    break;
-                }
-
-                sb.append(buffer, 0, n);
+                TagUtils.getInstance().saveException(pageContext, e);
+                throw e;
             }
 
-            reader.close();
+            // If we are returning an InputStream, do so and return
+            if (input != null) {
+                pageContext.setAttribute(id, stream);
+
+                return (SKIP_BODY);
+            }
+
+            // Accumulate the contents of this resource into a StringBuilder
+            StringBuilder sb = new StringBuilder();
+            try (InputStreamReader reader = new InputStreamReader(stream)) {
+                char[] buffer = new char[BUFFER_SIZE];
+                int n = 0;
+
+                while (true) {
+                    n = reader.read(buffer);
+
+                    if (n < 1) {
+                        break;
+                    }
+
+                    sb.append(buffer, 0, n);
+                }
+            }
+
             pageContext.setAttribute(id, sb.toString());
         } catch (IOException e) {
             TagUtils.getInstance().saveException(pageContext, e);

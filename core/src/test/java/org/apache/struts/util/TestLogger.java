@@ -20,6 +20,7 @@
  */
 package org.apache.struts.util;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.time.OffsetDateTime;
@@ -118,11 +119,11 @@ public class TestLogger extends LegacyAbstractLogger {
                 .append(throwable)
                 .append('>');
 
-            StringWriter sw = new StringWriter(1024);
-            PrintWriter pw = new PrintWriter(sw);
-            throwable.printStackTrace(pw);
-            pw.close();
-            sb.append(sw.getBuffer());
+            try (StringWriter sw = new StringWriter(1024); PrintWriter pw = new PrintWriter(sw)) {
+                throwable.printStackTrace(pw);
+                sb.append(sw.getBuffer());
+            } catch (IOException e) {
+            }
         }
         sb.append('\n');
 

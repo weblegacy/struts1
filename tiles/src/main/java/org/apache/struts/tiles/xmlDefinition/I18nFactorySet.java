@@ -21,6 +21,7 @@
 
 package org.apache.struts.tiles.xmlDefinition;
 
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -456,16 +457,18 @@ public class I18nFactorySet extends FactorySet {
         XmlDefinitionsSet xmlDefinitions)
         throws DefinitionsFactoryException {
 
+        InputStream input = null;
         try {
-            InputStream input = servletContext.getResourceAsStream(filename);
+            input = servletContext.getResourceAsStream(filename);
             // Try to load using real path.
             // This allow to load config file under websphere 3.5.x
             // Patch proposed Houston, Stephen (LIT) on 5 Apr 2002
             if (null == input) {
                 try {
-                    input =
-                        new java.io.FileInputStream(
-                            servletContext.getRealPath(filename));
+                    final String realPath = servletContext.getRealPath(filename);
+                    if (realPath != null) {
+                        input = new FileInputStream(realPath);
+                    }
                 } catch (Exception e) {
                 }
             }
@@ -510,6 +513,14 @@ public class I18nFactorySet extends FactorySet {
             throw new DefinitionsFactoryException(
                 "IO Error while parsing file '" + filename + "'. " + ex.getMessage(),
                 ex);
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException ioe) {
+                    log.warn("Error closing input stream", ioe);
+                }
+            }
         }
 
         return xmlDefinitions;

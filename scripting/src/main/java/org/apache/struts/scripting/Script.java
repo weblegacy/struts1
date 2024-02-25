@@ -95,34 +95,36 @@ class Script {
         compilable = scriptEngine instanceof Compilable;
 
         final String realPath = context.getRealPath(name);
-        final InputStream inputStream;
         if (realPath == null) {
             path = null;
-            inputStream = context.getResourceAsStream(name);
         } else {
             path = Paths.get(realPath);
-            inputStream = null;
         }
+        
+        try (InputStream inputStream = realPath == null
+                ? context.getResourceAsStream(name)
+                : null) {
 
-        if (path == null && inputStream == null) {
-            se = new ScriptException("Could not find resource for file: " + name);
-        }
+            if (path == null && inputStream == null) {
+                se = new ScriptException("Could not find resource for file: " + name);
+            }
 
-        if (se != null) {
-            return;
-        }
+            if (se != null) {
+                return;
+            }
 
-        try (Reader r = path == null
-                ? new InputStreamReader(inputStream, StandardCharsets.UTF_8)
-                : Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
+            try (Reader r = path == null
+                    ? new InputStreamReader(inputStream, StandardCharsets.UTF_8)
+                    : Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
 
-            lastModifiedTime = path != null
-                    ? IOUtils.getLastModifiedTime(path)
-                    : null;
+                lastModifiedTime = path != null
+                        ? IOUtils.getLastModifiedTime(path)
+                        : null;
 
-            log.debug("Loading new script: {}", name);
+                log.debug("Loading new script: {}", name);
 
-            setContent(IOUtils.getStringFromReader(r));
+                setContent(IOUtils.getStringFromReader(r));
+            }
         } catch (IOException e) {
             ioe = e;
         }

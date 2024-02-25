@@ -1810,15 +1810,11 @@ public class ActionServlet extends HttpServlet {
         // Process the web application deployment descriptor
         log.debug("Scanning web.xml for controller servlet mapping");
 
-        InputStream input =
-            getServletContext().getResourceAsStream("/WEB-INF/web.xml");
-
-        if (input == null) {
-            log.atError().log(() -> internal.getMessage("configWebXml"));
-            throw new ServletException(internal.getMessage("configWebXml"));
-        }
-
-        try {
+        try (InputStream input = getServletContext().getResourceAsStream("/WEB-INF/web.xml")) {
+            if (input == null) {
+                log.atError().log(() -> internal.getMessage("configWebXml"));
+                throw new ServletException(internal.getMessage("configWebXml"));
+            }
             digester.parse(input);
         } catch (IOException e) {
             log.atError()
@@ -1830,15 +1826,6 @@ public class ActionServlet extends HttpServlet {
                 .setMessage(() -> internal.getMessage("configWebXml"))
                 .setCause(e).log();
             throw new ServletException(e);
-        } finally {
-            try {
-                input.close();
-            } catch (IOException e) {
-                log.atError()
-                    .setMessage(() -> internal.getMessage("configWebXml"))
-                    .setCause(e).log();
-                throw new ServletException(e);
-            }
         }
 
         // Record a servlet context attribute (if appropriate)

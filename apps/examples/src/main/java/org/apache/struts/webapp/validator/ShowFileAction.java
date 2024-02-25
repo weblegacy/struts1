@@ -60,18 +60,20 @@ public class ShowFileAction extends Action {
 
         if(fileName != null) {
 
-            InputStream input = servlet.getServletContext().getResourceAsStream(fileName);
-            if (input == null) {
-                LOG.warn("File Not Found: {}", fileName);
-            } else {
-                InputStreamReader inputReader = new InputStreamReader(input);
-                char[] buffer = new char[1000];
-                while (true) {
-                    int lth = inputReader.read(buffer);
-                    if (lth < 0) {
-                        break;
-                    } else {
-                        fileContents.append(buffer, 0, lth);
+            try (InputStream input = servlet.getServletContext().getResourceAsStream(fileName)) {
+                if (input == null) {
+                    LOG.warn("File Not Found: {}", fileName);
+                } else {
+                    try (InputStreamReader inputReader = new InputStreamReader(input)) {
+                        char[] buffer = new char[1000];
+                        while (true) {
+                            int lth = inputReader.read(buffer);
+                            if (lth < 0) {
+                                break;
+                            } else {
+                                fileContents.append(buffer, 0, lth);
+                            }
+                        }
                     }
                 }
             }

@@ -223,14 +223,13 @@ public class TestRequestUtilsPopulate extends TestMockBase {
             RequestUtils.populate(mockForm, request);
 
             String logString = logFactory.getOutput(loggerName);
-            StringReader reader = new StringReader(logString);
-            BufferedReader bufReader = new BufferedReader(reader);
-
-            String line;
-            while ((line = bufReader.readLine()) != null) {
-                int pos = line.indexOf(keyword);
-                if (pos >= 0) {
-                    ignoreSet.add(line.substring(pos + keyword.length()));
+            try (BufferedReader bufReader = new BufferedReader(new StringReader(logString))) {
+                String line;
+                while ((line = bufReader.readLine()) != null) {
+                    int pos = line.indexOf(keyword);
+                    if (pos >= 0) {
+                        ignoreSet.add(line.substring(pos + keyword.length()));
+                    }
                 }
             }
         } catch(ServletException se) {

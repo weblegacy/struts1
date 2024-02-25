@@ -105,15 +105,10 @@ public abstract class DownloadAction extends BaseAction {
         throws Exception {
         StreamInfo info = getStreamInfo(mapping, form, request, response);
         String contentType = info.getContentType();
-        InputStream stream = info.getInputStream();
 
-        try {
+        try (InputStream in = info.getInputStream()) {
             response.setContentType(contentType);
-            copy(stream, response.getOutputStream());
-        } finally {
-            if (stream != null) {
-                stream.close();
-            }
+            copy(in, response.getOutputStream());
         }
 
         // Tell Struts that we are done with the response.

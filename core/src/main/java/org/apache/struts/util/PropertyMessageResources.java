@@ -303,7 +303,6 @@ public class PropertyMessageResources extends MessageResources {
 
         name += ".properties";
 
-        InputStream is = null;
         Properties props = new Properties();
 
         // Load the specified property resource
@@ -316,23 +315,15 @@ public class PropertyMessageResources extends MessageResources {
             classLoader = this.getClass().getClassLoader();
         }
 
-        is = classLoader.getResourceAsStream(name);
-
-        if (is != null) {
-            try {
+        try (InputStream is = classLoader.getResourceAsStream(name)) {
+            if (is != null) {
                 props.load(is);
-            } catch (IOException e) {
-                log.error("loadLocale()", e);
-            } finally {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    log.error("loadLocale()", e);
-                }
+                log.trace("  Loading resource completed");
+            } else {
+                log.warn("  Resource {} Not Found.", name);
             }
-            log.trace("  Loading resource completed");
-        } else {
-            log.warn("  Resource {} Not Found.", name);
+        } catch (IOException e) {
+            log.error("loadLocale()", e);
         }
 
 

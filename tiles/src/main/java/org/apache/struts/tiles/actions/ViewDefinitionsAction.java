@@ -81,7 +81,6 @@ public class ViewDefinitionsAction extends Action {
         }
 
         writer.flush();
-        writer.close();
 
         return (null);
     }

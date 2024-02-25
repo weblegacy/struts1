@@ -27,7 +27,6 @@ import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 import jakarta.servlet.ServletException;
@@ -214,30 +213,28 @@ public final class MemoryDatabasePlugIn implements PlugIn {
 
         // Does a copy of this file already exist in our temporary directory
         File dir = (File)
-            servlet.getServletContext().getAttribute
-            ("jakarta.servlet.context.tempdir");
+                servlet.getServletContext().getAttribute
+                        ("jakarta.servlet.context.tempdir");
         File file = new File(dir, "struts-example-database.xml");
         if (file.exists()) {
             return (file.getAbsolutePath());
         }
 
         // Copy the static resource to a temporary file and return its path
-        InputStream is =
-            servlet.getServletContext().getResourceAsStream(pathname);
-        BufferedInputStream bis = new BufferedInputStream(is, 1024);
-        FileOutputStream os =
-            new FileOutputStream(file);
-        BufferedOutputStream bos = new BufferedOutputStream(os, 1024);
-        byte buffer[] = new byte[1024];
-        while (true) {
-            int n = bis.read(buffer);
-            if (n <= 0) {
-                break;
+        try (BufferedInputStream bis = new BufferedInputStream(
+                servlet.getServletContext().getResourceAsStream(pathname), 1024);
+                BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(file), 1024)) {
+
+            byte buffer[] = new byte[1024];
+            while (true) {
+                int n = bis.read(buffer);
+                if (n <= 0) {
+                    break;
+                }
+                bos.write(buffer, 0, n);
             }
-            bos.write(buffer, 0, n);
         }
-        bos.close();
-        bis.close();
+
         return (file.getAbsolutePath());
 
     }

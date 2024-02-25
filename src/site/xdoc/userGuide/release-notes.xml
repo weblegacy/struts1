@@ -82,6 +82,7 @@
 
 <h4>Improvement</h4>
 <ul>
+<li>Ensure Input-/OutputStream is closed and use try-with-resources</li>
 <li>Fix for Apache Struts &quot;CVE-2012-1007&quot; Multiple Cross Site Scripting Vulnerabilities (Sample apps)</li>
 <li>Change cryptographic algorithm from &quot;MD5&quot; to &quot;AES&quot; for token generation</li>
 <li>Improvements in FileUpload handling</li>

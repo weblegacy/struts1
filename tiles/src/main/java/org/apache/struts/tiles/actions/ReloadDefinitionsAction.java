@@ -87,7 +87,6 @@ public class ReloadDefinitionsAction extends Action {
         }
 
         writer.flush();
-        writer.close();
 
         return (null);
     }

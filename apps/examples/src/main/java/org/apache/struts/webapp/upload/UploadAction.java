@@ -23,7 +23,6 @@ package org.apache.struts.webapp.upload;
 
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -106,47 +105,39 @@ public class UploadAction extends Action
 
             String data = null;
 
-            try {
+            try (InputStream stream = file.getInputStream()) {
                 //retrieve the file data
-                ByteArrayOutputStream baos = new ByteArrayOutputStream();
-                InputStream stream = file.getInputStream();
                 if (!writeFile) {
                     //only write files out that are less than 4MB
                     if (file.getFileLength() < (4*1024000)) {
 
-                        byte[] buffer = new byte[8192];
-                        int bytesRead = 0;
-                        while ((bytesRead = stream.read(buffer, 0, 8192)) != -1) {
-                            baos.write(buffer, 0, bytesRead);
+                        try (ByteArrayOutputStream baos = new ByteArrayOutputStream()) {
+                            byte[] buffer = new byte[8192];
+                            int bytesRead = 0;
+                            while ((bytesRead = stream.read(buffer, 0, 8192)) != -1) {
+                                baos.write(buffer, 0, bytesRead);
+                            }
+                            data = new String(baos.toByteArray());
                         }
-                        data = new String(baos.toByteArray());
-                    }
-                    else {
+                    } else {
                         data = new String("The file is greater than 4MB, " +
                                 " and has not been written to stream." +
                                 " File Size: " + file.getFileLength() + " bytes. This is a" +
                                 " limitation of this particular web application, hard-coded" +
                                 " in org.apache.struts.webapp.upload.UploadAction");
                     }
-                }
-                else {
+                } else {
                     //write the file to the file specified
-                    OutputStream bos = new FileOutputStream(theForm.getFilePath());
-                    int bytesRead = 0;
-                    byte[] buffer = new byte[8192];
-                    while ((bytesRead = stream.read(buffer, 0, 8192)) != -1) {
-                        bos.write(buffer, 0, bytesRead);
+                    try (OutputStream bos = new FileOutputStream(theForm.getFilePath())) {
+                        int bytesRead = 0;
+                        byte[] buffer = new byte[8192];
+                        while ((bytesRead = stream.read(buffer, 0, 8192)) != -1) {
+                            bos.write(buffer, 0, bytesRead);
+                        }
                     }
-                    bos.close();
                     data = "The file has been written to \"" + theForm.getFilePath() + "\"";
                 }
-                //close the stream
-                stream.close();
-            }
-            catch (FileNotFoundException fnfe) {
-                return null;
-            }
-            catch (IOException ioe) {
+            } catch (IOException e) {
                 return null;
             }
 

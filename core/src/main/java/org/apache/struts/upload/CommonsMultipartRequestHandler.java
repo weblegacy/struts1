@@ -293,17 +293,17 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * STR-2700 to prevent Window machines from hanging.
      */
     protected void clearInputStream(HttpServletRequest request) {
-        try {
-            if (WIN_SYSTEM) {
+        if (WIN_SYSTEM) {
+            try {
                 ServletInputStream is = request.getInputStream();
                 byte[] data = new byte[DEFAULT_SIZE_THRESHOLD];
                 int bytesRead = 0;
                 do {
                     bytesRead = is.read(data);
                 } while (bytesRead > -1);
+            } catch (IOException e) {
+                log.error(e.getMessage(), e);
             }
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
         }
     }
 

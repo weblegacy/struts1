@@ -59,21 +59,20 @@ public class ImageAction extends Action {
             HttpServletResponse response)
             throws Exception {
 
-            // e.g. /$module/struts-power.gif
-            // :FIXME: Should compute module
+        // e.g. /$module/struts-power.gif
+        // :FIXME: Should compute module
         String image = mapping.getParameter();
 
         byte[] buffer = new byte[2048];
         int bytesRead;
-        InputStream input =
-                getServlet().getServletContext().getResourceAsStream(image);
-        OutputStream
-                out = response.getOutputStream();
 
-        while ((bytesRead = input.read(buffer)) != -1) {
-            out.write(buffer, 0, bytesRead);
+        try (InputStream input = getServlet().getServletContext().getResourceAsStream(image)) {
+            final OutputStream out = response.getOutputStream();
+
+            while ((bytesRead = input.read(buffer)) != -1) {
+                out.write(buffer, 0, bytesRead);
+            }
         }
-        out.close();
 
         return null;
     }

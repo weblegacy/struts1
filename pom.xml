@@ -397,7 +397,7 @@
         <fileuploadVersion>2.0.0-M1</fileuploadVersion>
         <commonsChainVersion>1.3.0</commonsChainVersion>
         <struts.osgi.symbolicName>org.apache.${project.artifactId}</struts.osgi.symbolicName>
-        <struts.osgi.export>org.apache.struts.*;version=${project.version}</struts.osgi.export>
+        <struts.osgi.export>!**.doc-files,org.apache.struts.*;version=${project.version}</struts.osgi.export>
         <struts.osgi.import>org.apache.struts.*,*;version=!</struts.osgi.import>
         <struts.osgi.dynamicImport />
         <struts.osgi.private />

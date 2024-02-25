@@ -76,6 +76,7 @@
             <subsection name="Issue Tracking" id="Highlight">
 <h4>Bug</h4>
 <ul>
+<li>Exclude &quot;doc-files&quot; from export-packages in &quot;MANIFEST.MF&quot;</li>
 <li>Add &quot;CVE-2008-2025&quot; info to &quot;README&quot;</li>
 <li>JS validate email remove useless regular-expression character escape</li>
 <li>Correct OSGi/JPMS name from integration-test-apps</li>

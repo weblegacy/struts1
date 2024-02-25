@@ -20,13 +20,14 @@
  */
 package org.apache.struts.util;
 
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 import org.apache.struts.Globals;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 
 /**
  * TokenProcessor is responsible for handling all token related functionality.
@@ -201,8 +202,8 @@ public class TokenProcessor {
 
             previous = current;
 
-            byte[] now = Long.valueOf(current).toString().getBytes();
-            MessageDigest md = MessageDigest.getInstance("AES");
+            byte[] now = String.valueOf(current).getBytes(StandardCharsets.US_ASCII);
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
 
             md.update(id.getBytes());
             md.update(now);

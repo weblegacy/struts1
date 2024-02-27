@@ -57,6 +57,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 * [CVE-2015-0899 - Improper Input Validation in Apache Struts](https://github.com/advisories/GHSA-cvvx-r33m-v7pq)
 * [CVE-2016-1181 - Improper Input Validation in Apache Struts](https://github.com/advisories/GHSA-7jw3-5q4w-89qg)
 * [CVE-2016-1182 - Improper Input Validation in Apache Struts](https://github.com/advisories/GHSA-5ggr-mpgw-3mgx)
+* [CVE-2023-34396 - Apache Struts vulnerable to memory exhaustion](https://github.com/advisories/GHSA-4g42-gqrg-4633)
 
 ## Building Strus1 - Reloaded
 

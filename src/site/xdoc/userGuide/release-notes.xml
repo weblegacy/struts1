@@ -84,6 +84,7 @@
 
 <h4>Improvement</h4>
 <ul>
+<li>Fix for &quot;CVE-2023-34396&quot; Apache Struts vulnerable to memory exhaustion</li>
 <li>Add filtering for Option &quot;text&quot; when &quot;filter&quot; is set to &quot;true&quot;</li>
 <li>Ensure Input-/OutputStream is closed and use try-with-resources</li>
 <li>Fix for Apache Struts &quot;CVE-2012-1007&quot; Multiple Cross Site Scripting Vulnerabilities (Sample apps)</li>

@@ -21,8 +21,10 @@
 package org.apache.struts.mock;
 
 import org.apache.struts.action.ActionForm;
+import org.apache.struts.upload.FormFile;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -47,6 +49,7 @@ public class MockFormBean extends ActionForm {
     private int arrayCount;
     protected boolean booleanProperty = false;
     protected String stringProperty = null;
+    protected List<FormFile> files = null;
 
     // ------------------- Constructors
     public MockFormBean() {
@@ -175,5 +178,13 @@ public class MockFormBean extends ActionForm {
 
     public void setStringProperty(String stringProperty) {
         this.stringProperty = stringProperty;
+    }
+
+    public void setFiles(List<FormFile> files) {
+        this.files = files;
+    }
+
+    public List<FormFile> getFiles() {
+        return this.files;
     }
 }

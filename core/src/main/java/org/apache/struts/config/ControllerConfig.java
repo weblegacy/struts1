@@ -99,9 +99,19 @@ public class ControllerConfig extends BaseConfig {
     protected boolean locale = true;
 
     /**
+     * The maximum size to process a complete request for file uploads.
+     */
+    protected String maxSize = "256M";
+
+    /**
      * The maximum file size to process for file uploads.
      */
     protected String maxFileSize = "250M";
+
+    /**
+     * The maximum length of a string parameter in a multipart request.
+     */
+    protected String maxStringLen = "4K";
 
     /**
      * The maximum permitted number of files that may be uploaded in a single
@@ -245,6 +255,18 @@ public class ControllerConfig extends BaseConfig {
         this.locale = locale;
     }
 
+    public String getMaxSize() {
+        return (this.maxSize);
+    }
+
+    public void setMaxSize(String maxSize) {
+        if (configured) {
+            throw new IllegalStateException("Configuration is frozen");
+        }
+
+        this.maxSize = maxSize;
+    }
+
     public String getMaxFileSize() {
         return (this.maxFileSize);
     }
@@ -255,6 +277,18 @@ public class ControllerConfig extends BaseConfig {
         }
 
         this.maxFileSize = maxFileSize;
+    }
+
+    public String getMaxStringLen() {
+        return (this.maxStringLen);
+    }
+
+    public void setMaxStringLen(String maxStringLen) {
+        if (configured) {
+            throw new IllegalStateException("Configuration is frozen");
+        }
+
+        this.maxStringLen = maxStringLen;
     }
 
     public long getFileCountMax() {

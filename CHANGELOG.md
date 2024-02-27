@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Fix for `CVE-2023-34396` Apache Struts vulnerable to memory exhaustion
 * Exclude `doc-files` from export-packages in `MANIFEST.MF`
 * Add filtering for Option `text` when `filter` is set to `true`
 * Change cryptographic algorithm from `AES` to `SHA-256` for token generation

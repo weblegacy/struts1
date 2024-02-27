@@ -25,6 +25,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
+import java.lang.reflect.Array;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.charset.UnsupportedCharsetException;
@@ -67,6 +68,18 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * uploaded file. The value is equivalent to 250MB.
      */
     public static final long DEFAULT_SIZE_MAX = 250 * 1024 * 1024;
+
+    /**
+     * The default value for the maximum allowable size, in bytes, of an
+     * uploaded file. The value is equivalent to 250MB.
+     */
+    public static final long DEFAULT_FILE_SIZE_MAX = 250 * 1024 * 1024;
+
+    /**
+     * The default value for the maximum length of a string parameter, in
+     * bytes, in a multipart request. The value is equivalent to 4KB.
+     */
+    public static final long DEFAULT_MAX_STRING_LEN = 4 * 1024;
 
     /**
      * The default value for the threshold which determines whether an uploaded
@@ -174,7 +187,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         // Set the maximum size that will be stored in memory.
         factory.setBufferSize((int) getSizeThreshold(ac));
 
-        // Set the the location for saving data on disk.
+        // Set the location for saving data on disk.
         factory.setFile(getRepositoryFile(ac));
 
         // Create a new file upload handler
@@ -184,8 +197,11 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         // see http://issues.apache.org/bugzilla/show_bug.cgi?id=23255
         upload.setHeaderCharset(Charset.forName(request.getCharacterEncoding()));
 
-        // Set the maximum size before a FileUploadException will be thrown.
+        // Sets the maximum allowed size of a complete request before a FileUploadException will be thrown.
         upload.setSizeMax(getSizeMax(ac));
+
+        // Sets the maximum file size before a FileUploadException will be thrown.
+        upload.setFileSizeMax(getFileSizeMax(ac));
 
         // Sets the maximum number of files allowed per request.
         upload.setFileCountMax(getFileCountMax(ac));
@@ -206,11 +222,23 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
                 Boolean.TRUE);
 
             if (e instanceof FileUploadByteCountLimitException) {
+                final FileUploadByteCountLimitException e2 = (FileUploadByteCountLimitException) e;
                 request.setAttribute(MultipartRequestHandler.ATTRIBUTE_MAX_BYTE_LENGTH_EXCEEDED,
                         Boolean.TRUE);
+
+                log.warn("Byte-Count-Limit-Exception: FieldName: {}, FileName: {}, MaxSize: {}, "
+                        + "CurrentSize: {}", e2.getFieldName(), e2.getFieldName(),
+                        e2.getPermitted(), e2.getActualSize(), e2);
             } else if (e instanceof FileUploadFileCountLimitException) {
+                final FileUploadFileCountLimitException e2 = (FileUploadFileCountLimitException) e;
                 request.setAttribute(MultipartRequestHandler.ATTRIBUTE_MAX_FILE_COUNT_EXCEEDED,
                         Boolean.TRUE);
+
+                log.warn("File-Count-Limit-Exception: MaxSize: {}, CurrentSize: {}",
+                        e2.getPermitted(), e2.getActualSize(), e2);
+            } else {
+                log.warn("Byte-Count-Limit-Exception: MaxSize: {}, CurrentSize: {}",
+                        e.getPermitted(), e.getActualSize(), e);
             }
 
             clearInputStream(request);
@@ -221,10 +249,14 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
             throw new ServletException(e);
         }
 
+        // Get the maximum allowable length of a string parameter in a
+        // multipart request. CVE-2023-34396
+        final long maxStringLen = getMaxStringLen(ac);
+
         // Partition the items into form fields and files.
         for (DiskFileItem item : items) {
             if (item.isFormField()) {
-                addTextParameter(request, item);
+                addTextParameter(request, maxStringLen, item);
             } else {
                 addFileParameter(item);
             }
@@ -308,16 +340,44 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
     }
 
     /**
-     * Returns the maximum allowable size, in bytes, of an uploaded file. The
-     * value is obtained from the current module's controller configuration.
+     * Returns the maximum allowed size of a complete request. The value is
+     * obtained from the current module's controller configuration.
+     *
+     * @param mc The current module's configuration.
+     *
+     * @return The maximum allowable size of a complete request, in bytes.
+     */
+    protected long getSizeMax(ModuleConfig mc) {
+        return convertSizeToBytes("maximal request size",
+                mc.getControllerConfig().getMaxSize(), DEFAULT_SIZE_MAX);
+    }
+
+    /**
+     * Returns the maximum allowable file-size, in bytes, of an uploaded file.
+     * The value is obtained from the current module's controller
+     * configuration.
      *
      * @param mc The current module's configuration.
      *
      * @return The maximum allowable file size, in bytes.
      */
-    protected long getSizeMax(ModuleConfig mc) {
-        return convertSizeToBytes(mc.getControllerConfig().getMaxFileSize(),
-            DEFAULT_SIZE_MAX);
+    protected long getFileSizeMax(ModuleConfig mc) {
+        return convertSizeToBytes("maximal file size",
+                mc.getControllerConfig().getMaxFileSize(), DEFAULT_FILE_SIZE_MAX);
+    }
+
+    /**
+     * Returns the maximum allowable length, in bytes, of a string parameter in
+     * a multipart request. The value is obtained from the current module's
+     * controller configuration.
+     *
+     * @param mc The current module's configuration.
+     *
+     * @return The maximum allowable length of a string parameter, in bytes.
+     */
+    protected long getMaxStringLen(ModuleConfig mc) {
+        return convertSizeToBytes("maximal string length",
+                mc.getControllerConfig().getMaxStringLen(), DEFAULT_MAX_STRING_LEN);
     }
 
     /**
@@ -329,8 +389,8 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * @return The size threshold, in bytes.
      */
     protected long getSizeThreshold(ModuleConfig mc) {
-        return convertSizeToBytes(mc.getControllerConfig().getMemFileSize(),
-            DEFAULT_SIZE_THRESHOLD);
+        return convertSizeToBytes("threshold size",
+                mc.getControllerConfig().getMemFileSize(), DEFAULT_SIZE_THRESHOLD);
     }
 
     /**
@@ -342,13 +402,13 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * <p>If the size value cannot be converted, for example due to invalid
      * syntax, the supplied default is returned instead.</p>
      *
-     * @param sizeString  The string representation of the size to be
-     *                    converted.
+     * @param sizeType    The type of the size. Is's used for logging-message.
+     * @param sizeString  The string representation of the size to be converted.
      * @param defaultSize The value to be returned if the string is invalid.
      *
      * @return The actual size in bytes.
      */
-    protected long convertSizeToBytes(String sizeString, long defaultSize) {
+    protected long convertSizeToBytes(String sizeType, String sizeString, long defaultSize) {
         int multiplier = 1;
 
         if (sizeString.endsWith("K")) {
@@ -368,8 +428,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         try {
             size = Long.parseLong(sizeString);
         } catch (NumberFormatException nfe) {
-            log.warn("Invalid format for file size ('{}'). Using default.",
-                sizeString);
+            log.warn("Invalid format for {} ('{}'). Using default.", sizeType, sizeString);
             size = defaultSize;
             multiplier = 1;
         }
@@ -421,7 +480,7 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
             if (servlet != null) {
                 ServletContext context = servlet.getServletContext();
                 tempDirFile =
-                    (File) context.getAttribute("jakarta.servlet.context.tempdir");
+                    (File) context.getAttribute(ServletContext.TEMPDIR);
 
                 if (tempDirFile != null) {
                     tempDirFile = tempDirFile.getAbsoluteFile();
@@ -449,13 +508,48 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
      * multiple values for the same parameter by using an array for the
      * parameter value.
      *
-     * @param request The request in which the parameter was specified.
-     * @param item    The file item for the parameter to add.
+     * @param request      The request in which the parameter was specified.
+     * @param maxStringLen The maximum allowable length of a string parameter.
+     * @param item         The file item for the parameter to add.
      */
-    protected void addTextParameter(HttpServletRequest request, FileItem<?> item) {
-        String name = item.getFieldName();
-        String value = null;
-        boolean haveValue = false;
+    protected void addTextParameter(HttpServletRequest request, long maxStringLen, FileItem<?> item) {
+        final String name = item.getFieldName();
+        final String value;
+
+        // CVE-2023-34396
+        if (item.getSize() > maxStringLen) {
+            request.setAttribute(MultipartRequestHandler.ATTRIBUTE_MAX_LENGTH_EXCEEDED,
+                    Boolean.TRUE);
+            request.setAttribute(MultipartRequestHandler.ATTRIBUTE_MAX_STRING_LENGTH_EXCEEDED,
+                    Boolean.TRUE);
+
+            log.warn("Max-String-Length: FieldName: {}, FileName: {}, MaxSize: {}, "
+                    + "CurrentSize: {}", item.getFieldName(), item.getFieldName(),
+                    maxStringLen, item.getSize());
+
+            value = "";
+        } else {
+            value = getTextValue(request, item);
+        }
+
+        if (request instanceof MultipartRequestWrapper) {
+            MultipartRequestWrapper wrapper = (MultipartRequestWrapper) request;
+
+            wrapper.setParameter(name, value);
+        }
+
+        elementsAll.put(name, addElement(elementsText, name, value));
+    }
+
+    /**
+     * Gets the regular text parameter of the item.
+     *
+     * @param request The request in which the parameter was specified.
+     * @param item    The file item for the parameter.
+     *
+     * @return the value of the {@code item}
+     */
+    protected String getTextValue(HttpServletRequest request, FileItem<?> item) {
         Charset encoding = null;
 
         if (item instanceof DiskFileItem) {
@@ -474,42 +568,18 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
 
         if (encoding != null) {
             try {
-                value = item.getString(encoding);
-                haveValue = true;
+                return item.getString(encoding);
             } catch (Exception e) {
-                // Handled below, since haveValue is false.
+                // Handled below
             }
         }
 
-        if (!haveValue) {
-            try {
-                value = item.getString(StandardCharsets.ISO_8859_1);
-            } catch (IOException e) {
-                log.info("FileItem-getString", e);
-                value = item.getString();
-            }
-
-            haveValue = true;
+        try {
+            return item.getString(StandardCharsets.ISO_8859_1);
+        } catch (IOException e) {
+            log.info("FileItem-getString", e);
+            return item.getString();
         }
-
-        if (request instanceof MultipartRequestWrapper) {
-            MultipartRequestWrapper wrapper = (MultipartRequestWrapper) request;
-
-            wrapper.setParameter(name, value);
-        }
-
-        String[] oldArray = elementsText.get(name);
-        String[] newArray;
-
-        if (oldArray != null) {
-            newArray = Arrays.copyOf(oldArray, oldArray.length + 1);
-            newArray[oldArray.length] = value;
-        } else {
-            newArray = new String[] { value };
-        }
-
-        elementsText.put(name, newArray);
-        elementsAll.put(name, newArray);
     }
 
     /**
@@ -522,18 +592,35 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         final String name = item.getFieldName();
         final FormFile value = new CommonsFormFile(item);
 
-        final FormFile[] oldArray = elementsFile.get(name);
+        elementsAll.put(name, addElement(elementsFile, name, value));
+    }
 
-        final FormFile[] newArray;
+    /**
+     * Appends a new element to an array, which is in a map. If no array exists with the name,
+     * a new array with the name will be created.
+     *
+     * @param <T>      the elements of the array
+     * @param elements the map with the arrays
+     * @param name     the name within the map to find the array
+     * @param value    the new element
+     *
+     * @return the new array with the append element
+     */
+    private static <T> T[] addElement(final HashMap<String, T[]> elements, final String name, final T value) {
+        final T[] oldArray = elements.get(name);
+        final T[] newArray;
+
         if (oldArray != null) {
             newArray = Arrays.copyOf(oldArray, oldArray.length + 1);
-            newArray[oldArray.length] = value;
         } else {
-            newArray = new FormFile[] { value };
+            @SuppressWarnings("unchecked")
+            final T[] array =  (T[]) Array.newInstance(value.getClass(), 1);
+            newArray = array;
         }
+        newArray[newArray.length - 1] = value;
 
-        elementsFile.put(name, newArray);
-        elementsAll.put(name, newArray);
+        elements.put(name, newArray);
+        return newArray;
     }
 
     // ---------------------------------------------------------- Inner Classes

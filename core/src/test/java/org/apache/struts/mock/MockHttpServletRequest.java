@@ -22,7 +22,6 @@ package org.apache.struts.mock;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.util.Collection;
 import java.util.Enumeration;
@@ -120,6 +119,16 @@ public class MockHttpServletRequest implements HttpServletRequest {
      */
     protected String contentType = null;
 
+    /**
+     * <p> The Character Encoding for this request. </p>
+     */
+    protected String characterEncoding = null;
+
+    /**
+     * <p> The Content for this request. </p>
+     */
+    protected byte[] content = null;
+
     // ----------------------------------------------------------- Constructors
     public MockHttpServletRequest() {
         super();
@@ -190,6 +199,10 @@ public class MockHttpServletRequest implements HttpServletRequest {
         this.principal = principal;
     }
 
+    public void setContent(byte[] content) {
+        this.content = content;
+    }
+
     // --------------------------------------------- HttpServletRequest Methods
     @Override
     public String getAuthType() {
@@ -208,7 +221,7 @@ public class MockHttpServletRequest implements HttpServletRequest {
 
     @Override
     public String getHeader(String name) {
-        throw new UnsupportedOperationException();
+        return null;
     }
 
     @Override
@@ -399,22 +412,22 @@ public class MockHttpServletRequest implements HttpServletRequest {
 
     @Override
     public String getCharacterEncoding() {
-        throw new UnsupportedOperationException();
+        return characterEncoding;
     }
 
     @Override
-    public void setCharacterEncoding(String env) throws UnsupportedEncodingException {
-        throw new UnsupportedOperationException();
+    public void setCharacterEncoding(String env) {
+        this.characterEncoding = env;
     }
 
     @Override
     public int getContentLength() {
-        throw new UnsupportedOperationException();
+        return content != null ? content.length : 0;
     }
 
     @Override
     public long getContentLengthLong() {
-        throw new UnsupportedOperationException();
+        return getContentLength();
     }
 
     @Override
@@ -424,7 +437,7 @@ public class MockHttpServletRequest implements HttpServletRequest {
 
     @Override
     public ServletInputStream getInputStream() throws IOException {
-        throw new UnsupportedOperationException();
+        return new MockServletInputStream(content);
     }
 
     @Override

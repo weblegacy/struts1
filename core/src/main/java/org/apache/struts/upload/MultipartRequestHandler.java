@@ -60,6 +60,18 @@ public interface MultipartRequestHandler {
 
     /**
      * This is the ServletRequest attribute that should be set when a multipart
+     * request is being read and the maximum byte-length of a string parameter
+     * is exceeded. The value is a Boolean. If the maximum length isn't
+     * exceeded, this attribute shouldn't be put in the ServletRequest. It's
+     * the job of the implementation to put this attribute in the request if
+     * the maximum byte-length is exceeded; in the
+     * handleRequest(HttpServletRequest) method.
+     */
+    public static final String ATTRIBUTE_MAX_STRING_LENGTH_EXCEEDED =
+        "org.apache.struts.upload.MaxStringLengthExceeded";
+
+    /**
+     * This is the ServletRequest attribute that should be set when a multipart
      * request is being read and the maximum file-count is exceeded. The value
      * is a Boolean. If the maximum file-count isn't exceeded, this attribute
      * shouldn't be put in the ServletRequest. It's the job of the

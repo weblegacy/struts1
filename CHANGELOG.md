@@ -1,7 +1,8 @@
 # Changes
 
-## 1.5.0-RC2 / YYYY-MM-DD
+## 1.5.0-RC2 / 2024-03-01
 
+* Set Version to 1.5.0-RC2
 * Update `README.md` to version 1.5.0-RC2
 * Correct file-upload-example
 * Add missing `maven-release-plugin` 3.0.1

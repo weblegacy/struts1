@@ -22,7 +22,7 @@
    <parent>
       <groupId>io.github.weblegacy</groupId>
       <artifactId>struts-apps</artifactId>
-      <version>1.5.0-RC2-SNAPSHOT</version>
+      <version>1.5.0-RC2</version>
    </parent>
 
    <modelVersion>4.0.0</modelVersion>

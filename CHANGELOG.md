@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Security - Digester: Resolving XML external entity in user-controlled data
 * Fix for `CVE-2023-49735` Apache Tiles: Unvalidated input may lead to path traversal and XXE
 * Fix for `CVE-2023-34396` Apache Struts vulnerable to memory exhaustion
 * Exclude `doc-files` from export-packages in `MANIFEST.MF`

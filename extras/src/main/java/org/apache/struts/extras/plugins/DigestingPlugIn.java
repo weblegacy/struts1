@@ -172,6 +172,13 @@ public class DigestingPlugIn implements PlugIn {
             digester = this.newDigesterInstance();
         }
 
+        try {
+            digester.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+        } catch (Exception e) {
+            log.error("Exception configuring Digester instance", e);
+            throw new ServletException(e);
+        }
+
         this.applyRuleSets(digester);
 
         return digester;

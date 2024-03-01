@@ -23,9 +23,11 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 * 1.5.0
   * Include missing taglib docs, because the current version of [tlddoc](https://github.com/weblegacy/tlddoc) is not able to generate it (upgrade to `Jakarta Server Pages 3.0` is currently missing).
-* 1.5.1
   * [#23 - Apache Tiles: Unvalidated input may lead to path traversal and XXE](https://github.com/weblegacy/struts1/security/dependabot/23)
-  * Bump `commons-fileupload2` from 2.0.0-M1 to 2.0.0-M2
+  * [#7 - Resolving XML external entity in user-controlled data](https://github.com/weblegacy/struts1/security/code-scanning/7)
+  * [#23 - Investigate if CVE-2023-34396 affects struts1](https://github.com/weblegacy/struts1/issues/23)
+  * [#28 - Coming from struts 1.3.10 html:file issues](https://github.com/weblegacy/struts1/issues/28)
+  * [#29 - Sync with Struts1-repo from albfernandez](https://github.com/weblegacy/struts1/issues/29)
 * 1.4.6
   * Cherry-Pick relevant changes from version `1.5.0` and `1.5.1`
 * 1.6.0

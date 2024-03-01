@@ -84,6 +84,7 @@
 
 <h4>Improvement</h4>
 <ul>
+<li>Security - Digester: Resolving XML external entity in user-controlled data</li>
 <li>Fix for &quot;CVE-2023-49735&quot; Apache Tiles: Unvalidated input may lead to path traversal and XXE</li>
 <li>Fix for &quot;CVE-2023-34396&quot; Apache Struts vulnerable to memory exhaustion</li>
 <li>Add filtering for Option &quot;text&quot; when &quot;filter&quot; is set to &quot;true&quot;</li>

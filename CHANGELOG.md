@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Add missing `maven-antrun-plugin` 3.1.0
 * Add `versions-maven-plugin` 2.16.2 for updates reports
 * Bump `webdrivermanager` from 5.6.2 to 5.7.0
 * Bump `htmlunit` from 3.9.0 to 3.11.0

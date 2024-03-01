@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Update `README.md` to version 1.5.0-RC2
 * Correct file-upload-example
 * Add missing `maven-release-plugin` 3.0.1
 * Add missing `maven-antrun-plugin` 3.1.0

@@ -10,6 +10,7 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 | Version                                                                   | JEE-Version  | Java-Version | Servlet | JSP | EL  | JSF | JSTL |
 |--------------------------------------------------------------------------:|-------------:|-------------:|--------:|----:|----:|----:|-----:|
+| [1.5.0-RC2](https://github.com/weblegacy/struts1/releases/tag/v1.5.0_rc2) | Jakarta EE 9 |            8 |     5.0 | 3.0 | 4.0 | 3.0 |  2.0 |
 | [1.5.0-RC1](https://github.com/weblegacy/struts1/releases/tag/v1.5.0_rc1) | Jakarta EE 9 |            8 |     5.0 | 3.0 | 4.0 | 3.0 |  2.0 |
 |         [1.4.5](https://github.com/weblegacy/struts1/releases/tag/v1.4.5) | Jakarta EE 8 |            8 |     4.0 | 2.3 | 3.0 | 2.3 |  1.2 |
 |         [1.4.4](https://github.com/weblegacy/struts1/releases/tag/v1.4.4) | Jakarta EE 8 |            8 |     4.0 | 2.3 | 3.0 | 2.3 |  1.2 |
@@ -23,13 +24,8 @@ For documentation see [https://weblegacy.github.io/struts1](https://weblegacy.gi
 
 * 1.5.0
   * Include missing taglib docs, because the current version of [tlddoc](https://github.com/weblegacy/tlddoc) is not able to generate it (upgrade to `Jakarta Server Pages 3.0` is currently missing).
-  * [#23 - Apache Tiles: Unvalidated input may lead to path traversal and XXE](https://github.com/weblegacy/struts1/security/dependabot/23)
-  * [#7 - Resolving XML external entity in user-controlled data](https://github.com/weblegacy/struts1/security/code-scanning/7)
-  * [#23 - Investigate if CVE-2023-34396 affects struts1](https://github.com/weblegacy/struts1/issues/23)
-  * [#28 - Coming from struts 1.3.10 html:file issues](https://github.com/weblegacy/struts1/issues/28)
-  * [#29 - Sync with Struts1-repo from albfernandez](https://github.com/weblegacy/struts1/issues/29)
 * 1.4.6
-  * Cherry-Pick relevant changes from version `1.5.0` and `1.5.1`
+  * Cherry-Pick relevant changes from version `1.5.0`
 * 1.6.0
   * Bump JDK 8 to 11
   * Upgrade to Jakarta EE 10

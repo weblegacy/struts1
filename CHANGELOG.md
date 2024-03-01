@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Bump `slf4j-api`, `slf4j-simple` and `jcl-over-slf4j` from 2.0.9 to 2.0.12
 * Bump `selenium-api` and `selenium-java` from 4.16.0 to 4.18.1
 * Bump `groovy` from 4.0.17 to 4.0.18
 * Bump `maven-failsafe/surefire-[report]-plugin` from 3.2.3 to 3.2.5

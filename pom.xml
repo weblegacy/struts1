@@ -381,7 +381,7 @@
         <surefireVersion>3.2.5</surefireVersion>
         <groovyVersion>4.0.18</groovyVersion>
         <seleniumVersion>4.18.1</seleniumVersion>
-        <slf4jVersion>2.0.9</slf4jVersion>
+        <slf4jVersion>2.0.12</slf4jVersion>
         <tilesVersion>3.0.8</tilesVersion>
         <tilesRequestVersion>1.0.7</tilesRequestVersion>
         <antlrVersion>4.13.1</antlrVersion>

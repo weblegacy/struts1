@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Bump `webdrivermanager` from 5.6.2 to 5.7.0
 * Bump `htmlunit` from 3.9.0 to 3.11.0
 * Bump `cargo-maven3-plugin` from 1.10.11 to 1.10.12
 * Bump `maven-jxr-plugin` from 3.3.1 to 3.3.2

@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Add `versions-maven-plugin` 2.16.2 for updates reports
 * Bump `webdrivermanager` from 5.6.2 to 5.7.0
 * Bump `htmlunit` from 3.9.0 to 3.11.0
 * Bump `cargo-maven3-plugin` from 1.10.11 to 1.10.12

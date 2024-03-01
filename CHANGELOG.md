@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Bump `maven-jxr-plugin` from 3.3.1 to 3.3.2
 * Bump `checkstyle` from 10.12.6 to 10.14.0
 * Bump `junit-jupiter-api` from 5.10.1 to 5.10.2
 * Bump `slf4j-api`, `slf4j-simple` and `jcl-over-slf4j` from 2.0.9 to 2.0.12

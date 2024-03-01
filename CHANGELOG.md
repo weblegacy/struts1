@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Bump `junit-jupiter-api` from 5.10.1 to 5.10.2
 * Bump `slf4j-api`, `slf4j-simple` and `jcl-over-slf4j` from 2.0.9 to 2.0.12
 * Bump `selenium-api` and `selenium-java` from 4.16.0 to 4.18.1
 * Bump `groovy` from 4.0.17 to 4.0.18

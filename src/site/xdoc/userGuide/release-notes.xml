@@ -97,6 +97,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;junit-jupiter-api&quot; from 5.10.1 to 5.10.2</li>
 <li>Bump &quot;slf4j-api&quot;, &quot;slf4j-simple&quot; and &quot;jcl-over-slf4j&quot; from 2.0.9 to 2.0.12</li>
 <li>Bump &quot;selenium-api&quot; and &quot;selenium-java&quot; from 4.16.1 to 4.18.1</li>
 <li>Bump &quot;groovy&quot; from 4.0.17 to 4.0.18</li>

@@ -23,6 +23,7 @@ package org.apache.struts.tiles;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.lang.reflect.InvocationTargetException;
@@ -383,6 +384,58 @@ public class TestTilesPlugin extends TestMockBase {
      }
 
   }
+
+  /**
+   * Test I18nFactorySet with wrong filename: not normalized
+   */
+  @Test
+  public void testFileNameNotNormalized() {
+
+     final Map<String, Object> properties = new HashMap<>();
+
+     // Set the file name
+     properties.put(I18nFactorySet.DEFINITIONS_CONFIG_PARAMETER_NAME,
+                    "../etc/password");
+
+     assertThrows(FactoryNotFoundException.class,
+             () -> new CustomI18nFactorySet(context, properties));
+
+  }
+
+  /**
+   * Test I18nFactorySet with wrong filename: with \u0000
+   */
+  @Test
+  public void testFileNameWithNul() {
+
+     final Map<String, Object> properties = new HashMap<>();
+
+     // Set the file name
+     properties.put(I18nFactorySet.DEFINITIONS_CONFIG_PARAMETER_NAME,
+                    "../etc/pas\u0000");
+
+     assertThrows(FactoryNotFoundException.class,
+             () -> new CustomI18nFactorySet(context, properties));
+
+  }
+
+  /**
+   * Test I18nFactorySet with wrong filename: empty
+   */
+  @Test
+  public void testFileNameEmpty() {
+
+     final Map<String, Object> properties = new HashMap<>();
+
+     // Set the file name
+     properties.put(I18nFactorySet.DEFINITIONS_CONFIG_PARAMETER_NAME,
+                    "   ");
+
+     assertThrows(FactoryNotFoundException.class,
+             () -> new CustomI18nFactorySet(context, properties));
+
+  }  
+
 
   /**
    * String representation of a Locale. A bug in the

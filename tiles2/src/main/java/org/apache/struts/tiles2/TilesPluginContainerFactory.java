@@ -21,6 +21,9 @@
 
 package org.apache.struts.tiles2;
 
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Collections;
 import java.util.List;
 
@@ -32,8 +35,16 @@ import org.apache.tiles.factory.BasicTilesContainerFactory;
 import org.apache.tiles.locale.LocaleResolver;
 import org.apache.tiles.request.ApplicationContext;
 import org.apache.tiles.request.ApplicationResource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class TilesPluginContainerFactory extends BasicTilesContainerFactory {
+
+    /**
+     * The {@code Log} instance for this class.
+     */
+    private transient final Logger log =
+        LoggerFactory.getLogger(TilesPluginContainerFactory.class);
 
     @Override
     public TilesContainer createContainer(ApplicationContext applicationContext) {
@@ -75,8 +86,33 @@ public class TilesPluginContainerFactory extends BasicTilesContainerFactory {
             param = applicationContext
                     .getInitParams().get("definitions-config");
         }
-        if (param == null) {
+
+        boolean error = true;
+        if (param != null) {
+            if (param.isEmpty()) {
+                log.warn("getSources - empty parameters");
+            } else if (param.contains("\u0000")) {
+                log.warn("getSources - ignore file with nul-characters '{}'", param.replace('\u0000', '_') );
+            } else {
+                try {
+                    final Path p = Paths.get(param).normalize();
+                    if (p.toString().charAt(0) != '.') {
+                        error = false;
+                    } else {
+                        log.warn("getSources - path not normalized '{}'", p.toString());
+                    }
+                } catch (InvalidPathException e) {
+                    log.warn("getSources - illegal path '{}'", e.getInput(), e);
+                    param = null;
+                }
+            }
+        }
+
+        if (error) {
             param = "/WEB-INF/tiles.xml";
+            log.debug("getSources - use default '{}'", param);
+        } else {
+            log.debug("getSources - use '{}'", param);
         }
 
         return Collections

@@ -25,6 +25,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -182,7 +185,7 @@ public class I18nFactorySet extends FactorySet {
             }
         }
 
-        // init factory withappropriate configuration file
+        // init factory with appropriate configuration file
         // Try to use provided filename, if any.
         // If no filename are provided, try to use default ones.
         String filename = (String) properties.get(DEFINITIONS_CONFIG_PARAMETER_NAME);
@@ -229,7 +232,25 @@ public class I18nFactorySet extends FactorySet {
         StringTokenizer tokenizer = new StringTokenizer(proposedFilename, ",");
         this.filenames = new ArrayList<>(tokenizer.countTokens());
         while (tokenizer.hasMoreTokens()) {
-            this.filenames.add(tokenizer.nextToken().trim());
+            final String fn = tokenizer.nextToken().trim();
+            if (fn.isEmpty()) {
+                log.warn("Factory initialization - ignore empty file");
+                continue;
+            } else if (fn.contains("\u0000")) {
+                log.warn("Factory initialization - ignore file with nul-characters '{}'", fn.replace('\u0000', '_') );
+                continue;
+            }
+
+            try {
+                final Path p = Paths.get(fn).normalize();
+                if (p.toString().charAt(0) != '.') {
+                    this.filenames.add(p.toString());
+                } else {
+                    log.warn("Factory initialization - path not normalized '{}'", p.toString());
+                }
+            } catch (InvalidPathException e) {
+                log.warn("Factory initialization - illegal path '{}'", e.getInput(), e);
+            }
         }
 
         loaded = new HashMap<>();

@@ -76,6 +76,7 @@
             <subsection name="Issue Tracking" id="Highlight">
 <h4>Bug</h4>
 <ul>
+<li>Correct file-upload-example</li>
 <li>Add missing &quot;maven-release-plugin&quot; 3.0.1</li>
 <li>Add missing &quot;maven-antrun-plugin&quot; 3.1.0</li>
 <li>Exclude &quot;doc-files&quot; from export-packages in &quot;MANIFEST.MF&quot;</li>

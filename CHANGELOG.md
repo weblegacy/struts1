@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Correct file-upload-example
 * Add missing `maven-release-plugin` 3.0.1
 * Add missing `maven-antrun-plugin` 3.1.0
 * Add `versions-maven-plugin` 2.16.2 for updates reports

@@ -24,7 +24,7 @@
 <b>The Query Parameter:</b>&nbsp;<%= ResponseUtils.filter((String)request.getAttribute("queryValue")) %>
 </p>
 <p>
-<b>Number of selected files:</b>&nbsp;<%= ResponseUtils.filter((String)request.getAttribute("fileCount")) %>
+<b>Number of selected files:</b>&nbsp;<%= request.getAttribute("fileCount") %>
 </p>
 <p>
 <b>Informations of the first selected file:</b>

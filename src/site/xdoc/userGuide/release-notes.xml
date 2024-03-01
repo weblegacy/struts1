@@ -97,6 +97,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;selenium-api&quot; and &quot;selenium-java&quot; from 4.16.1 to 4.18.1</li>
 <li>Bump &quot;groovy&quot; from 4.0.17 to 4.0.18</li>
 <li>Bump &quot;maven-failsafe/surefire-[report]-plugin&quot; from 3.2.3 to 3.2.5</li>
 <li>Add example for multiple-file-upload</li>

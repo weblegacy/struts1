@@ -97,6 +97,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;htmlunit&quot; from 3.9.0 to 3.11.0</li>
 <li>Bump &quot;cargo-maven3-plugin&quot; from 1.10.11 to 1.10.12</li>
 <li>Bump &quot;maven-jxr-plugin&quot; from 3.3.1 to 3.3.2</li>
 <li>Bump &quot;checkstyle&quot; from 10.12.6 to 10.14.0</li>

@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Bump `cargo-maven3-plugin` from 1.10.11 to 1.10.12
 * Bump `maven-jxr-plugin` from 3.3.1 to 3.3.2
 * Bump `checkstyle` from 10.12.6 to 10.14.0
 * Bump `junit-jupiter-api` from 5.10.1 to 5.10.2

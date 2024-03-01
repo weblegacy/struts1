@@ -395,7 +395,7 @@ Attribute of <a href='#global-forwards'>global-forwards</a>
 <p>Sorry, no documentation.</p><a name='forward'></a>
 <br /><table class='elementTitle' summary="forward"><tr><td class='leftElementTitle'>
 &lt;forward&gt;</td><td class='rightElementTitle'>
-Child of <a href='#global-forwards'>global-forwards</a>, <a href='#action'>action</a>
+Child of <a href='#action'>action</a>, <a href='#global-forwards'>global-forwards</a>
 </td></tr></table>
 <p>The "forward" element describes an ActionForward that is to be made
 available to an Action as a return value. An ActionForward is referenced by
@@ -795,12 +795,22 @@ module-relative path to the resource
 to be used as the input form. Since Struts 1.1.
 [false]</p><p>locale Set to "true" if you want a Locale object stored in the
 user's session if not already present.
-[true]</p><p>maxFileSize The maximum size (in bytes) of a file to be accepted as a
+[true]</p><p>maxSize The maximum size (in bytes) of a complete request to be
+accepted as a file upload. Can be expressed as a number
+followed by a "K", "M", or "G", which are interpreted to
+mean kilobytes, megabytes, or gigabytes, respectively.
+Since Struts 1.4.6.
+["250M"]</p><p>maxFileSize The maximum size (in bytes) of a file to be accepted as a
 file upload. Can be expressed as a number followed by a
 "K", "M", or "G", which are interpreted to mean kilobytes,
 megabytes, or gigabytes, respectively.
-["250M"]</p><p>fileCountMax The maximum permitted number of files that may be uploaded
+["250M"]</p><p>maxStringLen The maximum length (in bytes) of a string parameter in a
+multipart request. Can be expressed as a number followed by a
+"K", "M", or "G", which are interpreted to mean kilobytes,
+megabytes, or gigabytes, respectively. Since Struts 1.4.6.
+["4K"]</p><p>fileCountMax The maximum permitted number of files that may be uploaded
 in a single request. A value of -1 indicates no maximum.
+Since Struts 1.4.5.
 [-1]</p><p>memFileSize The maximum size (in bytes) of a file whose contents will
 be retained in memory after uploading. Files larger than
 this threshold will be written to some alternative storage
@@ -843,7 +853,7 @@ file uploads.
 <tr>
 <th class='subtitle'>Name</th><th class='subtitle'>Values</th><th class='subtitle'>Default</th></tr>
 <tr><th colspan='3' height='1' class='ruler'></th></tr>
-<tr><td><a href='#controller_bufferSize'>bufferSize</a></td><td></td><td></td></tr><tr><td><a href='#controller_catalog'>catalog</a></td><td></td><td></td></tr><tr><td><a href='#controller_className'>className</a></td><td></td><td></td></tr><tr><td><a href='#controller_command'>command</a></td><td></td><td></td></tr><tr><td><a href='#controller_contentType'>contentType</a></td><td></td><td></td></tr><tr><td><a href='#controller_fileCountMax'>fileCountMax</a></td><td></td><td></td></tr><tr><td><a href='#controller_forwardPattern'>forwardPattern</a></td><td></td><td></td></tr><tr><td><a href='#controller_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#controller_inputForward'>inputForward</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#controller_locale'>locale</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#controller_maxFileSize'>maxFileSize</a></td><td></td><td></td></tr><tr><td><a href='#controller_memFileSize'>memFileSize</a></td><td></td><td></td></tr><tr><td><a href='#controller_multipartClass'>multipartClass</a></td><td></td><td></td></tr><tr><td><a href='#controller_nocache'>nocache</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#controller_pagePattern'>pagePattern</a></td><td></td><td></td></tr><tr><td><a href='#controller_processorClass'>processorClass</a></td><td></td><td></td></tr><tr><td><a href='#controller_tempDir'>tempDir</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
+<tr><td><a href='#controller_bufferSize'>bufferSize</a></td><td></td><td></td></tr><tr><td><a href='#controller_catalog'>catalog</a></td><td></td><td></td></tr><tr><td><a href='#controller_className'>className</a></td><td></td><td></td></tr><tr><td><a href='#controller_command'>command</a></td><td></td><td></td></tr><tr><td><a href='#controller_contentType'>contentType</a></td><td></td><td></td></tr><tr><td><a href='#controller_fileCountMax'>fileCountMax</a></td><td></td><td></td></tr><tr><td><a href='#controller_forwardPattern'>forwardPattern</a></td><td></td><td></td></tr><tr><td><a href='#controller_id'>id</a></td><td><i>Match the ID rules.</i></td><td></td></tr><tr><td><a href='#controller_inputForward'>inputForward</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#controller_locale'>locale</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#controller_maxFileSize'>maxFileSize</a></td><td></td><td></td></tr><tr><td><a href='#controller_maxSize'>maxSize</a></td><td></td><td></td></tr><tr><td><a href='#controller_maxStringLen'>maxStringLen</a></td><td></td><td></td></tr><tr><td><a href='#controller_memFileSize'>memFileSize</a></td><td></td><td></td></tr><tr><td><a href='#controller_multipartClass'>multipartClass</a></td><td></td><td></td></tr><tr><td><a href='#controller_nocache'>nocache</a></td><td>true, false, yes, no</td><td></td></tr><tr><td><a href='#controller_pagePattern'>pagePattern</a></td><td></td><td></td></tr><tr><td><a href='#controller_processorClass'>processorClass</a></td><td></td><td></td></tr><tr><td><a href='#controller_tempDir'>tempDir</a></td><td></td><td></td></tr></table></td></tr></table></blockquote>
 <span class='inTextTitle'>Element's model:</span><p class='model'>(<a href='#set-property'>set-property</a>*)</p><a name='controller_id'></a>
 <br /><table class='attributeTitle' summary="id"><tr><td class='leftAttributeTitle'>
 @id</td><td class='rightAttributeTitle'>
@@ -889,9 +899,19 @@ Attribute of <a href='#controller'>controller</a>
 @locale</td><td class='rightAttributeTitle'>
 Attribute of <a href='#controller'>controller</a>
 </td></tr></table>
-<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false, yes, no</p><a name='controller_maxFileSize'></a>
+<p>Sorry, no documentation.</p><p><span class='inTextTitle'>Possible values</span>: true, false, yes, no</p><a name='controller_maxSize'></a>
+<br /><table class='attributeTitle' summary="maxSize"><tr><td class='leftAttributeTitle'>
+@maxSize</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='controller_maxFileSize'></a>
 <br /><table class='attributeTitle' summary="maxFileSize"><tr><td class='leftAttributeTitle'>
 @maxFileSize</td><td class='rightAttributeTitle'>
+Attribute of <a href='#controller'>controller</a>
+</td></tr></table>
+<p>Sorry, no documentation.</p><a name='controller_maxStringLen'></a>
+<br /><table class='attributeTitle' summary="maxStringLen"><tr><td class='leftAttributeTitle'>
+@maxStringLen</td><td class='rightAttributeTitle'>
 Attribute of <a href='#controller'>controller</a>
 </td></tr></table>
 <p>Sorry, no documentation.</p><a name='controller_fileCountMax'></a>
@@ -1039,7 +1059,7 @@ Attribute of <a href='#plug-in'>plug-in</a>
 <p>Sorry, no documentation.</p><p><span class='inTextTitle'>Required</span></p><a name='description'></a>
 <br /><table class='elementTitle' summary="description"><tr><td class='leftElementTitle'>
 &lt;description&gt;</td><td class='rightElementTitle'>
-Child of <a href='#exception'>exception</a>, <a href='#action'>action</a>, <a href='#form-bean'>form-bean</a>, <a href='#struts-config'>struts-config</a>, <a href='#forward'>forward</a>
+Child of <a href='#action'>action</a>, <a href='#struts-config'>struts-config</a>, <a href='#exception'>exception</a>, <a href='#form-bean'>form-bean</a>, <a href='#forward'>forward</a>
 </td></tr></table>
 <p>The "description" element contains descriptive (paragraph length) text
 about the surrounding element, suitable for use in GUI tools.</p><blockquote><table summary='element info'><tr>
@@ -1059,7 +1079,7 @@ Attribute of <a href='#description'>description</a>
 <p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='display-name'></a>
 <br /><table class='elementTitle' summary="display-name"><tr><td class='leftElementTitle'>
 &lt;display-name&gt;</td><td class='rightElementTitle'>
-Child of <a href='#exception'>exception</a>, <a href='#action'>action</a>, <a href='#form-bean'>form-bean</a>, <a href='#struts-config'>struts-config</a>, <a href='#forward'>forward</a>
+Child of <a href='#action'>action</a>, <a href='#struts-config'>struts-config</a>, <a href='#exception'>exception</a>, <a href='#form-bean'>form-bean</a>, <a href='#forward'>forward</a>
 </td></tr></table>
 <p>The "display-name" element contains a short (one line) description of
 the surrounding element, suitable for use in GUI tools.</p><blockquote><table summary='element info'><tr>
@@ -1079,7 +1099,7 @@ Attribute of <a href='#display-name'>display-name</a>
 <p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='icon'></a>
 <br /><table class='elementTitle' summary="icon"><tr><td class='leftElementTitle'>
 &lt;icon&gt;</td><td class='rightElementTitle'>
-Child of <a href='#exception'>exception</a>, <a href='#action'>action</a>, <a href='#form-bean'>form-bean</a>, <a href='#forward'>forward</a>
+Child of <a href='#action'>action</a>, <a href='#exception'>exception</a>, <a href='#form-bean'>form-bean</a>, <a href='#forward'>forward</a>
 </td></tr></table>
 <p>The "icon" element contains a small-icon and large-icon element which
 specify the location, relative to the Struts configuration file, for small
@@ -1130,7 +1150,7 @@ Attribute of <a href='#large-icon'>large-icon</a>
 <p>Element identifier.</p><p><span class='inTextTitle'>Possible values</span>: <i>Match the ID rules.</i></p><a name='set-property'></a>
 <br /><table class='elementTitle' summary="set-property"><tr><td class='leftElementTitle'>
 &lt;set-property/&gt;</td><td class='rightElementTitle'>
-Child of <a href='#exception'>exception</a>, <a href='#action'>action</a>, <a href='#form-property'>form-property</a>, <a href='#plug-in'>plug-in</a>, <a href='#form-bean'>form-bean</a>, <a href='#controller'>controller</a>, <a href='#struts-config'>struts-config</a>, <a href='#forward'>forward</a>, <a href='#message-resources'>message-resources</a>
+Child of <a href='#message-resources'>message-resources</a>, <a href='#form-property'>form-property</a>, <a href='#action'>action</a>, <a href='#struts-config'>struts-config</a>, <a href='#exception'>exception</a>, <a href='#controller'>controller</a>, <a href='#form-bean'>form-bean</a>, <a href='#forward'>forward</a>, <a href='#plug-in'>plug-in</a>
 </td></tr></table>
 <p>The "set-property" element specifies the method name and initial value of
 an additional JavaBean configuration property. When the object representing

@@ -570,14 +570,28 @@ The "form-bean" element describes a particular form bean, which is a
                      user's session if not already present.
                      [true]
 
+     maxSize         The maximum size (in bytes) of a complete request to be
+                     accepted as a file upload. Can be expressed as a number
+                     followed by a "K", "M", or "G", which are interpreted to
+                     mean kilobytes, megabytes, or gigabytes, respectively.
+                     Since Struts 1.4.6.
+                     ["250M"]
+
      maxFileSize     The maximum size (in bytes) of a file to be accepted as a
-                     file upload.  Can be expressed as a number followed by a
+                     file upload. Can be expressed as a number followed by a
                      "K", "M", or "G", which are interpreted to mean kilobytes,
                      megabytes, or gigabytes, respectively.
                      ["250M"]
 
+     maxStringLen    The maximum length (in bytes) of a string parameter in a
+                     multipart request. Can be expressed as a number followed by a
+                     "K", "M", or "G", which are interpreted to mean kilobytes,
+                     megabytes, or gigabytes, respectively. Since Struts 1.4.6.
+                     ["4K"]
+
      fileCountMax    The maximum permitted number of files that may be uploaded
                      in a single request. A value of -1 indicates no maximum.
+                     Since Struts 1.4.5.
                      [-1]
 
      memFileSize     The maximum size (in bytes) of a file whose contents will
@@ -629,7 +643,9 @@ The "form-bean" element describes a particular form bean, which is a
 <!ATTLIST controller     forwardPattern CDATA           #IMPLIED>
 <!ATTLIST controller     inputForward   %Boolean;       #IMPLIED>
 <!ATTLIST controller     locale         %Boolean;       #IMPLIED>
+<!ATTLIST controller     maxSize        CDATA           #IMPLIED>
 <!ATTLIST controller     maxFileSize    CDATA           #IMPLIED>
+<!ATTLIST controller     maxStringLen   CDATA           #IMPLIED>
 <!ATTLIST controller     fileCountMax   %Long;          #IMPLIED>
 <!ATTLIST controller     memFileSize    CDATA           #IMPLIED>
 <!ATTLIST controller     multipartClass %ClassName;     #IMPLIED>

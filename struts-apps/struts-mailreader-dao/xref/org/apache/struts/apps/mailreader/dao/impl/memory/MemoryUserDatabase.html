@@ -159,231 +159,206 @@
 <a class="jxr_linenumber" name="L151" href="#L151">151</a>     <em class="jxr_comment">// See interface for Javadoc</em>
 <a class="jxr_linenumber" name="L152" href="#L152">152</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> open() <strong class="jxr_keyword">throws</strong> Exception {
 <a class="jxr_linenumber" name="L153" href="#L153">153</a> 
-<a class="jxr_linenumber" name="L154" href="#L154">154</a>         FileInputStream fis = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L155" href="#L155">155</a>         BufferedInputStream bis = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L156" href="#L156">156</a> 
-<a class="jxr_linenumber" name="L157" href="#L157">157</a>         <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L158" href="#L158">158</a> 
-<a class="jxr_linenumber" name="L159" href="#L159">159</a>             <em class="jxr_comment">// Acquire an input stream to our database file</em>
-<a class="jxr_linenumber" name="L160" href="#L160">160</a>             LOG.debug(<span class="jxr_string">"Loading database from '{}'"</span>, pathname);
-<a class="jxr_linenumber" name="L161" href="#L161">161</a>             fis = <strong class="jxr_keyword">new</strong> FileInputStream(pathname);
-<a class="jxr_linenumber" name="L162" href="#L162">162</a>             bis = <strong class="jxr_keyword">new</strong> BufferedInputStream(fis);
-<a class="jxr_linenumber" name="L163" href="#L163">163</a> 
-<a class="jxr_linenumber" name="L164" href="#L164">164</a>             <em class="jxr_comment">// Construct a digester to use for parsing</em>
-<a class="jxr_linenumber" name="L165" href="#L165">165</a>             Digester digester = <strong class="jxr_keyword">new</strong> Digester();
-<a class="jxr_linenumber" name="L166" href="#L166">166</a>             digester.push(<strong class="jxr_keyword">this</strong>);
-<a class="jxr_linenumber" name="L167" href="#L167">167</a>             digester.setValidating(false);
-<a class="jxr_linenumber" name="L168" href="#L168">168</a>             digester.addFactoryCreate
-<a class="jxr_linenumber" name="L169" href="#L169">169</a>                 (<span class="jxr_string">"database/user"</span>,
-<a class="jxr_linenumber" name="L170" href="#L170">170</a>                  <strong class="jxr_keyword">new</strong> <a name="MemoryUserCreationFactory" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemoryUserCreationFactory">MemoryUserCreationFactory</a>(<strong class="jxr_keyword">this</strong>));
-<a class="jxr_linenumber" name="L171" href="#L171">171</a>             digester.addFactoryCreate
-<a class="jxr_linenumber" name="L172" href="#L172">172</a>                 (<span class="jxr_string">"database/user/subscription"</span>,
-<a class="jxr_linenumber" name="L173" href="#L173">173</a>                  <strong class="jxr_keyword">new</strong> <a name="MemorySubscriptionCreationFactory" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemorySubscriptionCreationFactory">MemorySubscriptionCreationFactory</a>());
+<a class="jxr_linenumber" name="L154" href="#L154">154</a>         LOG.debug(<span class="jxr_string">"Loading database from '{}'"</span>, pathname);
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>         <em class="jxr_comment">// Acquire an input stream to our database file</em>
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>         <strong class="jxr_keyword">try</strong> (BufferedInputStream bis = <strong class="jxr_keyword">new</strong> BufferedInputStream(<strong class="jxr_keyword">new</strong> FileInputStream(pathname))) {
+<a class="jxr_linenumber" name="L157" href="#L157">157</a> 
+<a class="jxr_linenumber" name="L158" href="#L158">158</a>             <em class="jxr_comment">// Construct a digester to use for parsing</em>
+<a class="jxr_linenumber" name="L159" href="#L159">159</a>             Digester digester = <strong class="jxr_keyword">new</strong> Digester();
+<a class="jxr_linenumber" name="L160" href="#L160">160</a>             digester.push(<strong class="jxr_keyword">this</strong>);
+<a class="jxr_linenumber" name="L161" href="#L161">161</a>             digester.setValidating(false);
+<a class="jxr_linenumber" name="L162" href="#L162">162</a>             digester.addFactoryCreate
+<a class="jxr_linenumber" name="L163" href="#L163">163</a>                 (<span class="jxr_string">"database/user"</span>,
+<a class="jxr_linenumber" name="L164" href="#L164">164</a>                  <strong class="jxr_keyword">new</strong> <a name="MemoryUserCreationFactory" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemoryUserCreationFactory">MemoryUserCreationFactory</a>(<strong class="jxr_keyword">this</strong>));
+<a class="jxr_linenumber" name="L165" href="#L165">165</a>             digester.addFactoryCreate
+<a class="jxr_linenumber" name="L166" href="#L166">166</a>                 (<span class="jxr_string">"database/user/subscription"</span>,
+<a class="jxr_linenumber" name="L167" href="#L167">167</a>                  <strong class="jxr_keyword">new</strong> <a name="MemorySubscriptionCreationFactory" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemorySubscriptionCreationFactory">MemorySubscriptionCreationFactory</a>());
+<a class="jxr_linenumber" name="L168" href="#L168">168</a> 
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>             <em class="jxr_comment">// Parse the input stream to initialize our database</em>
+<a class="jxr_linenumber" name="L170" href="#L170">170</a>             digester.parse(bis);
+<a class="jxr_linenumber" name="L171" href="#L171">171</a>             <strong class="jxr_keyword">this</strong>.open = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L172" href="#L172">172</a> 
+<a class="jxr_linenumber" name="L173" href="#L173">173</a>         } <strong class="jxr_keyword">catch</strong> (Exception e) {
 <a class="jxr_linenumber" name="L174" href="#L174">174</a> 
-<a class="jxr_linenumber" name="L175" href="#L175">175</a>             <em class="jxr_comment">// Parse the input stream to initialize our database</em>
-<a class="jxr_linenumber" name="L176" href="#L176">176</a>             digester.parse(bis);
-<a class="jxr_linenumber" name="L177" href="#L177">177</a>             bis.close();
-<a class="jxr_linenumber" name="L178" href="#L178">178</a>             bis = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L179" href="#L179">179</a>             fis = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L180" href="#L180">180</a>             <strong class="jxr_keyword">this</strong>.open = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L175" href="#L175">175</a>             LOG.error(<span class="jxr_string">"Loading database from '{}':"</span>, pathname, e);
+<a class="jxr_linenumber" name="L176" href="#L176">176</a>             <strong class="jxr_keyword">throw</strong> e;
+<a class="jxr_linenumber" name="L177" href="#L177">177</a> 
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>         }
+<a class="jxr_linenumber" name="L179" href="#L179">179</a> 
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>     }
 <a class="jxr_linenumber" name="L181" href="#L181">181</a> 
-<a class="jxr_linenumber" name="L182" href="#L182">182</a>         } <strong class="jxr_keyword">catch</strong> (Exception e) {
-<a class="jxr_linenumber" name="L183" href="#L183">183</a> 
-<a class="jxr_linenumber" name="L184" href="#L184">184</a>             LOG.error(<span class="jxr_string">"Loading database from '{}':"</span>, pathname, e);
-<a class="jxr_linenumber" name="L185" href="#L185">185</a>             <strong class="jxr_keyword">throw</strong> e;
-<a class="jxr_linenumber" name="L186" href="#L186">186</a> 
-<a class="jxr_linenumber" name="L187" href="#L187">187</a>         } <strong class="jxr_keyword">finally</strong> {
-<a class="jxr_linenumber" name="L188" href="#L188">188</a> 
-<a class="jxr_linenumber" name="L189" href="#L189">189</a>             <strong class="jxr_keyword">if</strong> (bis != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L190" href="#L190">190</a>                 <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L191" href="#L191">191</a>                     bis.close();
-<a class="jxr_linenumber" name="L192" href="#L192">192</a>                 } <strong class="jxr_keyword">catch</strong> (Throwable t) {
-<a class="jxr_linenumber" name="L193" href="#L193">193</a>                     <em class="jxr_comment">// do nothing</em>
-<a class="jxr_linenumber" name="L194" href="#L194">194</a>                 }
-<a class="jxr_linenumber" name="L195" href="#L195">195</a>                 bis = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L196" href="#L196">196</a>                 fis = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L197" href="#L197">197</a>             }
-<a class="jxr_linenumber" name="L198" href="#L198">198</a> 
-<a class="jxr_linenumber" name="L199" href="#L199">199</a>         }
+<a class="jxr_linenumber" name="L182" href="#L182">182</a> 
+<a class="jxr_linenumber" name="L183" href="#L183">183</a>     <em class="jxr_comment">// See interface for Javadoc</em>
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> removeUser(<a name="User" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/User.html#User">User</a> user) {
+<a class="jxr_linenumber" name="L185" href="#L185">185</a> 
+<a class="jxr_linenumber" name="L186" href="#L186">186</a>         <strong class="jxr_keyword">if</strong> (!(<strong class="jxr_keyword">this</strong> == user.getDatabase())) {
+<a class="jxr_linenumber" name="L187" href="#L187">187</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalArgumentException
+<a class="jxr_linenumber" name="L188" href="#L188">188</a>                 (<span class="jxr_string">"User not associated with this database"</span>);
+<a class="jxr_linenumber" name="L189" href="#L189">189</a>         }
+<a class="jxr_linenumber" name="L190" href="#L190">190</a>         LOG.trace(<span class="jxr_string">"Removing user '{}'"</span>, user.getUsername());
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>         <strong class="jxr_keyword">synchronized</strong> (users) {
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>             users.remove(user.getUsername());
+<a class="jxr_linenumber" name="L193" href="#L193">193</a>         }
+<a class="jxr_linenumber" name="L194" href="#L194">194</a> 
+<a class="jxr_linenumber" name="L195" href="#L195">195</a>     }
+<a class="jxr_linenumber" name="L196" href="#L196">196</a> 
+<a class="jxr_linenumber" name="L197" href="#L197">197</a> 
+<a class="jxr_linenumber" name="L198" href="#L198">198</a>     <em class="jxr_comment">// See interface for Javadoc</em>
+<a class="jxr_linenumber" name="L199" href="#L199">199</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> save() <strong class="jxr_keyword">throws</strong> Exception {
 <a class="jxr_linenumber" name="L200" href="#L200">200</a> 
-<a class="jxr_linenumber" name="L201" href="#L201">201</a>     }
-<a class="jxr_linenumber" name="L202" href="#L202">202</a> 
-<a class="jxr_linenumber" name="L203" href="#L203">203</a> 
-<a class="jxr_linenumber" name="L204" href="#L204">204</a>     <em class="jxr_comment">// See interface for Javadoc</em>
-<a class="jxr_linenumber" name="L205" href="#L205">205</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> removeUser(<a name="User" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/User.html#User">User</a> user) {
-<a class="jxr_linenumber" name="L206" href="#L206">206</a> 
-<a class="jxr_linenumber" name="L207" href="#L207">207</a>         <strong class="jxr_keyword">if</strong> (!(<strong class="jxr_keyword">this</strong> == user.getDatabase())) {
-<a class="jxr_linenumber" name="L208" href="#L208">208</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IllegalArgumentException
-<a class="jxr_linenumber" name="L209" href="#L209">209</a>                 (<span class="jxr_string">"User not associated with this database"</span>);
-<a class="jxr_linenumber" name="L210" href="#L210">210</a>         }
-<a class="jxr_linenumber" name="L211" href="#L211">211</a>         LOG.trace(<span class="jxr_string">"Removing user '{}'"</span>, user.getUsername());
-<a class="jxr_linenumber" name="L212" href="#L212">212</a>         <strong class="jxr_keyword">synchronized</strong> (users) {
-<a class="jxr_linenumber" name="L213" href="#L213">213</a>             users.remove(user.getUsername());
-<a class="jxr_linenumber" name="L214" href="#L214">214</a>         }
-<a class="jxr_linenumber" name="L215" href="#L215">215</a> 
-<a class="jxr_linenumber" name="L216" href="#L216">216</a>     }
-<a class="jxr_linenumber" name="L217" href="#L217">217</a> 
-<a class="jxr_linenumber" name="L218" href="#L218">218</a> 
-<a class="jxr_linenumber" name="L219" href="#L219">219</a>     <em class="jxr_comment">// See interface for Javadoc</em>
-<a class="jxr_linenumber" name="L220" href="#L220">220</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> save() <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="L221" href="#L221">221</a> 
-<a class="jxr_linenumber" name="L222" href="#L222">222</a>         LOG.debug(<span class="jxr_string">"Saving database to '{}'"</span>, pathname);
-<a class="jxr_linenumber" name="L223" href="#L223">223</a>         File fileNew = <strong class="jxr_keyword">new</strong> File(pathnameNew);
-<a class="jxr_linenumber" name="L224" href="#L224">224</a>         PrintWriter writer = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L225" href="#L225">225</a> 
-<a class="jxr_linenumber" name="L226" href="#L226">226</a>         <strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L227" href="#L227">227</a> 
-<a class="jxr_linenumber" name="L228" href="#L228">228</a>             <em class="jxr_comment">// Configure our PrintWriter</em>
-<a class="jxr_linenumber" name="L229" href="#L229">229</a>             FileOutputStream fos = <strong class="jxr_keyword">new</strong> FileOutputStream(fileNew);
-<a class="jxr_linenumber" name="L230" href="#L230">230</a>             OutputStreamWriter osw = <strong class="jxr_keyword">new</strong> OutputStreamWriter(fos);
-<a class="jxr_linenumber" name="L231" href="#L231">231</a>             writer = <strong class="jxr_keyword">new</strong> PrintWriter(osw);
+<a class="jxr_linenumber" name="L201" href="#L201">201</a>         LOG.debug(<span class="jxr_string">"Saving database to '{}'"</span>, pathname);
+<a class="jxr_linenumber" name="L202" href="#L202">202</a>         File fileNew = <strong class="jxr_keyword">new</strong> File(pathnameNew);
+<a class="jxr_linenumber" name="L203" href="#L203">203</a>         <strong class="jxr_keyword">boolean</strong> delFileNew = false;
+<a class="jxr_linenumber" name="L204" href="#L204">204</a> 
+<a class="jxr_linenumber" name="L205" href="#L205">205</a>         <em class="jxr_comment">// Configure our PrintWriter</em>
+<a class="jxr_linenumber" name="L206" href="#L206">206</a>         <strong class="jxr_keyword">try</strong> (PrintWriter writer = <strong class="jxr_keyword">new</strong> PrintWriter(<strong class="jxr_keyword">new</strong> OutputStreamWriter(
+<a class="jxr_linenumber" name="L207" href="#L207">207</a>                 <strong class="jxr_keyword">new</strong> FileOutputStream(fileNew)))) {
+<a class="jxr_linenumber" name="L208" href="#L208">208</a> 
+<a class="jxr_linenumber" name="L209" href="#L209">209</a>             <em class="jxr_comment">// Print the file prolog</em>
+<a class="jxr_linenumber" name="L210" href="#L210">210</a>             writer.println(<span class="jxr_string">"&lt;?xml version='1.0'?&gt;"</span>);
+<a class="jxr_linenumber" name="L211" href="#L211">211</a>             writer.println(<span class="jxr_string">"&lt;database&gt;"</span>);
+<a class="jxr_linenumber" name="L212" href="#L212">212</a> 
+<a class="jxr_linenumber" name="L213" href="#L213">213</a>             <em class="jxr_comment">// Print entries for each defined user and associated subscriptions</em>
+<a class="jxr_linenumber" name="L214" href="#L214">214</a>             <a name="User" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/User.html#User">User</a> yusers[] = findUsers();
+<a class="jxr_linenumber" name="L215" href="#L215">215</a>             <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; yusers.length; i++) {
+<a class="jxr_linenumber" name="L216" href="#L216">216</a>                 writer.print(<span class="jxr_string">"  "</span>);
+<a class="jxr_linenumber" name="L217" href="#L217">217</a>                 writer.println(yusers[i]);
+<a class="jxr_linenumber" name="L218" href="#L218">218</a>                 <a name="Subscription" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/Subscription.html#Subscription">Subscription</a> subscriptions[] =
+<a class="jxr_linenumber" name="L219" href="#L219">219</a>                     yusers[i].getSubscriptions();
+<a class="jxr_linenumber" name="L220" href="#L220">220</a>                 <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> j = 0; j &lt; subscriptions.length; j++) {
+<a class="jxr_linenumber" name="L221" href="#L221">221</a>                     writer.print(<span class="jxr_string">"    "</span>);
+<a class="jxr_linenumber" name="L222" href="#L222">222</a>                     writer.println(subscriptions[j]);
+<a class="jxr_linenumber" name="L223" href="#L223">223</a>                     writer.print(<span class="jxr_string">"    "</span>);
+<a class="jxr_linenumber" name="L224" href="#L224">224</a>                     writer.println(<span class="jxr_string">"&lt;/subscription&gt;"</span>);
+<a class="jxr_linenumber" name="L225" href="#L225">225</a>                 }
+<a class="jxr_linenumber" name="L226" href="#L226">226</a>                 writer.print(<span class="jxr_string">"  "</span>);
+<a class="jxr_linenumber" name="L227" href="#L227">227</a>                 writer.println(<span class="jxr_string">"&lt;/user&gt;"</span>);
+<a class="jxr_linenumber" name="L228" href="#L228">228</a>             }
+<a class="jxr_linenumber" name="L229" href="#L229">229</a> 
+<a class="jxr_linenumber" name="L230" href="#L230">230</a>             <em class="jxr_comment">// Print the file epilog</em>
+<a class="jxr_linenumber" name="L231" href="#L231">231</a>             writer.println(<span class="jxr_string">"&lt;/database&gt;"</span>);
 <a class="jxr_linenumber" name="L232" href="#L232">232</a> 
-<a class="jxr_linenumber" name="L233" href="#L233">233</a>             <em class="jxr_comment">// Print the file prolog</em>
-<a class="jxr_linenumber" name="L234" href="#L234">234</a>             writer.println(<span class="jxr_string">"&lt;?xml version='1.0'?&gt;"</span>);
-<a class="jxr_linenumber" name="L235" href="#L235">235</a>             writer.println(<span class="jxr_string">"&lt;database&gt;"</span>);
-<a class="jxr_linenumber" name="L236" href="#L236">236</a> 
-<a class="jxr_linenumber" name="L237" href="#L237">237</a>             <em class="jxr_comment">// Print entries for each defined user and associated subscriptions</em>
-<a class="jxr_linenumber" name="L238" href="#L238">238</a>             <a name="User" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/User.html#User">User</a> yusers[] = findUsers();
-<a class="jxr_linenumber" name="L239" href="#L239">239</a>             <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; yusers.length; i++) {
-<a class="jxr_linenumber" name="L240" href="#L240">240</a>                 writer.print(<span class="jxr_string">"  "</span>);
-<a class="jxr_linenumber" name="L241" href="#L241">241</a>                 writer.println(yusers[i]);
-<a class="jxr_linenumber" name="L242" href="#L242">242</a>                 <a name="Subscription" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/Subscription.html#Subscription">Subscription</a> subscriptions[] =
-<a class="jxr_linenumber" name="L243" href="#L243">243</a>                     yusers[i].getSubscriptions();
-<a class="jxr_linenumber" name="L244" href="#L244">244</a>                 <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> j = 0; j &lt; subscriptions.length; j++) {
-<a class="jxr_linenumber" name="L245" href="#L245">245</a>                     writer.print(<span class="jxr_string">"    "</span>);
-<a class="jxr_linenumber" name="L246" href="#L246">246</a>                     writer.println(subscriptions[j]);
-<a class="jxr_linenumber" name="L247" href="#L247">247</a>                     writer.print(<span class="jxr_string">"    "</span>);
-<a class="jxr_linenumber" name="L248" href="#L248">248</a>                     writer.println(<span class="jxr_string">"&lt;/subscription&gt;"</span>);
-<a class="jxr_linenumber" name="L249" href="#L249">249</a>                 }
-<a class="jxr_linenumber" name="L250" href="#L250">250</a>                 writer.print(<span class="jxr_string">"  "</span>);
-<a class="jxr_linenumber" name="L251" href="#L251">251</a>                 writer.println(<span class="jxr_string">"&lt;/user&gt;"</span>);
-<a class="jxr_linenumber" name="L252" href="#L252">252</a>             }
-<a class="jxr_linenumber" name="L253" href="#L253">253</a> 
-<a class="jxr_linenumber" name="L254" href="#L254">254</a>             <em class="jxr_comment">// Print the file epilog</em>
-<a class="jxr_linenumber" name="L255" href="#L255">255</a>             writer.println(<span class="jxr_string">"&lt;/database&gt;"</span>);
-<a class="jxr_linenumber" name="L256" href="#L256">256</a> 
-<a class="jxr_linenumber" name="L257" href="#L257">257</a>             <em class="jxr_comment">// Check for errors that occurred while printing</em>
-<a class="jxr_linenumber" name="L258" href="#L258">258</a>             <strong class="jxr_keyword">if</strong> (writer.checkError()) {
-<a class="jxr_linenumber" name="L259" href="#L259">259</a>                 writer.close();
-<a class="jxr_linenumber" name="L260" href="#L260">260</a>                 fileNew.delete();
-<a class="jxr_linenumber" name="L261" href="#L261">261</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IOException
-<a class="jxr_linenumber" name="L262" href="#L262">262</a>                     (<span class="jxr_string">"Saving database to '"</span> + pathname + <span class="jxr_string">"'"</span>);
-<a class="jxr_linenumber" name="L263" href="#L263">263</a>             }
-<a class="jxr_linenumber" name="L264" href="#L264">264</a>             writer.close();
-<a class="jxr_linenumber" name="L265" href="#L265">265</a>             writer = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L266" href="#L266">266</a> 
-<a class="jxr_linenumber" name="L267" href="#L267">267</a>         } <strong class="jxr_keyword">catch</strong> (IOException e) {
-<a class="jxr_linenumber" name="L268" href="#L268">268</a> 
-<a class="jxr_linenumber" name="L269" href="#L269">269</a>             <strong class="jxr_keyword">if</strong> (writer != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L270" href="#L270">270</a>                 writer.close();
-<a class="jxr_linenumber" name="L271" href="#L271">271</a>             }
-<a class="jxr_linenumber" name="L272" href="#L272">272</a>             fileNew.delete();
-<a class="jxr_linenumber" name="L273" href="#L273">273</a>             <strong class="jxr_keyword">throw</strong> e;
-<a class="jxr_linenumber" name="L274" href="#L274">274</a> 
-<a class="jxr_linenumber" name="L275" href="#L275">275</a>         }
-<a class="jxr_linenumber" name="L276" href="#L276">276</a> 
+<a class="jxr_linenumber" name="L233" href="#L233">233</a>             <em class="jxr_comment">// Check for errors that occurred while printing</em>
+<a class="jxr_linenumber" name="L234" href="#L234">234</a>             <strong class="jxr_keyword">if</strong> (writer.checkError()) {
+<a class="jxr_linenumber" name="L235" href="#L235">235</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IOException
+<a class="jxr_linenumber" name="L236" href="#L236">236</a>                     (<span class="jxr_string">"Saving database to '"</span> + pathname + <span class="jxr_string">"'"</span>);
+<a class="jxr_linenumber" name="L237" href="#L237">237</a>             }
+<a class="jxr_linenumber" name="L238" href="#L238">238</a> 
+<a class="jxr_linenumber" name="L239" href="#L239">239</a>         } <strong class="jxr_keyword">catch</strong> (IOException e) {
+<a class="jxr_linenumber" name="L240" href="#L240">240</a> 
+<a class="jxr_linenumber" name="L241" href="#L241">241</a>             delFileNew = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L242" href="#L242">242</a>             <strong class="jxr_keyword">throw</strong> e;
+<a class="jxr_linenumber" name="L243" href="#L243">243</a> 
+<a class="jxr_linenumber" name="L244" href="#L244">244</a>         } <strong class="jxr_keyword">finally</strong> {
+<a class="jxr_linenumber" name="L245" href="#L245">245</a> 
+<a class="jxr_linenumber" name="L246" href="#L246">246</a>             <strong class="jxr_keyword">if</strong> (delFileNew) {
+<a class="jxr_linenumber" name="L247" href="#L247">247</a>                 fileNew.delete();
+<a class="jxr_linenumber" name="L248" href="#L248">248</a>             }
+<a class="jxr_linenumber" name="L249" href="#L249">249</a> 
+<a class="jxr_linenumber" name="L250" href="#L250">250</a>         }
+<a class="jxr_linenumber" name="L251" href="#L251">251</a> 
+<a class="jxr_linenumber" name="L252" href="#L252">252</a> 
+<a class="jxr_linenumber" name="L253" href="#L253">253</a>         <em class="jxr_comment">// Perform the required renames to permanently save this file</em>
+<a class="jxr_linenumber" name="L254" href="#L254">254</a>         File fileOrig = <strong class="jxr_keyword">new</strong> File(pathname);
+<a class="jxr_linenumber" name="L255" href="#L255">255</a>         File fileOld = <strong class="jxr_keyword">new</strong> File(pathnameOld);
+<a class="jxr_linenumber" name="L256" href="#L256">256</a>         <strong class="jxr_keyword">if</strong> (fileOrig.exists()) {
+<a class="jxr_linenumber" name="L257" href="#L257">257</a>             fileOld.delete();
+<a class="jxr_linenumber" name="L258" href="#L258">258</a>             <strong class="jxr_keyword">if</strong> (!fileOrig.renameTo(fileOld)) {
+<a class="jxr_linenumber" name="L259" href="#L259">259</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IOException
+<a class="jxr_linenumber" name="L260" href="#L260">260</a>                     (<span class="jxr_string">"Renaming '"</span> + pathname + <span class="jxr_string">"' to '"</span> + pathnameOld + <span class="jxr_string">"'"</span>);
+<a class="jxr_linenumber" name="L261" href="#L261">261</a>             }
+<a class="jxr_linenumber" name="L262" href="#L262">262</a>         }
+<a class="jxr_linenumber" name="L263" href="#L263">263</a>         <strong class="jxr_keyword">if</strong> (!fileNew.renameTo(fileOrig)) {
+<a class="jxr_linenumber" name="L264" href="#L264">264</a>             <strong class="jxr_keyword">if</strong> (fileOld.exists()) {
+<a class="jxr_linenumber" name="L265" href="#L265">265</a>                 fileOld.renameTo(fileOrig);
+<a class="jxr_linenumber" name="L266" href="#L266">266</a>             }
+<a class="jxr_linenumber" name="L267" href="#L267">267</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IOException
+<a class="jxr_linenumber" name="L268" href="#L268">268</a>                 (<span class="jxr_string">"Renaming '"</span> + pathnameNew + <span class="jxr_string">"' to '"</span> + pathname + <span class="jxr_string">"'"</span>);
+<a class="jxr_linenumber" name="L269" href="#L269">269</a>         }
+<a class="jxr_linenumber" name="L270" href="#L270">270</a>         fileOld.delete();
+<a class="jxr_linenumber" name="L271" href="#L271">271</a> 
+<a class="jxr_linenumber" name="L272" href="#L272">272</a>     }
+<a class="jxr_linenumber" name="L273" href="#L273">273</a> 
+<a class="jxr_linenumber" name="L274" href="#L274">274</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isOpen() {
+<a class="jxr_linenumber" name="L275" href="#L275">275</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">this</strong>.open;
+<a class="jxr_linenumber" name="L276" href="#L276">276</a>     }
 <a class="jxr_linenumber" name="L277" href="#L277">277</a> 
-<a class="jxr_linenumber" name="L278" href="#L278">278</a>         <em class="jxr_comment">// Perform the required renames to permanently save this file</em>
-<a class="jxr_linenumber" name="L279" href="#L279">279</a>         File fileOrig = <strong class="jxr_keyword">new</strong> File(pathname);
-<a class="jxr_linenumber" name="L280" href="#L280">280</a>         File fileOld = <strong class="jxr_keyword">new</strong> File(pathnameOld);
-<a class="jxr_linenumber" name="L281" href="#L281">281</a>         <strong class="jxr_keyword">if</strong> (fileOrig.exists()) {
-<a class="jxr_linenumber" name="L282" href="#L282">282</a>             fileOld.delete();
-<a class="jxr_linenumber" name="L283" href="#L283">283</a>             <strong class="jxr_keyword">if</strong> (!fileOrig.renameTo(fileOld)) {
-<a class="jxr_linenumber" name="L284" href="#L284">284</a>                 <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IOException
-<a class="jxr_linenumber" name="L285" href="#L285">285</a>                     (<span class="jxr_string">"Renaming '"</span> + pathname + <span class="jxr_string">"' to '"</span> + pathnameOld + <span class="jxr_string">"'"</span>);
-<a class="jxr_linenumber" name="L286" href="#L286">286</a>             }
-<a class="jxr_linenumber" name="L287" href="#L287">287</a>         }
-<a class="jxr_linenumber" name="L288" href="#L288">288</a>         <strong class="jxr_keyword">if</strong> (!fileNew.renameTo(fileOrig)) {
-<a class="jxr_linenumber" name="L289" href="#L289">289</a>             <strong class="jxr_keyword">if</strong> (fileOld.exists()) {
-<a class="jxr_linenumber" name="L290" href="#L290">290</a>                 fileOld.renameTo(fileOrig);
-<a class="jxr_linenumber" name="L291" href="#L291">291</a>             }
-<a class="jxr_linenumber" name="L292" href="#L292">292</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> IOException
-<a class="jxr_linenumber" name="L293" href="#L293">293</a>                 (<span class="jxr_string">"Renaming '"</span> + pathnameNew + <span class="jxr_string">"' to '"</span> + pathname + <span class="jxr_string">"'"</span>);
-<a class="jxr_linenumber" name="L294" href="#L294">294</a>         }
-<a class="jxr_linenumber" name="L295" href="#L295">295</a>         fileOld.delete();
+<a class="jxr_linenumber" name="L278" href="#L278">278</a> }
+<a class="jxr_linenumber" name="L279" href="#L279">279</a> 
+<a class="jxr_linenumber" name="L280" href="#L280">280</a> 
+<a class="jxr_linenumber" name="L281" href="#L281">281</a> <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L282" href="#L282">282</a> <em class="jxr_javadoccomment"> * Digester object creation factory for subscription instances.</em>
+<a class="jxr_linenumber" name="L283" href="#L283">283</a> <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L284" href="#L284">284</a> <strong class="jxr_keyword">class</strong> <a name="MemorySubscriptionCreationFactory" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemorySubscriptionCreationFactory">MemorySubscriptionCreationFactory</a> <strong class="jxr_keyword">implements</strong> ObjectCreationFactory {
+<a class="jxr_linenumber" name="L285" href="#L285">285</a>     <em class="jxr_comment">// Digester3: Subscription</em>
+<a class="jxr_linenumber" name="L286" href="#L286">286</a> 
+<a class="jxr_linenumber" name="L287" href="#L287">287</a>     <strong class="jxr_keyword">private</strong> Digester digester = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L288" href="#L288">288</a> 
+<a class="jxr_linenumber" name="L289" href="#L289">289</a>     <strong class="jxr_keyword">public</strong> Digester getDigester() {
+<a class="jxr_linenumber" name="L290" href="#L290">290</a>         <strong class="jxr_keyword">return</strong> (<strong class="jxr_keyword">this</strong>.digester);
+<a class="jxr_linenumber" name="L291" href="#L291">291</a>     }
+<a class="jxr_linenumber" name="L292" href="#L292">292</a> 
+<a class="jxr_linenumber" name="L293" href="#L293">293</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setDigester(Digester digester) {
+<a class="jxr_linenumber" name="L294" href="#L294">294</a>         <strong class="jxr_keyword">this</strong>.digester = digester;
+<a class="jxr_linenumber" name="L295" href="#L295">295</a>     }
 <a class="jxr_linenumber" name="L296" href="#L296">296</a> 
-<a class="jxr_linenumber" name="L297" href="#L297">297</a>     }
-<a class="jxr_linenumber" name="L298" href="#L298">298</a> 
-<a class="jxr_linenumber" name="L299" href="#L299">299</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isOpen() {
-<a class="jxr_linenumber" name="L300" href="#L300">300</a>         <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">this</strong>.open;
-<a class="jxr_linenumber" name="L301" href="#L301">301</a>     }
-<a class="jxr_linenumber" name="L302" href="#L302">302</a> 
-<a class="jxr_linenumber" name="L303" href="#L303">303</a> }
-<a class="jxr_linenumber" name="L304" href="#L304">304</a> 
-<a class="jxr_linenumber" name="L305" href="#L305">305</a> 
-<a class="jxr_linenumber" name="L306" href="#L306">306</a> <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L307" href="#L307">307</a> <em class="jxr_javadoccomment"> * Digester object creation factory for subscription instances.</em>
-<a class="jxr_linenumber" name="L308" href="#L308">308</a> <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L309" href="#L309">309</a> <strong class="jxr_keyword">class</strong> <a name="MemorySubscriptionCreationFactory" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemorySubscriptionCreationFactory">MemorySubscriptionCreationFactory</a> <strong class="jxr_keyword">implements</strong> ObjectCreationFactory {
-<a class="jxr_linenumber" name="L310" href="#L310">310</a>     <em class="jxr_comment">// Digester3: Subscription</em>
-<a class="jxr_linenumber" name="L311" href="#L311">311</a> 
-<a class="jxr_linenumber" name="L312" href="#L312">312</a>     <strong class="jxr_keyword">private</strong> Digester digester = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L313" href="#L313">313</a> 
-<a class="jxr_linenumber" name="L314" href="#L314">314</a>     <strong class="jxr_keyword">public</strong> Digester getDigester() {
-<a class="jxr_linenumber" name="L315" href="#L315">315</a>         <strong class="jxr_keyword">return</strong> (<strong class="jxr_keyword">this</strong>.digester);
-<a class="jxr_linenumber" name="L316" href="#L316">316</a>     }
-<a class="jxr_linenumber" name="L317" href="#L317">317</a> 
-<a class="jxr_linenumber" name="L318" href="#L318">318</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setDigester(Digester digester) {
-<a class="jxr_linenumber" name="L319" href="#L319">319</a>         <strong class="jxr_keyword">this</strong>.digester = digester;
-<a class="jxr_linenumber" name="L320" href="#L320">320</a>     }
-<a class="jxr_linenumber" name="L321" href="#L321">321</a> 
-<a class="jxr_linenumber" name="L322" href="#L322">322</a>     <strong class="jxr_keyword">public</strong> <a name="Subscription" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/Subscription.html#Subscription">Subscription</a> createObject(Attributes attributes) {
-<a class="jxr_linenumber" name="L323" href="#L323">323</a>         String host = attributes.getValue(<span class="jxr_string">"host"</span>);
-<a class="jxr_linenumber" name="L324" href="#L324">324</a>         <a name="User" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/User.html#User">User</a> user = (<a name="User" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/User.html#User">User</a>) digester.peek();
-<a class="jxr_linenumber" name="L325" href="#L325">325</a>         <a name="Subscription" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/Subscription.html#Subscription">Subscription</a> subscription = user.createSubscription(host);
-<a class="jxr_linenumber" name="L326" href="#L326">326</a>         String autoConnect = attributes.getValue(<span class="jxr_string">"autoConnect"</span>);
-<a class="jxr_linenumber" name="L327" href="#L327">327</a>         <strong class="jxr_keyword">if</strong> (autoConnect == <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L328" href="#L328">328</a>             autoConnect = <span class="jxr_string">"false"</span>;
-<a class="jxr_linenumber" name="L329" href="#L329">329</a>         }
-<a class="jxr_linenumber" name="L330" href="#L330">330</a>         <strong class="jxr_keyword">if</strong> (<span class="jxr_string">"true"</span>.equalsIgnoreCase(autoConnect) ||
-<a class="jxr_linenumber" name="L331" href="#L331">331</a>             <span class="jxr_string">"yes"</span>.equalsIgnoreCase(autoConnect)) {
-<a class="jxr_linenumber" name="L332" href="#L332">332</a>             subscription.setAutoConnect(<strong class="jxr_keyword">true</strong>);
-<a class="jxr_linenumber" name="L333" href="#L333">333</a>         } <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="L334" href="#L334">334</a>             subscription.setAutoConnect(false);
-<a class="jxr_linenumber" name="L335" href="#L335">335</a>         }
-<a class="jxr_linenumber" name="L336" href="#L336">336</a>         subscription.setPassword(attributes.getValue(<span class="jxr_string">"password"</span>));
-<a class="jxr_linenumber" name="L337" href="#L337">337</a>         subscription.setType(attributes.getValue(<span class="jxr_string">"type"</span>));
-<a class="jxr_linenumber" name="L338" href="#L338">338</a>         subscription.setUsername(attributes.getValue(<span class="jxr_string">"username"</span>));
-<a class="jxr_linenumber" name="L339" href="#L339">339</a>         <strong class="jxr_keyword">return</strong> (subscription);
+<a class="jxr_linenumber" name="L297" href="#L297">297</a>     <strong class="jxr_keyword">public</strong> <a name="Subscription" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/Subscription.html#Subscription">Subscription</a> createObject(Attributes attributes) {
+<a class="jxr_linenumber" name="L298" href="#L298">298</a>         String host = attributes.getValue(<span class="jxr_string">"host"</span>);
+<a class="jxr_linenumber" name="L299" href="#L299">299</a>         <a name="User" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/User.html#User">User</a> user = (<a name="User" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/User.html#User">User</a>) digester.peek();
+<a class="jxr_linenumber" name="L300" href="#L300">300</a>         <a name="Subscription" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/Subscription.html#Subscription">Subscription</a> subscription = user.createSubscription(host);
+<a class="jxr_linenumber" name="L301" href="#L301">301</a>         String autoConnect = attributes.getValue(<span class="jxr_string">"autoConnect"</span>);
+<a class="jxr_linenumber" name="L302" href="#L302">302</a>         <strong class="jxr_keyword">if</strong> (autoConnect == <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L303" href="#L303">303</a>             autoConnect = <span class="jxr_string">"false"</span>;
+<a class="jxr_linenumber" name="L304" href="#L304">304</a>         }
+<a class="jxr_linenumber" name="L305" href="#L305">305</a>         <strong class="jxr_keyword">if</strong> (<span class="jxr_string">"true"</span>.equalsIgnoreCase(autoConnect) ||
+<a class="jxr_linenumber" name="L306" href="#L306">306</a>             <span class="jxr_string">"yes"</span>.equalsIgnoreCase(autoConnect)) {
+<a class="jxr_linenumber" name="L307" href="#L307">307</a>             subscription.setAutoConnect(<strong class="jxr_keyword">true</strong>);
+<a class="jxr_linenumber" name="L308" href="#L308">308</a>         } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L309" href="#L309">309</a>             subscription.setAutoConnect(false);
+<a class="jxr_linenumber" name="L310" href="#L310">310</a>         }
+<a class="jxr_linenumber" name="L311" href="#L311">311</a>         subscription.setPassword(attributes.getValue(<span class="jxr_string">"password"</span>));
+<a class="jxr_linenumber" name="L312" href="#L312">312</a>         subscription.setType(attributes.getValue(<span class="jxr_string">"type"</span>));
+<a class="jxr_linenumber" name="L313" href="#L313">313</a>         subscription.setUsername(attributes.getValue(<span class="jxr_string">"username"</span>));
+<a class="jxr_linenumber" name="L314" href="#L314">314</a>         <strong class="jxr_keyword">return</strong> (subscription);
+<a class="jxr_linenumber" name="L315" href="#L315">315</a>     }
+<a class="jxr_linenumber" name="L316" href="#L316">316</a> 
+<a class="jxr_linenumber" name="L317" href="#L317">317</a> }
+<a class="jxr_linenumber" name="L318" href="#L318">318</a> 
+<a class="jxr_linenumber" name="L319" href="#L319">319</a> 
+<a class="jxr_linenumber" name="L320" href="#L320">320</a> <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L321" href="#L321">321</a> <em class="jxr_javadoccomment"> * Digester object creation factory for user instances.</em>
+<a class="jxr_linenumber" name="L322" href="#L322">322</a> <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L323" href="#L323">323</a> <strong class="jxr_keyword">class</strong> <a name="MemoryUserCreationFactory" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemoryUserCreationFactory">MemoryUserCreationFactory</a> <strong class="jxr_keyword">implements</strong> ObjectCreationFactory {
+<a class="jxr_linenumber" name="L324" href="#L324">324</a>     <em class="jxr_comment">// Digester3: User</em>
+<a class="jxr_linenumber" name="L325" href="#L325">325</a> 
+<a class="jxr_linenumber" name="L326" href="#L326">326</a>     <strong class="jxr_keyword">public</strong> <a name="MemoryUserCreationFactory" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemoryUserCreationFactory">MemoryUserCreationFactory</a>(<a name="MemoryUserDatabase" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemoryUserDatabase">MemoryUserDatabase</a> database) {
+<a class="jxr_linenumber" name="L327" href="#L327">327</a>         <strong class="jxr_keyword">this</strong>.database = database;
+<a class="jxr_linenumber" name="L328" href="#L328">328</a>     }
+<a class="jxr_linenumber" name="L329" href="#L329">329</a> 
+<a class="jxr_linenumber" name="L330" href="#L330">330</a>     <strong class="jxr_keyword">private</strong> <a name="MemoryUserDatabase" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemoryUserDatabase">MemoryUserDatabase</a> database = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L331" href="#L331">331</a> 
+<a class="jxr_linenumber" name="L332" href="#L332">332</a>     <strong class="jxr_keyword">private</strong> Digester digester = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L333" href="#L333">333</a> 
+<a class="jxr_linenumber" name="L334" href="#L334">334</a>     <strong class="jxr_keyword">public</strong> Digester getDigester() {
+<a class="jxr_linenumber" name="L335" href="#L335">335</a>         <strong class="jxr_keyword">return</strong> (<strong class="jxr_keyword">this</strong>.digester);
+<a class="jxr_linenumber" name="L336" href="#L336">336</a>     }
+<a class="jxr_linenumber" name="L337" href="#L337">337</a> 
+<a class="jxr_linenumber" name="L338" href="#L338">338</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setDigester(Digester digester) {
+<a class="jxr_linenumber" name="L339" href="#L339">339</a>         <strong class="jxr_keyword">this</strong>.digester = digester;
 <a class="jxr_linenumber" name="L340" href="#L340">340</a>     }
 <a class="jxr_linenumber" name="L341" href="#L341">341</a> 
-<a class="jxr_linenumber" name="L342" href="#L342">342</a> }
-<a class="jxr_linenumber" name="L343" href="#L343">343</a> 
-<a class="jxr_linenumber" name="L344" href="#L344">344</a> 
-<a class="jxr_linenumber" name="L345" href="#L345">345</a> <em class="jxr_javadoccomment">/**</em>
-<a class="jxr_linenumber" name="L346" href="#L346">346</a> <em class="jxr_javadoccomment"> * Digester object creation factory for user instances.</em>
-<a class="jxr_linenumber" name="L347" href="#L347">347</a> <em class="jxr_javadoccomment"> */</em>
-<a class="jxr_linenumber" name="L348" href="#L348">348</a> <strong class="jxr_keyword">class</strong> <a name="MemoryUserCreationFactory" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemoryUserCreationFactory">MemoryUserCreationFactory</a> <strong class="jxr_keyword">implements</strong> ObjectCreationFactory {
-<a class="jxr_linenumber" name="L349" href="#L349">349</a>     <em class="jxr_comment">// Digester3: User</em>
-<a class="jxr_linenumber" name="L350" href="#L350">350</a> 
-<a class="jxr_linenumber" name="L351" href="#L351">351</a>     <strong class="jxr_keyword">public</strong> <a name="MemoryUserCreationFactory" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemoryUserCreationFactory">MemoryUserCreationFactory</a>(<a name="MemoryUserDatabase" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemoryUserDatabase">MemoryUserDatabase</a> database) {
-<a class="jxr_linenumber" name="L352" href="#L352">352</a>         <strong class="jxr_keyword">this</strong>.database = database;
-<a class="jxr_linenumber" name="L353" href="#L353">353</a>     }
-<a class="jxr_linenumber" name="L354" href="#L354">354</a> 
-<a class="jxr_linenumber" name="L355" href="#L355">355</a>     <strong class="jxr_keyword">private</strong> <a name="MemoryUserDatabase" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/impl/memory/MemoryUserDatabase.html#MemoryUserDatabase">MemoryUserDatabase</a> database = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L356" href="#L356">356</a> 
-<a class="jxr_linenumber" name="L357" href="#L357">357</a>     <strong class="jxr_keyword">private</strong> Digester digester = <strong class="jxr_keyword">null</strong>;
-<a class="jxr_linenumber" name="L358" href="#L358">358</a> 
-<a class="jxr_linenumber" name="L359" href="#L359">359</a>     <strong class="jxr_keyword">public</strong> Digester getDigester() {
-<a class="jxr_linenumber" name="L360" href="#L360">360</a>         <strong class="jxr_keyword">return</strong> (<strong class="jxr_keyword">this</strong>.digester);
-<a class="jxr_linenumber" name="L361" href="#L361">361</a>     }
-<a class="jxr_linenumber" name="L362" href="#L362">362</a> 
-<a class="jxr_linenumber" name="L363" href="#L363">363</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> setDigester(Digester digester) {
-<a class="jxr_linenumber" name="L364" href="#L364">364</a>         <strong class="jxr_keyword">this</strong>.digester = digester;
-<a class="jxr_linenumber" name="L365" href="#L365">365</a>     }
-<a class="jxr_linenumber" name="L366" href="#L366">366</a> 
-<a class="jxr_linenumber" name="L367" href="#L367">367</a>     <strong class="jxr_keyword">public</strong> <a name="User" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/User.html#User">User</a> createObject(Attributes attributes) {
-<a class="jxr_linenumber" name="L368" href="#L368">368</a>         String username = attributes.getValue(<span class="jxr_string">"username"</span>);
-<a class="jxr_linenumber" name="L369" href="#L369">369</a>         <a name="User" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/User.html#User">User</a> user = database.createUser(username);
-<a class="jxr_linenumber" name="L370" href="#L370">370</a>         user.setFromAddress(attributes.getValue(<span class="jxr_string">"fromAddress"</span>));
-<a class="jxr_linenumber" name="L371" href="#L371">371</a>         user.setFullName(attributes.getValue(<span class="jxr_string">"fullName"</span>));
-<a class="jxr_linenumber" name="L372" href="#L372">372</a>         user.setPassword(attributes.getValue(<span class="jxr_string">"password"</span>));
-<a class="jxr_linenumber" name="L373" href="#L373">373</a>         user.setReplyToAddress(attributes.getValue(<span class="jxr_string">"replyToAddress"</span>));
-<a class="jxr_linenumber" name="L374" href="#L374">374</a>         <strong class="jxr_keyword">return</strong> (user);
-<a class="jxr_linenumber" name="L375" href="#L375">375</a>     }
-<a class="jxr_linenumber" name="L376" href="#L376">376</a> }
+<a class="jxr_linenumber" name="L342" href="#L342">342</a>     <strong class="jxr_keyword">public</strong> <a name="User" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/User.html#User">User</a> createObject(Attributes attributes) {
+<a class="jxr_linenumber" name="L343" href="#L343">343</a>         String username = attributes.getValue(<span class="jxr_string">"username"</span>);
+<a class="jxr_linenumber" name="L344" href="#L344">344</a>         <a name="User" href="../../../../../../../../org/apache/struts/apps/mailreader/dao/User.html#User">User</a> user = database.createUser(username);
+<a class="jxr_linenumber" name="L345" href="#L345">345</a>         user.setFromAddress(attributes.getValue(<span class="jxr_string">"fromAddress"</span>));
+<a class="jxr_linenumber" name="L346" href="#L346">346</a>         user.setFullName(attributes.getValue(<span class="jxr_string">"fullName"</span>));
+<a class="jxr_linenumber" name="L347" href="#L347">347</a>         user.setPassword(attributes.getValue(<span class="jxr_string">"password"</span>));
+<a class="jxr_linenumber" name="L348" href="#L348">348</a>         user.setReplyToAddress(attributes.getValue(<span class="jxr_string">"replyToAddress"</span>));
+<a class="jxr_linenumber" name="L349" href="#L349">349</a>         <strong class="jxr_keyword">return</strong> (user);
+<a class="jxr_linenumber" name="L350" href="#L350">350</a>     }
+<a class="jxr_linenumber" name="L351" href="#L351">351</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2000&#x2013;2023 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2000&#x2013;2024 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>
 </body>
 </html>

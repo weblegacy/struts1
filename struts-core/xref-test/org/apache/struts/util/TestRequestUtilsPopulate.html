@@ -231,25 +231,24 @@
 <a class="jxr_linenumber" name="L223" href="#L223">223</a>             RequestUtils.populate(mockForm, request);
 <a class="jxr_linenumber" name="L224" href="#L224">224</a> 
 <a class="jxr_linenumber" name="L225" href="#L225">225</a>             String logString = logFactory.getOutput(loggerName);
-<a class="jxr_linenumber" name="L226" href="#L226">226</a>             StringReader reader = <strong class="jxr_keyword">new</strong> StringReader(logString);
-<a class="jxr_linenumber" name="L227" href="#L227">227</a>             BufferedReader bufReader = <strong class="jxr_keyword">new</strong> BufferedReader(reader);
-<a class="jxr_linenumber" name="L228" href="#L228">228</a> 
-<a class="jxr_linenumber" name="L229" href="#L229">229</a>             String line;
-<a class="jxr_linenumber" name="L230" href="#L230">230</a>             <strong class="jxr_keyword">while</strong> ((line = bufReader.readLine()) != <strong class="jxr_keyword">null</strong>) {
-<a class="jxr_linenumber" name="L231" href="#L231">231</a>                 <strong class="jxr_keyword">int</strong> pos = line.indexOf(keyword);
-<a class="jxr_linenumber" name="L232" href="#L232">232</a>                 <strong class="jxr_keyword">if</strong> (pos &gt;= 0) {
-<a class="jxr_linenumber" name="L233" href="#L233">233</a>                     ignoreSet.add(line.substring(pos + keyword.length()));
-<a class="jxr_linenumber" name="L234" href="#L234">234</a>                 }
-<a class="jxr_linenumber" name="L235" href="#L235">235</a>             }
-<a class="jxr_linenumber" name="L236" href="#L236">236</a>         } <strong class="jxr_keyword">catch</strong>(ServletException se) {
-<a class="jxr_linenumber" name="L237" href="#L237">237</a>             fail(<span class="jxr_string">"Exception occurs: "</span>, se);
-<a class="jxr_linenumber" name="L238" href="#L238">238</a>         }
-<a class="jxr_linenumber" name="L239" href="#L239">239</a> 
-<a class="jxr_linenumber" name="L240" href="#L240">240</a>         <strong class="jxr_keyword">return</strong> ignoreSet;
-<a class="jxr_linenumber" name="L241" href="#L241">241</a>     }
-<a class="jxr_linenumber" name="L242" href="#L242">242</a> }
+<a class="jxr_linenumber" name="L226" href="#L226">226</a>             <strong class="jxr_keyword">try</strong> (BufferedReader bufReader = <strong class="jxr_keyword">new</strong> BufferedReader(<strong class="jxr_keyword">new</strong> StringReader(logString))) {
+<a class="jxr_linenumber" name="L227" href="#L227">227</a>                 String line;
+<a class="jxr_linenumber" name="L228" href="#L228">228</a>                 <strong class="jxr_keyword">while</strong> ((line = bufReader.readLine()) != <strong class="jxr_keyword">null</strong>) {
+<a class="jxr_linenumber" name="L229" href="#L229">229</a>                     <strong class="jxr_keyword">int</strong> pos = line.indexOf(keyword);
+<a class="jxr_linenumber" name="L230" href="#L230">230</a>                     <strong class="jxr_keyword">if</strong> (pos &gt;= 0) {
+<a class="jxr_linenumber" name="L231" href="#L231">231</a>                         ignoreSet.add(line.substring(pos + keyword.length()));
+<a class="jxr_linenumber" name="L232" href="#L232">232</a>                     }
+<a class="jxr_linenumber" name="L233" href="#L233">233</a>                 }
+<a class="jxr_linenumber" name="L234" href="#L234">234</a>             }
+<a class="jxr_linenumber" name="L235" href="#L235">235</a>         } <strong class="jxr_keyword">catch</strong>(ServletException se) {
+<a class="jxr_linenumber" name="L236" href="#L236">236</a>             fail(<span class="jxr_string">"Exception occurs: "</span>, se);
+<a class="jxr_linenumber" name="L237" href="#L237">237</a>         }
+<a class="jxr_linenumber" name="L238" href="#L238">238</a> 
+<a class="jxr_linenumber" name="L239" href="#L239">239</a>         <strong class="jxr_keyword">return</strong> ignoreSet;
+<a class="jxr_linenumber" name="L240" href="#L240">240</a>     }
+<a class="jxr_linenumber" name="L241" href="#L241">241</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2000&#x2013;2023 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2000&#x2013;2024 <a href="https://github.com/weblegacy">Web-Legacy</a>. All rights reserved.</div>
 </body>
 </html>

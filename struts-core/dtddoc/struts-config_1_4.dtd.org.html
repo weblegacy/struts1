@@ -576,14 +576,28 @@
 <span class="dtd_comment">                     user's session if not already present.</span>
 <span class="dtd_comment">                     [true]</span>
 
+<span class="dtd_comment">     maxSize         The maximum size (in bytes) of a complete request to be</span>
+<span class="dtd_comment">                     accepted as a file upload. Can be expressed as a number</span>
+<span class="dtd_comment">                     followed by a &quot;K&quot;, &quot;M&quot;, or &quot;G&quot;, which are interpreted to</span>
+<span class="dtd_comment">                     mean kilobytes, megabytes, or gigabytes, respectively.</span>
+<span class="dtd_comment">                     Since Struts 1.4.6.</span>
+<span class="dtd_comment">                     [&quot;250M&quot;]</span>
+
 <span class="dtd_comment">     maxFileSize     The maximum size (in bytes) of a file to be accepted as a</span>
-<span class="dtd_comment">                     file upload.  Can be expressed as a number followed by a</span>
+<span class="dtd_comment">                     file upload. Can be expressed as a number followed by a</span>
 <span class="dtd_comment">                     &quot;K&quot;, &quot;M&quot;, or &quot;G&quot;, which are interpreted to mean kilobytes,</span>
 <span class="dtd_comment">                     megabytes, or gigabytes, respectively.</span>
 <span class="dtd_comment">                     [&quot;250M&quot;]</span>
 
+<span class="dtd_comment">     maxStringLen    The maximum length (in bytes) of a string parameter in a</span>
+<span class="dtd_comment">                     multipart request. Can be expressed as a number followed by a</span>
+<span class="dtd_comment">                     &quot;K&quot;, &quot;M&quot;, or &quot;G&quot;, which are interpreted to mean kilobytes,</span>
+<span class="dtd_comment">                     megabytes, or gigabytes, respectively. Since Struts 1.4.6.</span>
+<span class="dtd_comment">                     [&quot;4K&quot;]</span>
+
 <span class="dtd_comment">     fileCountMax    The maximum permitted number of files that may be uploaded</span>
 <span class="dtd_comment">                     in a single request. A value of -1 indicates no maximum.</span>
+<span class="dtd_comment">                     Since Struts 1.4.5.</span>
 <span class="dtd_comment">                     [-1]</span>
 
 <span class="dtd_comment">     memFileSize     The maximum size (in bytes) of a file whose contents will</span>
@@ -635,7 +649,9 @@
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">forwardPattern</span><span class="dtd_plain"> </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">inputForward</span><span class="dtd_plain">   %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">locale</span><span class="dtd_plain">         %</span><span class="dtd_attribute_name">Boolean</span><span class="dtd_plain">;       </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">maxSize</span><span class="dtd_plain">        </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">maxFileSize</span><span class="dtd_plain">    </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
+<span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">maxStringLen</span><span class="dtd_plain">   </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">fileCountMax</span><span class="dtd_plain">   %</span><span class="dtd_attribute_name">Long</span><span class="dtd_plain">;          </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">memFileSize</span><span class="dtd_plain">    </span><span class="dtd_keyword">CDATA</span><span class="dtd_plain">           </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>
 <span class="dtd_tag_symbols">&lt;!</span><span class="dtd_tag_name">ATTLIST</span><span class="dtd_plain"> </span><span class="dtd_attribute_name">controller</span><span class="dtd_plain">     </span><span class="dtd_attribute_name">multipartClass</span><span class="dtd_plain"> %</span><span class="dtd_attribute_name">ClassName</span><span class="dtd_plain">;     </span><span class="dtd_keyword">#IMPLIED</span><span class="dtd_tag_symbols">&gt;</span>

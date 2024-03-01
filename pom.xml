@@ -378,7 +378,7 @@
         <mavenVersion>3.8.1</mavenVersion>
         <javaVersion>8</javaVersion>
         <javaTestVersion>8</javaTestVersion>
-        <surefireVersion>3.2.3</surefireVersion>
+        <surefireVersion>3.2.5</surefireVersion>
         <groovyVersion>4.0.17</groovyVersion>
         <seleniumVersion>4.16.1</seleniumVersion>
         <slf4jVersion>2.0.9</slf4jVersion>

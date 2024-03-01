@@ -2,6 +2,7 @@
 
 ## 1.5.0-RC2 / YYYY-MM-DD
 
+* Bump `groovy` from 4.0.17 to 4.0.18
 * Bump `maven-failsafe/surefire-[report]-plugin` from 3.2.3 to 3.2.5
 * Security - Digester: Resolving XML external entity in user-controlled data
 * Fix for `CVE-2023-49735` Apache Tiles: Unvalidated input may lead to path traversal and XXE

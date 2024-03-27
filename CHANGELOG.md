@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Set Version to 1.5.0-SNAPSHOT
 * Update documentation to version 1.5.0
 
 ## 1.5.0-RC2 / 2024-03-01

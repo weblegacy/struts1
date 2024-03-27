@@ -139,6 +139,7 @@
 <h4>Task</h4>
 <ul>
 <li>Update documentation to version 1.5.0</li>
+<li>Set Version to 1.5.0-SNAPSHOT</li>
 <li>With <strong>Release Candidate 1 &amp; 2</strong>:
     <ul>
         <li>Add example for multiple-file-upload</li>
@@ -171,7 +172,6 @@
         <li>Upgrade &quot;servlet-api&quot; from to 4.0.4 to 5.0.0</li>
         <li>Use &quot;tomcat&quot; 10.0.27 instead 9.0.68 for integration-tests</li>
         <li>Update &quot;README.md&quot; to version 1.5.0-RC2</li>
-        <li>Set Version to 1.5.0-RC2</li>
     </ul>
 </li>
 </ul>

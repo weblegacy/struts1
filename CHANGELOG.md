@@ -1,5 +1,9 @@
 # Changes
 
+## 1.5.0 / YYYY-MM-DD
+
+* Update documentation to version 1.5.0
+
 ## 1.5.0-RC2 / 2024-03-01
 
 * Set Version to 1.5.0-RC2

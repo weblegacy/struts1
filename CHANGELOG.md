@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Tiles: Correct `I18nFactorySet.initFactory` under windows
 * Set Version to 1.5.0-SNAPSHOT
 * Update documentation to version 1.5.0
 

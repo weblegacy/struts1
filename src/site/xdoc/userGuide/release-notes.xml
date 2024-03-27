@@ -97,6 +97,7 @@
             <subsection name="Issue Tracking" id="Highlight">
 <h4>Bug</h4>
 <ul>
+<li>Tiles: Correct &quot;I18nFactorySet.initFactory&quot; under windows</li>
 <li>With <strong>Release Candidate 1 &amp; 2</strong>:
     <ul>
         <li>Skip &quot;bnd-maven-pluin&quot; in integration-tests</li>

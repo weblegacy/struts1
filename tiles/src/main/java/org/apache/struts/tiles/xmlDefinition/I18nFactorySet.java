@@ -244,7 +244,7 @@ public class I18nFactorySet extends FactorySet {
             try {
                 final Path p = Paths.get(fn).normalize();
                 if (p.toString().charAt(0) != '.') {
-                    this.filenames.add(p.toString());
+                    this.filenames.add(fn);
                 } else {
                     log.warn("Factory initialization - path not normalized '{}'", p.toString());
                 }

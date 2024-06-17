@@ -59,9 +59,6 @@ public abstract class AbstractPopulateActionForm extends ActionCommandBase {
         ActionConfig actionConfig = actionCtx.getActionConfig();
         ActionForm actionForm = actionCtx.getActionForm();
 
-        // First determine if the request was cancelled
-        handleCancel(actionCtx, actionConfig, actionForm);
-
         // Is there a form bean for this request?
         if (actionForm == null) {
             return (false);
@@ -78,6 +75,9 @@ public abstract class AbstractPopulateActionForm extends ActionCommandBase {
             log.debug("Populating form bean '{}'", actionConfig.getName());
             populate(actionCtx, actionConfig, actionForm);
         }
+
+        // Always handle cancel last, as it needs populate first
+        handleCancel(actionCtx, actionConfig, actionForm);
 
         return CONTINUE_PROCESSING;
     }

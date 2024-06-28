@@ -25,9 +25,13 @@ import java.util.Map;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.chain.contexts.ActionContext;
+import org.apache.struts.chain.contexts.ServletActionContext;
 import org.apache.struts.config.ActionConfig;
+import org.apache.struts.util.RequestUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 /**
  * <p>Populate the form bean (if any) for this request.</p>
@@ -59,25 +63,41 @@ public abstract class AbstractPopulateActionForm extends ActionCommandBase {
         ActionConfig actionConfig = actionCtx.getActionConfig();
         ActionForm actionForm = actionCtx.getActionForm();
 
-        // Is there a form bean for this request?
-        if (actionForm == null) {
-            return (false);
-        }
+        ServletActionContext saContext = (ServletActionContext) actionCtx;
+        HttpServletRequest request = saContext.getRequest();
+        boolean isRequestMultipartPost =
+                RequestUtils.isRequestMultipartPost(request);
 
-        // Reset the form bean only if configured so
-        if (isReset(actionCtx, actionConfig)) {
+        if (isRequestMultipartPost) {
+            // Processing for multipart-post-requests
             log.debug("Reseting form bean '{}'",  actionConfig.getName());
             reset(actionCtx, actionConfig, actionForm);
-        }
 
-        // Populate the form bean only if configured so
-        if (isPopulate(actionCtx, actionConfig)) {
             log.debug("Populating form bean '{}'", actionConfig.getName());
             populate(actionCtx, actionConfig, actionForm);
-        }
 
-        // Always handle cancel last, as it needs populate first
-        handleCancel(actionCtx, actionConfig, actionForm);
+            handleCancel(actionCtx, actionConfig, actionForm);
+        } else {
+            // First determine if the request was cancelled
+            handleCancel(actionCtx, actionConfig, actionForm);
+
+            // Is there a form bean for this request?
+            if (actionForm == null) {
+                return CONTINUE_PROCESSING;
+            }
+
+            // Reset the form bean only if configured so
+            if (isReset(actionCtx, actionConfig)) {
+                log.debug("Reseting form bean '{}'",  actionConfig.getName());
+                reset(actionCtx, actionConfig, actionForm);
+            }
+
+            // Populate the form bean only if configured so
+            if (isRequestMultipartPost || isPopulate(actionCtx, actionConfig)) {
+                log.debug("Populating form bean '{}'", actionConfig.getName());
+                populate(actionCtx, actionConfig, actionForm);
+            }
+        }
 
         return CONTINUE_PROCESSING;
     }

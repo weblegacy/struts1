@@ -392,8 +392,6 @@ public class RequestUtils {
         // Map for multipart parameters
         Map<String, Object> multipartParameters = null;
 
-        String contentType = request.getContentType();
-        String method = request.getMethod();
         boolean isMultipart = false;
 
         if (bean instanceof ActionForm) {
@@ -401,15 +399,13 @@ public class RequestUtils {
         }
 
         MultipartRequestHandler multipartHandler = null;
-        if ((contentType != null)
-            && (contentType.startsWith("multipart/form-data"))
-            && (method.equalsIgnoreCase("POST"))) {
+        if (isRequestMultipartPost(request)) {
             // Get the ActionServletWrapper from the form bean
-            ActionServletWrapper servlet;
+            ActionServletWrapper servlet = null;
 
             if (bean instanceof ActionForm) {
                 servlet = ((ActionForm) bean).getServletWrapper();
-            } else {
+            } else if (bean != null) {
                 throw new ServletException("bean that's supposed to be "
                     + "populated from a multipart request is not of type "
                     + "\"org.apache.struts.action.ActionForm\", but type "
@@ -422,13 +418,19 @@ public class RequestUtils {
             if (multipartHandler != null) {
                 isMultipart = true;
 
-                // Set servlet and mapping info
-                servlet.setServletFor(multipartHandler);
                 multipartHandler.setMapping((ActionMapping) request
                     .getAttribute(Globals.MAPPING_KEY));
 
                 // Initialize multipart request class handler
                 multipartHandler.handleRequest(request);
+
+                if (servlet == null) {
+                    multipartHandler.rollback();
+                    return;
+                }
+
+                // Set servlet and mapping info
+                servlet.setServletFor(multipartHandler);
 
                 //stop here if the maximum length has been exceeded
                 Boolean maxLengthExceeded =
@@ -436,6 +438,7 @@ public class RequestUtils {
 
                 if ((maxLengthExceeded != null)
                     && (maxLengthExceeded.booleanValue())) {
+
                     ((ActionForm) bean).setMultipartRequestHandler(multipartHandler);
                     return;
                 }
@@ -452,6 +455,7 @@ public class RequestUtils {
             names = request.getParameterNames();
         }
 
+        boolean isNotCancelled = true;
         while (names.hasMoreElements()) {
             String name = names.nextElement();
             String stripped = name;
@@ -494,12 +498,21 @@ public class RequestUtils {
             // such as 'org.apache.struts.action.CANCEL'
             if (!(stripped.startsWith("org.apache.struts."))) {
                 properties.put(stripped, parameterValue);
+            } else
+                // Test the cancellation attribute
+                if (Globals.CANCEL_PROPERTY.equals(stripped)
+                || Globals.CANCEL_PROPERTY_X.equals(stripped)) {
+
+                isNotCancelled = false;
+                break;
             }
         }
 
         // Set the corresponding properties of our bean
         try {
-            BeanUtils.populate(bean, properties);
+            if (isNotCancelled) {
+                BeanUtils.populate(bean, properties);
+            }
         } catch (Exception e) {
             throw new ServletException("BeanUtils.populate", e);
         } finally {
@@ -1196,5 +1209,24 @@ public class RequestUtils {
      */
     public static boolean isRequestChained(HttpServletRequest request) {
         return (request.getAttribute(Globals.CHAIN_KEY) != null);
+    }
+
+    /**
+     * Verifies whether the current request is a multipart-post-request.
+     *
+     * @param request current HTTP request
+     *
+     * @return {@code true} if the request is a multipart-post-request;
+     *         otherwise {@code false}
+     *
+     * @since Struts 1.5
+     */
+    public static boolean isRequestMultipartPost(HttpServletRequest request) {
+        final String contentType = request.getContentType();
+        final String method = request.getMethod();
+
+        return contentType != null
+            && contentType.startsWith("multipart/form-data")
+            && method.equalsIgnoreCase("POST");
     }
 }

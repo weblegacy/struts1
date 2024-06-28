@@ -55,10 +55,13 @@ public class PopulateActionForm extends AbstractPopulateActionForm {
 
     protected void reset(ActionContext context, ActionConfig actionConfig,
         ActionForm actionForm) {
+
         ServletActionContext saContext = (ServletActionContext) context;
         HttpServletRequest request = saContext.getRequest();
 
-        actionForm.reset((ActionMapping) actionConfig, request);
+        if (actionForm != null) {
+            actionForm.reset((ActionMapping) actionConfig, request);
+        }
 
         // Set the multipart class
         if (actionConfig.getMultipartClass() != null) {

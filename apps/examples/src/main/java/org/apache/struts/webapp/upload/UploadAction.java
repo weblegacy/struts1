@@ -28,14 +28,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-
 import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.upload.FormFile;
+
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 
 
@@ -59,8 +59,12 @@ public class UploadAction extends Action
                                  HttpServletResponse response)
         throws Exception {
 
-        if (form instanceof UploadForm) {
+        // Was this transaction cancelled?
+        if (isCancelled(request)) {
+            return mapping.findForward("home");
+        }
 
+        if (form instanceof UploadForm) {
             //this line is here for when the input page is upload-utf8.jsp,
             //it sets the correct character encoding for the response
             String encoding = request.getCharacterEncoding();
@@ -150,8 +154,8 @@ public class UploadAction extends Action
             request.setAttribute("size", size);
             request.setAttribute("data", data);
 
-            //destroy the temporary file created
-            file.destroy();
+            //destroy temporary files
+            form.getMultipartRequestHandler().finish();
 
             //return a forward to display.jsp
             return mapping.findForward("display");

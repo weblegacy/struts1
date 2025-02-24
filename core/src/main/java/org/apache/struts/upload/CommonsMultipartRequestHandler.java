@@ -190,6 +190,9 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
         // Set the location for saving data on disk.
         factory.setFile(getRepositoryFile(ac));
 
+        // Sets the character encoding to be used
+        factory.setCharset(Charset.forName(request.getCharacterEncoding()));
+
         // Create a new file upload handler
         JakartaServletFileUpload<DiskFileItem, DiskFileItemFactory> upload = new JakartaServletFileUpload<>(factory.get());
 

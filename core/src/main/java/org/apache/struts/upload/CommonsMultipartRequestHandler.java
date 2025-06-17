@@ -41,7 +41,7 @@ import org.apache.commons.fileupload2.core.FileUploadByteCountLimitException;
 import org.apache.commons.fileupload2.core.FileUploadException;
 import org.apache.commons.fileupload2.core.FileUploadFileCountLimitException;
 import org.apache.commons.fileupload2.core.FileUploadSizeException;
-import org.apache.commons.fileupload2.jakarta.JakartaServletFileUpload;
+import org.apache.commons.fileupload2.jakarta.servlet5.JakartaServletFileUpload;
 import org.apache.struts.Globals;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionServlet;
@@ -578,8 +578,13 @@ public class CommonsMultipartRequestHandler implements MultipartRequestHandler {
             return item.getString(StandardCharsets.ISO_8859_1);
         } catch (IOException e) {
             log.info("FileItem-getString", e);
-            return item.getString();
+            try {
+                return item.getString();
+            } catch (IOException ex) {
+                log.info("FileItem-getString with default encoding", e);
+            }
         }
+        return null;
     }
 
     /**

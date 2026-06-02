@@ -139,6 +139,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;cargo-maven3-plugin&quot; from 1.10.12 to 1.10.27</li>
 <li>Bump &quot;antlr&quot; and &quot;antlr4-maven-plugin&quot; from 4.13.1 to 4.13.2</li>
 <li>Bump &quot;taglib-maven-plugin&quot; from 2.6 to 3.0.1</li>
 <li>Bump &quot;bnd-maven-plugin&quot; from 7.0.0 to 7.2.3</li>

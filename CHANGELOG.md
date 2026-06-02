@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `maven-checkstyle-plugin` from 3.3.1 to 3.6.0
 * Bump `maven-changes-plugin` from 2.12.1 to 3.0.0-M3 and migrate `changes.xml`
 * Bump `maven-assembly-plugin` from 3.6.0 to 3.8.0
 * Bump `maven-antrun-plugin` from 3.1.0 to 3.2.0

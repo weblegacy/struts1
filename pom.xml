@@ -763,7 +763,7 @@
                 <plugin>
                     <groupId>biz.aQute.bnd</groupId>
                     <artifactId>bnd-maven-plugin</artifactId>
-                    <version>7.0.0</version>
+                    <version>7.2.3</version>
                 </plugin>
                 <plugin>
                     <groupId>net.sf.dtddoc</groupId>

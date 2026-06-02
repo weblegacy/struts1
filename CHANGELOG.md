@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `htmlunit` from 3.11.0 to 5.1.0
 * Bump `commons-validator` from 1.8.0 to 1.10.1
 * Bump `commons-io` from 2.15.1 to 2.22.0
 * Bump `commons-beanutils` from 1.9.4 to 1.11.0

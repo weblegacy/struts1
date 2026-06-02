@@ -1157,7 +1157,7 @@
             <dependency>
                 <groupId>org.htmlunit</groupId>
                 <artifactId>htmlunit</artifactId>
-                <version>3.11.0</version>
+                <version>5.1.0</version>
                 <scope>test</scope>
                 <exclusions>
                     <exclusion>

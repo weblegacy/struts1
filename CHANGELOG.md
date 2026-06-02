@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `groovy-jsr223` from 4.0.18 to 4.0.32
 * Bump `webdrivermanager` from 5.7.0 to 6.3.4
 * Bump `spotbugs-annotations` from 4.8.3 to 4.9.8
 * Bump `htmlunit` from 3.11.0 to 5.1.0

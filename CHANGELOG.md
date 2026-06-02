@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `jaxb-runtime` from 2.3.9 to 3.0.2
 * Bump `slf4j-api`, `slf4j-simple` and `jcl-over-slf4j` from 2.0.12 to 2.0.18
 * Bump `selenium-api` and `selenium-java` from 4.18.1 to 4.44.0
 * Bump `groovy-jsr223` from 4.0.18 to 4.0.32

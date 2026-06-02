@@ -139,6 +139,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;jaxb-runtime&quot; from 2.3.9 to 3.0.2</li>
 <li>Bump &quot;slf4j-api&quot;, &quot;slf4j-simple&quot; and &quot;jcl-over-slf4j&quot; from 2.0.12 to 2.0.18</li>
 <li>Bump &quot;selenium-api&quot; and &quot;selenium-java&quot; from 4.18.1 to 4.44.0</li>
 <li>Bump &quot;groovy-jsr223&quot; from 4.0.18 to 4.0.32</li>

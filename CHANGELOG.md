@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `commons-io` from 2.15.1 to 2.22.0
 * Bump `commons-beanutils` from 1.9.4 to 1.11.0
 * Bump `versions-maven-plugin` from 2.16.2 to 2.21.0
 * Bump `cargo-maven3-plugin` from 1.10.12 to 1.10.27

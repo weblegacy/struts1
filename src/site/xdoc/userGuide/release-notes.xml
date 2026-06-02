@@ -139,6 +139,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;commons-io&quot; from 2.15.1 to 2.22.0</li>
 <li>Bump &quot;commons-beanutils&quot; from 1.9.4 to 1.11.0</li>
 <li>Bump &quot;versions-maven3-plugin&quot; from 2.16.2 to 2.21.0</li>
 <li>Bump &quot;cargo-maven3-plugin&quot; from 1.10.12 to 1.10.27</li>

@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `commons-beanutils` from 1.9.4 to 1.11.0
 * Bump `versions-maven-plugin` from 2.16.2 to 2.21.0
 * Bump `cargo-maven3-plugin` from 1.10.12 to 1.10.27
 * Bump `antlr` and `antlr4-maven-plugin` from 4.13.1 to 4.13.2

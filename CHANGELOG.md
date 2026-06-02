@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `junit-jupiter-api` from 5.10.2 to 6.1.0
 * Bump `jaxb-runtime` from 2.3.9 to 3.0.2
 * Bump `slf4j-api`, `slf4j-simple` and `jcl-over-slf4j` from 2.0.12 to 2.0.18
 * Bump `selenium-api` and `selenium-java` from 4.18.1 to 4.44.0

@@ -139,6 +139,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;spotbugs-annotations&quot; from 4.8.3 to 4.9.8</li>
 <li>Bump &quot;htmlunit&quot; from 3.11.0 to 5.1.0</li>
 <li>Bump &quot;commons-validator&quot; from 1.8.0 to 1.10.1</li>
 <li>Bump &quot;commons-io&quot; from 2.15.1 to 2.22.0</li>

@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `maven-scm-publish-plugin` from 3.2.1 to 3.3.0
 * Bump `maven-resources-plugin` from 3.3.1 to 3.5.0
 * Bump `maven-javadoc-plugin` from 3.6.3 to 3.12.0
 * Bump `maven-install-plugin` from 3.1.1 to 3.1.4

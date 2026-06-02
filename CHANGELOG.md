@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `webdrivermanager` from 5.7.0 to 6.3.4
 * Bump `spotbugs-annotations` from 4.8.3 to 4.9.8
 * Bump `htmlunit` from 3.11.0 to 5.1.0
 * Bump `commons-validator` from 1.8.0 to 1.10.1

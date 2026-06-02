@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `maven-antrun-plugin` from 3.1.0 to 3.2.0
 * Tiles: Correct `I18nFactorySet.initFactory` under windows
 * Set Version to 1.5.0-SNAPSHOT
 * Update documentation to version 1.5.0

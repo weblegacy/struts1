@@ -139,6 +139,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;maven-deploy-plugin&quot; from 3.1.1 to 3.1.4</li>
 <li>Bump &quot;maven-dependency-plugin&quot; from 3.6.1 to 3.11.0</li>
 <li>Bump &quot;maven-compiler-plugin&quot; from 3.12.1 to 3.15.0</li>
 <li>Bump &quot;maven-clean-plugin&quot; from 3.3.2 to 3.5.0</li>

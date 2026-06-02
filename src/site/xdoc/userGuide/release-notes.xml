@@ -139,6 +139,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;maven-jar-plugin&quot; from 3.3.0 to 3.5.0</li>
 <li>Bump &quot;maven-source-plugin&quot; from 3.3.0 to 3.4.0</li>
 <li>Bump &quot;maven-site-plugin&quot; from 3.12.1 to 3.22.0</li>
 <li>Bump &quot;maven-scm-publish-plugin&quot; from 3.2.1 to 3.3.0</li>

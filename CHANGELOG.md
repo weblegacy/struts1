@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `taglib-maven-plugin` from 2.6 to 3.0.1
 * Bump `bnd-maven-plugin` from 7.0.0 to 7.2.3
 * Bump `maven-failsafe/surefire-[report]-plugin` from 3.2.5 to 3.5.6
 * Bump `maven-war-plugin` from 3.4.0 to 3.5.1

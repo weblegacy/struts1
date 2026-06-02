@@ -139,6 +139,7 @@
 
 <h4>Task</h4>
 <ul>
+<li>Bump &quot;taglib-maven-plugin&quot; from 2.6 to 3.0.1</li>
 <li>Bump &quot;bnd-maven-plugin&quot; from 7.0.0 to 7.2.3</li>
 <li>Bump &quot;maven-failsafe/surefire-[report]-plugin&quot; from 3.2.5 to 3.5.6</li>
 <li>Bump &quot;maven-war-plugin&quot; from 3.4.0 to 3.5.1</li>

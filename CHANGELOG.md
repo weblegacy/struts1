@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Migrate `maven-changes-plugin` configuration
 * Generate Taglib-Documentation
 * Migrate `site.xml`
 * Bump `maven-fluido-skin` from 1.12.0 to 2.1.0 and move version to POM

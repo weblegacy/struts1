@@ -79,12 +79,9 @@
                <artifactId>maven-failsafe-plugin</artifactId>
                <configuration>
                   <runOrder>alphabetical</runOrder>
-                  <systemProperties>
-                     <property>
-                        <name>cargo.servlet.port</name>
-                        <value>${cargo.servlet.port}</value>
-                     </property>
-                  </systemProperties>
+                  <systemPropertyVariables>
+                      <cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
+                  </systemPropertyVariables>
                </configuration>
                <executions>
                   <execution>

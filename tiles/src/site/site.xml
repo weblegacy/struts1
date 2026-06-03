@@ -17,31 +17,51 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd"
-  name="Struts Tiles">
-    <bannerLeft>
-        <name>Apache Software Foundation</name>
-        <src>../images/asf-logo.png</src>
-        <href>https://www.apache.org/</href>
+<site xmlns="http://maven.apache.org/SITE/2.0.0" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SITE/2.0.0 https://maven.apache.org/xsd/site-2.0.0.xsd"
+      name="${project.name}">
+
+    <bannerLeft name="Apache Software Foundation" href="https://www.apache.org/">
+        <image src="../images/asf-logo.png" />
     </bannerLeft>
-    <bannerRight>
-        <name>Apache Struts</name>
-        <src>../images/struts.png</src>
-        <href>https://struts.apache.org/index.html</href>
+
+    <bannerRight name="Apache Struts" href="https://struts.apache.org/index.html">
+        <image src="../images/struts.png" />
     </bannerRight>
+
     <body>
+
         <links>
-            <item name="Apache" href="https://www.apache.org/" />
-            <item name="Struts" href="https://struts.apache.org/index.html" />
+
+            <item   name="Apache"
+                    href="https://www.apache.org/" />
+
+            <item   name="Struts"
+                    href="https://struts.apache.org/index.html" />
+
         </links>
-        <menu name="Struts Tiles">
-            <item href="index.html" name="Welcome"/>
-            <item href="faq.html" name="FAQ"/>
-            <item href="installation.html" name="Installation"/>
-            <item href="userGuide.html" name="User Guide"/>
-            <item href="examples.html" name="Creating Templates"/>
-            <item href="tagreference.html" name="Taglib Reference"/>
+
+        <menu name="${project.name}">
+
+            <item   name="Welcome"
+                    href="index.html" />
+
+            <item   name="FAQ"
+                    href="faq.html" />
+
+            <item   name="Installation"
+                    href="installation.html" />
+
+            <item   name="User Guide"
+                    href="userGuide.html" />
+
+            <item   name="Creating Templates"
+                    href="examples.html" />
+
+            <item   name="Taglib Reference"
+                    href="tagreference.html" />
+
         </menu>
 
         <menu name="Components">
@@ -76,13 +96,16 @@
         </menu>
 
         <menu name="Quick Links">
-            <item
-                    name="Javadoc"
-                    href="apidocs/index.html"/>
-            <item
-                    name="Struts 1"
-                    href="../index.html"/>
+
+            <item   name="Javadoc"
+                    href="apidocs/index.html" />
+
+            <item   name="Struts 1"
+                    href="../index.html" />
+
         </menu>
+
         <menu ref="reports"/>
+
     </body>
-</project>
+</site>

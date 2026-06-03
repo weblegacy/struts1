@@ -2,6 +2,52 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Resolve some warnings from `maven-javadoc-plugin`
+* Migrate `maven-failsafe-plugin` configuration
+* Migrate `maven-changes-plugin` configuration
+* Generate Taglib-Documentation
+* Migrate `site.xml`
+* Bump `maven-fluido-skin` from 1.12.0 to 2.1.0 and move version to POM
+* Bump `junit-jupiter-api` from 5.10.2 to 6.1.0
+* Bump `jaxb-runtime` from 2.3.9 to 3.0.2
+* Bump `slf4j-api`, `slf4j-simple` and `jcl-over-slf4j` from 2.0.12 to 2.0.18
+* Bump `selenium-api` and `selenium-java` from 4.18.1 to 4.44.0
+* Bump `groovy-jsr223` from 4.0.18 to 4.0.32
+* Bump `webdrivermanager` from 5.7.0 to 6.3.4
+* Bump `spotbugs-annotations` from 4.8.3 to 4.9.8
+* Bump `htmlunit` from 3.11.0 to 5.1.0
+* Bump `commons-validator` from 1.8.0 to 1.10.1
+* Bump `commons-io` from 2.15.1 to 2.22.0
+* Bump `commons-beanutils` from 1.9.4 to 1.11.0
+* Bump `versions-maven-plugin` from 2.16.2 to 2.21.0
+* Bump `cargo-maven3-plugin` from 1.10.12 to 1.10.27
+* Bump `antlr` and `antlr4-maven-plugin` from 4.13.1 to 4.13.2
+* Bump `taglib-maven-plugin` from 2.6 to 3.0.1
+* Bump `bnd-maven-plugin` from 7.0.0 to 7.2.3
+* Bump `maven-failsafe/surefire-[report]-plugin` from 3.2.5 to 3.5.6
+* Bump `maven-war-plugin` from 3.4.0 to 3.5.1
+* Bump `maven-release-plugin` from 3.0.1 to 3.3.1
+* Bump `maven-project-info-reports-plugin` from 3.5.0 to 3.9.0
+* Bump `maven-pmd-plugin` from 3.21.2 to 3.28.0
+* Bump `maven-jxr-plugin` from 3.3.2 to 3.6.0
+* Bump `maven-jar-plugin` from 3.3.0 to 3.5.0
+* Bump `maven-source-plugin` from 3.3.0 to 3.4.0
+* Bump `maven-site-plugin` from 3.12.1 to 3.22.0
+* Bump `maven-scm-publish-plugin` from 3.2.1 to 3.3.0
+* Bump `maven-resources-plugin` from 3.3.1 to 3.5.0
+* Bump `maven-javadoc-plugin` from 3.6.3 to 3.12.0
+* Bump `maven-install-plugin` from 3.1.1 to 3.1.4
+* Bump `maven-gpg-plugin` from 3.1.0 to 3.2.8
+* Bump `maven-enforcer-plugin` from 3.4.1 to 3.6.3
+* Bump `maven-deploy-plugin` from 3.1.1 to 3.1.4
+* Bump `maven-dependency-plugin` from 3.6.1 to 3.11.0
+* Bump `maven-compiler-plugin` from 3.12.1 to 3.15.0
+* Bump `maven-clean-plugin` from 3.3.2 to 3.5.0
+* Bump `checkstyle` from 10.14.0 to 13.5.0
+* Bump `maven-checkstyle-plugin` from 3.3.1 to 3.6.0
+* Bump `maven-changes-plugin` from 2.12.1 to 3.0.0-M3 and migrate `changes.xml`
+* Bump `maven-assembly-plugin` from 3.6.0 to 3.8.0
+* Bump `maven-antrun-plugin` from 3.1.0 to 3.2.0
 * Tiles: Correct `I18nFactorySet.initFactory` under windows
 * Set Version to 1.5.0-SNAPSHOT
 * Update documentation to version 1.5.0

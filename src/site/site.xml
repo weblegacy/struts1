@@ -17,89 +17,89 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd"
- name="Struts 1">
-    <bannerLeft>
-        <name>Apache Software Foundation</name>
-        <src>images/asf-logo.png</src>
-        <href>https://www.apache.org/</href>
+<site xmlns="http://maven.apache.org/SITE/2.0.0" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SITE/2.0.0 https://maven.apache.org/xsd/site-2.0.0.xsd"
+      name="${project.name}">
+
+    <bannerLeft name="Apache Software Foundation" href="https://www.apache.org/">
+        <image src="images/asf-logo.png" />
     </bannerLeft>
-    <bannerRight>
-        <name>Apache Struts</name>
-        <src>images/struts.png</src>
-        <href>https://struts.apache.org/index.html</href>
+
+    <bannerRight name="Apache Struts" href="https://struts.apache.org/index.html">
+        <image src="images/struts.png" />
     </bannerRight>
+
     <skin>
         <groupId>org.apache.maven.skins</groupId>
         <artifactId>maven-fluido-skin</artifactId>
-        <version>1.12.0</version>
+        <version>${fludioVersion}</version>
     </skin>
+
     <body>
+
         <links>
-            <item name="Apache" href="https://www.apache.org/" />
-            <item name="Struts" href="https://struts.apache.org/index.html" />
+
+            <item   name="Apache"
+                    href="https://www.apache.org/" />
+
+            <item   name="Struts"
+                    href="https://struts.apache.org/index.html" />
+
         </links>
-        <menu name="Struts 1">
-            <item
-                    name="Welcome"
-                    href="index.html"
-                    />
-            <item
-                    name="Learning"
-                    href="learning.html"
-                    />
-            <item
-                    name="Roadmap"
-                    href="roadmap.html"
-                    />
-            <item
-                    name="Releases"
-                    href="https://github.com/weblegacy/struts1/releases"/>
-            <item
-                    name="Thanks!"
-                    href="https://www.apache.org/foundation/thanks.html"/>
-            <item
-                    name="Sponsorship"
-                    href="https://www.apache.org/foundation/sponsorship.html"/>
+
+        <menu name="${project.name}">
+
+            <item   name="Welcome"
+                    href="index.html" />
+
+            <item   name="Learning"
+                    href="learning.html" />
+
+            <item   name="Roadmap"
+                    href="roadmap.html" />
+
+            <item   name="Releases"
+                    href="https://github.com/weblegacy/struts1/releases" />
+
+            <item   name="Thanks!"
+                    href="https://www.apache.org/foundation/thanks.html" />
+
+            <item   name="Sponsorship"
+                    href="https://www.apache.org/foundation/sponsorship.html" />
+
         </menu>
 
         <menu name="Documentation">
-            <item
-                    name="User Guide"
-                    href="userGuide/index.html"
-                    />
-            <item
-                    name="FAQs and HOWTOs"
-                    href="faqs/index.html"
-                    />
-            <item
-                    name="Release Notes"
-                    href="userGuide/release-notes.html"
-                    />
-            <item
-                    name="Javadoc"
-                    href="apidocs/index.html"
-                    />
-            <item
-                    name="DTDDoc"
-                    href="dtddoc/index.html"
-                    />
+
+            <item   name="User Guide"
+                    href="userGuide/index.html" />
+
+            <item   name="FAQs and HOWTOs"
+                    href="faqs/index.html" />
+
+            <item   name="Release Notes"
+                    href="userGuide/release-notes.html" />
+
+            <item   name="Javadoc"
+                    href="apidocs/index.html" />
+
+            <item   name="DTDDoc"
+                    href="dtddoc/index.html" />
+
         </menu>
 
         <menu name="Support">
-            <item
-                    name="User Mailing List"
-                    href="https://struts.apache.org/mail.html"
-                    />
-            <item
-                    name="Issue Tracker (JIRA)"
-                    href="https://issues.apache.org/jira/browse/WW"
-                    />
-            <item
-                    name="Wiki Pages"
-                    href="https://cwiki.apache.org/confluence/display/WW/Home"
-                    />
+
+            <item   name="User Mailing List"
+                    href="https://struts.apache.org/mail.html" />
+
+            <item   name="Issue Tracker (JIRA)"
+                    href="https://issues.apache.org/jira/browse/WW" />
+
+            <item   name="Wiki Pages"
+                    href="https://cwiki.apache.org/confluence/display/WW/Home" />
+
         </menu>
 
         <menu name="Components">
@@ -134,5 +134,6 @@
         </menu>
 
         <menu ref="reports"/>
+
     </body>
-</project>
+</site>

@@ -52,20 +52,6 @@
         </dependency>
     </dependencies>
 
-   <!--
-   <reporting>
-      <plugins>
-         <plugin>
-            <groupId>io.github.weblegacy</groupId>
-            <artifactId>taglib-maven-plugin</artifactId>
-            <configuration>
-               <srcDir>${project.basedir}/src/tld</srcDir>
-            </configuration>
-         </plugin>
-      </plugins>
-   </reporting>
-   -->
-
      <profiles>
        <profile>
         <id>pre-assembly</id>
@@ -109,14 +95,11 @@
           <reportSets>
             <reportSet>
               <configuration>
-                <githubAPIScheme>https</githubAPIScheme>
-                <githubAPIPort>443</githubAPIPort>
-                <teamlist>team.html</teamlist>
                 <onlyMilestoneIssues>false</onlyMilestoneIssues>
               </configuration>
               <reports>
-                <report>changes-report</report>
-                <report>github-report</report>
+                <report>changes</report>
+                <report>github-changes</report>
               </reports>
             </reportSet>
           </reportSets>

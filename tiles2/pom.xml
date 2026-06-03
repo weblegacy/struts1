@@ -31,7 +31,7 @@
    <modelVersion>4.0.0</modelVersion>
    <artifactId>struts-tiles2</artifactId>
    <packaging>jar</packaging>
-   <name>Struts Tiles 2 integration</name>
+   <name>Struts Tiles 2</name>
 
    <properties>
        <struts.osgi.symbolicName>org.apache.struts.tiles2</struts.osgi.symbolicName>
@@ -95,20 +95,6 @@
          <artifactId>jcl-over-slf4j</artifactId>
       </dependency>
    </dependencies>
-<!--
-   <reporting>
-      <plugins>
-         <plugin>
-            <groupId>io.github.weblegacy</groupId>
-            <artifactId>taglib-maven-plugin</artifactId>
-            <configuration>
-               <srcDir>${project.basedir}/src/main/resources/META-INF/tld</srcDir>
-               <parseHtml>true</parseHtml>
-            </configuration>
-         </plugin>
-      </plugins>
-   </reporting>
--->
    <profiles>
        <profile>
         <id>pre-assembly</id>

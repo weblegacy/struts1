@@ -117,6 +117,8 @@
 
 <h4>Improvement</h4>
 <ul>
+<li>Resolve some warnings from &quot;maven-javadoc-plugin&quot;</li>
+<li>Generate Taglib-Documentation</li>
 <li>With <strong>Release Candidate 1 &amp; 2</strong>:
     <ul>
         <li>Replace &quot;maven-bundle-plugin&quot; 5.1.9 with &quot;bnd-maven-plugin&quot; 7.0.0</li>
@@ -139,6 +141,50 @@
 
 <h4>Task</h4>
 <ul>
+<li>Migrate &quot;maven-failsafe-plugin&quot; configuration</li>
+<li>Migrate &quot;maven-changes-plugin&quot; configuration</li>
+<li>Migrate &quot;site.xml&quot;</li>
+<li>Bump &quot;maven-fluido-skin&quot; from 1.12.0 to 2.1.0 and move version to POM</li>
+<li>Bump &quot;junit-jupiter-api&quot; from 5.10.2 to 6.1.0</li>
+<li>Bump &quot;jaxb-runtime&quot; from 2.3.9 to 3.0.2</li>
+<li>Bump &quot;slf4j-api&quot;, &quot;slf4j-simple&quot; and &quot;jcl-over-slf4j&quot; from 2.0.12 to 2.0.18</li>
+<li>Bump &quot;selenium-api&quot; and &quot;selenium-java&quot; from 4.18.1 to 4.44.0</li>
+<li>Bump &quot;groovy-jsr223&quot; from 4.0.18 to 4.0.32</li>
+<li>Bump &quot;webdrivermanager&quot; from 5.7.0 to 6.3.4</li>
+<li>Bump &quot;spotbugs-annotations&quot; from 4.8.3 to 4.9.8</li>
+<li>Bump &quot;htmlunit&quot; from 3.11.0 to 5.1.0</li>
+<li>Bump &quot;commons-validator&quot; from 1.8.0 to 1.10.1</li>
+<li>Bump &quot;commons-io&quot; from 2.15.1 to 2.22.0</li>
+<li>Bump &quot;commons-beanutils&quot; from 1.9.4 to 1.11.0</li>
+<li>Bump &quot;versions-maven3-plugin&quot; from 2.16.2 to 2.21.0</li>
+<li>Bump &quot;cargo-maven3-plugin&quot; from 1.10.12 to 1.10.27</li>
+<li>Bump &quot;antlr&quot; and &quot;antlr4-maven-plugin&quot; from 4.13.1 to 4.13.2</li>
+<li>Bump &quot;taglib-maven-plugin&quot; from 2.6 to 3.0.1</li>
+<li>Bump &quot;bnd-maven-plugin&quot; from 7.0.0 to 7.2.3</li>
+<li>Bump &quot;maven-failsafe/surefire-[report]-plugin&quot; from 3.2.5 to 3.5.6</li>
+<li>Bump &quot;maven-war-plugin&quot; from 3.4.0 to 3.5.1</li>
+<li>Bump &quot;maven-release-plugin&quot; from 3.0.1 to 3.3.1</li>
+<li>Bump &quot;maven-project-info-reports-plugin&quot; from 3.5.0 to 3.9.0</li>
+<li>Bump &quot;maven-pmd-plugin&quot; from 3.21.2 to 3.28.0</li>
+<li>Bump &quot;maven-jxr-plugin&quot; from 3.3.2 to 3.6.0</li>
+<li>Bump &quot;maven-jar-plugin&quot; from 3.3.0 to 3.5.0</li>
+<li>Bump &quot;maven-source-plugin&quot; from 3.3.0 to 3.4.0</li>
+<li>Bump &quot;maven-site-plugin&quot; from 3.12.1 to 3.22.0</li>
+<li>Bump &quot;maven-scm-publish-plugin&quot; from 3.2.1 to 3.3.0</li>
+<li>Bump &quot;maven-resources-plugin&quot; from 3.3.1 to 3.5.0</li>
+<li>Bump &quot;maven-javadoc-plugin&quot; from 3.6.3 to 3.12.0</li>
+<li>Bump &quot;maven-install-plugin&quot; from 3.1.1 to 3.1.4</li>
+<li>Bump &quot;maven-gpg-plugin&quot; from 3.1.0 to 3.2.8</li>
+<li>Bump &quot;maven-enforcer-plugin&quot; from 3.4.1 to 3.6.3</li>
+<li>Bump &quot;maven-deploy-plugin&quot; from 3.1.1 to 3.1.4</li>
+<li>Bump &quot;maven-dependency-plugin&quot; from 3.6.1 to 3.11.0</li>
+<li>Bump &quot;maven-compiler-plugin&quot; from 3.12.1 to 3.15.0</li>
+<li>Bump &quot;maven-clean-plugin&quot; from 3.3.2 to 3.5.0</li>
+<li>Bump &quot;checkstyle&quot; from 10.14.0 to 13.5.0</li>
+<li>Bump &quot;maven-checkstyle-plugin&quot; from 3.3.1 to 3.6.0</li>
+<li>Bump &quot;maven-changes-plugin&quot; from 2.12.1 to 3.0.0-M3 and migrate &quot;changes.xml&quot;</li>
+<li>Bump &quot;maven-assembly-plugin&quot; from 3.6.0 to 3.8.0</li>
+<li>Bump &quot;maven-antrun-plugin&quot; from 3.1.0 to 3.2.0</li>
 <li>Update documentation to version 1.5.0</li>
 <li>Set Version to 1.5.0-SNAPSHOT</li>
 <li>With <strong>Release Candidate 1 &amp; 2</strong>:

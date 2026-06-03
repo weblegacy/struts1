@@ -17,37 +17,65 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/DECORATION/1.8.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/DECORATION/1.8.0 https://maven.apache.org/xsd/decoration-1.8.0.xsd"
-  name="Struts Taglib">
-    <bannerLeft>
-        <name>Apache Software Foundation</name>
-        <src>../images/asf-logo.png</src>
-        <href>https://www.apache.org/</href>
+<site xmlns="http://maven.apache.org/SITE/2.0.0" 
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/SITE/2.0.0 https://maven.apache.org/xsd/site-2.0.0.xsd"
+      name="${project.name}">
+
+    <bannerLeft name="Apache Software Foundation" href="https://www.apache.org/">
+        <image src="../images/asf-logo.png" />
     </bannerLeft>
-    <bannerRight>
-        <name>Apache Struts</name>
-        <src>../images/struts.png</src>
-        <href>https://struts.apache.org/index.html</href>
+
+    <bannerRight name="Apache Struts" href="https://struts.apache.org/index.html">
+        <image src="../images/struts.png" />
     </bannerRight>
+
     <body>
+
         <links>
-            <item name="Apache" href="https://www.apache.org/" />
-            <item name="Struts" href="https://struts.apache.org/index.html" />
+
+            <item   name="Apache"
+                    href="https://www.apache.org/" />
+
+            <item   name="Struts"
+                    href="https://struts.apache.org/index.html" />
+
         </links>
-        <menu name="Struts Taglib">
-            <item name="Welcome" href="index.html"/>
+
+        <menu name="${project.name}">
+
+            <item   name="Welcome"
+                    href="index.html" />
+
        </menu>
+
         <menu name="FAQs and HOWTOs">
-            <item name="Taglib FAQ" href="faq.html"/>
-            <item name="Building View Components" href="building_view.html"/>
-            <item name="Indexed Properties" href="indexedprops.html"/>
+
+            <item   name="Taglib FAQ"
+                    href="faq.html" />
+
+            <item   name="Building View Components"
+                    href="building_view.html" />
+
+            <item   name="Indexed Properties"
+                    href="indexedprops.html" />
+
        </menu>
+
         <menu name="Struts Taglib Guides">
-            <item name="Bean" href="dev_bean.html"/>
-            <item name="HTML" href="dev_html.html"/>
-            <item name="Logic" href="dev_logic.html"/>
-            <item name="Nested" href="dev_nested.html"/>
+
+            <item   name="Bean"
+                    href="dev_bean.html" />
+
+            <item   name="HTML"
+                    href="dev_html.html" />
+
+            <item   name="Logic"
+                    href="dev_logic.html" />
+
+            <item   name="Nested"
+                    href="dev_nested.html" />
+
         </menu>
 
        <menu name="Components">
@@ -82,34 +110,38 @@
         </menu>
 
         <menu name="Related Resources">
-            <item name="Display Tag"
-                  href="http://displaytag.sourceforge.net/"/>
 
-            <item name="html2"
-                  href="http://www.rabago.net/struts/html2/"/>
+            <item   name="Display Tag"
+                    href="http://displaytag.sourceforge.net/" />
 
-            <item name="JSTL"
-                  href="http://java.sun.com/products/jsp/jstl/"/>
+            <item   name="html2"
+                    href="http://www.rabago.net/struts/html2/" />
 
-            <item name="JSF"
-                  href="http://java.sun.com/j2ee/javaserverfaces/"/>
+            <item   name="JSTL"
+                    href="http://java.sun.com/products/jsp/jstl/" />
 
-            <item name="Struts Layout"
-                  href="http://struts.application-servers.com"/>
+            <item   name="JSF"
+                    href="http://java.sun.com/j2ee/javaserverfaces/" />
 
-            <item name="Struts Menu"
-                  href="http://struts-menu.sourceforge.net/"/>
+            <item   name="Struts Layout"
+                    href="http://struts.application-servers.com" />
+
+            <item   name="Struts Menu"
+                    href="http://struts-menu.sourceforge.net/" />
+
         </menu>
 
         <menu name="Quick Links">
-            <item
-                    name="Javadoc"
-                    href="apidocs/index.html"/>
-            <item
-                    name="Struts 1"
-                    href="../index.html"/>
+
+            <item   name="Javadoc"
+                    href="apidocs/index.html" />
+
+            <item   name="Struts 1"
+                    href="../index.html" />
+
         </menu>
 
         <menu ref="reports"/>
+
     </body>
-</project>
+</site>

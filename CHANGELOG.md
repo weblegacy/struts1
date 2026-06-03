@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Migrate `site.xml`
 * Bump `maven-fluido-skin` from 1.12.0 to 2.1.0 and move version to POM
 * Bump `junit-jupiter-api` from 5.10.2 to 6.1.0
 * Bump `jaxb-runtime` from 2.3.9 to 3.0.2

@@ -378,6 +378,7 @@
         <mavenVersion>3.8.1</mavenVersion>
         <javaVersion>8</javaVersion>
         <javaTestVersion>8</javaTestVersion>
+        <fludioVersion>2.1.0</fludioVersion>
         <surefireVersion>3.5.6</surefireVersion>
         <groovyVersion>4.0.32</groovyVersion>
         <seleniumVersion>4.44.0</seleniumVersion>

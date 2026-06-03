@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Migrate `maven-failsafe-plugin` configuration
 * Migrate `maven-changes-plugin` configuration
 * Generate Taglib-Documentation
 * Migrate `site.xml`

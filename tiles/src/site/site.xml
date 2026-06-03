@@ -57,7 +57,7 @@
                     href="userGuide.html" />
 
             <item   name="Creating Templates"
-                    href="examples.html" name="Creating Templates" />
+                    href="examples.html" />
 
             <item   name="Taglib Reference"
                     href="tagreference.html" />

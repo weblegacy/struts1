@@ -52,20 +52,6 @@
         </dependency>
     </dependencies>
 
-   <!--
-   <reporting>
-      <plugins>
-         <plugin>
-            <groupId>io.github.weblegacy</groupId>
-            <artifactId>taglib-maven-plugin</artifactId>
-            <configuration>
-               <srcDir>${project.basedir}/src/tld</srcDir>
-            </configuration>
-         </plugin>
-      </plugins>
-   </reporting>
-   -->
-
      <profiles>
        <profile>
         <id>pre-assembly</id>

@@ -390,6 +390,7 @@
         <jspVersion>3.0.0</jspVersion>
         <jstlVersion>2.0.0</jstlVersion>
         <jstlImplVersion>2.0.0</jstlImplVersion>
+        <digesterVersion>2.1</digesterVersion>
         <elVersion>4.0.0</elVersion>
         <jsfVersion>3.0.0</jsfVersion>
         <jsfImplVersion>3.0.5</jsfImplVersion>
@@ -668,6 +669,11 @@
                                 <url>https://javadoc.io/doc/org.jboss.weld/weld-api/4.0.Final/</url>
                             </dependencyLink>
                             <dependencyLink>
+                                <groupId>org.glassfish</groupId>
+                                <artifactId>jakarta.faces</artifactId>
+                                <url>https://javadoc.io/doc/org.glassfish/jakarta.faces/${jsfImplVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
                                 <groupId>org.glassfish.jaxb</groupId>
                                 <artifactId>jaxb-runtime</artifactId>
                                 <url>https://javadoc.io/doc/org.glassfish.jaxb/jaxb-runtime/${jaxbVersion}/</url>
@@ -681,6 +687,26 @@
                                 <groupId>org.apache.commons</groupId>
                                 <artifactId>commons-fileupload2-jakarta</artifactId>
                                 <url>https://javadoc.io/doc/org.apache.commons/commons-fileupload2-jakarta/${fileuploadVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>commons-digester</groupId>
+                                <artifactId>commons-digester</artifactId>
+                                <url>https://javadoc.io/doc/commons-digester/commons-digester/${digesterVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>org.slf4j</groupId>
+                                <artifactId>slf4j-api</artifactId>
+                                <url>https://javadoc.io/doc/org.slf4j/slf4j-api/${slf4jVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>org.slf4j</groupId>
+                                <artifactId>jcl-over-slf4j</artifactId>
+                                <url>https://javadoc.io/doc/org.slf4j/jcl-over-slf4j/${slf4jVersion}/</url>
+                            </dependencyLink>
+                            <dependencyLink>
+                                <groupId>org.slf4j</groupId>
+                                <artifactId>slf4j-simple</artifactId>
+                                <url>https://javadoc.io/doc/org.slf4j/slf4j-simple/${slf4jVersion}/</url>
                             </dependencyLink>
                         </dependencyLinks>
                         <links>
@@ -1046,7 +1072,7 @@
             <dependency>
                 <groupId>commons-digester</groupId>
                 <artifactId>commons-digester</artifactId>
-                <version>2.1</version>
+                <version>${digesterVersion}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>commons-logging</groupId>

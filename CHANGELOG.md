@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Resolve some warnings from `maven-javadoc-plugin`
 * Migrate `maven-failsafe-plugin` configuration
 * Migrate `maven-changes-plugin` configuration
 * Generate Taglib-Documentation

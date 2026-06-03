@@ -117,6 +117,7 @@
 
 <h4>Improvement</h4>
 <ul>
+<li>Resolve some warnings from &quot;maven-javadoc-plugin&quot;</li>
 <li>Generate Taglib-Documentation</li>
 <li>With <strong>Release Candidate 1 &amp; 2</strong>:
     <ul>

@@ -2,6 +2,7 @@
 
 ## 1.5.0 / YYYY-MM-DD
 
+* Bump `bnd-maven-plugin` from 7.2.3 to 7.3.0
 * Resolve some warnings from `maven-javadoc-plugin`
 * Migrate `maven-failsafe-plugin` configuration
 * Migrate `maven-changes-plugin` configuration
